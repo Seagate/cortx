@@ -1,0 +1,3 @@
+m0ut_objects += fd/ut/fd.o \
+		fd/ut/fd_tree.o \
+		fd/ut/common.o

@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+
+#
+# When mero is configured with --enable-coverage option, it
+# builds mero (both user and kernel space) with gcov profiling
+# options enabled.
+#
+# When such binaries are executed or kernel modules are exercised,
+# trace data is recorded in .gcda files.
+#
+# This script, collects gcda files from location dependent on user or
+# kernel mode, and runs lcov on it. As output, lcov will create
+# HTML file hierarchy in <output_dir>
+#
+
+if [ $# -ne 3 ]
+then
+	echo "Usage: gcov-gen-html [user|kernel] <src_dir> <output_dir>"
+	echo "       <src_dir>:    path of mero directory"
+	echo "       <output_dir>: path where output of lcov will be stored"
+	exit 1
+fi
+
+mode=$1
+src=$2
+outdir=$3
+
+if [ x$mode != xuser -a x$mode != xkernel ]
+then
+	echo "Error: First arg must be either \"user\" or \"kernel\""
+	exit 1
+fi
+
+if [ ! -d $src ]
+then
+	echo "Error: Either $src does not exists or is not a directory"
+	exit 1
+fi
+
+if [ ! -d $outdir ]
+then
+	echo "Creating $outdir..."
+	mkdir -p $outdir
+fi
+#
+# Following line must be commented in /usr/bin/geninfo
+#
+# push(@gcov_options, "-a") if ($gcov_caps->{'all-blocks'});
+#
+# This line from /usr/bin/geninfo causes gcov to hang while
+# processing some .gcda files.
+# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48361
+#
+# Make sure that it is really commented
+#
+line=`cat /usr/bin/geninfo | grep "all-blocks"`
+if [ $? -eq 0 ]   # Found a line that contains string "all-blocks"
+then
+	echo $line | egrep "^\s*#" > /dev/null
+	if [ $? -ne 0 ] # $line does not start with '#'
+	then
+		echo "Error: Comment following line from /usr/bin/geninfo and retry"
+		cat << EOF
+		push(@gcov_options, "-a") if ($gcov_caps->{'all-blocks'});
+EOF
+		exit 1
+	fi
+fi
+saved_pwd=`pwd`
+cd $outdir
+
+if [ $mode = "user" ]
+then
+	gcda_cnt=`find $src -name "*.gcda" | wc -l`
+	if [ $gcda_cnt -eq 0 ]
+	then
+		echo "No *.gcda file is present in $src and its subdirectoris"
+		exit 1
+	fi
+	echo "Collecting user mode stats"
+	lcov --directory $src -b $src --capture --output-file app.info
+	if [ -e app.info ]
+	then
+		genhtml app.info
+	fi
+else
+	mount | grep "/sys/kernel/debug" > /dev/null
+	if [ $? -ne 0 ]
+	then
+		echo "Error: debugfs is not mounted on /sys/kernel/debug"
+		echo "       Use 'mount -t debugfs none /sys/kernel/debug' to mount debugfs"
+		exit 1
+	fi
+
+	GCDA=/sys/kernel/debug/gcov
+	if [ ! -d $GCDA ]
+	then
+		echo "Error: running kernel is not compiled with CONFIG_GCOV_KERNEL=y option"
+		exit 1
+	fi
+
+	TEMPDIR=$(mktemp -d)
+	find $GCDA -type d -exec mkdir -p $TEMPDIR/\{\} \;
+	find $GCDA -name '*.gcda' -exec sh -c 'cat < $0 > '$TEMPDIR'/$0' {} \;
+	find $GCDA -name '*.gcno' -exec sh -c 'cp -d $0 '$TEMPDIR'/$0' {} \;
+
+	gcda_cnt=`find $TEMPDIR -name "*.gcda" | wc -l`
+	if [ $gcda_cnt -eq 0 ]
+	then
+		echo "No *.gcda file is present in /sys/kernel/debug/gcov and its subdirectoris"
+		rm -rf $TEMPDIR
+		exit 1
+	fi
+
+	echo "Collecting kernel mode stats"
+	lcov --directory $TEMPDIR --capture --output-file app.info
+	lcov --remove app.info "*.h" -o app1.info
+	genhtml app1.info
+	if [ $? -eq 0 ]
+	then
+		echo "lcov output saved at $outdir"
+	fi
+	rm -rf $TEMPDIR
+fi
+cd $saved_pwd

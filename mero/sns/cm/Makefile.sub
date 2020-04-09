@@ -1,0 +1,37 @@
+nobase_mero_include_HEADERS += sns/cm/ag.h \
+                                  sns/cm/cm.h \
+                                  sns/cm/cp.h \
+                                  sns/cm/iter.h \
+                                  sns/cm/file.h \
+                                  sns/cm/service.h \
+                                  sns/cm/sns_cp_onwire.h \
+                                  sns/cm/cm_utils.h \
+                                  sns/cm/trigger_fop.h \
+				  sns/cm/ha.h
+
+mero_libmero_la_SOURCES  += sns/cm/ag.c \
+                                  sns/cm/ag.h \
+                                  sns/cm/cm.c \
+                                  sns/cm/cm.h \
+                                  sns/cm/cp.c \
+                                  sns/cm/cp.h \
+                                  sns/cm/iter.c \
+                                  sns/cm/iter.h \
+                                  sns/cm/file.c \
+                                  sns/cm/file.h \
+                                  sns/cm/service.c \
+                                  sns/cm/storage.c \
+                                  sns/cm/net.c \
+                                  sns/cm/sns_cp_onwire.c \
+                                  sns/cm/cm_utils.c \
+                                  sns/cm/trigger_fop_common.c \
+                                  sns/cm/trigger_fop.h \
+                                  sns/cm/trigger_fom.c
+
+nodist_mero_libmero_la_SOURCES += sns/cm/sns_cp_onwire_xc.c \
+				  sns/cm/ha_xc.c
+
+XC_FILES += sns/cm/sns_cp_onwire_xc.h sns/cm/ha_xc.h
+
+EXTRA_DIST += sns/poolmach.c \
+              sns/cm/Kbuild.sub

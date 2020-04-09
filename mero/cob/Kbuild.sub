@@ -1,0 +1,3 @@
+m0mero_objects += \
+                  cob/cob.o \
+                  cob/cob_xc.o

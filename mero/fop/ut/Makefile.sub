@@ -1,0 +1,15 @@
+ut_libmero_ut_la_SOURCES += fop/ut/iterator_test.c \
+			    fop/ut/iterator_test.h \
+                            fop/ut/long_lock/long_lock_ut.c \
+                            fop/ut/stats/stats_ut.c \
+                            fop/ut/fom_interpose/ms_fom_ut.c \
+                            fop/ut/fom_timedwait_ut.c
+
+nodist_ut_libmero_ut_la_SOURCES += fop/ut/iterator_test_xc.c
+
+XC_FILES += fop/ut/iterator_test_xc.h
+
+EXTRA_DIST += fop/ut/long_lock/rdwr_test_bench.c \
+              fop/ut/long_lock/rdwr_fom.c \
+              fop/ut/stats/stats_fom.c \
+              fop/ut/stats/stats_fom.h

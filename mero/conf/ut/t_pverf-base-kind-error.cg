@@ -1,0 +1,62 @@
+#= Base <7640000000000001:1> of formulaic pver <7640000000000001:2> is not actual
+(root-0 verno=1 rootfid=(1, 2) mdpool=pool-3 imeta_pver=pver-0
+    mdredundancy=1 params=["param-0", "param-1", "param-2"] nodes=[node-2]
+    sites=[site-2] pools=[pool-3, pool-4] profiles=[profile-0] fdmi_flt_grps=[])
+(profile-0 pools=[pool-3, pool-4])
+(node-2 memsize=16000 nr_cpu=2 last_state=3 flags=2
+    processes=[process-5, process-6])
+(process-5 cores=[3] mem_limit_as=0 mem_limit_rss=0 mem_limit_stack=0
+    mem_limit_memlock=0 endpoint="0@lo:12345:34:1"
+    services=[service-9, service-10, service-20, service-21,
+              service-22, service-23, service-24, service-25, service-26])
+(process-6 cores=[3] mem_limit_as=0 mem_limit_rss=0 mem_limit_stack=0
+    mem_limit_memlock=0 endpoint="0@lo:12345:34:1" services=[])
+(service-9 type=@M0_CST_IOS endpoints=["0@lo:12345:34:1"] params=[]
+    sdevs=[sdev-15, sdev-71, sdev-72, sdev-73, sdev-74])
+(service-10 type=@M0_CST_MDS endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(service-20 type=@M0_CST_CONFD endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(service-21 type=@M0_CST_ADDB2 endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(service-22 type=@M0_CST_RMS endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(service-23 type=@M0_CST_HA endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(service-24 type=@M0_CST_SNS_REP endpoints=["0@lo:12345:34:1"] params=[]
+    sdevs=[])
+(service-25 type=@M0_CST_SNS_REB endpoints=["0@lo:12345:34:1"] params=[]
+    sdevs=[])
+(service-26 type=@M0_CST_DS1 endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(sdev-15 dev_idx=0 iface=7 media=2 bsize=8192 size=1073741824 last_state=2
+    flags=4 filename="/dev/sdev1")
+(sdev-71 dev_idx=1 iface=7 media=2 bsize=8192 size=1073741824 last_state=2
+    flags=4 filename="/dev/sdev2")
+(sdev-72 dev_idx=2 iface=7 media=2 bsize=8192 size=1073741824 last_state=2
+    flags=4 filename="/dev/sdev3")
+(sdev-73 dev_idx=3 iface=7 media=2 bsize=8192 size=1073741824 last_state=2
+    flags=4 filename="/dev/sdev4")
+(sdev-74 dev_idx=4 iface=7 media=2 bsize=8192 size=1073741824 last_state=2
+    flags=4 filename="/dev/sdev5")
+(site-2 racks=[rack-3] pvers=[pver-0])
+(rack-3 encls=[enclosure-7] pvers=[pver-0])
+(enclosure-7 ctrls=[controller-11] pvers=[pver-0])
+(controller-11 node=node-2
+    drives=[drive-16, drive-75, drive-76, drive-77, drive-78]
+    pvers=[pver-0])
+(drive-16 dev=sdev-15 pvers=[pver-0])
+(drive-75 dev=sdev-71 pvers=[pver-0])
+(drive-76 dev=sdev-72 pvers=[pver-0])
+(drive-77 dev=sdev-73 pvers=[pver-0])
+(drive-78 dev=sdev-74 pvers=[pver-0])
+(pool-3 pver_policy=0 pvers=[])
+(pool-4 pver_policy=0 pvers=[pver-0, pver_f-1, pver_f-2])
+(pver-0 N=1 K=1 P=5 tolerance=[0, 0, 0, 0, 1] sitevs=[objv-5])
+(pver_f-1 id=0 base=pver-0 allowance=[0, 0, 0, 0, 1])
+(pver_f-2 id=1 base=pver_f-1 # base is not actual
+    allowance=[0, 0, 0, 0, 2])
+(objv-5 real=site-2 children=[objv-12])
+(objv-12 real=rack-3 children=[objv-17])
+(objv-17 real=enclosure-7 children=[objv-18])
+(objv-18 real=controller-11
+    children=[objv-19, objv-79, objv-80, objv-81, objv-82])
+(objv-19 real=drive-16 children=[])
+(objv-79 real=drive-75 children=[])
+(objv-80 real=drive-76 children=[])
+(objv-81 real=drive-77 children=[])
+(objv-82 real=drive-78 children=[])

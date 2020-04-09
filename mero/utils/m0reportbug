@@ -1,0 +1,915 @@
+#!/usr/bin/env bash
+set -eu
+# set -x
+export PS4='+ [${FUNCNAME[0]:+${FUNCNAME[0]}:}${LINENO}] '
+
+VERSION=0.42
+
+IN_DIR=/var/mero # default value; overruled by CLI argument
+OUT_DATA_DIR=m0reportbug-data
+OUT_CORES_DIR=m0reportbug-cores
+OUT_TRACES_DIR=m0reportbug-traces
+REPORT=m0reportbug.txt # the file is created in $OUT_DATA_DIR/
+M0TRACES_MAX=20 # how many most recently modified m0trace files to collect
+M0TRACES_M0D_MAX=2 # additionally, collect that many m0trace files from each
+                   # $IN_DIR/m0d-* directory
+ADDB_TAIL=100000 # limit each m0addb2dump output file to that many lines
+CRASH_AGE_MAX=3 # maximal age (days) of vmcore-dmesg.txt files to be collected
+STAGE_TIME_LIMIT=10 # seconds; if a stage runs longer, show its duration
+readonly START_DIR=$PWD
+
+umask 0002
+export LC_ALL=C
+
+_xz() { xz --threads=0 "$@"; }
+
+main() {
+    local g t
+    local stages=(
+        probes
+        misc_files
+        backtraces_live
+        coredump_live
+        backtraces_cores # must precede `binaries' stage
+        binaries # will be skipped unless COLLECT_BINARIES_P=1
+        m0traces
+        addb # Should go after `m0traces' stage (m0addb2dump creates new
+             # m0traces, which we don't want to collect).
+        systemd_journal
+        sysrq_info
+    )
+
+    optparse "$@"
+    [ -d "$IN_DIR" ] || die "$IN_DIR: no such directory"
+
+    ## `find $IN_DIR` would return nothing if $IN_DIR is a link.
+    ## `find -H $IN_DIR` would depend on $PWD if $IN_DIR is a relative path.
+    IN_DIR=$(readlink -f $IN_DIR)
+
+    [ `id -u` -eq 0 ] || die 'Must be run by superuser'
+
+    ## Clean old m0reportbug output before generating new.
+    rm -rf {$OUT_DATA_DIR,$OUT_CORES_DIR,$OUT_TRACES_DIR}{,.tar.xz}
+
+    mkdir $OUT_DATA_DIR
+    cd $OUT_DATA_DIR
+    echo m0reportbug $VERSION >$REPORT
+    echo IN_DIR=$IN_DIR >>$REPORT
+    echo PWD=$START_DIR >>$REPORT
+
+    for g in "${stages[@]}"; do
+        case $g in
+            addb) [ ${COLLECT_ADDB_P:-0} -eq 1 ] || continue;;
+            binaries) [ ${COLLECT_BINARIES_P:-0} -eq 1 ] || continue;;
+        esac
+        echo -n "$g... " >&2
+        section "[$g]"
+        t=$(date +%s)
+        $g
+        echo "OK$(_time $t)" >&2
+    done >>$REPORT
+    cd ..
+
+    tar --remove-files -cJf $OUT_DATA_DIR{.tar.xz,}
+    local files=$OUT_DATA_DIR.tar.xz
+    for t in $OUT_CORES_DIR $OUT_TRACES_DIR; do
+        if [ -d $t ]; then
+            tar --remove-files -cJf $t{.tar.xz,}
+            files+=":$t.tar.xz"
+        fi
+    done
+    if echo $files | grep -q :; then
+        echo 'Please attach these files to the bug report:' >&2
+        echo $files | sed -e 's/^/  /' -e 's/:/\n  /g' >&2
+    else
+        echo "Please attach $files to the bug report." >&2
+    fi
+}
+
+probes() {
+    local p
+    local probes=(
+        'date -u --rfc-3339=seconds'
+        'hostname'
+        'uptime'
+        'm0version'
+        'm0d -v'
+        'halond -v'
+        'rpm -qi mero'
+        'rpm -qi halon'
+        'rpm -qR mero'
+        'rpm -qR halon'
+        'uname -a'
+        'cat /proc/cmdline'
+        'cat /proc/cpuinfo'
+        'cat /proc/diskstats'
+        'cat /proc/interrupts'
+        'cat /proc/mdstat'
+        'cat /proc/meminfo'
+        'cat /proc/partitions'
+        'cat /proc/vmstat'
+        'free'
+        'mount'
+        ## - XXX Querying m0t1fs free space will hang if there is m0d failure.
+        ##   Skip m0t1fs until this issue is resolved.
+        ## - Querying other network filesystems may also hang. Exclude `nfs'
+        ##   to be on the safe side.
+        ## - Disable it entirely because even with -x m0t1fs it calls a syscall
+        ##   which calls m0t1fs code. Will be re-enabled when m0t1fs locking
+        ##   is fixed.
+        # 'df -h -x m0t1fs -x nfs'
+        'lspci'
+        'gcc --version'
+        'ip addr'
+        'ip -s link'
+        'cat /etc/modprobe.d/lnet.conf'
+        'cat /sys/kernel/debug/mero/trace/stat'
+        'lsmod'
+        'ps -e f'
+        'ps auxH'
+        'ls /dev/disk/by-*'
+        'dmesg'
+        'systemctl status -l'
+        'systemctl status -l halond'
+        'systemctl status -l mero-kernel'
+        'lctl dk'
+        'hctl mero status -d'
+        'hctl halon info eq'
+        'hctl halon info rc'
+        'hctl halon info cep'
+        'find /var/mero/'
+    )
+    for p in "${probes[@]}"; do
+        section $p
+        $p 2>&1 || true
+    done
+}
+
+_kdump_files() {
+    local kdump_path=
+
+    if [ -f /etc/kdump.conf ]; then
+        kdump_path=$(sed -n 's/^path \+//p' /etc/kdump.conf)
+    fi
+    [ -n "$kdump_path" -a -d "$kdump_path" ] || kdump_path=/var/crash
+    if [ -d "$kdump_path" ]; then
+        find $kdump_path -type f -name vmcore-dmesg.txt -ctime -$CRASH_AGE_MAX
+    fi
+}
+
+misc_files() {
+    local outdir path f
+
+    (outdir=$(readlink -f .)/misc
+     cd "$IN_DIR"
+     find . -type f \( -name \*.log -o -name \*.xc \) | cut -c3- |
+         while read path; do
+             mkdir -p $outdir/$(dirname $path)
+             cp -p $path $outdir/$path
+             echo $path
+         done
+
+     mkdir -p $outdir
+     f=$outdir/halon-rg.json
+     if hctl halon info graph json >$f 2>/dev/null; then
+         echo ${f##*/}
+     else
+         rm $f
+     fi)
+
+    outdir=$(readlink -f .)/root-misc
+    {
+        find /etc/mero/ -type f 2>/dev/null || true
+        find /etc/sysconfig/ -maxdepth 1 -type f \
+             \( -name mero\* -o -name m0d\* -o -name m0t1fs\* \) |
+            while read f; do
+                echo $f
+                grep '^MERO_CONF_XC=' $f | cut -d\' -f2 # may produce duplicates
+            done | sort -u
+        for f in /etc/halon/halon_facts.yaml /tmp/halond.log; do
+            if [ -f $f ]; then echo $f; fi
+        done
+        find /var/log/ -type f -name halon.decision.log\*
+        _kdump_files
+    } | while read path; do
+        [ "$path" != "${path#/}" ] || {
+            warn "${FUNCNAME[0]}: Absolute path expected: $path"
+            continue
+        }
+        [ -f $path ] || {
+            echo "$path: No such file"
+            continue
+        }
+        mkdir -p $outdir$(dirname $path)
+        cp -p $path $outdir$path
+        echo $path
+    done
+
+    if [ -d /var/log/halon-persistence ]; then
+        mkdir -p $outdir/var/log
+        cp -rp /var/log/halon-persistence $outdir/var/log/
+        echo /var/log/halon-persistence
+    fi
+}
+
+die() { echo "**ERROR** $@" >&2; exit 1; }
+warn() { echo "*WARNING* $@" >&2; }
+
+section() { echo "----- $@ -----"; }
+
+_time() {
+    local start=$1
+    local limit=${STAGE_TIME_LIMIT:-0}
+    local t=$(($(date +%s) - start))
+
+    if [ $limit -ne 0 -a $t -gt $limit ]; then
+        printf ' (%um%us)' $((t / 60)) $((t % 60))
+    fi
+}
+
+program_from_core() {
+    local core=$1
+    local prog=$(file $core | sed -En "s/.*, from '([^ ']+).*/\1/p")
+    if [ -n "$prog" ]; then
+        ## $ file /var/mero/ios1/core.1271
+        ## /var/mero/ios1/core.1271: ELF 64-bit LSB core file x86-64, version 1 (SYSV), SVR4-style, from 'm0d -e lnet:10.22.192.32@tcp:12345:42:401 -f <0x7200000000000001:4> -T ad -D db'
+        :
+    else
+        ## $ file /var/mero/m0ut/ut-sandbox/core.4239
+        ## /var/mero/m0ut/ut-sandbox/core.4239: ELF 64-bit LSB core file x86-64, version 1 (SYSV), too many program header sections (16647)
+        prog=$(gdb -batch -nx -ex "core $core" 2>/dev/null |
+                   sed -En "s/^Core was generated by \`([^ ']+).*/\\1/p")
+    fi
+    [ -n "$prog" ] || warn "Cannot deduce name of program from \`$core'"
+    basename $prog
+}
+
+### Since $0 may be a relative path (e.g., 'utils/m0reportbug'),
+### we might not be able to canonicalize it after cd-ing to $OUT_DATA_DIR.
+PROG=$(readlink -f $0)
+
+_path_rpm() {
+    [ $# -eq 1 ] || die "Usage: ${FUNCNAME[0]} <name>"
+    local name=$1
+
+    case $name in
+        m0d|m0trace|m0tracedump) echo "/usr/bin/$name";;
+        m0mkfs) echo "/usr/sbin/$name";;
+        m0addb2dump) echo "/usr/sbin/$name";;
+        libmero.so) readlink -f /usr/lib64/libmero.so;;
+        m0mero.ko) echo "/lib/modules/$(uname -r)/kernel/fs/mero/$name";;
+        m0ham|lt-m0ham) echo "/usr/sbin/$name";;
+        m0ut|lt-m0ut)
+            ## Provided by mero-tests-ut-*.rpm (optional).
+            echo "?/usr/bin/${name#lt-}";;
+        libmero-ut.so|libmero-xcode-ff2c.so)
+            ## Provided by mero-devel-*.rpm (optional).
+            echo "?/usr/lib64/$name.0.0.0";;
+        libgalois.so) echo "/usr/lib64/$name.1.0.0";;
+        python) type -p python;;
+        halond) readlink -f /usr/bin/halond;;
+        *) die "${FUNCNAME[0]}: Unsupported argument: $name";;
+    esac
+}
+
+_path_src() {
+    [ $# -eq 2 -a -z "${2%.libs/}" ] ||
+        die "Usage: ${FUNCNAME[0]}: <name> [.libs/]"
+    local name=$1
+    local subdir="$2"
+
+    local src="$(echo $PROG | sed -n 's:/utils/m0reportbug$::p')"
+    [ -n "$src" ] || die "${FUNCNAME[0]}: Impossible happened"
+
+    case $name in
+        m0d|lt-m0d) echo "$src/mero/${subdir}$name";;
+        m0mkfs|lt-m0mkfs) echo "$src/utils/mkfs/${subdir}$name";;
+        m0trace|m0tracedump)
+            [ -z "$subdir" ] || die "${FUNCNAME[0]}: Unexpected argument"
+            echo "$src/utils/trace/$name";;
+        m0addb2dump)
+            [ -z "$subdir" ] || die "${FUNCNAME[0]}: Unexpected argument"
+            echo "$src/addb2/$name";;
+        libmero.so) readlink -f "$src/mero/.libs/libmero.so";;
+        m0mero.ko) echo "$src/$name";;
+        m0ham|lt-m0ham) echo "$src/ha/.libs/$name";;
+        m0ut|lt-m0ut) echo "$src/ut/.libs/$name";;
+        libmero-ut.so) echo "$src/ut/.libs/$name.0.0.0";;
+        libmero-xcode-ff2c.so) echo "$src/xcode/ff2c/.libs/$name.0.0.0";;
+        libgalois.so)
+            echo "$src/extra-libs/galois/src/.libs/$name.1.0.0";;
+        lt-m0rwlock) echo "$src/rm/st/.libs/lt-m0rwlock";;
+        python) type -p python;;
+        halond) readlink -f /usr/bin/halond;;
+        *) die "${FUNCNAME[0]}: Unsupported argument: $name";;
+    esac
+}
+
+path() {
+    [ $# -ge 1 -a -n "$1" -a -z "${2:-}" -o "${2:-}" = binary ] ||
+        die "Usage: ${FUNCNAME[0]} <name> [binary]"
+    local name=$1
+    local subdir="${2:+.libs/}"
+    local result
+    local optional=0
+
+    if [ "$(dirname $PROG)" = '/usr/sbin' ]; then
+        result=$(_path_rpm $name) # installed from rpm
+    elif [ -n "$(echo $PROG | sed -n 's:/utils/m0reportbug$::p')" ]; then
+        result=$(_path_src $name "$subdir") # running from sources
+    else
+        # Apparently `m0reportbug' is not running sources. We assume that
+        # executables and libraries were installed from rpm (we wouldn't
+        # know where to look for them if they weren't), and that
+        # `m0reportbug' was copied to some non-/usr/sbin directory
+        # (for testing purpose or whatever).
+        result=$(_path_rpm $name)
+    fi
+    [ "${result#\?}" = "$result" ] || local optional=1 # file may be missing
+    result="${result#\?}"
+
+    if [ -z "$result" ]; then
+        warn "${FUNCNAME[0]}: Unable to find $name"
+    elif ! [ -a "$result" ]; then
+        [ $optional -eq 1 ] || warn "${FUNCNAME[0]}: $result: No such file"
+    elif [ "${2:-}" = binary -a \
+           "$(file -bi $result | cut -d= -f2)" != binary ]; then
+        warn "${FUNCNAME[0]}: $name is not a binary file"
+    else
+        echo $result
+    fi
+}
+
+## `m0version` should work even when `m0d` is not in PATH.
+m0version() { $(path m0d) -v; }
+
+GDB=$(which gdb 2>/dev/null || true)
+
+gdb_bt() {
+    [ -n "$GDB" ] || die "${FUNCNAME[0]} cannot be used"
+    [ $# -eq 2 ] || die "Usage: ${FUNCNAME[0]} <prog> {<core>|<pid>}"
+
+    [ -n "$1" ] || return 0 # do nothing if `prog' argument is empty
+    local libdir=$(dirname "$(path libmero.so)")
+    {
+        cat <<EOF
+echo "set solib-search-path .:$libdir"
+set pagination off
+p "### bt"
+bt
+p "### thread apply all bt"
+thread apply all bt
+p "### thread apply all bt full"
+thread apply all bt full
+p "### info sharedlibrary"
+info sharedlibrary
+EOF
+    } | $GDB -nx "$@" 2>&1 || true
+    echo
+}
+
+backtraces_live() {
+    local pid task
+
+    pgrep '\<(lt-)?m0|\<(halond|dd|fio|mount)\>' | while read pid; do
+        local args="$(ps h -o args $pid)"
+        [ -n "$args" ] || continue # the process may be gone
+        local prog=$(echo $args | cut -d' ' -f1)
+
+        section /proc/$pid/stack
+        echo args: $args
+        cat /proc/$pid/stack 2>&1 || true # the process may be gone
+
+        { ls /proc/$pid/task 2>&1 || true; } | while read task; do
+            section /proc/$pid/task/$task/stack
+            cat /proc/$pid/task/$task/stack 2>&1 || true
+        done
+
+        [ "${prog#[}" = "$prog" ] || continue # skip kernel threads
+        case $(basename $prog) in
+            bash|sh|dd|fio) # skip these as well
+                continue;;
+        esac
+
+        section $pid $(basename $prog)
+        [ -z "$GDB" ] || gdb_bt $prog $pid
+    done
+}
+
+coredump_live() {
+    which gcore &>/dev/null || {
+        warn "${FUNCNAME[0]} cannot be used"
+        return
+    }
+    pgrep '\<(lt-)?m0d|\<(dd|fio|mount)\>' | while read pid; do
+        local pname=$(ps -o comm= -p $pid)
+        gcore -o "$IN_DIR/core.$pname" $pid &>/dev/null
+    done
+}
+
+_coredump() {
+    [ $# -eq 2 ] || die "Usage: ${FUNCNAME[0]} <inpath> <outdir>"
+    local core=$1
+    local outdir=$2
+
+    mkdir -p $outdir/$(dirname $core)
+    ls -sh $core # print size
+    _xz -c $core | {
+        local err
+        ## Write no more than 64 MB.
+        if ! err=$(dd ibs=8k count=8k of=$outdir/$core.xz 2>&1); then
+            echo $err
+            return
+        fi
+        ## Is there anything left in the input stream?
+        if [ $(dd bs=1 count=1 2>/dev/null | wc -c) -gt 0 ]; then
+            echo "Skipping $outdir/$core: compressed file is too large"
+            rm $outdir/$core.xz
+        else
+            touch -r $core $outdir/$core.xz
+        fi
+    }
+}
+
+backtraces_cores() {
+    local outdir=$START_DIR/$OUT_CORES_DIR
+    local core
+
+    ## Print backtraces.
+    if [ -n "$GDB" ]; then
+        find "$IN_DIR" -type f -name core.\* | while read core; do
+            section $core
+            gdb_bt "$(path $(program_from_core $core) binary)" $core
+        done
+    fi
+
+    ## Pack core dumps.
+    section core dumps
+    (cd "$IN_DIR"
+     find . -type f -name core.\* | cut -c3- | while read core; do
+         _coredump $core $outdir
+     done)
+    if [ -d /var/lib/halon ]; then
+        (cd /var/lib/halon
+         find . -type f -name core.\* | cut -c3- | while read core; do
+             _coredump $core $outdir/var/lib/halon
+         done)
+    fi
+
+    if [ -d $outdir ] && ! rmdir $outdir 2>/dev/null; then
+        ## Core dumps were collected. We need to collect binaries.
+        COLLECT_BINARIES_P=1
+    fi
+}
+
+binaries() {
+    local outdir=$START_DIR/$OUT_CORES_DIR/binaries
+    local -r libs=(
+        libmero.so
+        libmero-xcode-ff2c.so
+        libmero-ut.so
+        libgalois.so
+    )
+    local f s
+
+    mkdir -p $outdir
+    ## Note, that we intentionally skip `m0mero.ko' as it's too big (42M).
+    for f in m0mkfs m0d m0ham m0ut ${libs[@]} halond; do
+        s=$(path $f binary)
+        if [ -n "$s" ]; then
+            ## Strip `.0.0' suffix when copying.
+            f=$(basename $s)
+            cp -pv $s $outdir/${f%.0.0}
+            ## RATIONALE: Shared libraries, required by a binary, have
+            ## `.0.0' suffix stripped.
+            ##
+            ##     $ objdump -p lt-m0ut | awk '/NEEDED/ {print $2}' | head -2
+            ##     libmero-ut.so.0
+            ##     libmero-xcode-ff2c.so.0
+            ##
+            ## By stripping `.0.0' suffixes, we let developers load
+            ## shared library symbol files by executing
+            ## `set solib-search-path m0reportbug-cores/binaries' GDB command.
+            ## If the full name of shared library was preserved (e.g.,
+            ## `libmero-ut.so.0.0.0'), gdb would not be able to find this
+            ## library.
+        fi
+    done
+}
+
+_get_jc_cursor() {
+    journalctl -n0 --show-cursor | grep cursor | awk '{print $3}'
+}
+
+sysrq_info() {
+    local -A sysrq_cmd=(
+        [w]='show-blocked-tasks'
+        [l]='show-backtrace-all-active-cpus'
+        [t]='show-task-states'
+        [m]='show-memory-usage'
+    )
+    local old_sysrq=$(sysctl --values kernel.sysrq)
+
+    # unmask all sysrq functions
+    sysctl --quiet --write kernel.sysrq=1
+
+    for c in ${!sysrq_cmd[@]} ; do
+        local cursor=$(_get_jc_cursor)
+        echo $c > /proc/sysrq-trigger
+        section "sysrq ${sysrq_cmd[$c]}"
+        journalctl --no-pager --dmesg --after-cursor="$cursor"
+    done
+
+    # restore original sysrq functions
+    if [[ -n $old_sysrq ]] ; then
+        sysctl --quiet --write kernel.sysrq=$old_sysrq || true
+    fi
+}
+
+last_modified() {
+    local limit="$1"
+
+    if [ -z "$limit" ]; then
+        cat
+    else
+        xargs -r stat -c '%Y %n' | sort -nr -k1,1 | head -n $limit |
+            cut -d' ' -f2-
+    fi
+}
+
+_tracedump() {
+    [ $# -eq 2 ] || die "Usage: ${FUNCNAME[0]} <inpath> <outdir>"
+    local path=$1
+    local outdir=$2
+    local m0tracedump=$(path m0tracedump)
+
+    mkdir -p $outdir/$(dirname $path)
+    ##
+    ## Disable stderr output to suppress these messages:
+    ##
+    ## > lt-m0tracedump: Warning: skipping non-existing trace
+    ## > descriptor 0x7f977d0bdb00 (orig 0x7ff6ad5c9b00)
+    $m0tracedump -s -i $path 2>/dev/null | _xz >$outdir/$path.yaml.xz
+    touch -r $path $outdir/$path.yaml.xz
+    echo $path.yaml.xz
+}
+
+m0traces() {
+    local path dir
+    local m0trace=$(path m0trace)
+    local m0tracedump=$(path m0tracedump)
+    local outdir=$START_DIR/$OUT_TRACES_DIR
+
+    ## Kernel buffer.
+    if [ -x "$m0trace" ] && lsmod | grep -q '^m0ctl\b'; then
+        mkdir $outdir
+        $m0trace kernel-buf -Y | _xz >$outdir/kernel-buf.yaml.xz
+        echo $outdir/kernel-buf.yaml.xz
+    fi
+
+    [ -x "$m0tracedump" ] || return 0 # don't fail
+
+    (cd "$IN_DIR"
+     {
+         find . -type f -name m0trace.\* | last_modified "${M0TRACES_MAX:-}"
+         find . -maxdepth 1 -type d -name m0d-\* | while read dir; do
+             find $dir -type f -name m0trace.\* |
+                 last_modified "${M0TRACES_M0D_MAX:-}"
+         done
+     } | cut -c3- | sort -u | while read path; do
+         _tracedump $path $outdir
+     done)
+
+    for HA in 'Halon /var/lib/halon' 'hax /var/mero/hax'; do
+        read HA_name HA_traces_path <<< "$HA"
+        if [ -d $HA_traces_path ]; then
+            section $HA_name traces
+            (cd $HA_traces_path
+             find . -maxdepth 1 -type f -name m0trace.\* |
+                 last_modified "${M0TRACES_MAX:-}" | cut -c3- |
+                 while read path; do
+                     _tracedump $path $outdir$HA_traces_path
+                 done)
+        fi
+    done
+}
+
+addb() {
+    local outdir=addb
+    local dir path
+
+    local m0addb2dump=$(path m0addb2dump)
+    (outdir=$(readlink -f .)/$outdir
+     cd "$IN_DIR"
+     find . -type d -name addb-stobs | cut -c3- | while read dir; do
+         find $dir/o -type f -name \*:2 | while read path; do
+             mkdir -p $outdir/$(dirname $path)
+             ##
+             ## "$PWD/" prefix is needed to make an absolute path.
+             ## m0addb2dump fails if a relative path is provided:
+             ##
+             ## > lt-m0addb2dump: Cannot create stob: -2: No such file
+             ## > or directory
+             $m0addb2dump $PWD/$path | tail -$ADDB_TAIL | _xz >$outdir/$path.xz
+             touch -r $path $outdir/$path.xz
+             echo $path.xz
+         done
+     done)
+}
+
+systemd_journal() {
+    local outdir=$(readlink -f .)
+    journalctl -b -0 | _xz >$outdir/systemd-journal.xz
+}
+
+usage() {
+    cat <<EOF
+Usage: ${0##*/} [OPTION] [INPUT_DIR]
+Gather forensic data, which can be used for investigating Mero issues,
+from INPUT_DIR and its subdirectories.
+
+Options:
+    -h, --help      Show this help and exit.
+    --addb          Collect ADDB data.
+    -b, --binaries  Collect Mero binaries even if there are no core dumps.
+    -p, --path      Show locations of Mero binaries: m0d, m0mero.ko, etc.
+    -V, --version   Show version number and exit.
+
+INPUT_DIR defaults to '$IN_DIR'.
+EOF
+}
+
+optparse() {
+    ##
+    ## We do not want the program to proceed if invalid CLI options
+    ## are provided.
+    ##
+    ## If TEMP variable was given a value at the place of its declaration
+    ## (i.e. if we used `local TEMP=$(getopt ...)' expression), the program
+    ## would ignore getopt errors!  On the contrary, when variable
+    ## declaration and initialization are separated, any error of `getopt'
+    ## command (e.g., invalid option) will result in program failure.
+    ##
+    local TEMP # do not assign value here
+    TEMP=$(getopt -o hpbV --long help,addb,binaries,path,version \
+                  -n "${0##*/}" -- "$@")
+    eval set -- "$TEMP"
+    while true; do
+        case "$1" in
+            -h|--help) usage; exit 0;;
+            --addb) COLLECT_ADDB_P=1;;
+            -b|--binaries) COLLECT_BINARIES_P=1;;
+            -p|--path)
+                for f in m0mkfs m0d m0tracedump m0addb2dump m0mero.ko \
+                         libmero{,-xcode-ff2c,-ut}.so libgalois.so; do
+                    path $f
+                done
+                exit 0;;
+            -V|--version) echo m0reportbug $VERSION; exit 0;;
+            --) shift; break;;
+            *) break;;
+        esac
+        shift
+    done
+
+    if [ $# -gt 1 ]; then
+        die 'Too many arguments'
+    elif [ $# -eq 1 ]; then
+        IN_DIR="$1"
+    fi
+}
+
+[ $VERSION = "$(grep -A2 '^### Date' $PROG | tail -1 | cut -d' ' -f3)" ] ||
+    warn 'VERSION must be updated'
+main "$@"
+exit
+
+###
+### History:
+###
+### Date       Version Description
+### ---------- ------- ----------------------------------------------------
+### 2020-03-29 0.42    If `gcore` is not available, print a warning, don't fail.
+###
+### 2020-03-23 0.41    Generate core dumps of running Mero processes. They might
+###                    be stuck in a dead-lock. In such cases backtraces might
+###                    not provide all the required information.
+###
+### 2020-03-23 0.40    Add sysrq probe to collect system-wide information from
+###                    /proc/sysrq-trigger commands (memory-usage, task-states,
+###                    blocked-tasks, backtrace-all-active-cpus).
+###
+### 2019-12-11 0.39    When compressing files with `xz`, use as many threads
+###                    as there are CPU cores on the system.
+###
+### 2019-11-06 0.38    Debug and silence halon-rg.json collection.
+###
+### 2019-10-15 0.37    Collect traces of `hax` executable.
+###
+### 2019-04-16 0.36    Get Halon RG (resource graph) data in JSON format.
+###                    It can be converted into dynamic visualization
+###                    with $H0_SRC_DIR/scripts/halon-rg-view script.
+###
+### 2018-12-07 0.35    path(): If m0reportbug path does not end with
+###                    "/utils/m0reportbug", assume that executables and
+###                    libraries were installed from rpms (we wouldn't
+###                    know where to look for them if they weren't).
+###
+### 2018-11-27 0.34    * [bugfix] misc_files(): Don't stop if /etc/mero/
+###                      doesn't exist --- proceed with collecting other
+###                      files.  This fixes the problem of conf.xc and
+###                      halon files (facts, decision log) not being
+###                      collected.
+###                    * Do not require superuser permissions to show help
+###                      message.
+###                    * misc_files(): Make it possible for
+###                      halon.decision.log to be found even if /var/log
+###                      is a symbolic link.
+###
+### 2018-11-10 0.33    * Replace `hctl mero status` with more informative
+###                      `hctl mero status -d`.
+###                    * Explain why `m0version` is needed.
+###
+### 2018-11-08 0.32    * Find m0mero.ko in /lib/modules, not /lib/module.
+###
+### 2018-10-03 0.31    * m0mkfs executable has moved into /usr/sbin (was in
+###                      /usr/bin before).
+###
+### 2018-06-14 0.30    * [bugfix] _kdump_files(): Add missing quotes to
+###                      prevent "[: argument expected" error.
+###                    * m0traces(): Get halond m0traces from /var/lib/halon/
+###                      directory (again).
+###                    * backtraces_cores(): Collect core dumps from
+###                      /var/lib/halon/ directory.
+###                    * binaries(): Collect /usr/bin/halond.
+###
+### 2018-04-08 0.29    Clean old m0reportbug output before generating new.
+###
+### 2018-03-28 0.28    Don't check the version of Mero package. This check
+###                    has outlived its usefulness.
+###
+### 2018-03-02 0.27    Bump MERO_PACKAGE_VERSION to 1.2.0.
+###
+### 2017-08-23 0.26    Switch to xz compression.
+###
+### 2017-08-23 0.25    * Collect logrotated Halon decision logs
+###                      (/var/log/halon.decision.log-*.gz).
+###                    * Put journalctl output into a separate file.
+###
+### 2017-08-15 0.24    * Use contemporary ("master") hctl commands.
+###                    * Add `hctl halon info rc' probe.
+###
+### 2017-08-13 0.23    * Bump MERO_PACKAGE_VERSION to 1.1.0.
+###                    * gdb_bt(): Don't use `-batch' option of gdb ---
+###                      it suppresses gdb commands output.
+###                      (Used to work fine with older gdb though.)
+###                    * _path_rpm(), _path_src(): Don't expect libmero.so.*
+###                      file to end with MERO_PACKAGE_VERSION --- libtool
+###                      uses its own version numbering algorithm.
+###                    * program_from_core(): Don't treat single quote symbol
+###                      as part of the file name.
+###                    * Add `hctl mero status' probe.
+###
+### 2017-06-23 0.22.2  Disable `df -h' entirely.
+###
+### 2017-05-26 0.22.1  Set LC_ALL=C.
+###
+### 2017-03-30 0.22    * program_from_core(): If there is no executable name
+###                      in `file' output, fall back to `gdb -batch'.
+###                    * misc_files(): Do not complain if /etc/mero directory
+###                      is missing.
+###                    * Add `python' to _path_src() and _path_rpm().
+###                    * Fix some of SC2016 warnings reported by shellcheck.
+###
+### 2017-02-21 0.21    * misc_files(): Collect /var/crash/*/vmcore-dmesg.txt.
+###                    * Add `lctl dk' probe.
+###
+### 2017-02-09 0.20    backtraces_live(): Collect backtrace of halond.
+###
+### 2016-12-21 0.19    Produce 3 output archives:
+###                    - m0reportbug-cores.tar.gz (cores & binaries);
+###                    - m0reportbug-traces.tar.gz (m0traces);
+###                    - m0reportbug-data.tar.gz (main report & other data).
+###
+### 2016-12-21 0.18    * Add `m0ham' to _path_src(), _path_rpm() and binaries().
+###                    * Use proper path to libmero.so.
+###
+### 2016-12-05 0.17    Bump MERO_PACKAGE_VERSION to 1.0.0.
+###                    check_package_version(): New function.
+###
+### 2016-11-17 0.16    * m0traces(): Change location of halond traces to
+###                      /var/log/.
+###                    * If m0trace or m0tracedump is not found, don't try
+###                      to run it.
+###                    * Collect /etc/halon/halon_facts.yaml, if available.
+###                    * New probes: hctl cluster status, hctl debug eq,
+###                      hctl debug cep.
+###                    * Don't leave empty cores/ directory.
+###                    * Collect binaries only if there are core dumps fetched
+###                      or `--binaries' option is provided.
+###
+### 2016-10-05 0.15.1  Show dependencies of Mero and Halon rpms.
+###
+### 2016-09-06 0.15    More probes: halond -v, rpm -qi halon, systemctl status,
+###                    etc.
+###
+### 2016-08-15 0.14.3  Get /var/log/halon.decision.log.
+###
+### 2016-05-29 0.14.2  Don't query free space of `m0t1fs' and `nfs' mount
+###                    point(s).
+###
+### 2016-04-21 0.14.1  * Add `m0ut' to _path_rpm().
+###                    * Add `lt-m0mkfs' to _path_src().
+###                    * Suppress "No such file" warning for the binaries,
+###                      which are provided by optional rpms.
+###                    * Use "**ERROR**" prefix to make errors noticeable.
+###
+### 2016-04-05 0.14    Collect Halon data: /tmp/halond.log file,
+###                    /var/log/halon-persistence/ directory, m0traces
+###                    from /var/lib/halon/ directory.
+###
+### 2016-03-29 0.13.2  misc_files(): Don't fail if some file is missing.
+###                    `/var/mero/confd/conf.xc', referred to by
+###                    MERO_CONF_XC variable, is not guaranteed to exist.
+###
+### 2016-03-03 0.13.1  Add `lt-m0rwlock' to _path_src().
+###
+### 2016-03-01 0.13    * m0traces(): Collect at least two trace files from
+###                      each of $IN_DIR/m0d-*/ directories.
+###                    * Collect /etc/sysconfig/{m0d,m0t1fs,mero}* files.
+###                    * Collect $IN_DIR/*.{log,xc} files.
+###
+### 2016-02-24 0.12    Collect kernel buffer if possible.
+###
+### 2016-02-04 0.11.1  Warn, don't fail in case of VERSION discrepancy.
+###
+### 2016-02-04 0.11    * Collect /etc/mero/genders.
+###                    * Get stack of `mount' process.
+###
+### 2016-02-02 0.10.2  Add `df -h' probe.
+###
+### 2016-01-27 0.10.1  * _path_src() is able to handle `lt-m0d'.
+###                    * Compare VERSION with that of the topmost History
+###                      entry. Fail if the values differ.
+###
+### 2016-01-19 0.10    Create .tar.gz archive. bzip2 is not always available.
+###
+### 2016-01-05 0.9.2   * Do not collect ADDB data unless `--addb' option
+###                      is provided. (Collection of ADDB data may hang.)
+###                    * Don't tolerate invalid CLI options.
+###                    * Perform optional ADDB collection at the very end
+###                      of the execution.
+###
+### 2015-12-31 0.9.1   [fix] gdb_bt(): Do not call `dirname' without argument.
+###
+### 2015-12-29 0.9     * Collect addb data.
+###                    * Add `journalctl' probe.
+###                    * Do not fetch binaries unless there is a core dump
+###                      or `-b' CLI option is provided.
+###                    * Show duration of slow stages.
+###                    * [bugfix] _path_rpm(): Use proper quotes.
+###
+### 2015-12-24 0.8.1   Do not attach gdb to dd and fio processes.
+###
+### 2015-12-10 0.8     * Require superuser privileges; drop sudo-s.
+###                    * Fetch binaries: libmero.so, m0mkfs, m0d, lt-m0ut, etc.
+###                    * Pack results into .tar.bz2 archive.
+###                    * gdb_bt(): Show `info sharedlibrary'.
+###
+### 2015-12-08 0.7.1   * Core dumps and m0trace files may be not world-readable.
+###                      Run `touch -r' with sudo.
+###                    * Canonicalize $IN_DIR to allow symbolic links.
+###
+### 2015-12-04 0.7     * Use preset paths, different for rpm and non-rpm
+###                      (source) installations.
+###                    * Tolerate the absence of gdb.
+###                    * Collect no more than 20 most recent m0trace files.
+###                    * Limit the size of _compressed_ core dump file,
+###                      not the original file.
+###                    * gdb_bt(): set solib-search-path to obtain meaningful
+###                      backtraces at Jenkins nodes.
+###                    * backtraces_live(): Don't fail if a process disappears.
+###                    * Add `--path' CLI option.
+###
+### 2015-11-25 0.6     * Add more probes.
+###                    * Collect stderr output of probes.
+###                    * Get stacks of `dd' and `fio' processes.
+###                    * Update backtraces_cores() to work on Jenkins nodes.
+###                    * Add `--version' CLI option.
+###                    * [bugfix] backtraces_live(): Make `lt-' prefix optional.
+###
+### 2015-11-15 0.5.1   Specify input directory via CLI argument.
+###
+### 2015-11-03 0.4     * Delete old $OUT_DATA_DIR without asking user.
+###                    * Let the packed m0trace files have timestamps
+###                      of original files.
+###                    * [bugfix] Fix the issue of `find_exec' not working
+###                      properly with relative paths.
+###
+### 2015-10-31 0.3     Process raw m0traces with `m0tracedump'.
+###
+### 2015-10-27 0.2     `m0version' calls `m0d -v'.
+###
+### 2015-10-19 0.1     Initial release: system probes, backtraces (running
+###                    lt-m0* processes, core dumps), m0traces.
+###

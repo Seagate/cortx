@@ -1,0 +1,4 @@
+# config /dev/m0lnet device file to be readable and writable by group 'mero'
+SUBSYSTEM=="misc", KERNEL=="m0lnet", GROUP="mero", MODE="0660"
+# config /dev/lnet device file to be readable and writable by group 'mero'
+SUBSYSTEM=="misc", KERNEL=="lnet",   GROUP="mero", MODE="0660"

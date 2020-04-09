@@ -1,0 +1,5 @@
+:doctype:      manpage
+:man source:   Mero
+:man version:  @PACKAGE_VERSION@
+:man manual:   Mero User Manual
+// vim: syntax=asciidoc

@@ -1,0 +1,204 @@
+#!/usr/bin/env bash
+
+### wrapper to run kernel UT
+
+#
+# Global vars
+#
+
+# constants
+readonly PROG_NAME=$(basename $0)
+readonly self=$(readlink -f $0)
+readonly base_rundir='/var/mero'
+readonly top_srcdir=$(echo $(dirname $self) |
+                      sed -r -e 's#/?(utils|ut)/?$##' -e 's#^/usr/s?bin##')
+
+# KUT expects particular predefined UUID
+readonly node_uuid="12345678-90ab-cdef-fedc-ba0987654321"
+
+# variables
+verbose=false
+rundir=$base_rundir
+tests=
+exclude_tests=
+trace_level=${M0_TRACE_LEVEL:-notice+}
+trace_immediate_mask=${M0_TRACE_MASK:-all}
+trace_print_context=${M0_TRACE_PRINT_CONTEXT:-short}
+cli_args=
+SANDBOX_DIR=/var/mero/m0kut-$$
+
+# include sandbox functions
+. $top_srcdir/utils/functions
+
+#
+# Usage
+#
+
+help()
+{
+    [[ $1 == stdout ]] && usage || usage >&2
+    exit 1
+}
+
+usage()
+{
+    cat <<USAGE_END
+Usage: $PROG_NAME [-h|-v]
+
+  Helper script to run Mero kernel-space unit tests.
+
+  Options:
+
+    -t|--tests
+
+              List of tests to run in format 'suite[:test][,suite[:test]]'.
+
+    -x|--exclude-tests
+
+              List of tests to exclude in format 'suite[:test][,suite[:test]]'.
+
+    -v        Print what's going on.
+
+    -h        Print this help screen.
+USAGE_END
+}
+
+#
+# Parse CLI options
+#
+
+parse_cli_options()
+{
+    # Note that we use `"$@"' to let each command-line parameter expand to a
+    # separate word. The quotes around `$@' are essential!
+    # We need TEMP as the `eval set --' would nuke the return value of getopt.
+    # We need to separate TEMP declaration and assignment because 'local TEMP='
+    # would nuke the return value of getopt.
+    local TEMP
+    TEMP=$( getopt -o ht:x:v -l help,tests:,exclude-tests:,verbose \
+                   -n "$PROG_NAME" -- "$@" )
+
+    [[ $? != 0 ]] && help
+
+    # Note the quotes around `$TEMP': they are essential!
+    eval set -- "$TEMP"
+
+    while true ; do
+        case "$1" in
+            -t|--tests)          tests=$2; shift 2 ;;
+            -x|--exclude-tests)  exclude_tests=$2; shift 2 ;;
+            -v)                  verbose=true; shift ;;
+            -h)                  help stdout ;;
+            --)                  shift; break ;;
+            *)                   echo 'getopt: internal error...'; exit 1 ;;
+        esac
+    done
+
+    # remaining command line arguments
+    cli_args="$@"
+}
+
+#
+# Utility functions
+#
+
+die()
+{
+    echo "$PROG_NAME: ERROR: $@" >&2
+    exit 1
+}
+
+log()
+{
+    ! $verbose || echo "$PROG_NAME: $@"
+}
+
+# LNet driver UT requires a user space helper
+run_lut_helper()
+{
+    # run it only if lnet test will be executed
+    if [[ ( -z $tests || $tests =~ .*lnet.* ) && ! $exclude_tests =~ .*lnet.* ]] ; then
+        log 'starting lnet KUT helper'
+        if [[ -n $top_srcdir ]] ; then
+            $top_srcdir/net/lnet/ut/m0kut-helper
+        else
+            m0kut-helper
+        fi
+        log 'lnet KUT helper finished'
+    fi
+}
+
+# Loads Mero kernel UT module either from source tree or system-wide, if source
+# tree is not found.
+load_modules()
+{
+    if [[ -n $top_srcdir ]] ; then
+        NODE_UUID=$node_uuid
+        source $top_srcdir/m0t1fs/linux_kernel/st/common.sh
+        MODLIST="$top_srcdir/m0ut.ko"
+        modprobe_lnet
+        modload_m0gf
+        # currently, kernel UT runs as part of loading m0ut module
+        modload
+        run_lut_helper
+        modunload
+        modunload_m0gf
+    else
+        local lnet_status=$(service lnet status)
+        if [[ $lnet_status != running ]] ; then
+            log '(re)starting LNet service'
+            service lnet stop
+            service lnet start
+        fi
+
+        log 'loading Mero KUT modules'
+        modprobe m0ut "node_uuid=$node_uuid" \
+                      "trace_immediate_mask=$trace_immediate_mask" \
+                      "trace_print_context=$trace_print_context" \
+                      "trace_level=$trace_level" \
+                      "${tests:+tests=$tests}" \
+                      "${exclude_tests:+exclude=$exclude_tests}"
+
+        run_lut_helper
+
+        log 'unloading Mero KUT modules'
+        modprobe -r m0ut
+    fi
+}
+
+#
+# Main
+#
+
+# exit immediately if one the commands exits with a non-zero status
+set -e
+
+sandbox_init
+
+parse_cli_options "$@"
+eval set -- "$cli_args"
+
+[[ $UID -eq 0 ]] ||
+    die 'Please, run this script with "root" privileges.'
+
+sysctl -q -w kernel.printk=8
+tail -n 1 -F /var/log/messages &
+
+load_modules
+
+# wait required for Jenkins
+sleep 2
+echo
+
+# kill tail
+kill %1
+
+# due to a bug in systemd, syslog may stop working occasionally which leads to a
+# lost KUT status line (normally should be present in /var/log/messages) that
+# makes Jenkins think that the test has failed ("no status found")
+# as a workaround we fetch test status line from a dmesg buffer:
+dmesg | grep --color=none 'Unit tests status'
+
+sandbox_fini 0
+
+exit 0

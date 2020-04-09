@@ -1,0 +1,5 @@
+[gitlab]
+gitlab.mero.colo.seagate.com
+
+[gitlab:vars]
+ansible_user=root

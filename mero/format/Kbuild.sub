@@ -1,0 +1,2 @@
+m0mero_objects += format/format.o \
+                  format/format_xc.o

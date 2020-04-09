@@ -1,0 +1,5 @@
+{
+  "experimental" : true,
+  "insecure-registries" : [ "registry.gitlab.mero.colo.seagate.com" ],
+  "metrics-addr" : "localhost:9323"
+}

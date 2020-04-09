@@ -1,0 +1,178 @@
+#!/usr/bin/env bash
+set -e
+
+SCRIPT_NAME=`echo $0 | awk -F "/" '{print $NF}'`
+SCRIPT_PATH="$(readlink -f $0)"
+SCRIPT_DIR="${SCRIPT_PATH%/*}"
+MERO_SRC_DIR="${SCRIPT_PATH%/*/*/*/*}"
+HALON_SRC_DIR="${SCRIPT_PATH%/*/*/*/*/*}/halon"
+
+SKLN_CLUSTER_CONF_DIR="${MERO_SRC_DIR}/scripts/addb-py/chronometry/skln_cluster_configs"
+IO_WORKLOAD_TIMEOUT="3h"
+
+# functions _check_root(), _check_is_cluster_online()
+. ${SCRIPT_DIR}/common_funcs
+
+function halon_build() {
+
+    pushd $HALON_SRC_DIR
+    git clean -dfx
+    git pull
+    popd
+
+    _info "Halon building"
+    $HALON_SRC_DIR/scripts/h0 make &> halon_build.log
+}
+
+function mero_build() {
+    pushd $MERO_SRC_DIR
+    git clean -dfx
+    git pull
+
+    [[ -z $MERO_GIT_COMMIT ]] || {
+        #remove "commit=" part if exist
+        MERO_GIT_COMMIT=$(echo "$MERO_GIT_COMMIT" | sed 's/commit=//')
+        git checkout $MERO_GIT_COMMIT
+    }
+
+    popd
+    _info "mero build options: $MERO_BUILD_OPTIONS"
+    _info "Building Mero commit $MERO_GIT_COMMIT"
+    CONFIGURE_OPTS=$MERO_BUILD_OPTIONS $MERO_SRC_DIR/scripts/m0 make \
+        &>mero_build.log
+}
+
+function run_io_workload() {
+    _info "io_workload starting"
+
+    local mero_conf_param=""
+    local clovis_ports_param=""
+
+    [[ -z $MERO_CONF ]] || {
+        echo "using mero conf params: $MERO_CONF"
+        mero_conf_param="-m \"${MERO_CONF}\""
+    }
+
+    [[ -z $CLOVIS_PORTS_OPT ]] || {
+        echo "using clovis ports: $CLOVIS_PORTS_OPT"
+        clovis_ports_param="--clovis-ports \"${CLOVIS_PORTS_OPT}\""
+    }
+
+    eval timeout -s SIGKILL $IO_WORKLOAD_TIMEOUT \
+        ${MERO_SRC_DIR}/scripts/addb-py/chronometry/io_workload \
+        -w \"${WORKLOAD_CONF}\" $mero_conf_param -c \"${SKLN_CLUSTER_CONF_DIR}\" \
+        $clovis_ports_param
+}
+
+function check_mandatory_args() {
+    [[ -n $WORKLOAD_CONF && -n $PATH_FOR_ARTIFACTS ]] || {
+        echo -e "missed mandatory parameter\nUse --help option"
+        exit 1
+    }
+}
+
+function usage() {
+    cat << EOF
+
+Usage: $SCRIPT_NAME [options]
+    -w, --workload_config     workload options. It is mandatory option. Has
+                              overrides of m0crate config file default
+                              parameters.
+                              Example: "CLOVIS_IOSIZE=4k BLOCK_SIZE=4k"
+
+    -p, --result-path         path to save results artifacts. It is mandatory
+                              option.
+
+    -m, --mero_config         options for override mero config file values.
+                              There is string with values which replace current
+                              values in file /etc/sysconfig/mero.
+                              Example: "MERO_TRACED_M0D=yes MERO_M0D_OPTS=1"
+
+    -g, --mero-git-commit     commit for mero building
+
+    -b, --mero-build-options  options for mero building
+
+        --clovis-ports        clovis ports for using by m0crate instances.
+                              This option allows to run multiple instances
+                              of m0crate
+                              Example: "302 303 304"
+
+    -h, --help                this help
+
+Example:
+    $SCRIPT_NAME -w "CLOVIS_IOSIZE=4k BLOCK_SIZE=4k NR_THREADS=1" -p ./results
+
+EOF
+}
+
+function check_arg_value() {
+    [[ $# -gt 1 ]] || {
+        echo -e "Incorrect use of the option $1\nUse --help option"
+        exit 1
+    }
+}
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -w|--workload_config)
+            check_arg_value $1 $2
+            WORKLOAD_CONF="$2"
+            shift
+            ;;
+        -m|--mero_config)
+            check_arg_value $1 $2
+            MERO_CONF=$2
+            shift
+            ;;
+        -g|--mero-git-commit)
+            check_arg_value $1 $2
+            MERO_GIT_COMMIT=$2
+            shift
+            ;;
+        -b|--mero-build-options)
+            check_arg_value $1 $2
+            MERO_BUILD_OPTIONS=$2
+            shift
+            ;;
+        -p|--result-path)
+            check_arg_value $1 $2
+            PATH_FOR_ARTIFACTS=$2
+            shift
+            ;;
+        --clovis-ports)
+            check_arg_value $1 $2
+            CLOVIS_PORTS_OPT=$2
+            shift
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *)
+            echo -e "Invalid option: $1\nUse --help option"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+_check_root
+check_mandatory_args
+echo "creating $PATH_FOR_ARTIFACTS"
+mkdir -p $PATH_FOR_ARTIFACTS
+pushd $PATH_FOR_ARTIFACTS
+echo "task is started in `pwd`"
+
+[[ -z $MERO_GIT_COMMIT && -z $MERO_BUILD_OPTIONS ]] || {
+    if _check_is_cluster_online; then
+        _info "stopping cluster before rebuild"
+        hctl mero stop
+    fi
+
+    mero_build
+    halon_build
+}
+
+run_io_workload
+popd
+echo "task is finished"

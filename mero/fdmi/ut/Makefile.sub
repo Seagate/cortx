@@ -1,0 +1,16 @@
+ut_libmero_ut_la_SOURCES += fdmi/ut/filter_eval.c \
+			    fdmi/ut/sd_ut.c \
+			    fdmi/ut/sd_post_record.c \
+			    fdmi/ut/sd_common.c \
+			    fdmi/ut/sd_common.h \
+			    fdmi/ut/sd_apply_filter.c \
+			    fdmi/ut/sd_release_fom.c \
+			    fdmi/ut/sd_send_not.c \
+			    fdmi/ut/fol_ut.c \
+			    fdmi/ut/filterc_stub.c \
+			    fdmi/ut/pd_ut.c \
+			    fdmi/ut/filterc_ut.c
+
+CONFXC_FILES += fdmi/ut/conf.xc
+
+ut_libmero_ut_la_CPPFLAGS += -DM0_FDMI_UT_DIR=$(abs_top_builddir)/fdmi/ut/

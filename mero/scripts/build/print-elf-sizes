@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+echo 'Resulting ELF image sizes:'
+
+size mero/.libs/libmero{,-altogether}.so m0mero.ko 2>/dev/null \
+| awk \
+    '{ \
+        if ($1 == "text") { \
+            print "funcs\t" $0; \
+        } else { \
+            cmd = "readelf -s " $6 " | grep \" FUNC \" | grep -v UND | awk \"{sum+=\\$3} END{print sum}\""; \
+            cmd |& getline func_size; \
+            print func_size "\t" $0; \
+        } \
+    }' \
+| sed -r -e 's/dec/total/' \
+         -e 's#mero/.libs/|mero/##' \
+| cut -f6 --complement \
+| column -t

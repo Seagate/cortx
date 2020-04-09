@@ -1,0 +1,32 @@
+#
+# NFS client tasks
+#
+---
+- name: add fstab entry for cmu NFS shared dir
+  block:
+    - name: collect user facts
+      # initial Ansible facts are collected on behalf of 'root' user due to
+      # 'become: yes' directive in the top-level playbook, we need to override
+      # those with real ssh user info because we want to export user's home dir,
+      # not /root
+      become: no
+      setup:
+        filter: ansible_user_*
+
+    - set_fact:
+        cmu_nfs_export_dir: '{{ ansible_user_dir }}/{{ cmu_nfs_mountpoint }}'
+
+    - name: create mountpoint for nfs-client {{ cmu_nfs_export_dir }}
+      become: no
+      file:
+        path: '{{ cmu_nfs_export_dir }}'
+        state: directory
+
+    - name: add fstab entry for cmu NFS dir {{ cmu_nfs_export_dir }}
+      mount:
+        fstype: nfs
+        src:   'cmu.local:{{ cmu_nfs_export_dir }}'
+        path:  '{{ cmu_nfs_export_dir }}'
+        opts:   soft,async,actimeo=1,user,exec
+        state:  present
+  tags: nfs-client

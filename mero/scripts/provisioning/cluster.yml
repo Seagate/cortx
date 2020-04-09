@@ -1,0 +1,4 @@
+---
+- import_playbook: cmu.yml
+- import_playbook: ssu.yml
+- import_playbook: client.yml

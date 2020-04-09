@@ -1,0 +1,451 @@
+#!/usr/bin/env bash
+set -e -o pipefail
+shopt -s expand_aliases
+
+### wrapper to run Vagrant commands with mero configs
+
+if (( ${BASH_VERSINFO[0]} < 4 )) ; then
+    echo "${0##*/}: bash version < 4 is not supported" >&2
+    echo 'Try installing a modern bash version with either of:' >&2
+    echo '  brew install bash' >&2
+    echo '  port install bash' >&2
+    exit 1
+fi
+
+# a hack for `readlink -f` on BSD systems
+if [[ $(uname) == Darwin ]] && ! readlink -f / &> /dev/null ; then
+    if which greadlink &> /dev/null ; then
+        alias readlink=greadlink
+    else
+        echo "${0##*/}: \`readlink -f\` doesn't work" >&2
+        echo 'Try installing GNU readlink (greadlink) with either of:' >&2
+        echo '  brew install coreutils' >&2
+        echo '  port install coreutils' >&2
+        exit 1
+    fi
+fi
+
+#
+# Global vars
+#
+
+# constants
+readonly PROG_NAME="${0##*/}"
+readonly SELF="$(readlink -f $0)"
+readonly TOP_SRCDIR="${SELF%/*/*}"
+readonly VAGRANT_DIR="$TOP_SRCDIR/scripts/provisioning"
+readonly VAGRANT_DEFAULT_DOTFILE_DIR="$VAGRANT_DIR/.vagrant"
+readonly VAGRANT_DEFAULT_ENV_FILE="$VAGRANT_DIR/.env"
+readonly VAGRANT_MERO_DOTFILE_DIR="$(dirname $TOP_SRCDIR)/.vagrant-mero" # one level up from top srcdir
+readonly VAGRANT_MERO_ENV_FILE="$(dirname $TOP_SRCDIR)/.vagrant-mero-env"
+readonly VAGRANT_ANSIBLE_INVENTORY_FILE="$VAGRANT_DEFAULT_DOTFILE_DIR/provisioners/ansible/inventory/vagrant_ansible_inventory"
+
+# variables
+verbose=false
+cli_args=
+cmd=vagrant
+
+#
+# Usage
+#
+
+help()
+{
+    [[ $1 == stdout ]] && usage || usage >&2
+    exit 1
+}
+
+usage()
+{
+    cat <<USAGE_END
+Usage: $PROG_NAME [options] <vagrant-cmd> [vagrant-cmd-options]
+       $PROG_NAME [options] <ansible-cmd> <ansible-args>
+
+       $PROG_NAME params
+       $PROG_NAME env       [show|add|edit]
+       $PROG_NAME run       <remote command>
+       $PROG_NAME run -f    [file]
+       $PROG_NAME tmux      [vm-name]
+       $PROG_NAME upt       [vm-name]
+       $PROG_NAME workspace [list|add|switch]
+
+  Helper tool to run 'vagrant' or 'ansible-playbook' commands with mero
+  provisioning configs (see scripts/provisioning/README.md), e.g.:
+
+    $PROG_NAME up
+    $PROG_NAME ssh
+    $PROG_NAME ansible -m setup cmu
+    $PROG_NAME ansible-playbook --list-tasks cmu.yml
+
+  params     show environment variables recognized by mero Vagrantfile config
+             that can be specified either on command-line or in '.env' file to
+             control default vagrant behaviour.
+
+  env        shows and helps to add or edit environment variables in the
+             '.env' file, 'show' sub-command is assumed by default:
+
+               $PROG_NAME env
+               $PROG_NAME env add M0_VM_BOX=centos/7 M0_VM_BOX_VERSION=1803.01
+               $PROG_NAME env edit
+
+  run [--vm VM] command
+
+            execute a 'command' on a VM, if VM is ommitted default VM is used.
+
+  run [--vm VM] -f [file]
+
+             reads contents of the file or STDIN, if 'file' argument is
+             ommitted, and execute it on the default VM.
+
+  tmux       ssh to the VM and start a tmux session (or re-connects to the
+             existing one).
+
+  upt        equivalent of doing \`m0vg up && m0vg tmux\`.
+
+  workspace  enables multiple independent sets of VMs to co-exist. It can list
+             existing workspaces, add new ones or switch between them. It can be
+             abbreviated as 'ws' and 'list' sub-command can be omitted, it's
+             assumed by default:
+
+               $PROG_NAME ws
+               $PROG_NAME ws add centos-7.3
+               $PROG_NAME ws switch centos-7.3
+  Options:
+
+    -v|--verbose        Print what's going on.
+
+    -h|--help           Print this help screen.
+USAGE_END
+}
+
+#
+# Parse CLI options
+#
+
+parse_cli_options()
+{
+    while true ; do
+        case "$1" in
+            -v|--verbose)  verbose=true; shift ;;
+            -h|--help)     help stdout ;;
+
+            ansible*)      cmd=$1 ; shift ; break ;;
+            run)           cmd=$1 ; shift ; break ;;
+            tmux)          cmd=$1 ; shift ; break ;;
+            upt)           cmd=$1 ; shift ; break ;;
+
+            params)        grep -oE '\bM0_\w+\b' "$VAGRANT_DIR/Vagrantfile" | sort -u
+                           exit 0
+                           ;;
+
+            env)           cmd=env-${2:-show}; shift
+                           [[ -z $1 ]] || shift
+                           break
+                           ;;
+
+            workspace|ws)  cmd=workspace-${2:-list}; shift
+                           [[ -z $1 ]] || shift
+                           break
+                           ;;
+
+            *)             break ;;
+        esac
+    done
+
+    # remaining command line arguments
+    cli_args="$@"
+}
+
+#
+# Utility functions
+#
+
+die()
+{
+    echo -e "$PROG_NAME: ERROR: $@" >&2
+    exit 1
+}
+
+warn()
+{
+    echo -e "$PROG_NAME: WARNING: $@" >&2
+}
+
+log()
+{
+    ! $verbose || echo -e "$PROG_NAME: $@"
+}
+
+check_dependencies()
+{
+    local ok=true
+    local msg=''
+
+    if ! which vagrant &> /dev/null ; then
+        ok=false
+        msg+="\n* 'vagrant' is not found, it can be installed with either of:\n"
+        msg+="  - direct download from https://www.vagrantup.com/downloads.html\n"
+        if [[ $(uname) == Darwin ]] ; then
+            msg+="  - using homebrew: brew cask install vagrant\n"
+        fi
+    fi
+
+    if [[ $(uname) =~ ^(Linux|Darwin)$ ]] && ! which ansible &> /dev/null ; then
+        ok=false
+        msg+="\n* 'ansible' is not found, it can be installed with either of:\n"
+        msg+="  - python packet manager: pip install --user ansible\n"
+        msg+="    make sure that '\$HOME/.local/bin' is in your PATH\n"
+        if [[ $(uname) == Darwin ]] ; then
+            msg+="  - using homebrew: brew install ansible\n"
+            msg+="  - using macports: port install ansible\n"
+        fi
+    fi
+
+    $ok || die "Mero provisioning tools depend on Vagrant and Ansible," \
+               "please install the missing ones:\n$msg"
+}
+
+check_vagrant_dotdir()
+{
+    if [[ -e $VAGRANT_DEFAULT_DOTFILE_DIR ]] ; then
+        if [[ ! -L $VAGRANT_DEFAULT_DOTFILE_DIR ]] ; then
+            if [[ -e $VAGRANT_MERO_DOTFILE_DIR ]] ; then
+                die "both $VAGRANT_DEFAULT_DOTFILE_DIR and $VAGRANT_MERO_DOTFILE_DIR exist," \
+                    "please check and leave only one of them"
+            else
+                log "moving existing vagrant dotfiles dir to $VAGRANT_MERO_DOTFILE_DIR"
+                if $verbose ; then
+                    local v=-v
+                fi
+                mv $v $VAGRANT_DEFAULT_DOTFILE_DIR $VAGRANT_MERO_DOTFILE_DIR
+                ln -s $v $VAGRANT_MERO_DOTFILE_DIR $VAGRANT_DEFAULT_DOTFILE_DIR
+            fi
+        else
+            : # leaving existing link intact
+        fi
+    else
+        log "setting up vagrant dotfiles dir in $VAGRANT_MERO_DOTFILE_DIR"
+        if $verbose ; then
+            local v=-v
+        fi
+        [[ -d $VAGRANT_MERO_DOTFILE_DIR ]] || mkdir $v $VAGRANT_MERO_DOTFILE_DIR
+        ln -s $v $VAGRANT_MERO_DOTFILE_DIR $VAGRANT_DEFAULT_DOTFILE_DIR
+    fi
+}
+
+check_vagrant_envfile()
+{
+    if [[ -e $VAGRANT_DEFAULT_ENV_FILE ]] ; then
+        if [[ ! -L $VAGRANT_DEFAULT_ENV_FILE ]] ; then
+            if [[ -e $VAGRANT_MERO_ENV_FILE ]] ; then
+                die "both $VAGRANT_DEFAULT_ENV_FILE and $VAGRANT_MERO_ENV_FILE exist," \
+                    "please check and leave only one of them"
+            else
+                log "moving existing vagrant env file to $VAGRANT_MERO_ENV_FILE"
+                if $verbose ; then
+                    local v=-v
+                fi
+                mv $v $VAGRANT_DEFAULT_ENV_FILE $VAGRANT_MERO_ENV_FILE
+                ln -s $v $VAGRANT_MERO_ENV_FILE $VAGRANT_DEFAULT_ENV_FILE
+            fi
+        else
+            : # leaving existing link intact
+        fi
+    else
+        log "setting up vagrant env file in $VAGRANT_MERO_ENV_FILE"
+        if $verbose ; then
+            local v=-v
+        fi
+        [[ -f $VAGRANT_MERO_ENV_FILE ]] || touch $VAGRANT_MERO_ENV_FILE
+        ln -sfn $v $VAGRANT_MERO_ENV_FILE $VAGRANT_DEFAULT_ENV_FILE
+    fi
+}
+
+show_env()
+{
+    cat "$VAGRANT_DEFAULT_ENV_FILE"
+}
+
+add_env_var()
+{
+    if [[ -n $1 ]] ; then
+        for v in "$@" ; do
+            echo "$v" >> "$VAGRANT_DEFAULT_ENV_FILE"
+        done
+    else
+        warn 'expecting environment configuration on STDIN..'
+        cat >> "$VAGRANT_DEFAULT_ENV_FILE"
+    fi
+}
+
+edit_env()
+{
+    local editor=vi
+
+    if [[ -v EDITOR ]] ; then
+        editor=$EDITOR
+    elif [[ -v VISUAL ]] ; then
+        editor=$VISUAL
+    elif which vim &> /dev/null ; then
+        editor=vim
+    elif which emacs &> /dev/null ; then
+        editor=emacs
+    fi
+
+    $editor "$VAGRANT_DEFAULT_ENV_FILE"
+}
+
+is_current_workspace()
+{
+    [[ $(readlink -f $1) == $(readlink -f $VAGRANT_DEFAULT_DOTFILE_DIR) ]]
+}
+
+list_workspaces()
+{
+    if [[ -e $VAGRANT_MERO_DOTFILE_DIR ]] ; then
+        is_current_workspace $VAGRANT_MERO_DOTFILE_DIR \
+            && echo -n '*' \
+            || echo -n ' '
+        echo ' default'
+    fi
+
+    local ws
+    local name
+    for ws in $VAGRANT_MERO_DOTFILE_DIR-* ; do
+        # skip env files like '.vagrant-mero-env'
+        [[ -d $ws ]] || continue
+
+        is_current_workspace $ws && echo -n '*' || echo -n ' '
+        echo " ${ws##*/.vagrant-mero-}"
+    done
+}
+
+add_workspace()
+{
+    local ws_name=$1
+
+    [[ -n $ws_name ]] ||
+        die "please, specify a workspace name, it cannot be empty"
+
+    [[ $ws_name != default ]] ||
+        die "cannot add a workspace with the name 'default', it's reserved"
+
+    local ws="$VAGRANT_MERO_DOTFILE_DIR-$ws_name"
+
+    [[ ! -d $ws ]] || {
+        warn "workspace '$ws_name' already exists"
+        exit 0
+    }
+
+    if $verbose ; then
+        local v=-v
+    fi
+
+    mkdir $v "$ws"
+
+    local ws_env="$ws-env"
+    touch "$ws_env"
+    echo "M0_VM_NAME_PREFIX=$ws_name" >> "$ws_env"
+    echo "M0_VM_HOSTNAME_PREFIX=$ws_name" >> "$ws_env"
+}
+
+switch_to_workspace()
+{
+    [[ -n $1 ]] ||
+        die "please, specify the workspace name, it cannot be empty"
+
+    if [[ $1 == default ]] ; then
+        local ws=$VAGRANT_MERO_DOTFILE_DIR
+    else
+        local ws="$VAGRANT_MERO_DOTFILE_DIR-$1"
+    fi
+
+    [[ -d $ws ]] ||
+        die "workspace '$1' doesn't exist, try creating it first with" \
+            "\`$PROG_NAME workspace add <name>\`"
+
+    if $verbose ; then
+        local v=-v
+    fi
+
+    rm $VAGRANT_DEFAULT_DOTFILE_DIR
+    ln $v -sfn $ws $VAGRANT_DEFAULT_DOTFILE_DIR
+
+    rm $VAGRANT_DEFAULT_ENV_FILE
+    ln $v -sfn $ws-env $VAGRANT_DEFAULT_ENV_FILE
+}
+
+#
+# Main
+#
+
+parse_cli_options "$@"
+eval set -- "$cli_args"
+
+check_dependencies
+if [[ $(uname) =~ ^(Linux|Darwin)$ && -z $M0_VG_NO_SYMLINKS ]] ; then
+    check_vagrant_dotdir
+    check_vagrant_envfile
+fi
+cd $VAGRANT_DIR
+
+case $cmd in
+    env-*)
+        case ${cmd#env-} in
+            add)     add_env_var "$@" ;& # fall through
+            show)    show_env ;;
+            edit)    edit_env ;;
+            *)       die "Unknown env sub-command: '${cmd#env-}'" ;;
+        esac
+        ;;
+
+    workspace-*)
+        [[ $(uname) =~ ^(Linux|Darwin)$ ]] ||
+            die "'workspace|ws' sub-command is supported only on Linux and MacOS"
+
+        case ${cmd#workspace-} in
+            list)    list_workspaces ;;
+            add)     add_workspace "$1" && echo OK || echo FAILED ;;
+            switch)  switch_to_workspace "$1"
+                     list_workspaces ;;
+            *)       die "Unknown workspace sub-command: '${cmd#workspace-}'" ;;
+        esac
+        ;;
+
+    vagrant)
+        exec $cmd "$@"
+        ;;
+
+    ansible*)
+        exec $cmd --inventory-file="$VAGRANT_ANSIBLE_INVENTORY_FILE" "$@"
+        ;;
+
+    run)
+        if [[ $1 == --vm ]] ; then
+            [[ -n $2 && $2 != -f ]] ||
+                die "'run --vm' command requires an argument"
+            VM=$2
+            shift 2
+        fi
+
+        if [[ $1 == -f ]] ; then
+            if [[ -n $2 ]] ; then
+                # commands from file
+                exec vagrant ssh $VM -- -t "$(cd $OLDPWD; cat $2)"
+            else
+                # commands from STDIN
+                exec vagrant ssh $VM -- -t "$(cat)"
+            fi
+        else
+            # command specified as arguments
+            [[ -n "$*" ]] ||
+                die "'run' command requires an argument"
+            exec vagrant ssh $VM -- -t "$*"
+        fi
+        ;;
+
+    upt) vagrant up $1 ;& # fall through to tmux
+    tmux) exec vagrant ssh $1 -- -t "tmux new-session -A -s ${1:-cmu}" ;;
+
+    *) die "Unknown mode: '$cmd'" ;;
+esac

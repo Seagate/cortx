@@ -1,0 +1,228 @@
+## -*- makefile -*-
+
+#
+# global vars ----------------------------------------- {{{1
+#
+
+KBUILD_EXTRA_SYMBOLS := @LUSTRE_SYMVERS@ @GF_SYMVERS@
+
+ccflags-y := -DHAVE_CONFIG_H -iquote . @M0_KCPPFLAGS@ @M0_KCFLAGS@ @KCFLAGS@
+
+enable_test_modules := @ENABLE_KERNEL_UNIT_TESTS@
+
+#
+# kernel modules we build ----------------------------- {{{1
+#
+
+ifdef M0_BUILD_KERNEL_M0MERO_ONLY
+
+obj-m := m0mero.o
+
+else ifdef M0_BUILD_KERNEL_UT_ONLY
+
+obj-m := m0ut.o
+#obj-m += m0t1fs/linux_kernel/m0loop-ut.o
+
+else ifdef M0_BUILD_CLOVIS_ST
+
+obj-m := m0mero.o
+obj-m += clovis_st_kmod.o
+
+else ifdef M0_BUILD_CLOVIS_ST_ALLINONE
+
+obj-m := m0mero.o
+else
+
+# these modules are installed system wide and included into rpm package, they
+# should be built in mero/ directory, so they could be installed into
+# "kernel/fs/mero" under base kernel modules dir, where "kernel/fs" part is
+# provided by INSTALL_MOD_DIR Kbuild variable and "mero" is taken from module's
+# build directory
+obj-m := m0mero.o
+obj-m += m0ctl.o
+# loop driver was disabled after moving from SL6 to CentOS7
+# due to porting effor for 3.10.x kernel
+#obj-m += mero/m0loop.o
+
+# these modules are built unless '--disable-unit-tests' option of ./configure
+# script is used
+obj-$(enable_test_modules) += m0ut.o
+obj-$(enable_test_modules) += m0lnetping.o
+obj-$(enable_test_modules) += m0rpcping.o
+obj-$(enable_test_modules) += m0nettestd.o
+obj-$(enable_test_modules) += clovis_st_kmod.o
+#obj-$(enable_test_modules) += m0t1fs/linux_kernel/m0loop-ut.o
+
+endif
+
+
+#
+# m0mero.ko ------------------------------------------- {{{1
+#
+
+m0mero-y = mero/linux_kernel/m0mero_main.o \
+                $(m0mero_objects)
+
+m0mero_objects :=
+
+include $(src)/mero/Kbuild.sub
+include $(src)/m0t1fs/Kbuild.sub
+
+include $(src)/addb2/Kbuild.sub
+include $(src)/balloc/Kbuild.sub
+include $(src)/be/Kbuild.sub
+include $(src)/cas/Kbuild.sub
+include $(src)/clovis/Kbuild.sub
+include $(src)/conf/Kbuild.sub
+include $(src)/cob/Kbuild.sub
+include $(src)/console/Kbuild.sub
+include $(src)/cm/Kbuild.sub
+include $(src)/cm/repreb/Kbuild.sub
+include $(src)/dix/Kbuild.sub
+include $(src)/dix/cm/Kbuild.sub
+include $(src)/dtm/Kbuild.sub
+include $(src)/fd/Kbuild.sub
+include $(src)/fdmi/Kbuild.sub
+include $(src)/fid/Kbuild.sub
+include $(src)/file/Kbuild.sub
+include $(src)/fis/Kbuild.sub
+include $(src)/fol/Kbuild.sub
+include $(src)/fop/Kbuild.sub
+include $(src)/format/Kbuild.sub
+include $(src)/graph/Kbuild.sub
+include $(src)/ha/Kbuild.sub
+include $(src)/ioservice/Kbuild.sub
+include $(src)/iscservice/Kbuild.sub
+include $(src)/layout/Kbuild.sub
+include $(src)/lib/Kbuild.sub
+include $(src)/mdservice/Kbuild.sub
+include $(src)/module/Kbuild.sub
+include $(src)/net/Kbuild.sub
+include $(src)/net/bulk_emulation/Kbuild.sub
+include $(src)/net/lnet/Kbuild.sub
+include $(src)/net/sock/Kbuild.sub
+include $(src)/pool/Kbuild.sub
+include $(src)/reqh/Kbuild.sub
+include $(src)/rm/Kbuild.sub
+include $(src)/rpc/Kbuild.sub
+include $(src)/sm/Kbuild.sub
+include $(src)/sns/Kbuild.sub
+include $(src)/sns/cm/Kbuild.sub
+include $(src)/spiel/Kbuild.sub
+include $(src)/sss/Kbuild.sub
+include $(src)/stats/Kbuild.sub
+include $(src)/stob/Kbuild.sub
+include $(src)/xcode/Kbuild.sub
+include $(src)/helpers/Kbuild.sub
+
+
+#
+# m0ut.ko --------------------------------------------- {{{1
+#
+
+# m0ut module comprised of UT object files plus the same object files, which
+# constitute m0mero module; but because some UT files use ugly technique of
+# including .c files to access their static functions, we need to filter out the
+# original objects to avoid link time errors because of duplicate symbols
+
+m0ut-y = ut/linux_kernel/m0ut_main.o \
+                         $(m0ut_objects) \
+                         $(filter-out \
+                                      file/di.o \
+                                      m0t1fs/linux_kernel/file.o \
+                                      net/bulk_emulation/mem_xprt_xo.o \
+                                      net/lnet/lnet_main.o \
+                                      rm/rm_fops.o \
+                                      rm/rm_foms.o \
+                           , $(m0mero_objects))
+
+m0ut_objects :=
+
+include $(src)/addb2/ut/Kbuild.sub
+include $(src)/conf/ut/Kbuild.sub
+include $(src)/fop/ut/Kbuild.sub
+include $(src)/file/ut/Kbuild.sub
+include $(src)/fd/ut/Kbuild.sub
+include $(src)/dtm/ut/Kbuild.sub
+include $(src)/ioservice/ut/Kbuild.sub
+include $(src)/iscservice/ut/Kbuild.sub
+include $(src)/layout/ut/Kbuild.sub
+include $(src)/lib/ut/Kbuild.sub
+include $(src)/m0t1fs/linux_kernel/ut/Kbuild.sub
+include $(src)/net/ut/Kbuild.sub
+include $(src)/net/bulk_emulation/ut/Kbuild.sub
+include $(src)/net/lnet/ut/Kbuild.sub
+include $(src)/net/test/ut/Kbuild.sub # TODO: factor out net-test into a separate module
+include $(src)/reqh/ut/Kbuild.sub
+include $(src)/rm/ut/Kbuild.sub
+include $(src)/rpc/ut/Kbuild.sub
+include $(src)/sm/ut/Kbuild.sub
+include $(src)/stob/ut/Kbuild.sub
+include $(src)/ut/Kbuild.sub
+include $(src)/xcode/ut/Kbuild.sub
+include $(src)/be/ut/Kbuild.sub
+include $(src)/sns/ut/Kbuild.sub
+include $(src)/ha/ut/Kbuild.sub
+
+#
+# m0ctl.ko -------------------------------------------- {{{1
+#
+
+m0ctl-y   = $(m0ctl_objects)
+m0ctl_objects :=
+
+include $(src)/utils/Kbuild.sub
+
+
+#
+# m0loop.ko ------------------------------------------- {{{1
+#
+
+#mero/m0loop-y = m0t1fs/linux_kernel/m0loop_main.o
+
+
+#
+# m0loop-ut.ko ---------------------------------------- {{{1
+#
+
+#m0t1fs/linux_kernel/m0loop-ut-y = m0t1fs/linux_kernel/m0loop_main.o \
+                                  m0t1fs/linux_kernel/ut/m0loop.o
+
+
+#
+# m0lnetping.ko --------------------------------------- {{{1
+#
+
+m0lnetping-y = $(m0lnetping_objects)
+m0lnetping_objects :=
+
+include $(src)/net/lnet/st/Kbuild.sub
+
+
+#
+# m0rpcping.ko ---------------------------------------- {{{1
+#
+
+m0rpcping-y = $(m0rpcping_objects)
+m0rpcping_objects :=
+
+include $(src)/rpc/it/Kbuild.sub
+
+
+#
+# m0nettestd.ko --------------------------------------- {{{1
+#
+
+m0nettestd-y = $(m0nettestd_objects)
+m0nettestd_objects :=
+
+include $(src)/net/test/Kbuild.sub # TODO: factor out net-test files from
+                                   # m0mero.ko into a separate module
+
+# clovis_st_kmod --------------------------------------- {{{1
+#
+clovis_st_kmod-y = $(clovis_st_objects)
+clovis_st_objects :=
+include $(src)/clovis/st/Kbuild.sub
+
+# vim: filetype=make textwidth=80 nowrap foldmethod=marker

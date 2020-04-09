@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+SANDBOX_DIR=${SANDBOX_DIR:-/var/mero/sandbox.m0mount-st}
+M0_SRC_DIR=`readlink -f $0`
+M0_SRC_DIR=${M0_SRC_DIR%/*/*}
+
+. $M0_SRC_DIR/utils/functions # report_and_exit
+
+$M0_SRC_DIR/utils/m0mount -alvvsL -n 1 -d 2 -k 1 -p 4 -o -m -q
+rc=$?
+if [ $rc -eq 0 ]; then
+    rm -r $SANDBOX_DIR
+fi
+report_and_exit m0mount $rc

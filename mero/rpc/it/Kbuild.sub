@@ -1,0 +1,7 @@
+m0rpcping_objects += rpc/it/linux_kernel/m0rpcping_main.o \
+                     rpc/it/rpc_ping.o \
+                     rpc/it/ping_fom.o \
+                     rpc/it/ping_fop.o \
+                     rpc/it/ping_fop_xc.o \
+                     be/linux_kernel/stubs.o \
+                     xcode/xcode.o

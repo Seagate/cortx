@@ -1,0 +1,20 @@
+/* It's not possible to pass aggregate variable to function  */
+@define M0_PRINT_STATS_LOG(tag, measure, stats)
+%(
+	if (@count(@stats) > 0) {
+		printf("%s: min/max/avg/count/sum %d/%d/%d/%d/%d %s\n",
+		       @tag, @min(@stats), @max(@stats), @avg(@stats),
+		       @count(@stats), @sum(@stats), @measure);
+		print(@hist_log(@stats))
+	}
+%)
+
+@define M0_PRINT_STATS(tag, measure, stats, L, H, W)
+%(
+	if (@count(@stats) > 0) {
+		printf("%s: min/max/avg/count/sum %d/%d/%d/%d/%d %s\n",
+		       @tag, @min(@stats), @max(@stats), @avg(@stats),
+		       @count(@stats), @sum(@stats), @measure);
+		print(@hist_linear(@stats, @L, @H, @W))
+	}
+%)

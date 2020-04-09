@@ -1,0 +1,16 @@
+ut_libmero_ut_la_SOURCES += clovis/ut/clovis.c \
+			    clovis/ut/clovis_obj.c \
+			    clovis/ut/io_dummy.c \
+			    clovis/ut/io_req.c \
+			    clovis/ut/io_req_fop.c \
+			    clovis/ut/io_pargrp.c \
+			    clovis/ut/io_nw_xfer.c \
+			    clovis/ut/clovis_io.c \
+			    clovis/ut/clovis_idx.c \
+			    clovis/ut/clovis_idx_dix.c \
+			    clovis/ut/clovis_sync.c \
+			    clovis/ut/clovis_layout.c \
+			    clovis/ut/clovis.h \
+			    clovis/st/mt/clovis_mt_fom.c
+
+CONFXC_FILES += clovis/ut/dix_conf.xc

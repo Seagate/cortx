@@ -1,0 +1,3 @@
+ut_libmero_ut_la_SOURCES += fop/ub/ub.c
+
+EXTRA_DIST += fop/ub/README

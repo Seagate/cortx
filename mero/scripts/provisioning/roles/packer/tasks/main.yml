@@ -1,0 +1,24 @@
+#
+# Packer
+#
+---
+- name: install Packer on Debian based distro
+  when: ansible_os_family == 'Debian'
+  block:
+    - name: install packer dependencies
+      package:
+        name:
+          - libvirt-bin
+          - unzip
+
+    - name: download packer zip archive
+      get_url:
+        url: https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_{{ packer_arch }}.zip
+        dest: /var/opt/packer_{{ packer_version }}_linux_{{ packer_arch }}.zip
+
+    - name: install packer in /usr/local/bin
+      unarchive:
+        src: /var/opt/packer_{{ packer_version }}_linux_{{ packer_arch }}.zip
+        dest: /usr/local/bin
+        remote_src: yes
+  tags: packer

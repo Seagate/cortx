@@ -1,0 +1,119 @@
+#!/usr/bin/env expect
+### ------------------------------------------------------------------
+### System test for `m0ham'.
+###
+### Assumes that `m0mero' kernel module is already inserted.
+### ------------------------------------------------------------------
+
+set ctrl_c \x03
+set endpoint 0@lo:12345:63:100
+
+proc die {msg {rc 1}} {
+    send_error "**ERROR** $msg\n"
+    exit $rc
+}
+
+proc wait_for {sid name} {
+    expect -i $sid {
+	eof {}
+	timeout {die "$name timed out" 110}
+    }
+    set rc [lindex [wait -i $sid] end]
+    if {$rc != 0} {die "$name exit code $rc" $rc}
+}
+
+proc say {msg} {send_error -- "$msg\n"}
+
+proc m0 {path} {
+    global env
+    set path [file join $env(M0_SRC_DIR) $path]
+    if {[file exists $path]} {return $path}
+    die "$path: No such file"
+}
+
+proc hagen {args} {
+    if {[lindex $args 0] eq {-d}} {
+	if {"[lindex $args 1]" eq ""} {return "[m0 utils/m0hagen] -d"}
+	return "[m0 utils/m0hagen] -d | sed 's/^/[lindex $args 1]> /'"
+    }
+
+    set ha_msg_common {!ha_msg
+fid:     !fid [0,0]
+process: ^r|0.0
+service: ^s|0.0
+time: 0
+epoch: 0
+tag:  0}
+
+    switch $args {
+	nvec_set {
+	    set ha_msg "$ha_msg_common
+data: !ha_nvec_set
+  ignore_same_state: true
+  notes:
+  - {fid: ^c|1.1, state: failed}
+  - {fid: ^c|1.2, state: transient}"
+	}
+	nvec_get {
+	    set ha_msg "$ha_msg_common
+data: !ha_nvec_get
+  get_id: 77
+  ignore_same_state: false
+  fids: \[^c|1.1, ^c|1.2]"
+	}
+	default {die "proc hagen: Invalid usage"}
+    }
+    return "echo '$ha_msg' | [m0 utils/m0hagen]"
+}
+
+say "----------------"
+say "Test: self check"
+say "----------------"
+spawn -noecho sudo [m0 ha/m0ham] --self-check -v
+wait_for $spawn_id m0ham
+
+say "------------------"
+say "Test: server sends"
+say "------------------"
+spawn -noecho bash -c "[hagen nvec_set] | sudo [m0 ha/m0ham] -lv"
+set server $spawn_id
+expect {
+    "Listening at *.\r\n" {}
+    timeout {die "m0ham server timed out" 110}
+    eof {die "m0ham server: Unexpected EOF"}
+}
+spawn -noecho bash -c "sudo [m0 ha/m0ham] -v $endpoint | [hagen -d CLIENT]"
+expect "time: 0"
+send -i $server $ctrl_c
+wait_for $server server
+
+say "------------------"
+say "Test: client sends"
+say "------------------"
+spawn -noecho bash -c "sudo [m0 ha/m0ham] -lv | [hagen -d SERVER]"
+set server $spawn_id
+expect "Listening at *.\r\n"
+spawn -noecho bash -c "[hagen nvec_get] | sudo [m0 ha/m0ham] -v $endpoint"
+expect -i $server "time: 0\r\n"
+wait_for $server server
+expect "Message #? is delivered.\r\n"
+send $ctrl_c  ;# XXX BUG: m0ham client should not hang, but it does.
+wait_for $spawn_id client
+
+say "---------------"
+say "Test: both send"
+say "---------------"
+spawn -noecho bash -c "[hagen nvec_set] | sudo [m0 ha/m0ham] -lv \
+      | [hagen -d SERVER]"
+set server $spawn_id
+expect "Listening at *.\r\n"
+spawn -noecho bash -c "[hagen nvec_get] | sudo [m0 ha/m0ham] -v $endpoint \
+      | [hagen -d CLIENT]"
+expect "time: 0\r\n"
+expect -i $server "time: 0\r\n"
+wait_for $spawn_id client
+wait_for $server server
+
+# Local Variables:
+# mode: tcl
+# End:

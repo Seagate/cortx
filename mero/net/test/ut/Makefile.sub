@@ -1,0 +1,10 @@
+ut_libmero_ut_la_SOURCES += net/test/ut/client_server.c \
+			    net/test/ut/commands.c \
+			    net/test/ut/main.c \
+			    net/test/ut/network.c \
+			    net/test/ut/ringbuf.c \
+			    net/test/ut/serialize.c \
+			    net/test/ut/service.c \
+			    net/test/ut/slist.c \
+			    net/test/ut/stats.c \
+			    net/test/ut/str.c

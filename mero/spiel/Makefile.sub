@@ -1,0 +1,8 @@
+nobase_mero_include_HEADERS += spiel/spiel.h \
+			       spiel/conf_mgmt.h
+
+mero_libmero_la_SOURCES += spiel/spiel.c \
+			   spiel/spiel_internal.h   \
+			   spiel/cmd.c   \
+			   spiel/cmd_internal.h \
+			   spiel/conf_mgmt.c

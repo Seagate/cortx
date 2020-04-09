@@ -1,0 +1,7 @@
+ut_libmero_ut_la_SOURCES += sns/cm/repair/ut/cm.c \
+                               sns/cm/repair/ut/cp_common.h \
+                               sns/cm/repair/ut/cp_common.c \
+                               sns/cm/repair/ut/net.c \
+                               sns/cm/repair/ut/xform.c \
+			       sns/cm/repair/ut/storage.c \
+			       sns/cm/repair/ut/flock.c

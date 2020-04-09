@@ -1,0 +1,172 @@
+#!/usr/bin/env bash
+
+# exit immediately if one the commands exits with a non-zero status
+set -e
+
+# constants
+readonly PROG_NAME=$(basename $0)
+
+# global variables, which can be overriden in /etc/sysconfig/mero
+MERO_GENDERS_CONF=/etc/mero/genders
+MERO_CONF_XC_DEFAULT=/etc/mero/conf.xc
+
+# service local variables
+user_config=/etc/sysconfig/mero
+ha_config="/etc/sysconfig/m0d-${1#m0d-}"
+kernel_config=/etc/sysconfig/mero-kernel
+service_funcs=/usr/libexec/mero/mero-service.functions
+
+m0_server()
+{
+    local service=$1
+    local cmd=${2:-m0d}
+    local cmd_opts="$3"
+
+    source $service_funcs
+
+    [[ -n $service ]] || m0_exit "usage: $PROG_NAME <SERVICE>"
+
+    if [[ $service == m0d-* && ! -e $ha_config ]] ; then
+        m0_exit "service config file '$ha_config' doesn't exist"
+    fi
+
+    # read configs
+    [[ -r $kernel_config ]] && source $kernel_config
+    [[ -r $ha_config   ]]   && source $ha_config
+    [[ -r $user_config ]]   && source $user_config
+
+    # apply global system tweaks
+    if [[ -n $KERNEL_HUGEPAGE_DEFRAG ]] ; then
+        local hpdefrag_file='/sys/kernel/mm/transparent_hugepage/defrag'
+        echo "$KERNEL_HUGEPAGE_DEFRAG" > $hpdefrag_file
+        m0_log "$hpdefrag_file: $(cat $hpdefrag_file)"
+    fi
+
+    # validate Halon config
+    if [[ $service == m0d-* ]] ; then
+        [[ -n $MERO_M0D_EP ]] &&
+            m0_log "MERO_M0D_EP: $MERO_M0D_EP" ||
+                m0_exit "MERO_M0D_EP isn't set for $service service"
+
+        m0_log "MERO_PROCESS_FID: $(m0_get_proc_fid_for $service)"
+
+        [[ -z $MERO_HA_EP ]] ||
+            m0_log "MERO_HA_EP: $MERO_HA_EP"
+
+        if [[ -n $MERO_CONF_XC ]] ; then
+            m0_log "MERO_CONF_XC: $MERO_CONF_XC"
+        fi
+    fi
+
+    [[ -n $MERO_M0D_DEBUGGER ]] && export M0_DEBUGGER=$MERO_M0D_DEBUGGER
+
+    local service_dir=$(m0_get_m0d_data_dir_for $service)
+    if [[ $MERO_M0D_REMOVE_SERVICE_DIR == true ]] && [[ -d "$service_dir" ]] ; then
+        rm -rf "$service_dir"
+    fi
+    [[ ! -d "$service_dir" ]] && mkdir -p "$service_dir"
+    cd "$service_dir"
+
+    MERO_M0D_OPTS=${MERO_M0D_OPTS:-$(m0_get_core_params)}
+
+    local stob_type="-T $(m0_get_stob_mode)"
+    local stob_path='-S stobs'
+    local stob_opts
+    local proc_fid="<$(m0_get_proc_fid_for $service)>"
+
+    # mds and rms are expected to read local configuration until the
+    # order of mero bootstrapping changes to start rms along with
+    # confd prior to any other services, except maybe ha, which is
+    # independent of confd or rms, but to be started prior to any
+    # other m0d or m0t1fs requiring ha for further remote conf read
+    case "$service" in
+        mds*)  MERO_M0D_OPTS+=" -c ${MERO_CONF_XC:-$MERO_CONF_XC_DEFAULT}"
+            ;;
+
+        rms*)  MERO_M0D_OPTS+=" -c ${MERO_CONF_XC:-$MERO_CONF_XC_DEFAULT}"
+            ;;
+
+        fdmi*)  MERO_M0D_OPTS+=" -c ${MERO_CONF_XC:-$MERO_CONF_XC_DEFAULT}"
+            ;;
+
+        ios*)  local disks_conf="/etc/mero/disks-$service.conf"
+               if [[ -r $disks_conf ]]; then
+                   stob_opts+=" -d $disks_conf"
+               else
+                   stob_opts+=' -U '
+               fi
+               stob_path="-S $(m0_get_ios_stob_path_for $service)"
+            ;;
+
+        cas*)
+            ;;
+
+        confd|ha*)
+               : ${MERO_CONF_XC:=$MERO_CONF_XC_DEFAULT}
+
+               stob_type='-T linux'
+               MERO_M0D_OPTS+=" -c $MERO_CONF_XC"
+               if [[ ! -r $MERO_CONF_XC ||
+                     $(stat -c%Y $MERO_GENDERS_CONF) -gt $(stat -c%Y $MERO_CONF_XC) ]]
+               then
+                   m0_build_local_conf > $MERO_CONF_XC
+               fi
+            ;;
+
+        m0d-*) # Halon controlled services
+
+               # check if it is a confd process
+               if [[ -n $MERO_CONF_XC ]] ; then
+                   stob_type='-T linux'
+                   MERO_M0D_OPTS+=" -c $MERO_CONF_XC"
+               fi
+
+               MERO_M0D_OPTS+=${MERO_HA_EP:+ -H $MERO_HA_EP}
+               MERO_M0D_OPTS+=" -U"
+            ;;
+
+        *)     m0_exit "Failed to start unknown service '$service'," \
+                       " available services are 'mds*' and 'ios*'"
+            ;;
+    esac
+
+    if [[ $service != m0d-* ]] ; then
+        local ha_ep=${MERO_HA_EP:-$(m0_get_global_ep_of ha)}
+    fi
+
+    local service_ep
+    if [[ $service == ha ]]; then
+        service_ep="lnet:$ha_ep"
+    else
+        service_ep="lnet:${MERO_M0D_EP:-$(m0_get_ep_of $service)}"
+        MERO_M0D_OPTS+=${ha_ep:+ -H $ha_ep}
+    fi
+
+    local addbstob_dir=${MERO_M0D_ADDB_STOB_DIR:+$MERO_M0D_ADDB_STOB_DIR/$service/}
+    [[ -z $addbstob_dir ]] || mkdir -p $addbstob_dir
+
+    local binary=$(m0_path_to $cmd)
+
+    # enable core dumps
+    ulimit -c unlimited
+
+    # Increase vm.max_map_count. MERO-2171 MERO-2396
+    sysctl -w vm.max_map_count=30000000
+
+    # use custom trace files location if it's specified
+    [[ -z $MERO_M0D_TRACE_DIR ]] || {
+        export M0_TRACE_DIR=$MERO_M0D_TRACE_DIR/$service
+        mkdir -p $M0_TRACE_DIR
+    }
+
+    # show actual exec commands in log file
+    set -x
+
+    exec $binary -e $service_ep \
+                    -A linuxstob:${addbstob_dir}addb-stobs \
+                    -f $proc_fid $stob_type $stob_path $MERO_M0D_OPTS \
+                    $stob_opts $cmd_opts $MERO_M0D_EXTRA_OPTS
+}
+
+
+m0_server "$@"

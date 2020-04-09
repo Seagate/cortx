@@ -1,0 +1,2 @@
+m0mero_objects += stats/stats_fops.o \
+		  stats/stats_fops_xc.o

@@ -1,0 +1,6 @@
+mero_libmero_la_SOURCES += dix/cm/repair/service.c \
+                           dix/cm/repair/trigger_fop.c \
+                           dix/cm/repair/cm.c \
+                           dix/cm/repair/sw_fop.c \
+                           dix/cm/repair/net.c \
+                           dix/cm/repair/repair_cp_onwire.c

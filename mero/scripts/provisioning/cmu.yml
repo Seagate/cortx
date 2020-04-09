@@ -1,0 +1,36 @@
+---
+# allow to override hosts to which this playbook applies in command line
+# using '-e override_hosts=HOSTS' option
+- hosts:  '{{ override_hosts | default("cmu") }}'
+  become: yes  # run all commands as root
+
+  pre_tasks:
+    - name: reinstall all packages (hack for restoring man pages)
+      command:   'yum -y reinstall "*"'
+      args:
+        creates: '/usr/share/man/man8/rpm.8.gz'
+      when: ansible_os_family == 'RedHat'
+      tags:
+        - reinstall-all
+        - recover-man-pages
+
+  roles:
+    - ssh-master
+    - base-os
+    - journald-master
+    - nfs-server
+    - lustre-client
+    - mero-build
+    - mero-runtime
+    - halon-build
+    - halon-runtime
+    - hare-build
+    - hare-runtime
+    - role: iscsi-target
+      vars:
+        iscsi_backstore_type: fileio
+    - s3server-build
+    - s3server-runtime
+    - s3server-balancer
+    - role: xperior-runtime
+      tags: xperior

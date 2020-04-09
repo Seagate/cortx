@@ -1,0 +1,53 @@
+### Minimalistic conf data for conf-pvers-ut.
+### Note the absence of node, process, service, and sdev objects.
+
+(root-0 verno=1 rootfid=(1, 2) mdpool=pool-0 imeta_pver=pver-0
+    mdredundancy=0 params=[] nodes=[] sites=[site-2] pools=[pool-0]
+    profiles=[profile-0] fdmi_flt_grps=[])
+(profile-0 pools=[pool-0])
+
+(pool-0 pver_policy=0 pvers=[pver-0, pver_f-0])
+(pver-0 N=2 K=2 P=10 tolerance=[0, 0, 0, 1, 2] sitevs=[objv-2:0])
+(pver_f-0 id=0xfeed base=pver-0 allowance=[0, 0, 0, 1, 2])
+## sitevs ------------------------------------------------------------
+(site-2 racks=[rack-0] pvers=[pver-0])
+(objv-2:0 real=site-2 children=[objv-0])
+## rackvs ------------------------------------------------------------
+(rack-0 encls=[enclosure-0, enclosure-1] pvers=[pver-0])
+(objv-0 real=rack-0 children=[objv-1, objv-8])
+## enclvs ------------------------------------------------------------
+(enclosure-0 ctrls=[controller-0, controller-1] pvers=[pver-0])
+(enclosure-1 ctrls=[controller-2, controller-3] pvers=[pver-0])
+(objv-1 real=enclosure-0 children=[objv-2, objv-6])
+(objv-8 real=enclosure-1 children=[objv-9, objv-11])
+## ctrlvs ------------------------------------------------------------
+(controller-0 node=node-0 drives=[drive-0, drive-1, drive-2] pvers=[pver-0])
+(controller-1 node=node-0 drives=[drive-3, drive-4] pvers=[pver-0]) # <<< FAILED
+(controller-2 node=node-0 drives=[drive-5, drive-6, drive-7] pvers=[pver-0])
+(controller-3 node=node-0 drives=[drive-8, drive-9] pvers=[pver-0])
+(objv-2 real=controller-0 children=[objv-3, objv-4, objv-5])
+(objv-6 real=controller-1 children=[objv-7, objv-10])
+(objv-9 real=controller-2 children=[objv-12, objv-13, objv-14])
+(objv-11 real=controller-3 children=[objv-15, objv-16])
+## diskvs ------------------------------------------------------------
+# Never mind that all disks are associated with the same device (sdev-0).
+(drive-0 dev=sdev-0 pvers=[pver-0])
+(drive-1 dev=sdev-0 pvers=[pver-0])
+(drive-2 dev=sdev-0 pvers=[pver-0]) # <<< FAILED
+(drive-3 dev=sdev-0 pvers=[pver-0])
+(drive-4 dev=sdev-0 pvers=[pver-0])
+(drive-5 dev=sdev-0 pvers=[pver-0])
+(drive-6 dev=sdev-0 pvers=[pver-0]) # <<< FAILED
+(drive-7 dev=sdev-0 pvers=[pver-0])
+(drive-8 dev=sdev-0 pvers=[pver-0])
+(drive-9 dev=sdev-0 pvers=[pver-0])
+(objv-3 real=drive-0 children=[])
+(objv-4 real=drive-1 children=[])
+(objv-5 real=drive-2 children=[])
+(objv-7 real=drive-3 children=[])
+(objv-10 real=drive-4 children=[])
+(objv-12 real=drive-5 children=[])
+(objv-13 real=drive-6 children=[])
+(objv-14 real=drive-7 children=[])
+(objv-15 real=drive-8 children=[])
+(objv-16 real=drive-9 children=[])

@@ -1,0 +1,33 @@
+ff             ::= statement-list
+statement-list ::= statement | statement ";" statement-list
+statement      ::= require | declaration
+require        ::= "require" pathname
+declaration    ::= type identifier
+type           ::= atomic | compound | typename
+atomic         ::= "void" | "u8" | "u32" | "u64" | "opaque"
+compound       ::= kind "{" field-list "}"
+kind           ::= "record" | "union" | "sequence" | "array"
+field-list     ::= field | field ";" field-list
+field          ::= declaration tag escape
+tag            ::= empty | ":" expression
+escape         ::= empty | "[" identifier "]"
+
+tokens:
+
+identifier
+require
+string
+void
+u8
+u32
+u64
+opaque
+record
+union
+sequence
+typedef
+open (brace)
+close (brace)
+semicolon
+tag
+escape

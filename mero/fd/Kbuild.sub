@@ -1,0 +1,2 @@
+m0mero_objects += fd/fd.o \
+		  fd/fd_tree.o

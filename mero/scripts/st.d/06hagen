@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -eu
+
+cd "$M0_SRC_DIR"
+exec utils/m0hagen --self-check

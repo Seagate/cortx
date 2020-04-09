@@ -1,0 +1,56 @@
+
+clovis_st_user_space_c0st_SOURCES = clovis/st/user_space/clovis_st_main.c \
+		      clovis/st/clovis_st.c \
+		      clovis/st/clovis_st_misc.c \
+		      clovis/st/clovis_st_worker.c \
+		      clovis/st/clovis_st_assert.c \
+		      clovis/st/clovis_api.c \
+		      clovis/st/clovis_oid.c \
+		      clovis/st/clovis_obj.c  \
+		      clovis/st/clovis_idx.c \
+		      clovis/st/clovis_read.c \
+		      clovis/st/clovis_write.c \
+		      clovis/st/clovis_osync.c \
+		      clovis/st/clovis_isync.c \
+		      clovis/st/clovis_layout.c \
+		      clovis/st/clovis_example.c \
+		      clovis/st/clovis_st_assert.h \
+		      clovis/st/clovis_st.h \
+		      clovis/st/clovis_st_misc.h \
+		      clovis/st/mt/clovis_mt_fom.c
+
+clovis_st_utils_c0client_SOURCES = clovis/st/utils/clovis_client.c \
+		      clovis/st/utils/clovis_helper.c \
+		      clovis/st/utils/clovis_helper.h
+clovis_st_utils_c0unlink_SOURCES = clovis/st/utils/clovis_unlink.c \
+		      clovis/st/utils/clovis_helper.c \
+		      clovis/st/utils/clovis_helper.h
+clovis_st_utils_c0cp_SOURCES = clovis/st/utils/clovis_copy.c \
+		      clovis/st/utils/clovis_helper.c \
+		      clovis/st/utils/clovis_helper.h
+clovis_st_utils_c0cat_SOURCES = clovis/st/utils/clovis_cat.c \
+		      clovis/st/utils/clovis_helper.c \
+		      clovis/st/utils/clovis_helper.h
+clovis_st_utils_c0touch_SOURCES = clovis/st/utils/clovis_touch.c \
+		      clovis/st/utils/clovis_helper.c \
+		      clovis/st/utils/clovis_helper.h
+clovis_st_utils_c0cc_cp_cat_SOURCES = clovis/st/utils/clovis_cc_cp_cat.c \
+		      clovis/st/utils/clovis_helper.c \
+		      clovis/st/utils/clovis_helper.h
+clovis_st_utils_c0trunc_SOURCES = clovis/st/utils/clovis_truncate.c \
+		      clovis/st/utils/clovis_helper.c \
+		      clovis/st/utils/clovis_helper.h
+clovis_st_utils_c0cp_mt_SOURCES = clovis/st/utils/clovis_copy_mt.c \
+		      clovis/st/utils/clovis_helper.c \
+		      clovis/st/utils/clovis_helper.h
+clovis_st_utils_c0composite_SOURCES = clovis/st/utils/clovis_composite_bootstrap.c
+
+EXTRA_DIST  += clovis/st/utils/clovis_local_conf.sh \
+	       clovis/st/utils/clovis_cmd.sh \
+	       clovis/st/utils/clovis_st_inc.sh \
+	       clovis/st/utils/clovis_sys_test.sh \
+	       clovis/st/utils/clovis_mero_st.sh \
+	       clovis/st/utils/clovis_device_util.sh \
+	       clovis/st/utils/mero_fs.sh \
+	       clovis/st/utils/mero_services.sh \
+	       clovis/st/linux_kernel/clovis_st_kmain.c

@@ -1,0 +1,8 @@
+m0mero_objects += mero/ha.o \
+                  mero/keepalive.o \
+                  mero/keepalive_xc.o \
+                  mero/init.o \
+                  mero/version.o
+
+m0mero_objects += mero/linux_kernel/dummy_init_fini.o \
+                  mero/linux_kernel/module.o

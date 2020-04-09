@@ -1,0 +1,65 @@
+#
+# SSH slave tasks
+#
+---
+- name: copy SSH master key to {{ inventory_hostname }} host
+  copy:
+    src: '{{ ssh_master_key_file }}'
+    dest:  /home/{{ ansible_user }}/.ssh/id_rsa
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: 0600
+  # don't panic if key doesn't exist, ignore it
+  ignore_errors: yes
+  tags: ssh
+
+- name: copy SSH master pub key to {{ inventory_hostname }} host
+  copy:
+    src: '{{ ssh_master_pub_key_file }}'
+    dest:  /home/{{ ansible_user }}/.ssh/id_rsa.pub
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+  # don't panic if key doesn't exist, ignore it
+  ignore_errors: yes
+  tags: ssh
+
+- name: authorize SSH master pub key on {{ inventory_hostname }} host
+  authorized_key:
+    user:  '{{ item }}'
+    state: present
+    key:   '{{ lookup("file", ssh_master_pub_key_file) }}'
+  with_items:
+    - '{{ ansible_user }}'
+    # Mero cluster tools require a direct root access to nodes, so adding master
+    # pub key for root as well
+    - root
+  # don't panic if pub key doesn't exist, ignore it
+  ignore_errors: yes
+  tags: ssh
+
+- name: use the same key for 'root'
+  copy:
+    src:  /home/{{ ansible_user }}/.ssh
+    dest: /root
+    remote_src: yes
+    mode: preserve
+  tags: ssh
+
+- name: ensure correct permissions for root ssh prvite key
+  file:
+    path:  /root/.ssh/id_rsa
+    mode:  0600
+  tags: ssh
+
+- name: allow root user to login over SSH
+  replace:
+    path:    /etc/ssh/sshd_config
+    regexp:  '^#[ \t]*PermitRootLogin.*$'
+    replace: 'PermitRootLogin yes'
+  register: sshd_config
+  tags: ssh
+
+- name: restart sshd
+  service: name=sshd state=restarted
+  when: sshd_config.changed
+  tags: ssh

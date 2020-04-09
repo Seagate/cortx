@@ -1,0 +1,46 @@
+#!/usr/bin/env expect
+### ------------------------------------------------------------------
+### System test for `m0rpcping'.
+###
+### Assumes that `m0mero' kernel module is already inserted.
+### ------------------------------------------------------------------
+
+proc die {msg} {
+    global argv0
+    send_error "*ERROR* $argv0: m0rpcping $msg\n"
+    exit 1
+}
+
+proc wait_for {sid name} {
+    expect -i $sid eof {} FATAL {die "$name has failed"
+    } timeout {die "$name timeout"}
+    set rc [lindex [wait -i $sid] 3]
+    if {$rc != 0} {die "$name exitcode $rc"}
+}
+
+set timeout 30
+set prog [file join [file dirname $argv0] m0rpcping]
+
+# Start server:
+spawn sudo $prog -s -v
+set server $spawn_id
+
+# Check that the server is ready:
+expect -i $server -re {Press Enter to terminate.*#+\r*\n$} {
+} FATAL {die "server has failed"} timeout {die "server timeout"
+} eof {die "server has quit unexpectedly"}
+
+# Start client:
+spawn sudo $prog -t300 -n2 -v
+set client $spawn_id
+
+# Wait till client terminates:
+wait_for $client "client"
+
+# Send '\n' to server and wait till it quits:
+send -i $server "\n"
+wait_for $server "server"
+
+# Local Variables:
+# mode: tcl
+# End:

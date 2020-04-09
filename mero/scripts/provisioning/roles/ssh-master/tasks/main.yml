@@ -1,0 +1,45 @@
+#
+# SSH master tasks
+#
+---
+- name: generate user SSH key pair
+  user: name={{ ansible_user }} generate_ssh_key=yes
+  tags: ssh
+
+- name: read the public key
+  slurp:
+    src: /home/{{ ansible_user }}/.ssh/id_rsa.pub
+  register: pub_key
+  tags: ssh
+
+# this is needed for `m0genfacts` util, which gathers information about hosts
+# over ssh, so it requires an ssh access to a host even if it's already running
+# on the same host
+- name: enable SSH self-login with the public key
+  authorized_key:
+    user:  '{{ ansible_user }}'
+    state: present
+    key:   '{{ pub_key.content | b64decode }}'
+  tags: ssh
+
+- name: use the same key for 'root'
+  copy:
+    src:  /home/{{ ansible_user }}/.ssh
+    dest: /root
+    remote_src: yes
+    mode: preserve
+  tags: ssh
+
+- name: fetch SSH master key file
+  fetch:
+    src:  ~{{ ansible_user }}/.ssh/id_rsa
+    dest: '{{ ssh_master_key_file }}'
+    flat: yes
+  tags: ssh
+
+- name: fetch SSH master pub key file
+  fetch:
+    src:  ~{{ ansible_user }}/.ssh/id_rsa.pub
+    dest: '{{ ssh_master_pub_key_file }}'
+    flat: yes
+  tags: ssh

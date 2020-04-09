@@ -1,0 +1,158 @@
+/* ff2c input file. */
+
+/*
+ * The following command generates ./xcode/ff2c/sample.{c,h}
+ *
+ * $ ./xcode/ff2c/ff2c ./xcode/ff2c/sample.ff
+ *
+ */
+
+/*
+ * C-style comments are used, white-spaces between tokens are ignored.
+ *
+ * Semicolon is used as a _separator_, not a _terminator_. That is, various
+ * lists (fields, declarations) have a form E0 ; E1 ; ... ; EN.
+ */
+
+/*
+ * "require" statement introduces a dependency on other source file. For each
+ * "require", an #include directive is produced, which includes corresponding
+ * header file, "lib/vec.h" in this case
+ */
+require "lib/vec";
+require "fop/fop";
+
+/*
+ * Following in this file are type declaration statements, which all have form
+ * "type-declaration type-name".
+ */
+
+/* define "fid" as a RECORD type, having two U64 fields. */
+record {
+        u64 f_container;
+        u64 f_offset
+} fid;
+/*
+ * Produced C declaration is:
+ *                            struct fid {
+ *                                    uint64_t f_container;
+ *                                    uint64_t f_offset;
+ *                            };
+ */
+
+/*
+ * Define "optfid" as a UNION containing a byte discriminator field (o_flag),
+ * followed either by a fid (provided o_flag's value is 1) or a U32 value
+ * o_short (provided o_flag's value is 3).
+ */
+union {
+        u8  o_flag;
+        fid o_fid   :1;
+        u32 o_short :3
+} optfid;
+/*
+ * Produced C declaration is:
+ *
+ *                            struct optfid {
+ *                                    uint8_t o_flag;
+ *                                    union {
+ *                                            struct fid o_fid;
+ *                                            uint32_t o_short;
+ *                                    } u;
+ *                            };
+ */
+
+/* define optfidarray as a counted array of optfid instances. */
+sequence {
+        u64    ofa_nr;
+        optfid ofa_data
+} optfidarray;
+/*
+ * Produced C declaration is:
+ *
+ *                            struct optfidarray {
+ *                                    uint64_t ofa_nr;
+ *                                    struct optfid *ofa_data;
+ *                            };
+ */
+
+/*
+ * define fixarray as a fixed-size array of optfids. Array size is NR, which
+ * must be defined in one of "require"-d files.
+ */
+sequence {
+        void   fa_none :NR;
+        optfid fa_data
+} fixarray;
+/*
+ * Produced C declaration is:
+ *
+ *                            struct fixarray {
+ *                                    m0_void_t fa_none;
+ *                                    struct optfid *fa_data;
+ *                            };
+ */
+
+/* demonstrate declaration of a more complex structure. */
+record {
+        fid      p_fid;
+
+        /*
+	 * "p_cred" is opaque field. It is represented as a pointer to struct
+         * m0_cred. The actual type of pointed object is returned by
+         * m0_package_cred_get() function.
+	 */
+       *m0_cred  p_cred [m0_package_cred_get];
+
+        /*
+	 * field's type can be defined in-place. ff2c generates a name of the
+         * form "parent_type"_"field_name" for such anonymous type.
+	 */
+        sequence {
+                u32 s_nr;
+                record {
+                        u8       e_flag;
+                        fixarray e_payload;
+                        record {
+                                u64 d_0;
+                                u64 d_1
+                        } e_datum
+                } s_el
+        } p_name
+} package;
+/*
+ * Produced C declaration is:
+ *
+ *                            struct package {
+ *                                    struct fid p_fid;
+ *                                    struct m0_cred *p_cred;
+ *                                    struct package_p_name {
+ *                                            uint32_t s_nr;
+ *                                            struct p_name_s_el {
+ *                                                    uint8_t e_flag;
+ *                                                    struct fixarray e_payload;
+ *                                                    struct s_el_e_datum {
+ *                                                            uint64_t d_0;
+ *                                                            uint64_t d_1;
+ *                                                    } e_datum;
+ *                                            } s_el;
+ *                                    } p_name;
+ *                            };
+ *
+ * And (in sample.c):
+ *
+ * int m0_package_cred_get(const struct m0_xcode_obj *par,
+ *                         const struct m0_xcode_type **out);
+ *
+ */
+
+array {
+        fid quad : NR
+} fixfid
+/*
+ * Produced C declaration is:
+ *
+ *                            struct fixfid {
+ *                                    struct fid[NR];
+ *                            };
+ */

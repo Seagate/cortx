@@ -1,0 +1,5 @@
+---
+s3server_balancer_pkgs:
+  - haproxy
+  - keepalived
+  - nginx

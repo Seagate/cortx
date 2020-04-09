@@ -1,0 +1,4 @@
+rm_st_m0rwlock_SOURCES  = rm/st/rwlock_helper.c \
+                          rm/st/wlock_helper.c \
+                          rm/st/wlock_helper.h
+

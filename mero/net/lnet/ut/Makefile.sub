@@ -1,0 +1,6 @@
+ut_libmero_ut_la_SOURCES    += net/lnet/ut/lnet_ut.c
+
+net_lnet_ut_m0kut_helper_SOURCES  = net/lnet/ut/lut_main.c \
+                                    net/lnet/ut/lnet_drv_ut.h
+
+EXTRA_DIST += net/lnet/ut/linux_kernel/klnet_ut.c

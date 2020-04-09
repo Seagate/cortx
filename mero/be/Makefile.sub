@@ -1,0 +1,110 @@
+nobase_mero_include_HEADERS += \
+                               be/addb2.h           \
+                               be/alloc.h           \
+                               be/alloc_internal.h  \
+                               be/active_record.h   \
+                               be/be.h              \
+                               be/btree.h           \
+                               be/btree_internal.h  \
+			       be/domain.h          \
+			       be/engine.h          \
+                               be/extmap_internal.h \
+                               be/extmap.h          \
+                               be/fl.h              \
+                               be/fmt.h             \
+                               be/ha.h              \
+                               be/io.h              \
+                               be/io_sched.h        \
+                               be/list.h            \
+                               be/log.h             \
+			       be/log_discard.h     \
+			       be/log_sched.h       \
+			       be/log_store.h       \
+			       be/op.h              \
+                               be/pool.h            \
+                               be/pd.h              \
+			       be/recovery.h        \
+                               be/seg.h             \
+                               be/seg0.h            \
+                               be/seg_dict.h        \
+                               be/seg_internal.h    \
+                               be/tx.h              \
+                               be/tx_bulk.h         \
+                               be/tx_credit.h       \
+			       be/tx_group_fom.h    \
+                               be/tx_group.h        \
+                               be/tx_group_format.h \
+                               be/tx_group_format_internal.h \
+			       be/tx_internal.h     \
+                               be/tx_regmap.h       \
+                               be/tx_service.h	    \
+			       be/ut/helper.h
+
+mero_libmero_la_SOURCES += be/alloc.c           \
+                           be/active_record.c   \
+			   be/be.c              \
+			   be/btree.c           \
+			   be/domain.c          \
+			   be/engine.c          \
+			   be/extmap.c          \
+                           be/fl.c              \
+                           be/fmt.c             \
+                           be/ha.c              \
+			   be/io.c              \
+			   be/io_sched.c        \
+			   be/list.c            \
+			   be/log.c             \
+			   be/log_discard.c     \
+			   be/log_sched.c       \
+			   be/log_store.c       \
+			   be/op.c              \
+                           be/pool.c            \
+                           be/pd.c              \
+			   be/recovery.c        \
+			   be/seg.c             \
+			   be/seg0.c            \
+			   be/seg_dict.c        \
+			   be/tx.c              \
+			   be/tx_bulk.c         \
+			   be/tx_credit.c       \
+			   be/tx_group_fom.c    \
+			   be/tx_group.c        \
+			   be/tx_group_format.c \
+			   be/tx_regmap.c       \
+			   be/tx_service.c      \
+                           be/ut/helper.c
+
+nodist_mero_libmero_la_SOURCES  +=                 \
+			   be/addb2_xc.c           \
+			   be/alloc_xc.c           \
+			   be/alloc_internal_xc.c  \
+			   be/btree_xc.c           \
+			   be/btree_internal_xc.c  \
+			   be/domain_xc.c          \
+			   be/extmap_internal_xc.c \
+			   be/extmap_xc.c          \
+			   be/fl_xc.c              \
+			   be/fmt_xc.c             \
+			   be/ha_xc.c              \
+                           be/list_xc.c            \
+                           be/seg_xc.c             \
+                           be/seg_internal_xc.c    \
+			   be/tx_xc.c
+
+XC_FILES += be/addb2_xc.h           \
+            be/alloc_xc.h           \
+            be/alloc_internal_xc.h  \
+            be/btree_xc.h           \
+            be/btree_internal_xc.h  \
+            be/domain_xc.h          \
+            be/extmap_internal_xc.h \
+            be/extmap_xc.h          \
+            be/fl_xc.h              \
+            be/fmt_xc.h             \
+            be/ha_xc.h              \
+            be/list_xc.h            \
+            be/seg_xc.h             \
+            be/seg_internal_xc.h    \
+            be/tx_xc.h
+
+EXTRA_DIST += be/linux_kernel/stubs.c

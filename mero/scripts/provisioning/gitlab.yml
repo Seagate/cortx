@@ -1,0 +1,27 @@
+---
+# allow to override hosts to which this playbook applies in command line
+# using '-e override_hosts=HOSTS' option
+- hosts:  '{{ override_hosts | default("gitlab") }}'
+  become: no  # should be root already
+  gather_facts: no
+
+  # TODO: check how Ansible works with Python3 and use global config variable
+  # 'ansible_python_interpreter=/usr/bin/python3' instead
+  pre_tasks:
+    - name: install minimal Ansible deps that are missing on Ubuntu 18.04 LTS
+      raw: apt-get update && apt-get install -y python-minimal aptitude
+      become: true
+      become_user: root
+      become_method: sudo
+
+    - name: Gather Facts
+      setup:
+      tags: always
+
+  roles:
+    - base-os
+    - serial-console
+    - docker
+    - ansible
+    - vagrant
+    - packer

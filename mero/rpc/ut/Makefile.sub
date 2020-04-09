@@ -1,0 +1,26 @@
+ut_libmero_ut_la_SOURCES += rpc/ut/rpclib_ut.c \
+                               rpc/ut/formation2.c \
+                               rpc/ut/conn.c \
+                               rpc/ut/conn_pool.c \
+                               rpc/ut/rpc_machine.c \
+                               rpc/ut/session.c \
+                               rpc/ut/rcv_session.c \
+                               rpc/ut/item.c \
+                               rpc/ut/item_source.c \
+                               rpc/ut/packet.c \
+                               rpc/ut/fops.c \
+                               rpc/ut/link_ut.c \
+                               rpc/ut/at/at_ut.c \
+                               rpc/ut/at/at_ut.h
+
+nodist_ut_libmero_ut_la_SOURCES += \
+                               rpc/ut/fops_xc.c \
+                               rpc/ut/at/at_ut_xc.c
+
+XC_FILES += rpc/ut/fops_xc.h \
+            rpc/ut/at/at_ut_xc.h
+
+EXTRA_DIST += rpc/ut/clnt_srv_ctx.c \
+              rpc/ut/fops.h
+
+ut_libmero_ut_la_CPPFLAGS += -DM0_RPC_UT_DIR=$(abs_top_builddir)/rpc/ut/

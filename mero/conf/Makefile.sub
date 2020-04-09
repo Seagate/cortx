@@ -1,0 +1,68 @@
+nobase_mero_include_HEADERS += \
+                               conf/cache.h \
+                               conf/confc.h \
+                               conf/confd.h \
+                               conf/confd_fom.h \
+                               conf/confd_stob.h \
+                               conf/db.h \
+                               conf/dir.h \
+                               conf/diter.h \
+                               conf/flip_fom.h \
+                               conf/flip_fop.h \
+                               conf/fop.h \
+                               conf/glob.h \
+                               conf/ha.h \
+                               conf/helpers.h \
+                               conf/load_fom.h \
+                               conf/load_fop.h \
+                               conf/obj.h \
+                               conf/obj_ops.h \
+                               conf/onwire.h \
+                               conf/preload.h \
+                               conf/pvers.h \
+                               conf/rconfc.h \
+                               conf/rconfc_link_fom.h \
+                               conf/schema.h \
+                               conf/validation.h \
+                               conf/walk.h
+
+mero_libmero_la_SOURCES += \
+                           conf/cache.c \
+                           conf/confc.c \
+                           conf/confd.c \
+                           conf/confd_fom.c \
+                           conf/confd_stob.c \
+                           conf/db.c \
+                           conf/dir.c \
+                           conf/diter.c \
+                           conf/flip_fom.c \
+                           conf/flip_fop.c \
+                           conf/fop.c \
+                           conf/glob.c \
+                           conf/ha.c \
+                           conf/helpers.c \
+                           conf/load_fom.c \
+                           conf/load_fop.c \
+                           conf/obj.c \
+                           conf/obj_ops.c \
+                           conf/preload.c \
+                           conf/pvers.c \
+                           conf/rconfc.c \
+                           conf/rconfc_internal.h \
+                           conf/rconfc_link_fom.c \
+                           conf/validation.c \
+                           conf/walk.c
+
+nodist_mero_libmero_la_SOURCES  += \
+                           conf/flip_fop_xc.c \
+                           conf/schema_xc.c \
+                           conf/ha_xc.c \
+                           conf/load_fop_xc.c \
+                           conf/onwire_xc.c
+
+XC_FILES += \
+            conf/flip_fop_xc.h \
+            conf/schema_xc.h \
+            conf/ha_xc.h \
+            conf/load_fop_xc.h \
+            conf/onwire_xc.h

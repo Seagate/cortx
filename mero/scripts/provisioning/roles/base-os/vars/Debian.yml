@@ -1,0 +1,48 @@
+---
+basic_tools_pkgs:
+  - dstat
+  - emacs
+  - htop
+  - ipmitool
+  - iotop
+  - lsscsi
+  - mailutils
+  - mutt
+  - net-tools # netstat
+  - netcat
+  - nmap
+  - pdsh
+  - rsync
+  - scsitools
+  - smartmontools
+  - sysstat
+  - telnet
+  - tmux
+  - vim
+  - wget
+  # machine autodicovery by hostname
+  - avahi-daemon
+  - avahi-utils
+  #- bind9utils
+  - libnss-mdns
+  # remote syslog
+  - systemd-journal-remote
+  # secure updates
+  - apt-transport-https
+
+devel_tools_pkgs:
+  - crash
+  - expect
+  - gdb
+  - jq
+  - ltrace
+  - linux-tools-common  # perf
+  - psmisc
+  - strace
+  - systemtap
+  - tig
+  - time
+  - trace-cmd
+  - valgrind
+
+avahi_service: avahi-daemon

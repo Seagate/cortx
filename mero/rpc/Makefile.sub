@@ -1,0 +1,66 @@
+nobase_mero_include_HEADERS += rpc/addb2.h \
+                                  rpc/at.h \
+                                  rpc/bulk.h \
+                                  rpc/conn.h \
+                                  rpc/conn_internal.h \
+                                  rpc/conn_pool.h \
+                                  rpc/conn_pool_internal.h \
+                                  rpc/formation2_internal.h \
+                                  rpc/ha.h \
+                                  rpc/item.h \
+                                  rpc/item_internal.h \
+                                  rpc/item_source.h \
+                                  rpc/link.h \
+                                  rpc/onwire.h \
+                                  rpc/packet_internal.h \
+                                  rpc/rev_conn.h \
+                                  rpc/rpc.h \
+                                  rpc/rpc_helpers.h \
+                                  rpc/rpc_internal.h \
+                                  rpc/rpc_machine.h \
+                                  rpc/rpc_machine_internal.h \
+                                  rpc/rpc_opcodes.h \
+                                  rpc/rpclib.h \
+                                  rpc/service.h \
+                                  rpc/session.h \
+                                  rpc/session_foms.h \
+                                  rpc/session_fops.h \
+                                  rpc/session_internal.h
+
+mero_libmero_la_SOURCES  += rpc/at.c \
+                                  rpc/bulk.c \
+                                  rpc/conn.c \
+                                  rpc/conn_pool.c \
+                                  rpc/formation2.c \
+                                  rpc/frmops.c \
+                                  rpc/item.c \
+                                  rpc/item_source.c \
+                                  rpc/link.c \
+                                  rpc/onwire.c \
+                                  rpc/packet.c \
+                                  rpc/rev_conn.c \
+                                  rpc/rpc.c \
+                                  rpc/rpc_machine.c \
+                                  rpc/rpclib.c \
+                                  rpc/service.c \
+                                  rpc/session.c \
+                                  rpc/session_foms.c \
+                                  rpc/session_fops.c \
+                                  rpc/session_utils.c
+
+nodist_mero_libmero_la_SOURCES  += \
+                                  rpc/addb2_xc.c \
+                                  rpc/at_xc.c \
+                                  rpc/ha_xc.c \
+                                  rpc/bulk_xc.c \
+                                  rpc/onwire_xc.c \
+                                  rpc/rpc_opcodes_xc.c \
+                                  rpc/session_fops_xc.c
+
+XC_FILES   += rpc/addb2_xc.h \
+              rpc/at_xc.h \
+              rpc/ha_xc.h \
+              rpc/bulk_xc.h \
+              rpc/onwire_xc.h \
+	      rpc/rpc_opcodes_xc.h \
+              rpc/session_fops_xc.h

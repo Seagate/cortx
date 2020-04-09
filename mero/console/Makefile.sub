@@ -1,0 +1,22 @@
+nobase_mero_include_HEADERS += console/console.h \
+                               console/console_fom.h \
+                               console/console_fop.h \
+                               console/console_it.h \
+                               console/console_mesg.h \
+                               console/console_yaml.h
+
+mero_libmero_la_SOURCES  += console/console_fop.c \
+                            console/console_fom.c \
+                            console/console_it.c \
+                            console/console_mesg.c \
+                            console/console_yaml.c
+
+nodist_mero_libmero_la_SOURCES  += \
+                            console/console_fop_xc.c
+
+console_m0console_SOURCES = console/console.c
+
+XC_FILES   += console/console_fop_xc.h
+
+EXTRA_DIST += console/st/console-st.sh \
+              console/Kbuild.sub

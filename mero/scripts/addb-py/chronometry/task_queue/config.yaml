@@ -1,0 +1,8 @@
+m0crate:
+  LAYOUT_ID: 1
+  CLOVIS_IOSIZE: 4k
+  BLOCK_SIZE: 4k
+  NR_THREADS: 1
+notify:
+  email: maxim.malezhin@seagate.com
+priority: 19

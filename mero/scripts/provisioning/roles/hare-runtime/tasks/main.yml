@@ -1,0 +1,43 @@
+#
+# Hare runtime
+#
+---
+- name: dynamically load variables depending on the OS type
+  include_vars: '{{ item  }}'
+  with_first_found: '{{ ansible_os_family }}.yml'
+  tags: hare
+
+- name: install Hare run-time dependencies
+  package:
+    state: present
+    name:  '{{ hare_runtime_deps_pkgs }}'
+  tags: hare
+
+- name: install Consul
+  unarchive:
+    src:  https://releases.hashicorp.com/consul/{{consul_version}}/consul_{{consul_version}}_linux_amd64.zip
+    dest: /usr/local/bin
+    mode: 0755
+    remote_src: yes
+  tags: hare
+
+- name: install Dhall
+  block:
+    - name: download and install dhall
+      # Dhall guys are very original, the archives already containe 'bin'
+      # directory inside
+      unarchive:
+        src: https://github.com/dhall-lang/dhall-haskell/releases/download/{{dhall_version}}/dhall-{{dhall_version}}-x86_64-linux.tar.bz2
+        dest: /usr/local
+        owner: root
+        group: root
+        remote_src: yes
+
+    - name: download and install dhall-json
+      unarchive:
+        src: https://github.com/dhall-lang/dhall-haskell/releases/download/{{dhall_version}}/dhall-json-{{dhall_json_version}}-x86_64-linux.tar.bz2
+        dest: /usr/local
+        owner: root
+        group: root
+        remote_src: yes
+  tags: hare

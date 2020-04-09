@@ -1,0 +1,287 @@
+#!/usr/bin/env bash
+set -eu
+# set -x
+export PS4='+ ${FUNCNAME[0]:+${FUNCNAME[0]}():}line ${LINENO}: '
+
+umask 0002
+
+# TRACE_m0d='M0_TRACE_IMMEDIATE_MASK=!memory,stob M0_TRACE_LEVEL=info+'
+# TRACE_console='M0_TRACE_IMMEDIATE_MASK=!memory,stob M0_TRACE_LEVEL=info+'
+
+## CAUTION: This path will be removed by superuser.
+SANDBOX_DIR=${SANDBOX_DIR:-/var/mero/sandbox.sss-st}
+
+SERVER_TMID=1
+CLIENT_TMID=1002
+SVC_IOS_ID='^s|1:0'
+SVC_ID_NOENT='^s|1:99'
+SVC_ID="$SVC_IOS_ID"
+PROC_ID='^r|1:5'
+
+M0_SRC_DIR=`readlink -f $0`
+M0_SRC_DIR=${M0_SRC_DIR%/*/*}
+
+. $M0_SRC_DIR/utils/functions # die, opcode, sandbox_init, report_and_exit
+
+CONFDB_PATH=$M0_SRC_DIR/ut/diter.xc
+if [ "$(perl -wse 'print int(rand(2))')" -eq 0 ]; then  # 0.5 probability
+	CONFDB_m0d="-c $CONFDB_PATH"
+fi
+
+sss_send() {
+	[ $# -eq 3 ] || die 'Invalid arguments'
+	local SVC="$1"
+	local CMD=
+	case "$2" in  # see m0_sss_req_cmd for the values
+		M0_SERVICE_INIT)
+			CMD=4
+			if [ $SVC = confd -a -z "${CONFDB_m0d:-}" ]; then
+				local SS_PARAM="$CONFDB_PATH"
+			fi;;
+		M0_SERVICE_START)   CMD=0;;
+		M0_SERVICE_STOP)    CMD=1;;
+		M0_SERVICE_STATUS)  CMD=2;;
+		M0_SERVICE_QUIESCE) CMD=3;;
+		*) die 'Invalid value';;
+	esac
+	local ID="$3"
+
+	env ${TRACE_console:-} $M0_SRC_DIR/console/m0console \
+		-f $(opcode M0_SSS_SVC_REQ_OPCODE) \
+		-s $(endpoint $SERVER_TMID) -c $(endpoint $CLIENT_TMID) \
+		-d "($CMD, \"$SVC\", $ID, \"${SS_PARAM:-}\")" -v
+	echo rc_send = $? >&2
+
+}
+
+sss_process_send() {
+	[ $# -eq 3 ] || die 'Invalid arguments'
+	local CMD=
+	case "$1" in  # see m0_ss_process_req_cmd for the values
+		M0_PROCESS_STOP) CMD=0;;
+		M0_PROCESS_RECONFIG) CMD=1;;
+		M0_PROCESS_HEALTH) CMD=2;;
+		M0_PROCESS_QUIESCE) CMD=3;;
+		M0_PROCESS_RUNNING_LIST) CMD=4;;
+		M0_PROCESS_LIB_LOAD) CMD=5;;
+		*) die 'Invalid value';;
+	esac
+	local ID="$2"
+	local PARAM="${3:-[0]}"
+	# timeout was increase to 90 sec by tiket MERO-1239
+	# if bug MERO-1239 will be reproduce then need research
+	# $SANDBOX_DIR/console.log for additional information
+	#
+	env ${TRACE_console:-} timeout 90 $M0_SRC_DIR/console/m0console \
+		-f $(opcode M0_SSS_PROCESS_REQ_OPCODE) \
+		-s $(endpoint $SERVER_TMID) -c $(endpoint $CLIENT_TMID) \
+		-d "($CMD, $ID, $PARAM)" -v || true
+	echo rc_send = $? >&2
+}
+
+svc_state() {
+	case "${1:-}" in  # see m0_reqh_service_state for the values
+		M0_RST_INITIALISED) echo 1;;
+		M0_RST_STARTED) echo 3;;
+		M0_RST_STOPPING) echo 4;;
+		M0_RST_STOPPED) echo 5;;
+		_ENOENT)   echo -2;;
+		_EINVAL)   echo -22;;
+		_EPROTO)   echo -71;;
+		_EALREADY) echo -114;;
+		OK) echo 0;;
+		*) die 'Invalid value';;
+	esac
+}
+
+sss_check() {
+	[ $# -eq 5 ] || die 'Invalid arguments'
+	local SERVICE_NAME="$1"
+	local COMMAND="$2"
+	local SERVICE_ID="$3"
+	local KEY_NAME="$4"
+	local EXPECTED_VALUE="$5"
+
+	if [ "${SERVICE_NAME#M0_CST_}" = "$SERVICE_NAME" ]; then
+		[ "$SERVICE_NAME" = 'unknown' ] ||
+			die "Invalid service name: $SERVICE_NAME"
+	fi
+
+	echo -n "$SERVICE_NAME $COMMAND $SERVICE_ID.. " >&2
+	sss_send $SERVICE_NAME $COMMAND "$SERVICE_ID" &>$SANDBOX_DIR/console.log
+	local ACTUAL=$(awk "/$KEY_NAME/ {print \$3}" $SANDBOX_DIR/console.log)
+	local EXPECTED=$(svc_state $EXPECTED_VALUE)
+	[ -n "$ACTUAL" ] || die "Generic error = " \
+			$(awk "/rc_send/ {print \$3}" $SANDBOX_DIR/console.log)
+	[ "$ACTUAL" = "$EXPECTED" ] || \
+		die "Expected service state (${EXPECTED}) != actual (${ACTUAL})"
+	echo 'OK' >&2
+}
+
+sss_process_check() {  # XXX FIXME: code duplication
+	[ $# -eq 5 ] || die 'Invalid arguments'
+	local COMMAND="$1"
+	local PROCESS_ID="$2"
+	local PARAM="$3"
+	local KEY_NAME="$4"
+	local EXPECTED_VALUE="$5"
+
+	echo -n "$COMMAND $PROCESS_ID... " >&2
+	sss_process_send $COMMAND "$PROCESS_ID" "$PARAM" \
+	    &>$SANDBOX_DIR/console.log
+	local ACTUAL=$(awk "/$KEY_NAME/ {print \$3}" $SANDBOX_DIR/console.log)
+	local EXPECTED=$(svc_state $EXPECTED_VALUE)
+	[ -n "$ACTUAL" ] || die "Generic error = " \
+			$(awk "/rc_send/ {print \$3}" $SANDBOX_DIR/console.log)
+	[ "$ACTUAL" = "$EXPECTED" ] || \
+		die "Expected service state (${EXPECTED}) != actual (${ACTUAL})"
+	echo 'OK' >&2
+}
+
+sss_process_restart_check() {
+	local EXPECTED=$(grep Restarting $SANDBOX_DIR/m0d.log)
+	[ "$EXPECTED" = 'Restarting' ] || die "Expected restarting state"
+	echo 'Restart OK' >&2
+}
+
+endpoint() {
+	local LNET_NID="0@lo" #`lctl list_nids | head -1`
+	local TMID="${1:-}"  # numeric value, e.g. 1001
+	## LNet endpoint address format (see net/lnet/lnet.h):
+	##     NID:PID:Portal:TMID
+	##
+	## The PID value of 12345 is used by Lustre in the kernel and is
+	## the only value currently supported.
+	echo "${LNET_NID}:12345:34:${TMID}"
+}
+
+m0d_start() {
+	local MKFS_OPTS="-T linux -D sss_st.db -S sss_st.stob
+-A linuxstob:sss_st-addb.stob -e lnet:$(endpoint $SERVER_TMID)
+-H $(endpoint $SERVER_TMID) -c $CONFDB_PATH"
+	local M0D_OPT='-w 4 -m 163840 -q 16'
+
+	echo -n 'Running m0mkfs... ' >&2
+	$M0_SRC_DIR/utils/mkfs/m0mkfs $MKFS_OPTS &>$SANDBOX_DIR/mkfs.log ||
+		die 'm0mkfs failed'
+	echo 'OK' >&2
+
+	## M0_CST_SNS_REP and M0_CST_SNS_REB (see below)
+	## require M0_CST_IOS running.
+	env ${TRACE_m0d:-} $M0_SRC_DIR/mero/m0d $MKFS_OPTS \
+		${CONFDB_m0d:-} $M0D_OPT -f '<0x7200000000000001:5>' \
+		&>$SANDBOX_DIR/m0d.log &
+	sleep 1
+	sss_check M0_CST_IOS M0_SERVICE_STATUS "$SVC_ID" ssr_state \
+		M0_RST_STARTED
+	killall -q -0 lt-m0d || die 'Failed to start m0d'
+}
+
+m0d_stop() {
+	killall -q lt-m0d && wait 2>/dev/null || true
+}
+
+usage() {
+	cat <<EOF
+Usage: ${0##*/} [COMMAND]
+
+Supported commands:
+  run      run system tests (default command)
+  help     display this help and exit
+EOF
+}
+
+## -------------------------------------------------------------------
+## main
+## -------------------------------------------------------------------
+
+[ `id -u` -eq 0 ] || die 'Must be run by superuser'
+
+case "${1:-}" in
+	run|'') ;;
+	help) usage; exit;;
+	*) usage >&2; die;;
+esac
+
+$M0_SRC_DIR/conf/st insmod
+sandbox_init
+m0d_start
+
+sss_process_check M0_PROCESS_RECONFIG "$PROC_ID" "" sspr_rc OK
+# wait reconfigure
+sleep 5
+sss_process_restart_check
+
+#
+# Load shared library.
+#
+sss_process_check M0_PROCESS_LIB_LOAD "$PROC_ID" '"/lib64/libc.so.6 "' sspr_rc OK
+sss_process_check M0_PROCESS_LIB_LOAD "$PROC_ID" '"bah.so "' sspr_rc _EINVAL
+
+sss_check M0_CST_IOS M0_SERVICE_STATUS "$SVC_ID" ssr_state M0_RST_STARTED
+sss_check M0_CST_IOS M0_SERVICE_STATUS "$SVC_ID_NOENT" ssr_rc _ENOENT
+
+# XXX FIXME: M0_CST_IOS restart is not working; see MERO-1172.
+SVC_NAMES=(#M0_CST_IOS
+           M0_CST_MDS M0_CST_RMS M0_CST_SNS_REP M0_CST_SNS_REB M0_CST_ADDB2)
+for ((i=0; i < ${#SVC_NAMES[*]}; i++)); do
+	SVC_ID="^s|1:$((i+1))"
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_STATUS "$SVC_ID" \
+		ssr_state M0_RST_STARTED
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_QUIESCE "$SVC_ID" \
+		ssr_state M0_RST_STOPPING
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_STOP "$SVC_ID" \
+		ssr_state M0_RST_STOPPED
+done
+
+for ((i=0; i < ${#SVC_NAMES[*]}; i++)); do
+	SVC_ID="^s|1:$((i+1))"
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_STATUS  "$SVC_ID" \
+		ssr_rc _ENOENT
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_INIT    "$SVC_ID" \
+		ssr_state M0_RST_INITIALISED
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_STATUS  "$SVC_ID" \
+		ssr_state M0_RST_INITIALISED
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_START   "$SVC_ID" \
+		ssr_state M0_RST_STARTED
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_STATUS  "$SVC_ID" \
+		ssr_state M0_RST_STARTED
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_START   "$SVC_ID" \
+		ssr_rc    _EPROTO
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_QUIESCE "$SVC_ID" \
+		ssr_state M0_RST_STOPPING
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_STATUS  "$SVC_ID" \
+		ssr_state M0_RST_STOPPING
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_STOP    "$SVC_ID" \
+		ssr_state M0_RST_STOPPED
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_STATUS  "$SVC_ID" \
+		ssr_rc _ENOENT
+done
+for ((i=0; i < ${#SVC_NAMES[*]}; i++)); do
+	SVC_ID="^s|1:$((i+1))"
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_INIT    "$SVC_ID" \
+		ssr_state M0_RST_INITIALISED
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_START   "$SVC_ID" \
+		ssr_state M0_RST_STARTED
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_QUIESCE "$SVC_ID" \
+		ssr_state M0_RST_STOPPING
+	sss_check ${SVC_NAMES[$i]} M0_SERVICE_STOP    "$SVC_ID" \
+		ssr_state M0_RST_STOPPED
+done
+
+SVC_ID=$SVC_IOS_ID
+
+sss_check unknown M0_SERVICE_START "$SVC_ID_NOENT" ssr_rc _ENOENT
+sss_check unknown M0_SERVICE_START "$SVC_ID"       ssr_rc _EPROTO
+
+sss_check M0_CST_IOS M0_SERVICE_QUIESCE "$SVC_ID" ssr_state M0_RST_STOPPING
+sss_check M0_CST_IOS M0_SERVICE_STATUS  "$SVC_ID" ssr_state M0_RST_STOPPING
+sss_check M0_CST_IOS M0_SERVICE_STOP    "$SVC_ID" ssr_state M0_RST_STOPPED
+sss_check M0_CST_IOS M0_SERVICE_STATUS  "$SVC_ID" ssr_rc    _ENOENT
+sss_check M0_CST_IOS M0_SERVICE_INIT    "$SVC_ID" ssr_state M0_RST_INITIALISED
+sss_check M0_CST_IOS M0_SERVICE_START   "$SVC_ID" ssr_state M0_RST_STARTED
+
+m0d_stop
+sandbox_fini
+$M0_SRC_DIR/conf/st rmmod
+report_and_exit sss $?

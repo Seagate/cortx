@@ -1,0 +1,23 @@
+nobase_mero_include_HEADERS += pool/pool.h \
+                               pool/pool_machine.h \
+                               pool/pool_fops.h \
+                               pool/pool_foms.h \
+                               pool/policy.h
+
+mero_libmero_la_SOURCES  += pool/pool.c \
+                            pool/pool_machine.c \
+			    pool/pool_fops.c \
+			    pool/pool_foms.c \
+			    pool/policy.c
+
+nodist_mero_libmero_la_SOURCES  += pool/pool_xc.c \
+				   pool/pool_machine_xc.c \
+				   pool/pool_fops_xc.c \
+				   pool/policy_xc.c
+
+pool_m0poolmach_SOURCES  = pool/pool_trigger.c
+
+XC_FILES   += pool/pool_xc.h \
+	      pool/pool_machine_xc.h \
+	      pool/pool_fops_xc.h \
+	      pool/policy_xc.h

@@ -1,0 +1,252 @@
+#!/usr/bin/env bash
+set -eu
+
+### --------------------------------------------------------------------
+### Mero helper script
+###
+### Installation:
+###     ln -s /path/to/mero/scripts/m0 ~/bin/m0
+###
+### Type `m0 help' for usage.
+### --------------------------------------------------------------------
+
+umask 0002
+ulimit -c unlimited
+
+## CAUTION! This directory will be removed by superuser.
+RUNDIR=${RUNDIR:-/var/mero/$(id -un)}
+
+PROG="${0##*/}"
+M0_SRC_DIR="$(readlink -f $0)"
+M0_SRC_DIR="${M0_SRC_DIR%/*/*}"
+
+SUDO="${SUDO-sudo -E}"  # the absence of ':' is important
+
+# Increase the maximum number of memory map areas a process may have.
+# m0d process may allocate and madvise() at least 2,000,000 memory map areas.
+# See MERO-2171 for more details.
+$SUDO sysctl -q -w vm.max_map_count=30000000
+
+die() { echo "$@" >&2; exit 1; }
+
+_make() {
+    local TARGET=${1:-}
+
+    if [ "${TARGET:-}" = rpms ]; then
+        ## Tolerate warnings. rpms get built in spite of them.
+        make ${MAKE_OPTS:-} $TARGET || exit $?
+    else
+        local OUT=`mktemp`
+        trap "rm $OUT" 0
+        make ${MAKE_OPTS:-} $TARGET 2>&1 | tee $OUT
+        [ ${PIPESTATUS[0]} -eq 0 ] || exit ${PIPESTATUS[0]}
+        if grep 'WARNING' $OUT; then
+            die 'WARNING in make output is treated as error'
+        fi
+    fi
+}
+
+build() {
+    cmd_configure
+    _make
+}
+
+_exec() {
+    [ $1 = 'cmd_help' ] || echo "----- ${@#cmd_} -----" >&2
+    $@
+}
+
+_time() {
+    if [ -x /usr/bin/time ]; then
+        /usr/bin/time "$@"
+    else
+        time "$@"
+    fi
+}
+
+rundir_init() {
+    $SUDO rm -rf "$RUNDIR"  # Ouch!
+    $SUDO mkdir -m 0777 -p "$RUNDIR"
+    cd "$RUNDIR"
+}
+
+cmd_configure() {
+    cd "$M0_SRC_DIR"
+    autoreconf -ifs
+    ./configure ${CONFIGURE_OPTS:-}
+}
+
+cmd_make() {
+    cd "$M0_SRC_DIR"
+    if [ -f Makefile ]; then
+        _make "$@"
+    else
+        build
+    fi
+}
+
+cmd_clean() {
+    cd "$M0_SRC_DIR"
+    make distclean || true
+    [ "${1:-}" = '-f' ] && git clean -fdx || true
+}
+
+cmd_rebuild() {
+    cmd_clean
+    build
+}
+
+cmd_run_ut() {
+    rundir_init
+    $SUDO "$M0_SRC_DIR/utils/m0run" m0ut -- "$@"
+}
+
+cmd_run_kut() {
+    rundir_init
+    echo 'Running kernel UT (this may take a while) ...'
+    $SUDO "$M0_SRC_DIR/ut/m0kut" "$@"
+}
+
+cmd_run_st() {
+    local pattern
+    local f
+    local list_p=0
+
+    if [ "${1:-}" = '-l' ]; then
+        list_p=1
+        shift
+    else
+        rundir_init
+        # Export variables for system tests.
+        export M0_SRC_DIR SUDO
+    fi
+    for pattern in ${@:-[0-9][0-9]*}; do
+        find "$M0_SRC_DIR/scripts/st.d/" -maxdepth 1 \! -type d -name $pattern \
+            -perm +a=x -print | sort |
+            while read f; do
+                if [ $list_p -eq 1 ]; then
+                    echo ${f##*/}
+                else
+                    echo "<< ${f##*/} >>" >&2
+                    export SANDBOX_DIR=$RUNDIR/sandbox.st-${f##*/}
+                    _time $f || return $?
+                fi
+            done
+    done
+}
+
+cmd_run_all() {
+    cmd_run_ut
+    cmd_run_kut
+    cmd_run_st
+}
+
+cmd_dist_check() {
+    cd "$M0_SRC_DIR"
+    [ -f Makefile ] || die "You need to \`$PROG make' first."
+    _make rpms
+}
+
+cmd_check_everything() {
+    local i
+    local cmd
+
+    for i in 0 1; do
+        echo "<< CONFIGURE_OPTS='$CONFIGURE_OPTS' >>" >&2
+        for cmd in rebuild dist_check run_ut run_kut run_st; do
+            _exec cmd_$cmd
+        done
+
+        if echo ${CONFIGURE_OPTS:-} | grep -qe '--disable-m0-asserts'; then
+            return
+        else
+            CONFIGURE_OPTS="${CONFIGURE_OPTS:-} --disable-m0-asserts"
+        fi
+    done
+}
+
+cmd_help() {
+    local ret=${1:-0}
+
+    [ $ret -eq 0 ] && usage || usage >&2
+    exit $ret
+}
+
+usage() {
+    cat <<EOF
+Usage: $PROG {COMMAND [OPTION]...}...
+
+Commands:
+    configure            Configure Mero sources (see CONFIGURE_OPTS below).
+
+    make [TARGET]...     Execute 'make' in Mero directory, falling back to
+                         '$PROG rebuild' if no Makefile is found.
+
+    rebuild              Clean and build the whole Mero anew.
+
+    run-ut [OPTION]...   Run user-space unit tests.
+                         OPTIONs are passed to 'ut/m0ut'.
+
+    run-kut              Run kernel unit tests.
+
+    run-st [-l] [PATTERN]...
+                         Run system tests or list ('-l') their names.
+                         Optional arguments specify which tests to run:
+                         each of the PATTERNs is prefixed with 'scripts/st.d/'
+                         and those files that match the resulting shell pattern
+                         are executed.
+                         PATTERN defaults to '[0-9][0-9]*'.
+                         .
+                         Pattern examples:
+                             01net
+                             0{1,3..5}* {09..13}*
+
+    run-all              Run unit and system tests.
+
+    dist-check           Create and validate Mero distribution archive and rpm.
+
+    check-everything  =  (rebuild + dist-check + run-all) * 2
+                         *NOTE* Please run this command before landing.
+                         .
+                         The command is executed twice (note '* 2' above):
+                         the 2nd time with './configure --disable-m0-asserts'.
+
+    clean [-f]           Execute 'make distclean' in Mero sources directory.
+                         '-f' will also remove untracked files and directories
+                         (i.e. those not added to the git repository).
+                         *CAUTION* Be careful with '-f' option!
+
+    help    Show this help and exit.
+
+Environment variables:
+    CONFIGURE_OPTS      Extra options for './configure' command.
+    MAKE_OPTS           Extra options for 'make' command.
+
+Mero sources: $M0_SRC_DIR
+UT output:    $RUNDIR
+EOF
+}
+
+CMD=
+OPTS=
+while [ $# -gt 0 ]; do
+    case $1 in
+        make|clean|rebuild|run-ut|run-kut|run-st|run-all|dist-check| \
+            check-everything|configure|help)
+            [ -z "$CMD" ] || _exec $CMD $OPTS
+            CMD=cmd_${1//-/_}
+            OPTS=;;
+        *)
+            [ -n "$CMD" ] || {
+                echo "Invalid command: $1" >&2
+                die "Type \`$PROG help' for usage."
+            }
+            OPTS+=" $1";;
+    esac
+    shift
+done
+if [ -n "$CMD" ]; then
+    _exec $CMD $OPTS
+else
+    cmd_help 1
+fi

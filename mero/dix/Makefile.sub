@@ -1,0 +1,36 @@
+nobase_mero_include_HEADERS += \
+                            dix/client.h \
+                            dix/meta.h \
+                            dix/layout.h \
+                            dix/imask.h \
+                            dix/req.h \
+                            dix/req_internal.h \
+			    dix/dix_addb.h
+
+mero_libmero_la_SOURCES  += \
+                            dix/client_internal.h \
+                            dix/imask.c \
+                            dix/layout.c \
+                            dix/client.c \
+                            dix/req.c \
+                            dix/meta.c \
+                            dix/encdec.h \
+                            dix/encdec.c \
+                            dix/fid_convert.h \
+                            dix/fid_convert.c \
+                            dix/next_merge.c \
+			    dix/dix_addb.h
+
+nodist_mero_libmero_la_SOURCES  += \
+			    dix/dix_addb_xc.c \
+                            dix/imask_xc.c \
+                            dix/layout_xc.c \
+                            dix/encdec_xc.c \
+                            dix/req_xc.c
+
+XC_FILES += \
+         dix/dix_addb_xc.h \
+         dix/imask_xc.h \
+         dix/layout_xc.h \
+         dix/encdec_xc.h \
+         dix/req_xc.h

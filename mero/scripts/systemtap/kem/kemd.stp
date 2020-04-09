@@ -1,0 +1,333 @@
+# How to add a new probe to KEM profiler?
+# ---------------------------------------
+#
+# Determine kernel event and corresponding probe, say, foobar. Add foorbar
+# probe and native kernel code calling function as following:
+#
+# function foobar_call_dump:long(var1:long, var2:long) %{
+#   kemd_foobar_call_dump(STAP_ARG_var1, STAP_ARG_var2);
+# %}
+#
+# probe foobar {
+#   foobar_call_dump(var1, var2)
+# }
+#
+# Define foobar event ID (enum ke_type) and foobar event type (struct
+# foobar_event) in both kemd.stp and kem.h files:
+#
+# enum ke_type {
+#         ...
+#         KE_FOOBAR,
+# }
+#
+# struct foobar_event {
+#         int64_t fbe_var1;
+#         int64_t fbe_var2;
+#         ...
+# }
+#
+# Add foobar event structure to kernel event data structure union
+# (struct ke_data):
+#
+# struct ke_data {
+#         ...
+#         union {
+#                 ...
+#                 struct foobar_event ked_foobar;
+#         } u;
+# };
+#
+# To store foobar event information, implement native kernel code function
+# in :
+#
+# static void kemd_foobar_call_dump(int64_t var1,
+#                                   int64_t var2)
+# {
+#         ...
+#         struct foobar_event *event;
+#         ...
+#         if ((atomic_read(&rb->kr_written) < rb->kr_size) && ...) {
+#                 ...
+#                 msg->kem_data.ked_type = KE_FOOBAR;
+#
+#                 event = &msg->kem_data.u.ked_foobar;
+#                 event->fbe_var1 = var1;
+#                 ...
+#         }
+#
+#         return;
+# }
+#
+# Finally, to print information in user-space application, add foobar event
+# ID case and printing function to kemc.c file:
+#
+# void ke_foobar_print(struct foobar_event *event)
+# {
+#        printf("KE_FOOBAR ...");
+# }
+#
+# void kem_print(struct ke_msg *msg)
+# {
+#         switch ((enum ke_type)msg->kem_data.ked_type) {
+#         ...
+#         case KE_FOOBAR:
+#                 ke_foobar_print(&msg->kem_data.u.ked_foobar);
+#                 return;
+#         ...
+#         }
+# }
+#
+# How to add a new ADDB2 measurement?
+# -----------------------------------
+# The procedure is simular to adding of printing function, with the following
+# differencies:
+#
+# Add new probe in static void kem_addb2_log() function and dump all
+# corresponding information:
+#
+# static void kem_addb2_log(struct ke_msg *msg)
+# {
+#         switch ((enum ke_type)msg->kem_data.ked_type) {
+#         ...
+#         case KE_FOOBAR: {
+#                 struct foobar_event *event = &msg->kem_data.u.ked_foobar;
+#
+#                 M0_ADDB2_ADD(M0_AVI_KEM_FOOBAR,
+#                              event->fbe_var1, event->fbe_var2);
+#
+#                 return;
+#                 }
+#         ...
+#         }
+# }
+#
+# Add macro M0_AVI_KEM_FOOBAR to the ADDB2 identifier list in kem_id.h:
+#
+# enum {
+#         M0_AVI_KEM_CPU = M0_AVI_KEM_RANGE_START + 1,
+#         ...
+#         M0_AVI_KEM_FOOBAR,
+# };
+#
+
+
+function init() %{
+  struct kem_rb **pptr;
+  pptr = (struct kem_rb **)kallsyms_lookup_name("kemd_rbs");
+
+  if (pptr == NULL)
+    return;
+
+  ext_kemd_rbs = *pptr;
+%}
+
+probe begin {
+  init()
+  printf("begin\n");
+}
+
+probe end {
+  printf("end\n")
+}
+
+function pf_call_dump:long(address:long, wr_access:long) %{
+  kemd_pf_call_dump(STAP_ARG_address, STAP_ARG_wr_access);
+%}
+
+probe vm.pagefault {
+  pf_call_dump(address, write_access)
+}
+
+function pf_ret_dump:long(fault:long) %{
+  kemd_pf_ret_dump(STAP_ARG_fault);
+%}
+
+probe vm.pagefault.return {
+  pf_ret_dump(fault_type)
+}
+
+function cs_call_dump:long(pprev:long, pnext:long) %{
+  kemd_cs_call_dump(STAP_ARG_pprev, STAP_ARG_pnext);
+%}
+
+probe kernel.trace("sched_switch") {
+  cs_call_dump($prev, $next)
+}
+
+%{
+/**********************************************************************/
+/************************** KE DATA TYPES *****************************/
+/**********************************************************************/
+#include "include/linux/types.h"
+#include "include/linux/time.h"
+#include "include/linux/sched.h"
+
+enum ke_type {
+	KE_PAGE_FAULT,
+	KE_CONTEXT_SWITCH,
+};
+
+struct pf_event {
+	pid_t              pfe_pid;
+	pid_t              pfe_tgid;
+	unsigned long long pfe_rdtsc_call;
+	unsigned long long pfe_rdtsc_ret;
+	unsigned long      pfe_address;
+	unsigned int       pfe_write_access;
+	int                pfe_fault;
+};
+
+struct cs_event {
+	pid_t              cse_prev_pid;
+	pid_t              cse_prev_tgid;
+	pid_t              cse_next_pid;
+	pid_t              cse_next_tgid;
+	unsigned long long cse_rdtsc;
+};
+
+struct ke_data {
+	unsigned int ked_type;
+	union {
+		struct pf_event ked_pf;
+		struct cs_event ked_cs;
+	} u;
+};
+
+struct ke_msg {
+	struct timeval kem_timestamp;
+	struct ke_data kem_data;
+};
+
+struct kem_rb {
+	struct ke_msg *kr_buf;
+	unsigned int   kr_size;
+	unsigned int   kr_read_idx;
+	unsigned int   kr_write_idx;
+	atomic_t       kr_written;
+	unsigned int   kr_logged;
+	unsigned int   kr_occurred;
+};
+
+/**********************************************************************/
+/************************* DUMP FUNCTIONS *****************************/
+/**********************************************************************/
+
+static struct kem_rb *ext_kemd_rbs;
+
+static inline unsigned long long read_rdtsc(void)
+{
+	unsigned long low_time;
+	unsigned long high_time;
+
+	asm volatile (
+		      "rdtsc \n\t"
+		      : "=a" (low_time),
+			"=d" (high_time));
+
+	return (unsigned long long)high_time << 32 | low_time;
+}
+
+static void kemd_pf_call_dump(unsigned long address,
+			      unsigned int write_access)
+{
+	unsigned int   cpu;
+	struct kem_rb *rb;
+	struct ke_msg *msg;
+	struct pf_event *event;
+
+	if (ext_kemd_rbs == NULL)
+		return;
+
+	cpu = smp_processor_id();
+	rb = &ext_kemd_rbs[cpu];
+
+	if ((atomic_read(&rb->kr_written) < rb->kr_size) &&
+	    rb->kr_size != 0 &&
+	    rb->kr_buf != NULL) {
+		msg = &rb->kr_buf[rb->kr_write_idx];
+		do_gettimeofday(&msg->kem_timestamp);
+		msg->kem_data.ked_type = KE_PAGE_FAULT;
+
+		event = &msg->kem_data.u.ked_pf;
+		event->pfe_pid = current->pid;
+		event->pfe_tgid = current->tgid;
+		event->pfe_address = address;
+		event->pfe_write_access = write_access;
+		event->pfe_rdtsc_call = read_rdtsc();
+	}
+}
+
+static void kemd_pf_ret_dump(int fault)
+{
+	unsigned int     cpu;
+	struct kem_rb   *rb;
+	struct ke_msg   *msg;
+	struct pf_event *event;
+
+	if (ext_kemd_rbs == NULL)
+		return;
+
+	cpu = smp_processor_id();
+	rb = &ext_kemd_rbs[cpu];
+
+	if ((atomic_read(&rb->kr_written) < rb->kr_size) &&
+	    rb->kr_size != 0 &&
+	    rb->kr_buf != NULL) {
+		msg = &rb->kr_buf[rb->kr_write_idx];
+
+		event = &msg->kem_data.u.ked_pf;
+		event->pfe_rdtsc_ret = read_rdtsc();
+		event->pfe_fault = fault;
+
+		rb->kr_write_idx = (rb->kr_write_idx + 1) % rb->kr_size;
+		atomic_inc(&rb->kr_written);
+		rb->kr_logged++;
+	}
+
+	rb->kr_occurred++;
+}
+
+static void kemd_cs_call_dump(int64_t __prev,
+			      int64_t __next)
+{
+	struct task_struct *prev;
+	struct task_struct *next;
+	unsigned int        cpu;
+	struct kem_rb      *rb;
+	struct ke_msg      *msg;
+	struct cs_event    *event;
+
+	if (ext_kemd_rbs == NULL)
+		return;
+
+	prev = (struct task_struct *)(__prev);
+	next = (struct task_struct *)(__next);
+
+	if (prev->pid == next->pid)
+		return;
+
+	cpu = smp_processor_id();
+	rb = &ext_kemd_rbs[cpu];
+
+	if ((atomic_read(&rb->kr_written) < rb->kr_size) &&
+	    rb->kr_size != 0 &&
+	    rb->kr_buf != NULL) {
+		msg = &rb->kr_buf[rb->kr_write_idx];
+		do_gettimeofday(&msg->kem_timestamp);
+		msg->kem_data.ked_type = KE_CONTEXT_SWITCH;
+
+		event = &msg->kem_data.u.ked_cs;
+		event->cse_prev_tgid = prev->tgid;
+		event->cse_prev_pid = prev->pid;
+		event->cse_next_tgid = next->tgid;
+		event->cse_next_pid = next->pid;
+		event->cse_rdtsc = read_rdtsc();
+
+		rb->kr_write_idx = (rb->kr_write_idx + 1) % rb->kr_size;
+		atomic_inc(&rb->kr_written);
+	}
+
+	return;
+}
+
+%}

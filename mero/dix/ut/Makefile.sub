@@ -1,0 +1,4 @@
+ut_libmero_ut_la_SOURCES += \
+                            dix/ut/client_ut.c
+
+CONFXC_FILES += dix/ut/conf.xc

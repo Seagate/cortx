@@ -1,0 +1,3 @@
+ut_libmero_ut_la_SOURCES += fis/ut/fis_ut.c
+
+CONFXC_FILES += fis/ut/fis.xc

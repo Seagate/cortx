@@ -1,0 +1,62 @@
+		Profiling Mero shared object
+
+This document explains how to use sprof utility for profiling Mero shared
+object file, libmero-0.1.0.so.
+
+gprof cannot be used with shared-object files. Hence we need to use sprof.
+sprof utility is available as part of glibc-common package.
+
+Follow these steps for profiling -
+
+1. Compile mero with debug information enabled.
+[xyratex@guest0 core]$ ./autogen.sh && ./configure --enable-debug && make
+
+2. Profile output will be stored in directory pointed by LD_PROFILE_OUTPUT environment variable.
+   If LD_PROFILE_OUTPUT is not set, the profiler output file is stored at /var/tmp/.
+[xyratex@guest0 sandbox1]$ export LD_PROFILE_OUTPUT=`pwd`
+
+3. Specify the name of the shared object to be profiled in an environment variable LD_PROFILE.
+[xyratex@guest0 sandbox1]$ export LD_PROFILE=libmero-0.1.0.so
+
+NOTE:
+Be careful while exporting and using sudo.
+If a variable X is exported on a non-su shell, the variable will not be available in
+environment of command executed with sudo.
+e.g.
+[xyratex@guest0 sandbox1]$ export GODS_PARTICLE=HIGGSBOSON
+[xyratex@guest0 sandbox1]$ env | grep GODS_PARTICLE
+GODS_PARTICLE=HIGGSBOSON
+[xyratex@guest0 sandbox1]$ sudo env | grep GODS_PARTICLE
+[xyratex@guest0 sandbox1]$
+
+Hence if you are running a binary with sudo, make sure you switch to su shell
+before exporting above environment variables.
+
+[xyratex@guest0 sandbox1]$ sudo su
+[root@guest0 sandbox1]# export LD_PROFILE_OUTPUT=`pwd`
+[root@guest0 sandbox1]# export LD_PROFILE=libmero-0.1.0.so
+
+4. Run the binary which uses $LD_PROFILE shared object.
+[root@guest0 sandbox]# $MERO_CORE/rpc/it/m0rpcping -s -q16 -v
+[root@guest0 sandbox1]# $MERO_CORE/rpc/it/m0rpcping -t1000 -l100 -q16 -v
+
+If we are profiling m0rpcping client then, in client terminal at $LD_PROFILE_OUTPUT
+we will see a file named libmero-0.1.0.so.profile.
+
+[root@guest0 sandbox1]# ls
+m0.trace.29124  libmero-0.1.0.so.profile  m0rpcping_client.db  m0rpcping_client.db.errlog  m0rpcping_client.db.msglog
+
+5. Use sprof command to parse the libmero-0.1.0.so.profile and generete human readable profile.
+[root@guest0 sandbox1]# sprof $MERO_CORE/mero/.libs/libmero-0.1.0.so $LD_PROFILE_OUTPUT/libmero-0.1.0.so.profile | head
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total
+ time   seconds   seconds    calls  us/call  us/call  name
+ 21.37      0.84     0.84   365198     2.30           m0_tlist_invariant
+ 15.52      1.45     0.61 12548054     0.05           m0_tlist_next
+ 11.45      1.90     0.45  1265069     0.36           m0_list_link_invariant
+  4.58      2.08     0.18  1108570     0.16           m0_rpc_slot_invariant
+  4.07      2.24     0.16        0     0.00           xcode_subtype_size
+
+Visit http://www.cs.utah.edu/dept/old/texinfo/as/gprof.html to know how to read profiler output.

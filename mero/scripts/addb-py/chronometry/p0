@@ -1,0 +1,272 @@
+#!/usr/bin/env bash
+#set -x
+set -e
+
+SCRIPT_PATH="$(readlink -f $0)"
+SCRIPT_DIR="${SCRIPT_PATH%/*}"
+
+. ${SCRIPT_DIR}/common_funcs
+
+_get_cluster_params() {
+    local status=$(hctl mero status)
+    CLUSTER_PROFILE=`echo "$status" | grep profile | awk '{print $2}'`
+    IOS_FID=`echo "$status" | grep "\[.*\].*ioservice" | awk '{print $3}'`
+
+    [[ -n $CLUSTER_PROFILE && -n $IOS_FID ]]
+}
+
+_locals() {
+    M0_SRC_DIR="$(readlink -f $0)"
+    M0_SRC_DIR="${M0_SRC_DIR%/*/*/*/*}"
+    P0_DIR="scripts/addb-py/chronometry"
+    IP=$(hctl mero status | grep clovis-app | head -n1 | sed -E 's/.* ([0-9]+[.][0-9]+[.][0-9]+[.][0-9]+)@.*/\1/')
+    CWD=$(pwd)
+}
+
+_clean() {
+    rm -f m0trace.* ${MERO_M0D_TRACE_DIR:+$MERO_M0D_TRACE_DIR/*/m0trace.*}
+    rm -fr clovis_addb*
+    rm -f dump.txt dump_s.txt
+}
+
+_exec() {
+    _info "----- ${@#cmd_} -----"
+    $@
+}
+
+cmd_help() {
+    local ret=${1:-0}
+
+    [ $ret -eq 0 ] && usage || usage >&2
+    exit $ret
+}
+
+_iter_m0crate_params() {
+    local all_params=$(cat ${M0_SRC_DIR}/${P0_DIR}/test_io.yaml.template \
+			   | grep -P -o "###__.+=.+__###"                \
+			   | sed -E "s/###__(.*=.*)__###/\1/g")
+    for param_eq in $all_params; do
+	case $1 in
+	    ev) eval $param_eq;;
+	    pr) echo $param_eq;;
+	    *);;
+	esac
+    done
+}
+
+_set_default_m0crate_params() {
+    MERO_CONFD_ADDR=$IP
+    MERO_HA_ADDR=$IP
+    CLOVIS_PROF=$CLUSTER_PROFILE
+
+    _iter_m0crate_params ev
+}
+
+_parse_m0crate_params() {
+
+    shift # delete 'm0crate' part
+
+    for x in $@; do
+        eval $x;
+    done
+
+    return 0
+}
+
+_set_m0crate_config_file_params() {
+    local test_yaml=$1
+    local config_file=${M0_SRC_DIR}/${P0_DIR}/$test_yaml
+
+    local all_params=$(cat ${M0_SRC_DIR}/${P0_DIR}/test_io.yaml.template        \
+			   | grep -P -o "###__.+__###"                          \
+			   | sed -E "s/###__([^=]*?)={0,1}(.*?){0,1}__###/\1/")
+    for param_name in $all_params; do
+
+        local param_value=${!param_name}
+        echo "fill parameter: "$param_name" -> "$param_value
+
+        [[ -n $param_value ]] || {
+            echo "parameter $param_name not found"
+            exit 1
+        }
+
+        sed -i -E "s/###__${param_name}={0,1}(.*?){0,1}__###/${param_value}/" ${config_file}
+    done
+}
+
+cmd_run() {
+    set +e
+    _check_is_cluster_online || {
+    	_err "Cluster is offline."
+    	_err "hctl mero start/bootstrap to start."
+	exit 1
+    }
+    set -e
+
+    _clean
+
+    case $1 in
+	m0crate)
+        rm -f /tmp/128M
+        dd if=/dev/urandom of=/tmp/128M bs=1M count=128
+
+        _set_default_m0crate_params
+        _parse_m0crate_params $@
+
+        if [[ $? -ne 0 ]]; then
+            echo "m0crate parameters parsing failed"
+            exit 1
+        fi
+
+        if [[ -z "$CLOVIS_PORTS" ]]; then
+            CLOVIS_PORTS="302"
+        fi
+
+        for cport in $CLOVIS_PORTS; do
+            MERO_LOCAL_ADDR_EXT=${IP}@tcp:12345:33:${cport}
+            CLOVIS_PROCESS_FID=$(hctl mero status | grep "\[\s*N/A].*clovis-app" | grep $cport | awk '{print $3}')
+
+            cp $M0_SRC_DIR/scripts/addb-py/chronometry/test_io.yaml.template \
+               $M0_SRC_DIR/scripts/addb-py/chronometry/test_io${cport}.yaml
+            _set_m0crate_config_file_params "test_io${cport}.yaml"
+
+            ${M0_SRC_DIR}/clovis/m0crate/m0crate \
+                -S ${M0_SRC_DIR}/${P0_DIR}/test_io${cport}.yaml 2>&1 \
+                  | awk -v port=${MERO_LOCAL_ADDR_EXT} '{ print "m0crate@" port ": " $0}' &
+
+        done
+        wait;;
+	c0mt)
+	    ${M0_SRC_DIR}/clovis/st/mt/c0mt         \
+			 -l ${IP}@tcp:12345:41:303  \
+			 -h ${IP}@tcp:12345:34:101  \
+			 -p 0x7000000000000001:0x4d \
+			 -f 0x7200000000000001:0x28
+	    ;;
+	c0cp)
+	    ${M0_SRC_DIR}/clovis/st/utils/c0cp      \
+			 -l ${IP}@tcp:12345:41:303  \
+			 -H ${IP}@tcp:12345:34:101  \
+			 -p 0x7000000000000001:0x4d \
+			 -P 0x7200000000000001:0x28 \
+			 -o 0x7300000000000001:0x33 /tmp/128M -s 4096 -c 1024
+	    ;;
+	*)
+	    cmd_help 1
+	    ;;
+    esac
+}
+
+cmd_dump() {
+    set +e
+    _check_is_cluster_online && {
+	_warn "Cluster is ONLINE"
+	_warn "Server side ADDB stob is not synced to disk"
+    }
+    set -e
+
+    local dump_s="/var/mero/m0d-${IOS_FID}/addb-stobs/o/100000000000000:2"
+    local dump="${CWD}/clovis_addb*/o/100000000000000:2"
+
+    if [[ $1 == --json ]] ; then
+        local json_dump=true; shift
+        local test_uuid_json='"test_uuid":"'$(uuidgen)'"'
+    fi
+
+    case $1 in
+	srv)
+	    for d in $dump_s; do
+		local pid=$(echo $d | sed -E 's/.*[x]([a-z0-9]*)[/].*/\1/')
+		set -x
+		${M0_SRC_DIR}/utils/m0addb2dump -f  -- "$d" > dumps_${pid}.txt
+		set +x
+		if ${json_dump:-false} ; then
+		    set -x
+		    ${M0_SRC_DIR}/utils/m0addb2dump -j -J "$test_uuid_json" -- "$d" \
+		    | xz > dumps_${pid}.jsonl.xz
+		    set +x
+		fi
+	    done
+	    wait
+	    ;;
+	cli)
+	    for d in $dump; do
+		local pid=$(echo $d | sed -E 's/.*addb_([0-9]+)[/].*/\1/')
+		set -x
+		${M0_SRC_DIR}/utils/m0addb2dump -f  -- "$d" > dumpc_${pid}.txt
+		set +x
+		if ${json_dump:-false} ; then
+		    set -x
+		    ${M0_SRC_DIR}/utils/m0addb2dump -j -J "$test_uuid_json" -- "$d" \
+		    | xz > dumpc_${pid}.jsonl.xz
+		    set +x
+		fi
+	    done
+	    wait
+	    ;;
+	all)
+	    cmd_dump srv
+	    cmd_dump cli
+	    ;;
+	*)
+	    cmd_help 1
+	    ;;
+    esac
+}
+
+cmd_db() {
+    _info "--- Create db from ${@} ---"
+    python3 ${M0_SRC_DIR}/${P0_DIR}/addb2db.py --dumps $@
+}
+
+cmd_defaults() {
+    _info "--- Default settings ---"
+    _iter_m0crate_params pr
+}
+
+usage() {
+    cat <<EOF
+Usage: ${0##*/} {COMMAND [OPTION]...}...
+
+Commands:
+    run [m0crate [WOKLOAD OPTION LIST]|c0mt|c0cp]	Run appropriate command as a load test.
+
+    dump [srv|cli|all]		Dump appropriate samples from given command.
+
+    db [addb dumps *.txt]       Create performance db from given dump files.
+
+    defaults                    Show list of default settings
+
+    help			Show this help and exit.
+
+Running m0crate:
+    run m0crate LAYOUT_ID=1 CLOVIS_IOSIZE=4k BLOCK_SIZE=4k NR_THREADS=1
+EOF
+}
+
+CMD=
+OPTS=
+while [ $# -gt 0 ]; do
+    case $1 in
+        run|dump|db|defaults|help)
+            [ -z "$CMD" ] || _exec $CMD $OPTS
+            CMD=cmd_${1//-/_}
+            OPTS=;;
+        *)
+            [ -n "$CMD" ] || {
+                _err "Invalid command: $1"
+                _err "Type \`${0##*/} help' for usage."
+		exit 1
+            }
+            OPTS+=" $1";;
+    esac
+    shift
+done
+if [ -n "$CMD" ]; then
+    _locals
+    _get_cluster_params
+    _check_root
+    _exec $CMD $OPTS
+else
+    cmd_help 1
+fi

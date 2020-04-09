@@ -1,0 +1,4 @@
+scripts_systemtap_kem_m0kemc_SOURCES = scripts/systemtap/kem/kemc.c
+EXTRA_DIST += scripts/systemtap/kem/kem_dev.h \
+	      scripts/systemtap/kem/kem_id.h \
+	      scripts/systemtap/kem/kem.h

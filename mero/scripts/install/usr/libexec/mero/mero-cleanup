@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+# exit immediately if one the commands exits with a non-zero status
+set -e
+
+# constants
+readonly PROG_NAME=$(basename $0)
+
+# global variables, which can be overriden in /etc/sysconfig/mero
+MERO_GENDERS_CONF=/etc/mero/genders
+
+# service local variables
+mero_exec_dir=/usr/libexec/mero
+user_config=/etc/sysconfig/mero
+kernel_config=/etc/sysconfig/mero-kernel
+service_funcs=$mero_exec_dir/mero-service.functions
+
+
+source $service_funcs
+
+[[ -r $kernel_config ]] && source $kernel_config
+[[ -r $user_config   ]] && source $user_config
+
+mero_services=""
+# mero-cleanup is excluded from the list
+for s in m0d@* m0t1fs@* mero-client mero-kernel mero-mkfs mero-mkfs@* mero-server-confd mero-server-ha mero-server@* mero mero-singlenode mero-trace@*; do
+	mero_services="$mero_services $s.service"
+done
+
+systemctl list-units --all $mero_services
+
+m0_log 'Stopping mero-kernel with all dependencies ...'
+systemctl stop mero-kernel || m0_exit 'Failed to stop mero-kernel.'
+
+m0_log 'Stopping all Mero services ...'
+systemctl stop $mero_services || m0_exit 'Failed to stop Mero services.'
+
+systemctl list-units --all $mero_services
+
+for s in $(systemctl list-units --failed $mero_services | awk '/failed/ {if ($4 == "failed") print $2}'); do
+	m0_log "Resetting failed state for $s."
+	systemctl reset-failed $s
+done
+
+m0_log 'Done.'
+
+data_dir=${MERO_M0D_DATA_DIR:-$MERO_M0D_DEFAULT_DATA_DIR}
+
+if [[ -d $data_dir ]] ; then
+    m0_log "Cleaning up $data_dir"
+    if ls -ld $data_dir/{confd,m0d-*} &>/dev/null ; then
+        ls -ld $data_dir/{confd,m0d-*} 2>/dev/null
+    fi
+    rm -rf -v $data_dir/{confd,m0d-*}
+fi
+
+if [[ -d $MERO_LOG_DIR ]] ; then
+    m0_log "Cleaning up $MERO_LOG_DIR"
+    rm -vrf $MERO_LOG_DIR/*
+fi
+
+if [[ -n $MERO_M0D_ADDB_STOB_DIR && -d $MERO_M0D_ADDB_STOB_DIR ]] ; then
+    m0_log "Cleaning up $MERO_M0D_ADDB_STOB_DIR"
+    rm -vrf $MERO_M0D_ADDB_STOB_DIR/
+fi
+
+if [[ -n $MERO_M0D_TRACE_DIR && -d $MERO_M0D_TRACE_DIR ]] ; then
+    m0_log "Cleaning up $MERO_M0D_TRACE_DIR"
+    rm -vrf $MERO_M0D_TRACE_DIR/
+fi
+
+m0_log "Cleaning up config files in /etc/sysconfig/ dir"
+rm -vf /etc/sysconfig/{mero-kernel,{m0d,m0t1fs,s3server}-*}
+
+exit 0

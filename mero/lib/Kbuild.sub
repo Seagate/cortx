@@ -1,0 +1,64 @@
+m0mero_objects += lib/assert.o \
+                  lib/bitmap.o \
+                  lib/bitmap_xc.o \
+                  lib/bitstring.o \
+                  lib/bitstring_xc.o \
+                  lib/bob.o \
+                  lib/buf.o \
+                  lib/buf.o \
+                  lib/buf_xc.o \
+                  lib/chan.o \
+                  lib/combinations.o \
+                  lib/cond.o \
+                  lib/cookie.o \
+                  lib/cookie_xc.o \
+                  lib/ext.o \
+                  lib/ext_xc.o \
+                  lib/finject.o \
+                  lib/hash.o \
+                  lib/hash_fnc.o \
+                  lib/getopts.o \
+                  lib/list.o \
+                  lib/list_xc.o \
+                  lib/locality.o \
+                  lib/lockers.o \
+                  lib/m0lib.o \
+                  lib/memory.o \
+                  lib/misc.o \
+                  lib/mutex.o \
+                  lib/queue.o \
+                  lib/protocol_xc.o \
+                  lib/refs.o \
+                  lib/string.o \
+                  lib/string_xc.o \
+                  lib/semaphore.o \
+                  lib/thread.o \
+                  lib/time.o \
+                  lib/timer.o \
+                  lib/tlist.o \
+                  lib/tlist_xc.o \
+                  lib/trace.o \
+                  lib/types_xc.o \
+                  lib/uuid.o \
+                  lib/varr.o \
+                  lib/vec.o \
+                  lib/vec.o \
+                  lib/vec_xc.o
+
+m0mero_objects += lib/linux_kernel/finject_init.o \
+                  lib/linux_kernel/fs.o \
+                  lib/linux_kernel/kassert.o \
+                  lib/linux_kernel/kcookie.o \
+                  lib/linux_kernel/kthread.o \
+                  lib/linux_kernel/ktime.o \
+                  lib/linux_kernel/ktrace.o \
+                  lib/linux_kernel/kvec.o \
+                  lib/linux_kernel/kmisc.o \
+                  lib/linux_kernel/memory.o \
+                  lib/linux_kernel/mutex.o \
+                  lib/linux_kernel/processor.o \
+                  lib/linux_kernel/rwlock.o \
+                  lib/linux_kernel/semaphore.o \
+                  lib/linux_kernel/timer.o \
+                  lib/linux_kernel/kuuid.o \
+                  lib/linux_kernel/varr.o

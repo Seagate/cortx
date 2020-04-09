@@ -1,0 +1,24 @@
+#
+# S3server runtime
+#
+---
+- name: dynamically load variables depending on the OS type
+  include_vars: '{{ item  }}'
+  with_first_found: '{{ ansible_os_family }}.yml'
+  tags: s3server
+
+- name: configure 's3server-eos-deps' repository
+  yum_repository:
+    name:        s3server-eos-deps
+    file:        s3server-eos-deps
+    description: s3server eos dependencies
+    baseurl:     http://ci-storage.mero.colo.seagate.com/releases/eos/s3server_uploads
+    gpgcheck:    no
+  when: ansible_os_family == 'RedHat'
+  tags: s3server
+
+- name: install S3server run-time dependencies
+  package:
+    state: present
+    name:  '{{ s3server_runtime_deps_pkgs }}'
+  tags: s3server

@@ -1,0 +1,6 @@
+helpers_libmero_helpers_la_SOURCES += helpers/ufid.c \
+				      helpers/ufid.h \
+				      helpers/helpers.h
+
+nobase_mero_include_HEADERS += helpers/helpers.h \
+			       helpers/ufid.h

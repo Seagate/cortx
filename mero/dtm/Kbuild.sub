@@ -1,0 +1,19 @@
+m0mero_objects += \
+                  dtm/catalogue.o \
+                  dtm/domain.o \
+                  dtm/dtm.o \
+                  dtm/dtm_update_xc.o \
+                  dtm/dtx.o \
+                  dtm/factory.o \
+                  dtm/fol.o \
+                  dtm/history.o \
+                  dtm/ltx.o \
+                  dtm/machine.o \
+                  dtm/nucleus.o \
+                  dtm/object.o \
+                  dtm/operation.o \
+                  dtm/operation_xc.o \
+                  dtm/remote.o \
+                  dtm/remote_xc.o \
+                  dtm/update.o \
+                  dtm/update_xc.o

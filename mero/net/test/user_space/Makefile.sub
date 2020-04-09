@@ -1,0 +1,7 @@
+net_test_user_space_m0nettest_SOURCES  = net/test/user_space/common_u.c \
+					 net/test/user_space/common_u.h \
+					 net/test/user_space/console_u.c
+
+net_test_user_space_m0nettestd_SOURCES  = net/test/user_space/common_u.c \
+					  net/test/user_space/common_u.h \
+					  net/test/user_space/node_u.c

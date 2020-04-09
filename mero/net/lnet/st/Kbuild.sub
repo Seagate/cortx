@@ -1,0 +1,2 @@
+m0lnetping_objects += net/lnet/st/linux_kernel/m0lnetping_main.o \
+                      net/lnet/st/ping.o

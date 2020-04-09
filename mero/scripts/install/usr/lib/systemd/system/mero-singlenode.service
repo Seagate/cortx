@@ -1,0 +1,13 @@
+[Unit]
+Description=Mero singlenode configuration
+Requires=mero.service mero-client.service
+After=mero.service mero-client.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/true
+RemainAfterExit=yes
+KillMode=none
+
+[Install]
+WantedBy=multi-user.target

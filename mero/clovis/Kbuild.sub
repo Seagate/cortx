@@ -1,0 +1,22 @@
+m0mero_objects += clovis/clovis.o \
+		  clovis/clovis_xc.o \
+		  clovis/clovis_addb_xc.o \
+		  clovis/clovis_obj_lock.o \
+		  clovis/clovis_init.o \
+		  clovis/cob.o \
+		  clovis/clovis_obj.o \
+		  clovis/idx_mock.o \
+		  clovis/idx_cass.o \
+		  clovis/idx_dix.o \
+		  clovis/clovis_idx.o \
+		  clovis/io_pargrp.o \
+		  clovis/io_req_fop.o \
+		  clovis/io_req.o \
+		  clovis/io_nw_xfer.o \
+		  clovis/clovis_io.o \
+		  clovis/clovis_sync.o \
+		  clovis/clovis_layout.o \
+		  clovis/composite_layout.o \
+		  clovis/clovis_realm.o \
+		  clovis/utils.o \
+		  clovis/clovis_internal_xc.o

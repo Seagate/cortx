@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -e
+
+#
+# Jenkins wrapper script for 'utils/m0singlenode'
+#
+
+M0_SRC_DIR=`readlink -f $0`
+M0_SRC_DIR=${M0_SRC_DIR%/*/*}
+
+. $M0_SRC_DIR/utils/functions # report_and_exit
+
+cd $M0_SRC_DIR
+
+sudo ./scripts/install-mero-service -u
+sudo ./scripts/install-mero-service -l
+sudo ./utils/m0setup -M
+sudo ./utils/m0singlenode start
+sleep 5
+sudo ./utils/m0singlenode stop
+sudo ./utils/m0setup -c
+
+report_and_exit initscripts $?
+

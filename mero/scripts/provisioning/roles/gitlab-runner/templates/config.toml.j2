@@ -1,0 +1,9 @@
+concurrent = 1
+check_interval = 0
+
+[[runners]]
+  name = "{{ ansible_nodename }}"
+  url = "{{ gitlab_server_url }}"
+  token = "{{ gitlab_global_runner_token }}"
+  executor = "{{ gitlab_global_runner_executor | default('shell') }}"
+  [runners.cache]

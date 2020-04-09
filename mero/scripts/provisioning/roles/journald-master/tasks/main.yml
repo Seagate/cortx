@@ -1,0 +1,57 @@
+#
+# Journald master tasks
+#
+---
+- name: copy systemd-journal-remote.service to /etc for edits
+  copy:
+    src:  /lib/systemd/system/systemd-journal-remote.service
+    dest: /etc/systemd/system/
+    remote_src: yes
+    # don't copy if file exists
+    force: no
+
+- name: update systemd-journal-remote.service options (http)
+  replace:
+    path:    /etc/systemd/system/systemd-journal-remote.service
+    regexp:  '--listen-https='
+    replace: '--listen-http='
+
+- name: update systemd-journal-remote.service options (output)
+  replace:
+    path:    /etc/systemd/system/systemd-journal-remote.service
+    regexp:  '--output=/var/log/journal/remote/'
+    replace: '--output=/var/log/journal/'
+
+# Due to a bug in old systemd version that is used in CentOS-7, the ACK mask for
+# /var/log/journal/ dir is reset to 'r-x' on every boot, which renders any write
+# permissions on that directory useless. The only way of allowing journal-remote
+# service to create files in that dir is to run it under 'root' user.
+# TODO: revise this hack on other distros
+- name: update systemd-journal-remote.service options (user)
+  replace:
+    path:    /etc/systemd/system/systemd-journal-remote.service
+    regexp:  'User=systemd-journal-remote'
+    replace: 'User=root'
+
+- name: create directory for remote journals
+  file:
+    state: directory
+    path:  /var/log/journal/
+    group: systemd-journal-remote
+    mode:  g+rwx
+
+- name: set ACL group permissions for /var/log/journal/ dir
+  acl:
+    path:   /var/log/journal/
+    entity: systemd-journal-remote
+    etype:  group
+    state:  present
+    permissions: rwx
+
+- name: start systemd-journal-remote service
+  service: name=systemd-journal-remote state=started enabled=yes
+  tags: start-services
+
+- name: enable systemd-journal-remote socket
+  service: name=systemd-journal-remote.socket state=started enabled=yes
+  tags: start-services

@@ -1,0 +1,17 @@
+[Unit]
+Description=iSCSI initiator for {{ m0vg_hostname_prefix }}cmu.local target
+After=network.target
+Before=local-fs.target
+
+[Service]
+Type=oneshot
+Environment='IQN={{ iscsi_iqn_prefix }}{{ m0vg_hostname_prefix }}cmu:fileio'
+Environment='PORTAL={{ m0vg_hostname_prefix }}cmu.local'
+ExecStartPre=/usr/sbin/iscsiadm --mode discovery --type sendtargets --portal $PORTAL
+ExecStart=/usr/sbin/iscsiadm --mode node --targetname $IQN --portal $PORTAL --login
+ExecStop=/usr/sbin/iscsiadm --mode node --targetname $IQN --portal $PORTAL --logout
+SyslogIdentifier=iscsi-initiator-cmu
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

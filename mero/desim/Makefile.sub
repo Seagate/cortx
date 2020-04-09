@@ -1,0 +1,16 @@
+nobase_mero_include_HEADERS += desim/m0t1fs.h \
+                                  desim/chs.h \
+                                  desim/client.h \
+                                  desim/cnt.h \
+                                  desim/elevator.h \
+                                  desim/net.h \
+                                  desim/sim.h \
+                                  desim/storage.h
+
+mero_libmero_la_SOURCES  += desim/m0t1fs.c \
+                                  desim/chs.c \
+                                  desim/client.c \
+                                  desim/cnt.c \
+                                  desim/elevator.c \
+                                  desim/net.c \
+                                  desim/sim.c

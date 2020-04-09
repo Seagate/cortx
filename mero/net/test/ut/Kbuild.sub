@@ -1,0 +1,10 @@
+m0ut_objects += net/test/ut/client_server.o \
+                net/test/ut/commands.o \
+                net/test/ut/main.o \
+                net/test/ut/network.o \
+                net/test/ut/ringbuf.o \
+                net/test/ut/serialize.o \
+                net/test/ut/service.o \
+                net/test/ut/slist.o \
+                net/test/ut/stats.o \
+                net/test/ut/str.o

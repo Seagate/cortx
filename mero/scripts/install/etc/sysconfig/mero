@@ -1,0 +1,153 @@
+# Site local configuration of Mero services, allows to override global
+# configuration found under /etc/mero and /etc/sysconfig directories.
+#
+# This file is included by mero systemd service scripts.
+
+# Global, operating system level, tweaks required by Mero
+#   Hugepages defragmentation. Allowed values are 'always', 'madvise' and 'never'.
+#   See '/sys/kernel/mm/transparent_hugepage/defrag' for more info.
+#   Tests showed that system's default value, which is 'always', led to a
+#   recurrent performance drop on Mero side at high loads. Whereas value 'never'
+#   gave the best performance results.
+KERNEL_HUGEPAGE_DEFRAG='never'
+
+# Location of Mero logs and trace files, by default it's /var/log/mero.
+MERO_LOG_DIR='/var/log/mero'
+
+# Override default value for m0t1fs mount point
+MERO_M0T1FS_MOUNTPOINT='/mnt/m0t1fs'
+
+# override HA service endpoint
+#MERO_HA_EP=
+
+# override CONFD service endpoint
+#MERO_CONFD_EP=
+
+# override MD service endpoint
+#MERO_MDS_EP=
+
+# override CONFD configuration database, default is '/etc/mero/conf.xc'
+#MERO_CONF_XC='/etc/mero/conf.xc'
+
+# override which Mero services to start on a current node.
+#MERO_SERVICES='confd ha mds ios'
+
+# Local node uuid for m0merko.ko module.
+#MERO_NODE_UUID='00000000-0000-0000-0000-000000000000'
+
+# Override default parameters of m0mero.ko module.
+#MERO_KMOD_PARAMS=
+
+# Additional parameters for m0mero.ko module (will be appended to the default param list).
+#MERO_KMOD_EXTRA_PARAMS=
+
+# Where m0d stores it's data, by default it's /var/mero.
+#MERO_M0D_DATA_DIR=/var/mero
+
+#Override default addd stobs location
+#MERO_M0D_ADDB_STOB_DIR=$MERO_LOG_DIR
+
+#Override default trace files location
+#MERO_M0D_TRACE_DIR=$MERO_LOG_DIR
+
+# Override total number of disks in a cluster.
+#MERO_M0D_POOL_WIDTH=8
+
+# Override number of data units in parity group.
+#MERO_M0D_DATA_UNITS=2
+
+# Override number of parity units in parity group.
+#MERO_M0D_PARITY_UNITS=1
+
+# Maximum size of rpc message, in bytes.
+#MERO_M0D_MAX_RPC_MSG_SIZE=65536
+
+# Minimum rpc receive queue length.
+#MERO_M0D_MIN_RPC_RECVQ_LEN=16
+
+# ioservice buffer pool configuration
+#MERO_M0D_IOS_BUFFER_POOL_SIZE=32
+
+# sns repair/rebalance buffer pool configuration
+#MERO_M0D_SNS_BUFFER_POOL_SIZE=64
+
+# Backend log size (in bytes) for all m0d's. Default is 512 MiB.
+#MERO_M0D_BELOG_SIZE=536870912
+
+# Backend segment size (in bytes) for all m0d's, except for IO service.
+# Default is 8 GiB.
+MERO_M0D_BESEG_SIZE=8589934592
+
+# Backend segment size (in bytes) for IO service. Default is 4 GiB.
+#MERO_M0D_IOS_BESEG_SIZE=4294967296
+
+# Backend transactions group configuration parameters.
+#MERO_M0D_BETXGR_TX_NR_MAX=128
+#MERO_M0D_BETXGR_REG_NR_MAX=1048576
+#MERO_M0D_BETXGR_REG_SIZE_MAX=134217728
+#MERO_M0D_BETXGR_PAYLOAD_SIZE_MAX=134217728
+#MERO_M0D_BETXGR_FREEZE_TIMEOUT_MIN=1
+#MERO_M0D_BETXGR_FREEZE_TIMEOUT_MAX=50
+
+# Backend transactions configuration parameters.
+#MERO_M0D_BETX_REG_NR_MAX=262144
+#MERO_M0D_BETX_REG_SIZE_MAX=46137344
+#MERO_M0D_BETX_PAYLOAD_SIZE_MAX=2097152
+
+# Control data path (stob) direct-IO, by default is 'true'
+#MERO_M0D_DIRECT_IO=false
+
+# Override default options of m0d.
+#MERO_M0D_OPTS=
+
+# Additional m0d options (will be appended to the default option list).
+#MERO_M0D_EXTRA_OPTS=
+
+# Automatically attach debugger to a crashed m0d process.
+#MERO_M0D_DEBUGGER=gdb
+
+# Remove service data directory on each service start, by default is 'false'
+#MERO_M0D_REMOVE_SERVICE_DIR=false
+
+# Lnet network ID, it can either 'auto' (default) for auto-detection or a
+# specific IP address with Lnet network type ('o2ib' or 'tcp').
+#MERO_NODE_LNID=172.18.50.40@o2ib
+
+# Use m0t1fs
+MERO_M0T1FS=yes
+
+# Client's endpoint
+#MERO_M0T1FS_EP=172.18.50.40@tcp:12345:41:301
+
+# Use m0traced daemon to collect trace logs of m0mero.ko module.
+#MERO_TRACED_KMOD=yes
+
+# Use m0traced daemon to collect trace logs of m0d processes.
+#MERO_TRACED_M0D=yes
+
+# Can be set to a number of seconds for m0traced to monitor input file creation
+MERO_TRACED_CHECK_INPUT=30
+
+# How many log pieces to keep in rotation, lower margin (-k option of m0traced)
+MERO_TRACED_MIN_LOG_CHUNKS=2
+
+# How many log pieces to keep in rotation, upper margin (-k option of m0traced)
+MERO_TRACED_MAX_LOG_CHUNKS=6
+
+# Minimal size of individual log chunk in rotation set (-s option of m0traced)
+MERO_TRACED_MIN_LOG_CHUNK_SIZE_MB=256
+
+# Maximal size of individual log chunk in rotation set (-s option of m0traced)
+MERO_TRACED_MAX_LOG_CHUNK_SIZE_MB=1024
+
+# How many log sets to keep for each service (between restarts)
+MERO_TRACED_KEEP_LOGS_NUM=2
+
+# Additional m0traced options (will be appended to the default option list).
+#MERO_TRACED_EXTRA_OPTS=
+
+# If set, then Mero services will be started using binaries from provided
+# working directory path, instead of system-wide binaries. This can be useful
+# for developers to quickly test their local changes w/o creating and installing
+# an rpm package each time.
+#MERO_DEVEL_WORKDIR_PATH=/home/devvm/mero
