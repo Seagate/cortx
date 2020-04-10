@@ -1,9 +1,10 @@
 CORTX QUICK START GUIDE
 =======================
 
-1. Step One: Set up your own [Virtual Machine](VIRTUAL_MACHINE.md) or get a [DevVM](DEV_VM.md) from CORTX lab
-2. Step Two: Get the code
-3. Step Three: Build the code
+1. Set up your own [Virtual Machine](VIRTUAL_MACHINE.md) or get a [DevVM](DEV_VM.md) from CORTX lab
+2. Configure your VM
+2. Get the code
+3. Build the code
 4. etc
 
 
