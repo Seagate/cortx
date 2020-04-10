@@ -12,7 +12,9 @@ VM
 Create VM.
 Minimum requirements:
 CPU = 4, Memory = 8GB, Storage = 64GB
+Perhaps these requirements can be lowered.
 Install CentOS 7.7.1908 ISO.
+
 
 RPMs
 ----
