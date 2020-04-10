@@ -7,6 +7,10 @@ CORTX QUICK START GUIDE
 3. Build the code
 4. etc
 
+Support
+-------
+Please refer to [this page](SUPPORT.md) for additional help.
+
 
 The Notes from Lin
 ------------------
