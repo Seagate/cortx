@@ -47,6 +47,14 @@ All following commands assumes that user is already into it's main source direct
   
 KABOOM!!!
   
+## Running Jenkins / System tests
+
+TODO
+
+## Code reviews and commits
+
+TODO
+
 ### You're all set & You're awesome
 
 In case of any query feel free to write to our [SUPPORT](support.md).
