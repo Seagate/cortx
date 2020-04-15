@@ -4,6 +4,8 @@
 
 In consultation with IDC, Seagate has determined that an immense amount of data (175 zettabytes) will be created in 2025.  Surprisingly, of this data, IDC predicts that only 17 zettabytes (about 10%) will be stored.  This at-risk 158 zettabytes of data slated to be discarded will have a tremendous amount of unrealized potential as multiple research efforts have determined that the accuracy of machine learning and data analytics directly correlates to the size of the input data set.  
 
+![At Risk Data](../assets/images/at_risk_data.png?raw=true)
+
 As such, Seagate has worked hard to understand both the software and hardware requirements that would allow more of this 164 at-risk zettabytes to be stored.  We have discovered that the underlying hardware requires innovation to improve density per cost and that the software architecture itself is prohibitively expensive.  The result of this analysis is Seagate's conclusion that a new software architecture is needed both to satisfy the economic limitations of the existing systems as well as to ensure efficient utilization of the co-evolving hardware innovations.  
 
 To ensure maximum utililization and code quality and to avoid vendor lock-in, Seagate is open-sourcing CORTX: a distributed object storage system designed for efficient, mass-capacity, HDD-utilization.
