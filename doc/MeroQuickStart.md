@@ -32,8 +32,10 @@ Getting the main CORTX code on your system is straightforward.
     `$ chmod 600 /root/.ssh/id_rsa`
   
 6. Build necessaries dependencies
-  * $ sudo ./scripts/install-build-deps
-   * To install all dependent packages like lustre, pip, etc.
+  * To install all dependent packages like lustre, pip, etc.
+  
+    `$ sudo ./scripts/install-build-deps` 
+   
    * In case pip installation failure using scripts do following
    
      `$ python -m pip uninstall pip setuptools`
