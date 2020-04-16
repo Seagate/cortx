@@ -26,8 +26,26 @@ Getting the main CORTX code on your system is straightforward.
 4. $ cd mero
 5. Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
   * $ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg .git/hooks
+    * if permission denied, then do following 
+    > $ chmod 600 /root/.ssh/id_rsa 
+  
 6. Build necessaries dependencies
-  * $ sudo ./scripts/install-build-deps # (TBD incase of packages are not present)
+  * $ sudo ./scripts/install-build-deps
+   * To install all dependent packages like lustre, pip, etc.
+   * In case pip installation failure using scripts do following
+    
+    > $ python -m pip uninstall pip setuptools
+    > $ Run script ./scripts/install-build-deps
+    
+   If fails with dependency of pip3 , install pip3 using following
+    
+    > $ sudo yum install python34-setuptools
+    > $ sudo easy_install- 3.4 pip
+    
+   If fails for 'ply' dependency, install ply using following
+   
+    > $ pip3 install ply
+   
   
 ## Compiliation and Running Unit Test
 All following commands assumes that user is already into it's main source directory.
