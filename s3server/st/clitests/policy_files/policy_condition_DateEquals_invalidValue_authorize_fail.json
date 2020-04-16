@@ -1,0 +1,20 @@
+{
+  "Id": "Policy1462526893193",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1462526862401",
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::seagate/*",
+      "Condition": {
+        "DateEquals": {
+          "aws:CurrentTime": ""
+        }
+      },
+      "Principal":"*"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+[default]
+output = text
+region = US
+ca_bundle = /etc/ssl/stx-s3-clients/s3/ca.crt
+

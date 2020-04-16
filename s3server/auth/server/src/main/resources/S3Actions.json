@@ -1,0 +1,191 @@
+{
+    "Bucket": {
+        "s3:GetBucketAcl": [
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:DeleteBucket": [
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:ListBucket": [
+            "s3:DataAccessPointAccount",
+            "s3:DataAccessPointArn",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:delimiter",
+            "s3:max-keys",
+            "s3:prefix",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:ListBucketMultipartUploads": [
+            "s3:DataAccessPointAccount",
+            "s3:DataAccessPointArn",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:PutBucketAcl": [
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-acl",
+            "s3:x-amz-content-sha256",
+            "s3:x-amz-grant-full-control",
+            "s3:x-amz-grant-read",
+            "s3:x-amz-grant-read-acp",
+            "s3:x-amz-grant-write",
+            "s3:x-amz-grant-write-acp"
+        ],
+
+        "s3:GetBucketTagging": [
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+
+        "s3:GetBucketLocation": [],
+
+        "s3:PutBucketTagging": [
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+
+        "s3:DeleteBucketPolicy": [
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:PutBucketPolicy": [
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:GetBucketPolicy": [
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ]
+    },
+
+    "Object": {
+        "s3:AbortMultipartUpload": [
+            "s3:DataAccessPointArn",
+            "s3:DataAccessPointAccount",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:DeleteObject": [
+            "s3:DataAccessPointAccount",
+            "s3:DataAccessPointArn",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:GetObject": [
+            "s3:DataAccessPointAccount",
+            "s3:DataAccessPointArn",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:GetObjectAcl": [
+            "s3:DataAccessPointAccount",
+            "s3:DataAccessPointArn",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:PutObject": [
+            "s3:DataAccessPointAccount",
+            "s3:DataAccessPointArn",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-acl",
+            "s3:x-amz-content-sha256",
+            "s3:x-amz-grant-full-control",
+            "s3:x-amz-grant-read",
+            "s3:x-amz-grant-read-acp",
+            "s3:x-amz-grant-write",
+            "s3:x-amz-grant-write-acp",
+            "s3:x-amz-metadata-directive",
+            "s3:x-amz-server-side-encryption",
+            "s3:x-amz-server-side-encryption-aws-kms-key-id",
+            "s3:x-amz-storage-class",
+            "s3:x-amz-website-redirect-location",
+            "s3:object-lock-mode",
+            "s3:object-lock-retain-until-date",
+            "s3:object-lock-remaining-retention-days",
+            "s3:object-lock-legal-hold"
+        ],
+        "s3:PutObjectAcl": [
+            "s3:DataAccessPointAccount",
+            "s3:DataAccessPointArn",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-acl",
+            "s3:x-amz-content-sha256",
+            "s3:x-amz-grant-full-control",
+            "s3:x-amz-grant-read",
+            "s3:x-amz-grant-read-acp",
+            "s3:x-amz-grant-write",
+            "s3:x-amz-grant-write-acp",
+            "s3:x-amz-storage-class"
+        ],
+        "s3:GetObjectTagging": [
+            "s3:DataAccessPointAccount",
+            "s3:DataAccessPointArn",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:PutObjectTagging": [
+            "s3:DataAccessPointAccount",
+            "s3:DataAccessPointArn",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+        ],
+        "s3:DeleteObjectTagging": [],
+        "s3:ListMultipartUploadParts": [
+            "s3:DataAccessPointAccount",
+            "s3:DataAccessPointArn",
+            "s3:AccessPointNetworkOrigin",
+            "s3:authtype",
+            "s3:signatureage",
+            "s3:signatureversion",
+            "s3:x-amz-content-sha256"
+            ]
+        }
+}

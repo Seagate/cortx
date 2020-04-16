@@ -1,0 +1,5 @@
+[releases_eos]
+baseurl = http://ci-storage.mero.colo.seagate.com/releases/eos/integration/centos-7.5.1804/last_successful/
+gpgcheck = 0
+name = Yum repo for rpms built for eos - OS Centos 7.5.1804
+priority = 1

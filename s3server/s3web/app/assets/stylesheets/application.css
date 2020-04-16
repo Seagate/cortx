@@ -1,0 +1,64 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ * {
+ 	margin: 0;
+ 	padding: 0;
+ }
+
+.clear { clear: both; }
+
+.s3-app-header {
+	padding: 15px 0 15px 15px;
+  border-style: inset;
+  background-color:#ededed;
+}
+
+.s3-app-header-text {
+  margin-left: 125px;
+  color: #70AF71;
+}
+
+.s3-seagate-logo {
+  width: 100px;
+  height: 80px;
+  float: left;
+  border-radius: 5px;
+}
+
+.s3-app-body {
+  /*background-color:#eff4fd;*/
+}
+
+.s3-app-content {
+	padding: 15px 30px 0 0;
+}
+.s3-app-main-content {
+	margin-left: 225px;
+	max-width: 600px;
+}
+
+.s3-app-sidebar {
+	width: 200px;
+  height: 500px;
+	float: left;
+	padding: 0 0 0 15px;
+}
+
+.s3-seagate-dc {
+  height: 500px;
+  border-radius: 3px;
+}

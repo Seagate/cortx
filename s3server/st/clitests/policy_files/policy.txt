@@ -1,0 +1,15 @@
+{
+  "Id": "Policy1462526893193",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1462526862401",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::seagate",
+      "Principal":"*"
+    }
+  ]
+}

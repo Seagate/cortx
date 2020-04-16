@@ -1,0 +1,61 @@
+{
+    "ConditionTypes": [
+        "StringEquals",
+        "StringNotEquals",
+        "StringEqualsIgnoreCase",
+        "StringNotEqualsIgnoreCase",
+        "StringLike",
+        "StringNotLike",
+        "StringEqualsIfExists",
+        "StringNotEqualsIfExists",
+        "StringEqualsIgnoreCaseIfExists",
+        "StringNotEqualsIgnoreCaseIfExists",
+        "StringLikeIfExists",
+        "StringNotLikeIfExists",
+        "NumericEquals",
+        "NumericNotEquals",
+        "NumericLessThan",
+        "NumericLessThanEquals",
+        "NumericGreaterThan",
+        "NumericGreaterThanEquals",
+        "NumericEqualsIfExists",
+        "NumericNotEqualsIfExists",
+        "NumericLessThanIfExists",
+        "NumericLessThanEqualsIfExists",
+        "NumericGreaterThanIfExists",
+        "NumericGreaterThanEqualsIfExists",
+        "DateEquals",
+        "DateNotEquals",
+        "DateLessThan",
+        "DateLessThanEquals",
+        "DateGreaterThan",
+        "DateGreaterThanEquals",
+        "DateEqualsIfExists",
+        "DateNotEqualsIfExists",
+        "DateLessThanIfExists",
+        "DateLessThanEqualsIfExists",
+        "DateGreaterThanIfExists",
+        "DateGreaterThanEqualsIfExists",
+        "Bool",
+        "BoolIfExists",
+        "Null"
+    ],
+    "ConditionKeys" : {
+        "GlobalKeys": [
+            "aws:CurrentTime",
+            "aws:EpochTime"
+        ],
+        "S3Keys": [
+            "s3:x-amz-acl",
+            "s3:x-amz-grant-read",
+            "s3:x-amz-grant-write",
+            "s3:x-amz-grant-read-acp",
+            "s3:x-amz-grant-write-acp",
+            "s3:x-amz-grant-full-control",
+            "s3:max-keys",
+            "s3:prefix",
+            "s3:x-amz-content-sha256",
+            "s3:x-amz-storage-class"
+        ]
+    }
+}

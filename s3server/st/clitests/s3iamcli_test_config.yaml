@@ -1,0 +1,5 @@
+# Test config used by s3iamcli system tests
+
+# LDAP credentials used for creating s3 credentials
+ldapuser: 'sgiamadmin'
+ldappasswd: 'ldapadmin'

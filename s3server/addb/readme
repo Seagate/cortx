@@ -1,0 +1,61 @@
+
+This folder contains source files and scripts that are needed to support ADDB
+integration in S3 server.
+
+ADDB allows to collect very detailed run-time statistics about s3server and
+Clovis performance, without significant influence on resource consumption and
+performance impact.
+
+  Contents:
+    * plugin/ -- source code of the plugin (see details below).
+
+Details.
+
+Mero ADDB is a subsystem which allows to efficiently store certain run-time
+metrics.  They are called ADDB log entries.  Every entry is time stamped (with
+nanosecond precision), and contains up to 15 unsigned 64 bit integers.
+Applications can store any integers there that can later be analyzed.  The
+convention is that the first integer is an "action type id" (see enum
+S3AddbActionTypeId).  This ID serves later as a means to distinguish between
+different kinds of log entries that we save to ADDB.  These ID are allocated as
+ranges in Mero sources, every application should use IDs from designated range.
+
+For ADDB logs which show life cycle of a specific request (be it S3 API
+request, or Clovis request, or Mero FOM) the convention is that second integer
+in an ADDB entry is a unique ID of this request.  It must be unique within a
+given action type id.  If possible, the combination (activity type id, request
+id) should be unique across the cluster -- this will allow to combine ADDB logs
+from the entire cluster.  But this is not a hard requirement, especially for
+cases when we only need to analyze ADDB logs of one single s3server instance.
+
+To enable ADDB logging in S3 server, it needs to be launched with --addb
+command line switch.
+
+ADDB logs are stored in binary format in server folder in /var/mero, e.g.
+
+  /var/mero/s3server-0x7200000000000000:0/./clovis_addb/o/100000000000000:2
+
+Note that logs are not immediately flushed to disk, so ideally you should stop
+s3server and wait till it completes, before you start parsing ADDB logs.
+
+To parse ADDB logs, you will need m0addb2dump utility, which is a part of Mero
+(it is also included in Mero RPM).  The typical command to parse ADDB logs in
+development environment would be:
+
+  s3_path="your/path/to/s3server.git"
+  $s3_path/rs3/third_party/mero/utils/m0addb2dump -f \
+     -p $s3_path/bazel-bin/libs3addbplugin.so -- \
+     /var/mero/s3server-0x7200000000000000:0/./clovis_addb/o/100000000000000:2 \
+     > dump_s.txt
+
+This dump_s.txt is the text representation of ADDB log entries.
+
+Note that command line above refers to libs3addbplugin.so.  This shared library
+is called a "plugin".  This plugin is a part of s3server distribution.  It
+implements parsing rules which define the structure of s3server-specific ADDB
+entries, so that Mero utility (which is not aware of S3 server specifics) can
+still parse s3-specific ADDB logs.
+
+This dump_s.txt file can then be further parsed by Mero ADDB tools, but this is
+yet to be defined (those tools already exist, but do not yet support
+customizations to analyze s3 server logs).

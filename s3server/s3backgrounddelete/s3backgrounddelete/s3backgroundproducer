@@ -1,0 +1,8 @@
+#!/usr/bin/python3.6
+
+import sys
+import os
+from s3backgrounddelete.object_recovery_scheduler import ObjectRecoveryScheduler
+
+scheduler = ObjectRecoveryScheduler()
+scheduler.schedule_periodically()

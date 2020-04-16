@@ -1,0 +1,125 @@
+
+# vim: ft=sh
+
+# Usage:
+#
+# $ source rwrite.alias
+# $ bucket=s3://t7ko files=16 workers=4 size=256 rwrite
+# $ bucket=s3://t7ko files=16 workers=4 size=256 rwrite_multibucket
+# $ bucket=s3://t7ko files=10 rwrite_ttfb
+# $ bucket=s3://t7ko files=10 rread_ttfb
+#
+# See readme for more details.
+
+
+###########################################################################
+# Throughput measurements #
+###########################
+
+if ! test -f "$rupload_sh"; then
+  rupload_sh="$(mktemp --suffix=.sh)"
+fi
+
+cat >"$rupload_sh" <<'EOF'
+#!/bin/sh
+size="$1"
+dst_fname="$2"
+source=/dev/zero
+#source=/dev/urandom
+echo "Start $dst_fname"
+dd if=$source bs=1M count=$size status=none | aws s3 cp - "$dst_fname"
+#dd if=$source bs=1M count=$size status=none | s3cmd -q put - "$dst_fname"
+echo "Completed $dst_fname in ${SECONDS}s"
+EOF
+
+chmod u+x "$rupload_sh"
+
+rwrite() {
+  bucket_="$bucket"
+  files_="${files:-128}"
+  size_="${size:-256}" # in megabytes
+  workers_="${workers:-64}"
+  echo -e "Starting workload with:\n bucket=$bucket_\n files=$files_\n size=$size_ (MB for each file)\n workers=$workers_"
+  recreate_bucket "$bucket_"
+  date
+  start_time=$SECONDS
+  seq -f "$bucket_/%04.0f" "$files_" | xargs -n 1 -P "$workers_" "$rupload_sh" "$size_"
+  date
+  time_=$(( $SECONDS - $start_time ))
+  mb_transferred_=$(( $files_ * $size_ ))
+  tp_mb_=$(( $mb_transferred_ / $time_ ))
+  tp_kb_=$(( (1024 * $mb_transferred_) / $time_ ))
+  echo "Throughput: $tp_mb_ MB/s ($tp_kb_ KB/s)"
+  echo 'Time taken:' $time_ 'sec'
+  echo 'Data volume transferred:' $mb_transferred_ 'MB'
+}
+
+recreate_bucket() {
+  echo "Re-creating bucket $1"
+  aws s3 rm "$1" --recursive
+  aws s3 rb "$1"
+  aws s3 mb "$1"
+}
+
+rwrite_multibucket() {
+  bucket_="$bucket"
+  files_="${files:-128}"
+  size_="${size:-256}" # in megabytes
+  workers_="${workers:-64}"
+  echo -e "Starting workload with:\n bucket=$bucket_\n files=$files_\n size=$size_ (MB for each file)\n workers=$workers_"
+  echo "recreate buckets..."
+  seq -f "$bucket_%04.0f" "$files_" | xargs -n 1 -P "$workers_" -I {} aws s3 rm '{}' --recursive
+  seq -f "$bucket_%04.0f" "$files_" | xargs -n 1 -P "$workers_" -I {} aws s3 rb '{}'
+  seq -f "$bucket_%04.0f" "$files_" | xargs -n 1 -P "$workers_" -I {} aws s3 mb '{}'
+  echo "done"
+  date
+  start_time=$SECONDS
+  seq -f "$bucket_%04.0f/0" "$files_" | xargs -n 1 -P "$workers_" "$rupload_sh" "$size_"
+  date
+  time_=$(( $SECONDS - $start_time ))
+  mb_transferred_=$(( $files_ * $size_ ))
+  tp_mb_=$(( $mb_transferred_ / $time_ ))
+  tp_kb_=$(( (1024 * $mb_transferred_) / $time_ ))
+  echo "Throughput: $tp_mb_ MB/s ($tp_kb_ KB/s)"
+  echo 'Time taken:' $time_ 'sec'
+  echo 'Data volume transferred:' $mb_transferred_ 'MB'
+}
+
+###########################################################################
+# Timings measurements #
+########################
+
+rwrite_ttfb() {
+  bucket_="$bucket"
+  files_="${files:-128}"
+  echo "Start load test: creating $files_ objects of 1 byte size sequentially (one by one)"
+  recreate_bucket "$bucket_"
+  start_time=$SECONDS
+  for dst_fname in `seq -f "$bucket_/%04.0f" "$files_"`; do
+    echo "Creating $dst_fname"
+    echo 'a' | aws s3 cp - "$dst_fname"
+  done
+  time_=$(( $SECONDS - $start_time ))
+  time_per_object_=$(( $time_ * 1000 / $files_ ))
+  echo "Objects created: $files_"
+  echo "Time taken: $time_ sec"
+  echo "Time per object: $time_per_object_ ms"
+}
+
+rread_ttfb() {
+  bucket_="$bucket"
+  files_="${files:-128}"
+  echo "Start load test: reading $files_ objects of 1 byte size sequentially (one by one)"
+  recreate_bucket "$bucket_"
+  echo 'a' | aws s3 cp - "$bucket_/0001"
+  start_time=$SECONDS
+  for i in `seq "$files_"`; do
+    echo "Iteration $i"
+    aws s3 cp "$bucket_/0001" - > /dev/null
+  done
+  time_=$(( $SECONDS - $start_time ))
+  time_per_object_=$(( $time_ * 1000 / $files_ ))
+  echo "Read iterations: $files_"
+  echo "Time taken: $time_ sec"
+  echo "Time per object: $time_per_object_ ms"
+}

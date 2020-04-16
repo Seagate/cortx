@@ -1,0 +1,25 @@
+---
+
+# you may have to `yum install epel-release -y`
+# Prerequisites: Necessary yum repos setup, possibly jenkins_yum_repos.yml
+
+- import_playbook: openldap.yml
+
+- name: S3 release node setup (Centos 74)
+  hosts: s3releasenode
+  remote_user: root
+  gather_facts: yes
+
+  tasks:
+    - import_tasks: common_runtime.yml
+
+  handlers:
+      - name: restart slapd
+        service:
+          name: slapd
+          state: restarted
+
+      - name: restart rsyslog
+        service:
+          name: rsyslog
+          state: restarted

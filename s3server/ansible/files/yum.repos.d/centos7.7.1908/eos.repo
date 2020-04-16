@@ -1,0 +1,5 @@
+[releases_eos]
+baseurl = http://ci-storage.mero.colo.seagate.com/releases/eos/integration/centos-7.7.1908/last_successful/
+gpgcheck = 0
+name = Yum repo for eos builds - OS Centos 7.7.1908
+priority = 1

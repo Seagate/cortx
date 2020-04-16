@@ -1,0 +1,123 @@
+# Use this conf file when running multiple instances of S3
+
+#user  nobody;
+#s3
+worker_processes  5;
+
+error_log /var/log/nginx/nginx_error.log  debug;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+    #s3
+    use                 epoll;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+    # Set it to max size of 5GB for each part as per AWS
+    client_max_body_size 5G;
+
+    #gzip  on;
+
+    # S3 Configurations
+    upstream s3server {
+        # By default max_fails is 1, its number of failed attempts that happen
+        # during the specified time (fail_timeout, default is 10 sec) for NGINX
+        # to consider the server unavailable.
+
+        # Using 0.0.0.0 for upstream servers to explicitly use ipv4.
+        # S3 backend only support (listen's on) ipv4 for now.
+        server 0.0.0.0:8081 max_fails=3;
+
+        # Below s3server needs to be enabled when not running in standalone mode
+        #server 0.0.0.0:8082 max_fails=3;
+    }
+
+    server {
+        # HTTP Server Configuration
+        listen       80 reuseport;
+
+        # HTTPS Server Configuration
+        #listen       443 ssl reuseport;
+        #ssl_certificate /path/to/certchain.crt;
+        #ssl_certificate_key /path/to/cert.key;
+
+        server_name  s3.seagate.com;
+
+        # Do not ignore header fields with invalid names
+        ignore_invalid_headers off;
+
+        #access_log  logs/host.access.log  main;
+
+        #location / {
+        #    root   html;
+        #    index  index.html index.htm;
+        #}
+
+        # S3 Configurations
+        location / {
+            #s3
+            proxy_pass  http://s3server;
+            # Retry next s3 instance when current returns 503.
+            proxy_next_upstream error timeout http_502 http_503 http_504;
+            # We dont want clients to be held too long when retrying upstreams
+            proxy_next_upstream_timeout 5;
+            # http_host is required, since if client sends ip:port or
+            # domain:port in http 'Host' header, nginx should forward that
+            # as-is to backend s3 server.
+            # Nginx has limitation that if domain:80 or ip:80 is used,
+            # 80 being default port nginx strips it, but its unlikely for
+            # client to specify explicit port as 80.
+            proxy_set_header Host            $http_host;
+            proxy_pass_request_headers      on;
+            proxy_send_timeout  300;
+            proxy_read_timeout  300;
+            proxy_connect_timeout 300;
+            proxy_request_buffering off;
+            proxy_buffering off;
+            #proxy_max_temp_file_size 0;
+            #proxy_buffer_size 16k;
+            #proxy_busy_buffers_size 16k;
+            #proxy_http_version 1.1;
+            #proxy_set_header Connection "";
+            proxy_set_header Connection $http_connection;
+            set $originalrequest $uri;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        #error_page   500 502 503 504  /50x.html;
+        #location = /50x.html {
+        #    root   html;
+        #}
+        error_page  502 504 =503 /503.xml;
+
+        # We respond with s3 compatible error response
+        location /503.xml{
+            return 503 '<?xml version="1.0" encoding="UTF-8"?><Error><Code>ServiceUnavailable</Code><Message>Reduce your request rate.</Message><Resource>$originalrequest</Resource><RequestId>00000000-0000-0000-0000-000000000000</RequestId></Error>';
+        }
+    }
+}

@@ -1,0 +1,20 @@
+* This Readme explains about managing logs for various s3 components.
+
+#S3server:
+  s3server manages it's logging through script s3logfilerollover.sh. this is added in cron.hourly to run per hour.for customizing logging configuration "/etc/cron.hourly/s3logfilerollover.sh" should be changed. configure following parameters - 
+- S3_LOG_FILE_MAX_SIZE in "/opt/seagate/s3/s3config.yaml" and
+- log_files_max_count in "/etc/cron.hourly/s3logfilerollover.sh"
+as per your requirement.
+
+#s3authserver:
+  s3authserver manages it's logging through log4j2.you have to enable loglevel option in authserver.properties to genrate auth
+server logs.for customizing logging configuration "/opt/seagate/auth/resources/authserver-log4j2.xml" should be changed.
+
+#haproxy:
+  haproxy manages it's logging through logrotate.for customizing logging configuration "/etc/logrotate.d/haproxy" should be changed.
+
+#s3backgrounddelete:
+  s3backgrounddelete manages it's logging through rotating handler module.for customizing logging configuration "/opt/seagate/s3/s3backgrounddelete/config.yaml" should be changed.configure following parameters -
+- max_bytes
+- backup_count
+as per your requirement.

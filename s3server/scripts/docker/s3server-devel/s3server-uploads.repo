@@ -1,0 +1,7 @@
+[mero-s3server-uploads]
+name=Mero S3server uploads
+baseurl=http://ci-storage.mero.colo.seagate.com/releases/master/s3server_uploads/
+gpgcheck=0
+enabled=1
+# highest priority
+priority=1

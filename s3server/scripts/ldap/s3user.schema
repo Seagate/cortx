@@ -1,0 +1,197 @@
+attributetype ( 1.3.6.1.4.99999.2.3.1
+  NAME 's3UserId'
+  DESC 'S3 User Id'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.99999.2.3.2
+  NAME 's3FedUserId'
+  DESC 'S3 Federation User Id'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.99999.2.3.3
+  NAME 'accountId'
+  DESC 'S3 Account ID'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.99999.2.3.4
+  NAME 'canonicalId'
+  DESC 'Canonical ID of S3 Account'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.99999.2.3.5
+  NAME 'policyId'
+  DESC 'Policy Id'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.99999.2.3.6
+  NAME 'groupId'
+  DESC 'Group Id'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.99999.2.3.7
+  NAME 'roleId'
+  DESC 'Role ID'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.8
+  NAME 'path'
+  DESC 'user path'
+  EQUALITY caseExactMatch
+  SUBSTR   caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.9
+  NAME ('ak' 'accessKeyId')
+  DESC 'Acces Key Id'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.10
+  NAME ('sk' 'secretKey')
+  DESC 'Secret key'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.11
+  NAME 'token'
+  DESC 'Session ID'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.12
+  NAME 'status'
+  DESC 'Status of password or active key'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.13
+  NAME ('exp' 'expiry')
+  DESC 'Expiry TimeStamp'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 )
+
+attributetype (1.3.6.1.4.99999.2.3.14
+  NAME 'samlmetadataxml'
+  DESC 'SAML metadata'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.15
+  NAME 'samlTokensJson'
+  DESC 'Json containing key descriptor and service endpoint details'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.16
+  NAME 'issuer'
+  DESC 'IDP Issuer Name'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.17
+  NAME 'rolepolicydoc'
+  DESC 'Policy Document'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.18
+  NAME 'roleName'
+  DESC 'Role Name'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.19
+  NAME 'policyDoc'
+  DESC 'Policy document'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.20
+  NAME 'policyName'
+  DESC 'Policy name'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.21
+  NAME 'defaultVersionId'
+  DESC 'Number of entities the policy is attached to.'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.22
+  NAME 'isPolicyAttachable'
+  DESC 'Indicates if the policy can be attched to an entity.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 )
+
+attributetype (1.3.6.1.4.99999.2.3.23
+  NAME 'groupName'
+  DESC 'Name of the group.'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype (1.3.6.1.4.99999.2.3.24
+  NAME 'inlinePolicy'
+  DESC 'Inline policy attached to an entity.'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+objectclass ( 1.3.6.1.4.99999.2.4.1 NAME 'Account'
+  DESC 'S3 Account'
+  SUP top STRUCTURAL
+  MUST ( o $ accountId $ mail $ canonicalId )
+  MAY ( userPassword ) )
+
+objectclass ( 1.3.6.1.4.99999.2.4.2 NAME 'iamUser'
+  DESC 'S3 User'
+  SUP top STRUCTURAL
+  MUST ( cn $ s3userId )
+  MAY ( userPassword $ path $ inlinePolicy $ policyId ) )
+
+objectclass (1.3.6.1.4.99999.2.4.3 NAME 'iamFedUser'
+  DESC 'S3 federated user'
+  SUP top STRUCTURAL
+  MUST ( cn $ s3userId )
+  May ( inlinePolicy ) )
+
+objectclass (1.3.6.1.4.99999.2.4.4 NAME 'roleUser'
+  DESC 'S3 Role user'
+  SUP top STRUCTURAL
+  MUST ( cn $ s3userId $ roleName )
+  May ( inlinePolicy ) )
+
+objectclass (1.3.6.1.4.99999.2.4.5 NAME 'accessKey'
+  DESC 's3 access keys'
+  SUP top STRUCTURAL
+  MUST ( s3userId $ ak $ sk $ status ) )
+
+objectclass (1.3.6.1.4.99999.2.4.6 NAME 'fedAccessKey'
+  DESC 's3 federated user access keys'
+  SUP accessKey STRUCTURAL
+  MUST ( expiry $ token ) )
+
+objectclass (1.3.6.1.4.99999.2.4.7 NAME 'SAMLProvider'
+  DESC 'SAML Identity Provider'
+  SUP top STRUCTURAL
+  MUST ( cn $ samlmetadataxml $ exp $ issuer $ accountId $ samlTokensJson ) )
+
+objectclass (1.3.6.1.4.99999.2.4.8 NAME 'role'
+  DESC 'Role'
+  SUP top STRUCTURAL
+  MUST ( rolename $ path $ rolepolicydoc $ roleId )
+  May ( inlinePolicy $ policyId ) )
+
+objectclass (1.3.6.1.4.99999.2.4.9 NAME 'policy'
+  DESC 'Policy'
+  SUP top STRUCTURAL
+  MUST ( policyName $ policyDoc $ policyId $ defaultVersionId $ path)
+  MAY ( description ) )
+
+objectclass (1.3.6.1.4.99999.2.4.10 NAME 'group'
+  DESC 'Group'
+  SUP top STRUCTURAL
+  MUST ( groupName $ groupId $ path)
+  May ( inlinePolicy $ policyId ) )

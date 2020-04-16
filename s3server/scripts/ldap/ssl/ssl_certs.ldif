@@ -1,0 +1,9 @@
+dn: cn=config
+replace: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/ssl/stx-s3/openldap/ca.crt
+-
+replace: olctlscertificatefile
+olctlscertificatefile: /etc/ssl/stx-s3/openldap/s3openldap.crt
+-
+replace: olctlscertificatekeyfile
+olctlscertificatekeyfile: /etc/ssl/stx-s3/openldap/s3openldap.key

@@ -1,0 +1,5 @@
+[epel7]
+baseurl = http://eos-poc-katello1.mero.colo.seagate.com/pulp/repos/EOS/Library/custom/CentOS-7/EPEL-7/
+gpgcheck = 0
+name = Yum repo for epel7
+priority = 1

@@ -1,0 +1,11 @@
+#!/bin/sh
+# make install things for testing
+set -e
+
+echo "Installing S3/Auth server files..."
+./installhelper.sh /
+systemctl daemon-reload
+
+echo "S3 server and Auth server are setup."
+echo "Setup nginx or haproxy depending on your configuration"
+echo "Check the README.md for how to start/stop services."

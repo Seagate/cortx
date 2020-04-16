@@ -1,0 +1,32 @@
+The toolset was developed for testing "bare" libevent throughput.
+
+Server usage:
+$ ./server [-port <TCP_port_number>] [-send]
+
+Where:
+
+  * default TCP port is 60001;
+  * -send - the server SENDS data to a client and receives otherwise.
+
+./server -port 5001
+
+Note: the binary when built is being linked against local library in source
+code tree, but when it runs, it uses library installed in /opt/seagate.
+
+It is possible to override library path:
+
+LD_LIBRARY_PATH=/your/path/to/libevent ./server -port 5001
+
+
+Client usage:
+$ ./client [-ip <IP_address_of_a_server>] [-port <TCP_port_number>] [-recv]
+
+Where:
+
+  * default IP address is 127.0.0.1
+  * default TCP port is 60001
+  * -recv - the client receives data from the server (sends by default).
+
+
+Both programs need "gflags-devel" package to build, and "glfags" package to
+run.

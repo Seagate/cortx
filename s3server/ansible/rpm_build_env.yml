@@ -1,0 +1,29 @@
+---
+
+- name: S3 rpm build setup (Centos 75) (Assumes mero build env is set up)
+# Mero build env should be setup and mero and lustre rpms should be installed.
+# Clone mero and build using ./autogen.sh && ./configure && make rpms-notests
+  hosts: s3devvm
+  remote_user: root
+  gather_facts: yes
+  vars:
+    python_version: "{{ 'python36' if ((ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat') and (ansible_distribution_major_version == '7')) else 'python3'}}"
+
+  tasks:
+    - import_tasks: common_build_env.yml
+
+    - name: Add mero repository
+      yum_repository:
+        name: releases_hermi_mero
+        description: Yum repo for mero rpms
+        baseurl: http://jenkins.mero.colo.seagate.com/share/bigstorage/releases/hermi/last_successful/mero/repo/
+        gpgcheck: no
+        priority: 1
+
+    - name: Add halon repository
+      yum_repository:
+        name: releases_hermi_halon
+        description: Yum repo for mero rpms
+        baseurl: http://jenkins.mero.colo.seagate.com/share/bigstorage/releases/hermi/last_successful/halon/repo/
+        gpgcheck: no
+        priority: 1

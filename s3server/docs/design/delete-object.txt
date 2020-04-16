@@ -1,0 +1,14 @@
+- Fetch bucket metadata = bucket_metadata
+- Fetch object metadata = object_metadata (old obj metadata if any)
+- Add object OID "oid" to probable delete list with forceDelete=false.
+  obj entry has key = "oid"
+- Remove Object metadata from object list index = object_metadata
+- Remove Version entry from version list index = object_metadata
+- Send response to s3 client
+- If object metadata was deleted
+  -- mark forceDelete=True for oid
+  -- delete object oid
+  -- if delete oid object successful then remove oid probable entry else oid
+     probable entry stays in list so background delete can clean it up.
+- else if object metadata deleted Failed
+  -- Remove oid probable record

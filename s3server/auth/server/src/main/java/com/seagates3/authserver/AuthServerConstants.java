@@ -1,0 +1,41 @@
+/*
+ * COPYRIGHT 2018 SEAGATE LLC
+ *
+ * THIS DRAWING/DOCUMENT, ITS SPECIFICATIONS, AND THE DATA CONTAINED
+ * HEREIN, ARE THE EXCLUSIVE PROPERTY OF SEAGATE TECHNOLOGY
+ * LIMITED, ISSUED IN STRICT CONFIDENCE AND SHALL NOT, WITHOUT
+ * THE PRIOR WRITTEN PERMISSION OF SEAGATE TECHNOLOGY LIMITED,
+ * BE REPRODUCED, COPIED, OR DISCLOSED TO A THIRD PARTY, OR
+ * USED FOR ANY PURPOSE WHATSOEVER, OR STORED IN A RETRIEVAL SYSTEM
+ * EXCEPT AS ALLOWED BY THE TERMS OF SEAGATE LICENSES AND AGREEMENTS.
+ *
+ * YOU SHOULD HAVE RECEIVED A COPY OF SEAGATE'S LICENSE ALONG WITH
+ * THIS RELEASE. IF NOT PLEASE CONTACT A SEAGATE REPRESENTATIVE
+ * http://www.seagate.com/contact
+ *
+ * Original author: Basavaraj Kirunge
+ * Original creation date: 05-07-2018
+ */
+
+package com.seagates3.authserver;
+
+public
+class AuthServerConstants {
+ public
+  final static String INSTALL_DIR = "/opt/seagate/auth";
+
+ public
+  final static String RESOURCE_DIR = "/opt/seagate/auth/resources";
+
+ public
+  final static int MAX_AND_DEFAULT_ROOT_USER_DURATION = 3600;
+
+ public
+  final static String DEFAULT_IAM_USER_DURATION = "43200";
+
+ public
+  final static int MAX_IAM_USER_DURATION = 129600;
+
+ public
+  final static int MIN_ROOT_IAM_USER_DURATION = 900;
+}

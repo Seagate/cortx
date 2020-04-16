@@ -1,0 +1,16 @@
+[global]
+direct=1
+ioengine=libaio
+iodepth=16
+invalidate=1
+ramp_time=5
+runtime=20
+time_based
+bs=2M
+rw=write
+numjobs=16
+
+# for each device:
+
+# [mpath1]
+# filename=/dev/disk/by-id/dm-name-mpath1

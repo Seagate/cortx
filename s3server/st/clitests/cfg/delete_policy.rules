@@ -1,0 +1,22 @@
+define(
+  exclude_list,
+  (
+    FALSE
+    OR PATH_NAME LIKE '%/.mcstore/%'
+   )
+)
+
+/* Define an external pool for the off-line storage */
+RULE EXTERNAL POOL 'mcstore' EXEC '/opt/ibm/MCStore/bin/mcstore' OPTS '-F'
+
+/* Define migration rule */
+RULE 'DeleteFiles'
+    DELETE
+        FROM POOL 'system'
+        ACTION(System('/opt/ibm/MCStore/bin/mcstore remove -d -i ' || varchar(INODE) || ' -g '
+            || varchar(GENERATION) || ' -s 0' || ' -f ' || varchar(FS_ID)) = 0)
+        WHERE
+        (
+            PATH_NAME LIKE 'path_name_like/%'
+            AND XATTR('dmapi.MCEA', 5, 1) == 'C'
+        )

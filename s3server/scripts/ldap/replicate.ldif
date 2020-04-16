@@ -1,0 +1,56 @@
+# Sample replation configuration data file for N-way multi-master setup
+# This file should be replicated on all Master nodes, replacing following fields
+# in accordance to your setup.
+# Change the olcServerID: <Int> , rid=<XXX > information, this should be unique
+# for each server. Update provider field, provider=ldap://<provider_IP> with
+# URI of LDAP providers(Masters)
+#
+# Replication over SSL/TLS
+# Update provider field, provider=ldaps://<provider_IP>:port with fully qualified domain name
+# of LDAP providers(Masters) & port= 636
+# Note: The fully qualified domain name of ldap node must match CN in ssl certificate.
+# Example: If the fully qualified domain name is openldap_node1.s3.seagate.com
+           the certificate subject field can be C=IN, L=Pune, O=Seagate Tech, CN=*.s3.seagate.com
+# You can explicitly specifiy SSL certificate locations for each rid(Optional)
+#     tls_reqcert=demand
+#     tls_cert=/etc/ssl/openldap/ldap-cert.pem
+#     tls_cacert=/etc/ssl/openldap/ldap-cert.pem
+#     tls_key=/etc/ssl/openldap/private/ldap-key.pem
+#
+# Command to add configuration to ldap:
+# ldapmodify -Y EXTERNAL  -H ldapi:/// -f replicate.ldif
+
+dn: cn=config
+changetype: modify
+replace: olcServerID
+olcServerID: 2
+
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+add: olcSyncRepl
+olcSyncRepl: rid=004
+  provider=ldap://<sample_provider_URI>:389/
+  bindmethod=simple
+  binddn="cn=admin,dc=seagate,dc=com"
+  credentials=seagate
+  searchbase="dc=seagate,dc=com"
+  scope=sub
+  schemachecking=on
+  type=refreshAndPersist
+  retry="30 5 300 3"
+  interval=00:00:05:00
+# Enable additional providers
+# olcSyncRepl: rid=005
+#   provider=ldap://<sample_provider_URI>:389/
+#   bindmethod=simple
+#   binddn="cn=admin,dc=seagate,dc=com"
+#   credentials=seagate
+#   searchbase="dc=seagate,dc=com"
+#   scope=sub
+#   schemachecking=on
+#   type=refreshAndPersist
+#   retry="30 5 300 3"
+#   interval=00:00:05:00
+-
+replace: olcMirrorMode
+olcMirrorMode: TRUE

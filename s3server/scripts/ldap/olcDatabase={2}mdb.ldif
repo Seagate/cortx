@@ -1,0 +1,31 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 c6272005
+dn: olcDatabase={2}mdb
+objectClass: olcDatabaseConfig
+objectClass: olcMdbConfig
+olcDatabase: {2}mdb
+olcDbDirectory: /var/lib/ldap
+olcDbIndex: objectClass eq,pres
+olcDbIndex: ou,cn,mail,surname,givenname eq,pres,sub
+structuralObjectClass: olcMdbConfig
+entryUUID: 0041e964-836d-1039-8575-39a697f8cfbc
+creatorsName: cn=config
+createTimestamp: 20191015075612Z
+olcSuffix: dc=seagate,dc=com
+olcRootDN: cn=admin,dc=seagate,dc=com
+olcRootPW:: e1NTSEF9aGZVMWhEVGE5cDEweTQ1N0JBNFhwY0VLQVhTVnhuYmE=
+olcAccess: {0}to attrs=userPassword by self write by dn.base="cn=sgiamadmin,
+ dc=seagate,dc=com" write by anonymous auth by * none
+olcAccess: {1}to dn.sub="ou=idp,dc=s3,dc=seagate,dc=com" by dn.base="cn=sgia
+ madmin,dc=seagate,dc=com" write by self
+olcAccess: {2}to dn.sub="ou=accesskeys,dc=s3,dc=seagate,dc=com" by dn.base="
+ cn=sgiamadmin,dc=seagate,dc=com" write by self
+olcAccess: {3}to dn.sub="ou=accounts,dc=s3,dc=seagate,dc=com" by dn.base="cn
+ =sgiamadmin,dc=seagate,dc=com" write by self
+olcAccess: {4}to dn.sub="dc=s3,dc=seagate,dc=com" by dn.base="cn=sgiamadmin,
+ dc=seagate,dc=com" read by self
+olcAccess: {5}to * by dn.base="cn=sgiamadmin,dc=seagate,dc=com" write by sel
+ f write by * none
+entryCSN: 20191015080227.235586Z#000000#000#000000
+modifiersName: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
+modifyTimestamp: 20191015080227Z

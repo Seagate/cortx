@@ -1,0 +1,82 @@
+{
+    "mb": {
+        "Class": "S3API",
+        "Action": "makeBucket"
+    },
+    "rb": {
+        "Class": "S3API",
+        "Action": "removeBucket"
+    },
+    "ls": {
+        "Class": "S3API",
+        "Action": "list"
+    },
+    "head": {
+        "Class": "S3API",
+        "Action": "headObject"
+    },
+    "put": {
+        "Class": "S3API",
+        "Action": "putObject"
+    },
+    "get": {
+        "Class": "S3API",
+        "Action": "getObject"
+    },
+    "del": {
+        "Class": "S3API",
+        "Action": "deleteObject"
+    },
+    "multidel": {
+        "Class": "S3API",
+        "Action": "deleteMultipleObjects"
+    },
+    "multipart": {
+        "Class": "S3API",
+        "Action": "listMultiParts"
+    },
+    "listmp": {
+        "Class": "S3API",
+        "Action": "listParts"
+    },
+    "abortmp": {
+        "Class": "S3API",
+        "Action": "abortMultiPart"
+    },
+    "exists": {
+        "Class": "S3API",
+        "Action": "exists"
+    },
+    "partialput": {
+        "Class": "S3API",
+        "Action": "partialPutObject"
+    },
+    "getacl": {
+        "Class": "S3API",
+        "Action": "getAcl"
+    },
+    "setacl": {
+        "Class": "S3API",
+        "Action": "setAcl"
+    },
+    "location": {
+        "Class": "S3API",
+        "Action": "getBucketLocation"
+    },
+    "setpolicy": {
+        "Class": "S3API",
+        "Action": "putBucketPolicy"
+    },
+    "getpolicy": {
+        "Class": "S3API",
+        "Action": "getBucketPolicy"
+    },
+    "delpolicy": {
+        "Class": "S3API",
+        "Action": "deleteBucketPolicy"
+    },
+    "initmpu": {
+        "Class": "S3API",
+        "Action": "createMultipartUpload"
+    }
+}

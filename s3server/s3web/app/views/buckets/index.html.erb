@@ -1,0 +1,20 @@
+<div class="s3-app-container">
+  <h1>Buckets</h1>
+  <%= link_to 'Create New bucket', new_bucket_path %>
+  <table class="table table-hover">
+    <tr>
+      <th>Name</th>
+      <th>Creation Time</th>
+      <th colspan="3"></th>
+    </tr>
+
+    <% @buckets.each do |bucket| %>
+      <tr>
+        <td><%= bucket[:title] %></td>
+        <td><%= bucket[:createdon] %></td>
+        <td><%= link_to 'List Objects', bucket_objects_path(bucket[:title]) %></td>
+        <td><%= link_to 'Delete', controller: "buckets", action: "destroy", id: bucket[:title], method: :delete, :remote => true %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

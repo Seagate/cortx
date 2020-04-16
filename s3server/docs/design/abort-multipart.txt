@@ -1,0 +1,15 @@
+- Fetch bucket metadata = bucket_metadata
+- Fetch multipart upload metadata = object_multipart_metadata
+- Add object OID object_multipart_metadata-> "oid" to probable delete list with
+  forceDelete=false. obj entry has key = "oid"
+- Remove multipart metadata from multipart upload object list index =
+  object_multipart_metadata
+- Remove part list index using object_multipart_metadata
+- Send response to s3 client
+- If multipart metadata was deleted object_multipart_metadata
+  -- mark forceDelete=True for oid from object_multipart_metadata
+  -- delete object oid
+  -- if delete oid object successful then remove oid probable entry else oid
+     probable entry stays in list so background delete can clean it up.
+- else if multipart metadata deleted Failed
+  -- Remove oid probable record

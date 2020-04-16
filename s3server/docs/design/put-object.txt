@@ -1,0 +1,28 @@
+# Logic is same for PUT Object & PUT chunk obj
+
+- Fetch bucket metadata = bucket_metadata
+- Fetch object metadata = object_metadata (old obj metadata if any)
+- Create new object new-oid
+- Add both old object OID "oldoid" and new object OID "newoid" to probable
+  delete list with forceDelete=false.
+  old obj entry has key = "oldoid-newoid" (see probable-delete-processing.txt)
+  new obj entry has key = "newoid"
+- Stream data to new obj newoid
+- Save Version entry to version list index = new_object_metadata
+- Save Object metadata to object list index = new_object_metadata
+- Send response to s3 client
+- if new object was saved Successfully:
+  -- if old obj was present and overwrite
+     --- mark forceDelete=True for oldoid
+     --- Delete old object OID and version entry from version list
+     --- if delete oldoid object successful then remove oldoid probable entry
+         else oldoid probable entry stays in list so background delete can
+         clean it up.
+  -- Remove new oid probable record
+- else if new object save failed
+  -- if old obj was present and overwrite
+     --- remove old obj probable record
+  -- mark forceDelete=True for newoid
+  -- delete new object
+  -- if delete new obj successful then remove newoid probable record else newoid
+     probable entry stays in list so background delete can clean it up.

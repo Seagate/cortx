@@ -1,0 +1,14 @@
+[Unit]
+Description=Mero-S3 Auth Server
+After=slapd.service
+Requires=slapd.service
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStart=/opt/seagate/auth/startauth.sh
+ExecStop=/bin/kill -TERM $MAINPID
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target

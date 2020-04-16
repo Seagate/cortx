@@ -1,0 +1,46 @@
+APIs supported
+- Get, Put, List and Delete Object.
+- Get, Put, List and Delete Bucket.
+- Multipart upload.
+
+Steps to install java 1.8
+https://docs.google.com/document/d/1OhUVFfmYlk588FgRIJN47_aZnTag6RDigFJVJ5xgrWM/edit#bookmark=id.l258rkcdr672
+
+Steps to install maven
+https://docs.google.com/document/d/1OhUVFfmYlk588FgRIJN47_aZnTag6RDigFJVJ5xgrWM/edit#bookmark=id.g0amizn00imf
+
+How to build jcloudclient
+- cd auth-utils/jcloudclient.
+- mvn clean
+- mvn package
+
+Copy the jar file "jcloudclient/target/jcloudclient.jar" to your working directory.
+
+Dependencies:
+All the dependencies are installed via maven
+
+Update /etc/hosts:
+Add the following entries to /etc/hosts.
+127.0.0.1    iam.seagate.com
+127.0.0.1    sts.seagate.com
+127.0.0.1    s3.seagate.com
+
+Usage:
+java -jar jcloudclient.jar <Command>
+
+Example
+java -jar jcloudclient.jar mb s3://mybucket -x "accesskey" -y "secretkey"
+
+Help
+java -jar jcloudclient.jar -h
+
+NOTE
+Option "-a" or "--aws" will run the command on AWS S3. This can be used by
+developers to debug issues.
+Jcloudclient will search for default properties file "jcloud.properties" in directory which
+contains jcloudclient.jar.
+If default properties file is absent specify "-c" to configure properties file explicitly.
+
+Example:
+
+java -jar jcloudclient.jar -c /root/s3server/st/clitests/jcloudclient.properties

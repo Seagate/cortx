@@ -1,0 +1,3 @@
+ou=accesskeys,dc=s3,dc=seagate,dc=com
+ou=accounts,dc=s3,dc=seagate,dc=com
+ou=idp,dc=s3,dc=seagate,dc=com

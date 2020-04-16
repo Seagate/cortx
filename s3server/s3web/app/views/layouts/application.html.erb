@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seagate S3</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="s3-app-body">
+
+  <div class="s3-app-header">
+    <img src="<%= asset_path( 'seagate-logo.png' ) %>" class="img-responsive s3-seagate-logo" alt="Responsive image">
+    <h1 class="text-success s3-app-header-text">Seagate S3(Mero) storage.</h1>
+	</div>
+
+  <div class="s3-app-content">
+		<div class="s3-app-sidebar">
+			<img src="<%= asset_path( 'seagate-dc.jpeg' ) %>" class="img-responsive s3-seagate-dc" alt="Responsive image">
+		</div>
+
+		<div class="s3-app-main-content">
+			<%= yield %>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+</body>
+</html>

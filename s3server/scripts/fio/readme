@@ -1,0 +1,21 @@
+Configs and scripts to run a set of FIO tests on the hardware.
+
+FIO tests allow to measure disk system bandwidth.
+
+On the HW you're supposed to have multiple volumes mounted, so your test loads
+will be directed to all or part of those volumes.  Be careful to not overwrite
+any mounted volumes.  See runall.sh --help for details.
+
+Usage:
+
+# Create test output folder, where results will be stored:
+mkdir /root/tmp/fio-2019-11-14
+cd /root/tmp/fio-2019-11-14
+/path/to/your/s3server.git/scripts/fio/runall.sh 20 mpathx mpathy mpathz ...
+
+20 is the test run in seconds length with one load pattern (corresponds to fio
+'runtime' option).  Can be any reasonable number.  In my tests, 20 seconds
+was always enough to generate even load and get stable results.
+
+./baseline.sh script can be run to review results and compare them with last
+known good test results.

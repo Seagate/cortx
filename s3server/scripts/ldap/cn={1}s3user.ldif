@@ -1,0 +1,91 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 76914140
+dn: cn={1}s3user,cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: {1}s3user
+olcAttributeTypes: {0}( 1.3.6.1.4.99999.2.3.1 NAME 's3UserId' DESC 'S3 User Id
+ ' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {1}( 1.3.6.1.4.99999.2.3.2 NAME 's3FedUserId' DESC 'S3 Fede
+ ration User Id' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+ )
+olcAttributeTypes: {2}( 1.3.6.1.4.99999.2.3.3 NAME 'accountId' DESC 'S3 Accoun
+ t ID' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {3}( 1.3.6.1.4.99999.2.3.4 NAME 'canonicalId' DESC 'Canonic
+ al ID of S3 Account' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.
+ 1.15 )
+olcAttributeTypes: {4}( 1.3.6.1.4.99999.2.3.5 NAME 'policyId' DESC 'Policy Id'
+  EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {5}( 1.3.6.1.4.99999.2.3.6 NAME 'groupId' DESC 'Group Id' E
+ QUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {6}( 1.3.6.1.4.99999.2.3.7 NAME 'roleId' DESC 'Role ID' EQU
+ ALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {7}( 1.3.6.1.4.99999.2.3.8 NAME 'path' DESC 'user path' EQU
+ ALITY caseExactMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466
+ .115.121.1.15 )
+olcAttributeTypes: {8}( 1.3.6.1.4.99999.2.3.9 NAME ( 'ak' 'accessKeyId' ) DESC
+  'Acces Key Id' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+ )
+olcAttributeTypes: {9}( 1.3.6.1.4.99999.2.3.10 NAME ( 'sk' 'secretKey' ) DESC
+ 'Secret key' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {10}( 1.3.6.1.4.99999.2.3.11 NAME 'token' DESC 'Session ID'
+  EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {11}( 1.3.6.1.4.99999.2.3.12 NAME 'status' DESC 'Status of
+ password or active key' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {12}( 1.3.6.1.4.99999.2.3.13 NAME ( 'exp' 'expiry' ) DESC '
+ Expiry TimeStamp' SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 )
+olcAttributeTypes: {13}( 1.3.6.1.4.99999.2.3.14 NAME 'samlmetadataxml' DESC 'S
+ AML metadata' SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {14}( 1.3.6.1.4.99999.2.3.15 NAME 'samlTokensJson' DESC 'Js
+ on containing key descriptor and service endpoint details' EQUALITY caseExact
+ Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {15}( 1.3.6.1.4.99999.2.3.16 NAME 'issuer' DESC 'IDP Issuer
+  Name' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {16}( 1.3.6.1.4.99999.2.3.17 NAME 'rolepolicydoc' DESC 'Pol
+ icy Document' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {17}( 1.3.6.1.4.99999.2.3.18 NAME 'roleName' DESC 'Role Nam
+ e' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {18}( 1.3.6.1.4.99999.2.3.19 NAME 'policyDoc' DESC 'Policy
+ document' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {19}( 1.3.6.1.4.99999.2.3.20 NAME 'policyName' DESC 'Policy
+  name' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {20}( 1.3.6.1.4.99999.2.3.21 NAME 'defaultVersionId' DESC '
+ Number of entities the policy is attached to.' EQUALITY caseExactMatch SYNTAX
+  1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {21}( 1.3.6.1.4.99999.2.3.22 NAME 'isPolicyAttachable' DESC
+  'Indicates if the policy can be attched to an entity.' SYNTAX 1.3.6.1.4.1.14
+ 66.115.121.1.7 )
+olcAttributeTypes: {22}( 1.3.6.1.4.99999.2.3.23 NAME 'groupName' DESC 'Name of
+  the group.' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcAttributeTypes: {23}( 1.3.6.1.4.99999.2.3.24 NAME 'inlinePolicy' DESC 'Inli
+ ne policy attached to an entity.' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.
+ 1466.115.121.1.15 )
+olcAttributeTypes: {24}( 1.3.6.1.4.99999.2.3.25 NAME 'profileCreateDate' DES
+ C 'Login profile create Timestamp' SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 )
+olcAttributeTypes: {25}( 1.3.6.1.4.99999.2.3.26 NAME 'arn' DESC 'Resource Name
+ s' EQUALITY caseExactMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+olcObjectClasses: {0}( 1.3.6.1.4.99999.2.4.1 NAME 'Account' DESC 'S3 Account'
+ SUP top STRUCTURAL MUST ( o $ accountId $ mail $ canonicalId ) MAY ( userPass
+ word $ profileCreateDate ) )
+olcObjectClasses: {1}( 1.3.6.1.4.99999.2.4.2 NAME 'iamUser' DESC 'S3 User' SUP
+  top STRUCTURAL MUST ( cn $ s3userId ) MAY ( userPassword $ path $ inlinePoli
+ cy $ policyId $ profileCreateDate $ arn ) )
+olcObjectClasses: {2}( 1.3.6.1.4.99999.2.4.3 NAME 'iamFedUser' DESC 'S3 federa
+ ted user' SUP top STRUCTURAL MUST ( cn $ s3userId ) MAY inlinePolicy )
+olcObjectClasses: {3}( 1.3.6.1.4.99999.2.4.4 NAME 'roleUser' DESC 'S3 Role use
+ r' SUP top STRUCTURAL MUST ( cn $ s3userId $ roleName ) MAY inlinePolicy )
+olcObjectClasses: {4}( 1.3.6.1.4.99999.2.4.5 NAME 'accessKey' DESC 's3 access
+ keys' SUP top STRUCTURAL MUST ( s3userId $ ak $ sk $ status ) )
+olcObjectClasses: {5}( 1.3.6.1.4.99999.2.4.6 NAME 'fedAccessKey' DESC 's3 fede
+ rated user access keys' SUP accessKey STRUCTURAL MUST ( expiry $ token ) )
+olcObjectClasses: {6}( 1.3.6.1.4.99999.2.4.7 NAME 'SAMLProvider' DESC 'SAML Id
+ entity Provider' SUP top STRUCTURAL MUST ( cn $ samlmetadataxml $ exp $ issue
+ r $ accountId $ samlTokensJson ) )
+olcObjectClasses: {7}( 1.3.6.1.4.99999.2.4.8 NAME 'role' DESC 'Role' SUP top S
+ TRUCTURAL MUST ( rolename $ path $ rolepolicydoc $ roleId ) MAY ( inlinePolic
+ y $ policyId ) )
+olcObjectClasses: {8}( 1.3.6.1.4.99999.2.4.9 NAME 'policy' DESC 'Policy' SUP t
+ op STRUCTURAL MUST ( policyName $ policyDoc $ policyId $ defaultVersionId $ p
+ ath ) MAY description )
+olcObjectClasses: {9}( 1.3.6.1.4.99999.2.4.10 NAME 'group' DESC 'Group' SUP to
+ p STRUCTURAL MUST ( groupName $ groupId $ path ) MAY ( inlinePolicy $ policyI
+ d ) )

@@ -1,0 +1,16 @@
+
+S3 Auth CLI tool(pyclient) requires python 3.6 and below packages to be installed
+buildrpm.sh file builds src and binary rpms using spec files from python34 dir
+
+1. botocore
+   SRC RPM: http://dl.fedoraproject.org/pub/epel/7/SRPMS/Packages/p/python-botocore-1.6.0-1.el7.src.rpm
+   Patch: botocore-1.5.3-fix_dateutil_version.patch (Extracted from src rpm file)
+2. boto3
+   SRC RPM: http://dl.fedoraproject.org/pub/epel/7/SRPMS/Packages/p/python-boto3-1.4.6-1.el7.src.rpm
+3. s3transfer
+4. wheel
+   SRC RPM: http://dl.fedoraproject.org/pub/epel/7/SRPMS/Packages/p/python-wheel-0.24.0-2.el7.src.rpm
+5. jmespath
+   SRC RPM: http://dl.fedoraproject.org/pub/epel/7/SRPMS/Packages/p/python-jmespath-0.9.0-1.el7.src.rpm
+6. xmltodict
+   SRC RPM: http://dl.fedoraproject.org/pub/epel/7/SRPMS/Packages/p/python-xmltodict-0.9.0-1.el7.src.rpm

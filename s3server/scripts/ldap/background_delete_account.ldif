@@ -1,0 +1,36 @@
+dn: o=s3-background-delete-svc,ou=accounts,dc=s3,dc=seagate,dc=com
+o: s3-background-delete-svc
+accountid: 67891
+objectclass: Account
+mail: s3-background-delete-svc@seagate.com
+canonicalId: C67891
+
+dn: ou=users,o=s3-background-delete-svc,ou=accounts,dc=s3,dc=seagate,dc=com
+ou: users
+objectclass: organizationalunit
+
+dn: ou=roles,o=s3-background-delete-svc,ou=accounts,dc=s3,dc=seagate,dc=com
+ou: roles
+objectclass: organizationalunit
+
+dn: s3userid=450,ou=users,o=s3-background-delete-svc,ou=accounts,dc=s3,dc=seagate,dc=com
+path: /
+cn: root
+s3userid: 450
+arn: arn:aws:iam::67891:root
+objectclass: iamUser
+
+dn: ak=AKIAJPINPFRBTPAYXAHZ,ou=accesskeys,dc=s3,dc=seagate,dc=com
+ak: AKIAJPINPFRBTPAYXAHZ
+s3userid: 450
+sk: ht8ntpB9DoChDrneKZHvPVTm+1mHbs7UdCyYXWK5
+status: Active
+objectclass: accessKey
+
+dn: ou=groups,o=s3-background-delete-svc,ou=accounts,dc=s3,dc=seagate,dc=com
+ou: groups
+objectClass: organizationalUnit
+
+dn: ou=policies,o=s3-background-delete-svc,ou=accounts,dc=s3,dc=seagate,dc=com
+ou: policies
+objectClass: organizationalUnit

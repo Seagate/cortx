@@ -1,0 +1,98 @@
+For latest, see <s3 src>/doc/quickstart.md
+
+
+Below contents are for future reference only and could be outdated.
+
+* obsolete *
+Notes:
+1. If you hit gpg check errors, you can temporarily disable gpg checks by updating
+repo files.
+For example
+Add gpgcheck=0 to file /etc/yum.repos.d/epel-x86_64.repo
+
+
+******** Follow steps mentioned below on your laptop to configure your devvm ******
+
+Centos 75 VM image is available at
+    http://jenkins.mero.colo.seagate.com/share/bigstorage/sage_releases/vmdk_images/sage-CentOS-7.5.x86_64-7.5.1-k3.10.0-862.vmdk
+
+1. Install ansible on your laptop
+   - http://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
+   Mac : http://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#latest-releases-on-mac-osx
+   Update Mac OS maintenance release if you are facing any issues for 'pip install ansible'
+
+   Centos: yum install -y ansible
+
+2. Create a VM using sage VM (centos 7.5 or earlier) and test ssh access
+
+** Here onwards assumption is that you are in "<you s3server code>/ansible folder"
+
+3. Download a folder named 'files' which is currently available in google drive location:
+        https://drive.google.com/open?id=1QMPLcHjOT4q8xwDrCxZzsUPHPgMizu3R
+   For Centos 75, additionally download lustre rpms from
+         https://drive.google.com/open?id=1SZxCwoOUMRm78aQrazKTy8lz-XZIIHbE
+
+4. Copy the downloaded folders from "files" to <your s3server code>/ansible/files/ directory
+   Copy lustre rpms for Centos 7.5 to <your s3server code>/ansible/files/lustre/
+
+5. Update <s3 src>/ansible/hosts file with IP address of your new VM.
+   If you plan to run ansible within VM, use 127.0.0.1 for IP in <s3 src>/ansible/hosts file.
+   Note: that [s3devvm] is just a ansible group name and NOT dev vm hostname.
+
+6. Run ansible to setup the dev vm using appropriate .yml file. If you want to run
+   with same VM, use option "--connection local" to below command.
+   $ ansible-playbook -i hosts setup_s3dev_centos75_8.yml -v  -k
+
+   It will prompt for ssh password and ldap password.
+   For ldap password on dev vm, use "seagate" for rootDN and "ldapadmin" for IAM admin. These
+   password values should be same as dev VM configs use above values.
+
+   Your dev vm should be ready after successful run.
+
+***************************** END Dev Vm setup ***************************************
+
+******** Follow steps mentioned below on your laptop to configure your *openldap* node ******
+*Note: Above dev VM setup does the openldap setup, so you dont need to repeat this.
+
+1. For ansible install, see above steps.
+
+2. Update <s3 src>/ansible/hosts file with IP address of your openldap node in section [s3ldapnode]
+
+3. Run ansible to setup the openldap, enter the openldap password you want to setup.
+   # ansible-playbook -i hosts openldap.yml -v  -k
+   It will prompt for ssh password, followed by new openldap password.
+   For ldap password on dev vm, use "seagate" for rootDN and "ldapadmin" for IAM admin
+   Your openldap should be ready after successful run
+
+******************************* END OpenLDAP setup **************************************
+
+
+******** Follow steps mentioned below on your laptop to configure your *s3 release* node ******
+
+1. For ansible install, see above steps.
+
+2. Update <s3 src>/ansible/hosts file with IP address of your s3 node in section [s3releasenode]
+
+3. Run ansible to setup the s3, enter the openldap password you want to setup.
+   (Note: you may have to "yum install epel-release -y" if epel repo is not setup in node)
+   # ansible-playbook -i hosts setup_release_node.yml -v  -k
+   It will prompt for ssh password, followed by new openldap password.
+   For ldap password for testing, use "seagate" for rootDN and "ldapadmin" for IAM admin
+   Your s3 should be ready after successful run
+
+******************************* END OpenLDAP setup **************************************
+
+
+******** Follow steps mentioned below on your laptop to configure your *elasticsearch* node ******
+
+1. For ansible install, see above steps.
+
+2. Update <s3 src>/ansible/hosts file with IP address of your s3 node in section [elasticsearch]
+
+3. Run the following ansible command to setup the elasticsearch
+   # ansible-playbook -i hosts setup_elasticsearch.yml -v  -k
+   It will prompt for ssh password.
+   For ssh password, use "Xyratex"
+   Your elasticsearch should be ready after successful run
+
+******************************* END Elasticsearch setup **************************************

@@ -1,0 +1,118 @@
+s3cmd_spec.py :
+
+What does it test:
+- create bucket
+- List buckets
+- Create objects of size 3k, 8k and 700k.
+- Download objects of size 3k, 8k and 700k.
+- List objects
+- List objects with specific starting pattern
+- Delete objects.
+- Delete Buckets.
+- All above under 2 scenarios: pathstyle s3 uri and virtualhoststyle s3 uri
+
+auth_spec.py :
+
+What does it test:
+- Create account
+- Create, Delete, List and Update User
+- Create, Delete, List and Update Access Key
+- Create, Delete and List Roles
+- Create, Delete, List and Update SAML Provider
+- Get Federation Token.
+
+Assumptions:
+You have clean setup without a test bucket name 'seagatebucket', 'seagate-bucket'
+and 'SEAGATEBUCKET123'.
+Following access key pair is assumed, if your setup has different,
+please update below mentioned s3cfg files.
+
+System tests for auth server uses the python client 's3iamcli'.
+Ensure you have all the dependencies installed for s3iamcli.
+
+Python Version 3.6.3
+Installing python36 and required packages to run S3 Auth cli and ST tests
+   yum install wget epel-release
+   yum install python36
+   yum -y install python36-yaml
+   yum -y install python36-scripttest
+
+Below python modules can be downloaded from internal release management RPM Repository location 
+or built from S3server Repo s3server/rpms/python36/buildrpm.sh script.
+  - python36-xmltodict
+  - python36-jmespath
+  - python36-botocore
+  - python36-s3transfer
+  - python36-boto3
+
+   yum localinstall python36-xmltodict-0.9.0-1.el7.centos.noarch.rpm
+   yum localinstall python36-jmespath-0.9.0-1.el7.centos.noarch.rpm
+   yum localinstall python36-botocore-1.6.0-1.el7.centos.noarch.rpm
+   yum localinstall python36-s3transfer-0.1.10-1.el7.centos.noarch.rpm
+   yum localinstall python36-boto3-1.4.6-1.el7.centos.noarch.rpm
+
+System tests with ossperf uses tools like bc, parallel, md5sum and s3cmd
+Ensure that you have all dependencies installed for ossperf
+   yum install parallel
+   yum install bc
+   yum install coreutils
+Install s3cmd rpm after building it from S3server Repo
+s3server/rpms/s3cmd/buildrpm.sh script
+
+Build Jcloud and Jclient and copy jcloud.jar and jclient.jar to the
+current directory i.e st/clitests from the respective build directories.
+
+Configuration:
+cfg directory contains configuration files used by some system tests.
+Edit corresponding configuration file to modify adjustable parameters
+eg: To configure Mero-KVS as backend for System Test runs set S3_CLOVIS_IDX_SERVICE_ID: 1
+```sh
+cd cfg/
+edit cloviskvscli.yaml
+```
+
+How to run?
+- Ensure you have s3server, auth server and mero running with test data.
+- Update access keys in pathstyle.s3cfg and virtualhoststyle.s3cfg if required.
+- Update /etc/hosts file to add following entry for tests.
+  127.0.0.1 seagatebucket.s3.seagate.com s3.seagate.com
+  127.0.0.1 seagate-bucket.s3.seagate.com seagatebucket123.s3.seagate.com seagate.bucket.s3.seagate.com
+  127.0.0.1 s3-us-west-2.seagate.com seagatebucket.s3-us-west-2.seagate.com
+  127.0.0.1 iam.seagate.com sts.seagate.com
+- Ensure you have sourced mero_st (python version 3.5) with virtualenv.
+- If you are not running as root add user to /etc/sudoers file
+  - Run visudo to edit the /etc/sudoers file
+  - Find section "User privilege specification". Add below line under it
+  - <some_user> ALL=(ALL) NOPASSWD:ALL
+  - Note: Warning: This gives super user privilege to all commands when invoked as sudo.
+- Add s3server binary path to sudo secure path
+  - Run visudo to edit the /etc/sudoers file
+  - Find line with variable "secure_path". Edit to add below path
+  - /opt/seagate/s3/bin
+- cd to clitests directory
+- Note: For Dev environment, we use mero libs built from the source code. So before executing
+  standalone systems tests or runallsystest.sh, export LD_LIBRARY_PATH variable pointing it
+  to the source code mero libs location as below:
+  # export LD_LIBRARY_PATH="$(pwd)/../../third_party/mero/mero/.libs/:$(pwd)/../../third_party/mero/extra-libs/gf-complete/src/.libs/"
+
+  After the tests are done, unset the LD_LIBRARY_PATH variable as below:
+  # unset LD_LIBRARY_PATH
+- To verify setup and execute standard systests (auth, s3cmd, jclient and jcloud )
+- run runallsystest.sh
+- To execute system tests as standalone
+- run $python auth_spec.py
+- run $python s3cmd_spec.py
+- run $python jclient_spec.py
+- run $python jcloud_spec.py
+- To unset the LD_LIBRARY_PATH variable run `unset LD_LIBRARY_PATH`
+
+Notes:
+ - To get execution time in milli seconds (parsable format), make the
+following change in the test script (ex - s3cmd_spec.py) before running the tests
+set
+   Config.time_readable_format = False
+
+ - To run runallsystest.sh over HTTPS connection only
+    $ ./runallsystest.sh
+ - To run auth_spec.py over HTTP connection only, pass --no_https param to script
+    $ ./runallsystest.sh  --no_https

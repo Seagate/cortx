@@ -1,0 +1,9 @@
+#!/usr/bin/python3.6
+
+import sys
+import os
+from s3backgrounddelete.object_recovery_processor import ObjectRecoveryProcessor
+
+# Start the consumer to listen continuously
+processor = ObjectRecoveryProcessor()
+processor.consume()

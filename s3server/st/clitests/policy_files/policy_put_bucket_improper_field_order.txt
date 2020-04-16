@@ -1,0 +1,15 @@
+{
+  "Id": "Policy1462526893193",
+  "Statement": [
+    {
+      "Sid": "Stmt1462526862401",
+      "Version": "2012-10-17",
+      "Action": [
+        "s3:GetBucketAcl"
+      ],
+      "Resource": "arn:aws:s3:::seagate",
+      "Effect": "Allow",
+      "Principal":"*"
+    }
+  ]
+}

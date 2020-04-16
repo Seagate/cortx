@@ -1,0 +1,8 @@
+# syncprov data file
+# Command to add configuration to ldap:
+# ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov.ldif
+dn: olcOverlay=syncprov,olcDatabase={2}mdb,cn=config
+objectClass: olcOverlayConfig
+objectClass: olcSyncProvConfig
+olcOverlay: syncprov
+olcSpSessionLog: 100

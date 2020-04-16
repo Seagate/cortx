@@ -1,0 +1,15 @@
+{
+    "Owner": {
+        "ID": "C12345",
+        "DisplayName": "s3_test"
+    },
+    "Grants": [
+       {
+            "Grantee": {
+                "Type": "AmazonCustomerByEmail",
+                "EmailAddress": "doesnotexist@dreamhost.com.invalid12"
+            },
+            "Permission": "FULL_CONTROL"
+        }
+    ]
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workload name="_SIZE_mb-_BUCKETS_buckets-_OBJECTS_objects-_WORKERS_workers-readonly-writeonly-mixed_workloadtype" description="_SIZE_ MB S3 Benchmark">
+  <storage type="s3" config="accesskey=_ACCESSKEY_;secretkey=_SECRETKEY_;endpoint=_S3ENDPOINT_;path_style_access=true" />
+  <workflow>
+    <!-- Init Stages -->
+    <workstage name="init">
+      <work type="init" workers="1" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_)" />
+    </workstage>
+    <workstage name="prepare">
+      <work type="prepare" workers="_WORKERS_" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_);oprefix=r-_HASH_;objects=r(1,_OBJECTS_);sizes=c(_SIZE_)MB;" />
+    </workstage>
+
+    <!-- 100% Write -->
+    <workstage name="100w">
+      <work name="100w" workers="_WORKERS_" runtime="_RUNTIME_" division="object">
+        <operation type="write" ratio="100" config="cprefix=_SIZE_mb-;containers=u(1,_BUCKETS_);oprefix=100w-_HASH_;objects=u(1,_OBJECTS_);sizes=c(_SIZE_)MB" />
+      </work>
+    </workstage>
+    <workstage name="cleanup-100w">
+      <work name="cleanup-write" type="cleanup" workers="_WORKERS_" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_);oprefix=100w-_HASH_;objects=r(1,_OBJECTS_)" />
+    </workstage>
+
+    <!-- 100% Read -->
+    <workstage name="100r">
+      <work name="100r" workers="_WORKERS_" runtime="_RUNTIME_" division="object">
+        <operation type="read" ratio="100" config="cprefix=_SIZE_mb-;containers=u(1,_BUCKETS_);oprefix=r-_HASH_;objects=u(1,_OBJECTS_)" />
+      </work>
+    </workstage>
+
+    <!-- 50/50 Read/Write -->
+    <workstage name="50r50w">
+      <work name="50r50w" workers="_WORKERS_" runtime="_RUNTIME_" division="object">
+        <operation type="read" ratio="50" config="cprefix=_SIZE_mb-;containers=u(1,_BUCKETS_);oprefix=r-_HASH_;objects=u(1,_OBJECTS_)" />
+        <operation type="write" ratio="50" config="cprefix=_SIZE_mb-;containers=u(1,_BUCKETS_);oprefix=50w-_HASH_;objects=u(1,_OBJECTS_);sizes=c(_SIZE_)MB" />
+      </work>
+    </workstage>
+    <workstage name="cleanup-50r50w">
+      <work name="cleanup-50r50w" type="cleanup" workers="_WORKERS_" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_);oprefix=50w-_HASH_;objects=r(1,_OBJECTS_)" />
+    </workstage>
+
+    <!-- 25/75 Read/Write -->
+    <workstage name="25r75w">
+      <work name="25r75w" workers="_WORKERS_" runtime="_RUNTIME_" division="object">
+        <operation type="read" ratio="25" config="cprefix=_SIZE_mb-;containers=u(1,_BUCKETS_);oprefix=r-_HASH_;objects=u(1,_OBJECTS_)" />
+        <operation type="write" ratio="75" config="cprefix=_SIZE_mb-;containers=u(1,_BUCKETS_);oprefix=75w-_HASH_;objects=u(1,_OBJECTS_);sizes=c(_SIZE_)MB" />
+      </work>
+    </workstage>
+    <workstage name="cleanup-25r75w">
+      <work name="cleanup-25r75w" type="cleanup" workers="_WORKERS_" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_);oprefix=75w-_HASH_;objects=r(1,_OBJECTS_)" />
+    </workstage>
+
+    <!-- 75/25 Read/Write -->
+    <workstage name="75r25w">
+      <work name="75r25w" workers="_WORKERS_" runtime="_RUNTIME_" division="object">
+        <operation type="read" ratio="75" config="cprefix=_SIZE_mb-;containers=u(1,_BUCKETS_);oprefix=r-_HASH_;objects=u(1,_OBJECTS_)" />
+        <operation type="write" ratio="25" config="cprefix=_SIZE_mb-;containers=u(1,_BUCKETS_);oprefix=25w-_HASH_;objects=u(1,_OBJECTS_);sizes=c(_SIZE_)MB" />
+      </work>
+    </workstage>
+    <workstage name="cleanup-75r25w">
+      <work name="cleanup-75r25w" type="cleanup" workers="_WORKERS_" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_);oprefix=25w-_HASH_;objects=r(1,_OBJECTS_)" />
+    </workstage>
+
+    <!-- Cleanup-->
+    <workstage name="cleanup-r">
+      <work name="cleanup-r" type="cleanup" workers="_WORKERS_" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_);oprefix=r-_HASH_;objects=r(1,_OBJECTS_)" />
+    </workstage>
+    <workstage name="dispose">
+      <work name="dispose" type="dispose" workers="1" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_)" />
+    </workstage>
+  </workflow>
+</workload>

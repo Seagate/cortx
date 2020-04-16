@@ -1,0 +1,31 @@
+vrrp_script chk_haproxy {
+  script "/usr/bin/systemctl status haproxy" # check the haproxy process
+  interval 2 # every 2 seconds
+  weight 2 # add 2 points if OK
+}
+
+global_defs {
+  enable_script_security
+}
+
+vrrp_instance VI_1 {
+  interface ens33 # interface to monitor
+
+  state BACKUP # MASTER on haproxy1, BACKUP on haproxy2
+
+  # Unique router id used for VIP setup,
+  # Unique for VIP cluster of load balancers.
+  virtual_router_id 51
+
+  # Same priority on both load balancer nodes so switch happens
+  # only on other nodes failover
+  priority 100
+
+  virtual_ipaddress {
+    172.16.221.143 # virtual ip address
+  }
+
+  track_script {
+    chk_haproxy
+  }
+}

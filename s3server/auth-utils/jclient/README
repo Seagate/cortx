@@ -1,0 +1,46 @@
+APIs supported
+- Get, Put, List and Delete Object.
+- Get, Put, List and Delete Bucket.
+- Multipart upload.
+- List multiparts (all the multipart upload).
+- List parts (parts of an object).
+- Abort multipart.
+
+Steps to install java 1.8
+https://docs.google.com/document/d/1OhUVFfmYlk588FgRIJN47_aZnTag6RDigFJVJ5xgrWM/edit#bookmark=id.l258rkcdr672
+
+Steps to install maven
+https://docs.google.com/document/d/1OhUVFfmYlk588FgRIJN47_aZnTag6RDigFJVJ5xgrWM/edit#bookmark=id.g0amizn00imf
+
+How to build jclient
+- cd auth-utils/jclient.
+- mvn clean
+- mvn package
+
+Copy the jar file "jclient/target/jclient.jar" to your working directory.
+
+Dependencies:
+All the dependencies are installed via maven
+
+Update /etc/hosts:
+Add the following entries to /etc/hosts.
+127.0.0.1    iam.seagate.com
+127.0.0.1    sts.seagate.com
+127.0.0.1    s3.seagate.com
+
+Usage:
+java -jar jclient.jar <Command>
+
+Help
+java -jar jclient.jar -h
+
+NOTE
+Option "-a" or "--aws" will run the command on AWS S3. This can be used by
+developers to debug issues.
+Jclient will search for default properties file "jclient.properties" in directory which
+contains jclient.jar.
+If default properties file is absent specify "-c" to configure properties file explicitly.
+
+Example:
+
+java -jar jclient.jar -c /root/s3server/st/clitests/jclient.properties

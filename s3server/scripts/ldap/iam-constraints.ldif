@@ -1,0 +1,15 @@
+# S3 IAM ldap schema constraints
+# email id is unique attribute
+
+dn: cn=module{0},cn=config
+cn: module{0}
+objectClass: olcModuleList
+olcModulePath: /usr/lib64/openldap/
+olcModuleLoad: unique.la
+
+dn: olcOverlay=unique,olcDatabase={2}mdb,cn=config
+objectClass: olcOverlayConfig
+objectClass: olcUniqueConfig
+olcOverlay: unique
+olcUniqueUri: ldap:///?mail?sub?
+

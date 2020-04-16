@@ -1,0 +1,25 @@
+old_oid = OID of the old object that is being overwritten
+
+object_key_in_index = Object key in object list index (includes obj name)
+object_layout_id = Of current object to be possibly deleted
+
+object_list_index_oid = Object listing index OID
+objects_version_list_index_oid = Object Version listing OID for a bucket
+
+clovis_process_fid = Process fid identifying S3 process that created this record
+
+global_instance_id = Lifecycle counter (uuid) when process started, changes on
+                     S3 service restart.
+
+force_delete = true => backgrounddelete should simply delete the current obj
+               identified by key for this record (key is present in delete
+               probable list)
+               false => make further checks as per algorithm for delete.
+
+part_list_idx_oid = present if record is part of multipart upload.
+
+version_key_in_index = Version key in version listing index,
+                       present if record is not part of multipart upload but is
+                       simple upload.
+
+create_timestamp = Timestamp when record was created, isoformat

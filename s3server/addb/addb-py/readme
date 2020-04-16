@@ -1,0 +1,17 @@
+Folder contains python scripts to draw s3 request timeline and histogram.
+
+Based on mero/scripts/addb-py/chronometry
+mero-git: 973035e25f03421d5a774af3275008733298e5ea
+
+Workflow:
+
+cd ./chronometry
+
+# Convert to sqlite - m0play.db
+python ./addb2db.py --dumps <path to addb logs>
+
+# Draw timeline
+python ./s3_req.py --s2reqs <req_id1 ... req_idn>
+
+# Draw histogram
+python ./hist.py -v -u ms -p s3_req "[[<state1>,<state2>], ...]"

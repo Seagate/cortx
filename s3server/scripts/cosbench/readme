@@ -1,0 +1,103 @@
+Reference: https://docs.google.com/document/d/1RAeFebGSFanH_iNLuOJCs6f2djxvLuGvLGucUR-RAIw/edit#heading=h.4qcpmg6cz7m0
+           https://usermanual.wiki/Pdf/COSBenchUserGuide.1196297168.pdf
+
+cosbench automation scripts are used to
+
+1) Install/configure/start/stop cosbench on controller node and driver nodes
+2) Create s3 setup related file, which will be used as input for other actions
+3) Create and execute workload
+4) Manage running workloads (listing/cancelling)
+
+Cosbench setup:
+
+  --Installing cosbench on controller and driver nodes:
+    sh cosbench.sh install --controller <controller-ip> --drivers <path to driver-nodes.list file>
+
+  --Configuring cosbench
+    sh cosbench.sh configure --controller <controller-ip> --drivers <path to driver-nodes.list file>
+
+  --Starting cosbench on controller and driver nodes
+    sh cosbench.sh start --controller <controller-ip> --drivers <path to driver-nodes.list file>
+
+  --Stopping cosbench on controller and driver nodes
+    sh cosbench.sh stop --controller <controller-ip> --drivers <path to driver-nodes.list file>
+
+
+  driver-nodes.list must contain list of all driver nodes. One line per driver, each line containing
+  driver's IP or its node name
+
+Workload Creation/Management:
+
+  --First create s3 setup file, it will contain s3server credentials and s3 endpoint
+
+    For example:
+    sh configure.sh
+    Enter the label for S3 setup:s3setup
+    S3 endpoint url: https://s3.seagate.com
+    Access Key: wk2fXspKR1iNNy3GAiG6Ew
+    Secret Key:  8dgXIM+ouFYtv1ELApIO+hDHYfWOxhNRxj0hIf7Y
+
+    Above script execution will create file s3setup.properties file which will contain s3 credentials
+    and s3 endpoint. This s3setup.propertied file will be used for various other actions
+
+  --Creation and Execution of Workload:
+
+    Workload can be created and executed in interactive and non-interactive mode
+
+    Interactive mode:
+
+      The interactive mode will prompt user for various workload properties,
+      the properties value will be made use in creation of workload file.
+
+      sh run-test.sh --s3setup <s3setup.properties file created above> --controller <controller-ip>
+          --interactive
+
+    Non interactive mode:
+
+      In non interactive mode we need to create a file which will contain various
+      workload properties and its value.
+
+      Example:
+      [root@s3dev cosbench]# cat workload.properties
+      no_of_buckets=2
+      no_of_objects=6
+      object_size_in_mb=1
+      no_of_workers=2
+      workload_type=all
+      run_time_in_seconds=180
+
+      no_of_bucket -- Number of buckets that will be created
+      no_of_objects -- Number of objects that will be created
+      object_size_in_mb -- Objects size in MB
+      no_of_workers -- Number of worker threads
+      workload_type -- workload type, Supported workload types are 'read', 'write', 'mixed' and 'all'
+                      'read' means 100% read only, 'write' means 100 write only, 'mixed' means
+                      read to write ratio will be 50:50, 25:75 and 75:25, 'all' workload type means
+                      it includes all (ie read,write and mixed)
+
+
+      sh run-test.sh --s3setup <s3setup.properties file created above> --controller <controller-ip>
+         --workload <workload.properties file>
+
+
+   Sucessful creation and execution of workload by run-test.sh will result in the generation of workload ID
+
+ --Management of running workload:
+
+   All running workloads can be listed and be canceled.
+
+   listing of active workloads:
+     sh manage-workload-status.sh --list_running  --controller <controller-ip>
+
+   Above script will list workload IDs of all running workload
+
+   Cancellation of running worload:
+     sh manage-workload-status.sh --cancel <workload ID>
+
+
+ --Capturing of performance metric to local directory:
+
+   After execution of workload, its corresponding performance mertic can be collected
+
+   sh capture-artifacts.sh --workloadID <workload ID> --output-directory <local directory to copy output file>
+         --controller <controller-ip>

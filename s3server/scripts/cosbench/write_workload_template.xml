@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workload name="_SIZE_mb-_BUCKETS_buckets-_OBJECTS_objects-_WORKERS_workers-writeonly_workloadtype" description="_SIZE_ MB S3 Benchmark">
+  <storage type="s3" config="accesskey=_ACCESSKEY_;secretkey=_SECRETKEY_;endpoint=_S3ENDPOINT_;path_style_access=true" />
+  <workflow>
+
+    <!-- Init Stages -->
+    <workstage name="init">
+      <work type="init" workers="1" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_)" />
+    </workstage>
+    <workstage name="prepare">
+      <work type="prepare" workers="_WORKERS_" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_);oprefix=r-_HASH_;objects=r(1,_OBJECTS_);sizes=c(_SIZE_)MB;" />
+    </workstage>
+
+    <!-- 100% Write -->
+    <workstage name="100w">
+      <work name="100w" workers="_WORKERS_" runtime="_RUNTIME_" division="object">
+        <operation type="write" ratio="100" config="cprefix=_SIZE_mb-;containers=u(1,_BUCKETS_);oprefix=100w-_HASH_;objects=u(1,_OBJECTS_);sizes=c(_SIZE_)MB" />
+      </work>
+    </workstage>
+    <workstage name="cleanup-100w">
+      <work name="cleanup-write" type="cleanup" workers="_WORKERS_" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_);oprefix=100w-_HASH_;objects=r(1,_OBJECTS_)" />
+    </workstage>
+
+    <!-- Cleanup-->
+    <workstage name="cleanup-r">
+      <work name="cleanup-r" type="cleanup" workers="_WORKERS_" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_);oprefix=r-_HASH_;objects=r(1,_OBJECTS_)" />
+    </workstage>
+    <workstage name="dispose">
+      <work name="dispose" type="dispose" workers="1" config="cprefix=_SIZE_mb-;containers=r(1,_BUCKETS_)" />
+    </workstage>
+  </workflow>
+</workload>

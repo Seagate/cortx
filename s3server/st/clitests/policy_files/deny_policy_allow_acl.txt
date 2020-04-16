@@ -1,0 +1,19 @@
+{
+  "Id": "Policy1571741920713",
+  "Version": "2012-10-17",
+
+  "Statement": [
+      {
+      "Sid": "Stmt1571741573370",
+      "Resource": "arn:aws:s3:::auth-bucket/samplefile",
+      "Action": "s3:GetObjectAcl",
+      "Effect": "Deny",
+       "Principal": {
+        "AWS": [
+          "12345"
+        ]
+      }
+    }
+  ]
+}
+

@@ -1,0 +1,22 @@
+{
+	"iam": [
+		"ChangePassword",
+		"CreateAccessKey",
+		"CreateLoginProfile",
+		"CreatePolicy",
+		"CreateUser",
+		"DeleteAccessKey",
+		"DeleteLoginProfile",
+		"DeletePolicy",
+		"DeleteUser",
+		"GetLoginProfile",
+		"GetPolicy",
+		"GetUser",
+		"ListAccessKeys",
+		"ListPolicies",
+		"ListUsers",
+		"UpdateAccessKey",
+		"UpdateLoginProfile",
+		"UpdateUser"
+	]
+}

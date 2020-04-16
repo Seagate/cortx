@@ -1,0 +1,16 @@
+{
+    "Owner": {
+        "ID": "C12345",
+        "DisplayName": "s3_test"
+    },
+    "Grants": [
+        {
+            "Grantee": {
+                "Type": "CanonicalUser",
+                "ID": "InvalidID",
+                "DisplayName": "s3_test"
+            },
+            "Permission": "FULL_CONTROL"
+        }
+    ]
+}

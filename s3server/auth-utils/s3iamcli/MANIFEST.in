@@ -1,0 +1,3 @@
+include README
+include VERSION
+recursive-include s3iamcli/config *

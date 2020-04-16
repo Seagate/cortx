@@ -1,0 +1,94 @@
+{
+    "mb": {
+        "Class": "S3JcloudAPI",
+        "Action": "makeBucket"
+    },
+    "rb": {
+        "Class": "S3JcloudAPI",
+        "Action": "removeBucket"
+    },
+    "rbifempty": {
+        "Class": "S3JcloudAPI",
+        "Action": "removeBucketIfEmpty"
+    },
+    "ls": {
+        "Class": "S3JcloudAPI",
+        "Action": "list"
+    },
+    "exists": {
+        "Class": "S3JcloudAPI",
+        "Action": "exists"
+    },
+    "put": {
+        "Class": "S3JcloudAPI",
+        "Action": "putObject"
+    },
+    "get": {
+        "Class": "S3JcloudAPI",
+        "Action": "getObject"
+    },
+    "del": {
+        "Class": "S3JcloudAPI",
+        "Action": "deleteObject"
+    },
+    "multidel": {
+        "Class": "S3JcloudAPI",
+        "Action": "deleteMultipleObjects"
+    },
+    "head": {
+        "Class": "S3JcloudAPI",
+        "Action": "headObject"
+    },
+    "count": {
+        "Class": "S3JcloudAPI",
+        "Action": "countObjects"
+    },
+    "countdir": {
+        "Class": "S3JcloudAPI",
+        "Action": "countDirectoryObjects"
+    },
+    "dir": {
+        "Class": "S3JcloudAPI",
+        "Action": "createDirectory"
+    },
+    "deldir": {
+        "Class": "S3JcloudAPI",
+        "Action": "deleteDirectory"
+    },
+    "clrb": {
+        "Class": "S3JcloudAPI",
+        "Action": "clearBucket"
+    },
+    "clrbdir": {
+        "Class": "S3JcloudAPI",
+        "Action": "clearBucketDirectory"
+    },
+    "partialput": {
+        "Class": "S3JcloudAPI",
+        "Action": "uploadPart"
+    },
+    "abortmp": {
+        "Class": "S3JcloudAPI",
+        "Action": "abortMultipartUpload"
+    },
+    "listmp": {
+        "Class": "S3JcloudAPI",
+        "Action": "listParts"
+    },
+    "multipart": {
+        "Class": "S3JcloudAPI",
+        "Action": "listMultipartUploads"
+    },
+    "location": {
+        "Class": "S3JcloudAPI",
+        "Action": "getBucketLocation"
+    },
+    "setacl": {
+        "Class": "S3JcloudAPI",
+        "Action": "setAcl"
+    },
+    "getacl": {
+        "Class": "S3JcloudAPI",
+        "Action": "getAcl"
+    }
+}

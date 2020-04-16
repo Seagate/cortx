@@ -1,0 +1,26 @@
+******** Follow steps mentioned below on your laptop to configure your *bareos* node ******
+
+1. Install ansible on your laptop
+   - http://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
+   Mac : http://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#latest-releases-on-mac-osx
+   Update Mac OS maintenance release if you are facing any issues for 'pip install ansible'
+
+   Centos: yum install -y ansible
+
+2. For ansible install, see above steps.
+
+3. Update <s3 src>/ansible/hosts file with IP address of your bareos node in section [bareos]
+
+4. S3 server should be configured before configuring bareos.
+
+5. Run ansible to setup the s3, enter the openldap password you want to setup.
+   # ansible-playbook -i hosts setup_bareos.yml -v  -k
+
+   It will prompt for details related to your S3 setup, please fill accordingly.
+
+   It will prompt for ssh password, followed by S3 server IP address.
+   Configure S3server & provide host on which S3 is configured.
+   For S3 bucket name for testing, use "seagatebucket". Create this bucket "seagatebucket" on s3server
+   For S3 service endpoint domain, use "s3.seagate.com"
+   For S3 access key, use "AKIAJTYX36YCKQSAJT7Q"
+   For S3 access key, use "A6k2z84BqwXmee4WUUS2oWwM/tha7Wrd4Hc/8yRt"
