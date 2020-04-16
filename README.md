@@ -50,6 +50,12 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
+## Resources
+* Documentation for the latest version can be find under [here](https://github.com/Seagate/cortx/tree/master/doc). (TODO: link to actual reference documents)
+* [Seagate CORTX Forum](if possible to have) is a place to ask questions and find community resources. Another way is to reach out for our [SUPPORT](SUPPORT.md)
+* Check the [Issues section](https://github.com/Seagate/cortx/issues) on github if you find a bug or have a feature request. Please check existing Issues before opening a new one.
+* If you're interested in contributing to Seagate's CORTEX community, please check [Contributions Guide](CONTRIBUTING.md). (TBD : we can link contribution part here, instead of keeping that seperate)
+
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used
