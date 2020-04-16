@@ -1,6 +1,6 @@
 # Mero QuickStart guide
-This is a step by step guide to get the mero ready for you on your system.
-Before jumping on cloning, make sure, you have your VMs setup with specifications mentioned in [Virtual Machine](VIRTUAL_MACHINE.md).
+This is a step by step guide to get CORTX o ready for you on your system.
+Before cloning, however, you have your VMs setup with specifications mentioned in [Virtual Machine](VIRTUAL_MACHINE.md).
 
 ## Accessing the code right way
 (For phase 1) Latest code which is getting evolved, advancing and contributed is on the gerrit server.
@@ -18,17 +18,17 @@ Following steps will make your access to server hassel free.
 WoW! :sparkles:
 You are all set to fetch mero repo now. 
 
-## Cloning Mero
-Getting mero on your system is nothing but firing of below listed commands. let's jump into it.
-1. $cd path/to/your/dev/directory
-2. git clone --recursive ssh://g<yourGID>@gerrit.mero.colo.seagate.com:29418/mero
-  * Make sure your replace <yourGID> with your seagate ID number.
-3. Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
-  * cd mero && scp -p -P 29418 g<yourGId>@gerrit.mero.colo.seagate.com:hooks/commit-msg .git/hooks
-4. build dependencies
-  * $ cd mero
-  * $ ./scripts/install-build-deps (TBD incase of packages are not present)
-
+## Cloning CORTX
+Getting the main CORTX code on your system is straightforward.
+1. $ cd path/to/your/dev/directory
+2. $ export GID=<your_seagate_GID> # this will make subsequent sets easy to copy-paste :)
+3. $ git clone --recursive ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero
+4. $ cd mero
+5. # Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
+  * $ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg .git/hooks
+6. # Build dependencies
+  * $ sudo ./scripts/install-build-deps # (TBD incase of packages are not present)
+  
 ## Compiliation and Running Unit Test
 All following commands assumes that user is already into it's main source directory.
 1. building mero
