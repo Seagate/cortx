@@ -970,6 +970,14 @@ Commands 2-7 could be combined
 this command will update repos, remove pkgs, install pkgs, update s3server config,
 run cluster and print statuses of all installed pkgs
 
+### Enable Debug Logging while building s3 rpm
+
+To enable debug logging for s3 and auth, specify -l option
+
+```
+./builrpm.sh (-G | -P) -l
+-G is for short HEAD and -P specifies path to source.
+```
 ### Enable debug logs for openldap
 # by default slapd log level is set 0
 Log level '0' will generate only slapd service start log messages

@@ -10,10 +10,11 @@ S3_VERSION=1.0.0
 PATH_SRC=""
 VER_PATH_EXCL=0
 INSTALL_AFTER_BUILD=0
+ENABLE_DEBUG_LOG=0
 
-usage() { echo "Usage: $0 [-S <S3 version>] [-i] (-G <git short revision> | -P <path to sources>)" 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-S <S3 version>] [-i] (-G <git short revision> | -P <path to sources>) (specify [-l] to enable debug level logging" 1>&2; exit 1; }
 
-while getopts ":G:S:P:i" o; do
+while getopts ":G:S:P:i:l" o; do
     case "${o}" in
         G)
             GIT_VER=${OPTARG}
@@ -32,6 +33,9 @@ while getopts ":G:S:P:i" o; do
             ;;
         i)
             INSTALL_AFTER_BUILD=1
+            ;;
+        l)
+            ENABLE_DEBUG_LOG=1;
             ;;
         *)
             usage
@@ -57,12 +61,20 @@ if ! [ -z "${GIT_VER}" ]; then
     # Setup the source tar for rpm build
     git clone http://gerrit.mero.colo.seagate.com:8080/s3server eos-s3server-${S3_VERSION}-git${GIT_VER}
     cd eos-s3server-${S3_VERSION}-git${GIT_VER}
+    if [ $ENABLE_DEBUG_LOG == 1 ]; then
+        sed -i 's/#logLevel=DEBUG.*$/logLevel=DEBUG/g' auth/resources/authserver.properties
+        sed -i 's/S3_LOG_MODE:.*$/S3_LOG_MODE: DEBUG/g' s3config.release.yaml
+    fi
     # For sake of test, attempt checkout of version
     git checkout ${GIT_VER}
 elif ! [ -z "${PATH_SRC}" ]; then
     GIT_VER=$(git --git-dir "${PATH_SRC}"/.git rev-parse --short HEAD)
     mkdir -p eos-s3server-${S3_VERSION}-git${GIT_VER}
     cp -ar "${PATH_SRC}"/. ./eos-s3server-${S3_VERSION}-git${GIT_VER}
+    if [ $ENABLE_DEBUG_LOG == 1 ]; then
+        sed -i 's/#logLevel=DEBUG.*$/logLevel=DEBUG/g' eos-s3server-${S3_VERSION}-git${GIT_VER}/auth/resources/authserver.properties
+        sed -i 's/S3_LOG_MODE:.*$/S3_LOG_MODE: DEBUG/g' eos-s3server-${S3_VERSION}-git${GIT_VER}/s3config.release.yaml
+    fi
     find ./eos-s3server-${S3_VERSION}-git${GIT_VER} -type f -name CMakeCache.txt -delete;
 fi
 

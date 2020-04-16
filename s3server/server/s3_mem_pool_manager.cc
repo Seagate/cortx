@@ -103,7 +103,7 @@ void S3MempoolManager::free_pools() {
 }
 
 //  Return the buffer of give unit_size
-void *S3MempoolManager::get_buffer_for_unit_size(size_t unit_size) {
+void *S3MempoolManager::get_buffer_for_unit_size(size_t unit_size, int flags) {
   s3_log(S3_LOG_DEBUG, "", "Entering with unit_size[%zu]\n", unit_size);
   auto item = pool_of_mem_pool.find(unit_size);
   if (item != pool_of_mem_pool.end()) {
@@ -111,7 +111,7 @@ void *S3MempoolManager::get_buffer_for_unit_size(size_t unit_size) {
     MemoryPoolHandle handle = item->second;
     int max_retries = 3;
     while (max_retries > 0) {
-      void *buffer = (void *)mempool_getbuffer(handle, ZEROED_ALLOCATION);
+      void *buffer = (void *)mempool_getbuffer(handle, flags);
       // If buffer is NULL, check if other pool can release some memory
       if (buffer == NULL) {
         s3_log(S3_LOG_DEBUG, "", "Allocation error for unit_size[%zu]\n",

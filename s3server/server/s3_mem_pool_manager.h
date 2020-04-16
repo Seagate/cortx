@@ -59,7 +59,9 @@ class S3MempoolManager {
   static size_t free_space;
 
   //  Return the buffer of give unit_size
-  void* get_buffer_for_unit_size(size_t unit_size);
+  // For flags see mempool_getbuffer() in s3_memory_pool.h header
+  // flags = ZEROED_ALLOCATION memset buffers to zero
+  void* get_buffer_for_unit_size(size_t unit_size, int flags = 0);
 
   // Releases the give buffer back to pool, callers responsibility to use
   // proper unit_size else it will have **UNEXPECTED BEHAVIOR**
