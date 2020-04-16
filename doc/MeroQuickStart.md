@@ -24,9 +24,9 @@ Getting the main CORTX code on your system is straightforward.
 2. $ export GID=<your_seagate_GID> # this will make subsequent sets easy to copy-paste :)
 3. $ git clone --recursive ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero
 4. $ cd mero
-5. # Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
+5. Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
   * $ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg .git/hooks
-6. # Build dependencies
+6. Build necessaries dependencies
   * $ sudo ./scripts/install-build-deps # (TBD incase of packages are not present)
   
 ## Compiliation and Running Unit Test
