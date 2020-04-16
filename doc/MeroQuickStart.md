@@ -1,5 +1,5 @@
 # Mero QuickStart guide
-This is a step by step guide to get CORTX o ready for you on your system.
+This is a step by step guide to get CORTX ready for you on your system.
 Before cloning, however, you have your VMs setup with specifications mentioned in [Virtual Machine](VIRTUAL_MACHINE.md).
 
 ## Accessing the code right way
