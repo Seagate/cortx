@@ -1,0 +1,9 @@
+[Unit]
+Description=Mero trace daemon for %i
+After=mero-kernel.service mero-server@%i.service m0d@%i.service
+PartOf=mero-kernel.service mero-server@%i.service m0d@%i.service
+
+[Service]
+Type=simple
+Group=mero
+ExecStart=/usr/libexec/mero/mero-trace %i

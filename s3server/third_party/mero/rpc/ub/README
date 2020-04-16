@@ -1,0 +1,48 @@
+See benchmark results and analysis: http://goo.gl/mMaSQ
+
+A set of RPC benchmarks measures data needed for the following plots:
+
+  - rate (in messages per second) vs. number of connections;
+  - rate vs. message length (in bytes);
+  - processor utilisation vs. number of connections.
+
+*Note*: It is important to push along X axis (possibly
+logarithmically) until the peak is found.
+
+*Note*: Expected number of connections per rpc machine --- up to tens
+of millions.
+
+                          +--------------+
+     num. of connections  |              |
+    --------------------->|              |  rate (MPS)
+                          |              +--------------->
+                          |              |
+                          |    rpc-ub    |
+                          |              |  CPU load (%)
+     message length       |              +--------------->
+    --------------------->|              |
+                          |              |
+                          +--------------+
+
+		      Fig. 1  Inputs and outputs
+
+
+       +-------+                                  +-------+
+       |  rpc  |                                  |  rpc  |
+       +---+---+                                  +---+---+
+           |                                          |
+       +---+---+                                  +---+---+
+       |  net  |                                  |  net  |
+       +---+---+            "the pipe"            +---+---+
+           |       +-------+          +-------+       |
+           +-------|  mem  |----------|  mem  |-------+
+                   +-------+          +-------+
+           x                                          x
+           |                                          |
+       +---+---+                                  +---+---+
+       | LNet  |                                  | LNet  |
+       +---+---+                                  +---+---+
+           |                    IB                    |
+           +------------------------------------------+
+
+		     Fig. 2  Subsystems stack

@@ -1,0 +1,51 @@
+#= <7600000000000001:0>: Zeroed tolerance is supported only with N = 1
+(root-0 verno=1 rootfid=(1, 2) mdpool=pool-0 imeta_pver=pver-0
+    mdredundancy=1 params=["param-0", "param-1", "param-2"] nodes=[node-0]
+    sites=[site-2] pools=[pool-0] profiles=[profile-0] fdmi_flt_grps=[])
+(profile-0 pools=[pool-0])
+(node-0 memsize=16000 nr_cpu=2 last_state=3 flags=2 processes=[process-0])
+(process-0 cores=[3] mem_limit_as=0 mem_limit_rss=0 mem_limit_stack=0
+    mem_limit_memlock=0 endpoint="0@lo:12345:34:1"
+    services=[service-0, service-1, service-2, service-3, service-4, service-5,
+              service-6, service-7, service-8])
+(service-0 type=@M0_CST_MDS endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(service-1 type=@M0_CST_IOS endpoints=["0@lo:12345:34:1"] params=[]
+    sdevs=[sdev-0, sdev-1, sdev-2])
+(service-2 type=@M0_CST_CONFD endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(service-3 type=@M0_CST_RMS endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(service-4 type=@M0_CST_HA endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(service-5 type=@M0_CST_SNS_REP endpoints=["0@lo:12345:34:1"] params=[]
+    sdevs=[])
+(service-6 type=@M0_CST_SNS_REB endpoints=["0@lo:12345:34:1"] params=[]
+    sdevs=[])
+(service-7 type=@M0_CST_ADDB2 endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(service-8 type=@M0_CST_DS1 endpoints=["0@lo:12345:34:1"] params=[] sdevs=[])
+(sdev-0 dev_idx=0 iface=7 media=2 bsize=8192 size=1073741824 last_state=2
+    flags=4 filename="/dev/sdev1")
+(sdev-1 dev_idx=1 iface=7 media=2 bsize=8192 size=1073741824 last_state=2
+    flags=4 filename="/dev/sdev2")
+(sdev-2 dev_idx=2 iface=7 media=2 bsize=8192 size=1073741824 last_state=2
+    flags=4 filename="/dev/sdev3")
+
+(pool-0 pver_policy=0 pvers=[pver-0])
+(pver-0 N=3 K=1 P=5 tolerance=[0, 0, 0, 0, 0] # zeroed tolerance
+    sitevs=[objv-5])
+## sites -------------------------------------------------------------
+(site-2 racks=[rack-0] pvers=[pver-0])
+(objv-5 real=site-2 children=[objv-10])
+## racks -------------------------------------------------------------
+(rack-0 encls=[enclosure-0] pvers=[pver-0])
+(objv-10 real=rack-0 children=[objv-20])
+## encls -------------------------------------------------------------
+(enclosure-0 ctrls=[controller-0] pvers=[pver-0])
+(objv-20 real=enclosure-0 children=[objv-30])
+## ctrls -------------------------------------------------------------
+(controller-0 node=node-0 drives=[drive-0, drive-1, drive-2] pvers=[pver-0])
+(objv-30 real=controller-0 children=[objv-40, objv-41, objv-42])
+## disks -------------------------------------------------------------
+(drive-0 dev=sdev-0 pvers=[pver-0])
+(drive-1 dev=sdev-1 pvers=[pver-0])
+(drive-2 dev=sdev-2 pvers=[pver-0])
+(objv-40 real=drive-0 children=[])
+(objv-41 real=drive-1 children=[])
+(objv-42 real=drive-2 children=[])

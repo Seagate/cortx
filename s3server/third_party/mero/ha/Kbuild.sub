@@ -1,0 +1,24 @@
+m0mero_objects += ha/cookie.o \
+                  ha/cookie_xc.o \
+                  ha/dispatcher.o \
+                  ha/entrypoint.o \
+                  ha/entrypoint_xc.o \
+                  ha/entrypoint_fops.o \
+                  ha/entrypoint_fops_xc.o \
+                  ha/epoch.o \
+                  ha/failvec.o \
+                  ha/failvec_xc.o \
+                  ha/ha.o \
+                  ha/link.o \
+                  ha/link_fops.o \
+                  ha/link_fops_xc.o \
+                  ha/link_service.o \
+                  ha/lq.o \
+                  ha/msg.o \
+                  ha/msg_xc.o \
+                  ha/msg_queue.o \
+                  ha/note.o \
+                  ha/note_xc.o \
+                  ha/note_foms.o \
+                  ha/note_fops.o \
+                  ha/note_fops_xc.o

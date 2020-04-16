@@ -1,0 +1,16 @@
+nobase_mero_include_HEADERS += sns/ls_solve.h \
+                                  sns/matvec.h \
+                                  sns/parity_math.h \
+                                  sns/parity_ops.h \
+                                  sns/sns.h \
+                                  sns/parity_repair.h
+
+mero_libmero_la_SOURCES  += sns/sns.c \
+                                  sns/ls_solve.c \
+                                  sns/matvec.c \
+                                  sns/parity_math.c \
+                                  sns/parity_ops.c \
+                                  sns/parity_repair.c
+
+EXTRA_DIST += sns/poolmach.c \
+              sns/Kbuild.sub

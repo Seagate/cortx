@@ -1,0 +1,48 @@
+#
+# Docker tasks
+#
+---
+- name: configure Docker on Ubuntu
+  when: ansible_os_family == 'Debian'
+  block:
+    - name: install https apt transport
+      apt:
+        state: present
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg-agent
+          - software-properties-common
+
+    - name: install Docker apt key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 0EBFCD88
+
+    - name: enable Docker apt repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+        state: present
+        filename: docker-ce
+
+    - name: install Docker daemon
+      apt: name=docker-ce state=present update_cache=yes
+
+    - name: create Docker daemon config
+      copy:
+        src: daemon.json
+        dest: /etc/docker/daemon.json
+
+    - name: start Docker daemon
+      service: name=docker state=started enabled=yes
+  tags: docker
+
+- name: install docker-compose
+  get_url:
+    url:  https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+  tags:
+      - docker
+      - docker-compose

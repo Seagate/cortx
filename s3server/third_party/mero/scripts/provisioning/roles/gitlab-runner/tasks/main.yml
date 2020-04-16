@@ -1,0 +1,76 @@
+#
+# GitLab runner
+#
+---
+- name: configure GitLab runner on Ubuntu
+  when: ansible_os_family == 'Debian'
+  block:
+    - name: install https apt transport
+      apt: name=apt-transport-https state=present
+
+    - name: install GitLab apt key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 14219A96E15E78F4
+
+    - name: enable GitLab runner apt repository (version < 10.x)
+      apt_repository:
+        repo: 'deb https://packages.gitlab.com/runner/gitlab-ci-multi-runner/ubuntu/ {{ ansible_distribution_release }} main'
+        state: present
+        filename: gitlab-ci-multi-runner
+      when: gitlab_runner_major_version|int < 10
+
+    - name: enable GitLab runner apt repository (version >= 10.x)
+      apt_repository:
+        repo: 'deb https://packages.gitlab.com/runner/gitlab-runner/ubuntu/ {{ ansible_distribution_release }} main'
+        state: present
+        filename: gitlab-ci-runner
+      when: gitlab_runner_major_version|int >= 10
+
+    - name: install gitlab-runner daemon
+      apt: name=gitlab-ci-multi-runner state=present update_cache=yes
+
+    - name: enable sudo for 'gitlab-runner' user
+      user:
+        name: gitlab-runner
+        groups: sudo
+        append: yes
+
+    # this is just for convenience, when m0vg is invoced manually for
+    # debugging purpose
+    - name: disable m0vg symlinks mode for 'gitlab-runner' user
+      lineinfile:
+        path:   /home/gitlab-runner/.bashrc
+        create: yes
+        line:   'export M0_VG_NO_SYMLINKS=true'
+
+    # - name: create gitlab-runner config
+    # - template:
+    # -   src: config.toml.j2
+    # -   dest: /etc/gitlab-runner/config.toml
+
+    - name: fetch GitLab server SSL certificate
+      shell: |
+        openssl s_client -connect {{ gitlab_server_url | urlsplit('hostname') }}:443 -showcerts < /dev/null 2> /dev/null \
+        | openssl x509 -outform PEM > /etc/gitlab-runner/server-cert.pem
+      args:
+        creates: /etc/gitlab-runner/server-cert.pem
+      when: gitlab_server_url | regex_search('^https:')
+
+    - name: register gitlab-runner on {{ gitlab_server_url | urlsplit('hostname') }} server
+      shell: |
+        gitlab-ci-multi-runner register \
+            --non-interactive \
+            --registration-token {{ gitlab_global_runner_token }} \
+            --tag-list {{ gitlab_global_runner_tags }} \
+            --executor {{ gitlab_global_runner_executor | default('shell') }} \
+            {{ '--docker-image=' + gitlab_global_runner_docker_image + ' --docker-tlsverify=false --docker-privileged=false ' if gitlab_global_runner_executor == 'docker' else '' }} \
+            --url {{ gitlab_server_url }} \
+            && touch /etc/gitlab-runner/registration-done
+      args:
+        creates: /etc/gitlab-runner/registration-done
+      tags: gitlab-runner-register
+
+    - name: start gitlab runner daemon
+      service: name=gitlab-runner state=started enabled=yes
+  tags: gitlab-runner

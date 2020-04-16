@@ -1,0 +1,6 @@
+[Unit]
+Description="Mero free space monitor"
+
+[Service]
+EnvironmentFile=/etc/sysconfig/mero-free-space-monitor
+ExecStart=/usr/bin/python3 /usr/libexec/mero/mero-free-space-monitor $MERO_FREESPACE_ARGS

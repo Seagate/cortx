@@ -1,0 +1,21 @@
+---
+# allow to override hosts to which this playbook applies in command line
+# using '-e override_hosts=HOSTS' option
+- hosts:  '{{ override_hosts | default("clients") }}'
+  become: yes  # run all commands as root
+  roles:
+    - base-os
+    - ssh-slave
+    - journald-slave
+    - nfs-client
+    - lustre-client
+    - mero-runtime
+    # when provisioning a development environment it's likely that Halon scripts
+    # are going to be used, which require halon-build dependencies to be
+    # installed
+    - role: halon-build
+      when: ansible_user == 'vagrant'
+    - halon-runtime
+    - hare-runtime
+    - iscsi-initiator
+    - s3server-runtime

@@ -1,0 +1,7 @@
+nobase_mero_include_HEADERS += format/format.h
+
+mero_libmero_la_SOURCES += format/format.c
+
+nodist_mero_libmero_la_SOURCES  += format/format_xc.c
+
+XC_FILES += format/format_xc.h

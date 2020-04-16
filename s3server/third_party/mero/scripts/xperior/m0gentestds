@@ -1,0 +1,470 @@
+#!/usr/bin/env perl
+
+# COPYRIGHT 2017 XYRATEX TECHNOLOGY LIMITED
+#
+# THIS DRAWING/DOCUMENT, ITS SPECIFICATIONS, AND THE DATA CONTAINED
+# HEREIN, ARE THE EXCLUSIVE PROPERTY OF XYRATEX TECHNOLOGY
+# LIMITED, ISSUED IN STRICT CONFIDENCE AND SHALL NOT, WITHOUT
+# THE PRIOR WRITTEN PERMISSION OF XYRATEX TECHNOLOGY LIMITED,
+# BE REPRODUCED, COPIED, OR DISCLOSED TO A THIRD PARTY, OR
+# USED FOR ANY PURPOSE WHATSOEVER, OR STORED IN A RETRIEVAL SYSTEM
+# EXCEPT AS ALLOWED BY THE TERMS OF XYRATEX LICENSES AND AGREEMENTS.
+#
+# YOU SHOULD HAVE RECEIVED A COPY OF XYRATEX'S LICENSE ALONG WITH
+# THIS RELEASE. IF NOT PLEASE CONTACT A XYRATEX REPRESENTATIVE
+# http://www.xyratex.com/contact
+#
+# Original author: Dmitriy Chumak <dmitriy.chumak@seagate.com>
+# Original creation date: 24-Feb-2017
+
+
+# This script generates Mero configuration files for the Xperior test framework.
+
+
+# enable all features of Modern Perl, almost the same as done by Modern::Perl
+# module, but doesn't require it as a dependency
+use 5.010;
+use strict;
+use warnings;
+use autodie;
+use feature ':5.16';  # target minimum Perl version provided by the base distribution
+
+
+# check that all required external modules are available and display a hint to
+# the user about how they can be installed using default package management
+# system, if they are missing
+BEGIN {
+    my @required_modules = (
+        {
+            name       => 'YAML::XS',
+            debian_pkg => 'libyaml-libyaml-perl',
+            redhat_pkg => 'perl-YAML-LibYAML'
+        },
+        {
+            name       => 'File::Which',
+            debian_pkg => 'libfile-which-perl',
+            redhat_pkg => 'perl-File-Which'
+        },
+        {
+            name       => 'Try::Tiny',
+            debian_pkg => 'libtry-tiny-perl',
+            redhat_pkg => 'perl-Try-Tiny'
+        },
+        {
+            name       => 'List::MoreUtils',
+            debian_pkg => 'liblist-moreutils-perl',
+            redhat_pkg => 'perl-List-MoreUtils'
+        },
+    );
+    my $some_module_is_missing = 0;
+
+    for my $m (@required_modules) {
+
+        my $module = $m->{name};
+
+        $module =~ s#::#/#g;
+        $module .= '.pm';
+
+        no warnings 'uninitialized';
+        if (eval { require $module; 1; } ne 1) {
+            use warnings 'uninitialized';
+            $some_module_is_missing = 1;
+            print "$m->{name} perl module is missing\n"
+                  . "   It can be installed manually or using package management system:\n"
+                  . "     debian based:  apt-get install $m->{debian_pkg}\n"
+                  . "     red-hat based: yum install $m->{redhat_pkg}\n"
+                  . "     manually:      cpanm $m->{name}\n\n";
+        }
+    }
+
+    die "Please, install all required modules\n"
+        if $some_module_is_missing;
+}
+
+
+# core modules
+use Carp;
+use English qw( -no_match_vars ); # avoids regex performance penalty
+use Getopt::Long qw( :config no_ignore_case bundling );
+use Pod::Usage;
+use IO::Handle;
+use Cwd qw( realpath );
+use File::Spec;
+
+# external modules (not included into base perl distribution)
+use YAML::XS;
+use File::Which;
+use List::MoreUtils qw( none uniq );
+use Try::Tiny;
+
+# debugging
+use Data::Dumper;
+
+
+# global variables ############################################################
+#
+
+my %cli_option = (
+    force_timeout   => 0,
+    verbose         => 0,
+);
+
+my $default_timeout_sec = 300;
+my $output_suffix       = '_tests.yaml';
+
+my $testds_header = <<"END_TESTDS_HEADER"
+---
+Tests:
+
+END_TESTDS_HEADER
+;
+
+my $testds_footer = <<"END_TESTDS_FOOTER"
+dangerous     : 'yes'
+description   : Set of Mero tests
+expected_time : 300
+groupname     : mero-single-node
+reference     : none
+roles         : StoreSyslog StacktraceGenerator StoreConsole MeroStoreStat MeroReportBug
+schema        : data/schemas/testds.yaml
+tags          : mero
+timeout       : 300
+END_TESTDS_FOOTER
+;
+
+my @supported_valgrind_variants = qw(
+    cachegrind      exp-sgcheck
+    callgrind       helgrind
+    drd             massif
+    exp-bbv         memcheck
+    exp-dhat        valgrind
+);
+
+my @ut_profiles     = qw( ut ut-valgrind );
+my @all_profiles    = @ut_profiles;
+my @pseude_profiles = qw( ut-all all );
+my @profiles        = ();
+
+# helper funcs ################################################################
+#
+
+sub debug
+{
+    say {*STDERR} "--->  $_[0]" if $cli_option{verbose} > 0;
+}
+
+sub info
+{
+    say {*STDERR} "--->  $_[0]";
+}
+
+sub warning
+{
+    say {*STDERR} "--->  WARNING: $_[0]";
+}
+
+sub locate_m0_binary
+{
+    my $binary_name = shift;
+
+    my $binary_path;
+    my $full_path = realpath($PROGRAM_NAME);
+    my (undef, undef, $basename) = File::Spec->splitpath($full_path);
+
+    # check whether we are running from source tree
+    if ( $full_path =~ m# (scripts/xperior/$basename) $ #xms ) {
+        ($binary_path = $full_path) =~ s# $1 $ #utils/$binary_name#xms;
+    }
+
+    if (!defined $binary_path || ! -x $binary_path) {
+        $binary_path = which($binary_name);
+    }
+
+    die "Failed to find '$binary_name' utility in PATH or in the development"
+        . " tree next to ourselves\n"
+        if !defined $binary_path;
+
+    die "Can't use $binary_path: no such file or it's not an executable\n"
+        if ! -x $binary_path;
+
+    return $binary_path;
+}
+
+sub make_descriptor
+{
+    my $prefix  = shift;
+    my $idx     = shift;
+    my $name    = shift;
+    my $timeout = shift;
+    my $options = shift // '';
+    my $list    = shift // $name;
+
+    return <<"END_DESCRIPTOR"
+  - id       : $prefix$options-$idx-$name
+    script   : m0run $options m0ut -- -t $list
+    dir      : src/utils/
+    executor : Xperior::Executor::MeroTest
+    sandbox  : /var/mero/m0ut/$name
+    polltime : 15
+    timeout  : $timeout
+
+END_DESCRIPTOR
+}
+
+# command-line interface ######################################################
+#
+
+sub usage
+{
+    pod2usage(-verbose => 0);
+}
+
+sub help
+{
+    pod2usage(-verbose => 1);
+}
+
+sub man
+{
+    pod2usage(-verbose => 2);
+}
+
+sub process_cli_options
+{
+    usage() if !GetOptions(
+        'p|output-prefix=s' =>  \$cli_option{output_prefix},
+        't|timeout=i'       =>  \$cli_option{timeout},
+          'force-timeout'   =>  \$cli_option{force_timeout},
+
+        'v|verbose'         =>  \$cli_option{verbose},
+
+        # help
+        'h|help'    =>  \&help,
+          'man'     =>  \&man,
+          'usage'   =>  \&usage,
+    );
+
+    die "Option --force-timeout requires -t|--timeout option to be specified as well\n"
+        if $cli_option{force_timeout} && !defined $cli_option{timeout};
+
+    if (!defined $cli_option{output_prefix}) {
+        $cli_option{output_prefix} = './mero-single-';
+    }
+    elsif ($cli_option{output_prefix} !~ /-$/) {
+        $cli_option{output_prefix} .= '-';
+    }
+
+    for my $profile (@ARGV, @ARGV ? () : 'all') {
+        for ($profile) {
+            no if $] >= 5.018, warnings => 'experimental::smartmatch';
+
+            when (@ut_profiles) {
+                push @profiles, $profile;
+            }
+            when ('ut-all') {
+                push @profiles, @ut_profiles;
+            }
+            when ('all') {
+                push @profiles, @all_profiles;
+            }
+            default {
+                die "Unknown profile '$profile', supported profiles are:"
+                    . " @all_profiles @pseude_profiles\n";
+            }
+        }
+    }
+
+    @profiles = uniq @profiles;
+
+    return;
+}
+
+# main ########################################################################
+#
+
+sub main
+{
+    process_cli_options();
+
+    my $m0run = locate_m0_binary('m0run');
+    my $tests_list;
+    {
+        open my $input_fh, '-|', "$m0run m0ut -- -L -Y";
+        local $/;
+        $tests_list = <$input_fh>;
+        # ensure we catch piped command error and die
+        close $input_fh;
+    }
+    my $tests = YAML::XS::Load($tests_list);
+
+    for my $profile (@profiles) {
+        my $output_file = $cli_option{output_prefix} . $profile . $output_suffix;
+        info "$profile > $output_file";
+        open my $output_fh, '>', "$output_file";
+
+        print {$output_fh} $testds_header;
+
+        if ($profile eq 'ut') {
+            my $i = 0;
+            for my $test (@$tests) {
+                my $name    = [ keys %$test ]->[0];
+                my $timeout = $cli_option{timeout} // $default_timeout_sec;
+                my $idx     = sprintf '%03d', $i++;
+                debug "  $name";
+                print {$output_fh} make_descriptor('00userspace', $idx, $name, $timeout);
+            }
+        }
+        elsif ($profile eq 'ut-valgrind') {
+            my $i = 0;
+            for my $test ( grep {
+                                 my $key = [keys %$_]->[0];
+                                 defined $_->{$key}{config}
+                                } @$tests )
+            {
+                my $test_name = [keys %$test]->[0];
+                my $idx       = sprintf '%03d', $i++;
+
+                VARIANTS:
+                for my $vname (grep { $_ ne 'exclude' } keys $test->{$test_name}{config}) {
+                    if ( none { $_ eq $vname } @supported_valgrind_variants ) {
+                        warning "Unsupported valgrind vname '$vname' found"
+                                . " for test suite '$test_name'\n";
+                        next VARIANTS;
+                    }
+                    debug "  $test_name [$vname]";
+
+                    my $list;
+                    if (defined $test->{$test_name}{config}{exclude}) {
+                        no if $] >= 5.018, warnings => 'experimental::smartmatch';
+                        $list = join ','
+                                , map {
+                                    !($_ ~~ @{$test->{$test_name}{config}{exclude}})
+                                        ? "$test_name:$_" : ();
+                                } @{$test->{$test_name}{tests}};
+                    }
+
+                    my $variant = $test->{$test_name}{config}{$vname};
+                    $variant->{full_name} = $vname eq 'valgrind' ? $vname : "valgrind-$vname";
+
+                    my $timeout
+                        = $cli_option{force_timeout}   ? $cli_option{timeout}
+                        : defined $variant->{timeout}  ? $variant->{timeout}
+                        : defined $cli_option{timeout} ? $cli_option{timeout}
+                        :                                $default_timeout_sec;
+
+                    print {$output_fh} make_descriptor('00userspace', $idx, $test_name
+                                            , $timeout, "-d$variant->{full_name}"
+                                            , $list);
+                }
+            }
+        }
+
+        print {$output_fh} $testds_footer;
+    }
+
+    return;
+}
+
+main();
+
+__END__
+
+=head1 NAME
+
+m0gentestds - generates Mero configuration files for the Xperior test framework.
+
+=head1 SYNOPSIS
+
+ m0gentestds [options] [ut|ut-valgrind|ut-all|all]
+
+ Options:
+   -p|--output-prefix PREFIX  output files prefix and path
+   -t|--timeout SEC           timeout for all generated test descriptors
+      --force-timeout         override test's built-in timeout with --timeout value
+
+   -v|--verbose               print more info
+
+   -h|--help                  print full help documentation and exit
+      --usage                 show short usage synopsis and exit
+      --man                   show the manpage
+
+=head1 DESCRIPTION
+
+This script generates Mero configuration files for the Xperior test framework.
+In Xperior's terminology they're called test descriptors, which are lists of
+tests in YAML format.
+
+C<m0gentestds> runs C<m0ut> binary to get the list of available unit test suites
+as well as their configuration options, e.g what valgrind checks they support
+and so on. And produces test descriptors for Xperior based on that information.
+
+=head1 ARGUMENTS
+
+C<m0gentestds> can generate test descriptors for several profiles. Profile names
+can be specified as arguments. If none is provided, then I<all> is used by
+default, which creates test descriptors for all available profiles.
+
+Supported profiles are:
+
+=over 8
+
+=item B<ut>
+
+all unit tests
+
+=item B<ut-valgrind>
+
+unit tests that support C<valgrind> checks
+
+=item B<ut-all>
+
+all unit tests profiles (normal+valgrind)
+
+=item B<all>
+
+all supported profiles (default)
+
+=back
+
+=head1 OPTIONS
+
+=over 8
+
+=item B<-p|--output-prefix I<PREFIX>>
+
+Output file name prefix and path. If omitted then test descriptors are created
+in the current directory with names started by C<mero->, followed by the
+profile name and ended in C<_tests.yaml>. For example:
+
+  mero-ut_tests.yaml
+  mero-ut-valgrind_tests.yaml
+
+=item B<-t|--timeout I<SEC>>
+
+Timeout for all generated test descriptors. If test suite specifies it's own
+timeout value in the extended options, it won't be overridden with I<SEC> unless
+C<--force-timeout> is specified as well.
+
+=item B<--force-timeout>
+
+Override test's built-in timeout with the value from C<--timeout> option.
+
+=item B<-v|--verbose>
+
+Print more detaild info about what's going on.
+
+=item B<-h|--help>
+
+Print this help summary.
+
+=item B<--man>
+
+Print the complete manpage.
+
+=item B<--usage>
+
+Print usage part of this summary.
+
+=back
+
+=cut

@@ -1,0 +1,4 @@
+---
+lustre_client_pkgs:
+  - kmod-lustre-client
+  - lustre-client

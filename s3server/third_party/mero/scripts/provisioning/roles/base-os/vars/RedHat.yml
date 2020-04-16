@@ -1,0 +1,53 @@
+---
+basic_tools_pkgs:
+  - ansible  # for local mode, helpful on Windouz hosts
+  - dstat
+  - emacs
+  - htop
+  - ipmitool
+  - iotop
+  - nc
+  - nmap
+  - pdsh
+  - rsync
+  - sysstat
+  - telnet
+  - tmux
+  - tree
+  - vim
+  - wget
+  # machine autodicovery by hostname
+  - avahi
+  - avahi-tools
+  - bind-utils
+  - nss-mdns
+  # remote syslog
+  - systemd-journal-gateway
+
+devel_tools_pkgs:
+  - crash
+  - expect
+  - gdb
+  - iscsi-initiator-utils
+  - jq
+  - ltrace
+  - perf
+  - psmisc
+  - strace
+  - systemtap
+  - targetcli
+  - tig
+  - time
+  - trace-cmd
+  - valgrind
+
+avahi_service: avahi-daemon
+
+redhat_vault_repo_versions:
+  - C7.0.1406
+  - C7.1.1503
+  - C7.2.1511
+  - C7.3.1611
+  - C7.4.1708
+  - C7.5.1804
+  - C7.6.1810

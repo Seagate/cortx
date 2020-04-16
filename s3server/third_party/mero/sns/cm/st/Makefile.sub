@@ -1,0 +1,6 @@
+mero_libmero_la_SOURCES  += sns/cm/st/repair_cli.c
+
+sns_cm_st_m0repair_SOURCES = sns/cm/st/repair_cli.h \
+                             sns/cm/st/repair_cli.c \
+                             sns/cm/st/repair_main.c
+

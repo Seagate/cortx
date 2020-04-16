@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+# exit immediately if one the commands exits with a non-zero status
+set -e
+
+# global variables, which can be overriden in /etc/sysconfig/mero
+MERO_GENDERS_CONF=/etc/mero/genders
+
+# service local variables
+user_config=/etc/sysconfig/mero
+ha_config="/etc/sysconfig/m0t1fs-$2"
+service_funcs=/usr/libexec/mero/mero-service.functions
+fake_pfid='<0x7200000000000000:0>'
+
+start()
+{
+    local proc_fid=$1
+
+    source $service_funcs
+
+    if [[ -n $proc_fid && ! -e $ha_config ]] ; then
+        m0_exit "service config file '$ha_config' doesn't exist"
+    fi
+
+    if [ -z "$proc_fid" ]; then
+        proc_fid=$fake_pfid
+    fi
+
+    [[ -r $ha_config   ]] && source $ha_config
+    [[ -r $user_config ]] && source $user_config
+
+    m0_log "MERO_PROCESS_FID: $proc_fid"
+    m0_log "MERO_M0T1FS_EP: $MERO_M0T1FS_EP"
+    m0_log "MERO_HA_EP: $MERO_HA_EP"
+    m0_log "MERO_PROFILE_FID: $MERO_PROFILE_FID"
+    m0_log "MERO_M0T1FS: $MERO_M0T1FS"
+
+    local m0t1f=${MERO_M0T1FS:-$(m0_genders_value_of m0_t1fs)}
+    local mountpoint=${MERO_M0T1FS_MOUNTPOINT:-$(m0_genders_value_of m0_t1fs_mountpoint)}
+    local ha_ep=${MERO_HA_EP:-$(m0_get_global_ep_of ha)}
+    local profile="<${MERO_PROFILE_FID:-$m0_prof_opt}>"
+    local ep_opt=${MERO_M0T1FS_EP:+,ep=$MERO_M0T1FS_EP}
+
+    if [[ $m0t1f == "no" ]] ; then
+        return
+    fi
+    [ ! -d "$mountpoint" ] && mkdir -p "$mountpoint"
+
+    set -x
+    mount -t m0t1fs \
+          -o "pfid=$proc_fid,profile=$profile,ha=$ha_ep,oostore,verify${ep_opt}" \
+          m0t1 $mountpoint
+    set +x
+}
+
+stop()
+{
+    source $service_funcs
+
+    [ -r $user_config ] && source $user_config
+    local m0t1f=${MERO_M0T1FS}
+    if [[ $m0t1f == "no" ]] ; then
+        return
+    fi
+
+    mountpoint=${MERO_M0T1FS_MOUNTPOINT:-$(m0_genders_value_of m0_t1fs_mountpoint)}
+
+    echo "Stopping m0t1fs"
+    umount $mountpoint
+}
+
+action="$1" && shift
+
+case $action in
+    start)  start "$@" ;;
+    stop)   stop ;;
+esac

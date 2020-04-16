@@ -1,0 +1,242 @@
+This document contains a list of small code-level tasks that require no further
+design. The intention is that people take tasks from the list to avoid being
+blocked. Synchronization of concurrent list updates is through email. Task is
+moved into IN-PROGRESS section after someone has started working on it.
+Completed tasks are moved into DONE section. The list is populated by team and
+sub-team leads, contact them to add more things here.
+
+                          ***** TODO *****
+
+
+2012-May-15 Add mnemonic tags to doc/todo items for ease of reference.
+
+2012-Sep-04 Non-atomic trace
+
+    lib/trace.c uses a global shared atomic variable to allocate space in the
+    trace buffer. This introduces cache contention between cores. Eliminate the
+    contention by allocating a separate buffer for each core. Find out how to do
+    this in user space (assembly is allowed). In kernel, use per-cpu
+    variables. Each core should still use an atomic variable, because tracing
+    can be called asynchronously from signal or interrupt handler. In user
+    space, each buffer should be mapped to a separate file. Modify
+    initialisation and parsing code accordingly.
+
+2012-Sep-16 UT memory leaks
+
+    Plug memory leaks, reported by UT.  Check `Leaked:' lines of UT
+    output; any non-zero value may denote a defect.
+
+    A leakage in test suite "foo-ut" can be investigated with command
+        valgrind --leak-check=full utils/.libs/lt-ut -t foo-ut
+
+2012-Nov-29 rpc: use m0_cookie for sender-id
+
+2012-Nov-29 change console/ to use m0_xcode_read() instead of yaml
+
+2012-Nov-29 gccxml: add M0_XCA_ENUM
+
+    Add a M0_XCA_ENUM macro that would instruct gccxml to generate an array with
+    human-readable enum names:
+
+    enum m0_foo {
+            F_ONE   = 1,
+            F_TWO   = 2,
+            F_THREE = 3
+    } M0_XCA_ENUM(m0_foo_names);
+
+    generates in the corresponding _xc.[ch] file something like
+
+    struct m0_xcode_enum m0_foo_names[] = {
+            { F_ONE, 1, "F_ONE" },
+            { F_TWO, 2, "F_TWO" },
+            { F_THREE, 2, "F_THREE" },
+            { 0, 0, NULL }
+    };
+
+    where
+
+    struct m0_xcode_enum {
+            uint64_t    xe_tag;
+            uint64_t    xe_value;
+            const char *xe_name;
+    };
+
+    This array can be used by generic error-reporting functions and by
+    m0_xcode_read() to accept symbolic constants.
+
+2012-Nov-29 Alignment checks in xcode.
+
+    On-wire data-types must be portable across platforms:
+
+        u32 is always aligned on 4 byte boundary;
+
+        u64 is always aligned on 8 byte boundary;
+
+    This must be checked by m0_xcode_type_invariant() recursively, taking unions
+    and sequences into account.
+
+    (Re-write m0_xcode_type_invariant() in conjunction-style, while here.)
+
+2012-Nov-29 ioservice: don't call m0_cs_stob_domain_find() at run-time
+
+    Associate ioservice instance with a particular stob domain when the service
+    is started.
+
+2012-Nov-29 cleanup mero/mero-pub.api
+
+    Meaningful interfaces should be exported, not partial unusable ones.
+
+2013-Apr-30 sort the output of `ut.sh -l'
+
+    `sudo utils/ut.sh -l' command outputs 63 unsorted lines, despite
+    the names of test suite _variables_ being sorted in utils/ut_main.c.
+    We need to sort the strings themselves, not only variable names.
+
+2014-Feb-27 enforce uniqueness of magic values
+
+    `scripts/check-sources' should check uniqueness of magic numbers
+    in mero/magic.h.
+
+                          ***** IN-PROGRESS *****
+
+2012-Sep-05 Usage of m0_*_awkward() with signal handler and intrupt handler.
+
+                          ***** DONE *****
+
+2012-Oct-05 [Rajanikant]  Add lib/thread.h:m0_is_awkward(), implement in kernel
+	    and user space. Tag code. m0_is_awkward() should return true iff the
+            context is unsafe for blocking and locking (interrupt handler,
+            signal handler, timer call-back, chan call-back, &c.).
+            In kernel this is in_irq(). In user space, this should be based on
+            pthread_getspecific(). Timer and chan call-backs should be handled.
+
+	    Timer & chan call-backs handled.
+
+2012-May-09 [Dima] Replace all debugging printf-s and printk-s with M0_LOG()-s
+
+2012-Jul-26 [Dave] Call m0_processors_init() in m0_init(). Get rid of explicit
+            m0_processors_init() calls.
+
+2012-Jul-26 [Dave] m0_time_t is now a scalar with architecture-independent
+            semantics (nanoseconds since epoch). Replace calls to
+            m0_time_{before,after,...}() with direct comparisons.
+
+2012-May-04 [Amit] .gdbinit macros for basic Mero structures
+
+    Add to .gdbinit file gdb macros to display core Mero structures:
+    lists, vectors, &c. Preferably, the macros should be placed in .gdbinit
+    files, located in the corresponding modules, with top-level .gdbinit loading
+    them.
+
+2012-May-04 Add all magic numbers to doc/magix
+
+2012-May-04 Use tailored type-safe lists in reqh_service.c
+
+    Use lists based on M0_TL_{DEFINE,DESCR}()
+
+2012-May-04 Use tailored type-safe lists in setup.c
+
+    Use lists based on M0_TL_{DEFINE,DESCR}()
+
+2012-May-22 Use tailored type safe lists in rpc
+
+    Use lists based on M0_TL_{DEFINE,DESCR}()
+
+2012-May-14 Use #pragma once in headers [2012-Aug-01]
+
+2012-Jul-26 Use gcc builtins __sync_fetch_and_add, ... for use-space
+            m0_atomic64. Check first, that this is supported by our target
+            compiler version [2012-Aug-07]
+
+2012-Aug-22 Add m0_ut_ prefixes to all non-static unit test functions.
+
+2012-Jul-26 addb context should be embedded in reqh.
+2012-Sep-04 addb context should be embedded in reqh, instead of being referenced
+            by pointer (m0_reqh::rh_addb).
+
+2012-Aug-01 -include "config.h"
+
+    Add `-include "config.h"' compiler option (possibly to CFLAGS of
+    configure.ac). Delete `#include "config.h"' directives from source
+    files; remove the corresponding stanza from doc/source-structure.
+
+2012-Jul-26 Get rid of m0_fom::fo_fol, use fom->fo_service->rs_reqh->rh_fol
+            instead. [2012-Sep-04]
+
+2012-Aug-28 Magic delimiters [2012-Sep-10]
+
+    Change magic values to follow 0x33xxxxxxxxxxxx77 pattern.
+    Such "delimiters" are supposed to increase discoverability of
+    magic values in a memory dump.
+
+    Numbers 0x33 and 0x77 originate from Nikita's response to "magic
+    numbers generator" thread[1].  Magic values can be generated with
+    vvv's script[2].
+
+        [1] https://groups.google.com/a/xyratex.com/forum/#!msg/grp-mero-dev/q6BpJsA4hSU/_jzBzjKeMbYJ
+        [2] https://github.com/vvv/dotfiles/blob/master/bin/magic-gen.pl
+
+2012-Jul-26 Use type-safe lists in fom.[ch].
+
+2012-Jul-26 Replace atomic m0_fom_domain::fd_foms_nr with
+            m0_fom_domain_is_idle() function that iterates over all localities
+            and checks that queues are empty.
+
+2012-Dec-10 Embed m0_sm in m0_rpc_{session,conn,item}
+
+2012-Nov-29 M0_IN(): evaluate x only once
+
+2012-Nov-29 Kill unused ->sdo_block_shift()
+
+2012-Nov-29 get rid of m0_stob_io_*lock()
+
+    remove unused m0_stob_io_*lock() functions and corresponding methods in
+    m0_stob_op.
+
+2012-Nov-29 use "sdl_" prefix for ->use_directio and ->linux_setup
+
+2012-Nov-29 use the same fid and the same fid xc structure everywhere.
+
+    Multiple definitions of fid are used by various sub-systems. Unify.
+
+2012-Dec-10 Use m0_time_from_now() wherever possible.
+
+   There are many places that compute `now + delta` as
+   m0_time_add(m0_time_now(), delta);
+   Replace all such occurrences with simpler m0_time_from_now().
+
+2012-Nov-29 Convert .ff files to gccxml annotations where possible.
+
+2012-Dec-26 enforce M0_ASSERT() and M0_CNT_{INC,DEC}()
+
+    Add the following to lib/misc.h:
+#define M0_HAS_SIDE_EFFECTS(expr) \
+({ char _d[1]; __builtin_object_size(((void)(expr), _d), 0) == (size_t)-1; })
+
+    Then with M0_CASSERT() check that arguments of M0_CNT_{INC,DEC}()
+    and M0_ASSERT() have no side effects.
+
+Outcome: not possible, because proposed M0_HAS_SIDE_EFFECTS() is conservative
+and returns true for a function from another compilation unit.
+
+2012-Sep-04 External lock in m0_chan.
+
+    m0_chan::ch_guard is used to protect list of channel waiters
+    (m0_chan::ch_links). However, in majority of cases, this list is accessed
+    when some other lock is already held. This results in taking and releasing
+    lock for no actual reason.
+
+    Remove ->ch_guard and modify m0_chan interface to take a pointer to an
+    external lock as a parameter to m0_chan_init(). Check that this lock is held
+    when m0_clink_{add,del}(), m0_chan_{signal,broadcast}(), &c. are
+    called. m0_chan_wait() and m0_clink_signal() do not need the lock.
+
+    The same lock protects the lock invariant and it should be temporarily taken
+    to check the invariant, if necessary.
+
+    Identify locks protecting existing channels and add such locks when there is
+    none.
+
+2012-Nov-29 sm_timeout_top(): should use CAS
+
+    The same in sm_timeout_cancel() to avoid races. See fom_clink_cb().

@@ -1,0 +1,7 @@
+m0mero_objects += pool/pool.o \
+                  pool/pool_xc.o \
+                  pool/pool_fops_xc.o \
+                  pool/pool_machine.o \
+                  pool/pool_machine_xc.o \
+                  pool/policy.o \
+                  pool/policy_xc.o

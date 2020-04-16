@@ -1,0 +1,6 @@
+m0mero_objects += layout/layout.o \
+                 layout/pdclust.o \
+                 layout/composite.o \
+                 layout/linear_enum.o \
+                 layout/layout_pver.o
+

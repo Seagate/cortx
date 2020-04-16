@@ -1,0 +1,4 @@
+ut_libmero_ut_la_SOURCES += \
+                            dtm/ut/dtx.c \
+                            dtm/ut/nucleus.c \
+                            dtm/ut/transmit.c

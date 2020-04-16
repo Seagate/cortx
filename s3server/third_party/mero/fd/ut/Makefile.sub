@@ -1,0 +1,6 @@
+ut_libmero_ut_la_SOURCES += fd/ut/fd.c      \
+			    fd/ut/fd_tree.c \
+			    fd/ut/common.h  \
+			    fd/ut/common.c
+
+CONFXC_FILES += fd/ut/failure-domains.xc

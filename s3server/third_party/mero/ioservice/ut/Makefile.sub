@@ -1,0 +1,7 @@
+ut_libmero_ut_la_SOURCES += ioservice/ut/bulkio_ut.c \
+			    ioservice/ut/bulkio_client.c \
+			    ioservice/ut/bulkio_common.c \
+			    ioservice/ut/bulkio_common.h \
+			    ioservice/ut/cob_foms.c \
+			    ioservice/ut/ios_buffer_pool.c \
+			    ioservice/ut/storage_dev_ut.c

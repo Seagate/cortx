@@ -1,0 +1,4 @@
+nobase_mero_include_HEADERS += balloc/balloc.h
+mero_libmero_la_SOURCES  += balloc/balloc.c
+nodist_mero_libmero_la_SOURCES  += balloc/balloc_xc.c
+XC_FILES += balloc/balloc_xc.h

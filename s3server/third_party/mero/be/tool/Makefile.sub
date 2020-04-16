@@ -1,0 +1,8 @@
+be_tool_m0betool_SOURCES = \
+                           be/tool/common.c \
+                           be/tool/main.c \
+                           be/tool/st.c
+
+EXTRA_DIST += \
+              be/tool/common.h \
+              be/tool/st.h

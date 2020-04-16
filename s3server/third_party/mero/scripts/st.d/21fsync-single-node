@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -eu
+
+exec $SUDO "$M0_SRC_DIR/st/m0d-fsync-test.sh"

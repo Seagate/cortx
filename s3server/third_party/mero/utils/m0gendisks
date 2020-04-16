@@ -1,0 +1,318 @@
+#!/usr/bin/env bash
+
+# This script produces a list of block device files (like /dev/sda), in YAML
+# format, suitable as an input for `m0d`. It analyzes available disks in the
+# system and skips those, which have partitions. It's possible to limit disk
+# search to a specific disk name pattern. Also, it's possible to produce several
+# non-intersecting lists (this might be useful when disks are shared between two
+# controllers).
+
+
+#
+# Global vars
+#
+
+# constants
+readonly PROG_NAME=$(basename $0)
+readonly stdout='/dev/fd/1'
+readonly default_start_id=1
+readonly default_disk_pattern='/dev/disk/by-id/scsi-35*'
+readonly verbose_level_debug=2
+readonly verbose_level_info=1
+readonly verbose_level_none=0
+
+# variables
+verbose_level=$verbose_level_none
+outfile=$stdout
+outfile2=$stdout
+split_output=false
+split_count=
+disk_count=
+start_id=$default_start_id
+disk_pattern=$default_disk_pattern
+only_print_count=false
+only_print_disks=false
+cli_args=
+
+
+#
+# Usage
+#
+
+help()
+{
+    [[ $1 == stdout ]] && usage || usage >&2
+    exit 1
+}
+
+usage()
+{
+    cat <<USAGE_END
+Usage: $PROG_NAME [-h|--help] [-v] [-c] [-o|--output file]
+                  [-O[file], --split-output[=file]] [-s|--split-count num]
+                  [-d|--disk-count num] [-S|--start-id num]
+                  [-p|--disk-pattern pattern]  [disk1 disk2 disk3..]
+
+    Searches for available unformatted disks, matching the pattern and excluding
+    disk partitions and labled disks (MRB/GPT).
+
+    A list of block device names can be specified as arguments. In that case no
+    checks are performed on each disk and --disk-pattern option is ignored.
+
+    -c                     Only print number of available disks in the system,
+                           those which match requirements, and exit. All other
+                           options, except -p and -v are ignored.
+
+    -l|--list              List disks matching requirements, and exit. All other
+                           options, except -p, -d and -v are ignored.
+
+    -o|--output file       Write generated list to a 'file', by default it's
+                           printed to STDOUT.
+
+    -O[file], --split-output[=file]
+
+                           Split generated list in two parts. First part is
+                           written to a file, specified by -o option. Second
+                           part is written to a 'file', if provided, or STDOUT
+                           by default. Split ratio is controlled by -s option.
+
+    -s|--split-count num
+
+                           Number of disks in a second list. It's only
+                           meaningful with -O option. By default, list is split
+                           into equal parts.
+
+    -d|--disk-count num    Number of disks to use, by default it's all available
+                           disks. In split mode (-O option) it specifies total
+                           number of disks in both lists, so the first list
+                           would have 'disk-count - split-count' disks and
+                           second list would have 'split-count' disks.
+
+    -S|--start-id num      Base number for a sequence of device IDs.
+
+    -p|--disk-pattern pattern
+
+                           A shell pathname expansion pattern, which specifies
+                           initial set of block devices to operate on. By default
+                           it is '$default_disk_pattern', which means all
+                           available SAS drives on a Titan node. It can be
+                           anything like:
+
+                             /dev/loop[0-3]
+                             /dev/disk/by-id/scsi-35*0{1,4}
+
+                           If list of disks is provided through command-line
+                           arguments, the pattern is ignored.
+
+    -v                     Verbose output. Prints additional information to STDERR.
+                           Can be specified more than once (-vv) to get more
+                           verbose output.
+
+    -h|--help              Print this help screen.
+USAGE_END
+}
+
+
+#
+# Parse CLI options
+#
+
+parse_cli_options()
+{
+    # Note that we use `"$@"' to let each command-line parameter expand to a
+    # separate word. The quotes around `$@' are essential!
+    # We need TEMP as the `eval set --' would nuke the return value of getopt.
+    TEMP=$( getopt --options hclo:O::s:d:S:p:v \
+                   --longoptions help,output:,list,split-output::,split-count:,disk-count:,start-id:,disk-pattern: \
+                   --name "$PROG_NAME" -- "$@" )
+
+    [[ $? -ne 0 ]] && help
+
+    # Note the quotes around `$TEMP': they are essential!
+    eval set -- "$TEMP"
+
+    while true ; do
+        case "$1" in
+            -h|--help)          help stdout ;;
+            -c)                 only_print_count=true; shift ;;
+            -l|--list)          only_print_disks=true; shift ;;
+            -o|--output)        outfile=$2; shift 2 ;;
+            -O|--split-output)  split_output=true; [[ -n $2 ]] && outfile2=$2; shift 2 ;;
+            -s|--split-count)   split_count=$2; shift 2 ;;
+            -d|--disk-count)    disk_count=$2; shift 2 ;;
+            -S|--start-id)      start_id=$2; shift 2 ;;
+            -p|--disk-pattern)  disk_pattern=$2; shift 2 ;;
+            -v)                 verbose_level=$((verbose_level + 1)); shift ;;
+            --)                 shift; break ;;
+            *)                  echo 'getopt: internal error...'; exit 1 ;;
+        esac
+    done
+
+    # remaining command line arguments
+    cli_args="$@"
+}
+
+
+#
+# Utility functions
+#
+
+echo_err()
+{
+    echo -e "$*" >&2
+}
+
+debug()
+{
+    if [[ $verbose_level -ge $verbose_level_debug ]] ; then
+        echo_err "$PROG_NAME:  DEBUG:  $*"
+    fi
+}
+
+info()
+{
+    if [[ $verbose_level -ge $verbose_level_info ]] ; then
+        echo_err "$PROG_NAME:  INFO:   $*"
+    fi
+}
+
+warn()
+{
+    echo_err "$PROG_NAME: WARNING: $*"
+}
+
+die()
+{
+    echo_err "$PROG_NAME:  ERROR:  $*"
+    exit 1
+}
+
+real_device_name()
+{
+    local device=$1
+
+    [[ -L $device ]] && \
+        device=$(readlink -f $device)
+
+    echo $(basename $device)
+}
+
+# Return list of block devices, matching search pattern, which don't have a
+# partition table or aren't a partition themselves, which have non-zero size
+# (e.g. not attached loop device) and are rotational drives (not an SSD)
+find_available_disks()
+{
+    local pattern=$1
+    local disk
+
+    info "Checking available disks, matching pattern '$pattern'"
+
+    for disk in $(bash -c "ls $pattern" 2>/dev/null | grep -v -E -e '-part[0-9]+') ; do
+        local rotational=$(cat /sys/block/$(real_device_name $disk)/queue/rotational 2>/dev/null)
+        local size=$(blockdev --getsize64 $disk)
+        local have_valid_mbr=1
+
+        [[ -z $rotational ]] && rotational=0
+        [[ -z $(partprobe -ds $disk 2>/dev/null) ]] && have_valid_mbr=0
+
+        if [[ $rotational -eq 1 && $size -gt 0 && $have_valid_mbr -eq 0 ]] ; then
+            echo $disk
+        fi
+
+        debug "$disk\t$rotational  $have_valid_mbr  $size"
+    done
+}
+
+# Return disks list in YAML format, suitable for m0d.
+#   @param  $1  list for block devices
+#   @param  $2  base number for a sequence of device IDs
+generate_yaml_config()
+{
+    local disks=$1
+    local disk_id=$2
+
+    [[ -z $disks ]] && return
+
+    info "Generating YAML config"
+
+    echo 'Device:'
+
+    [[ -z $disk_id ]] && disk_id=$default_start_id
+
+    local disk
+    for disk in $disks; do
+        echo "  - id: $((disk_id++))"
+        echo "    filename: $disk"
+    done
+}
+
+
+#
+# Main
+#
+
+# exit immediately if one the commands exits with a non-zero status
+set -e
+
+parse_cli_options "$@"
+eval set -- "$cli_args"
+
+if [[ -n $1 ]] ; then
+    old_ifs="$IFS"
+    IFS=$'\n'
+    disks="$*"
+    IFS="$old_ifs"
+else
+    disks=$(find_available_disks "$disk_pattern")
+fi
+
+found_disk_cnt=$(echo -n -e "$disks${disks:+\n}" | wc -l)
+info "Number of disks found: $found_disk_cnt"
+
+if $only_print_count ; then
+    echo $found_disk_cnt
+    exit 0
+fi
+
+[[ -z $disks ]] && \
+    die "No disks available, try to use different disk pattern (option -p)"
+
+if $only_print_disks ; then
+    # limit output to $disk_count disks or print all if it isn't set
+    # '-0' instructs `head` to skip 0 lines at the end, thus printing it all
+    echo "$disks" | head -n ${disk_count:- -0}
+    exit 0
+fi
+
+# limit number of disks
+if [[ -n $disk_count ]] ; then
+    [[ $found_disk_cnt -lt $disk_count ]] && \
+        die "Not enough disks available: found $found_disk_cnt out of" \
+            " $disk_count requested"
+
+    info "Using only first $disk_count disks, as specified by -d option"
+    disks=$(echo "$disks" | head -n $disk_count)
+fi
+
+# split disks into two groups
+if $split_output ; then
+    [[ -z $disk_count ]]  && disk_count=$found_disk_cnt
+    [[ -z $split_count ]] && split_count=$((disk_count / 2))
+
+    [[ $split_count -ge $disk_count ]] && \
+        die "Split count ($split_count) can't be greater or equal to" \
+            " disk count ($disk_count), use -s and -d options for adjustment"
+
+    group1_count=$((disk_count - split_count))
+    disks2=$( echo "$disks" | tail -n +$((group1_count + 1)) )
+    disks=$( echo "$disks" | head -n $group1_count )
+fi
+
+yaml_conf=$(generate_yaml_config "$disks" $start_id)
+echo "$yaml_conf" > $outfile
+
+if $split_output ; then
+    yaml_conf=$( generate_yaml_config "$disks2" $((start_id + $group1_count)) )
+    echo "---" > $outfile2
+    echo "$yaml_conf" > $outfile2
+fi

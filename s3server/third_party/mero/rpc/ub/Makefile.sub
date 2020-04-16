@@ -1,0 +1,9 @@
+ut_libmero_ut_la_SOURCES += rpc/ub/ub.c \
+                            rpc/ub/fops.c \
+                            rpc/ub/fops.h
+
+nodist_ut_libmero_ut_la_SOURCES += rpc/ub/fops_xc.c
+
+XC_FILES += rpc/ub/fops_xc.h
+
+EXTRA_DIST += rpc/ub/README

@@ -1,0 +1,35 @@
+CrateConfig_Sections: [MERO_CONFIG, WORKLOAD_SPEC]
+
+
+MERO_CONFIG:
+   MERO_LOCAL_ADDR: 192.168.122.122@tcp:12345:33:302
+   MERO_HA_ADDR:    192.168.122.122@tcp:12345:34:101
+   CLOVIS_PROF: <0x7000000000000001:0x4d>  # Profile
+   LAYOUT_ID: 9                     # Defines the UNIT_SIZE (9: 1MB)
+   IS_OOSTORE: 1                    # Is oostore-mode?
+   IS_READ_VERIFY: 0                # Enable read-verify?
+   CLOVIS_TM_RECV_QUEUE_MIN_LEN: 16 # Minimum length of the receive queue
+   CLOVIS_MAX_RPC_MSG_SIZE: 65536   # Maximum rpc message size
+   CLOVIS_PROCESS_FID: <0x7200000000000001:0x28>
+   CLOVIS_IDX_SERVICE_ID: 1
+
+LOG_LEVEL: 4  # err(0), warn(1), info(2), trace(3), debug(4)
+
+WORKLOAD_SPEC:               # Workload specification section
+   WORKLOAD:                 # First Workload
+      WORKLOAD_TYPE: 1       # Index(0), IO(1)
+      WORKLOAD_SEED: tstamp  # SEED to the random number generator
+      OPCODE: 3              # Operation(s) to test: 2-WRITE, 3-WRITE+READ
+      CLOVIS_IOSIZE: 10m     # Total Size of IO to perform per object
+      BLOCK_SIZE: 2m         # In N+K conf set to (N * UNIT_SIZE) for max perf
+      BLOCKS_PER_OP: 1       # Number of blocks per Clovis operation
+      MAX_NR_OPS: 1          # Max concurrent operations per thread
+      NR_OBJS: 10            # Number of objects to create by each thread
+      NR_THREADS: 4          # Number of threads to run in this workload
+      RAND_IO: 1             # Random (1) or sequential (0) IO?
+      MODE: 1                # Synchronous=0, Asynchronous=1
+      THREAD_OPS: 0          # All threads write to the same object?
+      NR_ROUNDS: 1           # Number of times this workload is run
+      EXEC_TIME: unlimited   # Execution time (secs or "unlimited")
+      SOURCE_FILE: /tmp/128M # Source data file
+

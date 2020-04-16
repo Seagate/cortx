@@ -1,0 +1,13 @@
+---
+# allow to override hosts to which this playbook applies in command line
+# using '-e override_hosts=HOSTS' option
+- hosts:  '{{ override_hosts | default("jenkins-runners") }}'
+  become: no  # should be root already
+
+  roles:
+    - base-os
+    - lustre-client
+    - mero-build
+    - mero-runtime
+    - halon-build
+    - halon-runtime

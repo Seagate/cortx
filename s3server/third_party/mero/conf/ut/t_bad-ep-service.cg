@@ -1,0 +1,20 @@
+#= <7300000000000001:1>: Invalid endpoint: 172.16.64.1:12345:45:41
+(root-0 verno=1 rootfid=profile-0 mdpool=pool-0 imeta_pver=pver-8
+    mdredundancy=1 params=["82 8 2"] nodes=[node-0] sites=[site-2]
+    pools=[pool-0] profiles=[profile-0] fdmi_flt_grps=[])
+(profile-0 pools=[pool-0])
+(node-0 memsize=64230 nr_cpu=20 last_state=0 flags=0
+    processes=[process-0, process-1])
+(site-2 racks=[] pvers=[])
+(process-0 cores=[1048575] mem_limit_as=536870912 mem_limit_rss=65772544
+    mem_limit_stack=65772544 mem_limit_memlock=65772544
+    endpoint="172.18.1.1@tcp:12345:40:401" services=[service-0])
+(service-0 type=@M0_CST_IOS endpoints=["172.16.64.2@tcp:12345:41:201"] params=[]
+    sdevs=[])
+(process-1 cores=[1048575] mem_limit_as=536870912 mem_limit_rss=65772544
+    mem_limit_stack=65772544 mem_limit_memlock=65772544
+    endpoint="172.18.1.1@o2ib:12345:41:101" services=[service-1])
+(service-1 type=@M0_CST_RMS
+    endpoints=["172.16.64.1:12345:45:41"] # `@<network>' is missing
+    params=[] sdevs=[])
+(pool-0 pver_policy=0 pvers=[])

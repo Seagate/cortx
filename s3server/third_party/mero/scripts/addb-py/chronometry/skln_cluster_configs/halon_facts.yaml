@@ -1,0 +1,130 @@
+---
+id_sites:
+  - site_idx: 0
+    site_racks:
+      - rack_idx: 1
+        rack_enclosures:
+          - enc_idx: 0
+            enc_id: "ENC#0"
+            enc_bmc:
+              - bmc_addr: "0.0.0.0"
+                bmc_user: "admin"
+                bmc_pass: "admin"
+              - bmc_addr: "0.0.0.0"
+                bmc_user: "admin"
+                bmc_pass: "admin"
+            enc_hosts:
+              - h_fqdn: "skln3-m04.mero.colo.seagate.com"
+                h_memsize: 191912
+                h_cpucount: 48
+                h_interfaces:
+                  - if_macAddress: ""
+                    if_network: Management
+                    if_ipAddrs: [127.0.0.1]
+                  - if_macAddress: ""
+                    if_network: Data
+                    if_ipAddrs: [127.0.0.1]
+                h_halon:
+                  address: "127.0.0.1:9070"
+                  roles:
+                    - name: station
+                    - name: ssu
+                    - name: dm
+id_m0_servers:
+  - m0h_fqdn: "skln3-m04.mero.colo.seagate.com"
+    host_mem_as: 134217728
+    host_mem_rss: 196517888
+    host_mem_stack: 196517888
+    host_mem_memlock: 196517888
+    host_cores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    lnid: "127.0.0.1@tcp"
+    m0h_roles:
+      - name: ha
+      - name: confd
+      - name: storage
+      - name: clovis-app
+    m0h_devices:
+      - m0d_wwn: "0x00000000001"
+        m0d_serial: "STOBAD001"
+        m0d_bsize: 4096
+        m0d_size: 29999998435328
+        m0d_path: "/dev/disk/by-id/dm-name-mpathr"
+        m0d_slot: 1
+      - m0d_wwn: "0x00000000002"
+        m0d_serial: "STOBAD002"
+        m0d_bsize: 4096
+        m0d_size: 29999998435328
+        m0d_path: "/dev/disk/by-id/dm-name-mpaths"
+        m0d_slot: 2
+      - m0d_wwn: "0x00000000003"
+        m0d_serial: "STOBAD003"
+        m0d_bsize: 4096
+        m0d_size: 29999998435328
+        m0d_path: "/dev/disk/by-id/dm-name-mpatht"
+        m0d_slot: 3
+      - m0d_wwn: "0x00000000004"
+        m0d_serial: "STOBAD004"
+        m0d_bsize: 4096
+        m0d_size: 29999998435328
+        m0d_path: "/dev/disk/by-id/dm-name-mpathu"
+        m0d_slot: 4
+      - m0d_wwn: "0x00000000005"
+        m0d_serial: "STOBAD005"
+        m0d_bsize: 4096
+        m0d_size: 29999998435328
+        m0d_path: "/dev/disk/by-id/dm-name-mpathv"
+        m0d_slot: 5
+      - m0d_wwn: "0x00000000006"
+        m0d_serial: "STOBAD006"
+        m0d_bsize: 4096
+        m0d_size: 29999998435328
+        m0d_path: "/dev/disk/by-id/dm-name-mpathw"
+        m0d_slot: 6
+      - m0d_wwn: "0x00000000007"
+        m0d_serial: "STOBAD007"
+        m0d_bsize: 4096
+        m0d_size: 29999998435328
+        m0d_path: "/dev/disk/by-id/dm-name-mpathx"
+        m0d_slot: 7
+id_m0_globals:
+  m0_be_ios_seg_size: 536870912
+  m0_be_log_size: 134217728
+  m0_be_seg_size: 134217728
+  m0_be_tx_payload_size_max: 2465792
+  m0_be_tx_reg_nr_max: 262144
+  m0_be_tx_reg_size_max: 33554432
+  m0_be_txgr_freeze_timeout_max: 300
+  m0_be_txgr_freeze_timeout_min: 300
+  m0_be_txgr_payload_size_max: 134217728
+  m0_be_txgr_reg_nr_max: 2465792
+  m0_be_txgr_reg_size_max: 536870912
+  m0_be_txgr_tx_nr_max: 82
+  m0_md_redundancy: 1
+  m0_min_rpc_recvq_len: 2048
+id_pools:
+  - pool_id: default
+    pool_pdclust_attrs:
+      data_units: 1
+      parity_units: 0
+      unit_size: 4096
+      seed: [101, 102]
+    pool_allowed_failures: []
+    pool_device_refs:
+      - dr_path: "/dev/disk/by-id/dm-name-mpathr"
+        dr_serial: "STOBAD001"
+      - dr_path: "/dev/disk/by-id/dm-name-mpaths"
+        dr_serial: "STOBAD002"
+      - dr_path: "/dev/disk/by-id/dm-name-mpatht"
+        dr_serial: "STOBAD003"
+      - dr_path: "/dev/disk/by-id/dm-name-mpathu"
+        dr_serial: "STOBAD004"
+      - dr_path: "/dev/disk/by-id/dm-name-mpathv"
+        dr_serial: "STOBAD005"
+      - dr_path: "/dev/disk/by-id/dm-name-mpathw"
+        dr_serial: "STOBAD006"
+      - dr_path: "/dev/disk/by-id/dm-name-mpathx"
+        dr_serial: "STOBAD007"
+id_profiles:
+  - prof_id: prof-0
+    prof_pools:
+      - default

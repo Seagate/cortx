@@ -1,0 +1,18 @@
+rpc_it_m0rpcping_SOURCES  = rpc/it/ping_fop.c \
+                            rpc/it/ping_fom.c \
+                            rpc/it/rpc_ping.c \
+                            rpc/it/ping_fop.h \
+                            rpc/it/ping_fom.h
+
+nodist_rpc_it_m0rpcping_SOURCES = rpc/it/ping_fop_xc.c
+
+XC_FILES += rpc/it/ping_fop_xc.h
+
+EXTRA_DIST += rpc/it/linux_kernel/rpc_ping.h \
+              rpc/it/linux_kernel/m0rpcping_main.c \
+              rpc/it/linux_kernel/rpcload.sh \
+              rpc/it/linux_kernel/load.sh \
+              rpc/it/linux_kernel/unload.sh \
+              rpc/it/linux_kernel/m0mero.symvers \
+              rpc/it/st \
+              rpc/it/st.sh

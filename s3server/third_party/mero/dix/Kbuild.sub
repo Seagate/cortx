@@ -1,0 +1,15 @@
+m0mero_objects += \
+                  dix/dix_addb_xc.o \
+                  dix/meta.o \
+                  dix/client.o \
+                  dix/req.o \
+                  dix/imask.o \
+                  dix/layout.o \
+                  dix/encdec.o \
+                  dix/fid_convert.o \
+                  dix/next_merge.o \
+                  dix/imask_xc.o \
+                  dix/layout_xc.o \
+                  dix/encdec_xc.o \
+                  dix/req_xc.o \
+                  dix/cm/trigger_fop_common.o

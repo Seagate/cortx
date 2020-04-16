@@ -1,0 +1,8 @@
+EXTRA_DIST += m0t1fs/linux_kernel/st/m0t1fs_client.sh \
+              m0t1fs/linux_kernel/st/m0t1fs_client_inc.sh \
+              m0t1fs/linux_kernel/st/m0t1fs_common_inc.sh \
+              m0t1fs/linux_kernel/st/m0t1fs_server.sh \
+              m0t1fs/linux_kernel/st/m0t1fs_fsync_test.sh \
+              m0t1fs/linux_kernel/st/m0t1fs_fwait_test.sh \
+              m0t1fs/linux_kernel/st/m0t1fs_server_inc.sh \
+              m0t1fs/linux_kernel/st/m0t1fs_test.sh

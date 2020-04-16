@@ -1,0 +1,5 @@
+#Threshold value to send IEM logs to the server, if the used space is more
+#than threshold, the Alert errors would be sent.
+MERO_FREESPACE_TRIGGER_IEM_THRESHOLD=70 80 85 90
+MERO_FREESPACE_TRIGGER_IEM_FREQ=30
+MERO_FREESPACE_ARGS=""

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Kernel module -  test node
+MOD_NODE=@abs_top_srcdir@/m0nettestd.ko
+# Userspace program - test node
+CMD_NODE=@abs_top_srcdir@/net/test/user_space/m0nettestd
+# Userspace program - test console
+CMD_CONSOLE=@abs_top_srcdir@/net/test/user_space/m0nettest

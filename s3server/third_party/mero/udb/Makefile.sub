@@ -1,0 +1,2 @@
+nobase_mero_include_HEADERS += udb/udb.h
+mero_libmero_la_SOURCES  += udb/udb.c

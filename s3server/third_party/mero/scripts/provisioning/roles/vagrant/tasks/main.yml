@@ -1,0 +1,77 @@
+#
+# Vagrant
+#
+---
+- name: install Vagrant on Debian based distro
+  when: ansible_os_family == 'Debian'
+  block:
+    - name: install HashiCorp apt gpg key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 51852D87348FFC4C
+
+    - name: download Vagrant deb package
+      get_url:
+        url: https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_{{ vagrant_arch }}.deb
+        dest: /var/cache/apt/archives/vagrant_{{ vagrant_version  }}_{{ vagrant_arch  }}.deb
+
+    - name: install Vagrant
+      apt:
+        deb: /var/cache/apt/archives/vagrant_{{ vagrant_version  }}_{{ vagrant_arch  }}.deb
+        state: present
+
+    - name: install Vagrant dependencies
+      package:
+        name:
+          - build-essential
+          - libguestfs-tools  # required for `vagrant package` with libvirt provider
+          - libvirt-bin
+          - libvirt-dev
+          - nfs-kernel-server
+  tags: vagrant
+
+- name: install Vagrant plugins
+  block:
+    - name: check installed Vagrant plugins
+      stat:
+        path: '{{ ansible_env["HOME"] }}/.vagrant.d/plugins.json'
+      register: vg_plugins_json
+
+    - name: load Vagrant plugins info
+      block:
+        - slurp:
+            path: '{{ ansible_env["HOME"] }}/.vagrant.d/plugins.json'
+          register: vg_plugin_file
+
+        - set_fact:
+            vg_plugin: '{{ vg_plugin_file.content | b64decode | from_json }}'
+      when: vg_plugins_json.stat.exists
+
+    - name: install Vagrant plugins
+      command: vagrant plugin install {{ item }}
+      when: vg_plugin is not defined or vg_plugin.installed[item] is not defined
+      with_items:
+        - vagrant-env
+        - vagrant-hostmanager
+        - vagrant-libvirt
+        - vagrant-scp
+
+    - name: copy Vagrant plugins for other users
+      when: vagrant_plugins_users is defined
+      ignore_errors: yes
+      block:
+        - name: copy plugins dir
+          command: cp -r {{ ansible_env["HOME"] }}/.vagrant.d /home/{{ item }}/
+          args:
+            creates: /home/{{ item }}/.vagrant.d/
+          with_items: '{{ vagrant_plugins_users }}'
+
+        - name: set plugins dir owner
+          file:
+            path: /home/{{ item }}/.vagrant.d/
+            recurse: yes
+            owner: '{{ item }}'
+          with_items: '{{ vagrant_plugins_users }}'
+  tags:
+    - vagrant
+    - vagrant-plugins

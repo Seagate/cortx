@@ -1,0 +1,14 @@
+[Unit]
+Description=Mero server helper for ha service
+Requires=mero-kernel.service
+Wants=mero-trace@ha.service
+After=mero-kernel.service
+Before=mero-trace@ha.service mero-server-confd.service mero-server@.service mero-client.service
+PartOf=mero.service
+
+[Service]
+Type=notify
+TimeoutStopSec=20
+Restart=no
+Group=mero
+ExecStart=/usr/libexec/mero/mero-server ha

@@ -1,0 +1,9 @@
+m0ut_objects += \
+                ha/ut/cookie.o \
+                ha/ut/entrypoint.o \
+                ha/ut/ha.o \
+                ha/ut/helper.o \
+                ha/ut/link.o \
+                ha/ut/lq.o \
+                ha/ut/main.o \
+                ha/ut/msg_queue.o

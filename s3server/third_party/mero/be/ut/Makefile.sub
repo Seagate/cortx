@@ -1,0 +1,28 @@
+ut_libmero_ut_la_SOURCES += be/ut/alloc.c           \
+                            be/ut/active_record.c   \
+                            be/ut/btree.c           \
+                            be/ut/domain.c          \
+                            be/ut/extmap.c          \
+                            be/ut/fl.c              \
+                            be/ut/fmt.c             \
+                            be/ut/helper.c          \
+                            be/ut/helper.h          \
+                            be/ut/io.c              \
+                            be/ut/io_sched.c        \
+                            be/ut/list.c            \
+                            be/ut/log.c             \
+                            be/ut/log_discard.c     \
+                            be/ut/log_sched.c       \
+                            be/ut/log_store.c       \
+                            be/ut/main.c            \
+                            be/ut/op.c              \
+                            be/ut/pool.c            \
+                            be/ut/pd.c              \
+                            be/ut/recovery.c        \
+                            be/ut/seg.c             \
+                            be/ut/seg0.c            \
+                            be/ut/seg_dict.c        \
+                            be/ut/tx.c              \
+                            be/ut/tx_bulk.c         \
+                            be/ut/tx_group_format.c \
+                            be/ut/tx_regmap.c

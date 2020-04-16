@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Assign a node uuid.
+# See lib/linux_kernel/kuuid.c:m0_param_node_uuid_get()
+NODE_UUID="abcdef01-2345-6789-0123-456789ABCDEF"
+
+# Path to binaries
+MOD_M0NETTESTD=@abs_top_srcdir@/m0nettestd.ko
+CMD_M0NETTESTD=@abs_top_srcdir@/net/test/user_space/m0nettestd
+CMD_M0NETTEST=@abs_top_srcdir@/net/test/user_space/m0nettest
+
+# Time to wait for node loading.
+# Timeout is used here because there is no way to check for node readiness
+NODE_INIT_DELAY=3
+
+# Timeout for m0_net in kernel (to stop transfer machine etc.)
+# added because m0mero.ko will not be rmmod'ed between the tests
+NET_CLEANUP_TIMEOUT=2
+
+# Set to empty string to disable verbose output
+VERBOSE=
+# VERBOSE="-v"
+
+# Set to empty string to disable last line with parsable output
+PARSABLE=
+# PARSABLE="-p"
+
+LNET_IF="0@lo"
+LNET_PID=12345
+LNET_PORTAL=42
+
+LNET_PREFIX="$LNET_IF:$LNET_PID:$LNET_PORTAL"

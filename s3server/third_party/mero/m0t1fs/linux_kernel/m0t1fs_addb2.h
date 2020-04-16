@@ -1,0 +1,58 @@
+/* -*- C -*- */
+/*
+ * COPYRIGHT 2015 XYRATEX TECHNOLOGY LIMITED
+ *
+ * THIS DRAWING/DOCUMENT, ITS SPECIFICATIONS, AND THE DATA CONTAINED
+ * HEREIN, ARE THE EXCLUSIVE PROPERTY OF XYRATEX TECHNOLOGY
+ * LIMITED, ISSUED IN STRICT CONFIDENCE AND SHALL NOT, WITHOUT
+ * THE PRIOR WRITTEN PERMISSION OF XYRATEX TECHNOLOGY LIMITED,
+ * BE REPRODUCED, COPIED, OR DISCLOSED TO A THIRD PARTY, OR
+ * USED FOR ANY PURPOSE WHATSOEVER, OR STORED IN A RETRIEVAL SYSTEM
+ * EXCEPT AS ALLOWED BY THE TERMS OF XYRATEX LICENSES AND AGREEMENTS.
+ *
+ * YOU SHOULD HAVE RECEIVED A COPY OF XYRATEX'S LICENSE ALONG WITH
+ * THIS RELEASE. IF NOT PLEASE CONTACT A XYRATEX REPRESENTATIVE
+ * http://www.xyratex.com/contact
+ *
+ * Original author: Nikita Danilov <nikita.danilov@seagate.com>
+ * Original creation date: 30-Mar-2015
+ */
+
+#pragma once
+
+#ifndef __MERO_M0T1FS_LINUX_KERNEL_M0T1FS_ADDB2_H__
+#define __MERO_M0T1FS_LINUX_KERNEL_M0T1FS_ADDB2_H__
+
+/**
+ * @defgroup m0t1fs
+ *
+ * @{
+ */
+
+#include "addb2/identifier.h"    /* M0_AVI_M0T1FS_RANGE_START */
+
+enum {
+	M0_AVI_FS_OPEN = M0_AVI_M0T1FS_RANGE_START + 1,
+	M0_AVI_FS_LOOKUP,
+	M0_AVI_FS_CREATE,
+	M0_AVI_FS_READ,
+	M0_AVI_FS_WRITE,
+	M0_AVI_FS_IO_DESCR,
+	M0_AVI_FS_IO_MAP
+};
+
+/** @} end of m0t1fs group */
+#endif /* __MERO_M0T1FS_LINUX_KERNEL_M0T1FS_ADDB2_H__ */
+
+/*
+ *  Local variables:
+ *  c-indentation-style: "K&R"
+ *  c-basic-offset: 8
+ *  tab-width: 8
+ *  fill-column: 80
+ *  scroll-step: 1
+ *  End:
+ */
+/*
+ * vim: tabstop=8 shiftwidth=8 noexpandtab textwidth=80 nowrap
+ */

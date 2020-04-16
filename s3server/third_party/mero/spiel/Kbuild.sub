@@ -1,0 +1,3 @@
+m0mero_objects += spiel/spiel.o \
+		  spiel/cmd.o   \
+		  spiel/conf_mgmt.o

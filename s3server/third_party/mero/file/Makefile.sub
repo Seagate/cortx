@@ -1,0 +1,4 @@
+nobase_mero_include_HEADERS += file/file.h file/di.h
+
+mero_libmero_la_SOURCES     += file/file.c file/di.c
+EXTRA_DIST += file/crc.c

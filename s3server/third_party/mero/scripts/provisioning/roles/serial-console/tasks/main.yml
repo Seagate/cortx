@@ -1,0 +1,22 @@
+#
+# Serial console tasks
+#
+---
+- name: enable kernel boot msg on serial console
+  when: ansible_os_family == 'Debian'
+  tags:
+    - serial-console
+  block:
+    - name: enable verbose boot screen
+      replace:
+        path:    /etc/default/grub
+        regexp:  'GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"'
+        replace: 'GRUB_CMDLINE_LINUX_DEFAULT=""'
+      notify: update grub.cfg
+
+    - name: add ttyS0 console in Grub config
+      replace:
+        path:    /etc/default/grub
+        regexp:  'GRUB_CMDLINE_LINUX=""'
+        replace: 'GRUB_CMDLINE_LINUX="console=ttyS0,115200n8"'
+      notify: update grub.cfg

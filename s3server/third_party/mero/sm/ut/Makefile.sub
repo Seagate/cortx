@@ -1,0 +1,1 @@
+ut_libmero_ut_la_SOURCES += sm/ut/sm.c

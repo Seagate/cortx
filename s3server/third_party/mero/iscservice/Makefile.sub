@@ -1,0 +1,12 @@
+nobase_mero_include_HEADERS += iscservice/isc_service.h \
+                               iscservice/isc.h \
+                               iscservice/isc_fops.h
+
+mero_libmero_la_SOURCES  += iscservice/isc_service.c \
+                            iscservice/isc.c \
+                            iscservice/isc_fops.c
+
+nodist_mero_libmero_la_SOURCES  += \
+                            iscservice/isc_fops_xc.c
+
+XC_FILES   += iscservice/isc_fops_xc.h

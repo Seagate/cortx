@@ -1,0 +1,44 @@
+nobase_mero_include_HEADERS += \
+                                  dtm/catalogue.h \
+                                  dtm/domain.h \
+                                  dtm/dtm.h \
+                                  dtm/dtm_internal.h \
+                                  dtm/dtm_update.h \
+                                  dtm/dtx.h \
+                                  dtm/factory.h \
+                                  dtm/fol.h \
+                                  dtm/history.h \
+                                  dtm/ltx.h \
+                                  dtm/machine.h \
+                                  dtm/nucleus.h \
+                                  dtm/object.h \
+                                  dtm/operation.h \
+                                  dtm/remote.h \
+                                  dtm/update.h
+
+mero_libmero_la_SOURCES  += \
+                                  dtm/catalogue.c \
+                                  dtm/domain.c \
+                                  dtm/dtm.c \
+                                  dtm/dtx.c \
+                                  dtm/factory.c \
+                                  dtm/fol.c \
+                                  dtm/history.c \
+                                  dtm/ltx.c \
+                                  dtm/machine.c \
+                                  dtm/nucleus.c \
+                                  dtm/object.c \
+                                  dtm/operation.c \
+                                  dtm/remote.c \
+                                  dtm/update.c
+
+nodist_mero_libmero_la_SOURCES  += \
+                                  dtm/dtm_update_xc.c \
+                                  dtm/operation_xc.c \
+                                  dtm/remote_xc.c \
+                                  dtm/update_xc.c
+
+XC_FILES   += dtm/dtm_update_xc.h \
+              dtm/operation_xc.h \
+              dtm/remote_xc.h \
+              dtm/update_xc.h

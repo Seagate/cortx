@@ -1,0 +1,70 @@
+These are on my macbook.
+
+W: 8 Method: multtable
+Speed Test #1: 74.72305 Mega Multiplies per second
+Speed Test #2: 75.82318 Mega Divides per second
+
+W: 8 Method: logtable
+Speed Test #1: 64.22106 Mega Multiplies per second
+Speed Test #2: 47.77894 Mega Divides per second
+
+W: 8 Method: shift
+Speed Test #1: 3.93387 Mega Multiplies per second
+Speed Test #2: 0.18926 Mega Divides per second
+
+W: 16 Method: default
+Speed Test #1: 41.09683 Mega Multiplies per second
+Speed Test #2: 32.95252 Mega Divides per second
+
+W: 16 Method: logtable
+Speed Test #1: 46.90058 Mega Multiplies per second
+Speed Test #2: 36.89626 Mega Divides per second
+
+W: 16 Method: shift
+Speed Test #1: 1.37493 Mega Multiplies per second
+Speed Test #2: 0.03409 Mega Divides per second
+
+W: 32 Method: shift
+
+Speed Test #1: 0.65338 Mega Multiplies per second
+Speed Test #2: 0.08450 Mega Divides per second
+
+w = 8 - Region Timings 
+
+   Test 0: Overwrite initial region
+   Test 1: Products to new region
+   Test 2: XOR products into second region
+
+   Test 0: 263.06506 Megabytes of Multiplies per second
+   Test 1: 263.49218 Megabytes of Multiplies per second
+   Test 2: 200.70910 Megabytes of Multiplies per second
+
+w = 16: Region Timings
+
+   Test 0: Overwrite initial region
+   Test 1: Products to new region
+   Test 2: XOR products into second region
+
+   Test 0: 253.45548 Megabytes of Multiplies per second
+   Test 1: 238.59569 Megabytes of Multiplies per second
+   Test 2: 167.99968 Megabytes of Multiplies per second
+
+w = 32: Region Timings (using shift method)
+
+   Test 0: Overwrite initial region
+   Test 1: Products to new region
+   Test 2: XOR products into second region
+
+   Test 0: 3.23808 Megabytes of Multiplies per second
+   Test 1: 3.23906 Megabytes of Multiplies per second
+   Test 2: 3.31985 Megabytes of Multiplies per second
+
+w = 32: Region Timings (using split-w8 method)
+
+   Test 0: Overwrite initial region
+   Test 1: Products to new region
+   Test 2: XOR products into second region
+
+   Test 0: 51.03224 Megabytes of Multiplies per second
+   Test 1: 50.50272 Megabytes of Multiplies per second
+   Test 2: 50.30108 Megabytes of Multiplies per second

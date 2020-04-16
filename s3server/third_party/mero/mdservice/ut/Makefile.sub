@@ -1,0 +1,5 @@
+ut_libmero_ut_la_SOURCES += mdservice/ut/mdstore.c \
+                               mdservice/ut/lustre.c \
+                               mdservice/ut/lustre.h
+
+EXTRA_DIST += mdservice/ut/mdstore.h.in

@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+#set -eu
+
+# Command line example (for one host)
+# sudo ./test-user.sh console localhost localhost localhost \
+#		      0@lo 0@lo 0@lo ping 100000 4k 8 4
+
+if [ "$(id -u)" -ne 0 ]; then
+    echo "Must be run as root"
+    exit 1
+fi
+
+if [ $# -ne 7 -a $# -ne 12 ]; then
+	echo "Usage: `basename $0` script_role console_cr server_cr client_cr" \
+	     "console_if server_if client_if" \
+	     "[test_type msg_nr msg_size concurrency_server concurrency_client]"
+	echo "where"
+	echo "  script_role	-" \
+	     "one of [console|server|client]"
+	echo "  *_cr		-" \
+	     "credentials to run test console/server/client (username@hostname)"
+	echo "  *_if		-" \
+	     "LNET interface for test console (e.g. 172.18.50.161@o2ib)"
+	exit
+fi
+
+if [ $1 != "console" -a $1 != "server" -a $1 != "client" ]; then
+	echo "Invalid script role $1. Should be one of [console|server|client]"
+	exit
+fi
+
+. @abs_top_srcdir@/m0t1fs/linux_kernel/st/common.sh
+
+unload_all() {
+    modunload
+    modunload_m0gf
+}
+trap unload_all EXIT
+
+modprobe_lnet
+modload_m0gf
+modload || exit $?
+
+JOB_IDS=
+SCRIPT=@abs_top_srcdir@/net/test/test-user.sh
+
+PID=12345
+PORTAL=42
+
+ROLE=$1
+CONSOLE_CR=$2
+SERVER_CR=$3
+CLIENT_CR=$4
+CONSOLE_IF=$5
+SERVER_IF=$6
+CLIENT_IF=$7
+COMMON_PARAMS="$2 $3 $4 $5 $6 $7"
+shift 7
+
+job_id_add() {
+	JOB_IDS="$JOB_IDS $!"
+}
+
+run_console() {
+	@abs_top_srcdir@/net/test/user_space/m0nettest \
+		-t $TEST_TYPE \
+		-n $MSG_NR \
+		-s $MSG_SIZE \
+		-g $CONCUR_SERVER \
+		-h $CONCUR_CLIENT \
+		-a "$CONSOLE_IF:$PID:$PORTAL:100" \
+		-b "$CONSOLE_IF:$PID:$PORTAL:101" \
+		-c "$SERVER_IF:$PID:$PORTAL:200" \
+		-d "$CLIENT_IF:$PID:$PORTAL:300" \
+		-e "$SERVER_IF:$PID:$PORTAL:201" \
+		-f "$CLIENT_IF:$PID:$PORTAL:301" &
+	job_id_add
+}
+
+run_server() {
+	@abs_top_srcdir@/net/test/user_space/m0nettestd \
+		-a "$SERVER_IF:$PID:$PORTAL:200" \
+		-c "$CONSOLE_IF:$PID:$PORTAL:100" &
+	job_id_add
+}
+
+run_client() {
+	@abs_top_srcdir@/net/test/user_space/m0nettestd \
+		-a "$CLIENT_IF:$PID:$PORTAL:300" \
+		-c "$CONSOLE_IF:$PID:$PORTAL:101" &
+	job_id_add
+}
+
+run_ssh() {
+	ssh $* &
+	job_id_add
+}
+
+if [ "$ROLE" = "console" ]; then
+	TEST_TYPE=$1
+	MSG_NR=$2
+	MSG_SIZE=$3
+	CONCUR_SERVER=$4
+	CONCUR_CLIENT=$5
+
+	if [ "$CONSOLE_CR" = "$SERVER_CR" ]; then
+		# test server on the host with test console
+		run_server
+	else
+		# test server on the some other host
+		run_ssh "$SERVER_CR" "$SCRIPT server $COMMON_PARAMS"
+	fi
+	if [ "$CONSOLE_CR" = "$CLIENT_CR" ]; then
+		# test client on the host with test console
+		run_client
+	else
+		# if test client on the node with test server then don't run
+		# script over ssh again
+		if [ "$SERVER_CR" != "$CLIENT_CR" ]; then
+			run_ssh "$CLIENT_CR" "$SCRIPT client $COMMON_PARAMS"
+		fi
+	fi
+	# time to initialize nodes - magic number
+	sleep 3
+	run_console
+fi
+
+if [ "$ROLE" = "server" ]; then
+	if [ "$SERVER_CR" = "$CLIENT_CR" ]; then
+		run_client
+	fi
+	run_server
+fi
+
+if [ "$ROLE" = "client" ]; then
+	run_client
+fi
+
+wait $JOB_IDS

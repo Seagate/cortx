@@ -1,0 +1,1 @@
+addb2_st_libaddb2dump_plugin_test_la_SOURCES = addb2/st/dump_plugin_test.c

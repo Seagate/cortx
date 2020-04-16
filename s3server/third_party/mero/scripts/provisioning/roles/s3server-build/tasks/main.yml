@@ -1,0 +1,105 @@
+#
+# S3server build
+#
+---
+- name: dynamically load variables depending on the OS type
+  include_vars: '{{ item  }}'
+  with_first_found: '{{ ansible_os_family }}.yml'
+  tags: s3server
+
+- name: configure 'Fedora-COPR Bazel' repository
+  yum_repository:
+    name:        vbatts-bazel
+    file:        vbatts-bazel-epel-7
+    description: Copr repo for bazel owned by vbatts
+    baseurl:     https://copr-be.cloud.fedoraproject.org/results/vbatts/bazel/epel-7-$basearch/
+    gpgcheck:    yes
+    gpgkey:      https://copr-be.cloud.fedoraproject.org/results/vbatts/bazel/pubkey.gpg
+  when: ansible_os_family == 'RedHat'
+  tags: s3server
+
+- name: install S3server build-time dependencies
+  package:
+    state: present
+    name:  '{{ s3server_build_deps_pkgs }}'
+  tags: s3server
+
+#- name: install updated build-time dependencies for S3server 
+#  package:
+#    state: present
+#    name:  '{{ s3server_build_deps_updates_pkgs }}'
+#  tags: s3server
+
+- name: build gtest from src rpm
+  block:
+    - name: download gtest src rpm
+      get_url:
+        url: 'https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/27/Everything/source/tree/Packages/g/gtest-1.7.0-11.fc27.src.rpm'
+        dest: /root/gtest-1.7.0-11.fc27.src.rpm
+
+    - name: install gtest src rpm
+      command: rpm -ihv ~/gtest-*.src.rpm
+      args:
+        creates: ~/rpmbuild/SPECS/gtest.spec
+
+    - name: install gtest rpm build dependencies
+      command: yum-builddep -y ~/rpmbuild/SPECS/gtest.spec
+      register: builddep_result
+      changed_when: '"No uninstalled build requires" not in builddep_result.stdout'
+
+    - name: build gtest rpm
+      command: rpmbuild -bb ~/rpmbuild/SPECS/gtest.spec
+      args:
+        creates: ~/rpmbuild/RPMS/x86_64/gtest-*.rpm
+
+    - name: read gtest devel package filename
+      shell: ls -1 ~/rpmbuild/RPMS/x86_64/gtest{,-devel}-[0-9]*.rpm
+      register: gtest_rpms
+      changed_when: false
+      check_mode: no
+
+    - name: install gtest rpm
+      yum:
+        name: '{{ gtest_rpms.stdout_lines }}'
+        state: present
+  when: ansible_os_family == 'RedHat'
+  tags:
+    - s3server
+    - s3server-build
+
+- name: build gmock from src rpm
+  block:
+    - name: download gmock src rpm
+      get_url:
+        url: 'https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/27/Everything/source/tree/Packages/g/gmock-1.7.0-5.fc27.src.rpm'
+        dest: /root/gmock-1.7.0-5.fc27.src.rpm
+
+    - name: install gmock src rpm
+      command: rpm -ihv ~/gmock-*.src.rpm
+      args:
+        creates: ~/rpmbuild/SPECS/gmock.spec
+
+    - name: install gmock rpm build dependencies
+      command: yum-builddep -y ~/rpmbuild/SPECS/gmock.spec
+      register: builddep_result
+      changed_when: '"No uninstalled build requires" not in builddep_result.stdout'
+
+    - name: build gmock rpm
+      command: rpmbuild -bb ~/rpmbuild/SPECS/gmock.spec
+      args:
+        creates: ~/rpmbuild/RPMS/noarch/gmock-*.rpm
+
+    - name: read gmock devel package filename
+      shell: ls -1 ~/rpmbuild/RPMS/noarch/gmock{,-devel}-[0-9]*.rpm
+      register: gmock_rpms
+      changed_when: false
+      check_mode: no
+
+    - name: install gmock rpm
+      yum:
+        name: '{{ gmock_rpms.stdout_lines }}'
+        state: present
+  when: ansible_os_family == 'RedHat'
+  tags:
+    - s3server
+    - s3server-build

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -eu
+
+exec $SUDO "$M0_SRC_DIR/scripts/systemtap/kem/st/st.sh"

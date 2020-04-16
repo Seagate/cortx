@@ -1,0 +1,11 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+libdir=@LIB_INSTALL_DIR@
+includedir=@INCLUDE_INSTALL_DIR@/evhtp
+
+Name: libevhtp
+Description: A more flexible replacement for libevent's httpd API
+Version: @PROJECT_VERSION@
+Libs: -L${libdir} -levhtp
+Libs.private: @LIBEVHTP_EXTERNAL_LIBS@
+Cflags: -I${includedir}
+

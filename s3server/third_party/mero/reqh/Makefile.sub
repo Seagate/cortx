@@ -1,0 +1,6 @@
+nobase_mero_include_HEADERS += reqh/reqh.h \
+                               reqh/reqh_service.h
+
+mero_libmero_la_SOURCES  += reqh/reqh.c \
+                            reqh/reqh_service.c \
+                            reqh/reqh_service_internal.h

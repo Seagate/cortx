@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+
+# This script reports any public funcnition, which is present in
+# libmero-altogether.so, but not listed in mero-pub.api file. Only
+# functions, started which "m0_" prefix or which contain "tlist" in their names,
+# are reported.
+
+
+#
+# Global vars
+#
+
+PROG_NAME=$(basename $0)
+
+pub_api='mero/mero-pub.api'
+libmero='mero/.libs/libmero-altogether.so'
+
+
+#
+# Usage
+#
+
+help() {
+    [ $1 -eq 0 ] && usage || usage >&2
+    exit $1
+}
+
+usage() {
+    cat <<EOF
+Usage: $PROG_NAME [-h|--help] [-a|--api mero-pub.api] [-l|--libmero libmero.so]
+
+    -a|--api            A text file with the list of names of public mero
+                        functions. By default it's "$pub_api".
+
+    -l|--libmero        libmero.so library binary, by default it's
+                        "$libmero".
+
+    -h|--help           Print this help screen.
+EOF
+}
+
+
+#
+# Parse CLI options
+#
+
+# Note that we use `"$@"' to let each command-line parameter expand to a
+# separate word. The quotes around `$@' are essential!
+# We need TEMP as the `eval set --' would nuke the return value of getopt.
+TEMP=$(getopt -o ha:l: --long help,api:,libmero: -n "$PROG_NAME" -- "$@")
+
+[ $? -eq 0 ] || exit 1
+
+# Note the quotes around `$TEMP': they are essential!
+eval set -- "$TEMP"
+
+while true ; do
+    case "$1" in
+        -h|--help) help 0 ;;
+        -a|--api) pub_api=$2; shift 2 ;;
+        -l|--libmero) libmero=$2; shift 2 ;;
+        --) shift ; break ;;
+        *) echo "getopt: internal error..." ; exit 1 ;;
+    esac
+done
+
+
+#
+# Main
+#
+
+[[ -e $libmero ]] || exit 0 # do nothing if libmero-altogether.so doesn't exist
+
+echo -n 'Checking mero public API... '
+
+# exit immediately if one the commands exits with a non-zero status
+set -e
+
+# to have identical sorting order, we need to sort file's content using the same
+# locale
+_sort() { LC_ALL=C sort; }
+_comm() { LC_ALL=C comm "$@"; }
+
+readonly IGNORED_FUNCS='__dummy_function|_fini|_init'
+func_list=$(mktemp)
+nm "$libmero" | awk '$2 == "T" {print $3}' |
+    grep -Ev "^($IGNORED_FUNCS)$" |
+    _sort > $func_list
+
+pub_api_sorted=$(mktemp)
+sed -e '/^#/d' -e '/^$/d' -e 's/^\*//' $pub_api | _sort > $pub_api_sorted
+
+ids_unexpected=$(_comm -13 $pub_api_sorted $func_list)
+ids_missing=$(_comm -23 $pub_api_sorted $func_list)
+if [[ -n $ids_missing ]]; then
+	tolerated=$(mktemp)
+	sed -n 's/^\*//p' $pub_api | _sort > $tolerated
+	if [[ -s $tolerated ]]; then
+		ids_missing=$(echo "$ids_missing" | _comm -23 - $tolerated)
+	fi
+fi
+
+[[ -n ${ids_unexpected}${ids_missing} ]] && echo FAIL || echo OK
+
+rc=0
+[[ -z $ids_unexpected ]] || {
+	echo "*ERROR* Not found in \`$pub_api':" $ids_unexpected
+    rc=1
+}
+[[ -z $ids_missing ]] || {
+	echo "*ERROR* Present in \`$pub_api' but not defined:" $ids_missing
+    rc=1
+}
+
+rm $func_list $pub_api_sorted ${tolerated:-}
+
+exit $rc

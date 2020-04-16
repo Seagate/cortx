@@ -1,0 +1,6 @@
+---
+cmu_nfs_mountpoint: src
+iscsi_iqn_prefix: 'iqn.3000-03.local.'
+m0vg_hostname_prefix: ''
+ssh_master_key_file: master_rsa
+ssh_master_pub_key_file: master_rsa.pub

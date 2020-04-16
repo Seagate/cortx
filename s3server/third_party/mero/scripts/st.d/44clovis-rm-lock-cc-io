@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -eu
+
+exec $SUDO "$M0_SRC_DIR/clovis/st/utils/clovis_rm_lock_cc_io.sh"

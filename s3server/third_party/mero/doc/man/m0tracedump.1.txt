@@ -1,0 +1,83 @@
+M0TRACEDUMP(1)
+==============
+include::asciidoc.conf[]
+
+
+NAME
+----
+m0tracedump - utility to convert binary trace logs to YAML format for further
+analysis by m0trace(1)
+
+
+SYNOPSIS
+--------
+*m0tracedump* ['OPTIONS']
+
+
+OPTIONS
+-------
+*-i* 'IN_FILE'::
+    Input file name, if none is provided, then STDIN is used by default.
+
+*-o* 'OUT_FILE'::
+    Output file name, if none is provided, then STDOUT is used by default.
+
+*-s*::
+    Enable stream mode - each trace record is formatted as a separate YAML
+    document, so they can be fetched from YAML stream one by one. This allows
+    *m0trace* to process each record one by one "on the fly" w/o the need to
+    load a whole YAML document first, which also reduce memory footprint. It's
+    off by default.
+
+*-H*::
+    Dump only trace header information from trace log.
+
+*-k*::
+    Path to m0mero.ko modules's core image (only required for parsing kernel
+    mode trace files), by default it is '/var/log/mero/m0mero_ko.img'.
+
+*-h, --help*::
+    Display help screen and exit.
+
+
+EXAMPLES
+--------
+  $ m0tracedump -i /var/run/mero/m0trace.33972 -o /var/log/mero/m0trace.33972.yml
+
+  $ m0tracedump -i /var/run/mero/m0trace.33972 | gzip -c > /var/log/mero/m0trace.33972.yml.gz
+
+
+AUTHORS
+-------
+See the Mero distribution AUTHORS file.
+
+
+BUGS
+----
+All bugs are added by Mero Team ;)
+
+
+RESOURCES
+---------
+Main web site: <http://xyratex.com/>
+
+
+COPYING
+-------
+Copyright \(C) 2013 Xyratex Technology Limited
+
+You should have received a copy of Xyratex's license along with
+this release. If not please contact a Xyratex representative.
+
+
+SEE ALSO
+--------
+*m0trace*(1) *m0traced*(1) *mero*(7)
+
+
+MERO
+----
+Part of the *mero*(7) suite
+
+
+// vim: syntax=asciidoc

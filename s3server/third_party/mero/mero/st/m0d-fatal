@@ -1,0 +1,275 @@
+#!/usr/bin/env bash
+set -eu
+
+#set -x
+#export PS4='+ ${FUNCNAME[0]:+${FUNCNAME[0]}():}line ${LINENO}: '
+
+## CAUTION: This path will be removed by superuser.
+SANDBOX_DIR=${SANDBOX_DIR:-/var/mero/sandbox.m0d-fatal-st}
+
+M0_TRACE_IMMEDIATE_MASK=${M0_TRACE_IMMEDIATE_MASK:-all}
+M0_TRACE_LEVEL=${M0_TRACE_LEVEL:-warn}
+M0_TRACE_PRINT_CONTEXT=${M0_TRACE_PRINT_CONTEXT:-}
+
+MAX_RPC_MSG_SIZE=163840
+TM_MIN_RECV_QUEUE_LEN=2
+DEV_NR=4
+DEV_SIZE=$((1024 * 1024))
+
+error() { echo "$@" >&2; stop 1; }
+
+M0_SRC_DIR=`readlink -f $0`
+M0_SRC_DIR=${M0_SRC_DIR%/*/*/*}
+
+. $M0_SRC_DIR/utils/functions # die, sandbox_init, report_and_exit
+
+## Path to the file with configuration string for confd.
+CONF_FILE=$SANDBOX_DIR/confd/conf.txt
+CONF_DISKS=$SANDBOX_DIR/confd/disks.conf
+
+PROC_FID_CNTR=0x7200000000000001
+PROC_FID_KEY=0
+PROC_FID_KEY2=1
+PROC_FID="<$PROC_FID_CNTR:$PROC_FID_KEY>"
+PROC_FID2="<$PROC_FID_CNTR:$PROC_FID_KEY2>"
+MAIN_PID=
+SAMPLE_PID=
+START_WAIT=${START_WAIT:-10}
+INTER_WAIT=${INTER_WAIT:-3}
+TEST_NAME='m0d-fatal'
+
+iosloopdevs() {
+    cat > $CONF_DISKS << EOF
+    Device:
+EOF
+    for i in $(seq $DEV_NR); do
+        dd if=/dev/zero of=$SANDBOX_DIR/${i}.img bs=$DEV_SIZE seek=$DEV_SIZE count=1
+        losetup -d /dev/loop$i &> /dev/null || true
+        losetup /dev/loop$i $SANDBOX_DIR/${i}.img
+        cat >> $CONF_DISKS << EOF
+       - id: $i
+         filename: /dev/loop$i
+EOF
+    done
+}
+
+start() {
+    sandbox_init
+    _init
+}
+
+stop() {
+    local rc=${1:-$?}
+
+    say "Stop ($rc)"
+    trap - EXIT
+
+    # In case sample process appears to be not down at the moment, it
+    # has to be forced down first to let it cancel its read lock, and
+    # therefore, balance active RM resources. Otherwise the both m0d
+    # are prone to dead lock each other. Main process being signaled
+    # first looks unable to finalise rwlockable resource as the RM
+    # service is down prior to revoking read lock from sample process.
+    # Sample process looks unable to cancel read lock as long as
+    # active RM service is already locked in the course of stopping.
+
+    kill -2 $SAMPLE_PID 2>/dev/null && sleep 1
+    kill -2 $MAIN_PID   2>/dev/null && wait
+    _fini
+    if [ $rc -eq 0 ]; then
+        sandbox_fini
+    else
+        say "$TEST_NAME test FAILED: $rc"
+        exit $rc
+    fi
+}
+
+_init() {
+    lnet_up
+    m0_modules_insert
+    mkdir -p $SANDBOX_DIR/confd
+    mkdir -p $SANDBOX_DIR/systest-$$
+    iosloopdevs
+}
+
+_fini() {
+    for i in $(seq $DEV_NR); do
+        losetup -d /dev/loop$i
+    done
+    m0_modules_remove
+}
+
+stub_confdb() {
+    cat <<EOF
+(root-0 verno=1 rootfid=(11, 22) mdpool=pool-0 imeta_pver=(0, 0)
+    mdredundancy=2
+    params=["pool_width=3", "nr_data_units=1", "nr_parity_units=1",
+            "unit_size=4096"]
+    nodes=[node-0] sites=[site-2] pools=[pool-0]
+    profiles=[profile-0] fdmi_flt_grps=[])
+(profile-0 pools=[pool-0])
+(node-0 memsize=16000 nr_cpu=2 last_state=3 flags=2
+    processes=[process-0, process-1])
+(process-0 cores=[3] mem_limit_as=0 mem_limit_rss=0 mem_limit_stack=0
+    mem_limit_memlock=0 endpoint="$M0D1_ENDPOINT"
+    services=[service-0, service-1, service-2, service-3])
+(process-1 cores=[3] mem_limit_as=0 mem_limit_rss=0 mem_limit_stack=0
+    mem_limit_memlock=0 endpoint="$M0D2_ENDPOINT"
+    services=[service-4, service-5, service-6])
+(service-0 type=@M0_CST_RMS endpoints=["$M0D1_ENDPOINT"] params=[] sdevs=[])
+(service-1 type=@M0_CST_HA endpoints=["$M0D1_ENDPOINT"] params=[] sdevs=[])
+(service-2 type=@M0_CST_CONFD endpoints=["$M0D1_ENDPOINT"] params=[] sdevs=[])
+(service-3 type=@M0_CST_FIS endpoints=["$M0D1_ENDPOINT"] params=[] sdevs=[])
+(service-4 type=@M0_CST_IOS endpoints=["$M0D2_ENDPOINT"] params=[]
+    sdevs=[sdev-1, sdev-2, sdev-3, sdev-4])
+(service-5 type=@M0_CST_MDS endpoints=["$M0D2_ENDPOINT"] params=[]
+    sdevs=[sdev-0])
+(service-6 type=@M0_CST_RMS endpoints=["$M0D2_ENDPOINT"] params=[] sdevs=[])
+(pool-0 pver_policy=0 pvers=[pver-0, pver_f-11])
+(pver-0 N=2 K=1 P=4 tolerance=[0, 0, 0, 0, 1] sitevs=[objv-2:0])
+(pver_f-11 id=0 base=pver-0 allowance=[0, 0, 0, 0, 1])
+(objv-2:0 real=site-2 children=[objv-0])
+(objv-0 real=rack-0 children=[objv-1])
+(objv-1 real=enclosure-0 children=[objv-2])
+(objv-2 real=controller-0 children=[objv-3, objv-4, objv-5, objv-6])
+(objv-3 real=drive-0 children=[])
+(objv-4 real=drive-1 children=[])
+(objv-5 real=drive-2 children=[])
+(objv-6 real=drive-3 children=[])
+(site-2 racks=[rack-0] pvers=[pver-0])
+(rack-0 encls=[enclosure-0] pvers=[pver-0])
+(enclosure-0 ctrls=[controller-0] pvers=[pver-0])
+(controller-0 node=node-0 drives=[drive-0, drive-1, drive-2, drive-3] pvers=[pver-0])
+(drive-0 dev=sdev-1 pvers=[pver-0])
+(drive-1 dev=sdev-2 pvers=[pver-0])
+(drive-2 dev=sdev-3 pvers=[pver-0])
+(drive-3 dev=sdev-4 pvers=[pver-0])
+(sdev-0 dev_idx=0 iface=4 media=1 bsize=4096 size=596000000000 last_state=3
+    flags=4 filename="/dev/sdev0")
+(sdev-1 dev_idx=0 iface=4 media=1 bsize=4096 size=596000000000 last_state=3
+    flags=4 filename="/dev/sdev1")
+(sdev-2 dev_idx=1 iface=7 media=2 bsize=8192 size=320000000000 last_state=2
+    flags=4 filename="/dev/sdev2")
+(sdev-3 dev_idx=2 iface=7 media=2 bsize=8192 size=320000000000 last_state=2
+    flags=4 filename="/dev/sdev3")
+(sdev-4 dev_idx=3 iface=7 media=2 bsize=8192 size=320000000000 last_state=2
+    flags=4 filename="/dev/sdev4")
+EOF
+}
+
+main_m0d_start() {
+    local path=$SANDBOX_DIR/confd
+    local OPTS="-F -D $path/db -T AD -S $path/stobs
+        -A linuxstob:$path/addb-stobs -e lnet:$M0D1_ENDPOINT
+        -m $MAX_RPC_MSG_SIZE -q $TM_MIN_RECV_QUEUE_LEN -c $CONF_FILE
+        -w 3 -f $PROC_FID -d $CONF_DISKS -j"
+
+    stub_confdb | $M0_SRC_DIR/utils/m0confgen >$CONF_FILE
+
+    echo "--- `date` ---" >>$path/m0d.log
+    cd $path
+
+    ## m0mkfs should be executed only once. It is usually executed
+    ## during cluster initial setup.
+    echo $M0_SRC_DIR/utils/mkfs/m0mkfs $OPTS
+    $M0_SRC_DIR/utils/mkfs/m0mkfs $OPTS >>$path/mkfs.log ||
+        error 'm0mkfs failed'
+
+    echo $M0_SRC_DIR/mero/m0d $OPTS
+    $M0_SRC_DIR/mero/m0d $OPTS >>$path/m0d.log 2>&1 &
+    local PID=$!
+    echo "main pid=$PID"
+    sleep $START_WAIT
+    kill -0 $PID 2>/dev/null ||
+        error "Failed to start m0d. See $path/m0d.log for details."
+    MAIN_PID=$PID
+}
+
+sample_m0d_start() {
+    local path=$SANDBOX_DIR/systest-$$
+    local OPTS="-D $path/db -T AD -S $path/stobs
+        -A linuxstob:$path/addb-stobs -e lnet:$M0D2_ENDPOINT
+        -m $MAX_RPC_MSG_SIZE -q $TM_MIN_RECV_QUEUE_LEN -w 3
+        -f $PROC_FID2 -d $CONF_DISKS -H $M0D1_ENDPOINT"
+
+    cd $path
+
+    echo $M0_SRC_DIR/utils/mkfs/m0mkfs $OPTS
+    $M0_SRC_DIR/utils/mkfs/m0mkfs $OPTS >>$path/mkfs.log ||
+        error 'm0mkfs failed'
+    echo $M0_SRC_DIR/mero/m0d $OPTS
+    $M0_SRC_DIR/mero/m0d $OPTS >>$path/m0d.log 2>&1 &
+    local PID=$!
+    echo "sample pid=$PID"
+    sleep $START_WAIT
+    kill -0 $PID 2>/dev/null ||
+        error "Failed to start m0d. See $path/m0d.log for details."
+    SAMPLE_PID=$PID
+}
+
+## Keep the audience engaged.
+say() { echo "$@" | tee -a $SANDBOX_DIR/confd/m0d.log; }
+
+## -------------------------------------------------------------------
+## main()
+## -------------------------------------------------------------------
+
+# The test is to run m0d hosting confd, active RM, dummy HA and fault
+# injection services (main process). Another m0d hosting MDS and IOS
+# (sample process) is launched next. When both processes started, a
+# fault is injected into the main one preventing it from reporting
+# active RM in entrypoint reply.
+#
+# Write lock being acquired and released on the cluster results in
+# read lock conflict in sample process. Sample process requests
+# entrypoint information from main process when read lock is returned
+# after write lock release. As the entrypoint appears malformed
+# because of the fault injected on main process side, the test process
+# gets its rconfc falling into M0_RCS_FAILURE state. Due to this,
+# cs_rconfc_fatal_cb() is called in sample process resulting in mero
+# shutdown.
+#
+# So effectively the test is to make sure the main process survives
+# write lock acquisition while the sample process goes down soon after
+# write lock release.
+
+[ `id -u` -eq 0 ] || die 'Must be run by superuser'
+
+trap stop EXIT
+
+echo "Test environment start"
+start
+
+say "Main m0d start"
+main_m0d_start
+
+say "Sample m0d start"
+sample_m0d_start || stop
+
+sleep $INTER_WAIT
+at_start_m0d_pids=(`pgrep m0d`)
+say "m0d running: ${at_start_m0d_pids[*]}"
+
+# Now we expect main and sample processes be running simultaneously
+[ "${at_start_m0d_pids[*]}" == "$MAIN_PID $SAMPLE_PID" ] ||
+    die "($MAIN_PID $SAMPLE_PID) pids list is expected"
+
+say "Command to jnject a single-time fault on main m0d side"
+env ${TRACE_console:-} $M0_SRC_DIR/console/m0console \
+    -f $(opcode M0_FI_COMMAND_OPCODE) -s $M0D1_ENDPOINT -c $SPIEL_ENDPOINT -v \
+    -d '("mero_ha_entrypoint_rep_rm_fill", "no_rms_fid", 2, 0, 0)'
+
+say "Obtain write lock on the cluster"
+$M0_SRC_DIR/utils/m0rwlock -s $M0D1_ENDPOINT -c $SPIEL_ENDPOINT -d 5
+
+sleep $INTER_WAIT
+
+at_stop_m0d_pids=(`pgrep m0d`)
+say "m0d running: ${at_stop_m0d_pids[*]}"
+
+# Sample process is expected to be down to the moment
+[ "${at_stop_m0d_pids[*]}" == "$MAIN_PID" ] ||
+    die "($MAIN_PID) pids list is expected"
+
+stop
+report_and_exit $TEST_NAME $?

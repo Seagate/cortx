@@ -1,0 +1,9 @@
+nobase_mero_include_HEADERS += cob/cob.h \
+			       cob/ns_iter.h
+
+mero_libmero_la_SOURCES  += cob/cob.c \
+			    cob/ns_iter.c
+
+nodist_mero_libmero_la_SOURCES += cob/cob_xc.c
+
+XC_FILES += cob/cob_xc.h

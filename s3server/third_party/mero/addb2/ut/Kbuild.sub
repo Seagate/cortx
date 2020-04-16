@@ -1,0 +1,6 @@
+m0ut_objects += \
+	     addb2/ut/base.o      \
+             addb2/ut/common.o    \
+	     addb2/ut/consumer.o  \
+             addb2/ut/histogram.o \
+	     addb2/ut/sys.o

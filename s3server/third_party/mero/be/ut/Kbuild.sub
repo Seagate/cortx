@@ -1,0 +1,6 @@
+m0ut_objects += \
+                be/ut/list.o \
+                be/ut/btree.o \
+                be/ut/seg_dict.o \
+                be/ut/extmap.o \
+                be/ut/main.o

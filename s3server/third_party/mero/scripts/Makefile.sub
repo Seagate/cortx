@@ -1,0 +1,16 @@
+EXTRA_DIST += scripts/build/bloatmeter \
+              scripts/build/check-sources \
+              scripts/build/check-protocol \
+              scripts/build/check-public-api \
+              scripts/build/check-xlibri-traces \
+              scripts/build/print-elf-sizes \
+              scripts/coverage/gcov-gen-html \
+              scripts/coverage/gen-cov \
+              scripts/coverage/lcov-process \
+              scripts/gen-src-skel \
+              scripts/gdb/gdb-extensions \
+              scripts/gdb/gdb-extensions.py \
+              scripts/git/branchmeter \
+              scripts/git/restore-branch \
+              scripts/m0 \
+              scripts/xperior/m0gentestds

@@ -1,0 +1,39 @@
+#
+# Perlbrew
+#
+---
+- name: download perlbrew-install
+  get_url:
+    url:  https://install.perlbrew.pl
+    dest: /tmp/perlbrew-install
+    mode: 0755
+  tags: perl
+
+- name: install perlbrew
+  environment:
+    PERLBREW_ROOT: /usr/local
+  command: /tmp/perlbrew-install
+  args:
+    creates: /usr/local/bin/perlbrew
+  tags: perl
+
+- name: integrate perlbrew shell config
+  file:
+    state: link
+    src:   /usr/local/etc/bashrc
+    dest:  /etc/profile.d/perlbrew.sh
+  tags:
+    - perl
+
+- name: build latest stable perl version
+  shell: . /etc/profile && perlbrew install --thread --64all stable
+  register: perl_install
+  failed_when: perl_install.rc != 0 and 'is already installed' not in perl_install.stderr
+  changed_when: "'is already installed' not in perl_install.stderr"
+  tags: perl
+
+- name: install cpanm
+  shell: . /etc/profile && perlbrew install-cpanm
+  args:
+    creates: /usr/local/bin/cpanm
+  tags: perl

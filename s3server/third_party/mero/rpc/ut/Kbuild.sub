@@ -1,0 +1,5 @@
+m0ut_objects += rpc/ut/conn.o \
+                rpc/ut/formation2.o \
+                rpc/ut/packet.o \
+                rpc/ut/rpc_machine.o \
+                rpc/ut/session.o

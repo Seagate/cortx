@@ -1,0 +1,21 @@
+nobase_mero_include_HEADERS += fop/fop.h \
+                               fop/fom.h \
+                               fop/fop_item_type.h \
+                               fop/fom_generic.h \
+                               fop/fom_long_lock.h \
+                               fop/fom_simple.h \
+                               fop/fom_interpose.h
+
+mero_libmero_la_SOURCES  += fop/fop.c \
+                            fop/fom.c \
+                            fop/fop_item_type.c \
+                            fop/fom_generic.c \
+                            fop/fom_long_lock.c \
+                            fop/fom_simple.c \
+                            fop/fom_interpose.c
+
+nodist_mero_libmero_la_SOURCES  += \
+                            fop/fop_xc.c \
+                            fop/fom_generic_xc.c
+
+XC_FILES   += fop/fom_generic_xc.h fop/fop_xc.h

@@ -1,0 +1,188 @@
+This table is from:
+
+/* Error Correction Coding: Mathematical Methods and Algorithms
+
+by
+Todd K. Moon, Utah State University
+
+published by
+Wiley, 2005
+756+xliii pages, plus Web page. (ISBN 0-471-64800-0) */
+
+
+Table of Primitive Polynomials
+
+
+Several different polynomials are represented for most degrees.  For
+example, there are fourteen different primitive polynomials listed of
+degree 9.  (This is not necessarily an exhaustive list of all
+polynomials for each degree.)
+
+The numbers in the table below represent primitive polynomials.
+The numbers are in octal,
+
+     0=000, 1=001, 2=010, 3=011
+     4=100  5=101  6=110  7=111
+
+Each octal digit in the number is replaced by its binary equivalent.
+The resulting binary sequence represents the coefficients of the
+primitive polynomial.  The coefficient g_0 is on the left; the
+coefficient g_r is on the right.
+
+For example, for degree 9, the number 1021 has the expansion
+001 000 010 001,
+representing the polynomial 1 + x^5 + x^9.
+
+Note that if a polynomial is primitive, then so is its reciprocal.
+For example, for the same table entry reading right-to-left,
+1 + x^4 + x^9 is also primitive.
+
+Numbers in the table indicated with * are trinomials (have only 2
+feedback connections), and  are better suited for some high-speed
+applications.
+
+This table is obtained from "Digital Communications and Spread
+Spectrum Systems" by Rodger E. Ziemer and Roger L. Peterson (MacMillan
+Publishing, 1985), which derives it from:
+
+"Error Correction Codes" by W.W. Peterson and E.J. Weldon (MIT Press,
+1972)
+
+"An Ordered Table of Primitive Polynomials over GF(2) of degrees 2
+through 19 for use with Linear Maximal Sequence Generators," TM107,
+Cooley Laboratory, University of Michigan, Ann Arbor, July 1972
+
+"Coherent Spread Spectrum Systems" by J.K. Holmes (Wiley-Interscience,
+1982).
+
+Peterson and Weldon is a rich source of information about primitive
+polynomials.
+
+
+Information is provided in a textual format here, to make it easier to
+incorporate into programs.
+
+
+Degree   Octal Representation
+2        7*
+
+3        13*
+
+4        23*
+
+5        45*,  75,  67
+
+6        103*,  147,  155
+
+7        211,  217,  235,  367,  277,  325,  203*,  313,  345
+
+8        435,  551,  747,  453,  545,  537,  703,  543
+
+9        1021*,  1131,  1461,  1423,  1055,  1167,  1541,
+         1333,  1605,  1751,  1743,  1617,  1553,  1157
+
+10       2011*,  2415,  3771,  2157,  3515,  2773,  2033,
+         2443,  2461,  3023,  3543,  2745,  2431,  3177
+
+11       4005*,  4445,  4215,  4055,  6015,  7413,  4143,
+         4563,  4053,  5023,  5623,  4577,  6233,  6673
+
+12       10123,  15647,  16533,  16047,  11015,  14127,
+          17673,  13565,  15341,  15053,  15621,  15321,
+         11417,  13505
+
+13       20033,  23261,  24623,  23517,  30741,  21643,
+         30171,  21277,  27777,  35051,  34723,  34047,
+         32535,  31425
+
+14       42103,  43333,  51761,  40503,  77141,  62677,
+         44103,  45145,  76303,  64457,  57231,  64167,
+         60153,  55753
+
+15       100003*,  102043,  110013,  102067,  104307,  100317,
+         177775,  103451,  110075,  102061,  114725,  103251,
+         100021*,  100201*
+
+16       210013,  234313,  233303,  307107,  307527,  306357,
+         201735,  272201,  242413,  270155,  302157,  210205,
+         305667,  236107
+
+17       400011*,  400017,  400431,  525251,  410117,  400731
+         411335,  444257,  600013,  403555,  525327,  411077,
+         400041*,  400101*
+
+18       1000201*,  1000247,  1002241,  1002441,  1100045,
+         1000407,  1003011,  1020121,  1101005,  1000077,
+         1001361,  1001567,  1001727,  1002777
+
+19       2000047,  2000641,  2001441,  2000107,  2000077,
+         2000157,  2000175,  2000257,  2000677,  2000737,
+         2001557,  2001637,  2005775,  2006677
+
+20       4000011*,  4001051,  4004515,  6000031,  4442235
+
+21       10000005*,  10040205,  10020045,  10040315,  10000635,
+         10103075,  10050335,  10002135,  17000075
+
+22       20000003*,  20001043,  2222223,  25200127,  20401207,
+         20430607,  20070217
+
+23       40000041*,  40404041,  40000063,  40010061,  50000241,
+         40220151,  40006341,  40405463,  40103271,  41224445,
+         4043561
+
+24       100000207,  125245661,  113763063
+
+25       200000011*,  200000017,  204000051,  200010031,
+         200402017,  252001251,  201014171,  204204057,
+         200005535,  200014731
+
+26       400000107,  430216473,  402365755,  426225667,
+         510664323,  473167545,  411335571
+
+27       1000000047,  1001007071,  1020024171,  1102210617,
+         1250025757,  1257242631,  1020560103,  1112225171,
+         1035530241
+
+28       2000000011*,  2104210431,  2000025051,  2020006031,
+         2002502115,  2001601071
+
+29       4000000005*,  4004004005,  4000010205,  4010000045,
+         4400000045,  4002200115,  4001040115,  4004204435,
+         4100060435,  4040003075,  40040642751
+
+30       10040000007,  10104264207,  10115131333,  11362212703,
+         10343244533
+
+31       20000000011*,  20000000017,  20000020411,  21042104211,
+         20010010017,  20005000251,  20004100071,  20202040217,
+         20000200435,  20060140231,  21042107357
+
+32       40020000007,  40460216667,  40035532523,  42003247143,
+         41760427607
+
+33       100000020001*,  100020024001,  104000420001,
+         100020224401,  111100021111,  100000031463,
+         104020466001,  100502430041,  100601431001
+
+34       201000000007,  201472024107,  377000007527,
+         225213433257,  227712240037,  251132516577,
+         211636220473,  200000140003
+
+35       400000000005*
+
+36       1000000004001*
+
+37       2000000012005
+
+38       4000000000143
+
+39       10000000000021*
+
+40       20000012000005
+
+61       200000000000000000047
+
+89       400000000000000000000000000151
+
+

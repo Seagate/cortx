@@ -1,0 +1,24 @@
+EXTRA_DIST += utils/m0confgen \
+              utils/m0gendisks \
+              utils/m0genfacts \
+              utils/m0hagen \
+              utils/m0mount \
+              utils/m0reportbug \
+              utils/m0run \
+              utils/m0setup \
+              utils/m0singlenode \
+              utils/m0provision \
+              utils/spiel/setup.py \
+              utils/spiel/mero.c \
+              utils/spiel/m0spiel \
+              utils/spiel/m0_filesystem_stats \
+              utils/linux_kernel/m0ctl_main.c \
+              utils/linux_kernel/m0ctl_internal.h \
+              utils/linux_kernel/finject_debugfs.c \
+              utils/linux_kernel/finject_debugfs.h \
+              utils/linux_kernel/trace_debugfs.c \
+              utils/linux_kernel/trace_debugfs.h \
+              utils/linux_kernel/core_debugfs.c \
+              utils/linux_kernel/core_debugfs.h \
+              utils/README
+

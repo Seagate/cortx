@@ -1,0 +1,344 @@
+#!/usr/bin/env bash
+
+#
+# m0t1fs system test
+#
+
+# exit immediately if one the commands exits with a non-zero status
+set -e -o pipefail
+
+#
+# Global vars
+#
+
+# constants
+readonly PROG_NAME=$(basename $0)
+readonly verbose_level_debug=2
+readonly verbose_level_info=1
+readonly verbose_level_none=0
+
+M0_SRC_DIR=$(readlink -f $0)
+M0_SRC_DIR=${M0_SRC_DIR%/*/*}
+
+# variables
+verbose_level=$verbose_level_none
+update_rpm=false
+do_cleanup=true
+rpm_pkg=''
+m0setup=m0setup
+needs_cleanup=true
+
+
+#
+# Usage
+#
+
+help()
+{
+    [[ $1 == stdout ]] && usage || usage >&2
+    exit 1
+}
+
+usage()
+{
+    cat <<USAGE_END
+Usage: $PROG_NAME [-h|--help] [-v] [-u] [-r rpm_pkg]
+
+    -r rpm_pkg      Mero rpm package to test. By default, currently installed
+                    mero package is tested. If provided, the specified 'rpm_pkg'
+                    is installed in the system and then removed after testing is
+                    finished.
+
+    -u              Update rpm instead of a full re-install, don't remove
+                    exising metadata before the tests.
+
+    --no-cleanup    Don't remove existing mero metadata after the tests.
+
+    -v              Verbose output. Prints additional information to STDERR.
+                    Can be specified more than once (-vv) to get more
+                    verbose output.
+
+    -h|--help       Print this help screen.
+USAGE_END
+}
+
+
+#
+# Parse CLI options
+#
+
+parse_cli_options()
+{
+    # Note that we use `"$@"' to let each command-line parameter expand to a
+    # separate word. The quotes around `$@' are essential!
+    # We need TEMP as the `eval set --' would nuke the return value of getopt.
+    TEMP=$( getopt --options hvur: \
+                   --longoptions help,no-cleanup \
+                   --name "$PROG_NAME" -- "$@" )
+
+    [[ $? -ne 0 ]] && help
+
+    # Note the quotes around `$TEMP': they are essential!
+    eval set -- "$TEMP"
+
+    while true ; do
+        case "$1" in
+            -h|--help)          help stdout ;;
+            -v)                 verbose_level=$((verbose_level + 1)); shift ;;
+            -r)                 rpm_pkg=$2; shift 2 ;;
+            -u)                 update_rpm=true; shift ;;
+            --no-cleanup)       do_cleanup=false; shift ;;
+            --)                 shift; break ;;
+            *)                  echo 'getopt: internal error...'; exit 1 ;;
+        esac
+    done
+}
+
+
+#
+# Utility functions
+#
+
+echo_err()
+{
+    echo -e "$*" >&2
+}
+
+debug()
+{
+    if [[ $verbose_level -ge $verbose_level_debug ]] ; then
+        echo_err "$PROG_NAME:  DEBUG:  $*"
+    fi
+}
+
+info()
+{
+    if [[ $verbose_level -ge $verbose_level_info ]] ; then
+        echo_err "$PROG_NAME:  INFO:   $*"
+    fi
+}
+
+warn()
+{
+    echo_err "$PROG_NAME: WARNING: $*"
+}
+
+die()
+{
+    echo_err "$PROG_NAME:  ERROR:  $*"
+    exit 1
+}
+
+is_mero_installed()
+{
+    if [[ -e /etc/sysconfig/mero ]] ; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+install_mero_rpm()
+{
+    local pkg=$1
+
+    if $update_rpm ; then
+        info "Updating rpm: $pkg"
+        rpm -Uhv $pkg
+    else
+        # check if an older version is installed and remove it first
+        if rpm --quiet -q mero ; then
+            warn "Old mero rpm detected in the system, removing it first"
+            remove_mero_rpm $pkg
+        fi
+
+        info "Installing rpm: $pkg"
+        rpm -ihv $pkg
+    fi
+
+    info 'Activating singlenode services'
+    m0singlenode activate
+}
+
+remove_mero_rpm()
+{
+    local pkg=$1
+
+    local pkg_name=$(echo $pkg | grep -Po '(?:^|(?<=/))[_[:alnum:]]+(?=-\d+\.\d+\.\d+)')
+
+    info "Removing rpm: $pkg_name"
+    rpm --nodeps -e $pkg_name
+}
+
+test_file_path='/mnt/m0t1fs/0:4200000'
+test_file_md5_path='/var/mero/m0t1fs.md5'
+
+do_m0t1fs_write_test()
+{
+    debug "do_m0t1fs_system_test: start dd"
+
+    #wait for mount complete.
+    sleep 5
+
+    touch $test_file_path
+    # set unit_size to 1MB (see layout/layout_pver.c:m0_lid_to_unit_map)
+    setfattr -n lid -v 9 $test_file_path
+
+    local src_file_path=/dev/zero
+
+    for device in /dev/{s,v,h}da ; do
+        if [[ -e $device ]] ; then
+            src_file_path=$device
+            break
+        fi
+    done
+
+    debug "using $device as a source file"
+    dd if=$src_file_path of=$test_file_path bs=4M count=240 &
+    local dd_pid=$!
+
+    while true ; do
+        sleep 1
+        if ps -p $dd_pid &> /dev/null ; then
+            kill -USR1 $dd_pid
+        else
+            break
+        fi
+    done
+
+    wait $dd_pid
+    rc=$?
+    [[ $rc -eq 0 ]] ||
+        die "dd command finished with error code $rc"
+
+    debug "do_m0t1fs_system_test: sleep 30 sec"
+    sleep 10 # FIXME: w/a for 'umount: /mnt/m0t1fs: device is busy'
+
+    debug "do_m0t1fs_system_test: syncing data"
+    sync
+
+    md5sum $test_file_path > $test_file_md5_path
+}
+
+do_m0t1fs_read_test()
+{
+    md5sum --check --strict --warn $test_file_md5_path
+}
+
+do_m0t1fs_system_test()
+{
+    if [[ -e $test_file_path ]] ; then
+        info 'm0t1fs read test'
+        do_m0t1fs_read_test
+        test_file_path+='1'
+    fi
+
+    info 'm0t1fs write test'
+    do_m0t1fs_write_test
+}
+
+#
+# Cleanup
+#
+
+cleanup()
+{
+    $needs_cleanup || exit 0
+
+    warn 'not clean exit detected, performing a clean-up'
+    set +e
+    info 'stopping mero-kernel'
+    systemctl stop mero-kernel
+    info 'm0setup cleanup'
+    $m0setup -c
+    info 'rpm cleanup'
+    remove_mero_rpm $rpm_pkg
+}
+
+trap cleanup EXIT
+
+#
+# Main
+#
+
+parse_cli_options "$@"
+
+if ! is_mero_installed && [[ -z $rpm_pkg ]] ; then
+    die 'Mero rpm is not installed, either install desired Mero rpm package' \
+        'manually or provide it with -r option for automatic installation' \
+        'and removal'
+fi
+
+if [[ -n $rpm_pkg ]] ; then
+    install_mero_rpm $rpm_pkg
+else
+    m0setup="$M0_SRC_DIR/utils/m0setup"
+fi
+
+# this is required, because other test scripts might leave some
+# loopback devices attached
+if ! $update_rpm ; then
+    info 'Running m0setup cleanup'
+    $m0setup -c
+fi
+
+for ios_num in 1 ; do
+    info "--------------- m0t1fs test with $ios_num ioservice(s)  ---------------"
+
+    if ! $update_rpm ; then
+        info '/var/mero cleanup'
+        rm -rf /var/mero/{confd,ha,mds,ios*}/
+
+        info 'Running m0setup cleanup'
+        $m0setup -c
+
+        info 'Running m0setup'
+        $m0setup -i $ios_num
+
+        info 'Running mero-mkfs'
+        systemctl start mero-mkfs
+    fi
+
+    info 'Starting Mero'
+    systemctl start mero-singlenode
+
+    info 'Performing m0t1fs test'
+    do_m0t1fs_system_test
+
+    info  'Stopping Mero'
+    debug "  stopping mero-singlenode.. ($(date -u))"
+    systemctl stop mero-singlenode
+    debug "  [done] ($(date -u))"
+    sleep 5
+    debug "  stopping mero-kernel.. ($(date -u))"
+    systemctl stop mero-kernel
+    debug "  [done] ($(date -u))"
+
+    if $do_cleanup ; then
+        info 'Running m0setup cleanup'
+        $m0setup -c
+
+        info '/var/mero cleanup'
+        rm -rf /var/mero/{confd,ha,mds,ios*}/
+        rm -f $test_file_md5_path
+    fi
+
+    info 'Performing sanity checks'
+    if lsmod | grep -q m0 ; then
+        die 'failed to unload mero kernel modules'
+    else
+        debug 'looks OK, no mero kernel modules are loaded'
+    fi
+done
+
+if $do_cleanup && [[ -n $rpm_pkg ]] ; then
+    # this ugly 'sleep sync' required to workaround situation when mero-kernel
+    # doesn't have enough time to unload modules, due to buggy systemd
+    # behaviour, before rpm will remove them
+    debug 'ugly "sync" to make sure that systemd has *really* stopped all' \
+          'mero services'
+    sleep 30
+    remove_mero_rpm $rpm_pkg
+fi
+
+needs_cleanup=false

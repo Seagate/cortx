@@ -1,0 +1,18 @@
+LINUX_OBJ = @LINUX_OBJ@
+
+.PHONY: all clean module clean_module
+
+all: module
+
+clean: clean_module
+
+module: kemd.ko
+
+EXTRA_CFLAGS := -I$(src)/../../..
+obj-m += kemd.o
+
+kemd.ko:
+	make -C $(LINUX_OBJ) M=$(PWD) modules
+
+clean_module:
+	make -C $(LINUX_OBJ) M=$(PWD) clean

@@ -1,0 +1,13 @@
+[Unit]
+Description=Mero client service
+Requires=mero-kernel.service
+After=mero-kernel.service mero.service
+Before=mero-singlenode.service
+PartOf=mero-singlenode.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/mero/mero-client start
+ExecStop=/usr/libexec/mero/mero-client stop
+RemainAfterExit=yes
+KillMode=none

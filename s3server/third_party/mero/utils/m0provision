@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+
+source "/opt/seagate/eos/core/common/eos_error_codes.sh"
+source "/opt/seagate/eos/core/common/eos_util_funcs.sh"
+
+SCRIPT_ACTION=""
+
+workflow()
+{
+cat << EOF
+
+    The m0provision script will be called by the provisioner after the
+    installation of Mero RPM, for setting configurations and testing
+    sanity of the setup.
+
+EOF
+}
+
+help()
+{
+cat << EOF
+    *** CAUTION ***
+
+    The $0 script should be invoked only by the provisioner.
+    Should be invoked with sudo.
+
+    Usage:
+    sudo $0 [ACTION] ARGS
+        ACTION: post_install | init | config | test | reset
+            ARGS (post_install) : TOBE implemented.
+            ARGS (init)         : TOBE implemented.
+            ARGS (config)       : config
+            ARGS (test)         : test
+            ARGS (reset)        : TOBE implemented.
+EOF
+}
+
+do_post_install()
+{
+    msg "TOBE implemented."
+    die $ERR_NOT_IMPLEMENTED
+}
+
+do_init()
+{
+    msg "TOBE implemented."
+    die $ERR_NOT_IMPLEMENTED
+}
+
+do_config()
+{
+    /opt/seagate/eos/core/config/eos_core_cfg.sh
+    RESULT=$?
+    die $RESULT
+}
+
+do_test()
+{
+    local RESULT=0
+    msg "The mero installation will be tested for sanity."
+    msg "The following tests will be done."
+    msg "\t/opt/seagate/eos/core/sanity/eos_lnet_sanity.sh"
+    msg "\t/opt/seagate/eos/core/sanity/eos_srvc_sanity.sh"
+    msg "\t/opt/seagate/eos/core/sanity/eos_core_sanity.sh"
+
+    msg "Executing eos_lnet_sanity.sh"
+    /opt/seagate/eos/core/sanity/eos_lnet_sanity.sh
+    die_if_failed $? "Script [eos_lnet_sanity.sh] failed."
+
+    msg "Executing eos_srvc_sanity.sh"
+    /opt/seagate/eos/core/sanity/eos_srvc_sanity.sh
+    die_if_failed $? "Script [eos_srvc_sanity.sh] failed."
+
+    msg "Executing eos_core_sanity.sh"
+    /opt/seagate/eos/core/sanity/eos_core_sanity.sh
+    die_if_failed $? "Script [eos_srvc_sanity.sh] failed."
+
+    die $ERR_SUCCESS
+}
+
+do_reset()
+{
+    msg "TOBE implemented."
+    die $ERR_NOT_IMPLEMENTED
+
+}
+
+# Write all the functions and set all variables above this line.
+# main()
+
+is_sudoed
+msg "\n\nWELCOME TO THE m0 setup for the provisioner.\n\n"
+workflow
+
+if [ "$1" == "" ]; then
+    help
+    die $ERR_INVALID_ARGS
+fi
+SCRIPT_ACTION=$1
+
+case $SCRIPT_ACTION in
+
+    post_install)
+        do_post_install
+        ;;
+
+    init)
+        do_init
+        ;;
+
+    config)
+        do_config
+        ;;
+
+    test)
+        do_test
+        ;;
+
+    reset)
+        do_reset
+        ;;
+
+    *)
+        msg "Invalid action."
+        help
+        die $ERR_INVALID_ARGS
+        ;;
+esac
+
+## We donot return here, because all the cases will terminate the script

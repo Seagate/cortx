@@ -1,0 +1,229 @@
+#!/usr/bin/env bash
+set -e -o pipefail
+
+### helper script for creating GitHub releases from CircleCI jobs
+
+#
+# Global vars
+
+readonly PROG_NAME="${0##*/}"
+
+github_token="$SSG_GITHUB_MERO_CI_API_TOKEN"
+circleci_token="$SSG_CIRCLECI_MERO_CI_API_TOKEN"
+tag=$CIRCLE_TAG
+os_version=
+verbose=false
+cli_args=
+
+#
+# Usage
+
+help()
+{
+    [[ $1 == stdout ]] && usage || usage >&2
+    exit 1
+}
+
+usage()
+{
+    cat <<USAGE_END
+Usage: $PROG_NAME [options]
+
+  Helper script for creating GitHub releases from CircleCI jobs.
+
+  By default a new release is created. If '-u|--update <OSver>' is provided,
+  then the corresponding release is updated. 'OSver' must be set to a number
+  used by CircleCI to distinguish build jobs, for example:
+
+    73 corresponds to CentoOS 7.3.1611
+    74 corresponds to CentoOS 7.4.1708
+
+  Options:
+
+    -u|--update OSver          Update existing release associated with TAG by
+                               including information about OSver rpm packages.
+
+    -t|--tag TAG               Git tag that corresponds to the release.
+
+    -c|--circleci-token TOKEN  CircleCI access token.
+
+    -g|--github-token TOKEN    Github access token.
+
+    -v|--verbose               Print what's going on.
+
+    -h|--help                  Print this help screen.
+USAGE_END
+}
+
+#
+# Parse CLI options
+
+parse_cli_options()
+{
+    # Note that we use `"$@"' to let each command-line parameter expand to a
+    # separate word. The quotes around `$@' are essential!
+    # We need TEMP as the `eval set --' would nuke the return value of getopt.
+    # We need to separate TEMP declaration and assignment because 'local TEMP='
+    # would nuke the return value of getopt.
+    local TEMP
+    TEMP=$( getopt -o hvu:t:c:g: \
+                   -l help,verbose,update:,tag:,circleci-token:,github-token: \
+                   -n "$PROG_NAME" -- "$@" )
+
+    [[ $? != 0 ]] && help
+
+    # Note the quotes around `$TEMP': they are essential!
+    eval set -- "$TEMP"
+
+    while true ; do
+        case "$1" in
+            -u|--update)         os_version=$2; shift 2 ;;
+            -t|--tag)            tag=$2; shift 2 ;;
+            -c|--circleci-token) circleci_token=$2; shift 2 ;;
+            -g|--github-token)   github_token=$2; shift 2 ;;
+            -v|--verbose)        verbose=true; shift ;;
+            -h|--help)           help stdout ;;
+            --)                  shift; break ;;
+            *)                   echo 'getopt: internal error...'; exit 1 ;;
+        esac
+    done
+
+    # remaining command line arguments
+    cli_args="$@"
+}
+
+#
+# Utility functions
+
+die()
+{
+    echo -e "$PROG_NAME: ERROR: $@" >&2
+    exit 1
+}
+
+warn()
+{
+    echo -e "$PROG_NAME: WARNING: $@" >&2
+}
+
+log()
+{
+    ! $verbose || echo -e "$PROG_NAME: $@"
+}
+
+create_release()
+{
+    local payload
+    payload=$(jq --null-input \
+                 --arg tag_name "$tag" \
+                 --arg name "Mero $tag" \
+                 --arg body '# Downloads' \
+                 '{ tag_name: $tag_name, name: $name, body: $body }')
+
+    local response
+    response=$(curl -H "Authorization: token $github_token" \
+                    --silent \
+                    --location \
+                    --data "$payload" \
+                    "https://api.github.com/repos/seagate-ssg/mero/releases")
+
+    log 'verifying GitHub server response'
+    [[ $(echo "$response" | jq .url) != null ]] ||
+        die "failed to create GitHub release for '$tag' tag:\n$response"
+
+    if $verbos ; then
+        echo "$response"
+    fi
+}
+
+update_release()
+{
+    local os_release
+    local lustre_version
+    local special_release
+    case $os_version in
+        73|sage)
+            os_release='7.3.1611'
+            lustre_version='2.9.0' ;;
+            special_release=' SAGE'
+        74) os_release='7.4.1708'
+            lustre_version='2.10.3' ;;
+        75|latest)
+            os_release='7.5.1804'
+            lustre_version='2.10.4' ;;
+        *)  die "unsupported value for '-u|--update <OSver>' option: '$os_version'"
+    esac
+
+    local kmod_url="https://downloads.whamcloud.com/public/lustre/lustre-${lustre_version}/el${os_release}/client/RPMS/x86_64/kmod-lustre-client-${lustre_version}-1.el7.x86_64.rpm"
+    local lustre_client_url="https://downloads.whamcloud.com/public/lustre/lustre-${lustre_version}/el${os_release}/client/RPMS/x86_64/lustre-client-${lustre_version}-1.el7.x86_64.rpm"
+
+    release_info=$(
+        curl -H "Authorization: token $github_token" \
+            --silent \
+            --location \
+            "https://api.github.com/repos/seagate-ssg/mero/releases/tags/$tag"
+    )
+    body="$(echo "$release_info" | jq -r .body)"
+    body+=$(cat <<END_BODY
+
+
+### Centos $os_release$special_release
+[${kmod_url##*/}]($kmod_url)
+[${lustre_client_url##*/}]($lustre_client_url)
+END_BODY
+)
+
+    log "finding CircleCI build number for '$tag' tag"
+    tag_revision=$(git rev-parse ${tag}^{commit})
+    tag_build_num=$(curl -s "https://circleci.com/api/v1.1/project/github/seagate-ssg/mero?circle-token=$circleci_token" |
+                    jq -r 'map(select(.workflows.job_name == "artifacts" and .workflows.workflow_name == "master_'$os_version'" and .vcs_revision == "'$tag_revision'").build_num)|.[0]')
+
+    [[ $tag_build_num != null ]] ||
+        die "unable to find build corresponding to '$tag' tag on CircleCI"
+
+    log "getting artifacts information for build #$tag_build_num "
+    artifacts_urls=$(curl -s "https://circleci.com/api/v1.1/project/github/seagate-ssg/mero/$tag_build_num/artifacts?circle-token=$circleci_token" |
+                     jq -r '.[].url')
+
+    [[ -n $artifacts_urls ]] ||
+        die "unable to get artifacts information for build #$tag_build_num"
+
+    for url in $artifacts_urls
+    do
+        body+=$(cat <<END_BODY
+
+[${url##*/}]($url)
+END_BODY
+)
+    done
+
+    log "updating GitHub release notes for '$tag'"
+    local response
+    response=$(curl -H "Authorization: token $github_token" \
+                    --silent \
+                    --location \
+                    --data "$(jq --null-input --arg body "$body" '{ body: $body }')" \
+                    "$(echo "$release_info" | jq -r .url)")
+
+    log 'verifying GitHub server response'
+    [[ $(echo "$response" | jq .url) != null ]] ||
+        die "failed to create GitHub release for '$tag' tag:\n$response"
+
+    if $verbos ; then
+        echo "$response"
+    fi
+}
+
+#
+# Main
+
+parse_cli_options "$@"
+eval set -- "$cli_args"
+
+if [[ -z $os_version ]] ; then
+    echo 'Creating GitHub release'
+    create_release
+else
+    echo "Updating GitHub release for OS version $os_version"
+    update_release $os_version
+fi

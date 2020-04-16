@@ -1,0 +1,3 @@
+m0mero_objects += \
+                  graph/graph.o \
+                  graph/graph_xc.o

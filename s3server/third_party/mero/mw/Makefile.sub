@@ -1,0 +1,1 @@
+nobase_mero_include_HEADERS += mw/consensus.h

@@ -1,0 +1,274 @@
+#
+# Mero build
+#
+---
+- name: dynamically load variables depending on the OS type
+  include_vars: '{{ item  }}'
+  with_first_found: '{{ ansible_os_family }}.yml'
+  tags: lustre
+
+- name: install Mero build-time dependencies
+  package:
+    state: present
+    name:  '{{ mero_build_deps_pkgs }}'
+
+- name: install Mero build-time python3 dependencies
+  package:
+    state: present
+    name:  '{{ mero_build_deps_python3_pkgs }}'
+  tags: mero-build-python3
+
+- name: install Mero doc build-time dependencies
+  package:
+    state: present
+    name:  '{{ mero_doc_deps_pkgs }}'
+  tags: mero-doc
+
+- name: check if PlantUML has been already updated
+  stat: path=/usr/share/java/plantuml.jar.orig
+  register: orig_plantuml_jar
+  tags:
+    - mero-doc
+    - plantuml
+
+- name: update PlantUML to the latest version
+  when: orig_plantuml_jar.stat.exists == False
+  block:
+    - name: backup current plantuml.jar
+      copy:
+        remote_src: True
+        src: /usr/share/java/plantuml.jar
+        dest: /usr/share/java/plantuml.jar.orig
+      ignore_errors: yes
+
+    - name: remove old plantuml.jar
+      file:
+        path: /usr/share/java/plantuml.jar
+        state: absent
+
+    - name: download the latest version of plantuml.jar
+      get_url:
+        url:  https://netix.dl.sourceforge.net/project/plantuml/1.2019.3/plantuml.1.2019.3.jar
+        dest: /usr/share/java/plantuml.jar
+        mode: 0755
+  rescue:
+    # restore original PlantUML jar if latest verion download has failed
+    - name: restore original plantuml.jar
+      copy:
+        remote_src: True
+        src: /usr/share/java/plantuml.jar.orig
+        dest: /usr/share/java/plantuml.jar
+      ignore_errors: yes
+  tags:
+    - mero-doc
+    - plantuml
+
+- name: install pip modules for Mero doc build
+  become: no
+  pip:
+    name: '{{ mero_doc_pip_modules }}'
+    executable: pip3
+    extra_args: --user
+  tags: mero-doc
+
+- name: build Lustre using dkms sources
+  block:
+    - name: install lustre-client-dkms package
+      package:
+        state: present
+        name:  lustre-client-dkms
+
+    - name: check Lustre src dir
+      shell: ls -1rd /usr/src/lustre-* | head -n 1
+      register: lustre_src_dir
+      changed_when: false
+
+    - name: build Lustre sources
+      command: '{{ item }}'
+      args:
+        chdir: '{{ lustre_src_dir.stdout }}'
+        creates: Module.symvers
+      with_items:
+        - ./configure
+        - make -j4
+  tags:
+    - lustre-dkms
+    - never
+
+- name: build Lustre devel rpm
+  block:
+    - name: download Lustre src rpm
+      command: yumdownloader --source lustre
+      args:
+        chdir: /root
+        creates: ~/lustre-*.src.rpm
+
+    - name: install Lustre src rpm
+      command: rpm -ihv ~/lustre-*.src.rpm
+      args:
+        creates: ~/rpmbuild/SPECS/lustre.spec
+
+    - name: install additional Lustre build dependencies
+      package:
+        name:  '{{ lustre_build_deps_pkgs }}'
+        state: present
+
+    - name: apply Lustre spec patch
+      patch:
+        src: lustre-2.9.0.spec.patch
+        dest: ~/rpmbuild/SPECS/lustre.spec
+        strip: 1
+
+    - name: disable Lustre rpm strict kernel version check
+      lineinfile:
+        path: ~/rpmbuild/SOURCES/kmp-lustre.preamble
+        state: absent
+        regexp: '^Requires:.*kernel'
+
+    - name: bump local Lustre rpm build number to override stock builds
+      lineinfile:
+        path: ~/rpmbuild/SPECS/lustre.spec
+        state: present
+        regexp: '^Release: 1'
+        line: 'Release: 99%{?dist}'
+
+    - name: install Lustre rpm build dependencies
+      command: yum-builddep -y ~/rpmbuild/SPECS/lustre.spec
+      register: builddep_result
+      changed_when: '"No uninstalled build requires" not in builddep_result.stdout'
+
+    - name: build Lustre rpms
+      command: |
+        rpmbuild -bb --without servers --without lustre-tests \
+                 --define 'configure_args --disable-gss-keyring' \
+                 {{ '--define kver\ ' + ansible_env.lustre_kver if ansible_env.lustre_kver is defined else '' }} \
+                 ~/rpmbuild/SPECS/lustre.spec
+      args:
+        creates: ~/rpmbuild/RPMS/x86_64/lustre-client-devel-*.rpm
+
+    - name: read Lustre package version
+      shell: |
+        ls --reverse ~/rpmbuild/RPMS/x86_64/lustre-client-devel-*.rpm \
+        | grep -oP '(?<=lustre-client-devel-).*(?=\.rpm)' \
+        | head -n1
+      register: lustre_version
+      changed_when: false
+      check_mode: no
+
+    - name: install local Lustre rpms
+      yum:
+        name:
+          - /root/rpmbuild/RPMS/x86_64/kmod-lustre-client-{{ lustre_version.stdout }}.rpm
+          - /root/rpmbuild/RPMS/x86_64/lustre-client-{{ lustre_version.stdout }}.rpm
+        state: present
+      when: ansible_distribution_version is version('7.6.1810', '>')
+      tags: lustre-custom-build
+
+    - name: clean yum metadata
+      command: yum clean metadata
+      args:
+        warn: no
+      changed_when: false
+
+    - name: create local repo dir
+      file:
+        path: /var/lib/yum/localrepos/lustre-local
+        state: directory
+        mode: 0755
+
+    - name: copy Lustre devel rpm to local repo
+      copy:
+        src: '~/rpmbuild/RPMS/x86_64/lustre-client-devel-{{ lustre_version.stdout }}.rpm'
+        dest: /var/lib/yum/localrepos/lustre-local
+        remote_src: yes
+
+    - name: create local repo
+      command: createrepo --pretty .
+      args:
+        chdir: /var/lib/yum/localrepos/lustre-local
+        #creates: repodata
+      changed_when: false
+
+    - name: add local repo yum config
+      yum_repository:
+        name:        lustre-local
+        file:        lustre-local
+        description: Lustre local
+        baseurl:     file:///var/lib/yum/localrepos/lustre-local
+        enabled:     yes
+        gpgcheck:    no
+
+    - name: install Lustre devel rpm
+      yum:
+        name: lustre-client-devel
+        state: latest
+        update_cache: yes
+  when: ansible_os_family == 'RedHat'
+  tags:
+    - lustre-devel
+    - lustre
+
+- name: build mscgen from src rpm
+  block:
+    - name: download mscgen src rpm
+      get_url:
+        url: 'http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/27/Everything/source/tree/Packages/m/mscgen-0.20-21.fc27.src.rpm'
+        dest: /root/mscgen-0.20-21.fc27.src.rpm
+
+    - name: install mscgen src rpm
+      command: rpm -ihv ~/mscgen-*.src.rpm
+      args:
+        creates: ~/rpmbuild/SPECS/mscgen.spec
+
+    - name: install mscgen rpm build dependencies
+      command: yum-builddep -y ~/rpmbuild/SPECS/mscgen.spec
+      register: builddep_result
+      changed_when: '"No uninstalled build requires" not in builddep_result.stdout'
+
+    - name: build mscgen rpm
+      command: rpmbuild -bb ~/rpmbuild/SPECS/mscgen.spec
+      args:
+        creates: ~/rpmbuild/RPMS/x86_64/mscgen-*.rpm
+
+    - name: read mscgen devel package filename
+      shell: ls ~/rpmbuild/RPMS/x86_64/mscgen-[0-9]*.rpm
+      register: mscgen_devel_rpm
+      changed_when: false
+      check_mode: no
+
+    - name: install mscgen devel rpm
+      yum:
+        name: '{{ mscgen_devel_rpm.stdout }}'
+        state: present
+  when: ansible_os_family == 'RedHat'
+  tags:
+    - mero-doc
+
+- name: install up-to-date tools from Software Collections repo
+  block:
+    - name: install centos-release-scl repo
+      yum:
+        name:
+          - centos-release-scl
+          - scl-utils
+        state: present
+
+    - name: disable broken CentOS-SCLo-scl-rh.repo yum config
+      shell: mv /etc/yum.repos.d/CentOS-SCLo-scl-rh.repo{,.disabled}
+      args:
+        creates: /etc/yum.repos.d/CentOS-SCLo-scl-rh.repo.disabled
+        removes: /etc/yum.repos.d/CentOS-SCLo-scl-rh.repo
+      ignore_errors: yes
+
+    - name: install SCL Git 2.12
+      yum:
+        name: sclo-git212
+        state: present
+
+    - name: enable SCL Git 2.12
+      copy:
+        src: sclo-git212.sh
+        dest: /etc/profile.d/sclo-git212.sh
+  when: ansible_os_family == 'RedHat'
+  tags:
+    - software-collections

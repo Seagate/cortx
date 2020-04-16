@@ -1,0 +1,646 @@
+#!/usr/bin/env bash
+
+### set up loop devices and generate genders, disks-*.conf and halon_facts.yaml
+### files for given N K P configuration on a single node
+
+#
+# Global vars
+#
+
+# constants
+readonly PROG_NAME=$(basename $0)
+readonly SELF=$(readlink -f $0)
+readonly BASE_DIR=$(dirname $SELF)
+readonly ETC_MERO_DIR='/etc/mero'
+readonly ETC_HALON_DIR='/etc/halon'
+readonly LINUXSTOB_MIN_IOS_NUM=3
+readonly DEFAULT_POOL_WIDTH=8
+readonly DEFAULT_IMETA_POOL_WIDTH=4
+readonly MERO_SYSCONF='/etc/sysconfig/mero'
+
+# variables
+verbose=false
+do_cleanup=false
+do_loop_cleanup=false
+use_existing_loop_imgs=false
+do_gendisk=true
+do_genfacts=false
+do_mkfs=false
+cas_enabled=true
+directio=true
+activate_singlenode=false
+only_list_disks=false
+pool_width=$DEFAULT_POOL_WIDTH
+data_units=2
+parity_units=1
+ipool_width=$DEFAULT_IMETA_POOL_WIDTH
+iparity_units=1
+ios_num=1
+ios_num_is_set=false
+loop_img_dir='/var/mero'
+mero_data_dir='/var/mero'
+linuxstob_stobs_dir=
+loop_img_size_gb=64
+disk_pattern=
+linuxstob_mode=false
+clovis_apps=false
+use_m0t1fs=true
+
+#
+# Usage
+#
+
+help()
+{
+    [[ $1 == stdout ]] && usage || usage >&2
+    exit 1
+}
+
+usage()
+{
+    cat <<USAGE_END
+Usage: $PROG_NAME [-h|--help] [-v|--verbose] [options]
+
+ Options:
+
+   -P|--pool-width num     Total number of disks in the pool. So many loop
+                           devices will be provisioned. Default is ${pool_width}.
+                           In 'linuxstob' mode (-z|-Z) it defaults to ${LINUXSTOB_MIN_IOS_NUM}
+
+   -N|--data-units num     Number of data units in parity group.
+                           Default is ${data_units}.
+
+   -K|--parity-units num   Number of parity units in parity group.
+                           Default is ${parity_units}.
+
+      --ipool-width num    Total number of disks in the imeta pool. So many loop
+                           devices will be provisioned. Default is ${ipool_width}.
+
+      --iparity-units num  Number of parity units in parity group for imeta pool.
+                           Default is ${iparity_units}.
+
+   -i|--ios-number num     Number of ioservices to start. Default is ${ios_num}.
+                           In 'linuxstob' mode (-z|-Z) it defaults to ${LINUXSTOB_MIN_IOS_NUM}
+
+   -s|--disk-size GiBs     Size of image files for loop devices in GiB.
+                           Default is ${loop_img_size_gb}.
+
+   -p|--disk-pattern pat   A shell pathname expansion pattern, which specifies a
+                           set of existing block devices to be used for mero
+                           ioservice storage. By default it is none, which means
+                           plain file disk images will be generated and attached
+                           to loop devices.
+
+   -d|--loop-img-dir path  Directory, where to create image files for loop
+                           devices. Default is '$loop_img_dir'.
+
+   -E|--use-existing-loop-imgs
+
+                           Don't remove existing disk images for loop devices.
+                           Attach them if they exist. Otherwise report an error
+                           if any image file is missing.
+
+   -m|--mero-dir path      Mero metadata directory. Default is '$mero_data_dir'.
+
+   -z|--linuxstob-path path
+
+                           Use linuxstobs instead of adstobs for data storage.
+                           Linuxstobs will be created under provided 'path'
+                           argument. Implies '--no-directio'.
+
+   -Z|--linuxstob-mode [path]
+
+                           Use linuxstobs instead of adstobs for data storage.
+                           If 'path' argument provided, all mero data and
+                           meta-data will be created under that path.
+                           Implies '--no-directio'.
+
+   -I|--no-directio        Disable direct-IO for mero storage.
+
+      --no-cas             Disable CAS service.
+
+   -G|--no-gendisk         Don't generate YAML file with disk information.
+
+   -H|--halon-facts        Produce Halon facts YAML configuration instead of
+                           a genders-based config. Implies '--no-gendisk'.
+
+   -V|--clovis-apps        Enable Clovis applications in Halon facts config.
+
+   -A|--activate-singlenode-services
+
+                           Unmask singlenode services, such as 'mero-mkfs',
+                           'mero', 'mero-singlenode' and 'mero-client', in
+                           systemd's configuration. As they are masked by default
+                           after mero.rpm installation to prevent interference
+                           with Halon controlled services.
+
+   -M|--mkfs               Perform 'mero-mkfs' after generating configuration.
+
+   -l|--list-disks         List disks matched by pattern (requires --disk-pattern
+                           option).
+
+   -c|--cleanup            Clean generated config files, detach connected loop
+                           devices and remove image files. Number of loop devices
+                           is taken from '-P|--pool-width' and image files
+                           location from '-d|--loop-img-dir' options.
+
+   -C                      Clean generated config files only, doesn't affect loop
+                           devices.
+
+      --no-m0t1fs          Configures /etc/sysconfig/mero to disable the mounting
+                           of m0t1fs and then proceeds with the default execution
+                           of m0setup.
+                           Note: m0t1fs is enabled by default and not using this
+                           option re-enables the default behaviour.
+
+   -v|--verbose            Enable verbose output.
+
+   -h|--help               Print this help screen.
+USAGE_END
+}
+
+#
+# Parse CLI options
+#
+
+parse_cli_options()
+{
+    # Note that we use `"$@"' to let each command-line parameter expand to a
+    # separate word. The quotes around `$@' are essential!
+    # We need TEMP as the `eval set --' would nuke the return value of getopt.
+    TEMP=$( getopt --options hvclICEGHVAMP:N:K:i:d:m:s:p:z:Z:: \
+                   --longoptions help,verbose,cleanup,use-existing-loop-imgs,no-directio,no-gendisk,halon-facts,clovis-apps,activate-singlenode-services,mkfs,list-disks,no-cas,no-m0t1fs,pool-width:,data-units:,parity-units:,ipool-width:,iparity-units:,ios-number:,loop-img-dir:,mero-dir:,disk-size:,disk-pattern:,linuxstob-path:,linuxstob-mode:: \
+                   --name "$PROG_NAME" -- "$@" )
+
+    [[ $? -ne 0 ]] && help
+
+    # Note the quotes around `$TEMP': they are essential!
+    eval set -- "$TEMP"
+
+    while true ; do
+        case "$1" in
+            -h|--help)          help stdout ;;
+            -c|--cleanup)       do_cleanup=true; do_loop_cleanup=true; shift ;;
+            -l|--list-disks)    only_list_disks=true; shift   ;;
+            -I|--no-directio)   directio=false;       shift   ;;
+            -C)                 do_cleanup=true;      shift   ;;
+            -E|--use-existing-loop-imgs)
+                                use_existing_loop_imgs=true; shift ;;
+            -M|--mkfs)          do_mkfs=true;         shift   ;;
+            -G|--no-gendisk)    do_gendisk=false;     shift   ;;
+            -H|--halon-facts)   do_genfacts=true; do_gendisk=false; shift ;;
+            -V|--clovis-apps)   clovis_apps=true; shift ;;
+            --no-m0t1fs)        use_m0t1fs=false;     shift   ;;
+            -A|--activate-singlenode-services)
+                                activate_singlenode=true
+                                shift ;;
+            -z|--linuxstob-path)
+                                linuxstob_mode=true
+                                linuxstob_stobs_dir=$2
+                                do_gendisk=false
+                                directio=false
+                                shift 2 ;;
+            -Z|--linuxstob-mode)
+                                linuxstob_mode=true
+                                [[ -n $2 ]] && mero_data_dir=$2
+                                do_gendisk=false
+                                directio=false
+                                shift 2 ;;
+            -P|--pool-width)    pool_width=$2;        shift 2 ;;
+            -N|--data-units)    data_units=$2;        shift 2 ;;
+            -K|--parity-units)  parity_units=$2;      shift 2 ;;
+            --pool-width)       ipool_width=$2;       shift 2 ;;
+            --parity-units)     iparity_units=$2;     shift 2 ;;
+            --no-cas)           cas_enabled=false;    shift   ;;
+            -i|--ios-number)    ios_num=$2; ios_num_is_set=true; shift 2 ;;
+            -d|--loop-img-dir)  loop_img_dir=$2;      shift 2 ;;
+            -m|--mero-dir)      mero_data_dir=$2;     shift 2 ;;
+            -s|--disk-size)     loop_img_size_gb=$2;  shift 2 ;;
+            -p|--disk-pattern)  disk_pattern=$2;      shift 2 ;;
+            -v|--verbose)       verbose=true;         shift   ;;
+            --)                 shift; break ;;
+            *)                  echo 'getopt: internal error...'; exit 1 ;;
+        esac
+    done
+}
+
+#
+# Utility functions
+#
+
+log()
+{
+    echo -e "--->  $*"
+}
+
+debug()
+{
+    ! $verbose || echo -e "$PROG_NAME:  DEBUG:  $*"
+}
+
+warn()
+{
+    echo -e "$PROG_NAME: WARNING: $*"
+}
+
+die()
+{
+    echo -e "$PROG_NAME:  ERROR:  $*" >&2
+    exit 1
+}
+
+path_of()
+{
+    echo "$BASE_DIR/$1"
+}
+
+init_loop_devices()
+{
+    cleanup_loop_devices
+
+    if ! $use_existing_loop_imgs ; then
+        cleanup_loop_images
+
+        if [[ ! -d $loop_img_dir ]] ; then
+            warn "'$loop_img_dir' doesn't exist, creating.."
+            mkdir -p "$loop_img_dir"
+        fi
+
+        create_loop_images
+    fi
+
+    setup_loop_devices
+}
+
+create_loop_images()
+{
+    local imgs_cnt=$pool_width
+
+    if $cas_enabled ; then
+        imgs_cnt=$((pool_width + ipool_width))
+    fi
+
+    log "Creating $imgs_cnt file images, ${loop_img_size_gb}GiB each, in '$loop_img_dir'"
+    for i in $(seq $imgs_cnt) ; do
+        local img_file="$loop_img_dir/disk$i.img"
+        debug "$img_file"
+        dd if=/dev/zero of="$img_file" \
+           bs=1M seek=$(( $loop_img_size_gb * 1024 - 1 )) count=1 &>/dev/null
+    done
+}
+
+setup_loop_devices()
+{
+    local imgs_cnt=$pool_width
+
+    if $cas_enabled ; then
+        imgs_cnt=$((pool_width + ipool_width))
+    fi
+
+    log "Setting up loop devices"
+    for i in $(seq $imgs_cnt) ; do
+        local img_file="$loop_img_dir/disk$i.img"
+        debug "/dev/loop$i => $img_file"
+        [[ -e $img_file ]] ||
+            die "image file '$img_file' doesn't exist"
+        losetup /dev/loop$i "$img_file"
+    done
+}
+
+cleanup_loop_devices()
+{
+    log "Removing loop devices"
+    losetup -D
+}
+
+cleanup_loop_images()
+{
+    local imgs_cnt=$pool_width
+
+    if $cas_enabled ; then
+        imgs_cnt=$((pool_width + ipool_width))
+    fi
+
+    log "Removing file images"
+    for i in $(seq $imgs_cnt) ; do
+        local img_file="$loop_img_dir/disk$i.img"
+        debug "$img_file"
+        rm -f "$img_file"
+    done
+}
+
+cleanup_ios_configs()
+{
+    log "Removing disks-*.conf files"
+    for i in $(seq $ios_num) ; do
+        rm -f "$ETC_MERO_DIR/disks-ios${i}.conf"
+    done
+}
+
+cleanup_mero_configs()
+{
+    log "Removing $ETC_MERO_DIR/* files"
+
+    if $verbose ; then
+        local v_flag='-v'
+    fi
+
+    rm -f $v_flag "$ETC_MERO_DIR/genders"
+    rm -f $v_flag "$ETC_MERO_DIR/conf.xc"
+    rm -f $v_flag "$ETC_HALON_DIR/halon_facts.yaml"
+}
+
+cleanup_halon_configs()
+{
+    log "Removing $ETC_HALON_DIR/halon_facts.yaml"
+
+    if $verbose ; then
+        local v_flag='-v'
+    fi
+
+    rm -f $v_flag "$ETC_HALON_DIR/halon_facts.yaml"
+}
+
+generate_genders_config()
+{
+    local services
+    local genders_file=$ETC_MERO_DIR/genders
+    log "Generating genders file '$genders_file'"
+
+    local ios
+    for i in $(seq $ios_num) ; do
+        ios="$ios${ios:+;}ios$i"
+    done
+
+    services="ha;confd;mds;$ios"
+
+    if $cas_enabled ; then
+        services=$services";cas1"
+    fi
+
+    local hostname=$(hostname -s)
+    cat <<GENDERS_END > $genders_file
+$hostname  m0_uuid=$(uuidgen)
+$hostname  m0_lnet_nid=auto
+$hostname  m0_services=$services
+$hostname  m0_pool_width=$pool_width
+$hostname  m0_data_units=$data_units
+$hostname  m0_parity_units=$parity_units
+$hostname  m0_imeta_pool_width=$ipool_width
+$hostname  m0_imeta_parity_units=$iparity_units
+$hostname  m0_disk_size_in_bytes=$((loop_img_size_gb * 1024**3))
+$hostname  m0_directio=$directio
+$hostname  m0_datadir=$mero_data_dir
+GENDERS_END
+
+    if $linuxstob_mode ; then
+        cat <<GENDERS_END >> $genders_file
+$hostname  m0_stob_mode=linux
+GENDERS_END
+
+        if [[ -n $linuxstob_stobs_dir ]] ; then
+            cat <<GENDERS_END >> $genders_file
+$hostname  m0_stobdir=$linuxstob_stobs_dir
+GENDERS_END
+        fi
+    fi
+
+    debug "genders:\n-----BEGIN GENDERS-----\n$(cat $genders_file)\n-----END GENDERS-----"
+}
+
+generate_halon_facts()
+{
+    local m0gendisks=$(path_of m0gendisks)
+    local m0genfacts=$(path_of m0genfacts)
+
+    log "Generating halon_facts.yaml"
+
+    local vopt=$( $verbose && echo '-v' )
+    local clovis_opt=$( $clovis_apps && echo '--clovis-apps' )
+    local halon_facts="$ETC_HALON_DIR/halon_facts.yaml"
+    local pattern="${disk_pattern:-/dev/loop{1..$pool_width\}}"
+    local disks=$($m0gendisks -l -d $pool_width -p "$pattern")
+    # example output of `ip address` command that is parsed below
+    #   3: eth1    inet 172.28.128.94/24 brd 172.28.128.255 scope global dynamic eth1...
+    local ip_addr=$(ip -oneline -4 address show scope global up | grep -v docker |
+                    tail -n 1 | awk '{print $4}' | cut -d/ -f1)
+    local net_if=$(ip -oneline -4 address show scope global up | grep -v docker |
+                   tail -n 1 | awk '{print $2}')
+
+    [[ -n $disks ]] ||
+        die "failed to find disks matching '$pattern' pattern"
+
+    debug $disks
+
+    $m0genfacts -o "$halon_facts" $clovis_opt \
+                -e $net_if -N $data_units -K $parity_units $vopt $disks
+
+    local clovis_role_file=/etc/halon/role_maps/clovis.ede
+    local mero_role_file=/etc/halon/mero_role_mappings
+
+    if $clovis_apps &&
+       [[ $(readlink $mero_role_file) != $clovis_role_file &&
+          -e $clovis_role_file ]]
+    then
+        log "Switching Halon to clovis role maps"
+        ln $vopt -sf $clovis_role_file $mero_role_file
+    fi
+
+    local halond_conf=/etc/sysconfig/halond
+
+    if [[ ! -e $halond_conf ]] ; then
+        log "Generating $halond_conf"
+        echo "HALOND_LISTEN=$ip_addr:9070" > $halond_conf
+    fi
+
+    if ! grep -q lnet /etc/modprobe.d/* ; then
+        log 'Generating LNet config /etc/modprobe.d/lnet.conf'
+        echo "options lnet networks=tcp($net_if) config_on_load=1" \
+             > /etc/modprobe.d/lnet.conf
+    elif ! grep -q "lnet.*$net_if" /etc/modprobe.d/* ; then
+        warn "looks like LNet isn't configured on $net_if interface:\n" \
+             "  $(grep lnet /etc/modprobe.d/*)\n" \
+             "consider specifying the following config line, otherwise Mero" \
+             "networking may not work properly:\n" \
+             "  options lnet networks=tcp($net_if) config_on_load=1"
+    fi
+}
+
+generate_disk_configs()
+{
+    local m0gendisks=$(path_of m0gendisks)
+    local vopt=$( $verbose && echo '-v' )
+    local disks_per_ios=$(( $pool_width / $ios_num ))
+    local start_id=1
+
+    if [[ -n $disk_pattern ]] ; then
+        local disks=( $(m0gendisks -l -d $pool_width -p "$disk_pattern") )
+    fi
+
+    log "Generating disks-*.conf files"
+    for i in $(seq $ios_num) ; do
+        local disks_conf="$ETC_MERO_DIR/disks-ios${i}.conf"
+
+        if [[ -v disks ]] ; then
+            debug "$disks_conf ${disks[@]:$((start_id - 1)):$disks_per_ios}"
+            $m0gendisks -d $disks_per_ios -S $start_id -o "$disks_conf" $vopt \
+                        ${disks[@]:$((start_id - 1)):$disks_per_ios}
+        else
+            local pattern="/dev/loop{${start_id}..$(( $start_id + $disks_per_ios - 1 ))}"
+            debug "$disks_conf $pattern"
+            $m0gendisks -d $disks_per_ios -S $start_id -p "$pattern" \
+                        -o "$disks_conf" $vopt
+        fi
+
+        start_id=$(( $start_id + $disks_per_ios ))
+    done
+}
+
+activate_singlenode_services()
+{
+    local singlenonde_services='mero-mkfs mero mero-client mero-singlenode
+                                mero-server-confd mero-server-ha'
+
+    log 'Activating singlenode services'
+
+    for s in $singlenonde_services ; do
+        systemctl unmask $s
+    done
+
+    [[ ! -e /etc/systemd/system/mero-server@.service ]] ||
+        rm -vf /etc/systemd/system/mero-server@.service
+}
+
+mkfs()
+{
+    log 'Starting mero-mkfs, this may take a while...'
+
+    systemctl start mero-mkfs
+}
+
+#
+# Main
+#
+
+# exit immediately if one the commands exits with a non-zero status
+set -e
+
+parse_cli_options "$@"
+
+[[ $UID -eq 0 ]] ||
+    die 'Please, run this script with "root" privileges.'
+
+if $use_m0t1fs ; then
+    echo "Enabling m0t1fs in $MERO_SYSCONF"
+    sed -i 's/MERO_M0T1FS=no/MERO_M0T1FS=yes/g' $MERO_SYSCONF
+else
+    echo "Disabling m0t1fs in $MERO_SYSCONF"
+    sed -i 's/MERO_M0T1FS=yes/MERO_M0T1FS=no/g' $MERO_SYSCONF
+fi
+
+if $do_cleanup ; then
+    if $do_loop_cleanup ; then
+        cleanup_loop_devices
+        cleanup_loop_images
+    fi
+    cleanup_ios_configs
+    cleanup_mero_configs
+    if $do_genfacts ; then
+        cleanup_halon_configs
+    fi
+    exit 0
+fi
+
+if $activate_singlenode ; then
+    activate_singlenode_services
+    exit 0
+fi
+
+if $only_list_disks && [[ -z $disk_pattern ]] ; then
+    die "-l|--list-disks option requires the -p|--disk-pattern option"
+fi
+
+[[ -d $mero_data_dir ]] || {
+    warn "'$mero_data_dir' doesn't exist, creating.."
+    mkdir -p "$mero_data_dir" ;
+}
+
+[[ -z $linuxstob_stobs_dir || -d $linuxstob_stobs_dir ]] ||
+    die "Path '$linuxstob_stobs_dir' doesn't exist"
+
+if $linuxstob_mode ; then
+    if $ios_num_is_set && [[ $ios_num -lt $LINUXSTOB_MIN_IOS_NUM ]] ; then
+        die "In linuxtob mode number of ios services can't be less than" \
+            "$LINUXSTOB_MIN_IOS_NUM, requested ios-number was $ios_num"
+    elif ! $ios_num_is_set ; then
+        ios_num=$LINUXSTOB_MIN_IOS_NUM
+    fi
+
+    if [[ $pool_width -eq $DEFAULT_POOL_WIDTH ]] ; then
+        pool_width=$ios_num
+        data_units=1
+    fi
+fi
+
+[[ $(( $pool_width % $ios_num )) -eq 0 ]] ||
+    die "Requested configuration with pool-width=$pool_width and" \
+        "ios-number=$ios_num is not supported, pool-width should be a multiple" \
+        "of ios-number"
+
+if $do_genfacts && ($do_mkfs || [[ $ios_num -gt 1 ]]) ; then
+    die "The '-H|--halon-facts' option is incompatible with '-M|--mkfs' and" \
+        "'-i|--ios-number' options"
+fi
+
+if [[ -n $disk_pattern ]] ; then
+    info_msg="disk pattern $disk_pattern"
+elif $linuxstob_mode ; then
+    info_msg="${loop_img_size_gb}GiB linuxstobs in '${linuxstob_stobs_dir:-$mero_data_dir}'"
+else
+    info_msg="${loop_img_size_gb}GiB disks in '$loop_img_dir'"
+fi
+
+if $cas_enabled ; then
+    info_msg="[P=$ipool_width N=1 K=$iparity_units] with 1 CAS service, "$info_msg
+fi
+
+$only_list_disks ||
+    log "Requested configuration: [P=$pool_width N=$data_units K=$parity_units]" \
+        "with $ios_num ioservice(s), $info_msg"
+
+[[ -d $ETC_MERO_DIR ]] || {
+    warn "'$ETC_MERO_DIR' doesn't exist, creating.." ;
+    mkdir -p "$ETC_MERO_DIR" ;
+}
+
+[[ -d $ETC_HALON_DIR ]] || {
+    warn "'$ETC_HALON_DIR' doesn't exist, creating.." ;
+    mkdir -p "$ETC_HALON_DIR" ;
+}
+
+if [[ -n $disk_pattern ]] ; then
+    if $only_list_disks ; then
+        $(path_of m0gendisks) -l -d $pool_width -p "$disk_pattern"
+        exit 0
+    fi
+elif ! $linuxstob_mode ; then
+    init_loop_devices
+fi
+
+if $do_genfacts ; then
+    generate_halon_facts
+else
+    generate_genders_config
+    if $clovis_apps ; then
+        warn "ignoring '-V|--clovis-apps', it only makes sense when used" \
+             "together with '-H|--halon-facts'"
+    fi
+fi
+
+if $do_gendisk ; then
+    generate_disk_configs
+fi
+
+if $do_mkfs ; then
+    mkfs
+fi

@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -e
+
+#
+# Test Mero rpm update and interoperability
+#
+
+readonly PROG_NAME=$(basename $0)
+M0_SRC_DIR=$(readlink -f $0)
+M0_SRC_DIR=${M0_SRC_DIR%/*/*}
+
+. $M0_SRC_DIR/utils/functions # report_and_exit
+
+usage()
+{
+    cat <<USAGE_END
+Usage: $PROG_NAME mero-x1.y1.z1.rpm mero-x2.y2.z2.rpm
+USAGE_END
+}
+
+die()
+{
+    echo -e "$PROG_NAME:  ERROR:  $*" >&2
+    exit 1
+}
+
+info()
+{
+    echo "$PROG_NAME:  INFO:   $*"
+}
+
+# sanity checks
+if [[ -z $1 || -z $2 ]] ; then
+    die "expected 2 arguments, provided $#\n" \
+        $(usage)
+fi
+
+info "Installing base rpm '$1'"
+sudo $M0_SRC_DIR/st/m0t1fs -vv --no-cleanup -r $1
+
+info "Installing update '$2'"
+sudo $M0_SRC_DIR/st/m0t1fs -vv -u -r $2
+
+report_and_exit initscripts $?

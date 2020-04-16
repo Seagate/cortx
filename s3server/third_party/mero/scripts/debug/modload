@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+echo "set confirm off"
+b=$(pwd)
+for m in $(find . -name \*.ko) ;do
+    n=$(basename $m .ko)
+    addr=$(grep "$n " /proc/modules | cut -d' ' -f6)
+    o=$(find . -name $n.o)
+    echo "add-symbol-file $b/$o $addr"
+done

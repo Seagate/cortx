@@ -1,0 +1,4 @@
+---
+iscsi_backstore_type: fileio
+iscsi_fileio_img_num: 12
+iscsi_fileio_img_size: '2g'

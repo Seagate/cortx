@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e -o pipefail
+
+"${0%/*/*}/setup-node" jenkins-runners \
+    --skip-tags epel,lustre-devel,lustre-repo,upgrade \
+    "$@"

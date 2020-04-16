@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+set -e -o pipefail
+
+readonly PROG_NAME=$(basename $0)
+readonly SELF="$(readlink -f $0)"
+readonly TOP_SRCDIR="${SELF%/*/*}"
+dry_run=
+install_epel=true
+
+#
+# Usage
+#
+
+help()
+{
+    [[ $1 == stdout ]] && usage || usage >&2
+    exit 1
+}
+
+usage()
+{
+    cat <<USAGE_END
+
+Usage: $PROG_NAME [-h|--help] [-n|--dry-run]
+
+    -n|--dry-run        Don't perform any action, just show what would be
+                        installed.
+
+       --no-epel        Skip EPEL repository installation.
+
+    -h|--help           Print this help screen.
+USAGE_END
+}
+
+
+#
+# Parse CLI options
+#
+
+parse_cli_options()
+{
+    # Note that we use `"$@"' to let each command-line parameter expand to a
+    # separate word. The quotes around `$@' are essential!
+    # We need TEMP as the `eval set --' would nuke the return value of getopt.
+    TEMP=$( getopt -o hn --long help,dry-run,no-epel -n "$PROG_NAME" -- "$@" )
+
+    [[ $? != 0 ]] && help
+
+    # Note the quotes around `$TEMP': they are essential!
+    eval set -- "$TEMP"
+
+    while true ; do
+        case "$1" in
+            -h|--help)          help stdout ;;
+            -n|--dry-run)       dry_run=--dry-run ; shift ;;
+               --no-epel)       install_epel=false ; shift ;;
+            --)                 shift; break ;;
+            *)                  echo 'getopt: internal error...'; exit 1 ;;
+        esac
+    done
+}
+
+
+#
+# Utility functions
+#
+
+die()
+{
+    echo "$@" >&2
+    exit 1
+}
+
+distro_type()
+{
+    if [[ -f /etc/debian_version ]]; then
+        echo debian
+    elif [[ -f /etc/redhat-release ]]; then
+        echo redhat
+    else
+        die 'Error: unknown distro, only Red Hat or Debian based' \
+            'distributions are supported'
+    fi
+}
+
+parse_cli_options $@
+
+(( UID == 0 )) ||
+    die 'Error: Please, run this script with "root" privileges'
+
+if ! which ansible &>/dev/null ; then
+    case $(distro_type) in
+        redhat) yum -y install ansible ;;
+        debian) apt install ansible ;;
+    esac
+fi
+
+skip_tags=$(paste --serial --delimiters=, <<END_TAGS
+c75-workarounds
+c76-workarounds
+hare
+mero-doc
+plantuml
+s3server
+software-collections
+upgrade
+zfs
+END_TAGS
+)
+
+# python3 packages available starting from CentOS/RedHat 7.7
+if (( $(grep -Po '(?<=release 7\.).' /etc/redhat-release) < 7 )) ; then
+    skip_tags+=,mero-build-python3
+fi
+
+if ! $install_epel ; then
+    skip_tags+=,epel
+fi
+
+$TOP_SRCDIR/scripts/setup-node localhost \
+    ${dry_run} --verbose --local --skip-tags $skip_tags

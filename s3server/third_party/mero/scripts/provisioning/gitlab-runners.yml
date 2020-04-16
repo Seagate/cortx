@@ -1,0 +1,18 @@
+---
+# allow to override hosts to which this playbook applies in command line
+# using '-e override_hosts=HOSTS' option
+- hosts:  '{{ override_hosts | default("gitlab-runners") }}'
+
+  pre_tasks:
+    - name: install aptitude, which is Ansible default pkg manger on Debian based distros
+      package: name=aptitude state=present force_apt_get=yes
+      when: ansible_os_family == 'Debian'
+
+  roles:
+    - base-os
+    - serial-console
+    - docker
+    - ansible
+    - vagrant
+    - packer
+    - gitlab-runner

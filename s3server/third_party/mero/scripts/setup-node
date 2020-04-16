@@ -1,0 +1,272 @@
+#!/usr/bin/env bash
+set -eE -o pipefail
+
+### wrapper around Vagrant's ansible-playbook configs, it hides boilerplate
+### commands which allow using those configs to provision stand-alone nodes.
+
+#
+# Global vars
+#
+
+# constants
+readonly PROG_NAME="${0##*/}"
+readonly SELF="$(readlink -f $0)"
+readonly TOP_SRCDIR="${SELF%/*/*}"
+readonly VAGRANT_DIR="$TOP_SRCDIR/scripts/provisioning"
+
+# variables
+verbose=false
+ansible_verbose=
+dry_run=
+local_run=
+node_type=cmu
+remote_user=root
+remote_passwd=
+ask_pass=--ask-pass
+ssh_key=
+proxy_host=
+proxy_user=
+tags=
+skip_tags=
+cli_args=
+
+#
+# Usage
+#
+
+help()
+{
+    [[ $1 == stdout ]] && usage || usage >&2
+    exit 1
+}
+
+usage()
+{
+    cat <<USAGE_END
+Usage: $PROG_NAME [options] host1[,host2]
+       $PROG_NAME [options] inventory_name
+
+  Helper tool to run 'ansible-playbook' commands with Mero provisioning configs
+  (see scripts/provisioning/) against stand-alone nodes. Nodes can be specified
+  either as comma-separated list of hostnames/IPs or as Ansible inventory file.
+  In latter case, the '<inventory_name>.inventory' file should exist in
+  scripts/provision/ directory.
+
+  Options:
+
+    -n|--dry-run        Instruct Ansible to run in 'check' mode, i.e. only
+                        printing what would be changed on a host but not
+                        actually doing anything. NOTE: not all playbook tasks
+                        can work in this mode, some may be skipped or fail.
+
+    -l|--local          Instruct Ansible to run playbook on the localhost. It
+                        can be used to set up current host.
+
+    -U|--user NAME      A user account used to logon to a remote host. Default
+                        is '$remote_user'.
+
+    -P|--pass PASSWD    A user password used to logon to a remote host. By
+                        default it's prompted interactively on console. This can
+                        be useful when operating on multiple hosts to avoid
+                        entering the passowrd for each of them. NOTE: in order
+                        to work it requires \`sshpass\` utility to be installed.
+
+    -k|--ssh-key PATH   An absolute path to a private ssh key that is used to
+                        logon to a remote host. This is a better alternative to
+                        passowrd authentication. Default is to use whatever is
+                        provided by ssh-agent or local user's default key.
+
+       --proxy-host HOST
+
+                        A proxy host through which the target host(s) can be
+                        accessed. This is helpful in a situation when there is a
+                        single publicly accessible node in the cluster, sort of
+                        a login gateway, and all other cluster nodes can be
+                        accessed only from that node.
+
+       --proxy-user NAME
+
+                        A username to login to the proxy host. Default is same
+                        as -U|--user option or '$remote_user' if none is
+                        provided.
+
+       --no-ask-pass    Don't ask for passowrd interactively if none of the
+                        available ssh keys works and no '-P|--pass' option
+                        provided.
+
+       --limit HOST1[,HOST2]|GROUP
+
+                        Limit ansible-playbook actions to a subset of inventory
+                        hosts.
+
+    -e|--extra-vars     Pass variable overrides to \`actions-playbook\`.
+
+    -t|--node-type cmu|ssu|client
+
+                        A type of node to provision. Default is '$node_type',
+                        (ignored when using <inventory_name> form).
+
+    -T|--tags TAG1[,TAG2]
+
+                        A comman-separated list of tags to enable in Ansible
+                        playbook execution.
+
+    -S|--skip-tags TAG1[,TAG2]
+
+                        A comman-separated list of tags to skip in Ansible
+                        playbook execution.
+
+    -v|--verbose        Print Ansible commands that are executed. If specified
+                        more than once it encreases verbosity of Ansible output
+                        as well.
+
+    -h|--help           Print this help screen.
+USAGE_END
+}
+
+#
+# Logging
+#
+
+die()
+{
+    echo -e "$PROG_NAME: ERROR: $@" >&2
+    exit 1
+}
+
+log()
+{
+    ! $verbose || echo -e "$PROG_NAME: $@"
+}
+
+#
+# Parse CLI options
+#
+
+parse_cli_options()
+{
+    # Note that we use `"$@"' to let each command-line parameter expand to a
+    # separate word. The quotes around `$@' are essential!
+    # We need TEMP as the `eval set --' would nuke the return value of getopt.
+    # We need to separate TEMP declaration and assignment because 'local TEMP='
+    # would nuke the return value of getopt.
+    local TEMP
+    TEMP=$( getopt -o hvnlU:P:k:e:t:T:S: \
+                   --long help,verbose,dry-run,local,user:,pass:,extra-vars:,ssh-key:,proxy-host:,proxy-user:,node-type:,tags:,skip-tags:,no-ask-pass,limit: \
+                   -n "$PROG_NAME" -- "$@" )
+
+    [[ $? != 0 ]] && help
+
+    # Note the quotes around `$TEMP': they are essential!
+    eval set -- "$TEMP"
+
+    while true ; do
+        case "$1" in
+            -n|--dry-run)       dry_run=--check; shift ;;
+            -l|--local)         local_run='--connection local'; shift ;;
+            -U|--user)          remote_user=$2; shift 2 ;;
+            -P|--pass)          remote_passwd=$2; shift 2 ;;
+            -k|--ssh-key)       ssh_key=$2; shift 2
+                                # make path absolute if it isn't
+                                [[ $ssh_key =~ ^/ ]] || ssh_key="$PWD/$ssh_key"
+                                ;;
+            -t|--node-type)     node_type=$2; shift 2
+                                case $node_type in
+                                    cmu|ssu|client) ;;
+                                    *) die "invalid parameter '$node_type' for" \
+                                           '-t|--node-type option, supported' \
+                                           'values are: cmu, ssu, client'
+                                esac
+                                ;;
+            -T|--tags)          tags=$2; shift 2 ;;
+            -S|--skip-tags)     skip_tags=$2; shift 2 ;;
+               --proxy-host)    proxy_host=$2; shift 2 ;;
+               --proxy-user)    proxy_user=$2; shift 2 ;;
+               --no-ask-pass)   ask_pass=''; shift ;;
+               --limit)         limit_hosts=$2; shift 2 ;;
+            -e|--extra-vars)    extra_vars=$2; shift 2 ;;
+            -v|--verbose)       if $verbose ; then
+                                    ansible_verbose+=v
+                                fi
+                                verbose=true
+                                shift
+                                ;;
+            -h|--help)          help stdout ;;
+            --)                 shift; break ;;
+            *)                  echo 'getopt: internal error...' >&2; exit 1 ;;
+        esac
+    done
+
+    # remaining command line arguments
+    cli_args="$@"
+}
+
+#
+# Utility functions
+#
+
+check_dependencies()
+{
+    local ok=true
+    local msg=''
+
+    if ! which ansible &> /dev/null ; then
+        ok=false
+        msg+="\n* 'ansible' is not found, it can be installed with either of:\n"
+        msg+="  - python packet manager: pip install --user ansible\n"
+        msg+="    make sure that '\$HOME/.local/bin' is in your PATH\n"
+        if [[ $(uname) == Darwin ]] ; then
+            msg+="  - using homebrew: brew install ansible\n"
+            msg+="  - using macports: port install ansible\n"
+        fi
+    fi
+
+    $ok || die "Looks like some dependency is missing:\n$msg"
+}
+
+#
+# Main
+#
+
+parse_cli_options "$@"
+eval set -- "$cli_args"
+
+check_dependencies
+cd $VAGRANT_DIR
+
+[[ -n $1 ]] || die 'A host argument is required, please check' \
+                   "\`$PROG_NAME --help\` for details."
+
+if [[ -f $1.inventory ]] ; then
+    inventory=$1.inventory
+    node_type=$1
+else
+    remote_hosts=$1
+fi
+
+auth="${ssh_key:+--extra-vars ansible_private_key_file='$ssh_key'}"
+auth+="${remote_passwd:+\n    --extra-vars ansible_ssh_pass='$remote_passwd'}"
+ssh_proxy_cmd="ssh -W %h:%p -q ${proxy_user:-$remote_user}@$proxy_host"
+ssh_proxy="--ssh-common-args='-o ProxyCommand=\"$ssh_proxy_cmd\"'"
+
+cmd=$(cat <<COMMAND_END
+ansible-playbook ${ansible_verbose:+-$ansible_verbose} ${node_type}.yml
+    ${tags:+--tags $tags}
+    --skip-tags debuginfo,iscsi-initiator,iscsi-target,nfs-client,nfs-server,reboot,recover-man-pages,ssh,vault-release,xperior${skip_tags:+,$skip_tags}
+    --user $remote_user
+    ${local_run:-${auth:-$ask_pass}}
+    ${remote_hosts:+--extra-vars override_hosts=$remote_hosts --inventory $remote_hosts,}
+    ${inventory:+--inventory $inventory}
+    ${limit_hosts:+--limit $limit_hosts}
+    ${extra_vars:+--extra-vars $extra_vars}
+    $dry_run
+COMMAND_END
+)
+
+# TODO: due to limitation of word splitting during variable expansion it seems
+# there is no way to retain quotes around part of the string argument inside
+# $cmd variable, so the only way left is to specify this argument directly,
+# which leads to some duplication because we want to log an exact command before
+# executing it.
+log "running command: $cmd\n    ${proxy_host:+$ssh_proxy}"
+$cmd ${proxy_host:+--ssh-common-args="-o ProxyCommand='$ssh_proxy_cmd'"}

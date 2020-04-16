@@ -1,0 +1,35 @@
+nobase_mero_include_HEADERS += \
+				  fdmi/fdmi.h \
+				  fdmi/fops.h \
+				  fdmi/filter.h \
+				  fdmi/filterc.h \
+				  fdmi/flt_eval.h \
+				  fdmi/fol_fdmi_src.h \
+				  fdmi/module.h \
+				  fdmi/plugin_dock.h \
+				  fdmi/plugin_dock_internal.h \
+				  fdmi/service.h \
+				  fdmi/source_dock.h \
+				  fdmi/source_dock_internal.h \
+				  fdmi/src_rec.h
+
+mero_libmero_la_SOURCES  += \
+				  fdmi/fdmi.c \
+				  fdmi/fops.c \
+				  fdmi/filter.c \
+				  fdmi/filterc.c \
+				  fdmi/flt_eval.c \
+				  fdmi/fol_fdmi_src.c \
+				  fdmi/module.c \
+				  fdmi/plugin_dock.c \
+				  fdmi/plugin_dock_fom.c \
+				  fdmi/service.c \
+				  fdmi/source_dock.c \
+				  fdmi/source_dock_fom.c
+
+nodist_mero_libmero_la_SOURCES  += fdmi/fops_xc.c \
+				    fdmi/filter_xc.c
+
+XC_FILES   += fdmi/fops_xc.h \
+		    fdmi/filter_xc.h
+

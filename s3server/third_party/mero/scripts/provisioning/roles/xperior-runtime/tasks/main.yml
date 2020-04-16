@@ -1,0 +1,21 @@
+#
+# Xperior runtime
+#
+---
+- name: dynamically load variables depending on the OS type
+  include_vars: '{{ item  }}'
+  with_first_found: '{{ ansible_os_family }}.yml'
+  tags: xperior
+
+- name: install dependencies of Xperior perl modules
+  package:
+    state: present
+    name:  '{{ xperior_perl_modules_deps }}'
+  tags: xperior
+
+- name: install Xperior perl modules
+  shell: . /etc/profile && perlbrew exec cpanm {{ item }}
+  register: cpanm_status
+  with_items: '{{ xperior_perl_modules }}'
+  changed_when: "'is up to date' not in cpanm_status.stdout"
+  tags: xperior

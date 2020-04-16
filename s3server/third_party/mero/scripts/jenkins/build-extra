@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+#
+# Build optinal configurations
+#
+
+# auto export all variables
+set -a
+
+# exit with error code on any command failure (including pipes)
+set -e
+set -o pipefail
+
+
+ARTIFACTS=$(pwd)/artifacts
+
+# for backward compatibility with old Jenkins environment we need to `cd` into
+# 'workdir/src' directory if it exists, that is where old Jenkins jobs stored
+# mero sources
+src_dir=workdir/src
+[[ ! -d $src_dir ]] || cd $src_dir
+
+for option in enable-debug disable-m0-asserts ; do
+    sudo git clean -dfx
+    sudo git submodule foreach git clean -dfx
+    ./autogen.sh
+    ./configure --$option |& tee $ARTIFACTS/configure-$option.log
+    make -j |& tee $ARTIFACTS/make-$option.log
+done

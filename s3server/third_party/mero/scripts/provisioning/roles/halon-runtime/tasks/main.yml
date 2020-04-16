@@ -1,0 +1,15 @@
+#
+# Halon runtime
+#
+---
+- name: dynamically load variables depending on the OS type
+  include_vars: '{{ item  }}'
+  with_first_found: '{{ ansible_os_family }}.yml'
+  tags: halon
+
+- name: install Halon run-time dependencies
+  package:
+    state: present
+    name:  '{{ halon_runtime_deps_pkgs }}'
+  tags:
+    - halon

@@ -1,0 +1,31 @@
+/*
+ * COPYRIGHT 2017 XYRATEX TECHNOLOGY LIMITED
+ *
+ * THIS DRAWING/DOCUMENT, ITS SPECIFICATIONS, AND THE DATA CONTAINED
+ * HEREIN, ARE THE EXCLUSIVE PROPERTY OF XYRATEX TECHNOLOGY
+ * LIMITED, ISSUED IN STRICT CONFIDENCE AND SHALL NOT, WITHOUT
+ * THE PRIOR WRITTEN PERMISSION OF XYRATEX TECHNOLOGY LIMITED,
+ * BE REPRODUCED, COPIED, OR DISCLOSED TO A THIRD PARTY, OR
+ * USED FOR ANY PURPOSE WHATSOEVER, OR STORED IN A RETRIEVAL SYSTEM
+ * EXCEPT AS ALLOWED BY THE TERMS OF XYRATEX LICENSES AND AGREEMENTS.
+ *
+ * YOU SHOULD HAVE RECEIVED A COPY OF XYRATEX'S LICENSE ALONG WITH
+ * THIS RELEASE. IF NOT PLEASE CONTACT A XYRATEX REPRESENTATIVE
+ * http://www.xyratex.com/contact
+ *
+ * Original author: Valery V. Vorotyntsev <valery.vorotyntsev@seagate.com>
+ * Original creation date: 14-Feb-2017
+ */
+
+#include "lib/assert.h"  /* m0_failed_condition */
+#include "lib/string.h"  /* m0_streq */
+#include "ut/ut.h"
+
+void test_0C(void)
+{
+	M0_UT_ASSERT(m0_failed_condition == NULL);
+	M0_UT_ASSERT(!_0C(true && _0C(false)));
+	M0_UT_ASSERT(m0_streq(m0_failed_condition, "false"));
+	M0_UT_ASSERT(_0C(true));
+	M0_UT_ASSERT(m0_failed_condition == NULL);
+}
