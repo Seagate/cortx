@@ -71,7 +71,137 @@ TODO
 
 ## Code reviews and commits
 
-TODO
+### Getting Git / Gerit to Work
+Update Git to the latest version
+With older git version, you might be getting errors with commit hook, like this one:
+
+
+> $ git commit
+> git: 'interpret-trailers' is not a git command. See 'git --help'.
+cannot insert change-id line in .git/COMMIT_EDITMSG
+
+Fix (for CentOS 7.x):
+
+ > $ yum remove git
+ 
+ > $ yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
+ 
+ > $ yum -y install  git2u-all
+ 
+ > $ yum-config-manager --disable ius/x86_64 # prevent accidental updates from this repo
+
+Installing clang-format
+
+ > $ mkdir -p ~/Downloads/clang ~/bin
+ 
+ > $ cd ~/Downloads/clang
+ 
+ > $ wget http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-linux-x86_64-centos6.tar.xz
+ 
+ > $ tar -xvJf clang+llvm-3.8.0-linux-x86_64-centos6.tar.xz
+ 
+ > $ ln -s ~/Downloads/clang/clang+llvm-3.8.0-linux-x86_64-centos6/bin/git-clang-format ~/bin/git-clang-format
+ 
+Setup the git config options
+
+ > $ git config --global user.name ‘Your Name’
+ 
+ > $ git config --global user.email ‘Your.Name@seagate.com’
+
+### To work on a feature and save your code to git
+Ensure you have checkout out ‘master’ branch
+
+> $ git checkout master
+
+Now checkout your new branch for saving your code
+Example git checkout -b dev/<username>/<feature>
+Username = name or initials, example “John” or just “JB”
+
+> $ git checkout -b dev/s3_sync
+
+Make Changes
+
+Add files to be pushed to git to staged area
+
+> $ git add server/somefile.c
+> $ git add ut/someotherfile.c
+
+Add all such files
+
+Now commit your changes
+
+> $ git commit -m ‘S3 - Some change’
+
+Check git log to see your commit, verify the author name
+
+> $ git log 
+
+Once your changes are committed locally, it's time to push up to server
+push to your branch [Use this only if you want to backup your code, else prefer gerrit steps below]
+
+> $ git push origin dev/s3_sync
+
+### To work on a feature and submit review to gerrit
+Ensure you have checkout “master” branch
+
+> $ git checkout master
+
+> $ git checkout -b dev/s3_sync
+
+Make code changes
+
+Add files to be pushed to git to staged area
+
+> $ git add server/somefile.cc
+
+Add all such files
+
+Now commit your changes
+
+> $ git commit -m ‘S3 - Some description of change’
+
+Check git log to see your commit, verify the author name
+
+> $ git log 
+
+Note here the commit hook should add a ChangeID, something like 
+~~~
+commit a41a6d839148026cc0c3b838352529e10898e5dc
+Author: Rajesh Nambiar <rajesh.nambiar@seagate.com>
+Date:   Thu Apr 16 00:55:01 2020 -0600
+
+    EOS-7148: This parameter not supported by systemd in our hardware
+
+    Change-Id: I1ce3d04e74d56c11645a95b1d523e72b0cc01e17
+
+~~~
+
+Once your changes are committed locally, it's time to push up the review to gerrit
+push to ‘master’ branch
+> $ git push origin HEAD:refs/for/master
+
+If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
+> $ git commit --amend
+
+### How to rebase?
+Let’s say you want to rebase dev/s3_sync with latest changes in master branch.
+Here are the steps:
+Ensure there are no local changes, if yes take a backup and git stash so local is clean
+> $ git stash
+
+Update local master branch
+> $ git checkout master
+> $ git pull origin master  (alternatively git pull --rebase)
+
+Update local dev/s3_sync branch
+> $ git checkout dev/s3_sync
+> $ git pull origin dev/s3_sync  (alternatively git pull --rebase)
+
+Start the rebase to pull master in currently checked out dev/kd/myfeature
+> $ git rebase master
+
+Test your local rebase and push upstream using step
+> $ git push origin HEAD:refs/for/master
 
 ### You're all set & You're awesome
 
