@@ -4,7 +4,7 @@ Before cloning, however, you have your VMs setup with specifications mentioned i
 
 ## Accessing the code right way
 (For phase 1) Latest code which is getting evolved, advancing and contributed is on the gerrit server.
-Seagate contributor will be refernecing, cloning and committing code to/from this [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
+Seagate contributor will be referencing, cloning and committing code to/from this [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
 
 Following steps will make your access to server hassel free.
 
@@ -49,7 +49,7 @@ Getting the main CORTX code on your system is straightforward.
      `$ pip3 install ply`
    
   
-## Compiliation and Running Unit Test
+## Compilation and Running Unit Test
 
 All following commands assumes that user is already into it's main source directory.
 
