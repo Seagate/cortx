@@ -51,7 +51,7 @@ All following commands assumes that user is already into it's main source direct
   * `$ ./update-hosts.sh`
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.
   * `$ ./jenkins-build.sh`
-    * If you face issue with clang-format, refer [here](MeroQuickStart.md#Installing-clang--format).
+    * If you face issue with clang-format, refer [here](MeroQuickStart.md#Installing-clang\-format).
 
 KABOOM!!!
   
