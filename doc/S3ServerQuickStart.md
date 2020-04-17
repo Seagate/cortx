@@ -22,18 +22,23 @@ You are all set to fetch S3Server repo now.
 
 ## Cloning S3Server Repository
 Getting the main S3Server code on your system is straightforward.
-1. $ cd path/to/your/dev/directory
-2. $ export GID=<your_seagate_GID> # this will make subsequent steps easy to copy-paste :)
-3. $ git clone "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/s3server"
+1. `$ cd path/to/your/dev/directory`
+2. `$ export GID=<your_seagate_GID>` # this will make subsequent steps easy to copy-paste :)
+3. `$ git clone "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/s3server"`
 4. Enable some pre-commit hooks required before pushing your changes to remote.
-  * $ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg "s3server/.git/hooks/"
-5. cd s3server
-6. git submodule update --init --recursive && git status
+  * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg "s3server/.git/hooks/"`
+    
+    if permission denied, then do following
+    
+    `$ chmod 600 /root/.ssh/id_rsa`
+
+5. `$ cd s3server`
+6. ` $git submodule update --init --recursive && git status`
 
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
-1. $ cd ./scripts/env/dev
-2. $ ./init.sh
+1. `$ cd ./scripts/env/dev`
+2. `$ ./init.sh`
   * At some point of execution script will prompt for following password, enter those as mentioned below.
     * SSH password: `XYRATEX`
     * Enter new password for openldap rootDN:: `seagate`
@@ -43,9 +48,9 @@ This is a one time initialization when we do clone the repository or there is a 
 ## Compilation and Running Unit Test
 All following commands assumes that user is already into it's main source directory.
 1. Setup host system
-  * $ ./update-hosts.sh
+  * `$ ./update-hosts.sh`
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.
-  * $ ./jenkins-build.sh
+  * `$ ./jenkins-build.sh`
 
 KABOOM!!!
   
