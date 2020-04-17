@@ -78,7 +78,7 @@ TODO
 
 ### Getting Git / Gerit to Work
 Update Git to the latest version
-With older git version, you might be getting errors with commit hook, like this one:
+with older git version, you might be getting errors with commit hook, like this one:
 
 
 > $ git commit
