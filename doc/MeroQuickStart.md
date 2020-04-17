@@ -20,21 +20,17 @@ You are all set to fetch mero repo now.
 
 ## Cloning CORTX
 Getting the main CORTX code on your system is straightforward.
-1. `$ cd path/to/your/dev/directory`
-2. `$ export GID=<your_seagate_GID>` # this will make subsequent sets easy to copy-paste :)
-3. `$ git clone --recursive ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
-4. `$ cd mero`
-5. Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
+1. `$ sudo -s`
+2. `$ cd path/to/your/dev/directory`
+3. `$ export GID=<your_seagate_GID>` # this will make subsequent sets easy to copy-paste :)
+4. `$ git clone --recursive ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+5. `$ cd mero`
+6. Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
   * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg .git/hooks`
-   
-    if permission denied, then do following
-   
-    `$ chmod 600 /root/.ssh/id_rsa`
-  
-6. Build necessaries dependencies
+7. Build necessaries dependencies
   * To install all dependent packages like lustre, pip, etc.
   
-    `$ sudo ./scripts/install-build-deps` 
+    `$ ./scripts/install-build-deps` 
    
    * In case pip installation failure using scripts do following
    
@@ -44,9 +40,9 @@ Getting the main CORTX code on your system is straightforward.
     
    * If fails with dependency of pip3 , install pip3 using following
     
-     `$ sudo yum install python34-setuptools`
+     `$ yum install python34-setuptools`
     
-     `$ sudo easy_install- 3.4 pip`
+     `$ easy_install- 3.4 pip`
     
    * If fails for 'ply' dependency, install ply using following
    
@@ -61,17 +57,16 @@ All following commands assumes that user is already into it's main source direct
  * `$ ./scripts/m0 make`
   
 2. Running Unit Tests (UTs)
- * `$ sudo ./scripts/m0 run-ut`
+ * `$ ./scripts/m0 run-ut`
     > Feel free to expore other options of this run-ut command. Try : sudo run-ut --help
-    > sudo access is necessary as inserts relevant kernel modules beforehand.
     
 3. For kernel space UTs
-  * `$ sudo ./scripts/m0 run-kut`
+  * `$ ./scripts/m0 run-kut`
   
 4. Running a system test  
   
    As an example for clovis module system test can be run using following command :
-  * `$ sudo ./clovis/st/utils/clovis_sync_replication_st.sh`
+  * `$ ./clovis/st/utils/clovis_sync_replication_st.sh`
   
 KABOOM!!!
   
