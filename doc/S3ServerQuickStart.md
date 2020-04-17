@@ -24,7 +24,7 @@ You are all set to fetch S3Server repo now.
 Getting the main S3Server code on your system is straightforward.
 1. `$ cd path/to/your/dev/directory`
 2. `$ export GID=<your_seagate_GID>` # this will make subsequent steps easy to copy-paste :)
-3. `$ git clone "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/s3server"`
+3. `$ git clone "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/s3server"` ( It has been assumed that `git` is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
 4. Enable some pre-commit hooks required before pushing your changes to remote.
   * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg "s3server/.git/hooks/"`
     
