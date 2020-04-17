@@ -60,7 +60,7 @@ TODO
 
 ## Code reviews and commits
 
-To follow step by step process refer `Code reviews and commits` section [here](MeroQuickStart.md).
+To follow step by step process refer `Code reviews and commits` section [here](MeroQuickStart.md#Code-reviews-and-commits).
 
 ### You're all set & You're awesome
 
