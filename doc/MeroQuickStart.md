@@ -129,6 +129,7 @@ Make Changes
 Add files to be pushed to git to staged area
 
 > $ git add server/somefile.c
+
 > $ git add ut/someotherfile.c
 
 Add all such files
@@ -196,15 +197,18 @@ Ensure there are no local changes, if yes take a backup and git stash so local i
 
 Update local master branch
 > $ git checkout master
+
 > $ git pull origin master  (alternatively git pull --rebase)
 
 Update local dev/s3_sync branch
 > $ git checkout dev/s3_sync
+
 > $ git pull origin dev/s3_sync  (alternatively git pull --rebase)
 
 Start the rebase to pull master in currently checked out dev/kd/myfeature
 > $ git rebase master
 
+This might raise merge conflicts. fix all the merge conflicts cautiously.
 Test your local rebase and push upstream using step
 > $ git push origin HEAD:refs/for/master
 
