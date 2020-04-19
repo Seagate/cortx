@@ -10,41 +10,18 @@ As such, Seagate has worked hard to understand both the software and hardware re
 
 To ensure maximum utililization and code quality and to avoid vendor lock-in, Seagate is open-sourcing CORTX: a distributed object storage system designed for efficient, mass-capacity, HDD-utilization.
 
-## Building, Deploying, and Contributing
+## How to Contribute
 
-Please refer to our [online](https://docs.google.com/spreadsheets/d/1JkO1aI7wQy9LjANMTOU0XQAX8AqBOSI3DuWV4h_zPEM/edit#gid=859916141) [documentation](https://seagatetechnology.sharepoint.com/sites/GMSites/mero-launch-pad) for detailed technical information about how to build and deploy CORTX as well as for in-depth technical discussion about the architecture and many of the internal data structures used.
-
-## Running the tests
-
-Explain how to run the automated tests as well as the end to end tests for this system.  Also include how to conduct performance benchmarking.
+Please refer to our [Quick Start Guide)[doc/QUICK_START.md] for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](mero/doc/coding-style.md) for a description of our code style guidelines.
 
 ### Discussion of the CI/CD
+
 
 Explain what these tests test and why
 
 ```
 Give an example
 ```
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.  Please refer to our [Style Guide](mero/doc/coding-style.md) for a description of our code style guidelines.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
@@ -54,11 +31,7 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENS
 * Documentation for the latest version can be find under [here](https://github.com/Seagate/cortx/tree/master/doc). (TODO: link to actual reference documents)
 * [Seagate CORTX Forum](if possible to have) is a place to ask questions and find community resources. Another way is to reach out for our [SUPPORT](SUPPORT.md)
 * Check the [Issues section](https://github.com/Seagate/cortx/issues) on github if you find a bug or have a feature request. Please check existing Issues before opening a new one.
-* If you're interested in contributing to Seagate's CORTEX community, please check [Contributions Guide](CONTRIBUTING.md). (TBD : we can link contribution part here, instead of keeping that seperate)
+* If you're interested in contributing to Seagate's CORTX community, please check [Contributions Guide](CONTRIBUTING.md). (TBD : we can link contribution part here, instead of keeping that seperate)
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
+## THANK YOU
+We know that your time is limited and split between many worthwhile pursuits and we appreciate you stopping by to check out our community.  Seagate is fully dedicated to our mission to produce open source technologies to help the world save more data and thereby solve more challenging data problems.  We're so glad that you're considering helping us with this mission.
