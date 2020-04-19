@@ -214,7 +214,7 @@ Test your local rebase and push upstream using step
 
 ### You're all set & You're awesome
 
-In case of any query feel free to write to our [SUPPORT](support.md).
+In case of any query feel free to write to our [SUPPORT](SUPPORT.md).
 
 Let's start without a delay to contribute to seagate's open source initiative and join this movement with us keeping a common goal of making data storage better, more efficient and more accessible.
 
