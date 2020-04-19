@@ -12,7 +12,7 @@ To ensure maximum utililization and code quality and to avoid vendor lock-in, Se
 
 ## How to Contribute
 
-Please refer to our [Quick Start Guide)[doc/QUICK_START.md] for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](mero/doc/coding-style.md) for a description of our code style guidelines.
+Please refer to our [Quick Start Guide](doc/QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](mero/doc/coding-style.md) for a description of our code style guidelines.
 
 ### Discussion of the CI/CD
 
