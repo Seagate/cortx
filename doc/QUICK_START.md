@@ -4,11 +4,11 @@ CORTX QUICK START GUIDE
 1. Set up your own [Virtual Machine](VIRTUAL_MACHINE.md) or get a [DevVM](DEV_VM.md) from CORTX lab
 2. Configure your VM
 3. [Getting mero ready](MeroQuickStart.md)
-4. Ideas for contributions
-5. Submitting contributions [link to demo video](https://seagatetechnology.sharepoint.com/:v:/r/sites/CORTX/Shared%20Documents/EOS-Training/EOS%20Core%20Training/Codacy%20work%20sync.mp4?csf=1&web=1&e=QQcePf)
-6. Communicating with the community
+4. [Getting S3 ready](S3QuickStart.md)
+5. [Ideas for contributions](SuggestedContributions.md)
+6. Submitting contributions [link to demo video](https://seagatetechnology.sharepoint.com/:v:/r/sites/CORTX/Shared%20Documents/EOS-Training/EOS%20Core%20Training/Codacy%20work%20sync.mp4?csf=1&web=1&e=QQcePf)
 
-Support
+Support and Community Discussions
 -------
 Please refer to [this page](SUPPORT.md) for additional help.
 
