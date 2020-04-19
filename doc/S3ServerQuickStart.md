@@ -37,13 +37,16 @@ Getting the main S3Server code on your system is straightforward.
 
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
-1. `$ cd ./scripts/env/dev`
-2. `$ ./init.sh`
-  * At some point of execution script will prompt for following password, enter those as mentioned below.
+
+  * At some point during the execution the script will prompt for following password, enter those as mentioned below.
     * SSH password: `XYRATEX`
     * Enter new password for openldap rootDN:: `seagate`
     * Enter new password for openldap IAM admin:: `ldapadmin`
   * For some system `./init.sh` fails sometimes, if it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`.
+
+1. `$ cd ./scripts/env/dev`
+2. `$ ./init.sh`
+
   
 ## Compilation and Running Unit Test
 All following commands assumes that user is already into it's main source directory.
