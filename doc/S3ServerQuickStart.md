@@ -50,13 +50,76 @@ This is a one time initialization when we do clone the repository or there is a 
 
 ## Compilation and Running Unit Test
 All following commands assumes that user is already into it's main source directory.
+### Running Unit test and System test
 1. Setup host system
   * `$ ./update-hosts.sh`
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.
   * `$ ./jenkins-build.sh`. If you face issue with clang-format, to install refer [here](MeroQuickStart.md#getting-git--gerit-to-work).
-  Make sure output log has message as shown in below image to unsure successful run of system test in `./jenkins-build.sh`.
+  Make sure output log has message as shown in below image to ensure successful run of system test in `./jenkins-build.sh`.
   
 <p align="center"><img src="../../assets/images/jenkins_script_output.PNG?raw=true"></p>
+
+### Testing using S3CLI
+1. Installation and configuration
+  * Make sure you have `easy_install` installed using `$ easy_install --version`. If it is not installed run the following command.
+    * `$ yum install python-setuptools python-setuptools-devel`
+  * Make sure you have `pip` installed using `$ pip --version`. If it is not installed run the following command.
+    * `$ python --version`, if you don't have python version 2.6.5+ then install python.
+    * `$ python3 --version`, if you don't have python3 version 3.3+ then install python3.
+    * `$ easy_install pip`
+  * Make sure S3Server and it's dependent services are running.
+    * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start S3Server and it's dependent services.
+    * `$ pgrep S3`, it should list the `PID` of S3 processes running.
+    * `$ pgrep mero`, it should list the `PID` of mero processes running.
+  * Install aws client and it's plugin
+    * `$ pip install awscli`
+    * `$ pip install awscli-plugin-endpoint`
+  * Generate aws access key id and aws secret key
+    * `$ s3iamcli -h` to check help messages.
+    * `$ s3iamcli CreateAccount -n < Account Name > -e < Email Id >` to create new user. Enter the ldap `User Id` and `password` as mentioned below. Along with other details it will generate `aws access key id` and `aws secret key` for new user, make sure you save those.
+      * Enter Ldap User Id: `sgiamadmin`
+      * Enter Ldap password: `ldapadmin`
+  * Configure AWS
+    * `$ aws configure` and enter the following details.
+      * AWS Access Key ID [None]: < ACCESS KEY >
+      * AWS Secret Access Key [None]: < SECRET KEY >
+      * Default region name [None]: US
+      * Default output format [None]: text
+  * Set Endpoint
+    * `$ aws configure set plugins.endpoint awscli_plugin_endpoint`
+    * `$ aws configure set s3.endpoint_url http://s3.seagate.com`
+    * `$ aws configure set s3api.endpoint_url http://s3.seagate.com`
+  * Make sure aws config file has following content
+    * `$ cat ~/.aws/config`
+  ```
+  [default]
+  output = text
+  region = US
+  s3 =
+      endpoint_url = http://s3.seagate.com
+  s3api =
+      endpoint_url = http://s3.seagate.com
+  [plugins]
+  endpoint = awscli_plugin_endpoint
+  ```
+  * Make sure aws credential file has your access key Id and secret key.
+    * `$ cat ~/.aws/credentials`
+2. Test cases
+  * Make Bucket
+    * `$ aws s3 mb s3://seagatebucket`, should be able to get following output on the screen
+      * `make_bucket: seagatebucket`
+  * List Bucket
+    * `$ aws s3 ls`, should be able to see the bucket we have created.
+  * Remove Bucket
+    * `$ aws s3 rb s3://seagatebucket`, bucket should get remove and should not be seen if we do list bucket.
+  * Copy local file to remote(PUT)
+    * `$ aws s3 cp test_data s3://seagatebucket/`, will copy the local file test_data and test_data object will be created under bucket.
+  * List Object
+    * `$ aws s3 ls s3://seagatebucket`, will show the object named as test_data
+  * Move local file to remote(PUT)
+    * `$ aws s3 mv test_data s3://seagatebucket/`, will move the local file test_data and test_data object will be created under bucket.
+  * Remove object 
+    * `$ aws s3 rm  s3://seagatebucket/test_data`, the test_data object should be removed and it should not be seen if we do list object.
 
 KABOOM!!!
   
