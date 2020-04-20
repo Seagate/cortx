@@ -46,9 +46,8 @@ This is a one time initialization when we do clone the repository or there is a 
 1. `$ cd ./scripts/env/dev`
 2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.  # this can take 10-15 minutes to run
 
-<p align="center"><img src="../../assets/images/init_script_output.png?raw=true"></p>
+<p align="center"><img src="../../assets/images/init_script_output.PNG?raw=true"></p>
 
-  
 ## Compilation and Running Unit Test
 All following commands assumes that user is already into it's main source directory.
 1. Setup host system
