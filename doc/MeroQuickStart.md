@@ -54,19 +54,19 @@ Getting the main CORTX code on your system is straightforward.
 All following commands assumes that user is already into it's main source directory.
 
 1. building mero
- * `$ ./scripts/m0 make`
+ * `$ sudo ./scripts/m0 make`
   
 2. Running Unit Tests (UTs)
- * `$ ./scripts/m0 run-ut`
+ * `$ sudo ./scripts/m0 run-ut`
     > Feel free to expore other options of this run-ut command. Try : sudo run-ut --help
     
 3. For kernel space UTs
-  * `$ ./scripts/m0 run-kut`
+  * `$ sudo ./scripts/m0 run-kut`
   
 4. Running a system test  
   
    As an example for clovis module system test can be run using following command :
-  * `$ ./clovis/st/utils/clovis_sync_replication_st.sh`
+  * `$ sudo ./clovis/st/utils/clovis_sync_replication_st.sh`
   
 KABOOM!!!
   
