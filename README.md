@@ -16,9 +16,7 @@ Please refer to our [Quick Start Guide](doc/QUICK_START.md) for detailed technic
 
 ### Discussion of the CI/CD
 
-
-Explain what these tests test and why
-
+TODO: Fill in this section.
 ```
 Give an example
 ```
@@ -28,10 +26,9 @@ Give an example
 This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
 ## Resources
-* Documentation for the latest version can be find under [here](https://github.com/Seagate/cortx/tree/master/doc). (TODO: link to actual reference documents)
-* [Seagate CORTX Forum](if possible to have) is a place to ask questions and find community resources. Another way is to reach out for our [SUPPORT](SUPPORT.md)
+* [Seagate Innersource CORTX Forum](https://teams.microsoft.com/l/team/19%3a036ef7d2196f4c3dbe2e73ce26672240%40thread.tacv2/conversations?groupId=8a78203a-8c7a-42ad-b964-6fbbdc900bfb&tenantId=d466216a-c643-434a-9c2e-057448c17cbe) is the place to ask questions and find friendly and welcoming community resources. More details about support can be found in our [SUPPORT file](doc/SUPPORT.md)
 * Check the [Issues section](https://github.com/Seagate/cortx/issues) on github if you find a bug or have a feature request. Please check existing Issues before opening a new one.
-* If you're interested in contributing to Seagate's CORTX community, please check [Contributions Guide](CONTRIBUTING.md). (TBD : we can link contribution part here, instead of keeping that seperate)
+* If you're interested in contributing to Seagate's CORTX community, please check [Contributions Guide](doc/CONTRIBUTING.md). 
 
 ## THANK YOU
 We know that your time is limited and split between many worthwhile pursuits and we appreciate you stopping by to check out our community.  Seagate is fully dedicated to our mission to produce open source technologies to help the world save more data and thereby solve more challenging data problems.  We're so glad that you're considering helping us with this mission.
