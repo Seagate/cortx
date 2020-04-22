@@ -1,5 +1,7 @@
 [![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/EOS-Sandbox/blob/master/LICENSE) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1d5c09ab83b344348265c170ab37d3b7)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seagate/EOS-Sandbox&amp;utm_campaign=Badge_Grade) ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg)
 
+<img src="../assets/images/cortx-logo.png?raw=true">
+
 # CORTX.  Hyperscale storage stack capabilities for all.
 
 In consultation with IDC, Seagate has determined that an immense amount of data (175 zettabytes) will be created in 2025.  Surprisingly, of this data, IDC predicts that only 17 zettabytes (about 10%) will be stored.  This at-risk 158 zettabytes of data slated to be discarded will have a tremendous amount of unrealized potential as multiple research efforts have determined that the accuracy of machine learning and data analytics directly correlates to the size of the input data set.  
