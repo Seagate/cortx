@@ -1,4 +1,6 @@
-[![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/EOS-Sandbox/blob/master/LICENSE) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1d5c09ab83b344348265c170ab37d3b7)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seagate/EOS-Sandbox&amp;utm_campaign=Badge_Grade) ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg)
+[![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/EOS-Sandbox/blob/master/LICENSE) 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c099437792d44496b720a730ee4939ce)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seagate/mero&amp;utm_campaign=Badge_Grade)
+![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg)
 
 <img src="../assets/images/cortx-logo.png?raw=true">
 
