@@ -64,9 +64,15 @@ All following commands assumes that user is already into it's main source direct
   * `$ sudo ./scripts/m0 run-kut`
   
 4. Running a system test  
+
+  To list all ST's 
+  * `$ sudo ./scripts/m0 run-st -l`
   
    As an example for clovis module system test can be run using following command :
-  * `$ sudo ./clovis/st/utils/clovis_sync_replication_st.sh`
+  * `$ sudo ./scripts/m0 run-st 52mero-singlenode-sanity`
+   
+   To run all the ST's,
+  * `$ sudo ./scripts/m0 run-st`
   
 KABOOM!!!
   
