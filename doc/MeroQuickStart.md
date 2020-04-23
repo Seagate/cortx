@@ -31,7 +31,7 @@ Getting the main CORTX code on your system is straightforward.
   * To install all dependent packages like lustre, pip, etc.
   
     `$ ./scripts/install-build-deps` 
-   
+   * Troubleshooting steps:
    * In case pip installation failure using scripts do following
    
      `$ python -m pip uninstall pip setuptools`
