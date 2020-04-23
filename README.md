@@ -21,10 +21,7 @@ Please refer to our [Quick Start Guide](doc/QUICK_START.md) for detailed technic
 
 ### Discussion of the CI/CD
 
-TODO: Fill in this section.
-```
-Give an example
-```
+Please read about our CI/CD and other automation [here](doc/CI_CD.md).
 
 ## License
 
