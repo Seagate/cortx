@@ -6,7 +6,7 @@ Before cloning, however, you have your VMs setup with specifications mentioned i
 (For phase 1) Latest code which is getting evolved, advancing and contributed is on the gerrit server.
 Seagate contributor will be referencing, cloning and committing code to/from this [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
 
-Following stepsas sudo user(sudo -s) will make your access to server hassel free.
+Following steps as sudo user(sudo -s) will make your access to server hassel free.
 
 1. Create SSH Public Key
   * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. follow the instructions throughly.
