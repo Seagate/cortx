@@ -265,7 +265,7 @@ Update local JB/S3_sync branch
 
 > $ git pull origin JB/S3_sync  (alternatively git pull --rebase)
 
-Start the rebase to pull master in currently checked out dev/kd/myfeature
+Start the rebase to pull master in currently checked out dev branch
 > $ git rebase innersource
 
 This might raise merge conflicts. fix all the merge conflicts cautiously.
