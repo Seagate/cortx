@@ -24,7 +24,7 @@ You are all set to fetch S3Server repo now.
 Getting the main S3Server code on your system is straightforward.
 1. `$ cd path/to/your/dev/directory`
 2. `$ export GID=<your_seagate_GID>` # this will make subsequent steps easy to copy-paste :)
-3. `$ git clone "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/s3server" -b innersource` (It has been assumed that `git` is preinstalled. If not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+3. `$ git clone "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/s3server" -b innersource` ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
 4. Enable some pre-commit hooks required before pushing your changes to remote.
   * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg "s3server/.git/hooks/"`
     
@@ -197,7 +197,7 @@ Check git log to see your commit, verify the author name
 
 If author name is not set properly then set using following command
 
-> git commit --amend --author="Author Name <email@address.com>"
+> $ git commit --amend --author="Author Name <email@address.com>"
 
 Once your changes are committed locally, it's time to push up to server
 push to your branch [Use this only if you want to backup your code, else prefer gerrit steps below]
@@ -229,7 +229,7 @@ Check git log to see your commit, verify the author name
 
 If author name is not set properly then set using following command
 
-> git commit --amend --author="Author Name <email@address.com>"
+> $ git commit --amend --author="Author Name <email@address.com>"
 
 Note here the commit hook should add a ChangeID, something like 
 ~~~
