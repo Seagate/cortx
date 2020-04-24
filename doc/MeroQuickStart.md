@@ -101,18 +101,6 @@ Fix (for CentOS 7.x):
  > $ yum -y install  git2u-all
  
  > $ yum-config-manager --disable ius/x86_64 # prevent accidental updates from this repo
-
-Installing clang-format
-
- > $ mkdir -p ~/Downloads/clang ~/bin
- 
- > $ cd ~/Downloads/clang
- 
- > $ wget http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-linux-x86_64-centos6.tar.xz
- 
- > $ tar -xvJf clang+llvm-3.8.0-linux-x86_64-centos6.tar.xz
- 
- > $ ln -s ~/Downloads/clang/clang+llvm-3.8.0-linux-x86_64-centos6/bin/git-clang-format ~/bin/git-clang-format
  
 Setup the git config options
 
