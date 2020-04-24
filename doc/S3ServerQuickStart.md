@@ -24,7 +24,7 @@ You are all set to fetch S3Server repo now.
 Getting the main S3Server code on your system is straightforward.
 1. `$ cd path/to/your/dev/directory`
 2. `$ export GID=<your_seagate_GID>` # this will make subsequent steps easy to copy-paste :)
-3. `$ git clone "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/s3server"` 
+3. `$ git clone "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/s3server" -b innersource`
 4. Enable some pre-commit hooks required before pushing your changes to remote.
   * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg "s3server/.git/hooks/"`
     
@@ -54,7 +54,7 @@ All following commands assumes that user is already into it's main source direct
 1. Setup host system
   * `$ ./update-hosts.sh`
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.
-  * `$ ./jenkins-build.sh`. If you face issue with clang-format, to install refer [here](MeroQuickStart.md#getting-git--gerit-to-work).
+  * `$ ./jenkins-build.sh`. If you face issue with clang-format, to install refer [here](#getting-git--gerit-to-work).
   Make sure output log has message as shown in below image to ensure successful run of system test in `./jenkins-build.sh`.
   
 <p align="center"><img src="../../assets/images/jenkins_script_output.PNG?raw=true"></p>
@@ -129,7 +129,148 @@ TODO
 
 ## Code reviews and commits
 
-To follow step by step process refer [here](MeroQuickStart.md#Code-reviews-and-commits).
+### Getting Git / Gerit to Work
+Update Git to the latest version
+with older git version, you might be getting errors with commit hook, like this one:
+
+
+> $ git commit
+> git: 'interpret-trailers' is not a git command. See 'git --help'.
+cannot insert change-id line in .git/COMMIT_EDITMSG
+
+Fix (for CentOS 7.x):
+
+ > $ yum remove git
+ 
+ > $ yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
+ 
+ > $ yum -y install  git2u-all
+ 
+ > $ yum-config-manager --disable ius/x86_64 # prevent accidental updates from this repo
+
+Setup the git config options
+
+ > $ git config --global user.name ‘Your Name’
+ 
+ > $ git config --global user.email ‘Your.Name@seagate.com’
+ 
+Installing clang-format
+
+ > $ mkdir -p ~/Downloads/clang ~/bin
+ 
+ > $ cd ~/Downloads/clang
+ 
+ > $ wget http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-linux-x86_64-centos6.tar.xz
+ 
+ > $ tar -xvJf clang+llvm-3.8.0-linux-x86_64-centos6.tar.xz
+ 
+ > $ ln -s ~/Downloads/clang/clang+llvm-3.8.0-linux-x86_64-centos6/bin/git-clang-format ~/bin/git-clang-format
+ 
+### To work on a feature and save your code to git
+Ensure you have checkout out ‘innersource’ branch
+
+> $ git checkout innersource
+
+Now checkout your new branch for saving your code
+Example git checkout -b dev/<username>/<feature>
+Username = name or initials, example “John” or just “JB”
+
+> $ git checkout -b JB/S3_sync
+
+Make Changes
+
+Add files to be pushed to git to staged area
+
+> $ git add foo/somefile.c
+
+> $ git add foo_ut/someotherfile.c
+
+Add all such files
+
+Now commit your changes
+
+> $ git commit -m ‘S3 - Some changes’
+
+Check git log to see your commit, verify the author name
+
+> $ git log 
+
+If author name is not set properly then set using following command
+
+> git commit --amend --author="Author Name <email@address.com>"
+
+Once your changes are committed locally, it's time to push up to server
+push to your branch [Use this only if you want to backup your code, else prefer gerrit steps below]
+
+> $ git push origin JB/S3_sync
+
+### To work on a feature and submit review to gerrit
+Ensure you have checkout “innersource” branch
+
+> $ git checkout innersource
+
+> $ git checkout -b JB/S3_sync
+
+Make code changes
+
+Add files to be pushed to git to staged area
+
+> $ git add foo/somefile.cc
+
+Add all such files
+
+Now commit your changes
+
+> $ git commit -m ‘S3 - Some description of change’
+
+Check git log to see your commit, verify the author name
+
+> $ git log 
+
+If author name is not set properly then set using following command
+
+> git commit --amend --author="Author Name <email@address.com>"
+
+Note here the commit hook should add a ChangeID, something like 
+~~~
+commit a41a6d839148026cc0c3b838352529e10898e5dc
+Author: Rajesh Nambiar <rajesh.nambiar@seagate.com>
+Date:   Thu Apr 16 00:55:01 2020 -0600
+
+    EOS-7148: This parameter not supported by systemd in our hardware
+
+    Change-Id: I1ce3d04e74d56c11645a95b1d523e72b0cc01e17
+~~~
+
+Once your changes are committed locally, it's time to push up the review to gerrit
+push to ‘innersource’ branch
+> $ git push origin HEAD:refs/for/innersource
+
+If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
+> $ git commit --amend
+
+### How to rebase?
+Let’s say you want to rebase JB/S3_sync with latest changes in innersource branch.
+Here are the steps:
+Ensure there are no local changes, if yes take a backup and git stash so local is clean
+> $ git stash
+
+Update local master branch
+> $ git checkout innersource
+
+> $ git pull origin innersource  (alternatively git pull --rebase)
+
+Update local JB/S3_sync branch
+> $ git checkout JB/S3_sync
+
+> $ git pull origin JB/S3_sync  (alternatively git pull --rebase)
+
+Start the rebase to pull master in currently checked out dev/kd/myfeature
+> $ git rebase innersource
+
+This might raise merge conflicts. fix all the merge conflicts cautiously.
+Test your local rebase and push upstream using step
+> $ git push origin HEAD:refs/for/innersource
 
 ### You're all set & You're awesome
 
