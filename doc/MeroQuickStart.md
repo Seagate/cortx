@@ -197,7 +197,7 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
 ~~~
 
 Once your changes are committed locally, it's time to push up the review to gerrit
-push to ‘master’ branch
+push to ‘innersource’ branch
 > $ git push origin HEAD:refs/for/innersource
 
 If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
@@ -209,17 +209,17 @@ Here are the steps:
 Ensure there are no local changes, if yes take a backup and git stash so local is clean
 > $ git stash
 
-Update local master branch
+Update local innersource branch
 > $ git checkout innersource
 
-> $ git pull origin master  (alternatively git pull --rebase)
+> $ git pull origin innersource  (alternatively git pull --rebase)
 
 Update local JB/mero_sync branch
 > $ git checkout JB/mero_sync
 
 > $ git pull origin JB/mero_sync  (alternatively git pull --rebase)
 
-Start the rebase to pull master in currently checked out dev/kd/myfeature
+Start the rebase to pull innersource in currently checked out dev/kd/myfeature
 > $ git rebase innersource
 
 This might raise merge conflicts. fix all the merge conflicts cautiously.
