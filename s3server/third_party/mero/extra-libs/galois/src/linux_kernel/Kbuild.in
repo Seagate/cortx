@@ -1,2 +1,0 @@
-obj-m     += galois.o
-ccflags-y := -I@GALOIS_ABS_SRCDIR@/include

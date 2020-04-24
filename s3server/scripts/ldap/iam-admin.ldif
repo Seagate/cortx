@@ -1,7 +1,0 @@
-# ldap admin used by apps to update ldap data
-dn: cn=sgiamadmin,dc=seagate,dc=com
-description: Seagate ldap admin for iam.
-objectclass: organizationalRole
-objectclass: simpleSecurityObject
-cn: sgiamadmin
-userPassword: {{ ldapadminpasswdhash.stdout }}

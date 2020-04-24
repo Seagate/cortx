@@ -1,2 +1,0 @@
-m0ut_objects += iscservice/ut/isc.o \
-		iscservice/ut/common.o

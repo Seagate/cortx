@@ -1,1 +1,0 @@
-m0ut_objects += m0t1fs/linux_kernel/ut/file.o m0t1fs/linux_kernel/ut/fsync.o

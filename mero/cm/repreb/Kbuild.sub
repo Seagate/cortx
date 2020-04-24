@@ -1,2 +1,0 @@
-m0mero_objects += cm/repreb/trigger_fop_xc.o \
-                  cm/repreb/sw_onwire_fop_xc.o

@@ -1,3 +1,0 @@
-m0mero_objects += fid/fid.o \
-                  fid/fid_list.o \
-                  fid/fid_xc.o

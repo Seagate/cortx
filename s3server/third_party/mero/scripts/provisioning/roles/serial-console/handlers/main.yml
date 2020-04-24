@@ -1,7 +1,0 @@
-#
-# Serial console handlers
-#
-- name: update grub.cfg
-  command: update-grub
-  failed_when: ('error' in grub_update_status.stderr)
-  register: grub_update_status

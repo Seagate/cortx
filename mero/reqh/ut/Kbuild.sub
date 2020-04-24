@@ -1,2 +1,0 @@
-m0ut_objects += reqh/ut/service.o \
-                reqh/ut/service_xc.o

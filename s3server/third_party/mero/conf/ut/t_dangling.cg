@@ -1,5 +1,0 @@
-#= Dangling object: <7000000000000001:0>
-(root-0 verno=1 rootfid=profile-0 mdpool=pool-2 imeta_pver=(0, 0)
-    mdredundancy=1 params=[] nodes=[] sites=[] pools=[] profiles=[]
-    fdmi_flt_grps=[])
-(profile-0 pools=[])

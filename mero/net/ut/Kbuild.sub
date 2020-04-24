@@ -1,2 +1,0 @@
-m0ut_objects += net/ut/bulk_if.o \
-                net/ut/buffer_pool_ut.o

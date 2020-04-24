@@ -1,1 +1,0 @@
-ut_libmero_ut_la_SOURCES += file/ut/file.c file/ut/di.c

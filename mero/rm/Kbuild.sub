@@ -1,7 +1,0 @@
-m0mero_objects += rm/rm.o \
-                  rm/rm_service.o \
-                  rm/rm_fops.o \
-                  rm/rm_foms.o \
-                  rm/rm_fops_xc.o \
-                  rm/rm_rwlock.o \
-                  rm/rm_ha.o

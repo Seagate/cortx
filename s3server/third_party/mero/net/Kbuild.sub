@@ -1,9 +1,0 @@
-m0mero_objects += net/buf.o \
-                  net/buffer_pool.o \
-                  net/domain.o \
-                  net/ep.o \
-                  net/module.o \
-                  net/net.o \
-                  net/net_otw_types_xc.o \
-                  net/tm.o \
-                  net/tm_provision.o

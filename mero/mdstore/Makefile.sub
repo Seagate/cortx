@@ -1,3 +1,0 @@
-nobase_mero_include_HEADERS += mdstore/mdstore.h
-
-mero_libmero_la_SOURCES  += mdstore/mdstore.c

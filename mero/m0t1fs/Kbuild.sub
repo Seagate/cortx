@@ -1,7 +1,0 @@
-m0mero_objects += m0t1fs/linux_kernel/m0t1fs.o \
-                  m0t1fs/linux_kernel/super.o \
-                  m0t1fs/linux_kernel/inode.o \
-                  m0t1fs/linux_kernel/dir.o \
-                  m0t1fs/linux_kernel/fsync.o \
-                  m0t1fs/linux_kernel/ioctl.o \
-                  m0t1fs/linux_kernel/file.o

@@ -1,5 +1,0 @@
-[jenkins-runners]
-qb03n[1:3]-m06.mero.colo.seagate.com
-
-[jenkins-runners:vars]
-ansible_user=root

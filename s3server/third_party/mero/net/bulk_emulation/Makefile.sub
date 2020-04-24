@@ -1,9 +1,0 @@
-nobase_mero_include_HEADERS += net/bulk_emulation/mem_xprt.h
-
-mero_libmero_la_SOURCES  += net/bulk_emulation/mem_xprt_xo.c
-
-EXTRA_DIST += net/bulk_emulation/mem_xprt_ep.c \
-              net/bulk_emulation/mem_xprt_bulk.c \
-              net/bulk_emulation/mem_xprt_msg.c \
-              net/bulk_emulation/mem_xprt_pvt.h \
-              net/bulk_emulation/mem_xprt_tm.c

@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-set -eu
-
-exec $SUDO "$M0_SRC_DIR/spiel/st/spiel_multiple_confd.sh"
-

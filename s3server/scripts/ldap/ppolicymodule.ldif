@@ -1,5 +1,0 @@
-dn: cn=module{1},cn=config
-objectClass: olcModuleList
-cn: module{1}
-olcModulePath: /usr/lib64/openldap/
-olcModuleLoad: ppolicy.la

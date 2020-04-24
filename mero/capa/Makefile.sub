@@ -1,2 +1,0 @@
-nobase_mero_include_HEADERS += capa/capa.h
-mero_libmero_la_SOURCES  += capa/capa.c

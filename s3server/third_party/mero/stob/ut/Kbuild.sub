@@ -1,5 +1,0 @@
-m0ut_objects += \
-                stob/ut/cache.o \
-                stob/ut/domain.o \
-                stob/ut/main.o \
-                stob/ut/stob.o

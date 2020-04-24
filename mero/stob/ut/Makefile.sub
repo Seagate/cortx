@@ -1,8 +1,0 @@
-ut_libmero_ut_la_SOURCES += stob/ut/adieu.c \
-                               stob/ut/ad.c \
-                               stob/ut/domain.c \
-                               stob/ut/main.c \
-                               stob/ut/cache.c \
-                               stob/ut/perf.c \
-                               stob/ut/stob.c \
-                               stob/ut/stobio.c

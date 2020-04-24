@@ -1,5 +1,0 @@
-#= No IO services
-(root-0 verno=1 rootfid=(0xb, 0x16) mdpool=pool-4 imeta_pver=pver-8
-    mdredundancy=1 params=[] nodes=[] sites=[] pools=[]
-    profiles=[profile-0] fdmi_flt_grps=[])
-(profile-0 pools=[])

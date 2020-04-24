@@ -1,5 +1,0 @@
----
-halon_runtime_deps_pkgs:
-  - gmp
-  - leveldb
-  - pcre

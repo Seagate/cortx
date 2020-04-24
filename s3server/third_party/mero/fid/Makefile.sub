@@ -1,9 +1,0 @@
-nobase_mero_include_HEADERS += fid/fid.h \
-                               fid/fid_list.h
-
-mero_libmero_la_SOURCES += fid/fid.c \
-                           fid/fid_list.c
-
-nodist_mero_libmero_la_SOURCES  += fid/fid_xc.c
-
-XC_FILES   += fid/fid_xc.h

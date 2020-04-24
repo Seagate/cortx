@@ -1,2 +1,0 @@
-m0mero_objects += \
-                  net/sock/xcode_xc.o

@@ -1,7 +1,0 @@
-m0ut_objects += rm/ut/rings.o \
-                rm/ut/rcredits.o \
-                rm/ut/rmut.o \
-                rm/ut/lcredits.o \
-                rm/ut/rm_fops.o \
-                rm/ut/rm_foms.o \
-                rm/ut/rmapi.o

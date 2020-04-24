@@ -1,6 +1,0 @@
-# ldap admin used by apps to update ldap data
-dn: cn=sgiamadmin,dc=seagate,dc=com
-changetype: modify
-replace: userPassword
-userPassword: {{ ldapadminpasswdhash.stdout }}
-

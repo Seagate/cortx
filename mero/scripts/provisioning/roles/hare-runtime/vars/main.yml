@@ -1,4 +1,0 @@
----
-consul_version: '1.7.0-beta2'
-dhall_version: '1.26.1'
-dhall_json_version: '1.4.1'

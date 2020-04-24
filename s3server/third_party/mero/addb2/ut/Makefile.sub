@@ -1,8 +1,0 @@
-ut_libmero_ut_la_SOURCES += \
-                            addb2/ut/base.c      \
-                            addb2/ut/common.c    \
-                            addb2/ut/consumer.c  \
-                            addb2/ut/histogram.c \
-                            addb2/ut/net.c       \
-                            addb2/ut/storage.c   \
-                            addb2/ut/sys.c

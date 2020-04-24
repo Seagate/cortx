@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-set -eu
-
-exec $SUDO "$M0_SRC_DIR/m0t1fs/linux_kernel/st/m0t1fs_pool_version_assignment.sh"

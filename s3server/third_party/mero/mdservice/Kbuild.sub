@@ -1,6 +1,0 @@
-m0mero_objects += mdservice/md_fops.o \
-                 mdservice/md_fops_xc.o \
-                 mdservice/md_fid.o \
-                 mdservice/fsync_fops.o \
-                 mdservice/fsync_fops_xc.o
-

@@ -1,9 +1,0 @@
-# Setup - Run setup.sh to install necessary dependencies
-
-## How to run
-
-FLASK_APP=eoscorehttp.py python -m flask run
-
-## Test examples
-
-See run-sanity-tests.sh

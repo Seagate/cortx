@@ -1,5 +1,0 @@
-m0mero_objects += \
-                  cas/cas.o \
-                  cas/cas_xc.o \
-                  cas/cas_addb2_xc.o \
-                  cas/client.o

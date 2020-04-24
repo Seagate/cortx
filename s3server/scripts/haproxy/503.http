@@ -1,5 +1,0 @@
-HTTP/1.0 503 ServiceUnavailable
-Cache-Control: no-cache
-Connection: close
-Content-Type: application/xml
-<?xml version="1.0" encoding="UTF-8"?><Error><Code>ServiceUnavailable</Code><Message>Reduce your request rate</Message><RequestId>00000000-0000-0000-0000-000000000000</RequestId></Error>

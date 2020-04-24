@@ -1,3 +1,0 @@
-EXTRA_DIST += m0t1fs/linux_kernel/ut/m0loop.c \
-              m0t1fs/linux_kernel/ut/file.c \
-	      m0t1fs/linux_kernel/ut/fsync.c

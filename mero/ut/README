@@ -1,7 +1,0 @@
-The intent of this library is to include all code, which could be potentially
-useful for several UTs and thus can be shared, avoiding duplication of
-similar code.
-
-*** NOTE ***  This library is linked as mero module and not as mero -ut
-              library. This allows to use it in both - UTs and in standalone
-	      programs (and in kernel space as well).

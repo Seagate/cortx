@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-set -eu
-
-exec $SUDO "$M0_SRC_DIR/spiel/st/m0t1fs_spiel_dix_repair.sh"

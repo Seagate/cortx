@@ -1,3 +1,0 @@
-nobase_mero_include_HEADERS += sm/sm.h
-
-mero_libmero_la_SOURCES  += sm/sm.c

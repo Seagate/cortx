@@ -1,2 +1,0 @@
-m0mero_objects += fol/fol.o \
-                  fol/fol_xc.o

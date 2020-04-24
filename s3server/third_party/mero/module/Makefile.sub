@@ -1,3 +1,0 @@
-nobase_mero_include_HEADERS += module/module.h module/instance.h module/param.h
-
-mero_libmero_la_SOURCES += module/module.c module/instance.c module/param.c

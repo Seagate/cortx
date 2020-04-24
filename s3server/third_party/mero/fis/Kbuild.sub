@@ -1,5 +1,0 @@
-m0mero_objects += \
-                  fis/fi_command_fom.o \
-                  fis/fi_command_fops.o \
-                  fis/fi_command_xc.o \
-                  fis/fi_service.o

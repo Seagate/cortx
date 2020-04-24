@@ -1,5 +1,0 @@
-# modules load and exit trap
-. @abs_top_srcdir@/utils/modload-all.sh
-
-# call mkfs with all the params passed and always do "prepare storage"
-@abs_top_srcdir@/utils/mkfs/m0mkfs $@

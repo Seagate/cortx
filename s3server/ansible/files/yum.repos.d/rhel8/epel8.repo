@@ -1,7 +1,0 @@
-[epel8]
-# TODO - after testing use internal mirror from here
-# http://eos-poc-katello1.mero.colo.seagate.com/pulp/repos/EOS/Library/custom/CentOS-8_0_1905/EPEL-8/
-baseurl = http://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/
-gpgcheck = 0
-name = Yum repo for epel8
-priority = 1

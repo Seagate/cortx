@@ -1,5 +1,0 @@
-[releases_eos_s3deps]
-baseurl = http://ci-storage.mero.colo.seagate.com/releases/eos/s3server_uploads/centos8/
-gpgcheck = 0
-name = Yum repo for s3 dependencies rpms built for eos - OS rhel/centos 8
-priority = 1

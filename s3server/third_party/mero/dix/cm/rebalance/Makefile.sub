@@ -1,7 +1,0 @@
-mero_libmero_la_SOURCES += dix/cm/rebalance/service.c \
-                           dix/cm/rebalance/trigger_fop.c \
-                           dix/cm/rebalance/cm.c \
-                           dix/cm/rebalance/sw_fop.c \
-                           dix/cm/rebalance/net.c \
-                           dix/cm/rebalance/rebalance_cp_onwire.c
-

@@ -1,4 +1,0 @@
-ut_libmero_ut_la_SOURCES += stats/ut/stats_ut.c
-
-EXTRA_DIST += \
-	   stats/ut/stats_ut_svc.c

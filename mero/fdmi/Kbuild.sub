@@ -1,7 +1,0 @@
-m0mero_objects += \
-		  fdmi/filter.o \
-		  fdmi/filter_xc.o \
-                  fdmi/fops.o \
-                  fdmi/fops_xc.o \
-		  fdmi/module.o \
-		  fdmi/plugin_dock.o

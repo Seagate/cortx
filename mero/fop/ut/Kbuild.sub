@@ -1,2 +1,0 @@
-m0ut_objects += fop/ut/fom_interpose/ms_fom_ut.o \
-                fop/ut/fom_timedwait_ut.o

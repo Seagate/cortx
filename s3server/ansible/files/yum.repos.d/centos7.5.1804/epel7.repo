@@ -1,6 +1,0 @@
-[epel7]
-# If this is changed to another repo please ensure python36 is available in new repo.
-baseurl = http://ci-storage.mero.colo.seagate.com/prvsnr/vendor/centos/epel/
-gpgcheck = 0
-name = Yum repo for epel7
-priority = 1

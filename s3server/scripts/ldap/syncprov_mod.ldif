@@ -1,8 +1,0 @@
-# syncprov overlay module file
-# Command to add module to ldap:
-# ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov_mod.ldif
-dn: cn=module,cn=config
-objectClass: olcModuleList
-cn: module
-olcModulePath: /usr/lib64/openldap
-olcModuleLoad: syncprov.la

@@ -1,8 +1,0 @@
-nobase_mero_include_HEADERS += fol/fol.h \
-                               fol/fol_private.h
-
-mero_libmero_la_SOURCES  += fol/fol.c
-
-nodist_mero_libmero_la_SOURCES  += fol/fol_xc.c
-
-XC_FILES   += fol/fol_xc.h

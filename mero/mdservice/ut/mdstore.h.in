@@ -1,6 +1,0 @@
-#pragma once
-
-#ifndef __MERO_MDSERVICE_UT_MDSTORE_H__
-#define __MERO_MDSERVICE_UT_MDSTORE_H__
-#define M0_MDSTORE_OPS_DUMP_PATH "@abs_top_srcdir@/mdservice/ut/ops.dump"
-#endif

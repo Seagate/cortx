@@ -1,6 +1,0 @@
-obj-m     += m0gf.o
-ccflags-y := -I@GF_ABS_SRCDIR@/include/gf
-
-m0gf-y = gf.o gf_method.o gf_wgen.o gf_w4.o gf_w8.o gf_w16.o gf_w32.o \
-         gf_w64.o gf_w128.o gf_rand.o gf_general.o
-

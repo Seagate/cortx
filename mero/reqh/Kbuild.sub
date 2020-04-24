@@ -1,2 +1,0 @@
-m0mero_objects += reqh/reqh.o \
-                 reqh/reqh_service.o

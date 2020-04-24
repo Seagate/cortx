@@ -1,5 +1,0 @@
-m0mero_objects += sns/ls_solve.o \
-                 sns/matvec.o \
-                 sns/parity_math.o \
-                 sns/parity_ops.o \
-                 sns/parity_repair.o

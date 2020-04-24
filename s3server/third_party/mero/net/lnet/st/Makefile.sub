@@ -1,6 +1,0 @@
-net_lnet_st_m0lnetping_SOURCES  = net/lnet/st/main.c \
-                                  net/lnet/st/ping.c \
-                                  net/lnet/st/ping.h
-
-EXTRA_DIST += net/lnet/st/linux_kernel/m0lnetping_main.c \
-              net/lnet/st/linux_kernel/m0lnetping.sh

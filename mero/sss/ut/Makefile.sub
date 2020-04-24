@@ -1,4 +1,0 @@
-ut_libmero_ut_la_SOURCES += sss/ut/sss_ut.c
-
-ut_libtestlib_la_SOURCES  = sss/ut/testlib.c
-

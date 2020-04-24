@@ -1,3 +1,0 @@
-nobase_mero_include_HEADERS += ha/halon/interface.h
-
-mero_libmero_la_SOURCES  += ha/halon/interface.c

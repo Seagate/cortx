@@ -1,6 +1,0 @@
-[Unit]
-Description=Mero cleanup
-
-[Service]
-Type=oneshot
-ExecStart=/usr/libexec/mero/mero-cleanup

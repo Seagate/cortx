@@ -1,4 +1,0 @@
-m0mero_objects += ioservice/fid_convert.o \
-                  ioservice/io_addb2_xc.o \
-                  ioservice/io_fops.o \
-                  ioservice/io_fops_xc.o

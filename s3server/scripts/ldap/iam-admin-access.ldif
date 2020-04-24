@@ -1,9 +1,0 @@
-# Add necessary permissions
-dn: olcDatabase={2}mdb,cn=config
-changetype: modify
-add: olcAccess
-# Maintain the below order of permissions
-olcAccess: {1}to dn.sub="dc=s3,dc=seagate,dc=com" by dn.base="cn=sgiamadmin,dc=seagate,dc=com" read by self
-olcAccess: {1}to dn.sub="ou=accounts,dc=s3,dc=seagate,dc=com" by dn.base="cn=sgiamadmin,dc=seagate,dc=com" write by self
-olcAccess: {1}to dn.sub="ou=accesskeys,dc=s3,dc=seagate,dc=com" by dn.base="cn=sgiamadmin,dc=seagate,dc=com" write by self
-olcAccess: {1}to dn.sub="ou=idp,dc=s3,dc=seagate,dc=com" by dn.base="cn=sgiamadmin,dc=seagate,dc=com" write by self

@@ -1,4 +1,0 @@
-ut_libmero_ut_la_SOURCES += iscservice/ut/isc.c \
-			    iscservice/ut/service_ut.c \
-			    iscservice/ut/common.h \
-			    iscservice/ut/common.c

@@ -1,9 +1,0 @@
-m0mero_objects += sss/ss_fops.o    \
-		  sss/ss_fops_xc.o \
-		  sss/ss_svc.o \
-		  sss/process_fops.o \
-		  sss/process_fops_xc.o \
-		  sss/process_foms.o \
-		  sss/device_fops.o \
-		  sss/device_fops_xc.o \
-		  sss/device_foms.o

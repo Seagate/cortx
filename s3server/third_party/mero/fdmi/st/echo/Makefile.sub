@@ -1,3 +1,0 @@
-fdmi_st_echo_m0fdmiecho_SOURCES =  fdmi/st/echo/fdmi_echo.c
-
-EXTRA_DIST += fdmi/st/echo/echo_plugin_start.sh

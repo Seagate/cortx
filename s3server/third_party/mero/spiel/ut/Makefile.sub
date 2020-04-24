@@ -1,7 +1,0 @@
-ut_libmero_ut_la_SOURCES += spiel/ut/spiel_ut.c \
-			    spiel/ut/spiel_ut_common.c \
-			    spiel/ut/spiel_ut_common.h \
-			    spiel/ut/spiel_ci_ut.c \
-			    spiel/ut/spiel_conf_ut.c
-
-CONFXC_FILES += spiel/ut/conf.xc

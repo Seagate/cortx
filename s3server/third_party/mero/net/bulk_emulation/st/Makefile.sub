@@ -1,3 +1,0 @@
-net_bulk_emulation_st_m0bulkping_SOURCES  = net/bulk_emulation/st/main.c \
-                                            net/bulk_emulation/st/ping.c \
-                                            net/bulk_emulation/st/ping.h

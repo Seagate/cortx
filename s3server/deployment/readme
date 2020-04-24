@@ -1,8 +1,0 @@
-This directory hosts the halon_facts.yaml files for various cluster setups.
-
-List of halon_facts.yaml files:
-
-1) singlenode/halon_facts.yaml
-    Cluster is defined in bootstrap-cluster.sh script under `s3single` name.
-    Cluster consists of one Mero node and one S3 server node. S3 server node
-    is configured in halon_facts.yaml file to run two instances of s3server.

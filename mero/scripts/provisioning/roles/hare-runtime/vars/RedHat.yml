@@ -1,5 +1,0 @@
----
-hare_runtime_deps_pkgs:
-  - pacemaker
-  - pcs
-  - python36

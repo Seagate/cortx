@@ -1,4 +1,0 @@
-m0mero_objects += iscservice/isc_service.o \
-		  iscservice/isc.o \
-		  iscservice/isc_fops.o \
-		  iscservice/isc_fops_xc.o

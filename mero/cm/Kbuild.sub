@@ -1,4 +1,0 @@
-m0mero_objects += cm/ag_xc.o \
-                  cm/cp_onwire_xc.o \
-                  cm/sw_xc.o
-
