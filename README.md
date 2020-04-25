@@ -15,6 +15,10 @@ As such, Seagate has worked hard to understand both the software and hardware re
 
 To ensure maximum utililization and code quality and to avoid vendor lock-in, Seagate is open-sourcing CORTX: a distributed object storage system designed for efficient, mass-capacity, HDD-utilization.
 
+## The CORTX Community
+
+We are so excited for you to be visiting us and reading this file and really hope you consider sticking around and being part of our community.  We take community very seriously and assure you that we are committed to all of the social goals of respectful interactions and inclusivity as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).  Check it out and, if it sounds like your kind of place, we bid you a warm welcome!
+
 ## How to Contribute
 
 Please refer to our [Quick Start Guide](doc/QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](mero/doc/coding-style.md) for a description of our code style guidelines.
