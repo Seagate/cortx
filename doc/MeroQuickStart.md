@@ -23,11 +23,12 @@ Getting the main CORTX code on your system is straightforward.
 1. `$ sudo -s`
 2. `$ cd path/to/your/dev/directory`
 3. `$ export GID=<your_seagate_GID>` # this will make subsequent sets easy to copy-paste :)
-4. `$ git clone --recursive ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+4. `$ git clone --recursive "ssh://g{GID}@gerrit.mero.colo.seagate.com:29418/mero" -b innersource` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
 5. `$ cd mero`
-6. Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
-  * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg .git/hooks`
-7. Build necessaries dependencies
+6. `$ gitdir=$(git rev-parse --git-dir)`
+7. Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
+  * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
+8. Build necessaries dependencies
   * To install all dependent packages like lustre, pip, etc.
   
     `$ ./scripts/install-build-deps` 
@@ -100,18 +101,6 @@ Fix (for CentOS 7.x):
  > $ yum -y install  git2u-all
  
  > $ yum-config-manager --disable ius/x86_64 # prevent accidental updates from this repo
-
-Installing clang-format
-
- > $ mkdir -p ~/Downloads/clang ~/bin
- 
- > $ cd ~/Downloads/clang
- 
- > $ wget http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-linux-x86_64-centos6.tar.xz
- 
- > $ tar -xvJf clang+llvm-3.8.0-linux-x86_64-centos6.tar.xz
- 
- > $ ln -s ~/Downloads/clang/clang+llvm-3.8.0-linux-x86_64-centos6/bin/git-clang-format ~/bin/git-clang-format
  
 Setup the git config options
 
@@ -120,61 +109,69 @@ Setup the git config options
  > $ git config --global user.email ‘Your.Name@seagate.com’
 
 ### To work on a feature and save your code to git
-Ensure you have checkout out ‘master’ branch
+Ensure you have checkout out ‘innersource’ branch
 
-> $ git checkout master
+> $ git checkout innersource
 
 Now checkout your new branch for saving your code
 Example git checkout -b dev/<username>/<feature>
 Username = name or initials, example “John” or just “JB”
 
-> $ git checkout -b dev/s3_sync
+> $ git checkout -b JB/mero_sync
 
 Make Changes
 
 Add files to be pushed to git to staged area
 
-> $ git add server/somefile.c
+> $ git add foo/somefile.c
 
-> $ git add ut/someotherfile.c
+> $ git add foo_ut/someotherfile.c
 
 Add all such files
 
 Now commit your changes
 
-> $ git commit -m ‘S3 - Some change’
+> $ git commit -m ‘mero - Some change’
 
 Check git log to see your commit, verify the author name
 
 > $ git log 
 
+If author name is not set properly then set using following command
+
+> git commit --amend --author="Author Name <email@address.com>"
+
 Once your changes are committed locally, it's time to push up to server
 push to your branch [Use this only if you want to backup your code, else prefer gerrit steps below]
 
-> $ git push origin dev/s3_sync
+> $ git push origin JB/mero_sync
 
 ### To work on a feature and submit review to gerrit
-Ensure you have checkout “master” branch
+Ensure you have checkout “innersource” branch
 
-> $ git checkout master
+> $ git checkout innersource
 
-> $ git checkout -b dev/s3_sync
+> $ git checkout -b JB/mero_sync
 
 Make code changes
 
 Add files to be pushed to git to staged area
 
-> $ git add server/somefile.cc
+> $ git add foo/somefile.cc
 
 Add all such files
 
 Now commit your changes
 
-> $ git commit -m ‘S3 - Some description of change’
+> $ git commit -m ‘mero - Some description of change’
 
 Check git log to see your commit, verify the author name
 
 > $ git log 
+
+If author name is not set properly then set using following command
+
+> git commit --amend --author="Author Name <email@address.com>"
 
 Note here the commit hook should add a ChangeID, something like 
 ~~~
@@ -185,38 +182,37 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
     EOS-7148: This parameter not supported by systemd in our hardware
 
     Change-Id: I1ce3d04e74d56c11645a95b1d523e72b0cc01e17
-
 ~~~
 
 Once your changes are committed locally, it's time to push up the review to gerrit
-push to ‘master’ branch
-> $ git push origin HEAD:refs/for/master
+push to ‘innersource’ branch
+> $ git push origin HEAD:refs/for/innersource
 
 If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
 > $ git commit --amend
 
 ### How to rebase?
-Let’s say you want to rebase dev/s3_sync with latest changes in master branch.
+Let’s say you want to rebase JB/mero_sync with latest changes in innersource branch.
 Here are the steps:
 Ensure there are no local changes, if yes take a backup and git stash so local is clean
 > $ git stash
 
-Update local master branch
-> $ git checkout master
+Update local innersource branch
+> $ git checkout innersource
 
-> $ git pull origin master  (alternatively git pull --rebase)
+> $ git pull origin innersource  (alternatively git pull --rebase)
 
-Update local dev/s3_sync branch
-> $ git checkout dev/s3_sync
+Update local JB/mero_sync branch
+> $ git checkout JB/mero_sync
 
-> $ git pull origin dev/s3_sync  (alternatively git pull --rebase)
+> $ git pull origin JB/mero_sync  (alternatively git pull --rebase)
 
-Start the rebase to pull master in currently checked out dev/kd/myfeature
-> $ git rebase master
+Start the rebase to pull innersource in currently checked out dev/kd/myfeature
+> $ git rebase innersource
 
 This might raise merge conflicts. fix all the merge conflicts cautiously.
 Test your local rebase and push upstream using step
-> $ git push origin HEAD:refs/for/master
+> $ git push origin HEAD:refs/for/innersource
 
 ### You're all set & You're awesome
 
