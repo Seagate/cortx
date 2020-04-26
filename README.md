@@ -21,7 +21,7 @@ We are so excited for you to be visiting us and reading this file and really hop
 
 ## How to Contribute
 
-Please refer to our [Quick Start Guide](doc/QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](mero/doc/coding-style.md) for a description of our code style guidelines.
+Please refer to our [Quick Start Guide](doc/QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](mero/doc/coding-style.md) for a description of our code style guidelines.  Please refer to our [Suggested Contributions List](doc/SuggestedContributions.md) to find ideas about what contributions are currently being sought.
 
 ### Discussion of the CI/CD
 
@@ -34,7 +34,7 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENS
 ## Resources
 * [Seagate Innersource CORTX Forum](https://teams.microsoft.com/l/team/19%3a036ef7d2196f4c3dbe2e73ce26672240%40thread.tacv2/conversations?groupId=8a78203a-8c7a-42ad-b964-6fbbdc900bfb&tenantId=d466216a-c643-434a-9c2e-057448c17cbe) is the place to ask questions and find friendly and welcoming community resources. More details about support can be found in our [SUPPORT file](doc/SUPPORT.md)
 * Check the [Issues section](https://github.com/Seagate/cortx/issues) on github if you find a bug or have a feature request. Please check existing Issues before opening a new one.
-* If you're interested in contributing to Seagate's CORTX community, please check [Contributions Guide](doc/CONTRIBUTING.md). 
+* If you're interested in contributing to Seagate's CORTX community, please check [Contributions Guide](doc/SuggestedContributions.md) if you want some ideas about how to contribute. 
 
 ## THANK YOU
 We know that your time is limited and split between many worthwhile pursuits and we appreciate you stopping by to check out our community.  Seagate is fully dedicated to our mission to produce open source technologies to help the world save more data and thereby solve more challenging data problems.  We're so glad that you're considering helping us with this mission.
