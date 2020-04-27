@@ -15,9 +15,7 @@ Password: seagate
 ## 4. Configuring the networking interface
 At the command prompt type `# ip a`. You will see some output like this:
 <p align="center"><img src="../../assets/images/ip_a_op.png?raw=true"></p>
-Note down the interface name (other than the loopback interface "lo"). In this case it is *ens33*. This will be required in Step 6.
-
-If the interface is down use the following command to bring it up:
+Note down the interface name (other than the loopback interface "lo"). In this case it is *ens33*. This will be required in Step 6. If the interface is down use the following command to bring it up:   
 `# ifup ens33`
 
 ## 5. Clone S3 or Mero source
@@ -29,11 +27,11 @@ Type the following command:
 you should get the following output:
 <p align="center"><img src="../../assets/images/lctl_list_nids_op.png?raw=true"></p>
 
-If you don't get this output, LNet is not up. Perform the following steps:
-`# systemctl start lnet`
-`# lnetctl net add --net tcp0 --if ens33`
+If you don't get this output, LNet is not up. Perform the following steps:  
+`# systemctl start lnet`  
+`# lnetctl net add --net tcp0 --if ens33`  
 
-And check again. Now you should be able to a similar output as shown above.
+And check again. Now you should be able to see a similar output as shown above.
 
 ## 7. Verify system time
 Verify the system time is current, if not set it to the current time using the `timedatectl` utility.
