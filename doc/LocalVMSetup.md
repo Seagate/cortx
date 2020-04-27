@@ -15,7 +15,7 @@ Password: seagate
 ## 4. Configuring the networking interface
 At the command prompt type `# ip a`. You will see some output like this:
 <p align="center"><img src="../../assets/images/ip_a_op.png?raw=true"></p>
-Note down the interface name (other than the loopback interface "lo"). In this case it is *ens33*. This will be required in Step 6. If the interface is down use the following command to bring it up:   
+Note down the interface name (other than the loopback interface "lo"). In this case it is *ens33*. This will be required in Step 6. If the interface is down use the following command to bring it up:<br/>
 `# ifup ens33`
 
 ## 5. Clone S3 or Mero source
