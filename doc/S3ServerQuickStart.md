@@ -123,10 +123,6 @@ All following commands assumes that user is already into it's main source direct
 
 KABOOM!!!
   
-## Running Jenkins / System tests
-
-TODO
-
 ## Code reviews and commits
 
 ### Getting Git / Gerit to Work
@@ -271,6 +267,25 @@ Start the rebase to pull master in currently checked out dev branch
 This might raise merge conflicts. fix all the merge conflicts cautiously.
 Test your local rebase and push upstream using step
 > $ git push origin HEAD:refs/for/innersource
+
+## Running Jenkins / System tests
+
+* To get familiar with jenkins please visit [here](https://en.wikipedia.org/wiki/Jenkins_(software)).
+
+### How to start S3Server jenkins job?
+
+1. Open S3Server jenkins [link](http://eos-jenkins.mero.colo.seagate.com/job/S3server/job/s3-gerrit-test/).
+2. Login with Username as `eos-s3server` and password as `eos-s3server`.
+3. Click on `Build With Parameters` option.
+4. You need to enter the `GIT_REFSPEC` and `label`, follow the steps as mentioned below.
+  * To get `GIT_REFSPEC` goto your review request on gerrit and click on`Download` section. The highlighted part `refs/changes/31/19331/4` in `checkout` section as shown below is your `GIT_REFSPEC`. Copy and paste it on `GIT_REFSPEC` section of jenkins.
+  
+  
+<p align="center"><img src="../../assets/images/git_refspec.PNG?raw=true"></p>
+
+  * `label` field could be anything which is easy to recognize. It isn't mandatory field though.
+5. Press on `Build` button to start building the code. 
+6. All the currently running builds can be monitored from `Build History` section on left side pane. Specific build can be monitored by clicking on build number/lable from `Build History` section.
 
 ### You're all set & You're awesome
 
