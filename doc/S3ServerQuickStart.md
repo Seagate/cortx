@@ -69,7 +69,7 @@ All following commands assumes that user is already into it's main source direct
     * `$ easy_install pip`
   * Make sure S3Server and it's dependent services are running.
     * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start S3Server and it's dependent services.
-    * `$ pgrep S3`, it should list the `PID` of S3 processes running.
+    * `$ pgrep s3`, it should list the `PID` of S3 processes running.
     * `$ pgrep mero`, it should list the `PID` of mero processes running.
   * Install aws client and it's plugin
     * `$ pip install awscli`
