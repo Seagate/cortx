@@ -240,9 +240,9 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
 
 Once your changes are committed locally, it's time to push up the changes to gerrit for starting jenkins job and review request.
 push to ‘innersource’ branch
-> $ git push origin HEAD:refs/for/innersource
+> $ git push origin HEAD:refs/for/innersource%r=nilesh.govande@seagate.com,r=basavaraj.kirunge@seagate.com,r=john.bent@seagate.com,r=nikita.danilov@seagate.com
 
-Upon pushing changes, you will get the URL of gerrit server. Use that URL to visit gerrit server. Before we start review request run the jenkins job by following steps from [here](#Running-Jenkins--System-tests). Make sure your jenkins job is passing then you are up for review, you can add the reviewers as shown below.
+Upon pushing changes, you will get the URL of gerrit server. Use that URL to visit gerrit server. Make sure specified reviewers are added and jenkins job is started automatically. If ever needed, to start jenkins job manually follow the steps from [here](#Running-Jenkins--System-tests). If require, you can add other reviewer manually as shown below.
 
 <p align="center"><img src="../../assets/images/gerrit_review.PNG?raw=true"></p>
 
