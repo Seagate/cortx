@@ -242,9 +242,9 @@ Once your changes are committed locally, it's time to push up the changes to ger
 push to ‘innersource’ branch
 > $ git push origin HEAD:refs/for/innersource
 
-Upon pushing changes, it will show the URL of gerrit server. Use that link to visit gerrit server. Before we start review request run the jenkins job by following steps from [here](#Running-Jenkins--System-tests). Make sure your jenkins job is passing then you are up for review, you can add the reviewers as shown below.
+Upon pushing changes, you will get the URL of gerrit server. Use that URL to visit gerrit server. Before we start review request run the jenkins job by following steps from [here](#Running-Jenkins--System-tests). Make sure your jenkins job is passing then you are up for review, you can add the reviewers as shown below.
 
-<p align="center"><img src="../../assets/images/Review_gerrit.PNG?raw=true"></p>
+<p align="center"><img src="../../assets/images/gerrit_review.PNG?raw=true"></p>
 
 If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
 > $ git commit --amend
