@@ -2,9 +2,9 @@
 
 Building and testing CORTX can be done using a single system.  Obviously CORTX is designed to be a scale-out distributed object storage system but these instructions currently only cover setting up a single node environment.
 
-Currently CORTX requires the CentOS 7.7.1908 distribution running the 3.10.0-1062.12.1 kernel.  Building it and testing it can be done on either a physical or virtual machine matching these requirements.
+Currently CORTX requires the CentOS 7.7.1908 distribution running the 3.10.0-1062.12.1 kernel.  Building it and testing it can be done on either a physical or virtual machine matching these requirements.  
 
-Please refer to [this page](LocalVMSetup.md) for information about running with VMWare Fusion or Virtual Box as well as links to downloadable VM images which you can use.
+Please refer to [this page](LocalVMSetup.md) for information about running with VMWare Fusion or Virtual Box as well as links to downloadable VM images which you can use.  Please note that if you are a Seagate employee, you must file an Exception Request to run a local VM on your desktop/laptop computer.
 
 TODO:
 1. Provide a downloadable image for Windows Subsystem Linux and any necessary instructions.
