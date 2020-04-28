@@ -1,6 +1,6 @@
 # S3Server QuickStart guide
 This is a step by step guide to get S3Server ready for you on your system.
-Before cloning, however, you have your VMs setup with specifications mentioned in [Virtual Machine](VIRTUAL_MACHINE.md).
+Before cloning, however, you need to have a SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox[LocalVMSetup](LocalVMSetup.md).
 
 ## Accessing the code right way
 (For phase 1) Latest code which is getting evolved, advancing and contributed is on the gerrit server.

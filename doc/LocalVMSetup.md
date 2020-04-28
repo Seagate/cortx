@@ -9,13 +9,13 @@ You need to have either VMWare Fusion or Oracle VirtualBox to use the VM. In cas
 
 ## 3. Using the VM
 Start the VM, you will be presented with a login prompt after sometime. You need to enter the following credentials to login:
-Username: root
+Username: root  
 Password: seagate
 
 ## 4. Configuring the networking interface
 At the command prompt type `# ip a`. You will see some output like this:
 <p align="center"><img src="../../assets/images/ip_a_op.png?raw=true"></p>
-Note down the interface name (other than the loopback interface "lo"). In this case it is *ens33*. This will be required in Step 6. If the interface is down use the following command to bring it up:<br/>
+Note down the interface name (other than the loopback interface "lo"). In this case it is *ens33*. This will be required in Step 6. If the interface is down use the following command to bring it up :<br/>
 `# ifup ens33`
 
 ## 5. Clone S3 or Mero source
@@ -39,5 +39,5 @@ Verify the system time is current, if not set it to the current time using the `
 ## You are now all set to use this VM for either Mero or S3 development.
 
 ## Notes:
-* Port Forwarding
+* Port Forwarding  
   The VM does not have a window manager, so if you find it restrictive to use, enable port forwarding. Here's a link which explains how to do it in Virtual Box: https://www.techrepublic.com/article/how-to-use-port-forwarding-in-virtualbox/ .
