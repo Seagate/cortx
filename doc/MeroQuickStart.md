@@ -192,6 +192,16 @@ push to ‘innersource’ branch
 If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
 > $ git commit --amend
 
+Folks, Good news is that you can also review your applied patch and review comments as well.
+
+* There are two ways to do that :
+ 1. You will be provided link into logs after push command.
+ * e.g.
+ <p align="center"><img src="../../assets/images/gerrit_review_link.JPG?raw=true"></p>
+ 
+ 2. you can visit following link, open your commit from the list and browse it.
+ * http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open
+
 ### How to rebase?
 Let’s say you want to rebase JB/mero_sync with latest changes in innersource branch.
 Here are the steps:
