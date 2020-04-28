@@ -2,7 +2,7 @@
 This is a guide which lists the steps required to get a local VM and use it for S3 and/or Mero development.
 
 ## 1. Download the VM
-Download both .ovf or .vmdk files from the following link into a directory on your computer: https://seagatetechnology-my.sharepoint.com/personal/basavaraj_kirunge_seagate_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fbasavaraj%5Fkirunge%5Fseagate%5Fcom%2FDocuments%2FInnersource&originalPath=aHR0cHM6Ly9zZWFnYXRldGVjaG5vbG9neS1teS5zaGFyZXBvaW50LmNvbS86ZjovZy9wZXJzb25hbC9iYXNhdmFyYWpfa2lydW5nZV9zZWFnYXRlX2NvbS9FZ2tNaHFtVWJJZEZzOFRyOU4tYkhlY0J0TUR3bTAyUWJHMFQ4dlM3VExPZFVnP3J0aW1lPWVWc2UtVFhvMTBn
+Download both .ovf or .vmdk files from the following link into a directory on your computer: https://seagatetechnology-my.sharepoint.com/:f:/g/personal/basavaraj_kirunge_seagate_com/EgkMhqmUbIdFs8Tr9N-bHecBtMDwm02QbG0T8vS7TLOdUg?e=aiRHBr
 
 ## 2. Add the VM in VMWare Fusion or Oracle VirtualBox
 You need to have either VMWare Fusion or Oracle VirtualBox to use the VM. In case you have VirtualBox installed, select the "Import Appliance" option and select the .ovf file downloaded in the previous step.  Note: if you are a Seagate employee and do not already have access to either VMWare Fusion or Oracle VirtualBox, IT requires you to submit an Exception request since these are not officially supported applications.
