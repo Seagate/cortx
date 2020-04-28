@@ -187,14 +187,14 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
 
 Once your changes are committed locally, it's time to push up the review to gerrit
 push to ‘innersource’ branch
-> $ git push origin HEAD:refs/for/innersource%r=madhav.vemuri@seagate.com,r=max.medved@seagate.com
+> $ git push origin HEAD:refs/for/innersource%r=madhav.vemuri@seagate.com,r=max.medved@seagate.com,r=john.bent@seagate.com,r=nikita.danilov@seagate.com
 
 If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
 > $ git commit --amend
 
-Folks, Good news is that you can also review your applied patch and review comments as well.
+Folks, Good news is that you can also monitor progress of your applied patch and respond to review comments as well.
 
-* There are two ways to do that :
+* There are two ways to check your commit on gerrit :
  1. You will be provided link into logs after push command.
  * e.g.
  <p align="center"><img src="../../assets/images/gerrit_review_link.JPG?raw=true"></p>
@@ -223,7 +223,7 @@ Start the rebase to pull innersource in currently checked out dev/kd/myfeature
 
 This might raise merge conflicts. fix all the merge conflicts cautiously.
 Test your local rebase and push upstream using step
-> $ git push origin HEAD:refs/for/innersource%r=madhav.vemuri@seagate.com,r=max.medved@seagate.com
+> $ git push origin HEAD:refs/for/innersource%r=madhav.vemuri@seagate.com,r=max.medved@seagate.com,r=john.bent@seagate.com,r=nikita.danilov@seagate.com
 
 ## Running Jenkins / System tests
 
