@@ -37,3 +37,7 @@ And check again. Now you should be able to see a similar output as shown above.
 Verify the system time is current, if not set it to the current time using the `timedatectl` utility.
 
 ## You are now all set to use this VM for either Mero or S3 development.
+
+## Notes:
+* Port Forwarding
+  The VM does not have a window manager, so if you find it restrictive to use, enable port forwarding. Here's a link which explains how to do it in Virtual Box: https://www.techrepublic.com/article/how-to-use-port-forwarding-in-virtualbox/ .
