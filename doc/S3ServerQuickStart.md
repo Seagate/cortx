@@ -242,7 +242,11 @@ Once your changes are committed locally, it's time to push up the changes to ger
 push to ‘innersource’ branch
 > $ git push origin HEAD:refs/for/innersource%r=nilesh.govande@seagate.com,r=basavaraj.kirunge@seagate.com,r=john.bent@seagate.com,r=nikita.danilov@seagate.com
 
-Upon pushing changes, you will get the URL of gerrit server. Use that URL to visit gerrit server. Make sure specified reviewers are added and jenkins job is started automatically. If ever needed, to start jenkins job manually follow the steps from [here](#Running-Jenkins--System-tests). If require, you can add other reviewer manually as shown below.
+Upon pushing changes, you will get the URL of gerrit server as shown below. Use that URL to visit gerrit server.
+
+<p align="center"><img src="../../assets/images/gerrit_review_link.JPG?raw=true"></p>
+
+Make sure specified reviewers are added and jenkins job is started automatically. If ever needed, to start jenkins job manually follow the steps from [here](#Running-Jenkins--System-tests). Also you can add other reviewer manually as shown below.
 
 <p align="center"><img src="../../assets/images/gerrit_review.PNG?raw=true"></p>
 
