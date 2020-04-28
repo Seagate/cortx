@@ -217,7 +217,7 @@ Add all such files
 
 Now commit your changes
 
-> $ git commit -m ‘S3 - Some description of change’
+> $ git commit -m ‘GID - Appropriate Feature/Change Description’
 
 Check git log to see your commit, verify the author name
 
@@ -238,9 +238,13 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
     Change-Id: I1ce3d04e74d56c11645a95b1d523e72b0cc01e17
 ~~~
 
-Once your changes are committed locally, it's time to push up the review to gerrit
+Once your changes are committed locally, it's time to push up the changes to gerrit for starting jenkins job and review request.
 push to ‘innersource’ branch
 > $ git push origin HEAD:refs/for/innersource
+
+Upon pushing changes, it will show the URL of gerrit server. Use that link to visit gerrit server. Before we start review request run the jenkins job by following steps from [here](#Running-Jenkins--System-tests). Make sure your jenkins job is passing then you are up for review, you can add the reviewers as shown below.
+
+<p align="center"><img src="../../assets/images/Review_gerrit.PNG?raw=true"></p>
 
 If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
 > $ git commit --amend
@@ -274,11 +278,11 @@ Test your local rebase and push upstream using step
 
 ### How to start S3Server jenkins job?
 
-1. Open S3Server jenkins [link](http://eos-jenkins.mero.colo.seagate.com/job/S3server/job/s3-gerrit-test/).
+1. Open S3Server jenkins [link](http://eos-jenkins.colo.seagate.com/job/Release_Engineering/job/InnerSource/job/S3Server/job/s3-gerrit-test/).
 2. Login with Username as `eos-s3server` and password as `eos-s3server`.
 3. Click on `Build With Parameters` option.
 4. You need to enter the `GIT_REFSPEC` and `label`, follow the steps as mentioned below.
-  * To get `GIT_REFSPEC` goto your review request on gerrit and click on`Download` section. The highlighted part `refs/changes/31/19331/4` in `checkout` section as shown below is your `GIT_REFSPEC`. Copy and paste it on `GIT_REFSPEC` section of jenkins.
+  * To get `GIT_REFSPEC` goto your gerrit server branch where you pushed your changes and click on`Download` section. The highlighted part `refs/changes/31/19331/4` in `checkout` section as shown below is your `GIT_REFSPEC`. Copy and paste it on `GIT_REFSPEC` section of jenkins.
   
   
 <p align="center"><img src="../../assets/images/git_refspec.PNG?raw=true"></p>
