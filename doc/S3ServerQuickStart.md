@@ -250,7 +250,7 @@ Make sure specified reviewers are added and jenkins job is started automatically
 
 <p align="center"><img src="../../assets/images/gerrit_review.PNG?raw=true"></p>
 
-You can also use this [link](http://gerrit.mero.colo.seagate.com/q/project:s3server+branch:innersource+status:open) to track your review request status.
+You can also visit [track review status](http://gerrit.mero.colo.seagate.com/q/project:s3server+branch:innersource+status:open) to monitor your review request.
 
 If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
 > $ git commit --amend
