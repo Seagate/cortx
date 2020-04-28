@@ -187,7 +187,7 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
 
 Once your changes are committed locally, it's time to push up the review to gerrit
 push to ‘innersource’ branch
-> $ git push origin HEAD:refs/for/innersource
+> $ git push origin HEAD:refs/for/innersource%r=madhav.vemuri@seagate.com,r=max.medved@seagate.com
 
 If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
 > $ git commit --amend
@@ -213,7 +213,7 @@ Start the rebase to pull innersource in currently checked out dev/kd/myfeature
 
 This might raise merge conflicts. fix all the merge conflicts cautiously.
 Test your local rebase and push upstream using step
-> $ git push origin HEAD:refs/for/innersource
+> $ git push origin HEAD:refs/for/innersource%r=madhav.vemuri@seagate.com,r=max.medved@seagate.com
 
 ## Running Jenkins / System tests
 
