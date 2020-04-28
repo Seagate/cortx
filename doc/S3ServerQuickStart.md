@@ -185,7 +185,7 @@ Add all such files
 
 Now commit your changes
 
-> $ git commit -m ‘S3 - Some changes’
+> $ git commit -m ‘GID - Appropriate Feature/Change Description’
 
 Check git log to see your commit, verify the author name
 
