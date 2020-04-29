@@ -295,7 +295,8 @@ Test your local rebase and push upstream using step
 
   * `label` field could be anything which is easy to recognize. It isn't mandatory field though.
 5. Press on `Build` button to start building the code. 
-6. All the currently running builds can be monitored from `Build History` section on left side pane. Specific build can be monitored by clicking on build number/lable from `Build History` section.
+6. All the currently 
+builds can be monitored from `Build History` section on left side pane. Specific build can be monitored by clicking on build number/lable from `Build History` section.
 
 ## Testing specific MERO version with S3Server
 For this demand also we are having solution :
@@ -331,6 +332,10 @@ For this demand also we are having solution :
 > `cd ..`
 
 > `./jenkins-build.sh`
+
+* success logs looks like this :)
+
+<p align="center"><img src="../../assets/images/jenkins_script_output.PNG?raw=true"></p>
 
 ### You're all set & You're awesome
 
