@@ -298,19 +298,24 @@ Test your local rebase and push upstream using step
 6. All the currently running builds can be monitored from `Build History` section on left side pane. Specific build can be monitored by clicking on build number/lable from `Build History` section.
 
 ## Testing specific MERO version with S3Server
+For this demand also we are having solution :
 
-1. Required GIT_REFSPEC/Specific hash
-2. `$ cd third_party/mero`
-3. Copy GIT_REFSPEC/Specific hash and do git checkout hash/ git fetch GIT_REFSPEC(Get it from gerrit) 
-   * git checkout 9070f3db7dc9f6ecfb6d69c6d0c71980f4492b81
-   * refspec checkout command
+1. get desired mero commit HASH *or* commit REFSPECS on clipboard (you'll be asked to paste in step 4)
+* To get REFSPECS
+ >> Searching your desired commit [here](http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open)
+ >> go to desired commit and then click *Download* button and copy first link(which is your REFSPECS actually) in dropdown. 
+  
+  <p align="center"><img src="../../assets/images/mero_Refspec.JPG?raw=true"></p>
+  
+2. `$ cd third_party/mero` (it is assumed that you are into main directory of your s3 repo)
+3. Copy REFSPEC/Specific hash and do git checkout hash/ git fetch REFSPEC(Get it from gerrit) 
+   > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
+   or
+   > git pull "http://gerrit.mero.colo.seagate.com/mero" refs/changes/91/19491/4
 4. Update submodules `$ git submodule update --init --recursive`
-5. Build mero from script
-   cd ../
-   ./build_mero.sh
+5. `cd ../build_mero.sh`
 6. Run jenkins script to ensure everything works correct.
-   * cd ../
-   * ./jenkins-build.sh
+   * cd ../jenkins-build.sh
 
 ### You're all set & You're awesome
 
