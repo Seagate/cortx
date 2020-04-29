@@ -333,7 +333,7 @@ For this demand also we are having solution :
 
 > `./jenkins-build.sh`
 
-* success logs looks like this :)
+* success logs looks like this :point_down:
 
 <p align="center"><img src="../../assets/images/jenkins_script_output.PNG?raw=true"></p>
 
