@@ -321,11 +321,16 @@ For this demand also we are having solution :
 4. Update submodules 
 > `$ git submodule update --init --recursive`
 5. Build mero
+
 > `cd ..`
-> `build_mero.sh`
+
+> `./build_mero.sh`
+
 6. Run jenkins script to make sure that your build & tests passes.
-> `cd ..
-> `jenkins-build.sh`
+
+> `cd ..`
+
+> `./jenkins-build.sh`
 
 ### You're all set & You're awesome
 
