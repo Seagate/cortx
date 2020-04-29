@@ -187,6 +187,9 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
 
 Once your changes are committed locally, it's time to push up the review to gerrit
 push to ‘innersource’ branch
+
+* Before pushing, TAKE a PAUUUSE. Have you [rebased your branch](## How to rebase?)? if not then doing right now to avoide merge conflicts on gerrit.
+
 > $ git push origin HEAD:refs/for/innersource%r=madhav.vemuri@seagate.com,r=max.medved@seagate.com,r=john.bent@seagate.com,r=nikita.danilov@seagate.com
 
 If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
@@ -243,6 +246,10 @@ Test your local rebase and push upstream using step
   * `label` field could be anything which is easy to recognize. It isn't mandatory field though.
 5. Press on `Build` button to start building the code. 
 6. All the currently running builds can be monitored from `Build History` section on left side pane. Specific build can be monitored by clicking on build number/lable from `Build History` section.
+
+### Wanna test specific mero commit with s3?
+
+* check out the steps [here](S3ServerQuickStart# Testing specific MERO version with S3Server)
 
 ### You're all set & You're awesome
 
