@@ -310,7 +310,7 @@ For this demand also we are having solution :
   <p align="center"><img src="../../assets/images/mero_Refspec.JPG?raw=true"></p>
   
 2. `$ cd third_party/mero` (it is assumed that you are into main directory of your s3 repo)
-3. Copy REFSPEC/Specific hash and do git checkout hash/ git fetch REFSPEC(Get it from gerrit) 
+3. use copied commit HASH/REFSPEC in step 1 as shown below.
    
  > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
    
