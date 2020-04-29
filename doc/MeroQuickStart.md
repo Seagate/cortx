@@ -249,7 +249,7 @@ Test your local rebase and push upstream using step
 
 ### Wanna test specific mero commit with s3?
 
-* check out the steps [here](S3ServerQuickStart#Testing-specific-MERO-version-with-S3Server)
+* Check out detailed steps [here](S3ServerQuickStart.md#Testing-specific-MERO-version-with-S3Server)
 
 ### You're all set & You're awesome
 
