@@ -225,10 +225,10 @@ Create lnet.conf file, if not exist and restart the service
   * To create cloud VM visit [here](https://ssc-cloud.colo.seagate.com/ui/service/login).
   
 ### 2. Generate ssh-keys
-  * To generate ssh keys, follow the steps given [here](MeroQuickStart.md#Create-SSH-Public-Key).
+  * To generate ssh keys, follow the steps given [here](MeroQuickStart.md#Accessing-the-code-right-way).
   
 ### 3. Clone the mero code, compile and install
-  * To Clone the mero code follow the steps given[here](MeroQuickStart.md#Cloning-CORTX).
+  * To Clone the mero code follow the steps given [here](MeroQuickStart.md#Cloning-CORTX).
   * To compile mero code `$ sudo ./scripts/m0 make`. (It is assumed you are in main source directory of mero code )
   * To install mero services `$ sudo ./scripts/install-mero-service`.
   * `$ cd ..`
