@@ -297,6 +297,21 @@ Test your local rebase and push upstream using step
 5. Press on `Build` button to start building the code. 
 6. All the currently running builds can be monitored from `Build History` section on left side pane. Specific build can be monitored by clicking on build number/lable from `Build History` section.
 
+## Testing specific MERO version with S3Server
+
+1. Required GIT_REFSPEC/Specific hash
+2. `$ cd third_party/mero`
+3. Copy GIT_REFSPEC/Specific hash and do git checkout hash/ git fetch GIT_REFSPEC(Get it from gerrit) 
+   * git checkout 9070f3db7dc9f6ecfb6d69c6d0c71980f4492b81
+   * refspec checkout command
+4. Update submodules `$ git submodule update --init --recursive`
+5. Build mero from script
+   cd ../
+   ./build_mero.sh
+6. Run jenkins script to ensure everything works correct.
+   * cd ../
+   * ./jenkins-build.sh
+
 ### You're all set & You're awesome
 
 In case of any query feel free to write to our [SUPPORT](support.md).
