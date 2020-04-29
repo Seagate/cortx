@@ -302,20 +302,28 @@ For this demand also we are having solution :
 
 1. get desired mero commit HASH *or* commit REFSPECS on clipboard (you'll be asked to paste in step 4)
 * To get REFSPECS
- >> Searching your desired commit [here](http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open)
- >> go to desired commit and then click *Download* button and copy first link(which is your REFSPECS actually) in dropdown. 
+
+ > Searching your desired commit [here](http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open)
+ 
+ > go to desired commit and then click *Download* button and copy first link(which is your REFSPECS actually) in dropdown. 
   
   <p align="center"><img src="../../assets/images/mero_Refspec.JPG?raw=true"></p>
   
 2. `$ cd third_party/mero` (it is assumed that you are into main directory of your s3 repo)
 3. Copy REFSPEC/Specific hash and do git checkout hash/ git fetch REFSPEC(Get it from gerrit) 
-   > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
-   or
-   > git pull "http://gerrit.mero.colo.seagate.com/mero" refs/changes/91/19491/4
-4. Update submodules `$ git submodule update --init --recursive`
-5. `cd ../build_mero.sh`
+   
+ > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
+   
+ or
+   
+ > git pull "http://gerrit.mero.colo.seagate.com/mero" refs/changes/91/19491/4
+
+4. Update submodules 
+> `$ git submodule update --init --recursive`
+5. build mero
+> `cd ../build_mero.sh`
 6. Run jenkins script to ensure everything works correct.
-   * cd ../jenkins-build.sh
+> `cd ../jenkins-build.sh`
 
 ### You're all set & You're awesome
 
