@@ -21,7 +21,7 @@ We are so excited for you to be visiting us and reading this file and really hop
 
 ## How to Contribute
 
-Please refer to our [Quick Start Guide](doc/QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](mero/doc/coding-style.md) for a description of our code style guidelines.  Please refer to our [Suggested Contributions List](doc/SuggestedContributions.md) to find ideas about what contributions are currently being sought.
+Please refer to our [Quick Start Guide](QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](mero/doc/coding-style.md) for a description of our code style guidelines.  Please refer to our [Suggested Contributions List](doc/SuggestedContributions.md) to find ideas about what contributions are currently being sought.
 
 ### Discussion of the CI/CD
 
