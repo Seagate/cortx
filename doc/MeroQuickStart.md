@@ -249,7 +249,8 @@ Test your local rebase and push upstream using step
 
 ### Wanna test specific mero commit with s3?
 
-* Check out detailed steps [here](S3ServerQuickStart.md#Testing-specific-MERO-version-with-S3Server)
+* If s3server setup is not done yet then kindly visit [s3serverQuickstart](https://github.com/Seagate/cortx/edit/master/doc/S3ServerQuickStart.md) and get your setup ready.
+* If s3 is already setup then check out detailed steps [here](S3ServerQuickStart.md#Testing-specific-MERO-version-with-S3Server).
 
 ### You're all set & You're awesome
 
