@@ -241,7 +241,7 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
 Once your changes are committed locally, it's time to push up the changes to gerrit for starting jenkins job and review request.
 push to ‘innersource’ branch
 
-* Before pushing, TAKE A PAUSE. Have you [rebased your branch](#-How-to-rebase?)? if not then doing right now to avoide merge conflicts on gerrit.
+* Before pushing, TAKE A PAUSE. Have you [rebased your branch](#How-to-rebase?)? if not then doing right now to avoide merge conflicts on gerrit.
 
 > $ git push origin HEAD:refs/for/innersource%r=nilesh.govande@seagate.com,r=basavaraj.kirunge@seagate.com,r=john.bent@seagate.com,r=nikita.danilov@seagate.com
 
