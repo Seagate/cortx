@@ -303,11 +303,11 @@ For this demand also we are having solution :
 1. get desired mero commit HASH *or* commit REFSPECS on clipboard (you'll be asked to paste in step 4)
 * To get REFSPECS
 
- > Searching your desired commit [here](http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open)
+ > Search your desired commit [here](http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open)
  
  > go to desired commit and then click *Download* button and copy first link(which is your REFSPECS actually) in dropdown. 
   
-  <p align="center"><img src="../../assets/images/mero_Refspec.JPG?raw=true"></p>
+  <p align="center"><img src="../../assets/images/mero_Refspecs.JPG?raw=true"></p>
   
 2. `$ cd third_party/mero` (it is assumed that you are into main directory of your s3 repo)
 3. use copied commit HASH/REFSPEC in step 1 as shown below.
