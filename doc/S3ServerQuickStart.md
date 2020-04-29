@@ -162,44 +162,6 @@ Installing clang-format
  
  > $ ln -s ~/Downloads/clang/clang+llvm-3.8.0-linux-x86_64-centos6/bin/git-clang-format ~/bin/git-clang-format
  
-### To work on a feature and save your code to git
-Ensure you have checkout out ‘innersource’ branch
-
-> $ git checkout innersource
-
-Now checkout your new branch for saving your code
-Example git checkout -b dev/<username>/<feature>
-Username = name or initials, example “John” or just “JB”
-
-> $ git checkout -b JB/S3_sync
-
-Make Changes
-
-Add files to be pushed to git to staged area
-
-> $ git add foo/somefile.c
-
-> $ git add foo_ut/someotherfile.c
-
-Add all such files
-
-Now commit your changes
-
-> $ git commit -m ‘GID - Appropriate Feature/Change Description’
-
-Check git log to see your commit, verify the author name
-
-> $ git log 
-
-If author name is not set properly then set using following command
-
-> $ git commit --amend --author="Author Name <email@address.com>"
-
-Once your changes are committed locally, it's time to push up to server
-push to your branch [Use this only if you want to backup your code, else prefer gerrit steps below]
-
-> $ git push origin JB/S3_sync
-
 ### To work on a feature and submit review to gerrit
 Ensure you have checkout “innersource” branch
 
@@ -267,19 +229,15 @@ Ensure there are no local changes, if yes take a backup and git stash so local i
 Update local master branch
 > $ git checkout innersource
 
-> $ git pull origin innersource  (alternatively git pull --rebase)
+> $ git pull origin innersource
 
 Update local JB/S3_sync branch
 > $ git checkout JB/S3_sync
-
-> $ git pull origin JB/S3_sync  (alternatively git pull --rebase)
 
 Start the rebase to pull master in currently checked out dev branch
 > $ git rebase innersource
 
 This might raise merge conflicts. fix all the merge conflicts cautiously.
-Test your local rebase and push upstream using step
-> $ git push origin HEAD:refs/for/innersource
 
 ## Running Jenkins / System tests
 
