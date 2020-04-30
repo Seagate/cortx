@@ -1,7 +1,7 @@
 CORTX QUICK START GUIDE
 =======================
 
-In order to contribute to CORTX, the first thing to understand is that CORTX Community is currently comprised of two main pieces.  The first is mero and it is the central component providing object and key-value storage.  The second component is our S3 interface to mero.  Contributions are welcome in either or both of the components.
+In order to contribute to CORTX, the first thing to understand is that CORTX Community is currently comprised of three main pieces.  The first is this parent repository which contains top-level documentation about CORTX Community.  The second is the mero repository and it is the central component providing object and key-value storage.  The third component is our S3 interface to mero.  Contributions are welcome in any of the three components.  Sometimes it can be challenging to decide where particular documentation should be contributed.  Use your best judgement or feel free to discuss that in our communications channels! During code review, we can also decide to move a particular documentation contribution to a different location.
 
 1. Set up your [build and test environment](doc/BUILD_ENVIRONMENT.md)
 2. Configure your VM
