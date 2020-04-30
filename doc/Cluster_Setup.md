@@ -241,5 +241,56 @@ Create lnet.conf file, if not exist and restart the service
   * `$ cd ..`
   
 ### 5. Configure Hare CDF
-  *
+  * `$ ./hare/cfgen/examples/singlenode.yaml .`
+  * Find raw disks information by using `$ lsblk` command.
+  * `$ diff ./hare/cfgen/examples/singlenode.yaml singlenode.yaml`
   
+    ```
+    5c5
+    < - hostname: localhost # [user@]hostname
+    ---
+    > - hostname: ssc-vm-0173.colo.seagate.com # [user@]hostname
+    11c11
+    < - io_disks: { path_glob: "/dev/loop[0-9]*" }
+    ---
+    > - io_disks: { path_glob: "/dev/dev[b-i]" }
+    ```
+   
+### 6. Start the single node cluster
+  * `$ sudo hctl bootstrap --mkfs singlenode.yaml`
+  * `$ sudo hctl status`
+  
+    ```
+    Profile: 0x7000000000000001:0x26
+    Data Pools:
+    0x6f00000000000001:0x27
+    Services:
+    
+    ssc-vm-0171.colo.seagate.com (RC) 
+    [started ] hax 0x7200000000000001:0x6 192.168.1.160@tcp:12345:1:1 
+    [started ] confd 0x7200000000000001:0x9 192.168.1.160@tcp:12345:2:1
+    [started ] ioservice 0x7200000000000001:0xc 192.168.1.160@tcp:12345:2:2
+    [unknown ] m0_client 0x7200000000000001:0x20 192.168.1.160@tcp:12345:4:1
+    [unknown ] m0_client 0x7200000000000001:0x23 192.168.1.160@tcp:12345:4:2 
+    ```
+    
+### 7. Write data in to the mero
+  * `$ sudo ./utils/c0cp -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 -s 1m -c 128 /home/src/single/random.img -L 9`
+  
+### 8. Read data from the mero
+  * `$ sudo ./utils/c0cat -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 -s 1m -c 128 /home/src/single/random_from_mero.img -L 9`
+  
+### 9. Verify the data by using md5
+  * `$ md5sum random.img random_from_mero.img`
+  
+    ```
+    cc314a3dc4d9fbbfd8c8a1859818b51c random.img
+    cc314a3dc4d9fbbfd8c8a1859818b51c random_from_mero.img
+    ```
+    
+## KNOWN ISSUES
+
+### 1. Pacemaker rpms is not available
+  * Pacemaker rpms is needed for Hare.
+  * Copy base repo (lyve_platform.repo) to /etc/yum.repos.d/, password is seagate.
+  * `$ scp smc5-m11.colo.seagate.com:/etc/yum.repos.d/lyve_platform.repo /etc/yum.repos.d/`
