@@ -203,7 +203,7 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
 Once your changes are committed locally, it's time to push up the changes to gerrit for starting jenkins job and review request.
 push to ‘innersource’ branch
 
-* Before pushing, TAKE A PAUSE. You can rebased your branch from [here](#How-to-rebase?). If not then do it right now to avoide merge conflicts on gerrit.
+* Before pushing, TAKE A PAUSE. You can rebased your branch from [here](#How-to-rebase). If not then do it right now to avoide merge conflicts on gerrit.
 
 > $ git push origin HEAD:refs/for/innersource%r=nilesh.govande@seagate.com,r=basavaraj.kirunge@seagate.com,r=john.bent@seagate.com,r=nikita.danilov@seagate.com
 
@@ -220,7 +220,7 @@ You can also visit [track review status](http://gerrit.mero.colo.seagate.com/q/p
 If you want to make more changes, perform locally and use amend, so that last commit is updated with new changes and gerrit treats this as new patchset on the same review associated with the same changeid created earlier.
 > $ git commit --amend
 
-### How to rebase?
+### How to rebase
 Let’s say you want to rebase JB/S3_sync with latest changes in innersource branch.
 Here are the steps:
 Ensure there are no local changes, if yes take a backup and git stash so local is clean
