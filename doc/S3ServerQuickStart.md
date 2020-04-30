@@ -54,7 +54,7 @@ All following commands assumes that user is already into it's main source direct
 1. Setup host system
   * `$ ./update-hosts.sh`
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.
-  * `$ ./jenkins-build.sh`. If you face issue with clang-format, to install refer [here](#getting-git--gerit-to-work).
+  * `$ ./jenkins-build.sh`. If you face issue with clang-format, recommanded git version and clang-format needs to be installed. Do it from [here](#getting-git--gerit-to-work).
   Make sure output log has message as shown in below image to ensure successful run of system test in `./jenkins-build.sh`.
   
 <p align="center"><img src="../../assets/images/jenkins_script_output.PNG?raw=true"></p>
