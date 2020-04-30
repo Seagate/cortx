@@ -33,7 +33,7 @@ Getting the main S3Server code on your system is straightforward.
     `$ chmod 600 /root/.ssh/id_rsa`
 
 5. `$ cd s3server`
-6. `$ git submodule update --init --recursive && git status`  # this can take about 20 minutes to run
+6. `$ git submodule update --init --recursive && git status`
 
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
@@ -44,7 +44,7 @@ This is a one time initialization when we do clone the repository or there is a 
     * Enter new password for openldap IAM admin:: `ldapadmin`
 
 1. `$ cd ./scripts/env/dev`
-2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.  # this can take 10-15 minutes to run
+2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.
 
 <p align="center"><img src="../../assets/images/init_script_output.PNG?raw=true"></p>
 
