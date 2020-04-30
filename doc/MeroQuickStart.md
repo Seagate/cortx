@@ -109,48 +109,14 @@ Setup the git config options
  
  > $ git config --global user.email ‘Your.Name@seagate.com’
 
-### To work on a feature and save your code to git
-Ensure you have checkout out ‘innersource’ branch
-
-> $ git checkout innersource
-
-Now checkout your new branch for saving your code
-Example git checkout -b dev/<username>/<feature>
-Username = name or initials, example “John” or just “JB”
-
-> $ git checkout -b JB/mero_sync
-
-Make Changes
-
-Add files to be pushed to git to staged area
-
-> $ git add foo/somefile.c
-
-> $ git add foo_ut/someotherfile.c
-
-Add all such files
-
-Now commit your changes
-
-> $ git commit -m ‘mero - Some change’
-
-Check git log to see your commit, verify the author name
-
-> $ git log 
-
-If author name is not set properly then set using following command
-
-> git commit --amend --author="Author Name <email@address.com>"
-
-Once your changes are committed locally, it's time to push up to server
-push to your branch [Use this only if you want to backup your code, else prefer gerrit steps below]
-
-> $ git push origin JB/mero_sync
-
 ### To work on a feature and submit review to gerrit
 Ensure you have checkout “innersource” branch
 
 > $ git checkout innersource
+
+Now checkout your new branch for saving your code
+Example git checkout -b <username>/<feature>
+Username = name or initials, example “John” or just “JB”
 
 > $ git checkout -b JB/mero_sync
 
@@ -188,7 +154,7 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
 Once your changes are committed locally, it's time to push up the review to gerrit
 push to ‘innersource’ branch
 
-* Before pushing, TAKE A PAUSE. Have you [rebased your branch](#How-to-ebase?)? if not then doing right now to avoide merge conflicts on gerrit.
+* Before pushing, TAKE A PAUSE. Have you [rebased your branch](#How-to-rebase)? if not then doing right now to avoide merge conflicts on gerrit.
 
 > $ git push origin HEAD:refs/for/innersource%r=madhav.vemuri@seagate.com,r=max.medved@seagate.com,r=john.bent@seagate.com,r=nikita.danilov@seagate.com
 
@@ -214,19 +180,17 @@ Ensure there are no local changes, if yes take a backup and git stash so local i
 Update local innersource branch
 > $ git checkout innersource
 
-> $ git pull origin innersource  (alternatively git pull --rebase)
+> $ git pull origin innersource
 
 Update local JB/mero_sync branch
 > $ git checkout JB/mero_sync
 
-> $ git pull origin JB/mero_sync  (alternatively git pull --rebase)
+> $ git pull origin JB/mero_sync
 
 Start the rebase to pull innersource in currently checked out dev/kd/myfeature
 > $ git rebase innersource
 
 This might raise merge conflicts. fix all the merge conflicts cautiously.
-Test your local rebase and push upstream using step
-> $ git push origin HEAD:refs/for/innersource%r=madhav.vemuri@seagate.com,r=max.medved@seagate.com,r=john.bent@seagate.com,r=nikita.danilov@seagate.com
 
 ## Running Jenkins / System tests
 
