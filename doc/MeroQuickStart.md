@@ -130,7 +130,7 @@ Add all such files
 
 Now commit your changes
 
-> $ git commit -m ‘mero - Some description of change’
+> $ git commit -m ‘GID - Appropriate Feature/Change Description’
 
 Check git log to see your commit, verify the author name
 
