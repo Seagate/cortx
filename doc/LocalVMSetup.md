@@ -42,3 +42,27 @@ Verify the system time is current, if not set it to the current time using the `
 ## Notes:
 * Port Forwarding  
   The VM does not have a window manager, so if you find it restrictive to use, enable port forwarding. Here's a link which explains how to do it in Virtual Box: https://www.techrepublic.com/article/how-to-use-port-forwarding-in-virtualbox/ .
+
+
+---------------------------------------------------------
+# (Option two) Create a new VM from scratch
+You can also create a new VM from scatch and then install a fresh CentOS 7.7.1908.
+
+## 1. Download ISO file
+You can download CentOS 7.7.1908 ISO file from http://www.centos.org, or from any mirror site you like.
+
+## 2. Create a new VM in your VM provider (VMWare Fusion, or Oracle VirtualBox)
+* At least two CPUs or cores.
+* At least 4GB of memories.
+* At least 40GB of disk.
+* Two network adapters. One is local only, and another is NAT.
+
+## 3. Install a fresh CentOS 7.7.1908
+Automatic install or manual install. Basic installation is OK. When you build Mero from source in next steps, dependant packages will be resolved and installed.
+
+## 4. You may need to add EPEL repo.
+Please refer to: https://fedoraproject.org/wiki/EPEL
+
+* RHEL/CentOS 7:
+   `# yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm`
+   
