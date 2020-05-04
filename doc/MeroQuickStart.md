@@ -56,7 +56,8 @@ Getting the main CORTX code on your system is straightforward.
 All following commands assumes that user is already into it's main source directory.
 
 1. building mero
- * `$ sudo ./scripts/m0 make`
+ * `$ sudo ./scripts/m0 make` or `$sudo ./scripts/m0 rebuild`
+   * $ ./scripts/m0 rebuild command includes make along with some clean up.
   
 2. Running Unit Tests (UTs)
  * `$ sudo ./scripts/m0 run-ut`
@@ -128,7 +129,7 @@ Add files to be pushed to git to staged area
 
 Add all such files
 
-Now commit your changes
+Make sure build passes locally using [these steps](#compilation-and-running-unit-test) & commit your changes
 
 > $ git commit -m "GID - Appropriate Feature/Change Description"
 
