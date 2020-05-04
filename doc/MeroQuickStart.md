@@ -26,7 +26,7 @@ Getting the main CORTX code on your system is straightforward.
 4. `$ git clone --recursive "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero" -b innersource` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)  
 (If "Permission denied (publickey). fatal: Could not read from remote repository" error occurs while using ssh in this step then use the following alternate command) `$ git clone --recursive "http://gerrit.mero.colo.seagate.com/mero" -b innersource`                                                                                                                                                                                           
 5. `$ cd mero`
-6. `$ gitdir=$(git rev-parse --git-dir)`
+6. `$ gitdir=$(git rev-parse --git-dir)`f
 7. Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
   * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
 8. Build necessaries dependencies
@@ -130,7 +130,7 @@ Add all such files
 
 Now commit your changes
 
-> $ git commit -m ‘GID - Appropriate Feature/Change Description’
+> $ git commit -m "GID - Appropriate Feature/Change Description"
 
 Check git log to see your commit, verify the author name
 
