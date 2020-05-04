@@ -49,7 +49,15 @@ Getting the main CORTX code on your system is straightforward.
    * If fails for 'ply' dependency, install ply using following
    
      `$ pip3 install ply`
-   
+  
+9. Reboot
+  * After reboot, check if Lustre network is working
+  
+     `$ sudo modprobe lnet`
+  
+     `$ sudu lctl list_nids`
+
+    
   
 ## Compilation and Running Unit Test
 
