@@ -23,12 +23,12 @@ Getting the main CORTX code on your system is straightforward.
 1. `$ sudo -s`
 2. `$ cd path/to/your/dev/directory`
 3. `$ export GID=<your_seagate_GID>` # this will make subsequent sets easy to copy-paste :)
-4. `$ git clone --recursive "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero" -b innersource` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)  
+4. `$ git clone --recursive "ssh://${GID}@gerrit.mero.colo.seagate.com:29418/mero" -b innersource` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
 (If "Permission denied (publickey). fatal: Could not read from remote repository" error occurs while using ssh in this step then use the following alternate command) `$ git clone --recursive "http://gerrit.mero.colo.seagate.com/mero" -b innersource`                                                                                                                                                                                           
 5. `$ cd mero`
 6. `$ gitdir=$(git rev-parse --git-dir)`
 7. Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
-  * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
+  * `$ scp -p -P 29418 ${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
 8. Build necessaries dependencies
   * To install all dependent packages like lustre, pip, etc.
   
