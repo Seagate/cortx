@@ -140,6 +140,8 @@ If author name is not set properly then set using following command
 
 > git commit --amend --author="Author Name < email@address.com >"
 
+ * Make sure your [git configs options](#getting-git--gerit-to-work) are set properly.
+
 Note here the commit hook should add a ChangeID, something like 
 ~~~
 commit a41a6d839148026cc0c3b838352529e10898e5dc
