@@ -138,7 +138,7 @@ Check git log to see your commit, verify the author name
 
 If author name is not set properly then set using following command
 
-> git commit --amend --author="Author Name <email@address.com>"
+> git commit --amend --author="Author Name < email@address.com >"
 
 Note here the commit hook should add a ChangeID, something like 
 ~~~
