@@ -6,7 +6,9 @@ Before cloning, however, you need to have a SSC / Cloud VM or a local VM setup i
 (For phase 1) Latest code which is getting evolved, advancing and contributed is on the gerrit server.
 Seagate contributor will be referencing, cloning and committing code to/from this [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
 
-Following steps will make your access to server hassel free.
+To simply pull the code in which to build `git clone --recursive "http://gerrit.mero.colo.seagate.com/s3server" -b innersource`
+
+Following steps will make your access to server hassle free.
 1. From here on all the steps needs to be followed as root user.
   * Set the root user password using `sudo passwd` and set the password.
   * Type `su -` and enter root password to switch in to a root user mode.
