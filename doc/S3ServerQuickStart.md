@@ -40,7 +40,7 @@ Getting the main S3Server code on your system is straightforward.
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
 
-  * At some point during the execution of the `init.sh` script, it will prompt for the following passwords.Enter them as mentioned below.
+  * At some point during the execution of the `init.sh` script, it will prompt for the following passwords. Enter them as mentioned below.
     * SSH password: `XYRATEX`
     * Enter new password for openldap rootDN:: `seagate`
     * Enter new password for openldap IAM admin:: `ldapadmin`
@@ -51,7 +51,7 @@ This is a one time initialization when we do clone the repository or there is a 
 <p align="center"><img src="../../assets/images/init_script_output.PNG?raw=true"></p>
 
 ## Compilation and Running Unit Test
-All the following commands assume that user is already in it's main source directory.
+All the following commands assume that user is already in its main source directory.
 ### Running Unit test and System test
 1. Setup the host system
   * `$ ./update-hosts.sh`
@@ -170,7 +170,7 @@ For this demand also we are having solution :
 
 In case of any queries, feel free to write to our [SUPPORT](support.md).
 
-Let's start without a delay to contribute to Seagate's open-source initiative and join this movement with us, keeping a common goal of making data storage better, more efficient and more accessible.
+Let's start without a delay to contribute to Seagate's open source initiative and join this movement with us, keeping a common goal of making data storage better, more efficient and more accessible.
 
 Seagate welcomes You! :relaxed:
 
