@@ -38,6 +38,8 @@ Currently we store 2 kinds of metadata in BE :
 
 ### BE components relationship
 
+![be-components](/doc/be/images/be-components.png)
+
 Top-level components
 - BE domain : handles BE startup/shutdown
 - BE engine : the transaction engine. Manages transactions and transaction groups
@@ -45,9 +47,12 @@ Top-level components
 - BE tx : the transaction. The changes in segments are captured to the transactions
 - BE log : all the segment changes that need to become persistent go there. The changes that didn't go to the segments are replayed during BE recovery.
 
-Data flow for the user's persistent data  
-BE tx usage, 1/2  
-BE tx usage, 2/2
+## Data flow for the user's persistent data  
+![be-data-flow](/doc/be/images/be-data-flow-1.png)
+
+## Transactions
+![be-tx-1](/doc/be/images/be-tx-1.png)
+![be-tx-2](/doc/be/images/be-tx-2.png)
 
 ### BE data structures
 
