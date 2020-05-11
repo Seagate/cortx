@@ -19,8 +19,8 @@ Once you have completed the conversion, please also edit an existing documentati
 Mero High-level designs
 =======================
 
-When working on converting mero high-level designs (HLDs) into rst, please use doc/hld/hld-template.rst.in in
-dev/architecture branch as the template.
+When working on converting mero high-level designs (HLDs) into rst, please use [doc/hld/hld-template.rst.in](http://gerrit.mero.colo.seagate.com/plugins/gitiles/mero/+/dev/architecture/doc/hld/hld-template.rst.in) in
+[dev/architecture branch](http://gerrit.mero.colo.seagate.com/plugins/gitiles/mero/+/dev/architecture) as the template.
 
 Note, that rst files in dev/architecture are processed by m4 macros during the build process (look for rst.m4 files
 in this branch). This is a generally useful practice to make documents more uniform, let's follow it.
