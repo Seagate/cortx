@@ -16,3 +16,11 @@ Please find the list [here](https://seagatetechnology.sharepoint.com/:x:/s/cortx
 
 Once you have completed the conversion, please also edit an existing documentation file to add a pointer to your new file and then submit a patch (pull request) containing the new file and the modified file.  Thanks!
 
+Mero High-level designs
+=======================
+
+When working on converting mero high-level designs (HLDs) into rst, please use doc/hld/hld-template.rst.in in
+dev/architecture branch as the template.
+
+Note, that rst files in dev/architecture are processed by m4 macros during the build process (look for rst.m4 files
+in this branch). This is a generally useful practice to make documents more uniform, let's follow it.
