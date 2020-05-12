@@ -16,7 +16,7 @@ FAQs list is divided in two parts.
 
 **Q:**  How can I start contributing to this project? 
 
-**A:** To kick start your contribution kindly visit this detailed [Quickstart Guide](https://github.com/Seagate/cortx/blob/master/doc/QUICK_START.md).
+**A:** To kick start your contribution kindly visit this detailed [Quickstart Guide](https://github.com/Seagate/cortx/blob/master/QUICK_START.md).
 ##
 
 **Q:** What are the various stages of contribution process? 
