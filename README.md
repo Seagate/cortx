@@ -29,7 +29,7 @@ Please read about our CI/CD and other automation [here](doc/CI_CD.md).
 
 ## License
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE.md) file for details.
 
 ## Resources
 * [Seagate Innersource CORTX Forum](https://teams.microsoft.com/l/team/19%3a036ef7d2196f4c3dbe2e73ce26672240%40thread.tacv2/conversations?groupId=8a78203a-8c7a-42ad-b964-6fbbdc900bfb&tenantId=d466216a-c643-434a-9c2e-057448c17cbe) is the place to ask questions and find friendly and welcoming community resources. More details about support can be found in our [SUPPORT file](doc/SUPPORT.md)
