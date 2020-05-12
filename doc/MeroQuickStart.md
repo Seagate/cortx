@@ -10,6 +10,7 @@ Following steps as sudo user(sudo -s) will make your access to server hassel fre
 
 1. Create SSH Public Key
   * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. follow the instructions throughly.
+  
 2. Add SSH Public Key on [Gerrit server](http://gerrit.mero.colo.seagate.com:8080/settings/#SSHKeys).
   * Log into the gerrit server with your seagate gid based credentials.
   * On right top corner you will see your name, open drop down menu by clicking and choose settings.
@@ -18,27 +19,36 @@ Following steps as sudo user(sudo -s) will make your access to server hassel fre
 WoW! :sparkles:
 You are all set to fetch mero repo now. 
 
-## Working with CORTX source code
+## Cloing CORTX source code
 Getting the main CORTX source code on your system is straightforward.
-1. `$ sudo -s`
-2. `$ cd path/to/your/dev/directory`
-3. `$ export GID=<your_seagate_GID>` # this will make subsequent sets easy to copy-paste :)
-4. `$ git clone --recursive "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero" -b innersource` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+1. `$ cd path/to/your/dev/directory`
+
+2. `$ export GID=<your_seagate_GID>` # this will make subsequent sets easy to copy-paste :)
+
+3. `$ git clone --recursive "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero" -b innersource` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
 (If "Permission denied (publickey). fatal: Could not read from remote repository" error occurs while using ssh in this step then use the following alternate command) `$ git clone --recursive "http://gerrit.mero.colo.seagate.com/mero" -b innersource`                                                                                                                                                                                           
-5. `$ cd mero`
-6. `$ gitdir=$(git rev-parse --git-dir)`
-7. Enable some pre-commit hooks required before pushing your changes to remote (command to be run from the parent dir of Mero source).
-  * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
-8. Build necessaries dependencies
-  * To install all dependent packages like lustre, pip, etc.
+4. `$ cd mero`
+
+5. `$ gitdir=$(git rev-parse --git-dir)`
+
+6. Enable some pre-commit hooks required before pushing your changes to remote 
+   * Run this command from the parent dir of Mero source
+   
+     `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
+
+## Building the CORTX source code
+     
+1. Build and install necessaries dependencies
+   * To install all dependent packages like lustre, pip, etc.
   
     `$ sudo ./scripts/install-build-deps` 
+    
    * Troubleshooting steps:
    * In case pip installation failure using scripts do following
    
      `$ python -m pip uninstall pip setuptools`
      
-     `$ Run script ./scripts/install-build-deps`
+     `$ sudo ./scripts/install-build-deps`
     
    * If fails with dependency of pip3 , install pip3 using following
     
@@ -50,29 +60,30 @@ Getting the main CORTX source code on your system is straightforward.
    
      `$ pip3 install ply`
   
-9. Reboot
+2. Reboot
   * After reboot, check if Lustre network is working
   
      `$ sudo modprobe lnet`
   
      `$ sudo lctl list_nids`
-  
-## Compilation and Running Unit Test
 
-All following commands assumes that user is already into it's main source directory (i.e. `$cd mero`)
+3. Compiling mero (Commands assumes that user is already into it's main source directory i.e. `$cd mero`)
+   * Run following command
+   
+   `$ sudo ./scripts/m0 make` or `$sudo ./scripts/m0 rebuild`
+   
+    Note: `./scripts/m0 rebuild` command includes make along with some clean up.
+ 
+## Running Tests
 
-1. building mero
- * Run `$ sudo ./scripts/m0 make` or `$sudo ./scripts/m0 rebuild`
-   * $ ./scripts/m0 rebuild command includes make along with some clean up.
-  
-2. Running Unit Tests (UTs)
- * `$ sudo ./scripts/m0 run-ut` (This will take about 
+1. Running Unit Tests (UTs)
+ * `$ sudo ./scripts/m0 run-ut` (This may take a long time, i.e. aprx. 20-30 min) 
     > You can also expore other options of this run-ut command. Try : sudo run-ut --help
     
-3. For kernel space UTs
+2. For kernel space UTs
   * `$ sudo ./scripts/m0 run-kut`
   
-4. Running a system test  
+3. Running a system test  
 
   To list all ST's 
   * `$ sudo ./scripts/m0 run-st -l`
