@@ -20,7 +20,7 @@ Note down the interface name (other than the loopback interface "lo"). In this c
 `# ifup ens33`
 
 ## 5. Clone S3 or Mero source
-Now you are ready to clone either S3 or Mero. Please refer to the Mero or S3 quick start documents to do so.
+Now you are ready to clone either S3 or Mero. Please refer to the [Mero](MeroQuickStart.md) or [S3](S3ServerQuickStart.md) quick start documents to do so.
 
 ## 6. Check for LNet
 Type the following command:
