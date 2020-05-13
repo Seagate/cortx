@@ -439,11 +439,11 @@ In a safe pool it is guaranteed that effects of an operation, for which a succes
 
 |           **failure**          |        **detector**       |                                            **reaction**                                           |
 |:------------------------------:|:-------------------------:|:-------------------------------------------------------------------------------------------------:|
-|          message loss          |          timeout          |                                        resend ([rpc](#rpc-idea)))                                       |
+|          message loss          |          timeout          |                                        resend ([rpc](#rpc-idea))                                       |
 |       message re-ordering      |      sequence number      |            receiver drops mis-ordered message. Sender resend on incurred timeout ([rpc](#rpc-idea))            |
 |       message duplication      |      sequence number      |                                   receiver drops duplicate([rpc](#rpc-idea))                                   |
 |       message corruption       |         check-sum         |                                    receiver drops message([rpc](#rpc-idea))                                    |
-|   transient network partition  |          timeout          |                                            resend ([rpc](#rpc-idea)))                                           |
+|   transient network partition  |          timeout          |                                            resend ([rpc](#rpc-idea))                                           |
 |   permanent network partition  |          timeout          |                                           system failure                                          |
 |         1 node restart         |  "restart" action invoked |        initiate recovery ask other nodes to resend latest messages to restarted node ([rpc](#rpc-idea))        |
 |      multiple node restart     |  "restart" action invoked |                                         initiate recovery                                         |
