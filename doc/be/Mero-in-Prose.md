@@ -9,29 +9,29 @@ No linear reading order is assumed or possible, except that for a particular sub
 
 |     idea      | architecture | hld | dld | code |
 |---------------|--------------|-----|-----|------|
-| overview      | [X](#overview,-idea)            | [X](#overview,-architecture)   |     |      |
-| client        | [X](#client,-idea)            |     |     |      |
-| server        | [X](#server,-idea)            |     |     |      |
+| overview      | [X](#overview-idea)            | [X](#overview-architecture)   |     |      |
+| client        | [X](#client-idea)            |     |     |      |
+| server        | [X](#server-idea)            |     |     |      |
 | md            |              |     |     |      |
 | io            |              |     |     |      |
 | cfg           |              |     |     |      |
-| rm            | [X](#rm,-idea)        |     |     |      |
-| dtm           | [X](#dtm,-idea)        |     |     |      |
-| net           | [X](#net,-idea)        | [X](#net,-hld)   |     |      |
-| fop           | [X](#fop,-idea)        |     |     |      |
+| rm            | [X](#rm-idea)        |     |     |      |
+| dtm           | [X](#dtm-idea)        |     |     |      |
+| net           | [X](#net-idea)        | [X](#net-hld)   |     |      |
+| fop           | [X](#fop-idea)        |     |     |      |
 | fom           |              |     |     |      |
-| rpc           | [X](#rpc,-idea)            | [X](#rpc,-hld)   |     |      |
+| rpc           | [X](#rpc-idea)            | [X](#rpc-hld)   |     |      |
 | cm            |              |     |     |      |
 | layout        |              |     |     |      |
-| pdclust       | [X](#pdclust,-idea)        |     |     |      |
-| t1            | [X](#t1,-idea)        |     |     |      |
-| lustre        | [X](#lustre,-idea)        |     |     |      |
-| addb          | [X](#addb,-idea)        |     |     |      |
-| reqh          | [X](#reqh,-idea)        |     |     |      |
+| pdclust       | [X](#pdclust-idea)        |     |     |      |
+| t1            | [X](#t1-idea)        |     |     |      |
+| lustre        | [X](#lustre-idea)        |     |     |      |
+| addb          | [X](#addb-idea)        |     |     |      |
+| reqh          | [X](#reqh-idea)        |     |     |      |
 | container     |              |     |     |      |
 | file-set      |              |     |     |      |
-| fdmi          | [X](#fdmi,-idea)        | [X](#fdmi-architecture)   |     |      |
-| fol           | [X](#fol,-idea)        |     |     |      |
+| fdmi          | [X](#fdmi-idea)        | [X](#fdmi-architecture)   |     |      |
+| fol           | [X](#fol-idea)        |     |     |      |
 | scalability   |              |     |     |      |
 | failure       | [X](#failure-idea)        | [X](#failure-architecture)   |     |      |
 | security      | [X](#security-idea)        | [X](#security-architecture)   |     |      |
