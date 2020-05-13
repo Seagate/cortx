@@ -1,26 +1,26 @@
 # S3Server QuickStart guide
 This is a step by step guide to get S3Server ready for you on your system.
-Before cloning, however, you need to have a SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
+Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
 
 ## Accessing the code right way
-(For phase 1) Latest code which is getting evolved, advancing and contributed is on the gerrit server.
-Seagate contributor will be referencing, cloning and committing code to/from this [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
+(For phase 1) The latest code which is getting evolved and contributed is on the gerrit server.
+Seagate contributors will be referencing, cloning and committing their code to/from this [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
 
 To simply pull the code in which to build `git clone --recursive "http://gerrit.mero.colo.seagate.com/s3server" -b innersource`
 
 Following steps will make your access to server hassle free.
-1. From here on all the steps needs to be followed as root user.
-  * Set the root user password using `sudo passwd` and set the password.
-  * Type `su -` and enter root password to switch in to a root user mode.
+1. From here on all the steps needs to be followed as the root user.
+  * Set the root user password using `sudo passwd` and enter the required password.
+  * Type `su -` and enter the root password to switch to the root user mode.
 2. Create SSH Public Key
-  * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. follow the instructions throughly.
+  * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. Follow the instructions throughly.
 3. Add SSH Public Key on [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
   * Log into the gerrit server with your seagate gid based credentials.
   * On right top corner you will see your name, open drop down menu by clicking and choose settings.
-  * In the menu on left, click SSH Public Keys, and add your public key (which is generated in step one) right there.
+  * In the menu on the left, click on the SSH Public Keys, and add your public key (which is generated in step one) right there.
 
 WoW! :sparkles:
-You are all set to fetch S3Server repo now. 
+You are all set to fetch S3Server repo now! 
 
 ## Cloning S3Server Repository
 Getting the main S3Server code on your system is straightforward.
@@ -30,7 +30,7 @@ Getting the main S3Server code on your system is straightforward.
 4. Enable some pre-commit hooks required before pushing your changes to remote.
   * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg "s3server/.git/hooks/"`
     
-    if permission denied, then do following
+    if permission denied, then do the following
     
     `$ chmod 600 /root/.ssh/id_rsa`
 
@@ -40,7 +40,7 @@ Getting the main S3Server code on your system is straightforward.
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
 
-  * At some point during the execution the `init.sh` script will prompt for following password, enter those as mentioned below.
+  * At some point during the execution of the `init.sh` script, it will prompt for the following passwords. Enter them as mentioned below.
     * SSH password: `XYRATEX`
     * Enter new password for openldap rootDN:: `seagate`
     * Enter new password for openldap IAM admin:: `ldapadmin`
@@ -51,15 +51,15 @@ This is a one time initialization when we do clone the repository or there is a 
 <p align="center"><img src="../../assets/images/init_script_output.PNG?raw=true"></p>
 
 ## Compilation and Running Unit Test
-All following commands assumes that user is already into it's main source directory.
+All the following commands assume that user is already in its main source directory.
 ### Running Unit test and System test
-1. Setup host system
+1. Setup the host system
   * `$ ./update-hosts.sh`
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.  
-  * `$ ./jenkins-build.sh`. If you face issue with clang-format, recommanded git version and clang-format needs to be installed. Do it from [here](#getting-git--gerit-to-work).
-  * You may have to add `/usr/local/bin` to PATH variable using command `$PATH=$PATH:/usr/local/bin` if not there already.
+  * `$ ./jenkins-build.sh`. If you face any issue with clang-format, recommended git version and clang-format needs to be installed. Do it from [here](#getting-git--gerit-to-work).
+  * You may have to add `/usr/local/bin` to PATH variable using command `$PATH=$PATH:/usr/local/bin` if it is not there already.
   
-  Make sure output log has message as shown in below image to ensure successful run of system test in `./jenkins-build.sh`.
+  Make sure the output log has a message as shown in below image to ensure successful execution of system test in `./jenkins-build.sh`.
   
 <p align="center"><img src="../../assets/images/jenkins_script_output.PNG?raw=true"></p>
 
@@ -168,9 +168,9 @@ For this demand also we are having solution :
 
 ### You're all set & You're awesome
 
-In case of any query feel free to write to our [SUPPORT](support.md).
+In case of any queries, feel free to write to our [SUPPORT](SUPPORT.md).
 
-Let's start without a delay to contribute to seagate's open source initiative and join this movement with us keeping a common goal of making data storage better, more efficient and more accessible.
+Let's start without a delay to contribute to Seagate's open source initiative and join this movement with us, keeping a common goal of making data storage better, more efficient and more accessible.
 
 Seagate welcomes You! :relaxed:
 
