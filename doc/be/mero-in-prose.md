@@ -1,5 +1,8 @@
 # Mero in Prose
 
+_« Par ma foi ! il y a plus de quarante ans que je dis de la prose sans que j'en susse rien, et je vous suis le
+plus obligé du monde de m'avoir appris cela. »_
+
 This document attempts to be a master document for the whole of Mero, 
 concentrating on giving a consistent overview of the architecture.
 
