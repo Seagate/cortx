@@ -23,7 +23,7 @@ SPECIFIC SUGGESTED CONTRIBUTIONS
 --------------------------------
 Here is a list of our current ideas about useful specific contributions that you can make.  Some of them have the name of a CORTX Team member who can help with additional details.
 * Improve the documentation 
-  * You can either improve the existing documentation by making it more clear or addressing possible error cases or you can convert existing documents from binary formats into text formats like [MarkDown](https://www.markdownguide.org/) or [reStructuredText](https://docutils.sourceforge.io/rst.html) 
+  * You can either improve the existing documentation by making it more clear or addressing possible error cases or you can convert existing documents from binary formats into text formats like [reStructuredText](https://docutils.sourceforge.io/rst.html) or [MarkDown](https://www.markdownguide.org/).  In general, please use reStructuredText for most documents and only use MarkDown for very simple pages which are not expected to grow in the future.
   * Click [here](SuggestedDocumentConversions.md) for a list of documents needing conversion and instructions about how to do it
 * Fix bugs 
   * TODO: How can we share our bug backlog with innersource community? 
