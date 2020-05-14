@@ -9,8 +9,8 @@ new members to begin contributing to the community perhaps before they feel conf
 
 As such, we are providing a list of binary documents stored elsewhere that we believe would be better suited as text documents stored
 alongside our code within one of our 'doc/' folders.  For the conversion, we are requesting that the final format of the documents be
-either [MarkDown](https://www.markdownguide.org/) or [reStructuredText](https://docutils.sourceforge.io/rst.html) as these formats are
-very simple to write, are utilitarian yet elegant to view, and can be browsed directly through our GitHub repositories.
+either [reStructuredText](https://docutils.sourceforge.io/rst.html) or [MarkDown](https://www.markdownguide.org/) as these formats are
+very simple to write, are utilitarian yet elegant to view, and can be browsed directly through our GitHub repositories.  In general, please use reStructuredText for most documents and only use MarkDown for very small and very simple documents.
 
 Please find the list [here](https://seagatetechnology.sharepoint.com/:x:/s/cortx-innersource/EWhpumcTSsBNj5khvGPigU8BXQuzlWEutAvxa80u2bNrGw?e=8A2BKh) and add your name in the 'Assignee' column to ensure that multiple community members do not inadvertently, unnecessarily perform the same activities.  Please also add the date on which you assigned it to yourself in the 'Date Assigned' column.
 
