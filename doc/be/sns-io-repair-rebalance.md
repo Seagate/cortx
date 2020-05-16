@@ -1,15 +1,11 @@
 # SNS (io, repair, rebalance)
 
-------------
-
 ## Overview
 
 - Server network striping ([find more details for io here](https://docs.google.com/presentation/d/1_A7XUEHt4E6iV8pdyoSkubduKqOCu7uV3AiMDcpAO18/edit#slide=id.p "find more details for io here"))
 - Implements Erasure coding
 
-![SNS Overview](/doc/be/images/sns-overview.png)
-
-------------
+![SNS Overview](/doc/be/images/sns-overview.PNG)
 
 ## Repair/Rebalance
 
@@ -27,8 +23,6 @@
 	- SNS repair data iterator
 	- SNS repair incoming aggregation groups iterator
 
-------------
-
 ## SNS repair/rebalance copy machine service
 
 - Repair and Rebalance are implemented as Mero services
@@ -40,8 +34,6 @@
 	- Copy packet fop and fom
 	- Sw update fop and fom
 	- Trigger fop and fom
-
-------------
 
 ## Trigger fop/fom
 
@@ -57,8 +49,6 @@
 
 - Source: $MERO_SRC/sns/cm/trigger_{fop, fom}.[ch]
 
-------------
-
 ## Trigger fom
 
 Sources :
@@ -66,8 +56,6 @@ Sources :
 PREPARE, READY, START and FINI phases.
 -  $MERO_SRC/sns/cm/trigger_fom.c : sns repair/rebalance trigger fom
 implementation.
-
-------------
 
 ## Trigger fop/fom contd..
 
@@ -83,15 +71,11 @@ Phases
 - START - Invokes copy machine start
 	- Starts pump fom, data iterator, initialises size data structures
 
-------------
-
 ## Copy machine
 
 > CM start
 
-![CM Start](/doc/be/images/sns-cm-start.png)
-
-------------
+![CM Start](/doc/be/images/sns-cm-start.PNG)
 
 ## Repair/Rebalance copy machine
 
@@ -126,33 +110,29 @@ Phases
 	- Prune bufferpools
 	- Stop ast thread (generic)
 
-------------
-
-> SNS data iterator : TODO - insert image
+> SNS data iterator
 
 ![SNS data iterator](/doc/be/images/sns-data-iterator.png)
 
 > Copy packet
 
-![Copy packet](/doc/be/images/sns-copy-packet.png)
+![Copy packet](/doc/be/images/sns-copy-packet.PNG)
 
 > Copy packet receive
 
-![Copy packet receive](/doc/be/images/sns-copy-packet-receive.png)
+![Copy packet receive](/doc/be/images/sns-copy-packet-receive.PNG)
 
 > Sliding window
 
-![Sliding window](/doc/be/images/sns-sliding-window.png)
+![Sliding window](/doc/be/images/sns-sliding-window.PNG)
 
 > Failure Handling
 
-![Failure handling](/doc/be/images/sns-failure-handling.png)
+![Failure handling](/doc/be/images/sns-failure-handling.PNG)
 
 > CM stop
 
-![CM Stop](/doc/be/images/sns-cm-stop.png)
-
-------------
+![CM Stop](/doc/be/images/sns-cm-stop.PNG)
 
 ## Additional functionality
 
@@ -161,8 +141,6 @@ Phases
 - Concurrent io with repair/rebalance
 - Concurrent delete with repair/rebalance
 - Impose resource restrictions with help of sliding window
-
-------------
 
 ## References
 
