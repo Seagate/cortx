@@ -145,5 +145,5 @@ Phases
 ## References
 
 - [HLD of SNS Repair](https://seagatetechnology-my.sharepoint.com/personal/mandar_sawant_seagate_com/Documents/GoogleDrive/HLD%20of%20SNS%20Repair.docx?web=1)
-- [Copy macine and Copy packet redesign discussion](https://docs.google.com/document/d/1IPlMzMZZ7686iCpvt1LyMzglfd9KAkKKhSAlu2Q7N_I/edit)
+- [Copy machine and copy packet redesign discussion](https://docs.google.com/document/d/1IPlMzMZZ7686iCpvt1LyMzglfd9KAkKKhSAlu2Q7N_I/edit)
 - DLD part of source code, use doxygen.
