@@ -2,7 +2,7 @@
 
 ## Overview
 
-- Server network striping ([find more details for io here](https://docs.google.com/presentation/d/1_A7XUEHt4E6iV8pdyoSkubduKqOCu7uV3AiMDcpAO18/edit#slide=id.p "find more details for io here"))
+- Server network striping ([find more details for io here](https://seagatetechnology-my.sharepoint.com/:w:/g/personal/hua_huang_seagate_com/Eb0CTiI3VbdAhLzn8NufzisBj_OFeA4bnKw3Pu0X0jJGVA?e=4%3A8psKWK&at=9&CID=c7fca889-7248-8d1b-0701-0641fb87566d "find more details for io here"))
 - Implements Erasure coding
 
 ![SNS Overview](/doc/be/images/sns-overview.PNG)
