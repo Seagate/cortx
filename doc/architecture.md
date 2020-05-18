@@ -5,6 +5,7 @@
 * [Brainshark about CORTX architecture](https://www.brainshark.com/SeagateCommunications/vu?pi=zGpzSLLI8zROgkz0)
 * [Developer-facing white paper](https://seagatetechnology-my.sharepoint.com/:b:/g/personal/ganesan_umanesan_seagate_com/EXDp-sznHDlHiyLly-0YwzQB0hvZMJ7vhCP88rh0LFJblw?e=2RYstK)
 * [Mero in Prose](/doc/be/mero-in-prose.md)
+* [SNS (io, repair, rebalance)](/doc/be/sns-io-repair-rebalance.md)
 
 TODO: Add more.  Convert more into .rst format.
 
