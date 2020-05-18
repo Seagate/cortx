@@ -6,6 +6,7 @@
 * [Developer-facing white paper](https://seagatetechnology-my.sharepoint.com/:b:/g/personal/ganesan_umanesan_seagate_com/EXDp-sznHDlHiyLly-0YwzQB0hvZMJ7vhCP88rh0LFJblw?e=2RYstK)
 * [Mero in Prose](/doc/be/mero-in-prose.md)
 * [SNS (io, repair, rebalance)](/doc/be/sns-io-repair-rebalance.md)
+* An [opengrok source code browser](http://ssc-vm-c-192.colo.seagate.com:8090/source/xref/s3server/) for our S3 code
 
 TODO: Add more.  Convert more into .rst format.
 
