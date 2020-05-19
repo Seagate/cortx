@@ -41,7 +41,7 @@ Getting the main S3Server code on your system is straightforward.
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
 
   * At some point during the execution of the `init.sh` script, it will prompt for the following passwords. Enter them as mentioned below.
-    * SSH password: `XYRATEX`
+    * SSH password: <Enter root password of VM>
     * Enter new password for openldap rootDN:: `seagate`
     * Enter new password for openldap IAM admin:: `ldapadmin`
 
