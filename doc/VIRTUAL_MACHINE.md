@@ -28,7 +28,7 @@ PRE-BUILD
 [verify]
 >> rpm -qa | grep ansible
 
-ansible-2.9.3-1.el7.noarch
+`ansible-2.9.3-1.el7.noarch`
 
 Ensure ansible version is atleast 2.9
 
