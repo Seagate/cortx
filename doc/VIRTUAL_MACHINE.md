@@ -27,8 +27,9 @@ PRE-BUILD
 
 [verify]
 >> rpm -qa | grep ansible
+
 ansible-2.9.3-1.el7.noarch
 
-Ensure version is atleast 2.9
+Ensure ansible version is atleast 2.9
 
 Now you are ready to clone, build and/or run Mero. Please refer to the [Mero](MeroQuickStart.md) quick start document for further help on this.
