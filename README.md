@@ -23,6 +23,13 @@ We are so excited for you to be visiting us and reading this file and really hop
 
 Please refer to our [Quick Start Guide](QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](https://github.com/Seagate/cortx/blob/master/doc/CodeStyle.md) for a description of our code style guidelines.  Please refer to our [Suggested Contributions List](doc/SuggestedContributions.md) to find ideas about what contributions are currently being sought.
 
+## Source code Browser
+
+Opengrok is a source code search and cross referece engine, please use below link to browse repositories.
+* [S3 Opengrok](http://ssc-vm-c-192.colo.seagate.com:8090/source/xref/s3server/)  
+
+Happy code browsing!
+
 ### Discussion of the CI/CD
 
 Please read about our CI/CD and other automation [here](doc/CI_CD.md).
