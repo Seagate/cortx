@@ -53,3 +53,15 @@ It means that the necessary authorization information is not present. This may h
 Authorization exception: if you see the following error message - ```The difference between the request time and current time is too large```, then it means that the system time is incorrect. In such a case, check the output of the `date` command and modify the system time to current and re-run the test.
 
 yum repo errors: certain libraries are maintained in a Seagate yum repo - `EPEL-7` so if there are repo related errors you need to check the `baseurl` field in your `/etc/yum.repos.d/*.repo` files and if it specific to Seagate, you can contact the Seagate support team in this regard.
+
+PRE-BUILD [HARE]
+----------------
+* Python ≥ 3.6 and the corresponding header files.
+  To install them on CentOS 7.6, run
+  ```sudo yum install python3 python3-devel```
+* Create an environment variable that points to the Motr source code:
+  ```export M0_SRC_DIR="/home/motr"```
+* Ensure that Motr is built and its systemd services are installed.
+  ```$M0_SRC_DIR/scripts/m0 make
+     sudo $M0_SRC_DIR/scripts/install-mero-service --link```
+
