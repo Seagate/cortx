@@ -58,10 +58,14 @@ PRE-BUILD [HARE]
 ----------------
 * Python ≥ 3.6 and the corresponding header files.
   To install them on CentOS 7.6, run
-  ```sudo yum install python3 python3-devel```
+  
+  `sudo yum install python3 python3-devel`
 * Create an environment variable that points to the Motr source code:
-  ```export M0_SRC_DIR="/home/motr"```
+  
+  `export M0_SRC_DIR="/home/motr"`
 * Ensure that Motr is built and its systemd services are installed.
-  ```$M0_SRC_DIR/scripts/m0 make
-     sudo $M0_SRC_DIR/scripts/install-mero-service --link```
+  
+  `$M0_SRC_DIR/scripts/m0 make`
+  
+  `sudo $M0_SRC_DIR/scripts/install-mero-service --link`
 
