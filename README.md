@@ -6,7 +6,7 @@
 <img src="../assets/images/cortx-logo.png?raw=true">
 
 
-# CORTX.  Hyperscale storage stack capabilities for all.
+# CORTX.  Hyperscale storage stack capabilities for all.(((((((TESTING))))))
 
 In consultation with IDC, Seagate has determined that an immense amount of data (175 zettabytes) will be created in 2025.  Surprisingly, of this data, IDC predicts that only 17 zettabytes (about 10%) will be stored.  This at-risk 158 zettabytes of data slated to be discarded will have a tremendous amount of unrealized potential as multiple research efforts have determined that the accuracy of machine learning and data analytics directly correlates to the size of the input data set.  
 
