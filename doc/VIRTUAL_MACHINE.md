@@ -65,7 +65,54 @@ PRE-BUILD [HARE]
   `export M0_SRC_DIR="/home/motr"`
 * Ensure that Motr is built and its systemd services are installed.
   
-  `$M0_SRC_DIR/scripts/m0 make`
+  `$M0_SRC_DIR/scripts/m0 rebuild`
   
   `sudo $M0_SRC_DIR/scripts/install-mero-service --link`
 
+## Single node setup
+
+1. Make sure you are `root` user and then execute the following commands to fetch, build and install hare
+```# git clone --recursive http://gitlab.mero.colo.seagate.com/mero/hare.git
+# cd hare
+# make
+# sudo make devinstall
+```
+
+2. Add current user to `hare` group.
+```# usermod --append --groups hare $USER```
+Log out and log back in.
+
+3. Describing the single node cluster to hare:
+There's a sample file in hare source at the location `cfgen/examples/singlenode.yaml` file. Edit it to reflect the single node cluster environment:
+* Ensure that the disks enumerated in the `io_disks` list exist. Create loop devices, if necessary:
+```
+# mkdir -p /var/mero
+for i in {0..9}; do
+    sudo dd if=/dev/zero of=/var/mero/disk$i.img bs=1M seek=9999 count=1
+    sudo losetup /dev/loop$i /var/mero/disk$i.img
+done
+```
+Ensure that the path of the disks under `io_disks` match the created loop devices: `/var/mero/disk*.img`
+
+* Make sure that `data_iface` value refers to existing network interface (it should be present in the output of `ip a` command).
+
+4. Now we're all set to start a cluster:
+```
+# hctl bootstrap --mkfs cfgen/examples/singlenode.yaml
+```
+
+On a successful cluster bootstrap the messages output on the terminal may look like:
+```
+2020-06-18 19:03:17: Generating cluster configuration... OK
+2020-06-18 19:03:19: Starting Consul server agent on this node......... OK
+2020-06-18 19:03:26: Importing configuration into the KV store... OK
+2020-06-18 19:03:26: Starting Consul agents on other cluster nodes... OK
+2020-06-18 19:03:27: Updating Consul agents configs from the KV store... OK
+2020-06-18 19:03:27: Installing Mero configuration files... OK
+2020-06-18 19:03:27: Waiting for the RC Leader to get elected..... OK
+2020-06-18 19:03:30: Starting Mero (phase1, mkfs)... OK
+2020-06-18 19:03:36: Starting Mero (phase1, m0d)... OK
+2020-06-18 19:03:38: Starting Mero (phase2, mkfs)... OK
+2020-06-18 19:03:48: Starting Mero (phase2, m0d)... OK
+2020-06-18 19:03:51: Checking health of services... OK
+```
