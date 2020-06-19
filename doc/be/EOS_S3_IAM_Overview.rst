@@ -34,7 +34,7 @@ S3 Auth Server
 
 ● One instance of Auth server runs on each EES node
 
-● Uses OpenLdap as backed to store IAM data.
+● Uses OpenLdap as backend to store IAM data.
 
 ● OpenLdap is clustered, IAM data gets replicated across nodes.
 
@@ -200,8 +200,6 @@ Resource ACL
 +---------------------+----------------------+----------------------+
 
 
-..
-
 =================
 S3 Bucket Policy
 =================
@@ -262,11 +260,33 @@ S3 IAM Cli
 
 **API’s /Operations available**
 
-S3 Account : Create, Delete, List, Reset Account access key
 
-S3 User : Create, Modify, Delete, List
+-  S3 Account
 
-S3 Access Key/Secret Key : Create, Delete, List
+   - CreateAccountLoginProfile
+   
+   - GetAccountLoginProfile
+   
+   - UpdateAccountLoginProfile
+   
+   
+
+-  S3 User
+   
+   - CreateUserLoginProfile
+   
+   - GetUserLoginProfile
+   
+   - UpdateUserLoginProfile
+   
+   
+
+-  S3 Access Key/Secret Key
+   
+   - ChangePassword
+   
+   - GetTempAuthCredentials
+   
    
 ..
 
@@ -299,8 +319,8 @@ S3 Access Key/Secret Key : Create, Delete, List
 
 .. |image5| image:: images/6_Identity_and_Access_Management.png
   
-.. |image6| image:: images/7_S3_User_Schema.jpeg
+.. |image6| image:: images/7_S3_User_Schema.png
  
 .. |image7| image:: images/8_S3_ACL_Overview.png
  
-.. |image9| image:: images/9_Access_Evaluation.jpeg
+.. |image9| image:: images/9_Access_Evaluation.png
