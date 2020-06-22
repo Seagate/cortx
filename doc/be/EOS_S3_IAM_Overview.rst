@@ -200,6 +200,32 @@ Resource ACL
 +---------------------+----------------------+----------------------+
 
 
+
+ACL Code Example:
+
+
+.. code-block:: xml
+
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+ <Owner>
+  <ID>b17f937d52db45ae9ddccc89da9da0f2e03f96492bf54720a51fad0fef9c55e6</ID>
+  <DisplayName>usertest</DisplayName>
+ </Owner>
+ <AccessControlList>
+  <Grant>
+   <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser">
+    <ID>b17f937d52db45ae9ddccc89da9da0f2e03f96492bf54720a51fad0fef9c55e6</ID>
+    <DisplayName>usertest</DisplayName>
+   </Grantee>
+   <Permission>FULL_CONTROL</Permission>
+  </Grant>
+ </AccessControlList>
+</AccessControlPolicy>
+
+
+..
+
 =================
 S3 Bucket Policy
 =================
