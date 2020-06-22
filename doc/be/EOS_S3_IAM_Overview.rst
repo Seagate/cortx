@@ -201,7 +201,7 @@ Resource ACL
 
 
 
-ACL Code Example:
+Resource ACL Example:
 
 
 .. code-block:: xml
