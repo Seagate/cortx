@@ -2,20 +2,26 @@ SUGGESTED CONTRIBUTIONS
 =======================
 Thank you for your interest in participating in our community and helping us achieve our vision to produce open source software designed to reduce storage costs and help the world save the Datasphere!
 
-This file contains information about the different ways to contribute to the CORTX Community as well as a list of specific suggested contributions.
+This file contains information about the different ways to contribute to the CORTX Community as well as a list of specific suggested contributions.  In order to ensure that CORTX remains open and redistributable under our current licensing, we do require DCO sign-off for all contributions and may request CLA for large contributions.  Please read more about our DCO/CLA policy [here](doc/dco_cla.md).
 
 GENERAL WAYS TO CONTRIBUTE
 --------------------------
 There are many ways to participate in our community.
-1. Produce new test results (e.g. compare performance when using HDD for metadata as opposed to SSD)
-2. Find and report new bugs
-3. Fix bugs
-4. Ask and answer questions in our various discussion forums
-5. Improve our documentation
-6. Improve our code quality
-7. Improve our automation, devops, and CI/CD
-8. Add new features
-9. Identify and document the need for new features  
+1. Participate in discussion forums
+2. Create GitHub Issues requesting features
+3. Create GitHub Issues reporting bugs in the code
+4. Create GitHub Issues reporting missing, incomplete, or incorrect documentation
+5. Create GitHub Pull Requests improving documentation
+6. Create GitHub Pull Requests fixing bugs
+7. Create GitHub Pull Requests adding third-party integrations
+8. Create GitHub Pull Requests adding new features to the code
+9. Test CORTX performance• Test CORTX scalability
+10. Test CORTX interoperability across a range of hardware platforms (both physical and virtual)
+11. Test CORTX security via penetration testing and other mechanisms
+12. Create GitHub Pull Requests adding new test frameworks
+13. Write content such as solution briefs, reference architectures, recipes, and benchmarks
+14. Improve automation, devops, CI/CD, etc.
+15. Anything that improves the CORTX Community!
 
 Note that not all of these require actively committing new code or documentation to the repositories but in general we prefer that all of them do result in code or documentation commits.  For example, if you participate in an important QA session in one of our discussion forums, this suggests that our documentation is somewhere lacking.  Please take what you learn from that QA session and improve our documentation so that the next visitor to our community won't have the same question.
 
