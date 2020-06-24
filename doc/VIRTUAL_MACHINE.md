@@ -116,3 +116,23 @@ On a successful cluster bootstrap the messages output on the terminal may look l
 2020-06-18 19:03:48: Starting Mero (phase2, m0d)... OK
 2020-06-18 19:03:51: Checking health of services... OK
 ```
+
+Please refer to the `README.md` file in hare source for more comprehensive information.
+
+## Note:
+* If during the bootstrap you see an error message such as 
+```Starting Mero (phase1, mkfs)...Job for mero-mkfs@0x7200000000000001:0x9.service failed because the control process exited with error code. See "systemctl status mero-mkfs@0x7200000000000001:0x9.service" and "journalctl -xe" for details.```
+then it might be the case that lnet is not configured properly. In such a case follow these steps:
+```
+systemctl start lnet
+lnetctl net add --net tcp0 --if enp0s3
+```
+where `enp0s3` is your interface id from the output of `ip a`.
+Next check the output of `lctl list_nids`. It should be non-empty:
+```
+10.0.2.15@tcp
+```
+
+## Testing the cluster
+
+* To test the newly created cluster, one can perform I/O. Please refer to section 1.6 in [this](Cluster_Setup.md) document on how to use motr utilities to do so.
