@@ -7,7 +7,7 @@ In order to contribute to CORTX, the first thing to understand is that CORTX Com
 2. [Getting mero ready](doc/MeroQuickStart.md)
 3. [Getting S3 ready](doc/S3ServerQuickStart.md)
 4. A [video](https://web.microsoftstream.com/video/8453895e-c632-4891-a8e4-f80f9f73b129?list=studio) from CORTX engineer Kevin Price demonstrating the above three steps
-5. [Ideas for contributions](doc/SuggestedContributions.md)
+5. [Contributing](doc/SuggestedContributions.md)
 6. [Contributing to mero](doc/ContributingToMero.md)
 7. [Contributing to S3](doc/ContributingToS3.md)
 8. [Learn about our automated Actions](doc/CI_CD.md)
