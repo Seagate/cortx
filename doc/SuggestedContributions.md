@@ -2,7 +2,7 @@ SUGGESTED CONTRIBUTIONS
 =======================
 Thank you for your interest in participating in our community and helping us achieve our vision to produce open source software designed to reduce storage costs and help the world save the Datasphere!
 
-This file contains information about the different ways to contribute to the CORTX Community as well as a list of specific suggested contributions.  In order to ensure that CORTX remains open and redistributable under our current licensing, we do require DCO sign-off for all contributions and may request CLA for large contributions.  Please read more about our DCO/CLA policy [here](doc/dco_cla.md).
+This file contains information about the different ways to contribute to the CORTX Community as well as a list of specific suggested contributions.  In order to ensure that CORTX remains open and redistributable under our current licensing, we do require DCO sign-off for all contributions and may request CLA for large contributions.  Please read more about our DCO/CLA policy [here](dco_cla.md).
 
 GENERAL WAYS TO CONTRIBUTE
 --------------------------
