@@ -4,9 +4,9 @@ Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup 
 
 ## Accessing the code right way
 (For phase 1) The latest code which is getting evolved and contributed is on the github.
-Seagate contributors will be referencing, cloning and committing their code to/from this https://github.com/Seagate/s3server
+Seagate contributors will be referencing, cloning and committing their code to/from this https://github.com/Seagate/cortx-s3server
 
-To simply pull the code in which to build `git clone --recursive "https://github.com/Seagate/s3server" -b innersource`
+To simply pull the code in which to build `git clone --recursive "https://github.com/Seagate/cortx-s3server" -b innersource`
 
 Following steps will make your access to server hassle free.
 1. From here on all the steps needs to be followed as the root user.
@@ -26,7 +26,7 @@ You are all set to fetch S3Server repo now!
 Getting the main S3Server code on your system is straightforward.
 1. `$ cd path/to/your/dev/directory`
 2. `$ export GID=<your_seagate_GID>` # this will make subsequent steps easy to copy-paste :)
-3. `$ git clone "git clone git@github.com:Seagate/s3server.git" -b innersource` ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps .Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+3. `$ git clone git@github.com:Seagate/cortx-s3server.git -b innersource` ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps .Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
 4. `$ cd s3server`
 5. `$ git submodule update --init --recursive && git status`
 
