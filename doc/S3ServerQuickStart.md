@@ -3,10 +3,10 @@ This is a step by step guide to get S3Server ready for you on your system.
 Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
 
 ## Accessing the code right way
-(For phase 1) The latest code which is getting evolved and contributed is on the gerrit server.
-Seagate contributors will be referencing, cloning and committing their code to/from this [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
+(For phase 1) The latest code which is getting evolved and contributed is on the github.
+Seagate contributors will be referencing, cloning and committing their code to/from this https://github.com/Seagate/s3server
 
-To simply pull the code in which to build `git clone --recursive "http://gerrit.mero.colo.seagate.com/s3server" -b innersource`
+To simply pull the code in which to build `git clone --recursive "https://github.com/Seagate/s3server" -b innersource`
 
 Following steps will make your access to server hassle free.
 1. From here on all the steps needs to be followed as the root user.
@@ -14,10 +14,10 @@ Following steps will make your access to server hassle free.
   * Type `su -` and enter the root password to switch to the root user mode.
 2. Create SSH Public Key
   * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. Follow the instructions throughly.
-3. Add SSH Public Key on [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
-  * Log into the gerrit server with your seagate gid based credentials.
+3. Add SSH Public Key on [github](https://github.com/settings/keys).
+  * Log into the github with your github account credentials.
   * On right top corner you will see your name, open drop down menu by clicking and choose settings.
-  * In the menu on the left, click on the SSH Public Keys, and add your public key (which is generated in step one) right there.
+  * In the menu on the left, click on the SSH and GPG keys, and add your public key (which is generated in step one) right there.
 
 WoW! :sparkles:
 You are all set to fetch S3Server repo now! 
@@ -26,16 +26,9 @@ You are all set to fetch S3Server repo now!
 Getting the main S3Server code on your system is straightforward.
 1. `$ cd path/to/your/dev/directory`
 2. `$ export GID=<your_seagate_GID>` # this will make subsequent steps easy to copy-paste :)
-3. `$ git clone "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/s3server" -b innersource` ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
-4. Enable some pre-commit hooks required before pushing your changes to remote.
-  * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg "s3server/.git/hooks/"`
-    
-    if permission denied, then do the following
-    
-    `$ chmod 600 /root/.ssh/id_rsa`
-
-5. `$ cd s3server`
-6. `$ git submodule update --init --recursive && git status`
+3. `$ git clone "git clone git@github.com:Seagate/s3server.git" -b innersource` ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps .Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+4. `$ cd s3server`
+5. `$ git submodule update --init --recursive && git status`
 
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
@@ -56,7 +49,7 @@ All the following commands assume that user is already in its main source direct
 1. Setup the host system
   * `$ ./update-hosts.sh`
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.  
-  * `$ ./jenkins-build.sh`. If you face any issue with clang-format, recommended git version and clang-format needs to be installed. Do it from [here](#getting-git--gerit-to-work).
+  * `$ ./jenkins-build.sh`. 
   * You may have to add `/usr/local/bin` to PATH variable using command `$PATH=$PATH:/usr/local/bin` if it is not there already.
   
   Make sure the output log has a message as shown in below image to ensure successful execution of system test in `./jenkins-build.sh`.
@@ -129,25 +122,12 @@ KABOOM!!!
 
 ## Testing specific MERO version with S3Server
 For this demand also we are having solution :
-
-1. Get desired mero commit HASH *or* commit REFSPECS on clipboard (you'll be asked to paste in step 4)
-* To get REFSPECS
-
- > Search your desired commit [here](http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open)
- 
- > Go to desired commit and then click *Download* button and copy the highlighted part(which is your REFSPECS actually) as shown below. 
-  
-  <p align="center"><img src="../../assets/images/mero_Refspecs.JPG?raw=true"></p>
-  
+1. Search for specific commit-id in search box and choose type = 'Commits' , click on  search result (specific commit) and copy associated change-id
 2. `$ cd third_party/mero` (It is assumed that you are into main directory of your s3server repo)
 3. Use copied commit HASH/REFSPEC in step 1 as shown below.
    
  > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
    
- or
-   
- > git pull "http://gerrit.mero.colo.seagate.com/mero" refs/changes/91/19491/4
-
 4. Update submodules 
 > `$ git submodule update --init --recursive`
 5. Build mero
@@ -173,4 +153,3 @@ In case of any queries, feel free to write to our [SUPPORT](SUPPORT.md).
 Let's start without a delay to contribute to Seagate's open source initiative and join this movement with us, keeping a common goal of making data storage better, more efficient and more accessible.
 
 Seagate welcomes You! :relaxed:
-
