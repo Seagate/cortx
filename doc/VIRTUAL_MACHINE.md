@@ -16,19 +16,23 @@ Install CentOS 7.7.1908 ISO.
 
 PRE-BUILD [MOTR]
 ----------------
-[kernel 3.10.0-1062.12.1]
->> uname -r
+* [kernel 3.10.0-1062.12.1]
+```
+# uname -r
 3.10.0-1062.12.1.el7.x86_64
+```
 
-[install]
->> sudo yum install -y epel-release
+* [install]
+```
+# sudo yum install -y epel-release
+# sudo yum install -y ansible
+```
 
->> sudo yum install -y ansible
-
-[verify]
->> rpm -qa | grep ansible
-
-`ansible-2.9.3-1.el7.noarch`
+* [verify]
+```
+# rpm -qa | grep ansible
+ansible-2.9.3-1.el7.noarch
+```
 
 Ensure ansible version is atleast 2.9
 
@@ -133,6 +137,33 @@ Next check the output of `lctl list_nids`. It should be non-empty:
 10.0.2.15@tcp
 ```
 
+* If during bootstrap you see an error message such as
+```
+The RC leader can only be elected if there is a Consul server node
+on which both hare-hax and confd m0d@ service are in "non-failed" state.
+```
+then it might be because of an earlier aborted I/O, try resetting confd as follows
+```
+systemctl reset-failed m0d@0x7200000000000001:0x9
+```
+where `0x7200000000000001:0x9` is the confd ID from `hctl status`.
+
 ## Testing the cluster
 
 * To test the newly created cluster, one can perform I/O. Please refer to section 1.6 in [this](Cluster_Setup.md) document on how to use motr utilities to do so.
+
+## Stopping a cluster
+
+* To stop a cluster, execute the following command:
+```
+# hctl shutdown
+Stopping m0d@0x7200000000000001:0xc (ios) at localhost... 
+Stopped m0d@0x7200000000000001:0xc (ios) at localhost
+Stopping m0d@0x7200000000000001:0x9 (confd) at localhost... 
+Stopped m0d@0x7200000000000001:0x9 (confd) at localhost
+Stopping hare-hax at localhost... 
+Stopped hare-hax at localhost
+Stopping hare-consul-agent at localhost... 
+Stopped hare-consul-agent at localhost
+Killing RC Leader at localhost... done
+``` 
