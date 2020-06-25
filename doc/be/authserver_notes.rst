@@ -311,20 +311,19 @@ Overview:
    for bucket_acl_grant_userid_read/readacp is failing with Assertion
    errors.
 
-..
 
-   The display name is optional for ACLs as per AWS documentation
-   
-   `<https://docs.aws.amazon.com/AmazonS3/latest/API/API_Grantee.html>`_
+The display name is optional for ACLs as per AWS documentation
 
-   As we have tried to follow the documentation wherever possible this
-   cannot be called an issue.
+`<https://docs.aws.amazon.com/AmazonS3/latest/API/API_Grantee.html>`_
 
-   For all such test cases, you can please update the results without
-   taking into account the failures due to 'display name'.
+As we have tried to follow the documentation wherever possible this
+cannot be called an issue.
 
-   I.E. if the test case fails only due to the unavailability of display
-   name you can mark it as pass.
+For all such test cases, you can please update the results without
+taking into account the failures due to 'display name'.
+
+I.E. if the test case fails only due to the unavailability of display
+name you can mark it as pass.
 
 .. |image0| image:: images/1_S3_Actions.png
 .. :width: 2.73958in
