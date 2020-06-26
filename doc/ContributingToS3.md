@@ -53,7 +53,7 @@ cannot insert change-id line in .git/COMMIT_EDITMSG
 
 #### Clone cortx-s3server
 - Each contributor needs to do 'fork' to create their own private cortx-s3server repository.
-   > $ git clone git@github.com:<GitHub-ID>/cortx-s3server.git
+   > $ git clone git@github.com:"your-github-id"/cortx-s3server.git
  
 - Ensure you have checked out “Dev” branch
 
