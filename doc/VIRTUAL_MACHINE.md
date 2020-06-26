@@ -3,20 +3,23 @@ CentOS 7.7 dev VM
 
 ISO
 ---
-download CentOS 7.7.1908 ISO.
-http://mirrors.ukfast.co.uk/sites/ftp.centos.org/7.7.1908/isos/x86_64/
+Download CentOS version 7.7.1908 ISO image for installation. You can find the image here:
 http://mirrors.ukfast.co.uk/sites/ftp.centos.org/7.7.1908/isos/x86_64/CentOS-7-x86_64-DVD-1908.iso
 
 VM
 --
-Create VM.
-Minimum requirements:
-CPU = 4, Memory = 8GB, Storage = 128GB
-Install CentOS 7.7.1908 ISO.
+Create VM with the following recommended configuration:
+* CPUs = 4
+* Memory = 8GB
+* Storage = 128GB
+
+Install CentOS version 7.7.1908 in this VM from the previously downloaded ISO image.
 
 PRE-BUILD [MOTR]
 ----------------
-* [kernel 3.10.0-1062.12.1]
+It is recommended to change user to `root` as `root` user privileges are required for most steps.
+
+* Ensure kernel version is `3.10.0-1062.12.1`
 ```
 # uname -r
 3.10.0-1062.12.1.el7.x86_64
@@ -24,8 +27,8 @@ PRE-BUILD [MOTR]
 
 * [install]
 ```
-# sudo yum install -y epel-release
-# sudo yum install -y ansible
+# yum install -y epel-release
+# yum install -y ansible
 ```
 
 * [verify]
@@ -33,7 +36,6 @@ PRE-BUILD [MOTR]
 # rpm -qa | grep ansible
 ansible-2.9.3-1.el7.noarch
 ```
-
 Ensure ansible version is atleast `2.9`
 
 Now you are ready to clone, build and/or run motr. Please refer to the [Motr](MeroQuickStart.md) quick start document for further help on this.
@@ -62,7 +64,7 @@ PRE-BUILD [HARE]
 ----------------
 * Python ≥ 3.6 and the corresponding header files. To install them on CentOS 7.6, run
  ``` 
-# sudo yum install python3 python3-devel
+# yum install python3 python3-devel
 ```
 
 * Create an environment variable that points to the Motr source code:
@@ -73,7 +75,7 @@ PRE-BUILD [HARE]
 * Ensure that Motr is built and its systemd services are installed.
 ```
 # $M0_SRC_DIR/scripts/m0 rebuild
-# sudo $M0_SRC_DIR/scripts/install-mero-service --link
+# $M0_SRC_DIR/scripts/install-mero-service --link
 ```
 
 ## Single node setup
@@ -83,7 +85,7 @@ PRE-BUILD [HARE]
 2. Make sure you are `root` user, `cd` into the hare source directory and then execute the following commands to build and install hare 
 ```
 # make
-# sudo make devinstall
+# make devinstall
 ```
 
 3. Add current user to `hare` group.
