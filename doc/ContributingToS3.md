@@ -53,13 +53,14 @@ cannot insert change-id line in .git/COMMIT_EDITMSG
 
 #### Clone cortx-s3server
 - Each contributor needs to do 'fork' to create their own private cortx-s3server repository.
+   - Go to homepage of 'cortx-s3server' repository on GitHub, there you will see 'fork' at top right corner.
    > $ git clone git@github.com:"your-github-id"/cortx-s3server.git
  
-- Ensure you have checked out “Dev” branch
+- Ensure you have checked out “dev” branch
 
    > $ git checkout dev
 
-   > $ git checkout -b <your-local-branch-name>
+   > $ git checkout -b 'your-local-branch-name'
 
 - Make code changes
 
@@ -80,7 +81,7 @@ cannot insert change-id line in .git/COMMIT_EDITMSG
 - If author name is not set properly then set using following command
 
 - Push your changes to GitHub
-   > $ git push origin <your-local-branch-name>
+   > $ git push origin 'your-local-branch-name'
 
 Example output: 
 ~~~
@@ -100,22 +101,34 @@ To github.com:<your-GitHub-Id>/cortx-s3server.git
 ~~~
 
 ### Open pull request for review
-- Open the URL given in the output of 'git push'.
+- Open the URL given in the output of 'git push' command above.
 - Select base:branch as 'dev' from the dropdown.
 <p align="center"><img src=""></p>
-- Add reviewers and click "Create pull request"
+
+- Add reviewers and click 'Create pull request'
 
 ### Running Jenkins / System tests
 - Get commit-id of your change
 <p align="center"><img src=""></p>
+
 - Start pre-merge jobs using commit id and label(Optional) [Jenkins Job](http://eos-jenkins.mero.colo.seagate.com/job/S3server/job/s3-github-test/)
 
 ### How to rebase your local branch on latest master?
+
 > $ git checkout master
+
 > $ git pull origin master
+
 > $ git submodule update --init --recursive
-> $ git checkout <your-local-branch>
+
+> $ git checkout 'your-local-branch'
+
+> $ git pull origin 'your-remote-branch-name'
+
+> $ git submodule update --init --recursive
+
 > $ git rebase origin/master
+
 - If you get conflicts, follow the steps mentioned in the error message from git. 
 
 * To get familiar with jenkins please visit [here](https://en.wikipedia.org/wiki/Jenkins_(software)).
