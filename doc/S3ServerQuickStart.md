@@ -1,12 +1,12 @@
-# S3Server QuickStart guide
-This is a step by step guide to get S3Server ready for you on your system.
+# Cortx-S3Server QuickStart guide
+This is a step by step guide to get Cortx-S3Server ready for you on your system.
 Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
 
 ## Accessing the code right way
 (For phase 1) The latest code which is getting evolved and contributed is on the github.
 Seagate contributors will be referencing, cloning and committing their code to/from this https://github.com/Seagate/cortx-s3server
 
-To simply pull the code in which to build `git clone --recursive "https://github.com/Seagate/cortx-s3server" -b innersource`
+To simply pull the code in which to build `git clone --recursive "https://github.com/Seagate/cortx-s3server" -b dev`
 
 Following steps will make your access to server hassle free.
 1. From here on all the steps needs to be followed as the root user.
@@ -20,15 +20,14 @@ Following steps will make your access to server hassle free.
   * In the menu on the left, click on the SSH and GPG keys, and add your public key (which is generated in step one) right there.
 
 WoW! :sparkles:
-You are all set to fetch S3Server repo now! 
+You are all set to fetch Cortx-S3Server repo now! 
 
-## Cloning S3Server Repository
-Getting the main S3Server code on your system is straightforward.
+## Cloning Cortx-S3Server Repository
+Getting the main Cortx-S3Server code on your system is straightforward.
 1. `$ cd path/to/your/dev/directory`
-2. `$ export GID=<your_seagate_GID>` # this will make subsequent steps easy to copy-paste :)
-3. `$ git clone git@github.com:Seagate/cortx-s3server.git -b innersource` ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps .Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
-4. `$ cd s3server`
-5. `$ git submodule update --init --recursive && git status`
+2. `$ git clone git@github.com:Seagate/cortx-s3server.git -b dev` ( It has been assumed that `git` is preinstalled.If not then follow git installation specific steps. Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+3. `$ cd cortx-s3Server`
+4. `$ git submodule update --init --recursive && git status`
 
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
@@ -64,10 +63,10 @@ All the following commands assume that user is already in its main source direct
     * `$ python --version`, if you don't have python version 2.6.5+ then install python.
     * `$ python3 --version`, if you don't have python3 version 3.3+ then install python3.
     * `$ easy_install pip`
-  * Make sure S3Server and it's dependent services are running.
-    * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start S3Server and it's dependent services.
+  * Make sure Cortx-S3Server and it's dependent services are running.
+    * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start Cortx-S3Server and it's dependent services.
     * `$ pgrep s3`, it should list the `PID` of S3 processes running.
-    * `$ pgrep mero`, it should list the `PID` of mero processes running.
+    * `$ pgrep mero`, it should list the `PID` of MOTR processes running.
   * Install aws client and it's plugin
     * `$ pip install awscli`
     * `$ pip install awscli-plugin-endpoint`
@@ -120,17 +119,17 @@ All the following commands assume that user is already in its main source direct
 
 KABOOM!!!
 
-## Testing specific MERO version with S3Server
+## Testing specific MOTR version with Cortx-S3Server
 For this demand also we are having solution :
 1. Search for specific commit-id in search box and choose type = 'Commits' , click on  search result (specific commit) and copy associated change-id
-2. `$ cd third_party/mero` (It is assumed that you are into main directory of your s3server repo)
+2. `$ cd third_party/mero` (It is assumed that you are into main directory of your Cortx-S3Server repo)
 3. Use copied commit HASH/REFSPEC in step 1 as shown below.
    
  > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
    
 4. Update submodules 
 > `$ git submodule update --init --recursive`
-5. Build mero
+5. Build MOTR
 
 > `cd ..`
 
