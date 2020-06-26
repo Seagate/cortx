@@ -23,37 +23,37 @@
 1. Update Git to the latest version
     - with older git version, you might be getting errors with commit hook, like this one:
 
-> $ git commit
-> git: 'interpret-trailers' is not a git command. See 'git --help'.
+   > $ git commit
+   > git: 'interpret-trailers' is not a git command. See 'git --help'.
 cannot insert change-id line in .git/COMMIT_EDITMSG
 
-Fix (for CentOS 7.x):
+   Fix (for CentOS 7.x):
 
- > $ yum remove git
- 
- > $ yum -y install  https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
- 
- > $ yum -y install git
+      > $ yum remove git
+
+      > $ yum -y install  https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
+
+      > $ yum -y install git
   
 2. Install git-clang-format
 
-> $ yum install git-clang-format
+   > $ yum install git-clang-format
 
 3. Setup the git config options
 
- > $ git config --global user.name ‘Your Name’
- 
- > $ git config --global user.email ‘Your.Name@seagate.com’
- 
- > $ git config --global color.ui auto
- 
- > $ git config --global credential.helper cache (Required for submodule clone process)
+    > $ git config --global user.name ‘Your Name’
+
+    > $ git config --global user.email ‘Your.Name@seagate.com’
+
+    > $ git config --global color.ui auto
+
+    > $ git config --global credential.helper cache (Required for submodule clone process)
  
 ### To work on a feature and submit review to GitHub
 
 #### Clone cortx-s3server
 - Each contributor needs to do 'fork' to create their own private cortx-s3server repository.
-> $ git clone git@github.com:<GitHub-ID>/cortx-s3server.git
+   > $ git clone git@github.com:<GitHub-ID>/cortx-s3server.git
  
 - Ensure you have checked out “Dev” branch
 
