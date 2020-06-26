@@ -325,9 +325,7 @@ Detailed metadata ref:
 *Reach out to:*
 
 
-* **EOS-S3** channel on MS Teams
-
-* S3 team email@ eos.s3@seagate.com
+* *CORTX Community Slack channel* - `<https://cortxcommunity.slack.com>`_
 
 
 |image18|
