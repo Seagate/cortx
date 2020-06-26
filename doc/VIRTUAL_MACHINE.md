@@ -75,18 +75,19 @@ PRE-BUILD [HARE]
 
 ## Single node setup
 
-1. Make sure you are `root` user and then execute the following commands to fetch, build and install hare
-```# git clone --recursive http://gitlab.mero.colo.seagate.com/mero/hare.git
-# cd hare
+1. To fetch hare sources refer to section 3.5 in [this](Cluster_Setup.md) document. 
+
+2. Make sure you are `root` user, `cd` into the hare source directory and then execute the following commands to build and install hare 
+```
 # make
 # sudo make devinstall
 ```
 
-2. Add current user to `hare` group.
+3. Add current user to `hare` group.
 ```# usermod --append --groups hare $USER```
 Log out and log back in.
 
-3. Describing the single node cluster to hare:
+4. Describing the single node cluster to hare:
 There's a sample file in hare source at the location `cfgen/examples/singlenode.yaml` file. Edit it to reflect the single node cluster environment:
 * Ensure that the disks enumerated in the `io_disks` list exist. Create loop devices, if necessary:
 ```
