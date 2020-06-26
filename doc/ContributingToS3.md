@@ -54,6 +54,7 @@ cannot insert change-id line in .git/COMMIT_EDITMSG
 #### Clone cortx-s3server
 - Each contributor needs to do 'fork' to create their own private cortx-s3server repository.
    - Go to homepage of 'cortx-s3server' repository on GitHub, there you will see 'fork' at top right corner.
+
    > $ git clone git@github.com:"your-github-id"/cortx-s3server.git
  
 - Ensure you have checked out “dev” branch
@@ -105,7 +106,8 @@ To github.com:<your-GitHub-Id>/cortx-s3server.git
 - Select base:branch as 'dev' from the dropdown.
 <p align="center"><img src=""></p>
 
-- Add reviewers and click 'Create pull request'
+- click 'Create pull request' to create the pull request.
+- Add reviewers to get feedback on your changes.
 
 ### Running Jenkins / System tests
 - Get commit-id of your change
