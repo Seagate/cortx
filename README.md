@@ -51,6 +51,7 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENS
 
 ## Resources
 * [Join the CORTX Forum on Slack](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ) – Get your questions answered and interact with the Seagate team and your fellow Early Adopter program members. This will become the public forum – so this is another great way to contribute to the vibrancy of the community as we work towards the public launch.
+* Download the [CORTX Early Adopter Brief](https://github.com/Seagate/cortx/tree/master/doc/SB510_1-2004US_Seagate_CORTX_Community-Brief_R7.2.pdf)
 * Download the CORTX Technical Whitepaper – **Coming soon!** Get a deeper look at the architecture and key capabilities of CORTX.
 * [CORTX Documentation](https://github.com/Seagate/cortx/tree/master/doc) – This is another area you can contribute to – here is a [list of documents](https://github.com/Seagate/cortx/tree/master/doc) that need to be created or converted.
 * Check the [Issues section](https://github.com/Seagate/cortx/issues) on github if you find a bug or have a feature request. Please check existing Issues before opening a new one.
