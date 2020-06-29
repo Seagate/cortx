@@ -18,17 +18,14 @@ You are all set to fetch cortx-motr repo now.
 
 ## Cloing CORTX source code
 Getting the main CORTX source code on your system is straightforward.
-1. `$ cd path/to/your/dev/directory`
 
-2. `$ export GID=<your_seagate_GID>` # this will make subsequent sets easy to copy-paste :)
-
-3. `$ git clone --recursive git@github.com:Seagate/cortx-motr.git -b main` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+1. `$ git clone --recursive git@github.com:Seagate/cortx-motr.git -b main` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](ContributingToMero.md/#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
                                                                                                                                                                                            
-4. `$ cd cortx-motr`
+2. `$ cd cortx-motr`
 
-5. `$ gitdir=$(git rev-parse --git-dir)`
+3. `$ gitdir=$(git rev-parse --git-dir)`
 
-6. Enable some pre-commit hooks required before pushing your changes to remote 
+4. Enable some pre-commit hooks required before pushing your changes to remote 
    * Run this command from the parent dir of cortx-motr source
    Note: (This step needs to be validated)
    
