@@ -4,7 +4,7 @@ CentOS 7.7 dev VM
 ISO
 ---
 Download CentOS version 7.7.1908 ISO image for installation. You can find the image here:
-http://mirrors.ukfast.co.uk/sites/ftp.centos.org/7.7.1908/isos/x86_64/CentOS-7-x86_64-DVD-1908.iso
+http://mirrors.oit.uci.edu/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-DVD-1908.iso
 
 VM
 --
