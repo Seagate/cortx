@@ -25,7 +25,7 @@ Getting the main CORTX source code on your system is straightforward.
 
 2. `$ export GID=<your_seagate_GID>` # this will make subsequent sets easy to copy-paste :)
 
-3. `$ git clone --recursive "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero" -b innersource` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+3. `$ git clone --recursive "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero" -b innersource` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](ContributingToMero.md/#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
 (If "Permission denied (publickey). fatal: Could not read from remote repository" error occurs while using ssh in this step then use the following alternate command) `$ git clone --recursive "http://gerrit.mero.colo.seagate.com/mero" -b innersource`                                                                                                                                                                                           
 4. `$ cd mero`
 
