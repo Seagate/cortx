@@ -3,10 +3,10 @@ This is a step by step guide to get S3Server ready for you on your system.
 Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
 
 ## Accessing the code right way
-(For phase 1) The latest code which is getting evolved and contributed is on the gerrit server.
-Seagate contributors will be referencing, cloning and committing their code to/from this [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
+(For phase 1) The latest code which is getting evolved and contributed is on the Github server.
+Seagate contributors will be referencing, cloning and committing their code to/from this [Github](https://github.com/Seagate/).
 
-To simply pull the code in which to build `git clone --recursive "http://gerrit.mero.colo.seagate.com/s3server" -b innersource`
+To simply pull the code in which to build `git clone --recursive git@github.com:Seagate/cortx-s3server.git -b main`
 
 Following steps will make your access to server hassle free.
 1. From here on all the steps needs to be followed as the root user.
@@ -14,10 +14,7 @@ Following steps will make your access to server hassle free.
   * Type `su -` and enter the root password to switch to the root user mode.
 2. Create SSH Public Key
   * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. Follow the instructions throughly.
-3. Add SSH Public Key on [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
-  * Log into the gerrit server with your seagate gid based credentials.
-  * On right top corner you will see your name, open drop down menu by clicking and choose settings.
-  * In the menu on the left, click on the SSH Public Keys, and add your public key (which is generated in step one) right there.
+3. Add New SSH Public Key on [Github](https://github.com/settings/keys) and Enable SSO.
 
 WoW! :sparkles:
 You are all set to fetch S3Server repo now! 
@@ -26,15 +23,16 @@ You are all set to fetch S3Server repo now!
 Getting the main S3Server code on your system is straightforward.
 1. `$ cd path/to/your/dev/directory`
 2. `$ export GID=<your_seagate_GID>` # this will make subsequent steps easy to copy-paste :)
-3. `$ git clone "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/s3server" -b innersource` ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+3. `$ git clone "git clone --recursive git@github.com:Seagate/cortx-s3server.git -b main`  Note:If username prompted than enter github username and for password copy from [PAT](https://github.com/settings/tokens) or generate a new one using [Generate PAT](https://github.com/settings/tokens) and enable SSO ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.) 
 4. Enable some pre-commit hooks required before pushing your changes to remote.
-  * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg "s3server/.git/hooks/"`
+  * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg "s3server/.git/hooks/"` 
+  Note: Need to validate this step
     
     if permission denied, then do the following
     
     `$ chmod 600 /root/.ssh/id_rsa`
 
-5. `$ cd s3server`
+5. `$ cd cortx-s3server`
 6. `$ git submodule update --init --recursive && git status`
 
 ## Installing dependency
@@ -74,7 +72,7 @@ All the following commands assume that user is already in its main source direct
   * Make sure S3Server and it's dependent services are running.
     * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start S3Server and it's dependent services.
     * `$ pgrep s3`, it should list the `PID` of S3 processes running.
-    * `$ pgrep mero`, it should list the `PID` of mero processes running.
+    * `$ pgrep mero`, it should list the `PID` of mero processes running. (Note: Need changes if required pgrep mero or pgrep motr ?)
   * Install aws client and it's plugin
     * `$ pip install awscli`
     * `$ pip install awscli-plugin-endpoint`
@@ -127,34 +125,34 @@ All the following commands assume that user is already in its main source direct
 
 KABOOM!!!
 
-## Testing specific MERO version with S3Server
+## Testing specific Motr version with S3Server
 For this demand also we are having solution :
 
 1. Get desired mero commit HASH *or* commit REFSPECS on clipboard (you'll be asked to paste in step 4)
 * To get REFSPECS
 
- > Search your desired commit [here](http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open)
+ > Search your desired commit [here](http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open) (Note: This link should change to github)
  
- > Go to desired commit and then click *Download* button and copy the highlighted part(which is your REFSPECS actually) as shown below. 
+ > Go to desired commit and then click *Download* button and copy the highlighted part(which is your REFSPECS actually) as shown below. (Note: Images below need to change to point to github)
   
   <p align="center"><img src="../../assets/images/mero_Refspecs.JPG?raw=true"></p>
   
-2. `$ cd third_party/mero` (It is assumed that you are into main directory of your s3server repo)
+2. `$ cd third_party/mero` (It is assumed that you are into main directory of your s3server repo) (Note: cd third_party/motr ?)
 3. Use copied commit HASH/REFSPEC in step 1 as shown below.
    
  > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
    
  or
    
- > git pull "http://gerrit.mero.colo.seagate.com/mero" refs/changes/91/19491/4
+ > git pull "http://gerrit.mero.colo.seagate.com/mero" refs/changes/91/19491/4  (Note: git pull "https://github.com/Seagate/cortx-motr.git")
 
 4. Update submodules 
 > `$ git submodule update --init --recursive`
-5. Build mero
+5. Build Motr
 
 > `cd ..`
 
-> `./build_mero.sh`
+> `./build_mero.sh` ( Note: Verify filename if it is ./build_motr.sh)
 
 6. Run jenkins script to make sure that your build & tests passes.
 
