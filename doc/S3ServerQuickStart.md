@@ -3,7 +3,7 @@ This is a step by step guide to get Cortx-S3Server ready for you on your system.
 Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
 
 ## Accessing the code right way
-(For phase 1) The latest code which is getting evolved and contributed is on the github.
+The latest code which is getting evolved and contributed is on the github.
 Seagate contributors will be referencing, cloning and committing their code to/from this https://github.com/Seagate/cortx-s3server
 
 To simply pull the code in which to build `git clone --recursive "https://github.com/Seagate/cortx-s3server" -b main`
