@@ -8,7 +8,7 @@
 * [SNS (io, repair, rebalance)](/doc/be/sns-io-repair-rebalance.md)
 * An [opengrok source code browser](http://ssc-vm-c-192.colo.seagate.com:8090/source/xref/s3server/) for our S3 code
 * [EOS S3 IAM Overview](/doc/be/EOS_S3_IAM_Overview.rst)
-* [CORTX S3 Server overview](/doc/be/CORTX-S3OVERVIEW)
+* [CORTX S3 Server overview](/doc/be/CORTX-S3OVERVIEW.rst)
 
 TODO: Add more.  Convert more into .rst format.
 
