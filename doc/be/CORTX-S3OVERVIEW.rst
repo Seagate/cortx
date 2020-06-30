@@ -6,11 +6,11 @@
 **Agenda**
 ==========
 
-● What is S3
+● What is CORTX-S3
 
 ● Overview
 
-● S3 Server Architecture
+● CORTX-S3 Server Architecture
 
 ● Technologies used
 
@@ -18,7 +18,7 @@
 
 ● Downloads
 
-● S3 URL to EOS Core OID
+● CORTX-S3 URL to CORTX Motr OID
 
 ● Metadata
 
@@ -30,7 +30,7 @@
 
    
 ============================
-**What** is S3 **and why?**
+**What** is CORTX-S3 **and why?**
 ============================
 
 
@@ -41,20 +41,20 @@
 **Overview**
 =============
 
-● S3 Server can be installed on Mero node or a separate node
+● CORTX-S3 Server can be installed on Mero node or a separate node
 
-● Core S3 is developed in C++, Authentication/Authorisation server developed in core Java.
+● Motr CORTX-S3 is developed in C++, Authentication/Authorisation server developed in Motr Java.
 
 ● Uses Clovis library (C - API) to talk to Mero IO/KVS services
 
-● S3 Objects stored as EOS-Core (mero) Objects - IOS
+● CORTX-S3 Objects stored as CORTX-Motr (mero) Objects - IOS
 
-● KV store required for storing S3 buckets and object metadata = EOS-Core (mero) KVS (cas/dix)
+● KV store required for storing CORTX-S3 buckets and object metadata = CORTX-Motr (mero) KVS (cas/dix)
 
 ..
 
 ===========================
-**S3 Server Architecture**
+**CORTX-S3 Server Architecture**
 ===========================
 
 |image4|
@@ -63,36 +63,36 @@
 ..
  
 ===========================
-**S3 Server Architecture**
+**CORTX-S3 Server Architecture**
 ===========================
 
 |image5|
 
 ===================
-**S3 Overview**
+**CORTX-S3 Overview**
 ===================
 
 |image6|
 
-1. S3 client applications use S3 REST APls to perform object operations.
+1. CORTX-S3 client applications use CORTX-S3 REST APls to perform object operations.
 
 2. s3iamcli or GUI for Account/Users/Credentials management.
 
 3. haproxy - Load balancer / local node proxy, TLS/SSL termination.
 
-4. S3 Server exposes S3 REST APIs for EOS.
+4. CORTX-S3 Server exposes CORTX-S3 REST APIs for CORTX.
 
-5. Clovis - C library interface to EOS Object/KVS operations.
+5. Clovis - C library interface to CORTX Object/KVS operations.
 
-6. EOS Core Object store
+6. CORTX Motr Object store
 
 7. Auth server - exposes Account/User/Credentials management REST APls and authentication, authorization REST APls.
 
-8. Openldap server - DB for storing identities used with S3.
+8. Openldap server - DB for storing identities used with CORTX-S3.
 
 
 ===========================
-**S3 Tech stack overview**
+**CORTX-S3 Tech stack overview**
 ===========================
 
 
@@ -100,7 +100,7 @@
 
 
 ==================================
-**S3 Workflow (Upload Object)**
+**CORTX-S3 Workflow (Upload Object)**
 ==================================
 
 
@@ -117,22 +117,22 @@
 3. Auth server authenticates request and creates Account/User/Access keys in openldap and response is sent back to s3iamcli via haproxy.
 
 
-**Object upload via S3 API**
+**Object upload via CORTX-S3 API**
 ############################
 
-1. S3 client reads file to be uploaded as object.
+1. CORTX-S3 client reads file to be uploaded as object.
 
-2. S3 client uses PUT Object API to upload Object. For large object it divides file into parts and uploads using Multipart upload (POST Object,PUT Part and Complete upload) APIs.
+2. CORTX-S3 client uses PUT Object API to upload Object. For large object it divides file into parts and uploads using Multipart upload (POST Object,PUT Part and Complete upload) APIs.
 
-3. haproxy receives these API requests and distributes to different S3 instances.
+3. haproxy receives these API requests and distributes to different CORTX-S3 instances.
 
-4. S3 instances request Auth server to verify the API signatures to authenticate and authorize the request.
+4. CORTX-S3 instances request Auth server to verify the API signatures to authenticate and authorize the request.
 
-5. S3 instance creates an object in mero and writes data using clovis APIs. Clovis uses erasure coding/replication depending on configuration for data resiliency.
+5. CORTX-S3 instance creates an object in mero and writes data using clovis APIs. Clovis uses erasure coding/replication depending on configuration for data resiliency.
 
 
 ==================================
-**S3 Workflow (Download Object)**
+**CORTX-S3 Workflow (Download Object)**
 ==================================
 
 
@@ -140,56 +140,56 @@
 
 
 
-**Object download via S3 API**
+**Object download via CORTX-S3 API**
 ###############################
 
 
-1. S3 client makes a request to download object using S3 REST API (either full download or range read with parallel range downloads)
+1. CORTX-S3 client makes a request to download object using CORTX-S3 REST API (either full download or range read with parallel range downloads)
 
-2. haproxy receives these API requests and distributes to different S3 instances.
+2. haproxy receives these API requests and distributes to different CORTX-S3 instances.
 
-3. S3 instances request Auth server to verify the API signatures to authenticate and authorize the request.
+3. CORTX-S3 instances request Auth server to verify the API signatures to authenticate and authorize the request.
 
-4. S3 instances reads object data from mero nodes and (assembles data units at clovis layer).
+4. CORTX-S3 instances reads object data from mero nodes and (assembles data units at clovis layer).
 
-5. S3 server sends the data back to S3 clients via haproxy.
+5. CORTX-S3 server sends the data back to CORTX-S3 clients via haproxy.
 
-6. haproxy sends data back to S3 clients.
+6. haproxy sends data back to CORTX-S3 clients.
 
 
 =========================================
-**S3 Object to EOS Core object mapping**
+**CORTX-S3 Object to CORTX Motr object mapping**
 =========================================
 
 
 |image10|
 
 
-● Murmur3 hashing was used in **past** to map S3 URI to generated OID/fid
+● Murmur3 hashing was used in **past** to map CORTX-S3 URI to generated OID/fid
 
 ● Clovis Unique ID generator is used **today. ref:**
 
 `<https://docs.google.com/presentation/d/1toSKdMzamIQHCZBzQiYzIO5uXdTcDfjImPz3n6UBu0E/>`_
 
-● S3 URI – OID mapping stored in S3 Object metadata in KVS
+● CORTX-S3 URI – OID mapping stored in CORTX-S3 Object metadata in KVS
 
 
 ================
-**S3 metadata**
+**CORTX-S3 metadata**
 ================
 
-**● S3 Bucket metadata include**
+**● CORTX-S3 Bucket metadata include**
 #################################
 
 * name, timestamps, ACL, Policy
 
-* Object listing references within bucket (s3 object url, mero oid)
+* Object listing references within bucket (CORTX-S3 object url, mero oid)
 
 * Multipart upload listing references 
 
 * Tags
 
-**● S3 Object metadata**
+**● CORTX-S3 Object metadata**
 #########################
 
 * name, timestamps, ACL
@@ -242,7 +242,7 @@ Detailed metadata ref:
 
    -  Long term (Assemble in mero -recommended)
 
-      -  Follows S3 protocol strictly and mero handles handles
+      -  Follows CORTX-S3 protocol strictly and mero handles handles
          assembling in background without the user facing the delay in
          assemble.
 
@@ -264,7 +264,7 @@ Detailed metadata ref:
 
 
 =====================
-**S3 APls support**
+**CORTX-S3 APls support**
 =====================
 
 
@@ -277,10 +277,10 @@ Detailed metadata ref:
 
 
 =============================
-**S3 - Clovis KV interface**
+**CORTX-S3 - Clovis KV interface**
 =============================
 
-* S3 uses clevis key-value API interface to use specific KV store like Cassandra DB, Mero KVS, Redis etc.
+* CORTX-S3 uses clevis key-value API interface to use specific KV store like Cassandra DB, Mero KVS, Redis etc.
 
 * In future, when Mero KVS implementation is available we can switch to use Mero KVS by just a configuration change.
 
@@ -289,15 +289,15 @@ Detailed metadata ref:
 
 
 ===================
-**S3 Bucket data**
+**CORTX-S3 Bucket data**
 ===================
 
-* **S3 Bucket data include**
+* **CORTX-S3 Bucket data include**
 
 
 * Name, timestamps, ACL
 
-* Object references within bucket (s3 object url, mero oid)
+* Object references within bucket (CORTX-S3 object url, mero oid)
 	
 	
 
