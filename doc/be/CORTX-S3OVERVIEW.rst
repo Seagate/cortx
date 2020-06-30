@@ -41,15 +41,15 @@
 **Overview**
 =============
 
-● CORTX-S3 Server can be installed on Mero node or a separate node
+● CORTX-S3 Server can be installed on Motr node or a separate node
 
 ● Motr CORTX-S3 is developed in C++, Authentication/Authorisation server developed in Motr Java.
 
-● Uses Clovis library (C - API) to talk to Mero IO/KVS services
+● Uses Clovis library (C - API) to talk to Motr IO/KVS services
 
-● CORTX-S3 Objects stored as CORTX-Motr (mero) Objects - IOS
+● CORTX-S3 Objects stored as CORTX-Motr (motr) Objects - IOS
 
-● KV store required for storing CORTX-S3 buckets and object metadata = CORTX-Motr (mero) KVS (cas/dix)
+● KV store required for storing CORTX-S3 buckets and object metadata = CORTX-Motr (motr) KVS (cas/dix)
 
 ..
 
@@ -128,7 +128,7 @@
 
 4. CORTX-S3 instances request Auth server to verify the API signatures to authenticate and authorize the request.
 
-5. CORTX-S3 instance creates an object in mero and writes data using clovis APIs. Clovis uses erasure coding/replication depending on configuration for data resiliency.
+5. CORTX-S3 instance creates an object in motr and writes data using clovis APIs. Clovis uses erasure coding/replication depending on configuration for data resiliency.
 
 
 ==================================
@@ -150,7 +150,7 @@
 
 3. CORTX-S3 instances request Auth server to verify the API signatures to authenticate and authorize the request.
 
-4. CORTX-S3 instances reads object data from mero nodes and (assembles data units at clovis layer).
+4. CORTX-S3 instances reads object data from motr nodes and (assembles data units at clovis layer).
 
 5. CORTX-S3 server sends the data back to CORTX-S3 clients via haproxy.
 
@@ -183,7 +183,7 @@
 
 * name, timestamps, ACL, Policy
 
-* Object listing references within bucket (CORTX-S3 object url, mero oid)
+* Object listing references within bucket (CORTX-S3 object url, motr oid)
 
 * Multipart upload listing references 
 
@@ -198,7 +198,7 @@
 
 * user defined metadata, tags etc
 
-**● Metadata stored in Mero KVS**
+**● Metadata stored in Motr KVS**
 ##################################
 
 **● Metadata is stored as JSON.**
@@ -240,9 +240,9 @@ Detailed metadata ref:
 
       -  offset for each part = partNumber \* Content-Length
 
-   -  Long term (Assemble in mero -recommended)
+   -  Long term (Assemble in motr -recommended)
 
-      -  Follows CORTX-S3 protocol strictly and mero handles handles
+      -  Follows CORTX-S3 protocol strictly and motr handles handles
          assembling in background without the user facing the delay in
          assemble.
 
@@ -280,9 +280,9 @@ Detailed metadata ref:
 **CORTX-S3 - Clovis KV interface**
 =============================
 
-* CORTX-S3 uses clevis key-value API interface to use specific KV store like Cassandra DB, Mero KVS, Redis etc.
+* CORTX-S3 uses clevis key-value API interface to use specific KV store like Cassandra DB, Motr KVS, Redis etc.
 
-* In future, when Mero KVS implementation is available we can switch to use Mero KVS by just a configuration change.
+* In future, when Motr KVS implementation is available we can switch to use Motr KVS by just a configuration change.
 
 
 |image19|
@@ -297,11 +297,11 @@ Detailed metadata ref:
 
 * Name, timestamps, ACL
 
-* Object references within bucket (CORTX-S3 object url, mero oid)
+* Object references within bucket (CORTX-S3 object url, motr oid)
 	
 	
 
-* **Bucket data stored in Cassandra (Will move to Mero KVS)**
+* **Bucket data stored in Cassandra (Will move to Motr KVS)**
 
 * **Cassandra used for its nosql big data capabilities**
 
