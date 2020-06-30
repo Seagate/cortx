@@ -10,6 +10,7 @@
 * [EOS S3 IAM Overview](/doc/be/EOS_S3_IAM_Overview.rst)
 * [EOS core architecture overview](/doc/be/EOSCOREARCHITECTURE.rst)
 * [EOS Core - Deep Dive](/doc/be/EOSS3IAMDD.rst)
+* [CORTX S3 Server overview](/doc/be/CORTX-S3OVERVIEW.rst)
 
 TODO: Add more.  Convert more into .rst format.
 
