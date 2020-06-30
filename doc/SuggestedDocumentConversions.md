@@ -12,7 +12,7 @@ alongside our code within one of our 'doc/' folders.  For the conversion, we are
 either [reStructuredText](https://docutils.sourceforge.io/rst.html) or [MarkDown](https://www.markdownguide.org/) as these formats are
 very simple to write, are utilitarian yet elegant to view, and can be browsed directly through our GitHub repositories.  In general, please use reStructuredText for most documents and only use MarkDown for very small and very simple documents.
 
-Please find the list [here](https://seagatetechnology.sharepoint.com/:x:/s/cortx-innersource/EWhpumcTSsBNj5khvGPigU8BXQuzlWEutAvxa80u2bNrGw?e=8A2BKh) and add your name in the 'Assignee' column to ensure that multiple community members do not inadvertently, unnecessarily perform the same activities.  Please also add the date on which you assigned it to yourself in the 'Date Assigned' column.
+Please find the list [here](https://seagatetechnology.sharepoint.com/:x:/s/cortx-innersource/EWhpumcTSsBNj5khvGPigU8BXQuzlWEutAvxa80u2bNrGw?e=g9uhQA) and add your name in the 'Assignee' column to ensure that multiple community members do not inadvertently, unnecessarily perform the same activities.  Please also add the date on which you assigned it to yourself in the 'Date Assigned' column.
 
 Once you have completed the conversion, please also edit an existing documentation file to add a pointer to your new file and then submit a patch (pull request) containing the new file and the modified file.  Thanks!
 

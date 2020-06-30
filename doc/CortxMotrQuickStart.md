@@ -1,40 +1,36 @@
-# Mero QuickStart guide
+# Cortx-Motr QuickStart guide
 This is a step by step guide to get CORTX ready for you on your system.
 Before cloning, however, you need to have a SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).  If you prefer video, here is a [link to a video](https://seagatetechnology.sharepoint.com/:v:/s/gteamdrv1/tdrive1224/EZbJ5AUWe79DksiRctCtsnUB9sILRr5DqHeBzdrwzNNg6w?e=Xamvex) produced by Seagate engineer Puja Mudaliar following these instructions.
 
 ## Accessing the source code right way
-(For phase 1) Latest code which is getting evolved, advancing and contributed is on the gerrit server.
-Seagate contributor will be referencing, cloning and committing code to/from this [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
+(For phase 1) Latest code which is getting evolved, advancing and contributed is on the current github server.
+Seagate contributor will be referencing, cloning and committing code to/from this [Github](https://github.com/Seagate/).
 
 Following steps as sudo user(sudo -s) will make your access to server hassel free.
 
 1. Create SSH Public Key
   * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. follow the instructions throughly.
   
-2. Add SSH Public Key on [Gerrit server](http://gerrit.mero.colo.seagate.com:8080/settings/#SSHKeys).
-  * Log into the gerrit server with your seagate gid based credentials.
-  * On right top corner you will see your name, open drop down menu by clicking and choose settings.
-  * In the menu on left, click SSH Public Keys, and add your public key (which is generated in step one) right there.
-
+2. Add New SSH Public Key on [Github](https://github.com/settings/keys) and Enable SSO.
+ 
 WoW! :sparkles:
-You are all set to fetch mero repo now. 
+You are all set to fetch cortx-motr repo now. 
 
 ## Cloing CORTX source code
 Getting the main CORTX source code on your system is straightforward.
-1. `$ cd path/to/your/dev/directory`
 
-2. `$ export GID=<your_seagate_GID>` # this will make subsequent sets easy to copy-paste :)
 
-3. `$ git clone --recursive "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero" -b innersource` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
-(If "Permission denied (publickey). fatal: Could not read from remote repository" error occurs while using ssh in this step then use the following alternate command) `$ git clone --recursive "http://gerrit.mero.colo.seagate.com/mero" -b innersource`                                                                                                                                                                                           
-4. `$ cd mero`
+1. `$ git clone --recursive git@github.com:Seagate/cortx-motr.git -b main` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](ContributingToMero.md/#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+                                                                                                                                                                                           
+2. `$ cd cortx-motr`
 
-5. `$ gitdir=$(git rev-parse --git-dir)`
+3. `$ gitdir=$(git rev-parse --git-dir)`
 
-6. Enable some pre-commit hooks required before pushing your changes to remote 
-   * Run this command from the parent dir of Mero source
+4. Enable some pre-commit hooks required before pushing your changes to remote 
+   * Run this command from the parent dir of cortx-motr source
+   Note: (This step needs to be validated)
    
-     `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
+     #`$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
 
 ## Building the CORTX source code
      
@@ -67,7 +63,7 @@ Getting the main CORTX source code on your system is straightforward.
   
      `$ sudo lctl list_nids`
 
-3. Compiling mero (Commands assumes that user is already into it's main source directory i.e. `$cd mero`)
+3. Compiling cortx-motr (Commands assumes that user is already into it's main source directory i.e. `$cd cortx-motr`)
    * Run following command
    
    `$ sudo ./scripts/m0 make` or `$sudo ./scripts/m0 rebuild`
