@@ -9,6 +9,7 @@
 * An [opengrok source code browser](http://ssc-vm-c-192.colo.seagate.com:8090/source/xref/s3server/) for our S3 code
 * [EOS S3 IAM Overview](/doc/be/EOS_S3_IAM_Overview.rst)
 * [EOS core architecture overview](/doc/be/EOSCOREARCHITECTURE.rst)
+* [EOS Core - Deep Dive](/doc/be/EOSS3IAMDD.rst)
 
 TODO: Add more.  Convert more into .rst format.
 
