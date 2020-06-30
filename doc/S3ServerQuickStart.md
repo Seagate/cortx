@@ -6,7 +6,7 @@ Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup 
 (For phase 1) The latest code which is getting evolved and contributed is on the github.
 Seagate contributors will be referencing, cloning and committing their code to/from this https://github.com/Seagate/cortx-s3server
 
-To simply pull the code in which to build `git clone --recursive "https://github.com/Seagate/cortx-s3server" -b dev`
+To simply pull the code in which to build `git clone --recursive "https://github.com/Seagate/cortx-s3server" -b main`
 
 Following steps will make your access to server hassle free.
 1. From here on all the steps needs to be followed as the root user.
@@ -25,7 +25,7 @@ You are all set to fetch Cortx-S3Server repo now!
 ## Cloning Cortx-S3Server Repository
 Getting the main Cortx-S3Server code on your system is straightforward.
 1. `$ cd path/to/your/dev/directory`
-2. `$ git clone git@github.com:Seagate/cortx-s3server.git -b dev` ( It has been assumed that `git` is preinstalled.If not then follow git installation specific steps. Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+2. `$ git clone git@github.com:Seagate/cortx-s3server.git -b main` ( It has been assumed that `git` is preinstalled.If not then follow git installation specific steps. Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
 3. `$ cd cortx-s3Server`
 4. `$ git submodule update --init --recursive && git status`
 
@@ -66,7 +66,7 @@ All the following commands assume that user is already in its main source direct
   * Make sure Cortx-S3Server and it's dependent services are running.
     * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start Cortx-S3Server and it's dependent services.
     * `$ pgrep s3`, it should list the `PID` of S3 processes running.
-    * `$ pgrep mero`, it should list the `PID` of MOTR processes running.
+    * `$ pgrep mero`, it should list the `PID` of mero processes running.
   * Install aws client and it's plugin
     * `$ pip install awscli`
     * `$ pip install awscli-plugin-endpoint`
@@ -119,7 +119,7 @@ All the following commands assume that user is already in its main source direct
 
 KABOOM!!!
 
-## Testing specific MOTR version with Cortx-S3Server
+## Testing specific mero version with Cortx-S3Server
 For this demand also we are having solution :
 1. Search for specific commit-id in search box and choose type = 'Commits' , click on  search result (specific commit) and copy associated change-id
 2. `$ cd third_party/mero` (It is assumed that you are into main directory of your Cortx-S3Server repo)
@@ -129,7 +129,7 @@ For this demand also we are having solution :
    
 4. Update submodules 
 > `$ git submodule update --init --recursive`
-5. Build MOTR
+5. Build mero
 
 > `cd ..`
 
