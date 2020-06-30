@@ -38,7 +38,7 @@ ansible-2.9.3-1.el7.noarch
 ```
 Ensure ansible version is atleast `2.9`
 
-Now you are ready to clone, build and/or run motr. Please refer to the [Motr](MeroQuickStart.md) quick start document for further help on this.
+Now you are ready to clone, build and/or run motr. Please refer to the [Motr](CortxMotrQuickStart.md) quick start document for further help on this.
 
 PRE-BUILD [S3SERVER]
 --------------------
