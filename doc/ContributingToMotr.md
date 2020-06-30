@@ -94,6 +94,10 @@ Open pull request for review
 
     Add reviewers to get feedback on your changes.
 
+Running Jenkins / System tests
+
+    Jenkins job will get trigerred automatically within 15 minutes of commit push on pull request.
+
 ### How to rebase your local branch on latest master?
 
     $ git checkout master
@@ -112,24 +116,7 @@ Open pull request for review
 
     If you get conflicts, follow the steps mentioned in the error message from git.
 
-## Running Jenkins / System tests
-
 * To get familiar with jenkins please visit [here](https://en.wikipedia.org/wiki/Jenkins_(software)).
-
-### How to start Motr jenkins job?
-(Note: Change this part from gerrit to github.Screenshot shows gerrit information)
-1. Open Motr jenkins [link](http://eos-jenkins.colo.seagate.com/job/Release_Engineering/job/InnerSource/job/EOS-Core/job/mero-vm-test/). (Note: Edit this link)
-2. Login with Username as `eos-core` and password as `eos-core`.
-3. Click on `Build With Parameters` option.
-4. You need to enter the `GIT_REFSPEC` and `label`, follow the steps as mentioned below.
-  * To get `GIT_REFSPEC` goto your gerrit server branch where you pushed your changes and click on`Download` section. The highlighted part `refs/changes/31/19331/4` in `checkout` section as shown below is your `GIT_REFSPEC`. Copy and paste it on `GIT_REFSPEC` section of jenkins.
-  
-  
-<p align="center"><img src="../../assets/images/mero_gerritsnap_jenkins_GIT_REFSPEC_detail.JPG?raw=true"></p>
-
-  * `label` field could be anything which is easy to recognize. It isn't mandatory field though.
-5. Press on `Build` button to start building the code. 
-6. All the currently running builds can be monitored from `Build History` section on left side pane. Specific build can be monitored by clicking on build number/lable from `Build History` section.
 
 ### Wanna test specific Motr commit with s3?
 
