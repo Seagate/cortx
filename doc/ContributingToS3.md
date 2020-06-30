@@ -57,9 +57,9 @@ cannot insert change-id line in .git/COMMIT_EDITMSG
 
    > $ git clone git@github.com:"your-github-id"/cortx-s3server.git
  
-- Ensure you have checked out “dev” branch
+- Ensure you have checked out “main” branch
 
-   > $ git checkout dev
+   > $ git checkout main
 
    > $ git checkout -b 'your-local-branch-name'
 
@@ -94,7 +94,7 @@ Writing objects: 100% (3/3), 332 bytes | 332.00 KiB/s, done.
 Total 3 (delta 1), reused 0 (delta 0)
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 remote:
-remote: Create a pull request for 'dev/ak/test-innersource' on GitHub by visiting:
+remote: Create a pull request for 'your-local-branch-name' on GitHub by visiting:
 remote:      https://github.com/<your-GitHub-Id>/cortx-s3server/pull/new/<your-local-branch-name>
 remote:
 To github.com:<your-GitHub-Id>/cortx-s3server.git
@@ -103,17 +103,14 @@ To github.com:<your-GitHub-Id>/cortx-s3server.git
 
 ### Open pull request for review
 - Open the URL given in the output of 'git push' command above.
-- Select base:branch as 'dev' from the dropdown.
-<p align="center"><img src=""></p>
+- Select base:branch as 'main' from the dropdown.
 
 - click 'Create pull request' to create the pull request.
 - Add reviewers to get feedback on your changes.
 
 ### Running Jenkins / System tests
-- Get commit-id of your change
-<p align="center"><img src=""></p>
+- Jenkins job will get trigerred automatically within 15 minutes of commit push.
 
-- Start pre-merge jobs using commit id and label(Optional) [Jenkins Job](http://eos-jenkins.mero.colo.seagate.com/job/S3server/job/s3-github-test/)
 
 ### How to rebase your local branch on latest master?
 
