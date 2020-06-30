@@ -20,7 +20,7 @@ You are all set to fetch cortx-motr repo now.
 Getting the main CORTX source code on your system is straightforward.
 
 
-1. `$ git clone --recursive git@github.com:Seagate/cortx-motr.git -b main` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](ContributingToMero.md/#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+1. `$ git clone --recursive git@github.com:Seagate/cortx-motr.git -b main` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](ContributingToMotr.md/#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
                                                                                                                                                                                            
 2. `$ cd cortx-motr`
 
