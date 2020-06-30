@@ -66,36 +66,6 @@
 
 ..
 
-=====================================
-**Areas of Focus in H2020 Projects**
-=====================================
-
-
-Seagate Awards
-##############
-
--  **Sage2 - $1.3M**
-
--  **MAESTRO - $0.7M**
-
--  **SAGE- $3.2M**
-
--  **EsiWACE- $500K**
-
--  **IO-SEA- $1.3M(Proposed)**
-
--  **SAGE3 $2M - $4M (In plan)**
-
--  **SAGE3 (Planned 2020)**
-
-
-
-|image2|
-
-
-..
-
-
 =======================================
 **One Storage System to Rule them All**
 =======================================
@@ -485,16 +455,6 @@ entities [50% - 100%]
 ..
 
 
-=======================
-**EOS EU R&D Roadmap**
-=======================
-
-
-
-|image13|
-
-
-
 =====================
 **Other Activities**
 =====================
@@ -546,9 +506,7 @@ entities [50% - 100%]
 .. |image0| image:: images/1_EOS_Tutorial.png
    
 .. |image1| image:: images/2_H2020.png
-   
-.. |image2| image:: images/3_H2020_Areas_of_Focus.png
-   
+    
 .. |image3| image:: images/4_One_Storage_System.png
    
 .. |image4| image:: images/5_SAGE_Project_Goal.png
@@ -569,5 +527,4 @@ entities [50% - 100%]
    
 .. |image12| image:: images/13_SAGE2_Enhanced_System_&_Software_Focus.png
    
-.. |image13| image:: images/14_EOS_Roadmap.png
-   
+
