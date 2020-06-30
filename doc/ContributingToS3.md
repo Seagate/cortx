@@ -109,7 +109,7 @@ To github.com:<your-GitHub-Id>/cortx-s3server.git
 - Add reviewers to get feedback on your changes.
 
 ### Running Jenkins / System tests
-- Jenkins job will get trigerred automatically within 15 minutes of commit push.
+- Jenkins job will get trigerred automatically within 15 minutes of commit push on pull request.
 
 
 ### How to rebase your local branch on latest master?
