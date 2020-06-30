@@ -46,7 +46,7 @@ PRE-BUILD [S3SERVER]
 
 * Next, s3server requires the user to be root. So, change user to root and check the path. Please ensure that the path contains: `/usr/local/bin`. This is required as s3server will install `s3iamcli` utility here, which it requires when running tests, and the path environment variable may not be updated resulting in `s3iamcli` not found error at test runtime.
 
-* At this point you are ready to build s3server. Please refer to the [s3server](S3ServerQuickStart.md) quick start document on how to do that.
+* At this point you are ready to build s3server. Please refer to the [s3server](CortxS3ServerQuickStart.md) quick start document on how to do that.
 
 ## Running s3server:
 
