@@ -82,7 +82,7 @@ Push your changes to GitHub
 
     $ git push origin 'your-local-branch-name'
     
-* Before pushing, TAKE A PAUSE. Have you [rebased your branch](#How-to-rebase)? if not then doing right now to avoide merge conflicts on github
+* Before pushing, TAKE A PAUSE. Have you [rebased your branch](#How-to-rebase)? If not then doing right now to avoid merge conflicts on github.
 
 Open pull request for review
 
