@@ -295,7 +295,7 @@ Access Evaluation
 ..
 
 =========== 
-CORTX-S3 IAM Cli
+s3iamcli
 ===========
 
 **API’s /Operations available**
