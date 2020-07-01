@@ -96,7 +96,8 @@ Open pull request for review
 
 Running Jenkins / System tests
 
-    Jenkins job will get trigerred automatically within 15 minutes of commit push on pull request.
+Jenkins job will get trigerred automatically and results about static analysis and build health will get reflect in you PR dashboard.
+<p align="center"><img src="../../assets/images/jenkinsReportGithub.png?raw=true"></p>
 
 ### How to rebase your local branch on latest master?
 
