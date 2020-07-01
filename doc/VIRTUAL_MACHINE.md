@@ -13,7 +13,12 @@ Create VM with the following recommended configuration:
 * Memory = 8GB
 * Storage = 128GB
 
-Install CentOS version 7.7.1908 in this VM from the previously downloaded ISO image.
+Install CentOS version 7.7.1908 in this VM from the previously downloaded ISO image. The default install of CentOS may turn off the network interface at boot for security. To turn on the network interface edit the network-scripts for the interface by changing ONBOOT veriable to 'yes' & reboot the VM. 
+
+```
+# ip addr show
+# sudo vi /etc/sysconfig/network-script/<name of interface>
+```
 
 PRE-BUILD [MOTR]
 ----------------
