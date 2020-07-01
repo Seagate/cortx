@@ -1,8 +1,8 @@
 ## Code reviews and commits
 
 ### Git setup on development box
-Update Git to the latest version
-with older git version, you might be getting errors with commit hook, like this one:
+Update Git to the latest version.
+With older git version, you might be getting errors with commit hook, like this one:
 
 
 > $ git commit
