@@ -41,7 +41,7 @@ In short, we need content! Whether you like to write or if you prefer to be inte
 ## Source code Browser
 
 Opengrok is a source code search and cross referece engine, please use below link to browse repositories.
-* [S3 Opengrok](http://ssc-vm-c-192.colo.seagate.com:8090/source/xref/s3server/)  
+* [S3 Opengrok](http://ssc-vm-c-192.colo.seagate.com:8090/source/)
 
 Happy code browsing!
 
