@@ -30,7 +30,7 @@ It is recommended to change user to `root` as `root` user privileges are require
 3.10.0-1062.12.1.el7.x86_64
 ```
 
-* [install]
+* [install] The epel-release is needed to be able to install ansible. 
 ```
 # yum install -y epel-release
 # yum install -y ansible
@@ -41,7 +41,7 @@ It is recommended to change user to `root` as `root` user privileges are require
 # rpm -qa | grep ansible
 ansible-2.9.3-1.el7.noarch
 ```
-Ensure ansible version is atleast `2.9`
+Ensure that the ansible version is `2.9` or greater. 
 
 Now you are ready to clone, build and/or run motr. Please refer to the [Motr](CortxMotrQuickStart.md) quick start document for further help on this.
 
