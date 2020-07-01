@@ -20,6 +20,10 @@ To ensure maximum utililization and code quality and to avoid vendor lock-in, Se
 
 We are so excited for you to be visiting us and reading this file and really hope you consider sticking around and being part of our community.  We take community very seriously and assure you that we are committed to all of the social goals of respectful interactions and inclusivity as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).  Check it out and, if it sounds like your kind of place, we bid you a warm welcome!
 
+## The Early Adopter Program
+
+Prior to our full open source launch, CORTX is now in a phase we are calling our _Early Adopter Program_.  During this period, we have opened our repositories and are sharing our development efforts with an external community comprised of trusted partners and customers.  Thank you all for your willingness and interest in this initiative.  We are so flattered that you share our vision for helping the world save more data through open source object storage!  Please read more about this initiative in our [Early Adopter Brief](https://github.com/Seagate/cortx/tree/master/doc/SB510_1-2004US_Seagate_CORTX_Community-Brief_R7.2.pdf) and please, as always, ask any questions or provide any feedback in our various public communications channels or feel free to address any private questions or concerns to cortx-questions@seagate.com.
+
 ## How to Contribute
 
 Please refer to our [Quick Start Guide](QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](https://github.com/Seagate/cortx/blob/master/doc/CodeStyle.md) for a description of our code style guidelines.  Please refer to our [Suggested Contributions List](doc/SuggestedContributions.md) to find ideas about what contributions are currently being sought.
