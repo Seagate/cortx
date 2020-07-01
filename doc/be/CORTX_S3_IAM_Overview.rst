@@ -20,7 +20,7 @@ Agenda
 
 ● Access Evaluation method
 
-● CORTX-S3 IAM cli
+● s3iamcli
 
 ● Demo CORTX-S3 ACL with CloudBerry CORTX-S3 Explorer
 
