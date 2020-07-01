@@ -43,7 +43,6 @@ Now checkout your new branch for saving your code
 Example git checkout -b <username>/<feature>
 Username = name or initials, example “John” or just “JB”
 > $ git checkout -b 'your-local-branch-name'
-> $ git checkout -b JB/motr_sync
 
 Make code changes
 
