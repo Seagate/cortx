@@ -10,3 +10,5 @@ TODO:
 1. Provide a downloadable image for Windows Subsystem Linux and any necessary instructions.
 
 If you are unable to procure your own build system, a small number of supported virtual machines can be made available on a limited first come first serve basis.  Unfortunately this offer is only possible for Seagate employees and contractors.  Please click [here](DEV_VM.md) for instructions about how to request one.
+
+Planning to create your own VM, please check [this page](VIRTUAL_MACHINE.md) for helpful pre-build steps pertaining to motr, s3server and hare. It also contains information to resolve a few issues that can come up at runtime.

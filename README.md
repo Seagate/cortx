@@ -1,6 +1,7 @@
 [![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/EOS-Sandbox/blob/master/LICENSE) 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c099437792d44496b720a730ee4939ce)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seagate/mero&amp;utm_campaign=Badge_Grade)
 ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg)
+[![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?)
 
 <img src="../assets/images/cortx-logo.png?raw=true">
 
@@ -19,9 +20,30 @@ To ensure maximum utililization and code quality and to avoid vendor lock-in, Se
 
 We are so excited for you to be visiting us and reading this file and really hope you consider sticking around and being part of our community.  We take community very seriously and assure you that we are committed to all of the social goals of respectful interactions and inclusivity as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).  Check it out and, if it sounds like your kind of place, we bid you a warm welcome!
 
+## The Early Adopter Program
+
+Prior to our full open source launch, CORTX is now in a phase we are calling our _Early Adopter Program_.  During this period, we have opened our repositories and are sharing our development efforts with an external community comprised of trusted partners and customers.  Thank you all for your willingness and interest in this initiative.  We are so flattered that you share our vision for helping the world save more data through open source object storage!  Please read more about this initiative in our [Early Adopter Brief](https://github.com/Seagate/cortx/tree/master/doc/SB510_1-2004US_Seagate_CORTX_Community-Brief_R7.2.pdf) and please, as always, ask any questions or provide any feedback in our various public communications channels or feel free to address any private questions or concerns to cortx-questions@seagate.com.
+
 ## How to Contribute
 
 Please refer to our [Quick Start Guide](QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](https://github.com/Seagate/cortx/blob/master/doc/CodeStyle.md) for a description of our code style guidelines.  Please refer to our [Suggested Contributions List](doc/SuggestedContributions.md) to find ideas about what contributions are currently being sought.
+
+### Case Studies, Technical Content, and Blog Posts
+
+One of our goals of the Early Adopter program is to create and collect content for the public launch of CORTX: case studies, contributor stories, solution briefs, and technical content such as code samples, recipes, API documentation, benchmarks, and reference architectures.
+
+If, in the course of running and testing CORTX and making contributions, you solve a challenge (big or small) and are interested in working with us on developing a case study or other content, please get in touch with John Bent at john.bent@seagate.com.
+
+We would also like to profile community members – their background, use cases, and contributions for ongoing blog posts.
+
+In short, we need content! Whether you like to write or if you prefer to be interviewed and leave the writing to us, this is a great way to share your experience and expertise.
+
+## Source code Browser
+
+Opengrok is a source code search and cross referece engine, please use below link to browse repositories.
+* [S3 Opengrok](http://ssc-vm-c-192.colo.seagate.com:8090/source/xref/s3server/)  
+
+Happy code browsing!
 
 ### Discussion of the CI/CD
 
@@ -32,7 +54,10 @@ Please read about our CI/CD and other automation [here](doc/CI_CD.md).
 This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE.md) file for details.
 
 ## Resources
-* [Seagate Innersource CORTX Forum](https://teams.microsoft.com/l/team/19%3a036ef7d2196f4c3dbe2e73ce26672240%40thread.tacv2/conversations?groupId=8a78203a-8c7a-42ad-b964-6fbbdc900bfb&tenantId=d466216a-c643-434a-9c2e-057448c17cbe) is the place to ask questions and find friendly and welcoming community resources. More details about support can be found in our [SUPPORT file](doc/SUPPORT.md)
+* [Join the CORTX Forum on Slack](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ) – Get your questions answered and interact with the Seagate team and your fellow Early Adopter program members. This will become the public forum – so this is another great way to contribute to the vibrancy of the community as we work towards the public launch.
+* Download the [CORTX Early Adopter Brief](https://github.com/Seagate/cortx/tree/master/doc/SB510_1-2004US_Seagate_CORTX_Community-Brief_R7.2.pdf)
+* Download the CORTX Technical Whitepaper – **Coming soon!** Get a deeper look at the architecture and key capabilities of CORTX.
+* [CORTX Documentation](https://github.com/Seagate/cortx/tree/master/doc) – This is another area you can contribute to – here is a [list of documents](https://github.com/Seagate/cortx/tree/master/doc) that need to be created or converted.
 * Check the [Issues section](https://github.com/Seagate/cortx/issues) on github if you find a bug or have a feature request. Please check existing Issues before opening a new one.
 * If you're interested in contributing to Seagate's CORTX community, please check [Contributions Guide](doc/SuggestedContributions.md) if you want some ideas about how to contribute. 
 
