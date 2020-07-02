@@ -6,7 +6,7 @@
 * [Developer-facing white paper](https://seagatetechnology-my.sharepoint.com/:b:/g/personal/ganesan_umanesan_seagate_com/EXDp-sznHDlHiyLly-0YwzQB0hvZMJ7vhCP88rh0LFJblw?e=2RYstK)
 * [Mero in Prose](/doc/be/mero-in-prose.md)
 * [SNS (io, repair, rebalance)](/doc/be/sns-io-repair-rebalance.md)
-* An [opengrok source code browser](http://ssc-vm-c-192.colo.seagate.com:8090/source/) for our CORTX-S3 code. Currently available within Seagate firewall. TODO: migrate to open.
+* An [opengrok source code browser](http://ssc-vm-c-192.colo.seagate.com:8090/source/) for our CORTX-S3 code. Currently visible only within Seagate firewall. TODO: migrate to open.
 * [CORTX S3 IAM Overview](/doc/be/CORTX_S3_IAM_Overview.rst)
 * [EOS core architecture overview](/doc/be/EOSCOREARCHITECTURE.rst)
 * [EOS Core - Deep Dive](/doc/be/EOSS3IAMDD.rst)
