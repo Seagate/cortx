@@ -1,4 +1,4 @@
-This document describes Mero project coding style. This document
+This document describes Motr project coding style. This document
 does NOT describe code documentation practices, they are explained
 elsewhere.
 
@@ -8,7 +8,7 @@ participant. To this end, a code should be as uniform and idiomatic as
 possible similarly with the properties that make usual human speech
 easier to understand.
 
-Mero coding style is based on the Linux kernel coding style, which
+Motr coding style is based on the Linux kernel coding style, which
 everyone is advised to familiarize with at
 [Linux Kernel Coding Style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
 
@@ -76,7 +76,7 @@ To summarise:
 
       This rule applied to block-level variable declarations too.
 
-In addition to the above syntactic conventions, Mero code should
+In addition to the above syntactic conventions, Motr code should
 try to adhere to some higher level idioms.
 
   * a loop repeated N times is written
@@ -323,15 +323,15 @@ try to adhere to some higher level idioms.
 
           #pragma once
 
-          #ifndef __MERO_SUBSYS_HEADER_H__
-          #define __MERO_SUBSYS_HEADER_H__
+          #ifndef __MOTR_SUBSYS_HEADER_H__
+          #define __MOTR_SUBSYS_HEADER_H__
           ...
-          #endif /* __MERO_SUBSYS_HEADER_H__ */
+          #endif /* __MOTR_SUBSYS_HEADER_H__ */
 
       notice, that include guards should use names conforming to the
       following regular expression:
 
-          __MERO_\w+_H__
+          __MOTR_\w+_H__
 
       this is required for a build script which automatically checks
       correctness of include guards and reports duplicates;
@@ -355,8 +355,8 @@ try to adhere to some higher level idioms.
       re-structuring easier and compilation faster.).
 
   * use M0_LOG() from lib/trace.h instead of printf(3)/printk() in
-    all source files which are part of libmero.so library or
-    m0mero.ko module (UT, ST and various helper utilities and
+    all source files which are part of libmotr.so library or
+    m0tr.ko module (UT, ST and various helper utilities and
     modules should use printf(3)/printk()).
 
   * consider using M0_LOG() with some meaningful information to
@@ -383,7 +383,7 @@ try to adhere to some higher level idioms.
 
   * When a function is about to return a "leaf level" error (i.e., an
     error initially produced by this function, rather than returned
-    from a lower level Mero function), it should wrap the error code in
+    from a lower level Motr function), it should wrap the error code in
     M0_ERR():
 
           result = M0_ERR(-EFAULT);
@@ -394,7 +394,7 @@ try to adhere to some higher level idioms.
 
           return M0_ERR(-EIO);
 
-      (an error, returned by a non-Mero function, is considered leaf).
+      (an error, returned by a non-Motr function, is considered leaf).
 
       A non-leaf errors should be reported optionally, when this
       doesn't lead to artificial code complication for reporting
