@@ -54,7 +54,7 @@ Add all such files
 
 Make sure build passes locally using [these steps](#compilation-and-running-unit-test) & commit your changes
 
-> $ git commit -m "GID - Appropriate Feature/Change Description"
+> $ git commit -m "Motr-componnt : Appropriate Feature/Change Description"
 
 Check git log to see your commit, verify the author name
 
