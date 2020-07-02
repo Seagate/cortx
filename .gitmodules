@@ -1,0 +1,6 @@
+[submodule "cortx-motr"]
+	path = cortx-motr
+	url = https://github.com/Seagate/cortx-motr.git
+[submodule "cortx-s3server"]
+	path = cortx-s3server
+	url = https://github.com/Seagate/cortx-s3server.git
