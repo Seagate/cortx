@@ -54,7 +54,7 @@ Here is a list of our current ideas about useful specific contributions that you
   * Team Member: Anatoliy
 * BErta(BE run time analysis) – metadata traversal python scripts used for debugging, visualization of metadata patterns and etc.
   * Team Member: Anatoliy
-* Make chronometry/addb tools to be useable for other people. Decreases slope of the Mero learning curve a lot. 
+* Make chronometry/addb tools to be useable for other people. Decreases slope of the Motr learning curve a lot. 
   * Team Member: Anatoliy
 * Chronometry/addb provements (at least Pearson Correlation) and Machine learning to identify abnormal behavior (for ex: some layouts may produce irregular network load pattern). 
   * Team Member: Anatoliy
@@ -72,7 +72,7 @@ Here is a list of our current ideas about useful specific contributions that you
   * Team Member: Nikita
 * Simplify deployment: run in a “demo” mode on a single node without root access and without real storage devices (files or loop devices) 
   * Team Member: Nikita
-* See doc/todo in the mero repository 
+* See doc/todo in the motr repository 
   * Team Member: Nikita
 * Get it working on Windows Subsystem Linux.  Add documentation and a downloadable VM image. 
 * Improve CI/CD and other automated tasks.  When you do these, please document them in docs/CI_CD.md. 
