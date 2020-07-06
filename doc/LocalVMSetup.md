@@ -5,7 +5,10 @@ This is a guide which lists the steps required to get a local VM and use it for 
 Download both .ovf or .vmdk files from the following link into a directory on your computer: https://seagatetechnology-my.sharepoint.com/:f:/g/personal/basavaraj_kirunge_seagate_com/EgkMhqmUbIdFs8Tr9N-bHecBtMDwm02QbG0T8vS7TLOdUg?e=aiRHBr
 
 ## 2. Add the VM in VMWare Fusion or Oracle VirtualBox
-You need to have either VMWare Fusion or Oracle VirtualBox to use the VM. In case you have VirtualBox installed, select the "Import Appliance" option and select the .ovf file downloaded in the previous step.  Note: if you are a Seagate employee and do not already have access to either VMWare Fusion or Oracle VirtualBox, IT requires you to submit an Exception request since these are not officially supported applications.
+You need to have either VMWare Fusion or Oracle VirtualBox to use the VM. In case you have VirtualBox installed, select the "Import Appliance" option and select the .ovf file downloaded in the previous step. 
+For VMware Fusion: Select File -> New -> Create Custom Virtual Machine -> Linux centos7 64-bit -> Legacy Bios -> Use Existing Virtual Machine -> (browse to file S3dev_CentOS_7-disk1.vmdk & select continue) -> Finish.
+
+Note: if you are a Seagate employee and do not already have access to either VMWare Fusion or Oracle VirtualBox, IT requires you to submit an Exception request since these are not officially supported applications.
 
 ## 3. Using the VM
 Start the VM, you will be presented with a login prompt after sometime. You need to enter the following credentials to login:
