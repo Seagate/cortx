@@ -20,9 +20,51 @@ WoW! :sparkles:
 You are all set to fetch Cortx-S3Server repo now! 
 
 ## Cloning S3Server Repository
+
 1. `$ git clone --recursive git@github.com:Seagate/cortx-s3server.git -b main`  Note:If username prompted than enter github username and for password copy from [PAT](https://github.com/settings/tokens) or generate a new one using [Generate PAT](https://github.com/settings/tokens) and enable SSO ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps provided [here](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxS3.md). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.) 
 2. `$ cd cortx-s3server`
 3. `$ git submodule update --init --recursive && git status`
+
+## Prerequisites
+1. Please make sure python3,pip,ansible and kernel-devel-3.10.0-1062 packages are installed on the VM.
+   * `$ yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm`
+   * `$ yum update -y`
+   * `$ yum install -y python3`
+   * `$ yum install -y python-pip`
+   * `$ yum install -y ansible`
+2. Disable selinux and firewall
+   * `$ systemctl stop firewalld`
+   * `$ setenforce 0`
+   
+## Create a local repository 
+1. Create and configure a local repository if rpms are stored in github release.
+   * `$ mkdir /root/releases_eos_s3deps`
+   * `$ cd /root/releases_eos_s3deps`
+   * `$ githubrelease --github-token <GITHUB AUTH TOKEN> asset seagate/cortx-s3server download 1.0.0-10`
+   * `$cat /etc/yum.repos.d/releases_eos_s3deps.repo`
+       ```
+       [releases_eos_s3deps]
+       name=Cortx-S3 Repository
+       baseurl=file:///root/releases_eos_s3deps
+       gpgcheck=0
+       enabled=1
+   * `$ createrepo -v /root/releases_eos_s3deps`
+   * `$ yum repolist`
+   * `$ yum clean all`
+   * `$ yum update -y`
+  
+## Install lustre if not available
+1. Copy lustre repository from a server where MOTR is installed and install the lustre client.
+* `$ ls -lrt /var/lib/yum/localrepos/lustre-local`
+  ```
+  -rw-r--r--. 1 root root 417384 Jul  6 21:04 lustre-client-devel-2.12.4-99.el7.x86_64.rpm
+  drwxr-xr-x. 2 root root   4096 Jul  6 21:05 repodata
+* `$ ls -lrt /etc/yum.repos.d/lustre-*`
+  ```
+  -rw-r--r--. 1 root root 1327 Jul  6 21:03 /etc/yum.repos.d/lustre-whamcloud.repo
+  -rw-r--r--. 1 root root  115 Jul  6 21:03 /etc/yum.repos.d/lustre-local.repo
+* `$ yum install -y lustre* --skip-broken` 
+>>>>>>> Update S3ServerQuickStart.md
 
 
 ## Prerequisites
