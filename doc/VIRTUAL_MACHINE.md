@@ -98,13 +98,13 @@ Log out and log back in.
 There's a sample file in hare source at the location `cfgen/examples/singlenode.yaml` file. Edit it to reflect the single node cluster environment:
 * Ensure that the disks enumerated in the `io_disks` list exist. Create loop devices, if necessary:
 ```
-# mkdir -p /var/mero
+# mkdir -p /var/motr
 # for i in {0..9}; do
-    sudo dd if=/dev/zero of=/var/mero/disk$i.img bs=1M seek=9999 count=1
-    sudo losetup /dev/loop$i /var/mero/disk$i.img
+    sudo dd if=/dev/zero of=/var/motr/disk$i.img bs=1M seek=9999 count=1
+    sudo losetup /dev/loop$i /var/motr/disk$i.img
   done
 ```
-Ensure that the path of the disks under `io_disks` match the created loop devices: `/var/mero/disk*.img`
+Ensure that the path of the disks under `io_disks` match the created loop devices: `/var/motr/disk*.img`
 
 * Make sure that `data_iface` value refers to existing network interface (it should be present in the output of `ip a` command).
 
@@ -120,12 +120,12 @@ On a successful cluster bootstrap the messages output on the terminal may look l
 2020-06-18 19:03:26: Importing configuration into the KV store... OK
 2020-06-18 19:03:26: Starting Consul agents on other cluster nodes... OK
 2020-06-18 19:03:27: Updating Consul agents configs from the KV store... OK
-2020-06-18 19:03:27: Installing Mero configuration files... OK
+2020-06-18 19:03:27: Installing Motr configuration files... OK
 2020-06-18 19:03:27: Waiting for the RC Leader to get elected..... OK
-2020-06-18 19:03:30: Starting Mero (phase1, mkfs)... OK
-2020-06-18 19:03:36: Starting Mero (phase1, m0d)... OK
-2020-06-18 19:03:38: Starting Mero (phase2, mkfs)... OK
-2020-06-18 19:03:48: Starting Mero (phase2, m0d)... OK
+2020-06-18 19:03:30: Starting Motr (phase1, mkfs)... OK
+2020-06-18 19:03:36: Starting Motr (phase1, m0d)... OK
+2020-06-18 19:03:38: Starting Motr (phase2, mkfs)... OK
+2020-06-18 19:03:48: Starting Motr (phase2, m0d)... OK
 2020-06-18 19:03:51: Checking health of services... OK
 ```
 
@@ -133,7 +133,7 @@ Please refer to the `README.md` file in hare source for more comprehensive infor
 
 ## Note:
 * If during the bootstrap you see an error message such as 
-```Starting Mero (phase1, mkfs)...Job for mero-mkfs@0x7200000000000001:0x9.service failed because the control process exited with error code. See "systemctl status mero-mkfs@0x7200000000000001:0x9.service" and "journalctl -xe" for details.```
+```Starting Motr (phase1, mkfs)...Job for motr-mkfs@0x7200000000000001:0x9.service failed because the control process exited with error code. See "systemctl status motr-mkfs@0x7200000000000001:0x9.service" and "journalctl -xe" for details.```
 then it might be the case that lnet is not configured properly. In such a case follow these steps:
 ```
 # systemctl start lnet
