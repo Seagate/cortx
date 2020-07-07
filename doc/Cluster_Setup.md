@@ -322,7 +322,7 @@ Pacemaker RPMs are needed for Hare.
 
 The workaround:
 ```bash
-wget http://ci-storage.mero.colo.seagate.com/releases/eos/uploads/prvsnr_uploads/lyve_platform.tar
+curl 'http://gitlab.mero.colo.seagate.com/eos/provisioner/ees-prvsnr/raw/master/cli/src/cortx-prereqs.sh' -o cortx-prereqs.sh; chmod a+x cortx-prereqs.sh
 
-sudo tar -xf lyve_platform.tar -C /etc/yum.repos.d
+sudo ./cortx-prereqs.sh --disable-sub-mgr
 ```
