@@ -5,7 +5,7 @@ Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup 
 ## Accessing the code right way
 
 (For phase 1) The latest code which is getting evolved and contributed is on the Github server.
-Seagate contributors will be referencing, cloning and committing their code to/from this [Github](https://github.com/Seagate/).
+CORTX Contributors will be referencing, cloning and committing their code to/from this [Github](https://github.com/Seagate/).
 
 Following steps will make your access to server hassle free.
 1. From here on all the steps needs to be followed as the root user.
