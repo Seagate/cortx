@@ -5,7 +5,7 @@ Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup 
 ## Accessing the code right way
 
 (For phase 1) The latest code which is getting evolved and contributed is on the Github server.
-CORTX Contributors will be referencing, cloning and committing their code to/from this [Github](https://github.com/Seagate/).
+CORTX Contributors will be referencing, cloning and committing their code to/from this [Github](https://github.com/Seagate/cortx).
 
 Following steps will make your access to server hassle free.
 1. From here on all the steps needs to be followed as the root user.
@@ -43,7 +43,7 @@ You are all set to fetch Cortx-S3Server repo now!
 1. Create and configure a local repository if rpms are stored in github release.
    * `$ mkdir /root/releases_eos_s3deps`
    * `$ cd /root/releases_eos_s3deps`
-   * `$ githubrelease --github-token <GITHUB AUTH TOKEN> asset seagate/cortx-s3server download 1.0.0-10`
+   * `$ githubrelease --github-token <GITHUB AUTH TOKEN> asset seagate/cortx-s3server download latest`
    * `$cat /etc/yum.repos.d/releases_eos_s3deps.repo`
        ```
        [releases_eos_s3deps]
