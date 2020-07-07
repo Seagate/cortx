@@ -5,7 +5,7 @@ Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup 
 ## Accessing the code right way
 
 (For phase 1) The latest code which is getting evolved and contributed is on the Github server.
-CORTX Contributors will be referencing, cloning and committing their code to/from this [Github](https://github.com/Seagate/).
+CORTX Contributors will be referencing, cloning and committing their code to/from this [Github](https://github.com/Seagate/cortx).
 
 Following steps will make your access to server hassle free.
 1. From here on all the steps needs to be followed as the root user.
@@ -19,26 +19,10 @@ WoW! :sparkles:
 You are all set to fetch Cortx-S3Server repo now! 
 
 ## Cloning Cortx-S3Server Repository
-Getting the main Cortx-S3Server code on your system is straightforward.
-1. `$ cd path/to/your/dev/directory`
-<<<<<<< HEAD:doc/CortxS3ServerQuickStart.md
-2. `$ git clone git@github.com:Seagate/cortx-s3server.git -b main` ( It has been assumed that `git` is preinstalled.If not then follow git installation specific steps. Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
-3. `$ cd cortx-s3Server`
-4. `$ git submodule update --init --recursive && git status`
-=======
-2. `$ export GID=<your_seagate_GID>` # this will make subsequent steps easy to copy-paste :)
-3. `$ git clone "git clone --recursive git@github.com:Seagate/cortx-s3server.git -b main`  Note:If username prompted than enter github username and for password copy from [PAT](https://github.com/settings/tokens) or generate a new one using [Generate PAT](https://github.com/settings/tokens) and enable SSO ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps provided [here](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxS3.md). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.) 
-4. Enable some pre-commit hooks required before pushing your changes to remote.
-  * `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg "s3server/.git/hooks/"` 
-  Note: Need to validate this step
-    
-    if permission denied, then do the following
-    
-    `$ chmod 600 /root/.ssh/id_rsa`
+1. `$ git clone --recursive git@github.com:Seagate/cortx-s3server.git -b main`  Note:If username prompted than enter github username and for password copy from [PAT](https://github.com/settings/tokens) or generate a new one using [Generate PAT](https://github.com/settings/tokens) and enable SSO ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps provided [here](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxS3.md). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.) 
+2. `$ cd cortx-s3server`
+3. `$ git submodule update --init --recursive && git status`
 
-5. `$ cd cortx-s3server`
-6. `$ git submodule update --init --recursive && git status`
->>>>>>> Update S3ServerQuickStart.md:doc/S3ServerQuickStart.md
 
 ## Prerequisites
 1. Please make sure python3,pip,ansible and kernel-devel-3.10.0-1062 packages are installed on the VM.
@@ -55,7 +39,7 @@ Getting the main Cortx-S3Server code on your system is straightforward.
 1. Create and configure a local repository if rpms are stored in github release.
    * `$ mkdir /root/releases_eos_s3deps`
    * `$ cd /root/releases_eos_s3deps`
-   * `$ githubrelease --github-token <GITHUB AUTH TOKEN> asset seagate/cortx-s3server download 1.0.0-10`
+   * `$ githubrelease --github-token <GITHUB AUTH TOKEN> asset seagate/cortx-s3server download latest`
    * `$cat /etc/yum.repos.d/releases_eos_s3deps.repo`
        ```
        [releases_eos_s3deps]
