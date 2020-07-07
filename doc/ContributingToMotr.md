@@ -11,14 +11,12 @@ cannot insert change-id line in .git/COMMIT_EDITMSG
 
 Fix (for CentOS 7.x):
 
- > $ yum remove git
+ > `$ yum remove git`
  
- > $ yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
- 
- > $ yum -y install  git2u-all
- 
- > $ yum-config-manager --disable ius/x86_64 # prevent accidental updates from this repo
- 
+ > `$ yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm`
+
+ > `$ yum -y install git`
+
 Setup the git config options
 
  > $ git config --global user.name ‘Your Name’
