@@ -101,11 +101,7 @@ All the following commands assume that user is already in its main source direct
   * Make sure Cortx-S3Server and it's dependent services are running.
     * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start Cortx-S3Server and it's dependent services.
     * `$ pgrep s3`, it should list the `PID` of S3 processes running.
-<<<<<<< HEAD:doc/CortxS3ServerQuickStart.md
     * `$ pgrep m0`, it should list the `PID` of motr processes running.
-=======
-    * `$ pgrep mero`, it should list the `PID` of mero processes running. (Note: Need changes if required pgrep mero or pgrep motr ?)
->>>>>>> Update S3ServerQuickStart.md:doc/S3ServerQuickStart.md
   * Install aws client and it's plugin
     * `$ pip install awscli`
     * `$ pip install awscli-plugin-endpoint`
@@ -158,47 +154,21 @@ All the following commands assume that user is already in its main source direct
 
 KABOOM!!!
 
-<<<<<<< HEAD:doc/CortxS3ServerQuickStart.md
 ## Testing specific MOTR version with Cortx-S3Server
 For this demand also we are having solution :
 1. Search for specific commit-id in search box and choose type = 'Commits' , click on  search result (specific commit) and copy associated change-id
 2. `$ cd third_party/mero` (It is assumed that you are into main directory of your Cortx-S3Server repo)
-=======
-## Testing specific Motr version with S3Server
-For this demand also we are having solution :
-
-1. Get desired mero commit HASH *or* commit REFSPECS on clipboard (you'll be asked to paste in step 4)
-* To get REFSPECS
-
- > Search your desired commit [here](http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open) (Note: This link should change to github)
- 
- > Go to desired commit and then click *Download* button and copy the highlighted part(which is your REFSPECS actually) as shown below. (Note: Images below need to change to point to github)
-  
-  <p align="center"><img src="../../assets/images/mero_Refspecs.JPG?raw=true"></p>
-  
-2. `$ cd third_party/mero` (It is assumed that you are into main directory of your s3server repo) (Note: cd third_party/motr ?)
->>>>>>> Update S3ServerQuickStart.md:doc/S3ServerQuickStart.md
 3. Use copied commit HASH/REFSPEC in step 1 as shown below.
    
  > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
    
-<<<<<<< HEAD:doc/CortxS3ServerQuickStart.md
 4. Update submodules 
 > `$ git submodule update --init --recursive`
 5. Build motr
-=======
- or
-   
- > git pull "http://gerrit.mero.colo.seagate.com/mero" refs/changes/91/19491/4  (Note: git pull "https://github.com/Seagate/cortx-motr.git")
-
-4. Update submodules 
-> `$ git submodule update --init --recursive`
-5. Build Motr
->>>>>>> Update S3ServerQuickStart.md:doc/S3ServerQuickStart.md
 
 > `cd ..`
 
-> `./build_mero.sh` ( Note: Verify filename if it is ./build_motr.sh)
+> `./build_mero.sh` 
 
 6. Run jenkins script to make sure that your build & tests passes.
 
