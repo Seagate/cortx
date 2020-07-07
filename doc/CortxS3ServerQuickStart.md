@@ -27,14 +27,17 @@ You are all set to fetch Cortx-S3Server repo now!
 
 ## Prerequisites
 1. Please make sure python3,pip,ansible and kernel-devel-3.10.0-1062 packages are installed on the VM.
-   * `$ yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm`
-   * `$ yum update -y`
+   * `$ yum install -y epel-release`
    * `$ yum install -y python3`
-   * `$ yum install -y python-pip`
    * `$ yum install -y ansible`
 2. Disable selinux and firewall
    * `$ systemctl stop firewalld`
+   * `$ systemctl disable firewalld`
+   * `$ sestatus`
    * `$ setenforce 0`
+   * `$ sed 's/SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux`
+   * `$ shutdown -r now`
+   * `$ getenforce` (It should show disabled)
    
 ## Create a local repository 
 1. Create and configure a local repository if rpms are stored in github release.
@@ -63,6 +66,7 @@ You are all set to fetch Cortx-S3Server repo now!
   ```
   -rw-r--r--. 1 root root 1327 Jul  6 21:03 /etc/yum.repos.d/lustre-whamcloud.repo
   -rw-r--r--. 1 root root  115 Jul  6 21:03 /etc/yum.repos.d/lustre-local.repo
+<<<<<<< HEAD
 * `$ yum install -y lustre* --skip-broken` 
 >>>>>>> Update S3ServerQuickStart.md
 
@@ -113,6 +117,9 @@ You are all set to fetch Cortx-S3Server repo now!
   -rw-r--r--. 1 root root  115 Jul  6 21:03 /etc/yum.repos.d/lustre-local.repo
 * `$ yum install -y lustre*` 
 
+=======
+* `$ yum install -y lustre*` 
+>>>>>>> Update S3ServerQuickStart.md
 
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
