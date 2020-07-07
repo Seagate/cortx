@@ -78,7 +78,7 @@ Getting the main Cortx-S3Server code on your system is straightforward.
   ```
   -rw-r--r--. 1 root root 1327 Jul  6 21:03 /etc/yum.repos.d/lustre-whamcloud.repo
   -rw-r--r--. 1 root root  115 Jul  6 21:03 /etc/yum.repos.d/lustre-local.repo
-* `$ yum install -y lustre* --skip-broken` 
+* `$ yum install -y lustre*` 
 
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
