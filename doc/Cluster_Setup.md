@@ -291,7 +291,7 @@ cd -
 ```bash
 git clone --recursive ssh://git@gitlab.mero.colo.seagate.com:6022/mero/hare.git
 ```
-NOTE: Hare migration is not done yet. Update once migration done.
+NOTE: Hare component is not migrated to Github yet, doc will be updated once Hare repo is migrated.
 
 ### 3.6. Compile and install Hare
 
