@@ -27,7 +27,7 @@ You are all set to fetch Cortx-S3Server repo now!
 
 ## Prerequisites
 1. Please make sure python3,pip,ansible and kernel-devel-3.10.0-1062 packages are installed on the VM.
-   * `$ yum install -y epel-release`
+   * `$ yum install epel-release`
    * `$ yum install -y python3`
    * `$ yum install -y ansible`
 2. Disable selinux and firewall
