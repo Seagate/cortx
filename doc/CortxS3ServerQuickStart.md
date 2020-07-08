@@ -46,9 +46,10 @@ You are all set to fetch Cortx-S3Server repo now!
        gpgcheck=0
        enabled=1
    * `$ createrepo -v /root/releases_eos_s3deps`
-   * `$ yum repolist`
    * `$ yum clean all`
-   * `$ yum update -y`
+   * `$ yum repolist`
+   
+ 
   
 ## Install lustre if not available
 1. Copy lustre repository from a server where MOTR is installed and install the lustre client.
