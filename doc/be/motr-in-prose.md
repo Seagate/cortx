@@ -141,11 +141,11 @@ Main novel ideas of Motr, that distinguish it from other cluster  file-systems a
 Motr used to be called SCIF and H3S in the earlier documents. 
 
 ### References: 
-* [Motr reading list](https://seagatetechnology-my.sharepoint.com/personal/nikita_danilov_seagate_com/Documents/GoogleDrive/Exposures/Internal%20Exposure/Mero%20reading%20list.docx?web=1)
-* [Motr components](https://seagatetechnology-my.sharepoint.com/personal/nikita_danilov_seagate_com/Documents/GoogleDrive/Exposures/Internal%20Exposure/Mero%20components.xlsx?web=1)
-* [Motr technical (presentation)](https://seagatetechnology-my.sharepoint.com/personal/nikita_danilov_seagate_com/Documents/GoogleDrive/Mero/doc/Mero%20technical%20(long).pptx?web=1)
-* [Motr technical whitepaper](https://seagatetechnology-my.sharepoint.com/personal/nikita_danilov_seagate_com/Documents/GoogleDrive/Mero/doc/white%20papers/Mero%20Technical%20Whitepaper.docx?web=1)
-* [Motr architecture whitepaper](https://seagatetechnology-my.sharepoint.com/personal/nikita_danilov_seagate_com/Documents/GoogleDrive/Mero/doc/white%20papers/Mero%20Architecture%20Whitepaper.docx?web=1)
+* [Motr reading list](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/Mero%20reading%20list.docx?d=w1e58b2c1b64b4c38a2fa99c2cac11ae5&csf=1&web=1&e=JOksoZ)
+* [Motr components](https://seagatetechnology.sharepoint.com/:x:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/Mero%20components.xlsx?d=w6243900276c648a29b60bef40d27f137&csf=1&web=1&e=Po8jjN)
+* [Motr technical (presentation)](https://seagatetechnology.sharepoint.com/:p:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Architecture/Mero%20technical%20(long).pptx?d=w25423cb2d4dd4901bea01f894bb8f0f2&csf=1&web=1&e=vxtVtV)
+* [Motr technical whitepaper](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Overview/white%20papers/Mero%20Technical%20Whitepaper.docx?d=w2bdde1354e9241df97783814d8a4f42f&csf=1&web=1&e=pedLMs)
+* [Motr architecture whitepaper](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/white%20papers/Mero%20Architecture%20Whitepaper.docx?d=w7e4687f569ce4f4ea9c5edd1555c7d45&csf=1&web=1&e=L3Qc1n)
 
 ### Related:
 ### More details: [overview, architecture](#overview-architecture)
@@ -481,7 +481,7 @@ the underlying mdstore (db4) to recover from failure.
 
 ### References:
 * [fol overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/FOL%20overview.docx?d=w55e353997f49472e840e68fdf65043b7&csf=1&web=1&e=ppwoiu)
-* [fol QAS](https://docs.google.com/a/xyratex.com/document/d/1cvU5ggG8b9DrLVuoMHMKoMVjqUtneEZfULt-2E2zyvE/edit)
+* [fol QAS](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/requirements/QAS%20File%20Operations%20Log.docx?d=w7b01e94b51604dc8b4cfeab9b5da3802&csf=1&web=1&e=snKMjQ)
 * [C&C Shared Data View Packet 0 File Operations Log](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/Mero%20core%20-%20c%26c%20Shared-data%20view.docx?d=w30ea1ec37cc44f6db29d090e78e43c6f&csf=1&web=1&e=OJuMbi)
 * [Detailed QAS for M0 core](https://docs.google.com/a/xyratex.com/document/d/1QfmW8EJy9pY_JxdjcRHFxA_nMDS2BZbxzECpI5_MMmQ/edit#heading=h.2b37156a1fbb)
 
@@ -493,10 +493,10 @@ the underlying mdstore (db4) to recover from failure.
 * [HLD of distributed transaction manager](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20distributed%20transaction%20manager.docx?d=we7ce2dd341734badb4acf404a3222e8e&csf=1&web=1&e=5RKaAy)
 * [Distributed transaction management](https://docs.google.com/document/d/1E7e1uaZ0C8UjpcqQ2e4Hv7AF-MgtpWFNhJn1WcwWzFU)
 * [DTM overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/DTM%20overview.docx?d=w7258b5fb6dbd45e288c72de344280abf&csf=1&web=1&e=tBmvt5)
-* [Recovery presentation](https://seagatetechnology-my.sharepoint.com/personal/nikita_danilov_seagate_com/Documents/GoogleDrive/Mero/doc/presentations/2010-02-Recovery-Kiev.pdf?web=1)
-* [Report: distributed transactions stabilization (epochs)](https://docs.google.com/document/d/1arbmFJnTv7shH-HhqIvJnXXbZ1L5DWECXKHsq1M0YOk/edit)
+* [Recovery presentation](https://seagatetechnology.sharepoint.com/:b:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/presentations/2010-02-Recovery-Kiev.pdf?csf=1&web=1&e=wACuBb)
+* [Report: distributed transactions stabilization (epochs)](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/Report_%20distributed%20transactions%20stabilization%20(epochs).docx?d=w680c0858b82e4e1e905230df8f28dd7e&csf=1&web=1&e=k33D3L)
 * [Global epochs [an alternative proposal, long and dry].](http://marc.info/?l=lustre-devel&m=124788907220693&w=2)
-* [An Introduction to the Black Art of File System Recovery[epochs-report.txt]](https://seagatetechnology-my.sharepoint.com/personal/nikita_danilov_seagate_com/Documents/GoogleDrive/Mero/doc/epochs-report.txt.docx?web=1)
+* [An Introduction to the Black Art of File System Recovery[epochs-report.txt]](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/epochs-report.txt.docx?d=w044e3a2b3b8f4c879b75a1a4935717f9&csf=1&web=1&e=K30upB)
 * [US patent 8103643 B2 "System and method for performing distributedtransactions using global epochs"](https://www.google.com/patents/US8103643)
 
 ## rm, idea
@@ -585,7 +585,7 @@ to request records to get answers to the questions like the following:
 * Does any device in a pool have abnormal service latency?
 
 Internally, Motr uses the same addb mechanism to send information about
-exceptional conditions to the [HA](https://seagatetechnology-my.sharepoint.com/personal/nikita_danilov_seagate_com/Documents/GoogleDrive/Mero/doc/white%20papers/Mero%20Technical%20Whitepaper.docx?web=1) subsystem.
+exceptional conditions to the [HA](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Overview/white%20papers/Mero%20Technical%20Whitepaper.docx?d=w2bdde1354e9241df97783814d8a4f42f&csf=1&web=1&e=bdsTlo) subsystem.
 
 ## Analysis
 All addb records generated are eventually stored on persistent storage and kept 
