@@ -18,7 +18,7 @@ Following steps will make your access to server hassle free.
 WoW! :sparkles:
 You are all set to fetch Cortx-S3Server repo now! 
 
-## Cloning Cortx-S3Server Repository
+## Cloning S3Server Repository
 1. `$ git clone --recursive git@github.com:Seagate/cortx-s3server.git -b main`  Note:If username prompted than enter github username and for password copy from [PAT](https://github.com/settings/tokens) or generate a new one using [Generate PAT](https://github.com/settings/tokens) and enable SSO ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps provided [here](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxS3.md). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.) 
 2. `$ cd cortx-s3server`
 3. `$ git submodule update --init --recursive && git status`
@@ -35,6 +35,7 @@ You are all set to fetch Cortx-S3Server repo now!
    
 ## Create a local repository 
 1. Create and configure a local repository if rpms are stored in github release.
+   * `$ pip install githubrelease`
    * `$ mkdir /root/releases_eos_s3deps`
    * `$ cd /root/releases_eos_s3deps`
    * `$ githubrelease --github-token <GITHUB AUTH TOKEN> asset seagate/cortx-s3server download latest`
@@ -72,7 +73,7 @@ This is a one time initialization when we do clone the repository or there is a 
     * Enter new password for openldap IAM admin:: `ldapadmin`
 
 1. `$ cd ./scripts/env/dev`
-2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.
+2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.For any other errors, please refer [FAQs](Link in PR state)
 
 <p align="center"><img src="../../assets/images/init_script_output.PNG?raw=true"></p>
 
