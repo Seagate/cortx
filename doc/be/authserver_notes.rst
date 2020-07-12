@@ -13,12 +13,12 @@ Accesses on buckets/objects can be controlled with any of the following options-
 
 i.  Bucket Policy
 
-ii. S3 ACL (Access Control List)
+ii. CORTX-S3 ACL (Access Control List)
 
 ACL is an old way of providing grants on buckets/objects so recommendation is to use Bucket policies for access control.
 
 +----------------------------------+----------------------------------+
-| **Bucket Policy**                | **S3 ACL**                       |
+| **Bucket Policy**                | **CORTX-S3 ACL**                       |
 +----------------------------------+----------------------------------+
 | At Bucket level                  | At Bucket or at Object level     |
 +----------------------------------+----------------------------------+
@@ -70,8 +70,8 @@ all below checks-
 It accepts accountid, userid or user ARN
 
 2. Action filed validity- Here we check if provided action comes under
-   valid supported set of s3 actions or no. Below is the list supported
-   s3 actions-
+   valid supported set of CORTX-S3 actions or no. Below is the list supported
+   CORTX-S3 actions-
 
 
 |image0|
@@ -226,10 +226,10 @@ with Boolean Condition, thus rendering it futile as of now.
 2. For condition key - anything followed by "aws:" is valid. Other than
 that only pre-defined keys are valid. Few of the condition keys may be
 accepted (validated) but might not be considered while authorization if
-those are not one of the supported features from their respective S3
-APIs. Please refer to the S3 Rest API documentation for these details.
+those are not one of the supported features from their respective CORTX-S3
+APIs. Please refer to the CORTX-S3 Rest API documentation for these details.
 
-3. Each of these AWS S3 specifc keys can only be tagged to specific S3
+3. Each of these AWS CORTX-S3 specifc keys can only be tagged to specific CORTX-S3
 actions. For a detailed map of these Keys to Actions please visit:
 
 `<https://docs.aws.amazon.com/AmazonS3/latest/dev/amazon-s3-policy-keys.html?shortFooter=true>`_
@@ -304,7 +304,7 @@ Overview:
 
 
 ====================
-**Ceph S3 Failures**
+**Ceph CORTX-S3 Failures**
 ====================
 
 1. `EOS-3601 <https://jts.seagate.com/browse/EOS-3601>`__: S3TEST:Test
