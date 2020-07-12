@@ -14,7 +14,7 @@
 
 
 
--  Develop new software technology suitable for future EOS based
+-  Develop new software technology suitable for future CORTX based
    products
 
    -  Execute Collaborative R&D projects (Sage2, Maestro, EsiWACE2) in
@@ -29,13 +29,13 @@
 
    -  Focus on follow on projects (Sage3, etc)
 
--  Promote Open sourcing of EOS
+-  Promote Open sourcing of CORTX
 
 -  Developing new IP/Patents based on R&D
 
 -  Influencing wider research & technology roadmaps in EU (w/ ETP4HPC)
 
-   -  Also gather inputs on R&D areas of value for EOS & Seagate
+   -  Also gather inputs on R&D areas of value for CORTX & Seagate
 
 
 ..
@@ -86,8 +86,6 @@
 
 **Building a multi-tiered storage system suitable for Cloud, Big Data
 and HPC use cases**
-
-**~**\ €7.9M Project [Sept 2015 - Aug 2018] **(~€2.6M Seagate Share)**
 
 SAGE Team includes:
 ###################
@@ -254,7 +252,7 @@ local memory which will need to be extended**
 
 
 
-**Seagate EOS Focus (Sage2)**
+**Seagate CORTX Focus (Sage2)**
 ##############################
 
 -  QoS (Performance Throttling)
@@ -283,7 +281,7 @@ local memory which will need to be extended**
 
 -  Deployed AI applications
 
--  Slurm Scheduler for EOS
+-  Slurm Scheduler for CORTX
 
 
 
@@ -305,10 +303,8 @@ local memory which will need to be extended**
 -  MAESTRO is a Forchungzentrum Juelich led R&D project for building a
    data aware middleware called “MAESTRO” for extreme scale apps
 
--  **Seagate Focus:** EOS support for Maestro and provision of I/O
+-  **Seagate Focus:** CORTX support for Maestro and provision of I/O
    functionalities for Maestro
-
--  Seagate’s $0.7M grant awarded / Total project value is $5M
 
 
 **Partners**
@@ -326,9 +322,9 @@ local memory which will need to be extended**
 #########################
 
 
-MIO - Maestro I/O Interface that sits on top of EOS Clovis API
+MIO - Maestro I/O Interface that sits on top of CORTX Clovis API
 
--  MIO is a higher level API on top of Clovis making it easy to use EOS
+-  MIO is a higher level API on top of Clovis making it easy to use CORTX
 
 -  MIO work leads to work on a POSIX-lite API in Sage2
 
@@ -357,10 +353,9 @@ MIO - Maestro I/O Interface that sits on top of EOS Clovis API
    climate models to make use of Exascale systems when they arrive
    (Circa 2023)
 
--  **Seagate Focus:** Development of the Clovis API/EOS **suitable for the
+-  **Seagate Focus:** Development of the Clovis API/CORTX **suitable for the
    Weather/Climate Community** & provide a prototype storage solution
 
--  Seagate’s €240,000 grant/ Total project value is ~€8.04M
 
 
 
@@ -388,7 +383,7 @@ ESDM - Earth Systems Data Middleware
 
 -  Enables them to work with different formats of data
 
--  EOS will be a backend for ESDM
+-  CORTX will be a backend for ESDM
 
 
 ..
@@ -411,10 +406,8 @@ ESDM - Earth Systems Data Middleware
    Exascale, with “Ephemeral” storage services, Hierarchical Storage
    Management & NVRAM
 
--  **Seagate Focus:** Provision of EOS and associated advanced tools to
+-  **Seagate Focus:** Provision of CORTX and associated advanced tools to
    suit the IO-SEA data management platform
-
--  $1.2M Seagate Grant\* / $10M total project value
 
 
 
@@ -436,14 +429,14 @@ ESDM - Earth Systems Data Middleware
 -  Ephemeral Services - Services that are allocated on-demand and
    stripped down once the workload/application run ends
 
--  EOS Advanced Views - POSIX, HDF5, MPI-IO, S3 access - but to the same
+-  CORTX Advanced Views - POSIX, HDF5, MPI-IO, CORTX-S3 access - but to the same
    objects ( leverages Lingua Franca)
 
 -  Full in-storage processing - Leverage GPU resources close to storage
    for performing in-storage computations - apart from general purpose
    cores.
 
--  EOS+Full HSM - Using a advanced Hierarchical Storage Manager + EOS
+-  CORTX+Full HSM - Using a advanced Hierarchical Storage Manager + CORTX
    combination to move data across the full set of storage pools (NVRAM,
    SSD, Flash, Disk, Tape)
 
@@ -494,7 +487,7 @@ entities [50% - 100%]
 
 
 ================================================
-**All Deliverables will be shared on EOS Dev**
+**All Deliverables will be shared on CORTX Dev**
 ================================================
 
 
