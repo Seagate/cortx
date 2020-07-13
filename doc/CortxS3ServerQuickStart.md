@@ -144,7 +144,7 @@ All the following commands assume that user is already in its main source direct
   * Remove Bucket
     * `$ aws s3 rb s3://seagatebucket`, bucket should get remove and should not be seen if we do list bucket.
   * Copy local file to remote(PUT)
-    * `$ aws s3 cp test_data s3://seagatebucket/`, will copy the local file test_data and test_data object will be created under bucket.
+    * `$ aws s3 cp test_data s3://seagatebucket/`, will copy the local file test_data(use any file for test purpose,in this case we assume there is a file name test_data) and test_data object will be created under bucket.
   * List Object
     * `$ aws s3 ls s3://seagatebucket`, will show the object named as test_data
   * Move local file to remote(PUT)
