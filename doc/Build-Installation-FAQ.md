@@ -41,7 +41,7 @@
      Ans2: Check following entry:
            1. Step1: 
            * `$ cat /etc/modprobe.d/lnet.conf`
-             options lnet networks=tcp(eth1),tcp1(eth0) config_on_load=1
+             options lnet networks=tcp(ens160) config_on_load=1
              (Please ensure that the above command o/p contains this entry)
            
            2. Step2: If any changes made in Step1 then:
