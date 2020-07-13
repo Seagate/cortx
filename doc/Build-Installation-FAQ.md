@@ -71,4 +71,8 @@
            * `$ [root@localhost ~]# rmmod m0ctl`
            * `$ [root@localhost ~]# rmmod m0tr`
            * `$ [root@localhost ~]# rmmod galois`
+           
+     Qs4: Error: no package found for log4cxx_cortx.
+     
+     Ans4: This issue is resolved in the section "Create a local repository" in [CortxS3QuickStartGuide](https://github.com/Seagate/cortx/blob/master/doc/CortxS3ServerQuickStart.md). 
 
