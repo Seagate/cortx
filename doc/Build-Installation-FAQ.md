@@ -74,5 +74,5 @@
            
      Qs4: Error: no package found for log4cxx_cortx.
      
-     Ans4: This issue is resolved in the section 'Create a local repository' in [here](https://github.com/Seagate/cortx/blob/master/doc/CortxS3ServerQuickStart.md)  
+     Ans4: This issue is resolved in the section 'Create a local repository' in https://github.com/Seagate/cortx/blob/master/doc/CortxS3ServerQuickStart.md). 
 
