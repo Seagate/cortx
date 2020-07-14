@@ -141,11 +141,13 @@ Main novel ideas of Motr, that distinguish it from other cluster  file-systems a
 Motr used to be called SCIF and H3S in the earlier documents. 
 
 ### References: 
-* [Motr reading list](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/Mero%20reading%20list.docx?d=w1e58b2c1b64b4c38a2fa99c2cac11ae5&csf=1&web=1&e=JOksoZ)
-* [Motr components](https://seagatetechnology.sharepoint.com/:x:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/Mero%20components.xlsx?d=w6243900276c648a29b60bef40d27f137&csf=1&web=1&e=Po8jjN)
-* [Motr technical (presentation)](https://seagatetechnology.sharepoint.com/:p:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Architecture/Mero%20technical%20(long).pptx?d=w25423cb2d4dd4901bea01f894bb8f0f2&csf=1&web=1&e=vxtVtV)
-* [Motr technical whitepaper](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Overview/white%20papers/Mero%20Technical%20Whitepaper.docx?d=w2bdde1354e9241df97783814d8a4f42f&csf=1&web=1&e=pedLMs)
-* [Motr architecture whitepaper](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/white%20papers/Mero%20Architecture%20Whitepaper.docx?d=w7e4687f569ce4f4ea9c5edd1555c7d45&csf=1&web=1&e=L3Qc1n)
+* [Motr reading list](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/Mero%20reading%20list.docx?d=w1e58b2c1b64b4c38a2fa99c2cac11ae5&csf=1&web=1&e=JOksoZ) *
+* [Motr components](https://seagatetechnology.sharepoint.com/:x:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/Mero%20components.xlsx?d=w6243900276c648a29b60bef40d27f137&csf=1&web=1&e=Po8jjN) *
+* [Motr technical (presentation)](https://seagatetechnology.sharepoint.com/:p:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Architecture/Mero%20technical%20(long).pptx?d=w25423cb2d4dd4901bea01f894bb8f0f2&csf=1&web=1&e=vxtVtV) *
+* [Motr technical whitepaper](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Overview/white%20papers/Mero%20Technical%20Whitepaper.docx?d=w2bdde1354e9241df97783814d8a4f42f&csf=1&web=1&e=pedLMs) *
+* [Motr architecture whitepaper](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/white%20papers/Mero%20Architecture%20Whitepaper.docx?d=w7e4687f569ce4f4ea9c5edd1555c7d45&csf=1&web=1&e=L3Qc1n) *
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
 
 ### Related:
 ### More details: [overview, architecture](#overview-architecture)
@@ -220,12 +222,15 @@ queue of fops expecting processing, thus providing opportunities of
 re-ordering. See NRS in the references below.
 
 ### References:
-* [HLD of request handler](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20request%20handler.docx?d=web412983e8b9458990317745478ceda9&csf=1&web=1&e=zaPx3p),
-* [request handler overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Request%20handler.docx?d=w61ba146297e649098259e4637f05b1e7&csf=1&web=1&e=ROYPnP)
-* [Locality](https://seagatetechnology.sharepoint.com/:b:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/presentations/locality.pdf?csf=1&web=1&e=xBjzM3)
-* [HLD of fop state machine](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20fop%20state%20machine.docx?d=w4534a2f1facf493dbd2330346936f230&csf=1&web=1&e=JWmGN2)
+* [HLD of request handler](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20request%20handler.docx?d=web412983e8b9458990317745478ceda9&csf=1&web=1&e=zaPx3p) *
+* [request handler overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Request%20handler.docx?d=w61ba146297e649098259e4637f05b1e7&csf=1&web=1&e=ROYPnP) *
+* [Locality](https://seagatetechnology.sharepoint.com/:b:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/presentations/locality.pdf?csf=1&web=1&e=xBjzM3) *
+* [HLD of fop state machine](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20fop%20state%20machine.docx?d=w4534a2f1facf493dbd2330346936f230&csf=1&web=1&e=JWmGN2) *
 * [Network request scheduler](http://wiki.lustre.org/index.php/Architecture_-_Network_Request_Scheduler)
-* [HLD of Lustre NRS](https://docs.google.com/a/xyratex.com/Doc?docid=0AUggUDoE_TgXZGR6N3M1OXRfM2RiMzJ6Y2Zu)
+* [HLD of Lustre NRS](https://docs.google.com/a/xyratex.com/Doc?docid=0AUggUDoE_TgXZGR6N3M1OXRfM2RiMzJ6Y2Zu) **
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+** Sharepoint link not found for this google doc. TODO: Add a link.
 
 ### Related: [server](#server-idea), [client](#client-idea)
 
@@ -332,9 +337,12 @@ runs Motr file-system m0t1fs, implemented as a kernel module. This module
 doesn't have request handler and doesn't use fops. This will be changed.
 
 ### References:
-* [Outline of the C2 core conceptual design](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTg5Y2c3Mm53YzI#),
-* [Summary of the H3S architecture](https://docs.google.com/a/xyratex.com/viewer?a=v&pid=explorer&chrome=true&srcid=0Bzg1HFjUZcaZMTFkNzM2ZDEtOGIxOS00NGFhLWFiNGQtYzAzNmFhYjQwMWIy),
-* [C2 Architecture Documentation](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMjUzeHFnbjJmajY&authkey=CL_NxPEN&authkey=CL_NxPEN)
+* [Outline of the C2 core conceptual design](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTg5Y2c3Mm53YzI#) *
+* [Summary of the H3S architecture](https://docs.google.com/a/xyratex.com/viewer?a=v&pid=explorer&chrome=true&srcid=0Bzg1HFjUZcaZMTFkNzM2ZDEtOGIxOS00NGFhLWFiNGQtYzAzNmFhYjQwMWIy) *
+* [C2 Architecture Documentation](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMjUzeHFnbjJmajY&authkey=CL_NxPEN&authkey=CL_NxPEN) *
+
+\* Sharepoint link not found for this google doc. TODO: Add a link.
+
 ### Related:
 ### More details:
 
@@ -480,24 +488,30 @@ At the moment, server fol is not used for local recovery. Instead we rely on
 the underlying mdstore (db4) to recover from failure.
 
 ### References:
-* [fol overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/FOL%20overview.docx?d=w55e353997f49472e840e68fdf65043b7&csf=1&web=1&e=ppwoiu)
-* [fol QAS](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/requirements/QAS%20File%20Operations%20Log.docx?d=w7b01e94b51604dc8b4cfeab9b5da3802&csf=1&web=1&e=snKMjQ)
-* [C&C Shared Data View Packet 0 File Operations Log](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/Mero%20core%20-%20c%26c%20Shared-data%20view.docx?d=w30ea1ec37cc44f6db29d090e78e43c6f&csf=1&web=1&e=OJuMbi)
-* [Detailed QAS for M0 core](https://docs.google.com/a/xyratex.com/document/d/1QfmW8EJy9pY_JxdjcRHFxA_nMDS2BZbxzECpI5_MMmQ/edit#heading=h.2b37156a1fbb)
+* [fol overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/FOL%20overview.docx?d=w55e353997f49472e840e68fdf65043b7&csf=1&web=1&e=ppwoiu) *
+* [fol QAS](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/requirements/QAS%20File%20Operations%20Log.docx?d=w7b01e94b51604dc8b4cfeab9b5da3802&csf=1&web=1&e=snKMjQ) *
+* [C&C Shared Data View Packet 0 File Operations Log](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/Mero%20core%20-%20c%26c%20Shared-data%20view.docx?d=w30ea1ec37cc44f6db29d090e78e43c6f&csf=1&web=1&e=OJuMbi) *
+* [Detailed QAS for M0 core](https://docs.google.com/a/xyratex.com/document/d/1QfmW8EJy9pY_JxdjcRHFxA_nMDS2BZbxzECpI5_MMmQ/edit#heading=h.2b37156a1fbb) **
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+** Sharepoint link not found for this google doc. TODO: Add a link.
 
 ### Related:
 ### More details:
 
 ## dtm, idea
 ### References:
-* [HLD of distributed transaction manager](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20distributed%20transaction%20manager.docx?d=we7ce2dd341734badb4acf404a3222e8e&csf=1&web=1&e=5RKaAy)
-* [Distributed transaction management](https://docs.google.com/document/d/1E7e1uaZ0C8UjpcqQ2e4Hv7AF-MgtpWFNhJn1WcwWzFU)
-* [DTM overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/DTM%20overview.docx?d=w7258b5fb6dbd45e288c72de344280abf&csf=1&web=1&e=tBmvt5)
-* [Recovery presentation](https://seagatetechnology.sharepoint.com/:b:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/presentations/2010-02-Recovery-Kiev.pdf?csf=1&web=1&e=wACuBb)
-* [Report: distributed transactions stabilization (epochs)](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/Report_%20distributed%20transactions%20stabilization%20(epochs).docx?d=w680c0858b82e4e1e905230df8f28dd7e&csf=1&web=1&e=k33D3L)
+* [HLD of distributed transaction manager](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20distributed%20transaction%20manager.docx?d=we7ce2dd341734badb4acf404a3222e8e&csf=1&web=1&e=5RKaAy) *
+* [Distributed transaction management](https://docs.google.com/document/d/1E7e1uaZ0C8UjpcqQ2e4Hv7AF-MgtpWFNhJn1WcwWzFU) **
+* [DTM overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/DTM%20overview.docx?d=w7258b5fb6dbd45e288c72de344280abf&csf=1&web=1&e=tBmvt5) *
+* [Recovery presentation](https://seagatetechnology.sharepoint.com/:b:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/presentations/2010-02-Recovery-Kiev.pdf?csf=1&web=1&e=wACuBb) *
+* [Report: distributed transactions stabilization (epochs)](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/Report_%20distributed%20transactions%20stabilization%20(epochs).docx?d=w680c0858b82e4e1e905230df8f28dd7e&csf=1&web=1&e=k33D3L) *
 * [Global epochs [an alternative proposal, long and dry].](http://marc.info/?l=lustre-devel&m=124788907220693&w=2)
-* [An Introduction to the Black Art of File System Recovery[epochs-report.txt]](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/epochs-report.txt.docx?d=w044e3a2b3b8f4c879b75a1a4935717f9&csf=1&web=1&e=K30upB)
+* [An Introduction to the Black Art of File System Recovery[epochs-report.txt]](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/epochs-report.txt.docx?d=w044e3a2b3b8f4c879b75a1a4935717f9&csf=1&web=1&e=K30upB) *
 * [US patent 8103643 B2 "System and method for performing distributedtransactions using global epochs"](https://www.google.com/patents/US8103643)
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+** Sharepoint link not found for this google doc. TODO: Add a link.
 
 ## rm, idea
 
@@ -585,7 +599,9 @@ to request records to get answers to the questions like the following:
 * Does any device in a pool have abnormal service latency?
 
 Internally, Motr uses the same addb mechanism to send information about
-exceptional conditions to the [HA](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Overview/white%20papers/Mero%20Technical%20Whitepaper.docx?d=w2bdde1354e9241df97783814d8a4f42f&csf=1&web=1&e=bdsTlo) subsystem.
+exceptional conditions to the [HA](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Overview/white%20papers/Mero%20Technical%20Whitepaper.docx?d=w2bdde1354e9241df97783814d8a4f42f&csf=1&web=1&e=bdsTlo)* subsystem.
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
 
 ## Analysis
 All addb records generated are eventually stored on persistent storage and kept 
@@ -629,8 +645,11 @@ impact of changes to a system.
 
 ## net, hld
 ### References:
-* [High level design of Colibri LNet Transport](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/High%20level%20design%20of%20Mero%20LNet%20Transport%20(obsolete).docx?d=wf2ee0053dba44eba83337a9fcb06a956&csf=1&web=1&e=ka6XK6)
-* [RPC Bulk Transfer Task Plan](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/RPC%20Bulk%20Transfer%20Task%20Plan.docx?d=wec011fdf50fb4e68818da70316bd4392&csf=1&web=1&e=ihWAbJ)
+* [High level design of Colibri LNet Transport](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/High%20level%20design%20of%20Mero%20LNet%20Transport%20(obsolete).docx?d=wf2ee0053dba44eba83337a9fcb06a956&csf=1&web=1&e=ka6XK6) *
+* [RPC Bulk Transfer Task Plan](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/RPC%20Bulk%20Transfer%20Task%20Plan.docx?d=wec011fdf50fb4e68818da70316bd4392&csf=1&web=1&e=ihWAbJ) *
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+
 ### Related:
 ### More details:
 
@@ -672,9 +691,12 @@ reply is received for the previous item (except for one-way items, for which no
 reply is expected).
 
 ### References:
-* [High level design of rpc layer core](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20rpc%20layer%20core.docx?d=wcef5eb69236c438eb5b7db09b77d48b5&csf=1&web=1&e=d39nX2)
-* [High level design of RPC Formation](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20RPC%20Formation.docx?d=w82c8edf9e9ba4af0b9792ec806ef9dab&csf=1&web=1&e=CGkmln)
-* [Architecture review of Colibri rpc layer](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/AR%20of%20rpc%20layer.docx?d=w723ca499fd7d4d488635ee04a5b3c9d3&csf=1&web=1&e=Xyb6Ol)
+* [High level design of rpc layer core](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20rpc%20layer%20core.docx?d=wcef5eb69236c438eb5b7db09b77d48b5&csf=1&web=1&e=d39nX2) *
+* [High level design of RPC Formation](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20RPC%20Formation.docx?d=w82c8edf9e9ba4af0b9792ec806ef9dab&csf=1&web=1&e=CGkmln) *
+* [Architecture review of Colibri rpc layer](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/AR%20of%20rpc%20layer.docx?d=w723ca499fd7d4d488635ee04a5b3c9d3&csf=1&web=1&e=Xyb6Ol) *
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+
 ### Related:
 ### More details:
 
@@ -801,14 +823,14 @@ Storage recovery consists of the following mechanisms:
   parity block corruption is detected via check-sum, the parity is 
   re-calculated from data blocks (assuming they match their check-sums). As a 
   special case, medium-term recovery includes 
-  [SNS repair](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTc5ZjYybjg4Y3Q) 
+  [SNS repair](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTc5ZjYybjg4Y3Q)* 
   that re-constructs data lost in a device or node failure;
 * long-term recovery via preventive file-system checking. In case where all 
   redundant state is corrupted, file system checker is used. This is possible, 
   for example, when due to a software bug malformed meta-data are written to 
   store. Motr uses a novel file-system design: a preventive file-system checker.
   
-  To understand it, recall that traditional [fsck](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTc5ZjYybjg4Y3Q) 
+  To understand it, recall that traditional [fsck](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTc5ZjYybjg4Y3Q)* 
   works by building a set of extra data-structures, for example, tables 
   indicating to which file a block is allocated, or associating depth in the 
   directory tree to each directory and a list of names to each file. These 
@@ -830,6 +852,9 @@ Storage recovery consists of the following mechanisms:
   fenced: consistency guarantees are waived for the damaged fragment, and all 
   attempts to access it result in immediate error. Eventually, damaged fragment 
   is either restored from a backup or deleted.
+
+\* Sharepoint link not found for this google doc. TODO: Add a link.
+
 ### References:
 ### Related:
 ### More details:
@@ -949,7 +974,7 @@ mdservice perhaps)
 ### More details:
 
 ## deployments, idea
-This section describes which Motr features (differentiators) apply to which possible deployments. See also [Motr Product Options](http://goo.gl/MB2lg).
+This section describes which Motr features (differentiators) apply to which possible deployments. See also [Motr Product Options](http://goo.gl/MB2lg)*.
 
 |                 | LOMO | WOMO | AA | Ceph(PLFS) | BOMO | POSIX | Exascale | NFS |
 |-----------------|------|------|----|------------|------|-------|----------|-----|
@@ -979,6 +1004,7 @@ Legend:
 
 \- < D < N < C
 
+\* Link not found. TODO: Add a link.
 ### References:
 ### Related:
 ### More details:
@@ -1098,7 +1124,10 @@ different set of storage devices) than previous.
 ### References:
 * [CMU PDL publications](http://www.pdl.cmu.edu/RAID/publications.shtml)
 * [On-Line Data Reconstruction in Redundant Disk Arrays](http://www.pdl.cmu.edu/PDL-FTP/Declustering/Thesis.pdf). Mark Holland Carnegie Mellon Ph.D. Dissertation CMU-CS-94-164, 1994
-* [HLD of SNS Repair](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20SNS%20Repair.docx?d=wd826b1dea4524ee4af0982219a67887a&csf=1&web=1&e=OqfNto)
-* [HLD of parity de-clustering algorithm](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLDIT%20parity%20de-clustering%20algorithm.docx?d=wa30795d39f7a4c10bbe4cef5f158af02&csf=1&web=1&e=9o3rPZ)
+* [HLD of SNS Repair](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20SNS%20Repair.docx?d=wd826b1dea4524ee4af0982219a67887a&csf=1&web=1&e=OqfNto) *
+* [HLD of parity de-clustering algorithm](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLDIT%20parity%20de-clustering%20algorithm.docx?d=wa30795d39f7a4c10bbe4cef5f158af02&csf=1&web=1&e=9o3rPZ) *
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+
 ### Related:
 ### More details:
