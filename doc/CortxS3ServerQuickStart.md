@@ -82,6 +82,8 @@ You are all set to fetch Cortx-S3Server repo now!
    * `$ systemctl stop firewalld`
    * `$ systemctl disable firewalld`
    * `$ sestatus`
+=======
+>>>>>>> Update S3ServerQuickStart.md
    * `$ setenforce 0`
    * `$ sed 's/SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux`
    * `$ shutdown -r now`
