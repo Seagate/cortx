@@ -43,7 +43,8 @@ You are all set to fetch Cortx-S3Server repo now!
 1. Create and configure a local repository if rpms are stored in github release.
    * `$ mkdir /root/releases_eos_s3deps`
    * `$ cd /root/releases_eos_s3deps`
-   * `$ githubrelease --github-token <GITHUB AUTH TOKEN> asset seagate/cortx-s3server download latest | grep "tag_name" | sed -E 's/.*"([^"]+)".*/\1/')`
+   * `$ GITHUB_TOKEN=<AUTH TOKEN GITHUB>`
+   * `$ githubrelease --github-token $GITHUB_TOKEN asset seagate/cortx-s3server download $(curl -H "Authorization: token $GITHUB_TOKEN" -s https://api.github.com/repos/Seagate/cortx-s3server/releases/latest | grep "tag_name" | sed -E 's/.*"([^"]+)".*/\1/')`
    * `$cat /etc/yum.repos.d/releases_eos_s3deps.repo`
        ```
        [releases_eos_s3deps]
