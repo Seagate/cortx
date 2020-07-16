@@ -16,6 +16,7 @@ Following steps will make your access to server hassle free.
 3. Add New SSH Public Key on [Github](https://github.com/settings/keys) and Enable SSO.
 
 WoW! :sparkles:
+
 You are all set to fetch Cortx-S3Server repo now! 
 
 ## Cloning S3Server Repository
@@ -161,6 +162,7 @@ All the following commands assume that user is already in its main source direct
 KABOOM!!!
 
 ## Testing specific MOTR version with Cortx-S3Server
+
 For this demand also we are having solution :
 1. Search for specific commit-id in search box and choose type = 'Commits' , click on  search result (specific commit) and copy associated change-id
 2. `$ cd third_party/mero` (It is assumed that you are into main directory of your Cortx-S3Server repo)
@@ -193,3 +195,6 @@ In case of any queries, feel free to write to our [SUPPORT](SUPPORT.md).
 Let's start without a delay to contribute to Seagate's open source initiative and join this movement with us, keeping a common goal of making data storage better, more efficient and more accessible.
 
 Seagate welcomes You! :relaxed:
+
+
+
