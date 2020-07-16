@@ -1,5 +1,13 @@
+
 # Cortx-S3Server QuickStart guide
 This is a step by step guide to get Cortx-S3Server ready for you on your system.
+Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
+
+## Accessing the code right way
+
+
+# S3Server QuickStart guide
+This is a step by step guide to get S3Server ready for you on your system.
 Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
 
 ## Accessing the code right way
@@ -17,7 +25,9 @@ Following steps will make your access to server hassle free.
 
 WoW! :sparkles:
 
+
 You are all set to fetch Cortx-S3Server repo now! 
+
 
 ## Cloning S3Server Repository
 
@@ -72,6 +82,8 @@ You are all set to fetch Cortx-S3Server repo now!
 * `$ yum install -y lustre* --skip-broken` 
 >>>>>>> Update S3ServerQuickStart.md
 
+=======
+>>>>>>> Updated filename
 
 ## Prerequisites
 1. Please make sure python3,pip,ansible and kernel-devel-3.10.0-1062 packages are installed on the VM.
@@ -91,6 +103,10 @@ You are all set to fetch Cortx-S3Server repo now!
    
 ## Create a local repository 
 1. Create and configure a local repository if rpms are stored in github release.
+<<<<<<< HEAD
+=======
+
+>>>>>>> Updated filename
    * `$ pip install githubrelease`
    * `$ mkdir /root/releases_eos_s3deps`
    * `$ cd /root/releases_eos_s3deps`
@@ -134,17 +150,25 @@ This is a one time initialization when we do clone the repository or there is a 
     * Enter new password for openldap IAM admin:: `ldapadmin`
 
 1. `$ cd ./scripts/env/dev`
+<<<<<<< HEAD
 2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.For any other errors, please refer [FAQs](Link in PR state)
+=======
+2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.For any other errors, please refer [FAQs](https://github.com/Seagate/cortx/blob/master/doc/Build-Installation-FAQ.md)
+>>>>>>> Updated filename
 
 <p align="center"><img src="../../assets/images/init_script_output.PNG?raw=true"></p>
 
 ## Compilation and Running Unit Test
 All the following commands assume that user is already in its main source directory.
+
 ### Running Unit test and System test
 1. Setup the host system
   * `$ ./update-hosts.sh`
+
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.  
+
   * `$ ./jenkins-build.sh`. 
+
   * You may have to add `/usr/local/bin` to PATH variable using command `$PATH=$PATH:/usr/local/bin` if it is not there already.
   
   Make sure the output log has a message as shown in below image to ensure successful execution of system test in `./jenkins-build.sh`.
