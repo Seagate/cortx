@@ -31,7 +31,12 @@ You are all set to fetch Cortx-S3Server repo now!
    * `$ yum install -y ansible`
 2. Disable selinux and firewall
    * `$ systemctl stop firewalld`
+   * `$ systemctl disable firewalld`
+   * `$ sestatus`
    * `$ setenforce 0`
+   * `$ sed 's/SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux`
+   * `$ shutdown -r now`
+   * `$ getenforce` (It should show disabled)
    
 ## Create a local repository 
 1. Create and configure a local repository if rpms are stored in github release.
