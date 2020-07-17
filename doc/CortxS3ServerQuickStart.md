@@ -35,6 +35,7 @@ You are all set to fetch Cortx-S3Server repo now!
 2. `$ cd cortx-s3server`
 3. `$ git submodule update --init --recursive && git status`
 
+
 ## Prerequisites
 1. Please make sure python3,pip,ansible and kernel-devel-3.10.0-1062 packages are installed on the VM.
    * `$ yum install -y epel-release`
@@ -85,6 +86,8 @@ You are all set to fetch Cortx-S3Server repo now!
 =======
 >>>>>>> Updated filename
 
+=======
+>>>>>>> Headers were removed which was visible in the document
 ## Prerequisites
 1. Please make sure python3,pip,ansible and kernel-devel-3.10.0-1062 packages are installed on the VM.
    * `$ yum install -y epel-release`
@@ -104,9 +107,12 @@ You are all set to fetch Cortx-S3Server repo now!
 ## Create a local repository 
 1. Create and configure a local repository if rpms are stored in github release.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> Updated filename
+=======
+>>>>>>> Headers were removed which was visible in the document
    * `$ pip install githubrelease`
    * `$ mkdir /root/releases_eos_s3deps`
    * `$ cd /root/releases_eos_s3deps`
@@ -151,10 +157,14 @@ This is a one time initialization when we do clone the repository or there is a 
 
 1. `$ cd ./scripts/env/dev`
 <<<<<<< HEAD
+<<<<<<< HEAD
 2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.For any other errors, please refer [FAQs](Link in PR state)
 =======
 2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.For any other errors, please refer [FAQs](https://github.com/Seagate/cortx/blob/master/doc/Build-Installation-FAQ.md)
 >>>>>>> Updated filename
+=======
+2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.For any other errors, please refer [FAQs](https://github.com/Seagate/cortx/blob/master/doc/Build-Installation-FAQ.md)
+>>>>>>> Headers were removed which was visible in the document
 
 <p align="center"><img src="../../assets/images/init_script_output.PNG?raw=true"></p>
 
