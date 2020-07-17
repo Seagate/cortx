@@ -52,67 +52,6 @@ You are all set to fetch Cortx-S3Server repo now!
    
 ## Create a local repository 
 1. Create and configure a local repository if rpms are stored in github release.
-   * `$ mkdir /root/releases_eos_s3deps`
-   * `$ cd /root/releases_eos_s3deps`
-   * `$ GITHUB_TOKEN=<AUTH TOKEN GITHUB>`
-   * `$ githubrelease --github-token $GITHUB_TOKEN asset seagate/cortx-s3server download $(curl -H "Authorization: token $GITHUB_TOKEN" -s https://api.github.com/repos/Seagate/cortx-s3server/releases/latest | grep "tag_name" | sed -E 's/.*"([^"]+)".*/\1/')`
-   * `$ cat /etc/yum.repos.d/releases_eos_s3deps.repo`
-       ```
-       [releases_eos_s3deps]
-       name=Cortx-S3 Repository
-       baseurl=file:///root/releases_eos_s3deps
-       gpgcheck=0
-       enabled=1
-   * `$ createrepo -v /root/releases_eos_s3deps`
-   * `$ yum clean all`
-   * `$ yum repolist`
-   
- 
-  
-## Install lustre if not available
-1. Copy lustre repository from a server where MOTR is installed and install the lustre client.
-* `$ ls -lrt /var/lib/yum/localrepos/lustre-local`
-  ```
-  -rw-r--r--. 1 root root 417384 Jul  6 21:04 lustre-client-devel-2.12.4-99.el7.x86_64.rpm
-  drwxr-xr-x. 2 root root   4096 Jul  6 21:05 repodata
-* `$ ls -lrt /etc/yum.repos.d/lustre-*`
-  ```
-  -rw-r--r--. 1 root root 1327 Jul  6 21:03 /etc/yum.repos.d/lustre-whamcloud.repo
-  -rw-r--r--. 1 root root  115 Jul  6 21:03 /etc/yum.repos.d/lustre-local.repo
-<<<<<<< HEAD
-* `$ yum install -y lustre* --skip-broken` 
->>>>>>> Update S3ServerQuickStart.md
-
-=======
->>>>>>> Updated filename
-
-=======
->>>>>>> Headers were removed which was visible in the document
-## Prerequisites
-1. Please make sure python3,pip,ansible and kernel-devel-3.10.0-1062 packages are installed on the VM.
-   * `$ yum install -y epel-release`
-   * `$ yum install -y python3`
-   * `$ yum install -y ansible`
-2. Disable selinux and firewall
-   * `$ systemctl stop firewalld`
-   * `$ systemctl disable firewalld`
-   * `$ sestatus`
-=======
->>>>>>> Update S3ServerQuickStart.md
-   * `$ setenforce 0`
-   * `$ sed 's/SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux`
-   * `$ shutdown -r now`
-   * `$ getenforce` (It should show disabled)
-   
-## Create a local repository 
-1. Create and configure a local repository if rpms are stored in github release.
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> Updated filename
-=======
->>>>>>> Headers were removed which was visible in the document
    * `$ pip install githubrelease`
    * `$ mkdir /root/releases_eos_s3deps`
    * `$ cd /root/releases_eos_s3deps`
@@ -143,10 +82,6 @@ You are all set to fetch Cortx-S3Server repo now!
   -rw-r--r--. 1 root root  115 Jul  6 21:03 /etc/yum.repos.d/lustre-local.repo
 * `$ yum install -y lustre*` 
 
-=======
-* `$ yum install -y lustre*` 
->>>>>>> Update S3ServerQuickStart.md
-
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
 
@@ -156,15 +91,7 @@ This is a one time initialization when we do clone the repository or there is a 
     * Enter new password for openldap IAM admin:: `ldapadmin`
 
 1. `$ cd ./scripts/env/dev`
-<<<<<<< HEAD
-<<<<<<< HEAD
-2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.For any other errors, please refer [FAQs](Link in PR state)
-=======
 2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.For any other errors, please refer [FAQs](https://github.com/Seagate/cortx/blob/master/doc/Build-Installation-FAQ.md)
->>>>>>> Updated filename
-=======
-2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.For any other errors, please refer [FAQs](https://github.com/Seagate/cortx/blob/master/doc/Build-Installation-FAQ.md)
->>>>>>> Headers were removed which was visible in the document
 
 <p align="center"><img src="../../assets/images/init_script_output.PNG?raw=true"></p>
 
@@ -249,39 +176,23 @@ All the following commands assume that user is already in its main source direct
 
 KABOOM!!!
 
-<<<<<<< HEAD
 ## Testing specific MOTR version with Cortx-S3Server
 
-=======
-## Testing specific Motr version with S3Server
->>>>>>> Update S3ServerQuickStart.md
 For this demand also we are having solution :
 
-1. Get desired mero commit HASH *or* commit REFSPECS on clipboard (you'll be asked to paste in step 4)
-* To get REFSPECS
-
- > Search your desired commit [here](http://gerrit.mero.colo.seagate.com/q/project:mero+branch:innersource+status:open) (Note: This link should change to github)
- 
- > Go to desired commit and then click *Download* button and copy the highlighted part(which is your REFSPECS actually) as shown below. (Note: Images below need to change to point to github)
+1. Search for specific commit-id in search box and choose type = 'Commits' , click on search result (specific commit) and copy associated change-id
   
-  <p align="center"><img src="../../assets/images/mero_Refspecs.JPG?raw=true"></p>
-  
-2. `$ cd third_party/mero` (It is assumed that you are into main directory of your s3server repo) (Note: cd third_party/motr ?)
+2. `$ cd third_party/mero` (It is assumed that you are into main directory of your s3server repo)
 3. Use copied commit HASH/REFSPEC in step 1 as shown below.
    
  > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
    
- or
-   
- > git pull "http://gerrit.mero.colo.seagate.com/mero" refs/changes/91/19491/4  (Note: git pull "https://github.com/Seagate/cortx-motr.git")
-
 4. Update submodules 
 > `$ git submodule update --init --recursive`
 5. Build Motr
 
 > `cd ..`
 
-<<<<<<< HEAD
 > `./build_mero.sh` 
 
 6. Run jenkins script to make sure that your build & tests passes.
