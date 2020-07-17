@@ -1,4 +1,4 @@
-# FAQs
+#  Build Installation - FAQs
 
      Qs1. In cortx-s3 during init.sh installation an error occurs: 
           http://ssc-satellite1.colo.seagate.com/pulp/repos/EOS/Production/CentOS-7_7_1908/custom/EPEL-7/EPEL-7/repodata/repomd.xml: 
@@ -7,7 +7,7 @@
      Ans1. Use the following steps:                   
            1. Step1: Navigate to the cloned repository 
            
-           * `$ cd /root/cortx- s3server/ansible/files/yum.repos.d/centos7.7.1908`
+           * `$ cd /root/cortx-s3server/ansible/files/yum.repos.d/centos7.7.1908`
            
            2. Step2:  
            
