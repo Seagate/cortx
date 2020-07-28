@@ -11,3 +11,5 @@ from any person or entity, CORTX Community may require a Contributor License Agr
 file that has been signed by each Contributor, indicating agreement to the license terms below. This 
 license is for your protection as a Contributor as well as the protection of the project and its users; 
 it does not change your rights to use your own Contributions for any other purpose. 
+
+Please email [cla@seagate.com](mailto:cla@seagate.com) with any questions about this policy.
