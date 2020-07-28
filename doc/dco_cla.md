@@ -13,3 +13,5 @@ license is for your protection as a Contributor as well as the protection of the
 it does not change your rights to use your own Contributions for any other purpose. 
 
 The specific CLA documents that might be required can be viewed [here](cla/).
+Please email [cla@seagate.com](mailto:cla@seagate.com) with any questions about this policy.
+
