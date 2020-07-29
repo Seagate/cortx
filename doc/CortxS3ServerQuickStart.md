@@ -52,7 +52,8 @@ You are all set to fetch Cortx-S3Server repo now!
    
 ## Create a local repository 
 1. Create and configure a local repository if rpms are stored in github release.
-   * `$ pip install githubrelease`
+   * `$ rpm -q python3-pip || yum install -y python3-pip`
+   * `$ pip3 install githubrelease`
    * `$ mkdir /root/releases_eos_s3deps`
    * `$ cd /root/releases_eos_s3deps`
    * `$ GITHUB_TOKEN=<AUTH TOKEN GITHUB>`
