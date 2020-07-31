@@ -16,7 +16,7 @@ Following steps as sudo user(sudo -s) will make your access to server hassel fre
 WoW! :sparkles:
 You are all set to fetch cortx-motr repo now. 
 
-## Cloing CORTX source code
+## Cloning CORTX source code
 Getting the main CORTX source code on your system is straightforward.
 
 
