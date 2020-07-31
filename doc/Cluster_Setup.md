@@ -1,6 +1,6 @@
 # CORTX v1.0 Virtual Clusters Setup
 
-This is a step by step guide to get CORTX virtual clustur setup ready.
+This is a step by step guide to get CORTX virtual cluster setup ready.
 
 ## 1. Single-node setup
 
