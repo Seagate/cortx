@@ -9,7 +9,7 @@ FAQs list is divided in two parts.
 
 ##
 
-**Q:** Where can I get more technical information/resources regarding CORTEX? 
+**Q:** Where can I get more technical information/resources regarding CORTX? 
 
 **A:** Please refer to our [Technical Solution Brief](https://seagatetechnology.sharepoint.com/:b:/s/CORTX/EXOk7auiWGNPq2N3SuNb1nIBZl2rT_UhmgRbJ_IveOau-w?e=HmWlV2) and [this presentation](https://seagatetechnology.sharepoint.com/:p:/s/CORTX/Ec12Wmx1RoNKm1HqIaTA68oBoZ4tlK93hBqab0AiwQM6UQ?e=LPfxCl) from a CORTX architect for technical audiences.  We will also be providing additional documentation over the next coming days.  An easy way to make a contribution is to help us convert our existing technical documentation from binary formats (such as .docx and .pdf) to text formats (i.e. either Markdown or RestructuredText).
 ##
