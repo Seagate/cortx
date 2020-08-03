@@ -7,7 +7,7 @@ In order to contribute to CORTX, the first thing to understand is that CORTX Com
 2. [Getting cortx-motr ready](doc/CortxMotrQuickStart.md)
 3. [Getting Cortx-S3 ready](doc/CortxS3ServerQuickStart.md)
 4. A [video](https://web.microsoftstream.com/video/8453895e-c632-4891-a8e4-f80f9f73b129?list=studio) from CORTX engineer Kevin Price demonstrating the above three steps
-5. [Contributing](doc/SuggestedContributions.md)
+5. [Help Wanted - Suggested Contributions](doc/SuggestedContributions.md)
 6. [Contributing to Cortx Motr](doc/ContributingToMotr.md)
 7. [Contributing to Cortx S3](doc/ContributingToCortxS3.md)
 8. [Learn about our automated Actions](doc/CI_CD.md)
