@@ -73,3 +73,50 @@ To authorize a PAT, perform the procedure mentioned below.
 5. Navigate to the token you want to authorize, and select **Enable SSO**.
 
 6. Click **Authorize**. The token is authorized with the SAML Single Sign-On.
+
+Git Workflow
+============
+In Git, the following two aspects are applicable:
+
+- Gitflow
+
+- Dev Branches
+
+Setting up the Git Config
+-------------------------
+To perform the Git configuration, use the following:
+
+- **$ git config --global user.name ‘Your Name’**
+
+- **$ git config --global user.email ‘Your.Name@yourdomain.com’**
+
+Forking a Repository
+--------------------
+To fork a repository, perform the procedure mentioned below.
+
+1. Login to the GitHub account.
+
+2. Navigate to the relevant repository.
+
+3. In the top-right corner of the page, click **Fork**. A fork of the required repository is created successfully.
+
+Cloning a Repository
+--------------------
+To clone a repository, perform the procedure below.
+
+1. Login to your GitHub account, and navigate to the above created fork.
+
+2. Above the list of files, click .. image :: code-button.png
+
+3. To clone the repository using HTTPS, under the Clone with HTTPS section, click the clipboard. To clone the repository using a SSH key, including a certificate issued by your organization's SSH certificate authority, click **Use SSH**, then click the clipboard.
+
+4. Open Git Bash.
+
+5. Change the current working directory to the location where you want the cloned directory.
+
+6. Type **git clone**, and then paste the URL you copied earlier. It will look like this, with your GitHub username instead of **YOUR-USERNAME**.
+
+  - **$ git clone https://github.com/YOUR-USERNAME/repository name**
+
+7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
+
