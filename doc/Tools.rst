@@ -163,5 +163,10 @@ Please note the below mentioned points.
 - The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
 
   .. image:: images/Writer1.png
+  
+- A new Git branch can be created from the current branch.
+
+  .. image:: images/Writer2.png
+ 
 
 
