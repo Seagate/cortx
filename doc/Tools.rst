@@ -106,7 +106,7 @@ To clone a repository, perform the procedure below.
 
 1. Login to your GitHub account, and navigate to the above created fork.
 
-2. Above the list of files, click .. image :: code-button.png
+2. Above the list of files, click .. image:: /code-button.png
 
 3. To clone the repository using HTTPS, under the Clone with HTTPS section, click the clipboard. To clone the repository using a SSH key, including a certificate issued by your organization's SSH certificate authority, click **Use SSH**, then click the clipboard.
 
@@ -120,3 +120,26 @@ To clone a repository, perform the procedure below.
 
 7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
 
+Syncing the Fork with Repository
+--------------------------------
+To configure Git to sync with the fork, perform the following:
+
+1. Open Git Bash.
+
+2. Change directories to the location of the fork you cloned in the earlier procedure.
+
+ - To navigate to your home directory, type **cd**.
+
+ - To list the files and folders in your current directory, type **ls**.
+
+ - To go into one of your listed directories, type **cd your_listed_directory**.
+
+ - To go up one directory, type **cd** ..
+
+3. Type **git remote –v**, and press **Enter**. The configured remote repository for your fork is visible.
+
+4. Type **git remote add upstream**, and then paste the URL you had copied. Then, click **Enter**.
+
+ - **$ git remote add upstream <<URL>>**
+
+5. To verify the new upstream repository that you had specified for your fork, type **git remote -v** again. You should see the URL for your fork as **origin**, and the URL for the original repository as **upstream**.
