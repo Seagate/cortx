@@ -229,6 +229,26 @@ To create a pull request on GitHub, navigate to the main page of the respective 
 3. Type a title and description for your pull request.
 4. Select the reviewers using the menu on the right-side of the window.
 5. Click **Create Pull Request**. The pull request is raised successfully.
+
+
+Rebasing
+--------
+Rebasing ensures that you have the latest version of main. The procedure is detailed below.
+
+ 1. Consume the commits from your dev branch.
+ 2. Temporarily unset them
+ 3. Move to the newest head of the main branch
+ 4. Commit them again
+
+**Note**: If there are no issues, conflicts would not occur.
+
+To rebase your local dev branch on the latest version of main: 
+
+•	**$ git checkout main             /* ensure you are on the main branch**
+•	**$ git pull                                   /* pull the latest from the remote**
+•	**$ git push origin PM/cortx-re-testbranch  /* update your copy in the repo**
+•	**$ git rebase main                 /* rebase on the main branch**    
+•	**$ git push origin PM/cortx-re-testbranch --force   /* force update the remote** 
  
  
  
