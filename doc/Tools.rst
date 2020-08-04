@@ -106,11 +106,9 @@ To clone a repository, perform the procedure below.
 
 1. Login to your GitHub account, and navigate to the above created fork.
 
-2. Above the list of files, click
+2. Above the list of files, click .. image:: images/code-button.png
 
    .. image:: images/code-button.png
-   :width: 275
-   :align: center
 
 3. To clone the repository using HTTPS, under the Clone with HTTPS section, click the clipboard. To clone the repository using a SSH key, including a certificate issued by your organization's SSH certificate authority, click **Use SSH**, then click the clipboard.
 
