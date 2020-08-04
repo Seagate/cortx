@@ -249,6 +249,28 @@ To rebase your local dev branch on the latest version of main:
 •	**$ git push origin PM/cortx-re-testbranch  /* update your copy in the repo**
 •	**$ git rebase main                 /* rebase on the main branch**    
 •	**$ git push origin PM/cortx-re-testbranch --force   /* force update the remote** 
+
+******
+Codacy
+******
+
+Codacy is an automated code analysis or quality tool that enables a developer to deliver effective software in a faster and seem less manner.
+
+******************
+Working of Codacy
+******************
+You can use Codacy by performing the below mentioned procedure.
+
+1. Login to your GitHub account, and navigate to the relevant repository.
+2. Scroll down the page until you reach the **README** section.
+3. Under the **README** section, click the **code quality** tab. The **Dashboard** of the Codacy portal is displayed. You can view the following information:
+
+ - Graphical representation of the repository certification
+ - Commits made in your repository
+ - Issues reported in your repository
+ - Files associated with your repository
+ - Pull requests raised in your repository
+ - Security status of different parameters
  
  
  
