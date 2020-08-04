@@ -204,4 +204,21 @@ Code Changes and GIT Commands
  
  .. image:: images/Writer4.png
  
+Pushing your Branch
+-------------------
+
+To push the new dev branch to the remote repo, perform the following:
+
+1. Configure Git to always push using the current branch.
+
+ - **$ git config --global push.default current**
+
+2. Push a local branch to a different remote branch.
+
+ - **$ git push origin <local_branch>:<remote_branch>**
+ 
+ .. image:: images/Writer5.png
+ 
+ 
+ 
 
