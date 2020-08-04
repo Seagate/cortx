@@ -145,3 +145,23 @@ To configure Git to sync with the fork, perform the following:
  - **$ git remote add upstream <<URL>>**
 
 5. To verify the new upstream repository that you had specified for your fork, type **git remote -v** again. You should see the URL for your fork as **origin**, and the URL for the original repository as **upstream**.
+
+Branching Information
+---------------------
+Please note the below mentioned points.
+
+- As per the global naming convention, the Master branch is the Main branch.
+
+- The Main branch represents the official history, and it must be deployable at any point of time. For every new feature that is being developed, the developer creates a new branch.
+
+- At times, a single branch would be used to deliver a large feature, or prepare for a release.
+
+- Before creating a branch, make sure that all the upstream changes from the main branch is maintained.
+
+- Make sure that you are in the right branch before pulling the commits.
+
+- The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
+
+  .. image:: images/Writer1.png
+
+
