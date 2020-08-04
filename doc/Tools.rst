@@ -106,7 +106,7 @@ To clone a repository, perform the procedure below.
 
 1. Login to your GitHub account, and navigate to the above created fork.
 
-2. Above the list of files, click .. image:: images/code-button.png
+2. Above the list of files, click the following tab.
 
    .. image:: images/code-button.png
 
