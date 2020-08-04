@@ -181,5 +181,6 @@ Code Changes and GIT Commands
  - You may have to run the following:
 
   - **$ git pull origin/feature_x** 
-
+ 
+ .. image:: images/Writer3.png
 
