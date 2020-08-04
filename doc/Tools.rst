@@ -220,5 +220,16 @@ To push the new dev branch to the remote repo, perform the following:
  .. image:: images/Writer5.png
  
  
+Pull Request
+------------
+To create a pull request on GitHub, navigate to the main page of the respective repository, and perform the following:
+
+1. Select the appropriate branch from the **Branch** drop-down menu.
+2. Click **Compare & Pull Request**.
+3. Type a title and description for your pull request.
+4. Select the reviewers using the menu on the right-side of the window.
+5. Click **Create Pull Request**. The pull request is raised successfully.
+ 
+ 
  
 
