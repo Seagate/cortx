@@ -167,6 +167,19 @@ Please note the below mentioned points.
 - A new Git branch can be created from the current branch.
 
   .. image:: images/Writer2.png
- 
+  
+  
+Code Changes and GIT Commands
+-----------------------------
+
+- Make your code changes, and commit.
+
+ - When main is the branch, and is ready to pull the updates:
+
+  - **$ git pull origin main**
+
+ - You may have to run the following:
+
+  - **$ git pull origin/feature_x** 
 
 
