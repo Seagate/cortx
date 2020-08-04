@@ -183,4 +183,25 @@ Code Changes and GIT Commands
   - **$ git pull origin/feature_x** 
  
  .. image:: images/Writer3.png
+ 
+- The Git pull command merges the git fetch and git merge commands.
+
+- With each commit, there would be additions and deletions. The following command provides an updated list of files.
+
+ - **$ git status**
+
+- Run the following command from root of the project to add files individually or in bulk.
+
+ - **$ git add**
+
+- Run the following command to address additions and deletions.
+
+ - **$ git add –all**
+
+- When the updates are presented differently, under the heading of Changes to be committed, run the following:
+
+ - **$ git commit -m "<type>(<scope>): <subject>"**
+ 
+ .. image:: images/Writer4.png
+ 
 
