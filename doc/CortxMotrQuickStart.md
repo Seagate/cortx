@@ -9,7 +9,7 @@ Seagate contributor will be referencing, cloning and committing code to/from thi
 Following steps as sudo user(sudo -s) will make your access to server hassel free.
 
 1. Create SSH Public Key
-  * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. follow the instructions throughly.
+  * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. follow the instructions throughly. For Windows user, you can use [MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html) (Start local terminal) to follow the instructions.
   
 2. Add New SSH Public Key on [Github](https://github.com/settings/keys) and Enable SSO.
  
