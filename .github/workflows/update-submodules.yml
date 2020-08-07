@@ -1,7 +1,7 @@
 name: Update Submodules
 on:
   repository_dispatch:
-    types: [repository-dispatch-event]
+    types: [submodule-update-event]
 jobs:
   dispatchEvent:
     runs-on: ubuntu-latest
@@ -11,8 +11,8 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           submodules: 'recursive'
       - run: |
-          git config --global user.name "Gaurav Chaudhari"
-          git config --global user.email "gaurav.chaudhari@seagate.com" 
+          git config --global user.name "CORTX-OPS"
+          git config --global user.email "cortx.application@seagate.com" 
       - run: git submodule update --remote --checkout
       - run: git add --all
       - run: git commit -m "Automated submodule remote update"
