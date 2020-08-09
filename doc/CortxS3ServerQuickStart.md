@@ -21,7 +21,7 @@ Following steps will make your access to server hassle free.
   * Type `su -` and enter the root password to switch to the root user mode.
 2. Create SSH Public Key
   * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. Follow the instructions throughly.
-3. Add New SSH Public Key on [Github](https://github.com/settings/keys) and Enable SSO.
+3. Add New SSH Public Key on [Github](https://github.com/settings/keys) and [Enable SSO](https://docs.github.com/en/github/authenticating-to-github/authorizing-an-ssh-key-for-use-with-saml-single-sign-on).
 
 WoW! :sparkles:
 
