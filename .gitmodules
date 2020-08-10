@@ -4,3 +4,18 @@
 [submodule "cortx-s3server"]
 	path = cortx-s3server
 	url = https://github.com/Seagate/cortx-s3server.git
+[submodule "cortx-hare"]
+	path = cortx-hare
+	url = https://github.com/Seagate/cortx-hare.git
+[submodule "cortx-csm"]
+	path = cortx-csm
+	url = https://github.com/Seagate/cortx-csm.git
+[submodule "cortx-prvsnr"]
+	path = cortx-prvsnr
+	url = https://github.com/Seagate/cortx-prvsnr.git
+[submodule "cortx-posix"]
+	path = cortx-posix
+	url = https://github.com/Seagate/cortx-posix.git
+[submodule "cortx-sspl"]
+	path = cortx-sspl
+	url = https://github.com/Seagate/cortx-sspl.git
