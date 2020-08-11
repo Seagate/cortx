@@ -90,7 +90,7 @@ Getting the main CORTX source code on your system is straightforward.
    To run all the ST's,
   * `$ sudo ./scripts/m0 run-st`
   
-KABOOM!!!
+All done! You're now CORTX-Motr-ready.
   
 ## Running Jenkins / System tests
 
