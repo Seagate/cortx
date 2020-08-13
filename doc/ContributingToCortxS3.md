@@ -17,7 +17,14 @@
    - When you're using two-factor authentication
    - To access protected content in an organization that uses SAML single sign-on (SSO). Tokens used with organizations that use SAML SSO must be authorized.
    - Reference Article, [Creating a personal access token for the command line](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
-   - In this new token, please make sure that you have enabled SSO.
+   - In this new token, please make sure that to **Enable SSO**.
+ - The access required for the personal token is as follows:
+   - [x] repo
+     - [x] repo:status
+     - [x] repo_deployment
+     - [x] public_repo
+     - [x] repo:invite
+     - [x] security_events
 
 ### Git setup on development box
 1. Update Git to the latest version
