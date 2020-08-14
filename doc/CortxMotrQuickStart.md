@@ -4,7 +4,7 @@ Before cloning, however, you need to have a SSC / Cloud VM or a local VM setup i
 
 ## Accessing the source code right way
 (For phase 1) Latest code which is getting evolved, advancing and contributed is on the current github server.
-Seagate contributor will be referencing, cloning and committing code to/from this [Github](https://github.com/Seagate/).
+Seagate contributor will be referencing, cloning and committing code to/from this [Github](https://github.com/Seagate/cortx/).
 
 Following steps as sudo user(sudo -s) will make your access to server hassel free.
 
@@ -74,7 +74,7 @@ Getting the main CORTX source code on your system is straightforward.
 
 1. Running Unit Tests (UTs)
  * `$ sudo ./scripts/m0 run-ut` (This may take a long time, i.e. aprx. 20-30 min) 
-    > You can also expore other options of this run-ut command. Try : sudo run-ut --help
+    > You can also expore other options of this run-ut command. Try : `$ sudo ./scripts/m0 run-ut -help`
     
 2. For kernel space UTs
   * `$ sudo ./scripts/m0 run-kut`
