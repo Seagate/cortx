@@ -37,17 +37,26 @@ You are all set to fetch Cortx-S3Server repo now!
 
 
 ## Prerequisites
-1. Please make sure python3,pip,ansible and kernel-devel-3.10.0-1062 packages are installed on the VM.
+1. Check if epel-release, python3, ansible and pip was installed, 'command not found' means no correponding package was installed
+   * `$ yum repolist` If epel was installed, should see epel in the output list, you might also see exclamation mark in front (https://access.redhat.com/solutions/2267871)
+   * `$ python3 --version`
+   * `$ ansible --version`
+   * `$ pip --version`
+   
+
+2. If not, please make sure epel-release, python3, ansible and pip are installed on the VM.
    * `$ yum install -y epel-release`
    * `$ yum install -y python3`
    * `$ yum install -y ansible`
-2. Disable selinux and firewall
-   * `$ systemctl stop firewalld`
-   * `$ systemctl disable firewalld`
-   * `$ sestatus`
-   * `$ setenforce 0`
-   * `$ sed 's/SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux`
-   * `$ shutdown -r now`
+   * `$ yum install -y python-pip`
+   
+3. Disable selinux and firewall
+   * `$ systemctl stop firewalld` no output
+   * `$ systemctl disable firewalld` no output 
+   * `$ sestatus`  should see 'SELinux status: disabled'
+   * `$ setenforce 0` should see 'setenforce: SELinux is disabled'
+   * `$ sed 's/SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux` should see 'SELINUX=disabled'
+   * `$ shutdown -r now`  reboot. If you use cloud VM, you can go to your cloud VM website and select the VM, stop first and start again to complete the reboot process.
    * `$ getenforce` (It should show disabled)
    
 ## Create a local repository 
@@ -55,9 +64,10 @@ You are all set to fetch Cortx-S3Server repo now!
    * `$ pip install githubrelease`
    * `$ mkdir /root/releases_eos_s3deps`
    * `$ cd /root/releases_eos_s3deps`
-   * `$ GITHUB_TOKEN=<AUTH TOKEN GITHUB>`
+   * `$ GITHUB_TOKEN=<GITHUB personal access token>`
    * `$ githubrelease --github-token $GITHUB_TOKEN asset seagate/cortx-s3server download $(curl -H "Authorization: token $GITHUB_TOKEN" -s https://api.github.com/repos/Seagate/cortx-s3server/releases/latest | grep "tag_name" | sed -E 's/.*"([^"]+)".*/\1/')`
-   * Create the file /etc/yum.repos.d/releases_eos_s3deps.repo with the following contents
+   * `$ ls` should see .rpm files
+   * `$ nano /etc/yum.repos.d/releases_eos_s3deps.repo` copy and paste the following contents, ctrl+x > yes > enter, then you should create the file /etc/yum.repos.d/releases_eos_s3deps.repo     
        ```
        [releases_eos_s3deps]
        name=Cortx-S3 Repository
@@ -66,11 +76,10 @@ You are all set to fetch Cortx-S3Server repo now!
        enabled=1
    * `$ createrepo -v /root/releases_eos_s3deps`
    * `$ yum clean all`
-   * `$ yum repolist`
-   
+   * `$ yum repolist`  should see 'releases_eos_s3deps' in the list   
  
   
-## Install lustre if not available
+## Install lustre if not available 
 1. Copy lustre repository from a server where MOTR is installed and install the lustre client.
 * `$ ls -lrt /var/lib/yum/localrepos/lustre-local`
   ```
@@ -80,7 +89,8 @@ You are all set to fetch Cortx-S3Server repo now!
   ```
   -rw-r--r--. 1 root root 1327 Jul  6 21:03 /etc/yum.repos.d/lustre-whamcloud.repo
   -rw-r--r--. 1 root root  115 Jul  6 21:03 /etc/yum.repos.d/lustre-local.repo
-* `$ yum install -y lustre*` 
+* `$ yum install -y lustre*` if encounter error, try `$ yum install -y lustre* --skip-broken`
+* `$ yum repolist`  should see 'lustre*' in the list 
 
 ## Installing dependency
 This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
@@ -100,7 +110,7 @@ All the following commands assume that user is already in its main source direct
 
 ### Running Unit test and System test
 1. Setup the host system
-  * `$ ./update-hosts.sh`
+  * `$ ./update-hosts.sh` will ask you to enter the IP address, just hit Enter key and should see something like 'Host 10.230.244.196 is reachable'
 
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.  
 
@@ -121,7 +131,7 @@ All the following commands assume that user is already in its main source direct
     * `$ python3 --version`, if you don't have python3 version 3.3+ then install python3.
     * `$ easy_install pip`
   * Make sure Cortx-S3Server and it's dependent services are running.
-    * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start Cortx-S3Server and it's dependent services.
+    * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start Cortx-S3Server and it's dependent services. Should see 'S3 service started successfully' in the output
     * `$ pgrep s3`, it should list the `PID` of S3 processes running.
     * `$ pgrep m0`, it should list the `PID` of mero processes running. 
   * Install aws client and it's plugin
