@@ -1,4 +1,4 @@
-1. Use [these instructions](https://seagatetechnology-my.sharepoint.com/:w:/g/personal/trent_geerdes_seagate_com/EVmAOIGpAftLvKeA0BmmTtABVCGMZUBiVZCat4qLXniSsg?e=uBt3x6) to get yourself a development VM and ssh into it.
+1. Use [these instructions](https://seagatetechnology-my.sharepoint.com/:b:/g/personal/yanqing_f_fu_seagate_com/ETqBdOxACABMsRVibZweZEMBHjAi5cXD9TTNUdMaErFm4g?e=gdqfsk) to get yourself a development VM and ssh into it.
    - Submit a [CARS request](https://request.seagate.com/oim).(i.e. Lab Access : EOS : LCO : Cortx Community Lab Access)
    - Goto https://ssc-cloud.colo.seagate.com/self_service (login using GID and my.seagate password)
    - Request the '2x CentOS 7.7 (2Disks, 2vCPU).  Put it in your shopping cart and check out.
