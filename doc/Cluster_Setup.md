@@ -54,7 +54,8 @@ Create `lnet.conf` file, if it does not exist, and restart `lnet` service.
 * Edit the copy:
 
   - ensure that the disks referred to by `io_disks` values exist
-    (add new disks to VM, if necessary, or create loop devices);
+    (add new disks to VM, if necessary, or create loop devices, 
+    [run the iostat command with -d option to see available devices](https://www.2daygeek.com/check-monitor-disk-io-in-linux-using-iotop-iostat-command/));
 
   - make sure that `data_iface` value refers to existing network
     interface (it should be present in the output of `ip a` command
@@ -296,7 +297,7 @@ NOTE: Hare component is not migrated to Github yet, doc will be updated once Har
 ### 3.6. Compile and install Hare
 
 ```bash
-cd hare
+cd cortx-hare
 make
 sudo make devinstall
 cd -
