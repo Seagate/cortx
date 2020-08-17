@@ -4,14 +4,6 @@ Thank you for your interest in participating in our community and helping us ach
 
 This file contains information about the different ways to contribute to the CORTX Community as well as a list of specific suggested contributions.  In order to ensure that CORTX remains open and redistributable under our current licensing, we do require DCO sign-off for all contributions and may request CLA for large contributions.  Please read more about our DCO/CLA policy [here](dco_cla.md).
 
-<figure class="video_container">
-  <video controls="true" allowfullscreen="true" poster="path/to/poster_image.png">
-    <source src="path/to/video.mp4" type="video/mp4">
-    <source src="path/to/video.ogg" type="video/ogg">
-    <source src="path/to/video.webm" type="video/webm">
-  </video>
-</figure>
-
 GENERAL WAYS TO CONTRIBUTE
 --------------------------
 There are many ways to participate in our community.
