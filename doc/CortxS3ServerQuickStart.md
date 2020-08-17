@@ -110,7 +110,7 @@ All the following commands assume that user is already in its main source direct
 
 ### Running Unit test and System test
 1. Setup the host system
-  * `$ ./update-hosts.sh` will ask you to enter the IP address, just hit Enter key and should see something like 'Host 10.230.244.196 is reachable'
+  * `$ ./update-hosts.sh` will ask you to enter the IP address, just hit Enter key and should see something like 'Host xx.xxx.xxx.xxx is reachable'
 
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.  
 
