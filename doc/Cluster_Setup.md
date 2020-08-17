@@ -88,7 +88,7 @@ Sample diff:
     - name: the pool
       disks: all
       data_units: 4      # N=4 Update N and K here
-      parity_units: 2    # K=2
+      parity_units: 2    # K=2, Also make sure N+2K <= P number of devices.
 ```
 
 ### 1.5. Bootstrap the cluster
@@ -220,7 +220,7 @@ Sample diff:
     - name: the pool
       disks: all
       data_units: 4      # N=4 Update N and K here
-      parity_units: 2    # K=2
+      parity_units: 2    # K=2, Also make sure N+2K <= P number of devices.
 ```
 
 ### 2.6. Bootstrap the cluster
