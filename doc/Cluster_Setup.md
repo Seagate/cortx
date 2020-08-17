@@ -13,8 +13,8 @@ Create a virtual machine using
 
 * Add 'last_successful' yum repository.
   ```bash
-  REPO=ci-storage.mero.colo.seagate.com/releases/eos
-  REPO+=/github/master/rhel-7.7.1908/last_successful
+  REPO=http://cortx-storage.colo.seagate.com/releases/cortx
+  REPO+=/github/release/rhel-7.7.1908/last_successful/
 
   sudo yum-config-manager --add-repo="http://$REPO"
   sudo tee -a /etc/yum.repos.d/${REPO//\//_}.repo <<< 'gpgcheck=0'
@@ -22,14 +22,9 @@ Create a virtual machine using
 
 * Install the RPMs.
 
-  :warning: Currently the Pacemaker RPMs, required by `cortx-hare`, are not
-  available in the VM.  See the workaround in
-  [KNOWN ISSUES](#41-pacemaker-rpms-are-not-available) section.
-
   ```bash
   sudo yum install -y cortx-hare
   ```
-
 ### 1.3. Configure LNet
 
 Create `lnet.conf` file, if it does not exist, and restart `lnet` service.
@@ -89,6 +84,11 @@ Sample diff:
      m0_clients:
        s3: 0         # number of S3 servers to start
        other: 2      # max quantity of other Motr clients this host may have
+     pools:
+    - name: the pool
+      disks: all
+      data_units: 4      # N=4 Update N and K here
+      parity_units: 2    # K=2
 ```
 
 ### 1.5. Bootstrap the cluster
@@ -110,10 +110,17 @@ Sample diff:
 
 ### 1.6. Perform the I/O
 
-<!-- XXX TODO:
-  - Describe the options of `c0cp` and `c0cat` commands.
-  - Where do values come from?
-  -->
+c0cp, c0cat and other motr utils refers `hctl status` and gets it's arguments
+accordingly.
+For e.g,
+ -l  local endpoint is,
+     [unknown ]  m0_client  0x7200000000000001:0x20  *192.168.1.160@tcp:12345:4:1*
+ -H  HA endpoint is,
+     [started ]  hax        0x7200000000000001:0x6   *192.168.1.160@tcp:12345:1:1*
+ -p  profile is,
+     Profile: *0x7000000000000001:0x26*
+ -P  process is,
+     [unknown ]  m0_client  *0x7200000000000001:0x20*  192.168.1.160@tcp:12345:4:1
 
 * Write some data to Motr.
   ```bash
@@ -208,6 +215,11 @@ Sample diff:
      m0_servers:
        - runs_confd: true
          io_disks: []
+           pools:
+    - name: the pool
+      disks: all
+      data_units: 4      # N=4 Update N and K here
+      parity_units: 2    # K=2
 ```
 
 ### 2.6. Bootstrap the cluster
@@ -235,11 +247,6 @@ Sample diff:
   ```
 
 ### 2.7. Perform the I/O
-
-<!-- XXX TODO:
-  - Describe the options of `c0cp` and `c0cat` commands.
-  - Where do values come from?
-  -->
 
 * Write some data to Motr.
   ```bash
