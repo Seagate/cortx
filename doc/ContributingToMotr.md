@@ -17,14 +17,7 @@ Fix (for CentOS 7.x):
 
  > `$ yum -y install git`
  
- If you encounters error such as "You need to be root to perform this command.", run the following commands instead
- 
- > `$ sudo yum remove git`
- 
- > `$ sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm`
-
- > `$ sudo yum -y install git`
- 
+ If you encounters error such as "You need to be root to perform this command.", add "sudo" before executing above commands.
 
 Setup the git config options
 
