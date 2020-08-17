@@ -1,6 +1,6 @@
 
 # CORTX-S3 Server Quick Start Guide
-This guide provides a step-by-step walkthrough for getting CORTX-S3 Server-ready.
+This guide provides a step-by-step walkthrough for getting you CORTX-S3 Server-ready.
 
 - [1.1 Prerequisites](#1.1-Prerequsites)
   * [1.2 Clone CORTX-S3 Server Repository](#1.2-Clone-the-CORTX-S3-Server-Repository)
