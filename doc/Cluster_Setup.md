@@ -53,9 +53,8 @@ Create `lnet.conf` file, if it does not exist, and restart `lnet` service.
 
 * Edit the copy:
 
-  - ensure that the disks referred to by `io_disks` values exist
-    (add new disks to VM, if necessary, or create loop devices, 
-    [run the iostat command with -d option to see available devices](https://www.2daygeek.com/check-monitor-disk-io-in-linux-using-iotop-iostat-command/));
+  - ensure that the disks referred to by `io_disks` values exist. To see available devices use command 'lsblk' or 'lsscsi' or 'fdisk -l'.
+    (add new disks to VM, if necessary, or create loop devices);
 
   - make sure that `data_iface` value refers to existing network
     interface (it should be present in the output of `ip a` command
