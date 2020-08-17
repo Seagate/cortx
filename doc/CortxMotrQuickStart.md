@@ -58,7 +58,7 @@ Getting the main CORTX source code on your system is straightforward.
   
 2. Reboot
 
-   You can use [command](https://www.certdepot.net/rhel7-boot-reboot-shut-system-normally/), such as `$ sudo systemctl reboot` to reboot the system.
+   You can use command `$ sudo reboot` to reboot the system.
    If you use cloud VM, you can go to your cloud VM website and select the VM, stop first and start again to complete the reboot process.
    
   * After reboot, check if Lustre network is working
