@@ -110,9 +110,9 @@ Sample diff:
 
 ### 1.6. Perform the I/O
 
-c0cp, c0cat and other motr utils refers `hctl status` and gets it's arguments
-accordingly.
+c0cp, c0cat and other motr utils argument refer `hctl status`.
 For e.g,
+```
  -l  local endpoint is,
      [unknown ]  m0_client  0x7200000000000001:0x20  *192.168.1.160@tcp:12345:4:1*
  -H  HA endpoint is,
@@ -121,6 +121,7 @@ For e.g,
      Profile: *0x7000000000000001:0x26*
  -P  process is,
      [unknown ]  m0_client  *0x7200000000000001:0x20*  192.168.1.160@tcp:12345:4:1
+ ```
 
 * Write some data to Motr.
   ```bash
