@@ -1,6 +1,6 @@
 # Cortx-HA QuickStart guide
 This is a step by step guide to get Cortx-HA ready for you on your system.
-Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
+Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md). If you prefer video, here is a [link to a video](https://seagatetechnology.sharepoint.com/:v:/s/gteamdrv1/tdrive1224/EZbJ5AUWe79DksiRctCtsnUB9sILRr5DqHeBzdrwzNNg6w?e=Xamvex) produced by Seagate engineer Puja Mudaliar following these instructions.
 
 ## Accessing the source code right way
 (For phase 1) Latest code which is getting evolved, advancing and contributed is on the current github server.
@@ -23,16 +23,19 @@ You are all set to fetch cortx-ha repo now.
 
 
 ## Prerequisites
-1. Please make sure python3 and pip3 package are installed on the VM.
-    * `$ yum install python36 , python36-devel, openssl-devel, libffi-devel, bzip2-devel,systemd-devel`
+1. Setup Yum repo.
+    * `$ curl http://gitlab.mero.colo.seagate.com/eos/provisioner/ees-prvsnr/raw/Cortx-v1.0.0_Beta/cli/src/cortx-prereqs.sh -o cortx-prereqs.sh; chmod a+x cortx-prereqs.sh; ./cortx-prereqs.sh --disable-sub-mgr`
+
+2. Please make sure python3,pip3 and kernel-devel-3.10.0-1062 packages are installed on the VM.
+    * `$ yum install python36 , python36-devel, openssl-devel, libffi-devel, bzip2-devel, systemd-devel`
     * `$ yum group install "Development Tools"`
 
-2. Install eos-py-utils rpm
+3. Install eos-py-utils rpm
     * `$ cd cortx-py-utils`
     * `$ python3 setup.py bdist_rpm`
     * `$ yum install dist/eos-py-utils-1.0.0-1.noarch.rpm`
 
-3. Install pip packages
+4. Install pip packages
     * `$ cd cortx-ha`
     * `$ bash jenkins/cicd/cortx-ha-dep.sh dev <github-token>`
     * `$ python3 -m pip install -r jenkins/pyinstaller/requirements.txt`
@@ -110,9 +113,5 @@ You are all set to fetch cortx-ha repo now.
 
 
 ## Running Test
-
-To Do
-
-## Running Jenkins / System tests
-
-To Do
+  * `$ cd cortx-ha/ha/test/`
+  * `$ python3 main.py`

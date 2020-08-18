@@ -1,6 +1,6 @@
 # Cortx-SSPL QuickStart guide
 This is a step by step guide to get Cortx-SSPL ready for you on your system.
-Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
+Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).If you prefer video, here is a [link to a video](https://seagatetechnology.sharepoint.com/:v:/s/gteamdrv1/tdrive1224/EZbJ5AUWe79DksiRctCtsnUB9sILRr5DqHeBzdrwzNNg6w?e=Xamvex) produced by Seagate engineer Puja Mudaliar following these instructions.
 
 ## Accessing the source code right way
 (For phase 1) Latest code which is getting evolved, advancing and contributed is on the current github server.
@@ -24,8 +24,13 @@ You are all set to fetch cortx-sspl repo now.
 
 
 ## Prerequisites
-1. Please make sure python3,pip and kernel-devel-3.10.0-1062 packages are installed on the VM.
-    * `$ yum install -y epel-release`
+1. Setup yum repo.
+    * `$ curl http://gitlab.mero.colo.seagate.com/eos/provisioner/ees-prvsnr/raw/Cortx-v1.0.0_Beta/cli/src/cortx-prereqs.sh -o cortx-prereqs.sh; chmod a+x cortx-prereqs.sh; ./cortx-prereqs.sh --disable-sub-mgr`
+    * `$ BUILD_URL="http://cortx-storage.colo.seagate.com/releases/eos/github/dev/rhel-7.7.1908/provisioner_last_successful"`
+    * `$ yum-config-manager --add-repo  $BUILD_URL`
+    * `$ rpm --import  $BUILD_URL/RPM-GPG-KEY-Seagate`
+
+2. Please make sure python3,pip and kernel-devel-3.10.0-1062 packages are installed on the VM.
     * `$ yum install -y python36`
 
 
@@ -34,13 +39,6 @@ You are all set to fetch cortx-sspl repo now.
 1. Before building RPM, install necessaries dependencies
     * `$ yum install rpm-build`
     * `$ yum install autoconf automake libtool check-devel doxygen gcc graphviz openssl-devel python-pep8`
-    * Create the file /etc/yum.repos.d/commons.repo with the following contents
-      ```
-      [commons]
-      gpgcheck=0
-      enabled=1
-      baseurl=http://ci-storage.mero.colo.seagate.com/releases/eos/uploads/
-      name=commons
 
 2. Build RPMS
     * Go to the directory where cortx-sspl is cloned.
