@@ -5,6 +5,32 @@
 #### Generate SSH key on your development box (Needed if you wish to use SSH for clone)
 > `$ ssh-keygen -t rsa`
 
+Example output:
+~~~
+[root@ssc-vm-c-0539 dev_scripts]# ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:s2a5Kq1cUAI90bN4TRNLnOwzItJzs2YZDVeaxD0w0Qo root@ssc-vm-c-0539.colo.seagate.com
+The key's randomart image is:
++---[RSA 2048]----+
+|  ...o +BO.      |
+|   .o EoO=+      |
+|   ..o.@+o .     |
+|  . =oB B        |
+|   ..= *So       |
+|     .=  +       |
+|     +. =        |
+|   ....o .       |
+|    oo...        |
++----[SHA256]-----+
+~~~
+
+
 #### Add SSH key to GitHub Account and Enable SSO
   1. Copy public key i.e. id_rsa.pub (default location: /root/.ssh/id_rsa.pub)
   2. Go to GitHub SSH key settings: https://github.com/settings/keys of your account

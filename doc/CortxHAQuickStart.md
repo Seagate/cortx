@@ -8,10 +8,10 @@ Seagate contributor will be referencing, cloning and committing code to/from thi
 
 Following steps as sudo user(sudo -s) will make your access to server hassel free.
 
-1. Create SSH Public Key
-    * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. follow the instructions throughly.
 
-2. Add New SSH Public Key on [Github](https://github.com/settings/keys) and [Enable SSO](https://docs.github.com/en/github/authenticating-to-github/authorizing-an-ssh-key-for-use-with-saml-single-sign-on).
+1. Create and Add SSH Public Key:
+    * For creating and adding SSH key please follow refer "Github setup" section from [ContributingToCortxHA](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxHA.md#GitHub-setup)
+    * You can also refer [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key).
 
 WoW! :sparkles:
 You are all set to fetch cortx-ha repo now.
@@ -23,9 +23,9 @@ You are all set to fetch cortx-ha repo now.
 
 
 ## Prerequisites
-1. Setup Yum repo.
-    * `$ curl http://gitlab.mero.colo.seagate.com/eos/provisioner/ees-prvsnr/raw/Cortx-v1.0.0_Beta/cli/src/cortx-prereqs.sh -o cortx-prereqs.sh; chmod a+x cortx-prereqs.sh; ./cortx-prereqs.sh --disable-sub-mgr`
-
+1. Setup Yum repos.
+    * `$ curl https://raw.githubusercontent.com/Seagate/cortx-prvsnr/dev/cli/src/cortx-prereqs.sh?token=APA75GY34Y2F5DJSOKDCZAK7ITSZC -o cortx-prereqs.sh; chmod a+x cortx-prereqs.sh`
+    * For Cent-OS VMs : `$ sh cortx-prereqs.sh`, For Rhel VMs: `$ sh cortx-prereqs.sh --disable-sub-mgr`
 2. Please make sure python3,pip3 and kernel-devel-3.10.0-1062 packages are installed on the VM.
     * `$ yum install python36 , python36-devel, openssl-devel, libffi-devel, bzip2-devel, systemd-devel`
     * `$ yum group install "Development Tools"`
