@@ -289,7 +289,7 @@ cd -
 ### 3.5. Get Hare sources
 
 ```bash
-git clone --recursive git@github.com:Seagate/cortx-hare.git -b dev
+git clone --recursive git@github.com:Seagate/cortx-hare.git -b main
 ```
 
 ### 3.6. Compile and install Hare
