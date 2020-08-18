@@ -71,6 +71,8 @@
            * `$ [root@localhost ~]# rmmod m0ctl`
            * `$ [root@localhost ~]# rmmod m0tr`
            * `$ [root@localhost ~]# rmmod galois`
+          
+           You might couldn't see which module is using m0tr, in this case, reboot should solve the problem.
            
      Qs4: Error: no package found for log4cxx_cortx.
      
