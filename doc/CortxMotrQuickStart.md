@@ -74,7 +74,7 @@ Getting the main CORTX source code on your system is straightforward.
 
 1. Running Unit Tests (UTs)
  * `$ sudo ./scripts/m0 run-ut` (This may take a long time, i.e. aprx. 20-30 min) 
-    > You can also expore other options of this run-ut command. Try : `$ sudo ./scripts/m0 run-ut -help`
+    > You can also explore other options of this run-ut command. Try : `$ sudo ./scripts/m0 run-ut -help`
     
 2. For kernel space UTs
   * `$ sudo ./scripts/m0 run-kut`
