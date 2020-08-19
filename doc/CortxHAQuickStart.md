@@ -16,31 +16,24 @@ Following steps as sudo user(sudo -s) will make your access to server hassel fre
 WoW! :sparkles:
 You are all set to fetch cortx-ha repo now.
 
-## Cloning cortx-ha repository
-1. `$ git clone --recursive git@github.com:Seagate/cortx-ha.git` (It has been assumed that `git` is preinstalled. if not then follow git installation specific steps provided [here](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxHA.md). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
-
-2. `$ git clone --recursive git@github.com:Seagate/cortx-py-utils.git`
-
-
 ## Prerequisites
 1. Setup Yum repos.
     * `$ curl https://raw.githubusercontent.com/Seagate/cortx-prvsnr/dev/cli/src/cortx-prereqs.sh?token=APA75GY34Y2F5DJSOKDCZAK7ITSZC -o cortx-prereqs.sh; chmod a+x cortx-prereqs.sh`
     * For Cent-OS VMs : `$ sh cortx-prereqs.sh`, For Rhel VMs: `$ sh cortx-prereqs.sh --disable-sub-mgr`
+
 2. Please make sure python3,pip3 and kernel-devel-3.10.0-1062 packages are installed on the VM.
     * `$ yum install python36 , python36-devel, openssl-devel, libffi-devel, bzip2-devel, systemd-devel`
     * `$ yum group install "Development Tools"`
 
 3. Install eos-py-utils rpm
+    * `$ git clone --recursive git@github.com:Seagate/cortx-py-utils.git`
     * `$ cd cortx-py-utils`
     * `$ python3 setup.py bdist_rpm`
     * `$ yum install dist/eos-py-utils-1.0.0-1.noarch.rpm`
 
-4. Install pip packages
-    * `$ cd cortx-ha`
-    * `$ bash jenkins/cicd/cortx-ha-dep.sh dev <github-token>`
-    * `$ python3 -m pip install -r jenkins/pyinstaller/requirements.txt`
-
 ### corosync pacemaker setup
+
+Note: For corosync pacemaker setup we need two VM's.
 
 - Run following command on both node.
 
@@ -99,9 +92,19 @@ You are all set to fetch cortx-ha repo now.
 
     * `$ pcs status cluster`
 
+## Cloning cortx-ha repository
+1. `$ git clone --recursive git@github.com:Seagate/cortx-ha.git` (It has been assumed that `git` is preinstalled. if not then follow git installation specific steps provided [here](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxHA.md). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+
+2. `$ cd cortx-ha`
+
 
 ## Building the CORTX-HA source code
-1. Build RPMS
+
+1. Install pip packages
+    * `$ bash jenkins/cicd/cortx-ha-dep.sh dev <github-token>`
+    * `$ python3 -m pip install -r jenkins/pyinstaller/requirements.txt`
+
+2. Build RPMS
     * Go to the directory where cortx-ha is cloned.
     * `$ jenkins/build.sh` or `$ jenkins/build.sh -b <BUILD-NO>`
 
