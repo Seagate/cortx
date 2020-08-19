@@ -22,7 +22,12 @@ You are all set to fetch cortx-ha repo now.
     * For Cent-OS VMs : `$ sh cortx-prereqs.sh`, For Rhel VMs: `$ sh cortx-prereqs.sh --disable-sub-mgr`
 
 2. Please make sure python3,pip3 and kernel-devel-3.10.0-1062 packages are installed on the VM.
-    * `$ yum install python36 , python36-devel, openssl-devel, libffi-devel, bzip2-devel, systemd-devel`
+    * `$ yum install python36`
+    * `$ yum install python36-devel`
+    * `$ yum install openssl-devel`
+    * `$ yum install libffi-devel`
+    * `$ yum install bzip2-devel`
+    * `$ yum install systemd-devel`
     * `$ yum group install "Development Tools"`
 
 3. Install eos-py-utils rpm
@@ -35,9 +40,12 @@ You are all set to fetch cortx-ha repo now.
 
 Note: For corosync pacemaker setup we need two VM's.
 
-- Run following command on both node.
+- Run following command on both nodes.
 
-1. Disable selinux and firewall on both node.
+1. Setup Yum repos on both nodes.
+    * Refere [Setup Yum repos](#Prerequisites)
+
+2. Disable selinux and firewall on both node.
     * `$ systemctl stop firewalld`
     * `$ systemctl disable firewalld`
     * `$ sestatus`
@@ -46,17 +54,16 @@ Note: For corosync pacemaker setup we need two VM's.
     * `$ shutdown -r now`
     * `$ getenforce` (It should show disabled)
 
-2. Make sure /etc/hosts is reflected properly or DNS is updated to resolve host names
+3. Make sure /etc/hosts is reflected properly or DNS is updated to resolve host names
     * `$ cat /etc/hosts`
       ```
       10.0.15.10      node1
       10.0.15.11      node2
 
-3. Install required Software
-    * `$ yum -y install epel-release`
+4. Install required Software
     * `$ yum -y install corosync pacemaker pcs`
 
-4. Configure Pacemaker, Corosync, and Pcsd
+5. Configure Pacemaker, Corosync, and Pcsd
     * `$ systemctl enable pcsd`
     * `$ systemctl enable corosync`
     * `$ systemctl enable pacemaker`
@@ -68,7 +75,7 @@ Note: For corosync pacemaker setup we need two VM's.
   Configure a password for the 'hacluster' user.
     * `$ echo <new-password> | passwd --stdin hacluster`
 
-5. Create and Configure the Cluster.
+6. Create and Configure the Cluster.
     * `$ pcs cluster auth node1 node2`
       ```
       Username: hacluster
@@ -76,14 +83,14 @@ Note: For corosync pacemaker setup we need two VM's.
 
 - Run following command on Primary node.
 
-6. Set up the cluster. Define cluster name and servers that will be part of the cluster.
+7. Set up the cluster. Define cluster name and servers that will be part of the cluster.
     * `$ pcs cluster setup --name EOS_cluster node1 node2`
 
   Now start all cluster services and also enable them.
     * `$ pcs cluster start --all`
     * `$ pcs cluster enable --all`
 
-7. Disable STONITH and Ignore the Quorum Policy
+8. Disable STONITH and Ignore the Quorum Policy
     * `$ pcs property set stonith-enabled=false`
     * `$ pcs property set no-quorum-policy=ignore`
     * `$ pcs property list`
