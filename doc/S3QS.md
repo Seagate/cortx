@@ -17,13 +17,9 @@ This guide provides a step-by-step walkthrough for getting you CORTX-S3 Server-r
 1. You'll need to set up SSC, Cloud VM, or a local VM on VMWare Fusion or Oracle VirtualBox. To know more, refer to the [LocalVMSetup](LocalVMSetup.md) section.
 
 2. Access codes the right way:
-   our CORTX Contributors will refer, clone, contribute, and commit changes via the GitHub server. Tou can access the latest code via [Github](https://github.com/Seagate/cortx). 
+   our CORTX Contributors will refer, clone, contribute, and commit changes via the GitHub server. You can access the latest code via [Github](https://github.com/Seagate/cortx). 
 
-3. Follow these steps to access the GitHub server: 
-   
-    > You'll need to use the root access to access your Git Repository: 
-    > 1. You'll need to set the root user password using `sudo passwd`. Enter your password.
-    > 2. Type `su -` and enter the root password to switch to the root user mode.
+3. You'll need a valid GitHub Account. 
 
 4. Before you clone your Git repository, you'll need to create the following:
     > 1. Follow the link to generate the [SSH Public Key](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key).
@@ -249,16 +245,16 @@ Before your test your build, ensure that you have installed and configured the f
           `$ pip install awscli-plugin-endpoint`
   
       3. To generate the aws Access Key ID and aws Secret Key, run commands:
-          
+        
          1. To check for help messages, run the command:
           
             `$ s3iamcli -h`
             
-          2. Run the following command to create a new User:
+         2. Run the following command to create a new User:
           
               `$ s3iamcli CreateAccount -n < Account Name > -e < Email Id >` 
           
-              *   Enter the following ldap credentials:
+               *   Enter the following ldap credentials:
             
                   User Id : `sgiamadmin`
           
@@ -287,9 +283,9 @@ Before your test your build, ensure that you have installed and configured the f
 
         * `$ aws configure set plugins.endpoint awscli_plugin_endpoint`
 
-        * `$ aws configure set s3.endpoint_url http://s3.seagate.com`
+        * `$ aws configure set s3.endpoint_url https://s3.seagate.com`
         
-        *  `$ aws configure set s3api.endpoint_url http://s3.seagate.com`
+        *  `$ aws configure set s3api.endpoint_url https://s3.seagate.com`
         
         * Run the following command to view the contents of your aws config file: 
 
