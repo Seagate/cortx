@@ -84,7 +84,8 @@ You are all set to fetch cortx-sspl repo now.
 
 
 ## Running Tests
-Make sure *cortx-sspl-1.0.0-XXXX.el7.noarch.rpm* and *cortx-sspl-test-1.0.0-XXXX.el7.noarch.rpm* rpms are installed and sspl service is in Active state.
+  Make sure *cortx-sspl-1.0.0-XXXX.el7.noarch.rpm* and *cortx-sspl-test-1.0.0-XXXX.el7.noarch.rpm* rpms are installed and sspl service is in Active state.
+
     * `$ rpm -qa | grep cortx-sspl`
 
     Example output:
@@ -96,7 +97,8 @@ Make sure *cortx-sspl-1.0.0-XXXX.el7.noarch.rpm* and *cortx-sspl-test-1.0.0-XXXX
 
   * `$ systemctl status sspl-ll`
 
-Runnning sanity test
+  Runnning sanity test
+
     * `$ /opt/seagate/cortx/sspl/bin/sspl_test sanity` or `/opt/seagate/cortx/sspl/sspl_test/run_tests.sh`
 
     Example output:

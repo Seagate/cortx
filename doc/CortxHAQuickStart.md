@@ -38,7 +38,7 @@ You are all set to fetch cortx-ha repo now.
 
 ### corosync pacemaker setup
 
-Note: For corosync pacemaker setup we need two VM's.
+  Note: For corosync pacemaker setup we need two VM's. Run step 1-6 below, on both nodes and other step on primary node node.
 
 - Run following command on both nodes.
 
@@ -55,6 +55,9 @@ Note: For corosync pacemaker setup we need two VM's.
     * `$ getenforce` (It should show disabled)
 
 3. Make sure /etc/hosts is reflected properly or DNS is updated to resolve host names
+
+    Add eth0 ip address of both nodes in /etc/hosts file.
+
     * `$ cat /etc/hosts`
       ```
       10.0.15.10      node1
@@ -68,11 +71,12 @@ Note: For corosync pacemaker setup we need two VM's.
     * `$ systemctl enable corosync`
     * `$ systemctl enable pacemaker`
 
-  Start pcsd service
+    Start pcsd service
 
     * `$ systemctl start pcsd`
 
-  Configure a password for the 'hacluster' user.
+    Configure a password for the 'hacluster' user.
+
     * `$ echo <new-password> | passwd --stdin hacluster`
 
 6. Create and Configure the Cluster.
@@ -86,7 +90,8 @@ Note: For corosync pacemaker setup we need two VM's.
 7. Set up the cluster. Define cluster name and servers that will be part of the cluster.
     * `$ pcs cluster setup --name EOS_cluster node1 node2`
 
-  Now start all cluster services and also enable them.
+    Now start all cluster services and also enable them.
+
     * `$ pcs cluster start --all`
     * `$ pcs cluster enable --all`
 
@@ -95,7 +100,7 @@ Note: For corosync pacemaker setup we need two VM's.
     * `$ pcs property set no-quorum-policy=ignore`
     * `$ pcs property list`
 
-  Check cluster status
+    Check cluster status
 
     * `$ pcs status cluster`
 
@@ -109,18 +114,27 @@ Note: For corosync pacemaker setup we need two VM's.
 
 1. Install pip packages
     * `$ bash jenkins/cicd/cortx-ha-dep.sh dev <github-token>`
+
+    Note : For creating github token follow steps from [ContributingToCortxHA](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxHA.md#token-personal-access-for-command-line-required-for-submodule-clone-process)
+
     * `$ python3 -m pip install -r jenkins/pyinstaller/requirements.txt`
 
 2. Build RPMS
     * Go to the directory where cortx-ha is cloned.
-    * `$ jenkins/build.sh` or `$ jenkins/build.sh -b <BUILD-NO>`
+    * `$ jenkins/build.sh` **OR** `$ jenkins/build.sh -b <BUILD-NO>`
 
-2. Install and Configure RPMS
+3. Install and Configure RPMS
     * `$ yum install -y dist/rpmbuild/RPMS/x86_64/cortx-ha-XXXX.rpm`
+
+    Check CICD if return non zero then exit and fail build.
+
+    * `$ bash jenkins/cicd/cortx-ha-cicd.sh`
+
     *  From https://github.com/Seagate/cortx-ha/blob/dev/conf/setup.yaml Execute: post_install, config, init and ha.
 
-    Note : To post_install and config we need Cortx Stack or at least salt, pacemaker and consul configured on development box.
-
+    Note :
+    1. To configure HA we need Cortx Stack or at least salt, pacemaker and consul configured on the development box.
+    2. Currently HA will support only on the hardware.
 
 ## Running Test
   * `$ cd cortx-ha/ha/test/`

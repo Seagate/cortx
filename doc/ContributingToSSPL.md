@@ -30,7 +30,6 @@ The key's randomart image is:
 +----[SHA256]-----+
 ~~~
 
-
 #### Add SSH key to GitHub Account and Enable SSO
   1. Copy public key i.e. id_rsa.pub (default location: /root/.ssh/id_rsa.pub)
   2. Go to GitHub SSH key settings: https://github.com/settings/keys of your account
@@ -71,23 +70,47 @@ cannot insert change-id line in .git/COMMIT_EDITMSG
 
 #### Clone cortx-sspl
 - Each contributor needs to do 'fork' to create their own private cortx-sspl repository.
-  - Go to homepage of [cortx-sspl repository on GitHub](https://github.com/Seagate/cortx-sspl), there you will see 'fork' at top right corner.
+
+  Go to homepage of [cortx-sspl repository on GitHub](https://github.com/Seagate/cortx-sspl), there you will see 'fork' at top right corner.
 
   > $ git clone --recursive git@github.com:"your-github-id"/cortx-sspl.git
 
+    Example output:
+    ~~~
+    Cloning into 'cortx-sspl'...
+    remote: Enumerating objects: 101, done.
+    remote: Counting objects: 100% (101/101), done.
+    remote: Compressing objects: 100% (70/70), done.
+    remote: Total 657 (delta 39), reused 64 (delta 25), pack-reused 556
+    Receiving objects: 100% (657/657), 162.39 KiB | 0 bytes/s, done.
+    Resolving deltas: 100% (292/292), done.
+    ~~~
+
 - Setup upstream repo in the remote list. (It's one-time activity)
 
-  > $ git remote -v (See the current configured remote repository for your fork.)
-      - origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
-      - origin git@github.com:<github-id>/cortx-sspl.git (push)
+  > $ git remote -v
+
+    (See the current configured remote repository for your fork.)
+
+    Example output:
+    ~~~
+    origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
+    origin git@github.com:<github-id>/cortx-sspl.git (push)
+    ~~~
 
   > $ git remote add upstream git@github.com:Seagate/cortx-sspl.git
 
-  > $ git remote -v (Upstream repo should be visible)
-      - origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
-      - origin git@github.com:<github-id>/cortx-sspl.git (push)
-      - upstream git@github.com:Seagate/cortx-sspl.git (fetch)
-      - upstream git@github.com:Seagate/cortx-sspl.git (push)
+  > $ git remote -v
+
+    (Upstream repo should be visible)
+
+    Example output:
+    ~~~
+    origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
+    origin git@github.com:<github-id>/cortx-sspl.git (push)
+    upstream git@github.com:Seagate/cortx-sspl.git (fetch)
+    upstream git@github.com:Seagate/cortx-sspl.git (push)
+    ~~~
 
 - Ensure you have checked out “dev” branch
 
@@ -116,13 +139,12 @@ cannot insert change-id line in .git/COMMIT_EDITMSG
   > git commit --amend --author="Author Name < email@address.com >"
 
 - Push your changes to GitHub
-  * Before pushing, TAKE A PAUSE. Have you [rebased your branch](#How-to-rebase)? If not then doing right now to avoid merge conflicts on github.
+
+  Before pushing, TAKE A PAUSE. Have you [rebased your branch](#How-to-rebase)? If not then doing right now to avoid merge conflicts on github.
 
   > $ git push origin 'your-local-branch-name'
 
-  * Note: Sometimes, It fails to push local branch changes to origin after rebase. Use --force option to push it forcefully.
-
-  > $ git push origin 'your-local-branch-name'
+  Note: Sometimes, It fails to push local branch changes to origin after rebase. Use --force option to push it forcefully.
 
   > $ git push --force origin 'your-local-branch-name'
 

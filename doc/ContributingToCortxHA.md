@@ -50,13 +50,13 @@ with older git version, you might be getting errors with commit hook, like this 
   > git: 'interpret-trailers' is not a git command. See 'git --help'.
     cannot insert change-id line in .git/COMMIT_EDITMSG
 
-Fix (for CentOS 7.x)
+  Fix (for CentOS 7.x)
 
-  > $ yum remove git
+    > $ yum remove git
 
-  > $ yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
+    > $ yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
 
-  > $ yum -y install git
+    > $ yum -y install git
 
 - Setup the git config options
 
@@ -71,23 +71,48 @@ Fix (for CentOS 7.x)
 
 #### Clone cortx-ha
 - Each contributor needs to do 'fork' to create their own private cortx-ha repository.
-  - Go to homepage of [cortx-ha repository on GitHub](https://github.com/Seagate/cortx-ha), there you will see 'fork' at top right corner.
+
+  Go to homepage of [cortx-ha repository on GitHub](https://github.com/Seagate/cortx-ha), there you will see 'fork' at top right corner.
 
   > $ git clone --recursive git@github.com:"your-github-id"/cortx-ha.git
 
+    Example output:
+    ~~~
+    Cloning into 'cortx-ha'...
+    remote: Enumerating objects: 101, done.
+    remote: Counting objects: 100% (101/101), done.
+    remote: Compressing objects: 100% (70/70), done.
+    remote: Total 657 (delta 39), reused 64 (delta 25), pack-reused 556
+    Receiving objects: 100% (657/657), 162.39 KiB | 0 bytes/s, done.
+    Resolving deltas: 100% (292/292), done.
+    ~~~
+
 - Setup upstream repo in the remote list. (It's one-time activity)
 
-  > $ git remote -v (See the current configured remote repository for your fork.)
-    - origin git@github.com:<gitgub-id>/cortx-ha.git (fetch)
-    - origin git@github.com:<github-id>/cortx-ha.git (push)
+  > $ git remote -v
+
+    (See the current configured remote repository for your fork.)
+
+    Example output:
+    ~~~
+    # git remote -v
+    origin git@github.com:<gitgub-id>/cortx-ha.git (fetch)
+    origin git@github.com:<github-id>/cortx-ha.git (push)
+    ~~~
 
   > $ git remote add upstream git@github.com:Seagate/cortx-ha.git
 
-  > $ git remote -v (Upstream repo should be visible)
-    - origin git@github.com:<gitgub-id>/cortx-ha.git (fetch)
-    - origin git@github.com:<github-id>/cortx-ha.git (push)
-    - upstream git@github.com:Seagate/cortx-ha.git (fetch)
-    - upstream git@github.com:Seagate/cortx-ha.git (push)
+  > $ git remote -v
+
+    (Upstream repo should be visible)
+
+    Example output:
+    ~~~
+    origin git@github.com:<gitgub-id>/cortx-ha.git (fetch)
+    origin git@github.com:<github-id>/cortx-ha.git (push)
+    upstream git@github.com:Seagate/cortx-ha.git (fetch)
+    upstream git@github.com:Seagate/cortx-ha.git (push)
+    ~~~
 
 - Ensure you have checked out “dev” branch
 
@@ -116,13 +141,12 @@ Fix (for CentOS 7.x)
   > git commit --amend --author="Author Name < email@address.com >"
 
 - Push your changes to GitHub
-  * Before pushing, TAKE A PAUSE. Have you [rebased your branch](#How-to-rebase)? If not then doing right now to avoid merge conflicts on github.
+
+  Before pushing, TAKE A PAUSE. Have you [rebased your branch](#How-to-rebase)? If not then doing right now to avoid merge conflicts on github.
 
   > $ git push origin 'your-local-branch-name'
 
-  * Note: Sometimes, It fails to push local branch changes to origin after rebase. Use --force option to push it forcefully.
-
-  > $ git push origin 'your-local-branch-name'
+  Note: Sometimes, It fails to push local branch changes to origin after rebase. Use --force option to push it forcefully.
 
   > $ git push --force origin 'your-local-branch-name'
 
