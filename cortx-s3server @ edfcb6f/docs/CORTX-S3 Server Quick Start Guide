@@ -118,23 +118,23 @@ If rpms are stored in github release, you can create a local repository on your 
 
 ```
 $ pip install githubrelease
-$ mkdir /root/releases_eos_s3deps
-$ cd /root/releases_eos_s3deps
+$ mkdir /root/releases_cortx_s3deps
+$ cd /root/releases_cortx_s3deps
 $ GITHUB_TOKEN=<AUTH TOKEN GITHUB>
 $ githubrelease --github-token $GITHUB_TOKEN asset seagate/cortx-s3server download $(curl -H "Authorization: token $GITHUB_TOKEN" -s https://api.github.com/repos/Seagate/cortx-s3server/releases/latest | grep "tag_name" | sed -E 's/.*"([^"]+)".*/\1/')`
 ```
 
-Create the file `/etc/yum.repos.d/releases_eos_s3deps.repo` using the following commands:
+Create the file `/etc/yum.repos.d/releases_cortx_s3deps.repo` using the following commands:
 
-> *  `$ createrepo -v /root/releases_eos_s3deps`
+> *  `$ createrepo -v /root/releases_cortx_s3deps`
 > * `$ yum clean all`
 > * `$ yum repolist`
 
 You will see the following details once your file is created:
 ```
-[releases_eos_s3deps]
+[releases_cortx_s3deps]
 name=Cortx-S3 Repository
-baseurl=file:///root/releases_eos_s3deps
+baseurl=file:///root/releases_cortx_s3deps
 gpgcheck=0
 enabled=1
 ```
