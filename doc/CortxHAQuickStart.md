@@ -159,7 +159,7 @@ You are all set to fetch cortx-ha repo now.
 3. Install and Configure RPMS
     * `$ yum install -y dist/rpmbuild/RPMS/x86_64/cortx-ha-XXXX.rpm`
 
-    Example :nstall -y dist/rpmbuild/RPMS/x86_64/cortx-ha-1.0.0-368034b.x86_64.rpm 
+    Example : yum install -y dist/rpmbuild/RPMS/x86_64/cortx-ha-1.0.0-368034b.x86_64.rpm 
 
     Check CICD if return non zero then exit and fail build.
 
