@@ -146,8 +146,6 @@ You are all set to fetch cortx-ha repo now.
 1. Install pip packages
     * `$ bash jenkins/cicd/cortx-ha-dep.sh dev <github-token>`
 
-    Example : bash jenkins/cicd/cortx-ha-dep.sh dev 9a876db873420e5d6aabbcc7896eb234a567890
-
     Note : For creating github token follow steps from [ContributingToCortxHA](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxHA.md#token-personal-access-for-command-line-required-for-submodule-clone-process)
 
     * `$ python3 -m pip install -r jenkins/pyinstaller/requirements.txt`
@@ -156,20 +154,44 @@ You are all set to fetch cortx-ha repo now.
     * Go to the directory where cortx-ha is cloned.
     * `$ jenkins/build.sh` **OR** `$ jenkins/build.sh -b <BUILD-NO>`
 
-3. Install and Configure RPMS
-    * `$ yum install -y dist/rpmbuild/RPMS/x86_64/cortx-ha-XXXX.rpm`
 
-    Example :nstall -y dist/rpmbuild/RPMS/x86_64/cortx-ha-1.0.0-368034b.x86_64.rpm 
+## Installing the CORTX-HA source code
 
-    Check CICD if return non zero then exit and fail build.
+  Run following command on both node.
 
-    * `$ bash jenkins/cicd/cortx-ha-cicd.sh`
+  * `$ yum install -y dist/rpmbuild/RPMS/x86_64/cortx-ha-XXXX.rpm`
 
-    *  From https://github.com/Seagate/cortx-ha/blob/dev/conf/setup.yaml Execute: post_install, config, init and ha.
+    Example : yum install -y dist/rpmbuild/RPMS/x86_64/cortx-ha-1.0.0-368034b.x86_64.rpm
 
-    Note :
-    1. To configure HA we need Cortx Stack or at least salt, pacemaker and consul configured on the development box.
-    2. Currently HA will support only on the hardware.
+  *  From https://github.com/Seagate/cortx-ha/blob/dev/conf/setup.yaml Execute: post_install, config, init and ha.
+
+    Example :
+    1. /opt/seagate/cortx/ha/conf/script/ha_setup post_install
+    2. /opt/seagate/cortx/ha/conf/script/ha_setup config
+    3. /opt/seagate/cortx/ha/conf/script/ha_setup init
+    4. /opt/seagate/cortx/ha/conf/script/ha_setup test
+
+  Note :
+  1. To configure HA we need Cortx Stack or at least salt, pacemaker and consul configured on the development box.
+  2. Currently HA will support only on the hardware.
+
+  Run following command on salt primary node.
+
+  * `$ /opt/seagate/cortx/ha/conf/script/build-cortx-ha init /var/lib/hare/build-ees-ha-args.yaml`
+
+### Reset CORTX-HA
+
+  Note : To upgrade rpm or reinstall Perform reset and follow installation steps.
+
+  On salt primary node.
+
+  `$ /opt/seagate/cortx/ha/conf/script/build-cortx-ha cleanup /var/lib/hare/build-ees-ha-args.yaml`
+
+  On both nodes.
+
+  `$ /opt/seagate/cortx/ha/conf/script/ha_setup reset`
+
+  `$ yum remove -y cortx-ha-XXXX.rpm`
 
 ## Running Test
   * `$ cd cortx-ha/ha/test/`
