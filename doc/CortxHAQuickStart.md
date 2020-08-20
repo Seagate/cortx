@@ -38,7 +38,7 @@ You are all set to fetch cortx-ha repo now.
 
 ### corosync pacemaker setup
 
-  Note: For corosync pacemaker setup we need two VM's. Run step 1-6 below, on both nodes and other step on primary node node.
+  Note: For corosync pacemaker setup we need two VM's. Run step 1-5 below, on both nodes and other step on primary node node.
 
 - Run following command on both nodes.
 
@@ -79,13 +79,15 @@ You are all set to fetch cortx-ha repo now.
 
     * `$ echo <new-password> | passwd --stdin hacluster`
 
+    Example : echo testDoc | passwd --stdin hacluster
+
+- Run following command on Primary node.
+
 6. Create and Configure the Cluster.
     * `$ pcs cluster auth node1 node2`
       ```
       Username: hacluster
       Password:
-
-- Run following command on Primary node.
 
 7. Set up the cluster. Define cluster name and servers that will be part of the cluster.
     * `$ pcs cluster setup --name EOS_cluster node1 node2`
@@ -93,6 +95,7 @@ You are all set to fetch cortx-ha repo now.
     Now start all cluster services and also enable them.
 
     * `$ pcs cluster start --all`
+
     * `$ pcs cluster enable --all`
 
 8. Disable STONITH and Ignore the Quorum Policy
@@ -100,9 +103,37 @@ You are all set to fetch cortx-ha repo now.
     * `$ pcs property set no-quorum-policy=ignore`
     * `$ pcs property list`
 
+    Example output:
+    ~~~
+    [root@ssc-vm-c-0208 534380]# pcs property list
+    Cluster Properties:
+    cluster-infrastructure: corosync
+    cluster-name: EOS_cluster
+    dc-version: 1.1.21-4.el7-f14e36fd43
+    have-watchdog: false
+    no-quorum-policy: ignore
+    stonith-enabled: false
+    ~~~
+
     Check cluster status
 
     * `$ pcs status cluster`
+
+    Example output:
+    ~~~
+    [root@ssc-vm-c-0208 534380]# pcs status cluster
+    Cluster Status:
+    Stack: corosync
+    Current DC: node1 (version 1.1.21-4.el7-f14e36fd43) - partition with quorum
+    Last updated: Wed Aug 19 02:04:43 2020
+    Last change: Wed Aug 19 02:03:57 2020 by root via cibadmin on node1
+    2 nodes configured
+    0 resources configured
+
+    PCSD Status:
+    node2: Online
+    node1: Online
+    ~~~
 
 ## Cloning cortx-ha repository
 1. `$ git clone --recursive git@github.com:Seagate/cortx-ha.git` (It has been assumed that `git` is preinstalled. if not then follow git installation specific steps provided [here](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxHA.md). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
@@ -115,6 +146,8 @@ You are all set to fetch cortx-ha repo now.
 1. Install pip packages
     * `$ bash jenkins/cicd/cortx-ha-dep.sh dev <github-token>`
 
+    Example : bash jenkins/cicd/cortx-ha-dep.sh dev 9a876db873420e5d6aabbcc7896eb234a567890
+
     Note : For creating github token follow steps from [ContributingToCortxHA](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxHA.md#token-personal-access-for-command-line-required-for-submodule-clone-process)
 
     * `$ python3 -m pip install -r jenkins/pyinstaller/requirements.txt`
@@ -125,6 +158,8 @@ You are all set to fetch cortx-ha repo now.
 
 3. Install and Configure RPMS
     * `$ yum install -y dist/rpmbuild/RPMS/x86_64/cortx-ha-XXXX.rpm`
+
+    Example :nstall -y dist/rpmbuild/RPMS/x86_64/cortx-ha-1.0.0-368034b.x86_64.rpm 
 
     Check CICD if return non zero then exit and fail build.
 

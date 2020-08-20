@@ -60,7 +60,7 @@ with older git version, you might be getting errors with commit hook, like this 
 
 - Setup the git config options
 
-  > $ git config --global user.name ‘Your Name’
+  > $ git config --global user.name ‘Your Username’
 
   > $ git config --global user.email ‘Your.Name@seagate.com’
 
@@ -78,6 +78,8 @@ with older git version, you might be getting errors with commit hook, like this 
 
     Example output:
     ~~~
+    # git clone --recursive git@github.com:vaibhavparatwar/cortx-ha.git
+
     Cloning into 'cortx-ha'...
     remote: Enumerating objects: 101, done.
     remote: Counting objects: 100% (101/101), done.

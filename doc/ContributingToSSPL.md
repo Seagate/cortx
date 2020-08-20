@@ -59,7 +59,7 @@ cannot insert change-id line in .git/COMMIT_EDITMSG
 
 - Setup the git config options
 
-  > $ git config --global user.name ‘Your Name’
+  > $ git config --global user.name ‘Your Username’
 
   > $ git config --global user.email ‘Your.Name@seagate.com’
 
@@ -77,6 +77,7 @@ cannot insert change-id line in .git/COMMIT_EDITMSG
 
     Example output:
     ~~~
+    # git clone --recursive git@github.com:vaibhavparatwar/cortx-sspl.git
     Cloning into 'cortx-sspl'...
     remote: Enumerating objects: 101, done.
     remote: Counting objects: 100% (101/101), done.
