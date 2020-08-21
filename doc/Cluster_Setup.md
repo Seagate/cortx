@@ -53,7 +53,7 @@ Create `lnet.conf` file, if it does not exist, and restart `lnet` service.
 
 * Edit the copy:
 
-  - ensure that the disks referred to by `io_disks` values exist
+  - ensure that the disks referred to by `io_disks` values exist. To see available devices use command 'lsblk' or 'lsscsi' or 'fdisk -l'.
     (add new disks to VM, if necessary, or create loop devices);
 
   - make sure that `data_iface` value refers to existing network
@@ -295,7 +295,7 @@ git clone --recursive git@github.com:Seagate/cortx-hare.git -b main
 ### 3.6. Compile and install Hare
 
 ```bash
-cd hare
+cd cortx-hare
 make
 sudo make devinstall
 cd -
