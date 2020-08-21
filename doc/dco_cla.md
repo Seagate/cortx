@@ -12,6 +12,9 @@ file that has been signed by each Contributor, indicating agreement to the licen
 license is for your protection as a Contributor as well as the protection of the project and its users; 
 it does not change your rights to use your own Contributions for any other purpose. 
 
-The specific CLA documents that might be required can be viewed [here](cla/).
+DCO is always required.  The code reviewers will use the following decision tree to determine when CLA will be needed:
+![image](https://user-images.githubusercontent.com/2047294/88670714-a1706b00-d0a2-11ea-80f5-bfe5324928ac.png)
+
+The specific CLA documents that might be required can be viewed [here](cla/).  
 Please email [cla@seagate.com](mailto:cla@seagate.com) with any questions about this policy.
 
