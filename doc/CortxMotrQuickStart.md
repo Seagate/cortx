@@ -52,11 +52,20 @@ Getting the main CORTX source code on your system is straightforward.
      `$ pip3 install ply`
   
 2. Reboot
+
+   You can use command `$ sudo reboot` to reboot the system.
+   If you use cloud VM, you can go to your cloud VM website and select the VM, stop first and start again to complete the reboot process.
+   
   * After reboot, check if Lustre network is working
   
      `$ sudo modprobe lnet`
   
      `$ sudo lctl list_nids`
+     
+     You should see list of IPs as following:
+     192.168.9.60@tcp
+     10.230.245.74@tcp1
+
 
 3. Compiling cortx-motr (Commands assumes that user is already into it's main source directory i.e. `$cd cortx-motr`)
    * Run following command
