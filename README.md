@@ -56,7 +56,9 @@ Please read about our CI/CD and other automation [here](doc/CI_CD.md).
 
 This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE.md) file for details.
 
-## Resources
+## Resource
+Join the CORTX Community
+
 * Join the CORTX Forum <!---[Join the CORTX Forum on Slack](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ) – --->**Coming soon!** Get your questions answered and interact with the Seagate team and your fellow Early Adopter program members. This will become the public forum – so this is another great way to contribute to the vibrancy of the community as we work towards the public launch.
 * Email our group mailing list at [seagate-early-adopters@seagate.com](mailto:seagate-early-adopters@seagate.com) to participate in Community discussions.
 * Download the [CORTX Early Adopter Brief](https://github.com/Seagate/cortx/tree/master/doc/SB510_1-2004US_Seagate_CORTX_Community-Brief_R7.2.pdf)
