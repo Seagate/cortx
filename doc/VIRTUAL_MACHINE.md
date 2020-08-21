@@ -80,7 +80,7 @@ PRE-BUILD [HARE]
 * Ensure that Motr is built and its systemd services are installed.
 ```
 # $M0_SRC_DIR/scripts/m0 rebuild
-# $M0_SRC_DIR/scripts/install-mero-service --link
+# $M0_SRC_DIR/scripts/install-motr-service --link
 ```
 
 ## Single node setup

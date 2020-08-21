@@ -1,6 +1,6 @@
 # CORTX v1.0 Virtual Clusters Setup
 
-This is a step by step guide to get CORTX virtual clustur setup ready.
+This is a step by step guide to get CORTX virtual cluster setup ready.
 
 ## 1. Single-node setup
 
@@ -282,16 +282,15 @@ Follow [these steps](CortxMotrQuickStart.md#Cloning-CORTX).
 ```bash
 cd cortx-motr
 scripts/m0 make
-sudo scripts/install-mero-service
+sudo scripts/install-motr-service
 cd -
 ```
 
 ### 3.5. Get Hare sources
 
 ```bash
-git clone --recursive ssh://git@gitlab.mero.colo.seagate.com:6022/mero/hare.git
+git clone --recursive git@github.com:Seagate/cortx-hare.git -b main
 ```
-NOTE: Hare component is not migrated to Github yet, doc will be updated once Hare repo is migrated.
 
 ### 3.6. Compile and install Hare
 
