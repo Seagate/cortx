@@ -26,12 +26,6 @@ Getting the main CORTX source code on your system is straightforward.
 
 3. `$ gitdir=$(git rev-parse --git-dir)`
 
-4. Enable some pre-commit hooks required before pushing your changes to remote 
-   * Run this command from the parent dir of cortx-motr source
-   Note: (This step needs to be validated)
-   
-     #`$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
-
 ## Building the CORTX source code
      
 1. Build and install necessaries dependencies. When finished, if you see failed=0 in the output, which means your installation is successful. 
