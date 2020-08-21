@@ -94,7 +94,7 @@ You are all set to fetch Cortx-S3Server repo now!
 * `$ yum repolist`  should see 'lustre*' in the list 
 
 ## Installing dependency
-This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
+All the following commands assume that user is already in its main source directory. This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
 
   * At some point during the execution of the `init.sh` script, it will prompt for the following passwords. Enter them as mentioned below.
     * SSH password: `<Enter root password of VM>`
@@ -193,7 +193,7 @@ For this demand also we are having solution :
 
 1. Search for specific commit-id in search box and choose type = 'Commits' , click on search result (specific commit) and copy associated change-id
   
-2. `$ cd third_party/mero` (It is assumed that you are into main directory of your s3server repo)
+2. `$ cd third_party/motr` (It is assumed that you are into main directory of your s3server repo)
 3. Use copied commit ID in step 1 as shown below.
    
  > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
@@ -204,7 +204,7 @@ For this demand also we are having solution :
 
 > `cd ..`
 
-> `./build_mero.sh` 
+> `./build_motr.sh` 
 
 6. Run jenkins script to make sure that your build & tests passes.
 
