@@ -34,7 +34,8 @@ Getting the main CORTX source code on your system is straightforward.
 
 ## Building the CORTX source code
      
-1. Build and install necessaries dependencies
+1. Build and install necessaries dependencies. When finished, if you see failed=0 in the output, which means your installation is successful. 
+
    * To install all dependent packages like lustre, pip, etc.
   
     `$ sudo ./scripts/install-build-deps` 
