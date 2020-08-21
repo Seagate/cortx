@@ -85,7 +85,7 @@ Getting the main CORTX source code on your system is straightforward.
   * `$ sudo ./scripts/m0 run-st -l`
   
    As an example for clovis module system test can be run using following command :
-  * `$ sudo ./scripts/m0 run-st 52mero-singlenode-sanity`
+  * `$ sudo ./scripts/m0 run-st 52motr-singlenode-sanity`
    
    To run all the ST's,
   * `$ sudo ./scripts/m0 run-st`
