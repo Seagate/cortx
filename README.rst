@@ -1,14 +1,13 @@
 |license| |Codacy Badge| |codacy-analysis-cli|
 
-.. image:: doc/images/cortx-logo.png
+.. image:: ../assets/images/cortx-logo.png
 
 CORTX. Hyperscale storage stack capabilities for all.
 =====================================================
 
 In consultation with IDC, Seagate has determined that by 2025, an immense amount of data, approximately 175 zettabytes will be created. Surprisingly, only 10% or 17 out of 175 zettabytes of data will be retained. IDC predicts that this 158 zettabytes of unretained data, has tremendous unrealized potential. Multiple research efforts conclude that machine learning and data analytics accuracy is directly correlated to the size of the input data set.
 
-.. image:: doc/images/at_risk_data.jpg
-  : width: 600
+.. image:: ../assets/images/at_risk_data.jpg
 
 Retaining such a large volume of data necessitates hardware innovations for high areal density per cost and new software architecture, which are prohibitively expensive. Developing a new software architecture that ensures efficient utilization of co-evolving hardware innovations and mitigates the economic limitations of existing systems is the imminent need of the hour. 
 
@@ -19,7 +18,7 @@ Seagate has developed CORTX after diligently understanding the software and hard
 The CORTX project is licensed under the `Apache 2.0 License <LICENSE.md>`__.
 
 Join the CORTX Community
-""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you’re interested in contributing to Seagate’s CORTX community, please read the `Contributions Guide <doc/SuggestedContributions.md>`__. 
 
@@ -31,7 +30,7 @@ If you’re interested in contributing to Seagate’s CORTX community, please re
 We are committed to our social goal for respectful interactions and inclusivity. Refer to our `Code of Conduct <CODE_OF_CONDUCT.md>`__ documentation to know more about Community Rules.
 
 To Start Using CORTX
-"""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^
 
 - Refer to the `Quick Start Guide <QUICK_START.md>`__ to build and test the code.
 
@@ -45,7 +44,7 @@ Resources
 -  Check out the `GitHub issues section <https://github.com/Seagate/cortx/issues>`__, if you find a bug or have a feature request. Please check the list of existing issues before you create a new one. 
 
 Thank You
-"""""""""
+^^^^^^^^^^
 
 We know that your time is limited and thank you for stopping by to check out the CORTX Community. Seagate is fully dedicated to its mission to produce open source technologies that help the world save more data and solve challenging data problems. Join our mission to help reinvent a data-driven world. 
 
