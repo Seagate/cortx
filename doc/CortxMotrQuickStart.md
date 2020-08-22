@@ -28,6 +28,11 @@ Getting the main CORTX source code on your system is straightforward.
 
 ## Building the CORTX source code
      
+1. Build and install necessaries dependencies
+   * Ensure epel-release has been installed
+   
+   `$ sudo yum install epel-release`
+   
 1. Build and install necessaries dependencies. When finished, if you see failed=0 in the output, which means your installation is successful. 
 
    * To install all dependent packages like lustre, pip, etc.
@@ -61,11 +66,12 @@ Getting the main CORTX source code on your system is straightforward.
      `$ sudo modprobe lnet`
   
      `$ sudo lctl list_nids`
+   
+   * Troubleshooting hint: if list_nids reports NETWORK IS DOWN, check /etc/modprobe.d/lnet.conf and ensure the listed network interfaces are present on your system. If not, edit lnet.conf, reboot, and try again.
      
      You should see list of IPs as following:
      192.168.9.60@tcp
      10.230.245.74@tcp1
-
 
 3. Compiling cortx-motr (Commands assumes that user is already into it's main source directory i.e. `$cd cortx-motr`)
    * Run following command
