@@ -1,3 +1,5 @@
+.. _CORTX_QuickstartGuide:
+
 CORTX Quickstart Guide
 #######################
 
