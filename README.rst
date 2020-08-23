@@ -1,4 +1,4 @@
-
+.. _CORTX_README:
 |license| |Codacy Badge| |codacy-analysis-cli|
 
 .. image:: ../assets/images/cortx-logo.png
@@ -6,16 +6,14 @@
 CORTX: World's First Scalable Mass-Capacity Object Storage System
 ==============================================================================
 
-The volume of data created and collected worldwide is massively increasing. In comparison, the proportion of data that is being stored is minuscule. The machine learning models that are at the forefront of most significant research studies today depend on access to complete data sets. Retaining such a large volume of data necessitates hardware innovations for high areal density per cost and new software architecture, which are prohibitively expensive. 
-
-We enable research that is changing the world by creating ingenious storage solutions that are efficient and economical. 
+The volume of data created and collected worldwide is massively increasing. In comparison, only a small proportion of this data is being retained. The machine learning models at the forefront of the most significant research studies today, depend on access to complete data sets. We're continuously creating efficient and economical storage solutions to enable research that's transforming the world.
 
 .. image:: ../assets/images/at_risk_data.jpg
 
 The CORTX Project
 -----------------
 
-CORTX is a distributed object storage system designed for efficiency, mass-capacity, and high HDD-utilization. Our goal is to create storage solutions with maximum utilization and high code-quality. 
+CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization. 
 
 CORTX Project Scope & Core Design Goals
 *****************************************
@@ -37,19 +35,19 @@ The CORTX project is licensed under the `Apache 2.0 License <LICENSE>`__.
 
 CORTX Community
 ---------------
-Refer to the CORTX Community Guide <link to the file> that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us. 
+Refer to the CORTX Community Guide **<link placeholder>** that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us. 
 
 To Start Using CORTX
 ********************
 
-- Refer to the :ref:`CORTXQuickstartGuide` to build and test the CORTX.
+- Refer to the `CORTX Quickstart Guide <../master/CORTX_Quickstart_Guide.rst>`_ to build and test CORTX.
 
-- Use `Opengrok <http://ssc-vm-c-192.colo.seagate.com:8090/source/>`_ to browse through the source code. Opengrok is a source code search and cross-reference engine. 
+- Use `Opengrok <https://oracle.github.io/opengrok/>`_ to browse through the source code. Opengrok is a source code search and cross-reference engine. 
 
 Thank You
-*********
+----------
 
-We know that your time is limited, and we thank you for stopping by to check out the CORTX Community. Seagate is fully dedicated to its mission to produce open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world. 
+We thank you for stopping by to check out the CORTX Community. Seagate is fully dedicated to its mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world. 
 
 .. |license| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://github.com/Seagate/EOS-Sandbox/blob/master/LICENSE
