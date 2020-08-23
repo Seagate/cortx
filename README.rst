@@ -44,7 +44,7 @@ To Start Using CORTX
 
 - Use `Opengrok <https://oracle.github.io/opengrok/>`_ to browse through the source code. Opengrok is a source code search and cross-reference engine. 
 
-Thank You
+Thank You!
 ----------
 
 We thank you for stopping by to check out the CORTX Community. Seagate is fully dedicated to its mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world. 
