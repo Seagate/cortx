@@ -37,7 +37,7 @@ Contribute to CORTX Community
 
 Refer to the CORTX Community Guide **<link placeholder>** that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us.
 
-- You'll need to read the individual component specific documents before you submit your contributions to the `CORTX-Motr <../master/doc/ContributingToMotr.md>`_ and `CORTX-S3 Server <../blob/cortx-s3server/dev/docs/ContributingToCortxS3.md>`_ repositories.
+- You'll need to read the individual component specific documents before you submit your contributions to the `CORTX-Motr <../master/doc/ContributingToMotr.md>`_ and `CORTX-S3 Server <../cortx-s3server/dev/docs/ContributingToCortxS3.md>`_ repositories.
 
 Support and Community Discussions
 *********************************
