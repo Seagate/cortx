@@ -10,6 +10,7 @@
 * [CORTX Core Architecture Overview](/doc/be/EOSCOREARCHITECTURE.rst)
 * [CORTX Core - Deep Dive](/doc/be/EOSS3IAMDD.rst)
 * [CORTX S3 Server Overview](/doc/be/CORTX-S3OVERVIEW.rst)
+* [EOS EU R&D (Introductory Tutorial)](/doc/be/EOSTUTORIAL.rst)
 
 TODO: Add more.  Convert more into .rst format.
 
