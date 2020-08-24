@@ -1,20 +1,20 @@
-# Mero in Prose
+# Motr in Prose
 
 _« Par ma foi ! il y a plus de quarante ans que je dis de la prose sans que j'en susse rien, et je vous suis le
 plus obligé du monde de m'avoir appris cela. »_
 
-This document attempts to be a master document for the whole of Mero, 
+This document attempts to be a master document for the whole of Motr, 
 concentrating on giving a consistent overview of the architecture.
 
 The document is structured as a collection of fragments. Each fragment, 
 relatively small in size (1–2 pages), describes a particular subject 
-(functional or structural part of Mero) at a particular level of detail and is 
+(functional or structural part of Motr) at a particular level of detail and is 
 named "subject, level". The fragments are referenced from the table below.
 
 No linear reading order is assumed or possible, except that for a particular 
 subject the reading should proceed left-to-right (because higher levels 
 introduce terminology) and "overview" subject, that briefly describes the whole 
-of Mero, should be read first. Each fragment ends with a list of suggestions 
+of Motr, should be read first. Each fragment ends with a list of suggestions 
 for further reading: "More details" list pointing to the next level fragment 
 for the same subject (corresponding to moving right in the table below), 
 "References" list of external documents and "Related" list of "vertical" 
@@ -55,18 +55,18 @@ suggestions at the same detail level.
 
 # overview, idea
 
-Mero is a distributed storage system, targeting 
+Motr is a distributed storage system, targeting 
 [exascale](https://en.wikipedia.org/wiki/Exascale_computing) configurations. 
-Mero architecture started in 2009. Its main roots are [Lustre](#lustre-idea) 
-file system, NFSv4 and database technology. Mero is not, strictly speaking, a 
+Motr architecture started in 2009. Its main roots are [Lustre](#lustre-idea) 
+file system, NFSv4 and database technology. Motr is not, strictly speaking, a 
 file system: an emerging consensus is that traditional file system properties 
 (hierarchical directory namespace, strong POSIX consistency guarantees, &c.) 
-are no longer desirable or achievable at exascale. Instead, Mero is a more 
+are no longer desirable or achievable at exascale. Instead, Motr is a more 
 general storage system, providing an optional file system interface. This 
 allows wider range of deployments, including cloud.
 
-Mero controls a cluster consisting of nodes connected by network. Some nodes 
-have persistent storage attached to them. Mero makes distinction between 
+Motr controls a cluster consisting of nodes connected by network. Some nodes 
+have persistent storage attached to them. Motr makes distinction between 
 various types of persistent store:
 
 * rotational drives. They have low cost per bit, good durability, widely 
@@ -77,14 +77,14 @@ various types of persistent store:
 * non-volatile memory of various types, including PCI-attached flash devices, 
   battery-backed memory and phase-change memory. Even more expensive and even faster.
 
-Some nodes are running applications, which are entities external to Mero. 
+Some nodes are running applications, which are entities external to Motr. 
 Applications issue requests to query or manipulate cluster state. An 
 application can be a traditional user space application, running standalone on 
 a node, or a large [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface) 
 job running on multiple nodes, or a cluster management utility monitoring the 
-state of the system, or NFS (or CIFS) daemon exporting Mero to non-Mero clients.
+state of the system, or NFS (or CIFS) daemon exporting Motr to non-Motr clients.
 
-Each Mero node caches a part of system state. This cache consists of meta-data 
+Each Motr node caches a part of system state. This cache consists of meta-data 
 (information about directories, files, their attributes) and data (file 
 contents, usually in form of pages). The cache can be stored in volatile memory 
 or on persistent store. To allow multiple nodes to cache state without 
@@ -92,13 +92,13 @@ violating system consistency a [resource manager](#rm-idea) is used. For
 example, multiple nodes can keep read-only copies of the same page in a file, 
 but when one node writes in the page, all other copies of this page must be 
 invalidated in caches. This latter requirement is part of consistency 
-guarantees. Mero provides variable consistency levels (compare with 
+guarantees. Motr provides variable consistency levels (compare with 
 [isolation levels](https://en.wikipedia.org/wiki/Isolation_(database_systems)) 
 in databases and [close-to-open](http://www.quora.com/What-is-close-to-open-cache-consistency) 
 cache consistency in NFS).
 
-Applications request Mero to perform operations, including creating, reading, 
-and writing files. An operation request goes to the Mero instance local to the 
+Applications request Motr to perform operations, including creating, reading, 
+and writing files. An operation request goes to the Motr instance local to the 
 application (running on the same node). The instance decides whether the 
 operation is executed locally, by caching some state updates at the local 
 node, or its execution should be forwarded to other nodes. A single operation 
@@ -117,7 +117,7 @@ servers is configured, which defines the overall structure of cluster storage
 hierarchy. Opportunistically, nodes use resource manager to learn about caches 
 in their vicinity and peer-to-peer communication to exploit neighbours' caches.
 
-Remote execution requires [network](#net-idea) communication. Mero 
+Remote execution requires [network](#net-idea) communication. Motr 
 [rpc layer](#rpc-idea) handles certain network failures (message loss) and 
 providing convenient interface to send items, which are internally packed in 
 network messages. 
@@ -128,7 +128,7 @@ the face of certain failures.
 
 ![Distributed Transaction Manager](images/1-Distributed-transaction-manager.JPG)
 
-Main novel ideas of Mero, that distinguish it from other cluster  file-systems are:
+Main novel ideas of Motr, that distinguish it from other cluster  file-systems are:
 * fdmi;
 * file operations log (fol);
 * fops;
@@ -138,14 +138,16 @@ Main novel ideas of Mero, that distinguish it from other cluster  file-systems a
 * containers;
 * addb.
 
-Mero used to be called SCIF and H3S in the earlier documents. 
+Motr used to be called SCIF and H3S in the earlier documents. 
 
 ### References: 
-* [Mero reading list](https://docs.google.com/document/d/1LUfd6MkNdnghmXhYwrKHIU_eTauMWdpHCXcVATG_Akg/edit)
-* [Mero components](https://docs.google.com/spreadsheets/d/10plOv-1vbNp3ZTkRIjEu-L4TOrU5V71aBSQ6Nx9XkxE/edit#gid=0)
-* [Mero technical (presentation)](https://docs.google.com/presentation/d/1VrqkzxklEXnthfsNl3GZhgGaeWl4yTW43LP87EmhzPc/edit#slide=id.g5422de3ce3ebe9f374)
-* [Mero technical whitepaper](https://docs.google.com/document/d/1OnG7RL4HzmIhBzpbbbqyt3u2yC3uZUxzEKr-IJJXicg/edit#heading=h.lu5k8of3smm9)
-* [Mero architecture whitepaper](https://docs.google.com/document/d/1xM7yYPjPH_AuxiN7-J54s2LANv87BvkqLtdL9bOU-7I/edit#heading=h.2cl1oobc8wgr)
+* [Motr reading list](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/Mero%20reading%20list.docx?d=w1e58b2c1b64b4c38a2fa99c2cac11ae5&csf=1&web=1&e=JOksoZ) *
+* [Motr components](https://seagatetechnology.sharepoint.com/:x:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/Mero%20components.xlsx?d=w6243900276c648a29b60bef40d27f137&csf=1&web=1&e=Po8jjN) *
+* [Motr technical (presentation)](https://seagatetechnology.sharepoint.com/:p:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Architecture/Mero%20technical%20(long).pptx?d=w25423cb2d4dd4901bea01f894bb8f0f2&csf=1&web=1&e=vxtVtV) *
+* [Motr technical whitepaper](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Overview/white%20papers/Mero%20Technical%20Whitepaper.docx?d=w2bdde1354e9241df97783814d8a4f42f&csf=1&web=1&e=pedLMs) *
+* [Motr architecture whitepaper](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/white%20papers/Mero%20Architecture%20Whitepaper.docx?d=w7e4687f569ce4f4ea9c5edd1555c7d45&csf=1&web=1&e=L3Qc1n) *
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
 
 ### Related:
 ### More details: [overview, architecture](#overview-architecture)
@@ -158,7 +160,7 @@ Microsystems, which was acquired by Oracle, Lustre IP was then acquired by
 Xyratex, which is in process of being acquired by Seagate—file systems habent 
 sua fata. Lustre is highly successful in the HPC space, running on 7 to 9 
 supercomputers from Top10 list. 
-Lustre is different from Mero in a number of ways:
+Lustre is different from Motr in a number of ways:
 * Lustre is a strictly client-server system. There are client nodes, that issue 
   file system operations to server nodes;
 * Lustre clients have no persistent store. Only server nodes have persistent 
@@ -168,7 +170,7 @@ Lustre is different from Mero in a number of ways:
   so on. Plans to introduce some restricted form of clustered meta-data exist 
   for many years.
 
-Commonalities between Lustre and Mero include:
+Commonalities between Lustre and Motr include:
 * client caches for data and meta-data (Lustre supports only read-only meta-data cache);
 * various network optimisations including intents and 0-copy transfers;
 * highly asynchronous servers and associated recovery.
@@ -182,10 +184,10 @@ Commonalities between Lustre and Mero include:
 ## reqh, idea
 
 Request handler (reqh) processes [fops](#fop-idea). reqh is part of any 
-[Mero instance](#overview-idea). It receives incoming fops and executes them to 
+[Motr instance](#overview-idea). It receives incoming fops and executes them to 
 completion. As part of fop processing, 
-[reqh interacts with other Mero sub-systems](#overview-architecture), issues 
-store requests and sends network messages. Mero reqh design addresses the 
+[reqh interacts with other Motr sub-systems](#overview-architecture), issues 
+store requests and sends network messages. Motr reqh design addresses the 
 following issues:
 * factoring out common code shared by multiple fop types. Various file-system 
   operations involve similar steps:
@@ -220,12 +222,15 @@ queue of fops expecting processing, thus providing opportunities of
 re-ordering. See NRS in the references below.
 
 ### References:
-* [HLD of request handler](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMjA2Zmc0N3I3Z2Y),
-* [request handler overview](https://docs.google.com/a/xyratex.com/document/d/1JzuIYRpq483hF3_5aOHtwJjGSGr9glLPFS00QreaUR0/edit)
-* [Locality](https://docs.google.com/a/xyratex.com/viewer?a=v&pid=explorer&chrome=true&srcid=0BwaCw6YRYSVSMmVlODY1ZjQtMzJkMS00ZGYwLWFiZWQtNWVhNWJmZWZlZWM2)
-* [HLD of fop state machine](https://docs.google.com/a/xyratex.com/document/d/1LjL0Ky6mCxxAgRSX6DIe7UMdt1CrFsSWG_2twBy5kI8/edit)
+* [HLD of request handler](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20request%20handler.docx?d=web412983e8b9458990317745478ceda9&csf=1&web=1&e=zaPx3p) *
+* [request handler overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Request%20handler.docx?d=w61ba146297e649098259e4637f05b1e7&csf=1&web=1&e=ROYPnP) *
+* [Locality](https://seagatetechnology.sharepoint.com/:b:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/presentations/locality.pdf?csf=1&web=1&e=xBjzM3) *
+* [HLD of fop state machine](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20fop%20state%20machine.docx?d=w4534a2f1facf493dbd2330346936f230&csf=1&web=1&e=JWmGN2) *
 * [Network request scheduler](http://wiki.lustre.org/index.php/Architecture_-_Network_Request_Scheduler)
-* [HLD of Lustre NRS](https://docs.google.com/a/xyratex.com/Doc?docid=0AUggUDoE_TgXZGR6N3M1OXRfM2RiMzJ6Y2Zu)
+* [HLD of Lustre NRS](https://docs.google.com/a/xyratex.com/Doc?docid=0AUggUDoE_TgXZGR6N3M1OXRfM2RiMzJ6Y2Zu) **
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+** Sharepoint link not found for this google doc. TODO: Add a link.
 
 ### Related: [server](#server-idea), [client](#client-idea)
 
@@ -233,18 +238,18 @@ re-ordering. See NRS in the references below.
 
 # fop, idea
 ## overview, architecture
-Each node in the cluster runs one or more Mero instances. Each instance has the 
+Each node in the cluster runs one or more Motr instances. Each instance has the 
 same overall structure:
 
-![Mero Instance](images/2-Mero-Instance.JPG)
+![Motr Instance](images/2-Mero-Instance.JPG)
 
-At the heart of Mero instance is [reqh](#reqh-idea) (request handler). Request 
+At the heart of Motr instance is [reqh](#reqh-idea) (request handler). Request 
 handler processes requests in form of [fops](#fop-idea) 
 (file-system operation packets). Fops arrive to request handler by variety of means:
 
-* an instance (typically a [server](#server-idea)) understands Mero native 
+* an instance (typically a [server](#server-idea)) understands Motr native 
   protocol, "fop protocol" (fopp) that allows fops to be sent over network 
-  from one Mero instance to another;
+  from one Motr instance to another;
 * an instance (typically a [server](#server-idea)) understands standard 
   protocols: CIFS, NFS, iSCSI, FCoE. Requests in these protocols are 
   interpreted by protocol translators, which produce fops corresponding to 
@@ -264,13 +269,13 @@ communication failure, resource availability, &c.) occurs.
 To process fops reqh interacts with 3 major modules:
 
 * user data-base, which is used for [authorisation](#security-idea). In 
-  addition, Mero integrates with external enterprise user database;
+  addition, Motr integrates with external enterprise user database;
 * stores: io-store, md-store and remote-store. Stores is where 
   [state cached locally](#overview-idea) on the node is kept. Client page 
   cache is part of io-store and client inode cache is part of md-store;
 * [resource manager](#rm-idea), which cooperates with reqh to determine which 
   operations should be executed locally and which should be delegated to remote 
-  Mero instances.
+  Motr instances.
 
 As a typical use case, consider file creation fop. Creation of a file requires 
 updating multiple file-system meta-data structures:
@@ -328,24 +333,27 @@ processing.
 
 ### Reality check:
 At the moment, client node looks differently from server node. A Linux client 
-runs Mero file-system m0t1fs, implemented as a kernel module. This module 
+runs Motr file-system m0t1fs, implemented as a kernel module. This module 
 doesn't have request handler and doesn't use fops. This will be changed.
 
 ### References:
-* [Outline of the C2 core conceptual design](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTg5Y2c3Mm53YzI#),
-* [Summary of the H3S architecture](https://docs.google.com/a/xyratex.com/viewer?a=v&pid=explorer&chrome=true&srcid=0Bzg1HFjUZcaZMTFkNzM2ZDEtOGIxOS00NGFhLWFiNGQtYzAzNmFhYjQwMWIy),
-* [C2 Architecture Documentation](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMjUzeHFnbjJmajY&authkey=CL_NxPEN&authkey=CL_NxPEN)
+* [Outline of the C2 core conceptual design](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTg5Y2c3Mm53YzI#) *
+* [Summary of the H3S architecture](https://docs.google.com/a/xyratex.com/viewer?a=v&pid=explorer&chrome=true&srcid=0Bzg1HFjUZcaZMTFkNzM2ZDEtOGIxOS00NGFhLWFiNGQtYzAzNmFhYjQwMWIy) *
+* [C2 Architecture Documentation](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMjUzeHFnbjJmajY&authkey=CL_NxPEN&authkey=CL_NxPEN) *
+
+\* Sharepoint link not found for this google doc. TODO: Add a link.
+
 ### Related:
 ### More details:
 
 ## fdmi, idea
-Some Mero nodes are running service apps (or plugins), which are entities 
-external to Mero. Plugins are more tightly coupled with Mero than applications. 
-A plugin is connected to some Mero-provided event feeds, which provide a stream 
+Some Motr nodes are running service apps (or plugins), which are entities 
+external to Motr. Plugins are more tightly coupled with Motr than applications. 
+A plugin is connected to some Motr-provided event feeds, which provide a stream 
 of notifications about events in the cluster. On receiving a notification about 
 an event of interest, the plugin handles this event somehow, typically by 
-updating cluster state through normal Mero interfaces (this means that a plugin 
-is usually an application) or updating some state external to Mero (for example, 
+updating cluster state through normal Motr interfaces (this means that a plugin 
+is usually an application) or updating some state external to Motr (for example, 
 as part of replication). Examples of plugins are:
 * backup, migration, replication, [HSM](https://en.wikipedia.org/wiki/Hierarchical_storage_management) apps;
 * tier-management (burst buffer prefetching and destaging), background 
@@ -356,7 +364,7 @@ as part of replication). Examples of plugins are:
 * full-text indexing, searching apps.
 
 The interface used by plugins is called File-system Data Manipulation Interface 
-(fdmi). Event feeds are populated from [fol](#fol-idea). fdmi makes Mero into an 
+(fdmi). Event feeds are populated from [fol](#fol-idea). fdmi makes Motr into an 
 extensible storage system. fdmi used to be called Horizontal Scale Data 
 Management Language (HSDML) in earlier documents.
 ### References:
@@ -365,7 +373,7 @@ Management Language (HSDML) in earlier documents.
 
 ## fdmi, architecture
 The File Data Manipulation Interface (fdmi) is a publish-subscribe interface 
-designed to receive records about operations executed in the Mero system or 
+designed to receive records about operations executed in the Motr system or 
 inject file operation requests. The fdmi is designed for use with external 
 plugins.
 
@@ -374,14 +382,14 @@ The fdmi distributes to applications records from multiple fdmi sources:
 * [addb](#addb-idea) (analytics and diagnostics data-base);
 * [rm](#rm-idea) (resource manager).
 
-Each source produces records on all or some Mero instances.
+Each source produces records on all or some Motr instances.
 
 The fdmi allows users to subscribe to a subset of records that are specified by 
-a filter. Mero uses a MapReduce-style algorithm to continuously monitor new 
-records produced by sources across all Mero instances, collect records that 
+a filter. Motr uses a MapReduce-style algorithm to continuously monitor new 
+records produced by sources across all Motr instances, collect records that 
 match the filter, batch the filtered records and forward them to subscribed 
 users. In other words, fdmi allows users to "listen" to interesting events that 
-occur in the Mero system.
+occur in the Motr system.
 
 The figure below shows the flow of fol records from the nodes where they are 
 generated to fdmi subscribers.
@@ -389,17 +397,17 @@ generated to fdmi subscribers.
 ![MapReduce Style Algorithm](images/3-MapReduce-style-algorithm.JPG)
 
 As a simplified example, consider an fdmi-based application running on a 
-dedicated server, connected to two Mero object stores (source and target) and 
+dedicated server, connected to two Motr object stores (source and target) and 
 subscribed to all operations in the source. When the fdmi user receives an 
 operation from the source, it re-executes it in the target. This approach 
 provides a simple and scalable replicator that does not require scanning of the 
 source for updates and changes. If failures occur, the [dtm](#dtm-idea) 
 guarantees that the source and that target remain consistent.
 
-As a key element of Mero's scalability architecture, fdmi allows Mero's core to 
+As a key element of Motr's scalability architecture, fdmi allows Motr's core to 
 remain simple, clear and focused, while providing a framework to support future 
 features and capabilities, in which they act as tightly integrated components. 
-Core Mero will not have to change to add new features, such as later-developed 
+Core Motr will not have to change to add new features, such as later-developed 
 functionality to support HSM; instead, an fdmi plugin will be written. The 
 ability to utilize additional nodes to run fdmi plugins is important for 
 horizontal scalability and compares favorably with the traditional 
@@ -437,7 +445,7 @@ POSIX-based solutions, such as tar and rsync, which are not scalable and
 generally incorrect). The development of fdmi creates the possibility of an 
 entirely new market for portable storage applications that are designed and 
 developed independently from storage systems. To this end, fdmi is portable and 
-can be implemented on non-Mero systems.
+can be implemented on non-Motr systems.
 
 ### References: [HLD of FDMI](#fdmi-idea)
 ### Related:
@@ -446,10 +454,10 @@ can be implemented on non-Mero systems.
 ## fol, idea
 Data-bases and journal file-systems use 
 [write-ahead logging](http://en.wikipedia.org/wiki/Write-ahead_logging) to 
-implement transactions with all-or-nothing property. Mero too maintains a log 
+implement transactions with all-or-nothing property. Motr too maintains a log 
 of operations, called File Operations Log (fol). 
 
-This log is maintained by every instance of Mero:
+This log is maintained by every instance of Motr:
 
 * when a caching client executes an operation, updating its local cached state 
   (e.g., when write to a file adds a page to the client page cache), a record 
@@ -480,29 +488,35 @@ At the moment, server fol is not used for local recovery. Instead we rely on
 the underlying mdstore (db4) to recover from failure.
 
 ### References:
-* [fol overview](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTgwZmp3ZzI0Y3M)
-* [fol QAS](https://docs.google.com/a/xyratex.com/document/d/1cvU5ggG8b9DrLVuoMHMKoMVjqUtneEZfULt-2E2zyvE/edit)
-* [C&C Shared Data View Packet 0 File Operations Log](https://docs.google.com/a/xyratex.com/document/d/1yDZtq40b51hcMXmK71qg-5P8IdSVNy3IPLIzPlvDza0/edit)
-* [Detailed QAS for M0 core](https://docs.google.com/a/xyratex.com/document/d/1QfmW8EJy9pY_JxdjcRHFxA_nMDS2BZbxzECpI5_MMmQ/edit#heading=h.2b37156a1fbb)
+* [fol overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/FOL%20overview.docx?d=w55e353997f49472e840e68fdf65043b7&csf=1&web=1&e=ppwoiu) *
+* [fol QAS](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/requirements/QAS%20File%20Operations%20Log.docx?d=w7b01e94b51604dc8b4cfeab9b5da3802&csf=1&web=1&e=snKMjQ) *
+* [C&C Shared Data View Packet 0 File Operations Log](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/Mero%20core%20-%20c%26c%20Shared-data%20view.docx?d=w30ea1ec37cc44f6db29d090e78e43c6f&csf=1&web=1&e=OJuMbi) *
+* [Detailed QAS for M0 core](https://docs.google.com/a/xyratex.com/document/d/1QfmW8EJy9pY_JxdjcRHFxA_nMDS2BZbxzECpI5_MMmQ/edit#heading=h.2b37156a1fbb) **
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+** Sharepoint link not found for this google doc. TODO: Add a link.
 
 ### Related:
 ### More details:
 
 ## dtm, idea
 ### References:
-* [HLD of distributed transaction manager](https://docs.google.com/document/d/1D-99MmScYss3lgXbZvNLk2gMv66JeK4oZMZWtSF3Rsw)
-* [Distributed transaction management](https://docs.google.com/document/d/1E7e1uaZ0C8UjpcqQ2e4Hv7AF-MgtpWFNhJn1WcwWzFU)
-* [DTM overview](https://docs.google.com/document/d/1YclVBh1rRuH9cnyLuSaxFTenai2at89W8TOWiMOGlHY)
-* [Recovery presentation](https://drive.google.com/open?id=0B6co5mpIf4sZWUpud21TcVp6MkU&authuser=1)
-* [Report: distributed transactions stabilization (epochs)](https://docs.google.com/document/d/1arbmFJnTv7shH-HhqIvJnXXbZ1L5DWECXKHsq1M0YOk/edit)
+* [HLD of distributed transaction manager](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20distributed%20transaction%20manager.docx?d=we7ce2dd341734badb4acf404a3222e8e&csf=1&web=1&e=5RKaAy) *
+* [Distributed transaction management](https://docs.google.com/document/d/1E7e1uaZ0C8UjpcqQ2e4Hv7AF-MgtpWFNhJn1WcwWzFU) **
+* [DTM overview](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/DTM%20overview.docx?d=w7258b5fb6dbd45e288c72de344280abf&csf=1&web=1&e=tBmvt5) *
+* [Recovery presentation](https://seagatetechnology.sharepoint.com/:b:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/presentations/2010-02-Recovery-Kiev.pdf?csf=1&web=1&e=wACuBb) *
+* [Report: distributed transactions stabilization (epochs)](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Mero%20Core/Report_%20distributed%20transactions%20stabilization%20(epochs).docx?d=w680c0858b82e4e1e905230df8f28dd7e&csf=1&web=1&e=k33D3L) *
 * [Global epochs [an alternative proposal, long and dry].](http://marc.info/?l=lustre-devel&m=124788907220693&w=2)
-* [An Introduction to the Black Art of File System Recovery[epochs-report.txt]](https://docs.google.com/document/d/1iQA4yNj4knRgzDbcmrEqRZiNO8Eo5Kox_kkdWPqHkpA)
+* [An Introduction to the Black Art of File System Recovery[epochs-report.txt]](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/doc/epochs-report.txt.docx?d=w044e3a2b3b8f4c879b75a1a4935717f9&csf=1&web=1&e=K30upB) *
 * [US patent 8103643 B2 "System and method for performing distributedtransactions using global epochs"](https://www.google.com/patents/US8103643)
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+** Sharepoint link not found for this google doc. TODO: Add a link.
 
 ## rm, idea
 
 ## addb, idea
-When Mero executes an operation on behalf of a user or system, it accumulates 
+When Motr executes an operation on behalf of a user or system, it accumulates 
 auxiliary information about the operation's execution, for example, time 
 elapsed for network communication, time elapsed for storage I/O, lock 
 contention, queue depth, cache hit or miss, etc. These performance 
@@ -512,7 +526,7 @@ be used to analyze the execution of operations and detect exceptional
 conditions. Other addb records contain system data-points, such as free memory 
 or provide notifications for exceptions like device failures or timeouts.
 
-Diskless Mero instances (clients) forward addb records across the network. 
+Diskless Motr instances (clients) forward addb records across the network. 
 Instances with persistent storage store addb records, in a documented format, 
 on the storage device. Similarly to the [fol](#fol-idea), addb records can be 
 mined using a MapReduce-style mechanism, either online (as the records are 
@@ -524,10 +538,10 @@ The figure below shows subcomponents of the addb subsystem.
 
 ![addb Components & Control Flow](images/5-addb-components-and-control-flow.JPG)
 
-Mero code is systematically instrumented to produce addb records. Each record 
+Motr code is systematically instrumented to produce addb records. Each record 
 contains context information, which identifies system activity to which the 
 record pertains. Mapping the context of multiple related records enables, for 
-example, records produced by multiple Mero services while executing the same 
+example, records produced by multiple Motr services while executing the same 
 read request, to be identified. Below is a real-life example of addb record:
 
 ```
@@ -569,7 +583,7 @@ The figure below shows the possible uses of addb.
 
 ## Monitoring
 The simplest addb use case is cluster monitoring. If an addb record, produced 
-by a Mero node, matches a filter, specified by a cluster monitoring 
+by a Motr node, matches a filter, specified by a cluster monitoring 
 application, the record is forwarded to the application (subject to batching 
 and aggregation on the intermediate nodes). The application, which can also be 
 an [FDMI](#fdmi-idea) subscriber, uses incoming records to display statistics 
@@ -577,15 +591,17 @@ of interest: operation rate or throughput, memory usage, processor utilization,
 etc. all of which can be calculated cluster-wide, per server, per client or per 
 job.
 
-By manipulating addb and FDMI filters, a monitoring application can query Mero 
+By manipulating addb and FDMI filters, a monitoring application can query Motr 
 system about more detailed aspects of its behavior. For example, it is possible 
 to request records to get answers to the questions like the following:
 * Which processes of a particular MPI job do random IO?
 * What clients read a given range of a given file?
 * Does any device in a pool have abnormal service latency?
 
-Internally, Mero uses the same addb mechanism to send information about
-exceptional conditions to the [HA](https://docs.google.com/document/d/1OnG7RL4HzmIhBzpbbbqyt3u2yC3uZUxzEKr-IJJXicg/edit#heading=h.6ejjjyww6i7y) subsystem.
+Internally, Motr uses the same addb mechanism to send information about
+exceptional conditions to the [HA](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/Mero%20architecture/Overview/white%20papers/Mero%20Technical%20Whitepaper.docx?d=w2bdde1354e9241df97783814d8a4f42f&csf=1&web=1&e=bdsTlo)* subsystem.
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
 
 ## Analysis
 All addb records generated are eventually stored on persistent storage and kept 
@@ -603,7 +619,7 @@ behavior.
 
 A simulator uses a subset of stored addb records as the input for the 
 simulation. addb records, among other things, provide accurate traces of all 
-calls made by applications to Mero. The simulator "re-executes" these traced 
+calls made by applications to Motr. The simulator "re-executes" these traced 
 calls. Additionally, other subsets of addb can be used to drive the simulation, 
 for example, to provide information about characteristics of storage devices, 
 network connections or failures.
@@ -629,8 +645,11 @@ impact of changes to a system.
 
 ## net, hld
 ### References:
-* [High level design of Colibri LNet Transport](https://docs.google.com/a/xyratex.com/document/d/1TZG__XViil3ATbWICojZydvKzFNbL7-JJdjBbXTLgP4/edit#heading=h.b4dea20125e3)
-* [RPC Bulk Transfer Task Plan](https://docs.google.com/a/xyratex.com/document/d/1tm_IfkSsW6zfOxQlPMHeZ5gjF1Xd0FAUHeGOaNpUcHA/edit?hl=en#)
+* [High level design of Colibri LNet Transport](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/High%20level%20design%20of%20Mero%20LNet%20Transport%20(obsolete).docx?d=wf2ee0053dba44eba83337a9fcb06a956&csf=1&web=1&e=ka6XK6) *
+* [RPC Bulk Transfer Task Plan](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/RPC%20Bulk%20Transfer%20Task%20Plan.docx?d=wec011fdf50fb4e68818da70316bd4392&csf=1&web=1&e=ihWAbJ) *
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+
 ### Related:
 ### More details:
 
@@ -672,9 +691,12 @@ reply is received for the previous item (except for one-way items, for which no
 reply is expected).
 
 ### References:
-* [High level design of rpc layer core](https://docs.google.com/a/xyratex.com/document/d/1BGytJQz-_3dBG8puAOrEMNtCOxxTnzcFXKCJv8aIBP4/edit)
-* [High level design of RPC Formation](https://docs.google.com/a/xyratex.com/document/d/1fLvyGCziZRD_SsHtEKg0UChHom9ywHpnHishO2G41d8/edit#heading=h.44cfd58fc30e)
-* [Architecture review of Colibri rpc layer](https://docs.google.com/a/xyratex.com/document/d/1F1dP_uXNztb7m0mU6n6VPr3IlLFWbAoQTWy_mM3XGC0/edit)
+* [High level design of rpc layer core](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20rpc%20layer%20core.docx?d=wcef5eb69236c438eb5b7db09b77d48b5&csf=1&web=1&e=d39nX2) *
+* [High level design of RPC Formation](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20RPC%20Formation.docx?d=w82c8edf9e9ba4af0b9792ec806ef9dab&csf=1&web=1&e=CGkmln) *
+* [Architecture review of Colibri rpc layer](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/AR%20of%20rpc%20layer.docx?d=w723ca499fd7d4d488635ee04a5b3c9d3&csf=1&web=1&e=Xyb6Ol) *
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+
 ### Related:
 ### More details:
 
@@ -686,20 +708,20 @@ failures and their semantics, these assumptions constitute a failure model, and
 provide different guarantees about system properties maintained in the face of 
 failures (failure invariants, fault-tolerance characteristics).
 
-Mero failure model (informal) is the following:
+Motr failure model (informal) is the following:
 * a network message corruption is detectable by a suitable check-sum of message 
   payload;
 * a storage block corruption is detectable by a suitable check-sum of block 
   data;
 * a message sender can be authenticated by a cryptographic signature;
 * a node failure can be
-  * a restart, where all node instances of Mero stop executing and then 
+  * a restart, where all node instances of Motr stop executing and then 
     execution starts with a predefined "restart" action. The contents of 
     volatile store is lost in the restart,
-  * a crash, where all node instances of Mero stop executing and never do any 
-    further externally visible Mero actions. Node crash includes situations 
+  * a crash, where all node instances of Motr stop executing and never do any 
+    further externally visible Motr actions. Node crash includes situations 
     where node physically restarted but there was a further failure to load 
-    Mero software or attach persistent store or initialise the node properly;
+    Motr software or attach persistent store or initialise the node properly;
   * a [Byzantine failure](http://en.wikipedia.org/wiki/Byzantine_fault_tolerance), 
     where a node exhibits arbitrary, including malign, behaviour, but still 
     assuming that message origin can be authenticated;
@@ -742,7 +764,7 @@ Mero failure model (informal) is the following:
   messages are eventually delivered and storage blocks are eventually updated;
 * software and human errors. To err is human.
 
-Mero fault-tolerance characteristics are specified at the level of pools. A 
+Motr fault-tolerance characteristics are specified at the level of pools. A 
 pool is a collection of cluster resources (nodes, network links, storage 
 devices) which is administratively configured to maintain a specified level of 
 availability under a certain safety condition, described below. An application 
@@ -756,7 +778,7 @@ A pool is safe iff
 
 In a safe pool it is guaranteed that effects of an operation, for which a 
 successful completion indication was returned, will be present as long as the 
-pool is safe. That is, if Mero returned success to an application, it is 
+pool is safe. That is, if Motr returned success to an application, it is 
 guaranteed that any following query will observe the operation as executed, no 
 matter what failures occur, provided that the pool remains safe.
 ### References:
@@ -784,9 +806,9 @@ matter what failures occur, provided that the pool remains safe.
 Storage recovery consists of the following mechanisms:
 * ongoing consistency check that verifies persistent structures to detect 
   inconsistencies. The check is performed on each node by background scan of 
-  all persistent Mero structures to verify their consistency. There are three 
+  all persistent Motr structures to verify their consistency. There are three 
   main components to the check:
-  *  check-sums must be correct. Mero calculates check-sums for all data and 
+  *  check-sums must be correct. Motr calculates check-sums for all data and 
   meta-data. Specifically, check-sums are calculated on clients, giving 
   end-to-end integrity;
   *  redundant data must match. When RAID-style parity codes, including 
@@ -801,19 +823,19 @@ Storage recovery consists of the following mechanisms:
   parity block corruption is detected via check-sum, the parity is 
   re-calculated from data blocks (assuming they match their check-sums). As a 
   special case, medium-term recovery includes 
-  [SNS repair](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTc5ZjYybjg4Y3Q) 
+  [SNS repair](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTc5ZjYybjg4Y3Q)* 
   that re-constructs data lost in a device or node failure;
 * long-term recovery via preventive file-system checking. In case where all 
   redundant state is corrupted, file system checker is used. This is possible, 
   for example, when due to a software bug malformed meta-data are written to 
-  store. Mero uses a novel file-system design: a preventive file-system checker.
+  store. Motr uses a novel file-system design: a preventive file-system checker.
   
-  To understand it, recall that traditional [fsck](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTc5ZjYybjg4Y3Q) 
+  To understand it, recall that traditional [fsck](https://docs.google.com/a/xyratex.com/Doc?docid=0ATg1HFjUZcaZZGNkNXg4cXpfMTc5ZjYybjg4Y3Q)* 
   works by building a set of extra data-structures, for example, tables 
   indicating to which file a block is allocated, or associating depth in the 
   directory tree to each directory and a list of names to each file. These 
   structures are, roughly speaking, "inverse" to normal file-system structures. 
-  Mero preventive file-system checker is an [fdmi plugin](#fdmi-idea) that runs 
+  Motr preventive file-system checker is an [fdmi plugin](#fdmi-idea) that runs 
   on a dedicated node or a set of redundant nodes and continuously builds a set 
   of such inverse structures. For example, when an appending write is made to a 
   file, a server executing the write operation inserts a record in fol, 
@@ -830,6 +852,9 @@ Storage recovery consists of the following mechanisms:
   fenced: consistency guarantees are waived for the damaged fragment, and all 
   attempts to access it result in immediate error. Eventually, damaged fragment 
   is either restored from a backup or deleted.
+
+\* Sharepoint link not found for this google doc. TODO: Add a link.
+
 ### References:
 ### Related:
 ### More details:
@@ -850,13 +875,13 @@ Storage recovery consists of the following mechanisms:
 ### More details:
 
 ## security, idea
-Security architecture of Mero is based on the architecture of secure network 
+Security architecture of Motr is based on the architecture of secure network 
 attached storage device (NASD) referenced below. Main elements of the 
 architecture are the following:
 * a secure service is part of the system that executes user operations 
   enforcing security restrictions. A typical example of a secure service would 
-  be a Mero service like ioservice, mdservice, confd, dtm, rm, etc. Other 
-  instances of secure services include clients (m0t1fs, REST, etc.), non-Mero 
+  be a Motr service like ioservice, mdservice, confd, dtm, rm, etc. Other 
+  instances of secure services include clients (m0t1fs, REST, etc.), non-Motr 
   system components (Halon services, cluster management services, etc.). A 
   service is uniquely identified by a fid;
 * a manager is a secure service which implements particular security policy. A 
@@ -949,7 +974,7 @@ mdservice perhaps)
 ### More details:
 
 ## deployments, idea
-This section describes which Mero features (differentiators) apply to which possible deployments. See also [Mero Product Options](http://goo.gl/MB2lg).
+This section describes which Motr features (differentiators) apply to which possible deployments. See also [Motr Product Options](http://goo.gl/MB2lg)*.
 
 |                 | LOMO | WOMO | AA | Ceph(PLFS) | BOMO | POSIX | Exascale | NFS |
 |-----------------|------|------|----|------------|------|-------|----------|-----|
@@ -979,6 +1004,7 @@ Legend:
 
 \- < D < N < C
 
+\* Link not found. TODO: Add a link.
 ### References:
 ### Related:
 ### More details:
@@ -993,7 +1019,7 @@ pdclust consists of two components:
   cluster, and
 * SNS repair. This is a mechanism that restores lost data in case of a failure.
 
-Certain hardware and software elements in a Mero cluster are failure domains in 
+Certain hardware and software elements in a Motr cluster are failure domains in 
 the sense that our failure and availability model assumes these elements fail 
 as a whole. Examples of failure domains are: harddrive, service, process, 
 controller, enclosure, rack. Failure domains are arranged in a tree by the 
@@ -1098,7 +1124,10 @@ different set of storage devices) than previous.
 ### References:
 * [CMU PDL publications](http://www.pdl.cmu.edu/RAID/publications.shtml)
 * [On-Line Data Reconstruction in Redundant Disk Arrays](http://www.pdl.cmu.edu/PDL-FTP/Declustering/Thesis.pdf). Mark Holland Carnegie Mellon Ph.D. Dissertation CMU-CS-94-164, 1994
-* [HLD of SNS Repair](https://docs.google.com/a/seagate.com/document/d/1r8jqkrLweRvEbbmPXypoY8mKuEQJU9qS2xFbSbKHAGg)
-* [HLD of parity de-clustering algorithm](https://docs.google.com/a/seagate.com/document/d/1r8jqkrLweRvEbbmPXypoY8mKuEQJU9qS2xFbSbKHAGg)
+* [HLD of SNS Repair](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLD%20of%20SNS%20Repair.docx?d=wd826b1dea4524ee4af0982219a67887a&csf=1&web=1&e=OqfNto) *
+* [HLD of parity de-clustering algorithm](https://seagatetechnology.sharepoint.com/:w:/r/sites/gteamdrv1/tdrive1224/Shared%20Documents/Components/Motr/Mero/designs/HLDIT%20parity%20de-clustering%20algorithm.docx?d=wa30795d39f7a4c10bbe4cef5f158af02&csf=1&web=1&e=9o3rPZ) *
+
+\* Currently only visible within Seagate firewall. TODO: migrate to publicly visible location.
+
 ### Related:
 ### More details:
