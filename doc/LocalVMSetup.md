@@ -1,11 +1,14 @@
 # Setup a CentOS Local VM
-This is a guide which lists the steps required to get a local VM and use it for S3 and/or Mero development.
+This is a guide which lists the steps required to get a local VM and use it for  S3 and/or Motr development.
 
 ## 1. Download the VM
 Download both .ovf or .vmdk files from the following link into a directory on your computer: https://seagatetechnology-my.sharepoint.com/:f:/g/personal/basavaraj_kirunge_seagate_com/EgkMhqmUbIdFs8Tr9N-bHecBtMDwm02QbG0T8vS7TLOdUg?e=aiRHBr
 
 ## 2. Add the VM in VMWare Fusion or Oracle VirtualBox
-You need to have either VMWare Fusion or Oracle VirtualBox to use the VM. In case you have VirtualBox installed, select the "Import Appliance" option and select the .ovf file downloaded in the previous step.  Note: if you are a Seagate employee and do not already have access to either VMWare Fusion or Oracle VirtualBox, IT requires you to submit an Exception request since these are not officially supported applications.
+You need to have either VMWare Fusion or Oracle VirtualBox to use the VM. In case you have VirtualBox installed, select the "Import Appliance" option and select the .ovf file downloaded in the previous step. 
+For VMware Fusion: Select File -> New -> Create Custom Virtual Machine -> Linux centos7 64-bit -> Legacy Bios -> Use Existing Virtual Machine -> (browse to file S3dev_CentOS_7-disk1.vmdk & select continue) -> Finish.
+
+Note: if you are a Seagate employee and do not already have access to either VMWare Fusion or Oracle VirtualBox, IT requires you to submit an Exception request since these are not officially supported applications.
 
 ## 3. Using the VM
 Start the VM, you will be presented with a login prompt after sometime. You need to enter the following credentials to login:
@@ -19,8 +22,8 @@ Note down the interface name (other than the loopback interface "lo"). In this c
 
 `# ifup ens33`
 
-## 5. Clone S3 or Mero source
-Now you are ready to clone either S3 or Mero. Please refer to the [Mero](MeroQuickStart.md) or [S3](S3ServerQuickStart.md) quick start documents to do so.
+## 5. Clone S3 or Motr source
+Now you are ready to clone either S3 or Motr. Please refer to the [Motr](CortxMotrQuickStart.md) or [S3](CortxS3ServerQuickStart.md) quick start documents to do so.
 
 ## 6. Check for LNet
 Type the following command:
@@ -37,7 +40,7 @@ And check again. Now you should be able to see a similar output as shown above.
 ## 7. Verify system time
 Verify the system time is current, if not set it to the current time using the `timedatectl` utility.
 
-## You are now all set to use this VM for either Mero or S3 development.
+## You are now all set to use this VM for either Motr or S3 development.
 
 ## Notes:
 * Port Forwarding  
@@ -58,7 +61,7 @@ You can download CentOS 7.7.1908 ISO file from http://www.centos.org, or from an
 * Two network adapters. One is local only, and another is NAT.
 
 ## 3. Install a fresh CentOS 7.7.1908
-Automatic install or manual install. Basic installation is OK. When you build Mero from source in next steps, dependant packages will be resolved and installed.
+Automatic install or manual install. Basic installation is OK. When you build Motr from source in next steps, dependant packages will be resolved and installed.
 
 ## 4. You may need to add EPEL repo.
 Please refer to: https://fedoraproject.org/wiki/EPEL

@@ -1,44 +1,40 @@
-# Mero QuickStart guide
+# Cortx-Motr QuickStart guide
 This is a step by step guide to get CORTX ready for you on your system.
 Before cloning, however, you need to have a SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).  If you prefer video, here is a [link to a video](https://seagatetechnology.sharepoint.com/:v:/s/gteamdrv1/tdrive1224/EZbJ5AUWe79DksiRctCtsnUB9sILRr5DqHeBzdrwzNNg6w?e=Xamvex) produced by Seagate engineer Puja Mudaliar following these instructions.
 
 ## Accessing the source code right way
-(For phase 1) Latest code which is getting evolved, advancing and contributed is on the gerrit server.
-Seagate contributor will be referencing, cloning and committing code to/from this [Gerrit server](http://gerrit.mero.colo.seagate.com:8080).
+(For phase 1) Latest code which is getting evolved, advancing and contributed is on the current github server.
+Seagate contributor will be referencing, cloning and committing code to/from this [Github](https://github.com/Seagate/cortx/).
 
 Following steps as sudo user(sudo -s) will make your access to server hassel free.
 
 1. Create SSH Public Key
   * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. follow the instructions throughly.
   
-2. Add SSH Public Key on [Gerrit server](http://gerrit.mero.colo.seagate.com:8080/settings/#SSHKeys).
-  * Log into the gerrit server with your seagate gid based credentials.
-  * On right top corner you will see your name, open drop down menu by clicking and choose settings.
-  * In the menu on left, click SSH Public Keys, and add your public key (which is generated in step one) right there.
-
+2. Add New SSH Public Key on [Github](https://github.com/settings/keys) and Enable SSO.
+ 
 WoW! :sparkles:
-You are all set to fetch mero repo now. 
+You are all set to fetch cortx-motr repo now. 
 
-## Cloing CORTX source code
+## Cloning CORTX source code
 Getting the main CORTX source code on your system is straightforward.
-1. `$ cd path/to/your/dev/directory`
 
-2. `$ export GID=<your_seagate_GID>` # this will make subsequent sets easy to copy-paste :)
 
-3. `$ git clone --recursive "ssh://g${GID}@gerrit.mero.colo.seagate.com:29418/mero" -b innersource` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
-(If "Permission denied (publickey). fatal: Could not read from remote repository" error occurs while using ssh in this step then use the following alternate command) `$ git clone --recursive "http://gerrit.mero.colo.seagate.com/mero" -b innersource`                                                                                                                                                                                           
-4. `$ cd mero`
+1. `$ git clone --recursive git@github.com:Seagate/cortx-motr.git -b main` (It has been assumed that "git" is preinstalled. if not then follow git installation specific steps provided [here](ContributingToMotr.md/#getting-git--gerit-to-work). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
+                                                                                                                                                                                           
+2. `$ cd cortx-motr`
 
-5. `$ gitdir=$(git rev-parse --git-dir)`
-
-6. Enable some pre-commit hooks required before pushing your changes to remote 
-   * Run this command from the parent dir of Mero source
-   
-     `$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
+3. `$ gitdir=$(git rev-parse --git-dir)`
 
 ## Building the CORTX source code
      
 1. Build and install necessaries dependencies
+   * Ensure epel-release has been installed
+   
+   `$ sudo yum install epel-release`
+   
+1. Build and install necessaries dependencies. When finished, if you see failed=0 in the output, which means your installation is successful. 
+
    * To install all dependent packages like lustre, pip, etc.
   
     `$ sudo ./scripts/install-build-deps` 
@@ -61,13 +57,23 @@ Getting the main CORTX source code on your system is straightforward.
      `$ pip3 install ply`
   
 2. Reboot
+
+   You can use command `$ sudo reboot` to reboot the system.
+   If you use cloud VM, you can go to your cloud VM website and select the VM, stop first and start again to complete the reboot process.
+   
   * After reboot, check if Lustre network is working
   
      `$ sudo modprobe lnet`
   
      `$ sudo lctl list_nids`
+   
+   * Troubleshooting hint: if list_nids reports NETWORK IS DOWN, check /etc/modprobe.d/lnet.conf and ensure the listed network interfaces are present on your system. If not, edit lnet.conf, reboot, and try again.
+     
+     You should see list of IPs as following:
+     192.168.9.60@tcp
+     10.230.245.74@tcp1
 
-3. Compiling mero (Commands assumes that user is already into it's main source directory i.e. `$cd mero`)
+3. Compiling cortx-motr (Commands assumes that user is already into it's main source directory i.e. `$cd cortx-motr`)
    * Run following command
    
    `$ sudo ./scripts/m0 make` or `$sudo ./scripts/m0 rebuild`
@@ -78,7 +84,7 @@ Getting the main CORTX source code on your system is straightforward.
 
 1. Running Unit Tests (UTs)
  * `$ sudo ./scripts/m0 run-ut` (This may take a long time, i.e. aprx. 20-30 min) 
-    > You can also expore other options of this run-ut command. Try : sudo run-ut --help
+    > You can also explore other options of this run-ut command. Try : `$ sudo ./scripts/m0 run-ut -help`
     
 2. For kernel space UTs
   * `$ sudo ./scripts/m0 run-kut`
@@ -89,12 +95,12 @@ Getting the main CORTX source code on your system is straightforward.
   * `$ sudo ./scripts/m0 run-st -l`
   
    As an example for clovis module system test can be run using following command :
-  * `$ sudo ./scripts/m0 run-st 52mero-singlenode-sanity`
+  * `$ sudo ./scripts/m0 run-st 52motr-singlenode-sanity`
    
    To run all the ST's,
   * `$ sudo ./scripts/m0 run-st`
   
-KABOOM!!!
+All done! You're now CORTX-Motr-ready.
   
 ## Running Jenkins / System tests
 

@@ -6,7 +6,7 @@
 Agenda
 =======
 
-● S3 Auth Server
+● CORTX-S3 Auth Server
 
 ● Authentication
 
@@ -20,19 +20,19 @@ Agenda
 
 ● Access Evaluation method
 
-● S3 IAM cli
+● s3iamcli
 
-● Demo S3 ACL with CloudBerry S3 Explorer
+● Demo CORTX-S3 ACL with CloudBerry CORTX-S3 Explorer
 
 ===============
-S3 Auth Server
+CORTX-S3 Auth Server
 ===============
 
 ● Enable access control to resources (Bucket, Objects)
 
 ● Developed in Java using Java netty io framework.
 
-● One instance of Auth server runs on each EES node
+● One instance of Auth server runs on each LDRr1 node
 
 ● Uses OpenLdap as backend to store IAM data.
 
@@ -40,20 +40,20 @@ S3 Auth Server
 
 ● Provides REST API interface, AWS IAM API
 
-● Every S3 request generates authentication and authorization request.
+● Every CORTX-S3 request generates authentication and authorization request.
 
 ===============
-S3 Auth Server
+CORTX-S3 Auth Server
 ===============
 
 |image1|
 
-**S3 IAM endpoint:** *iam.seagate.com:9443*
+**CORTX-S3 IAM endpoint:** *iam.seagate.com:9443*
 
 **SSL ca cert:** */etc/ssl/stx-s3-clients/s3auth/s3authserver.crt*  
 
 ===============
-S3 Auth Server
+CORTX-S3 Auth Server
 ===============
 
 **Authentication : “Verify Identity of a User”**
@@ -61,7 +61,7 @@ S3 Auth Server
 **Authorization : “Permission to perform operation”**
 
 ====================================
-S3 Authentication and Authorization
+CORTX-S3 Authentication and Authorization
 ====================================
 
 |image2|
@@ -88,12 +88,12 @@ Authentication methods
 
 |image3|
 
-**S3 Auth server supports both AWS V4 and AWS V2**
+**CORTX-S3 Auth server supports both AWS V4 and AWS V2**
 
 **Access Id** - This is a unique id generated for each user.
 
-**Secret Key-** The secret key is used by s3-clients to 
-sign all the requests to the s3-server.
+**Secret Key-** The secret key is used by CORTX-S3-clients to 
+sign all the requests to the CORTX-S3-server.
 
 **- No exchange of secret key**
    
@@ -112,14 +112,14 @@ Identity and Access Management (IAM)
 
 |image5|
 
-• S3 Account
+• CORTX-S3 Account
 
 • IAM User
 
 • Static groups – AllUsers, AuthenticatedUser
 
 =================================
-S3 User Schema (DIT in OpenLdap)
+CORTX-S3 User Schema (DIT in OpenLdap)
 =================================
    
 |image6|
@@ -146,16 +146,16 @@ Authorization methods
 
 ○ Match permissions
 
-S3 Account - level Access Management
+CORTX-S3 Account - level Access Management
 
-* S3 ACL
+* CORTX-S3 ACL
 
 IAM User and Account - level Access Management
 
-* S3 Bucket Policy
+* CORTX-S3 Bucket Policy
 
 ================   
-S3 ACL Overview
+CORTX-S3 ACL Overview
 ================
 
 |image7|
@@ -241,13 +241,13 @@ Resource ACL Example:
 ..
 
 =================
-S3 Bucket Policy
+CORTX-S3 Bucket Policy
 =================
 
   
 ● Bucket policy is a resource based access management policy.
 
-● Using Bucket policy, we can grant access to other S3 accounts or
+● Using Bucket policy, we can grant access to other CORTX-S3 accounts or
 IAM users.
 
 ● Bucket policy is associated with individual bucket and stored as
@@ -295,13 +295,13 @@ Access Evaluation
 ..
 
 =========== 
-S3 IAM Cli
+s3iamcli
 ===========
 
 **API’s /Operations available**
 
 
--  S3 Account
+-  CORTX-S3 Account
 
    - CreateAccountLoginProfile
    
@@ -311,7 +311,7 @@ S3 IAM Cli
    
    
 
--  S3 User
+-  CORTX-S3 User
    
    - CreateUserLoginProfile
    
@@ -321,7 +321,7 @@ S3 IAM Cli
    
    
 
--  S3 Access Key/Secret Key
+-  CORTX-S3 Access Key/Secret Key
    
    - ChangePassword
    
@@ -335,11 +335,9 @@ S3 IAM Cli
 ===============   
 
 *Reach out to:*
-################
 
-•**EOS-S3** channel on MS Teams
 
-•S3 team email @ eos.s3@seagate.com
+* *CORTX Community Slack channel* - `<https://cortxcommunity.slack.com>`_
 
    
 ==============
