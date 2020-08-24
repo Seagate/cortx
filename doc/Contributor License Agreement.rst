@@ -10,6 +10,6 @@ cla-bot is a GitHub Application for automation of Contributor Licence Agreements
 
 Once you have added this application, you need to add a **.clabot** file to your repository, which provides details of contributors who have a signed CLA. Refer `cla-bot <https://colineberhardt.github.io/cla-bot/>`_ to know more about installing and configuring the bot with your repository.
 
-If you have any queries with regards to cla, please send a mail [cla@seagate.com](mailto:cla@seagate.com).
+If you have any queries with regards to cla, please send a mail [cla@seagate.com] (mailto:cla@seagate.com).
 
 
