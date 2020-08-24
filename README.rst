@@ -6,7 +6,7 @@
 CORTX: World's Most Scalable Mass-Capacity Object Storage System
 ==============================================================================
 
-The volume of data created and collected worldwide is massively increasing. In comparison, only a small proportion of this data is being retained. The machine learning models at the forefront of the most significant research studies today, depend on access to complete data sets. We're continuously creating efficient and economical storage solutions to enable research that's transforming the world.
+The amount of data the world is creating and collecting is increasing massively. The amount of data the world is storing is not. The models and machine learning that are at the forefront of some of the most important research today depend on access to compete data sets, but limitations on storage lead to unnecessary data loss. By creating better, more economical storage solutions, we enable the research that is changing the world.
 
 .. image:: ../assets/images/at_risk_data.jpg
 
