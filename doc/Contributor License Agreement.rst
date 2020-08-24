@@ -8,6 +8,6 @@ Functioning of CLA Bot
 **********************
 cla-bot is a GitHub Application for automation of Contributor Licence Agreements (CLAs). It checks whether contributors have signed an agreement, adding labels to PRs if they have, or prompting for signature if they have not.
 
-Once you have added this application, you need to add a **.clabot** file to your repository, which provides details of contributors who have a signed CLA.
+Once you have added this application, you need to add a **.clabot** file to your repository, which provides details of contributors who have a signed CLA. Refer `cla-bot <https://colineberhardt.github.io/cla-bot/>`_ to know more about installing and configuring the bot with your repository.
 
 
