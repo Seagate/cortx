@@ -5,7 +5,7 @@
 ==================
 
 
-Bucket policy is a resource based access management policy i.e. using this, we can grant access to other aws accounts or IAM users on specificbucket
+Bucket policy is a resource based access management policy i.e. using this, we can grant access to other cortx-s3 accounts or IAM users on specificbucket
 
 Bucket policy is associated with individual bucket.
 
@@ -22,7 +22,7 @@ ACL is an old way of providing grants on buckets/objects so recommendation is to
 +----------------------------------+----------------------------------+
 | At Bucket level                  | At Bucket or at Object level     |
 +----------------------------------+----------------------------------+
-| Max size allowed - 20Kb          | No limit on size. Limit is       |
+| Max size allowed - 20KB          | No limit on size. Limit is       |
 |                                  | present on grants.               |
 +----------------------------------+----------------------------------+
 | This will define-                | This will define-                |
@@ -36,15 +36,15 @@ We can apply Bucket policy and ACLs simultaneously.
 When both are applied together, result will be least privilege of
 union of all.
 
-If Bucket policy Allows access to some action/operation then
-irrespective of acl, Result will be Allow
+If Bucket policy allows access to some action/operation then
+irrespective of acl, Result will be: Allow
 
-If Bucket Policy Denies access to any action/operation then
-irrespective of ACL, result will be Deny
+If Bucket policy denies access to any action/operation then
+irrespective of ACL, result will be: Deny
 
 ACL will be checked only when -
 
-Either Policy itself is not present on bucket or Policy is not
+Either policy itself is not present on bucket or policy is not
 concluding anything (neither Allow nor Deny)
 
 There are few exceptions to this rule-
@@ -229,7 +229,7 @@ accepted (validated) but might not be considered while authorization if
 those are not one of the supported features from their respective CORTX-S3
 APIs. Please refer to the CORTX-S3 Rest API documentation for these details.
 
-3. Each of these AWS CORTX-S3 specifc keys can only be tagged to specific CORTX-S3
+3. Each of these CORTX-S3 specifc keys can only be tagged to specific CORTX-S3
 actions. For a detailed map of these Keys to Actions please visit:
 
 `<https://docs.aws.amazon.com/AmazonS3/latest/dev/amazon-s3-policy-keys.html?shortFooter=true>`_
