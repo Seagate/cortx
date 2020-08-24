@@ -3,7 +3,7 @@
 
 .. image:: ../assets/images/cortx-logo.png
 
-CORTX: World's First Scalable Mass-Capacity Object Storage System
+CORTX: World's Most Scalable Mass-Capacity Object Storage System
 ==============================================================================
 
 The volume of data created and collected worldwide is massively increasing. In comparison, only a small proportion of this data is being retained. The machine learning models at the forefront of the most significant research studies today, depend on access to complete data sets. We're continuously creating efficient and economical storage solutions to enable research that's transforming the world.
@@ -18,8 +18,6 @@ CORTX is a distributed object storage system designed for great efficiency, mass
 CORTX Project Scope & Core Design Goals
 *****************************************
 
-We've listed the project scope and core design goals below:
-
 .. csv-table::
    :header: "Project Scope", "Core Design Goals"
    :widths: 20, 80
@@ -33,9 +31,19 @@ We've listed the project scope and core design goals below:
 
 The CORTX project is licensed under the `Apache 2.0 License <LICENSE>`__.
 
-CORTX Community
----------------
-Refer to the CORTX Community Guide **<link placeholder>** that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us. 
+CORTX Community Values
+---------------------
+
+Inclusive - Our ambitions are global. The CORTX community is, too. The perspectives and skills necessary to achieve our goals are wide and varied; we believe in creating a community and a project that is inclusive, accessible, and welcoming to everyone.
+
+Open - We are dedicated to remaining open and transparent. We believe in keeping CORTX Community code freely and fully available to be viewed, modified, and used without vendor lock in or other in-built limitations.
+
+Inspired- CORTX is all about the challenge. Our goals are not small: we want to build the world’s best scalable mass-capacity object storage system, one that can work with any hardware and interoperate with all workloads. CORTX is built on hard work, ingenuity and an engineering mindset. We embrace hard problems and find inspired solutions.
+
+Evolving – CORTX is continuously growing and adapting. As a community project, there is no limit to its development. We continuously make room for improvement and welcome the opportunities offered by the ever-evolving nature of community projects.
+
+We excited for your interest in CORTX and hope you will join us. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our `Code of conduct <CODE_OF_CONDUCT.md>`_. Refer to the CORTX Community Guide **<link placeholder>** that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us. 
+
 
 To Start Using CORTX
 ********************
