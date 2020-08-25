@@ -29,7 +29,7 @@ The procedure to install Cortx on VA is mentioned below.
 
  - **hctl bootstrap --mkfs /var/lib/hare/cluster.yaml**
 
-  You must run the above command with **--mkfs** only once. Further usage erases data.
+  You must run the above command with **--mkfs** only once. Further usage of **--mkfs** erases data.
 
 6. Ensure that the I/O stack is running by running the following command:
 
