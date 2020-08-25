@@ -1,6 +1,6 @@
 # CORTX v1.0 Virtual Clusters Setup
 
-This is a step by step guide to get CORTX virtual clustur setup ready.
+This is a step by step guide to get CORTX virtual cluster setup ready.
 
 ## 1. Single-node setup
 
@@ -13,8 +13,8 @@ Create a virtual machine using
 
 * Add 'last_successful' yum repository.
   ```bash
-  REPO=ci-storage.mero.colo.seagate.com/releases/eos
-  REPO+=/integration/centos-7.7.1908/last_successful
+  REPO=http://cortx-storage.colo.seagate.com/releases/cortx
+  REPO+=/github/release/rhel-7.7.1908/last_successful/
 
   sudo yum-config-manager --add-repo="http://$REPO"
   sudo tee -a /etc/yum.repos.d/${REPO//\//_}.repo <<< 'gpgcheck=0'
@@ -22,14 +22,9 @@ Create a virtual machine using
 
 * Install the RPMs.
 
-  :warning: Currently the Pacemaker RPMs, required by `eos-hare`, are not
-  available in the VM.  See the workaround in
-  [KNOWN ISSUES](#41-pacemaker-rpms-are-not-available) section.
-
   ```bash
-  sudo yum install -y eos-hare
+  sudo yum install -y cortx-hare
   ```
-
 ### 1.3. Configure LNet
 
 Create `lnet.conf` file, if it does not exist, and restart `lnet` service.
@@ -48,12 +43,12 @@ Create `lnet.conf` file, if it does not exist, and restart `lnet` service.
 * Make a copy of the single-node CDF (Cluster Description File),
   provided by Hare:
   ```bash
-  cp /opt/seagate/eos/hare/share/cfgen/examples/singlenode.yaml .
+  cp /opt/seagate/cortx/hare/share/cfgen/examples/singlenode.yaml .
   ```
 
 * Edit the copy:
 
-  - ensure that the disks referred to by `io_disks` values exist
+  - ensure that the disks referred to by `io_disks` values exist. To see available devices use command 'lsblk' or 'lsscsi' or 'fdisk -l'.
     (add new disks to VM, if necessary, or create loop devices);
 
   - make sure that `data_iface` value refers to existing network
@@ -88,12 +83,17 @@ Sample diff:
 +          - /dev/sdi
      m0_clients:
        s3: 0         # number of S3 servers to start
-       other: 2      # max quantity of other Mero clients this host may have
+       other: 2      # max quantity of other Motr clients this host may have
+     pools:
+    - name: the pool
+      disks: all
+      data_units: 4      # N=4 Update N and K here
+      parity_units: 2    # K=2, Also make sure N+2K <= P number of devices.
 ```
 
 ### 1.5. Bootstrap the cluster
 
-* `hctl bootstrap --mkfs singlenode.yaml`
+* `sudo hctl bootstrap --mkfs singlenode.yaml`
 * `hctl status`
   ```
   Profile: 0x7000000000000001:0x26
@@ -110,28 +110,36 @@ Sample diff:
 
 ### 1.6. Perform the I/O
 
-<!-- XXX TODO:
-  - Describe the options of `c0cp` and `c0cat` commands.
-  - Where do values come from?
-  -->
+c0cp, c0cat and other motr utils argument refer `hctl status`.
+For e.g,
+```
+ -l  local endpoint is,
+     [unknown ]  m0_client  0x7200000000000001:0x20  *192.168.1.160@tcp:12345:4:1*
+ -H  HA endpoint is,
+     [started ]  hax        0x7200000000000001:0x6   *192.168.1.160@tcp:12345:1:1*
+ -p  profile is,
+     Profile: *0x7000000000000001:0x26*
+ -P  process is,
+     [unknown ]  m0_client  *0x7200000000000001:0x20*  192.168.1.160@tcp:12345:4:1
+ ```
 
-* Write some data to Mero.
+* Write some data to Motr.
   ```bash
   c0cp -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 \
        -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 \
        -s 1m -c 128 /home/src/single/random.img -L 9
   ```
 
-* Read the data from Mero.
+* Read the data from Motr.
   ```bash
   c0cat -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 \
         -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 \
-        -s 1m -c 128 /home/src/single/random_from_mero.img -L 9
+        -s 1m -c 128 /home/src/single/random_from_motr.img -L 9
   ```
 
 * Ensure that I/O succeeded.
   ```bash
-  cmp random.img random_from_mero.img
+  cmp random.img random_from_motr.img
   ```
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -181,7 +189,7 @@ See [section 1.4](#14-prepare-the-cdf) for details.
 
 Sample diff:
 ```diff
---- /opt/seagate/eos/hare/share/cfgen/examples/ees-cluster.yaml	2020-05-19 11:41:18.077166724 +0000
+--- /opt/seagate/cortx/hare/share/cfgen/examples/ees-cluster.yaml	2020-05-19 11:41:18.077166724 +0000
 +++ ees-cluster.yaml	2020-05-19 21:32:32.258714734 +0000
 @@ -2,10 +2,8 @@
  # See `cfgen --help-schema` for the format description.
@@ -199,7 +207,7 @@ Sample diff:
 @@ -17,9 +15,8 @@
      m0_clients:
          s3: 0           # number of S3 servers to start
-         other: 2        # max quantity of other Mero clients this node may have
+         other: 2        # max quantity of other Motr clients this node may have
 -  - hostname: pod-c2
 -    data_iface: eth1_c2
 -    data_iface_type: o2ib
@@ -208,11 +216,16 @@ Sample diff:
      m0_servers:
        - runs_confd: true
          io_disks: []
+           pools:
+    - name: the pool
+      disks: all
+      data_units: 4      # N=4 Update N and K here
+      parity_units: 2    # K=2, Also make sure N+2K <= P number of devices.
 ```
 
 ### 2.6. Bootstrap the cluster
 
-* `hctl bootstrap --mkfs ees-cluster.yaml`
+* `sudo hctl bootstrap --mkfs ees-cluster.yaml`
 * `hctl status`
   ```
   Profile: 0x7000000000000001:0x49
@@ -236,28 +249,23 @@ Sample diff:
 
 ### 2.7. Perform the I/O
 
-<!-- XXX TODO:
-  - Describe the options of `c0cp` and `c0cat` commands.
-  - Where do values come from?
-  -->
-
-* Write some data to Mero.
+* Write some data to Motr.
   ```bash
   c0cp -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
        -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x23 -o 21:40 \
        -s 1m -c 128 /home/src/single/random.img -L 9
   ```
 
-* Read the data from Mero.
+* Read the data from Motr.
   ```bash
   c0cat -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
         -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x23 -o 21:40 \
-        -s 1m -c 128 /home/src/single/random_from_mero.img -L 9
+        -s 1m -c 128 /home/src/single/random_from_motr.img -L 9
   ```
 
 * Ensure that I/O succeeded.
   ```bash
-  cmp random.img random_from_mero.img
+  cmp random.img random_from_motr.img
   ```
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -271,31 +279,31 @@ Create a virtual machine using
 ### 3.2. Generate SSH keys
 
 Follow
-[these steps](MeroQuickStart.md#Accessing-the-code-right-way).
+[these steps](CortxMotrQuickStart.md#Accessing-the-code-right-way).
 
-### 3.3. Get Mero sources
+### 3.3. Get Motr sources
 
-Follow [these steps](MeroQuickStart.md#Cloning-CORTX).
+Follow [these steps](CortxMotrQuickStart.md#Cloning-CORTX).
 
-### 3.4. Compile and install Mero
+### 3.4. Compile and install Motr
 
 ```bash
-cd mero
+cd cortx-motr
 scripts/m0 make
-sudo scripts/install-mero-service
+sudo scripts/install-motr-service
 cd -
 ```
 
 ### 3.5. Get Hare sources
 
 ```bash
-git clone --recursive ssh://git@gitlab.mero.colo.seagate.com:6022/mero/hare.git
+git clone --recursive git@github.com:Seagate/cortx-hare.git -b main
 ```
 
 ### 3.6. Compile and install Hare
 
 ```bash
-cd hare
+cd cortx-hare
 make
 sudo make devinstall
 cd -
@@ -322,7 +330,7 @@ Pacemaker RPMs are needed for Hare.
 
 The workaround:
 ```bash
-# password: seagate
-scp smc5-m11.colo.seagate.com:/etc/yum.repos.d/lyve_platform.repo \
-    /etc/yum.repos.d/
+curl 'https://raw.githubusercontent.com/Seagate/cortx-prvsnr/master/cli/src/cortx-prereqs.sh?token=APAGAPH5GQBM4LM54UOZJVK7B23XM' -o cortx-prereqs.sh; chmod a+x cortx-prereqs.sh
+
+sudo ./cortx-prereqs.sh --disable-sub-mgr
 ```

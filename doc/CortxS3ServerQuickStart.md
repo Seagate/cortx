@@ -1,12 +1,19 @@
+
 # Cortx-S3Server QuickStart guide
 This is a step by step guide to get Cortx-S3Server ready for you on your system.
 Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
 
 ## Accessing the code right way
-The latest code which is getting evolved and contributed is on the github.
-Seagate contributors will be referencing, cloning and committing their code to/from this https://github.com/Seagate/cortx-s3server
 
-To simply pull the code in which to build `git clone --recursive "https://github.com/Seagate/cortx-s3server" -b main`
+
+# S3Server QuickStart guide
+This is a step by step guide to get S3Server ready for you on your system.
+Before cloning, however, you need to have an SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).
+
+## Accessing the code right way
+
+(For phase 1) The latest code which is getting evolved and contributed is on the Github server.
+CORTX Contributors will be referencing, cloning and committing their code to/from this [Github](https://github.com/Seagate/cortx).
 
 Following steps will make your access to server hassle free.
 1. From here on all the steps needs to be followed as the root user.
@@ -14,23 +21,80 @@ Following steps will make your access to server hassle free.
   * Type `su -` and enter the root password to switch to the root user mode.
 2. Create SSH Public Key
   * [SSH generation](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) will make your key generation super easy. Follow the instructions throughly.
-3. Add SSH Public Key on [github](https://github.com/settings/keys).
-  * Log into the github with your github account credentials.
-  * On right top corner you will see your name, open drop down menu by clicking and choose settings.
-  * In the menu on the left, click on the SSH and GPG keys, and add your public key (which is generated in step one) right there.
+3. Add New SSH Public Key on [Github](https://github.com/settings/keys) and [Enable SSO](https://docs.github.com/en/github/authenticating-to-github/authorizing-an-ssh-key-for-use-with-saml-single-sign-on).
 
 WoW! :sparkles:
+
+
 You are all set to fetch Cortx-S3Server repo now! 
 
-## Cloning Cortx-S3Server Repository
-Getting the main Cortx-S3Server code on your system is straightforward.
-1. `$ cd path/to/your/dev/directory`
-2. `$ git clone git@github.com:Seagate/cortx-s3server.git -b main` ( It has been assumed that `git` is preinstalled.If not then follow git installation specific steps. Recommended git version is 2.x.x . Check your git version using `$ git --version` command.)
-3. `$ cd cortx-s3Server`
-4. `$ git submodule update --init --recursive && git status`
+
+## Cloning S3Server Repository
+
+1. `$ git clone --recursive git@github.com:Seagate/cortx-s3server.git -b main`  Note:If username prompted than enter github username and for password copy from [PAT](https://github.com/settings/tokens) or generate a new one using [Generate PAT](https://github.com/settings/tokens) and enable SSO ( It has been assumed that `git` is preinstalled. If not then follow git installation specific steps provided [here](https://github.com/Seagate/cortx/blob/master/doc/ContributingToCortxS3.md). Recommended git version is 2.x.x . Check your git version using `$ git --version` command.) 
+2. `$ cd cortx-s3server`
+3. `$ git submodule update --init --recursive && git status`
+
+
+## Prerequisites
+1. Check if epel-release, python3, ansible and pip was installed, 'command not found' means no correponding package was installed
+   * `$ yum repolist` If epel was installed, should see epel in the output list, you might also see exclamation mark in front (https://access.redhat.com/solutions/2267871)
+   * `$ python3 --version`
+   * `$ ansible --version`
+   * `$ pip --version`
+   
+
+2. If not, please make sure epel-release, python3, ansible and pip are installed on the VM.
+   * `$ yum install -y epel-release`
+   * `$ yum install -y python3`
+   * `$ yum install -y ansible`
+   * `$ yum install -y python-pip`
+   
+3. Disable selinux and firewall
+   * `$ systemctl stop firewalld` no output
+   * `$ systemctl disable firewalld` no output 
+   * `$ sestatus`  should see 'SELinux status: disabled'
+   * `$ setenforce 0` should see 'setenforce: SELinux is disabled'
+   * `$ sed 's/SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux` should see 'SELINUX=disabled'
+   * `$ shutdown -r now`  reboot. If you use cloud VM, you can go to your cloud VM website and select the VM, stop first and start again to complete the reboot process.
+   * `$ getenforce` (It should show disabled)
+   
+## Create a local repository 
+1. Create and configure a local repository if rpms are stored in github release.
+   * `$ rpm -q python3-pip || yum install -y python3-pip`
+   * `$ pip3 install githubrelease`
+   * `$ mkdir /root/releases_eos_s3deps`
+   * `$ cd /root/releases_eos_s3deps`
+   * `$ GITHUB_TOKEN=<GITHUB personal access token>`
+   * `$ githubrelease --github-token $GITHUB_TOKEN asset seagate/cortx-s3server download $(curl -H "Authorization: token $GITHUB_TOKEN" -s https://api.github.com/repos/Seagate/cortx-s3server/releases/latest | grep "tag_name" | sed -E 's/.*"([^"]+)".*/\1/')`
+   * `$ ls` should see .rpm files
+   * `$ nano /etc/yum.repos.d/releases_eos_s3deps.repo` copy and paste the following contents, ctrl+x > yes > enter, then you should create the file /etc/yum.repos.d/releases_eos_s3deps.repo     
+       ```
+       [releases_eos_s3deps]
+       name=Cortx-S3 Repository
+       baseurl=file:///root/releases_eos_s3deps
+       gpgcheck=0
+       enabled=1
+   * `$ createrepo -v /root/releases_eos_s3deps`
+   * `$ yum clean all`
+   * `$ yum repolist`  should see 'releases_eos_s3deps' in the list   
+ 
+  
+## Install lustre if not available 
+1. Copy lustre repository from a server where MOTR is installed and install the lustre client.
+* `$ ls -lrt /var/lib/yum/localrepos/lustre-local`
+  ```
+  -rw-r--r--. 1 root root 417384 Jul  6 21:04 lustre-client-devel-2.12.4-99.el7.x86_64.rpm
+  drwxr-xr-x. 2 root root   4096 Jul  6 21:05 repodata
+* `$ ls -lrt /etc/yum.repos.d/lustre-*`
+  ```
+  -rw-r--r--. 1 root root 1327 Jul  6 21:03 /etc/yum.repos.d/lustre-whamcloud.repo
+  -rw-r--r--. 1 root root  115 Jul  6 21:03 /etc/yum.repos.d/lustre-local.repo
+* `$ yum install -y lustre*` if encounter error, try `$ yum install -y lustre* --skip-broken`
+* `$ yum repolist`  should see 'lustre*' in the list 
 
 ## Installing dependency
-This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
+All the following commands assume that user is already in its main source directory. This is a one time initialization when we do clone the repository or there is a changes in dependent packages.
 
   * At some point during the execution of the `init.sh` script, it will prompt for the following passwords. Enter them as mentioned below.
     * SSH password: `<Enter root password of VM>`
@@ -38,17 +102,21 @@ This is a one time initialization when we do clone the repository or there is a 
     * Enter new password for openldap IAM admin:: `ldapadmin`
 
 1. `$ cd ./scripts/env/dev`
-2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.
+2. `$ ./init.sh`, For some system `./init.sh` fails sometimes. If it is failing run `./upgrade-enablerepo.sh` and re run `./init.sh`. Refer below image of successful run of `./init.sh` where `failed` field should be zero.For any other errors, please refer [FAQs](https://github.com/Seagate/cortx/blob/master/doc/Build-Installation-FAQ.md)
 
 <p align="center"><img src="../../assets/images/init_script_output.PNG?raw=true"></p>
 
 ## Compilation and Running Unit Test
 All the following commands assume that user is already in its main source directory.
+
 ### Running Unit test and System test
 1. Setup the host system
-  * `$ ./update-hosts.sh`
+  * `$ ./update-hosts.sh` will ask you to enter the IP address, just hit Enter key and should see something like 'Host xx.xxx.xxx.xxx is reachable'
+
 2. Following script by default will build the code, run the unit test and system test in your local system. Check for help to get more details.  
+
   * `$ ./jenkins-build.sh`. 
+
   * You may have to add `/usr/local/bin` to PATH variable using command `$PATH=$PATH:/usr/local/bin` if it is not there already.
   
   Make sure the output log has a message as shown in below image to ensure successful execution of system test in `./jenkins-build.sh`.
@@ -64,9 +132,9 @@ All the following commands assume that user is already in its main source direct
     * `$ python3 --version`, if you don't have python3 version 3.3+ then install python3.
     * `$ easy_install pip`
   * Make sure Cortx-S3Server and it's dependent services are running.
-    * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start Cortx-S3Server and it's dependent services.
+    * `$ ./jenkins-build.sh --skip_build --skip_tests` so that it will start Cortx-S3Server and it's dependent services. Should see 'S3 service started successfully' in the output
     * `$ pgrep s3`, it should list the `PID` of S3 processes running.
-    * `$ pgrep m0`, it should list the `PID` of motr processes running.
+    * `$ pgrep m0`, it should list the `PID` of mero processes running. 
   * Install aws client and it's plugin
     * `$ pip install awscli`
     * `$ pip install awscli-plugin-endpoint`
@@ -109,7 +177,7 @@ All the following commands assume that user is already in its main source direct
   * Remove Bucket
     * `$ aws s3 rb s3://seagatebucket`, bucket should get remove and should not be seen if we do list bucket.
   * Copy local file to remote(PUT)
-    * `$ aws s3 cp test_data s3://seagatebucket/`, will copy the local file test_data and test_data object will be created under bucket.
+    * `$ aws s3 cp test_data s3://seagatebucket/`, will copy the local file test_data(use any file for test purpose,in this case we assume there is a file name test_data) and test_data object will be created under bucket.
   * List Object
     * `$ aws s3 ls s3://seagatebucket`, will show the object named as test_data
   * Move local file to remote(PUT)
@@ -120,20 +188,23 @@ All the following commands assume that user is already in its main source direct
 KABOOM!!!
 
 ## Testing specific MOTR version with Cortx-S3Server
+
 For this demand also we are having solution :
-1. Search for specific commit-id in search box and choose type = 'Commits' , click on  search result (specific commit) and copy associated change-id
-2. `$ cd third_party/mero` (It is assumed that you are into main directory of your Cortx-S3Server repo)
-3. Use copied commit HASH/REFSPEC in step 1 as shown below.
+
+1. Search for specific commit-id in search box and choose type = 'Commits' , click on search result (specific commit) and copy associated change-id
+  
+2. `$ cd third_party/motr` (It is assumed that you are into main directory of your s3server repo)
+3. Use copied commit ID in step 1 as shown below.
    
  > git checkout Id41cd2b41cb77f1d106651c267072f29f8c81d0f
    
 4. Update submodules 
 > `$ git submodule update --init --recursive`
-5. Build motr
+5. Build Motr
 
 > `cd ..`
 
-> `./build_mero.sh`
+> `./build_motr.sh` 
 
 6. Run jenkins script to make sure that your build & tests passes.
 
@@ -152,3 +223,6 @@ In case of any queries, feel free to write to our [SUPPORT](SUPPORT.md).
 Let's start without a delay to contribute to Seagate's open source initiative and join this movement with us, keeping a common goal of making data storage better, more efficient and more accessible.
 
 Seagate welcomes You! :relaxed:
+
+
+

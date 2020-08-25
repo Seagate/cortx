@@ -4,7 +4,7 @@ Before cloning, however, you need to have a SSC / Cloud VM or a local VM setup i
 
 ## Accessing the source code right way
 (For phase 1) Latest code which is getting evolved, advancing and contributed is on the current github server.
-Seagate contributor will be referencing, cloning and committing code to/from this [Github](https://github.com/Seagate/).
+Seagate contributor will be referencing, cloning and committing code to/from this [Github](https://github.com/Seagate/cortx/).
 
 Following steps as sudo user(sudo -s) will make your access to server hassel free.
 
@@ -16,7 +16,7 @@ Following steps as sudo user(sudo -s) will make your access to server hassel fre
 WoW! :sparkles:
 You are all set to fetch cortx-motr repo now. 
 
-## Cloing CORTX source code
+## Cloning CORTX source code
 Getting the main CORTX source code on your system is straightforward.
 
 
@@ -26,15 +26,15 @@ Getting the main CORTX source code on your system is straightforward.
 
 3. `$ gitdir=$(git rev-parse --git-dir)`
 
-4. Enable some pre-commit hooks required before pushing your changes to remote 
-   * Run this command from the parent dir of cortx-motr source
-   Note: (This step needs to be validated)
-   
-     #`$ scp -p -P 29418 g${GID}@gerrit.mero.colo.seagate.com:hooks/commit-msg ${gitdir}/hooks/commit-msg`
-
 ## Building the CORTX source code
      
 1. Build and install necessaries dependencies
+   * Ensure epel-release has been installed
+   
+   `$ sudo yum install epel-release`
+   
+1. Build and install necessaries dependencies. When finished, if you see failed=0 in the output, which means your installation is successful. 
+
    * To install all dependent packages like lustre, pip, etc.
   
     `$ sudo ./scripts/install-build-deps` 
@@ -57,11 +57,21 @@ Getting the main CORTX source code on your system is straightforward.
      `$ pip3 install ply`
   
 2. Reboot
+
+   You can use command `$ sudo reboot` to reboot the system.
+   If you use cloud VM, you can go to your cloud VM website and select the VM, stop first and start again to complete the reboot process.
+   
   * After reboot, check if Lustre network is working
   
      `$ sudo modprobe lnet`
   
      `$ sudo lctl list_nids`
+   
+   * Troubleshooting hint: if list_nids reports NETWORK IS DOWN, check /etc/modprobe.d/lnet.conf and ensure the listed network interfaces are present on your system. If not, edit lnet.conf, reboot, and try again.
+     
+     You should see list of IPs as following:
+     192.168.9.60@tcp
+     10.230.245.74@tcp1
 
 3. Compiling cortx-motr (Commands assumes that user is already into it's main source directory i.e. `$cd cortx-motr`)
    * Run following command
@@ -74,7 +84,7 @@ Getting the main CORTX source code on your system is straightforward.
 
 1. Running Unit Tests (UTs)
  * `$ sudo ./scripts/m0 run-ut` (This may take a long time, i.e. aprx. 20-30 min) 
-    > You can also expore other options of this run-ut command. Try : sudo run-ut --help
+    > You can also explore other options of this run-ut command. Try : `$ sudo ./scripts/m0 run-ut -help`
     
 2. For kernel space UTs
   * `$ sudo ./scripts/m0 run-kut`
@@ -85,12 +95,12 @@ Getting the main CORTX source code on your system is straightforward.
   * `$ sudo ./scripts/m0 run-st -l`
   
    As an example for clovis module system test can be run using following command :
-  * `$ sudo ./scripts/m0 run-st 52mero-singlenode-sanity`
+  * `$ sudo ./scripts/m0 run-st 52motr-singlenode-sanity`
    
    To run all the ST's,
   * `$ sudo ./scripts/m0 run-st`
   
-KABOOM!!!
+All done! You're now CORTX-Motr-ready.
   
 ## Running Jenkins / System tests
 
