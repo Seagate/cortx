@@ -1,5 +1,8 @@
+# For Seagate employees, virtual machine images can be requested and run out of a Seagate managed internal self-service cloud.  
+These instructions therefore only are relevant to Seagate employees.
+
 1. Use [these instructions](https://seagatetechnology-my.sharepoint.com/:w:/g/personal/trent_geerdes_seagate_com/EVmAOIGpAftLvKeA0BmmTtABVCGMZUBiVZCat4qLXniSsg?e=uBt3x6) to get yourself a development VM and ssh into it.
-   - Submit a CARS request.(i.e. Lab Access : EOS : LCO : Cortx Community Developer Lab Access)
+   - Submit a [CARS request](https://request.seagate.com/oim).(i.e. Lab Access : EOS : LCO : Cortx Community Lab Access)
    - Goto https://ssc-cloud.colo.seagate.com/self_service (login using GID and my.seagate password)
    - Request the '2x CentOS 7.7 (2Disks, 2vCPU).  Put it in your shopping cart and check out.
    - Once your order is approved, go to the 'My Services' and click on your approved VM.
