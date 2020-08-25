@@ -12,8 +12,12 @@ Let's get CORTX ready!
 
 **Before you Begin**
 
-You'll need to `Build and Test your VM Environment <../master/doc/BUILD_ENVIRONMENT.md>`_
+- You'll need to `Build and Test your VM Environment <../master/doc/BUILD_ENVIRONMENT.md>`_.
+- Ensure that you have RoCE(RDMA over Converged Ethernet) and TCP connectivity.
 
+**Caution**
+
+The CORTX stack does not work on Intel's OmniPath cards.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Since CORTX is composed of the Motr and S3 Server components, you'll need to:
