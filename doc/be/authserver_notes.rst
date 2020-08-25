@@ -18,12 +18,13 @@ ii. CORTX-S3 ACL (Access Control List)
 ACL is an old way of providing grants on buckets/objects so recommendation is to use Bucket policies for access control.
 
 +----------------------------------+----------------------------------+
-| **Bucket Policy**                | **CORTX-S3 ACL**                       |
+| **Bucket Policy**                | **CORTX-S3 ACL**                 |
 +----------------------------------+----------------------------------+
 | At Bucket level                  | At Bucket or at Object level     |
 +----------------------------------+----------------------------------+
-| Max size allowed - 20KB          | No limit on size. Limit is       |
-|                                  | present on grants.               |
+| Max size allowed - 20KB          | No limit on size.                |
+|                                  | Limit is present on grants.      |
+|                                  | Maximum no. of grants - 100.     |
 +----------------------------------+----------------------------------+
 | This will define-                | This will define-                |
 | Who all can perform what all     | Who all can perform what all     |
