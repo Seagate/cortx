@@ -3,7 +3,7 @@
 
 .. image:: ../assets/images/cortx-logo.png
 
-CORTX: World's Most Scalable Mass-Capacity Object Storage System
+CORTX: World's Best Scalable Mass-Capacity Object Storage System
 ==============================================================================
 
 The amount of data the world is creating and collecting is increasing massively. The amount of data the world is storing is not. The models and machine learning that are at the forefront of some of the most important research today depend on access to compete data sets, but limitations on storage lead to unnecessary data loss. By creating better, more economical storage solutions, we enable the research that is changing the world.
