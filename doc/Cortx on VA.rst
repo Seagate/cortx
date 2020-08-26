@@ -34,7 +34,7 @@ The procedure to install Cortx on VA is mentioned below.
 
  - In case of troubleshooting, refer `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
  
-6. Switch on the virtual machine and login using either the SSH or VMware console.
+6. Turn on the virtual machine and login using either the SSH or VMware console.
 
  - Username: root
  - Password: opensource!
