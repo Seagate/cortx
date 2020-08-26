@@ -12,7 +12,7 @@ The prerequisites required to install Cortx on a VA is listed below.
 
 - GitHub Access
 - Unzipping Software (preferably WinZip)
-- Either of the following:
+- Any of the following:
  - VMware ESX server
  - VMware ESXi server
  - VMware Workstation
