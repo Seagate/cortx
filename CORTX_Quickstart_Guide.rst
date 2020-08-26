@@ -53,3 +53,6 @@ Thank You!
 -----------
 
 We thank you for stopping by to check out the CORTX Community. We are fully dedicated to our mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world.
+
+.. |Slack| image:: https://img.shields.io/badge/chat-on%20Slack-blue
+   :target: https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?
