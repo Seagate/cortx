@@ -36,7 +36,7 @@ Additional Resources
 
 - Know more about `CORTX CI/CD and Automation <../main/doc/CI_CD.md>`_.
 - Learn more about the `CORTX Architechture <../main/doc/architecture.md>`_
-- - You can `submit requests and bugs using GitHub Issues <https://github.com/Seagate/cortx/issues>`_
+- You can `submit requests and bugs using GitHub Issues <https://github.com/Seagate/cortx/issues>`_
 
 Contribute to CORTX Community
 -----------------------------
