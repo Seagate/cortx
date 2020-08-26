@@ -32,19 +32,25 @@ The procedure to install Cortx on VA is mentioned below.
 
 5. Install the VM on your system by referring *<<Link to the VM Installation document>>*.
 
+ - In case of troubleshooting, refer `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
+ 
+6. Switch on the virtual machine and login using either the SSH or VMware console.
+
+ - Username: <.....>
+ - Password: <.....>
 
 
-5. Run the following command:
+7. Run the following command:
 
  - **hctl bootstrap --mkfs /var/lib/hare/cluster.yaml**
 
   You must run the above command with **--mkfs** only once. Further usage of **--mkfs** erases data.
 
-6. Ensure that the I/O stack is running by running the following command:
+8. Ensure that the I/O stack is running by running the following command:
 
  - **hctl status**
 
-7. Ensure that the CSM service is operational by running the following commands:
+9. Ensure that the CSM service is operational by running the following commands:
 
  - **systemctl status csm_agent**
  - **systemctl status csm_web**
