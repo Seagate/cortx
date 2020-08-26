@@ -36,6 +36,7 @@ Additional Resources
 
 - Know more about `CORTX CI/CD and Automation <../main/doc/CI_CD.md>`_.
 - Learn more about the `CORTX Architechture <../main/doc/architecture.md>`_
+- - You can `submit requests and bugs using GitHub Issues <https://github.com/Seagate/cortx/issues>`_
 
 Contribute to CORTX Community
 -----------------------------
@@ -45,7 +46,8 @@ Refer to the CORTX Community Guide **<link placeholder>** that hosts all informa
 Support and Community Discussions
 *********************************
 
-Please refer to our `Help and Support page <../main/doc/SUPPORT.md>`_, for further assistance.
+- Join our CORTX-Open Source Slack channel |Slack| to interact with your fellow community members and gets your questions answered. 
+- If you'd like to contact us directly, drop us a mail at: `cortx-early-adopters@seagate.com <cortx-early-adopters@seagate.com>`_
 
 Thank You!
 -----------
