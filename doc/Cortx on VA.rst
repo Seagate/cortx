@@ -26,9 +26,13 @@ The procedure to install Cortx on VA is mentioned below.
 1. Login to `GitHub <https://github.com/>`_ with your credentials.
 2. Select the relevant repository, and navigate to the appropriate directory. *<<we need to give links of the repository and directory>>*
 
-3. From the directory, download the ZIP file that contains VMware virtual machine images.
+3. From the directory, download the ZIP file that contains the VMware virtual machine images.
 
-4. Import the OVA file into ESX, and install Cortx. Refer `Help Docs <https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.html.hostclient.doc/GUID-8ABDB2E1-DDBF-40E3-8ED6-DC857783E3E3.html>`_ to know more about the process of installation.
+4. Extract the contents of the downloaded ZIP file into your system.
+
+5. Install the VM on your system by referring *<<Link to the VM Installation document>>*.
+
+
 
 5. Run the following command:
 
