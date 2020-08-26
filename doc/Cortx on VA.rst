@@ -39,7 +39,6 @@ The procedure to install Cortx on VA is mentioned below.
  - Username: root
  - Password: opensource!
 
-
 7. Run the following command:
 
  - **hctl bootstrap --mkfs /var/lib/hare/cluster.yaml**
