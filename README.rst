@@ -46,17 +46,16 @@ We excited for your interest in CORTX and hope you will join us. We take communi
 
 Refer to the CORTX Community Guide **<link placeholder>** that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us. 
 
-
 To Start Using CORTX
 ********************
 
-- Refer to the `CORTX Quickstart Guide <../master/CORTX_Quickstart_Guide.rst>`_ to build and test CORTX.
-- Join our CORTX-Open Source Slack channel to interact with your fellow community members and gets your questions answered. |Slack|
+- Refer to the `CORTX Quickstart Guide <../main/CORTX_Quickstart_Guide.rst>`_ to build and test CORTX.
+- Join our CORTX-Open Source Slack channel |Slack| to interact with your fellow community members and gets your questions answered. 
 
 Thank You!
 ----------
 
-We thank you for stopping by to check out the CORTX Community. Seagate is fully dedicated to its mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world. 
+We thank you for stopping by to check out the CORTX Community. We are fully dedicated to our mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world. 
 
 .. |Slack| image:: https://img.shields.io/badge/chat-on%20Slack-blue
    :target: https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?
