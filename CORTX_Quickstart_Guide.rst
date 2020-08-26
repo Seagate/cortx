@@ -38,7 +38,7 @@ Additional Resources
 - Learn more about the `CORTX Architechture <../main/doc/architecture.md>`_
 
 Contribute to CORTX Community
-*****************************
+-----------------------------
 
 Refer to the CORTX Community Guide **<link placeholder>** that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us.
 
@@ -48,6 +48,6 @@ Support and Community Discussions
 Please refer to our `Help and Support page <../main/doc/SUPPORT.md>`_, for further assistance.
 
 Thank You!
-**********
+-----------
 
 We thank you for stopping by to check out the CORTX Community. We are fully dedicated to our mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world.
