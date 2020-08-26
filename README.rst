@@ -51,7 +51,7 @@ To Start Using CORTX
 ********************
 
 - Refer to the `CORTX Quickstart Guide <../master/CORTX_Quickstart_Guide.rst>`_ to build and test CORTX.
-- Join our CORTX-Open Source |Slack| channel to interact with your fellow community members and gets your questions answered.
+- Join our CORTX-Open Source Slack channel to interact with your fellow community members and gets your questions answered. |Slack|
 
 Thank You!
 ----------
