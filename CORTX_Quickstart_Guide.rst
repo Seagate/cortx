@@ -12,19 +12,20 @@ Let's get CORTX ready!
 
 **Before you Begin**
 
-- You'll need to `Build and Test your VM Environment <../master/doc/BUILD_ENVIRONMENT.md>`_.
+- You'll need to `Build and Test your VM Environment <../main/doc/BUILD_ENVIRONMENT.md>`_.
 - Ensure that you have RoCE(RDMA over Converged Ethernet) and TCP connectivity.
 
 **Caution**
 
 The CORTX stack does not work on Intel's OmniPath cards.
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Since CORTX is composed of the Motr and S3 Server components, you'll need to:
 
-1. `Set up CORTX-Motr <../master/doc/CortxMotrQuickStart.md>`_
+1. `Set up CORTX-Motr <../main/doc/CortxMotrQuickStart.md>`_
 
-2. `Get CORTX-S3 Server ready <../cortx-s3server/dev/docs/CORTX-S3 Server Quick Start Guide.md>`_
+2. `Get CORTX-S3 Server ready <../dev/docs/CORTX-S3 Server Quick Start Guide.md>`_
 
 Watch our CORTX Engineer, Kevin Price, demonstrate **<link to the video>** the process.
 
@@ -33,17 +34,20 @@ Watch our CORTX Engineer, Kevin Price, demonstrate **<link to the video>** the p
 Additional Resources
 ---------------------
 
-- Know more about `CORTX CI/CD and Automation <../master/doc/CI_CD.md>`_.
-- Learn more about the `CORTX Architechture <../master/doc/architecture.md>`_
+- Know more about `CORTX CI/CD and Automation <../main/doc/CI_CD.md>`_.
+- Learn more about the `CORTX Architechture <../main/doc/architecture.md>`_
 
 Contribute to CORTX Community
 *****************************
 
 Refer to the CORTX Community Guide **<link placeholder>** that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us.
 
-- You'll need to read the individual component specific documents before you submit your contributions to the `CORTX-Motr <../master/doc/ContributingToMotr.md>`_ and `CORTX-S3 Server <../cortx-s3server/dev/docs/ContributingToCortxS3.md>`_ repositories.
-
 Support and Community Discussions
 *********************************
 
-Please refer to our `Help and Support page <../master/doc/SUPPORT.md>`_, for further assistance.
+Please refer to our `Help and Support page <../main/doc/SUPPORT.md>`_, for further assistance.
+
+Thank You!
+**********
+
+We thank you for stopping by to check out the CORTX Community. We are fully dedicated to our mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world.
