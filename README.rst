@@ -58,7 +58,7 @@ Thank You!
 
 We thank you for stopping by to check out the CORTX Community. Seagate is fully dedicated to its mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world. 
 
-.. | Slack | image:: https://img.shields.io/badge/chat-on%20Slack-blue
+.. |Slack| image:: https://img.shields.io/badge/chat-on%20Slack-blue
    :target: https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?
 .. |license| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://github.com/Seagate/EOS-Sandbox/blob/master/LICENSE
