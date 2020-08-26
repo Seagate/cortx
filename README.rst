@@ -51,8 +51,7 @@ To Start Using CORTX
 ********************
 
 - Refer to the `CORTX Quickstart Guide <../master/CORTX_Quickstart_Guide.rst>`_ to build and test CORTX.
-
-- Use `Opengrok <https://oracle.github.io/opengrok/>`_ to browse through the source code. Opengrok is a source code search and cross-reference engine. 
+- Join our CORTX-Open Source |Slack| channel to interact with your fellow community members and gets your questions answered.
 
 Thank You!
 ----------
