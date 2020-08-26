@@ -49,8 +49,14 @@ Refer to the CORTX Community Guide **<link placeholder>** that hosts all informa
 To Start Using CORTX
 ********************
 
-- Refer to the `CORTX Quickstart Guide <../master/CORTX_Quickstart_Guide.rst>`_ to build and test CORTX.
+- Refer to the `CORTX Quickstart Guide <../main/CORTX_Quickstart_Guide.rst>`_ to build and test CORTX.
+- You can `submit requests and bugs using GitHub Issues <https://github.com/Seagate/cortx/issues>`_
+
+Reach Out To Us
+---------------
+
 - Join our CORTX-Open Source Slack channel |Slack| to interact with your fellow community members and gets your questions answered. 
+- If you'd like to contact us directly, drop us a mail at: `cortx-early-adopters@seagate.com <cortx-early-adopters@seagate.com>`_
 
 Thank You!
 ----------
