@@ -35,13 +35,16 @@ Perform the procedure mentioned below to deploy the VM.
 
 7. Click **Next**.
 
-8. Click a datastore from the list of accessible datastores on the Select storage page of the **New Virtual Machine** wizard. By default, it is **datastore1**.
+8. Select a datastore from the list of accessible datastores. By default, it is **datastore1**.
 
 9. Click **Next**. 
 
 10. Perform the network configuration accurately.
 
-11. Select the provisioning for the disks option from **Thin** or **Thick**.
+11. Select either of the following as an option for provisioning the disks.
+
+  - **Thin** 
+  - **Thick**
 
 12. After provisioning, select the checkbox if you want to start the VM. By default, **Yes** is the option.
 
