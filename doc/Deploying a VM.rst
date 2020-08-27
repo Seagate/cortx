@@ -13,7 +13,7 @@ The prerequisites mentioned below must be met to deploy the VM.
 - ESX server must be configured with at least two virtual interfaces.
 
  - One interface for management network
- - one interface for data network
+ - One interface for data network
  
 
 **********
