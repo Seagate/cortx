@@ -35,6 +35,6 @@ Perform the procedure mentioned below to deploy the VM.
 
 7. Click **Next**.
 
-8. Click a datastore from the list of accessible datastores on the Select storage page of the **New Virtual Machine** wizard.
+8. Click a datastore from the list of accessible datastores on the Select storage page of the **New Virtual Machine** wizard. By default, it is **datastore1**.
 
 9. Click **Next**.
