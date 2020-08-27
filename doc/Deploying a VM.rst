@@ -57,8 +57,16 @@ Perform the procedure mentioned below to deploy the VM.
   - ens256 - public data
   
   **Note**: As there is a single-node VM, the above IP addresses are also VIPs.
+  
+17. If required, change the hostname by running the following command:
 
-
+  - **hostnamectl set-hostname <new-name>**
+  
+    To verify the change in hostname, run the following command:
+    
+    - **hostnamectl status**
+ 
+ 
 **Note**: It is not recommended to use VMware products as CORTX may break due to kernel dependencies. 
 
 
