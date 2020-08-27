@@ -14,3 +14,15 @@ The prerequisites mentioned below must be met to deploy the VM.
 
  - One interface for management network
  - one interface for data network
+ 
+
+**********
+Procedure
+**********
+Perform the procedure mentioned below to deploy the VM.
+
+1. Login to the web interface of ESX.
+
+2. Click **Create/Register VM**. The **New Virtual Machine wizard** opens.
+
+3. On the Select creation type page of the wizard, select **Deploy a virtual machine from an OVF or OVA** file, and click **Next**.
