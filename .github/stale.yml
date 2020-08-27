@@ -1,5 +1,5 @@
 # Number of days of inactivity before an issue becomes stale
-daysUntilStale: 7
+daysUntilStale: 4
 # Issues with these labels will never be considered stale
 exemptLabels:
   - feature
@@ -7,6 +7,6 @@ exemptLabels:
 staleLabel: auto-stale
 # Comment to post when marking an issue as stale. Set to `false` to disable
 markComment: >
-  This issue/pull request has been automatically marked as stale because it has not had
-  recent activity. It will be closed if no further activity occurs. Thank you
-  for your contributions.
+    This issue/pull request has been automatically marked as stale because it has not had recent activity.
+    We will tag the appropriate person and ensure that it is properly handled.
+    Sorry for the staleness and thanks for your participation in CORTX.
