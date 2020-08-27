@@ -49,13 +49,6 @@ We would also like to profile community members – their background, use cases,
 
 In short, we want to showcase your contributions and experiences! Whether you like to write or if you prefer to be interviewed and leave the writing to us, we want to recognize our community and highlight the interesting work everyone is doing. 
 
-## Source code Browser
-
-Opengrok is a source code search and cross referece engine, please use below link to browse repositories.
-Currently visible only within Seagate firewall. TODO: migrate to open.
-* [CORTX-S3 Opengrok](http://ssc-vm-c-192.colo.seagate.com:8090/source/)
-
-Happy code browsing!
 
 ### Discussion of the CI/CD
 
