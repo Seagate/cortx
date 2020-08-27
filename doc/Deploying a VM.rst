@@ -39,4 +39,10 @@ Perform the procedure mentioned below to deploy the VM.
 
 9. Click **Next**.
 
+10. Perform the network configuration accurately.
+
+11. Select the provisioning for the disks option from **Thin** or **Thick**.
+
+12. After provisioning, select the checkbox if you want to start the VM. By default, **Yes** is the option.
+
 
