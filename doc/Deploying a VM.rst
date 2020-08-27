@@ -37,13 +37,26 @@ Perform the procedure mentioned below to deploy the VM.
 
 8. Click a datastore from the list of accessible datastores on the Select storage page of the **New Virtual Machine** wizard. By default, it is **datastore1**.
 
-9. Click **Next**.
+9. Click **Next**. 
 
 10. Perform the network configuration accurately.
 
 11. Select the provisioning for the disks option from **Thin** or **Thick**.
 
 12. After provisioning, select the checkbox if you want to start the VM. By default, **Yes** is the option.
+
+13. Click **Next**.
+
+14. Ensure accuracy in the configuration and click **Finish**. The VM provisioning process takes approximately 25-40 minutes.
+
+15. After the completion of import, open the VM console in ESX, and login as **root**.
+
+16. Run **ip a l** and note the IP addresses of the following interfaces:
+
+  - ens192 - management
+  - ens256 - public data
+  
+  **Note**: As there is a single-node VM, the above IP addresses are also VIPs.
 
 
 **Note**: It is not recommended to use VMware products as CORTX may break due to kernel dependencies. 
