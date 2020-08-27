@@ -31,7 +31,7 @@ Perform the procedure mentioned below to deploy the VM.
 
 5. Click the blue pane to select an OVF and a VMDK, or an OVA file to deploy. Your local system storage opens.
 
-6. Select the file that you want to deploy your virtual machine from and click **Open**. The file you selected is displayed in the blue pane.
+6. Select the file that you want to deploy your virtual machine from, and click **Open**.
 
 7. Click **Next**.
 
