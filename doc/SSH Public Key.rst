@@ -12,7 +12,7 @@ Perform the below mentioned procedure to generate the SSH public key.
 
  The key is generated successfully.
 
-3. Copy the generated key, and navigate to the **SSH and GPG Keys** section of GitHub.
+3. Copy the generated key, and navigate to `SSH and GPG Keys <https://github.com/settings/keys>`_.
 
 4. Click **New SSH Key**, and paste the key that you had copied.
 
