@@ -46,3 +46,6 @@ Perform the procedure mentioned below to deploy the VM.
 12. After provisioning, select the checkbox if you want to start the VM. By default, **Yes** is the option.
 
 
+**Note**: It is not recommended to use VMware products as CORTX may break due to kernel dependencies. 
+
+
