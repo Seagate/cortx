@@ -34,7 +34,7 @@
 ..
 
 ==========================================
-**EOS Core - Scalable Storage Platform**
+**CORTX Core - Scalable Storage Platform**
 ==========================================
 
 
@@ -264,7 +264,7 @@ Reqh:
 
 
 
-EOS core servers are called m0d's. M0d for IOSERVICE contains ioservice,
+CORTX core servers are called m0d's. M0d for IOSERVICE contains ioservice,
 dixservice, rmservice and other services. M0D for CONF contains
 confservice and rmservice only. Here assuming 8 cores are available then
 foms are scheduled among 8 locality threads.
@@ -303,7 +303,7 @@ network: LNet, 0-copy, unreliable message passing
 
 Lnetsupports tcp, RoCEand IB.
 
-New Transport based on Sockets (recently added in Master).
+New Transport based on Sockets (recently added in Main).
 
 
 
@@ -935,7 +935,7 @@ Implementations
 
 
 
-EOS Core Training Documents:
+CORTX Core Training Documents:
 
 `<https://drive.google.com/drive/u/0/folders/1_oq-i20X7lzWHeLxcSiwfUIZMxgGxHHI>`_
 
