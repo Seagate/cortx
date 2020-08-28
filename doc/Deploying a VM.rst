@@ -14,6 +14,7 @@ The prerequisites mentioned below must be met to deploy the VM.
 
  - One interface for management network
  - One interface for data network
+ - One interface for private data network 
  
 
 **********
@@ -45,7 +46,9 @@ Perform the procedure mentioned below to deploy the VM.
   
   - One interface must be mapped to the data network.
   
-  **Note**: Ensure that the management and data networks are connected to different subnets.
+  - One interface must be mapped to the private data network. 
+  
+  **Note**: Ensure that all the three networks are connected to different subnets.
 
 11. Select either of the following as an option for provisioning the disks.
 
