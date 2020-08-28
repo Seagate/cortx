@@ -112,7 +112,7 @@
 =================
 
 
--  eos rpc: uses RDMA when available (requires kernel module)
+-  cortx rpc: uses RDMA when available (requires kernel module)
 
 -  s3 server linked with libmotr
 
@@ -135,7 +135,7 @@
 
 -  very similar to S3
 
--  underlying eos object and index semantics is rich enough to support S3, NFS and others
+-  underlying CORTX object and index semantics is rich enough to support S3, NFS and others
 
 -  interoperability between S3 and NFS: common meta-data format, *lingua franca* [work in progress]
 
@@ -291,7 +291,7 @@
 
    -  Error recovery in the middle of a group is difficult (errors during recovery)
 
--  a transaction is a group of eos core operations that are atomic in the face of failures
+-  a transaction is a group of CORTX core operations that are atomic in the face of failures
 
 -  DTM guarantees that either all or none operations survive a failure
 
@@ -382,7 +382,7 @@
 
 -  FDMI is a scalable publish-subscribe interface
 
--  each eos core instance produces cross-referenced records describing operations stored in FOL
+-  each CORTX core instance produces cross-referenced records describing operations stored in FOL
 
 -  FDMI plugin registers a filter, that selects some records
 
