@@ -8,9 +8,9 @@
 **Outline**
 ============
 
--  This presentation is a beginner's guide to the EOS core architecture
+-  This presentation is a beginner's guide to the CORTX core architecture
 
--  Tries to cover all important aspects of EOS core with a reasonable
+-  Tries to cover all important aspects of CORTX core with a reasonable
    level of detail
 
 -  Focus on software (hardware details elsewhere)
@@ -34,13 +34,13 @@
 
 
 =================
-**What is EOS?**
+**What is CORTX?**
 =================
 
 
--  EOS core is a component of the new cloud software stack developed by Seagate
+-  CORTX core is a component of the new cloud software stack developed by Seagate
 
--  EOS provides basic functionality through its clovis interface:
+-  CORTX provides basic functionality through its clovis interface:
 
    -  object store
 
@@ -77,13 +77,13 @@
 
 
 ==========================
-**How is EOS Different?**
+**How is CORTX Different?**
 ==========================
 
 
 -  Scalable
 
-   -  horizontal scalability: grow system by adding more nodes. EOS designed for horizontal scalability: no meta-data hotspots,shared-nothing IO path. Extensions running on additional nodes.
+   -  horizontal scalability: grow system by adding more nodes. CORTX designed for horizontal scalability: no meta-data hotspots,shared-nothing IO path. Extensions running on additional nodes.
 
    -  vertical scalability: more memory and cpu on the nodes.
 
@@ -114,7 +114,7 @@
 
 -  eos rpc: uses RDMA when available (requires kernel module)
 
--  s3 server linked with libmero
+-  s3 server linked with libmotr
 
 -  flexible deployment: services can run anywhere on the network, share storage
 
@@ -146,7 +146,7 @@
 
 
 ====================================
-**Anatomy of an EOS core instance**
+**Anatomy of an CORTX core instance**
 ====================================
 
 
@@ -161,7 +161,7 @@
 
 -  Asynchronous network and storage interface
 
--  Same on "client" (libmero) and server (not quite yet).
+-  Same on "client" (libmotr) and server (not quite yet).
 
 
 
@@ -229,7 +229,7 @@
 =======================
 
 
--  libmero calculates cob identities and offsets within cobs
+-  libmotr calculates cob identities and offsets within cobs
 
 -  ioservice maps cob offset to device offset though ad (allocation
    data) index
@@ -237,7 +237,7 @@
 -  mapping is done independently for each object and each parity group
    (aka stripe)
 
--  parity blocks are calculated by libmero
+-  parity blocks are calculated by libmotr
 
 
 
@@ -281,9 +281,9 @@
 
 -  DTM: Distributed Transaction Manager
 
--  EOS operations affect multiple nodes. Nodes can fail independently. Error recovery is difficult.
+-  CORTX operations affect multiple nodes. Nodes can fail independently. Error recovery is difficult.
 
--  Multiple EOS operations form logical groups:
+-  Multiple CORTX operations form logical groups:
 
    -  S3 object creation: update bucket, store object attributes, create object, write data
 
@@ -297,7 +297,7 @@
 
 -  DTM: work in progress
 
--  one of the most complex EOS components
+-  one of the most complex CORTX components
 
 -  scalable efficient transactions are hard
 
@@ -350,13 +350,13 @@
 
 
 
--  FDMI: file data manipulation interface, EOS core extension interface
+-  FDMI: file data manipulation interface, CORTX core extension interface
 
--  EOS core: objects, key-value indices, transactions. Fast path
+-  CORTX core: objects, key-value indices, transactions. Fast path
 
 -  Extensions: migration, backup, archive, replication, compression, encryption, indexing, tiering, defragmentation, scrubbing, format conversion, re-striping, *etc*.
 
--  We want to keep EOS core small and clean
+-  We want to keep CORTX core small and clean
 
 -  Extensions must be:
 
