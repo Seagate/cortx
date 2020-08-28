@@ -267,7 +267,7 @@ Reqh:
 CORTX core servers are called m0d's. M0d for IOSERVICE contains ioservice,
 dixservice, rmservice and other services. M0D for CONF contains
 confservice and rmservice only. Here assuming 8 cores are available then
-foms are scheduled among 8 locality threads.
+FOMs are scheduled among 8 locality threads.
 
 
 
