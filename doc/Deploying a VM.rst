@@ -68,7 +68,7 @@ Perform the procedure mentioned below to deploy the VM.
   
 17. If required, change the hostname by running the following command:
 
-  - **hostnamectl set-hostname <new-name>**
+  - **hostnamectl --set-hostname --static --transient --pretty <new-name>**
   
     To verify the change in hostname, run the following command:
     
