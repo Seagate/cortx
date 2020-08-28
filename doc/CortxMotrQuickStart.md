@@ -1,6 +1,6 @@
 # Cortx-Motr QuickStart guide
-This is a step by step guide to get CORTX ready for you on your system.
-Before cloning, however, you need to have a SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).  If you prefer video, here is a [link to a video](https://seagatetechnology.sharepoint.com/:v:/s/gteamdrv1/tdrive1224/EZbJ5AUWe79DksiRctCtsnUB9sILRr5DqHeBzdrwzNNg6w?e=Xamvex) produced by Seagate engineer Puja Mudaliar following these instructions.
+This is a step by step guide to get Cortx-Motr ready for you on your system.
+Before cloning, however, you need to have a SSC / Cloud VM or a local VM setup in either VMWare Fusion or Oracle VirtualBox [LocalVMSetup](LocalVMSetup.md).  If you prefer a video instruction, here is a [link to a video](https://seagatetechnology.sharepoint.com/:v:/s/gteamdrv1/tdrive1224/EZbJ5AUWe79DksiRctCtsnUB9sILRr5DqHeBzdrwzNNg6w?e=Xamvex) produced by Seagate engineer Puja Mudaliar following these instructions.
 
 ## Accessing the source code right way
 (For phase 1) Latest code which is getting evolved, advancing and contributed is on the current github server.
@@ -33,7 +33,7 @@ Getting the main CORTX source code on your system is straightforward.
    
    `$ sudo yum install epel-release`
    
-1. Build and install necessaries dependencies. When finished, if you see failed=0 in the output, which means your installation is successful. 
+2. Build and install necessaries dependencies. When finished, if you see failed=0 in the output, which means your installation is successful. 
 
    * To install all dependent packages like lustre, pip, etc.
   
@@ -56,7 +56,7 @@ Getting the main CORTX source code on your system is straightforward.
    
      `$ pip3 install ply`
   
-2. Reboot
+3. Reboot
 
    You can use command `$ sudo reboot` to reboot the system.
    If you use cloud VM, you can go to your cloud VM website and select the VM, stop first and start again to complete the reboot process.
@@ -73,7 +73,7 @@ Getting the main CORTX source code on your system is straightforward.
      192.168.9.60@tcp
      10.230.245.74@tcp1
 
-3. Compiling cortx-motr (Commands assumes that user is already into it's main source directory i.e. `$cd cortx-motr`)
+4. Compiling cortx-motr (Commands assume that user is already into it's main source directory i.e. `$cd cortx-motr`)
    * Run following command
    
    `$ sudo ./scripts/m0 make` or `$sudo ./scripts/m0 rebuild`
