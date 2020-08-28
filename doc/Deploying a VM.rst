@@ -76,6 +76,6 @@ Perform the procedure mentioned below to deploy the VM.
     - **hostnamectl status**
  
  
-**Note**: It is not recommended to install VMware tools as CORTX may break due to kernel dependencies. 
+**Note**: It is not recommended to install **VMware Tools** as CORTX may break due to kernel dependencies. 
 
 
