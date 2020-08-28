@@ -45,7 +45,7 @@ Perform the procedure mentioned below to deploy the VM.
   
   - One interface must be mapped to the data network.
   
-  **Note**: The management and data networks are connected to different Internet Protocol (IP) subnets.
+  **Note**: Ensure that the management and data networks are connected to different subnets.
 
 11. Select either of the following as an option for provisioning the disks.
 
