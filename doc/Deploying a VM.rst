@@ -65,7 +65,6 @@ Perform the procedure mentioned below to deploy the VM.
   - ens192 - management
   - ens256 - public data
   
-  **Note**: As there is a single-node VM, the above IP addresses are also VIPs.
   
 17. If required, change the hostname by running the following command:
 
