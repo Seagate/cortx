@@ -31,7 +31,7 @@ Perform the procedure mentioned below to deploy the VM.
 
 5. Click the blue pane to select an OVF and a VMDK, or an OVA file to deploy. Your local system storage opens.
 
-6. Select the file that you want to deploy your virtual machine from, and click **Open**.
+6. Select all the files that corresponds to the virtual machine that you want to deploy, and click **Open**.
 
 7. Click **Next**.
 
@@ -40,6 +40,12 @@ Perform the procedure mentioned below to deploy the VM.
 9. Click **Next**. 
 
 10. Perform the network configuration accurately.
+
+  - One interface must be mapped to the management network.
+  
+  - One interface must be mapped to the data network.
+  
+  **Note**: The management and data networks are connected to different Internet Protocol (IP) subnets.
 
 11. Select either of the following as an option for provisioning the disks.
 
@@ -70,6 +76,6 @@ Perform the procedure mentioned below to deploy the VM.
     - **hostnamectl status**
  
  
-**Note**: It is not recommended to use VMware products as CORTX may break due to kernel dependencies. 
+**Note**: It is not recommended to install VMware tools as CORTX may break due to kernel dependencies. 
 
 
