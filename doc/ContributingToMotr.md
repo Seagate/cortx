@@ -30,7 +30,8 @@ Setup the git config options
 Clone cortx-motr
 
 * Each contributor needs to do 'fork' to create their own private cortx-motr and motr-galois repository.
-* Go to homepage of [cortx-motr repository on GitHub](https://github.com/Seagate/cortx-motr), there you will see 'fork' at top right corner.
+* Go to homepage of [motr-galois repository on GitHub](https://github.com/Seagate/motr-galois), there you will see 'fork' at top right corner. fork it.
+* Now, go to homepage of [cortx-motr repository on GitHub](https://github.com/Seagate/cortx-motr) and fork this one too.
 > $ git clone --recursive git@github.com:"your-github-id"/cortx-motr.git
 
 
