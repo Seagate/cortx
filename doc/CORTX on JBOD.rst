@@ -33,8 +33,16 @@ To setup Motr + hare and IO with m0crate, perform the procedure mentioned below.
 1. Install yum utils for yum-config-manager by running the following command.
 
  - **# yum install yum-utils.noarch**
+ 
+2. Add the latest release rpm repository.
 
-2. Add repo for the pacemaker.
+ - **# yum-config-manager --add-repo=http://cortx-storage.colo.seagate.com/releases/eos/github/release-2729/**
+
+3. Add repository for lustre packages.
+
+ - **# sudo yum-config-manager --add-repo=http://cortx-storage.colo.seagate.com/releases/cortx/lustre/custom/tcp/**
+
+4. Add repo for the pacemaker.
 
  # add /etc/yum.repos.d/base.repo with following contents 
     [base]
@@ -47,6 +55,19 @@ To setup Motr + hare and IO with m0crate, perform the procedure mentioned below.
 
  name=base
 
-3. Run the following command to run Motr and Hare.
+5. Run the following command to run Motr and Hare.
 
  - **# yum install -y --nogpgcheck cortx-motr.x86_64 cortx-hare.x86_64**
+ 
+6. Configure lnet on all the nodes. 
+
+   edit /etc/modprobe.d/lnet.conf file with netowork interface used by MOTR endpoints' 
+    options lnet networks=o2ib(enp175s0f1) config_on_load=1
+
+ - # systemctl restart lnet
+
+ -  # lctl list_nids
+
+7. To update the BE tx parameters, run the following command:
+
+ -  **# m0provisioning config**
