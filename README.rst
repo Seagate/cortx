@@ -56,7 +56,7 @@ Reach Out To Us
 ---------------
 
 - Join our CORTX-Open Source Slack channel |Slack| to interact with your fellow community members and gets your questions answered. 
-- If you'd like to contact us directly, drop us a mail at: `cortx-early-adopters@seagate.com <cortx-early-adopters@seagate.com>`_
+- If you'd like to contact us directly, drop us a mail at: `opensource@seagate.com <opensource@seagate.com>`_
 
 Thank You!
 ----------
