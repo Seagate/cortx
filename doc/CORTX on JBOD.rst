@@ -22,3 +22,5 @@ The prerequisites are as follows:
 Configuration Workflow
 ***********************
 As a contributor, you must follow the workflow described in the diagram below, to install CORTX on JBOD.
+
+ .. image:: images/JBOD.png
