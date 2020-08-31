@@ -43,11 +43,13 @@ Contribute to CORTX Community
 
 Refer to the CORTX Community Guide **<link placeholder>** that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us.
 
+We excited for your interest in CORTX and hope you will join us. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our `Code of Conduct <CODE_OF_CONDUCT.md>`_.
+
 Support and Community Discussions
 *********************************
 
 - Join our CORTX-Open Source Slack channel |Slack| to interact with your fellow community members and gets your questions answered. 
-- If you'd like to contact us directly, drop us a mail at: `cortx-early-adopters@seagate.com <cortx-early-adopters@seagate.com>`_
+- If you'd like to contact us directly, drop us a mail at: `opensource@seagate.com <opensource@seagate.com>`_
 
 Thank You!
 -----------
