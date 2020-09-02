@@ -111,7 +111,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 1. Navigate to the repository homepage on GitHub.
 2. Click **Fork**
 3. Run the following commands in Shell:
-
+   
    `$ git clone git@github.com:"your-github-id"/repo-name.git`
 
 4. You'll need to setup the upstream repository in the remote list. This is a one-time activity. Run the following command to view the configured remote repository for your fork.
@@ -128,9 +128,9 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 
  5. Set up the upstream repository in the remote list using:
    
-     `$ git remote add upstream git@github.com:Seagate/reponame.git
+    `$ git remote add upstream git@github.com:Seagate/reponame.git`
       
-     `$ git remote -v`
+    `$ git remote -v`
 
      **Sample Output:**
     
@@ -222,7 +222,7 @@ You can make changes to the code and save them in your files.
 <p>
 1. Once you Push changes to GitHub, the output will display a URL for creating a Pull Request, as shown in the sample code above.
 
-:page_with_curl:**Note:** To resolve conflicts, follow the troubleshooting steps mentioned in git error messages.
+   :page_with_curl:**Note:** To resolve conflicts, follow the troubleshooting steps mentioned in git error messages.
 
 2. You'll be redirected to GitHib remote.
 3. Select the relevant repository branch from the *Branches/Tags* drop-down list.
