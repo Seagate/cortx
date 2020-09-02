@@ -8,7 +8,7 @@ After reading this guide, you'll be able to pick up topics and issues to contrib
 
 - [**Code of Conduct**](#Code-of-Conduct)
 - [**Contribution Process**](Contribution-Process)
-- [**Submitting issues**](#Submitting_Issues)
+- [**Submitting issues**](#Submitting-Issues)
 - [**Contributing to Documentation**](#Contributing_to_Documentation)
 
 
@@ -72,11 +72,11 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 Contributing to the CORTX repository is a six-step process where you'll need to:
 
 1. [Set up Git on your Development Box](#1-Setup-Git-on-your-Development-Box)
-2. Clone the CORTX repository
-3. Commit your Code
-4. Create a Pull Request
-5. Run Jenkins and System Tests
-6. Sign the CLA and DCO
+2. [Clone the CORTX Repository](#2-Clone-the-CORTX-Repository)
+3. [Commit your Code](#3-Commit-your-Code)
+4. [Create a Pull Request](#4-Create-a-Pull-Request)
+5. [Run Jenkins and System Tests](#5-Run-Jenkins-and-System-Tests)
+6. [Sign off the CLA and DCO](
 
 ### 1. Setup Git on your Development Box
 
@@ -100,7 +100,7 @@ Once you've installed the prerequisites, follow these steps to set up Git on you
 </p>
 </details>
 
-### 2. Clone the CORTX repository
+### 2. Clone the CORTX Repository
 
 <details>
 <summary>Click to expand!</summary>
@@ -118,7 +118,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
     
        `$ git remote -v`  
 
-       **Sample Output:**
+      **Sample Output:**
     
         ```shell
     
@@ -129,7 +129,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
  5. Set up the upstream repository in the remote list using:
    
       `$ git remote add upstream git@github.com:Seagate/reponame.git
-
+      
       `$ git remote -v`
 
       **Sample Output:**
@@ -144,7 +144,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
     
 6. Check out to your branch using:
 
-   `$ git checkout <branchname>`
+   `$ git checkout "branchname"`
 
    `$ git checkout -b 'your-local-branch-name`
    
@@ -236,17 +236,24 @@ You can make changes to the code and save them in your files.
 
 Creating a pull request automatically triggers Jenkins jobs and System tests. To familiarize yourself with jenkins, please visit the [Jenkins wiki page](https://en.wikipedia.org/wiki/Jenkins_(software)).
 
-### CLA and DCO 
+### Sign off CLA and DCO 
 
+<details>
+  <summary>Click to expand!</summary>
+  <p>
+    
 To ensure contributions can be redistributed by all under an open source license, all contributions must be signed with [DCO](https://opensource.com/article/18/3/cla-vs-dco-whats-difference). To further ensure that all members of the community can redistribute and resell CORTX should and when they so choose, [CLA may be required on a case-by-case basis](https://github.com/Seagate/cortx/blob/main/doc/cla/README.md) such that corporations cannot attempt to prevent others from reselling CORTX.
 
 More formally, in order to clarify the intellectual property license granted with Contributions from any person or entity, CORTX Community may require a Contributor License Agreement (CLA) on file that has been signed by each Contributor, indicating agreement to the license terms below. This license is for your protection as a Contributor as well as the protection of the project and its users; it does not change your rights to use your own Contributions for any other purpose.
 
-DCO is always required. The code reviewers will use the following decision tree to determine when CLA will be needed 
+DCO is always required. The code reviewers will use the [decision tree](https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md) to determine when CLA is required.
+
+</p>
+</details>
 
 ## Submitting Issues
 
-## Contributing to Documentation
+## Contributing to Documentation TODO
 
 ## Resources 
 
