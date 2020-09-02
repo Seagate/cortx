@@ -76,7 +76,7 @@ Contributing to the CORTX repository is a six-step process where you'll need to:
 3. [Commit your Code](#3-Commit-your-Code)
 4. [Create a Pull Request](#4-Create-a-Pull-Request)
 5. [Run Jenkins and System Tests](#5-Run-Jenkins-and-System-Tests)
-6. [Sign off the CLA and DCO](
+6. [Sign CLA and Pass DCO](#Sign-CLA-and-Pass-DCO)
 
 ### 1. Setup Git on your Development Box
 
@@ -236,7 +236,7 @@ You can make changes to the code and save them in your files.
 
 Creating a pull request automatically triggers Jenkins jobs and System tests. To familiarize yourself with jenkins, please visit the [Jenkins wiki page](https://en.wikipedia.org/wiki/Jenkins_(software)).
 
-### Sign off CLA and DCO 
+### 6. Sign CLA and Pass DCO 
 
 <details>
   <summary>Click to expand!</summary>
@@ -252,6 +252,12 @@ DCO is always required. The code reviewers will use the [decision tree](https://
 </details>
 
 ## Submitting Issues
+
+### The GitHub Triage Process
+
+## File a Bug 
+
+## Suggest a Feature or Improvement
 
 ## Contributing to Documentation TODO
 
