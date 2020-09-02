@@ -23,7 +23,7 @@ The CORTX stack currently does not work on Intel's OmniPath cards.
 
 Since CORTX is composed of the Motr and S3 Server components, you'll need to:
 
-1. `Set up CORTX-Motr <../main/doc/CortxMotrQuickStart.md>`_
+1. `Set up CORTX-Motr <https://github.com/Seagate/cortx-motr/blob/dev/doc/Quick-Start-Guide.rst>`_
 
 2. `Get CORTX-S3 Server ready <https://github.com/Seagate/cortx-s3server/blob/dev/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md>`_
 
