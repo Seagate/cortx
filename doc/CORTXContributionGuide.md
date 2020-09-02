@@ -47,16 +47,16 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
       
  - Update Git to the latest version. If you're on an older version, you'll see errors in your commit hooks that look like this:
 
-      `$ git commit`
+    `$ git commit`
 
-      **Sample Output**
+     **Sample Output**
   
-      ```shell
+    ```shell
 
-      git: 'interpret-trailers' is not a git command.
-      See 'git --help'
-      cannot insert change-id line in .git/COMMIT_EDITMSG
-      ```
+    git: 'interpret-trailers' is not a git command.
+    See 'git --help'
+    cannot insert change-id line in .git/COMMIT_EDITMSG
+    ```
 
 - Install Fix for CentOS 7.x by using: `$ yum remove git`
   * Download the [RPM file from here](https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm) and run the following commands:
@@ -116,31 +116,31 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 
 4. You'll need to setup the upstream repository in the remote list. This is a one-time activity. Run the following command to view the configured remote repository for your fork.
     
-       `$ git remote -v`  
+   `$ git remote -v`  
 
-      **Sample Output:**
+    **Sample Output:**
     
-        ```shell
+    ```shell
     
-        origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
-        origin git@github.com:<github-id>/cortx-sspl.git (push)
-        ```
+     origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
+     origin git@github.com:<github-id>/cortx-sspl.git (push)
+     ```
 
  5. Set up the upstream repository in the remote list using:
    
-      `$ git remote add upstream git@github.com:Seagate/reponame.git
+     `$ git remote add upstream git@github.com:Seagate/reponame.git
       
-      `$ git remote -v`
+     `$ git remote -v`
 
-      **Sample Output:**
+     **Sample Output:**
     
-      ```shell
+     ```shell
     
-      origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
-      origin git@github.com:<github-id>/cortx-sspl.git (push)
-      upstream git@github.com:Seagate/cortx-sspl.git (fetch)
-      upstream git@github.com:Seagate/cortx-sspl.git (push)
-      ```
+     origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
+     origin git@github.com:<github-id>/cortx-sspl.git (push)
+     upstream git@github.com:Seagate/cortx-sspl.git (fetch)
+     upstream git@github.com:Seagate/cortx-sspl.git (push)
+     ```
     
 6. Check out to your branch using:
 
@@ -187,7 +187,7 @@ You can make changes to the code and save them in your files.
 
 2. To commit your code changes use:
 
-   `$ git commit -m ‘comment’` - enter your GitHub Account ID and an appropriate Feature or Change description in comment.
+   `$ git commit -s -m ‘comment’` - enter your GitHub Account ID and an appropriate Feature or Change description in comment.
 
 3. Check out your git log to view the details of your commit and verify the author name using: `$ git log`
 
