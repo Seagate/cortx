@@ -37,7 +37,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
     1. Copy the public key: `id_rsa.pub`. By default, your public key is located at `/root/.ssh/id_rsa.pub`
     2. Navigate to [GitHub SSH key settings](https://github.com/settings/keys) on your GitHub account.
       
-    :page_with_curl:**Note:** Ensure that you've set your Email ID as the Primary Email Address associated with your GitHub Account. SSO will not work if you do not set  your Seagate Email ID as your Primary Email Address.
+    :page_with_curl:**Note:** Ensure that you've set your Email ID as the Primary Email Address associated with your GitHub Account. SSO will not work if you do not set up your Email ID as your Primary Email Address.
     
     3. Paste the SSH key you generated in Step 1 and select *Enable SSO*.
     4. Click **Authorize** to authorize SSO for your SSH key.
@@ -71,7 +71,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 
 Contributing to the CORTX repository is a six-step process where you'll need to:
 
-1. Set up Git on your Development Box
+1. [Set up Git on your Development Box](#1-Setup-Git-on-your-Development-Box)
 2. Clone the CORTX repository
 3. Commit your Code
 4. Create a Pull Request
@@ -80,7 +80,11 @@ Contributing to the CORTX repository is a six-step process where you'll need to:
 
 ### 1. Setup Git on your Development Box
 
-Once you've installed the prerequisites, follow these steps to set up Git on your Development Box:
+Once you've installed the prerequisites, follow these steps to set up Git on your Development Box.
+
+<details>
+  <summary> Click to expand!</summary>
+  <p>
 
 1. Install git-clang-format using: `$ yum install git-clang-format`
 
@@ -93,13 +97,16 @@ Once you've installed the prerequisites, follow these steps to set up Git on you
    $ git config --global color.ui auto
    $ git config --global credential.helper cache
    ```
+</p>
+</details>
 
 ### 2. Clone the CORTX repository
 
 <details>
 <summary>Click to expand!</summary>
 <p>
-Before you can work on a GitHub feature, you'll need to clone the repository you're working on. You'll need to **Fork** the repository to clone it into your private GitHub repository and follow these steps:
+
+Before you can work on a GitHub feature, you'll need to clone the repository you're working on. **Fork** the repository to clone it into your private GitHub repository and follow these steps:
 
 1. Navigate to the repository homepage on GitHub.
 2. Click **Fork**
@@ -107,27 +114,25 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 
    `$ git clone git@github.com:"your-github-id"/repo-name.git`
 
-4.  You'll need to setup the upstream repository in the remote list. This is a one-time activity.
-
-    1. Run the following command to view the configured remote repository for your fork.
+4. You'll need to setup the upstream repository in the remote list. This is a one-time activity. Run the following command to view the configured remote repository for your fork.
     
        `$ git remote -v`  
 
-      Sample Output:
+       **Sample Output:**
     
-      ```shell
+        ```shell
     
-      origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
-      origin git@github.com:<github-id>/cortx-sspl.git (push)
-      ```
+        origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
+        origin git@github.com:<github-id>/cortx-sspl.git (push)
+        ```
 
-   2. Set up the upstream repository in the remote list using:
+ 5. Set up the upstream repository in the remote list using:
    
       `$ git remote add upstream git@github.com:Seagate/reponame.git
 
       `$ git remote -v`
 
-      Sample Output:
+      **Sample Output:**
     
       ```shell
     
@@ -137,13 +142,21 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
       upstream git@github.com:Seagate/cortx-sspl.git (push)
       ```
     
-5. Check out to your branch using:
+6. Check out to your branch using:
 
    `$ git checkout <branchname>`
 
    `$ git checkout -b 'your-local-branch-name`
    
-   :page_with_curl: **Note:** By default, you'll need to contribute to the main branch. However, this may differ for some repositories. 
+    :page_with_curl: **Note:** By default, you'll need to contribute to the main branch. However, this differs for various repositories as shown below:
+    
+   | **Repository**   | **Branch Name** | 
+   | :----------------| :-------------: |
+   | cortx-s3server   | main            | 
+   | cortx-hare       | dev             | 
+   | cortx-motr       | dev             |
+   | cortx-prvsnr     | main            |
+   | cortx-sspl       | dev             |
 
 </p>
 </details>
@@ -170,19 +183,19 @@ You can make changes to the code and save them in your files.
 
 1. Use the command below to add files that need to be pushed to the git staging area:
 
-- `$ git add foo/somefile.cc`
+    `$ git add foo/somefile.cc`
 
 2. To commit your code changes use:
 
-   `$ git commit -m ‘comment’` - Enter your GitHub Account ID and an appropriate Feature or Change description in comment.
+   `$ git commit -m ‘comment’` - enter your GitHub Account ID and an appropriate Feature or Change description in comment.
 
 3. Check out your git log to view the details of your commit and verify the author name using: `$ git log`
 
-  :page_with_curl:**Note:** If you need to change the author name for your commit, refer to the GitHub article on [Changing author info](https://docs.github.com/en/github/using-git/changing-author-info).
+   :page_with_curl:**Note:** If you need to change the author name for your commit, refer to the GitHub article on [Changing author info](https://docs.github.com/en/github/using-git/changing-author-info).
 
 4. To Push your changes to GitHub, use: `$ git push origin 'your-local-branch-name'`
 
-   Your output will look like the Sample Output below:
+   **Sample Output**
 
    ```shell
 
@@ -196,7 +209,7 @@ You can make changes to the code and save them in your files.
    remote:
    remote: Create a pull request for 'your-local-branch-name' on GitHub by visiting:
    remote: https://github.com/<your-GitHub-Id>/cortx-s3server/pull/new/<your-local-branch-name>
-   remote: To github.com:<your-GitHub-Id>/cortx-s3server.git
+   remote: To github.com:<your-GitHub-Id>/reponame.git
    * [new branch] <your-local-branch-name> -> <your-local-branch-name>
    ```
 </p>
@@ -210,8 +223,9 @@ You can make changes to the code and save them in your files.
 1. Once you Push changes to GitHub, the output will display a URL for creating a Pull Request, as shown in the sample code above.
 
 :page_with_curl:**Note:** To resolve conflicts, follow the troubleshooting steps mentioned in git error messages.
+
 2. You'll be redirected to GitHib remote.
-3. Select **main** from the Branches/Tags drop-down list.
+3. Select the relevant repository branch from the *Branches/Tags* drop-down list.
 4. Click **Create pull request** to create the pull request.
 5. Add reviewers to your pull request to review and provide feedback on your changes.
 
@@ -223,6 +237,12 @@ You can make changes to the code and save them in your files.
 Creating a pull request automatically triggers Jenkins jobs and System tests. To familiarize yourself with jenkins, please visit the [Jenkins wiki page](https://en.wikipedia.org/wiki/Jenkins_(software)).
 
 ### CLA and DCO 
+
+To ensure contributions can be redistributed by all under an open source license, all contributions must be signed with [DCO](https://opensource.com/article/18/3/cla-vs-dco-whats-difference). To further ensure that all members of the community can redistribute and resell CORTX should and when they so choose, [CLA may be required on a case-by-case basis](https://github.com/Seagate/cortx/blob/main/doc/cla/README.md) such that corporations cannot attempt to prevent others from reselling CORTX.
+
+More formally, in order to clarify the intellectual property license granted with Contributions from any person or entity, CORTX Community may require a Contributor License Agreement (CLA) on file that has been signed by each Contributor, indicating agreement to the license terms below. This license is for your protection as a Contributor as well as the protection of the project and its users; it does not change your rights to use your own Contributions for any other purpose.
+
+DCO is always required. The code reviewers will use the following decision tree to determine when CLA will be needed 
 
 ## Submitting Issues
 
@@ -246,11 +266,8 @@ Refer to these Quickstart Guides to build and contribute to the CORTX project.
 
 ## Communication Channels
 
-
 - Join the CORTX Slack Channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) and chat with your fellow contributors 
-
 - Mail Id [cortx-questions@seagate.com](cortx-questions@seagate.com)
-
 - You can start a thread in the [Github Community] (Link TBA) for any questions, suggestions, feedback, or discussions with your fellow community members. 
 
-## Thank You!
+### Thank You!
