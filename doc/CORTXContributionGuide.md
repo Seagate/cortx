@@ -1,22 +1,22 @@
 # Contribute to the CORTX Project
 
-CORTX is about building the [world's best scalable mass-capacity object storage system](https://github.com/Seagate/cort). If you’re interested in what we’re building and intrigued by hard challenges, here's everything you need to know about contributing to the project and how to get started. 
+CORTX is about building the [world's best scalable mass-capacity object storage system](https://github.com/Seagate/cortx). If you’re interested in what we’re building and intrigued by hard challenges, here's everything you need to know about contributing to the project and how to get started. 
 
-After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and how to turn your pull request into a successful contribution. Feel free to browse through the [list of contrubutions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md), and [view and submit issues](https://github.com/Seagate/cortx/issues). 
-
-And if you have any suggestions on how we can improve this guide, or anything else in the project, we want to hear from you. 
+After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and how to turn your pull request into a successful contribution. Feel free to browse through the [list of contrubutions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md), and [view and submit issues](https://github.com/Seagate/cortx/issues). And if you have any suggestions on how we can improve this guide, or anything else in the project, we want to hear from you!
 
 ## Contribution Guide
 
 - [**Code of Conduct**](#Code-of-Conduct)
-- [**Contribution Process**](Contribution_Process)
+- [**Contribution Process**](Contribution-Process)
 - [**Submitting issues**](#Submitting_Issues)
 - [**Contributing to Documentation**](#Contributing_to_Documentation)
 
 
 ## Code of Conduct
 
-Thanks for joining us and we're glad to have you. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our [Contributor Covenant Code of Conduct](https://github.com/Seagate/cortx/blob/main/CODE_OF_CONDUCT.md). Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at opensource@seagate.com.
+Thanks for joining us and we're glad to have you. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our [Contributor Covenant Code of Conduct](https://github.com/Seagate/cortx/blob/main/CODE_OF_CONDUCT.md). 
+
+You can report instances of abusive, harassing, or otherwise unacceptable behavior by contacting the project team at opensource@seagate.com.
 
 ## Contribution Process
 
@@ -30,54 +30,53 @@ Thanks for joining us and we're glad to have you. We take community very serious
 
   1. Generate the SSH key on your development box using:
 
-      ```shell
-
-       $ ssh-keygen -o -t rsa -b 4096 -C "seagate-email-address"
-      ```
+     ```shell
+     $ ssh-keygen -o -t rsa -b 4096 -C "Email-address"
+     ```
   2. Add the SSH key to your GitHub Account:
     1. Copy the public key: `id_rsa.pub`. By default, your public key is located at `/root/.ssh/id_rsa.pub`
     2. Navigate to [GitHub SSH key settings](https://github.com/settings/keys) on your GitHub account.
       
-      :page_with_curl:**Note:** Ensure that you've set your Seagate Email ID as the Primary Email Address associated with your GitHub Account. SSO will not work if you do not set  your Seagate Email ID as your Primary Email Address.
+    :page_with_curl:**Note:** Ensure that you've set your Email ID as the Primary Email Address associated with your GitHub Account. SSO will not work if you do not set  your Seagate Email ID as your Primary Email Address.
+    
     3. Paste the SSH key you generated in Step 1 and select *Enable SSO*.
     4. Click **Authorize** to authorize SSO for your SSH key.
     5. [Create a Personal Access Token or PAT](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 
-      :page_with_curl:**Note:** Ensure that you have enabled SSO for your PAT.
+     :page_with_curl:**Note:** Ensure that you have enabled SSO for your PAT.
       
  - Update Git to the latest version. If you're on an older version, you'll see errors in your commit hooks that look like this:
 
-    `$ git commit`
+      `$ git commit`
 
-  Sample Output
+      **Sample Output**
   
-    ```shell
+      ```shell
 
-    git: 'interpret-trailers' is not a git command.
-    See 'git --help'
-    cannot insert change-id line in .git/COMMIT_EDITMSG
-    ```
+      git: 'interpret-trailers' is not a git command.
+      See 'git --help'
+      cannot insert change-id line in .git/COMMIT_EDITMSG
+      ```
 
 - Install Fix for CentOS 7.x by using: `$ yum remove git`
-
-    Download the [RPM file from here](https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm) and run the following commands:
-
+  * Download the [RPM file from here](https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm) and run the following commands:
+  
     ```shell
-
-    $ yum -y install
-    $ yum -y install git
+       $ yum -y install
+       $ yum -y install git
     ```
 
    </p>
     </details>
 
-Contributing to the CORTX repository is a four-step process where you'll need to:
+Contributing to the CORTX repository is a six-step process where you'll need to:
 
 1. Set up Git on your Development Box
 2. Clone the CORTX repository
 3. Commit your Code
 4. Create a Pull Request
 5. Run Jenkins and System Tests
+6. Sign the CLA and DCO
 
 ### 1. Setup Git on your Development Box
 
