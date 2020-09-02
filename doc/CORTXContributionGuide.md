@@ -1,45 +1,22 @@
 # Contribute to the CORTX Project
 
-Have you ever wanted to solve the world's storage issues? We'll help you understand [CORTX—the coolest project on storage solution](https://github.com/Seagate/cortx), how it's organized, and the best places to get started with contributing. 
+CORTX is about building the [world's best scalable mass-capacity object storage system](https://github.com/Seagate/cort). If you’re interested in what we’re building and intrigued by hard challenges, here's everything you need to know about contributing to the project and how to get started. 
 
-After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and get your work reviewd and merged. Feel free to browse through the [list of contrubutions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md), and [view and submit issues](https://github.com/Seagate/cortx/issues). 
+After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and how to turn your pull request into a successful contribution. Feel free to browse through the [list of contrubutions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md), and [view and submit issues](https://github.com/Seagate/cortx/issues). 
 
-We welcome all feedback and contributions!
+And if you have any suggestions on how we can improve this guide, or anything else in the project, we want to hear from you. 
 
 ## Contribution Guide
 
 - [**Code of Conduct**](#Code-of-Conduct)
-- [**Community Guidelines**](#Community-Guidelines)
 - [**Contribution Process**](Contribution_Process)
 - [**Submitting issues**](#Submitting_Issues)
 - [**Contributing to Documentation**](#Contributing_to_Documentation)
 
+
 ## Code of Conduct
 
-We excited for your interest in CORTX and hope you will join us. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our [Contributor Covenant Code of Conduct](https://github.com/Seagate/cortx/blob/main/CODE_OF_CONDUCT.md).
-
-## Community Guidelines
-
-To know more about the CORTX community, refer to the [CORTX Community Brief](https://github.com/Seagate/cortx/blob/main/doc/SB510_1-2004US_Seagate_CORTX_Community-Brief_R7.2.pdf)
-
-### CORTX Community Values
-
-The CORTX community is strongly driven by the following Community Values:
-
-<details>
-<summary>Click to expand!</summary>
-<p>
-
-**Inclusive** - Our ambitions are global. The CORTX community is, too. The perspectives and skills necessary to achieve our goals are wide and varied; we believe in creating a community and a project that is inclusive, accessible, and welcoming to everyone.
-
-**Open** - We are dedicated to remaining open and transparent. We believe in keeping CORTX Community code freely and fully available to be viewed, modified, and used without vendor lock in or other in-built limitations.
-
-**Inspired** - CORTX is all about the challenge. Our goals are not small: we want to build the world’s best scalable mass-capacity object storage system, one that can work with any hardware and interoperate with all workloads. CORTX is built on hard work, ingenuity and an engineering mindset. We embrace hard problems and find inspired solutions.
-
-**Evolving** – CORTX is continuously growing and adapting. As a community project, there is no limit to its development. We continuously make room for improvement and welcome the opportunities offered by the ever-evolving nature of community projects.
-
-</p>
-</details>
+Thanks for joining us and we're glad to have you. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our [Contributor Covenant Code of Conduct](https://github.com/Seagate/cortx/blob/main/CODE_OF_CONDUCT.md). Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at opensource@seagate.com.
 
 ## Contribution Process
 
@@ -273,10 +250,8 @@ Refer to these Quickstart Guides to build and contribute to the CORTX project.
 
 - Join the CORTX Slack Channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) and chat with your fellow contributors 
 
-- Mail Id [opensource@seagate.com](opensource@seagate.com)
+- Mail Id [cortx-questions@seagate.com](cortx-questions@seagate.com)
 
-- You can start a thread in the [Github Community](https://github.com/orgs/Seagate/teams/cortx-community/discussions) for any questions, suggestions, feedback, or discussions with your fellow community members. 
+- You can start a thread in the [Github Community] (Link TBA) for any questions, suggestions, feedback, or discussions with your fellow community members. 
 
 ## Thank You!
-
-We thank you for stopping by to check out the CORTX Community. We are fully dedicated to our mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world.
