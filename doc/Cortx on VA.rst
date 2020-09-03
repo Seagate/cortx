@@ -36,8 +36,22 @@ The procedure to install Cortx on VA is mentioned below.
  
 6. Turn on the virtual machine and login using either the SSH or VMware console.
 
- - Username: root
+ - Username: cortx
  - Password: opensource!
+ 
+7. As the super user, run the following command:
+
+ - **sudo su -**
+ 
+8. Update the hostname by running the below mentioned command. By default the name is set to **localhost.localdomain**.
+
+ - **hostnamectl set-hostname --static --transient --pretty <new_hostname>**
+
+     If you receive **Access denied** message, remove immutable settings on the **/etc/hostname** file and run the command again. To remove immutable setting from **/etc/hostname**, run the following command.
+     
+     - **chattr -i /etc/hostname**
+     
+  **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.  
 
 7. Run the following command:
 
