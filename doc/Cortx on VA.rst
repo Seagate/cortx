@@ -100,3 +100,27 @@ The procedure to install Cortx on VA is mentioned below.
 17. Open the web browser and navigate to the following location:
 
   - **https://<management IP>:28100/#/preboarding/welcome**
+  
+Restarting CORTX VA
+===================
+To restart the CORTX VA, follow the below mentioned procedures, in the order of listing.
+
+- Shutdown the VA
+
+- Start the VA
+
+Shutdown the VA
+----------------
+1. Stop all S3 I/O traffic from S3 clients to VA.
+
+2. Login to the CORTX Virtual Appliance as user **cortx** and run the following.
+
+ - **sudo su -**
+
+3. Stop CORTX I/O subsystem by running the following command.
+
+ - **hctl shutdown** 
+
+4. After executing the previous command, shutdown the VA by running the following command.
+
+ - **poweroff**
