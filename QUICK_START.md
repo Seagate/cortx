@@ -4,7 +4,7 @@ CORTX QUICK START GUIDE
 In order to contribute to CORTX, the first thing to understand is that CORTX Community is currently comprised of three main pieces.  The first is this parent repository which contains top-level documentation about CORTX Community.  The second is the cortx-motr repository and it is the central component providing object and key-value storage.  The third component is our S3 interface to cortx-motr.  Contributions are welcome in any of the three components.  Sometimes it can be challenging to decide where particular documentation should be contributed.  Use your best judgement or feel free to discuss that in our communications channels! During code review, we can also decide to move a particular documentation contribution to a different location.
 
 1. Set up your [build and test environment](doc/BUILD_ENVIRONMENT.md)
-2. [Getting cortx-motr ready](doc/CortxMotrQuickStart.md)
+2. [Getting cortx-motr ready](https://github.com/Seagate/cortx-motr/blob/dev/doc/Quick-Start-Guide.rst)
 3. [Getting Cortx-S3 ready](doc/CortxS3ServerQuickStart.md)
 4. A [video](https://web.microsoftstream.com/video/8453895e-c632-4891-a8e4-f80f9f73b129?list=studio) from CORTX engineer Kevin Price demonstrating the above three steps
 5. [Help Wanted - Suggested Contributions](doc/SuggestedContributions.md)
