@@ -3,7 +3,7 @@
 _« Par ma foi ! il y a plus de quarante ans que je dis de la prose sans que j'en susse rien, et je vous suis le
 plus obligé du monde de m'avoir appris cela. »_
 
-This document attempts to be a master document for the whole of Motr, 
+This document attempts to be the single source of truth document for the whole of Motr, 
 concentrating on giving a consistent overview of the architecture.
 
 The document is structured as a collection of fragments. Each fragment, 
@@ -288,7 +288,7 @@ In general, these updates need to be performed on different remote servers
 (in a case, where one meta-data server manages the parent directory and another 
 meta-data server manages new file inode). There are multiple possible execution strategies:
 
-* master-server-only: a client sends a create file fop to a remote service 
+* primary-server-only: a client sends a create file fop to a remote service 
   (say, the service that manages the parent directory). This service, performs 
   its part of the operation and, if necessary, sends create-inode fop to 
   another service that manages the inode;
