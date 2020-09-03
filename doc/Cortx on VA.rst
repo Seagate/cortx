@@ -124,3 +124,31 @@ Shutdown the VA
 4. After executing the previous command, shutdown the VA by running the following command.
 
  - **poweroff**
+ 
+Starting the VA
+----------------
+1. Power on the Virtual Appliance VM.
+
+2. Login to the VA through ssh after the VM starts.
+
+3. As **root**, run the following command.
+
+ - **sudo su -**
+
+4. Start CORTX I/O subsystem by running the following command.
+
+ - **hctl bootstrap -c /var/lib/hare/cluster.yaml**
+
+5. Run the below mentioned command to verify that CORTX I/O subsystem has started.
+
+ - **hctl status** 
+
+6. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started
+
+ - **systemctl status csm_agent**
+
+ - **systemctl status csm_web**
+
+  If the above services are not active, run the following command.
+
+  - **systemctl start <csm_agent|csm_web>**
