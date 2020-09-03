@@ -28,7 +28,7 @@ The procedure to install Cortx on VA is mentioned below.
 
 3. From the directory, download the ZIP file that contains the VMware virtual machine images.
 
-4. Extract the contents of the downloaded ZIP file into your system.
+4. Extract the contents of the downloaded ZIP file into your system. Refer `OVA file <https://github.com/Seagate/cortx/releases/tag/OVA>`_ to download the ZIP file.
 
 5. Install the VM on your system by referring `Deploying a VM <https://github.com/Seagate/cortx/blob/main/doc/Deploying%20a%20VM.rst>`_.
 
