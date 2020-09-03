@@ -51,7 +51,17 @@ The procedure to install Cortx on VA is mentioned below.
      
      - **chattr -i /etc/hostname**
      
-  **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.  
+  **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
+  
+9. Update **/etc/hosts** with the management IP address and the new hostname for the VA.
+
+10. Edit **/root/.ssh/config** and update the following with the new hostname for the VA.
+
+  - **Host srvnode-1 <new_hostname>**
+  
+  - **HostName <new_hostname>**
+  
+  **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it's required for the proper functioning of VA.
 
 7. Run the following command:
 
