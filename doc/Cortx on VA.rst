@@ -99,6 +99,8 @@ The procedure to install Cortx on VA is mentioned below.
 
   - **https://<management IP>:28100/#/preboarding/welcome**
   
+Note: Operating system updates are not supported due to specific kernel dependencies.
+  
 Restarting CORTX VA
 ===================
 To restart the CORTX VA, follow the below mentioned procedures, in the order of listing.
