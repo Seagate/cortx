@@ -15,7 +15,7 @@ Let's get CORTX ready!
 - You'll need to `Build and Test your VM Environment <../main/doc/BUILD_ENVIRONMENT.md>`_.
 - Ensure that you have RoCE(RDMA over Converged Ethernet) and TCP connectivity.
 
-⚠️**Known Limitation**
+⚠️ **Known Limitation**
 
 The CORTX stack currently does not work on Intel's OmniPath cards.
 
