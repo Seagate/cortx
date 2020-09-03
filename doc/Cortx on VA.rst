@@ -63,9 +63,7 @@ The procedure to install Cortx on VA is mentioned below.
   
   **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it's required for the proper functioning of VA.
 
-11. Edit <exact location> and update the HAproxy configuration with public data IP address information.
-
-12. Refresh HAproxy configuration by running the following command.
+11. Refresh HAproxy configuration by running the following command.
 
   - **salt "*" saltutil.pillar_refresh**
   
@@ -73,22 +71,22 @@ The procedure to install Cortx on VA is mentioned below.
   
   - **salt "*" state.apply components.ha.haproxy.start**
   
-13. Restart lnet by running the following command.
+12. Restart lnet by running the following command.
 
   - **systemctl restart lnet**
   
 
-14. Run the following command:
+13. Run the following command:
 
  - **hctl bootstrap --mkfs /var/lib/hare/cluster.yaml**
 
   You must run the above command with **--mkfs** only once. Further usage of **--mkfs** erases data.
 
-15. Ensure that the I/O stack is running by running the following command:
+14. Ensure that the I/O stack is running by running the following command:
 
  - **hctl status**
 
-16. Ensure that the CSM service is operational by running the following commands:
+15. Ensure that the CSM service is operational by running the following commands:
 
  - **systemctl status csm_agent**
  - **systemctl status csm_web**
@@ -97,7 +95,7 @@ The procedure to install Cortx on VA is mentioned below.
 
   - **systemctl start <csm_agent|csm_web>**
   
-17. Open the web browser and navigate to the following location:
+16. Open the web browser and navigate to the following location:
 
   - **https://<management IP>:28100/#/preboarding/welcome**
   
