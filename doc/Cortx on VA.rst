@@ -57,3 +57,7 @@ The procedure to install Cortx on VA is mentioned below.
    If the above services are not active, run the following command:
 
   - **systemctl start <csm_agent|csm_web>**
+  
+10. Open the web browser and navigate to the following location:
+
+  - **https://<management IP>:28100/#/preboarding/welcome**
