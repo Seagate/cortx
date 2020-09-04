@@ -112,7 +112,7 @@ Shutdown the VA
 ----------------
 1. Stop all S3 I/O traffic from S3 clients to VA.
 
-2. Login to the CORTX Virtual Appliance as user **cortx** and run the following.
+2. Login to the CORTX Virtual Appliance as **cortx** and run the following.
 
  - **sudo su -**
 
@@ -130,7 +130,7 @@ Starting the VA
 
 2. Login to the VA through ssh after the VM starts.
 
-3. As **root**, run the following command.
+3. Login to the CORTX VA as **cortx** and run the following
 
  - **sudo su -**
 
