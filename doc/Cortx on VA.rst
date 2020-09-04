@@ -1,14 +1,14 @@
 ==========================
-Cortx on Virtual Appliance
+CORTX on Virtual Appliance
 ==========================
 Virtual Appliance (VA) is a virtual machine image file that consists of pre-installed and pre-configured operating system environment, and a single application.
 
-This document provides information on the procedure that must be followed to install Cortx (all components included) on a VA.
+This document provides information on the procedure that must be followed to install CORTX (all components included) on a VA.
 
 **************
 Prerequisites
 **************
-The prerequisites required to install Cortx on a VA is listed below.
+The prerequisites required to install CORTX on a VA is listed below.
 
 - GitHub Access
 - Unzipping Software (preferably WinZip)
@@ -21,7 +21,7 @@ The prerequisites required to install Cortx on a VA is listed below.
 **********
 Procedure
 **********
-The procedure to install Cortx on VA is mentioned below.
+The procedure to install CORTX on VA is mentioned below.
 
 1. Login to `GitHub <https://github.com/>`_ with your credentials.
 
