@@ -1,0 +1,12 @@
+# Number of days of inactivity before an issue becomes stale
+daysUntilStale: 4
+# Issues with these labels will never be considered stale
+exemptLabels:
+  - feature
+# Label to use when marking an issue as stale
+staleLabel: needs-attention
+# Comment to post when marking an issue as stale. Set to `false` to disable
+markComment: >
+    This issue/pull request has been marked as `needs attention` as it has been left pending without new activity for 4 days.
+    Tagging @mukul-seagate11 for appropriate assignment.
+    Sorry for the delay & Thank you for contributing to CORTX. We will get back to you as soon as possible.
