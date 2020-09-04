@@ -110,7 +110,7 @@ Sample diff:
 
 ### 1.6. Perform the I/O
 
-c0cp, c0cat and other motr utils argument refer `hctl status`.
+m0cp, m0cat and other motr utils argument refer `hctl status`.
 For e.g,
 ```
  -l  local endpoint is,
@@ -125,14 +125,14 @@ For e.g,
 
 * Write some data to Motr.
   ```bash
-  c0cp -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 \
+  m0cp -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 \
        -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 \
        -s 1m -c 128 /home/src/single/random.img -L 9
   ```
 
 * Read the data from Motr.
   ```bash
-  c0cat -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 \
+  m0cat -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 \
         -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 \
         -s 1m -c 128 /home/src/single/random_from_motr.img -L 9
   ```
@@ -251,14 +251,14 @@ Sample diff:
 
 * Write some data to Motr.
   ```bash
-  c0cp -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
+  m0cp -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
        -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x23 -o 21:40 \
        -s 1m -c 128 /home/src/single/random.img -L 9
   ```
 
 * Read the data from Motr.
   ```bash
-  c0cat -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
+  m0cat -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
         -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x23 -o 21:40 \
         -s 1m -c 128 /home/src/single/random_from_motr.img -L 9
   ```
