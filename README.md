@@ -37,7 +37,7 @@ We excited for your interest in CORTX and hope you will join us.  We take commun
 
 ## How to Contribute
 
-Please refer to our [Quick Start Guide](QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](https://github.com/Seagate/cortx/blob/master/doc/CodeStyle.md) for a description of our code style guidelines.  Please refer to our [Suggested Contributions List](doc/SuggestedContributions.md) to find ideas about what contributions are currently being sought.
+Please refer to our [Quick Start Guide](QUICK_START.md) for detailed technical information about how to build and test the code. Read the [Contribution Guide](../main/doc/CORTXContributionGuide.md) to know more about suggested contributions and contribution guidelines.  Please refer to our [Style Guide](../main/doc/CodeStyle.md) for a description of our code style guidelines.  Please refer to our [Suggested Contributions List](doc/SuggestedContributions.md) to find ideas about what contributions are currently being sought.
 
 ### Case Studies, Technical Content, and Blog Posts
 
