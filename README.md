@@ -1,11 +1,9 @@
-[![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/EOS-Sandbox/blob/master/LICENSE) 
+[![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/cortx/blob/main/LICENSE) 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c099437792d44496b720a730ee4939ce)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seagate/mero&amp;utm_campaign=Badge_Grade)
 ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg)
 [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?)
 
-
 <img src="../assets/images/cortx-logo.png?raw=true">
-
 
 CORTX: World's Best Scalable Mass-Capacity Object Storage System
 ================================================================
@@ -103,7 +101,7 @@ fully dedicated to our mission to build open source technologies that
 help the world save unlimited data and solve challenging data problems.
 Join our mission to help reinvent a data-driven world.
 
-**The CORTX project is licensed under the** [Apache 2.0 License][].
+**The CORTX project is licensed under the** [Apache 2.0 License][https://github.com/Seagate/cortx/blob/main/LICENSE].
 
   [Code of Conduct]: CODE_OF_CONDUCT.md
   [Slack]: https://img.shields.io/badge/chat-on%20Slack-blue
