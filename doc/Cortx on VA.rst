@@ -38,7 +38,7 @@ The procedure to install Cortx on VA is mentioned below.
  - Username: cortx
  - Password: opensource!
  
-6. As the super user, run the following command:
+6. Run the below mentioned command to become a superuser.
 
  - **sudo su -**
  
