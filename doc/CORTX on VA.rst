@@ -130,7 +130,7 @@ Starting the VA
 
 2. Login to the VA through ssh after the VM starts.
 
-3. Login to the CORTX VA as **cortx** and run the following
+3. Login to the CORTX VA as **cortx** and run the following.
 
  - **sudo su -**
 
