@@ -1,14 +1,14 @@
 ==========================
-Cortx on Virtual Appliance
+CORTX on Virtual Appliance
 ==========================
 Virtual Appliance (VA) is a virtual machine image file that consists of pre-installed and pre-configured operating system environment, and a single application.
 
-This document provides information on the procedure that must be followed to install Cortx (all components included) on a VA.
+This document provides information on the procedure that must be followed to install CORTX (all components included) on a VA.
 
 **************
 Prerequisites
 **************
-The prerequisites required to install Cortx on a VA is listed below.
+The prerequisites required to install CORTX on a VA is listed below.
 
 - GitHub Access
 - Unzipping Software (preferably WinZip)
@@ -21,11 +21,11 @@ The prerequisites required to install Cortx on a VA is listed below.
 **********
 Procedure
 **********
-The procedure to install Cortx on VA is mentioned below.
+The procedure to install CORTX on VA is mentioned below.
 
 1. Login to `GitHub <https://github.com/>`_ with your credentials.
 
-2. From `OVA file <https://github.com/Seagate/cortx/releases/tag/OVA>`_, download the ZIP file that contains the VMware virtual machine images.
+2. From `OVA file <https://github.com/Seagate/cortx/releases/tag/OVA>`_, download the ZIP file that contains the VMware virtual machine images (a file named **cortxvm_opensource_vX.zip**, where X is the revision of the VM image).
 
 3. Extract the contents of the downloaded ZIP file into your system. 
 
@@ -38,7 +38,7 @@ The procedure to install Cortx on VA is mentioned below.
  - Username: cortx
  - Password: opensource!
  
-6. As the super user, run the following command:
+6. Run the below mentioned command to become a superuser.
 
  - **sudo su -**
  
@@ -98,7 +98,7 @@ The procedure to install Cortx on VA is mentioned below.
 
   - **https://<management IP>:28100/#/preboarding/welcome**
   
-Note: Operating system updates are not supported due to specific kernel dependencies.
+**Note**: Operating system updates are not supported due to specific kernel dependencies.
   
 Restarting CORTX VA
 ===================
@@ -112,7 +112,7 @@ Shutdown the VA
 ----------------
 1. Stop all S3 I/O traffic from S3 clients to VA.
 
-2. Login to the CORTX Virtual Appliance as user **cortx** and run the following.
+2. Login to the CORTX Virtual Appliance as **cortx** and run the following.
 
  - **sudo su -**
 
@@ -130,7 +130,7 @@ Starting the VA
 
 2. Login to the VA through ssh after the VM starts.
 
-3. As **root**, run the following command.
+3. Login to the CORTX VA as **cortx** and run the following.
 
  - **sudo su -**
 
