@@ -79,7 +79,7 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
 
 Push your changes to GitHub
 
-* Before pushing, TAKE A PAUSE. Have you [rebased your branch](#how-to-rebase-your-local-branch-on-latest-master)? If not then doing right now to avoid merge conflicts on github.
+* Before pushing, TAKE A PAUSE. Have you [rebased your branch](#how-to-rebase-your-local-branch-on-latest-main)? If not then doing right now to avoid merge conflicts on github.
 
 * Now, push your changes
 
@@ -100,21 +100,21 @@ Running Jenkins / System tests
 Jenkins job will get trigerred automatically and results about static analysis and build health will get reflect in you PR dashboard.
 <p align="center"><img src="../../assets/images/jenkinsReportGithub.png?raw=true"></p>
 
-### How to rebase your local branch on latest master?
+### How to rebase your local branch on latest main?
 
-    $ git checkout master
+    $ git checkout main
 
-    $ git pull origin master
+    $ git pull origin main
 
     $ git submodule update --init --recursive
 
     $ git checkout 'your-local-branch'
 
-    $ git pull origin 'your-remote-branch-name'
+    $ git pull origin 'your-remote-branch-name' (Note : Do this if your remote branch is already present.)
 
     $ git submodule update --init --recursive
 
-    $ git rebase origin/master
+    $ git rebase origin/main
 
     If you get conflicts, follow the steps mentioned in the error message from git.
 
