@@ -83,8 +83,7 @@ Push your changes to GitHub
 
 * Now, push your changes
 
-
-    $ git push origin 'your-local-branch-name'
+> $ git push origin 'your-local-branch-name'
 
 Open pull request for review
 
