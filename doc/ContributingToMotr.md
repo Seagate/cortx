@@ -30,7 +30,8 @@ Setup the git config options
 Clone cortx-motr
 
 * Each contributor needs to do 'fork' to create their own private cortx-motr and motr-galois repository.
-* Go to homepage of [cortx-motr repository on GitHub](https://github.com/Seagate/cortx-motr), there you will see 'fork' at top right corner.
+* Go to homepage of [cortx-motr repository on GitHub](https://github.com/Seagate/cortx-motr), there you will see 'fork' at top right corner. fork it.
+* Go to homepage of [motr-galois repository on GitHub](https://github.com/Seagate/motr-galois) and fork this one too. <**TODO** : update new galois link>
 > $ git clone --recursive git@github.com:"your-github-id"/cortx-motr.git
 
 
@@ -51,7 +52,7 @@ Add files to be pushed to git to staged area
 
 Add all such files
 
-Make sure build passes locally using [these steps](#compilation-and-running-unit-test) & commit your changes
+Make sure build passes locally using build and test commands provided [here](https://github.com/Seagate/cortx-motr/blob/dev/doc/Quick-Start-Guide.rst#building-the-source-code) & then commit your changes
 
 > $ git commit -m "Motr-component : Appropriate Feature/Change Description"
 
@@ -78,9 +79,12 @@ Date:   Thu Apr 16 00:55:01 2020 -0600
 
 Push your changes to GitHub
 
+* Before pushing, TAKE A PAUSE. Have you [rebased your branch](#how-to-rebase-your-local-branch-on-latest-master)? If not then doing right now to avoid merge conflicts on github.
+
+* Now, push your changes
+
+
     $ git push origin 'your-local-branch-name'
-    
-* Before pushing, TAKE A PAUSE. Have you [rebased your branch](#How-to-rebase)? If not then doing right now to avoid merge conflicts on github.
 
 Open pull request for review
 
@@ -120,7 +124,7 @@ Jenkins job will get trigerred automatically and results about static analysis a
 ### Wanna test specific Motr commit with s3?
 
 * If s3server setup is not done yet then kindly visit [s3serverQuickstart](CortxS3ServerQuickStart.md) and get your setup ready.
-* If s3 is already setup then check out detailed steps [here](CortxS3ServerQuickStart.md#Testing-specific-MERO-version-with-S3Server).
+* If s3 is already setup then check out detailed steps [here](CortxS3ServerQuickStart.md#testing-specific-motr-version-with-cortx-s3server).
 
 ### You're all set & You're awesome
 
