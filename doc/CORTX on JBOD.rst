@@ -115,3 +115,35 @@ Starting and Stopping Services
 ------------------------------
 In this case, no service is running. Hence, this is not applicable. It is due to the same reason why Verifying (check) is also not applicable.
 
+Command Line Interface (CLI)
+----------------------------
+- Cluster Management
+
+ - # Start Cortx ha cluster
+
+  - **$ cortxha cluster start**
+
+ - # Stop Cortx-ha cluster
+
+  - **$ cortxha cluster stop**
+
+ - # Get status for services
+
+  - **$ cortxha cluster status**
+
+ - # Shutdown cluster
+
+  - **$ cortxha cluster shutdown**
+
+- Service Management
+
+ The default node value is local.
+
+ - **$ cortx service <service_name> --node <node_id> start**
+
+ - **$ cortx service <service_name> --node <node_id> stop**
+
+ - **$ cortx service <service_name> --node <node_id> status**
+
+ **Note**: The name (Services Name) in the above CLI is **Hare**.
+
