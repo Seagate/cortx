@@ -1,7 +1,7 @@
 =============
 CORTX on JBOD
 =============
-This document provides information on the installation procedures that must be followed to install Cortx on JBOD.
+This document provides information on the installation procedures that must be followed to install CORTX on JBOD.
 
 **************
 Prerequisites
