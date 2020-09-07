@@ -13,6 +13,7 @@ In order to contribute to CORTX, the first thing to understand is that CORTX Com
 8. [Learn about our automated Actions](doc/CI_CD.md)
 9. Submitting contributions [link to demo video](https://seagatetechnology.sharepoint.com/:v:/r/sites/CORTX/Shared%20Documents/EOS-Training/EOS%20Core%20Training/Codacy%20work%20sync.mp4?csf=1&web=1&e=QQcePf)
 10. [Learning more about our architecture](doc/architecture.md)
+11. CORTX on Virtual Appliance (https://github.com/Seagate/cortx/blob/main/doc/CORTX%20on%20VA.rst)
 
 Support and Community Discussions
 -------
