@@ -71,3 +71,33 @@ To setup Motr + hare and IO with m0crate, perform the procedure mentioned below.
 7. To update the BE tx parameters, run the following command:
 
  -  **# m0provisioning config**
+ 
+***************************
+Configuration of Components
+***************************
+
+Configuration of different components that are part of CORTX are mentioned in the sections below.
+
+
+HA 
+==
+
+The prerequisites and the procedures that must be followed to configure and start the HA component is mentioned below.
+
+Prerequisites
+-------------
+
+- Provisioner stack must be configured
+
+ - Provisioner and salt API must be available on setup
+
+- The cortx-ha rpm must be installed
+
+- Installation type identification with provisioner api
+
+ ::
+
+  $ provisioner get_setup_info
+
+  {'nodes': 1, 'servers_per_node': 2, 'storage_type': '5u84', 'server_type': 'virtual'}
+
