@@ -100,4 +100,18 @@ Prerequisites
   $ provisioner get_setup_info
 
   {'nodes': 1, 'servers_per_node': 2, 'storage_type': '5u84', 'server_type': 'virtual'}
+  
+Configuration
+--------------
+To check dependency and configure **HA**, perform **post_install**, **config**, and **init**.
+
+- **$ /opt/seagate/cortx/ha/conf/script/ha_setup post_install # call by provisioner (provisioner api)**
+
+- **$ /opt/seagate/cortx/ha/conf/script/ha_setup config**
+
+- **$ /opt/seagate/cortx/ha/conf/script/ha_setup init**
+
+Starting and Stopping Services
+------------------------------
+In this case, no service is running. Hence, this is not applicable. It is due to the same reason why Verifying (check) is also not applicable.
 
