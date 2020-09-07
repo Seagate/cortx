@@ -146,4 +146,12 @@ Command Line Interface (CLI)
  - **$ cortx service <service_name> --node <node_id> status**
 
  **Note**: The name (Services Name) in the above CLI is **Hare**.
+ 
+Removing RPM
+------------
+Reset and uninstall the configuration by running the below mentioned commands.
+
+- **$ /opt/seagate/cortx/ha/conf/script/ha_setup reset**
+
+- **$ yum remove cortx-ha**
 
