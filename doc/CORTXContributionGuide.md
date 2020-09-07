@@ -26,6 +26,8 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 
 - Please read our [Code Style Guide](https://github.com/Seagate/cortx/blob/main/doc/CodeStyle.md).
 
+- Get started with [GitHub Tools and Procedures](../doc/Tools.rst), if you are new to GitHub.
+
 - Before you set up your GitHub, you'll need to
 
   1. Generate the SSH key on your development box using:
@@ -219,11 +221,7 @@ You can make changes to the code and save them in your files.
 
 <details>
 <summary>Click to expand!</summary>
-  <p>
-
-   | **Repository**   |
-   | :----------------| 
-   | [cortx-s3server](https://github.com/Seagate/cortx-s3server/blob/dev/docs/ContributingToCortxS3.md#133-create-a-pull-request)   |       
+  <p>       
    
 1. Once you Push changes to GitHub, the output will display a URL for creating a Pull Request, as shown in the sample code above.
 
