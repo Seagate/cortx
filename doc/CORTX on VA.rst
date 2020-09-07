@@ -144,7 +144,7 @@ Starting the VA
 
  - **hctl status** 
 
-6. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started
+6. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
 
  - **systemctl status csm_agent**
 
