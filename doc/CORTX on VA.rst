@@ -134,7 +134,7 @@ Starting the VA
 
  - **sudo su -**
 
-4. Start CORTX I/O subsystem by running the following commands.
+4. Start CORTX I/O subsystem by running the following command.
 
  - **hctl bootstrap -c /var/lib/hare/**
 
