@@ -136,13 +136,13 @@ Starting the VA
 
 4. Start CORTX I/O subsystem by running the following command.
 
- - **hctl bootstrap -c /var/lib/hare/cluster.yaml**
+ - **hctl bootstrap -c /var/lib/hare/**
 
 5. Run the below mentioned command to verify that CORTX I/O subsystem has started.
 
  - **hctl status** 
 
-6. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started
+6. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
 
  - **systemctl status csm_agent**
 
