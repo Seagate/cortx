@@ -103,6 +103,14 @@ Prerequisites
    cortx-prvsnr-cli-xxxxxxxxxxxxxxxxxxxxx 
    cortx-prvsnr-xxxxxxxxxxxxxxxxxxxxx 
    cortx-py-utils-xxxxxxxxxxxxxxxxxxxxx rabbitmq-server-xxxxxxxxxxxxxxxxxxxxx
+   
+- Run the below mentioned command to ensure that the RabbitMq-server is running and active.
+
+ - **$ systemctl status rabbitmq-server**
+
+- Run the below mentioned command to ensure that the consul agent is running.
+
+ - **$ ps -aux | grep "consul"**
 
 HA 
 ==
