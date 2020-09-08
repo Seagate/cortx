@@ -6,7 +6,7 @@ This document provides information on the installation procedures that must be f
 **************
 Limitations
 **************
-Please note that this is a preview of distributed CORTX and it is not yet failure resilient.  Please do not use this software for production reasons nor for storing any critical data.
+Please note that this is a preview of distributed CORTX doing network erasure and it is not yet failure resilient.  Please do not use these instructions to run CORTX for production reasons nor for storing any critical data.  Do note that the officially supported Seagate version of Lyve Drive Rack can be used for production reasons since it relies on erasure within the enclosures.
 
 **************
 Prerequisites
