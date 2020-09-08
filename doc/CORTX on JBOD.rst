@@ -141,6 +141,22 @@ Starting and Stopping Services
 - Run the following command to know the status of the SSPL service.
 
  - **$ systemctl status sspl-ll -l**
+ 
+Verification
+------------
+Perform sanity test and ensure that the SSPL configuration is accurate. Run the following commands to perform the test.
+
+- **$ /opt/seagate/cortx/sspl/bin/sspl_setup check**
+
+- **$ /opt/seagate/cortx/sspl/bin/sspl_setup test self**
+
+Removing RPM
+------------
+Reset and uninstall the configuration by running the below mentioned commands.
+
+- **$ /opt/seagate/cortx/sspl/bin/sspl_setup reset hard -p LDR_R1**
+
+- **$ yum remove -y cortx-sspl** 
 
 HA 
 ==
