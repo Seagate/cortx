@@ -91,7 +91,7 @@ Prerequisites
 
  - Provisioner and salt API must be available on setup
 
-- Run the below mentioned command to ensure that RabbitMq server and SSPL rpms must be installed.
+- Run the below mentioned command to ensure that RabbitMq server and SSPL rpms are installed.
 
   ::
   
