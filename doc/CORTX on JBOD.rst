@@ -78,7 +78,6 @@ Configuration of Components
 
 Configuration of different components that are part of CORTX are mentioned in the sections below.
 
-
 HA 
 ==
 
