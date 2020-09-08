@@ -1,7 +1,7 @@
 =============
 CORTX on JBOD
 =============
-This document provides information on the installation procedures that must be followed to install CORTX on JBOD.
+This document provides information on the installation procedures that must be followed to install a set of CORTX servers doing distributed erasure across a set of storage devices.
 
 **************
 Prerequisites
