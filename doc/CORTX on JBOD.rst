@@ -172,7 +172,22 @@ Prerequisites
 
  - **cortx-csm-web**
 
- - **uds-pyi**  
+ - **uds-pyi**
+ 
+Configuration
+-------------
+
+Execute the below mentioned commands on the where CSM service would run after fresh installation.
+
+- **csm_setup post_install**
+
+- **csm_setup config**
+
+- **csm_setup init**
+
+You can fine tune the configuration by manually editing the configuration files in **/etc/csm**.
+
+**Note**: In case of UDS, configuration is not required.   
 
 HA 
 ==
