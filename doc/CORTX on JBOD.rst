@@ -78,10 +78,36 @@ Configuration of Components
 
 Configuration of different components that are part of CORTX are mentioned in the sections below.
 
+SSPL
+====
+
+The prerequisites and the procedure associated with the configuration of SSPL component are mentioned below.
+
+
+Prerequisites
+-------------
+
+- Provisioner stack must be configured.
+
+ - Provisioner and salt API must be available on setup
+
+- Run the below mentioned command to ensure that RabbitMq server and SSPL rpms must be installed.
+
+  ::
+  
+   $ rpm -qa | grep -E "cortx|rabbitmq" 
+   cortx-libsspl_sec-xxxxxxxxxxxxxxxxxxxxx 
+   cortx-sspl-xxxxxxxxxxxxxxxxxxxxx 
+   cortx-libsspl_sec-method_none-xxxxxxxxxxxxxxxxxxxxx 
+   cortx-sspl-test-xxxxxxxxxxxxxxxxxxxxx 
+   cortx-prvsnr-cli-xxxxxxxxxxxxxxxxxxxxx 
+   cortx-prvsnr-xxxxxxxxxxxxxxxxxxxxx 
+   cortx-py-utils-xxxxxxxxxxxxxxxxxxxxx rabbitmq-server-xxxxxxxxxxxxxxxxxxxxx
+
 HA 
 ==
 
-The prerequisites and the procedure associated with the installation of HA component are mentioned below.
+The prerequisites and the procedure associated with the configuration of HA component are mentioned below.
 
 Prerequisites
 -------------
