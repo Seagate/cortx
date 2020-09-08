@@ -187,7 +187,52 @@ Execute the below mentioned commands on the where CSM service would run after fr
 
 You can fine tune the configuration by manually editing the configuration files in **/etc/csm**.
 
-**Note**: In case of UDS, configuration is not required.   
+**Note**: In case of UDS, configuration is not required.
+
+Starting Services
+-----------------
+The starting of services procedure must be performed on only one node.
+
+1. Run the below mentioned commands to start and enable the **csm agent**. 
+
+ - **$ systemctl start csm_agent**
+
+ - **$ systemctl enable csm_agent**
+
+2. Run the below mentioned commands to start and enable the **csm web**.
+
+ - **$ systemctl start csm_web**
+
+ - **$ systemctl enable csm_web**
+
+3. Run the below mentioned commands to start and enable the **UDS**.
+
+ - **$ systemctl start uds**
+
+ - **$ systemctl enable uds**
+
+Ensure that the services have started successfully by running the following command.
+
+- **$ systemctl status <service name>** 
+
+Run the following command to check if the UDS port is open.
+
+- **$ netstat –na | grep 5000**
+
+  Please note that **5000** is the UDS port.
+
+**Note**: After all the services have started running, the CSM web UI is available at port 28100. Navigate to `https://localhost:28100 <https://localhost:28100/>`_ to access the port.
+
+Stopping Services
+-----------------
+
+Run the below mentioned commands to stop the CSM service.
+
+- **$ systemctl stop uds**
+
+- **$ systemctl stop csm_web**
+
+- **$ systemctl stop csm_agent**    
 
 HA 
 ==
