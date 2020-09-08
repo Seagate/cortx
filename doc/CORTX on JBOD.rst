@@ -81,8 +81,7 @@ Configuration of different components that are part of CORTX are mentioned in th
 SSPL
 ====
 
-The prerequisites and the procedure associated with the configuration of SSPL component are mentioned below.
-
+The prerequisites and different procedures associated with the configuration of SSPL component are mentioned below.
 
 Prerequisites
 -------------
@@ -156,12 +155,17 @@ Reset and uninstall the configuration by running the below mentioned commands.
 
 - **$ /opt/seagate/cortx/sspl/bin/sspl_setup reset hard -p LDR_R1**
 
-- **$ yum remove -y cortx-sspl** 
+- **$ yum remove -y cortx-sspl**
+
+CSM
+===
+
+The prerequisites and different procedures associated with the configuration of CSM component are mentioned below.
 
 HA 
 ==
 
-The prerequisites and the procedure associated with the configuration of HA component are mentioned below.
+The prerequisites and different procedures associated with the configuration of HA component are mentioned below.
 
 Prerequisites
 -------------
