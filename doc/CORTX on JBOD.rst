@@ -81,7 +81,7 @@ Configuration of different components that are part of CORTX are mentioned in th
 HA 
 ==
 
-The prerequisites and the procedures that must be followed to configure and start the HA component is mentioned below.
+The prerequisites and the procedure associated with the installation of HA component are mentioned below.
 
 Prerequisites
 -------------
