@@ -162,6 +162,18 @@ CSM
 
 The prerequisites and different procedures associated with the configuration of CSM component are mentioned below.
 
+Prerequisites
+-------------
+- Consul, ElasticSearch, and RabbitMq must be installed.
+
+- The below mentioned RPMs must be installed on all the nodes.
+
+ - **cortx-csm-agent**
+
+ - **cortx-csm-web**
+
+ - **uds-pyi**  
+
 HA 
 ==
 
