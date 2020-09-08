@@ -111,6 +111,36 @@ Prerequisites
 - Run the below mentioned command to ensure that the consul agent is running.
 
  - **$ ps -aux | grep "consul"**
+ 
+Configuration
+-------------
+Run the below mentioned commands to configure SSPL.
+
+- **$ /opt/seagate/cortx/sspl/bin/sspl_setup post_install -e DEV -p LDR_R1**
+
+- **$ /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx**
+
+- **$ /opt/seagate/cortx/sspl/bin/sspl_setup config -f**
+
+Note: *-e DEV|PROD <-- is optional. By default, it would be PROD. In order to setup SSPL to start, provisioner feeds sls data into consul (PROD). In JBOD, will provisioner take care of the same or will HA do it?*
+
+Starting and Stopping Services
+------------------------------
+- Run the following to start the SSPL service.
+
+ - **$ systemctl start sspl-ll**
+
+- Run the following to stop the SSPL service.
+
+ - **$ systemctl stop sspl-ll**
+
+- Run the following to restart the SSPL service.
+
+ - **$ systemctl restart sspl-ll**
+
+- Run the following command to know the status of the SSPL service.
+
+ - **$ systemctl status sspl-ll -l**
 
 HA 
 ==
