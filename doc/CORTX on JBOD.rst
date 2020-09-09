@@ -104,7 +104,7 @@ Prerequisites
 
 Statsd Configuration
 --------------------
-Run the below mentioned commands to start and enable the **statsd** service.
+Run the below mentioned commands to start and enable the **statsd** service. This must be performed on every node.
 
 - **$ systemctl start statsd**
 
