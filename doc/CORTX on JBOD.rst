@@ -125,7 +125,7 @@ Starting and Stopping Services
 
 Run the following command to check the status of the service.
 
-- systemctl status slapd
+- **systemctl status slapd**
 
 RabbitMQ
 ========
