@@ -102,7 +102,7 @@ Configuration
 
  - **./setup_ldap.sh --defaultpasswd --skipssl --forceclean**
 
-3. Perform **LDAP Replication**. Refer the procedure below.
+3. After LDAP is setup on the three nodes, perform **LDAP Replication**. Refer the procedure below.
 
 4. Configure **slapd.log** on all 3 nodes using the commands mentioned below.
 
