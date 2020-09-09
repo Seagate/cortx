@@ -108,6 +108,25 @@ Prerequisites
 - The **erlang.cookie** file must be available. Run the following command to check the availability.
 
  - **$ cat /var/lib/rabbitmq/.erlang.cookie**
+ 
+Configuration
+-------------
+1. Start the RabbitMQ server.
+2. Open the required ports for rabbitmq.
+
+ ::
+
+  systemctl start firewalld 
+  firewall-cmd --zone=public --permanent --add-port=4369/tcp 
+  firewall-cmd --zone=public --permanent --add-port=25672/tcp 
+  firewall-cmd --zone=public --permanent --add-port=25672/tcp 
+  firewall-cmd --zone=public --permanent --add-port=5671-5672/tcp 
+  firewall-cmd --zone=public --permanent --add-port=15672/tcp 
+  firewall-cmd --zone=public --permanent --add-port=15672/tcp 
+  firewall-cmd --zone=public --permanent --add-port=61613-61614/tcp 
+  firewall-cmd --zone=public --permanent --add-port=1883/tcp 
+  firewall-cmd --zone=public --permanent --add-port=8883/tcp 
+  firewall-cmd --reload
 
 Statsd and Kibana
 =================
