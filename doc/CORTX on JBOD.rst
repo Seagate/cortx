@@ -1,6 +1,6 @@
-=============
+===================================
 Running Distributed Scale-out CORTX 
-=============
+===================================
 This document provides information on the installation procedures that must be followed to install a set of CORTX servers doing distributed erasure across a set of storage devices.
 
 **************
@@ -76,6 +76,12 @@ To setup Motr + hare and IO with m0crate, perform the procedure mentioned below.
 7. To update the BE tx parameters, run the following command:
 
  -  **# m0provisioning config**
+ 
+*****************************
+Configuration of Dependencies
+*****************************
+
+The procedures that must be followed to install and configure different dependencies are mentioned below.
  
 ***************************
 Configuration of Components
