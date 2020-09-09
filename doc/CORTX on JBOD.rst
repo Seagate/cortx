@@ -83,6 +83,50 @@ Configuration of Dependencies
 
 The procedures that must be followed to install and configure different dependencies are mentioned below.
 
+LDAP
+====
+This section describes the procedures that must be followed to configure LDAP.
+
+Prerequisites
+--------------
+- S3 Server must be installed.
+
+- 3 VMs must be present
+
+Configuration
+-------------
+
+1. Navigate to **/opt/seagate/cortx/s3/install/ldap**.
+
+2. Run **setup_ldap.sh** using the following command.
+
+ - **./setup_ldap.sh --defaultpasswd --skipssl --forceclean**
+
+3. Perform **LDAP Replication**. Refer the procedure below.
+
+4. Configure **slapd.log** on all 3 nodes using the commands mentioned below.
+
+ - **cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf** 
+ 
+ - **systemctl restart slapd**
+
+ - **systemctl restart rsyslog**
+
+Starting and Stopping Services
+------------------------------
+
+- Run the following command to start the service.
+
+ - **systemctl start slapd**
+
+- Run the following command to stop the service.
+
+ - **systemctl stop slapd**
+
+Run the following command to check the status of the service.
+
+- systemctl status slapd
+
 RabbitMQ
 ========
 This section describes the procedures that must be followed to configure RabbitMQ.
