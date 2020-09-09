@@ -113,6 +113,37 @@ Run the below mentioned commands to start and enable the **statsd** service. Thi
 To know the status of the service, run the following command.
 
 - **$ systemctl status statsd**
+
+Kibana Configuration
+--------------------
+1. Update the **kibana.service** file on each system. By default, the service is not compatible with new systemd. Run the following command to check the compatibility.
+
+ - **$ systemd-analyze verify /etc/systemd/system/kibana.service**
+
+  - If above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
+
+  In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst** are part of **Unit** Section but as per new systemd rule it is part of **Service** section.
+
+ ::
+
+  Description=Kibana
+ 
+  [Service] 
+  Type=simple 
+  StartLimitInterval=30 
+  StartLimitBurst=3 
+  User=kibana 
+  Group=kibana 
+  # Load env vars from /etc/default/ and /etc/sysconfig/ if they exist. 
+  # Prefixing the path with '-' makes it try to load, but if the file doesn't 
+  # exist, it continues onward. 
+  EnvironmentFile=-/etc/default/kibana 
+  EnvironmentFile=-/etc/sysconfig/kibana 
+  ExecStart=/usr/share/kibana/bin/kibana "-c /etc/kibana/kibana.yml" 
+  Restart=always 
+  WorkingDirectory=/ 
+
+  [Install] WantedBy=multi-user.target
  
 ***************************
 Configuration of Components
