@@ -144,6 +144,24 @@ Kibana Configuration
   WorkingDirectory=/ 
 
   [Install] WantedBy=multi-user.target
+  
+2. Reload the daemon on each system by running the following command.
+
+ - **$ systemctl daemon-reload**
+
+3. Find the active csm service (active node) by running the following command.
+
+ - **$ systemctl status csm_agent**
+
+4. Start kibana on the active CSM node and enable the service by running the following commands.
+
+ - **$ systemctl start kibana**
+
+ - **$ systemctl enable kibana**
+
+Check the systemd status on active CSM node by running the following command.
+
+ - **$ systemctl status kibana**
  
 ***************************
 Configuration of Components
