@@ -83,6 +83,32 @@ Configuration of Dependencies
 
 The procedures that must be followed to install and configure different dependencies are mentioned below.
 
+RabbitMQ
+========
+This section describes the procedures that must be followed to configure RabbitMQ.
+
+Prerequisites
+--------------
+- Provisioner stack must be configured.
+
+ - Provisioner and salt API must be available on setup
+
+- The RabbitMQ - server rpm must be installed in the system.
+
+ - $rpm -qa | grep "rabbitmq"
+
+   rabbitmq-server-3.3.5-34.el7.noarch
+
+- Data from the **rabbitmq.sls** file must be transmitted into consul. This action is performed by provisioner.
+
+- Run the below mentioned script to avoid RMQ processor related errors.
+
+ - **$ python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt** 
+
+- The **erlang.cookie** file must be available. Run the following command to check the availability.
+
+ - **$ cat /var/lib/rabbitmq/.erlang.cookie**
+
 Statsd and Kibana
 =================
 This section describes the procedures that must be followed to configure statsd and kibana.
