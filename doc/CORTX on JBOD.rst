@@ -90,6 +90,29 @@ This section describes the procedures that must be followed to configure statsd 
 - **Statsd** is used to collect metric from various sources and it runs on each node as the daemon service.
 
 - **Kibana** is used to aggregate metrics and run on the system with csm service.
+
+Prerequisites
+-------------
+
+- The following RPMs must be available.
+
+ - **statsd**
+
+ - **stats_utils**
+
+ - **kibana**
+
+Statsd Configuration
+--------------------
+Run the below mentioned commands to start and enable the **statsd** service.
+
+- **$ systemctl start statsd**
+
+- **$ systemctl enable statsd**
+
+To know the status of the service, run the following command.
+
+- **$ systemctl status statsd**
  
 ***************************
 Configuration of Components
