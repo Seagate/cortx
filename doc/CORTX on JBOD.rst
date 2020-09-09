@@ -141,7 +141,7 @@ Prerequisites
 
 Procedure
 ^^^^^^^^^^
-Perform the the initial 4 steps with the following change in **olcseverid.ldif**.
+Perform the the first 4 steps on the 3 nodes with the following change in **olcseverid.ldif**.
 
 - **olcseverrid  = 1 for node 1**
 
