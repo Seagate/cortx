@@ -128,6 +128,24 @@ Configuration
   firewall-cmd --zone=public --permanent --add-port=8883/tcp 
   firewall-cmd --reload
 
+Starting and Stopping
+---------------------
+- Run the below mentioned command to start the server.
+
+ - **$ systemctl start rabbitmq-server**
+
+- Run the below mentioned command to stop the server.
+
+ - **$ systemctl stop rabbitmq-server**
+
+- Run the below mentioned command to restart the server.
+
+ - **$ systemctl restart rabbitmq-server**
+
+- Run the below mentioned command to know the status.
+
+ - **$ systemctl status rabbitmq-server -l**
+
 Statsd and Kibana
 =================
 This section describes the procedures that must be followed to configure statsd and kibana.
