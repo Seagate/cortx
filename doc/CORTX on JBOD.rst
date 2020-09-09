@@ -91,7 +91,7 @@ Prerequisites
 --------------
 - S3 Server must be installed.
 
-- 3 VMs must be present
+- 3 VMs must be available
 
 Configuration
 -------------
@@ -186,7 +186,7 @@ Starting and Stopping
 
  - **$ systemctl restart rabbitmq-server**
 
-- Run the below mentioned command to know the status.
+Run the below mentioned command to know the status.
 
  - **$ systemctl status rabbitmq-server -l**
 
@@ -335,7 +335,7 @@ Starting and Stopping Services
 
  - **$ systemctl restart sspl-ll**
 
-- Run the following command to know the status of the SSPL service.
+Run the following command to know the status of the SSPL service.
 
  - **$ systemctl status sspl-ll -l**
  
