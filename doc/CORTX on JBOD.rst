@@ -127,6 +127,55 @@ Run the following command to check the status of the service.
 
 - **systemctl status slapd**
 
+LDAP Replication
+----------------
+This section consists of the prerequisites and procedure associated with the ldap replication.
+
+Prerequisites
+^^^^^^^^^^^^^
+- LDAP must be installed.
+
+- 3 nodes must be available
+
+- The host name in the provider field in **config.ldif** on all 3 nodes if not updated earlier.
+
+Procedure
+^^^^^^^^^^
+Perform the the initial 4 steps with the following change in **olcseverid.ldif**.
+
+- **olcseverrid  = 1 for node 1**
+
+- **olcseverrid  = 2 for node 2**
+
+- **olcseverrid  = 3 for node 3**
+
+1. Push the unique olcserver Id.
+   
+   **olcserverid.ldif**
+
+  ::
+
+   dn: cn=config
+   changetype: modify
+   add: olcServerID
+   olcServerID: 1
+
+ **command to add -: ldapmodify -Y EXTERNAL -H ldapi:/// -f olcserverid.ldif**
+
+2. Load the provider module.
+
+   **syncprov_mod.ldif**
+
+   ::
+
+    dn: cn=module,cn=config
+    objectClass: olcModuleList
+    cn: module
+    olcModulePath: /usr/lib64/openldap
+    olcModuleLoad: syncprov.la
+
+  **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov_mod.ldif**
+
 RabbitMQ
 ========
 This section describes the procedures that must be followed to configure RabbitMQ.
