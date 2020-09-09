@@ -82,6 +82,14 @@ Configuration of Dependencies
 *****************************
 
 The procedures that must be followed to install and configure different dependencies are mentioned below.
+
+Statsd and Kibana
+=================
+This section describes the procedures that must be followed to configure statsd and kibana.
+
+- **Statsd** is used to collect metric from various sources and it runs on each node as the daemon service.
+
+- **Kibana** is used to aggregate metrics and run on the system with csm service.
  
 ***************************
 Configuration of Components
