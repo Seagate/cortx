@@ -552,6 +552,14 @@ Configuration of Components
 
 Configuration of different components that are part of CORTX are mentioned in the sections below.
 
+S3 (AuthServer and HAProxy)
+===========================
+The AuthServer is configured along with the installation of S3 component.
+
+Run the below mentioned command to restart the AuthServer.
+
+- **systemctl restart s3authserver** 
+
 SSPL
 ====
 
