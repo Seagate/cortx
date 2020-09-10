@@ -623,6 +623,42 @@ Before configuring HAProxy, check the number of S3 instances using **hctl status
  
 From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. Perform the steps mentioned below to configure **N**.
 
+1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
+
+2. Locate the S3 instance - **server s3-instance-1 0.0.0.0:28081 check maxconn 110**. Add **N – 1**. In case of VM, if the number of S3 instances per node is 1, then three steps (2,3,4) including this will be skipped.
+
+3. Name instances uniquely **(s3-instance-x)** and increment **x** by 1, for every instance.
+
+4. Increment the port number (**28081**) for the next 3 instances, by 1. 
+
+5. Navigate to **backend s3-auth** section, and comment out the **HAProxy Monitoring Config** section if present.
+
+6. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**. 
+
+7. Configure haproxy logs on all the nodes by running the following commands.
+
+ - **mkdir /etc/haproxy/errors/** 
+
+ - **cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/**
+
+ - **cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy** 
+
+ - **cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf** 
+
+ - **rm -rf /etc/cron.daily/logrotate** 
+
+ - **cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate** 
+
+ - **systemctl restart rsyslog** 
+
+ - **systemctl restart haproxy** 
+
+ - **systemctl status haproxy**
+ 
+Run the below mentioned command to start the HAProxy services.
+
+- **systemctl start haproxy**
+
 SSPL
 ====
 
