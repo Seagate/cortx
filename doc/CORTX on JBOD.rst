@@ -620,6 +620,8 @@ Before configuring HAProxy, check the number of S3 instances using **hctl status
  s3server   0x7200000000000001:0x78  192.168.20.11@o2ib:12345:3:4    [unknown]  
  m0_client  0x7200000000000001:0x7b  192.168.20.11@o2ib:12345:4:1    [unknown]  
  m0_client  0x7200000000000001:0x7e  192.168.20.11@o2ib:12345:4:2
+ 
+From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. Perform the steps mentioned below to configure **N**.
 
 SSPL
 ====
