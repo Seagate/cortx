@@ -570,7 +570,7 @@ Installation
 
  - **yum install haproxy**
 
-2. Download and copy stx-s3 and stx-s3-clients from <<...>>
+2. Copy the **s3server.pem** file from `here <https://github.com/Seagate/cortx-s3server/tree/dev/ansible/files/certs/stx-s3/s3>`_ and paste it in the **/etc/ssl/stx** directory.
 
 3. Navigate to **/opt/seagate/cortx/s3/install/haproxy**.
 
