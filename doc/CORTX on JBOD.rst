@@ -156,9 +156,13 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
   ::
 
    dn: cn=config
+   
    changetype: modify
+   
    add: olcServerID
+   
    olcServerID: 1
+
 
  **command to add -: ldapmodify -Y EXTERNAL -H ldapi:/// -f olcserverid.ldif**
 
@@ -169,10 +173,15 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
    ::
 
     dn: cn=module,cn=config
+    
     objectClass: olcModuleList
+    
     cn: module
+    
     olcModulePath: /usr/lib64/openldap
+    
     olcModuleLoad: syncprov.la
+
 
   **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov_mod.ldif**
   
