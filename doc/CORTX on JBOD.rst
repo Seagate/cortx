@@ -589,13 +589,12 @@ Configuration
 -------------
 Run the below mentioned commands to configure SSPL.
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup post_install -e DEV -p LDR_R1**
+- **$ /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1**
 
 - **$ /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx**
 
 - **$ /opt/seagate/cortx/sspl/bin/sspl_setup config -f**
 
-Note: *-e DEV|PROD <-- is optional. By default, it would be PROD. In order to setup SSPL to start, provisioner feeds sls data into consul (PROD). In JBOD, will provisioner take care of the same or will HA do it?*
 
 Starting and Stopping Services
 ------------------------------
