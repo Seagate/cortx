@@ -558,7 +558,23 @@ The AuthServer is configured along with the installation of S3 component.
 
 Run the below mentioned command to restart the AuthServer.
 
-- **systemctl restart s3authserver** 
+- **systemctl restart s3authserver**
+
+HAProxy
+--------
+This section provides information on the installation and configuration associated with HAProxy.
+
+Installation
+^^^^^^^^^^^^^
+1. Run the following command to install HAProxy.
+
+ - **yum install haproxy**
+
+2. Download and copy stx-s3 and stx-s3-clients from <<...>>
+
+3. Navigate to **/opt/seagate/cortx/s3/install/haproxy**.
+
+4. Copy the contents of **haproxy_osver7.cfg** (**haproxy_osver8.cfg** depending on your OS version) to **/etc/haproxy/haproxy.cfg**.
 
 SSPL
 ====
