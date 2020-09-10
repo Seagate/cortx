@@ -401,7 +401,7 @@ Perform the following steps on only one node. In this case, it must be performed
 
 **command to add - ldapmodify -Y EXTERNAL -H ldapi:/// -f data.ldif**
 
-**Note**: Update the host name in the provider field in data.ldif before running the command.
+   **Note**: Update the host name in the provider field in data.ldif before running the command.
 
 RabbitMQ
 ========
