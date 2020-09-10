@@ -560,13 +560,24 @@ AuthServer
 
 The AuthServer is configured along with the installation of S3 component.
 
-- Run the below mentioned command to restart the AuthServer.
+Starting and Stopping Services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Run the below mentioned command to start the AuthServer.
 
  - **systemctl start s3authserver**
 
 - Run the below mentioned command to restart the AuthServer.
 
  - **systemctl restart s3authserver**
+ 
+- Run the below mentioned command to stop the AuthServer.
+
+ - **systemctl stop s3authserver**
+ 
+- Run the following command to check the status of AuthServer.
+
+ - systemctl status s3authserver
 
 HAProxy
 --------
@@ -655,9 +666,20 @@ From the above result, it can be seen that each node has 4 s3server instances. H
 
  - **systemctl status haproxy**
  
-Run the below mentioned command to start the HAProxy services.
+Starting and Stopping Services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
+- Run the below mentioned command to start the HAProxy services.
 
-- **systemctl start haproxy**
+ - **systemctl start haproxy**
+ 
+- Run the below mentioned command to stop the HAProxy services.
+
+ - **systemctl stop haproxy**
+ 
+- Run the below mentioned command to check the status of HAProxy services.
+
+ - **systemctl status haproxy**
 
 SSPL
 ====
