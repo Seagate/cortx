@@ -694,7 +694,7 @@ Run the following command to check if the UDS port is open.
 
   Please note that **5000** is the UDS port.
 
-**Note**: After all the services have started running, the CSM web UI is available at port 28100. Navigate to `https://localhost:28100 <https://localhost:28100/>`_ to access the port.
+**Note**: After all the services have started running, the CSM web UI is available at port 28100. Navigate to **https://<IP address of the box>:28100** to access the port.
 
 Stopping Services
 -----------------
