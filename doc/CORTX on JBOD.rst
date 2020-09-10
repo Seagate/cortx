@@ -310,7 +310,7 @@ Perform the following steps on only one node. In this case, it must be performed
      olcSpSessionLog: 100
 
 
-             **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov.ldif**   
+   **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov.ldif**   
 
 RabbitMQ
 ========
