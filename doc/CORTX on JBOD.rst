@@ -310,7 +310,98 @@ Perform the following steps on only one node. In this case, it must be performed
      olcSpSessionLog: 100
 
 
-   **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov.ldif**   
+   **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov.ldif**
+   
+2. Push the data replication ldif.
+
+  **data.ldif**
+
+  ::
+
+    dn: olcDatabase={2}mdb,cn=config 
+
+    changetype: modify 
+
+    add: olcSyncRepl 
+
+    olcSyncRepl: rid=004
+
+       provider=ldap://< hostname_of_node_1>:389/ 
+
+       bindmethod=simple 
+
+       binddn="cn=admin,dc=seagate,dc=com" 
+
+       credentials=seagate 
+
+       searchbase="dc=seagate,dc=com" 
+
+       scope=sub 
+
+       schemachecking=on 
+
+       type=refreshAndPersist 
+
+       retry="30 5 300 3" 
+
+       interval=00:00:05:00
+
+     # Enable additional providers
+
+     olcSyncRepl: rid=005
+
+        provider=ldap://< hostname_of_node_2>:389/ 
+
+        bindmethod=simple 
+
+        binddn="cn=admin,dc=seagate,dc=com" 
+
+        credentials=seagate 
+
+        searchbase="dc=seagate,dc=com" 
+
+        scope=sub 
+
+        schemachecking=on 
+
+        type=refreshAndPersist 
+
+        retry="30 5 300 3" 
+
+        interval=00:00:05:00 
+
+      olcSyncRepl: rid=006   
+
+         provider=ldap://<hostname_of_node_3>:389/ 
+
+         bindmethod=simple 
+
+         binddn="cn=admin,dc=seagate,dc=com" 
+
+         credentials=seagate 
+
+         searchbase="dc=seagate,dc=com" 
+
+         scope=sub 
+
+         schemachecking=on 
+
+         type=refreshAndPersist 
+
+         retry="30 5 300 3" 
+
+         interval=00:00:05:00
+
+   
+
+       add: olcMirrorMode 
+
+       olcMirrorMode: TRUE
+  
+
+**command to add - ldapmodify -Y EXTERNAL -H ldapi:/// -f data.ldif**
+
+**Note**: Update the host name in the provider field in data.ldif before running the command.
 
 RabbitMQ
 ========
