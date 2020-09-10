@@ -289,7 +289,28 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
          olcMirrorMode: TRUE
         
 
-        **command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif** 
+        **command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif**
+        
+Perform the following steps on only one node. In this case, it must be performed on the primary node.
+
+1. Push  the provider for data replication.
+
+   ::
+
+    syncprov.ldif
+
+     dn: olcOverlay=syncprov,olcDatabase={2}mdb,cn=config 
+
+     objectClass: olcOverlayConfig 
+
+     objectClass: olcSyncProvConfig 
+
+     olcOverlay: syncprov 
+
+     olcSpSessionLog: 100
+
+
+             **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov.ldif**   
 
 RabbitMQ
 ========
