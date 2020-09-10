@@ -584,6 +584,43 @@ Installation
 
 4. Copy the contents of **haproxy_osver7.cfg** (**haproxy_osver8.cfg** depending on your OS version) to **/etc/haproxy/haproxy.cfg**.
 
+Configuration
+^^^^^^^^^^^^^^
+Before configuring HAProxy, check the number of S3 instances using **hctl status**. The hctl status would be similar to the below content.
+
+::
+
+ Profile: 0x7000000000000001:0xc0Data pools:
+ 0x6f00000000000001:0xc1Services:    sm18-r20.pun.seagate.com    [started]
+ hax        0x7200000000000001:0x84  192.168.20.18@o2ib:12345:1:1    [started]  
+ confd      0x7200000000000001:0x87  192.168.20.18@o2ib:12345:2:1    [started]  
+ ioservice  0x7200000000000001:0x8a  192.168.20.18@o2ib:12345:2:2    [started]  
+ s3server   0x7200000000000001:0xae  192.168.20.18@o2ib:12345:3:1    [started]  
+ s3server   0x7200000000000001:0xb1  192.168.20.18@o2ib:12345:3:2    [started]  
+ s3server   0x7200000000000001:0xb4  192.168.20.18@o2ib:12345:3:3    [started]  
+ s3server   0x7200000000000001:0xb7  192.168.20.18@o2ib:12345:3:4    [unknown]  
+ m0_client  0x7200000000000001:0xba  192.168.20.18@o2ib:12345:4:1    [unknown]  
+ m0_client  0x7200000000000001:0xbd  192.168.20.18@o2ib:12345:4:2    sm10-
+ r20.pun.seagate.com    [started]  hax        0x7200000000000001:0x6   
+ 192.168.20.10@o2ib:12345:1:1    [started]  confd      0x7200000000000001:0x9   
+ 192.168.20.10@o2ib:12345:2:1    [started]  ioservice  0x7200000000000001:0xc   
+ 192.168.20.10@o2ib:12345:2:2    [started]  s3server   0x7200000000000001:0x30  
+ 192.168.20.10@o2ib:12345:3:1    [started]  s3server   0x7200000000000001:0x33  
+ 192.168.20.10@o2ib:12345:3:2    [started]  s3server   0x7200000000000001:0x36  
+ 192.168.20.10@o2ib:12345:3:3    [started]  s3server   0x7200000000000001:0x39  
+ 192.168.20.10@o2ib:12345:3:4    [unknown]  m0_client  0x7200000000000001:0x3c  
+ 192.168.20.10@o2ib:12345:4:1    [unknown]  m0_client  0x7200000000000001:0x3f  
+ 192.168.20.10@o2ib:12345:4:2    sm11-r20.pun.seagate.com  (RC)    [started]  
+ hax        0x7200000000000001:0x45  192.168.20.11@o2ib:12345:1:1    [started]  
+ confd      0x7200000000000001:0x48  192.168.20.11@o2ib:12345:2:1    [started]  
+ ioservice  0x7200000000000001:0x4b  192.168.20.11@o2ib:12345:2:2    [started]  
+ s3server   0x7200000000000001:0x6f  192.168.20.11@o2ib:12345:3:1    [started]  
+ s3server   0x7200000000000001:0x72  192.168.20.11@o2ib:12345:3:2    [started]  
+ s3server   0x7200000000000001:0x75  192.168.20.11@o2ib:12345:3:3    [started]  
+ s3server   0x7200000000000001:0x78  192.168.20.11@o2ib:12345:3:4    [unknown]  
+ m0_client  0x7200000000000001:0x7b  192.168.20.11@o2ib:12345:4:1    [unknown]  
+ m0_client  0x7200000000000001:0x7e  192.168.20.11@o2ib:12345:4:2
+
 SSPL
 ====
 
