@@ -4,7 +4,7 @@ Building and testing CORTX can be done using a single system.  Obviously CORTX i
 
 Currently CORTX requires the CentOS 7.7.1908 distribution running the 3.10.0-1062 kernel. Building it and testing it can be done on either a physical or virtual machine matching these requirements.  
 
-Please refer to [this page](LocalVMSetup.md) for information about running with VMWare Fusion or Virtual Box as well as links to downloadable VM images which you can use.  Please note that if you are a Seagate employee, you cannot use Virtualbox on Seagate machines and VMWare Fusion is your only option. Also note that you must file an [Exception Request](https://seagatetechnology-my.sharepoint.com/:w:/g/personal/dhiren_t_sutaria_seagate_com/Eev4uwgFL51Cp6GfQUAv04wBPHgzd0dl2UaCR6gcQAwh-A) to run a local VM on your desktop/laptop computer.
+Please refer to [this page](LocalVMSetup.md) for information about running with VMWare Fusion or Virtual Box as well as links to downloadable VM images which you can use.  Please note that if you are a Seagate employee, virtual machine images can be requested and run out of a Seagate managed internal self-service cloud by following [this page](DEV_VM.md).
 
 TODO:
 1. Provide a downloadable image for Windows Subsystem Linux and any necessary instructions.
