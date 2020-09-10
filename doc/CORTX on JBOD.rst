@@ -202,7 +202,93 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
   olcSpSessionLog: 100 
 
 
- **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif** 
+ **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif**
+ 
+4. Push the **Config.ldif** file.
+
+     **config.ldif**
+
+        ::
+
+          dn: olcDatabase={0}config,cn=config 
+
+          changetype: modify 
+
+          add: olcSyncRepl 
+
+          olcSyncRepl: rid=001
+
+              provider=ldap://<hostname_node-1>:389/ 
+
+              bindmethod=simple 
+
+              binddn="cn=admin,cn=config" 
+
+              credentials=seagate 
+
+              searchbase="cn=config" 
+
+              scope=sub 
+
+              schemachecking=on 
+
+              type=refreshAndPersist 
+
+              retry="30 5 300 3" 
+
+              interval=00:00:05:00
+
+         # Enable additional providers 
+
+         olcSyncRepl: rid=002 
+
+            provider=ldap://<hostname_node-2>:389/ 
+
+            bindmethod=simple 
+
+            binddn="cn=admin,cn=config" 
+
+            credentials=seagate 
+
+            searchbase="cn=config" 
+
+            scope=sub 
+
+            schemachecking=on 
+
+            type=refreshAndPersist 
+
+            retry="30 5 300 3" 
+
+            interval=00:00:05:00 
+
+         olcSyncRepl: rid=003 
+
+            provider=ldap://<hostname_node-3>:389/ 
+
+            bindmethod=simple 
+
+            binddn="cn=admin,cn=config" 
+
+            credentials=seagate 
+
+            searchbase="cn=config" 
+
+            scope=sub 
+
+            schemachecking=on 
+
+            type=refreshAndPersist 
+
+            retry="30 5 300 3" 
+
+            interval=00:00:05:00 
+
+         add: olcMirrorMode 
+
+         olcMirrorMode: TRUE
+
+         **command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif** 
 
 RabbitMQ
 ========
