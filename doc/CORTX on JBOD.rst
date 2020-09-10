@@ -774,7 +774,6 @@ Prerequisites
 
  - **cortx-csm-web**
 
- - **uds-pyi**
  
 Configuration
 -------------
