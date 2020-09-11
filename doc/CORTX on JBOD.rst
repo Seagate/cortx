@@ -31,51 +31,34 @@ As a contributor, you must follow the workflow described in the diagram below, t
  .. image:: images/JBOD.png
  
 ***************************************
-Setting Motr + hare and IO with m0crate 
+I/O Configuration (Motr + HARE + S3) 
 ***************************************
-To setup Motr + hare and IO with m0crate, perform the procedure mentioned below.
+Perform the below mentioned procedure to configure the I/O stack.
 
-1. Install yum utils for yum-config-manager by running the following command.
+1. Update the BE tx parameters by running the below mentioned command. The **/etc/sysconfig/motr** gets configured.
 
- - **# yum install yum-utils.noarch**
- 
-2. Add the latest release rpm repository.
+ - **# m0provision config**
 
- - **# yum-config-manager --add-repo=http://cortx-storage.colo.seagate.com/releases/eos/github/release-2729/**
+2. Run the below mentioned command to bootstrap the cluster.
 
-3. Add repository for lustre packages.
+ - **# hctl bootstrap --mkfs cluster.yaml**
 
- - **# sudo yum-config-manager --add-repo=http://cortx-storage.colo.seagate.com/releases/cortx/lustre/custom/tcp/**
+  This command must be used with **mkfs** only while running it for the first time. 
 
-4. Add repo for the pacemaker.
+3. Verify the motr utility m0crate, by creating a sample m0crate workload file and running m0crate workload. Run the below mentioned commands.
 
- # add /etc/yum.repos.d/base.repo with following contents 
-    [base]
+ -  **# /opt/seagate/cortx/hare/libexec/m0crate-io-conf > /tmp/m0crate-io.yaml**
 
- gpgcheck=0
+ -  **# m0crate -S /tmp/m0crate-io.yaml**
 
- enabled=1
+Run the below mentioned command to shut down the cluster.
 
- baseurl=http://ssc-satellite1.colo.seagate.com/pulp/repos/EOS/Library/custom/CentOS-7/CentOS-7-OS/
+ - **# hctl shutdown**
 
- name=base
+Run the below mentioned command to start the cluster. This command must be used while starting the cluster from second time.
 
-5. Run the following command to run Motr and Hare.
+- **# hctl bootstrap –c /var/lib/hare**  
 
- - **# yum install -y --nogpgcheck cortx-motr.x86_64 cortx-hare.x86_64**
- 
-6. Configure lnet on all the nodes. 
-
-   edit /etc/modprobe.d/lnet.conf file with netowork interface used by MOTR endpoints' 
-    options lnet networks=o2ib(enp175s0f1) config_on_load=1
-
- - # systemctl restart lnet
-
- -  # lctl list_nids
-
-7. To update the BE tx parameters, run the following command:
-
- -  **# m0provisioning config**
  
 *****************************
 Configuration of Dependencies
