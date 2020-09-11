@@ -145,6 +145,15 @@ Prerequisites
 
 - *invalid syntax*
 
+**Important**
+^^^^^^^^^^^^^
+
+You need not copy the contents of the files from this page as they are placed in the following directory.
+
+ - **cd /opt/seagate/cortx/s3/install/ldap/replication**
+ 
+ Edit the relevant fields as required (olcserverid.ldif and config.ldif). 
+
 Procedure
 ^^^^^^^^^^
 Perform the the first 4 steps on the 3 nodes with the following change in **olcseverid.ldif**.
