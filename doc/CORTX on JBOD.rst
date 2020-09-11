@@ -137,7 +137,7 @@ Prerequisites
 
 - 3 nodes must be available
 
-- The host name in the provider field in **config.ldif** on all 3 nodes if not updated earlier.
+- The host name must be updated in the provider field in **config.ldif** on all the 3 nodes at all times.
 
 Procedure
 ^^^^^^^^^^
