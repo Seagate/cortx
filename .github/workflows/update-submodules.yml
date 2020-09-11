@@ -16,4 +16,4 @@ jobs:
       - run: git submodule update --remote --checkout
       - run: git add --all
       - run: git commit -m "Automated submodule remote update"
-      - run: git push origin master 
+      - run: git push origin main 
