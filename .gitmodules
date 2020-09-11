@@ -16,6 +16,15 @@
 [submodule "cortx-posix"]
 	path = cortx-posix
 	url = https://github.com/Seagate/cortx-posix.git
-[submodule "cortx-sspl"]
-	path = cortx-sspl
-	url = https://github.com/Seagate/cortx-sspl.git
+[submodule "cortx-management-web"]
+	path = cortx-management-web
+	url = https://github.com/Seagate/cortx-management-web.git
+[submodule "cortx-management"]
+	path = cortx-management
+	url = https://github.com/Seagate/cortx-management.git
+[submodule "cortx-ha"]
+	path = cortx-ha
+	url = https://github.com/Seagate/cortx-ha.git
+[submodule "cortx-monitor"]
+	path = cortx-monitor
+	url = https://github.com/Seagate/cortx-monitor.git
