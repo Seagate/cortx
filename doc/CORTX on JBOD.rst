@@ -691,7 +691,7 @@ Prerequisites
 
  - Provisioner and salt API must be available on setup
 
-- Run the below mentioned command to ensure that RabbitMq server and SSPL rpms are installed.
+- Run the below mentioned command to ensure that RabbitMQ server and SSPL rpms are installed.
 
   ::
   
@@ -764,7 +764,7 @@ The prerequisites and different procedures associated with the configuration of 
 
 Prerequisites
 -------------
-- Consul, ElasticSearch, and RabbitMq must be installed.
+- Consul, ElasticSearch, and RabbitMQ must be installed.
 
 - The below mentioned RPMs must be installed on all the nodes.
 
