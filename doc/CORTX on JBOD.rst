@@ -137,7 +137,13 @@ Prerequisites
 
 - 3 nodes must be available
 
-- The host name must be updated in the provider field in **config.ldif** on all the 3 nodes at all times.
+- The host name must be updated in the provider field in **config.ldif** on all the 3 nodes.
+
+**Note**: All the commands must run successfully. The below mentioned errors must not occur.
+
+- *no such attribute*
+
+- *invalid syntax*
 
 Procedure
 ^^^^^^^^^^
