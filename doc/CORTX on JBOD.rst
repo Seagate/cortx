@@ -1,6 +1,6 @@
-===================================
+###################################
 Running Distributed Scale-out CORTX 
-===================================
+###################################
 This document provides information on the installation procedures that must be followed to install a set of CORTX servers doing distributed erasure across a set of storage devices.
 
 **************
