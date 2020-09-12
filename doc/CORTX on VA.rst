@@ -52,7 +52,7 @@ The procedure to install CORTX on VA is mentioned below.
      
   **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
   
-8. Update **/etc/hosts** with the management IP address and the new hostname for the VA.
+8. Update **/etc/hosts** with the management IP address and the new hostname for the VA. In the same file, update the line that contains **s3.seagate.com** with the IP address of the public data interface. Do not remove or rename hostnames in this line.
 
 9. Edit **/root/.ssh/config** and update the following with the new hostname for the VA.
 
