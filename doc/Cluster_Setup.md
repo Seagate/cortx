@@ -1,6 +1,7 @@
 # CORTX v1.0 Virtual Clusters Setup
 
 This is a step by step guide to get CORTX virtual cluster setup ready.
+Also see https://github.com/Seagate/cortx-hare/blob/dev/README.md
 
 ## 1. Single-node setup
 
@@ -13,7 +14,7 @@ Create a virtual machine using
 
 * Add 'last_successful' yum repository.
   ```bash
-  REPO=http://cortx-storage.colo.seagate.com/releases/cortx
+  REPO=cortx-storage.colo.seagate.com/releases/cortx
   REPO+=/github/release/rhel-7.7.1908/last_successful/
 
   sudo yum-config-manager --add-repo="http://$REPO"
@@ -86,9 +87,10 @@ Sample diff:
        other: 2      # max quantity of other Motr clients this host may have
      pools:
     - name: the pool
-      disks: all
+      #type: sns  # optional; supported values: "sns" (default), "dix", "md"
       data_units: 4      # N=4 Update N and K here
       parity_units: 2    # K=2, Also make sure N+2K <= P number of devices.
+      allowed_failures: { site: 0, rack: 0, encl: 0, ctrl: 0, disk: 2 } 
 ```
 
 ### 1.5. Bootstrap the cluster
@@ -218,7 +220,6 @@ Sample diff:
          io_disks: []
            pools:
     - name: the pool
-      disks: all
       data_units: 4      # N=4 Update N and K here
       parity_units: 2    # K=2, Also make sure N+2K <= P number of devices.
 ```
