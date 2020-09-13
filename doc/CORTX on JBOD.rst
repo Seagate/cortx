@@ -107,7 +107,7 @@ This section provides information on the installation of Provisioner and the ass
 | LFS           | lfs 2.12.3                                          |
 +---------------+-----------------------------------------------------+
 
-6. Proceed to the next section, and start configuring the dependency components.
+6. Proceed to the next section, and start the configuration procedures.
 
  
 ***************************************
