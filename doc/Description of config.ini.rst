@@ -27,13 +27,33 @@ Mandatory Keys
 ---------------
 The mandatory keys are listed in the table below.
 
-    +------------+---------------------------------------------+
-    |     Key    |  Description / default value (if provided)  |
-    +------------+---------------------------------------------+     
-    | cluster_ip | IP address of Cluster (Data) VIP>           |
-    +------------+---------------------------------------------+
-    | mgmt_vip   | IP address of Management VIP>               |
-    +------------+---------------------------------------------+
+    +------------+-------------------------------------------------+
+    |  **Key**   |  **Description / default value (if provided)**  |
+    +------------+-------------------------------------------------+     
+    | cluster_ip | IP address of Cluster (Data) VIP>               |
+    +------------+-------------------------------------------------+
+    | mgmt_vip   | IP address of Management VIP>                   |
+    +------------+-------------------------------------------------+
+
+Optional Keys
+--------------
+- None
+
+Storage_enclosure
+==================
+This section describes the storage enclosure type. JBOD is the only supported type.
+
+Mandatory Keys
+---------------
+The mandatory keys are listed in the table below.
+
+    +------------+------------------------------------------------+
+    | **Key**    | **Description / default value (if provided)**  |
+    +------------+------------------------------------------------+     
+    | type       | JBOD                                           |
+    +------------+------------------------------------------------+
+
+**Note**: The value in this section is case-sensitive.
 
 Optional Keys
 --------------
