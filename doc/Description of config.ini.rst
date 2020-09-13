@@ -1,6 +1,6 @@
-=========================
-Description of config.ini
-=========================
+================
+Config.ini File
+================
 
 The purpose of the config.ini file is to provide configuration details about the CORTX cluster. It is required for the cluster's installation. 
 
