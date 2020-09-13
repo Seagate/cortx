@@ -1,12 +1,12 @@
 ###################################
 Running Distributed Scale-out CORTX 
 ###################################
-This document provides information on the installation procedures that must be followed to install a set of CORTX servers doing distributed erasure across a set of storage devices.
+This document details the installation procedures that must be followed to install a set of CORTX servers doing distributed erasure across a set of storage devices.
 
 **************
 Limitations
 **************
-Please note that this is a preview of distributed CORTX doing network erasure and it is not yet failure resilient.  Please do not use these instructions to run CORTX for production reasons nor for storing any critical data.  Do note that the officially supported Seagate version of Lyve Drive Rack can be used for production reasons since it relies on erasure within the enclosures.
+Please note that this is a preview of distributed CORTX doing network erasure and it is not failure resilient. Do not use these instructions to run CORTX for production reasons nor for storing critical data. The official Seagate version of Lyve Drive Rack (LDR) can be used for production reasons as it relies on erasure within the enclosures.
 
 **************
 Prerequisites
