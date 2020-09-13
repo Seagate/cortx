@@ -109,7 +109,7 @@ Optional Keys
 --------------
 
    +--------------------------------+-----------------------------------------+
-   |             **Key**            |  **Description/value (if provided) **   |
+   |             **Key**            |  **Description/value (if provided)**    |
    +--------------------------------+-----------------------------------------+
    | is_primary                     | Designates the first server in the      |
    |                                | cluster. The value should be set to     |
