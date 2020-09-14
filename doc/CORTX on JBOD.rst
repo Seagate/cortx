@@ -239,6 +239,41 @@ This section provides information on the installation of Provisioner and the ass
    - Supported Version - 3.6
    
     - Other versions are not supported.
+    
+11. Configure DNS and DHCP server, if used, with the host names and IP addresses for each server.
+
+  - Each server should have FQDN assigned to it. The FQDN should be associated with the IP address of the management network interface.
+
+  - Configure IP addresses on Management and Public Data network interfaces on each server using one of the following methods:
+
+   - static IP addresses for each of the network interfaces
+
+   - dynamic IP addresses for each of the network interfaces
+
+   **Important Notes**
+
+   - CORTX does not support IPv6. Only IPv4 is supported.
+
+   - If you are using dynamic IP addresses, please map the MAC addresses of the respective interfaces to the IP address in the configuration of your DHCP server. This is required to avoid possible IP changes when the leases associated with DHCP expire.
+
+   - If DHCP server is used, ensure that DHCP server passes host names to the servers.
+
+   - Do not configure DHCP to assign the IP address to the private data interfaces. This interface is configured by the CORTX software installer. By default, the configuration uses **192.168.0.0/24** subnet. This setting can be changed by providing necessary information in the config.ini file. For more information, move to step 12.
+
+   You also need two static IPs to be used as Virtual IPs (VIPs). One VIP will be used as Management VIP and another VIP will be used as Cluster (Data) VIP.
+
+   - The Management VIP should be from the same subnet as the rest of the Management network IPs.
+
+   - The Cluster (Data) VIP should be from the same subnet as the rest of the Public Data network IPs.
+
+   **Notes**
+ 
+   - VIPs utilize CLUSTERIP iptables module that relies on multicast. For CORTX to function appropriately, multicasts should be allowed for Management and Public Data networks.
+
+
+   - These static IPs are required regardless of whether DHCP is used to provide IP addresses for each server interface or not.
+
+   - You must configure DNS resolution for these VIPs.
 
  
 ***************************************
