@@ -130,11 +130,11 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 5. Allow the root login over SSH on all three servers. This is required for the installation and operations of the cluster.
 
- **Notes**
+   **Notes**
 
- - This setting cannot be changed after the installation is complete.
+    - This setting cannot be changed after the installation is complete.
 
- - You can create another non-root user to avoid logging in to the servers as root all the time. Please allow this user to run all commands using sudo (add it to the "wheel" group).
+    - You can create another non-root user to avoid logging in to the servers as root all the time. Please allow this user to run all commands using sudo (add it to the "wheel" group).
 
 ******************************
 Installation of CORTX Software
