@@ -222,6 +222,20 @@ This section provides information on the installation of Provisioner and the ass
 
 6. Proceed to the next section, and start the configuration procedures.
 
+6. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
+
+7. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.7-3.2.9.0/rhel7.7/x86_64/MLNX_LIBS/. You must reboot the system after completing the installation.
+
+  - Supported Version - 4.7-3.2.9.0
+
+   - Other versions are not supported.
+
+8. Download CORTX ISO and CORTX 3rd_party ISO files from <url to github location>.
+
+9. Upload the ISOs to the first server in the cluster that you are planning to install. It is recommended to have the ISOs in the same location.
+
+10. On all three servers, setup Python 3.6 virtual environment. Refer https://docs.python.org/3.6/library/venv.html. 
+
  
 ***************************************
 I/O Configuration (Motr + HARE + S3) 
