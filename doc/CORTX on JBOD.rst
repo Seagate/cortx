@@ -71,6 +71,28 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
  - **uname -r**
 
   - Appropriate Output: 3.10.0-1062.el7.x86_64
+  
+  WARNING: Do not update CentOS 7.7 release as it will break CORTX. Operating system updates are not supported at the moment.
+
+  While there are no specific requirements for installing the CentOS 7.7, we recommend you to follow the following guidelines:
+
+  a. Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
+
+  b. On each drive, configure the partitions as per the following guidelines.
+
+     +-------------+---------+-------------------------------------------+
+     |  Partition  |  Size   |        Notes                              |
+     |  number     |         |                                           |
+     +-------------+---------+-------------------------------------------+
+     |     1       | 256 MB  | to be mounted to /boot/efi or /boot/efi2  |
+     +-------------+---------+-------------------------------------------+
+     |     2       |  1 GB   | to be used as part of md0 RAID-1 volume   |
+     +-------------+---------+-------------------------------------------+
+     |     3       | rest of | to be used as part of md1 RAID-1 volume   |
+     |             | disk    |                                           |
+     +-------------+---------+-------------------------------------------+
+
+    **Note**: The partitioning schema is assuming the servers support UEFI for booting. If the servers do not support UEFI, partition #1 is not required. CentOD Linux implementation of UEFI does not support RAID configuration at the moment, therefore two separate EFI partitions will be needed to be able to boot the server in case of one of the disk fails. These partions should be mounted to /boot/efi (the partition on disk #1) and /boot/efi2 (the partition on disk #2).
 
 ******************************
 Installation of CORTX Software
