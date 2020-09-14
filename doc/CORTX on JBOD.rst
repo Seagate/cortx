@@ -124,7 +124,17 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     | /dev/mapper/vg_swap            | none           | 100GB | linux-swap(*) |
     +--------------------------------+----------------+-------+---------------+
 
-    **Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions. 
+    **Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions.
+    
+4. Configure root user on all 3 servers to use the same password. This is required for the installation and can be changed after the installation is complete.
+
+5. Allow the root login over SSH on all three servers. This is required for the installation and operations of the cluster.
+
+ **Notes**
+
+ - This setting cannot be changed after the installation is complete.
+
+ - You can create another non-root user to avoid logging in to the servers as root all the time. Please allow this user to run all commands using sudo (add it to the "wheel" group).
 
 ******************************
 Installation of CORTX Software
