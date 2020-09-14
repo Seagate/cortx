@@ -238,9 +238,10 @@ This section provides information on the installation of Provisioner and the ass
 
 5. Run the below mentioned commands to verify that the dependency components are installed successfully.
 
- - **/usr/share/kibana/bin/kibana --version**
-
- - **slapd -V**
+   :: 
+ 
+    /usr/share/kibana/bin/kibana --version
+    slapd -V
 
  - **/usr/share/elasticsearch/bin/elasticsearch --version**
 
