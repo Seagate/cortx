@@ -72,7 +72,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
   - Appropriate Output: 3.10.0-1062.el7.x86_64
   
-  WARNING: Do not update CentOS 7.7 release as it will break CORTX. Operating system updates are not supported at the moment.
+  **Warning**: Do not update CentOS 7.7 release as it will break CORTX. Operating system updates are not supported at the moment.
 
   While there are no specific requirements for installing the CentOS 7.7, we recommend you to follow the following guidelines:
 
