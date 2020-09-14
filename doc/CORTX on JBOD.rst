@@ -63,7 +63,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
   
  - **lsb_release -r**
 
-  - Appropriate Output: 7.7.1908
+   - Appropriate Output: 7.7.1908
 
  - **uname -r**
 
