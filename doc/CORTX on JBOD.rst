@@ -135,6 +135,59 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     - This setting cannot be changed after the installation is complete.
 
     - You can create another non-root user to avoid logging in to the servers as root all the time. Please allow this user to run all commands using sudo (add it to the "wheel" group).
+    
+6. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
+
+7. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.7-3.2.9.0/rhel7.7/x86_64/MLNX_LIBS/. You must reboot the system after completing the installation.
+
+  - Supported Version - 4.7-3.2.9.0
+
+   - Other versions are not supported.
+
+8. Download CORTX ISO and CORTX 3rd_party ISO files from <url to github location>.
+
+9. Upload the ISOs to the first server in the cluster that you are planning to install. It is recommended to have the ISOs in the same location.
+
+10. On all three servers, setup Python 3.6 virtual environment. Refer https://docs.python.org/3.6/library/venv.html.
+
+   - Supported Version - 3.6
+   
+    - Other versions are not supported.
+    
+11. Configure DNS and DHCP server, if used, with the host names and IP addresses for each server.
+
+  - Each server should have FQDN assigned to it. The FQDN should be associated with the IP address of the management network interface.
+
+  - Configure IP addresses on Management and Public Data network interfaces on each server using one of the following methods:
+
+   - static IP addresses for each of the network interfaces
+
+   - dynamic IP addresses for each of the network interfaces
+
+   **Important Notes**
+
+   - CORTX does not support IPv6. Only IPv4 is supported.
+
+   - If you are using dynamic IP addresses, please map the MAC addresses of the respective interfaces to the IP address in the configuration of your DHCP server. This is required to avoid possible IP changes when the leases associated with DHCP expire.
+
+   - If DHCP server is used, ensure that DHCP server passes host names to the servers.
+
+   - Do not configure DHCP to assign the IP address to the private data interfaces. This interface is configured by the CORTX software installer. By default, the configuration uses **192.168.0.0/24** subnet. This setting can be changed by providing necessary information in the config.ini file. For more information, move to step 12.
+
+   You also need two static IPs to be used as Virtual IPs (VIPs). One VIP will be used as Management VIP and another VIP will be used as Cluster (Data) VIP.
+
+   - The Management VIP should be from the same subnet as the rest of the Management network IPs.
+
+   - The Cluster (Data) VIP should be from the same subnet as the rest of the Public Data network IPs.
+
+   **Notes**
+ 
+   - VIPs utilize CLUSTERIP iptables module that relies on multicast. For CORTX to function appropriately, multicasts should be allowed for Management and Public Data networks.
+
+
+   - These static IPs are required regardless of whether DHCP is used to provide IP addresses for each server interface or not.
+
+   - You must configure DNS resolution for these VIPs.
 
 ******************************
 Installation of CORTX Software
@@ -221,60 +274,6 @@ This section provides information on the installation of Provisioner and the ass
 +---------------+-----------------------------------------------------+
 
 6. Proceed to the next section, and start the configuration procedures.
-
-6. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
-
-7. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.7-3.2.9.0/rhel7.7/x86_64/MLNX_LIBS/. You must reboot the system after completing the installation.
-
-  - Supported Version - 4.7-3.2.9.0
-
-   - Other versions are not supported.
-
-8. Download CORTX ISO and CORTX 3rd_party ISO files from <url to github location>.
-
-9. Upload the ISOs to the first server in the cluster that you are planning to install. It is recommended to have the ISOs in the same location.
-
-10. On all three servers, setup Python 3.6 virtual environment. Refer https://docs.python.org/3.6/library/venv.html.
-
-   - Supported Version - 3.6
-   
-    - Other versions are not supported.
-    
-11. Configure DNS and DHCP server, if used, with the host names and IP addresses for each server.
-
-  - Each server should have FQDN assigned to it. The FQDN should be associated with the IP address of the management network interface.
-
-  - Configure IP addresses on Management and Public Data network interfaces on each server using one of the following methods:
-
-   - static IP addresses for each of the network interfaces
-
-   - dynamic IP addresses for each of the network interfaces
-
-   **Important Notes**
-
-   - CORTX does not support IPv6. Only IPv4 is supported.
-
-   - If you are using dynamic IP addresses, please map the MAC addresses of the respective interfaces to the IP address in the configuration of your DHCP server. This is required to avoid possible IP changes when the leases associated with DHCP expire.
-
-   - If DHCP server is used, ensure that DHCP server passes host names to the servers.
-
-   - Do not configure DHCP to assign the IP address to the private data interfaces. This interface is configured by the CORTX software installer. By default, the configuration uses **192.168.0.0/24** subnet. This setting can be changed by providing necessary information in the config.ini file. For more information, move to step 12.
-
-   You also need two static IPs to be used as Virtual IPs (VIPs). One VIP will be used as Management VIP and another VIP will be used as Cluster (Data) VIP.
-
-   - The Management VIP should be from the same subnet as the rest of the Management network IPs.
-
-   - The Cluster (Data) VIP should be from the same subnet as the rest of the Public Data network IPs.
-
-   **Notes**
- 
-   - VIPs utilize CLUSTERIP iptables module that relies on multicast. For CORTX to function appropriately, multicasts should be allowed for Management and Public Data networks.
-
-
-   - These static IPs are required regardless of whether DHCP is used to provide IP addresses for each server interface or not.
-
-   - You must configure DNS resolution for these VIPs.
-
  
 ***************************************
 I/O Configuration (Motr + HARE + S3) 
