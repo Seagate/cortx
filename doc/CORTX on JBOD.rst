@@ -105,7 +105,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
    |  md1   |  To be used as physical volume for LVM   |
    +--------+------------------------------------------+
 
- d. Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
+   d. Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
 
     +--------------------------------+----------------+-------+---------------+
     |    LVM device name             | Mount          | Size  | FS type       |
