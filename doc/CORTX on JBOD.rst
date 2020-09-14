@@ -1104,19 +1104,19 @@ Command Line Interface (CLI)
 ----------------------------
 - Cluster Management
 
- - # Start Cortx ha cluster
+ - Start Cortx ha cluster
 
   - **$ cortxha cluster start**
 
- - # Stop Cortx-ha cluster
+ - Stop Cortx-ha cluster
 
   - **$ cortxha cluster stop**
 
- - # Get status for services
+ - Get status for services
 
   - **$ cortxha cluster status**
 
- - # Shutdown cluster
+ - Shutdown cluster
 
   - **$ cortxha cluster shutdown**
 
