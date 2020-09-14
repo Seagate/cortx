@@ -4,7 +4,7 @@ Config.ini File
 
 The purpose of the config.ini file is to provide configuration details about the CORTX cluster. It is required for the cluster's installation. 
 
-The config.ini file contains several sections. All sections are mandatory. Each section has several keys - value pairs, some of which are mandatory and some are optional.
+The config.ini file contains several sections. All sections are mandatory. Each section has several keys-value pairs, some of which are mandatory and some are optional.
 
 For the formatting guidelines of the INI file, refer https://www.nongnu.org/chmspec/latest/INI.html.
 
@@ -120,6 +120,7 @@ Optional Keys
    |                                |                                         |
    |                                | Accepted formats:                       |
    |                                |     AAA.BBB.CCC.DDD                     |
+   |                                |                                         |
    |                                |     XY                                  |
    |                                |                                         |
    |                                |  NOTE: This key becomes mandatory       |
@@ -135,6 +136,7 @@ Optional Keys
    |                                |                                         |
    |                                | Accepted formats:                       |
    |                                |     AAA.BBB.CCC.DDD                     |
+   |                                |                                         |
    |                                |     XY                                  |
    |                                |                                         |
    |                                |  NOTE: This key becomes mandatory       |
