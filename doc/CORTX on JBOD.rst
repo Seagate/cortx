@@ -62,7 +62,15 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 3. Install CentOS 7.7 (1908 release) operating system on all three servers in the future cluster.
 
-  **Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands:
+  **Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands and view the appropriate outputs.
+  
+ - **lsb_release -r**
+
+  - Appropriate Output: 7.7.1908
+
+ - **uname -r**
+
+  - Appropriate Output: 3.10.0-1062.el7.x86_64
 
 ******************************
 Installation of CORTX Software
