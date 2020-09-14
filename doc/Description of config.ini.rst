@@ -13,14 +13,14 @@ Sections
 **********
 The following sections are displayed.
 
-- Cluster
+- [cluster]
 
-- Storage_enclosure
+- [storage_enclosure]
 
-- srvnode-X
+- [srvnode-X]
 
-Cluster
-========
+[cluster]
+=========
 This section describes the VIP address for management and public data networks.
 
 Mandatory Keys
@@ -39,8 +39,8 @@ Optional Keys
 --------------
 - None
 
-Storage_enclosure
-==================
+[storage_enclosure]
+===================
 This section describes the storage enclosure type. JBOD is the only supported type.
 
 Mandatory Keys
@@ -59,8 +59,8 @@ Optional Keys
 --------------
 - None
 
-Srvnode-X
-===========
+[srvnode-X]
+============
 This section provides information about every server in the cluster. 
 
 **Note**: X should be replaced with the number. The actual sections should be named [srvnode-1], [srvnode-2], and [srvnode-3]. 
