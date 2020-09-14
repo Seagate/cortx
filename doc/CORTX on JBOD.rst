@@ -74,7 +74,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
   
   **Warning**: Do not update CentOS 7.7 release as it will break CORTX. Operating system updates are not supported at the moment.
 
-  While there are no specific requirements for installing the CentOS 7.7, we recommend you to follow the following guidelines:
+  While there are no specific requirements for installing the CentOS 7.7, we recommend you to perform the following 4 steps.
 
   a. Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
 
