@@ -203,7 +203,7 @@ This section provides information on the installation of Provisioner and the ass
 
 3. Run the below mentioned command to install the CORTX Provisioner API.
 
- - **pip3 install <url to provisioner API on github>**
+ - **pip3 install https://github.com/Seagate/cortx-prvsnr/tree/dev/api/python**
 
 4. Run the below mentioned commands to install the cluster. The approximate time taken is 40 minutes.
 
