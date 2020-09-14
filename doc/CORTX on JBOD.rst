@@ -42,7 +42,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
  b. JBOD Reference Configuration
 
-  - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server.
+  - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server. The minimum size of the JBOD disk is 2TB.
 
  c. Network Configuration Requirements
 
