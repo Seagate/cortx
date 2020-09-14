@@ -93,6 +93,38 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
      +-------------+---------+-------------------------------------------+
 
     **Note**: The partitioning schema is assuming the servers support UEFI for booting. If the servers do not support UEFI, partition #1 is not required. CentOD Linux implementation of UEFI does not support RAID configuration at the moment, therefore two separate EFI partitions will be needed to be able to boot the server in case of one of the disk fails. These partions should be mounted to /boot/efi (the partition on disk #1) and /boot/efi2 (the partition on disk #2).
+    
+   c. Create two RAID-1 volumes.
+
+   +--------+------------------------------------------+
+   | Volume |      Purpose / mount point               |
+   | name   |                                          |
+   +--------+------------------------------------------+
+   |  md0   |  /boot                                   |
+   +--------+------------------------------------------+
+   |  md1   |  To be used as physical volume for LVM   |
+   +--------+------------------------------------------+
+
+ d. Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
+
+    +--------------------------------+----------------+-------+---------------+
+    |    LVM device name             | Mount          | Size  | FS type       |
+    |                                | point          |       |               |
+    +--------------------------------+----------------+-------+---------------+
+    | /dev/mapper/vg_sysvol-lv_root  | /              | 200GB | ext4          |
+    +--------------------------------+----------------+-------+---------------+
+    | /dev/mapper/vg_sysvol-lv_tmp   | /tmp           | 200GB | ext4          |
+    +--------------------------------+----------------+-------+---------------+
+    | /dev/mapper/vg_sysvol-lv_var   | /var           | 200GB | ext4          |
+    +--------------------------------+----------------+-------+---------------+
+    | /dev/mapper/vg_sysvol-lv_log   | /var/log       | 200GB | ext4          |
+    +--------------------------------+----------------+-------+---------------+
+    | /dev/mapper/vg_sysvol-lv_audit | /var/log/audit | 128MB | ext4          |
+    +--------------------------------+----------------+-------+---------------+
+    | /dev/mapper/vg_swap            | none           | 100GB | linux-swap(*) |
+    +--------------------------------+----------------+-------+---------------+
+
+    **Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions. 
 
 ******************************
 Installation of CORTX Software
