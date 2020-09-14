@@ -173,12 +173,12 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 
   ```shell
 
-  $ git pull origin master
+  $ git pull origin main
   $ git submodule update --init --recursive
   $ git checkout 'your-local-branch'
   $ git pull origin 'your-remote-branch-name'
   $ git submodule update --init --recursive
-  $ git rebase origin/master
+  $ git rebase origin/main
   ```
   
 You can make changes to the code and save them in your files.
