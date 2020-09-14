@@ -172,74 +172,47 @@ Template of Config.ini file
   [storage_enclosure]
   type=JBOD
 
-
-| [srvnode-1]
-| hostname=
-| network.mgmt_nw.iface=
-| network.mgmt_nw.public_ip_addr=
-| network.mgmt_nw.netmask=
-| network.mgmt_nw.gateway=
-| network.data_nw.iface=
-| network.data_nw.public_ip_addr=
-| network.data_nw.netmask=
-| network.data_nw.gateway=
-| network.data_nw.pvt_ip_addr=
-| is_primary=
-| bmc.user=
-| bmc.secret=
-
-- [srvnode-2]
-
+  [srvnode-1]
   hostname=
-
   network.mgmt_nw.iface=
-
   network.mgmt_nw.public_ip_addr=
-
   network.mgmt_nw.netmask=
-
   network.mgmt_nw.gateway=
-
   network.data_nw.iface=
-
   network.data_nw.public_ip_addr=
- 
   network.data_nw.netmask=
-
   network.data_nw.gateway=
-
   network.data_nw.pvt_ip_addr=
-
   is_primary=
-
   bmc.user=
-
   bmc.secret=
 
-- [srvnode-3]
-
+  [srvnode-2]
   hostname=
-
   network.mgmt_nw.iface=
-
   network.mgmt_nw.public_ip_addr=
-
   network.mgmt_nw.netmask=
-
   network.mgmt_nw.gateway=
-
   network.data_nw.iface=
-
   network.data_nw.public_ip_addr=
-
   network.data_nw.netmask=
-
   network.data_nw.gateway=
-
   network.data_nw.pvt_ip_addr=
-
   is_primary=
-
   bmc.user=
+  bmc.secret=
 
+  [srvnode-3]
+  hostname=
+  network.mgmt_nw.iface=
+  network.mgmt_nw.public_ip_addr=
+  network.mgmt_nw.netmask=
+  network.mgmt_nw.gateway=
+  network.data_nw.iface=
+  network.data_nw.public_ip_addr=
+  network.data_nw.netmask=
+  network.data_nw.gateway=
+  network.data_nw.pvt_ip_addr=
+  is_primary=
+  bmc.user=
   bmc.secret=
