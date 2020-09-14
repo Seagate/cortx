@@ -8,20 +8,61 @@ Limitations
 **************
 Please note that this is a preview of distributed CORTX doing network erasure and it is not failure resilient. Do not use these instructions to run CORTX for production reasons nor for storing critical data. The official Seagate version of Lyve Drive Rack (LDR) can be used for production reasons as it relies on erasure within the enclosures.
 
-**************
-Prerequisites
-**************
-The prerequisites are as follows:
+*********************************
+3 Node JBOD Setup (Prerequisites)
+*********************************
 
-- Python 3.6
+Perform the below mentioned procedure to complete the process of 3 node JBOD Setup.
 
-- Root login using password (SSH)
+1. Prepare three servers and three JBODs as per the following guidelines.
 
-- Salt and gluster_fs
+ a. Server Reference Configuration
 
-- Image File (ISOs). This file consists of the installation RPMS.
+  - Minimal Configuration
 
- - The ISO must be placed in a specific location.
+   - 1x Intel Xeon CPU, 6 cores per CPU (2x Intel Xeon CPU, 10 cores per CPU for optimal performance)
+
+   - 64 GB RAM ( 192 GB RAM for optimal performane)
+
+   - 2x 1 TB internal HDD
+
+   - One dual-port or two single-port Mellanox HCA (for the data networks)
+
+   - At least one 1 GbE network port (for the Management network)
+
+   - SCSI HBA with expernal ports (to connect to JBOD)
+
+   **Notes**
+
+   - The minimum number of network ports per server is 3.
+
+   - Usage of Mellanox HCAs is recommended but not mandatory. For optimal performance you need two high-speed network ports (10 GbE minimum; 50 GbE or 100 GbE recommended).
+
+    - All the three servers must have Mellanox HCA or none of the servers must have it.
+
+ b. JBOD Reference Configuration
+
+  - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server.
+
+ c. Network Configuration Requirements
+
+  - The CORTX software requires 3 separate networks. The networks could be physically separate (connected to different switches) or separate VLANs. We recommend you to physically separate the management and data networks.
+
+         +----------------------+---------------------------------------------+
+         | Network name/purpose | Corresponding NIC                           |
+         +----------------------+---------------------------------------------+
+         | Management network   | connected to the 1 GbE NIC                  |
+         +----------------------+---------------------------------------------+
+         | Public Data network  | connected to the one of the high-speed NICs |
+         +----------------------+---------------------------------------------+
+         | Private Data network | connected to another high-speed NIC         |
+         +----------------------+---------------------------------------------+
+
+2. Connect the servers to the networks and the JBODs as per the guidelines provided above.
+
+3. Install CentOS 7.7 (1908 release) operating system on all three servers in the future cluster.
+
+  **Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands:
 
 ******************************
 Installation of CORTX Software
