@@ -163,13 +163,14 @@ Optional Keys
 Template of Config.ini file
 ****************************
 
-| [cluster]
-| cluster_ip=
-| mgmt_vip=
+::
 
-
-| [storage_enclosure]
-| type=JBOD
+  [cluster]
+  cluster_ip=
+  mgmt_vip=
+  
+  [storage_enclosure]
+  type=JBOD
 
 
 | [srvnode-1]
