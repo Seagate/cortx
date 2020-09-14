@@ -234,7 +234,11 @@ This section provides information on the installation of Provisioner and the ass
 
 9. Upload the ISOs to the first server in the cluster that you are planning to install. It is recommended to have the ISOs in the same location.
 
-10. On all three servers, setup Python 3.6 virtual environment. Refer https://docs.python.org/3.6/library/venv.html. 
+10. On all three servers, setup Python 3.6 virtual environment. Refer https://docs.python.org/3.6/library/venv.html.
+
+   - Supported Version - 3.6
+   
+    - Other versions are not supported.
 
  
 ***************************************
