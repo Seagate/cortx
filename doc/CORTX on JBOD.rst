@@ -769,16 +769,22 @@ Starting Service
 ^^^^^^^^^^^^^^^^^
 
 - Run the below mentioned command to start the AuthServer.
-
- - **systemctl start s3authserver**
+    
+   ::
+   
+    systemctl start s3authserver
 
 - Run the below mentioned command to restart the AuthServer.
 
- - **systemctl restart s3authserver**
+   ::
+    
+    systemctl restart s3authserver
  
 - Run the following command to check the status of AuthServer.
 
- - systemctl status s3authserver
+   ::
+
+    systemctl status s3authserver
 
 HAProxy
 --------
@@ -844,34 +850,40 @@ From the above result, it can be seen that each node has 4 s3server instances. H
 
 7. Configure haproxy logs on all the nodes by running the following commands.
 
- - **mkdir /etc/haproxy/errors/** 
+    ::
 
- - **cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/**
+     mkdir /etc/haproxy/errors/
 
- - **cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy** 
+     cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
 
- - **cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf** 
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
 
- - **rm -rf /etc/cron.daily/logrotate** 
+     cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
 
- - **cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate** 
+     rm -rf /etc/cron.daily/logrotate
 
- - **systemctl restart rsyslog** 
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate 
 
- - **systemctl restart haproxy** 
+     systemctl restart rsyslog
 
- - **systemctl status haproxy**
+     systemctl restart haproxy 
+
+     systemctl status haproxy
  
 Starting Service
 ^^^^^^^^^^^^^^^^^
  
 - Run the below mentioned command to start the HAProxy services.
 
- - **systemctl start haproxy**
+   ::
+   
+    systemctl start haproxy
  
 - Run the below mentioned command to check the status of HAProxy services.
 
- - **systemctl status haproxy**
+   ::
+   
+    systemctl status haproxy
 
 SSPL
 ====
@@ -885,7 +897,7 @@ Initial Steps
 
   ::
   
-   $ rpm -qa | grep -E "cortx|rabbitmq" 
+   rpm -qa | grep -E "cortx|rabbitmq" 
    cortx-libsspl_sec-xxxxxxxxxxxxxxxxxxxxx 
    cortx-sspl-xxxxxxxxxxxxxxxxxxxxx 
    cortx-libsspl_sec-method_none-xxxxxxxxxxxxxxxxxxxxx 
@@ -896,45 +908,59 @@ Initial Steps
    
 - Run the below mentioned command to ensure that the RabbitMq-server is running and active.
 
- - **$ systemctl status rabbitmq-server**
+   ::
+   
+    systemctl status rabbitmq-server
 
 - Run the below mentioned command to ensure that the consul agent is running.
 
- - **$ ps -aux | grep "consul"**
+   ::
+
+    ps -aux | grep "consul"
  
 Configuration
 -------------
 Run the below mentioned commands to configure SSPL.
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1**
+ ::
+ 
+  /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx**
+  /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup config -f**
+  /opt/seagate/cortx/sspl/bin/sspl_setup config -f
 
 
 Starting Service
 -----------------
 - Run the following to start the SSPL service.
 
- - **$ systemctl start sspl-ll**
+   ::
+
+    systemctl start sspl-ll
 
 - Run the following to restart the SSPL service.
 
- - **$ systemctl restart sspl-ll**
+   ::
+   
+    systemctl restart sspl-ll**
 
 Run the following command to know the status of the SSPL service.
 
- - **$ systemctl status sspl-ll -l**
+ ::
+ 
+  systemctl status sspl-ll -l
  
 Verification
 ------------
 Perform sanity test and ensure that the SSPL configuration is accurate. Run the following commands to perform the test.
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup check**
+ ::
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup test self**
-
+  /opt/seagate/cortx/sspl/bin/sspl_setup check
+  
+  /opt/seagate/cortx/sspl/bin/sspl_setup test self
+ 
 CSM
 ===
 
