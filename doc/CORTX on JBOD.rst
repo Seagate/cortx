@@ -334,22 +334,28 @@ Configuration
 
 4. Configure **slapd.log** on all 3 nodes using the commands mentioned below.
 
- - **cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf** 
- 
- - **systemctl restart slapd**
+    ::
 
- - **systemctl restart rsyslog**
+     cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf 
+ 
+     systemctl restart slapd
+
+     systemctl restart rsyslog
 
 Starting Service
 -----------------
 
 - Run the following command to start the service.
 
- - **systemctl start slapd**
+   ::
+
+    systemctl start slapd
 
 Run the following command to check the status of the service.
 
-- **systemctl status slapd**
+ ::
+
+  systemctl status slapd
 
 LDAP Replication
 ----------------
