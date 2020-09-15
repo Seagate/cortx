@@ -78,8 +78,8 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
   b. On each drive, configure the partitions as per the following guidelines.
 
      +-------------+---------+-------------------------------------------+
-     |  Partition  |  Size   |        Notes                              |
-     |  number     |         |                                           |
+     | **Partition |  **Size**   |        Notes                              |
+     |  number**   |         |                                           |
      +-------------+---------+-------------------------------------------+
      |     1       | 256 MB  | to be mounted to /boot/efi or /boot/efi2  |
      +-------------+---------+-------------------------------------------+
@@ -93,14 +93,14 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     
    c. Create two RAID-1 volumes.
 
-   +--------+------------------------------------------+
-   | Volume |      Purpose / mount point               |
-   | name   |                                          |
-   +--------+------------------------------------------+
-   |  md0   |  /boot                                   |
-   +--------+------------------------------------------+
-   |  md1   |  To be used as physical volume for LVM   |
-   +--------+------------------------------------------+
+   +--------+----------------------------------------------------+
+   | **Volume name**  |   **Purpose / mount point**              |
+   |                  |                                          |
+   +------------------+------------------------------------------+
+   |  md0             |  /boot                                   |
+   +------------------+------------------------------------------+
+   |  md1             |  To be used as physical volume for LVM   |
+   +------------------+------------------------------------------+
 
    d. Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
 
