@@ -28,6 +28,7 @@ Watch our CORTX Engineer, Justin Woo, demonstrate **<link to the video>** the pr
 ## Additional Resources
 
 - Know more about [CORTX CI/CD and Automation](../main/doc/CI_CD.md).
+- Setup [CORTX on JBOD](https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/CORTX%20on%20JBOD.rst)
 - Learn more about the [CORTX Architechture](../main/doc/architecture.md).
 - You can [submit requests and bugs using GitHub Issues](https://github.com/Seagate/cortx/issues).
 
