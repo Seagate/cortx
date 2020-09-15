@@ -324,7 +324,7 @@ This section describes the procedures that must be followed to configure LDAP.
 Configuration
 -------------
 
-1. Navigate to **/opt/seagate/cortx/s3/install/ldap**.
+1. Navigate to **/opt/seagate/cortx/s3/install/ldap**. This is applicable to all the 3 nodes.
 
 2. Run **setup_ldap.sh** using the following command.
 
