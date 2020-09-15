@@ -243,15 +243,16 @@ This section provides information on the installation of Provisioner and the ass
    :: 
  
     /usr/share/kibana/bin/kibana --version
+    
     slapd -V
 
- - **/usr/share/elasticsearch/bin/elasticsearch --version**
+    /usr/share/elasticsearch/bin/elasticsearch --version**
 
- - **rabbitmqadmin --version**
+    rabbitmqadmin --version
 
- - **node --version**
+    node --version
 
- - **lfs --version**
+    lfs --version
 
  The output must be displayed in the following tabular format.
 
