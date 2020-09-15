@@ -33,3 +33,21 @@ Run the below mentioned commands in the order of listing to stop the relevant se
   :: 
 
    systemctl stop sspl-ll
+   
+- I/O Stack
+
+  ::
+ 
+   hctl shutdown --all
+   
+- RabbitMQ
+
+  ::
+
+   systemctl stop rabbitmq-server
+
+- LDAP
+
+  ::
+
+   systemctl stop slapd
