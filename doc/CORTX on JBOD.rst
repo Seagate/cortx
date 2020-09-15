@@ -45,15 +45,15 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
   - The CORTX software requires 3 separate networks. The networks could be physically separate (connected to different switches) or separate VLANs. We recommend you to physically separate the management and data networks.
 
-         +----------------------+---------------------------------------------+
-         | Network name/purpose | Corresponding NIC                           |
-         +----------------------+---------------------------------------------+
-         | Management network   | connected to the 1 GbE NIC                  |
-         +----------------------+---------------------------------------------+
-         | Public Data network  | connected to the one of the high-speed NICs |
-         +----------------------+---------------------------------------------+
-         | Private Data network | connected to another high-speed NIC         |
-         +----------------------+---------------------------------------------+
+         +--------------------------+---------------------------------------------+
+         | **Network name/purpose** | **Corresponding NIC**                       |
+         +--------------------------+---------------------------------------------+
+         | Management network       | connected to the 1 GbE NIC                  |
+         +--------------------------+---------------------------------------------+
+         | Public Data network      | connected to the one of the high-speed NICs |
+         +--------------------------+---------------------------------------------+
+         | Private Data network     | connected to another high-speed NIC         |
+         +--------------------------+---------------------------------------------+
 
 2. Connect the servers to the networks and the JBODs as per the guidelines provided above.
 
@@ -104,22 +104,22 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    d. Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
 
-    +--------------------------------+----------------+-------+---------------+
-    |    LVM device name             | Mount          | Size  | FS type       |
-    |                                | point          |       |               |
-    +--------------------------------+----------------+-------+---------------+
-    | /dev/mapper/vg_sysvol-lv_root  | /              | 200GB | ext4          |
-    +--------------------------------+----------------+-------+---------------+
-    | /dev/mapper/vg_sysvol-lv_tmp   | /tmp           | 200GB | ext4          |
-    +--------------------------------+----------------+-------+---------------+
-    | /dev/mapper/vg_sysvol-lv_var   | /var           | 200GB | ext4          |
-    +--------------------------------+----------------+-------+---------------+
-    | /dev/mapper/vg_sysvol-lv_log   | /var/log       | 200GB | ext4          |
-    +--------------------------------+----------------+-------+---------------+
-    | /dev/mapper/vg_sysvol-lv_audit | /var/log/audit | 128MB | ext4          |
-    +--------------------------------+----------------+-------+---------------+
-    | /dev/mapper/vg_swap            | none           | 100GB | linux-swap(*) |
-    +--------------------------------+----------------+-------+---------------+
+    +--------------------------------+-----------------+----------+--------------+
+    |    **LVM device name**         | **Mount point** | **Size** | **FS type**  |
+    |                                |                 |          |              |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_sysvol-lv_root  | /               | 200GB    | ext4         |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_sysvol-lv_tmp   | /tmp            | 200GB    | ext4         |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_sysvol-lv_var   | /var            | 200GB    | ext4         |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_sysvol-lv_log   | /var/log        | 200GB    | ext4         |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_sysvol-lv_audit | /var/log/audit  | 128MB    | ext4         |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_swap            | none            | 100GB    | linux-swap(*)|
+    +--------------------------------+----------------+-----------+--------------+
 
     **Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions.
     
