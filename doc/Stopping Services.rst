@@ -4,14 +4,6 @@ Stopping Services
 
 Run the below mentioned commands in the order of listing to stop the relevant services.
 
-- HA
-
- ::
-
-  cortxha cluster stop
-
-  cortxha cluster shutdown
-
 - CSM
 
   ::
@@ -19,6 +11,14 @@ Run the below mentioned commands in the order of listing to stop the relevant se
    systemctl stop csm_web
 
    systemctl stop csm_agent
+   
+   
+- SSPL
+
+  :: 
+
+   systemctl stop sspl-ll
+   
 
 - S3 (AuthServer and HAProxy)
 
@@ -28,23 +28,20 @@ Run the below mentioned commands in the order of listing to stop the relevant se
 
    systemctl stop haproxy
    
-- SSPL
-
-  :: 
-
-   systemctl stop sspl-ll
-   
+     
 - I/O Stack
 
   ::
  
    hctl shutdown --all
    
+   
 - RabbitMQ
 
   ::
 
    systemctl stop rabbitmq-server
+   
 
 - LDAP
 
