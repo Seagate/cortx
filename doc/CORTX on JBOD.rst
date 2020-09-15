@@ -997,11 +997,13 @@ Configuration
 --------------
 To check dependency and configure **HA**, perform **post_install**, **config**, and **init**.
 
-- **$ /opt/seagate/cortx/ha/conf/script/ha_setup post_install #**
+::
 
-- **$ /opt/seagate/cortx/ha/conf/script/ha_setup config**
+ /opt/seagate/cortx/ha/conf/script/ha_setup post_install
 
-- **$ /opt/seagate/cortx/ha/conf/script/ha_setup init**
+ /opt/seagate/cortx/ha/conf/script/ha_setup config
+
+ /opt/seagate/cortx/ha/conf/script/ha_setup init
 
 Starting Service
 ------------------
@@ -1019,7 +1021,7 @@ Starting Service
   
      cortxha cluster status
   
- - Service Management
+- Service Management
 
  The default node value is local.
 
