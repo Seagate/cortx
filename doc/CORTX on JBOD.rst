@@ -296,10 +296,6 @@ Perform the below mentioned procedure to configure the I/O stack.
 
  -  **# m0crate -S /tmp/m0crate-io.yaml**
 
-Run the below mentioned command to shut down the cluster.
-
- - **# hctl shutdown**
-
 Run the below mentioned command to start the cluster. This command must be used while starting the cluster from second time.
 
 - **# hctl bootstrap –c /var/lib/hare**  
@@ -314,12 +310,6 @@ The procedures that must be followed to install and configure different dependen
 LDAP
 ====
 This section describes the procedures that must be followed to configure LDAP.
-
-Prerequisites
---------------
-- S3 Server must be installed.
-
-- 3 VMs must be available
 
 Configuration
 -------------
@@ -340,16 +330,12 @@ Configuration
 
  - **systemctl restart rsyslog**
 
-Starting and Stopping Services
-------------------------------
+Starting Service
+-----------------
 
 - Run the following command to start the service.
 
  - **systemctl start slapd**
-
-- Run the following command to stop the service.
-
- - **systemctl stop slapd**
 
 Run the following command to check the status of the service.
 
@@ -359,11 +345,8 @@ LDAP Replication
 ----------------
 This section consists of the prerequisites and procedure associated with the ldap replication.
 
-Prerequisites
-^^^^^^^^^^^^^
-- LDAP must be installed.
-
-- 3 nodes must be available
+Prerequisite
+^^^^^^^^^^^^
 
 - The host name must be updated in the provider field in **config.ldif** on all the 3 nodes.
 
@@ -652,17 +635,6 @@ This section describes the procedures that must be followed to configure RabbitM
 
 Prerequisites
 --------------
-- Provisioner stack must be configured.
-
- - Provisioner and salt API must be available on setup
-
-- The RabbitMQ - server rpm must be installed in the system.
-
- - $rpm -qa | grep "rabbitmq"
-
-   rabbitmq-server-3.3.5-34.el7.noarch
-
-- Data from the **rabbitmq.sls** file must be transmitted into consul. This action is performed by provisioner.
 
 - Run the below mentioned script to avoid RMQ processor related errors.
 
@@ -691,15 +663,11 @@ Configuration
   firewall-cmd --zone=public --permanent --add-port=8883/tcp 
   firewall-cmd --reload
 
-Starting and Stopping
----------------------
+Starting Service
+-----------------
 - Run the below mentioned command to start the server.
 
  - **$ systemctl start rabbitmq-server**
-
-- Run the below mentioned command to stop the server.
-
- - **$ systemctl stop rabbitmq-server**
 
 - Run the below mentioned command to restart the server.
 
@@ -716,17 +684,6 @@ This section describes the procedures that must be followed to configure statsd 
 - **Statsd** is used to collect metric from various sources and it runs on each node as the daemon service.
 
 - **Kibana** is used to aggregate metrics and run on the system with csm service.
-
-Prerequisites
--------------
-
-- The following RPMs must be available.
-
- - **statsd**
-
- - **stats_utils**
-
- - **kibana**
 
 Statsd Configuration
 --------------------
@@ -803,8 +760,8 @@ AuthServer
 
 The AuthServer is configured along with the installation of S3 component.
 
-Starting and Stopping Services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Starting Service
+^^^^^^^^^^^^^^^^^
 
 - Run the below mentioned command to start the AuthServer.
 
@@ -813,10 +770,6 @@ Starting and Stopping Services
 - Run the below mentioned command to restart the AuthServer.
 
  - **systemctl restart s3authserver**
- 
-- Run the below mentioned command to stop the AuthServer.
-
- - **systemctl stop s3authserver**
  
 - Run the following command to check the status of AuthServer.
 
@@ -828,15 +781,10 @@ This section provides information on the installation and configuration associat
 
 Installation
 ^^^^^^^^^^^^^
-1. Run the following command to install HAProxy.
 
- - **yum install haproxy**
+1. Navigate to **/opt/seagate/cortx/s3/install/haproxy**.
 
-2. Copy the **s3server.pem** file from `here <https://github.com/Seagate/cortx-s3server/tree/dev/ansible/files/certs/stx-s3/s3>`_ and paste it in the **/etc/ssl/stx-s3/s3/** directory.
-
-3. Navigate to **/opt/seagate/cortx/s3/install/haproxy**.
-
-4. Copy the contents of **haproxy_osver7.cfg** (**haproxy_osver8.cfg** depending on your OS version) to **/etc/haproxy/haproxy.cfg**.
+2. Copy the contents of **haproxy_osver7.cfg** (**haproxy_osver8.cfg** depending on your OS version) to **/etc/haproxy/haproxy.cfg**.
 
 Configuration
 ^^^^^^^^^^^^^^
@@ -909,16 +857,12 @@ From the above result, it can be seen that each node has 4 s3server instances. H
 
  - **systemctl status haproxy**
  
-Starting and Stopping Services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Starting Service
+^^^^^^^^^^^^^^^^^
  
 - Run the below mentioned command to start the HAProxy services.
 
  - **systemctl start haproxy**
- 
-- Run the below mentioned command to stop the HAProxy services.
-
- - **systemctl stop haproxy**
  
 - Run the below mentioned command to check the status of HAProxy services.
 
@@ -929,12 +873,8 @@ SSPL
 
 The prerequisites and different procedures associated with the configuration of SSPL component are mentioned below.
 
-Prerequisites
--------------
-
-- Provisioner stack must be configured.
-
- - Provisioner and salt API must be available on setup
+Initial Steps
+--------------
 
 - Run the below mentioned command to ensure that RabbitMQ server and SSPL rpms are installed.
 
@@ -968,15 +908,11 @@ Run the below mentioned commands to configure SSPL.
 - **$ /opt/seagate/cortx/sspl/bin/sspl_setup config -f**
 
 
-Starting and Stopping Services
-------------------------------
+Starting Service
+-----------------
 - Run the following to start the SSPL service.
 
  - **$ systemctl start sspl-ll**
-
-- Run the following to stop the SSPL service.
-
- - **$ systemctl stop sspl-ll**
 
 - Run the following to restart the SSPL service.
 
@@ -994,30 +930,11 @@ Perform sanity test and ensure that the SSPL configuration is accurate. Run the 
 
 - **$ /opt/seagate/cortx/sspl/bin/sspl_setup test self**
 
-Removing RPM
-------------
-Reset and uninstall the configuration by running the below mentioned commands.
-
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup reset hard -p LDR_R1**
-
-- **$ yum remove -y cortx-sspl**
-
 CSM
 ===
 
 The prerequisites and different procedures associated with the configuration of CSM component are mentioned below.
 
-Prerequisites
--------------
-- Consul, ElasticSearch, and RabbitMQ must be installed.
-
-- The below mentioned RPMs must be installed on all the nodes.
-
- - **cortx-csm-agent**
-
- - **cortx-csm-web**
-
- 
 Configuration
 -------------
 
@@ -1033,7 +950,7 @@ You can fine tune the configuration by manually editing the configuration files 
 
 
 Starting Services
------------------
+------------------
 The starting of services procedure must be performed on only one node.
 
 1. Run the below mentioned commands to start and enable the **csm agent**. 
@@ -1055,16 +972,6 @@ Ensure that the services have started successfully by running the following comm
 
 **Note**: After all the services have started running, the CSM web UI is available at port 28100. Navigate to **https://<IP address of the box>:28100** to access the port.
 
-Stopping Services
------------------
-
-Run the below mentioned commands to stop the CSM service.
-
-
-- **$ systemctl stop csm_web**
-
-- **$ systemctl stop csm_agent**    
-
 HA 
 ==
 
@@ -1072,12 +979,6 @@ The prerequisites and different procedures associated with the configuration of 
 
 Prerequisites
 -------------
-
-- Provisioner stack must be configured
-
- - Provisioner and salt API must be available on setup
-
-- The cortx-ha rpm must be installed
 
 - Installation type identification with provisioner api
 
@@ -1091,35 +992,23 @@ Configuration
 --------------
 To check dependency and configure **HA**, perform **post_install**, **config**, and **init**.
 
-- **$ /opt/seagate/cortx/ha/conf/script/ha_setup post_install # call by provisioner (provisioner api)**
+- **$ /opt/seagate/cortx/ha/conf/script/ha_setup post_install #**
 
 - **$ /opt/seagate/cortx/ha/conf/script/ha_setup config**
 
 - **$ /opt/seagate/cortx/ha/conf/script/ha_setup init**
 
-Starting and Stopping Services
-------------------------------
-In this case, no service is running. Hence, this is not applicable. It is due to the same reason why Verifying (check) is also not applicable.
-
-Command Line Interface (CLI)
-----------------------------
+Starting Service
+------------------
 - Cluster Management
 
  - Start Cortx ha cluster
 
   - **$ cortxha cluster start**
 
- - Stop Cortx-ha cluster
-
-  - **$ cortxha cluster stop**
-
  - Get status for services
 
   - **$ cortxha cluster status**
-
- - Shutdown cluster
-
-  - **$ cortxha cluster shutdown**
 
 - Service Management
 
@@ -1133,11 +1022,5 @@ Command Line Interface (CLI)
 
  **Note**: The name (Services Name) in the above CLI is **Hare**.
  
-Removing RPM
-------------
-Reset and uninstall the configuration by running the below mentioned commands.
 
-- **$ /opt/seagate/cortx/ha/conf/script/ha_setup reset**
-
-- **$ yum remove cortx-ha**
 
