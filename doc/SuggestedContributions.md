@@ -39,10 +39,10 @@ Here is a list of our current ideas about useful specific contributions that you
 * Stress testing 
 * Performance testing of kvs 
   * Team Member: John Bent
-* IOR integration with clovis 
+* IOR integration with motr 
   * Team Member: John Bent
-* Fio with clovis 
-* Use of locks with clovis 
+* Fio with motr 
+* Use of locks with motr 
 * Performance impact of lock usage 
 * Test complete path with net socket transport 
 * Stabilization of net socket transport 
