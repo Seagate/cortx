@@ -962,11 +962,11 @@ The starting of services procedure must be performed on only one node.
 
 1. Run the below mentioned commands to start and enable the **csm agent**.
 
-    ::
+   ::
 
-     systemctl start csm_agent
+    systemctl start csm_agent
 
-     systemctl enable csm_agent
+    systemctl enable csm_agent
 
 2. Run the below mentioned commands to start and enable the **csm web**.
 
