@@ -324,7 +324,7 @@ This section describes the procedures that must be followed to configure LDAP.
 Configuration
 -------------
 
-1. Navigate to **/opt/seagate/cortx/s3/install/ldap**.
+1. Navigate to **/opt/seagate/cortx/s3/install/ldap**.(On all 3 nodes)
 
 2. Run **setup_ldap.sh** using the following command.
 
@@ -332,7 +332,7 @@ Configuration
 
      ./setup_ldap.sh --defaultpasswd --skipssl --forceclean
 
-3. After LDAP is setup on the three nodes, perform **LDAP Replication**. Refer the procedure below.
+3. After LDAP is setup on the three nodes, perform **LDAP Replication**. Refer the procedure below.(On all 3 nodes)
 
 4. Configure **slapd.log** on all 3 nodes using the commands mentioned below.
 
@@ -347,7 +347,7 @@ Configuration
 Starting Service
 -----------------
 
-- Run the following command to start the service.
+- Run the following command to start the service.(On all 3 nodes)
 
    ::
 
@@ -362,6 +362,7 @@ Run the following command to check the status of the service.
 LDAP Replication
 ----------------
 This section consists of the prerequisites and procedure associated with the ldap replication.
+Perform the steps on all 3 nodes.
 
 Prerequisite
 ^^^^^^^^^^^^
