@@ -48,3 +48,12 @@ Run the below mentioned commands in the order of listing to stop the relevant se
   ::
 
    systemctl stop slapd
+   
+   
+- Statsd and Kibana
+
+  ::
+  
+   systemctl stop statsd
+   
+   systemctl stop kibana
