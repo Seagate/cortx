@@ -17,3 +17,5 @@ Perform the below mentioned procedure to generate the SSH public key.
 4. Click **New SSH Key**, and paste the key that you had copied.
 
 5. Select **Enable SSO** from the  drop-down list.
+
+   - Remember to click on **Authorize** at the dialog pop up to authorize the SSH key using Seagate SSO.
