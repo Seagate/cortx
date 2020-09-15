@@ -1,6 +1,7 @@
 [![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/cortx/blob/main/LICENSE) 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c099437792d44496b720a730ee4939ce)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seagate/mero&amp;utm_campaign=Badge_Grade)
 ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg)
+[![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?)
 
 <img src="../assets/images/cortx-logo.png?raw=true">
 
