@@ -119,7 +119,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     | /dev/mapper/vg_sysvol-lv_audit | /var/log/audit  | 128MB    | ext4         |
     +--------------------------------+-----------------+----------+--------------+
     | /dev/mapper/vg_swap            | none            | 100GB    | linux-swap(*)|
-    +--------------------------------+----------------+-----------+--------------+
+    +--------------------------------+-----------------+----------+--------------+
 
     **Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions.
     
