@@ -9,6 +9,9 @@ The CORTX repository is the first and the parent repository that contains top-le
 **Before you Begin**
 
 - You'll need to [Build and Test your VM Environment](../main/doc/BUILD_ENVIRONMENT.md).
+
+ - Setup [CORTX on Virtual Appliance](https://github.com/Seagate/cortx/blob/main/doc/CORTX%20on%20VA.rst).
+ 
 - Ensure that you have RoCE—RDMA over Converged Ethernet and TCP connectivity.
 
 ⚠️ **Known Limitation**
@@ -28,7 +31,7 @@ Watch our CORTX Engineer, Justin Woo, demonstrate **<link to the video>** the pr
 ## Additional Resources
 
 - Know more about [CORTX CI/CD and Automation](../main/doc/CI_CD.md).
-- Setup [CORTX on JBOD](https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/CORTX%20on%20JBOD.rst)
+- Setup [CORTX on JBOD](https://github.com/Seagate/cortx/blob/main/doc/CORTX%20on%20JBOD.rst).
 - Learn more about the [CORTX Architechture](../main/doc/architecture.md).
 - You can [submit requests and bugs using GitHub Issues](https://github.com/Seagate/cortx/issues).
 
