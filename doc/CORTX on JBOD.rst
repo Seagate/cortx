@@ -361,7 +361,7 @@ Run the following command to check the status of the service.
 
 LDAP Replication
 ----------------
-This section consists of the prerequisites and procedure associated with the ldap replication.
+This section consists of the prerequisites and procedure associated with the ldap replication. The procedure below must be performed on all the 3 nodes.
 
 Prerequisite
 ^^^^^^^^^^^^
