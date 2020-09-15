@@ -873,7 +873,27 @@ Before configuring HAProxy, check the number of S3 instances using **hctl status
  m0_client  0x7200000000000001:0x7b  192.168.20.11@o2ib:12345:4:1    [unknown]  
  m0_client  0x7200000000000001:0x7e  192.168.20.11@o2ib:12345:4:2
  
-From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. Perform the steps mentioned below to configure **N**.
+From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. There are two procedurs for HAproxy configuration, one with load balancer and the other without load balancer.
+
+Perform the steps mentioned below to configure **N** if external load balancer (DNS RR) is not available.
+
+1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
+
+2. Navigate to **backend app-main** section in haproxy.cfg, and locate S3 instance - **server s3-instance-1 0.0.0.0:28081 check maxconn 110**. Then, replace the 0.0.0.0 of all instances with the IP addresses (eth0) of the current node.
+
+3. Add N – 1 (4 – 1 = 3 for this case) like instances below this. In case of VM, if the number of S3 instances per node is 1, then this step and steps 7 & 8 must be skipped.
+
+4. Keep the instance name (s3-instance-x) for each instance unique, increment x by 1 with increase in instance.
+
+5. Increment the port number (28081) for the next 3 instances by 1. Repeat these steps for nodes 2 & 3 as explained in the next two steps.
+
+6. Copy the above **N** edited instances and paste it below. Change the IP address of these instances to the IP of Node 2. Then, keep the instance name (s3-instance-x) for each instance unique, incrementing x by 1.
+
+7. Repeat the previous step while replacing the IP with the IP for Node – 3 and keeping the instance names unique. 
+
+
+
+
 
 1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
 
