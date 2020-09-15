@@ -873,7 +873,7 @@ Before configuring HAProxy, check the number of S3 instances using **hctl status
  m0_client  0x7200000000000001:0x7b  192.168.20.11@o2ib:12345:4:1    [unknown]  
  m0_client  0x7200000000000001:0x7e  192.168.20.11@o2ib:12345:4:2
  
-From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. There are two procedurs for HAproxy configuration, one with load balancer and the other without load balancer.
+From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. There are two procedures for HAproxy configuration, one without load balancer and the other with load balancer.
 
 Perform the steps mentioned below to configure **N** if external load balancer (DNS RR) is not available.
 
@@ -889,11 +889,39 @@ Perform the steps mentioned below to configure **N** if external load balancer (
 
 6. Copy the above **N** edited instances and paste it below. Change the IP address of these instances to the IP of Node 2. Then, keep the instance name (s3-instance-x) for each instance unique, incrementing x by 1.
 
-7. Repeat the previous step while replacing the IP with the IP for Node – 3 and keeping the instance names unique. 
+7. Repeat the previous step while replacing the IP with the IP for Node – 3 and keeping the instance names unique.
 
+8. Navigate to the **backend s3-auth** section and locate S3 auth instance: **server s3authserver-instance1 0.0.0.0:9085**.  Replace 0.0.0.0 with the public data IP address of current node
 
+9. Add 2 more similar instances below this and replace the IP addresses of those 2 instances with the public data IP addresses of the 2 passive nodes. Keep the s3authserver-instanceX instance ID unique.
 
+10. Comment out the **HAProxy Monitoring Config** section if present.
 
+11. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**.
+
+12. Configure haproxy logs on all the nodes by running the following commands.
+
+    ::
+
+     mkdir /etc/haproxy/errors/
+
+     cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
+
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
+
+     cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
+
+     rm -rf /etc/cron.daily/logrotate
+
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate 
+
+     systemctl restart rsyslog
+
+     systemctl restart haproxy 
+
+     systemctl status haproxy
+
+Perform the steps mentioned below to configure **N** if external load balancer (DNS RR) is not available. 
 
 1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
 
