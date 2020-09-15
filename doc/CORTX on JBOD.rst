@@ -945,11 +945,13 @@ Configuration
 
 Execute the below mentioned commands on the where CSM service would run after fresh installation.
 
-- **csm_setup post_install**
+::
 
-- **csm_setup config**
+ csm_setup post_install
 
-- **csm_setup init**
+ csm_setup config
+
+ csm_setup init
 
 You can fine tune the configuration by manually editing the configuration files in **/etc/csm**.
 
@@ -958,21 +960,27 @@ Starting Services
 ------------------
 The starting of services procedure must be performed on only one node.
 
-1. Run the below mentioned commands to start and enable the **csm agent**. 
+1. Run the below mentioned commands to start and enable the **csm agent**.
 
- - **$ systemctl start csm_agent**
+    ::
 
- - **$ systemctl enable csm_agent**
+     systemctl start csm_agent
+
+     systemctl enable csm_agent
 
 2. Run the below mentioned commands to start and enable the **csm web**.
 
- - **$ systemctl start csm_web**
+   ::
 
- - **$ systemctl enable csm_web**
+    systemctl start csm_web
+
+    systemctl enable csm_web
 
 Ensure that the services have started successfully by running the following command.
 
-- **$ systemctl status <service name>** 
+ :: 
+ 
+  systemctl status <service name>
 
 
 **Note**: After all the services have started running, the CSM web UI is available at port 28100. Navigate to **https://<IP address of the box>:28100** to access the port.
@@ -989,7 +997,7 @@ Prerequisites
 
  ::
 
-  $ provisioner get_setup_info
+  provisioner get_setup_info
 
   {'nodes': 1, 'servers_per_node': 2, 'storage_type': '5u84', 'server_type': 'virtual'}
   
