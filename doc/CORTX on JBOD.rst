@@ -1126,36 +1126,6 @@ To check dependency and configure **HA**, perform **post_install**, **config**, 
 
  /opt/seagate/cortx/ha/conf/script/ha_setup init
 
-Starting Service
-------------------
-- Cluster Management
-
- - Start Cortx ha cluster
-
-    ::
-    
-     cortxha cluster start
-
- - Get status for services
-
-    :: 
-  
-     cortxha cluster status
-  
-- Service Management
-
- The default node value is local.
-
-   ::
-   
-    cortx service <service_name> --node <node_id> start
-
-    cortx service <service_name> --node <node_id> stop
-
-    cortx service <service_name> --node <node_id> status
-
- **Note**: The name (Services Name) in the above CLI is **Hare**.
- 
 **********************
  Stopping of Services
 **********************
