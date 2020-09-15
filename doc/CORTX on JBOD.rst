@@ -729,9 +729,11 @@ Kibana Configuration
 --------------------
 1. Update the **kibana.service** file on each system. By default, the service is not compatible with new systemd. Run the following command to check the compatibility.
 
- - **$ systemd-analyze verify /etc/systemd/system/kibana.service**
+    ::
 
-  - If above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
+     systemd-analyze verify /etc/systemd/system/kibana.service
+
+     - If the above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
 
   In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst** are part of **Unit** Section but as per new systemd rule it is part of **Service** section.
 
