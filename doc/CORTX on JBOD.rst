@@ -1019,7 +1019,7 @@ Starting Service
   
      cortxha cluster status
   
-  - Service Management
+ - Service Management
 
  The default node value is local.
 
