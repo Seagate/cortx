@@ -1156,5 +1156,10 @@ Starting Service
 
  **Note**: The name (Services Name) in the above CLI is **Hare**.
  
+ *********************
+ Stopping of Services
+ *********************
+ 
+ To perform stopping of services refer, `Stopping Services <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/Stopping%20Services.rst>`_.
 
 
