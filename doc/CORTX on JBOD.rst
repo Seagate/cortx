@@ -739,7 +739,7 @@ Kibana Configuration
 
      systemd-analyze verify /etc/systemd/system/kibana.service
 
-     - If the above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
+  If the above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
 
   In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst** are part of **Unit** Section but as per new systemd rule it is part of **Service** section.
 
