@@ -347,7 +347,7 @@ Configuration
 Starting Service
 -----------------
 
-- Run the following command to start the service.
+- Run the following command to start the service on all the 3 nodes.
 
    ::
 
