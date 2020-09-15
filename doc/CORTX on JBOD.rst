@@ -328,7 +328,9 @@ Configuration
 
 2. Run **setup_ldap.sh** using the following command.
 
- - **./setup_ldap.sh --defaultpasswd --skipssl --forceclean**
+    ::
+
+     ./setup_ldap.sh --defaultpasswd --skipssl --forceclean
 
 3. After LDAP is setup on the three nodes, perform **LDAP Replication**. Refer the procedure below.
 
@@ -377,7 +379,9 @@ Prerequisite
 
 You need not copy the contents of the files from this page as they are placed in the following directory.
 
- - **cd /opt/seagate/cortx/s3/install/ldap/replication**
+ ::
+
+  cd /opt/seagate/cortx/s3/install/ldap/replication
  
  Edit the relevant fields as required (olcserverid.ldif and config.ldif). 
 
@@ -654,11 +658,15 @@ Prerequisites
 
 - Run the below mentioned script to avoid RMQ processor related errors.
 
- - **$ python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt** 
+   ::
+
+    python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt 
 
 - The **erlang.cookie** file must be available. Run the following command to check the availability.
 
- - **$ cat /var/lib/rabbitmq/.erlang.cookie**
+   ::
+
+    cat /var/lib/rabbitmq/.erlang.cookie
  
 Configuration
 -------------
@@ -705,13 +713,17 @@ Statsd Configuration
 --------------------
 Run the below mentioned commands to start and enable the **statsd** service. This must be performed on every node.
 
-- **$ systemctl start statsd**
+ ::
 
-- **$ systemctl enable statsd**
+  systemctl start statsd
+
+  systemctl enable statsd
 
 To know the status of the service, run the following command.
 
-- **$ systemctl status statsd**
+ ::
+
+  systemctl status statsd
 
 Kibana Configuration
 --------------------
@@ -746,21 +758,29 @@ Kibana Configuration
   
 2. Reload the daemon on each system by running the following command.
 
- - **$ systemctl daemon-reload**
+    ::
+
+     systemctl daemon-reload
 
 3. Find the active csm service (active node) by running the following command.
 
- - **$ systemctl status csm_agent**
+    ::
+
+     systemctl status csm_agent
 
 4. Start kibana on the active CSM node and enable the service by running the following commands.
 
- - **$ systemctl start kibana**
+    ::
 
- - **$ systemctl enable kibana**
+     systemctl start kibana
+
+     systemctl enable kibana
 
 Check the systemd status on active CSM node by running the following command.
 
- - **$ systemctl status kibana**
+ ::
+
+  systemctl status kibana
  
 ***************************
 Configuration of Components
