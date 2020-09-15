@@ -4,7 +4,7 @@ Config.ini File
 
 The purpose of the config.ini file is to provide configuration details about the CORTX cluster. It is required for the cluster's installation. 
 
-The config.ini file contains several sections. All sections are mandatory. Each section has several keys - value pairs, some of which are mandatory and some are optional.
+The config.ini file contains several sections. All sections are mandatory. Each section has several keys-value pairs, some of which are mandatory and some are optional.
 
 For the formatting guidelines of the INI file, refer https://www.nongnu.org/chmspec/latest/INI.html.
 
@@ -120,6 +120,7 @@ Optional Keys
    |                                |                                         |
    |                                | Accepted formats:                       |
    |                                |     AAA.BBB.CCC.DDD                     |
+   |                                |                                         |
    |                                |     XY                                  |
    |                                |                                         |
    |                                |  NOTE: This key becomes mandatory       |
@@ -135,6 +136,7 @@ Optional Keys
    |                                |                                         |
    |                                | Accepted formats:                       |
    |                                |     AAA.BBB.CCC.DDD                     |
+   |                                |                                         |
    |                                |     XY                                  |
    |                                |                                         |
    |                                |  NOTE: This key becomes mandatory       |
@@ -161,96 +163,56 @@ Optional Keys
 Template of Config.ini file
 ****************************
 
-- [cluster]
+::
 
+  [cluster]
   cluster_ip=
-
   mgmt_vip=
-
-- [storage_enclosure]
-
+  
+  [storage_enclosure]
   type=JBOD
 
-- [srvnode-1]
-
+  [srvnode-1]
   hostname=
-
   network.mgmt_nw.iface=
-
   network.mgmt_nw.public_ip_addr=
-
   network.mgmt_nw.netmask=
-
   network.mgmt_nw.gateway=
-
   network.data_nw.iface=
-
   network.data_nw.public_ip_addr=
-
   network.data_nw.netmask=
-
   network.data_nw.gateway=
-
   network.data_nw.pvt_ip_addr=
-
   is_primary=
-
   bmc.user=
-
   bmc.secret=
 
-- [srvnode-2]
-
+  [srvnode-2]
   hostname=
-
   network.mgmt_nw.iface=
-
   network.mgmt_nw.public_ip_addr=
-
   network.mgmt_nw.netmask=
-
   network.mgmt_nw.gateway=
-
   network.data_nw.iface=
-
   network.data_nw.public_ip_addr=
- 
   network.data_nw.netmask=
-
   network.data_nw.gateway=
-
   network.data_nw.pvt_ip_addr=
-
   is_primary=
-
   bmc.user=
-
   bmc.secret=
 
-- [srvnode-3]
-
+  [srvnode-3]
   hostname=
-
   network.mgmt_nw.iface=
-
   network.mgmt_nw.public_ip_addr=
-
   network.mgmt_nw.netmask=
-
   network.mgmt_nw.gateway=
-
   network.data_nw.iface=
-
   network.data_nw.public_ip_addr=
-
   network.data_nw.netmask=
-
   network.data_nw.gateway=
-
   network.data_nw.pvt_ip_addr=
-
   is_primary=
-
   bmc.user=
-
   bmc.secret=

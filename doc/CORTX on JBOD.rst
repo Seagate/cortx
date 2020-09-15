@@ -3,25 +3,190 @@ Running Distributed Scale-out CORTX
 ###################################
 This document details the installation procedures that must be followed to install a set of CORTX servers doing distributed erasure across a set of storage devices.
 
-**************
-Limitations
-**************
-Please note that this is a preview of distributed CORTX doing network erasure and it is not failure resilient. Do not use these instructions to run CORTX for production reasons nor for storing critical data. The official Seagate version of Lyve Drive Rack (LDR) can be used for production reasons as it relies on erasure within the enclosures.
+**Important**: Please note that this is a preview of distributed CORTX doing network erasure and it is not failure resilient. Do not use these instructions to run CORTX for production reasons nor for storing critical data. The official Seagate version of Lyve Drive Rack (LDR) can be used for production reasons as it relies on erasure within the enclosures.
 
-**************
-Prerequisites
-**************
-The prerequisites are as follows:
+*********************************
+3 Node JBOD Setup (Prerequisites)
+*********************************
 
-- Python 3.6
+Perform the below mentioned procedure to complete the process of 3 node JBOD Setup.
 
-- Root login using password (SSH)
+1. Prepare three servers and three JBODs as per the following guidelines.
 
-- Salt and gluster_fs
+ a. Server Reference Configuration
 
-- Image File (ISOs). This file consists of the installation RPMS.
+  - Minimal Configuration
 
- - The ISO must be placed in a specific location.
+   - 1x Intel Xeon CPU, 6 cores per CPU (2x Intel Xeon CPU, 10 cores per CPU for optimal performance)
+
+   - 64 GB RAM ( 192 GB RAM for optimal performane)
+
+   - 2x 1 TB internal HDD
+
+   - One dual-port or two single-port Mellanox HCA (for the data networks)
+
+   - At least one 1 GbE network port (for the Management network)
+
+   - SCSI HBA with expernal ports (to connect to JBOD)
+
+   **Notes**
+
+   - The minimum number of network ports per server is 3.
+
+   - Usage of Mellanox HCAs is recommended but not mandatory. For optimal performance you need two high-speed network ports (10 GbE minimum; 50 GbE or 100 GbE recommended).
+
+    - All the three servers must have Mellanox HCA or none of the servers must have it.
+
+ b. JBOD Reference Configuration
+
+  - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server. The minimum size of the JBOD disk is 2TB.
+
+ c. Network Configuration Requirements
+
+  - The CORTX software requires 3 separate networks. The networks could be physically separate (connected to different switches) or separate VLANs. We recommend you to physically separate the management and data networks.
+
+         +--------------------------+---------------------------------------------+
+         | **Network name/purpose** | **Corresponding NIC**                       |
+         +--------------------------+---------------------------------------------+
+         | Management network       | connected to the 1 GbE NIC                  |
+         +--------------------------+---------------------------------------------+
+         | Public Data network      | connected to the one of the high-speed NICs |
+         +--------------------------+---------------------------------------------+
+         | Private Data network     | connected to another high-speed NIC         |
+         +--------------------------+---------------------------------------------+
+
+2. Connect the servers to the networks and the JBODs as per the guidelines provided above.
+
+3. Install CentOS 7.7 (1908 release) operating system on all three servers in the future cluster.
+
+  **Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands and view the appropriate outputs.
+  
+ - **lsb_release -r**
+
+   - Appropriate Output: 7.7.1908
+
+ - **uname -r**
+
+  - Appropriate Output: 3.10.0-1062.el7.x86_64
+  
+  **Warning**: Do not update CentOS 7.7 release as it will break CORTX. Operating system updates are not supported at the moment.
+
+  While there are no specific requirements for installing the CentOS 7.7, we recommend you to perform the following 4 steps.
+
+  a. Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
+
+  b. On each drive, configure the partitions as per the following guidelines.
+
+     +-----------------------+-------------+-------------------------------------------+
+     | **Partition number**  |  **Size**   |        **Notes**                          |
+     |                       |             |                                           |
+     +-----------------------+-------------+-------------------------------------------+
+     |     1                 | 256 MB      | to be mounted to /boot/efi or /boot/efi2  |
+     +-----------------------+-------------+-------------------------------------------+
+     |     2                 |  1 GB       | to be used as part of md0 RAID-1 volume   |
+     +-----------------------+-------------+-------------------------------------------+
+     |     3                 | rest of     | to be used as part of md1 RAID-1 volume   |
+     |                       | disk        |                                           |
+     +-----------------------+-------------+-------------------------------------------+
+
+    **Note**: The partitioning schema is assuming the servers support UEFI for booting. If the servers do not support UEFI, partition #1 is not required. CentOD Linux implementation of UEFI does not support RAID configuration at the moment, therefore two separate EFI partitions will be needed to be able to boot the server in case of one of the disk fails. These partions should be mounted to /boot/efi (the partition on disk #1) and /boot/efi2 (the partition on disk #2).
+    
+   c. Create two RAID-1 volumes.
+
+   +------------------+------------------------------------------+
+   | **Volume name**  |   **Purpose / mount point**              |
+   |                  |                                          |
+   +------------------+------------------------------------------+
+   |  md0             |  /boot                                   |
+   +------------------+------------------------------------------+
+   |  md1             |  To be used as physical volume for LVM   |
+   +------------------+------------------------------------------+
+
+   d. Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
+
+    +--------------------------------+-----------------+----------+--------------+
+    |    **LVM device name**         | **Mount point** | **Size** | **FS type**  |
+    |                                |                 |          |              |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_sysvol-lv_root  | /               | 200GB    | ext4         |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_sysvol-lv_tmp   | /tmp            | 200GB    | ext4         |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_sysvol-lv_var   | /var            | 200GB    | ext4         |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_sysvol-lv_log   | /var/log        | 200GB    | ext4         |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_sysvol-lv_audit | /var/log/audit  | 128MB    | ext4         |
+    +--------------------------------+-----------------+----------+--------------+
+    | /dev/mapper/vg_swap            | none            | 100GB    | linux-swap(*)|
+    +--------------------------------+-----------------+----------+--------------+
+
+    **Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions.
+    
+4. Configure root user on all 3 servers to use the same password. This is required for the installation and can be changed after the installation is complete.
+
+5. Allow the root login over SSH on all three servers. This is required for the installation and operations of the cluster.
+
+   **Notes**
+
+    - This setting cannot be changed after the installation is complete.
+
+    - You can create another non-root user to avoid logging in to the servers as root all the time. Please allow this user to run all commands using sudo (add it to the "wheel" group).
+    
+6. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
+
+7. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.7-3.2.9.0/rhel7.7/x86_64/MLNX_LIBS/. You must reboot the system after completing the installation.
+
+  - Supported Version - 4.7-3.2.9.0
+
+   - Other versions are not supported.
+
+8. Download CORTX ISO and CORTX 3rd_party ISO files from <url to github location>.
+
+9. Upload the ISOs to the first server in the cluster that you are planning to install. It is recommended to have the ISOs in the same location.
+
+10. On all three servers, setup Python 3.6 virtual environment. Refer https://docs.python.org/3.6/library/venv.html.
+
+   - Supported Version - 3.6
+   
+    - Other versions are not supported.
+    
+11. Configure DNS and DHCP server, if used, with the host names and IP addresses for each server.
+
+  - Each server should have FQDN assigned to it. The FQDN should be associated with the IP address of the management network interface.
+
+  - Configure IP addresses on Management and Public Data network interfaces on each server using one of the following methods:
+
+   - static IP addresses for each of the network interfaces
+
+   - dynamic IP addresses for each of the network interfaces
+
+   **Important Notes**
+
+   - CORTX does not support IPv6. Only IPv4 is supported.
+
+   - If you are using dynamic IP addresses, please map the MAC addresses of the respective interfaces to the IP address in the configuration of your DHCP server. This is required to avoid possible IP changes when the leases associated with DHCP expire.
+
+   - If DHCP server is used, ensure that DHCP server passes host names to the servers.
+
+   - Do not configure DHCP to assign the IP address to the private data interfaces. This interface is configured by the CORTX software installer. By default, the configuration uses **192.168.0.0/24** subnet. This setting can be changed by providing necessary information in the config.ini file. For more information, move to step 12.
+
+   You also need two static IPs to be used as Virtual IPs (VIPs). One VIP will be used as Management VIP and another VIP will be used as Cluster (Data) VIP.
+
+   - The Management VIP should be from the same subnet as the rest of the Management network IPs.
+
+   - The Cluster (Data) VIP should be from the same subnet as the rest of the Public Data network IPs.
+
+   **Notes**
+ 
+   - VIPs utilize CLUSTERIP iptables module that relies on multicast. For CORTX to function appropriately, multicasts should be allowed for Management and Public Data networks.
+
+
+   - These static IPs are required regardless of whether DHCP is used to provide IP addresses for each server interface or not.
+
+   - You must configure DNS resolution for these VIPs.
+   
+12. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <https://github.com/Seagate/cortx/blob/main/doc/Description%20of%20config.ini.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
 
 ******************************
 Installation of CORTX Software
@@ -35,7 +200,9 @@ This section provides information on the installation of Provisioner and the ass
 
 3. Run the below mentioned command to install the CORTX Provisioner API.
 
- - **pip3 install <url to provisioner API on github>**
+  ::
+
+    pip install https://github.com/Seagate/provisioner-test/releases/download/cortx-api-v0.33.0/cortx-prvsnr-0.33.0.tar.gz
 
 4. Run the below mentioned commands to install the cluster. The approximate time taken is 40 minutes.
 
@@ -73,17 +240,19 @@ This section provides information on the installation of Provisioner and the ass
 
 5. Run the below mentioned commands to verify that the dependency components are installed successfully.
 
- - **/usr/share/kibana/bin/kibana --version**
+   :: 
+ 
+    /usr/share/kibana/bin/kibana --version
+    
+    slapd -V
 
- - **slapd -V**
+    /usr/share/elasticsearch/bin/elasticsearch --version**
 
- - **/usr/share/elasticsearch/bin/elasticsearch --version**
+    rabbitmqadmin --version
 
- - **rabbitmqadmin --version**
+    node --version
 
- - **node --version**
-
- - **lfs --version**
+    lfs --version
 
  The output must be displayed in the following tabular format.
 
@@ -108,7 +277,6 @@ This section provides information on the installation of Provisioner and the ass
 +---------------+-----------------------------------------------------+
 
 6. Proceed to the next section, and start the configuration procedures.
-
  
 ***************************************
 I/O Configuration (Motr + HARE + S3) 
@@ -117,28 +285,31 @@ Perform the below mentioned procedure to configure the I/O stack.
 
 1. Update the BE tx parameters by running the below mentioned command. The **/etc/sysconfig/motr** gets configured.
 
- - **# m0provision config**
+   ::
+    
+    m0provision config
 
 2. Run the below mentioned command to bootstrap the cluster.
 
- - **# hctl bootstrap --mkfs cluster.yaml**
+   ::
+
+    hctl bootstrap --mkfs cluster.yaml
 
   This command must be used with **mkfs** only while running it for the first time. 
 
 3. Verify the motr utility m0crate, by creating a sample m0crate workload file and running m0crate workload. Run the below mentioned commands.
 
- -  **# /opt/seagate/cortx/hare/libexec/m0crate-io-conf > /tmp/m0crate-io.yaml**
+   ::
 
- -  **# m0crate -S /tmp/m0crate-io.yaml**
+    /opt/seagate/cortx/hare/libexec/m0crate-io-conf > /tmp/m0crate-io.yaml
 
-Run the below mentioned command to shut down the cluster.
-
- - **# hctl shutdown**
+    m0crate -S /tmp/m0crate-io.yaml
 
 Run the below mentioned command to start the cluster. This command must be used while starting the cluster from second time.
 
-- **# hctl bootstrap –c /var/lib/hare**  
+ ::
 
+  hctl bootstrap –c /var/lib/hare 
  
 *****************************
 Configuration of Dependencies
@@ -150,12 +321,6 @@ LDAP
 ====
 This section describes the procedures that must be followed to configure LDAP.
 
-Prerequisites
---------------
-- S3 Server must be installed.
-
-- 3 VMs must be available
-
 Configuration
 -------------
 
@@ -163,42 +328,43 @@ Configuration
 
 2. Run **setup_ldap.sh** using the following command.
 
- - **./setup_ldap.sh --defaultpasswd --skipssl --forceclean**
+    ::
+
+     ./setup_ldap.sh --defaultpasswd --skipssl --forceclean
 
 3. After LDAP is setup on the three nodes, perform **LDAP Replication**. Refer the procedure below.
 
 4. Configure **slapd.log** on all 3 nodes using the commands mentioned below.
 
- - **cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf** 
+    ::
+
+     cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf 
  
- - **systemctl restart slapd**
+     systemctl restart slapd
 
- - **systemctl restart rsyslog**
+     systemctl restart rsyslog
 
-Starting and Stopping Services
-------------------------------
+Starting Service
+-----------------
 
 - Run the following command to start the service.
 
- - **systemctl start slapd**
+   ::
 
-- Run the following command to stop the service.
-
- - **systemctl stop slapd**
+    systemctl start slapd
 
 Run the following command to check the status of the service.
 
-- **systemctl status slapd**
+ ::
+
+  systemctl status slapd
 
 LDAP Replication
 ----------------
 This section consists of the prerequisites and procedure associated with the ldap replication.
 
-Prerequisites
-^^^^^^^^^^^^^
-- LDAP must be installed.
-
-- 3 nodes must be available
+Prerequisite
+^^^^^^^^^^^^
 
 - The host name must be updated in the provider field in **config.ldif** on all the 3 nodes.
 
@@ -213,7 +379,9 @@ Prerequisites
 
 You need not copy the contents of the files from this page as they are placed in the following directory.
 
- - **cd /opt/seagate/cortx/s3/install/ldap/replication**
+ ::
+
+  cd /opt/seagate/cortx/s3/install/ldap/replication
  
  Edit the relevant fields as required (olcserverid.ldif and config.ldif). 
 
@@ -487,25 +655,18 @@ This section describes the procedures that must be followed to configure RabbitM
 
 Prerequisites
 --------------
-- Provisioner stack must be configured.
-
- - Provisioner and salt API must be available on setup
-
-- The RabbitMQ - server rpm must be installed in the system.
-
- - $rpm -qa | grep "rabbitmq"
-
-   rabbitmq-server-3.3.5-34.el7.noarch
-
-- Data from the **rabbitmq.sls** file must be transmitted into consul. This action is performed by provisioner.
 
 - Run the below mentioned script to avoid RMQ processor related errors.
 
- - **$ python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt** 
+   ::
+
+    python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt 
 
 - The **erlang.cookie** file must be available. Run the following command to check the availability.
 
- - **$ cat /var/lib/rabbitmq/.erlang.cookie**
+   ::
+
+    cat /var/lib/rabbitmq/.erlang.cookie
  
 Configuration
 -------------
@@ -526,23 +687,25 @@ Configuration
   firewall-cmd --zone=public --permanent --add-port=8883/tcp 
   firewall-cmd --reload
 
-Starting and Stopping
----------------------
+Starting Service
+-----------------
 - Run the below mentioned command to start the server.
 
- - **$ systemctl start rabbitmq-server**
+   ::
 
-- Run the below mentioned command to stop the server.
-
- - **$ systemctl stop rabbitmq-server**
+    systemctl start rabbitmq-server
 
 - Run the below mentioned command to restart the server.
 
- - **$ systemctl restart rabbitmq-server**
+   ::
+
+    systemctl restart rabbitmq-server
 
 Run the below mentioned command to know the status.
 
- - **$ systemctl status rabbitmq-server -l**
+ ::
+
+  systemctl status rabbitmq-server -l
 
 Statsd and Kibana
 =================
@@ -552,36 +715,31 @@ This section describes the procedures that must be followed to configure statsd 
 
 - **Kibana** is used to aggregate metrics and run on the system with csm service.
 
-Prerequisites
--------------
-
-- The following RPMs must be available.
-
- - **statsd**
-
- - **stats_utils**
-
- - **kibana**
-
 Statsd Configuration
 --------------------
 Run the below mentioned commands to start and enable the **statsd** service. This must be performed on every node.
 
-- **$ systemctl start statsd**
+ ::
 
-- **$ systemctl enable statsd**
+  systemctl start statsd
+
+  systemctl enable statsd
 
 To know the status of the service, run the following command.
 
-- **$ systemctl status statsd**
+ ::
+
+  systemctl status statsd
 
 Kibana Configuration
 --------------------
 1. Update the **kibana.service** file on each system. By default, the service is not compatible with new systemd. Run the following command to check the compatibility.
 
- - **$ systemd-analyze verify /etc/systemd/system/kibana.service**
+    ::
 
-  - If above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
+     systemd-analyze verify /etc/systemd/system/kibana.service
+
+  If the above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
 
   In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst** are part of **Unit** Section but as per new systemd rule it is part of **Service** section.
 
@@ -608,21 +766,29 @@ Kibana Configuration
   
 2. Reload the daemon on each system by running the following command.
 
- - **$ systemctl daemon-reload**
+    ::
+
+     systemctl daemon-reload
 
 3. Find the active csm service (active node) by running the following command.
 
- - **$ systemctl status csm_agent**
+    ::
+
+     systemctl status csm_agent
 
 4. Start kibana on the active CSM node and enable the service by running the following commands.
 
- - **$ systemctl start kibana**
+    ::
 
- - **$ systemctl enable kibana**
+     systemctl start kibana
+
+     systemctl enable kibana
 
 Check the systemd status on active CSM node by running the following command.
 
- - **$ systemctl status kibana**
+ ::
+
+  systemctl status kibana
  
 ***************************
 Configuration of Components
@@ -638,24 +804,26 @@ AuthServer
 
 The AuthServer is configured along with the installation of S3 component.
 
-Starting and Stopping Services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Starting Service
+^^^^^^^^^^^^^^^^^
 
 - Run the below mentioned command to start the AuthServer.
-
- - **systemctl start s3authserver**
+    
+   ::
+   
+    systemctl start s3authserver
 
 - Run the below mentioned command to restart the AuthServer.
 
- - **systemctl restart s3authserver**
- 
-- Run the below mentioned command to stop the AuthServer.
-
- - **systemctl stop s3authserver**
+   ::
+    
+    systemctl restart s3authserver
  
 - Run the following command to check the status of AuthServer.
 
- - systemctl status s3authserver
+   ::
+
+    systemctl status s3authserver
 
 HAProxy
 --------
@@ -663,15 +831,10 @@ This section provides information on the installation and configuration associat
 
 Installation
 ^^^^^^^^^^^^^
-1. Run the following command to install HAProxy.
 
- - **yum install haproxy**
+1. Navigate to **/opt/seagate/cortx/s3/install/haproxy**.
 
-2. Copy the **s3server.pem** file from `here <https://github.com/Seagate/cortx-s3server/tree/dev/ansible/files/certs/stx-s3/s3>`_ and paste it in the **/etc/ssl/stx-s3/s3/** directory.
-
-3. Navigate to **/opt/seagate/cortx/s3/install/haproxy**.
-
-4. Copy the contents of **haproxy_osver7.cfg** (**haproxy_osver8.cfg** depending on your OS version) to **/etc/haproxy/haproxy.cfg**.
+2. Copy the contents of **haproxy_osver7.cfg** (**haproxy_osver8.cfg** depending on your OS version) to **/etc/haproxy/haproxy.cfg**.
 
 Configuration
 ^^^^^^^^^^^^^^
@@ -710,7 +873,55 @@ Before configuring HAProxy, check the number of S3 instances using **hctl status
  m0_client  0x7200000000000001:0x7b  192.168.20.11@o2ib:12345:4:1    [unknown]  
  m0_client  0x7200000000000001:0x7e  192.168.20.11@o2ib:12345:4:2
  
-From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. Perform the steps mentioned below to configure **N**.
+From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. There are two procedures for HAproxy configuration, one without external load balancer and the other with external load balancer.
+
+Perform the steps mentioned below to configure HAProxy if external load balancer (DNS RR) is not available.
+
+1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
+
+2. Navigate to **backend app-main** section in haproxy.cfg, and locate S3 instance - **server s3-instance-1 0.0.0.0:28081 check maxconn 110**. Then, replace the 0.0.0.0 of all instances with the public data IP addresses  of the current node.
+
+3. Add N – 1 (4 – 1 = 3 for this case) like instances below this. In case of VM, if the number of S3 instances per node is 1, then this step and steps 7 & 8 must be skipped.
+
+4. Keep the instance name (s3-instance-x) for each instance unique, increment x by 1 with increase in instance.
+
+5. Increment the port number (28081) for the next 3 instances by 1. Repeat these steps for nodes 2 & 3 as explained in the next two steps.
+
+6. Copy the above **N** edited instances and paste it below. Change the IP address of these instances to the IP of Node 2. Then, keep the instance name (s3-instance-x) for each instance unique, incrementing x by 1.
+
+7. Repeat the previous step while replacing the IP with the IP for Node – 3 and keeping the instance names unique.
+
+8. Navigate to the **backend s3-auth** section and locate S3 auth instance: **server s3authserver-instance1 0.0.0.0:9085**.  Replace 0.0.0.0 with the public data IP address of current node
+
+9. Add 2 more similar instances below this and replace the IP addresses of those 2 instances with the public data IP addresses of the 2 passive nodes. Keep the s3authserver-instanceX instance ID unique.
+
+10. Comment out the **HAProxy Monitoring Config** section if present.
+
+11. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**.
+
+12. Configure haproxy logs on all the nodes by running the following commands.
+
+    ::
+
+     mkdir /etc/haproxy/errors/
+
+     cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
+
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
+
+     cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
+
+     rm -rf /etc/cron.daily/logrotate
+
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate 
+
+     systemctl restart rsyslog
+
+     systemctl restart haproxy 
+
+     systemctl status haproxy
+
+Perform the steps mentioned below to configure HAProxy if external load balancer (DNS RR) is available. 
 
 1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
 
@@ -726,56 +937,54 @@ From the above result, it can be seen that each node has 4 s3server instances. H
 
 7. Configure haproxy logs on all the nodes by running the following commands.
 
- - **mkdir /etc/haproxy/errors/** 
+    ::
 
- - **cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/**
+     mkdir /etc/haproxy/errors/
 
- - **cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy** 
+     cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
 
- - **cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf** 
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
 
- - **rm -rf /etc/cron.daily/logrotate** 
+     cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
 
- - **cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate** 
+     rm -rf /etc/cron.daily/logrotate
 
- - **systemctl restart rsyslog** 
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate 
 
- - **systemctl restart haproxy** 
+     systemctl restart rsyslog
 
- - **systemctl status haproxy**
+     systemctl restart haproxy 
+
+     systemctl status haproxy
  
-Starting and Stopping Services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Starting Service
+^^^^^^^^^^^^^^^^^
  
 - Run the below mentioned command to start the HAProxy services.
 
- - **systemctl start haproxy**
- 
-- Run the below mentioned command to stop the HAProxy services.
-
- - **systemctl stop haproxy**
+   ::
+   
+    systemctl start haproxy
  
 - Run the below mentioned command to check the status of HAProxy services.
 
- - **systemctl status haproxy**
+   ::
+   
+    systemctl status haproxy
 
 SSPL
 ====
 
 The prerequisites and different procedures associated with the configuration of SSPL component are mentioned below.
 
-Prerequisites
--------------
-
-- Provisioner stack must be configured.
-
- - Provisioner and salt API must be available on setup
+Initial Steps
+--------------
 
 - Run the below mentioned command to ensure that RabbitMQ server and SSPL rpms are installed.
 
   ::
   
-   $ rpm -qa | grep -E "cortx|rabbitmq" 
+   rpm -qa | grep -E "cortx|rabbitmq" 
    cortx-libsspl_sec-xxxxxxxxxxxxxxxxxxxxx 
    cortx-sspl-xxxxxxxxxxxxxxxxxxxxx 
    cortx-libsspl_sec-method_none-xxxxxxxxxxxxxxxxxxxxx 
@@ -786,119 +995,108 @@ Prerequisites
    
 - Run the below mentioned command to ensure that the RabbitMq-server is running and active.
 
- - **$ systemctl status rabbitmq-server**
+   ::
+   
+    systemctl status rabbitmq-server
 
 - Run the below mentioned command to ensure that the consul agent is running.
 
- - **$ ps -aux | grep "consul"**
+   ::
+
+    ps -aux | grep "consul"
  
 Configuration
 -------------
 Run the below mentioned commands to configure SSPL.
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1**
+ ::
+ 
+  /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx**
+  /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup config -f**
+  /opt/seagate/cortx/sspl/bin/sspl_setup config -f
 
 
-Starting and Stopping Services
-------------------------------
+Starting Service
+-----------------
 - Run the following to start the SSPL service.
 
- - **$ systemctl start sspl-ll**
+   ::
 
-- Run the following to stop the SSPL service.
-
- - **$ systemctl stop sspl-ll**
+    systemctl start sspl-ll
 
 - Run the following to restart the SSPL service.
 
- - **$ systemctl restart sspl-ll**
+   ::
+   
+    systemctl restart sspl-ll**
 
 Run the following command to know the status of the SSPL service.
 
- - **$ systemctl status sspl-ll -l**
+ ::
+ 
+  systemctl status sspl-ll -l
  
 Verification
 ------------
 Perform sanity test and ensure that the SSPL configuration is accurate. Run the following commands to perform the test.
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup check**
+ ::
 
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup test self**
-
-Removing RPM
-------------
-Reset and uninstall the configuration by running the below mentioned commands.
-
-- **$ /opt/seagate/cortx/sspl/bin/sspl_setup reset hard -p LDR_R1**
-
-- **$ yum remove -y cortx-sspl**
-
+  /opt/seagate/cortx/sspl/bin/sspl_setup check
+  
+  /opt/seagate/cortx/sspl/bin/sspl_setup test self
+ 
 CSM
 ===
 
 The prerequisites and different procedures associated with the configuration of CSM component are mentioned below.
 
-Prerequisites
--------------
-- Consul, ElasticSearch, and RabbitMQ must be installed.
-
-- The below mentioned RPMs must be installed on all the nodes.
-
- - **cortx-csm-agent**
-
- - **cortx-csm-web**
-
- 
 Configuration
 -------------
 
 Execute the below mentioned commands on the where CSM service would run after fresh installation.
 
-- **csm_setup post_install**
+::
 
-- **csm_setup config**
+ csm_setup post_install
 
-- **csm_setup init**
+ csm_setup config
+
+ csm_setup init
 
 You can fine tune the configuration by manually editing the configuration files in **/etc/csm**.
 
 
 Starting Services
------------------
+------------------
 The starting of services procedure must be performed on only one node.
 
-1. Run the below mentioned commands to start and enable the **csm agent**. 
+1. Run the below mentioned commands to start and enable the **csm agent**.
 
- - **$ systemctl start csm_agent**
+   ::
 
- - **$ systemctl enable csm_agent**
+    systemctl start csm_agent
+
+    systemctl enable csm_agent
 
 2. Run the below mentioned commands to start and enable the **csm web**.
 
- - **$ systemctl start csm_web**
+   ::
 
- - **$ systemctl enable csm_web**
+    systemctl start csm_web
+
+    systemctl enable csm_web
 
 Ensure that the services have started successfully by running the following command.
 
-- **$ systemctl status <service name>** 
+ :: 
+ 
+  systemctl status <service name>
 
 
 **Note**: After all the services have started running, the CSM web UI is available at port 28100. Navigate to **https://<IP address of the box>:28100** to access the port.
-
-Stopping Services
------------------
-
-Run the below mentioned commands to stop the CSM service.
-
-
-- **$ systemctl stop csm_web**
-
-- **$ systemctl stop csm_agent**    
 
 HA 
 ==
@@ -908,17 +1106,11 @@ The prerequisites and different procedures associated with the configuration of 
 Prerequisites
 -------------
 
-- Provisioner stack must be configured
-
- - Provisioner and salt API must be available on setup
-
-- The cortx-ha rpm must be installed
-
 - Installation type identification with provisioner api
 
  ::
 
-  $ provisioner get_setup_info
+  provisioner get_setup_info
 
   {'nodes': 1, 'servers_per_node': 2, 'storage_type': '5u84', 'server_type': 'virtual'}
   
@@ -926,53 +1118,48 @@ Configuration
 --------------
 To check dependency and configure **HA**, perform **post_install**, **config**, and **init**.
 
-- **$ /opt/seagate/cortx/ha/conf/script/ha_setup post_install # call by provisioner (provisioner api)**
+::
 
-- **$ /opt/seagate/cortx/ha/conf/script/ha_setup config**
+ /opt/seagate/cortx/ha/conf/script/ha_setup post_install
 
-- **$ /opt/seagate/cortx/ha/conf/script/ha_setup init**
+ /opt/seagate/cortx/ha/conf/script/ha_setup config
 
-Starting and Stopping Services
-------------------------------
-In this case, no service is running. Hence, this is not applicable. It is due to the same reason why Verifying (check) is also not applicable.
+ /opt/seagate/cortx/ha/conf/script/ha_setup init
 
-Command Line Interface (CLI)
-----------------------------
+Starting Service
+------------------
 - Cluster Management
 
- - # Start Cortx ha cluster
+ - Start Cortx ha cluster
 
-  - **$ cortxha cluster start**
+    ::
+    
+     cortxha cluster start
 
- - # Stop Cortx-ha cluster
+ - Get status for services
 
-  - **$ cortxha cluster stop**
-
- - # Get status for services
-
-  - **$ cortxha cluster status**
-
- - # Shutdown cluster
-
-  - **$ cortxha cluster shutdown**
-
+    :: 
+  
+     cortxha cluster status
+  
 - Service Management
 
  The default node value is local.
 
- - **$ cortx service <service_name> --node <node_id> start**
+   ::
+   
+    cortx service <service_name> --node <node_id> start
 
- - **$ cortx service <service_name> --node <node_id> stop**
+    cortx service <service_name> --node <node_id> stop
 
- - **$ cortx service <service_name> --node <node_id> status**
+    cortx service <service_name> --node <node_id> status
 
  **Note**: The name (Services Name) in the above CLI is **Hare**.
  
-Removing RPM
-------------
-Reset and uninstall the configuration by running the below mentioned commands.
+**********************
+ Stopping of Services
+**********************
+ 
+ To perform stopping of services refer, `Stopping Services <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/Stopping%20Services.rst>`_.
 
-- **$ /opt/seagate/cortx/ha/conf/script/ha_setup reset**
-
-- **$ yum remove cortx-ha**
 
