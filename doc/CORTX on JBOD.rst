@@ -93,7 +93,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     
    c. Create two RAID-1 volumes.
 
-   +--------+----------------------------------------------------+
+   +------------------+------------------------------------------+
    | **Volume name**  |   **Purpose / mount point**              |
    |                  |                                          |
    +------------------+------------------------------------------+
