@@ -326,11 +326,11 @@ Configuration
 
 1. Navigate to **/opt/seagate/cortx/s3/install/ldap**. This is applicable to all the 3 nodes.
 
-2. Run **setup_ldap.sh** using the following command.
+2. Run the below mentioned command on one node. As a result, LDAP is setup on all the 3 nodes.
 
     ::
 
-     ./setup_ldap.sh --defaultpasswd --skipssl --forceclean
+     salt '*' cmd.run /opt/seagate/cortx/s3/install/ldap/setup_ldap.sh --defaultpasswd --skipssl --forceclean
 
 3. After LDAP is setup on the three nodes, perform **LDAP Replication**. Refer the procedure below.
 
@@ -338,11 +338,11 @@ Configuration
 
     ::
 
-     cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf 
+     salt '*' cmd.run cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf 
  
-     systemctl restart slapd
+     salt '*' cmd.run systemctl restart slapd
 
-     systemctl restart rsyslog
+     salt '*' cmd.run systemctl restart rsyslog
 
 Starting Service
 -----------------
@@ -351,13 +351,13 @@ Starting Service
 
    ::
 
-    systemctl start slapd
+    salt '*' cmd.run systemctl start slapd
 
 Run the following command to check the status of the service.
 
  ::
 
-  systemctl status slapd
+  salt '*' cmd.run systemctl status slapd
 
 LDAP Replication
 ----------------
@@ -717,23 +717,23 @@ This section describes the procedures that must be followed to configure statsd 
 
 Statsd Configuration
 --------------------
-Run the below mentioned commands to start and enable the **statsd** service. This must be performed on every node.
+Run the below mentioned commands to start and enable the **statsd** service. This must be performed on the node where CSM is running.
 
  ::
 
-  systemctl start statsd
+  salt '<Node Name>' cmd.run systemctl start statsd
 
-  systemctl enable statsd
+  salt '<Node Name>' cmd.run systemctl enable statsd
 
 To know the status of the service, run the following command.
 
  ::
 
-  systemctl status statsd
+  salt '<Node Name>' cmd.run systemctl status statsd
 
 Kibana Configuration
 --------------------
-1. Update the **kibana.service** file on each system. By default, the service is not compatible with new systemd. Run the following command to check the compatibility.
+1. Update the **kibana.service** file on the node where CSM is running. By default, the service is not compatible with new systemd. Run the following command to check the compatibility.
 
     ::
 
@@ -741,7 +741,7 @@ Kibana Configuration
 
   If the above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
 
-  In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst** are part of **Unit** Section but as per new systemd rule it is part of **Service** section.
+  In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst** are part of **Unit** section but as per new systemd rule it is part of **Service** section.
 
  ::
 
@@ -807,23 +807,23 @@ The AuthServer is configured along with the installation of S3 component.
 Starting Service
 ^^^^^^^^^^^^^^^^^
 
-- Run the below mentioned command to start the AuthServer.
+- Run the below mentioned command to start the AuthServer on all the three nodes.
     
    ::
    
-    systemctl start s3authserver
+    salt '*' cmd.run systemctl start s3authserver
 
-- Run the below mentioned command to restart the AuthServer.
+- Run the below mentioned command to restart the AuthServer on all the three nodes.
 
    ::
     
-    systemctl restart s3authserver
+    salt '*' cmd.run systemctl restart s3authserver
  
 - Run the following command to check the status of AuthServer.
 
    ::
 
-    systemctl status s3authserver
+    salt '*' cmd.run systemctl status s3authserver
 
 HAProxy
 --------
@@ -964,13 +964,13 @@ Starting Service
 
    ::
    
-    systemctl start haproxy
+    salt '*' cmd.run systemctl start haproxy
  
 - Run the below mentioned command to check the status of HAProxy services.
 
    ::
    
-    systemctl status haproxy
+    salt '*' cmd.run systemctl status haproxy
 
 SSPL
 ====
@@ -1024,19 +1024,19 @@ Starting Service
 
    ::
 
-    systemctl start sspl-ll
+    salt '*' cmd.run systemctl start sspl-ll
 
 - Run the following to restart the SSPL service.
 
    ::
    
-    systemctl restart sspl-ll**
+    salt '*' cmd.run systemctl restart sspl-ll
 
 Run the following command to know the status of the SSPL service.
 
  ::
  
-  systemctl status sspl-ll -l
+  salt '*' cmd.run systemctl status sspl-ll -l
  
 Verification
 ------------
@@ -1056,7 +1056,7 @@ The prerequisites and different procedures associated with the configuration of 
 Configuration
 -------------
 
-Execute the below mentioned commands on the where CSM service would run after fresh installation.
+Execute the below mentioned commands on the node where CSM service would run after fresh installation.
 
 ::
 
