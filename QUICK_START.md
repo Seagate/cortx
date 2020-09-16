@@ -2,7 +2,7 @@
 
 To contribute to the CORTX Open-Source project, you'll need to understand the way the CORTX repository is organized. 
 
-The CORTX repository is the first and the parent repository that contains top-level documentation about the CORTX Community. The CORTX-Motr repository contains Motr files and is the second component of the CORTX project. Motr is the central component that stores Objects and Key-Values. The S3 Server component is built on Motr and all component related information is posited in the CORTX-S3 Server repository. 
+The CORTX repository is the first and the parent repository that contains top-level documentation about the CORTX Community. The CORTX-Motr repository contains Motr files and is the second component of the CORTX project. Motr is the central component that stores Objects and Key-Values. The S3 Server component is built on Motr and all component related information is posited in the CORTX-S3 Server repository. To test and develop the basic functionality of CORTX, only these two components are required.  However, the full CORTX software stack includes additional components such as web interfaces and automated provisioning software.  Therefore, in this page we include the instructions for both testing and developing the basic functionality using just S3 and motr as well as instructions for testing and developing the entire CORTX system. 
 
 # Let's get CORTX ready!
 
