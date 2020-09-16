@@ -62,7 +62,7 @@ Run the below mentioned commands in the order of listing to stop the relevant se
    
       salt '<Node Name>' cmd.run systemctl stop kibana
    
-_ Elasticsearch
+- Elasticsearch
 
   ::
   
