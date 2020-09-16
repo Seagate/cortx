@@ -10,11 +10,9 @@ Prerequisites
 **************
 The prerequisites required to install CORTX on a VA is listed below.
 
-- GitHub Access
-- Unzipping Software (preferably WinZip)
 - Any of the following:
  - VMware ESX server
- - VMware ESXi server
+ - VMware vSphere
  - VMware Workstation
  - VMware Fusion
 
@@ -25,9 +23,11 @@ The procedure to install CORTX on VA is mentioned below.
 
 1. Login to `GitHub <https://github.com/>`_ with your credentials.
 
-2. From `OVA file <https://github.com/Seagate/cortx/releases/tag/OVA>`_, download the ZIP file that contains the VMware virtual machine images (a file named **cortxvm_opensource_vX.zip**, where X is the revision of the VM image).
+2. From `OVA file <https://github.com/Seagate/cortx/releases/tag/OVA>`_, download the TAR file that contains the VMware virtual machine images (a file named **cortxvm_opensource_vX.tar.gz**, where X is the revision of the VM image).
 
-3. Extract the contents of the downloaded ZIP file into your system. 
+3. Extract the contents of the downloaded TAR file into your system. You can also run the below mentioned command to extract the content.
+
+ - **tar -xzvf cortvm_opensource_vX_ova.tar.gz**
 
 4. Install the VM on your system by referring `Deploying a VM <https://github.com/Seagate/cortx/blob/main/doc/Deploying%20a%20VM.rst>`_.
 
