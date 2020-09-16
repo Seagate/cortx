@@ -26,4 +26,4 @@ Perform the below mentioned procedure to create an issue in GitHub.
 
 5. Enter a title and description for your issue, and click **Submit new issue**.
 
-Note: Click **Open a blank issue** if the type of issue you want to open, is not included in the available different types of issues.
+**Note**: Click **Open a blank issue** if the type of issue you want to open, is not included in the available different types of issues.
