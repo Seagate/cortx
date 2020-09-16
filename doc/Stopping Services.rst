@@ -4,35 +4,31 @@ Stopping Services
 
 Run the below mentioned commands in the order of listing to stop the relevant services.
 
-- CSM 
+- CSM
+  
+   As you know the node on which CSM is running, run the following commands.
 
   ::
-
-   systemctl stop csm_web
-
-   systemctl stop csm_agent
+     
+   salt '<Node Name>' cmd.run systemctl stop csm_web
    
-   If you know the node in which CSM is running, run the following commands.
-   
-   salt '<Node Name>' systemctl stop csm_web
-   
-   salt '<Node Name>' systemctl stop csm_web
+   salt '<Node Name>' cmd.run systemctl stop csm_web
    
    
 - SSPL
 
   :: 
 
-   salt '*' systemctl stop sspl-ll
+   salt '*' cmd.run systemctl stop sspl-ll
    
 
 - S3 (AuthServer and HAProxy)
 
   ::
 
-   salt '*' systemctl stop haproxy
+   salt '*' cmd.run systemctl stop haproxy
    
-   salt '*' systemctl stop s3authserver
+   salt '*' cmd.run systemctl stop s3authserver
 
       
 - I/O Stack
@@ -53,19 +49,21 @@ Run the below mentioned commands in the order of listing to stop the relevant se
 
   ::
 
-   salt '*' systemctl stop slapd
+   salt '*' cmd.run systemctl stop slapd
    
    
 - Statsd and Kibana
 
-  ::
+     As you know the nodes on which statsd and kibana are running, run the following commands.
+
+     ::
   
-   systemctl stop statsd
+      salt '<Node Name>' cmd.run systemctl stop statsd
    
-   systemctl stop kibana
+      salt '<Node Name>' cmd.run systemctl stop kibana
    
 _ Elasticsearch
 
   ::
   
-   salt '*' systemctl stop elasticsearch
+   salt '*' cmd.run systemctl stop elasticsearch
