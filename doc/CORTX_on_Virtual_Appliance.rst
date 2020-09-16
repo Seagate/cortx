@@ -21,28 +21,26 @@ Procedure
 **********
 The procedure to install CORTX on VA is mentioned below.
 
-1. Login to `GitHub <https://github.com/>`_ with your credentials.
+1. From `OVA file <https://github.com/Seagate/cortx/releases/tag/OVA>`_, download the TAR file that contains the VMware virtual machine images (a file named **cortxvm_opensource_vX.tar.gz**, where X is the revision of the VM image).
 
-2. From `OVA file <https://github.com/Seagate/cortx/releases/tag/OVA>`_, download the TAR file that contains the VMware virtual machine images (a file named **cortxvm_opensource_vX.tar.gz**, where X is the revision of the VM image).
-
-3. Extract the contents of the downloaded TAR file into your system. You can also run the below mentioned command to extract the content.
+2. Extract the contents of the downloaded TAR file into your system. You can also run the below mentioned command to extract the content.
 
  - **tar -xzvf cortvm_opensource_vX_ova.tar.gz**
 
-4. Install the VM on your system by referring `Deploying a VM <https://github.com/Seagate/cortx/blob/main/doc/Deploying%20a%20VM.rst>`_.
+3. Install the VM on your system by referring `Deploying a VM <https://github.com/Seagate/cortx/blob/main/doc/Deploying%20a%20VM.rst>`_.
 
  - In case of troubleshooting, refer `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
  
-5. Turn on the virtual machine and login using either the SSH or VMware console.
+4. Turn on the virtual machine and login using either the SSH or VMware console.
 
  - Username: cortx
  - Password: opensource!
  
-6. Run the below mentioned command to become a superuser.
+5. Run the below mentioned command to become a superuser.
 
  - **sudo su -**
  
-7. Update the hostname by running the below mentioned command. By default the name is set to **localhost.localdomain**.
+6. Update the hostname by running the below mentioned command. By default the name is set to **localhost.localdomain**.
 
  - **hostnamectl set-hostname --static --transient --pretty <new_hostname>**
 
@@ -52,9 +50,9 @@ The procedure to install CORTX on VA is mentioned below.
      
   **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
   
-8. Update **/etc/hosts** with the management IP address and the new hostname for the VA. In the same file, update the line that contains **s3.seagate.com** with the IP address of the public data interface. Do not remove or rename hostnames in this line.
+7. Update **/etc/hosts** with the management IP address and the new hostname for the VA. In the same file, update the line that contains **s3.seagate.com** with the IP address of the public data interface. Do not remove or rename hostnames in this line.
 
-9. Edit **/root/.ssh/config** and update the following with the new hostname for the VA.
+8. Edit **/root/.ssh/config** and update the following with the new hostname for the VA.
 
   - **Host srvnode-1 <new_hostname>**
   
@@ -62,7 +60,7 @@ The procedure to install CORTX on VA is mentioned below.
   
   **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it's required for the proper functioning of VA.
 
-10. Refresh HAproxy configuration by running the following command.
+9. Refresh HAproxy configuration by running the following command.
 
   - **salt "*" saltutil.pillar_refresh**
   
@@ -70,22 +68,22 @@ The procedure to install CORTX on VA is mentioned below.
   
   - **salt "*" state.apply components.ha.haproxy.start**
   
-11. Restart lnet by running the following command.
+10. Restart lnet by running the following command.
 
   - **systemctl restart lnet**
   
 
-12. Run the following command:
+11. Run the following command:
 
  - **hctl bootstrap --mkfs /var/lib/hare/cluster.yaml**
 
   You must run the above command with **--mkfs** only once. Further usage of **--mkfs** erases data.
 
-13. Ensure that the I/O stack is running by running the following command:
+12. Ensure that the I/O stack is running by running the following command:
 
  - **hctl status**
 
-14. Ensure that the CSM service is operational by running the following commands:
+13. Ensure that the CSM service is operational by running the following commands:
 
  - **systemctl status csm_agent**
  - **systemctl status csm_web**
@@ -94,7 +92,7 @@ The procedure to install CORTX on VA is mentioned below.
 
   - **systemctl start <csm_agent|csm_web>**
   
-15. Open the web browser and navigate to the following location:
+14. Open the web browser and navigate to the following location:
 
   - **https://<management IP>:28100/#/preboarding/welcome**
   
