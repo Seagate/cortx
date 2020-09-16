@@ -717,7 +717,7 @@ This section describes the procedures that must be followed to configure statsd 
 
 Statsd Configuration
 --------------------
-Run the below mentioned commands to start and enable the **statsd** service. This must be performed on the node where CSM is running.
+Run the below mentioned commands to start and enable the **statsd** service on one node. Ensure that Kibana and CSM are run on the same node.
 
  ::
 
@@ -733,7 +733,7 @@ To know the status of the service, run the following command.
 
 Kibana Configuration
 --------------------
-1. Update the **kibana.service** file on the node where CSM is running. By default, the service is not compatible with new systemd. Run the following command to check the compatibility.
+1. Update the **kibana.service** file on the node where Statsd is running. By default, the service is not compatible with new systemd. Run the following command to check the compatibility.
 
     ::
 
@@ -764,19 +764,13 @@ Kibana Configuration
 
   [Install] WantedBy=multi-user.target
   
-2. Reload the daemon on each system by running the following command.
+2. Reload the daemon by running the following command.
 
     ::
 
      systemctl daemon-reload
 
-3. Find the active csm service (active node) by running the following command.
-
-    ::
-
-     systemctl status csm_agent
-
-4. Start kibana on the active CSM node and enable the service by running the following commands.
+3. Start kibana on the node where CSM would be active and enable the service by running the following commands.
 
     ::
 
@@ -784,7 +778,7 @@ Kibana Configuration
 
      systemctl enable kibana
 
-Check the systemd status on active CSM node by running the following command.
+Check the status of Kibana by running the following command.
 
  ::
 
@@ -1051,12 +1045,12 @@ Perform sanity test and ensure that the SSPL configuration is accurate. Run the 
 CSM
 ===
 
-The prerequisites and different procedures associated with the configuration of CSM component are mentioned below.
+The various aspects associated with the configuration of CSM component are mentioned below.
 
 Configuration
 -------------
 
-Execute the below mentioned commands on the node where CSM service would run after fresh installation.
+Execute the below mentioned commands on the node where Statsd and Kibana services are running.
 
 ::
 
@@ -1068,6 +1062,7 @@ Execute the below mentioned commands on the node where CSM service would run aft
 
 You can fine tune the configuration by manually editing the configuration files in **/etc/csm**.
 
+**Important**: Statsd, Kibana, and CSM services must run on the same node.
 
 Starting Services
 ------------------
@@ -1120,11 +1115,11 @@ To check dependency and configure **HA**, perform **post_install**, **config**, 
 
 ::
 
- /opt/seagate/cortx/ha/conf/script/ha_setup post_install
+ salt '*' cmd.run /opt/seagate/cortx/ha/conf/script/ha_setup post_install
 
- /opt/seagate/cortx/ha/conf/script/ha_setup config
+ salt '*' cmd.run /opt/seagate/cortx/ha/conf/script/ha_setup config
 
- /opt/seagate/cortx/ha/conf/script/ha_setup init
+ salt '*' cmd.run /opt/seagate/cortx/ha/conf/script/ha_setup init
 
 **********************
  Stopping of Services
