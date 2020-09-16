@@ -1,4 +1,6 @@
-# CORTX Quickstart Guide
+# CORTX Development Quickstart Guide
+
+This guide is intended to provide quick start instructions for developers who want to build, test, and contribute to the CORTX software.  If you are merely looking to _test_ the software, please use [these instructions](doc/CORTX_on_Virtual_Appliance.rst).
 
 To contribute to the CORTX Open-Source project, you'll need to understand the way the CORTX repository is organized. 
 
@@ -9,8 +11,6 @@ The CORTX repository is the first and the parent repository that contains top-le
 **Before you Begin**
 
 - You'll need to [Build and Test your VM Environment](doc/BUILD_ENVIRONMENT.md).
-
- - Setup [CORTX on Virtual Appliance](doc/CORTX_on_Virtual_Appliance.rst).
  
 - Ensure that you have RoCE—RDMA over Converged Ethernet and TCP connectivity.
 
