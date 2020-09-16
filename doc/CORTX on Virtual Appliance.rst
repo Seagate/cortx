@@ -27,7 +27,7 @@ The procedure to install CORTX on VA is mentioned below.
 
 3. Extract the contents of the downloaded TAR file into your system. You can also run the below mentioned command to extract the content.
 
- - 
+ - **tar -xzvf cortx77_v1_ova.tar.gz**
 
 4. Install the VM on your system by referring `Deploying a VM <https://github.com/Seagate/cortx/blob/main/doc/Deploying%20a%20VM.rst>`_.
 
