@@ -16,6 +16,16 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
 
 3. Configure the I/O stack by referring to `Configuring I / O Stack <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Configuring%20IO%20Stack.rst>`_.
 
+4. Configure the dependencies by referring to `Configuring Dependencies <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Configuring%20Dependencies.rst>`_. The dependencies are as follows.
+
+ - LDAP
+ 
+  - LDAP Replication
+  
+ - Rabbit MQ
+ 
+ - Statsd and Kibana
+
 
 
 
@@ -23,6 +33,6 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  Stopping of Services
 **********************
  
- To perform stopping of services refer to `Stopping Services <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Stopping%20Services.rst>`_.
+To perform stopping of services refer to `Stopping Services <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Stopping%20Services.rst>`_.
  
  
