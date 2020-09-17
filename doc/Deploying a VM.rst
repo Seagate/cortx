@@ -17,7 +17,7 @@ The prerequisites mentioned below must be met to deploy the VM.
  - One interface for private data network 
  
 **********
-Procedure
+Deployment Procedure
 **********
 Perform the procedure mentioned below to deploy the VM.
 
@@ -46,6 +46,7 @@ Perform the procedure mentioned below to deploy the VM.
 **Note**: If you are running the VM in any of the products of VMware, it is not recommended to use **VMware Tools**, as CORTX may break due to kernel dependencies. 
 
 **********
-Accessing CORTX management interface on the VM
+Onboarding Procedure
 **********
-Point your browser to https://<ens192 IP>:28100
+Point your browser to https://<ens192 IP>:28100/#/preboarding/welcome and follow the procedure to accept EULA and create the initial admin account
+
