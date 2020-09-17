@@ -685,21 +685,27 @@ Prerequisites
 Configuration
 -------------
 1. Start the RabbitMQ server.
-2. Open the required ports for rabbitmq.
+2. Run the below mentioned commands to setup the RabbitMQ cluster.
+
+ - Setting a single (current) node as cluster
+ 
+   ::
+   
+    /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster
+   
+ - Setting 2 nodes
+ 
+   ::
+   
+    /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster -n NODES
+ 
+Run the below mentioned command to check the status of the RabbitMQ cluster.
 
  ::
 
-  systemctl start firewalld 
-  firewall-cmd --zone=public --permanent --add-port=4369/tcp 
-  firewall-cmd --zone=public --permanent --add-port=25672/tcp 
-  firewall-cmd --zone=public --permanent --add-port=25672/tcp 
-  firewall-cmd --zone=public --permanent --add-port=5671-5672/tcp 
-  firewall-cmd --zone=public --permanent --add-port=15672/tcp 
-  firewall-cmd --zone=public --permanent --add-port=15672/tcp 
-  firewall-cmd --zone=public --permanent --add-port=61613-61614/tcp 
-  firewall-cmd --zone=public --permanent --add-port=1883/tcp 
-  firewall-cmd --zone=public --permanent --add-port=8883/tcp 
-  firewall-cmd --reload
+  rabbitmqctl cluster_status
+ 
+
 
 Starting Service
 -----------------
