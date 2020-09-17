@@ -16,7 +16,7 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
 
 3. Configure the I/O stack by referring to `Configuring I / O Stack <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Configuring%20IO%20Stack.rst>`_.
 
-4. Configure the dependencies by referring to `Configuring Dependencies <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Configuring%20Dependencies.rst>`_. The dependencies are as follows.
+4. Configure the dependencies by referring to `Configuring Dependencies <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Configuring%20Dependencies.rst>`_. The dependencies are listed below in the order in which they have to be configured.
 
  - LDAP
  
@@ -25,9 +25,16 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  - Rabbit MQ
  
  - Statsd and Kibana
+ 
+5. Configure the components of CORTX by referring to `Configuring Components <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Configuring%20CORTX%20Components.rst>`_. The dependencies are listed below in the order in which they have to be configured.
 
+ - S3 (AuthServer and HAProxy)
+ 
+ - SSPL
 
-
+ - CSM
+ 
+ - HA
 
 **********************
  Stopping of Services
