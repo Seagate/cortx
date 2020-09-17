@@ -1145,6 +1145,6 @@ To check dependency and configure **HA**, perform **post_install**, **config**, 
  Stopping of Services
 **********************
  
- To perform stopping of services refer, `Stopping Services <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/Stopping%20Services.rst>`_.
+ To perform stopping of services refer, `Stopping Services <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Stopping%20Services.rst>`_.
 
 
