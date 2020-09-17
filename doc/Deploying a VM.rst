@@ -48,5 +48,5 @@ Perform the procedure mentioned below to deploy the VM.
 **********
 Onboarding Procedure
 **********
-Point your browser to https://<ens192 IP>:28100/#/preboarding/welcome and follow the procedure to accept EULA and create the initial admin account
+Point your browser to https://<ens192 IP>:28100/#/preboarding/welcome and follow the procedure to accept EULA and create the initial admin account 
 
