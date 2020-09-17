@@ -10,9 +10,9 @@ We are excited that you are interested in contributing to the CORTX project! Sin
 |**[Java](https://google.github.io/styleguide/javaguide.html)** |cortx-s3-server|
 |**[Python](https://google.github.io/styleguide/pyguide.html)**| cortx-s3-server</br> cortx-ha</br>cortx-posix</br>cortx-monitor</br> |
 |**[Shell](https://google.github.io/styleguide/shellguide.html)**| cortx-ha</br>cortx-provisioner</br> |
-| **YAML:**</br>**[Style](https://docs.saltstack.com/en/latest/topics/development/conventions/style.html)**</br>**[Formulae](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)**</br> | cortx-provisioner|
+| **YAML:**</br></p>**[Style](https://docs.saltstack.com/en/latest/topics/development/conventions/style.html)**</br>**[Formulae](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)**</br> | cortx-provisioner|
 
-**Exceptions:** 
+:warning: **Exceptions:** 
 
 Some repositories have their own style guides, please refer to these repository-specific coding style guides.
 
