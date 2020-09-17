@@ -27,9 +27,9 @@ The procedure to install CORTX on VA is mentioned below.
 
  - **tar -xzvf cortvm_opensource_vX_ova.tar.gz**
 
-3. Install the VM on your system by referring `Deploying a VM <https://github.com/Seagate/cortx/blob/main/doc/Deploying%20a%20VM.rst>`_.
+3. Install the VM on your system by referring to `Deploying a VM <https://github.com/Seagate/cortx/blob/main/doc/Deploying%20a%20VM.rst>`_.
 
- - In case of troubleshooting, refer `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
+ - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
  
 4. Turn on the virtual machine and login using either the SSH or VMware console.
 
