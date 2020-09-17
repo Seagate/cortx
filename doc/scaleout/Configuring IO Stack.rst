@@ -58,6 +58,18 @@ Perform the below mentioned steps to restart (rejoin) a node.
     
   - **confd-fid** can be found in the **/var/lib/hare/consul-server-conf/consul-server-conf.json** file and **/etc/sysconfig/m0d@**
     
-4. 
+4. Run the below mentioned command to start the motr io service.
+
+   ::
+   
+    systemctl start m0d@<motr-ios-fid>
     
-4. 
+  - **motr ioservice fid** can be found in the **/var/lib/hare/consul-server-conf/consul-server-conf.json** file
+    
+5. Run the below mentioned command to start the S3 service.
+
+   ::
+   
+    systemctl start s3server@<s3server-fid>
+    
+  - **s3server fids** can be found in **/etc/sysconfig**
