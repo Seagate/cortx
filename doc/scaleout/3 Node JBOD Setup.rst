@@ -179,4 +179,4 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - You must configure DNS resolution for these VIPs.
    
-12. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <https://github.com/Seagate/cortx/blob/main/doc/Description%20of%20config.ini.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
+12. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <https://github.com/Seagate/cortx/blob/main/doc/scaleout/Config.ini%20File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
