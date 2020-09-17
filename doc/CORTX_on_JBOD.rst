@@ -662,6 +662,20 @@ Prerequisites
 
     python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt 
 
+- Ensure that rabbitmq server, provisioner, and sspl RPMs must be installed.
+
+  ::
+  
+   rpm -qa | grep -Ei "rabbitmq|sspl|prvsnr" 
+   cortx-libsspl_sec-1.0.0xxxxxxxxxxxxxxxxxxxxx 
+   cortx-libsspl_sec-method_none-1.0.0xxxxxxxxxxxxxxx 
+   cortx-prvsnr-cli-1.0.0xxxxxxxxxxxxxxxxxxx 
+   cortx-prvsnr-1.0.0xxxxxxxxxxxxxxxxx 
+   cortx-sspl-1.0.0xxxxxxxxxxxxxxxx 
+   cortx-sspl-test-1.0.0xxxxxxxxxxxxxxxxxxxxxxxx 
+   rabbitmq-server-xxxxxxxxxxxxxxxxxx
+
+
 - The **erlang.cookie** file must be available. Run the following command to check the availability.
 
    ::
