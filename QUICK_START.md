@@ -31,7 +31,7 @@ Watch our CORTX Engineer, Justin Woo, demonstrate **<link to the video>** the pr
 ## Additional Resources
 
 - Know more about [CORTX CI/CD and Automation](doc/CI_CD.md).
-- Setup [CORTX on JBOD](doc/scaleout/READ_ME.rst).
+- Setup [CORTX on JBOD](https://github.com/Seagate/cortx/blob/VenkyOS-patch-11/doc/scaleout/READ_ME.rst).
 - Learn more about the [CORTX Architechture](doc/architecture.md).
 - You can [submit requests and bugs using GitHub Issues](https://github.com/Seagate/cortx/issues).
 
