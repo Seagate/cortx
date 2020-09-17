@@ -31,3 +31,33 @@ Run the below mentioned command to start the cluster. This command must be used 
  ::
 
   hctl bootstrap –c /var/lib/hare
+  
+=============
+Node Restart
+=============
+
+Perform the below mentioned steps to restart (rejoin) a node.
+
+1. Run the below mentioned command to start the consul.
+
+   ::
+   
+    systemctl start hare-consul-agent
+    
+2. Run the below mentioned command to start the hax.
+
+   ::
+   
+    systemctl start hare-hax
+    
+3. Run the below mentioned command to start the motr confd.
+
+   ::
+   
+    systemctl start m0d@<confd-fid>
+    
+  - **confd-fid** can be found in the **/var/lib/hare/consul-server-conf/consul-server-conf.json** file and **/etc/sysconfig/m0d@**
+    
+4. 
+    
+4. 
