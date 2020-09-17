@@ -64,7 +64,7 @@ This section provides information on the installation of Provisioner and the ass
 
     lfs --version
 
- The output must be displayed in the following tabular format.
+ The output of these commands should match the following:
 
 +---------------+-----------------------------------------------------+
 | **Component** |                 **Expected output**                 |
