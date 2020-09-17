@@ -32,7 +32,6 @@ Run the below mentioned command to start the cluster. This command must be used 
 
   hctl bootstrap –c /var/lib/hare
   
-   ::
 =============
 Node Restart
 =============
