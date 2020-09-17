@@ -16,15 +16,14 @@ The prerequisites mentioned below must be met to deploy the VM.
  - One interface for data network
  - One interface for private data network 
  
-
 **********
 Procedure
 **********
 Perform the procedure mentioned below to deploy the VM.
 
-1. Import the OVA file by referring to `Importing OVA </doc/Importing%20OVA%20File.rst>`_. 
+1. Import the OVA file by referring to  `Importing OVA <https://github.com/Seagate/cortx/blob/main/doc/Importing%20OVA%20File.rst>`_.
 
-2. Open the VM console and login as **cortx**.
+2. After the completion of import, open the VM console, and login as **cortx**. The password must be **opensource!**.
 
 3. Become the **root** user by running the following command.
 
@@ -45,5 +44,3 @@ Perform the procedure mentioned below to deploy the VM.
  
  
 **Note**: If you are running the VM in any of the products of VMware, it is not recommended to use **VMware Tools**, as CORTX may break due to kernel dependencies. 
-
-
