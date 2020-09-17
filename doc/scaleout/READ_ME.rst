@@ -14,7 +14,7 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
 
 2. Install the CORTX software by referring to `Installing CORTX <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Installing%20CORTX%20Software.rst>`_.
 
-3. Configure the I/O stack by referring to `Configuring I / O Stack <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Configuring%20IO%20Stack.rst>`_.
+3. Configure the I/O stack by referring to `Configuring I/O Stack <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Configuring%20IO%20Stack.rst>`_.
 
 4. Configure the dependencies by referring to `Configuring Dependencies <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Configuring%20Dependencies.rst>`_. The dependencies are listed below in the order in which they have to be configured.
 
