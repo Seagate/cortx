@@ -22,25 +22,9 @@ Procedure
 **********
 Perform the procedure mentioned below to deploy the VM.
 
-1. Login to the web interface of ESX.
+1. Import the OVA file.
 
-2. Click **Create/Register VM**. The **New Virtual Machine wizard** opens.
-
-3. On the Select creation type page of the wizard, select **Deploy a virtual machine from an OVF or OVA** file, and click **Next**.
-
-4. Enter a name for your virtual machine. Virtual machine names can contain up to 80 characters and must be unique within each ESXi instance.
-
-5. Click the blue pane to select an OVF and a VMDK, or an OVA file to deploy. Your local system storage opens.
-
-6. Select all the files that corresponds to the virtual machine that you want to deploy, and click **Open**.
-
-7. Click **Next**.
-
-8. Select a datastore from the list of accessible datastores. By default, it is **datastore1**.
-
-9. Click **Next**. 
-
-10. Perform the network configuration accurately.
+2. Perform the network configuration accurately.
 
   - One interface must be mapped to the management network.
   
@@ -50,26 +34,25 @@ Perform the procedure mentioned below to deploy the VM.
   
   **Note**: Ensure that all the three networks are connected to different subnets.
 
-11. Select either of the following as an option for provisioning the disks.
+3. Select either of the following as an option for provisioning the disks.
 
   - **Thin** 
   - **Thick**
 
-12. After provisioning, select the checkbox if you want to start the VM. By default, **Yes** is the option.
+4. Ensure accuracy in the configuration. The VM provisioning process takes approximately 25-40 minutes.
 
-13. Click **Next**.
+5. After the completion of import, open the VM console, and login as **cortx**.
 
-14. Ensure accuracy in the configuration and click **Finish**. The VM provisioning process takes approximately 25-40 minutes.
+6. Become the **root** user by running the following command.
 
-15. After the completion of import, open the VM console in ESX, and login as **root**.
+ - sudo su -
 
-16. Run **ip a l** and note the IP addresses of the following interfaces:
+7. Run **ip a l** and note the IP addresses of the following interfaces:
 
   - ens192 - management
   - ens256 - public data
-  
-  
-17. If required, change the hostname by running the following command:
+    
+8. If required, change the hostname by running the following command:
 
   - **hostnamectl set-hostname --static --transient --pretty <new-name>**
   
@@ -78,6 +61,6 @@ Perform the procedure mentioned below to deploy the VM.
     - **hostnamectl status**
  
  
-**Note**: It is not recommended to install **VMware Tools** as CORTX may break due to kernel dependencies. 
+**Note**: If you are running the VM in any of the products of VMware, it is not recommended to use **VMware Tools**, as CORTX may break due to kernel dependencies. 
 
 

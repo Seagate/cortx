@@ -1,8 +1,8 @@
 # Contribute to the CORTX Project
 
-CORTX is about building the [world's best scalable mass-capacity object storage system](https://github.com/Seagate/cortx). If you’re interested in what we’re building and intrigued by hard challenges, here's everything you need to know about contributing to the project and how to get started. 
+CORTX is about building the world's best scalable mass-capacity object storage system. If you’re interested in what we’re building and intrigued by hard challenges, here's everything you need to know about contributing to the project and how to get started. 
 
-After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and how to turn your pull request into a successful contribution. Feel free to browse through the [list of contrubutions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md), and [view and submit issues](https://github.com/Seagate/cortx/issues). And if you have any suggestions on how we can improve this guide, or anything else in the project, we want to hear from you!
+After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and how to turn your pull request into a successful contribution. Feel free to browse through the [list of contributions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md), and [view and submit issues](https://github.com/Seagate/cortx/issues). And if you have any suggestions on how we can improve this guide, or anything else in the project, we want to hear from you!
 
 ## Contribution Guide
 

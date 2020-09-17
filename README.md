@@ -40,7 +40,8 @@ We are excited about your interest in CORTX and hope you will join us. We take o
 
 ## How to Get Started
 
--   Jump into [CORTX Quickstart Guide](QUICK_START.md) to build and test CORTX.
+-   Download a VM image and follow [the instructions](doc/CORTX_on_Virtual_Appliance.rst) to test the pre-built full CORTX system. 
+-   Jump into [CORTX Development Quickstart Guide](QUICK_START.md) to build and test CORTX.
 -   Check out our [Contribution Guide](../main/doc/CORTXContributionGuide.md) to pick up topics and issues to contribute, submit your codes, and learn how to turn your pull request into a successful contribution.
     -   Refer to our [Suggested Contributions](../main/doc/SuggestedContributions.md) page for some inspiration about how to contribute to the CORTX project.
 -   You can [submit requests and bugs using GitHub Issues](https://github.com/Seagate/cortx/issues)
@@ -52,11 +53,11 @@ Resources
 -   Join our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) to interact with community members and gets your questions answered.
 -   Become a forum member to ask, answer, and discuss topics with your fellow CORTX contributors! **TODO** Add link for Forum.
 -   If you'd like to contact us directly, drop us a mail at cortx-questions@seagate.com.
--   We like to highlight the work and contributions of our community members—if you have solved an interesting challenge, or you are interested in sharing your experience or use cases, we want to talk to you! Please contact john.bent@seagate.com or [schedule a meeting with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2).
+-   We like to highlight the work and contributions of our community members—if you have solved an interesting challenge, or you are interested in sharing your experience or use cases, we want to talk to you! Please email our Community Manager rachel.novak@seagate.com or [schedule a meeting with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2) to share.
 
 Thank You!
 ----------
 
 We thank you for stopping by to check out the CORTX Community. We are fully dedicated to our mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world.
 
-**The CORTX project is licensed under the** [Apache 2.0 License](../main/LICENSE).
+**CORTX is 100% Open Source.** Most of the project is licensed under the [Apache 2.0 License](../main/LICENSE) and the rest is under LGPLv3; check the specific License file for each submodule to determine which is which.
