@@ -10,7 +10,7 @@ We are glad that you are interested in contributing to the CORTX project. Since 
 |**[Bash](https://github.com/bahamas10/bash-style-guide)** | cortx-s3-server| 
 |**[Shell](https://google.github.io/styleguide/shellguide.html)**| cortx-ha</br>cortx-provisioner</br> |
 |**[C](https://github.com/Seagate/cortx-motr/blob/dev/doc/coding-style.md)**| cortx-motr</br>cortx-posix</br>cortx-monitor</br> |
-| YAML for Salt: **[Style](https://docs.saltstack.com/en/latest/topics/development/conventions/style.html)**</br>**[Formulae](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)**</br> | cortx-provisioner|
+| YAML for Salt:,/br>**[Style](https://docs.saltstack.com/en/latest/topics/development/conventions/style.html)**</br>**[Formulae](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)**</br> | cortx-provisioner|
 
 **Exceptions:** 
 
