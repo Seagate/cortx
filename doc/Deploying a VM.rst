@@ -44,3 +44,8 @@ Perform the procedure mentioned below to deploy the VM.
  
  
 **Note**: If you are running the VM in any of the products of VMware, it is not recommended to use **VMware Tools**, as CORTX may break due to kernel dependencies. 
+
+**********
+Accessing CORTX management interface on the VM
+**********
+Point your browser to https://<ens192 IP>:28100
