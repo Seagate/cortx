@@ -698,6 +698,8 @@ Configuration
    ::
    
     /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster -n NODES
+    
+   **Note**: -n nodes where nodes must be FQDN of the respective nodes and separated by comma. For example, -n ssc-vm-2104,ssc-vm-176 
  
 Run the below mentioned command to check the status of the RabbitMQ cluster.
 
@@ -1145,6 +1147,6 @@ To check dependency and configure **HA**, perform **post_install**, **config**, 
  Stopping of Services
 **********************
  
- To perform stopping of services refer, `Stopping Services <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Stopping%20Services.rst>`_.
+ To perform stopping of services refer to `Stopping Services <https://github.com/Seagate/cortx/blob/JBOD-Updates/doc/scaleout/Stopping%20Services.rst>`_.
 
 
