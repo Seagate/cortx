@@ -45,7 +45,7 @@ VMware vSphere
 
 9. Click **Finish** after you review the configuration. The process of importing starts. After the import is complete, click **Refresh**.
 
-10. After the importing is complete, navigate to `Deploying a VM </doc/Deploying%20a%20VM.rst>`_.
+10. Navigate to `Deploying a VM </doc/Deploying%20a%20VM.rst>`_.
 
 11. Perform the following steps:
 
@@ -85,10 +85,24 @@ VMware Workstation
 **************
 VMware Fusion
 **************
-1.
+1. Launch VMware Fusion in your system.
 
-2.
+2. Click **File** at the top. A menu appears. Select **Import**
 
-3.
+3. Click **Choose File**. From your system, select the OVA file. Then, click **Open**.
 
-4. <<Reference to Deploying VM document>>  
+4. Enter the name for the virtual machine in the **Save As** text box and provide the location to save it.
+
+ - By default, Fusion creates the Virtual Machines folder.
+
+5. Click **Save**. Fusion performs OVA specification conformance and virtual hardware compliance checks. After the import is complete, the virtual machine appears in the virtual machine library and in a separate virtual machine window. 
+
+6. Perform the following steps:
+
+ - Step 2
+ 
+ - Step 3
+ 
+ - Step 4
+ 
+ - Step 5 
