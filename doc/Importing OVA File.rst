@@ -18,13 +18,44 @@ VMware ESX Server
 ***************
 VMware vSphere
 ***************
-1.
 
-2.
+1. Log in to the VMware vSphere web client and go to the **VMs** tab. 
 
-3.
+2. At the top of the window, click **Actions**. A menu appears. Then, click **Deploy OVF Template**. A window asking through which you can upload the OVA file appears.
 
-4. <<Reference to Deploying VM document>> 
+3. Use the **Browse** button to select the OVA file from your system. Click **Next** after the OVA file is selected.
+
+4. Enter a name for your VM and select the location where you want to deploy, then click **Next**.
+
+5. Select the resource that you want to use to run the virtual appliance. Then, click **Next**.
+
+6. Review the details and click **Next**.
+
+7. Select the desired storage location from the list of data stores. Then, click **Next**.
+
+ - You can either choose **Thick** or **Thin**. It is recommended to select **Thick**.
+
+8. Select a network from the drop-down list for each interface, click **Next**.
+
+ - One interface must be mapped to the management network
+
+ - One interface must be mapped to the private data network
+
+ - One interface must be mapped to the private data network
+
+9. Click **Finish** after you review the configuration. The process of importing starts. After the import is complete, click **Refresh**.
+
+10. After the importing is complete, navigate to `Deploying a VM </doc/Deploying%20a%20VM.rst>`_.
+
+11. Perform the following steps:
+
+ - Step 2
+
+ - Step 3
+
+ - Step 4
+
+ - Step 5 
 
 ******************
 VMware Workstation
