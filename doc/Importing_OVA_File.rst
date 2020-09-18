@@ -23,14 +23,17 @@ VMware vSphere
 #. Select the resource that you want to use to run the virtual appliance. Then, click **Next**.
 #. Review the details and click **Next**.
 #. Select the desired storage location from the list of data stores. Then, click **Next**.
+   
    * You can either choose **Thick** or **Thin**. It is recommended to select **Thick**.
 #. Select a network from the drop-down list for each interface, click **Next**.
+   
    * One interface must be mapped to the management network
    * One interface must be mapped to the private data network
    * One interface must be mapped to the public data network
 #. Click **Finish** after you review the configuration. The process of importing starts. After the import is complete, click **Refresh**.
 #. Navigate to `Deploying a VM <Deploying_a_VM.rst>`_.
 #. Perform the following steps: 
+   
    * Step a
    * Step b
    * Step c
@@ -49,6 +52,7 @@ Some host network adapters might need to be unselected to allow proper operation
 #. Click **Import**. The process of importing the VM gets started.
 #. After the importing is complete, navigate to `Deploying a VM <Deploying_a_VM.rst>`_.
 #. Perform the following steps:
+   
    * step 2
    * step 3
    * step 4
@@ -65,6 +69,7 @@ VMware Fusion
 #. Click **Save**. Fusion performs OVA specification conformance and virtual hardware compliance checks. After the import is complete, the virtual machine appears in the virtual machine library and in a separate virtual machine window.
 #. Navigate to `Deploying a VM <Deploying_a_VM.rst>`_.
 #. Perform the following steps:
+   
    * step 2
    * step 3
    * step 4
