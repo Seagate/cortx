@@ -31,6 +31,24 @@ The procedure to install CORTX on VA is mentioned below.
 
  - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
  
+  If you have a firewall between the VA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to VA.
+  
+ +----------------------+-------------------+---------------------------------------------+
+ |    **Port number**   |   **Protocols**   |   **Destination network (on VA)**           |
+ +----------------------+-------------------+---------------------------------------------+
+ |          22          |        TCP        |           Management network                |
+ +----------------------+-------------------+---------------------------------------------+ 
+ |          53          |      TCP/UDP      | Management network and Public Data network  |
+ +----------------------+-------------------+---------------------------------------------+ 
+ |         123          |      TCP/UDP      |              Management network             |
+ +----------------------+-------------------+---------------------------------------------+
+ |         443          |       HTTPS       |             Public Data network             |
+ +----------------------+-------------------+---------------------------------------------+
+ |         9443         |       HTTPS       |              Public Data network            |
+ +----------------------+-------------------+---------------------------------------------+
+ |         28100        |   TCP (HTTPS)     |              Public Data network            |
+ +----------------------+-------------------+---------------------------------------------+
+ 
 4. Turn on the virtual machine and login using either the SSH or VMware console.
 
  - Username: cortx
