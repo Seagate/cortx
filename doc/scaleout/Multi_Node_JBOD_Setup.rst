@@ -134,7 +134,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - Other versions are not supported.
 
-7. Download CORTX ISO and CORTX 3rd_party ISO files from <url to github location>.
+7. Download CORTX ISO and CORTX 3rd_party ISO files from `here <https://github.com/Seagate/cortx/releases/tag/JBOD>`_.
 
 8. Upload the ISOs to the first server in the cluster that you are planning to install. It is recommended to have the ISOs in the same location.
 
