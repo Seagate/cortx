@@ -50,7 +50,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 2. Connect the servers to the networks and the JBODs as per the guidelines provided above.
 
-3. Install CentOS 7.7 (1908 release) operating system on all three servers in the future cluster.
+3. Install CentOS 7.7 (1908 release) operating system on all three servers in the cluster.
 
   **Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands and view the appropriate outputs.
   
