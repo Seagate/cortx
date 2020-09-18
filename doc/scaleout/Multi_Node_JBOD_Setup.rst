@@ -16,7 +16,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - 2x 1 TB internal HDD
 
-   - One dual-port or two single-port Mellanox HCA (for the data networks)
+   - One dual-port or single-port high-speed NICs (for the data networks). We recommend using Mellanox HCAs.
 
    - At least one 1 GbE network port (for the Management network)
 
@@ -29,6 +29,8 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
    - Usage of Mellanox HCAs is recommended but not mandatory. For optimal performance you need two high-speed network ports (10 GbE minimum; 50 GbE or 100 GbE recommended).
 
     - All the three servers must have Mellanox HCA or none of the servers must have it.
+    
+   - Infiband and OmniPath adapters are not supported.
 
  b. JBOD Reference Configuration
 
@@ -50,7 +52,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 2. Connect the servers to the networks and the JBODs as per the guidelines provided above.
 
-3. Install CentOS 7.7 (1908 release) operating system on all three servers in the future cluster.
+3. Install CentOS 7.7 (1908 release) operating system on all three servers in the cluster.
 
   **Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands and view the appropriate outputs.
   
@@ -116,9 +118,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
     **Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions.
     
-4. Configure root user on all 3 servers to use the same password. This is required for the installation and can be changed after the installation is complete.
-
-5. Allow the root login over SSH on all three servers. This is required for the installation and operations of the cluster.
+4. Allow the root login over SSH on all three servers. This is required for the installation and operations of the cluster.
 
    **Notes**
 
@@ -126,25 +126,27 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
     - You can create another non-root user to avoid logging in to the servers as root all the time. Please allow this user to run all commands using sudo (add it to the "wheel" group).
     
-6. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
+5. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
 
-7. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.7-3.2.9.0/rhel7.7/x86_64/MLNX_LIBS/. You must reboot the system after completing the installation.
+6. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.7-3.2.9.0/rhel7.7/x86_64/MLNX_LIBS/. You must reboot the system after completing the installation.
 
   - Supported Version - 4.7-3.2.9.0
 
    - Other versions are not supported.
 
-8. Download CORTX ISO and CORTX 3rd_party ISO files from <url to github location>.
+7. Download CORTX ISO and CORTX 3rd_party ISO files from <url to github location>.
 
-9. Upload the ISOs to the first server in the cluster that you are planning to install. It is recommended to have the ISOs in the same location.
+8. Upload the ISOs to the first server in the cluster that you are planning to install. It is recommended to have the ISOs in the same location.
 
-10. On all three servers, setup Python 3.6 virtual environment. Refer https://docs.python.org/3.6/library/venv.html.
+9. On all three servers, setup Python 3.6 virtual environment. Refer https://docs.python.org/3.6/library/venv.html.
 
    - Supported Version - 3.6
    
     - Other versions are not supported.
     
-11. Configure DNS and DHCP server, if used, with the host names and IP addresses for each server.
+   **Note**: You can install Python 3.6 without the use of the virtual environments. This is a supported configuration.
+    
+10. Configure DNS and DHCP server, if used, with the host names and IP addresses for each server.
 
   - Each server should have FQDN assigned to it. The FQDN should be associated with the IP address of the management network interface.
 
@@ -180,3 +182,22 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
    - You must configure DNS resolution for these VIPs.
    
 12. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <Configuration_File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
+
+If you have a firewall within your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access.
+  
+ +----------------------+-------------------+---------------------------------------------+
+ |    **Port number**   |   **Protocols**   |   **Destination network (on VA)**           |
+ +----------------------+-------------------+---------------------------------------------+
+ |          22          |        TCP        |           Management network                |
+ +----------------------+-------------------+---------------------------------------------+ 
+ |          53          |      TCP/UDP      | Management network and Public Data network  |
+ +----------------------+-------------------+---------------------------------------------+ 
+ |         123          |      TCP/UDP      |              Management network             |
+ +----------------------+-------------------+---------------------------------------------+
+ |         443          |       HTTPS       |             Public Data network             |
+ +----------------------+-------------------+---------------------------------------------+
+ |         9443         |       HTTPS       |              Public Data network            |
+ +----------------------+-------------------+---------------------------------------------+
+ |         28100        |   TCP (HTTPS)     |              Public Data network            |
+ +----------------------+-------------------+---------------------------------------------+
+
