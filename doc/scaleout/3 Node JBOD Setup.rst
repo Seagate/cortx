@@ -16,7 +16,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - 2x 1 TB internal HDD
 
-   - One dual-port or two single-port Mellanox HCA (for the data networks)
+   - One dual-port or single-port high-speed NICs (for the data networks). We recommend using Mellanox HCAs.
 
    - At least one 1 GbE network port (for the Management network)
 
