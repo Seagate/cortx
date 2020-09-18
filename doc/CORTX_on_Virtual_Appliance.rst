@@ -30,6 +30,8 @@ The procedure to install CORTX on VA is mentioned below.
 3. Import the OVA file by referring to `Importing OVA <Importing_OVA_File.rst>`_.
 
  - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
+  
+**Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.
  
 4. Open the VM console, and login with the below mentioned credentials.
 
@@ -131,8 +133,6 @@ If you have a firewall between the VA and the rest of your infrastructure, inclu
  |         28100        |   TCP (HTTPS)     |              Public Data network            |
  +----------------------+-------------------+---------------------------------------------+
 
-
-  
 Restarting CORTX VA
 ===================
 To restart the CORTX VA, follow the below mentioned procedures, in the order of listing.
