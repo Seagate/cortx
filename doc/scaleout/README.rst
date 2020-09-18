@@ -10,7 +10,7 @@ Procedure
 **********
 Perform the below mentioned procedure to setup CORTX on JBOD.
 
-1. Perform the setup of 3 node JBOD by referring to `3 Node JBOD Setup <https://github.com/Seagate/cortx/blob/VenkyOS-patch-9/doc/scaleout/Multi_Node_JBOD_Setup.rst>`_.
+1. Perform the setup of 3 node JBOD by referring to `Multi Node JBOD Setup <https://github.com/Seagate/cortx/blob/VenkyOS-patch-9/doc/scaleout/Multi_Node_JBOD_Setup.rst>`_.
 
 2. Install the CORTX software by referring to `Installing CORTX <https://github.com/Seagate/cortx/blob/VenkyOS-patch-9/doc/scaleout/Installing_CORTX_Software.rst>`_.
 
