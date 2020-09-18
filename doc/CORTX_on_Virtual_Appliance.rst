@@ -43,15 +43,73 @@ The procedure to install CORTX on VA is mentioned below.
  
  - ens256 - public data
  
-7. If required, change the hostname by running the following command:
+7. Change the hostname by running the following command:
 
  - **hostnamectl set-hostname --static --transient --pretty <new-name>**
+  
+     If you receive **Access denied** message, remove immutable settings on the **/etc/hostname** file and run the command again. To remove immutable setting from **/etc/hostname**, run the following command.
+     
+      - **chattr -i /etc/hostname**
+  
  
    To verify the change in hostname, run the following command:
  
-  - **hostnamectl status**
- 
-  If you have a firewall between the VA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to VA.
+   - **hostnamectl status**
+   
+   **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
+  
+8. Update **/etc/hosts** with the management IP address and the new hostname for the VA. In the same file, update the line that contains **s3.seagate.com** with the IP address of the public data interface. Do not remove or rename hostnames in this line.
+
+9. Edit **/root/.ssh/config** and update the following with the new hostname for the VA.
+
+  - **Host srvnode-1 <new_hostname>**
+  
+  - **HostName <new_hostname>**
+  
+  **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it's required for the proper functioning of VA.
+
+10. Refresh HAproxy configuration by running the following command.
+
+  - **salt "*" saltutil.pillar_refresh**
+  
+  - **salt "*" state.apply components.ha.haproxy.config**
+  
+  - **salt "*" state.apply components.ha.haproxy.start**
+  
+11. Restart lnet by running the following command.
+
+  - **systemctl restart lnet**
+  
+
+12. Run the following command:
+
+ - **hctl bootstrap --mkfs /var/lib/hare/cluster.yaml**
+
+  You must run the above command with **--mkfs** only once. Further usage of **--mkfs** erases data.
+
+13. Ensure that the I/O stack is running by running the following command:
+
+ - **hctl status**
+
+14. Ensure that the CSM service is operational by running the following commands:
+
+ - **systemctl status csm_agent**
+ - **systemctl status csm_web**
+
+   If the above services are not active, run the following command:
+
+  - **systemctl start <csm_agent|csm_web>**
+  
+15. Open the web browser and navigate to the following location:
+
+  - **https://<management IP>:28100/#/preboarding/welcome**
+  
+**Note**: Operating system updates are not supported due to specific kernel dependencies.
+
+16. Refer `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process.
+
+
+If you have a firewall between the VA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to VA.
   
  +----------------------+-------------------+---------------------------------------------+
  |    **Port number**   |   **Protocols**   |   **Destination network (on VA)**           |
@@ -68,75 +126,8 @@ The procedure to install CORTX on VA is mentioned below.
  +----------------------+-------------------+---------------------------------------------+
  |         28100        |   TCP (HTTPS)     |              Public Data network            |
  +----------------------+-------------------+---------------------------------------------+
- 
-4. Turn on the virtual machine and login using either the SSH or VMware console.
 
- - Username: cortx
- - Password: opensource!
- 
-5. Run the below mentioned command to become a superuser.
 
- - **sudo su -**
- 
-6. Update the hostname by running the below mentioned command. By default the name is set to **localhost.localdomain**.
-
- - **hostnamectl set-hostname --static --transient --pretty <new_hostname>**
-
-     If you receive **Access denied** message, remove immutable settings on the **/etc/hostname** file and run the command again. To remove immutable setting from **/etc/hostname**, run the following command.
-     
-     - **chattr -i /etc/hostname**
-     
-  **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
-  
-7. Update **/etc/hosts** with the management IP address and the new hostname for the VA. In the same file, update the line that contains **s3.seagate.com** with the IP address of the public data interface. Do not remove or rename hostnames in this line.
-
-8. Edit **/root/.ssh/config** and update the following with the new hostname for the VA.
-
-  - **Host srvnode-1 <new_hostname>**
-  
-  - **HostName <new_hostname>**
-  
-  **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it's required for the proper functioning of VA.
-
-9. Refresh HAproxy configuration by running the following command.
-
-  - **salt "*" saltutil.pillar_refresh**
-  
-  - **salt "*" state.apply components.ha.haproxy.config**
-  
-  - **salt "*" state.apply components.ha.haproxy.start**
-  
-10. Restart lnet by running the following command.
-
-  - **systemctl restart lnet**
-  
-
-11. Run the following command:
-
- - **hctl bootstrap --mkfs /var/lib/hare/cluster.yaml**
-
-  You must run the above command with **--mkfs** only once. Further usage of **--mkfs** erases data.
-
-12. Ensure that the I/O stack is running by running the following command:
-
- - **hctl status**
-
-13. Ensure that the CSM service is operational by running the following commands:
-
- - **systemctl status csm_agent**
- - **systemctl status csm_web**
-
-   If the above services are not active, run the following command:
-
-  - **systemctl start <csm_agent|csm_web>**
-  
-14. Open the web browser and navigate to the following location:
-
-  - **https://<management IP>:28100/#/preboarding/welcome**
-  
-**Note**: Operating system updates are not supported due to specific kernel dependencies.
-
-15. Refer `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process. 
   
 Restarting CORTX VA
 ===================
