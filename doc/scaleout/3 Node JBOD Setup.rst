@@ -12,7 +12,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - 1x Intel Xeon CPU, 6 cores per CPU (2x Intel Xeon CPU, 10 cores per CPU for optimal performance)
 
-   - 64 GB RAM ( 192 GB RAM for optimal performane)
+   - 64 GB RAM ( 192 GB RAM for optimal performance)
 
    - 2x 1 TB internal HDD
 
