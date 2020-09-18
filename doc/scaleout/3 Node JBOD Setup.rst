@@ -144,6 +144,8 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
    
     - Other versions are not supported.
     
+   **Note**: You can install Python 3.6 without the use of the virtual environments. This is a supported configuration.
+    
 10. Configure DNS and DHCP server, if used, with the host names and IP addresses for each server.
 
   - Each server should have FQDN assigned to it. The FQDN should be associated with the IP address of the management network interface.
