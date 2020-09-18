@@ -27,9 +27,29 @@ The procedure to install CORTX on VA is mentioned below.
 
  - **tar -xzvf cortvm_opensource_vX_ova.tar.gz**
 
-3. Install the VM on your system by referring `Deploying a VM <Deploying_a_VM.rst>`_.
+3. Import the OVA file by referring to `Importing OVA <Importing_OVA_File.rst>`_.
 
  - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
+ 
+4. After the completion of import, open the VM console, and login as **cortx**. The password must be **opensource!**.
+
+5. Become the **root** user by running the following command.
+
+ - sudo su -
+ 
+6. Run **ip a l** and note the IP addresses of the following interfaces:
+
+ - ens192 - management
+ 
+ - ens256 - public data
+ 
+7. If required, change the hostname by running the following command:
+
+ - **hostnamectl set-hostname --static --transient --pretty <new-name>**
+ 
+   To verify the change in hostname, run the following command:
+ 
+  - **hostnamectl status**
  
   If you have a firewall between the VA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to VA.
   
