@@ -21,7 +21,7 @@ Deployment Procedure
 **********
 Perform the procedure mentioned below to deploy the VM.
 
-1. Import the OVA file by referring to  `Importing OVA <doc/Deploying_a_VM.rst>`_.
+1. Import the OVA file by referring to  `Importing OVA <Deploying_a_VM.rst>`_.
 
 2. After the completion of import, open the VM console, and login as **cortx**. The password must be **opensource!**.
 
