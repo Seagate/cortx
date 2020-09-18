@@ -7,7 +7,7 @@ Perform the below mentioned procedure to configure the I/O stack.
 1. Update the BE tx parameters by running the below mentioned command. The **/etc/sysconfig/motr** gets configured.
 
    ::
-    
+   
     m0provision config
 
 2. Run the below mentioned command to bootstrap the cluster.
