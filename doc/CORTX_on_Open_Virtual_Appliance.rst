@@ -1,14 +1,14 @@
-==========================
-CORTX on Virtual Appliance
-==========================
-Virtual Appliance (VA) is a virtual machine image file that consists of pre-installed and pre-configured operating system environment, and a single application.
+===============================
+CORTX on Open Virtual Appliance
+===============================
+Open Virtual Appliance (OVA) is a virtual machine image file that consists of pre-installed and pre-configured operating system environment, and a single application.
 
-This document provides information on the procedure that must be followed to install CORTX (all components included) on a VA.
+This document provides information on the procedure that must be followed to install CORTX (all components included) on a OVA.
 
 **************
 Prerequisites
 **************
-The prerequisites required to install CORTX on a VA is listed below.
+The prerequisites required to use CORTX by importing an OVA is listed below.
 
 - Any of the following:
  - VMware ESX server
@@ -19,7 +19,7 @@ The prerequisites required to install CORTX on a VA is listed below.
 **********
 Procedure
 **********
-The procedure to install CORTX on VA is mentioned below.
+The procedure to install CORTX on OVA is mentioned below.
 
 1. From `OVA file <https://github.com/Seagate/cortx/releases/tag/VA>`_, download the TAR file that contains the VMware virtual machine images (a file named **cortxvm_opensource_vX.tar.gz**, where X is the revision of the VM image).
 
@@ -64,15 +64,15 @@ The procedure to install CORTX on VA is mentioned below.
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
   
-8. Update **/etc/hosts** with the management IP address and the new hostname for the VA. In the same file, update the line that contains **s3.seagate.com** with the IP address of the public data interface. Do not remove or rename hostnames in this line.
+8. Update **/etc/hosts** with the management IP address and the new hostname for the OVA. In the same file, update the line that contains **s3.seagate.com** with the IP address of the public data interface. Do not remove or rename hostnames in this line.
 
-9. Edit **/root/.ssh/config** and update the following with the new hostname for the VA.
+9. Edit **/root/.ssh/config** and update the following with the new hostname for the OVA.
 
   - **Host srvnode-1 <new_hostname>**
   
   - **HostName <new_hostname>**
   
-  **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it's required for the proper functioning of VA.
+  **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it's required for the proper functioning of OVA.
 
 10. Refresh HAproxy configuration by running the following command.
 
@@ -115,7 +115,7 @@ The procedure to install CORTX on VA is mentioned below.
 16. Refer `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process.
 
 
-If you have a firewall between the VA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to VA.
+If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
   
  +----------------------+-------------------+---------------------------------------------+
  |    **Port number**   |   **Protocols**   |   **Destination network (on VA)**           |
@@ -133,17 +133,17 @@ If you have a firewall between the VA and the rest of your infrastructure, inclu
  |         28100        |   TCP (HTTPS)     |              Public Data network            |
  +----------------------+-------------------+---------------------------------------------+
 
-Restarting CORTX VA
-===================
-To restart the CORTX VA, follow the below mentioned procedures, in the order of listing.
+Restarting CORTX OVA
+====================
+To restart the CORTX OVA, follow the below mentioned procedures, in the order of listing.
 
-- Shutdown the VA
+- Shutdown the OVA
 
-- Start the VA
+- Start the OVA
 
-Shutdown the VA
-----------------
-1. Stop all S3 I/O traffic from S3 clients to VA.
+Shutdown the OVA
+-----------------
+1. Stop all S3 I/O traffic from S3 clients to OVA.
 
 2. Login to the CORTX Virtual Appliance as **cortx** and run the following.
 
@@ -153,17 +153,17 @@ Shutdown the VA
 
  - **hctl shutdown** 
 
-4. After executing the previous command, shutdown the VA by running the following command.
+4. After executing the previous command, shutdown the OVA by running the following command.
 
  - **poweroff**
  
-Starting the VA
-----------------
+Starting the OVA
+-----------------
 1. Power on the Virtual Appliance VM.
 
-2. Login to the VA through ssh after the VM starts.
+2. Login to the OVA through ssh after the VM starts.
 
-3. Login to the CORTX VA as **cortx** and run the following.
+3. Login to the CORTX OVA as **cortx** and run the following.
 
  - **sudo su -**
 
