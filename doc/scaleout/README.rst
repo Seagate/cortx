@@ -10,13 +10,13 @@ Procedure
 **********
 Perform the below mentioned procedure to setup CORTX on JBOD.
 
-1. Perform the setup of 3 node JBOD by referring to `3 Node JBOD Setup <https://github.com/Seagate/cortx/blob/main/doc/scaleout/3%20Node%20JBOD%20Setup.rst>`_.
+1. Perform the setup of 3 node JBOD by referring to `3 Node JBOD Setup <Multi_Node_JBOD_Setup.rst>`_.
 
-2. Install the CORTX software by referring to `Installing CORTX <https://github.com/Seagate/cortx/blob/main/doc/scaleout/Installing%20CORTX%20Software.rst>`_.
+2. Install the CORTX software by referring to `Installing CORTX <Installing_CORTX_Software.rst>`_.
 
-3. Configure the I/O stack by referring to `Configuring I / O Stack <https://github.com/Seagate/cortx/blob/main/doc/scaleout/Configuring%20IO%20Stack.rst>`_.
+3. Configure the I/O stack by referring to `Configuring I / O Stack <Configuring_IO_Stack.rst>`_.
 
-4. Configure the dependencies by referring to `Configuring Dependencies <https://github.com/Seagate/cortx/blob/main/doc/scaleout/Configuring%20Dependencies.rst>`_. The dependencies are listed below in the order in which they have to be configured.
+4. Configure the dependencies by referring to `Configuring Dependencies <Configuring_Dependencies.rst>`_. The dependencies are listed below in the order in which they have to be configured.
 
  - LDAP
  
@@ -26,7 +26,7 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  
  - Statsd and Kibana
  
-5. Configure the components of CORTX by referring to `Configuring Components <https://github.com/Seagate/cortx/blob/main/doc/scaleout/Configuring%20CORTX%20Components.rst>`_. The components are listed below in the order in which they have to be configured.
+5. Configure the components of CORTX by referring to `Configuring Components <Configuring_CORTX_Components.rst>`_. The components are listed below in the order in which they have to be configured.
 
  - S3 (AuthServer and HAProxy)
  
@@ -42,6 +42,6 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  Stopping of Services
 **********************
  
-To perform stopping of services refer to `Stopping Services <https://github.com/Seagate/cortx/blob/main/doc/scaleout/Stopping%20Services.rst>`_.
+To perform stopping of services refer to `Stopping Services <Stopping_Services.rst>`_.
  
  

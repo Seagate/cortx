@@ -20,7 +20,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - At least one 1 GbE network port (for the Management network)
 
-   - SCSI HBA with expernal ports (to connect to JBOD)
+   - SCSI HBA with external ports (to connect to JBOD)
 
    **Notes**
 
@@ -174,7 +174,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    **Notes**
  
-   - VIPs utilize CLUSTERIP iptables module that relies on multicast. For CORTX to function appropriately, multicasts should be allowed for Management and Public Data networks.
+   - VIPs utilize CLUSTERIP ip tables module that relies on multicast. For CORTX to function appropriately, multicasts should be allowed for Management and Public Data networks.
 
 
    - These static IPs are required regardless of whether DHCP is used to provide IP addresses for each server interface or not.
