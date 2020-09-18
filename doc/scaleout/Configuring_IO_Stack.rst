@@ -1,6 +1,6 @@
 
 ***************************************
-I/O Configuration (Motr + HARE + S3) 
+I/O Configuration (Motr + HARE + S3)
 ***************************************
 Perform the below mentioned procedure to configure the I/O stack.
 
