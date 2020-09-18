@@ -21,7 +21,7 @@ Procedure
 **********
 The procedure to install CORTX on VA is mentioned below.
 
-1. From `OVA file <https://github.com/Seagate/cortx/releases/tag/OVA>`_, download the TAR file that contains the VMware virtual machine images (a file named **cortxvm_opensource_vX.tar.gz**, where X is the revision of the VM image).
+1. From `OVA file <https://github.com/Seagate/cortx/releases/tag/VA>`_, download the TAR file that contains the VMware virtual machine images (a file named **cortxvm_opensource_vX.tar.gz**, where X is the revision of the VM image).
 
 2. Extract the contents of the downloaded TAR file into your system. You can also run the below mentioned command to extract the content.
 
