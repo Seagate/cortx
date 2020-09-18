@@ -8,21 +8,25 @@ GENERAL WAYS TO CONTRIBUTE
 --------------------------
 There are many ways to participate in our community.
 1. Participate in discussion forums
-2. Create GitHub Issues requesting features
-3. Create GitHub Issues reporting bugs in the code
-4. Create GitHub Issues reporting missing, incomplete, or incorrect documentation
-5. Create GitHub Pull Requests improving documentation
-6. Create GitHub Pull Requests fixing bugs
-7. Create GitHub Pull Requests adding third-party integrations
-8. Create GitHub Pull Requests adding new features to the code
-9. Test CORTX performance
-10. Test CORTX scalability
-11. Test CORTX interoperability across a range of hardware platforms (both physical and virtual)
-12. Test CORTX security via penetration testing and other mechanisms
-13. Create GitHub Pull Requests adding new test frameworks
-14. Write content such as solution briefs, reference architectures, recipes, and benchmarks
-16. Improve automation, devops, CI/CD, etc.
-17. Anything that improves the CORTX Community!
+2. Create GitHub Issues requesting 
+    1. features
+    2. bugs in the code
+    3. missing, incomplete, or incorrect documentation
+3. Find and respond to existing Issues
+4. Create GitHub Pull Requests 
+    1. improving documentation
+    2. fixing bugs
+    3. adding third-party integrations
+    4. adding new features to the code
+    5. adding new test frameworks
+5. Test CORTX 
+    1. performance
+    2. scalability
+    3. interoperability across a range of hardware platforms (both physical and virtual)
+    4. security via penetration testing and other mechanisms
+6. Write content such as solution briefs, reference architectures, recipes, and benchmarks
+7. Improve automation, devops, CI/CD, etc.
+8. Anything that improves the CORTX Community!
 
 Note that not all of these require actively committing new code or documentation to the repositories but in general we prefer that all of them do result in code or documentation commits.  For example, if you participate in an important QA session in one of our discussion forums, this suggests that our documentation is somewhere lacking.  Please take what you learn from that QA session and improve our documentation so that the next visitor to our community won't have the same question.
 

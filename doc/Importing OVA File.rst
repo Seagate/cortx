@@ -60,6 +60,9 @@ VMware vSphere
 ******************
 VMware Workstation
 ******************
+Note: With "Bridged" network configuration VMware Workstation should allow DHCP for the installed VMs.   
+Some host network adapters might need to be unselected to allow proper operation. See https://stackoverflow.com/questions/31531235/guest-vm-cant-get-ip-address-with-bridge-mode for more details
+
 1. Open the downloaded VMware Workstation Player.
 
 2. Select **Open a Virtual Machine**. The **Open Virtual Machine** window opens.
