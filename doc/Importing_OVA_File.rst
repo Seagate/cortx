@@ -45,7 +45,7 @@ VMware vSphere
 
 9. Click **Finish** after you review the configuration. The process of importing starts. After the import is complete, click **Refresh**.
 
-10. Navigate to `Deploying a VM <doc/Deploying_a_VM.rst>`_.
+10. Navigate to `Deploying a VM <Deploying_a_VM.rst>`_.
 
 11. Perform the following steps:
 
