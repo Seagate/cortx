@@ -19,7 +19,7 @@ Procedure
 **********
 Perform the procedure mentioned below to deploy the VM.
 
-1. Import the OVA file by referring to  `Importing OVA <https://github.com/Seagate/cortx/blob/main/doc/Importing%20OVA%20File.rst>`_.
+1. Import the OVA file by referring to  `Importing OVA <Importing_OVA.rst>`_.
 
 2. After the completion of import, open the VM console, and login as **cortx**. The password must be **opensource!**.
 
