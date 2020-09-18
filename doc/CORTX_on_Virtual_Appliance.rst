@@ -116,7 +116,7 @@ The procedure to install CORTX on VA is mentioned below.
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
-15. Refer `Onboarding into CORTX <Onboarding.rst>`_ to execute onboarding process. 
+15. Refer `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process. 
   
 Restarting CORTX VA
 ===================
