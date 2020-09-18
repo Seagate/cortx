@@ -8,9 +8,7 @@ Prerequisites
 **************
 The prerequisites mentioned below must be met to deploy the VM.
 
-- Pop-ups from ESX server must be allowed.
-- ZIP archive with the VM image file must be downloaded and extracted.
-- ESX server must be configured with at least two virtual interfaces.
+- Configure your hypervisor with at least three virtual interfaces.
 
  - One interface for management network
  - One interface for data network
