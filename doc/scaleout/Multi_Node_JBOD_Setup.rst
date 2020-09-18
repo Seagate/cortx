@@ -6,7 +6,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 1. Prepare three servers and three JBODs as per the following guidelines.
 
- a. Server Reference Configuration
+ - Server Reference Configuration
 
   - Minimal Configuration
 
@@ -32,11 +32,11 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     
    - Infiband and OmniPath adapters are not supported.
 
- b. JBOD Reference Configuration
+ - JBOD Reference Configuration
 
   - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server. The minimum size of the JBOD disk is 2TB.
 
- c. Network Configuration Requirements
+ - Network Configuration Requirements
 
   - The CORTX software requires 3 separate networks. The networks could be physically separate (connected to different switches) or separate VLANs. We recommend you to physically separate the management and data networks.
 
@@ -181,7 +181,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - You must configure DNS resolution for these VIPs.
    
-12. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <Configuration_File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
+11. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <Configuration_File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
 
 If you have a firewall within your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access.
   
