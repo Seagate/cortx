@@ -10,7 +10,9 @@ Procedure
 **********
 Perform the below mentioned procedure to setup CORTX on JBOD.
 
-1. Perform the setup of 3 node JBOD by referring to `3 Node JBOD Setup <Multi_Node_JBOD_Setup.rst>`_.
+
+
+1. Perform the setup of Multi node JBOD by referring to `Multi Node JBOD Setup <Multi_Node_JBOD_Setup.rst>`_.
 
 2. Install the CORTX software by referring to `Installing CORTX <Installing_CORTX_Software.rst>`_.
 

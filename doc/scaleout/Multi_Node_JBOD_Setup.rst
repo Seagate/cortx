@@ -181,7 +181,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - You must configure DNS resolution for these VIPs.
    
-11. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <https://github.com/Seagate/cortx/blob/main/doc/scaleout/Config.ini%20File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
+12. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <Configuration_File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
 
 If you have a firewall within your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access.
   
@@ -200,3 +200,4 @@ If you have a firewall within your infrastructure, including but not limited to 
  +----------------------+-------------------+---------------------------------------------+
  |         28100        |   TCP (HTTPS)     |              Public Data network            |
  +----------------------+-------------------+---------------------------------------------+
+

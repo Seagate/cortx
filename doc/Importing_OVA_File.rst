@@ -45,7 +45,7 @@ VMware vSphere
 
 9. Click **Finish** after you review the configuration. The process of importing starts. After the import is complete, click **Refresh**.
 
-10. Navigate to `Deploying a VM </doc/Deploying%20a%20VM.rst>`_.
+10. Navigate to `Deploying a VM <Deploying_a_VM.rst>`_.
 
 11. Perform the following steps:
 
@@ -60,6 +60,9 @@ VMware vSphere
 ******************
 VMware Workstation
 ******************
+Note: With "Bridged" network configuration VMware Workstation should allow DHCP for the installed VMs.   
+Some host network adapters might need to be unselected to allow proper operation. See https://stackoverflow.com/questions/31531235/guest-vm-cant-get-ip-address-with-bridge-mode for more details
+
 1. Open the downloaded VMware Workstation Player.
 
 2. Select **Open a Virtual Machine**. The **Open Virtual Machine** window opens.
@@ -70,7 +73,7 @@ VMware Workstation
 
 5. Click **Import**. The process of importing the VM gets started.
 
-6. After the importing is complete, navigate to `Deploying a VM </doc/Deploying%20a%20VM.rst>`_.
+6. After the importing is complete, navigate to `Deploying a VM <Deploying_a_VM.rst>`_.
 
 7. Perform the following steps:
 
@@ -95,9 +98,11 @@ VMware Fusion
 
  - By default, Fusion creates the Virtual Machines folder.
 
-5. Click **Save**. Fusion performs OVA specification conformance and virtual hardware compliance checks. After the import is complete, the virtual machine appears in the virtual machine library and in a separate virtual machine window. 
+5. Click **Save**. Fusion performs OVA specification conformance and virtual hardware compliance checks. After the import is complete, the virtual machine appears in the virtual machine library and in a separate virtual machine window.
 
-6. Perform the following steps:
+6. Navigate to `Deploying a VM <Deploying_a_VM.rst>`_.
+
+7. Perform the following steps:
 
  - Step 2
  
