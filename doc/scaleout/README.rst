@@ -10,7 +10,6 @@ Procedure
 **********
 Perform the below mentioned procedure to setup CORTX on JBOD.
 
-=======
 1. Perform the setup of 3 node JBOD by referring to `3 Node JBOD Setup <https://github.com/Seagate/cortx/blob/main/doc/scaleout/3%20Node%20JBOD%20Setup.rst>`_.
 
 2. Install the CORTX software by referring to `Installing CORTX <https://github.com/Seagate/cortx/blob/main/doc/scaleout/Installing%20CORTX%20Software.rst>`_.
