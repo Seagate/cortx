@@ -45,17 +45,7 @@ VMware vSphere
 
 9. Click **Finish** after you review the configuration. The process of importing starts. After the import is complete, click **Refresh**.
 
-10. Navigate to `Deploying a VM <Deploying_a_VM.rst>`_.
-
-11. Perform the following steps:
-
- - Step 2
-
- - Step 3
-
- - Step 4
-
- - Step 5 
+10. Navigate to `CORTX on VA <CORTX_on_Virtual_Appliance.rst>`_, and perform all the actions described from step 3.
 
 ******************
 VMware Workstation
@@ -73,17 +63,7 @@ Some host network adapters might need to be unselected to allow proper operation
 
 5. Click **Import**. The process of importing the VM gets started.
 
-6. After the importing is complete, navigate to `Deploying a VM <Deploying_a_VM.rst>`_.
-
-7. Perform the following steps:
-
- - Step 2
- 
- - Step 3
- 
- - Step 4
- 
- - Step 5
+6. After the importing is complete, navigate to `CORTX on VA <CORTX_on_Virtual_Appliance.rst>`_, and perform all the actions described from step 3.
 
 **************
 VMware Fusion
@@ -100,14 +80,4 @@ VMware Fusion
 
 5. Click **Save**. Fusion performs OVA specification conformance and virtual hardware compliance checks. After the import is complete, the virtual machine appears in the virtual machine library and in a separate virtual machine window.
 
-6. Navigate to `Deploying a VM <Deploying_a_VM.rst>`_.
-
-7. Perform the following steps:
-
- - Step 2
- 
- - Step 3
- 
- - Step 4
- 
- - Step 5 
+6. Navigate to `CORTX on VA <CORTX_on_Virtual_Appliance.rst>`_, and perform all the actions described from step 3.
