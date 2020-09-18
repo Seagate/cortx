@@ -10,7 +10,6 @@ Procedure
 **********
 Perform the below mentioned procedure to setup CORTX on JBOD.
 
-=======
 1. Perform the setup of 3 node JBOD by referring to `3 Node JBOD Setup <https://github.com/Seagate/cortx/blob/main/doc/scaleout/3%20Node%20JBOD%20Setup.rst>`_.
 
 2. Install the CORTX software by referring to `Installing CORTX <https://github.com/Seagate/cortx/blob/main/doc/scaleout/Installing%20CORTX%20Software.rst>`_.
@@ -36,6 +35,8 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  - CSM
  
  - HA
+ 
+6. Using a browser of your choice, navigate to *https://<management_VIP>:28100/#/preboarding/welcome* to create an admin user and complete the setup. 
 
 **********************
  Stopping of Services
