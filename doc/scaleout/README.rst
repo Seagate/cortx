@@ -11,13 +11,13 @@ Procedure
 Perform the below mentioned procedure to setup CORTX on JBOD.
 
 
-1. Perform the setup of Multi node JBOD by referring to `Multi Node JBOD Setup <doc/scaleout/Multi_Node_JBOD_Setup.rst>`_.
+1. Perform the setup of Multi node JBOD by referring to `Multi Node JBOD Setup <Multi_Node_JBOD_Setup.rst>`_.
 
-2. Install the CORTX software by referring to `Installing CORTX <doc/scaleout/Installing_CORTX_Software.rst>`_.
+2. Install the CORTX software by referring to `Installing CORTX <Installing_CORTX_Software.rst>`_.
 
-3. Configure the I/O stack by referring to `Configuring I / O Stack <doc/scaleout/Configuring_IO_Stack.rst>`_.
+3. Configure the I/O stack by referring to `Configuring I / O Stack <Configuring_IO_Stack.rst>`_.
 
-4. Configure the dependencies by referring to `Configuring Dependencies <doc/scaleout/Configuring_Dependencies.rst>`_. The dependencies are listed below in the order in which they have to be configured.
+4. Configure the dependencies by referring to `Configuring Dependencies <Configuring_Dependencies.rst>`_. The dependencies are listed below in the order in which they have to be configured.
 
  - LDAP
  
@@ -27,7 +27,7 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  
  - Statsd and Kibana
  
-5. Configure the components of CORTX by referring to `Configuring Components <doc/scaleout/Configuring_CORTX_Components.rst>`_. The components are listed below in the order in which they have to be configured.
+5. Configure the components of CORTX by referring to `Configuring Components <Configuring_CORTX_Components.rst>`_. The components are listed below in the order in which they have to be configured.
 
  - S3 (AuthServer and HAProxy)
  
@@ -41,6 +41,6 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  Stopping of Services
 **********************
  
-To perform stopping of services refer to `Stopping Services <doc/scaleout/Stopping_Services.rst>`_.
+To perform stopping of services refer to `Stopping Services <Stopping_Services.rst>`_.
  
  
