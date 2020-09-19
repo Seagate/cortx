@@ -56,7 +56,7 @@ VMware vSphere
 
 5. Select the resource that you want to use to run the virtual appliance. Then, click **Next**.
 
-   .. image:: images/vSphere4.png
+  .. image:: images/vSphere13.PNG
 
 6. Review the details and click **Next**.
 
