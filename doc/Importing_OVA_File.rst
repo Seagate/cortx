@@ -66,7 +66,7 @@ VMware vSphere
 
  - You can either choose **Thick** or **Thin**.
  
- .. image:: images/vSphere5.png
+  .. image:: images/vSphere5.png
 
 8. Select a network from the drop-down list for each interface, click **Next**.
 
