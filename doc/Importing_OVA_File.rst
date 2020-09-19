@@ -30,9 +30,9 @@ VMware vSphere
 
 7. Select the desired storage location from the list of data stores. Then, click **Next**.
 
- - You can either choose **Thick** or **Thin**.
+   - You can either choose **Thick** or **Thin**.
  
-  .. image:: images/vSphere100.PNG
+   .. image:: images/vSphere100.PNG
 
 8. Select a network from the drop-down list for each interface, click **Next**.
 
@@ -115,7 +115,6 @@ VMware Fusion
 3. Click **Choose File**. From your system, select the OVA file. Then, click **Open**.
 
 4. Enter the name for the virtual machine in the **Save As** text box and provide the location to save it.
-
  - By default, Fusion creates the Virtual Machines folder.
 
 5. Click **Save**. Fusion performs OVA specification conformance and virtual hardware compliance checks. After the import is complete, the virtual machine appears in the virtual machine library and in a separate virtual machine window.
