@@ -123,7 +123,7 @@ Optional Keys
 |                                |                                         |
 |                                | XY                                      |
 |                                |                                         |
-|                                |  NOTE: This key becomes mandatory       |
+|                                | NOTE: This key becomes mandatory        |
 |                                |        if the statis IP address is used |
 |                                |        for the Management network       |
 |                                |        interface                        |
@@ -139,7 +139,7 @@ Optional Keys
 |                                |                                         |
 |                                | XY                                      |
 |                                |                                         |
-|                                |  NOTE: This key becomes mandatory       |
+|                                | NOTE: This key becomes mandatory        |
 |                                |        if the statis IP address is used |
 |                                |        for the Public Data network      |
 |                                |        interface                        |
