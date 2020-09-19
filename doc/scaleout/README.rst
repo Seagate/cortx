@@ -28,13 +28,13 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  
 5. Configure the components of CORTX by referring to `Configuring Components <Configuring_CORTX_Components.rst>`_. The components are listed below in the order in which they have to be configured.
 
- - S3 (AuthServer and HAProxy)
+   - S3 (AuthServer and HAProxy)
  
- - SSPL
+   - SSPL
 
- - CSM
+   - CSM
  
- - HA
+   - HA
  
 6. Using a browser of your choice, navigate to *https://<management_VIP>:28100/#/preboarding/welcome* to create an admin user and complete the setup.
 
