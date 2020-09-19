@@ -10,13 +10,13 @@ Perform the below mentioned to complete the preboarding process. The below menti
 
 3. Create a user with admin privileges.
 
- - Enter the username, password, and email address in the relevant fields. Also, select the checkbox if want to receive the notifications.
+   - Enter the username, password, and email address in the relevant fields. Also, select the checkbox if want to receive the notifications.
 
-  **Note**: Do not create an user with one of the following usernames.
+   **Note**: Do not create an user with one of the following usernames.
 
-     - **root**
+   - **root**
 
-     - **csm**
+   - **csm**
      
 ======================
 Onboarding into CORTX
