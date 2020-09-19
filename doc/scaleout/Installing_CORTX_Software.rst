@@ -68,7 +68,7 @@ This section provides information on the installation of Provisioner and the ass
 
     lfs --version
 
- The output of these commands should match the following:
+The output of these commands should match the following:
 
 +---------------+-----------------------------------------------------+
 | **Component** |                 **Expected output**                 |
