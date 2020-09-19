@@ -24,13 +24,11 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 **Notes**
 
-   - The minimum number of network ports per server is 3.
+- The minimum number of network ports per server is 3.
 
-   - Usage of Mellanox HCAs is recommended but not mandatory. For optimal performance you need two high-speed network ports (10 GbE minimum; 50 GbE or 100 GbE recommended).
-
-    - All the three servers must have Mellanox HCA or none of the servers must have it.
+- Usage of Mellanox HCAs is recommended but not mandatory. For optimal performance you need two high-speed network ports (10 GbE minimum; 50 GbE or 100 GbE recommended). All the three servers must have Mellanox HCA or none of the servers must have it.
     
-   - Infiniband and OmniPath adapters are not supported.
+- Infiniband and OmniPath adapters are not supported.
 
  - JBOD Reference Configuration
 
