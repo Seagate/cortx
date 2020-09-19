@@ -36,7 +36,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
     - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server. The minimum size of the JBOD disk is 2TB.
 
-    - Network Configuration Requirements
+  - **Network Configuration Requirements**
 
     - The CORTX software requires 3 separate networks. The networks could be physically separate (connected to different switches) or separate VLANs. We recommend you to physically separate the management and data networks.
 
