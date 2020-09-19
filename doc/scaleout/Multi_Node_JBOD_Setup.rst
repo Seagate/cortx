@@ -201,8 +201,8 @@ If you have a firewall within your infrastructure, including but not limited to 
  |         28100        |   TCP (HTTPS)     |              Management network                |
  +----------------------+-------------------+------------------------------------------------+
  |          67          |     TCP/UDP       | Management network and Public Data network     |
- |                      |                   |(only if using DHCP to obtain the IP addresses) |
+ |                      |                   | (only if using DHCP to obtain the IP addresses)|
  +----------------------+-------------------+------------------------------------------------+
  |          68          |     TCP/UDP       | Management network and Public Data network     |
- |                      |                   |(only if using DHCP to obtain the IP addresses) |
+ |                      |                   | (only if using DHCP to obtain the IP addresses)|
  +----------------------+-------------------+------------------------------------------------+
