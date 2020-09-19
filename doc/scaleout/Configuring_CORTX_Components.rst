@@ -17,21 +17,21 @@ Starting Service
 
 - Run the below mentioned command to start the AuthServer on all the three nodes.
     
-   ::
+  ::
    
-    salt '*' cmd.run systemctl start s3authserver
+   salt '*' cmd.run systemctl start s3authserver
 
 - Run the below mentioned command to restart the AuthServer on all the three nodes.
 
-   ::
+  ::
     
-    salt '*' cmd.run systemctl restart s3authserver
+   salt '*' cmd.run systemctl restart s3authserver
  
 - Run the following command to check the status of AuthServer.
 
-   ::
+  ::
 
-    salt '*' cmd.run systemctl status s3authserver
+   salt '*' cmd.run systemctl status s3authserver
 
 HAProxy
 --------
