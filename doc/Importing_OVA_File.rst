@@ -75,6 +75,8 @@ VMware vSphere
  - One interface must be mapped to the private data network
 
  - One interface must be mapped to the public data network
+ 
+ .. image:: images/vSphere8.PNG
 
 9. Click **Finish** after you review the configuration. The process of importing starts. After the import is complete, click **Refresh**.
 
