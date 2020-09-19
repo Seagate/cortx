@@ -50,7 +50,7 @@ VMware vSphere
 
 3. Use the **Browse** button to select the OVA file from your system. Click **Next** after the OVA file is selected.
 
-   .. image:: images/vSphere2.png
+   .. image:: images/vSphere2.PNG
 
 4. Enter a name for your VM and select the location where you want to deploy, then click **Next**.
 
