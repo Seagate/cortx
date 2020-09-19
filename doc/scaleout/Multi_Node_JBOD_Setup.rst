@@ -68,25 +68,25 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
   While there are no specific requirements for installing the CentOS 7.7, we recommend you to perform the following 4 steps.
 
-  1. Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
+  Step 1 -  Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
   
-  2. On each drive, configure the partitions as per the following guidelines.
+  Step 2 -  On each drive, configure the partitions as per the following guidelines.
 
-     +-----------------------+-------------+-------------------------------------------+
-     | **Partition number**  |  **Size**   |        **Notes**                          |
-     |                       |             |                                           |
-     +-----------------------+-------------+-------------------------------------------+
-     |     1                 | 256 MB      | to be mounted to /boot/efi or /boot/efi2  |
-     +-----------------------+-------------+-------------------------------------------+
-     |     2                 |  1 GB       | to be used as part of md0 RAID-1 volume   |
-     +-----------------------+-------------+-------------------------------------------+
-     |     3                 | rest of     | to be used as part of md1 RAID-1 volume   |
-     |                       | disk        |                                           |
-     +-----------------------+-------------+-------------------------------------------+
+  +-----------------------+-------------+-------------------------------------------+
+  | **Partition number**  |  **Size**   |        **Notes**                          |
+  |                       |             |                                           |
+  +-----------------------+-------------+-------------------------------------------+
+  |     1                 | 256 MB      | to be mounted to /boot/efi or /boot/efi2  |
+  +-----------------------+-------------+-------------------------------------------+
+  |     2                 |  1 GB       | to be used as part of md0 RAID-1 volume   |
+  +-----------------------+-------------+-------------------------------------------+
+  |     3                 | rest of     | to be used as part of md1 RAID-1 volume   |
+  |                       | disk        |                                           |
+  +-----------------------+-------------+-------------------------------------------+
 
 **Note**: The partitioning schema is assuming the servers support UEFI for booting. If the servers do not support UEFI, partition #1 is not required. CentOD Linux implementation of UEFI does not support RAID configuration at the moment, therefore two separate EFI partitions will be needed to be able to boot the server in case of one of the disk fails. These partions should be mounted to /boot/efi (the partition on disk #1) and /boot/efi2 (the partition on disk #2).
 
-  3. Create two RAID-1 volumes.
+  Step 3 - Create two RAID-1 volumes.
 
      +------------------+------------------------------------------+
      | **Volume name**  |   **Purpose / mount point**              |
@@ -97,7 +97,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
      |  md1             |  To be used as physical volume for LVM   |
      +------------------+------------------------------------------+
 
-  4. Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
+  Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
 
     +--------------------------------+-----------------+----------+--------------+
     |    **LVM device name**         | **Mount point** | **Size** | **FS type**  |
