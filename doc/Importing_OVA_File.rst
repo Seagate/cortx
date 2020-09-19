@@ -31,6 +31,7 @@ VMware vSphere
 7. Select the desired storage location from the list of data stores. Then, click **Next**.
 
    - You can either choose **Thick** or **Thin**.
+   
  
    .. image:: images/vSphere100.PNG
 
@@ -41,6 +42,7 @@ VMware vSphere
    - One interface must be mapped to the private data network
 
    - One interface must be mapped to the public data network
+   
  
    .. image:: images/vSphere150.PNG
 
@@ -58,15 +60,15 @@ Some host network adapters might need to be unselected to allow proper operation
 
 2. Select **Open a Virtual Machine**. The **Open Virtual Machine** window opens.
 
- .. image:: images/WS1.PNG
+   .. image:: images/WS1.PNG
 
 3. Select the downloaded OVA file, and click **Open**. The **Import Virtual Machine** window is displayed.
 
- .. image:: images/WS2.PNG
+   .. image:: images/WS2.PNG
 
 4. Enter a name of your choice for the VM, and provide the location where the VM would be stored in the **Storage Path**. Click **Import**. The process of importing the VM gets started.
 
- .. image:: images/WS3.PNG
+   .. image:: images/WS3.PNG
 
 5. After the importing is complete, navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 3.
 
