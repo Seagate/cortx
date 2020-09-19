@@ -6,11 +6,11 @@ Perform the below mentioned procedure to generate the SSH public key.
 
 2. Run the commands mentioned below.
  
- - **$ cd ~/.ssh**
+   * **$ cd ~/.ssh**
 
- - **$ ssh-keygen -o**
+   * **$ ssh-keygen -o**
 
- The key is generated successfully.
+   The key is generated successfully.
 
 3. Copy the generated key, and navigate to `SSH and GPG Keys <https://github.com/settings/keys>`_.
 
