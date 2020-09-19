@@ -7,6 +7,7 @@ Based on the hypervisor you use, refer the sections below to import an OVA file.
 ******************
 VMware ESX Server
 ******************
+
 1. Login to the VMware ESX server using vSphere client. 
 
 2. At the top, click **File**. A menu is displayed.
@@ -90,6 +91,7 @@ Some host network adapters might need to be unselected to allow proper operation
 **************
 VMware Fusion
 **************
+
 1. Launch VMware Fusion in your system.
 
 2. Click **File** at the top. A menu appears. Select **Import**
@@ -103,3 +105,4 @@ VMware Fusion
 5. Click **Save**. Fusion performs OVA specification conformance and virtual hardware compliance checks. After the import is complete, the virtual machine appears in the virtual machine library and in a separate virtual machine window.
 
 6. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 3.
+

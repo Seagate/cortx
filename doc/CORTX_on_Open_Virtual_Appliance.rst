@@ -1,31 +1,31 @@
+
 ===============================
 CORTX on Open Virtual Appliance
 ===============================
-Open Virtual Appliance (OVA) is a virtual machine image file that consists of pre-installed and pre-configured operating system environment, and a single application.
+Open Virtual Appliance (OVA) is a virtual machine (VM) image file that consists of pre-installed and pre-configured operating system environment, and a single application.
 
-This document provides information on the procedure that must be followed to install CORTX (all components included) on a OVA.
+This document describes how to use a VM image pre-packaged with CORTX for the purposes of single-node CORTX testing.
 
-**************
-Prerequisites
-**************
-The prerequisites required to use CORTX by importing an OVA is listed below.
+***********************
+Recommended Hypervisors
+***********************
+All of the following hypervisors should work:
 
-- Any of the following:
- - VMware ESX server
- - VMware vSphere
- - VMware Workstation
- - VMware Fusion
+* VMware ESX server
+* VMware vSphere
+* VMware Workstation
+* VMware Fusion
 
 **********
 Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-1. From `OVA file <https://github.com/Seagate/cortx/releases/tag/VA>`_, download the TAR file that contains the VMware virtual machine images (a file named **cortxvm_opensource_vX.tar.gz**, where X is the revision of the VM image).
+1. From `our release page <https://github.com/Seagate/cortx/releases/tag/OVA>`_, download the cortxva-v1.1.zip file that contains the virtual machine images.
 
-2. Extract the contents of the downloaded TAR file into your system. You can also run the below mentioned command to extract the content.
+2. Extract the contents of the downloaded file into your system. You can also run the below mentioned command to extract the content.
 
- - **tar -xzvf cortvm_opensource_vX_ova.tar.gz**
+  * **gzip cortxva-v1.1.zip**
 
 3. Import the OVA file by referring to `Importing OVA <Importing_OVA_File.rst>`_.
 
@@ -63,56 +63,57 @@ The procedure to install CORTX on OVA is mentioned below.
    - **hostnamectl status**
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
-  
+
 8. Update **/etc/hosts** with the management IP address and the new hostname for the OVA. In the same file, update the line that contains **s3.seagate.com** with the IP address of the public data interface. Do not remove or rename hostnames in this line.
 
 9. Edit **/root/.ssh/config** and update the following with the new hostname for the OVA.
 
-  - **Host srvnode-1 <new_hostname>**
+    * **Host srvnode-1 <new_hostname>**
   
-  - **HostName <new_hostname>**
+    * **HostName <new_hostname>**
   
-  **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it's required for the proper functioning of OVA.
+  **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it is required for the proper functioning of OVA.
 
 10. Refresh HAproxy configuration by running the following command.
 
-  - **salt "*" saltutil.pillar_refresh**
+    * **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it's required for the proper functioning of VA.
+
+    * **salt "*" saltutil.pillar_refresh**
   
-  - **salt "*" state.apply components.ha.haproxy.config**
+    * **salt "*" state.apply components.ha.haproxy.config**
   
-  - **salt "*" state.apply components.ha.haproxy.start**
+    * **salt "*" state.apply components.ha.haproxy.start**
   
 11. Restart lnet by running the following command.
 
-  - **systemctl restart lnet**
+    * **systemctl restart lnet**
   
-
 12. Run the following command:
 
- - **hctl bootstrap --mkfs /var/lib/hare/cluster.yaml**
+   * **hctl bootstrap --mkfs /var/lib/hare/cluster.yaml**
 
-  You must run the above command with **--mkfs** only once. Further usage of **--mkfs** erases data.
+   Note: You must run the above command with **--mkfs** only once. Further usage of **--mkfs** erases data.
 
 13. Ensure that the I/O stack is running by running the following command:
 
- - **hctl status**
+   * **hctl status**
 
 14. Ensure that the CSM service is operational by running the following commands:
 
- - **systemctl status csm_agent**
- - **systemctl status csm_web**
+   * **systemctl status csm_agent**
+   * **systemctl status csm_web**
 
-   If the above services are not active, run the following command:
+   * If the above services are not active, run the following command:
 
-  - **systemctl start <csm_agent|csm_web>**
+    * **systemctl start <csm_agent|csm_web>**
   
-15. Open the web browser and navigate to the following location:
+14. Open the web browser and navigate to the following location:
 
-  - **https://<management IP>:28100/#/preboarding/welcome**
+   * **https://<management IP>:28100/#/preboarding/welcome**
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
-16. Refer to `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process.
+15. Refer to `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process.
 
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
@@ -141,22 +142,23 @@ To restart the CORTX OVA, follow the below mentioned procedures, in the order of
 
 - Start the OVA
 
-Shutdown the OVA
------------------
-1. Stop all S3 I/O traffic from S3 clients to OVA.
+Shutdown the VA
+----------------
+1. Stop all S3 I/O traffic from S3 clients to VA.
 
 2. Login to the CORTX Virtual Appliance as **cortx** and run the following.
 
- - **sudo su -**
+   * **sudo su -**
 
 3. Stop CORTX I/O subsystem by running the following command.
 
- - **hctl shutdown** 
+   * **hctl shutdown** 
 
 4. After executing the previous command, shutdown the OVA by running the following command.
 
- - **poweroff**
+   * **poweroff**
  
+
 Starting the OVA
 -----------------
 1. Power on the Virtual Appliance VM.
@@ -165,22 +167,22 @@ Starting the OVA
 
 3. Login to the CORTX OVA as **cortx** and run the following.
 
- - **sudo su -**
+   * **sudo su -**
 
 4. Start CORTX I/O subsystem by running the following command.
 
- - **hctl bootstrap -c /var/lib/hare/**
+   * **hctl bootstrap -c /var/lib/hare/**
 
 5. Run the below mentioned command to verify that CORTX I/O subsystem has started.
 
- - **hctl status** 
+   * **hctl status** 
 
 6. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
 
- - **systemctl status csm_agent**
+   * **systemctl status csm_agent**
 
- - **systemctl status csm_web**
+   * **systemctl status csm_web**
 
-  If the above services are not active, run the following command.
+   * If the above services are not active, run the following command.
 
-  - **systemctl start <csm_agent|csm_web>**
+      * **systemctl start <csm_agent|csm_web>**
