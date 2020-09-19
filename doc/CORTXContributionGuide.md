@@ -7,7 +7,7 @@ After reading this guide, you'll be able to pick up topics and issues to contrib
 ## Contribution Guide
 
 - [**Code of Conduct**](#Code-of-Conduct)
-- [**Contribution Process**](Contribution-Process)
+- [**Contribution Process**](#Contribution-Process)
 - [**Submitting issues**](#Submitting-Issues)
 - [**Contributing to Documentation**](#Contributing_to_Documentation)
 
@@ -114,7 +114,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 2. Click **Fork**
 3. Run the following commands in Shell:
    
-   `$ git clone git@github.com:"your-github-id"/repo-name.git`
+   `$ git clone --recursive git@github.com:"your-github-id"/repo-name.git`
 
 4. You'll need to setup the upstream repository in the remote list. This is a one-time activity. Run the following command to view the configured remote repository for your fork.
     
@@ -173,12 +173,12 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 
   ```shell
 
-  $ git pull origin master
+  $ git pull origin main
   $ git submodule update --init --recursive
   $ git checkout 'your-local-branch'
   $ git pull origin 'your-remote-branch-name'
   $ git submodule update --init --recursive
-  $ git rebase origin/master
+  $ git rebase origin/main
   ```
   
 You can make changes to the code and save them in your files.
