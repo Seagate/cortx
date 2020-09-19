@@ -25,7 +25,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
 2. Extract the contents of the downloaded file into your system. You can also run the below mentioned command to extract the content.
 
-  * **gzip cortxva-v1.1.zip**
+   * **gzip cortxva-v1.1.zip**
 
 3. Import the OVA file by referring to `Importing OVA <Importing_OVA_File.rst>`_.
 
