@@ -19,7 +19,7 @@ VMware ESX Server
 
 6. Enter a name for your VM and click **Next**.
 
-7. Select the desired storage location from the available datastores using the following radio buttons.
+7. Select the desired storage location from the available data stores using the following radio buttons.
 
  - **Thick Provision**
  
