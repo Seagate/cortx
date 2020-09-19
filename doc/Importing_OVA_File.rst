@@ -64,13 +64,11 @@ Some host network adapters might need to be unselected to allow proper operation
 
  .. image:: images/WS2.PNG
 
-4. Enter a name of your choice for the VM, and provide the location where the VM would be stored in the **Storage Path**.
-
-5. Click **Import**. The process of importing the VM gets started.
+4. Enter a name of your choice for the VM, and provide the location where the VM would be stored in the **Storage Path**. Click **Import**. The process of importing the VM gets started.
 
  .. image:: images/WS3.PNG
 
-6. After the importing is complete, navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 3.
+5. After the importing is complete, navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 3.
 
 ******************
 VMware ESX Server
