@@ -32,13 +32,13 @@ Perform the below mentioned procedure to onboard into CORTX. The below mentioned
 
 4. Enter information about the DNS servers and search domains in relevant fields. The entries must be separated by comma, if either one or both the conditions mentioned below are applicable.
 
- - Number of DNS Servers > 1
+   - Number of DNS Servers > 1
 
- - Number of search domains > 1
+   - Number of search domains > 1
 
 5. Provide information about the NTP servers in the relevant field. The entries must be separated by comma, if the below mentioned condition is applicable.
 
- - Number of NTP Servers > 1
+   - Number of NTP Servers > 1
 
 6. Configure the notifications by selecting the checkbox. If you do not want to receive notifications, select **Skip this step**, and click **Next**.
 
