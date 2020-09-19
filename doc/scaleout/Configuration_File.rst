@@ -119,9 +119,9 @@ Optional Keys
 | network.mgmt_nw.netmask        | Subnet mask for the Management network  |
 |                                |                                         |
 |                                | Accepted formats:                       |
-|                                |     AAA.BBB.CCC.DDD                     |
+|                                | AAA.BBB.CCC.DDD                         |
 |                                |                                         |
-|                                |     XY                                  |
+|                                | XY                                      |
 |                                |                                         |
 |                                |  NOTE: This key becomes mandatory       |
 |                                |        if the statis IP address is used |
@@ -135,9 +135,9 @@ Optional Keys
 | network.data_nw.netmask        | Subnet mask for the Public Data network |
 |                                |                                         |
 |                                | Accepted formats:                       |
-|                                |     AAA.BBB.CCC.DDD                     |
+|                                | AAA.BBB.CCC.DDD                         |
 |                                |                                         |
-|                                |     XY                                  |
+|                                | XY                                      |
 |                                |                                         |
 |                                |  NOTE: This key becomes mandatory       |
 |                                |        if the statis IP address is used |
