@@ -305,18 +305,12 @@ By making a contribution to this project, I certify that:
 
 You must sign off that you adhere to the above requirements, by pre-fixing **Signed-off-by** to the commit messages.
 
- - **Signed-off-by**: Random J Developer `random@developer.example.org <mailto:random@developer.example.org>`_
+- **Signed-off-by**: Random J Developer `random@developer.example.org <mailto:random@developer.example.org>`_
 
- In Command Line Interface (CLI), you can add **–s** to append automatically.
+In Command Line Interface (CLI), you can add **–s** to append automatically.
 
- - **$ git commit -s -m 'This is my commit message'** 
+- **$ git commit -s -m 'This is my commit message'** 
 
- Usage of hooks will help if you have the tendency to forget adding **-s**. To know more about this, refer `https://lubomir.github.io/en/2016-05-04-signoff-hooks.html <https://lubomir.github.io/en/2016-05-04-signoff-hooks.html>`_
+Usage of hooks will help if you have the tendency to forget adding **-s**. To know more about this, refer `https://lubomir.github.io/en/2016-05-04-signoff-hooks.html <https://lubomir.github.io/en/2016-05-04-signoff-hooks.html>`_
  
  To know more about DCO and CLA, refer `DCO and CLA <https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md>`_.
-
-
- 
- 
- 
-
