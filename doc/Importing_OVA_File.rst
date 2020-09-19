@@ -54,6 +54,8 @@ VMware vSphere
 
 4. Enter a name for your VM and select the location where you want to deploy, then click **Next**.
 
+   .. image:: images/vSphere3.png
+
 5. Select the resource that you want to use to run the virtual appliance. Then, click **Next**.
 
 6. Review the details and click **Next**.
