@@ -53,13 +53,13 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 3. Install CentOS 7.7 (1908 release) operating system on all three servers in the cluster.
 
-  **Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands and view the appropriate outputs.
+**Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands and view the appropriate outputs.
   
- - **lsb_release -r**
+- **lsb_release -r**
 
-   - Appropriate Output: 7.7.1908
+  - Appropriate Output: 7.7.1908
 
- - **uname -r**
+- **uname -r**
 
   - Appropriate Output: 3.10.0-1062.el7.x86_64
   
@@ -68,7 +68,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
   While there are no specific requirements for installing the CentOS 7.7, we recommend you to perform the following 4 steps.
 
   a. Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
-
+  
   b. On each drive, configure the partitions as per the following guidelines.
 
      +-----------------------+-------------+-------------------------------------------+
@@ -83,18 +83,18 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
      |                       | disk        |                                           |
      +-----------------------+-------------+-------------------------------------------+
 
-    **Note**: The partitioning schema is assuming the servers support UEFI for booting. If the servers do not support UEFI, partition #1 is not required. CentOD Linux implementation of UEFI does not support RAID configuration at the moment, therefore two separate EFI partitions will be needed to be able to boot the server in case of one of the disk fails. These partions should be mounted to /boot/efi (the partition on disk #1) and /boot/efi2 (the partition on disk #2).
+**Note**: The partitioning schema is assuming the servers support UEFI for booting. If the servers do not support UEFI, partition #1 is not required. CentOD Linux implementation of UEFI does not support RAID configuration at the moment, therefore two separate EFI partitions will be needed to be able to boot the server in case of one of the disk fails. These partions should be mounted to /boot/efi (the partition on disk #1) and /boot/efi2 (the partition on disk #2).
     
-   c. Create two RAID-1 volumes.
+     c. Create two RAID-1 volumes.
 
-   +------------------+------------------------------------------+
-   | **Volume name**  |   **Purpose / mount point**              |
-   |                  |                                          |
-   +------------------+------------------------------------------+
-   |  md0             |  /boot                                   |
-   +------------------+------------------------------------------+
-   |  md1             |  To be used as physical volume for LVM   |
-   +------------------+------------------------------------------+
+       +------------------+------------------------------------------+
+       | **Volume name**  |   **Purpose / mount point**              |
+       |                  |                                          |
+       +------------------+------------------------------------------+
+       |  md0             |  /boot                                   |
+       +------------------+------------------------------------------+
+       |  md1             |  To be used as physical volume for LVM   |
+       +------------------+------------------------------------------+
 
    d. Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
 
@@ -115,7 +115,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     | /dev/mapper/vg_swap            | none            | 100GB    | linux-swap(*)|
     +--------------------------------+-----------------+----------+--------------+
 
-    **Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions.
+**Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions.
     
 4. Allow the root login over SSH on all three servers. This is required for the installation and operations of the cluster.
 
