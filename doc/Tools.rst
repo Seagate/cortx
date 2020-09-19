@@ -28,8 +28,8 @@ To create a GitHub account, perform the procedure below.
 
 4. Under the **Verify your account** section, click **Verify**.
 
- 1. Using the arrows, rotate the image to achieve accuracy.
- 2. Click **Done** after you ensure that the image is accurately positioned.
+   1. Using the arrows, rotate the image to achieve accuracy.
+   2. Click **Done** after you ensure that the image is accurately positioned.
 
 5. Click **Create Account**. An email with a link to verify the created account would be sent to you.
 
