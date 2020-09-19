@@ -475,20 +475,20 @@ Kibana Configuration
   
 2. Reload the daemon by running the following command.
 
-    ::
+   ::
 
-     systemctl daemon-reload
+    systemctl daemon-reload
 
 3. Start kibana on the node where CSM would be active and enable the service by running the following commands.
 
-    ::
+   ::
 
-     systemctl start kibana
+    systemctl start kibana
 
-     systemctl enable kibana
+    systemctl enable kibana
 
 Check the status of Kibana by running the following command.
 
- ::
+::
 
-  systemctl status kibana
+ systemctl status kibana
