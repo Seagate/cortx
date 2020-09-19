@@ -174,12 +174,13 @@ Please note the below mentioned points.
   
 Code Changes and GIT Commands
 -----------------------------
-
 - Make your code changes, and commit.
 
- - When main is the branch, and is ready to pull the updates:
+  - When main is the branch, and is ready to pull the updates:
 
-  - **$ git pull origin main**
+    ::
+    
+     $ git pull origin main
 
  - You may have to run the following:
 
