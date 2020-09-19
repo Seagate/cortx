@@ -83,7 +83,7 @@ Before configuring HAProxy, check the number of S3 instances using **hctl status
  
 From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. There are two procedures for HAproxy configuration, one without external load balancer and the other with external load balancer.
 
-Perform the steps mentioned below to configure HAProxy if external load balancer (DNS RR) is not available.
+Perform the steps mentioned below to configure HAProxy, if external load balancer (DNS RR) is not available.
 
 1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
 
@@ -129,7 +129,7 @@ Perform the steps mentioned below to configure HAProxy if external load balancer
 
      systemctl status haproxy
 
-Perform the steps mentioned below to configure HAProxy if external load balancer (DNS RR) is available. 
+Perform the steps mentioned below to configure HAProxy, if external load balancer (DNS RR) is available. 
 
 1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
 
@@ -145,25 +145,25 @@ Perform the steps mentioned below to configure HAProxy if external load balancer
 
 7. Configure haproxy logs on all the nodes by running the following commands.
 
-    ::
+   ::
 
-     mkdir /etc/haproxy/errors/
+    mkdir /etc/haproxy/errors/
 
-     cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
+    cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
 
-     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
+    cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
 
-     cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
+    cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
 
-     rm -rf /etc/cron.daily/logrotate
+    rm -rf /etc/cron.daily/logrotate
 
-     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate 
+    cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate 
 
-     systemctl restart rsyslog
+    systemctl restart rsyslog
 
-     systemctl restart haproxy 
+    systemctl restart haproxy 
 
-     systemctl status haproxy
+    systemctl status haproxy
  
 Starting Service
 ^^^^^^^^^^^^^^^^^
