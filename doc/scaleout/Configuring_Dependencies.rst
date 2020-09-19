@@ -395,26 +395,25 @@ Run the below mentioned command to check the status of the RabbitMQ cluster.
  rabbitmqctl cluster_status
  
 
-
 Starting Service
 -----------------
 - Run the below mentioned command to start the server.
 
-   ::
+  ::
 
-    systemctl start rabbitmq-server
+   systemctl start rabbitmq-server
 
 - Run the below mentioned command to restart the server.
 
-   ::
+  ::
 
-    systemctl restart rabbitmq-server
+   systemctl restart rabbitmq-server
 
 Run the below mentioned command to know the status.
 
- ::
+::
 
-  systemctl status rabbitmq-server -l
+ systemctl status rabbitmq-server -l
 
 Statsd and Kibana
 =================
