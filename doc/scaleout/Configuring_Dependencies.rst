@@ -86,18 +86,18 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
    
    **olcserverid.ldif**
 
-  ::
+   ::
 
-   dn: cn=config
+    dn: cn=config
    
-   changetype: modify
+    changetype: modify
    
-   add: olcServerID
+    add: olcServerID
    
-   olcServerID: 1
+    olcServerID: 1
 
 
- **command to add -: ldapmodify -Y EXTERNAL -H ldapi:/// -f olcserverid.ldif**
+**command to add -: ldapmodify -Y EXTERNAL -H ldapi:/// -f olcserverid.ldif**
 
 2. Load the provider module.
 
