@@ -112,7 +112,7 @@ The procedure to install CORTX on OVA is mentioned below.
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
-16. Refer `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process.
+16. Refer to `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process.
 
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
