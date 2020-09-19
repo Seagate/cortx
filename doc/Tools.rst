@@ -170,8 +170,7 @@ Please note the below mentioned points.
 - A new Git branch can be created from the current branch.
 
   .. image:: images/Writer2.png
-  
-  
+    
 Code Changes and GIT Commands
 -----------------------------
 - Make your code changes, and commit.
@@ -188,9 +187,9 @@ Code Changes and GIT Commands
   
      $ git pull origin/feature_x
  
- .. image:: images/Writer3.png
+     .. image:: images/Writer3.png
  
-- The Git pull command merges the git fetch and git merge commands.
+   - The Git pull command merges the git fetch and git merge commands.
 
 - With each commit, there would be additions and deletions. The following command provides an updated list of files.
 
@@ -217,11 +216,15 @@ To push the new dev branch to the remote repo, perform the following:
 
 1. Configure Git to always push using the current branch.
 
-   - **$ git config --global push.default current**
+   ::
+   
+    $ git config --global push.default current
 
 2. Push a local branch to a different remote branch.
 
-   - **$ git push origin <local_branch>:<remote_branch>**
+   ::
+   
+    $ git push origin <local_branch>:<remote_branch>
    
     .. image:: images/Writer5.png
  
