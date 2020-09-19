@@ -6,23 +6,23 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 1. Prepare three servers and three JBODs as per the following guidelines.
 
- - Server Reference Configuration
+   - Server Reference Configuration
 
-  - Minimal Configuration
+     - Minimal Configuration
 
-   - 1x Intel Xeon CPU, 6 cores per CPU (2x Intel Xeon CPU, 10 cores per CPU for optimal performance)
+       - 1x Intel Xeon CPU, 6 cores per CPU (2x Intel Xeon CPU, 10 cores per CPU for optimal performance)
 
-   - 64 GB RAM ( 192 GB RAM for optimal performance)
+       - 64 GB RAM ( 192 GB RAM for optimal performance)
 
-   - 2x 1 TB internal HDD
+       - 2x 1 TB internal HDD
 
-   - One dual-port or single-port high-speed NICs (for the data networks). We recommend using Mellanox HCAs.
+       - One dual-port or single-port high-speed NICs (for the data networks). We recommend using Mellanox HCAs.
 
-   - At least one 1 GbE network port (for the Management network)
+       - At least one 1 GbE network port (for the Management network)
 
-   - SCSI HBA with external ports (to connect to JBOD)
+       - SCSI HBA with external ports (to connect to JBOD)
 
-   **Notes**
+**Notes**
 
    - The minimum number of network ports per server is 3.
 
