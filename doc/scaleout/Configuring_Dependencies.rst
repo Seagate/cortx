@@ -246,9 +246,9 @@ Perform the following steps on only one node. In this case, it must be performed
    
 2. Push the data replication ldif.
 
-  **data.ldif**
+   **data.ldif**
 
-  ::
+   ::
 
     dn: olcDatabase={2}mdb,cn=config 
 
