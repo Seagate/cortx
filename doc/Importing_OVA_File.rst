@@ -46,7 +46,7 @@ VMware vSphere
 
 2. At the top of the window, click **Actions**. A menu appears. Then, click **Deploy OVF Template**. A window asking through which you can upload the OVA file appears.
 
-   .. image:: images/vSphere1.png
+   .. image:: images/vSphere1.PNG
 
 3. Use the **Browse** button to select the OVA file from your system. Click **Next** after the OVA file is selected.
 
