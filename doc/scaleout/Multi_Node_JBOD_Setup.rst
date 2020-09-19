@@ -119,11 +119,11 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     
 4. Allow the root login over SSH on all three servers. This is required for the installation and operations of the cluster.
 
-  **Notes**
+**Notes**
 
-   - This setting cannot be changed after the installation is complete.
+- This setting cannot be changed after the installation is complete.
 
-   - You can create another non-root user to avoid logging in to the servers as root all the time. Please allow this user to run all commands using sudo (add it to the "wheel" group).
+- You can create another non-root user to avoid logging in to the servers as root all the time. Please allow this user to run all commands using sudo (add it to the "wheel" group).
     
 5. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
 
@@ -131,7 +131,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - Supported Version - 4.7-3.2.9.0
 
-    - Other versions are not supported.
+     - Other versions are not supported.
 
 7. Download CORTX and dependency ISO files from `here <https://github.com/Seagate/cortx/releases/tag/JBOD>`_.
 
