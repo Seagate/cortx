@@ -313,4 +313,4 @@ In Command Line Interface (CLI), you can add **–s** to append automatically.
 
 Usage of hooks will help if you have the tendency to forget adding **-s**. To know more about this, refer `https://lubomir.github.io/en/2016-05-04-signoff-hooks.html <https://lubomir.github.io/en/2016-05-04-signoff-hooks.html>`_
  
- To know more about DCO and CLA, refer `DCO and CLA <https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md>`_.
+To know more about DCO and CLA, refer `DCO and CLA <https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md>`_.
