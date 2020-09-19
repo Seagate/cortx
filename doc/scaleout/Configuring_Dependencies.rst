@@ -15,36 +15,36 @@ Configuration
 
 2. Run the below mentioned command on one node. As a result, LDAP is setup on all the 3 nodes.
 
-    ::
+   ::
 
-     salt '*' cmd.run /opt/seagate/cortx/s3/install/ldap/setup_ldap.sh --defaultpasswd --skipssl --forceclean
+    salt '*' cmd.run /opt/seagate/cortx/s3/install/ldap/setup_ldap.sh --defaultpasswd --skipssl --forceclean
 
 3. After LDAP is setup on the three nodes, perform **LDAP Replication**. Refer the procedure below.
 
 4. Configure **slapd.log** on all 3 nodes using the commands mentioned below.
 
-    ::
+   ::
 
-     salt '*' cmd.run cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf 
+    salt '*' cmd.run cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf 
  
-     salt '*' cmd.run systemctl restart slapd
+    salt '*' cmd.run systemctl restart slapd
 
-     salt '*' cmd.run systemctl restart rsyslog
+    salt '*' cmd.run systemctl restart rsyslog
 
 Starting Service
 -----------------
 
 - Run the following command to start the service on all the 3 nodes.
 
-   ::
+  ::
 
-    salt '*' cmd.run systemctl start slapd
+   salt '*' cmd.run systemctl start slapd
 
 Run the following command to check the status of the service.
 
- ::
+::
 
-  salt '*' cmd.run systemctl status slapd
+ salt '*' cmd.run systemctl status slapd
 
 LDAP Replication
 ----------------
@@ -66,11 +66,11 @@ Prerequisite
 
 You need not copy the contents of the files from this page as they are placed in the following directory.
 
- ::
+::
 
-  cd /opt/seagate/cortx/s3/install/ldap/replication
+ cd /opt/seagate/cortx/s3/install/ldap/replication
  
- Edit the relevant fields as required (olcserverid.ldif and config.ldif). 
+Edit the relevant fields as required (olcserverid.ldif and config.ldif). 
 
 Procedure
 ^^^^^^^^^^
