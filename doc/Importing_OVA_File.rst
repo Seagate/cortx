@@ -58,6 +58,8 @@ VMware vSphere
 
 5. Select the resource that you want to use to run the virtual appliance. Then, click **Next**.
 
+   .. image:: images/vSphere4.png
+
 6. Review the details and click **Next**.
 
 7. Select the desired storage location from the list of data stores. Then, click **Next**.
