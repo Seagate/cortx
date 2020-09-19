@@ -24,20 +24,21 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    **Notes**
 
-   - The minimum number of network ports per server is 3.
+  - The minimum number of network ports per server is 3.
 
-   - Usage of Mellanox HCAs is recommended but not mandatory. For optimal performance you need two high-speed network ports (10 GbE minimum; 50 GbE or 100 GbE recommended). All the three servers must have Mellanox HCA or none of the servers must have it.
+  - Usage of Mellanox HCAs is recommended but not mandatory. For optimal performance you need two high-speed network ports (10 GbE minimum; 50 GbE or 100 GbE recommended). All the three servers must have Mellanox HCA or none of the servers must have it.
     
-   - Infiniband and OmniPath adapters are not supported.
+  - Infiniband and OmniPath adapters are not supported.
+  
+  
 
+    - JBOD Reference Configuration
 
-- JBOD Reference Configuration
+      - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server. The minimum size of the JBOD disk is 2TB.
 
-  - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server. The minimum size of the JBOD disk is 2TB.
+      - Network Configuration Requirements
 
-  - Network Configuration Requirements
-
-  - The CORTX software requires 3 separate networks. The networks could be physically separate (connected to different switches) or separate VLANs. We recommend you to physically separate the management and data networks.
+      - The CORTX software requires 3 separate networks. The networks could be physically separate (connected to different switches) or separate VLANs. We recommend you to physically separate the management and data networks.
 
 +--------------------------+---------------------------------------------+
 | **Network name/purpose** | **Corresponding NIC**                       |
@@ -67,9 +68,9 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
   While there are no specific requirements for installing the CentOS 7.7, we recommend you to perform the following 4 steps.
 
-  a. Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
+  1. Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
   
-  b. On each drive, configure the partitions as per the following guidelines.
+  2. On each drive, configure the partitions as per the following guidelines.
 
      +-----------------------+-------------+-------------------------------------------+
      | **Partition number**  |  **Size**   |        **Notes**                          |
@@ -84,19 +85,19 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
      +-----------------------+-------------+-------------------------------------------+
 
 **Note**: The partitioning schema is assuming the servers support UEFI for booting. If the servers do not support UEFI, partition #1 is not required. CentOD Linux implementation of UEFI does not support RAID configuration at the moment, therefore two separate EFI partitions will be needed to be able to boot the server in case of one of the disk fails. These partions should be mounted to /boot/efi (the partition on disk #1) and /boot/efi2 (the partition on disk #2).
-    
-     c. Create two RAID-1 volumes.
 
-       +------------------+------------------------------------------+
-       | **Volume name**  |   **Purpose / mount point**              |
-       |                  |                                          |
-       +------------------+------------------------------------------+
-       |  md0             |  /boot                                   |
-       +------------------+------------------------------------------+
-       |  md1             |  To be used as physical volume for LVM   |
-       +------------------+------------------------------------------+
+  3. Create two RAID-1 volumes.
 
-   d. Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
+     +------------------+------------------------------------------+
+     | **Volume name**  |   **Purpose / mount point**              |
+     |                  |                                          |
+     +------------------+------------------------------------------+
+     |  md0             |  /boot                                   |
+     +------------------+------------------------------------------+
+     |  md1             |  To be used as physical volume for LVM   |
+     +------------------+------------------------------------------+
+
+  4. Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
 
     +--------------------------------+-----------------+----------+--------------+
     |    **LVM device name**         | **Mount point** | **Size** | **FS type**  |
