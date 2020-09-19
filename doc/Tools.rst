@@ -165,11 +165,7 @@ Please note the below mentioned points.
 
 - The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
 
-  .. image:: images/Writer1.png
-  
 - A new Git branch can be created from the current branch.
-
-  .. image:: images/Writer2.png
     
 Code Changes and GIT Commands
 -----------------------------
@@ -207,8 +203,6 @@ Code Changes and GIT Commands
 
  - **$ git commit -m "<type>(<scope>): <subject>"**
  
- .. image:: images/Writer4.png
- 
 Pushing your Branch
 -------------------
 
@@ -226,9 +220,6 @@ To push the new dev branch to the remote repo, perform the following:
    
     $ git push origin <local_branch>:<remote_branch>
    
-.. image:: images/Writer5.png
- 
- 
 Pull Request
 ------------
 To create a pull request on GitHub, navigate to the main page of the respective repository, and perform the following:
