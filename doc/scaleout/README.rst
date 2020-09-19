@@ -38,7 +38,7 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  
 6. Using a browser of your choice, navigate to *https://<management_VIP>:28100/#/preboarding/welcome* to create an admin user and complete the setup.
 
-7. Refer to `Onboarding into CORTX <doc/Preboarding_and_Onboarding.rst>`_ to execute the onboarding process.
+7. Refer to `Onboarding into CORTX <https://github.com/Seagate/cortx/blob/Screenshots-1/doc/Preaboarding_and_Onboarding.rst>`_ to execute the onboarding process.
 
 **********************
  Stopping of Services
