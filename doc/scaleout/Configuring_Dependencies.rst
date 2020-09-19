@@ -428,48 +428,48 @@ Statsd Configuration
 --------------------
 Run the below mentioned commands to start and enable the **statsd** service on one node. Ensure that Kibana and CSM are run on the same node.
 
- ::
+::
 
-  salt '<Node Name>' cmd.run systemctl start statsd
+ salt '<Node Name>' cmd.run systemctl start statsd
 
-  salt '<Node Name>' cmd.run systemctl enable statsd
+ salt '<Node Name>' cmd.run systemctl enable statsd
 
 To know the status of the service, run the following command.
 
- ::
+::
 
-  salt '<Node Name>' cmd.run systemctl status statsd
+ salt '<Node Name>' cmd.run systemctl status statsd
 
 Kibana Configuration
 --------------------
 1. Update the **kibana.service** file on the node where Statsd is running. By default, the service is not compatible with new systemd. Run the following command to check the compatibility.
 
-    ::
+   ::
 
-     systemd-analyze verify /etc/systemd/system/kibana.service
+    systemd-analyze verify /etc/systemd/system/kibana.service
 
-  If the above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
+If the above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
 
-  In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst** are part of **Unit** section but as per new systemd rule it is part of **Service** section.
+In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst** are part of **Unit** section but as per new systemd rule it is part of **Service** section.
 
- ::
+::
 
-  Description=Kibana
+ Description=Kibana
  
-  [Service] 
-  Type=simple 
-  StartLimitInterval=30 
-  StartLimitBurst=3 
-  User=kibana 
-  Group=kibana 
-  # Load env vars from /etc/default/ and /etc/sysconfig/ if they exist. 
-  # Prefixing the path with '-' makes it try to load, but if the file doesn't 
-  # exist, it continues onward. 
-  EnvironmentFile=-/etc/default/kibana 
-  EnvironmentFile=-/etc/sysconfig/kibana 
-  ExecStart=/usr/share/kibana/bin/kibana "-c /etc/kibana/kibana.yml" 
-  Restart=always 
-  WorkingDirectory=/ 
+ [Service] 
+ Type=simple 
+ StartLimitInterval=30 
+ StartLimitBurst=3 
+ User=kibana 
+ Group=kibana 
+ # Load env vars from /etc/default/ and /etc/sysconfig/ if they exist. 
+ # Prefixing the path with '-' makes it try to load, but if the file doesn't 
+ # exist, it continues onward. 
+ EnvironmentFile=-/etc/default/kibana 
+ EnvironmentFile=-/etc/sysconfig/kibana 
+ ExecStart=/usr/share/kibana/bin/kibana "-c /etc/kibana/kibana.yml" 
+ Restart=always 
+ WorkingDirectory=/ 
 
   [Install] WantedBy=multi-user.target
   
