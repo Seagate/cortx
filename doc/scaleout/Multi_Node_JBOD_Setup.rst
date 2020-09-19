@@ -86,16 +86,16 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 **Note**: The partitioning schema is assuming the servers support UEFI for booting. If the servers do not support UEFI, partition #1 is not required. CentOD Linux implementation of UEFI does not support RAID configuration at the moment, therefore two separate EFI partitions will be needed to be able to boot the server in case of one of the disk fails. These partions should be mounted to /boot/efi (the partition on disk #1) and /boot/efi2 (the partition on disk #2).
 
-  Step 3 - Create two RAID-1 volumes.
+Step 3 - Create two RAID-1 volumes.
 
-     +------------------+------------------------------------------+
-     | **Volume name**  |   **Purpose / mount point**              |
-     |                  |                                          |
-     +------------------+------------------------------------------+
-     |  md0             |  /boot                                   |
-     +------------------+------------------------------------------+
-     |  md1             |  To be used as physical volume for LVM   |
-     +------------------+------------------------------------------+
++------------------+------------------------------------------+
+| **Volume name**  |   **Purpose / mount point**              |
+|                  |                                          |
++------------------+------------------------------------------+
+|  md0             |  /boot                                   |
++------------------+------------------------------------------+
+|  md1             |  To be used as physical volume for LVM   |
++------------------+------------------------------------------+
 
   Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
 
