@@ -170,15 +170,15 @@ Starting Service
  
 - Run the below mentioned command to start the HAProxy services.
 
-   ::
+  ::
    
-    salt '*' cmd.run systemctl start haproxy
+   salt '*' cmd.run systemctl start haproxy
  
 - Run the below mentioned command to check the status of HAProxy services.
 
-   ::
+  ::
    
-    salt '*' cmd.run systemctl status haproxy
+   salt '*' cmd.run systemctl status haproxy
 
 SSPL
 ====
