@@ -68,9 +68,9 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
   While there are no specific requirements for installing the CentOS 7.7, we recommend you to perform the following 4 steps.
 
-  Step 1 -  Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
+Step 1 -  Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
   
-  Step 2 -  On each drive, configure the partitions as per the following guidelines.
+Step 2 -  On each drive, configure the partitions as per the following guidelines.
 
   +-----------------------+-------------+-------------------------------------------+
   | **Partition number**  |  **Size**   |        **Notes**                          |
@@ -97,24 +97,24 @@ Step 3 - Create two RAID-1 volumes.
 |  md1             |  To be used as physical volume for LVM   |
 +------------------+------------------------------------------+
 
-  Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
+Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID-1 volume. We recommend you the following LVM disk group and volumes structure.
 
-    +--------------------------------+-----------------+----------+--------------+
-    |    **LVM device name**         | **Mount point** | **Size** | **FS type**  |
-    |                                |                 |          |              |
-    +--------------------------------+-----------------+----------+--------------+
-    | /dev/mapper/vg_sysvol-lv_root  | /               | 200GB    | ext4         |
-    +--------------------------------+-----------------+----------+--------------+
-    | /dev/mapper/vg_sysvol-lv_tmp   | /tmp            | 200GB    | ext4         |
-    +--------------------------------+-----------------+----------+--------------+
-    | /dev/mapper/vg_sysvol-lv_var   | /var            | 200GB    | ext4         |
-    +--------------------------------+-----------------+----------+--------------+
-    | /dev/mapper/vg_sysvol-lv_log   | /var/log        | 200GB    | ext4         |
-    +--------------------------------+-----------------+----------+--------------+
-    | /dev/mapper/vg_sysvol-lv_audit | /var/log/audit  | 128MB    | ext4         |
-    +--------------------------------+-----------------+----------+--------------+
-    | /dev/mapper/vg_swap            | none            | 100GB    | linux-swap(*)|
-    +--------------------------------+-----------------+----------+--------------+
++--------------------------------+-----------------+----------+--------------+
+|    **LVM device name**         | **Mount point** | **Size** | **FS type**  |
+|                                |                 |          |              |
++--------------------------------+-----------------+----------+--------------+
+| /dev/mapper/vg_sysvol-lv_root  | /               | 200GB    | ext4         |
++--------------------------------+-----------------+----------+--------------+
+| /dev/mapper/vg_sysvol-lv_tmp   | /tmp            | 200GB    | ext4         |
++--------------------------------+-----------------+----------+--------------+
+| /dev/mapper/vg_sysvol-lv_var   | /var            | 200GB    | ext4         |
++--------------------------------+-----------------+----------+--------------+
+| /dev/mapper/vg_sysvol-lv_log   | /var/log        | 200GB    | ext4         |
++--------------------------------+-----------------+----------+--------------+
+| /dev/mapper/vg_sysvol-lv_audit | /var/log/audit  | 128MB    | ext4         |
++--------------------------------+-----------------+----------+--------------+
+| /dev/mapper/vg_swap            | none            | 100GB    | linux-swap(*)|
++--------------------------------+-----------------+----------+--------------+
 
 **Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions.
     
