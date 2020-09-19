@@ -55,7 +55,7 @@ VMware vSphere
 
 7. Select the desired storage location from the list of data stores. Then, click **Next**.
 
- - You can either choose **Thick** or **Thin**. It is recommended to select **Thick**.
+ - You can either choose **Thick** or **Thin**.
 
 8. Select a network from the drop-down list for each interface, click **Next**.
 
