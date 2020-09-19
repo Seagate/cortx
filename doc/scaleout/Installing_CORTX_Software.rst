@@ -43,12 +43,12 @@ This section provides information on the installation of Provisioner and the ass
 
 For example:
 
-   ::
+::
 
-    provisioner setup_jbod --source iso --iso-cortx /root/cortx.iso \
-     --iso-cortx-deps /root/prereqs.iso --ha --logfile \
-     --logfile-filename ./setup.log --config-path config.ini \
-     srvnode-1:srv1.test.com srvnode-2:srv2.test.com srvnode-3:srv3.test.com
+ provisioner setup_jbod --source iso --iso-cortx /root/cortx.iso \
+   --iso-cortx-deps /root/prereqs.iso --ha --logfile \
+   --logfile-filename ./setup.log --config-path config.ini \
+   srvnode-1:srv1.test.com srvnode-2:srv2.test.com srvnode-3:srv3.test.com
     
 **Note**: You will be prompted for the root password of each server.
 
