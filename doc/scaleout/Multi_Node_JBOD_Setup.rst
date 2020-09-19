@@ -30,7 +30,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
     - All the three servers must have Mellanox HCA or none of the servers must have it.
     
-   - Infiband and OmniPath adapters are not supported.
+   - Infiniband and OmniPath adapters are not supported.
 
  - JBOD Reference Configuration
 
@@ -185,19 +185,24 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 If you have a firewall within your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access.
   
- +----------------------+-------------------+---------------------------------------------+
- |    **Port number**   |   **Protocols**   |   **Destination network (on VA)**           |
- +----------------------+-------------------+---------------------------------------------+
- |          22          |        TCP        |           Management network                |
- +----------------------+-------------------+---------------------------------------------+ 
- |          53          |      TCP/UDP      | Management network and Public Data network  |
- +----------------------+-------------------+---------------------------------------------+ 
- |         123          |      TCP/UDP      |              Management network             |
- +----------------------+-------------------+---------------------------------------------+
- |         443          |       HTTPS       |             Public Data network             |
- +----------------------+-------------------+---------------------------------------------+
- |         9443         |       HTTPS       |              Public Data network            |
- +----------------------+-------------------+---------------------------------------------+
- |         28100        |   TCP (HTTPS)     |              Public Data network            |
- +----------------------+-------------------+---------------------------------------------+
-
+ +----------------------+-------------------+------------------------------------------------+
+ |    **Port number**   |   **Protocols**   |   **Destination network (on VA)**              |
+ +----------------------+-------------------+------------------------------------------------+
+ |          22          |        TCP        |           Management network                   |
+ +----------------------+-------------------+------------------------------------------------+ 
+ |          53          |      TCP/UDP      | Management network and Public Data network     |
+ +----------------------+-------------------+------------------------------------------------+ 
+ |         123          |      TCP/UDP      |              Management network                |
+ +----------------------+-------------------+------------------------------------------------+
+ |         443          |       HTTPS       |             Public Data network                |
+ +----------------------+-------------------+------------------------------------------------+
+ |         9443         |       HTTPS       |              Public Data network               |
+ +----------------------+-------------------+------------------------------------------------+
+ |         28100        |   TCP (HTTPS)     |              Management network                |
+ +----------------------+-------------------+------------------------------------------------+
+ |          67          |     TCP/UDP       | Management network and Public Data network     |
+ |                      |                   |(only if using DHCP to obtain the IP addresses) |
+ +----------------------+-------------------+------------------------------------------------+
+ |          68          |     TCP/UDP       | Management network and Public Data network     |
+ |                      |                   |(only if using DHCP to obtain the IP addresses) |
+ +----------------------+-------------------+------------------------------------------------+
