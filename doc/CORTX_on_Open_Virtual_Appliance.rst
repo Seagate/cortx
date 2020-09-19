@@ -130,7 +130,7 @@ If you have a firewall between the OVA and the rest of your infrastructure, incl
  +----------------------+-------------------+---------------------------------------------+
  |         9443         |       HTTPS       |              Public Data network            |
  +----------------------+-------------------+---------------------------------------------+
- |         28100        |   TCP (HTTPS)     |              Public Data network            |
+ |         28100        |   TCP (HTTPS)     |              Management network             |
  +----------------------+-------------------+---------------------------------------------+
 
 Restarting CORTX OVA
