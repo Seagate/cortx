@@ -92,9 +92,11 @@ Some host network adapters might need to be unselected to allow proper operation
 
 2. Select **Open a Virtual Machine**. The **Open Virtual Machine** window opens.
 
-  .. image:: images/WS1.PNG
+ .. image:: images/WS1.PNG
 
 3. Select the downloaded OVA file, and click **Open**. The **Import Virtual Machine** window is displayed.
+
+ .. image:: images/WS2.PNG
 
 4. Enter a name of your choice for the VM, and provide the location where the VM would be stored in the **Storage Path**.
 
