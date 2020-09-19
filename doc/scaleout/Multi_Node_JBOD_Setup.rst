@@ -6,7 +6,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 1. Prepare three servers and three JBODs as per the following guidelines.
 
-   - Server Reference Configuration
+   - **Server Reference Configuration**
 
      - Minimal Configuration
 
@@ -30,7 +30,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     
 - Infiniband and OmniPath adapters are not supported.
   
-  - JBOD Reference Configuration
+  - **JBOD Reference Configuration**
 
     - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server. The minimum size of the JBOD disk is 2TB.
 
