@@ -267,11 +267,11 @@ You can use Codacy by performing the below mentioned procedure.
 3. Under the **README** section, click the **code quality** tab. The **Dashboard** of the Codacy portal is displayed. You can view the following information:
 
    - Graphical representation of the repository certification
- - Commits made in your repository
- - Issues reported in your repository
- - Files associated with your repository
- - Pull requests raised in your repository
- - Security status of different parameters
+   - Commits made in your repository
+   - Issues reported in your repository
+   - Files associated with your repository
+   - Pull requests raised in your repository
+   - Security status of different parameters
  
 ********************************
 Developer Certificate of Origin
