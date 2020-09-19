@@ -65,6 +65,8 @@ VMware vSphere
 7. Select the desired storage location from the list of data stores. Then, click **Next**.
 
  - You can either choose **Thick** or **Thin**.
+ 
+ .. image:: images/vSphere5.png
 
 8. Select a network from the drop-down list for each interface, click **Next**.
 
