@@ -27,13 +27,13 @@ Mandatory Keys
 ---------------
 The mandatory keys are listed in the table below.
 
-    +------------+-------------------------------------------------+
-    |  **Key**   |  **Description / default value (if provided)**  |
-    +------------+-------------------------------------------------+     
-    | cluster_ip | IP address of Cluster (Data) VIP>               |
-    +------------+-------------------------------------------------+
-    | mgmt_vip   | IP address of Management VIP>                   |
-    +------------+-------------------------------------------------+
++------------+-------------------------------------------------+
+|  **Key**   |  **Description / default value (if provided)**  |
++------------+-------------------------------------------------+     
+| cluster_ip | IP address of Cluster (Data) VIP>               |
++------------+-------------------------------------------------+
+| mgmt_vip   | IP address of Management VIP>                   |
++------------+-------------------------------------------------+
 
 Optional Keys
 --------------
@@ -47,11 +47,11 @@ Mandatory Keys
 ---------------
 The mandatory keys are listed in the table below.
 
-    +------------+------------------------------------------------+
-    | **Key**    | **Description / default value (if provided)**  |
-    +------------+------------------------------------------------+     
-    | type       | JBOD                                           |
-    +------------+------------------------------------------------+
++------------+------------------------------------------------+
+| **Key**    | **Description / default value (if provided)**  |
++------------+------------------------------------------------+     
+| type       | JBOD                                           |
++------------+------------------------------------------------+
 
 **Note**: The value in this section is case-sensitive.
 
@@ -69,95 +69,95 @@ Mandatory Keys
 ---------------
 The mandatory keys are listed in the table below.
 
-  +--------------------------------+------------------------------------------+
-  |             **Key**            |  **Description/value (if provided)**     |
-  +--------------------------------+------------------------------------------+
-  | hostname                       | FQDN of the server                       |
-  +--------------------------------+------------------------------------------+
-  | network.mgmt_nw.iface          | Name of the Management interface         |
-  |                                |                                          |
-  |                                | For example:                             |
-  |                                |    network.mgmt_nw.iface=eno1            |
-  +--------------------------------+------------------------------------------+
-  | network.mgmt_nw.public_ip_addr | IP address of the Management network     |
-  |                                | interface                                |
-  |                                | If keyword "None" is specified, the      |
-  |                                | network will be configured with an       |
-  |                                | assumption that DHCP addresses are       |
-  |                                | being used                               |
-  +--------------------------------+------------------------------------------+
-  | network.data_nw.iface          | A comma-separated list of the data       |
-  |                                | network interfaces. The Public Data      |
-  |                                | interface should be specified first,     |
-  |                                | followed by the Private Data interface   |
-  |                                |                                          |
-  |                                | For example:                             |
-  |                                |    network.data_nw.iface=eth2,eth3       |
-  +--------------------------------+------------------------------------------+
-  | network.data_nw.public_ip_addr | IP address of the Public Data network    |
-  |                                | interface                                |
-  |                                | If keyword "None" is specified, the      |
-  |                                | network will be configured with an       |
-  |                                | assumption that DHCP addresses are       |
-  |                                | being used                               |
-  +--------------------------------+------------------------------------------+
-  | network.data_nw.pvt_ip_addr    | Private Data network IP address          |
-  +--------------------------------+------------------------------------------+
++--------------------------------+------------------------------------------+
+|             **Key**            |  **Description/value (if provided)**     |
++--------------------------------+------------------------------------------+
+| hostname                       | FQDN of the server                       |
++--------------------------------+------------------------------------------+
+| network.mgmt_nw.iface          | Name of the Management interface         |
+|                                |                                          |
+|                                | For example:                             |
+|                                |    network.mgmt_nw.iface=eno1            |
++--------------------------------+------------------------------------------+
+| network.mgmt_nw.public_ip_addr | IP address of the Management network     |
+|                                | interface                                |
+|                                | If keyword "None" is specified, the      |
+|                                | network will be configured with an       |
+|                                | assumption that DHCP addresses are       |
+|                                | being used                               |
++--------------------------------+------------------------------------------+
+| network.data_nw.iface          | A comma-separated list of the data       |
+|                                | network interfaces. The Public Data      |
+|                                | interface should be specified first,     |
+|                                | followed by the Private Data interface   |
+|                                |                                          |
+|                                | For example:                             |
+|                                |    network.data_nw.iface=eth2,eth3       |
++--------------------------------+------------------------------------------+
+| network.data_nw.public_ip_addr | IP address of the Public Data network    |
+|                                | interface                                |
+|                                | If keyword "None" is specified, the      |
+|                                | network will be configured with an       |
+|                                | assumption that DHCP addresses are       |
+|                                | being used                               |
++--------------------------------+------------------------------------------+
+| network.data_nw.pvt_ip_addr    | Private Data network IP address          |
++--------------------------------+------------------------------------------+
 
     
 Optional Keys
 --------------
 
-   +--------------------------------+-----------------------------------------+
-   |             **Key**            |  **Description/value (if provided)**    |
-   +--------------------------------+-----------------------------------------+
-   | is_primary                     | Designates the first server in the      |
-   |                                | cluster. The value should be set to     |
-   |                                | True for the first server and False     |
-   |                                | for the remaining two servers           |
-   +--------------------------------+-----------------------------------------+
-   | network.mgmt_nw.netmask        | Subnet mask for the Management network  |
-   |                                |                                         |
-   |                                | Accepted formats:                       |
-   |                                |     AAA.BBB.CCC.DDD                     |
-   |                                |                                         |
-   |                                |     XY                                  |
-   |                                |                                         |
-   |                                |  NOTE: This key becomes mandatory       |
-   |                                |        if the statis IP address is used |
-   |                                |        for the Management network       |
-   |                                |        interface                        |
-   +--------------------------------+-----------------------------------------+
-   | network.mgmt_nw.gateway        | IP address of the Management network    |
-   |                                | gateway. If there's no gateway, keyword |
-   |                                | "None" should be used                   |
-   +--------------------------------+-----------------------------------------+
-   | network.data_nw.netmask        | Subnet mask for the Public Data network |
-   |                                |                                         |
-   |                                | Accepted formats:                       |
-   |                                |     AAA.BBB.CCC.DDD                     |
-   |                                |                                         |
-   |                                |     XY                                  |
-   |                                |                                         |
-   |                                |  NOTE: This key becomes mandatory       |
-   |                                |        if the statis IP address is used |
-   |                                |        for the Public Data network      |
-   |                                |        interface                        |
-   +--------------------------------+-----------------------------------------+
-   | network.data_nw.gateway        | IP address of the Public Data network   |
-   |                                | gateway. If there's no gateway, keyword |
-   |                                | "None" should be used                   |
-   +--------------------------------+-----------------------------------------+
-   | bmc.user                       | BMC user name                           |
-   |                                |                                         |
-   |                                | For example:                            |
-   |                                |    ADMIN                                |
-   +--------------------------------+-----------------------------------------+
-   | bmc.secret                     | BMC password (in single quotes)         |
-   |                                |                                         |
-   |                                | For example:                            |
-   |                                |    'adminBMC123!'                       |
-   +--------------------------------+-----------------------------------------+
++--------------------------------+-----------------------------------------+
+|             **Key**            |  **Description/value (if provided)**    |
++--------------------------------+-----------------------------------------+
+| is_primary                     | Designates the first server in the      |
+|                                | cluster. The value should be set to     |
+|                                | True for the first server and False     |
+|                                | for the remaining two servers           |
++--------------------------------+-----------------------------------------+
+| network.mgmt_nw.netmask        | Subnet mask for the Management network  |
+|                                |                                         |
+|                                | Accepted formats:                       |
+|                                |     AAA.BBB.CCC.DDD                     |
+|                                |                                         |
+|                                |     XY                                  |
+|                                |                                         |
+|                                |  NOTE: This key becomes mandatory       |
+|                                |        if the statis IP address is used |
+|                                |        for the Management network       |
+|                                |        interface                        |
++--------------------------------+-----------------------------------------+
+| network.mgmt_nw.gateway        | IP address of the Management network    |
+|                                | gateway. If there's no gateway, keyword |
+|                                | "None" should be used                   |
++--------------------------------+-----------------------------------------+
+| network.data_nw.netmask        | Subnet mask for the Public Data network |
+|                                |                                         |
+|                                | Accepted formats:                       |
+|                                |     AAA.BBB.CCC.DDD                     |
+|                                |                                         |
+|                                |     XY                                  |
+|                                |                                         |
+|                                |  NOTE: This key becomes mandatory       |
+|                                |        if the statis IP address is used |
+|                                |        for the Public Data network      |
+|                                |        interface                        |
++--------------------------------+-----------------------------------------+
+| network.data_nw.gateway        | IP address of the Public Data network   |
+|                                | gateway. If there's no gateway, keyword |
+|                                | "None" should be used                   |
++--------------------------------+-----------------------------------------+
+| bmc.user                       | BMC user name                           |
+|                                |                                         |
+|                                | For example:                            |
+|                                |    ADMIN                                |
++--------------------------------+-----------------------------------------+
+| bmc.secret                     | BMC password (in single quotes)         |
+|                                |                                         |
+|                                | For example:                            |
+|                                |    'adminBMC123!'                       |
++--------------------------------+-----------------------------------------+
    
 ****************************
 Template of Config.ini file
