@@ -119,7 +119,9 @@ To clone a repository, perform the procedure below.
 
 6. Type **git clone**, and then paste the URL you copied earlier. It will look like this, with your GitHub username instead of **YOUR-USERNAME**.
 
-  - **$ git clone https://github.com/YOUR-USERNAME/repository name**
+   ::
+  
+    $ git clone https://github.com/YOUR-USERNAME/repository name
 
 7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
 
