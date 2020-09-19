@@ -203,58 +203,58 @@ Initial Steps
    
 - Run the below mentioned command to ensure that the RabbitMq-server is running and active.
 
-   ::
+  ::
    
-    systemctl status rabbitmq-server
+   systemctl status rabbitmq-server
 
 - Run the below mentioned command to ensure that the consul agent is running.
 
-   ::
+  ::
 
-    ps -aux | grep "consul"
+   ps -aux | grep "consul"
  
 Configuration
 -------------
 Run the below mentioned commands to configure SSPL.
 
- ::
+::
  
-  /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
+ /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
 
-  /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx
+ /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx
 
-  /opt/seagate/cortx/sspl/bin/sspl_setup config -f
+ /opt/seagate/cortx/sspl/bin/sspl_setup config -f
 
 
 Starting Service
 -----------------
 - Run the following to start the SSPL service.
 
-   ::
+  ::
 
-    salt '*' cmd.run systemctl start sspl-ll
+   salt '*' cmd.run systemctl start sspl-ll
 
 - Run the following to restart the SSPL service.
 
-   ::
+  ::
    
-    salt '*' cmd.run systemctl restart sspl-ll
+   salt '*' cmd.run systemctl restart sspl-ll
 
 Run the following command to know the status of the SSPL service.
 
- ::
+::
  
-  salt '*' cmd.run systemctl status sspl-ll -l
+ salt '*' cmd.run systemctl status sspl-ll -l
  
 Verification
 ------------
 Perform sanity test and ensure that the SSPL configuration is accurate. Run the following commands to perform the test.
 
- ::
+::
 
-  /opt/seagate/cortx/sspl/bin/sspl_setup check
+ /opt/seagate/cortx/sspl/bin/sspl_setup check
   
-  /opt/seagate/cortx/sspl/bin/sspl_setup test self
+ /opt/seagate/cortx/sspl/bin/sspl_setup test self
  
 CSM
 ===
@@ -300,9 +300,9 @@ The starting of services procedure must be performed on only one node.
 
 Ensure that the services have started successfully by running the following command.
 
- :: 
+:: 
  
-  systemctl status <service name>
+ systemctl status <service name>
 
 
 **Note**: After all the services have started running, the CSM web UI is available at port 28100. Navigate to **https://<IP address of the box>:28100** to access the port.
@@ -317,11 +317,11 @@ Prerequisites
 
 - Installation type identification with provisioner api
 
- ::
+::
 
-  provisioner get_setup_info
+ provisioner get_setup_info
 
-  {'nodes': 1, 'servers_per_node': 2, 'storage_type': '5u84', 'server_type': 'virtual'}
+ {'nodes': 1, 'servers_per_node': 2, 'storage_type': '5u84', 'server_type': 'virtual'}
   
 Configuration
 --------------
