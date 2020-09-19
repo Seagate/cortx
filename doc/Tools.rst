@@ -236,10 +236,10 @@ Rebasing
 --------
 Rebasing ensures that you have the latest version of main. The procedure is detailed below.
 
- 1. Consume the commits from your dev branch.
- 2. Temporarily unset them
- 3. Move to the newest head of the main branch
- 4. Commit them again
+1. Consume the commits from your dev branch.
+2. Temporarily unset them
+3. Move to the newest head of the main branch
+4. Commit them again
 
 **Note**: If there are no issues, conflicts would not occur.
 
@@ -266,7 +266,7 @@ You can use Codacy by performing the below mentioned procedure.
 2. Scroll down the page until you reach the **README** section.
 3. Under the **README** section, click the **code quality** tab. The **Dashboard** of the Codacy portal is displayed. You can view the following information:
 
- - Graphical representation of the repository certification
+   - Graphical representation of the repository certification
  - Commits made in your repository
  - Issues reported in your repository
  - Files associated with your repository
