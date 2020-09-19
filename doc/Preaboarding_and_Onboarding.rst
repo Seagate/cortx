@@ -4,9 +4,10 @@ Preboarding Process
 
 Perform the below mentioned to complete the preboarding process. The below mentioned steps can be performed only once.
 
-1. Accept the End User License Agree (EULA).
+1. Navigate to 
+2. Accept the End User License Agree (EULA).
 
-2. Create a user with admin privileges.
+3. Create a user with admin privileges.
 
  - Enter the username, password, and email address in the relevant fields. Also, select the checkbox if want to receive the notifications.
 
