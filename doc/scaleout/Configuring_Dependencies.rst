@@ -386,7 +386,7 @@ Configuration
    
     /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster -n NODES
     
- **Note**: -n NODES where NODES must be FQDN of the respective nodes and separated by comma. For example, -n ssc-vm-2104,ssc-vm-176 
+**Note**: -n NODES where NODES must be FQDN of the respective nodes and separated by comma. For example, -n ssc-vm-2104,ssc-vm-176 
  
 Run the below mentioned command to check the status of the RabbitMQ cluster.
 
