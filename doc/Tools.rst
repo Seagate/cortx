@@ -226,7 +226,7 @@ To push the new dev branch to the remote repo, perform the following:
    
     $ git push origin <local_branch>:<remote_branch>
    
-    .. image:: images/Writer5.png
+.. image:: images/Writer5.png
  
  
 Pull Request
