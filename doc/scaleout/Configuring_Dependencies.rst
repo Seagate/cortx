@@ -116,26 +116,26 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
     olcModuleLoad: syncprov.la
 
 
-  **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov_mod.ldif**
+   **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov_mod.ldif**
   
 3. Push the provider ldif for config replication.
 
    **syncprov_config.ldif**
 
- ::
+   ::
 
-  dn: olcOverlay=syncprov,olcDatabase={0}config,cn=config
+    dn: olcOverlay=syncprov,olcDatabase={0}config,cn=config
 
-  objectClass: olcOverlayConfig
+    objectClass: olcOverlayConfig
 
-  objectClass: olcSyncProvConfig 
+    objectClass: olcSyncProvConfig 
 
-  olcOverlay: syncprov
+    olcOverlay: syncprov
 
-  olcSpSessionLog: 100 
+    olcSpSessionLog: 100 
 
 
- **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif**
+  **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif**
  
 4. Push the **Config.ldif** file.
 
