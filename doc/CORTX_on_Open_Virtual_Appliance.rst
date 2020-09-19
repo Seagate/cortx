@@ -64,7 +64,7 @@ The procedure to install CORTX on OVA is mentioned below.
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
 
-8. Set the NAT for the new by running the script that is present in the following location.
+8. Set the **Network Translation Address** NAT for the new VM, by running the script that is present in the following location.
 
  - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
  
