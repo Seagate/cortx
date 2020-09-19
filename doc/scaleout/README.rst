@@ -18,13 +18,13 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
 
 4. Configure the dependencies by referring to `Configuring Dependencies <Configuring_Dependencies.rst>`_. The dependencies are listed below in the order in which they have to be configured.
 
- - LDAP
+   - LDAP
  
-  - LDAP Replication
+     - LDAP Replication
   
- - Rabbit MQ
+   - Rabbit MQ
  
- - Statsd and Kibana
+   - Statsd and Kibana
  
 5. Configure the components of CORTX by referring to `Configuring Components <Configuring_CORTX_Components.rst>`_. The components are listed below in the order in which they have to be configured.
 
