@@ -50,7 +50,7 @@ This section provides information on the installation of Provisioner and the ass
     --logfile-filename ./setup.log --config-path config.ini \
     srvnode-1:srv1.test.com srvnode-2:srv2.test.com srvnode-3:srv3.test.com
     
- **Note**: You will be prompted for root password of each server.
+**Note**: You will be prompted for root password of each server.
 
 5. Run the below mentioned commands to verify that the dependency components are installed successfully.
 
