@@ -17,21 +17,21 @@ Starting Service
 
 - Run the below mentioned command to start the AuthServer on all the three nodes.
     
-   ::
+  ::
    
-    salt '*' cmd.run systemctl start s3authserver
+   salt '*' cmd.run systemctl start s3authserver
 
 - Run the below mentioned command to restart the AuthServer on all the three nodes.
 
-   ::
+  ::
     
-    salt '*' cmd.run systemctl restart s3authserver
+   salt '*' cmd.run systemctl restart s3authserver
  
 - Run the following command to check the status of AuthServer.
 
-   ::
+  ::
 
-    salt '*' cmd.run systemctl status s3authserver
+   salt '*' cmd.run systemctl status s3authserver
 
 HAProxy
 --------
@@ -83,7 +83,7 @@ Before configuring HAProxy, check the number of S3 instances using **hctl status
  
 From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. There are two procedures for HAproxy configuration, one without external load balancer and the other with external load balancer.
 
-Perform the steps mentioned below to configure HAProxy if external load balancer (DNS RR) is not available.
+Perform the steps mentioned below to configure HAProxy, if external load balancer (DNS RR) is not available.
 
 1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
 
@@ -129,7 +129,7 @@ Perform the steps mentioned below to configure HAProxy if external load balancer
 
      systemctl status haproxy
 
-Perform the steps mentioned below to configure HAProxy if external load balancer (DNS RR) is available. 
+Perform the steps mentioned below to configure HAProxy, if external load balancer (DNS RR) is available. 
 
 1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
 
@@ -145,40 +145,40 @@ Perform the steps mentioned below to configure HAProxy if external load balancer
 
 7. Configure haproxy logs on all the nodes by running the following commands.
 
-    ::
+   ::
 
-     mkdir /etc/haproxy/errors/
+    mkdir /etc/haproxy/errors/
 
-     cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
+    cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
 
-     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
+    cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
 
-     cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
+    cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
 
-     rm -rf /etc/cron.daily/logrotate
+    rm -rf /etc/cron.daily/logrotate
 
-     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate 
+    cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate 
 
-     systemctl restart rsyslog
+    systemctl restart rsyslog
 
-     systemctl restart haproxy 
+    systemctl restart haproxy 
 
-     systemctl status haproxy
+    systemctl status haproxy
  
 Starting Service
 ^^^^^^^^^^^^^^^^^
  
 - Run the below mentioned command to start the HAProxy services.
 
-   ::
+  ::
    
-    salt '*' cmd.run systemctl start haproxy
+   salt '*' cmd.run systemctl start haproxy
  
 - Run the below mentioned command to check the status of HAProxy services.
 
-   ::
+  ::
    
-    salt '*' cmd.run systemctl status haproxy
+   salt '*' cmd.run systemctl status haproxy
 
 SSPL
 ====
@@ -203,58 +203,58 @@ Initial Steps
    
 - Run the below mentioned command to ensure that the RabbitMq-server is running and active.
 
-   ::
+  ::
    
-    systemctl status rabbitmq-server
+   systemctl status rabbitmq-server
 
 - Run the below mentioned command to ensure that the consul agent is running.
 
-   ::
+  ::
 
-    ps -aux | grep "consul"
+   ps -aux | grep "consul"
  
 Configuration
 -------------
 Run the below mentioned commands to configure SSPL.
 
- ::
+::
  
-  /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
+ /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
 
-  /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx
+ /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx
 
-  /opt/seagate/cortx/sspl/bin/sspl_setup config -f
+ /opt/seagate/cortx/sspl/bin/sspl_setup config -f
 
 
 Starting Service
 -----------------
 - Run the following to start the SSPL service.
 
-   ::
+  ::
 
-    salt '*' cmd.run systemctl start sspl-ll
+   salt '*' cmd.run systemctl start sspl-ll
 
 - Run the following to restart the SSPL service.
 
-   ::
+  ::
    
-    salt '*' cmd.run systemctl restart sspl-ll
+   salt '*' cmd.run systemctl restart sspl-ll
 
 Run the following command to know the status of the SSPL service.
 
- ::
+::
  
-  salt '*' cmd.run systemctl status sspl-ll -l
+ salt '*' cmd.run systemctl status sspl-ll -l
  
 Verification
 ------------
 Perform sanity test and ensure that the SSPL configuration is accurate. Run the following commands to perform the test.
 
- ::
+::
 
-  /opt/seagate/cortx/sspl/bin/sspl_setup check
+ /opt/seagate/cortx/sspl/bin/sspl_setup check
   
-  /opt/seagate/cortx/sspl/bin/sspl_setup test self
+ /opt/seagate/cortx/sspl/bin/sspl_setup test self
  
 CSM
 ===
@@ -300,9 +300,9 @@ The starting of services procedure must be performed on only one node.
 
 Ensure that the services have started successfully by running the following command.
 
- :: 
+:: 
  
-  systemctl status <service name>
+ systemctl status <service name>
 
 
 **Note**: After all the services have started running, the CSM web UI is available at port 28100. Navigate to **https://<IP address of the box>:28100** to access the port.
@@ -317,11 +317,11 @@ Prerequisites
 
 - Installation type identification with provisioner api
 
- ::
+::
 
-  provisioner get_setup_info
+ provisioner get_setup_info
 
-  {'nodes': 1, 'servers_per_node': 2, 'storage_type': '5u84', 'server_type': 'virtual'}
+ {'nodes': 1, 'servers_per_node': 2, 'storage_type': '5u84', 'server_type': 'virtual'}
   
 Configuration
 --------------

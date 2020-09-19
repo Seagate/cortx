@@ -15,36 +15,36 @@ Configuration
 
 2. Run the below mentioned command on one node. As a result, LDAP is setup on all the 3 nodes.
 
-    ::
+   ::
 
-     salt '*' cmd.run /opt/seagate/cortx/s3/install/ldap/setup_ldap.sh --defaultpasswd --skipssl --forceclean
+    salt '*' cmd.run /opt/seagate/cortx/s3/install/ldap/setup_ldap.sh --defaultpasswd --skipssl --forceclean
 
 3. After LDAP is setup on the three nodes, perform **LDAP Replication**. Refer the procedure below.
 
 4. Configure **slapd.log** on all 3 nodes using the commands mentioned below.
 
-    ::
+   ::
 
-     salt '*' cmd.run cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf 
+    salt '*' cmd.run cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf 
  
-     salt '*' cmd.run systemctl restart slapd
+    salt '*' cmd.run systemctl restart slapd
 
-     salt '*' cmd.run systemctl restart rsyslog
+    salt '*' cmd.run systemctl restart rsyslog
 
 Starting Service
 -----------------
 
 - Run the following command to start the service on all the 3 nodes.
 
-   ::
+  ::
 
-    salt '*' cmd.run systemctl start slapd
+   salt '*' cmd.run systemctl start slapd
 
 Run the following command to check the status of the service.
 
- ::
+::
 
-  salt '*' cmd.run systemctl status slapd
+ salt '*' cmd.run systemctl status slapd
 
 LDAP Replication
 ----------------
@@ -66,11 +66,11 @@ Prerequisite
 
 You need not copy the contents of the files from this page as they are placed in the following directory.
 
- ::
+::
 
-  cd /opt/seagate/cortx/s3/install/ldap/replication
+ cd /opt/seagate/cortx/s3/install/ldap/replication
  
- Edit the relevant fields as required (olcserverid.ldif and config.ldif). 
+Edit the relevant fields as required (olcserverid.ldif and config.ldif). 
 
 Procedure
 ^^^^^^^^^^
@@ -86,18 +86,18 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
    
    **olcserverid.ldif**
 
-  ::
+   ::
 
-   dn: cn=config
+    dn: cn=config
    
-   changetype: modify
+    changetype: modify
    
-   add: olcServerID
+    add: olcServerID
    
-   olcServerID: 1
+    olcServerID: 1
 
 
- **command to add -: ldapmodify -Y EXTERNAL -H ldapi:/// -f olcserverid.ldif**
+   **command to add -: ldapmodify -Y EXTERNAL -H ldapi:/// -f olcserverid.ldif**
 
 2. Load the provider module.
 
@@ -116,113 +116,112 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
     olcModuleLoad: syncprov.la
 
 
-  **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov_mod.ldif**
+   **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov_mod.ldif**
   
 3. Push the provider ldif for config replication.
 
    **syncprov_config.ldif**
 
- ::
+   ::
 
-  dn: olcOverlay=syncprov,olcDatabase={0}config,cn=config
+    dn: olcOverlay=syncprov,olcDatabase={0}config,cn=config
 
-  objectClass: olcOverlayConfig
+    objectClass: olcOverlayConfig
 
-  objectClass: olcSyncProvConfig 
+    objectClass: olcSyncProvConfig 
 
-  olcOverlay: syncprov
+    olcOverlay: syncprov
 
-  olcSpSessionLog: 100 
+    olcSpSessionLog: 100 
 
 
- **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif**
+**command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif**
  
 4. Push the **Config.ldif** file.
 
-     **config.ldif**
+   **config.ldif**
 
-        ::
+   ::
 
-          dn: olcDatabase={0}config,cn=config 
+    dn: olcDatabase={0}config,cn=config 
 
-          changetype: modify 
+    changetype: modify 
 
-          add: olcSyncRepl 
+    add: olcSyncRepl 
 
-          olcSyncRepl: rid=001
+    olcSyncRepl: rid=001
 
-              provider=ldap://<hostname_node-1>:389/ 
+        provider=ldap://<hostname_node-1>:389/ 
 
-              bindmethod=simple 
+        bindmethod=simple 
 
-              binddn="cn=admin,cn=config" 
+        binddn="cn=admin,cn=config" 
 
-              credentials=seagate 
+        credentials=seagate 
 
-              searchbase="cn=config" 
+        searchbase="cn=config" 
 
-              scope=sub 
+        scope=sub 
 
-              schemachecking=on 
+        schemachecking=on 
 
-              type=refreshAndPersist 
+        type=refreshAndPersist 
 
-              retry="30 5 300 3" 
+        retry="30 5 300 3" 
 
-              interval=00:00:05:00
+        interval=00:00:05:00
 
-         # Enable additional providers 
+    # Enable additional providers 
 
-         olcSyncRepl: rid=002 
+    olcSyncRepl: rid=002 
 
-            provider=ldap://<hostname_node-2>:389/ 
+       provider=ldap://<hostname_node-2>:389/ 
 
-            bindmethod=simple 
+       bindmethod=simple 
 
-            binddn="cn=admin,cn=config" 
+       binddn="cn=admin,cn=config" 
 
-            credentials=seagate 
+       credentials=seagate 
 
-            searchbase="cn=config" 
+       searchbase="cn=config" 
 
-            scope=sub 
+       scope=sub 
 
-            schemachecking=on 
+       schemachecking=on 
 
-            type=refreshAndPersist 
+       type=refreshAndPersist 
 
-            retry="30 5 300 3" 
+       retry="30 5 300 3" 
 
-            interval=00:00:05:00 
+       interval=00:00:05:00 
 
-         olcSyncRepl: rid=003 
+    olcSyncRepl: rid=003 
 
-            provider=ldap://<hostname_node-3>:389/ 
+       provider=ldap://<hostname_node-3>:389/ 
 
-            bindmethod=simple 
+       bindmethod=simple 
 
-            binddn="cn=admin,cn=config" 
+       binddn="cn=admin,cn=config" 
 
-            credentials=seagate 
+       credentials=seagate 
 
-            searchbase="cn=config" 
+       searchbase="cn=config" 
 
-            scope=sub 
+       scope=sub 
 
-            schemachecking=on 
+       schemachecking=on 
 
-            type=refreshAndPersist 
+       type=refreshAndPersist 
 
-            retry="30 5 300 3" 
+       retry="30 5 300 3" 
 
-            interval=00:00:05:00 
+       interval=00:00:05:00 
 
-         add: olcMirrorMode 
+    add: olcMirrorMode 
 
-         olcMirrorMode: TRUE
+    olcMirrorMode: TRUE
         
-
-        **command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif**
+**command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif**
         
 Perform the following steps on only one node. In this case, it must be performed on the primary node.
 
@@ -247,9 +246,9 @@ Perform the following steps on only one node. In this case, it must be performed
    
 2. Push the data replication ldif.
 
-  **data.ldif**
+   **data.ldif**
 
-  ::
+   ::
 
     dn: olcDatabase={2}mdb,cn=config 
 
@@ -334,7 +333,7 @@ Perform the following steps on only one node. In this case, it must be performed
 
 **command to add - ldapmodify -Y EXTERNAL -H ldapi:/// -f data.ldif**
 
-   **Note**: Update the host name in the provider field in data.ldif before running the command.
+**Note**: Update the host name in the provider field in data.ldif before running the command.
 
 RabbitMQ
 ========
@@ -345,9 +344,9 @@ Prerequisites
 
 - Run the below mentioned script to avoid RMQ processor related errors.
 
-   ::
+  ::
 
-    python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt 
+   python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt 
 
 - Ensure that rabbitmq server, provisioner, and sspl RPMs must be installed.
 
@@ -365,56 +364,55 @@ Prerequisites
 
 - The **erlang.cookie** file must be available. Run the following command to check the availability.
 
-   ::
+  ::
 
-    cat /var/lib/rabbitmq/.erlang.cookie
+   cat /var/lib/rabbitmq/.erlang.cookie
  
 Configuration
 -------------
 1. Start the RabbitMQ server.
 2. Run the below mentioned commands to setup the RabbitMQ cluster.
 
- - Setting a single (current) node as cluster
+   - Setting a single (current) node as cluster
  
    ::
    
     /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster
    
- - Setting 2 nodes
+   - Setting 2 nodes
  
    ::
    
     /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster -n NODES
     
-   **Note**: -n NODES where NODES must be FQDN of the respective nodes and separated by comma. For example, -n ssc-vm-2104,ssc-vm-176 
+**Note**: -n NODES where NODES must be FQDN of the respective nodes and separated by comma. For example, -n ssc-vm-2104,ssc-vm-176 
  
 Run the below mentioned command to check the status of the RabbitMQ cluster.
 
- ::
+::
 
-  rabbitmqctl cluster_status
+ rabbitmqctl cluster_status
  
-
 
 Starting Service
 -----------------
 - Run the below mentioned command to start the server.
 
-   ::
+  ::
 
-    systemctl start rabbitmq-server
+   systemctl start rabbitmq-server
 
 - Run the below mentioned command to restart the server.
 
-   ::
+  ::
 
-    systemctl restart rabbitmq-server
+   systemctl restart rabbitmq-server
 
 Run the below mentioned command to know the status.
 
- ::
+::
 
-  systemctl status rabbitmq-server -l
+ systemctl status rabbitmq-server -l
 
 Statsd and Kibana
 =================
@@ -428,67 +426,67 @@ Statsd Configuration
 --------------------
 Run the below mentioned commands to start and enable the **statsd** service on one node. Ensure that Kibana and CSM are run on the same node.
 
- ::
+::
 
-  salt '<Node Name>' cmd.run systemctl start statsd
+ salt '<Node Name>' cmd.run systemctl start statsd
 
-  salt '<Node Name>' cmd.run systemctl enable statsd
+ salt '<Node Name>' cmd.run systemctl enable statsd
 
 To know the status of the service, run the following command.
 
- ::
+::
 
-  salt '<Node Name>' cmd.run systemctl status statsd
+ salt '<Node Name>' cmd.run systemctl status statsd
 
 Kibana Configuration
 --------------------
 1. Update the **kibana.service** file on the node where Statsd is running. By default, the service is not compatible with new systemd. Run the following command to check the compatibility.
 
-    ::
+   ::
 
-     systemd-analyze verify /etc/systemd/system/kibana.service
+    systemd-analyze verify /etc/systemd/system/kibana.service
 
-  If the above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
+If the above command gives a warning, replace the file with **/etc/systemd/system/kibana.service**.
 
-  In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst** are part of **Unit** section but as per new systemd rule it is part of **Service** section.
+In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst** are part of **Unit** section but as per new systemd rule it is part of **Service** section.
 
- ::
+::
 
-  Description=Kibana
+ Description=Kibana
  
-  [Service] 
-  Type=simple 
-  StartLimitInterval=30 
-  StartLimitBurst=3 
-  User=kibana 
-  Group=kibana 
-  # Load env vars from /etc/default/ and /etc/sysconfig/ if they exist. 
-  # Prefixing the path with '-' makes it try to load, but if the file doesn't 
-  # exist, it continues onward. 
-  EnvironmentFile=-/etc/default/kibana 
-  EnvironmentFile=-/etc/sysconfig/kibana 
-  ExecStart=/usr/share/kibana/bin/kibana "-c /etc/kibana/kibana.yml" 
-  Restart=always 
-  WorkingDirectory=/ 
+ [Service] 
+ Type=simple 
+ StartLimitInterval=30 
+ StartLimitBurst=3 
+ User=kibana 
+ Group=kibana 
+ # Load env vars from /etc/default/ and /etc/sysconfig/ if they exist. 
+ # Prefixing the path with '-' makes it try to load, but if the file doesn't 
+ # exist, it continues onward. 
+ EnvironmentFile=-/etc/default/kibana 
+ EnvironmentFile=-/etc/sysconfig/kibana 
+ ExecStart=/usr/share/kibana/bin/kibana "-c /etc/kibana/kibana.yml" 
+ Restart=always 
+ WorkingDirectory=/ 
 
   [Install] WantedBy=multi-user.target
   
 2. Reload the daemon by running the following command.
 
-    ::
+   ::
 
-     systemctl daemon-reload
+    systemctl daemon-reload
 
 3. Start kibana on the node where CSM would be active and enable the service by running the following commands.
 
-    ::
+   ::
 
-     systemctl start kibana
+    systemctl start kibana
 
-     systemctl enable kibana
+    systemctl enable kibana
 
 Check the status of Kibana by running the following command.
 
- ::
+::
 
-  systemctl status kibana
+ systemctl status kibana

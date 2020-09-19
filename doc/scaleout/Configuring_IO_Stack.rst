@@ -16,7 +16,7 @@ Perform the below mentioned procedure to configure the I/O stack.
 
     hctl bootstrap --mkfs cluster.yaml
 
-  This command must be used with **mkfs** only while running it for the first time. 
+This command must be used with **mkfs** only while running it for the first time. 
 
 3. Verify the motr utility m0crate, by creating a sample m0crate workload file and running m0crate workload. Run the below mentioned commands.
 
@@ -28,9 +28,9 @@ Perform the below mentioned procedure to configure the I/O stack.
 
 Run the below mentioned command to start the cluster. This command must be used while starting the cluster from second time.
 
- ::
+::
 
-  hctl bootstrap –c /var/lib/hare
+ hctl bootstrap –c /var/lib/hare
   
 
 =============
@@ -57,7 +57,7 @@ Perform the below mentioned steps to restart (rejoin) a node.
    
     systemctl start m0d@<confd-fid>
     
-  - **confd-fid** can be found in the **/var/lib/hare/consul-server-conf/consul-server-conf.json** file and **/etc/sysconfig/m0d@**
+- **confd-fid** can be found in the **/var/lib/hare/consul-server-conf/consul-server-conf.json** file and **/etc/sysconfig/m0d@**
     
 4. Run the below mentioned command to start the motr io service.
 
@@ -65,7 +65,7 @@ Perform the below mentioned steps to restart (rejoin) a node.
    
     systemctl start m0d@<motr-ios-fid>
     
-  - **motr ioservice fid** can be found in the **/var/lib/hare/consul-server-conf/consul-server-conf.json** file
+- **motr ioservice fid** can be found in the **/var/lib/hare/consul-server-conf/consul-server-conf.json** file
     
 5. Run the below mentioned command to start the S3 service.
 
@@ -73,4 +73,4 @@ Perform the below mentioned steps to restart (rejoin) a node.
    
     systemctl start s3server@<s3server-fid>
     
-  - **s3server fids** can be found in **/etc/sysconfig**
+- **s3server fids** can be found in **/etc/sysconfig**
