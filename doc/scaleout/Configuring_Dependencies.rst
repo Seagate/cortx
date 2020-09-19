@@ -171,55 +171,55 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
 
         interval=00:00:05:00
 
-   # Enable additional providers 
+    # Enable additional providers 
 
-   olcSyncRepl: rid=002 
+    olcSyncRepl: rid=002 
 
-      provider=ldap://<hostname_node-2>:389/ 
+       provider=ldap://<hostname_node-2>:389/ 
 
-      bindmethod=simple 
+       bindmethod=simple 
 
-      binddn="cn=admin,cn=config" 
+       binddn="cn=admin,cn=config" 
 
-      credentials=seagate 
+       credentials=seagate 
 
-      searchbase="cn=config" 
+       searchbase="cn=config" 
 
-      scope=sub 
+       scope=sub 
 
-      schemachecking=on 
+       schemachecking=on 
 
-      type=refreshAndPersist 
+       type=refreshAndPersist 
 
-      retry="30 5 300 3" 
+       retry="30 5 300 3" 
 
-      interval=00:00:05:00 
+       interval=00:00:05:00 
 
-   olcSyncRepl: rid=003 
+    olcSyncRepl: rid=003 
 
-      provider=ldap://<hostname_node-3>:389/ 
+       provider=ldap://<hostname_node-3>:389/ 
 
-      bindmethod=simple 
+       bindmethod=simple 
 
-      binddn="cn=admin,cn=config" 
+       binddn="cn=admin,cn=config" 
 
-      credentials=seagate 
+       credentials=seagate 
 
-      searchbase="cn=config" 
+       searchbase="cn=config" 
 
-      scope=sub 
+       scope=sub 
 
-      schemachecking=on 
+       schemachecking=on 
 
-      type=refreshAndPersist 
+       type=refreshAndPersist 
 
-      retry="30 5 300 3" 
+       retry="30 5 300 3" 
 
-      interval=00:00:05:00 
+       interval=00:00:05:00 
 
-   add: olcMirrorMode 
+    add: olcMirrorMode 
 
-   olcMirrorMode: TRUE
+    olcMirrorMode: TRUE
         
 **command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif**
         
