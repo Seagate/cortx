@@ -122,107 +122,107 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
 
    **syncprov_config.ldif**
 
-   ::
+  ::
 
-    dn: olcOverlay=syncprov,olcDatabase={0}config,cn=config
+   dn: olcOverlay=syncprov,olcDatabase={0}config,cn=config
 
-    objectClass: olcOverlayConfig
+   objectClass: olcOverlayConfig
 
-    objectClass: olcSyncProvConfig 
+   objectClass: olcSyncProvConfig 
 
-    olcOverlay: syncprov
+   olcOverlay: syncprov
 
-    olcSpSessionLog: 100 
+   olcSpSessionLog: 100 
 
 
   **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif**
  
 4. Push the **Config.ldif** file.
 
-     **config.ldif**
+   **config.ldif**
 
-        ::
+   ::
 
-          dn: olcDatabase={0}config,cn=config 
+    dn: olcDatabase={0}config,cn=config 
 
-          changetype: modify 
+    changetype: modify 
 
-          add: olcSyncRepl 
+    add: olcSyncRepl 
 
-          olcSyncRepl: rid=001
+    olcSyncRepl: rid=001
 
-              provider=ldap://<hostname_node-1>:389/ 
+        provider=ldap://<hostname_node-1>:389/ 
 
-              bindmethod=simple 
+        bindmethod=simple 
 
-              binddn="cn=admin,cn=config" 
+        binddn="cn=admin,cn=config" 
 
-              credentials=seagate 
+        credentials=seagate 
 
-              searchbase="cn=config" 
+        searchbase="cn=config" 
 
-              scope=sub 
+        scope=sub 
 
-              schemachecking=on 
+        schemachecking=on 
 
-              type=refreshAndPersist 
+        type=refreshAndPersist 
 
-              retry="30 5 300 3" 
+        retry="30 5 300 3" 
 
-              interval=00:00:05:00
+        interval=00:00:05:00
 
-         # Enable additional providers 
+   # Enable additional providers 
 
-         olcSyncRepl: rid=002 
+   olcSyncRepl: rid=002 
 
-            provider=ldap://<hostname_node-2>:389/ 
+      provider=ldap://<hostname_node-2>:389/ 
 
-            bindmethod=simple 
+      bindmethod=simple 
 
-            binddn="cn=admin,cn=config" 
+      binddn="cn=admin,cn=config" 
 
-            credentials=seagate 
+      credentials=seagate 
 
-            searchbase="cn=config" 
+      searchbase="cn=config" 
 
-            scope=sub 
+      scope=sub 
 
-            schemachecking=on 
+      schemachecking=on 
 
-            type=refreshAndPersist 
+      type=refreshAndPersist 
 
-            retry="30 5 300 3" 
+      retry="30 5 300 3" 
 
-            interval=00:00:05:00 
+      interval=00:00:05:00 
 
-         olcSyncRepl: rid=003 
+   olcSyncRepl: rid=003 
 
-            provider=ldap://<hostname_node-3>:389/ 
+      provider=ldap://<hostname_node-3>:389/ 
 
-            bindmethod=simple 
+      bindmethod=simple 
 
-            binddn="cn=admin,cn=config" 
+      binddn="cn=admin,cn=config" 
 
-            credentials=seagate 
+      credentials=seagate 
 
-            searchbase="cn=config" 
+      searchbase="cn=config" 
 
-            scope=sub 
+      scope=sub 
 
-            schemachecking=on 
+      schemachecking=on 
 
-            type=refreshAndPersist 
+      type=refreshAndPersist 
 
-            retry="30 5 300 3" 
+      retry="30 5 300 3" 
 
-            interval=00:00:05:00 
+      interval=00:00:05:00 
 
-         add: olcMirrorMode 
+   add: olcMirrorMode 
 
-         olcMirrorMode: TRUE
+   olcMirrorMode: TRUE
         
 
-        **command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif**
+  **command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif**
         
 Perform the following steps on only one node. In this case, it must be performed on the primary node.
 
