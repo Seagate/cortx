@@ -1,8 +1,8 @@
 # Contribute to the CORTX Project
 
-CORTX is about building the [world's best scalable mass-capacity object storage system](https://github.com/Seagate/cortx). If you’re interested in what we’re building and intrigued by hard challenges, here's everything you need to know about contributing to the project and how to get started. 
+CORTX is about building the world's best scalable mass-capacity object storage system. If you’re interested in what we’re building and intrigued by hard challenges, here's everything you need to know about contributing to the project and how to get started. 
 
-After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and how to turn your pull request into a successful contribution. Feel free to browse through the [list of contrubutions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md), and [view and submit issues](https://github.com/Seagate/cortx/issues). And if you have any suggestions on how we can improve this guide, or anything else in the project, we want to hear from you!
+After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and how to turn your pull request into a successful contribution. Feel free to browse through the [list of contributions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md), and [view and submit issues](https://github.com/Seagate/cortx/issues). And if you have any suggestions on how we can improve this guide, or anything else in the project, we want to hear from you!
 
 ## Contribution Guide
 
@@ -24,7 +24,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 <summary>Prerequisites</summary>
 <p>
 
-- Please read our [Code Style Guide](https://github.com/Seagate/cortx/blob/main/doc/CodeStyle.md).
+- Please read our [CORTX Code Style Guide](../main/doc/CodeStyle.md).
 
 - Get started with [GitHub Tools and Procedures](../doc/Tools.rst), if you are new to GitHub.
 
@@ -256,13 +256,13 @@ To ensure contributions can be redistributed by all under an open source license
 
 You can pass DCO in many ways:
 
-1. While creating a Pull Request via the GitHub UI, add `Signed-off-by: "Name" <email address>` in the PR comments section. 
+- While creating a Pull Request via the GitHub UI, add `Signed-off-by: "Name" <email address>` in the PR comments section. 
 
    **Example:** `Signed-off-by: John Doe <John.doe@gmail.com>`
 
-2. DCO will automatically pass if you push commits using [GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/configuring-git-for-github-desktop). 
+- DCO will automatically pass if you push commits using [GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/configuring-git-for-github-desktop). 
 
-3. You can pass DCO by adding a Signed-off-by line to commit messages in Git CLI:
+- You can pass DCO by adding a Signed-off-by line to commit messages in Git CLI:
 
    `Signed-off-by: Random J Developer <random@developer.example.org>`
    

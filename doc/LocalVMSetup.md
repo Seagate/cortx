@@ -22,8 +22,9 @@ Note down the interface name (other than the loopback interface "lo"). In this c
 
 `# ifup ens33`
 
-## 5. Clone S3 or Motr source
-Now you are ready to clone either S3 or Motr. Please refer to the [Motr](CortxMotrQuickStart.md) or [S3](CortxS3ServerQuickStart.md) quick start documents to do so.
+## 5. Build and Test CORTX
+Now you are to build and test CORTX. 
+Please refer to the [CORTX Quickstart Guide](../QUICK_START.md) to get started.
 
 ## 6. Check for LNet
 Type the following command:
