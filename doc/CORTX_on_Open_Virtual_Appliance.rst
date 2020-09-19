@@ -29,33 +29,33 @@ The procedure to install CORTX on OVA is mentioned below.
 
 3. Import the OVA file by referring to `Importing OVA <Importing_OVA_File.rst>`_.
 
- - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
+   - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
   
 **Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.
  
 4. Open the VM console, and login with the below mentioned credentials.
 
-  - Username: **cortx**
+   - Username: **cortx**
   
-  - Password: **opensource!**
+   - Password: **opensource!**
 
 5. Become the **root** user by running the following command.
 
- - sudo su -
+   - sudo su -
  
 6. Run **ip a l** and note the IP addresses of the following interfaces:
 
- - ens192 - management
+   - ens192 - management
  
- - ens256 - public data
+   - ens256 - public data
  
 7. Change the hostname by running the following command:
 
- - **hostnamectl set-hostname --static --transient --pretty <new-name>**
+   - **hostnamectl set-hostname --static --transient --pretty <new-name>**
   
      If you receive **Access denied** message, remove immutable settings on the **/etc/hostname** file and run the command again. To remove immutable setting from **/etc/hostname**, run the following command.
      
-      - **chattr -i /etc/hostname**
+   - **chattr -i /etc/hostname**
   
  
    To verify the change in hostname, run the following command:
