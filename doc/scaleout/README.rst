@@ -10,8 +10,6 @@ Procedure
 **********
 Perform the below mentioned procedure to setup CORTX on JBOD.
 
-
-
 1. Perform the setup of Multi node JBOD by referring to `Multi Node JBOD Setup <Multi_Node_JBOD_Setup.rst>`_.
 
 2. Install the CORTX software by referring to `Installing CORTX <Installing_CORTX_Software.rst>`_.
@@ -38,7 +36,9 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  
  - HA
  
-6. Using a browser of your choice, navigate to *https://<management_VIP>:28100/#/preboarding/welcome* to create an admin user and complete the setup. 
+6. Using a browser of your choice, navigate to *https://<management_VIP>:28100/#/preboarding/welcome* to create an admin user and complete the setup.
+
+7. Refer to `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process.
 
 **********************
  Stopping of Services

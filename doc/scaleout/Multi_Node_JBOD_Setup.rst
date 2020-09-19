@@ -6,7 +6,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 1. Prepare three servers and three JBODs as per the following guidelines.
 
- a. Server Reference Configuration
+ - Server Reference Configuration
 
   - Minimal Configuration
 
@@ -30,13 +30,13 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
     - All the three servers must have Mellanox HCA or none of the servers must have it.
     
-   - Infiband and OmniPath adapters are not supported.
+   - Infiniband and OmniPath adapters are not supported.
 
- b. JBOD Reference Configuration
+ - JBOD Reference Configuration
 
   - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server. The minimum size of the JBOD disk is 2TB.
 
- c. Network Configuration Requirements
+ - Network Configuration Requirements
 
   - The CORTX software requires 3 separate networks. The networks could be physically separate (connected to different switches) or separate VLANs. We recommend you to physically separate the management and data networks.
 
@@ -134,7 +134,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - Other versions are not supported.
 
-7. Download CORTX ISO and CORTX 3rd_party ISO files from <url to github location>.
+7. Download CORTX and dependency ISO files from `here <https://github.com/Seagate/cortx/releases/tag/JBOD>`_.
 
 8. Upload the ISOs to the first server in the cluster that you are planning to install. It is recommended to have the ISOs in the same location.
 
@@ -181,23 +181,28 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
    - You must configure DNS resolution for these VIPs.
    
-12. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <Configuration_File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
+11. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <Configuration_File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
 
 If you have a firewall within your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access.
   
- +----------------------+-------------------+---------------------------------------------+
- |    **Port number**   |   **Protocols**   |   **Destination network (on VA)**           |
- +----------------------+-------------------+---------------------------------------------+
- |          22          |        TCP        |           Management network                |
- +----------------------+-------------------+---------------------------------------------+ 
- |          53          |      TCP/UDP      | Management network and Public Data network  |
- +----------------------+-------------------+---------------------------------------------+ 
- |         123          |      TCP/UDP      |              Management network             |
- +----------------------+-------------------+---------------------------------------------+
- |         443          |       HTTPS       |             Public Data network             |
- +----------------------+-------------------+---------------------------------------------+
- |         9443         |       HTTPS       |              Public Data network            |
- +----------------------+-------------------+---------------------------------------------+
- |         28100        |   TCP (HTTPS)     |              Public Data network            |
- +----------------------+-------------------+---------------------------------------------+
-
+ +----------------------+-------------------+------------------------------------------------+
+ |    **Port number**   |   **Protocols**   |   **Destination network (on VA)**              |
+ +----------------------+-------------------+------------------------------------------------+
+ |          22          |        TCP        |           Management network                   |
+ +----------------------+-------------------+------------------------------------------------+ 
+ |          53          |      TCP/UDP      | Management network and Public Data network     |
+ +----------------------+-------------------+------------------------------------------------+ 
+ |         123          |      TCP/UDP      |              Management network                |
+ +----------------------+-------------------+------------------------------------------------+
+ |         443          |       HTTPS       |             Public Data network                |
+ +----------------------+-------------------+------------------------------------------------+
+ |         9443         |       HTTPS       |              Public Data network               |
+ +----------------------+-------------------+------------------------------------------------+
+ |         28100        |   TCP (HTTPS)     |              Management network                |
+ +----------------------+-------------------+------------------------------------------------+
+ |          67          |     TCP/UDP       | Management network and Public Data network     |
+ |                      |                   | (only if using DHCP to obtain the IP addresses)|
+ +----------------------+-------------------+------------------------------------------------+
+ |          68          |     TCP/UDP       | Management network and Public Data network     |
+ |                      |                   | (only if using DHCP to obtain the IP addresses)|
+ +----------------------+-------------------+------------------------------------------------+
