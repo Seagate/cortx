@@ -14,11 +14,11 @@ To create a GitHub account, perform the procedure below.
 
 2. Enter relevant information in the following fields:
 
- - **Username** – Your Username
+   * **Username** – Your Username
 
- - **Email** - Your email address
+   * **Email** - Your email address
 
- - **Password** - Ensure that the password meets either of the following two conditions:
+   * **Password** - Ensure that the password meets either of the following two conditions:
 
                       - The word must include at least 15 characters
                       - The word must include at least 8 characters. One numeric value and a   letter in lower case is mandatory.
@@ -78,17 +78,17 @@ Git Workflow
 ============
 In Git, the following two aspects are applicable:
 
-- Gitflow
+  - Gitflow
 
-- Dev Branches
+  - Dev Branches
 
 Setting up the Git Config
 -------------------------
 To perform the Git configuration, use the following:
 
-- **$ git config --global user.name ‘Your Name’**
+  - **$ git config --global user.name ‘Your Name’**
 
-- **$ git config --global user.email ‘Your.Name@yourdomain.com’**
+  - **$ git config --global user.email ‘Your.Name@yourdomain.com’**
 
 Forking a Repository
 --------------------
@@ -130,19 +130,19 @@ To configure Git to sync with the fork, perform the following:
 
 2. Change directories to the location of the fork you cloned in the earlier procedure.
 
- - To navigate to your home directory, type **cd**.
+   - To navigate to your home directory, type **cd**.
 
- - To list the files and folders in your current directory, type **ls**.
+   - To list the files and folders in your current directory, type **ls**.
 
- - To go into one of your listed directories, type **cd your_listed_directory**.
+   - To go into one of your listed directories, type **cd your_listed_directory**.
 
- - To go up one directory, type **cd** ..
+   - To go up one directory, type **cd** ..
 
 3. Type **git remote –v**, and press **Enter**. The configured remote repository for your fork is visible.
 
 4. Type **git remote add upstream**, and then paste the URL you had copied. Then, click **Enter**.
 
- - **$ git remote add upstream <<URL>>**
+   - **$ git remote add upstream <<URL>>**
 
 5. To verify the new upstream repository that you had specified for your fork, type **git remote -v** again. You should see the URL for your fork as **origin**, and the URL for the original repository as **upstream**.
 
@@ -150,21 +150,21 @@ Branching Information
 ---------------------
 Please note the below mentioned points.
 
-- As per the global naming convention, the Master branch is the Main branch.
+  - As per the global naming convention, the Master branch is the Main branch.
 
-- The Main branch represents the official history, and it must be deployable at any point of time. For every new feature that is being developed, the developer creates a new branch.
+  - The Main branch represents the official history, and it must be deployable at any point of time. For every new feature that is being developed, the developer creates a new branch.
 
-- At times, a single branch would be used to deliver a large feature, or prepare for a release.
+  - At times, a single branch would be used to deliver a large feature, or prepare for a release.
 
-- Before creating a branch, make sure that all the upstream changes from the main branch is maintained.
+  - Before creating a branch, make sure that all the upstream changes from the main branch is maintained.
 
-- Make sure that you are in the right branch before pulling the commits.
+  - Make sure that you are in the right branch before pulling the commits.
 
-- The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
+  - The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
 
   .. image:: images/Writer1.png
   
-- A new Git branch can be created from the current branch.
+  - A new Git branch can be created from the current branch.
 
   .. image:: images/Writer2.png
   
