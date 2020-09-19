@@ -14,19 +14,19 @@ VMware vSphere
 
 3. Use the **Browse** button to select the OVA file from your system. Click **Next** after the OVA file is selected.
 
-  .. image:: images/vSphere50.PNG
+   .. image:: images/vSphere50.PNG
 
 4. Enter a name for your VM and select the location where you want to deploy, then click **Next**.
 
-  .. image:: images/vSphere77.PNG
+   .. image:: images/vSphere77.PNG
 
 5. Select the resource that you want to use to run the virtual appliance. Then, click **Next**.
 
-  .. image:: images/vSphere13.PNG
+   .. image:: images/vSphere13.PNG
 
 6. Review the details and click **Next**.
 
-  .. image:: images/vSphere12.PNG
+   .. image:: images/vSphere12.PNG
 
 7. Select the desired storage location from the list of data stores. Then, click **Next**.
 
