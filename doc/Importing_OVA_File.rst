@@ -4,40 +4,6 @@ Importing OVA File
 
 Based on the hypervisor you use, refer the sections below to import an OVA file.
 
-******************
-VMware ESX Server
-******************
-
-1. Login to the VMware ESX server using vSphere client. 
-
-2. At the top, click **File**. A menu is displayed.
-
-3. Select **Deploy OVF Template...**. The **Deploy OVF Template** window is displayed. 
-
-4. Navigate to the location where the OVA file is placed in you system. Select the file and click **Next**. A window displaying the details appear.
-
-5. Click **Next** after verifying the details.
-
-6. Enter a name for your VM and click **Next**.
-
-7. Select the desired storage location from the available data stores using the following radio buttons.
-
- - **Thick Provision**
- 
- - **Thin Provision**
- 
-8. Select a network from the drop-down list for each interface, and click **Next**.
-
-  - One interface must be mapped to the management network
-
-  - One interface must be mapped to the private data network
-
-  - One interface must be mapped to the public data network
- 
- 9. Click **Finish** after reviewing your settings.
- 
- 10. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 3.
-
 ***************
 VMware vSphere
 ***************
@@ -105,6 +71,40 @@ Some host network adapters might need to be unselected to allow proper operation
  .. image:: images/WS3.PNG
 
 6. After the importing is complete, navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 3.
+
+******************
+VMware ESX Server
+******************
+
+1. Login to the VMware ESX server using vSphere client. 
+
+2. At the top, click **File**. A menu is displayed.
+
+3. Select **Deploy OVF Template...**. The **Deploy OVF Template** window is displayed. 
+
+4. Navigate to the location where the OVA file is placed in you system. Select the file and click **Next**. A window displaying the details appear.
+
+5. Click **Next** after verifying the details.
+
+6. Enter a name for your VM and click **Next**.
+
+7. Select the desired storage location from the available data stores using the following radio buttons.
+
+ - **Thick Provision**
+ 
+ - **Thin Provision**
+ 
+8. Select a network from the drop-down list for each interface, and click **Next**.
+
+  - One interface must be mapped to the management network
+
+  - One interface must be mapped to the private data network
+
+  - One interface must be mapped to the public data network
+ 
+ 9. Click **Finish** after reviewing your settings.
+ 
+ 10. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 3.
 
 **************
 VMware Fusion
