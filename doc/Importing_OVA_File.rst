@@ -102,9 +102,9 @@ VMware ESX Server
 
    - One interface must be mapped to the public data network
  
- 9. Click **Finish** after reviewing your settings.
+9.  Click **Finish** after reviewing your settings.
  
- 10. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 3.
+10. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 3.
 
 **************
 VMware Fusion
