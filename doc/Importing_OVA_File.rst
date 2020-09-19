@@ -60,6 +60,8 @@ VMware vSphere
 
 6. Review the details and click **Next**.
 
+  .. image:: images/vSphere12.PNG
+
 7. Select the desired storage location from the list of data stores. Then, click **Next**.
 
  - You can either choose **Thick** or **Thin**.
