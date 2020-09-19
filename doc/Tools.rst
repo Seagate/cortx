@@ -33,7 +33,7 @@ To create a GitHub account, perform the procedure below.
 
 5. Click **Create Account**. An email with a link to verify the created account would be sent to you.
 
- - Click the link to complete the verification process.
+   - Click the link to complete the verification process.
 
 Personal Access Token (PAT)
 ===========================
