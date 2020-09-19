@@ -148,38 +148,37 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     
 10. Configure DNS and DHCP server, if used, with the host names and IP addresses for each server.
 
-  - Each server should have FQDN assigned to it. The FQDN should be associated with the IP address of the management network interface.
+    - Each server should have FQDN assigned to it. The FQDN should be associated with the IP address of the management network interface.
 
-  - Configure IP addresses on Management and Public Data network interfaces on each server using one of the following methods:
+    - Configure IP addresses on Management and Public Data network interfaces on each server using one of the following methods:
 
-   - static IP addresses for each of the network interfaces
+    - static IP addresses for each of the network interfaces
 
-   - dynamic IP addresses for each of the network interfaces
+    - dynamic IP addresses for each of the network interfaces
 
-   **Important Notes**
+    **Important Notes**
 
-   - CORTX does not support IPv6. Only IPv4 is supported.
+    - CORTX does not support IPv6. Only IPv4 is supported.
 
-   - If you are using dynamic IP addresses, please map the MAC addresses of the respective interfaces to the IP address in the configuration of your DHCP server. This is required to avoid possible IP changes when the leases associated with DHCP expire.
+    - If you are using dynamic IP addresses, please map the MAC addresses of the respective interfaces to the IP address in the configuration of your DHCP server. This is required to avoid possible IP changes when the leases associated with DHCP expire.
 
-   - If DHCP server is used, ensure that DHCP server passes host names to the servers.
+    - If DHCP server is used, ensure that DHCP server passes host names to the servers.
 
-   - Do not configure DHCP to assign the IP address to the private data interfaces. This interface is configured by the CORTX software installer. By default, the configuration uses **192.168.0.0/24** subnet. This setting can be changed by providing necessary information in the config.ini file. For more information, move to step 12.
+    - Do not configure DHCP to assign the IP address to the private data interfaces. This interface is configured by the CORTX software installer. By default, the configuration uses **192.168.0.0/24** subnet. This setting can be changed by providing necessary information in the config.ini file. For more information, move to step 12.
 
-   You also need two static IPs to be used as Virtual IPs (VIPs). One VIP will be used as Management VIP and another VIP will be used as Cluster (Data) VIP.
+    You also need two static IPs to be used as Virtual IPs (VIPs). One VIP will be used as Management VIP and another VIP will be used as Cluster (Data) VIP.
 
-   - The Management VIP should be from the same subnet as the rest of the Management network IPs.
+    - The Management VIP should be from the same subnet as the rest of the Management network IPs.
 
-   - The Cluster (Data) VIP should be from the same subnet as the rest of the Public Data network IPs.
+    - The Cluster (Data) VIP should be from the same subnet as the rest of the Public Data network IPs.
 
-   **Notes**
+    **Notes**
  
-   - VIPs utilize CLUSTERIP ip tables module that relies on multicast. For CORTX to function appropriately, multicasts should be allowed for Management and Public Data networks.
+    - VIPs utilize CLUSTERIP ip tables module that relies on multicast. For CORTX to function appropriately, multicasts should be allowed for Management and Public Data networks.
 
+    - These static IPs are required regardless of whether DHCP is used to provide IP addresses for each server interface or not.
 
-   - These static IPs are required regardless of whether DHCP is used to provide IP addresses for each server interface or not.
-
-   - You must configure DNS resolution for these VIPs.
+    - You must configure DNS resolution for these VIPs.
    
 11. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <Configuration_File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
 
