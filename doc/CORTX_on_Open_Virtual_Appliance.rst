@@ -64,57 +64,20 @@ The procedure to install CORTX on OVA is mentioned below.
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
 
-8. Update **/etc/hosts** with the management IP address and the new hostname for the OVA. In the same file, update the line that contains **s3.seagate.com** with the IP address of the public data interface. Do not remove or rename hostnames in this line.
 
-9. Edit **/root/.ssh/config** and update the following with the new hostname for the OVA.
+8. Set the **Network Translation Address** (NAT) in the hypervisor settings for the imported OVA. Refer to `Importing OVA <Importing_OVA_File.rst>`_.
 
-    * **Host srvnode-1 <new_hostname>**
-  
-    * **HostName <new_hostname>**
-  
-  **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it is required for the proper functioning of OVA.
+9. Bring up the OVA by running the below mentioned script.
 
-10. Refresh HAproxy configuration by running the following command.
-
-    * **Note**: Please keep **srvnode-1** in the Host field. This is an internal name and it's required for the proper functioning of VA.
-
-    * **salt "*" saltutil.pillar_refresh**
-  
-    * **salt "*" state.apply components.ha.haproxy.config**
-  
-    * **salt "*" state.apply components.ha.haproxy.start**
-  
-11. Restart lnet by running the following command.
-
-    * **systemctl restart lnet**
-  
-12. Run the following command:
-
-   * **hctl bootstrap --mkfs /var/lib/hare/cluster.yaml**
-
-   Note: You must run the above command with **--mkfs** only once. Further usage of **--mkfs** erases data.
-
-13. Ensure that the I/O stack is running by running the following command:
-
-   * **hctl status**
-
-14. Ensure that the CSM service is operational by running the following commands:
-
-   * **systemctl status csm_agent**
-   * **systemctl status csm_web**
-
-   * If the above services are not active, run the following command:
-
-    * **systemctl start <csm_agent|csm_web>**
-  
-14. Open the web browser and navigate to the following location:
+ - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
+ 
+10. Open the web browser and navigate to the following location:
 
    * **https://<management IP>:28100/#/preboarding/welcome**
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
-15. Refer to `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process.
-
+11. Refer to `Onboarding into CORTX <Preaboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
   
@@ -165,24 +128,6 @@ Starting the OVA
 
 2. Login to the OVA through ssh after the VM starts.
 
-3. Login to the CORTX OVA as **cortx** and run the following.
+3. Bring up the OVA by running the below mentioned script.
 
-   * **sudo su -**
-
-4. Start CORTX I/O subsystem by running the following command.
-
-   * **hctl bootstrap -c /var/lib/hare/**
-
-5. Run the below mentioned command to verify that CORTX I/O subsystem has started.
-
-   * **hctl status** 
-
-6. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
-
-   * **systemctl status csm_agent**
-
-   * **systemctl status csm_web**
-
-   * If the above services are not active, run the following command.
-
-      * **systemctl start <csm_agent|csm_web>**
+ - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
