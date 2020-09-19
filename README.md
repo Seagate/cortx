@@ -60,4 +60,4 @@ Thank You!
 
 We thank you for stopping by to check out the CORTX Community. We are fully dedicated to our mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world.
 
-**CORTX is 100% Open Source.** Most of the project is licensed under the [Apache 2.0 License](../main/LICENSE) and the rest is under LGPLv3; check the specific License file for each submodule to determine which is which.
+**CORTX is 100% Open Source.** Most of the project is licensed under the [Apache 2.0 License](../main/LICENSE) and the rest is under AGPLv3; check the specific License file for each submodule to determine which is which.

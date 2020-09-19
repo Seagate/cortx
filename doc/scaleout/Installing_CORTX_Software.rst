@@ -10,23 +10,25 @@ This section provides information on the installation of Provisioner and the ass
 
 3. Run the below mentioned command to install the CORTX Provisioner API.
 
-  ::
+   ::
 
     pip install https://github.com/Seagate/provisioner-test/releases/download/cortx-api-v0.33.0/cortx-prvsnr-0.33.0.tar.gz
+    
+**Note**: If you installed Python 3.6 without the virtual environment, replace **pip** command with **pip3**.
 
 4. Run the below mentioned commands to install the cluster. The approximate time taken is 40 minutes.
 
-  ::
+   ::
 
-   provisioner setup_jbod --source iso --iso-cortx <path_to_CORTX_ISO> \
-    --iso-cortx-deps <path_to_3rd_party_ISO> \
-    --ha --logfile --logfile-filename <path_to_logfile> \
-    --config-path <path_to_config.ini> srvnode-1:<server-1_fqdn> \
-    srvnode-2:<server-2_fqdn> srvnode-3:<server-3_fqdn>
+    provisioner setup_jbod --source iso --iso-cortx <path_to_CORTX_ISO> \
+     --iso-cortx-deps <path_to_3rd_party_ISO> \
+     --ha --logfile --logfile-filename <path_to_logfile> \
+     --config-path <path_to_config.ini> srvnode-1:<server-1_fqdn> \
+     srvnode-2:<server-2_fqdn> srvnode-3:<server-3_fqdn>
 
-  where
+   where
 
-  ::
+   ::
 
     --source            Installation source (only ISO files are supported at the moment)
     --iso-cortx         Path to CORTX ISO location
@@ -39,14 +41,16 @@ This section provides information on the installation of Provisioner and the ass
     srvnode-2:<host>    FQDN of server-2
     srvnode-3:<host>    FQDN of server-3
 
-  For example:
+For example:
 
-  ::
+::
 
-   provisioner setup_jbod --source iso --iso-cortx /root/cortx.iso \
-    --iso-cortx-deps /root/prereqs.iso --ha --logfile \
-    --logfile-filename ./setup.log --config-path config.ini \
-    srvnode-1:srv1.test.com srvnode-2:srv2.test.com srvnode-3:srv3.test.com
+ provisioner setup_jbod --source iso --iso-cortx /root/cortx.iso \
+   --iso-cortx-deps /root/prereqs.iso --ha --logfile \
+   --logfile-filename ./setup.log --config-path config.ini \
+   srvnode-1:srv1.test.com srvnode-2:srv2.test.com srvnode-3:srv3.test.com
+    
+**Note**: You will be prompted for the root password of each server.
 
 5. Run the below mentioned commands to verify that the dependency components are installed successfully.
 
@@ -64,7 +68,7 @@ This section provides information on the installation of Provisioner and the ass
 
     lfs --version
 
- The output of these commands should match the following:
+The output of these commands should match the following:
 
 +---------------+-----------------------------------------------------+
 | **Component** |                 **Expected output**                 |

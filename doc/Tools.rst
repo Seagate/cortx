@@ -14,25 +14,26 @@ To create a GitHub account, perform the procedure below.
 
 2. Enter relevant information in the following fields:
 
- - **Username** – Your Username
+   * **Username** – Your Username
 
- - **Email** - Your email address
+   * **Email** - Your email address
 
- - **Password** - Ensure that the password meets either of the following two conditions:
+   * **Password** - Ensure that the password meets either of the following two conditions:
 
-                      - The word must include at least 15 characters
-                      - The word must include at least 8 characters. One numeric value and a   letter in lower case is mandatory.
+     - The word must include at least 15 characters
+                    
+     - The word must include at least 8 characters. One numeric value and a   letter in lower case is mandatory.
 
 3. Under **Email preferences**, select the **Send me occasional product updates, announcements, and offers** check box. This is an optional step.
 
 4. Under the **Verify your account** section, click **Verify**.
 
- 1. Using the arrows, rotate the image to achieve accuracy.
- 2. Click **Done** after you ensure that the image is accurately positioned.
+   1. Using the arrows, rotate the image to achieve accuracy.
+   2. Click **Done** after you ensure that the image is accurately positioned.
 
 5. Click **Create Account**. An email with a link to verify the created account would be sent to you.
 
- - Click the link to complete the verification process.
+   - Click the link to complete the verification process.
 
 Personal Access Token (PAT)
 ===========================
@@ -118,7 +119,9 @@ To clone a repository, perform the procedure below.
 
 6. Type **git clone**, and then paste the URL you copied earlier. It will look like this, with your GitHub username instead of **YOUR-USERNAME**.
 
-  - **$ git clone https://github.com/YOUR-USERNAME/repository name**
+   ::
+  
+    $ git clone https://github.com/YOUR-USERNAME/repository name
 
 7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
 
@@ -130,19 +133,19 @@ To configure Git to sync with the fork, perform the following:
 
 2. Change directories to the location of the fork you cloned in the earlier procedure.
 
- - To navigate to your home directory, type **cd**.
+   - To navigate to your home directory, type **cd**.
 
- - To list the files and folders in your current directory, type **ls**.
+   - To list the files and folders in your current directory, type **ls**.
 
- - To go into one of your listed directories, type **cd your_listed_directory**.
+   - To go into one of your listed directories, type **cd your_listed_directory**.
 
- - To go up one directory, type **cd** ..
+   - To go up one directory, type **cd** ..
 
 3. Type **git remote –v**, and press **Enter**. The configured remote repository for your fork is visible.
 
 4. Type **git remote add upstream**, and then paste the URL you had copied. Then, click **Enter**.
 
- - **$ git remote add upstream <<URL>>**
+   - **$ git remote add upstream <<URL>>**
 
 5. To verify the new upstream repository that you had specified for your fork, type **git remote -v** again. You should see the URL for your fork as **origin**, and the URL for the original repository as **upstream**.
 
@@ -162,47 +165,49 @@ Please note the below mentioned points.
 
 - The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
 
-  .. image:: images/Writer1.png
-  
 - A new Git branch can be created from the current branch.
-
-  .. image:: images/Writer2.png
-  
-  
+    
 Code Changes and GIT Commands
 -----------------------------
-
 - Make your code changes, and commit.
 
- - When main is the branch, and is ready to pull the updates:
+  - When main is the branch, and is ready to pull the updates:
 
-  - **$ git pull origin main**
+    ::
+    
+     $ git pull origin main
 
- - You may have to run the following:
+  - You may have to run the following:
 
-  - **$ git pull origin/feature_x** 
+    ::
+  
+     $ git pull origin/feature_x
  
- .. image:: images/Writer3.png
- 
-- The Git pull command merges the git fetch and git merge commands.
+  - The Git pull command merges the git fetch and git merge commands.
 
 - With each commit, there would be additions and deletions. The following command provides an updated list of files.
 
- - **$ git status**
+  ::
+ 
+   $ git status
 
 - Run the following command from root of the project to add files individually or in bulk.
 
- - **$ git add**
+  ::
+  
+   $ git add
 
 - Run the following command to address additions and deletions.
 
- - **$ git add –all**
+  ::
+  
+   $ git add –all
 
 - When the updates are presented differently, under the heading of Changes to be committed, run the following:
 
- - **$ git commit -m "<type>(<scope>): <subject>"**
- 
- .. image:: images/Writer4.png
+  ::
+   
+   $ git commit -m "<type>(<scope>): <subject>"
  
 Pushing your Branch
 -------------------
@@ -211,15 +216,16 @@ To push the new dev branch to the remote repo, perform the following:
 
 1. Configure Git to always push using the current branch.
 
- - **$ git config --global push.default current**
+   ::
+   
+    $ git config --global push.default current
 
 2. Push a local branch to a different remote branch.
 
- - **$ git push origin <local_branch>:<remote_branch>**
- 
- .. image:: images/Writer5.png
- 
- 
+   ::
+   
+    $ git push origin <local_branch>:<remote_branch>
+   
 Pull Request
 ------------
 To create a pull request on GitHub, navigate to the main page of the respective repository, and perform the following:
@@ -235,10 +241,10 @@ Rebasing
 --------
 Rebasing ensures that you have the latest version of main. The procedure is detailed below.
 
- 1. Consume the commits from your dev branch.
- 2. Temporarily unset them
- 3. Move to the newest head of the main branch
- 4. Commit them again
+1. Consume the commits from your dev branch.
+2. Temporarily unset them
+3. Move to the newest head of the main branch
+4. Commit them again
 
 **Note**: If there are no issues, conflicts would not occur.
 
@@ -265,12 +271,12 @@ You can use Codacy by performing the below mentioned procedure.
 2. Scroll down the page until you reach the **README** section.
 3. Under the **README** section, click the **code quality** tab. The **Dashboard** of the Codacy portal is displayed. You can view the following information:
 
- - Graphical representation of the repository certification
- - Commits made in your repository
- - Issues reported in your repository
- - Files associated with your repository
- - Pull requests raised in your repository
- - Security status of different parameters
+   - Graphical representation of the repository certification
+   - Commits made in your repository
+   - Issues reported in your repository
+   - Files associated with your repository
+   - Pull requests raised in your repository
+   - Security status of different parameters
  
 ********************************
 Developer Certificate of Origin
@@ -304,18 +310,12 @@ By making a contribution to this project, I certify that:
 
 You must sign off that you adhere to the above requirements, by pre-fixing **Signed-off-by** to the commit messages.
 
- - **Signed-off-by**: Random J Developer `random@developer.example.org <mailto:random@developer.example.org>`_
+- **Signed-off-by**: Random J Developer `random@developer.example.org <mailto:random@developer.example.org>`_
 
- In Command Line Interface (CLI), you can add **–s** to append automatically.
+In Command Line Interface (CLI), you can add **–s** to append automatically.
 
- - **$ git commit -s -m 'This is my commit message'** 
+- **$ git commit -s -m 'This is my commit message'** 
 
- Usage of hooks will help if you have the tendency to forget adding **-s**. To know more about this, refer `https://lubomir.github.io/en/2016-05-04-signoff-hooks.html <https://lubomir.github.io/en/2016-05-04-signoff-hooks.html>`_
+Usage of hooks will help if you have the tendency to forget adding **-s**. To know more about this, refer `https://lubomir.github.io/en/2016-05-04-signoff-hooks.html <https://lubomir.github.io/en/2016-05-04-signoff-hooks.html>`_
  
- To know more about DCO and CLA, refer `DCO and CLA <https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md>`_.
-
-
- 
- 
- 
-
+To know more about DCO and CLA, refer `DCO and CLA <https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md>`_.

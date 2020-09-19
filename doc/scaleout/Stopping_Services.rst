@@ -6,13 +6,13 @@ Run the below mentioned commands in the order of listing to stop the relevant se
 
 - CSM
   
-   As you know the node on which CSM is running, run the following commands.
+  As you know the node on which CSM is running, run the following commands.
 
   ::
      
    salt '<Node Name>' cmd.run systemctl stop csm_web
    
-   salt '<Node Name>' cmd.run systemctl stop csm_web
+   salt '<Node Name>' cmd.run systemctl stop csm_agent
    
    
 - SSPL
@@ -54,13 +54,13 @@ Run the below mentioned commands in the order of listing to stop the relevant se
    
 - Statsd and Kibana
 
-     As you know the nodes on which statsd and kibana are running, run the following commands.
+  As you know the nodes on which statsd and kibana are running, run the following commands.
 
-     ::
+  ::
   
-      salt '<Node Name>' cmd.run systemctl stop statsd
+   salt '<Node Name>' cmd.run systemctl stop statsd
    
-      salt '<Node Name>' cmd.run systemctl stop kibana
+   salt '<Node Name>' cmd.run systemctl stop kibana
    
 - Elasticsearch
 
