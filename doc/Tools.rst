@@ -182,9 +182,11 @@ Code Changes and GIT Commands
     
      $ git pull origin main
 
- - You may have to run the following:
+  - You may have to run the following:
 
-  - **$ git pull origin/feature_x** 
+    ::
+  
+     $ git pull origin/feature_x
  
  .. image:: images/Writer3.png
  
