@@ -64,18 +64,20 @@ The procedure to install CORTX on OVA is mentioned below.
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
 
-8. Set the **Network Translation Address** NAT for the new VM, by running the script that is present in the following location.
+
+8. Set the **Network Translation Address** (NAT) in the Hypervisor settings for the imported OVA.
+
+9. Bring up the OVA by running the below mentioned script.
 
  - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
  
-9. Open the web browser and navigate to the following location:
+10. Open the web browser and navigate to the following location:
 
    * **https://<management IP>:28100/#/preboarding/welcome**
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
-10. Refer to `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process.
-
+11. Refer to `Onboarding into CORTX <Onboarding.rst>`_ to execute the onboarding process.
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
   
@@ -126,24 +128,6 @@ Starting the OVA
 
 2. Login to the OVA through ssh after the VM starts.
 
-3. Login to the CORTX OVA as **cortx** and run the following.
+3. Bring up the OVA by running the below mentioned script.
 
-   * **sudo su -**
-
-4. Start CORTX I/O subsystem by running the following command.
-
-   * **hctl bootstrap -c /var/lib/hare/**
-
-5. Run the below mentioned command to verify that CORTX I/O subsystem has started.
-
-   * **hctl status** 
-
-6. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
-
-   * **systemctl status csm_agent**
-
-   * **systemctl status csm_web**
-
-   * If the above services are not active, run the following command.
-
-      * **systemctl start <csm_agent|csm_web>**
+ - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
