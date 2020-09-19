@@ -102,6 +102,8 @@ Some host network adapters might need to be unselected to allow proper operation
 
 5. Click **Import**. The process of importing the VM gets started.
 
+ .. image:: images/WS3.PNG
+
 6. After the importing is complete, navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 3.
 
 **************
