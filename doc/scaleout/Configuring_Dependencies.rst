@@ -135,7 +135,7 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
    olcSpSessionLog: 100 
 
 
-  **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif**
+**command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif**
  
 4. Push the **Config.ldif** file.
 
@@ -221,8 +221,7 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
 
    olcMirrorMode: TRUE
         
-
-  **command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif**
+**command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif**
         
 Perform the following steps on only one node. In this case, it must be performed on the primary node.
 
@@ -334,7 +333,7 @@ Perform the following steps on only one node. In this case, it must be performed
 
 **command to add - ldapmodify -Y EXTERNAL -H ldapi:/// -f data.ldif**
 
-   **Note**: Update the host name in the provider field in data.ldif before running the command.
+**Note**: Update the host name in the provider field in data.ldif before running the command.
 
 RabbitMQ
 ========
