@@ -30,6 +30,8 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
     
 - Infiniband and OmniPath adapters are not supported.
   
+  
+  
   - **JBOD Reference Configuration**
 
     - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server. The minimum size of the JBOD disk is 2TB.
@@ -38,15 +40,15 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
     - The CORTX software requires 3 separate networks. The networks could be physically separate (connected to different switches) or separate VLANs. We recommend you to physically separate the management and data networks.
 
-+--------------------------+---------------------------------------------+
-| **Network name/purpose** | **Corresponding NIC**                       |
-+--------------------------+---------------------------------------------+
-| Management network       | connected to the 1 GbE NIC                  |
-+--------------------------+---------------------------------------------+
-| Public Data network      | connected to the one of the high-speed NICs |
-+--------------------------+---------------------------------------------+
-| Private Data network     | connected to another high-speed NIC         |
-+--------------------------+---------------------------------------------+
+      +--------------------------+---------------------------------------------+
+      | **Network name/purpose** | **Corresponding NIC**                       |
+      +--------------------------+---------------------------------------------+
+      | Management network       | connected to the 1 GbE NIC                  |
+      +--------------------------+---------------------------------------------+
+      | Public Data network      | connected to the one of the high-speed NICs |
+      +--------------------------+---------------------------------------------+
+      | Private Data network     | connected to another high-speed NIC         |
+      +--------------------------+---------------------------------------------+
 
 2. Connect the servers to the networks and the JBODs as per the guidelines provided above.
 
