@@ -4,7 +4,8 @@ Preboarding Process
 
 Perform the below mentioned to complete the preboarding process. The below mentioned steps can be performed only once.
 
-1. Navigate to 
+1. Navigate to the *https://<management IP>:28100/#/preboarding/login*.
+
 2. Accept the End User License Agree (EULA).
 
 3. Create a user with admin privileges.
