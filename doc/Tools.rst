@@ -87,9 +87,9 @@ Setting up the Git Config
 -------------------------
 To perform the Git configuration, use the following:
 
-  - **$ git config --global user.name ‘Your Name’**
+- **$ git config --global user.name ‘Your Name’**
 
-  - **$ git config --global user.email ‘Your.Name@yourdomain.com’**
+- **$ git config --global user.email ‘Your.Name@yourdomain.com’**
 
 Forking a Repository
 --------------------
@@ -151,21 +151,21 @@ Branching Information
 ---------------------
 Please note the below mentioned points.
 
-  - As per the global naming convention, the Master branch is the Main branch.
+- As per the global naming convention, the Master branch is the Main branch.
 
-  - The Main branch represents the official history, and it must be deployable at any point of time. For every new feature that is being developed, the developer creates a new branch.
+- The Main branch represents the official history, and it must be deployable at any point of time. For every new feature that is being developed, the developer creates a new branch.
 
-  - At times, a single branch would be used to deliver a large feature, or prepare for a release.
+- At times, a single branch would be used to deliver a large feature, or prepare for a release.
 
-  - Before creating a branch, make sure that all the upstream changes from the main branch is maintained.
+- Before creating a branch, make sure that all the upstream changes from the main branch is maintained.
 
-  - Make sure that you are in the right branch before pulling the commits.
+- Make sure that you are in the right branch before pulling the commits.
 
-  - The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
+- The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
 
   .. image:: images/Writer1.png
   
-  - A new Git branch can be created from the current branch.
+- A new Git branch can be created from the current branch.
 
   .. image:: images/Writer2.png
   
