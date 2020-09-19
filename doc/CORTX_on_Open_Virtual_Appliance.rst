@@ -65,7 +65,7 @@ The procedure to install CORTX on OVA is mentioned below.
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
 
 
-8. Set the **Network Translation Address** (NAT) in the Hypervisor settings for the imported OVA.
+8. Set the **Network Translation Address** (NAT) in the hypervisor settings for the imported OVA. Refer to `Importing OVA <Importing_OVA_File.rst>`_.
 
 9. Bring up the OVA by running the below mentioned script.
 
