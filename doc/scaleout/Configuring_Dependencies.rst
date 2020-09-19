@@ -345,9 +345,9 @@ Prerequisites
 
 - Run the below mentioned script to avoid RMQ processor related errors.
 
-   ::
+  ::
 
-    python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt 
+   python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt 
 
 - Ensure that rabbitmq server, provisioner, and sspl RPMs must be installed.
 
@@ -365,34 +365,34 @@ Prerequisites
 
 - The **erlang.cookie** file must be available. Run the following command to check the availability.
 
-   ::
+  ::
 
-    cat /var/lib/rabbitmq/.erlang.cookie
+   cat /var/lib/rabbitmq/.erlang.cookie
  
 Configuration
 -------------
 1. Start the RabbitMQ server.
 2. Run the below mentioned commands to setup the RabbitMQ cluster.
 
- - Setting a single (current) node as cluster
+   - Setting a single (current) node as cluster
  
    ::
    
     /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster
    
- - Setting 2 nodes
+   - Setting 2 nodes
  
    ::
    
     /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster -n NODES
     
-   **Note**: -n NODES where NODES must be FQDN of the respective nodes and separated by comma. For example, -n ssc-vm-2104,ssc-vm-176 
+ **Note**: -n NODES where NODES must be FQDN of the respective nodes and separated by comma. For example, -n ssc-vm-2104,ssc-vm-176 
  
 Run the below mentioned command to check the status of the RabbitMQ cluster.
 
- ::
+::
 
-  rabbitmqctl cluster_status
+ rabbitmqctl cluster_status
  
 
 
