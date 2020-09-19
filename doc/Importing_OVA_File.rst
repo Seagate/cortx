@@ -90,17 +90,17 @@ VMware ESX Server
 
 7. Select the desired storage location from the available data stores using the following radio buttons.
 
- - **Thick Provision**
+   - **Thick Provision**
  
- - **Thin Provision**
+   - **Thin Provision**
  
 8. Select a network from the drop-down list for each interface, and click **Next**.
 
-  - One interface must be mapped to the management network
+   - One interface must be mapped to the management network
 
-  - One interface must be mapped to the private data network
+   - One interface must be mapped to the private data network
 
-  - One interface must be mapped to the public data network
+   - One interface must be mapped to the public data network
  
  9. Click **Finish** after reviewing your settings.
  
