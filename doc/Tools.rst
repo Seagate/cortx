@@ -20,9 +20,9 @@ To create a GitHub account, perform the procedure below.
 
    * **Password** - Ensure that the password meets either of the following two conditions:
 
-                    * The word must include at least 15 characters
+     - The word must include at least 15 characters
                     
-                    * The word must include at least 8 characters. One numeric value and a   letter in lower case is mandatory.
+     - The word must include at least 8 characters. One numeric value and a   letter in lower case is mandatory.
 
 3. Under **Email preferences**, select the **Send me occasional product updates, announcements, and offers** check box. This is an optional step.
 
