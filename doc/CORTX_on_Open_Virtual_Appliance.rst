@@ -81,21 +81,21 @@ The procedure to install CORTX on OVA is mentioned below.
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
   
- +----------------------+-------------------+---------------------------------------------+
- |    **Port number**   |   **Protocols**   |   **Destination network (on VA)**           |
- +----------------------+-------------------+---------------------------------------------+
- |          22          |        TCP        |           Management network                |
- +----------------------+-------------------+---------------------------------------------+ 
- |          53          |      TCP/UDP      | Management network and Public Data network  |
- +----------------------+-------------------+---------------------------------------------+ 
- |         123          |      TCP/UDP      |              Management network             |
- +----------------------+-------------------+---------------------------------------------+
- |         443          |       HTTPS       |             Public Data network             |
- +----------------------+-------------------+---------------------------------------------+
- |         9443         |       HTTPS       |              Public Data network            |
- +----------------------+-------------------+---------------------------------------------+
- |         28100        |   TCP (HTTPS)     |              Management network             |
- +----------------------+-------------------+---------------------------------------------+
++----------------------+-------------------+---------------------------------------------+
+|    **Port number**   |   **Protocols**   |   **Destination network (on VA)**           |
++----------------------+-------------------+---------------------------------------------+
+|          22          |        TCP        |           Management network                |
++----------------------+-------------------+---------------------------------------------+ 
+|          53          |      TCP/UDP      | Management network and Public Data network  |
++----------------------+-------------------+---------------------------------------------+ 
+|         123          |      TCP/UDP      |              Management network             |
++----------------------+-------------------+---------------------------------------------+
+|         443          |       HTTPS       |             Public Data network             |
++----------------------+-------------------+---------------------------------------------+
+|         9443         |       HTTPS       |              Public Data network            |
++----------------------+-------------------+---------------------------------------------+
+|         28100        |   TCP (HTTPS)     |              Management network             |
++----------------------+-------------------+---------------------------------------------+
 
 Restarting CORTX OVA
 ====================
@@ -130,4 +130,4 @@ Starting the OVA
 
 3. Bring up the OVA by running the below mentioned script.
 
- - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
+   - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
