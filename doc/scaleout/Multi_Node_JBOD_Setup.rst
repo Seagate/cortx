@@ -22,7 +22,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
        - SCSI HBA with external ports (to connect to JBOD)
 
-   **Notes**
+  **Notes**
 
   - The minimum number of network ports per server is 3.
 
