@@ -378,11 +378,11 @@ Prerequisites
     
      ls -l /var/lib/rabbitmq/.erlang.cookie
      
-   - To copy the file to all nodes
+  - To copy the file to all nodes
    
-     ::
+    ::
      
-      salt-cp "*" /var/lib/rabbitmq/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie --hard-crash
+     salt-cp "*" /var/lib/rabbitmq/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie --hard-crash
   
 
 Starting Service
