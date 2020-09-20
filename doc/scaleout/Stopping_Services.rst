@@ -10,25 +10,25 @@ Run the below mentioned commands in the order of listing to stop the relevant se
 
   ::
      
-   salt '<Node Name>' cmd.run systemctl stop csm_web
+   salt '<Node Name>' cmd.run "systemctl stop csm_web"
    
-   salt '<Node Name>' cmd.run systemctl stop csm_agent
+   salt '<Node Name>' cmd.run "systemctl stop csm_agent"
    
    
 - SSPL
 
   :: 
 
-   salt '*' cmd.run systemctl stop sspl-ll
+   salt '*' cmd.run "systemctl stop sspl-ll"
    
 
 - S3 (AuthServer and HAProxy)
 
   ::
 
-   salt '*' cmd.run systemctl stop haproxy
+   salt '*' cmd.run "systemctl stop haproxy"
    
-   salt '*' cmd.run systemctl stop s3authserver
+   salt '*' cmd.run "systemctl stop s3authserver"
 
       
 - I/O Stack
@@ -49,7 +49,7 @@ Run the below mentioned commands in the order of listing to stop the relevant se
 
   ::
 
-   salt '*' cmd.run systemctl stop slapd
+   salt '*' cmd.run "systemctl stop slapd"
    
    
 - Statsd and Kibana
@@ -58,12 +58,12 @@ Run the below mentioned commands in the order of listing to stop the relevant se
 
   ::
   
-   salt '<Node Name>' cmd.run systemctl stop statsd
+   salt '<Node Name>' cmd.run "systemctl stop statsd"
    
-   salt '<Node Name>' cmd.run systemctl stop kibana
+   salt '<Node Name>' cmd.run "systemctl stop kibana"
    
 - Elasticsearch
 
   ::
   
-   salt '*' cmd.run systemctl stop elasticsearch
+   salt '*' cmd.run "systemctl stop elasticsearch"
