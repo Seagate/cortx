@@ -10,15 +10,24 @@ Perform the below mentioned procedure to configure the I/O stack.
    
     m0provision config
 
-2. Define the SNS pool config in cluster.yaml file. Refer below.
+2. Define the SNS pool configuration in the cluster.yaml file. Refer below.
 
    ::
    
     pools:
       - name: the pool
-    
-    
-    
+        type: sns
+        data_units: 8  # N
+        parity_units: 2  # K
+        allowed_failures: { site: 0, rack: 0, encl: 0, ctrl: 0, disk: 2 }
+      - name: MD pool
+        type: md
+        data_units: 1
+        parity_units: 1
+      - name: DIX pool
+        type: dix
+        data_units: 1
+        parity_units: 1   
 
 3. Run the below mentioned command to bootstrap the cluster.
 
@@ -28,7 +37,7 @@ Perform the below mentioned procedure to configure the I/O stack.
 
    **Note**: This command must be used with **mkfs** only while running it for the first time. 
 
-3. Verify the motr utility m0crate, by creating a sample m0crate workload file and running m0crate workload. Run the below mentioned commands.
+4. Verify the motr utility m0crate, by creating a sample m0crate workload file and running m0crate workload. Run the below mentioned commands.
 
    ::
 
