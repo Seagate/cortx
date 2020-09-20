@@ -475,6 +475,7 @@ In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst
 
 ::
 
+ [Unit]
  Description=Kibana
  
  [Service] 
@@ -492,7 +493,8 @@ In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst
  Restart=always 
  WorkingDirectory=/ 
 
-  [Install] WantedBy=multi-user.target
+ [Install] 
+ WantedBy=multi-user.target
   
 2. Reload the daemon by running the following command.
 
