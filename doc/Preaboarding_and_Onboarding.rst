@@ -42,4 +42,4 @@ Perform the below mentioned procedure to onboard into CORTX. The below mentioned
 
 6. Configure the notifications by selecting the checkbox. If you do not want to receive notifications, select **Skip this step**, and click **Next**.
 
-7. Click **Finish**. CORTX is now ready for use.
+7. Click **Finish**. CORTX is now ready for use. CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
