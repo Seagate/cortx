@@ -10,7 +10,17 @@ Perform the below mentioned procedure to configure the I/O stack.
    
     m0provision config
 
-2. Run the below mentioned command to bootstrap the cluster.
+2. Define the SNS pool config in cluster.yaml file. Refer below.
+
+   ::
+   
+    pools:
+      - name: the pool
+    
+    
+    
+
+3. Run the below mentioned command to bootstrap the cluster.
 
    ::
 
