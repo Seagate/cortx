@@ -25,7 +25,13 @@ This command must be used with **mkfs** only while running it for the first time
     /opt/seagate/cortx/hare/libexec/m0crate-io-conf > /tmp/m0crate-io.yaml
 
     m0crate -S /tmp/m0crate-io.yaml
+    
+Run the below mentioned command to shutdown the cluster.
 
+::
+
+ hctl shutdown
+ 
 Run the below mentioned command to start the cluster. This command is applicable if the cluster was shutdown. 
 
 ::
