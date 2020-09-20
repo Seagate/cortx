@@ -362,11 +362,13 @@ Prerequisites
    rabbitmq-server-xxxxxxxxxxxxxxxxxx
 
 
-- The **erlang.cookie** file must be available. Run the following command to check the availability.
+- The **erlang.cookie** file must be available. Run the below mentioned commands.
 
-  ::
+  - Generating the file
 
-   cat /var/lib/rabbitmq/.erlang.cookie
+    ::
+
+     systemctl start rabbitmq-server
   
 
 Starting Service
