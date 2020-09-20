@@ -14,7 +14,7 @@ Perform the below mentioned procedure to configure the I/O stack.
 
    ::
 
-    hctl bootstrap --mkfs cluster.yaml
+    hctl bootstrap --mkfs /var/lib/hare/cluster.yaml
 
 This command must be used with **mkfs** only while running it for the first time. 
 
