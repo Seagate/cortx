@@ -61,6 +61,8 @@ For example:
     slapd -V
 
     /usr/share/elasticsearch/bin/elasticsearch --version**
+    
+    salt "*" service.start rabbitmq-server
 
     rabbitmqadmin --version
 
