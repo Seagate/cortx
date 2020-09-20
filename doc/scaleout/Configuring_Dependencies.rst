@@ -407,6 +407,13 @@ Run the below mentioned command to know the status.
 Configuration
 -------------
 1. Start the RabbitMQ server.
+
+2. Run the below mentioned command.
+
+   ::
+   
+    salt "*" pip.install python-consul bin_env="/usr/bin/pip3"
+    
 2. Run the below mentioned commands to setup the RabbitMQ cluster.
 
    - Setting a single (current) node as cluster
@@ -415,11 +422,11 @@ Configuration
    
     /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster
    
-   - Setting 2 nodes
+   - Setting 3 nodes
  
    ::
    
-    /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster -n NODES
+    /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster -n srvnode-1,srvnode-2,srvnode-3
     
 **Note**: -n NODES where NODES must be FQDN of the respective nodes and separated by comma. For example, -n ssc-vm-2104,ssc-vm-176 
  
@@ -427,7 +434,7 @@ Run the below mentioned command to check the status of the RabbitMQ cluster.
 
 ::
 
- rabbitmqctl cluster_status
+ salt "*" cmd.run "rabbitmqctl cluster_status"
  
 
 Statsd and Kibana
