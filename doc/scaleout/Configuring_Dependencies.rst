@@ -385,19 +385,14 @@ Prerequisites
      salt-cp "*" /var/lib/rabbitmq/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie --hard-crash
   
 
-Starting Service
------------------
-- Run the below mentioned command to start the server.
-
-  ::
-
-   systemctl start rabbitmq-server
+Restarting Service
+------------------
 
 - Run the below mentioned command to restart the server.
 
   ::
 
-   systemctl restart rabbitmq-server
+   salt "*" service.restart rabbitmq-server
 
 Run the below mentioned command to know the status.
 
