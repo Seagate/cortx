@@ -24,9 +24,9 @@ Onboarding into CORTX
 
 Perform the below mentioned procedure to onboard into CORTX. The below mentioned steps can be performed multiple times, by accessing to the URL *https://<management IP>:28100/#/preboarding/login* or from the **Settings** page on the CSM GUI.
 
-1. Enter a name for your appliance in the **Appliance Name** field.
+1. After being prompted, login again with the username and password that you had provided earlier.
 
-2. After being prompted, login again with the username and password that you provided in step 2.
+2. Enter a name for your appliance in the **Appliance Name** field.
 
 3. Upload the SSL certificate. If you do not upload a certificate, a default self-signed certificate provided by Seagate will be used.
 
