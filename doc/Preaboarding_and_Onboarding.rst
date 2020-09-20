@@ -22,7 +22,7 @@ Perform the below mentioned to complete the preboarding process. The below menti
 Onboarding into CORTX
 ======================
 
-Perform the below mentioned procedure to onboard into CORTX. The below mentioned steps can be performed multiple times.
+Perform the below mentioned procedure to onboard into CORTX. The below mentioned steps can be performed multiple times, by accessing to the URL *https://<management IP>:28100/#/preboarding/login* or from the **Settings** page on the CSM GUI.
 
 1. Enter a name for your appliance in the **Appliance Name** field.
 
