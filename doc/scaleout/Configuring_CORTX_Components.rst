@@ -103,11 +103,13 @@ Perform the steps mentioned below to configure HAProxy, if external load balance
 
 9. Add 2 more similar instances below this and replace the IP addresses of those 2 instances with the public data IP addresses of the 2 passive nodes. Keep the s3authserver-instanceX instance ID unique.
 
-10. Comment out the **HAProxy Monitoring Config** section if present.
+10. Repeat the above step (Step 9) on two other nodes.
 
-11. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**.
+11. Comment out the **HAProxy Monitoring Config** section if present.
 
-12. Configure haproxy logs on all the nodes by running the following commands.
+12. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**.
+
+13. Configure haproxy logs on all the nodes by running the following commands.
 
     ::
 
