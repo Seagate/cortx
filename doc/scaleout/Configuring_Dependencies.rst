@@ -17,7 +17,7 @@ Configuration
 
    ::
 
-    salt '*' cmd.run /opt/seagate/cortx/s3/install/ldap/setup_ldap.sh --defaultpasswd --skipssl --forceclean
+    salt '*' cmd.run "/opt/seagate/cortx/s3/install/ldap/setup_ldap.sh --defaultpasswd --skipssl --forceclean"
 
 3. After LDAP is setup on the three nodes, perform **LDAP Replication**. Refer the procedure below.
 
