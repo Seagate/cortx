@@ -369,6 +369,20 @@ Prerequisites
     ::
 
      systemctl start rabbitmq-server
+     
+     systemctl stop rabbitmq-server
+     
+  - Checking the existance of the file
+  
+    ::
+    
+     ls -l /var/lib/rabbitmq/.erlang.cookie
+     
+   - To copy the file to all nodes
+   
+     ::
+     
+      salt-cp "*" /var/lib/rabbitmq/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie --hard-crash
   
 
 Starting Service
