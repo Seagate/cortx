@@ -128,6 +128,25 @@ Starting the OVA
 
 2. Login to the OVA through ssh after the VM starts.
 
-3. Bring up the OVA by running the below mentioned script.
+3. Login to the CORTX OVA as **cortx** and run the following.
 
- - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
+   * **sudo su -**
+
+4. Start CORTX I/O subsystem by running the following command.
+
+   * **hctl bootstrap -c /var/lib/hare/**
+   
+5. Run the below mentioned command to verify that CORTX I/O subsystem has started.
+
+   * **hctl status** 
+
+6. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
+
+   * **systemctl status csm_agent**
+
+   * **systemctl status csm_web**
+
+   * If the above services are not active, run the following command.
+
+      * **systemctl start <csm_agent|csm_web>**
+   
