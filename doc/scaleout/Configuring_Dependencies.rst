@@ -139,6 +139,8 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
  
 4. Push the **Config.ldif** file.
 
+   Replace provider with the hostname or node-id in each olcSyncRepl entry below.
+
    **config.ldif**
 
    ::
@@ -245,6 +247,8 @@ Perform the following steps on only one node. In this case, it must be performed
    **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov.ldif**
    
 2. Push the data replication ldif.
+
+   Replace provider with the hostname or node-id in each olcSyncRepl entry below.
 
    **data.ldif**
 
