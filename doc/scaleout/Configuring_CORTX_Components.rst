@@ -19,19 +19,19 @@ Starting Service
     
   ::
    
-   salt '*' cmd.run systemctl start s3authserver
+   salt '*' cmd.run "systemctl start s3authserver"
 
 - Run the below mentioned command to restart the AuthServer on all the three nodes.
 
   ::
     
-   salt '*' cmd.run systemctl restart s3authserver
+   salt '*' cmd.run "systemctl restart s3authserver"
  
 - Run the following command to check the status of AuthServer.
 
   ::
 
-   salt '*' cmd.run systemctl status s3authserver
+   salt '*' cmd.run "systemctl status s3authserver"
 
 HAProxy
 --------
@@ -172,13 +172,13 @@ Starting Service
 
   ::
    
-   salt '*' cmd.run systemctl start haproxy
+   salt '*' cmd.run "systemctl start haproxy"
  
 - Run the below mentioned command to check the status of HAProxy services.
 
   ::
    
-   salt '*' cmd.run systemctl status haproxy
+   salt '*' cmd.run "systemctl status haproxy"
 
 SSPL
 ====
@@ -232,19 +232,19 @@ Starting Service
 
   ::
 
-   salt '*' cmd.run systemctl start sspl-ll
+   salt '*' cmd.run "systemctl start sspl-ll"
 
 - Run the following to restart the SSPL service.
 
   ::
    
-   salt '*' cmd.run systemctl restart sspl-ll
+   salt '*' cmd.run "systemctl restart sspl-ll"
 
 Run the following command to know the status of the SSPL service.
 
 ::
  
- salt '*' cmd.run systemctl status sspl-ll -l
+ salt '*' cmd.run "systemctl status sspl-ll -l"
  
 Verification
 ------------
@@ -329,8 +329,8 @@ To check dependency and configure **HA**, perform **post_install**, **config**, 
 
 ::
 
- salt '*' cmd.run /opt/seagate/cortx/ha/conf/script/ha_setup post_install
+ salt '*' cmd.run "/opt/seagate/cortx/ha/conf/script/ha_setup post_install"
 
- salt '*' cmd.run /opt/seagate/cortx/ha/conf/script/ha_setup config
+ salt '*' cmd.run "/opt/seagate/cortx/ha/conf/script/ha_setup config"
 
- salt '*' cmd.run /opt/seagate/cortx/ha/conf/script/ha_setup init
+ salt '*' cmd.run "/opt/seagate/cortx/ha/conf/script/ha_setup init"
