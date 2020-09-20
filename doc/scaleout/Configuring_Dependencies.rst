@@ -362,7 +362,7 @@ Prerequisites
    rabbitmq-server-xxxxxxxxxxxxxxxxxx
 
 
-- The **erlang.cookie** file must be available. Run the below mentioned commands.
+- The **erlang.cookie** file must be available. Run the below mentioned commands in the order in which they are listed.
 
   - Generating the file
 
