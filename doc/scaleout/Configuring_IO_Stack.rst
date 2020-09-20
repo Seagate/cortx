@@ -23,6 +23,8 @@ Perform the below mentioned procedure to configure the I/O stack.
    ::
 
     /opt/seagate/cortx/hare/libexec/m0crate-io-conf > /tmp/m0crate-io.yaml
+    
+    dd if=/dev/urandom of=/tmp/128M bs=1M count=128
 
     m0crate -S /tmp/m0crate-io.yaml
     
