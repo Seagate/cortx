@@ -25,11 +25,11 @@ Configuration
 
    ::
 
-    salt '*' cmd.run cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf 
+    salt '*' cmd.run "cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf" 
  
-    salt '*' cmd.run systemctl restart slapd
+    salt '*' cmd.run "systemctl restart slapd"
 
-    salt '*' cmd.run systemctl restart rsyslog
+    salt '*' cmd.run "systemctl restart rsyslog"
 
 Starting Service
 -----------------
@@ -38,13 +38,13 @@ Starting Service
 
   ::
 
-   salt '*' cmd.run systemctl start slapd
+   salt '*' cmd.run "systemctl start slapd"
 
 Run the following command to check the status of the service.
 
 ::
 
- salt '*' cmd.run systemctl status slapd
+ salt '*' cmd.run "systemctl status slapd
 
 LDAP Replication
 ----------------
@@ -429,15 +429,15 @@ Run the below mentioned commands to start and enable the **statsd** service on o
 
 ::
 
- salt '<Node Name>' cmd.run systemctl start statsd
+ salt '<Node Name>' cmd.run "systemctl start statsd"
 
- salt '<Node Name>' cmd.run systemctl enable statsd
+ salt '<Node Name>' cmd.run "systemctl enable statsd"
 
 To know the status of the service, run the following command.
 
 ::
 
- salt '<Node Name>' cmd.run systemctl status statsd
+ salt '<Node Name>' cmd.run "systemctl status statsd"
 
 Kibana Configuration
 --------------------
