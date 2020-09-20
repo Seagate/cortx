@@ -71,13 +71,17 @@ The procedure to install CORTX on OVA is mentioned below.
 
  - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
  
-10. Open the web browser and navigate to the following location:
+10. Run s3 sanity to check if everything works fine - 
+
+- **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
+ 
+11. Open the web browser and navigate to the following location:
 
    * **https://<management IP>:28100/#/preboarding/welcome**
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
-11. Refer to `Onboarding into CORTX <Preaboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
+12. Refer to `Onboarding into CORTX <Preaboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
   
@@ -128,6 +132,25 @@ Starting the OVA
 
 2. Login to the OVA through ssh after the VM starts.
 
-3. Bring up the OVA by running the below mentioned script.
+3. Login to the CORTX OVA as **cortx** and run the following.
 
- - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
+   * **sudo su -**
+
+4. Start CORTX I/O subsystem by running the following command.
+
+   * **hctl bootstrap -c /var/lib/hare/**
+   
+5. Run the below mentioned command to verify that CORTX I/O subsystem has started.
+
+   * **hctl status** 
+
+6. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
+
+   * **systemctl status csm_agent**
+
+   * **systemctl status csm_web**
+
+   * If the above services are not active, run the following command.
+
+      * **systemctl start <csm_agent|csm_web>**
+   
