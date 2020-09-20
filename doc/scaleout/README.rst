@@ -26,16 +26,6 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
 
 4. Configure the I/O stack by referring to `Configuring I / O Stack <Configuring_IO_Stack.rst>`_.
 
-5. Configure the dependencies by referring to `Configuring Dependencies <Configuring_Dependencies.rst>`_. The dependencies are listed below in the order in which they have to be configured.
-
-   - LDAP
- 
-     - LDAP Replication
-  
-   - Rabbit MQ
- 
-   - Statsd and Kibana
- 
 6. Configure the components of CORTX by referring to `Configuring Components <Configuring_CORTX_Components.rst>`_. The components are listed below in the order in which they have to be configured.
 
    - S3 (AuthServer and HAProxy)
