@@ -33,27 +33,30 @@ Preboarding and Onboarding
     <details>
    <summary><a>Click here to complete the onboarding process.</a></summary>
 
-Perform the below mentioned procedure to onboard into CORTX. The below mentioned steps can be performed multiple times, by accessing to the URL *https://<management IP>:28100/#/preboarding/login* or from the **Settings** page on the CSM GUI.
 
-1. After being prompted, login again with the username and password that you had provided earlier.
+1. Navigate to *https://<management IP>:28100/#/preboarding/login* or from the **Settings** page on the CSM GUI.
 
-2. Enter a name for your appliance in the **Appliance Name** field.
+2. After being prompted, login again with the username and password that you had provided earlier.
 
-3. Upload the SSL certificate. If you do not upload a certificate, a default self-signed certificate provided by Seagate will be used.
+3. Enter a name for your appliance in the **Appliance Name** field.
 
-4. Enter information about the DNS servers and search domains in relevant fields. The entries must be separated by comma, if either one or both the conditions mentioned below are applicable.
+4. Upload the SSL certificate. If you do not upload a certificate, a default self-signed certificate provided by Seagate will be used.
+
+5. Enter information about the DNS servers and search domains in relevant fields. The entries must be separated by comma, if either one or both the conditions mentioned below are applicable.
 
    - Number of DNS Servers > 1
 
    - Number of search domains > 1
 
-5. Provide information about the NTP servers in the relevant field. The entries must be separated by comma, if the below mentioned condition is applicable.
+6. Provide information about the NTP servers in the relevant field. The entries must be separated by comma, if the below mentioned condition is applicable.
 
    - Number of NTP Servers > 1
 
-6. Configure the notifications by selecting the checkbox. If you do not want to receive notifications, select **Skip this step**, and click **Next**.
+7. Configure the notifications by selecting the checkbox. If you do not want to receive notifications, select **Skip this step**, and click **Next**.
 
-7. Click **Finish**. CORTX is now ready for use. CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
+8. Click **Finish**. CORTX is now ready for use. CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
+
+**Note**: The below mentioned steps can be performed multiple times.
 
 .. raw:: html
    
