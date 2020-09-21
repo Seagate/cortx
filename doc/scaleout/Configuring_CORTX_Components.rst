@@ -221,11 +221,11 @@ Run the below mentioned commands to configure SSPL.
 
 ::
  
- salt "*" state.apply components.sspl.config.commons
+ salt '*' state.apply components.sspl.config.commons
 
- salt "*" cmd.run "/opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1"
+ salt '*' cmd.run "/opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1"
 
- salt "*" cmd.run "/opt/seagate/cortx/sspl/bin/sspl_setup config -f"
+ salt '*' cmd.run "/opt/seagate/cortx/sspl/bin/sspl_setup config -f"
 
 
 Starting Service
