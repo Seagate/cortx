@@ -18,7 +18,7 @@
 
    - **csm**
    
- **Note**: The above mentioned procedure can be performed only once.
+**Note**: The above mentioned procedure can be performed only once.
    
 .. raw:: html
    
