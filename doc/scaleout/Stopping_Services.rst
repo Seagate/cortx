@@ -66,11 +66,16 @@ I/O Stack
 .. raw:: html
 
  <details>
- <summary><a>Click here to view the commands. </a></summary>
+ <summary><a>Click here to view the command. </a></summary>
  
-  ::
+::
  
-   hctl shutdown --all
+ hctl shutdown --all
+   
+   
+.. raw:: html
+   
+  </details>
    
    
 - RabbitMQ
