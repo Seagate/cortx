@@ -140,11 +140,11 @@ Starting the OVA
    
 5. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
    
-   - systemctl status csm_agent
+   - **systemctl status csm_agent**
    
-   - systemctl status csm_web
+   - **systemctl status csm_web**
    
 6. If the above services are not active, run the following command.
 
-   - systemctl start <csm_agent|csm_web>
+   - **systemctl start <csm_agent|csm_web>**
 
