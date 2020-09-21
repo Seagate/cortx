@@ -36,7 +36,7 @@ CORTX is a distributed object storage system designed for great efficiency, mass
 We are excited about your interest in CORTX and hope you will join us. We take our community very seriously, and we are committed to creating a community built on respectful interactions and inclusivity, as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 -   Join our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) to interact with your fellow community members and gets your questions answered.
--   Subscribe to the Newsletter to and stay updated on the latest developments in the CORTX project. **TODO** add a link for newsletter subscriptions.
+-   Subscribe to the our [developer newsletter](https://www.seagate.com/promos/developer-newsletter/) to and stay up to date on the latest CORTX developments, news, and events.
 
 ## How to Get Started
 
