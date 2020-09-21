@@ -49,19 +49,25 @@ S3 (AuthServer and HAProxy)
  <details>
  <summary><a>Click here to view the commands. </a></summary>
 
-  ::
+::
 
-   salt '*' cmd.run "systemctl stop haproxy"
+ salt '*' cmd.run "systemctl stop haproxy"
    
-   salt '*' cmd.run "systemctl stop s3authserver"
+ salt '*' cmd.run "systemctl stop s3authserver"
    
 .. raw:: html
    
-</details>
+  </details>
 
       
-- I/O Stack
+I/O Stack
+=========
 
+.. raw:: html
+
+ <details>
+ <summary><a>Click here to view the commands. </a></summary>
+ 
   ::
  
    hctl shutdown --all
