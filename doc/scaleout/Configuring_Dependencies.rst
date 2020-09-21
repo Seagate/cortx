@@ -7,6 +7,8 @@ The procedures that must be followed to install and configure different dependen
 LDAP
 ====
 
+The Lightweight Directory Access Protocol (LDAP) is an open, vendor-neutral, industry standard application protocol for accessing and maintaining distributed directory information services over an IP network.
+
 .. raw:: html
 
  <details>
