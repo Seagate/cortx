@@ -95,13 +95,17 @@ RabbitMQ
  </details>
  
  
-   
+LDAP
+====
 
-- LDAP
+.. raw:: html
 
-  ::
+ <details>
+ <summary><a>Click here to view the command. </a></summary>
+    
+::
 
-   salt '*' cmd.run "systemctl stop slapd"
+ salt '*' cmd.run "systemctl stop slapd"
    
    
 - Statsd and Kibana
