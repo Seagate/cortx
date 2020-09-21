@@ -70,7 +70,7 @@ The procedure to install CORTX on OVA is mentioned below.
  
 9. Open the web browser and navigate to the following location:
 
-    * **https://<management IP>:28100/#/preboarding/welcome**
+   * **https://<management IP>:28100/#/preboarding/welcome**
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
