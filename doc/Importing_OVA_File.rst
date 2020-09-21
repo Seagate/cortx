@@ -4,8 +4,13 @@ Importing OVA File
 
 Based on the hypervisor you use, refer the sections below to import an OVA file.
 
+.. raw:: html
 
-***************
+ 
+
+   <details>
+   <summary><a>VMware vSphere</a></summary>
+  
 VMware vSphere
 ***************
 
@@ -50,6 +55,12 @@ VMware vSphere
 9. Click **Finish** after you review the configuration. The process of importing starts. After the import is complete, click **Refresh**.
 
 10. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
+  
+.. raw:: html
+   
+   </details>
+
+
 
 ******************
 VMware Workstation
