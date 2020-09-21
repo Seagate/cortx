@@ -44,9 +44,9 @@ The onboarding procedure must be performed after completing the preboarding proc
 
 1. After being prompted, login again with the username and password that you had provided earlier.
 
-2. Enter a name for your appliance in the **System Name** field.
+2. Enter a name for your appliance in the **System Name** field and click **Continue**.
 
-3. Upload the SSL certificate. If you do not upload a certificate, a default self-signed certificate provided by Seagate will be used.
+3. If you have a SSL certificate, you can upload it. Else, a default self-signed certificate provided by Seagate will be used.
 
 4. Enter information about the DNS servers and search domains in relevant fields. The entries must be separated by comma, if either one or both the conditions mentioned below are applicable.
 
