@@ -12,7 +12,7 @@ The preboarding process must be the first process that must be completed after c
     <details>
    <summary><a>Click here to expand the preboarding procedure.</a></summary>
 
-#. Navigate to the *https://<management IP>:28100/#/preboarding/welcome*.
+#. Open a browser and navigate to *https://<management IP>:28100/#/preboarding/welcome*.
 
    * You may see a message about your connection not being private; if so, just proceed past this message.
  
