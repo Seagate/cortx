@@ -14,7 +14,7 @@ All of the following hypervisors should work:
 * `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_
 * `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_
 * `VMware Fusion <https://www.vmware.com/products/fusion.html>`_
-* `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_  **note** Not currently working.
+* `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_  
 
 **********
 Procedure
