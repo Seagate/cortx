@@ -44,7 +44,7 @@ Run the following command to check the status of the service.
 
 ::
 
- salt '*' cmd.run "systemctl status slapd
+ salt '*' cmd.run "systemctl status slapd"
 
 LDAP Replication
 ----------------
