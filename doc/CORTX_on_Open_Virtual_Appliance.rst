@@ -68,17 +68,17 @@ The procedure to install CORTX on OVA is mentioned below.
 
    - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
    
-9. Perform the sanity test by running the following.
+9. Perform the S3 sanity test by running the following.
 
-   - sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh
+   - **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
  
-9. Open the web browser and navigate to the following location:
+10. Open the web browser and navigate to the following location:
 
    * **https://<management IP>:28100/#/preboarding/welcome**
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
-10. Refer to `Onboarding into CORTX <Preaboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
+11. Refer to `Onboarding into CORTX <Preaboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
   
@@ -122,13 +122,29 @@ Shutdown the VA
 
    * **poweroff**
  
-
 Starting the OVA
 -----------------
 1. Power on the Virtual Appliance VM.
 
-2. Login to the OVA through ssh after the VM starts.
+2. Login to the CORTX OVA as cortx and run the following.
 
-3. Bring up the OVA by running the below mentioned script.
+   - **sudo su -**
 
-   - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
+3. Start CORTX I/O subsystem by running the following command.
+
+   - **hctl bootstrap -c /var/lib/hare/**
+   
+4. Run the below mentioned command to verify that CORTX I/O subsystem has started.
+
+   - **hctl status**
+   
+5. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
+   
+   - systemctl status csm_agent
+   
+   - systemctl status csm_web
+   
+6. If the above services are not active, run the following command.
+
+   - systemctl start <csm_agent|csm_web>
+
