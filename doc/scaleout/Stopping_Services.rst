@@ -22,14 +22,23 @@ As you know the node on which CSM is running, run the following commands.
    
 .. raw:: html
    
-  </details>
+ </details>
    
-   
-- SSPL
+SSPL
+====
+
+.. raw:: html
+
+ <details>
+ <summary><a>Click here to view the command. </a></summary>
 
   :: 
 
    salt '*' cmd.run "systemctl stop sspl-ll"
+   
+.. raw:: html
+   
+  </details>
    
 
 - S3 (AuthServer and HAProxy)
