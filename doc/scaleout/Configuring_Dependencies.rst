@@ -412,7 +412,7 @@ Configuration
 
    ::
    
-    salt "*" pip.install python-consul bin_env="/usr/bin/pip3"
+    salt '*' cmd.run 'pip.install python-consul bin_env="/usr/bin/pip3"'
     
 2. Run the below mentioned commands to setup the RabbitMQ cluster.
 
