@@ -2,7 +2,7 @@
 Importing OVA File
 ==================
 
-Based on the hypervisor you use, refer the procedures mentioned below, by clicking and expanding the sections below.
+Based on the hypervisor you use, click and expand the sections below to view the procedure.
 
 .. raw:: html
 
