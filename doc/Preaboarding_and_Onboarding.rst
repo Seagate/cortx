@@ -5,7 +5,7 @@ Preboarding and Onboarding
 Preboarding
 ===========
 
-The preboarding process must be the first process that must be completed after configugring [CORTX_on_OVA](CORTX_on_Open_Virtual_Appliance.rst). The preboarding procedure must be performed only once.
+The preboarding process must be the first process that must be completed after configugring [CORTX_on_OVA](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst). The preboarding procedure must be performed only once.
 
 .. raw:: html
 
