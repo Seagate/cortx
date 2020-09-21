@@ -115,6 +115,11 @@ Run the below mentioned commands to check the status of different services that 
  
  systemctl status sspl-ll
 
+If any service is inactive, run the below mentioned command.
+
+::
+
+ systemctl start|restart <service_name>
 
 Restarting CORTX OVA
 ====================
