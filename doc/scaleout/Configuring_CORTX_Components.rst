@@ -196,7 +196,10 @@ Starting Service
 SSPL
 ====
 
-The prerequisites and different procedures associated with the configuration of SSPL component are mentioned below.
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for detailed information. </a></summary>
 
 Initial Steps
 --------------
@@ -280,10 +283,17 @@ Perform sanity test and ensure that the SSPL configuration is accurate. Run the 
   
  /opt/seagate/cortx/sspl/bin/sspl_setup test self
  
+.. raw:: html
+   
+ </details>
+ 
 CSM
 ===
 
-The various aspects associated with the configuration of CSM component are mentioned below.
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for detailed information. </a></summary>
 
 Run the below mentioned command. This is a prerquisite.
 
@@ -347,6 +357,10 @@ Ensure that the services have started successfully by running the following comm
 
 
 **Note**: After all the services have started running, the CSM web UI is available at port 28100. Navigate to **https://<IP address of the box>:28100** to access the port.
+
+.. raw:: html
+   
+ </details>
 
 HA 
 ==
