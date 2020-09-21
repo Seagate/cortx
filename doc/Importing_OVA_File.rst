@@ -1,5 +1,5 @@
 ==================
-Importing OVA File
+Importing the CORTX Open Virtual Appliance [OVA]
 ==================
 
 Based on the hypervisor you use, click to expand the section below.
