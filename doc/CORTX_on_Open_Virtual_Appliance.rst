@@ -72,23 +72,23 @@ The procedure to install CORTX on OVA is mentioned below.
    
 9.Run the below mentioned commands to check the status of different services that are part of CORTX.
 
-   ::
+  ::
 
-    systemctl status rabbitmq-server
+   systemctl status rabbitmq-server
  
-    systemctl status elasticsearch
+   systemctl status elasticsearch
+   
+   systemctl status haproxy
  
-    systemctl status haproxy
+   systemctl status s3authserver
  
-    systemctl status s3authserver
- 
-    systemctl status sspl-ll
+   systemctl status sspl-ll
     
-    hctl status
+   hctl status
     
-    systemctl status csm_agent
+   systemctl status csm_agent
     
-    systemctl status csm_web
+   systemctl status csm_web
     
 
    If any service is inactive, run the below mentioned command.
