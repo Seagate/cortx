@@ -396,7 +396,7 @@ Restarting Service
 
   ::
 
-   salt "*" service.restart rabbitmq-server
+   salt '*' cmd.run "service.restart rabbitmq-server"
 
 Run the below mentioned command to know the status.
 
@@ -434,7 +434,7 @@ Run the below mentioned command to check the status of the RabbitMQ cluster.
 
 ::
 
- salt "*" cmd.run "rabbitmqctl cluster_status"
+ salt '*' cmd.run "rabbitmqctl cluster_status"
  
 
 Statsd and Kibana
