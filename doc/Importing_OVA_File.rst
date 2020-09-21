@@ -6,13 +6,8 @@ Based on the hypervisor you use, refer the sections below to import an OVA file.
 
 .. raw:: html
 
- 
-
-   <details>
+    <details>
    <summary><a>VMware vSphere</a></summary>
-  
-VMware vSphere
-***************
 
 1. Log in to the VMware vSphere web client and go to the **VMs** tab. 
 
