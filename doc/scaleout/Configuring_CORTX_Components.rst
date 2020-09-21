@@ -93,7 +93,7 @@ Perform the steps mentioned below to configure HAProxy, if external load balance
 
 4. Keep the instance name (s3-instance-x) for each instance unique, increment x by 1 with increase in instance.
 
-5. Increment the port number (28081) for all the instances by 1. Repeat these steps for nodes 2 & 3 as explained in the next two steps.
+5. Increment the port number (28081) for all the instances by 1. Add these entries for the nodes 2 and 3 based on steps 6 and 7.
 
 6. Copy the above **N** edited instances and paste it below. Change the IP address of these instances to the IP of Node 2. Then, keep the instance name (s3-instance-x) for each instance unique, incrementing x by 1.
 
@@ -321,6 +321,12 @@ The starting of services procedure must be performed on only one node.
     systemctl start csm_web
 
     systemctl enable csm_web
+    
+Run the below mentioned command if you come across an error related to starting the CSM web services.
+
+::
+      
+ setfacl -R -m u:csm:rwx /etc/ssl/stx/
 
 Ensure that the services have started successfully by running the following command.
 

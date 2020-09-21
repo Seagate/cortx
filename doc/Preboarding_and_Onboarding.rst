@@ -1,8 +1,16 @@
-======================
-Preboarding Process
-======================
+==========================
+Preboarding and Onboarding
+==========================
 
-Perform the below mentioned to complete the preboarding process. The below mentioned steps can be performed only once.
+Preboarding
+===========
+
+The preboarding process must be the first process that must be completed after configugring `CORTX on OVA <https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst>`_. The preboarding procedure must be performed only once.
+
+.. raw:: html
+
+    <details>
+   <summary><a>Click here to read the preboarding procedure.</a></summary>
 
 1. Navigate to the *https://<management IP>:28100/#/preboarding/welcome*.
 
@@ -17,12 +25,22 @@ Perform the below mentioned to complete the preboarding process. The below menti
    - **root**
 
    - **csm**
-     
-======================
-Onboarding into CORTX
-======================
+  
+.. raw:: html
+   
+   </details>
+   
+Onboarding
+===========
 
-Perform the below mentioned procedure to onboard into CORTX. The below mentioned steps can be performed multiple times, by accessing to the URL *https://<management IP>:28100/#/preboarding/login* or from the **Settings** page on the CSM GUI.
+The onboarding procedure must be performed after completing the preboarding procedure by accessing *https://<management IP>:28100/#/preboarding/login* or from the **Settings** page on the CSM GUI. The onboarding procedure can be performed multiple times.
+
+     
+.. raw:: html
+
+    <details>
+   <summary><a>Click here to read the onboarding procedure.</a></summary>
+
 
 1. After being prompted, login again with the username and password that you had provided earlier.
 
@@ -43,3 +61,8 @@ Perform the below mentioned procedure to onboard into CORTX. The below mentioned
 6. Configure the notifications by selecting the checkbox. If you do not want to receive notifications, select **Skip this step**, and click **Next**.
 
 7. Click **Finish**. CORTX is now ready for use. CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
+
+.. raw:: html
+   
+   </details>
+

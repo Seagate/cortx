@@ -60,9 +60,9 @@ For example:
     
     slapd -V
 
-    /usr/share/elasticsearch/bin/elasticsearch --version**
+    /usr/share/elasticsearch/bin/elasticsearch --version
     
-    salt '*' cmd.run "service.start rabbitmq-server"
+    salt '*' service.start rabbitmq-server
 
     rabbitmqadmin --version
 

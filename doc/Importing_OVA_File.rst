@@ -2,11 +2,12 @@
 Importing OVA File
 ==================
 
-Based on the hypervisor you use, refer the sections below to import an OVA file.
+Based on the hypervisor you use, click to expand the section below.
 
-***************
-VMware vSphere
-***************
+.. raw:: html
+
+    <details>
+   <summary><a>VMware vSphere</a></summary>
 
 1. Log in to the VMware vSphere web client and go to the **VMs** tab. 
 
@@ -50,11 +51,17 @@ VMware vSphere
 
 10. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
 
-******************
-VMware Workstation
-******************
-Note: With "Bridged" network configuration VMware Workstation should allow DHCP for the installed VMs.   
-Some host network adapters might need to be unselected to allow proper operation. See https://stackoverflow.com/questions/31531235/guest-vm-cant-get-ip-address-with-bridge-mode for more details
+  
+.. raw:: html
+   
+   </details>
+
+
+.. raw:: html
+
+
+    <details>
+   <summary><a>VMware Workstation</a></summary>
 
 1. Open the downloaded VMware Workstation Player.
 
@@ -72,9 +79,19 @@ Some host network adapters might need to be unselected to allow proper operation
 
 5. After the importing is complete, navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
 
-******************
-VMware ESX Server
-******************
+**Note**: With "Bridged" network configuration VMware Workstation should allow DHCP for the installed VMs.   
+Some host network adapters might need to be unselected to allow proper operation. See https://stackoverflow.com/questions/31531235/guest-vm-cant-get-ip-address-with-bridge-mode for more details
+
+.. raw:: html
+   
+   </details>
+   
+
+.. raw:: html
+
+
+    <details>
+   <summary><a>VMware ESX Server</a></summary>
 
 1. Login to the VMware ESX server using vSphere client. 
 
@@ -106,9 +123,15 @@ VMware ESX Server
  
 10. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
 
-**************
-VMware Fusion
-**************
+.. raw:: html
+   
+   </details>
+
+
+.. raw:: html
+
+    <details>
+   <summary><a>VMware Fusion</a></summary>
 
 1. Launch VMware Fusion in your system.
 
@@ -123,4 +146,9 @@ VMware Fusion
 5. Click **Save**. Fusion performs OVA specification conformance and virtual hardware compliance checks. After the import is complete, the virtual machine appears in the virtual machine library and in a separate virtual machine window.
 
 6. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
+
+.. raw:: html
+   
+   </details>
+
 

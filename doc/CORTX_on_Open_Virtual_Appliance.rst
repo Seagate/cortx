@@ -78,7 +78,7 @@ The procedure to install CORTX on OVA is mentioned below.
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
-11. Refer to `Onboarding into CORTX <Preaboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
+11. Refer to `Onboarding into CORTX <Preboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
   
@@ -98,6 +98,29 @@ If you have a firewall between the OVA and the rest of your infrastructure, incl
 |         28100        |   TCP (HTTPS)     |              Management network             |
 +----------------------+-------------------+---------------------------------------------+
 
+Status of Services
+==================
+
+Run the below mentioned commands to check the status of different services that are part of CORTX.
+
+::
+
+ systemctl status rabbitmq-server
+ 
+ systemctl status elasticsearch
+ 
+ systemctl status haproxy
+ 
+ systemctl status s3authserver
+ 
+ systemctl status sspl-ll
+
+If any service is inactive, run the below mentioned command.
+
+::
+
+ systemctl start|restart <service_name>
+
 Restarting CORTX OVA
 ====================
 To restart the CORTX OVA, follow the below mentioned procedures, in the order of listing.
@@ -106,8 +129,14 @@ To restart the CORTX OVA, follow the below mentioned procedures, in the order of
 
 - Start the OVA
 
-Shutdown the VA
+Shutdown the OVA
 ----------------
+
+.. raw:: html
+
+    <details>
+   <summary><a>Click here to view the procedure.</a></summary>
+   
 1. Stop all S3 I/O traffic from S3 clients to VA.
 
 2. Login to the CORTX Virtual Appliance as **cortx** and run the following.
@@ -121,9 +150,20 @@ Shutdown the VA
 4. After executing the previous command, shutdown the OVA by running the following command.
 
    * **poweroff**
+   
+.. raw:: html
+   
+   </details>
  
-Starting the OVA
------------------
+
+Start the OVA
+--------------
+
+.. raw:: html
+
+    <details>
+   <summary><a>Click here to view the procedure.</a></summary>
+
 1. Power on the Virtual Appliance VM.
 
 2. Login to the CORTX OVA as cortx and run the following.
@@ -147,4 +187,10 @@ Starting the OVA
 6. If the above services are not active, run the following command.
 
    - **systemctl start <csm_agent|csm_web>**
+
+   
+.. raw:: html
+   
+   </details>
+
 
