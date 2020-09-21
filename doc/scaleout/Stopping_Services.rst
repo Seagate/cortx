@@ -32,9 +32,9 @@ SSPL
  <details>
  <summary><a>Click here to view the command. </a></summary>
 
-  :: 
+:: 
 
-   salt '*' cmd.run "systemctl stop sspl-ll"
+ salt '*' cmd.run "systemctl stop sspl-ll"
    
 .. raw:: html
    
