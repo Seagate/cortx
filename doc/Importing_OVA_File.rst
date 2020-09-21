@@ -83,9 +83,10 @@ Some host network adapters might need to be unselected to allow proper operation
    
    </details>
 
-******************
-VMware ESX Server
-******************
+.. raw:: html
+
+    <details>
+   <summary><a>VMware ESX Server</a></summary>
 
 1. Login to the VMware ESX server using vSphere client. 
 
@@ -116,6 +117,10 @@ VMware ESX Server
 9.  Click **Finish** after reviewing your settings.
  
 10. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
+
+.. raw:: html
+   
+   </details>
 
 **************
 VMware Fusion
