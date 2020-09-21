@@ -262,6 +262,11 @@ Codacy
 
 Codacy is an automated code analysis or quality tool that enables a developer to deliver effective software in a faster and seem less manner.
 
+.. raw:: html
+
+    <details>
+   <summary><a>Working of Codacy</a></summary>
+
 ******************
 Working of Codacy
 ******************
