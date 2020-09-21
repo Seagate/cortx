@@ -1,6 +1,7 @@
-======================
-Preboarding Process
-======================
+.. raw:: html
+
+    <details>
+   <summary><a>Preboarding Process</a></summary>
 
 Perform the below mentioned to complete the preboarding process. The below mentioned steps can be performed only once.
 
@@ -17,6 +18,10 @@ Perform the below mentioned to complete the preboarding process. The below menti
    - **root**
 
    - **csm**
+   
+.. raw:: html
+   
+   </details>
      
 ======================
 Onboarding into CORTX
