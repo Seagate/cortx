@@ -106,8 +106,14 @@ To restart the CORTX OVA, follow the below mentioned procedures, in the order of
 
 - Start the OVA
 
-Shutdown the VA
+Shutdown the OVA
 ----------------
+
+.. raw:: html
+
+    <details>
+   <summary><a>Click here to view the procedure.</a></summary>
+   
 1. Stop all S3 I/O traffic from S3 clients to VA.
 
 2. Login to the CORTX Virtual Appliance as **cortx** and run the following.
@@ -121,6 +127,10 @@ Shutdown the VA
 4. After executing the previous command, shutdown the OVA by running the following command.
 
    * **poweroff**
+   
+.. raw:: html
+   
+   </details>
  
 Starting the OVA
 -----------------
