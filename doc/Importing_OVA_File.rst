@@ -125,7 +125,7 @@ Based on the hypervisor you use, click to expand the section below.
  
 #.  Click **Finish** after reviewing your settings.
  
-#. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
+#. Return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
 
 .. raw:: html
    
@@ -149,7 +149,7 @@ Based on the hypervisor you use, click to expand the section below.
 
 #. Click **Save**. Fusion performs OVA specification conformance and virtual hardware compliance checks. After the import is complete, the virtual machine appears in the virtual machine library and in a separate virtual machine window.
 
-#. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
+#. Return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
 
 .. raw:: html
    
