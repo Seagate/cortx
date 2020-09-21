@@ -321,6 +321,12 @@ The starting of services procedure must be performed on only one node.
     systemctl start csm_web
 
     systemctl enable csm_web
+    
+**Note**: Run the below mentioned command if you come across an error related to starting the CSM web services.
+
+      ::
+      
+       setfacl -R -m u:csm:rwx /etc/ssl/stx/
 
 Ensure that the services have started successfully by running the following command.
 
