@@ -72,15 +72,14 @@ The procedure to install CORTX on OVA is mentioned below.
 
    * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
  
-#. Using the management IP that you queried in step 6, open the web browser and navigate to the following location to perform the preboarding procedure to configure the management system and dashboard:
+#. Mark down the management IP that you queried in step 6, and refer to `Onboarding into CORTX <Preboarding_and_Onboarding.rst>`_ to configure the management dashboard. 
+ 
+*************
+Miscellaneous
+*************
 
-   * **https://<management IP>:28100/#/preboarding/welcome**
-   
-   * You may see a message about your connection not being private; if so, just proceed past this message.
-  
-   **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
-11. After completing the preboarding, please refer to `Onboarding into CORTX <Preboarding_and_Onboarding.rst>`_ to complete onboarding process.
+**Note**: Operating system updates are not supported due to specific kernel dependencies.
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
   
