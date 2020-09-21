@@ -267,9 +267,7 @@ Codacy is an automated code analysis or quality tool that enables a developer to
     <details>
    <summary><a>Working of Codacy</a></summary>
 
-******************
-Working of Codacy
-******************
+
 You can use Codacy by performing the below mentioned procedure.
 
 1. Login to your GitHub account, and navigate to the relevant repository.
@@ -282,7 +280,11 @@ You can use Codacy by performing the below mentioned procedure.
    - Files associated with your repository
    - Pull requests raised in your repository
    - Security status of different parameters
- 
+   
+.. raw:: html
+   
+   </details>
+   
 ********************************
 Developer Certificate of Origin
 ********************************
