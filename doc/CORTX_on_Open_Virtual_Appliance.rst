@@ -132,8 +132,14 @@ Shutdown the OVA
    
    </details>
  
-Starting the OVA
------------------
+Start the OVA
+--------------
+
+.. raw:: html
+
+    <details>
+   <summary><a>Click here to view the procedure.</a></summary>
+
 1. Power on the Virtual Appliance VM.
 
 2. Login to the CORTX OVA as cortx and run the following.
@@ -157,4 +163,8 @@ Starting the OVA
 6. If the above services are not active, run the following command.
 
    - **systemctl start <csm_agent|csm_web>**
+   
+.. raw:: html
+   
+   </details>
 
