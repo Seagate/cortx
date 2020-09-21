@@ -398,7 +398,7 @@ Restarting Service
 
    salt '*' cmd.run "service.restart rabbitmq-server"
 
-Run the below mentioned command to know the status.
+Run the below mentioned command to know the status. This must be run on the following 2 nodes.
 
 ::
 
