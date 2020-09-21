@@ -7,6 +7,12 @@ Configuration of different components that are part of CORTX are mentioned in th
 S3 (AuthServer and HAProxy)
 ===========================
 
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for detailed information. </a></summary>
+ 
+
 AuthServer
 ----------
 
@@ -181,6 +187,11 @@ Starting Service
   ::
    
    salt '*' cmd.run "systemctl status haproxy"
+   
+.. raw:: html
+   
+ </details>   
+
 
 SSPL
 ====
