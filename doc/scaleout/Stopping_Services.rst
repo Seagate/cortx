@@ -2,17 +2,27 @@
 Stopping Services
 =================
 
-Run the below mentioned commands in the order of listing to stop the relevant services.
+Run the commands mentioned below to stop the services. Please follow the order of listing.
 
-- CSM
-  
-  As you know the node on which CSM is running, run the following commands.
+CSM
+=====
 
-  ::
-     
-   salt '<Node Name>' cmd.run "systemctl stop csm_web"
+As you know the node on which CSM is running, run the following commands.
+ 
+.. raw:: html
+
+ <details>
+ <summary><a>Click here to view the commands. </a></summary>
    
-   salt '<Node Name>' cmd.run "systemctl stop csm_agent"
+::
+     
+ salt '<Node Name>' cmd.run "systemctl stop csm_web"
+   
+ salt '<Node Name>' cmd.run "systemctl stop csm_agent"
+   
+.. raw:: html
+   
+  </details>
    
    
 - SSPL
