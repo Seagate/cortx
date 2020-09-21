@@ -122,9 +122,10 @@ Some host network adapters might need to be unselected to allow proper operation
    
    </details>
 
-**************
-VMware Fusion
-**************
+.. raw:: html
+
+    <details>
+   <summary><a>VMware Fusion</a></summary>
 
 1. Launch VMware Fusion in your system.
 
@@ -139,4 +140,8 @@ VMware Fusion
 5. Click **Save**. Fusion performs OVA specification conformance and virtual hardware compliance checks. After the import is complete, the virtual machine appears in the virtual machine library and in a separate virtual machine window.
 
 6. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
+
+.. raw:: html
+   
+   </details>
 
