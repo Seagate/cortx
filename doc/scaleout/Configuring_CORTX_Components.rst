@@ -217,6 +217,17 @@ Initial Steps
  
 Configuration
 -------------
+
+Run the below mentioned commands.
+
+::
+
+ provisioner pillar_set cluster/srvnode-1/network/data_nw/roaming_ip \"127.0.0.1\"
+ 
+ provisioner pillar_set cluster/srvnode-2/network/data_nw/roaming_ip \"127.0.0.1\"
+ 
+ provisioner pillar_set cluster/srvnode-3/network/data_nw/roaming_ip \"127.0.0.1\"
+ 
 Run the below mentioned commands to configure SSPL.
 
 ::
