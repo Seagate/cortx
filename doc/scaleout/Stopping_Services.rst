@@ -120,7 +120,7 @@ As you know the nodes on which statsd and kibana are running, run the following 
 .. raw:: html
 
  <details>
- <summary><a>Click here to view the command. </a></summary>
+ <summary><a>Click here to view the commands. </a></summary>
 
 ::
   
@@ -128,8 +128,13 @@ As you know the nodes on which statsd and kibana are running, run the following 
    
  salt '<Node Name>' cmd.run "systemctl stop kibana"
    
-- Elasticsearch
+Elasticsearch
 
-  ::
+.. raw:: html
+
+ <details>
+ <summary><a>Click here to view the command. </a></summary>
+
+::
   
-   salt '*' cmd.run "systemctl stop elasticsearch"
+ salt '*' cmd.run "systemctl stop elasticsearch"
