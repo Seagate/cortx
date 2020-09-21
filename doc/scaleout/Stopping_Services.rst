@@ -42,7 +42,7 @@ Run the below mentioned commands in the order of listing to stop the relevant se
 
   ::
 
-   systemctl stop rabbitmq-server
+   salt '*' cmd.run "systemctl stop rabbitmq-server"
    
 
 - LDAP
