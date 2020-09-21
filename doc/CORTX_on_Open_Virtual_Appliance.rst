@@ -27,7 +27,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    * **gzip cortxva-v1.1.zip**
 
-3. Import the OVA file by referring to `Importing OVA <Importing_OVA_File.rst>`_.
+3. Import the OVA file by referring to `Importing OVA <Importing_OVA_File.rst>`_. Set the **Network Translation Address** (NAT) in the hypervisor settings for the imported OVA. 
 
    - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
   
@@ -64,20 +64,17 @@ The procedure to install CORTX on OVA is mentioned below.
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
 
-
-8. Set the **Network Translation Address** (NAT) in the hypervisor settings for the imported OVA. Refer to `Importing OVA <Importing_OVA_File.rst>`_.
-
-9. Bring up the OVA by running the below mentioned script.
+8. Bring up the OVA by running the below mentioned script.
 
    - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
  
-10. Open the web browser and navigate to the following location:
+9. Open the web browser and navigate to the following location:
 
     * **https://<management IP>:28100/#/preboarding/welcome**
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
-11. Refer to `Onboarding into CORTX <Preaboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
+10. Refer to `Onboarding into CORTX <Preaboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
   
