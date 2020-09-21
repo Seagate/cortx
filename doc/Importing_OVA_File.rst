@@ -7,7 +7,7 @@ Based on the hypervisor you use, refer the sections below to import an OVA file.
 .. raw:: html
 
     <details>
-   <summary><a>VMware vSphere</a></summary>
+   <summary><a>Click here if you are using VMware vSphere</a></summary>
 
 1. Log in to the VMware vSphere web client and go to the **VMs** tab. 
 
@@ -58,7 +58,7 @@ Based on the hypervisor you use, refer the sections below to import an OVA file.
 .. raw:: html
 
     <details>
-   <summary><a>VMware Workstation</a></summary>
+   <summary><a>Click here if you are using VMware Workstation</a></summary>
 
 1. Open the downloaded VMware Workstation Player.
 
@@ -86,7 +86,7 @@ Some host network adapters might need to be unselected to allow proper operation
 .. raw:: html
 
     <details>
-   <summary><a>VMware ESX Server</a></summary>
+   <summary><a>Click here if you are using VMware ESX Server</a></summary>
 
 1. Login to the VMware ESX server using vSphere client. 
 
@@ -125,7 +125,7 @@ Some host network adapters might need to be unselected to allow proper operation
 .. raw:: html
 
     <details>
-   <summary><a>VMware Fusion</a></summary>
+   <summary><a>Click here if you are using VMware Fusion</a></summary>
 
 1. Launch VMware Fusion in your system.
 
