@@ -55,7 +55,7 @@ The procedure to install CORTX on OVA is mentioned below.
   
      If you receive **Access denied** message, remove immutable settings on the **/etc/hostname** file and run the command again. To remove immutable setting from **/etc/hostname**, run the following command.
      
-   * **chattr -i /etc/hostname**
+     * **chattr -i /etc/hostname**
   
  
    To verify the change in hostname, run the following command:
