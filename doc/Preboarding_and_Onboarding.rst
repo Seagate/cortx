@@ -5,7 +5,7 @@ Preboarding and Onboarding
 Preboarding
 ===========
 
-The preboarding process must be the first process that must be completed after configugring `CORTX on OVA <https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst>`_. The preboarding procedure must be performed only once.
+The preboarding process must be the first process that must be completed after configuring `CORTX on OVA <https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst>`_. The preboarding procedure must be performed only once.
 
 .. raw:: html
 
@@ -46,9 +46,9 @@ The onboarding procedure must be performed after completing the preboarding proc
 
 #. After being prompted, login again with the username and password that you had provided earlier.
 
-#. Enter a name for your appliance in the **Appliance Name** field.
+#. Enter a name for your system in the **System Name** field.  Any name is fine.
 
-#. Upload the SSL certificate. If you do not upload a certificate, a default self-signed certificate provided by Seagate will be used.
+#. Optional: upload an SSL certificate. If you do not upload a certificate, a default self-signed certificate provided by Seagate will be used.
 
 #. Enter information about the DNS servers and search domains in relevant fields. The entries must be separated by comma, if either one or both the conditions mentioned below are applicable.
 
