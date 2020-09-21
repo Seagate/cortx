@@ -98,6 +98,24 @@ If you have a firewall between the OVA and the rest of your infrastructure, incl
 |         28100        |   TCP (HTTPS)     |              Management network             |
 +----------------------+-------------------+---------------------------------------------+
 
+Status of Services
+==================
+
+Run the below mentioned commands to check the status of different services that are part of CORTX.
+
+::
+
+ systemctl status rabbitmq-server
+ 
+ systemctl status elasticsearch
+ 
+ systemctl status haproxy
+ 
+ systemctl status s3authserver
+ 
+ systemctl status sspl-ll
+
+
 Restarting CORTX OVA
 ====================
 To restart the CORTX OVA, follow the below mentioned procedures, in the order of listing.
