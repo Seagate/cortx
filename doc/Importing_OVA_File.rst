@@ -78,6 +78,7 @@ Based on the hypervisor you use, click to expand the section below.
    .. image:: images/WS3.PNG
 
 #. After importing the file, power on the VM by clicking on the green arrow or the green text that says, "Power on this virtual machine".
+
    .. image:: images/power_on_vmw.png
 
 #. After finishing the import, return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
