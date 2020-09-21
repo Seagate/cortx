@@ -91,11 +91,11 @@ The procedure to install CORTX on OVA is mentioned below.
  systemctl status csm_web
     
 
- If any service is inactive, run the below mentioned command.
+If any service is inactive, run the below mentioned command.
 
- ::
+::
 
-  systemctl start|restart <service_name>
+ systemctl start|restart <service_name>
    
 10. Perform the S3 sanity test by running the following command.
 
