@@ -62,7 +62,7 @@ For example:
 
     /usr/share/elasticsearch/bin/elasticsearch --version**
     
-    salt "*" service.start rabbitmq-server
+    salt '*' cmd.run "service.start rabbitmq-server"
 
     rabbitmqadmin --version
 
