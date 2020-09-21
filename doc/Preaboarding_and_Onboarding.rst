@@ -2,6 +2,8 @@
 Preboarding and Onboarding
 ==========================
 
+The preboarding process must be the first process that must be completed after configugring CORTX on OVA. The preboarding procedure must be performed only once.
+
 .. raw:: html
 
     <details>
