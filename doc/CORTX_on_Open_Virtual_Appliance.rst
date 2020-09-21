@@ -32,6 +32,8 @@ The procedure to install CORTX on OVA is mentioned below.
    - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
   
 **Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.
+
+**Note**:  Operating system updates are not supported due to specific kernel dependencies.
  
 4. Open the VM console, and login with the below mentioned credentials.
 
@@ -68,15 +70,37 @@ The procedure to install CORTX on OVA is mentioned below.
 
    - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
    
-9. Perform the S3 sanity test by running the following.
+9.Run the below mentioned commands to check the status of different services that are part of CORTX.
+
+   ::
+
+    systemctl status rabbitmq-server
+ 
+    systemctl status elasticsearch
+ 
+    systemctl status haproxy
+ 
+    systemctl status s3authserver
+ 
+    systemctl status sspl-ll
+    
+    hctl status
+    
+    systemctl status csm_agent
+    
+    systemctl status csm_web
+    
+
+   If any service is inactive, run the below mentioned command.
+
+   ::
+
+    systemctl start|restart <service_name>
+   
+10. Perform the S3 sanity test by running the following.
 
    - **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
  
-10. Open the web browser and navigate to the following location:
-
-   * **https://<management IP>:28100/#/preboarding/welcome**
-  
-**Note**: Operating system updates are not supported due to specific kernel dependencies.
 
 11. Refer to `Onboarding into CORTX <Preboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
 
@@ -97,29 +121,6 @@ If you have a firewall between the OVA and the rest of your infrastructure, incl
 +----------------------+-------------------+---------------------------------------------+
 |         28100        |   TCP (HTTPS)     |              Management network             |
 +----------------------+-------------------+---------------------------------------------+
-
-Status of Services
-==================
-
-Run the below mentioned commands to check the status of different services that are part of CORTX.
-
-::
-
- systemctl status rabbitmq-server
- 
- systemctl status elasticsearch
- 
- systemctl status haproxy
- 
- systemctl status s3authserver
- 
- systemctl status sspl-ll
-
-If any service is inactive, run the below mentioned command.
-
-::
-
- systemctl start|restart <service_name>
 
 Restarting CORTX OVA
 ====================
@@ -174,19 +175,6 @@ Start the OVA
 
    - **hctl bootstrap -c /var/lib/hare/**
    
-4. Run the below mentioned command to verify that CORTX I/O subsystem has started.
-
-   - **hctl status**
-   
-5. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
-   
-   - **systemctl status csm_agent**
-   
-   - **systemctl status csm_web**
-   
-6. If the above services are not active, run the following command.
-
-   - **systemctl start <csm_agent|csm_web>**
 
    
 .. raw:: html
