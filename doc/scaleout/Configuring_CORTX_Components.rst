@@ -334,7 +334,7 @@ Prerequisites
 
  provisioner get_setup_info
 
- {'nodes': 3, 'servers_per_node': 2, 'storage_type': 'JBOD', 'server_type': 'virtual'}
+ {'nodes': 1, 'servers_per_node': 3, 'storage_type': 'JBOD', 'server_type': 'physical'}
   
 Configuration
 --------------
