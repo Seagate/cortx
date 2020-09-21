@@ -65,7 +65,7 @@ Based on the hypervisor you use, click to expand the section below.
 
 #. Open the downloaded VMware Workstation Player.
 
-#. Select **Open a Virtual Machine**. The **Open Virtual Machine** window opens.  If you are asked about 'Custom' or 'Typical' Configuration, these instructions assume you choose 'Typical'. 
+#. Select **Open a Virtual Machine**. The **Open Virtual Machine** window opens.  
 
    .. image:: images/WS1.PNG
 
