@@ -27,7 +27,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    * **gzip cortx-va-1.0.0-rc3.zip**
 
-#. Import the OVA file by referring to `Importing OVA <Importing_OVA_File.rst>`_. 
+#. Import the OVA file by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
    * In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
   
