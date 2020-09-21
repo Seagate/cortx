@@ -60,9 +60,6 @@ Based on the hypervisor you use, refer the sections below to import an OVA file.
     <details>
    <summary><a>VMware Workstation</a></summary>
 
-Note: With "Bridged" network configuration VMware Workstation should allow DHCP for the installed VMs.   
-Some host network adapters might need to be unselected to allow proper operation. See https://stackoverflow.com/questions/31531235/guest-vm-cant-get-ip-address-with-bridge-mode for more details
-
 1. Open the downloaded VMware Workstation Player.
 
 2. Select **Open a Virtual Machine**. The **Open Virtual Machine** window opens.
@@ -78,6 +75,9 @@ Some host network adapters might need to be unselected to allow proper operation
    .. image:: images/WS3.PNG
 
 5. After the importing is complete, navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
+
+**Note**: With "Bridged" network configuration VMware Workstation should allow DHCP for the installed VMs.   
+Some host network adapters might need to be unselected to allow proper operation. See https://stackoverflow.com/questions/31531235/guest-vm-cant-get-ip-address-with-bridge-mode for more details
 
 .. raw:: html
    
