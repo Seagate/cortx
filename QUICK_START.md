@@ -37,13 +37,14 @@ Watch our CORTX Engineer, Justin Woo, demonstrate **<link to the video>** the pr
 
 ## Contribute to CORTX Community
 
-Refer to the CORTX [Community Guide](doc/CORTXContributionGuide.md) that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us. 
+Refer to the CORTX [Contribution Guide](doc/CORTXContributionGuide.md) that hosts all information about community values, code of conduct, how to contribute code and documentation, community and code style guide, and how to reach out to us. 
 
 We excited for your interest in CORTX and hope you will join us. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Support and Community Discussions
 
-- Join our CORTX-Open Source [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) channel to interact with your fellow community members and gets your questions answered. 
+- Join our CORTX-Open Source [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) in order to connect with the rest of the community and learn more. 
+- Have a question, or want to share an idea? Check out [CORTX Github Discussions.](https://github.com/Seagate/cortx/discussions)
 - If you'd like to contact us directly, drop us a mail at: cortx-question@seagate.com.
 
 ## Thank You!
