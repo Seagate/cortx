@@ -24,9 +24,10 @@
    
    </details>
      
-======================
-Onboarding into CORTX
-======================
+.. raw:: html
+
+    <details>
+   <summary><a>Click here to complete the onboarding process.</a></summary>
 
 Perform the below mentioned procedure to onboard into CORTX. The below mentioned steps can be performed multiple times, by accessing to the URL *https://<management IP>:28100/#/preboarding/login* or from the **Settings** page on the CSM GUI.
 
@@ -49,3 +50,7 @@ Perform the below mentioned procedure to onboard into CORTX. The below mentioned
 6. Configure the notifications by selecting the checkbox. If you do not want to receive notifications, select **Skip this step**, and click **Next**.
 
 7. Click **Finish**. CORTX is now ready for use. CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
+
+.. raw:: html
+   
+   </details>
