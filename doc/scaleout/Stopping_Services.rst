@@ -78,11 +78,23 @@ I/O Stack
   </details>
    
    
-- RabbitMQ
+RabbitMQ
+========
 
-  ::
+.. raw:: html
 
-   salt '*' cmd.run "systemctl stop rabbitmq-server"
+ <details>
+ <summary><a>Click here to view the command. </a></summary>
+ 
+::
+
+ salt '*' cmd.run "systemctl stop rabbitmq-server"
+ 
+.. raw:: html
+   
+ </details>
+ 
+ 
    
 
 - LDAP
