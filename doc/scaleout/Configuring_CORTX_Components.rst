@@ -2,7 +2,7 @@
 Configuration of Components
 ***************************
 
-Configuration of different components that are part of CORTX are mentioned in the sections below.
+Configuration of different components that are part of CORTX are mentioned in the sections below. Please configure every component in the order in which they are listed.
 
 S3 (AuthServer and HAProxy)
 ===========================
