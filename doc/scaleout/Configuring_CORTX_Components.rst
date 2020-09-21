@@ -263,6 +263,13 @@ CSM
 
 The various aspects associated with the configuration of CSM component are mentioned below.
 
+Run the below mentioned command. This is a prerquisite.
+
+::
+
+ salt '*' cmd.run "setfacl -m u:csm:rwx /etc/ssl/stx/stx.pem"
+ 
+
 Configuration
 -------------
 
@@ -270,11 +277,15 @@ Execute the below mentioned commands on the node where Statsd and Kibana service
 
 ::
 
- csm_setup post_install
+ salt '*' cmd.run "csm_setup post_install"
 
- csm_setup config
+ salt '*' cmd.run "csm_setup config"
+ 
+ salt '*' cmd.run "usermod -a -G prvsnrusers csm"
+ 
+ salt '*' cmd.run "usermod -a -G certs csm"
 
- csm_setup init
+ salt '*' cmd.run "csm_setup init"
 
 You can fine tune the configuration by manually editing the configuration files in **/etc/csm**.
 
@@ -323,7 +334,7 @@ Prerequisites
 
  provisioner get_setup_info
 
- {'nodes': 1, 'servers_per_node': 2, 'storage_type': '5u84', 'server_type': 'virtual'}
+ {'nodes': 3, 'servers_per_node': 2, 'storage_type': 'JBOD', 'server_type': 'virtual'}
   
 Configuration
 --------------
