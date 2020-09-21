@@ -106,17 +106,27 @@ LDAP
 ::
 
  salt '*' cmd.run "systemctl stop slapd"
+ 
+.. raw:: html
    
-   
-- Statsd and Kibana
-
-  As you know the nodes on which statsd and kibana are running, run the following commands.
-
-  ::
+ </details>
   
-   salt '<Node Name>' cmd.run "systemctl stop statsd"
    
-   salt '<Node Name>' cmd.run "systemctl stop kibana"
+Statsd and Kibana
+=================
+
+As you know the nodes on which statsd and kibana are running, run the following commands.
+  
+.. raw:: html
+
+ <details>
+ <summary><a>Click here to view the command. </a></summary>
+
+::
+  
+ salt '<Node Name>' cmd.run "systemctl stop statsd"
+   
+ salt '<Node Name>' cmd.run "systemctl stop kibana"
    
 - Elasticsearch
 
