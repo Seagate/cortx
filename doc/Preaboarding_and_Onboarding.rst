@@ -4,7 +4,7 @@ Preboarding Process
 
 Perform the below mentioned to complete the preboarding process. The below mentioned steps can be performed only once.
 
-1. Navigate to the *https://<management IP>:28100/#/preboarding/login*.
+1. Navigate to the *https://<management IP>:28100/#/preboarding/welcome*.
 
 2. Accept the End User License Agree (EULA).
 
@@ -22,11 +22,11 @@ Perform the below mentioned to complete the preboarding process. The below menti
 Onboarding into CORTX
 ======================
 
-Perform the below mentioned procedure to onboard into CORTX. The below mentioned steps can be performed multiple times.
+Perform the below mentioned procedure to onboard into CORTX. The below mentioned steps can be performed multiple times, by accessing to the URL *https://<management IP>:28100/#/preboarding/login* or from the **Settings** page on the CSM GUI.
 
-1. Enter a name for your appliance in the **Appliance Name** field.
+1. After being prompted, login again with the username and password that you had provided earlier.
 
-2. After being prompted, login again with the username and password that you provided in step 2.
+2. Enter a name for your appliance in the **Appliance Name** field.
 
 3. Upload the SSL certificate. If you do not upload a certificate, a default self-signed certificate provided by Seagate will be used.
 
@@ -42,4 +42,4 @@ Perform the below mentioned procedure to onboard into CORTX. The below mentioned
 
 6. Configure the notifications by selecting the checkbox. If you do not want to receive notifications, select **Skip this step**, and click **Next**.
 
-7. Click **Finish**. CORTX is now ready for use.
+7. Click **Finish**. CORTX is now ready for use. CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*

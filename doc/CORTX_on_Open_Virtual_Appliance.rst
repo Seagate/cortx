@@ -27,7 +27,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    * **gzip cortxva-v1.1.zip**
 
-3. Import the OVA file by referring to `Importing OVA <Importing_OVA_File.rst>`_.
+3. Import the OVA file by referring to `Importing OVA <Importing_OVA_File.rst>`_. Set the **Network Translation Address** (NAT) in the hypervisor settings for the imported OVA. 
 
    - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
   
@@ -64,16 +64,17 @@ The procedure to install CORTX on OVA is mentioned below.
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have DNS server to register the VM with, you can access it using the IP address. However, the hostname is mandatory and should be configured.
 
-
-8. Set the **Network Translation Address** (NAT) in the hypervisor settings for the imported OVA. Refer to `Importing OVA <Importing_OVA_File.rst>`_.
-
-9. Bring up the OVA by running the below mentioned script.
+8. Bring up the OVA by running the below mentioned script.
 
    - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
+   
+9. Perform the S3 sanity test by running the following.
+
+   - **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
  
 10. Open the web browser and navigate to the following location:
 
-    * **https://<management IP>:28100/#/preboarding/welcome**
+   * **https://<management IP>:28100/#/preboarding/welcome**
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
@@ -121,13 +122,29 @@ Shutdown the VA
 
    * **poweroff**
  
-
 Starting the OVA
 -----------------
 1. Power on the Virtual Appliance VM.
 
-2. Login to the OVA through ssh after the VM starts.
+2. Login to the CORTX OVA as cortx and run the following.
 
-3. Bring up the OVA by running the below mentioned script.
+   - **sudo su -**
 
-   - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
+3. Start CORTX I/O subsystem by running the following command.
+
+   - **hctl bootstrap -c /var/lib/hare/**
+   
+4. Run the below mentioned command to verify that CORTX I/O subsystem has started.
+
+   - **hctl status**
+   
+5. Run the below mentioned commands to check if CORTX Management subsystem (CSM) has started.
+   
+   - **systemctl status csm_agent**
+   
+   - **systemctl status csm_web**
+   
+6. If the above services are not active, run the following command.
+
+   - **systemctl start <csm_agent|csm_web>**
+

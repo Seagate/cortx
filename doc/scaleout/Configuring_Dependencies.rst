@@ -17,7 +17,7 @@ Configuration
 
    ::
 
-    salt '*' cmd.run /opt/seagate/cortx/s3/install/ldap/setup_ldap.sh --defaultpasswd --skipssl --forceclean
+    salt '*' cmd.run "/opt/seagate/cortx/s3/install/ldap/setup_ldap.sh --defaultpasswd --skipssl --forceclean"
 
 3. After LDAP is setup on the three nodes, perform **LDAP Replication**. Refer the procedure below.
 
@@ -25,11 +25,11 @@ Configuration
 
    ::
 
-    salt '*' cmd.run cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf 
+    salt '*' cmd.run "cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf" 
  
-    salt '*' cmd.run systemctl restart slapd
+    salt '*' cmd.run "systemctl restart slapd"
 
-    salt '*' cmd.run systemctl restart rsyslog
+    salt '*' cmd.run "systemctl restart rsyslog"
 
 Starting Service
 -----------------
@@ -38,13 +38,13 @@ Starting Service
 
   ::
 
-   salt '*' cmd.run systemctl start slapd
+   salt '*' cmd.run "systemctl start slapd"
 
 Run the following command to check the status of the service.
 
 ::
 
- salt '*' cmd.run systemctl status slapd
+ salt '*' cmd.run "systemctl status slapd"
 
 LDAP Replication
 ----------------
@@ -138,6 +138,8 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
 **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif**
  
 4. Push the **Config.ldif** file.
+
+   Replace provider with the hostname or node-id in each olcSyncRepl entry below.
 
    **config.ldif**
 
@@ -245,6 +247,8 @@ Perform the following steps on only one node. In this case, it must be performed
    **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov.ldif**
    
 2. Push the data replication ldif.
+
+   Replace provider with the hostname or node-id in each olcSyncRepl entry below.
 
    **data.ldif**
 
@@ -362,15 +366,54 @@ Prerequisites
    rabbitmq-server-xxxxxxxxxxxxxxxxxx
 
 
-- The **erlang.cookie** file must be available. Run the following command to check the availability.
+- The **erlang.cookie** file must be available. Run the below mentioned commands in the order in which they are listed.
+
+  - Generating the file
+
+    ::
+
+     systemctl start rabbitmq-server
+     
+     systemctl stop rabbitmq-server
+     
+  - Checking the existance of the file
+  
+    ::
+    
+     ls -l /var/lib/rabbitmq/.erlang.cookie
+     
+  - To copy the file to all nodes
+   
+    ::
+     
+     salt-cp "*" /var/lib/rabbitmq/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie --hard-crash
+  
+
+Restarting Service
+------------------
+
+- Run the below mentioned command to restart the server.
 
   ::
 
-   cat /var/lib/rabbitmq/.erlang.cookie
+   salt '*' cmd.run "service.restart rabbitmq-server"
+
+Run the below mentioned command to know the status.
+
+::
+
+ systemctl status rabbitmq-server -l
  
 Configuration
 -------------
 1. Start the RabbitMQ server.
+
+2. Run the below mentioned command.
+
+   ::
+   
+    salt '*' cmd.run 'pip.install python-consul bin_env="/usr/bin/pip3"'
+    
 2. Run the below mentioned commands to setup the RabbitMQ cluster.
 
    - Setting a single (current) node as cluster
@@ -379,11 +422,11 @@ Configuration
    
     /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster
    
-   - Setting 2 nodes
+   - Setting 3 nodes
  
    ::
    
-    /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster -n NODES
+    /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster -n srvnode-1,srvnode-2,srvnode-3
     
 **Note**: -n NODES where NODES must be FQDN of the respective nodes and separated by comma. For example, -n ssc-vm-2104,ssc-vm-176 
  
@@ -391,28 +434,8 @@ Run the below mentioned command to check the status of the RabbitMQ cluster.
 
 ::
 
- rabbitmqctl cluster_status
+ salt '*' cmd.run "rabbitmqctl cluster_status"
  
-
-Starting Service
------------------
-- Run the below mentioned command to start the server.
-
-  ::
-
-   systemctl start rabbitmq-server
-
-- Run the below mentioned command to restart the server.
-
-  ::
-
-   systemctl restart rabbitmq-server
-
-Run the below mentioned command to know the status.
-
-::
-
- systemctl status rabbitmq-server -l
 
 Statsd and Kibana
 =================
@@ -428,15 +451,15 @@ Run the below mentioned commands to start and enable the **statsd** service on o
 
 ::
 
- salt '<Node Name>' cmd.run systemctl start statsd
+ salt '<Node Name>' cmd.run "systemctl start statsd"
 
- salt '<Node Name>' cmd.run systemctl enable statsd
+ salt '<Node Name>' cmd.run "systemctl enable statsd"
 
 To know the status of the service, run the following command.
 
 ::
 
- salt '<Node Name>' cmd.run systemctl status statsd
+ salt '<Node Name>' cmd.run "systemctl status statsd"
 
 Kibana Configuration
 --------------------
@@ -452,6 +475,7 @@ In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst
 
 ::
 
+ [Unit]
  Description=Kibana
  
  [Service] 
@@ -469,7 +493,8 @@ In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst
  Restart=always 
  WorkingDirectory=/ 
 
-  [Install] WantedBy=multi-user.target
+ [Install] 
+ WantedBy=multi-user.target
   
 2. Reload the daemon by running the following command.
 

@@ -19,19 +19,19 @@ Starting Service
     
   ::
    
-   salt '*' cmd.run systemctl start s3authserver
+   salt '*' cmd.run "systemctl start s3authserver"
 
 - Run the below mentioned command to restart the AuthServer on all the three nodes.
 
   ::
     
-   salt '*' cmd.run systemctl restart s3authserver
+   salt '*' cmd.run "systemctl restart s3authserver"
  
 - Run the following command to check the status of AuthServer.
 
   ::
 
-   salt '*' cmd.run systemctl status s3authserver
+   salt '*' cmd.run "systemctl status s3authserver"
 
 HAProxy
 --------
@@ -93,7 +93,7 @@ Perform the steps mentioned below to configure HAProxy, if external load balance
 
 4. Keep the instance name (s3-instance-x) for each instance unique, increment x by 1 with increase in instance.
 
-5. Increment the port number (28081) for the next 3 instances by 1. Repeat these steps for nodes 2 & 3 as explained in the next two steps.
+5. Increment the port number (28081) for all the instances by 1. Repeat these steps for nodes 2 & 3 as explained in the next two steps.
 
 6. Copy the above **N** edited instances and paste it below. Change the IP address of these instances to the IP of Node 2. Then, keep the instance name (s3-instance-x) for each instance unique, incrementing x by 1.
 
@@ -103,11 +103,13 @@ Perform the steps mentioned below to configure HAProxy, if external load balance
 
 9. Add 2 more similar instances below this and replace the IP addresses of those 2 instances with the public data IP addresses of the 2 passive nodes. Keep the s3authserver-instanceX instance ID unique.
 
-10. Comment out the **HAProxy Monitoring Config** section if present.
+10. Repeat the above step (Step 9) on two other nodes.
 
-11. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**.
+11. Comment out the **HAProxy Monitoring Config** section if present.
 
-12. Configure haproxy logs on all the nodes by running the following commands.
+12. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**.
+
+13. Configure haproxy logs on all the nodes by running the following commands.
 
     ::
 
@@ -172,13 +174,13 @@ Starting Service
 
   ::
    
-   salt '*' cmd.run systemctl start haproxy
+   salt '*' cmd.run "systemctl start haproxy"
  
 - Run the below mentioned command to check the status of HAProxy services.
 
   ::
    
-   salt '*' cmd.run systemctl status haproxy
+   salt '*' cmd.run "systemctl status haproxy"
 
 SSPL
 ====
@@ -215,15 +217,26 @@ Initial Steps
  
 Configuration
 -------------
+
+Run the below mentioned commands.
+
+::
+
+ provisioner pillar_set cluster/srvnode-1/network/data_nw/roaming_ip \"127.0.0.1\"
+ 
+ provisioner pillar_set cluster/srvnode-2/network/data_nw/roaming_ip \"127.0.0.1\"
+ 
+ provisioner pillar_set cluster/srvnode-3/network/data_nw/roaming_ip \"127.0.0.1\"
+ 
 Run the below mentioned commands to configure SSPL.
 
 ::
  
- /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
+ salt '*' state.apply components.sspl.config.commons
 
- /opt/seagate/cortx/sspl/bin/sspl_setup init -r cortx
+ salt '*' cmd.run "/opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1"
 
- /opt/seagate/cortx/sspl/bin/sspl_setup config -f
+ salt '*' cmd.run "/opt/seagate/cortx/sspl/bin/sspl_setup config -f"
 
 
 Starting Service
@@ -232,19 +245,19 @@ Starting Service
 
   ::
 
-   salt '*' cmd.run systemctl start sspl-ll
+   salt '*' cmd.run "systemctl start sspl-ll"
 
 - Run the following to restart the SSPL service.
 
   ::
    
-   salt '*' cmd.run systemctl restart sspl-ll
+   salt '*' cmd.run "systemctl restart sspl-ll"
 
 Run the following command to know the status of the SSPL service.
 
 ::
  
- salt '*' cmd.run systemctl status sspl-ll -l
+ salt '*' cmd.run "systemctl status sspl-ll -l"
  
 Verification
 ------------
@@ -261,6 +274,13 @@ CSM
 
 The various aspects associated with the configuration of CSM component are mentioned below.
 
+Run the below mentioned command. This is a prerquisite.
+
+::
+
+ salt '*' cmd.run "setfacl -m u:csm:rwx /etc/ssl/stx/stx.pem"
+ 
+
 Configuration
 -------------
 
@@ -268,11 +288,15 @@ Execute the below mentioned commands on the node where Statsd and Kibana service
 
 ::
 
- csm_setup post_install
+ salt '*' cmd.run "csm_setup post_install"
 
- csm_setup config
+ salt '*' cmd.run "csm_setup config"
+ 
+ salt '*' cmd.run "usermod -a -G prvsnrusers csm"
+ 
+ salt '*' cmd.run "usermod -a -G certs csm"
 
- csm_setup init
+ salt '*' cmd.run "csm_setup init"
 
 You can fine tune the configuration by manually editing the configuration files in **/etc/csm**.
 
@@ -321,7 +345,7 @@ Prerequisites
 
  provisioner get_setup_info
 
- {'nodes': 1, 'servers_per_node': 2, 'storage_type': '5u84', 'server_type': 'virtual'}
+ {'nodes': 1, 'servers_per_node': 3, 'storage_type': 'JBOD', 'server_type': 'physical'}
   
 Configuration
 --------------
@@ -329,8 +353,8 @@ To check dependency and configure **HA**, perform **post_install**, **config**, 
 
 ::
 
- salt '*' cmd.run /opt/seagate/cortx/ha/conf/script/ha_setup post_install
+ salt '*' cmd.run "/opt/seagate/cortx/ha/conf/script/ha_setup post_install"
 
- salt '*' cmd.run /opt/seagate/cortx/ha/conf/script/ha_setup config
+ salt '*' cmd.run "/opt/seagate/cortx/ha/conf/script/ha_setup config"
 
- salt '*' cmd.run /opt/seagate/cortx/ha/conf/script/ha_setup init
+ salt '*' cmd.run "/opt/seagate/cortx/ha/conf/script/ha_setup init"
