@@ -1,9 +1,8 @@
 .. raw:: html
 
     <details>
-   <summary><a>Preboarding Process</a></summary>
+   <summary><a>Click here to complete the preboarding process.</a></summary>
 
-Perform the below mentioned to complete the preboarding process. The below mentioned steps can be performed only once.
 
 1. Navigate to the *https://<management IP>:28100/#/preboarding/welcome*.
 
@@ -18,6 +17,8 @@ Perform the below mentioned to complete the preboarding process. The below menti
    - **root**
 
    - **csm**
+   
+ **Note**: The above mentioned procedure can be performed only once.
    
 .. raw:: html
    
