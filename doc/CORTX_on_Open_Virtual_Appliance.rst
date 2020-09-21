@@ -99,7 +99,7 @@ The procedure to install CORTX on OVA is mentioned below.
    
 10. Perform the S3 sanity test by running the following command.
 
-- **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
+    - **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
  
 
 11. Refer to `Onboarding into CORTX <Preboarding_and_Onboarding.rst>`_ to execute the preboarding and onboarding process.
