@@ -83,8 +83,7 @@ Based on the hypervisor you use, click to expand the section below.
 
 #. After finishing the import, return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
 
-   **Note**: With "Bridged" network configuration VMware Workstation should allow DHCP for the installed VMs.   
-   Some host network adapters might need to be unselected to allow proper operation. See https://stackoverflow.com/questions/31531235/guest-vm-cant-get-ip-address-with-bridge-mode for more details
+   **Note**: If you do not see any IP addresses when you run the **ip a l** command as directed in the instructions, you will need to reconfigure some of our virtual networking settings.  Refer to https://stackoverflow.com/questions/31531235/guest-vm-cant-get-ip-address-with-bridge-mode for more details.
 
 .. raw:: html
    
