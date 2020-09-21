@@ -74,7 +74,7 @@ The procedure to install CORTX on OVA is mentioned below.
  
 10. Open the web browser and navigate to the following location:
 
-    * **https://<management IP>:28100/#/preboarding/welcome**
+   * **https://<management IP>:28100/#/preboarding/welcome**
   
 **Note**: Operating system updates are not supported due to specific kernel dependencies.
 
@@ -155,6 +155,7 @@ Shutdown the OVA
    
    </details>
  
+
 Start the OVA
 --------------
 
@@ -186,8 +187,10 @@ Start the OVA
 6. If the above services are not active, run the following command.
 
    - **systemctl start <csm_agent|csm_web>**
+
    
 .. raw:: html
    
    </details>
+
 

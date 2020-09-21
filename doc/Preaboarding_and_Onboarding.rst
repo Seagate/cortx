@@ -12,7 +12,6 @@ The preboarding process must be the first process that must be completed after c
     <details>
    <summary><a>Click here to read the preboarding procedure.</a></summary>
 
-
 1. Navigate to the *https://<management IP>:28100/#/preboarding/welcome*.
 
 2. Accept the End User License Agree (EULA).
@@ -63,7 +62,7 @@ The onboarding procedure must be performed after completing the preboarding proc
 
 7. Click **Finish**. CORTX is now ready for use. CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
 
-
 .. raw:: html
    
    </details>
+

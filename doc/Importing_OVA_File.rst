@@ -50,12 +50,15 @@ Based on the hypervisor you use, click and expand the section below to view the 
 9. Click **Finish** after you review the configuration. The process of importing starts. After the import is complete, click **Refresh**.
 
 10. Navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
+
   
 .. raw:: html
    
    </details>
 
+
 .. raw:: html
+
 
     <details>
    <summary><a>VMware Workstation</a></summary>
@@ -82,8 +85,10 @@ Some host network adapters might need to be unselected to allow proper operation
 .. raw:: html
    
    </details>
+   
 
 .. raw:: html
+
 
     <details>
    <summary><a>VMware ESX Server</a></summary>
@@ -122,6 +127,7 @@ Some host network adapters might need to be unselected to allow proper operation
    
    </details>
 
+
 .. raw:: html
 
     <details>
@@ -144,4 +150,5 @@ Some host network adapters might need to be unselected to allow proper operation
 .. raw:: html
    
    </details>
+
 
