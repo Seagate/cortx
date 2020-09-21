@@ -2,11 +2,15 @@
 Configuration of Dependencies
 *****************************
 
-The procedures that must be followed to install and configure different dependencies are mentioned below.
+The procedures that must be followed to install and configure different dependencies are mentioned below. Please configure below mentioned dependencies in the order which they are listed.
 
 LDAP
 ====
-This section describes the procedures that must be followed to configure LDAP.
+
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for complete information. </a></summary>
 
 Configuration
 -------------
@@ -339,9 +343,17 @@ Perform the following steps on only one node. In this case, it must be performed
 
 **Note**: Update the host name in the provider field in data.ldif before running the command.
 
+.. raw:: html
+   
+  </details>
+
 RabbitMQ
 ========
-This section describes the procedures that must be followed to configure RabbitMQ.
+
+.. raw:: html
+
+ <details>
+ <summary><a>Click herefor complete information. </a></summary>
 
 Prerequisites
 --------------
@@ -436,6 +448,10 @@ Run the below mentioned command to check the status of the RabbitMQ cluster.
 ::
 
  salt '*' cmd.run "rabbitmqctl cluster_status"
+ 
+.. raw:: html
+   
+  </details>
  
 
 Statsd and Kibana
