@@ -77,7 +77,10 @@ Based on the hypervisor you use, click to expand the section below.
 
    .. image:: images/WS3.PNG
 
-#. After the importing is complete, navigate to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and follow the instructions from step 4.
+#. After importing the file, power on the VM by clicking on the green arrow or the green text that says, "Power on this virtual machine".
+   .. image:: images/power_on_vmw.png
+
+#. After finishing the import, return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
 
    **Note**: With "Bridged" network configuration VMware Workstation should allow DHCP for the installed VMs.   
    Some host network adapters might need to be unselected to allow proper operation. See https://stackoverflow.com/questions/31531235/guest-vm-cant-get-ip-address-with-bridge-mode for more details
