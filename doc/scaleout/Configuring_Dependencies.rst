@@ -353,7 +353,7 @@ RabbitMQ
 .. raw:: html
 
  <details>
- <summary><a>Click herefor complete information. </a></summary>
+ <summary><a>Click here for complete information. </a></summary>
 
 Prerequisites
 --------------
@@ -456,11 +456,15 @@ Run the below mentioned command to check the status of the RabbitMQ cluster.
 
 Statsd and Kibana
 =================
-This section describes the procedures that must be followed to configure statsd and kibana.
 
 - **Statsd** is used to collect metric from various sources and it runs on each node as the daemon service.
 
 - **Kibana** is used to aggregate metrics and run on the system with csm service.
+
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for complete information. </a></summary>
 
 Statsd Configuration
 --------------------
@@ -532,3 +536,7 @@ Check the status of Kibana by running the following command.
 ::
 
  systemctl status kibana
+ 
+.. raw:: html
+   
+  </details>
