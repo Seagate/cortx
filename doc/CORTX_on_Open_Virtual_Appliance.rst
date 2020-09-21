@@ -31,7 +31,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
   
-**Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.
+**Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. 
 
 **Note**:  Operating system updates are not supported due to specific kernel dependencies.
  
@@ -72,30 +72,30 @@ The procedure to install CORTX on OVA is mentioned below.
    
 9.Run the below mentioned commands to check the status of different services that are part of CORTX.
 
+::
+
+ systemctl status rabbitmq-server
+ 
+ systemctl status elasticsearch
+   
+ systemctl status haproxy
+ 
+ systemctl status s3authserver
+ 
+ systemctl status sspl-ll
+    
+ hctl status
+    
+ systemctl status csm_agent
+    
+ systemctl status csm_web
+    
+
+ If any service is inactive, run the below mentioned command.
+
  ::
 
-  systemctl status rabbitmq-server
- 
-   systemctl status elasticsearch
-   
-   systemctl status haproxy
- 
-   systemctl status s3authserver
- 
-   systemctl status sspl-ll
-    
-   hctl status
-    
-   systemctl status csm_agent
-    
-   systemctl status csm_web
-    
-
-   If any service is inactive, run the below mentioned command.
-
-   ::
-
-    systemctl start|restart <service_name>
+  systemctl start|restart <service_name>
    
 10. Perform the S3 sanity test by running the following command.
 
