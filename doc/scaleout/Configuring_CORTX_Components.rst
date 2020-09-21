@@ -365,7 +365,10 @@ Ensure that the services have started successfully by running the following comm
 HA 
 ==
 
-The prerequisite and the configuration procedure associated with the configuration of HA component is mentioned below.
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for detailed information. </a></summary>
 
 Prerequisites
 -------------
@@ -389,3 +392,7 @@ To check dependency and configure **HA**, perform **post_install**, **config**, 
  salt '*' cmd.run "/opt/seagate/cortx/ha/conf/script/ha_setup config"
 
  salt '*' cmd.run "/opt/seagate/cortx/ha/conf/script/ha_setup init"
+ 
+.. raw:: html
+   
+ </details>
