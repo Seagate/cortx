@@ -33,9 +33,8 @@ Perform the below mentioned procedure to configure the I/O stack.
 
    ::
 
-    hctl bootstrap --mkfs /var/lib/hare/cluster.yaml
+    hctl start
 
-   **Note**: This command must be used with **mkfs** only while running it for the first time. 
 
 4. Verify the motr utility m0crate, by creating a sample m0crate workload file and running m0crate workload. Run the below mentioned commands.
 
