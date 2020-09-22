@@ -69,6 +69,8 @@ The onboarding procedure must be performed after completing the preboarding proc
    - Number of DNS Servers > 1
 
    - Number of search domains > 1
+   
+   .. image:: images/DNS.PNG
 
 5. Provide information about the NTP servers in the relevant field. The entries must be separated by comma, if the below mentioned condition is applicable.
 
