@@ -122,6 +122,12 @@ If any service is inactive, run the below mentioned command.
 
 
 13. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
+
+**Important**: By default, port 80 is closed. Run the below mentioned command to open port 80.
+
+::
+               
+ salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
  
 *************
 Miscellaneous
