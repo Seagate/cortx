@@ -91,6 +91,8 @@ The onboarding procedure must be performed after completing the preboarding proc
 
 8. Click **Go to dashboard**. CORTX is now ready for use. CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
 
+   .. image:: images/DB.PNG
+
 .. raw:: html
    
    </details>
