@@ -132,7 +132,7 @@ Let us assume we are configuring **M**-node cluster.  Also let's assume number o
          ...
          server s3authserver-instance1 0.0.0.0:9085
          
-    Replace 0.0.0.0 with the private data IP address of Node 1.
+   Replace 0.0.0.0 with the private data IP address of Node 1.
 
 8. Create a copy of this line for every node in cluster. That is,  with **M**=3, you need 3 entries total.
 
