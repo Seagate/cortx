@@ -310,6 +310,8 @@ Execute the below mentioned commands on the node where Statsd and Kibana service
 
 ::
 
+ salt '*' cmd.run "setfacl -m u:csm:rwx /etc/ssl/stx/stx.pem"
+
  salt '*' cmd.run "csm_setup post_install"
 
  salt '*' cmd.run "csm_setup config"
