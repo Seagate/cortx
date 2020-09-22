@@ -281,8 +281,7 @@ Perform sanity test and ensure that the SSPL configuration is accurate. Run the 
 ::
 
  /opt/seagate/cortx/sspl/bin/sspl_setup check
-  
- /opt/seagate/cortx/sspl/bin/sspl_setup test self
+
  
 .. raw:: html
    
