@@ -115,8 +115,10 @@ Run the following to restart the SSPL service.
    
 </details>
 
-CSM
-===
+.. raw:: html
+
+ <details>
+ <summary><a>CSM</a></summary> 
 
 Run the below mentioned commands to start and enable the csm agent.
 
@@ -133,3 +135,7 @@ Run the below mentioned commands to start and enable the csm web.
  systemctl start csm_web
 
  systemctl enable csm_web
+ 
+.. raw:: html
+   
+</details>
