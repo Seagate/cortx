@@ -26,9 +26,7 @@ The preboarding process must be the first process that must be completed after c
 
    .. image:: images/EULA1.PNG
 
-4. Create a user with admin privileges.
-
-   - Enter the username, password, and email address in the relevant fields. Also, select the checkbox if want to receive the notifications.
+4. Create a user with admin privileges by entering the username, password, and email address in the relevant fields. If you want to receive email notifications, select the **Subscribe to email notifications** checkbox.
    
    .. image:: images/Adminu.PNG
 
