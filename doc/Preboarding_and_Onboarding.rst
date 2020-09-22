@@ -58,7 +58,7 @@ The onboarding procedure must be performed after completing the preboarding proc
 
 2. Enter a name for your appliance in the **System Name** field, and click **Continue**.
 
- .. image:: images/Systemname.PNG
+   .. image:: images/Systemname.PNG
 
 3. If you have a SSL certificate, you can upload it. Else, a default self-signed certificate provided by Seagate will be used.
 
