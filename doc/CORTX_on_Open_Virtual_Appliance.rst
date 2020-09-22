@@ -65,9 +65,9 @@ The procedure to install CORTX on OVA is mentioned below.
      * **chattr -i /etc/hostname**
   
  
-   To verify the change in hostname, run the following command:
+     To verify the change in hostname, run the following command:
  
-   * **hostnamectl status**
+     * **hostnamectl status**
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have a DNS server with which to register the VM, you can access it directly using its IP addresses. However, the hostname is mandatory and should be configured.
 
