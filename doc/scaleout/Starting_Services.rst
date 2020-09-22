@@ -2,7 +2,7 @@
 Starting Services
 ==================
 
-Run the commands mentioned below to start the services. Please follow the order of listing.
+Click each service to expand and view the commands that must be run to start services.
 
 .. raw:: html
 
