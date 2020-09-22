@@ -46,7 +46,7 @@ The procedure to install CORTX on OVA is mentioned below.
  
    * ens256 - public data
    
-      .. image:: images/networks.png
+   .. image:: images/networks.png
 
 #. Change the hostname by running the following command:
 
