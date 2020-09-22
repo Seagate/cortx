@@ -28,11 +28,11 @@ The procedure to install CORTX on OVA is mentioned below.
 
 #. Import the OVA file by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
-- In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
+   - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
   
-**Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. 
+   **Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. 
 
-**Note**:  Operating system updates are not supported due to specific kernel dependencies.
+   **Note**:  Operating system updates are not supported due to specific kernel dependencies.
  
   
 #. Open the VM console, and login with the below mentioned credentials.
