@@ -2,68 +2,139 @@
 Stopping Services
 =================
 
-Run the below mentioned commands in the order of listing to stop the relevant services.
+Run the commands mentioned below to stop the services. Please follow the order of listing.
 
-- CSM
-  
-  As you know the node on which CSM is running, run the following commands.
+CSM
+=====
 
-  ::
+As you know the node on which CSM is running, run the following commands.
+ 
+.. raw:: html
+
+ <details>
+ <summary><a>Click here to view the commands. </a></summary>
+   
+::
      
-   salt '<Node Name>' cmd.run "systemctl stop csm_web"
+ salt '<Node Name>' cmd.run "systemctl stop csm_web"
    
-   salt '<Node Name>' cmd.run "systemctl stop csm_agent"
+ salt '<Node Name>' cmd.run "systemctl stop csm_agent"
    
+.. raw:: html
    
-- SSPL
+ </details>
+   
+SSPL
+====
 
-  :: 
+.. raw:: html
 
-   salt '*' cmd.run "systemctl stop sspl-ll"
+ <details>
+ <summary><a>Click here to view the command. </a></summary>
+
+:: 
+
+ salt '*' cmd.run "systemctl stop sspl-ll"
+   
+.. raw:: html
+   
+  </details>
    
 
-- S3 (AuthServer and HAProxy)
+S3 (AuthServer and HAProxy)
+===========================
 
-  ::
+.. raw:: html
 
-   salt '*' cmd.run "systemctl stop haproxy"
+ <details>
+ <summary><a>Click here to view the commands. </a></summary>
+
+::
+
+ salt '*' cmd.run "systemctl stop haproxy"
    
-   salt '*' cmd.run "systemctl stop s3authserver"
+ salt '*' cmd.run "systemctl stop s3authserver"
+   
+.. raw:: html
+   
+  </details>
 
       
-- I/O Stack
+I/O Stack
+=========
 
-  ::
+.. raw:: html
+
+ <details>
+ <summary><a>Click here to view the command. </a></summary>
  
-   hctl shutdown --all
+::
+ 
+ hctl shutdown --all
    
    
-- RabbitMQ
-
-  ::
-
-   salt '*' cmd.run "systemctl stop rabbitmq-server"
+.. raw:: html
    
-
-- LDAP
-
-  ::
-
-   salt '*' cmd.run "systemctl stop slapd"
+  </details>
    
    
-- Statsd and Kibana
+RabbitMQ
+========
 
-  As you know the nodes on which statsd and kibana are running, run the following commands.
+.. raw:: html
 
-  ::
+ <details>
+ <summary><a>Click here to view the command. </a></summary>
+ 
+::
+
+ salt '*' cmd.run "systemctl stop rabbitmq-server"
+ 
+.. raw:: html
+   
+ </details>
+ 
+ 
+LDAP
+====
+
+.. raw:: html
+
+ <details>
+ <summary><a>Click here to view the command. </a></summary>
+    
+::
+
+ salt '*' cmd.run "systemctl stop slapd"
+ 
+.. raw:: html
+   
+ </details>
   
-   salt '<Node Name>' cmd.run "systemctl stop statsd"
    
-   salt '<Node Name>' cmd.run "systemctl stop kibana"
-   
-- Elasticsearch
+Statsd and Kibana
+=================
 
-  ::
+As you know the nodes on which statsd and kibana are running, run the following commands.
   
-   salt '*' cmd.run "systemctl stop elasticsearch"
+.. raw:: html
+
+ <details>
+ <summary><a>Click here to view the commands. </a></summary>
+
+::
+  
+ salt '<Node Name>' cmd.run "systemctl stop statsd"
+   
+ salt '<Node Name>' cmd.run "systemctl stop kibana"
+   
+Elasticsearch
+
+.. raw:: html
+
+ <details>
+ <summary><a>Click here to view the command. </a></summary>
+
+::
+  
+ salt '*' cmd.run "systemctl stop elasticsearch"
