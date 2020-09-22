@@ -71,7 +71,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
  
-#. Mark down the management IP that you queried in step 6, and refer to `Onboarding into CORTX <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
+#. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
 
 #. Now that you have the complete system up and running, mark down the data IP that you queried in step 6 and use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
 
