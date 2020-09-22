@@ -261,6 +261,12 @@ Starting Service
 
    salt '*' cmd.run "systemctl start sspl-ll"
    
+- Run the below mentioned command if the SSPL service does not start.
+
+  ::
+  
+   "consul kv put system_information/product cluster"
+   
 - Run the following to restart the SSPL service.
 
   ::
