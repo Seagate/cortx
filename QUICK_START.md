@@ -2,29 +2,16 @@
 
 This guide is intended to provide quick start instructions for developers who want to build, test, and contribute to the CORTX software.  If you are merely looking to _test_ the software, please use [these instructions](doc/CORTX_on_Open_Virtual_Appliance.rst).
 
-To contribute to the CORTX Open-Source project, you'll need to understand the way the CORTX repository is organized. 
+**Develoment Environment** First you need to configure your [development environment](doc/BUILD_ENVIRONMENT.md). 
 
-The CORTX repository is the first and the parent repository that contains top-level documentation about the CORTX Community. The CORTX-Motr repository contains Motr files and is the second component of the CORTX project. Motr is the central component that stores Objects and Key-Values. The S3 Server component is built on Motr and all component related information is posited in the CORTX-S3 Server repository. To test and develop the basic functionality of CORTX, only these two components are required.  However, the full CORTX software stack includes additional components such as web interfaces and automated provisioning software.  Therefore, in this page we include the instructions for both testing and developing the basic functionality using just S3 and motr as well as instructions for testing and developing the entire CORTX system. 
-
-# Let's get CORTX ready!
-
-**Before you Begin**
-
-- You'll need to [Build and Test your VM Environment](doc/BUILD_ENVIRONMENT.md).
- 
-- Ensure that you have RoCE—RDMA over Converged Ethernet and TCP connectivity.
-
-   - Note: The CORTX stack currently does not work on Intel's OmniPath cards.
-***
-
-For basic development and testing of CORTX, you only need the motr and S3 submodules:
+**Core Functionality** For basic development and testing of CORTX, you only need the motr and S3 submodules:
 
 1. [CORTX-Motr](https://github.com/Seagate/cortx-motr/blob/dev/doc/Quick-Start-Guide.rst)
    - The main data path of the system responsible for the actual storage and distribution of objects and key-value pairs.
 2. [CORTX-S3](https://github.com/Seagate/cortx-s3server/blob/dev/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
    - The S3 interface to CORTX.
 
-For the complete stack, you will also need the remaining submodules:
+**Complete System** For the complete CORTX experience, you will also need the remaining submodules:
 
 1. [CORTX HA](https://github.com/Seagate/cortx-ha/blob/main/Quick-Start-Guide.rst)
    - The module responsible for maintaining highly available access to shared storage.
@@ -40,8 +27,6 @@ For the complete stack, you will also need the remaining submodules:
    - The module providing a file interface to CORTX.  
 7. [CORTX Provisioner](https://github.com/Seagate/cortx-prvsnr/blob/main/Cortx-ProvisionerQuickstartGuide.md)
    - The module which assists the users is satisfying dependencies, configuring the components and the other modules, and initializing the CORTX environment.
-
-***
 
 ## Additional Resources
 
