@@ -2,7 +2,7 @@
 
 This guide is intended to provide quick start instructions for developers who want to build, test, and contribute to the CORTX software.  If you are merely looking to _test_ CORTX, please use [these instructions](doc/CORTX_on_Open_Virtual_Appliance.rst).
 
-**Develoment Environment:** First you need to configure your [development environment](doc/BUILD_ENVIRONMENT.md). 
+**Development Environment:** First you need to configure your [development environment](doc/BUILD_ENVIRONMENT.md). 
 
 **Core Functionality:** For basic development and testing of CORTX, you only need the motr and S3 submodules:
 
