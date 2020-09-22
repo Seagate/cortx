@@ -54,125 +54,225 @@ Configuration
 ^^^^^^^^^^^^^^
 Before configuring HAProxy, check the number of S3 instances using **hctl status**. The hctl status would be similar to the below content.
 
-::
+Common Procedure
+^^^^^^^^^^^^^^^^^
+1. Decide whether you are going to use DNS Round-Robin configuration for load distribution for the cluster, or not.  Both configurations are supported, see steps below.
 
- Profile: 0x7000000000000001:0xc0Data pools:
- 0x6f00000000000001:0xc1Services:    sm18-r20.pun.seagate.com    [started]
- hax        0x7200000000000001:0x84  192.168.20.18@o2ib:12345:1:1    [started]  
- confd      0x7200000000000001:0x87  192.168.20.18@o2ib:12345:2:1    [started]  
- ioservice  0x7200000000000001:0x8a  192.168.20.18@o2ib:12345:2:2    [started]  
- s3server   0x7200000000000001:0xae  192.168.20.18@o2ib:12345:3:1    [started]  
- s3server   0x7200000000000001:0xb1  192.168.20.18@o2ib:12345:3:2    [started]  
- s3server   0x7200000000000001:0xb4  192.168.20.18@o2ib:12345:3:3    [started]  
- s3server   0x7200000000000001:0xb7  192.168.20.18@o2ib:12345:3:4    [unknown]  
- m0_client  0x7200000000000001:0xba  192.168.20.18@o2ib:12345:4:1    [unknown]  
- m0_client  0x7200000000000001:0xbd  192.168.20.18@o2ib:12345:4:2    sm10-
- r20.pun.seagate.com    [started]  hax        0x7200000000000001:0x6   
- 192.168.20.10@o2ib:12345:1:1    [started]  confd      0x7200000000000001:0x9   
- 192.168.20.10@o2ib:12345:2:1    [started]  ioservice  0x7200000000000001:0xc   
- 192.168.20.10@o2ib:12345:2:2    [started]  s3server   0x7200000000000001:0x30  
- 192.168.20.10@o2ib:12345:3:1    [started]  s3server   0x7200000000000001:0x33  
- 192.168.20.10@o2ib:12345:3:2    [started]  s3server   0x7200000000000001:0x36  
- 192.168.20.10@o2ib:12345:3:3    [started]  s3server   0x7200000000000001:0x39  
- 192.168.20.10@o2ib:12345:3:4    [unknown]  m0_client  0x7200000000000001:0x3c  
- 192.168.20.10@o2ib:12345:4:1    [unknown]  m0_client  0x7200000000000001:0x3f  
- 192.168.20.10@o2ib:12345:4:2    sm11-r20.pun.seagate.com  (RC)    [started]  
- hax        0x7200000000000001:0x45  192.168.20.11@o2ib:12345:1:1    [started]  
- confd      0x7200000000000001:0x48  192.168.20.11@o2ib:12345:2:1    [started]  
- ioservice  0x7200000000000001:0x4b  192.168.20.11@o2ib:12345:2:2    [started]  
- s3server   0x7200000000000001:0x6f  192.168.20.11@o2ib:12345:3:1    [started]  
- s3server   0x7200000000000001:0x72  192.168.20.11@o2ib:12345:3:2    [started]  
- s3server   0x7200000000000001:0x75  192.168.20.11@o2ib:12345:3:3    [started]  
- s3server   0x7200000000000001:0x78  192.168.20.11@o2ib:12345:3:4    [unknown]  
- m0_client  0x7200000000000001:0x7b  192.168.20.11@o2ib:12345:4:1    [unknown]  
- m0_client  0x7200000000000001:0x7e  192.168.20.11@o2ib:12345:4:2
- 
-From the above result, it can be seen that each node has 4 s3server instances. Hence, each HAProxy will be configured with 4 (s3 instances) x 3 (nodes) = 12 S3 instances in the HAProxy’s  **backend** section of app-main. Let us consider this value of number of S3 instances per node as **N**. There are two procedures for HAproxy configuration, one without external load balancer and the other with external load balancer.
+2. Find out the number of **s3server** instances by running the below mentioned commands.
 
-Perform the steps mentioned below to configure HAProxy, if external load balancer (DNS RR) is not available.
+   ::
+   
+    $ hctl status | grep s3server | wc -l
+    
+   For example:
+  
+   ::
+   
+    $ hctl status | grep s3server | wc -l
+    33
+    
+     N = 33/3
+     
+   This is total per cluster, and in this example it is 3-node cluster, so number of instances per node (N) is 11.
+  
+HAProxy Configuration Without DNS Round-Robin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
+**Note**: This configuration assumes that S3 clients are connecting to either one of the cluster nodes, and that node is then responsible for distributing the load within the cluster.
 
-2. Navigate to **backend app-main** section in haproxy.cfg, and locate S3 instance - **server s3-instance-1 0.0.0.0:28081 check maxconn 110**. Then, replace the 0.0.0.0 of all instances with the public data IP addresses  of the current node.
+Let us assume we are configuring **M**-node cluster.  Also let's assume number of *s3server* instances per node is **N**
 
-3. Add N – 1 (4 – 1 = 3 for this case) like instances below this. In case of VM, if the number of S3 instances per node is 1, then this step and steps 7 & 8 must be skipped.
+1. Open **/etc/haproxy/haproxy.cfg** on Node 1, and navigate to the **backend app-main** section:
 
-4. Keep the instance name (s3-instance-x) for each instance unique, increment x by 1 with increase in instance.
+   ::
+   
+    #---------------------------------------------------------------------
+    # BackEnd roundrobin as balance algorithm
+    ---------------------------------------------------------------------
+    backend app-main
 
-5. Increment the port number (28081) for all the instances by 1. Add these entries for the nodes 2 and 3 based on steps 6 and 7.
+2. Locate S3 instance definition line:
 
-6. Copy the above **N** edited instances and paste it below. Change the IP address of these instances to the IP of Node 2. Then, keep the instance name (s3-instance-x) for each instance unique, incrementing x by 1.
+   ::
+   
+    server s3-instance-1 0.0.0.0:28081 check maxconn 110
 
-7. Repeat the previous step while replacing the IP with the IP for Node – 3 and keeping the instance names unique.
+3. Replace the 0.0.0.0 with the private data IP addresses of the current node.
 
-8. Navigate to the **backend s3-auth** section and locate S3 auth instance: **server s3authserver-instance1 0.0.0.0:9085**.  Replace 0.0.0.0 with the public data IP address of current node
+4. Replicate this line **N** times.  In each line keep increasing **s3-instance-X** number, and port number:
 
-9. Add 2 more similar instances below this and replace the IP addresses of those 2 instances with the public data IP addresses of the 2 passive nodes. Keep the s3authserver-instanceX instance ID unique.
+   ::
+   
+    server s3-instance-1 YOUR.IP.ADDR.HERE:28081 check maxconn 110
+    server s3-instance-2 YOUR.IP.ADDR.HERE:28082 check maxconn 110
+    server s3-instance-3 YOUR.IP.ADDR.HERE:28083 check maxconn 110
+    ...
 
-10. Repeat the above step (Step 9) on two other nodes.
+5. Copy the above **N** edited instances and paste it below. Change the IP address of these instances to the private data IP of Node 2. Then, keep the instance name **s3-instance-X** for each instance unique, incrementing **X** by 1.
 
-11. Comment out the **HAProxy Monitoring Config** section if present.
+   For example, with **N=11**:
+   
+   ::
+   
+    server s3-instance-11 YOUR.NODE-1-IP.ADDR.HERE:28091 check maxconn 110
+    server s3-instance-12 YOUR.NODE-2-IP.ADDR.HERE:28081 check maxconn 110
+    server s3-instance-13 YOUR.NODE-2-IP.ADDR.HERE:28082 check maxconn 110
+    ...
 
-12. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**.
+6. Repeat the previous step for Node 3.
 
-13. Configure haproxy logs on all the nodes by running the following commands.
+7. Navigate to the **backend s3-auth** section and locate S3 auth instance: **server s3authserver-instance1 0.0.0.0:9085**.
+
+   ::
+   
+     #----------------------------------------------------------------------
+     # BackEnd roundrobin as balance algorith for s3 auth server
+     #----------------------------------------------------------------------
+     backend s3-auth
+         ...
+         server s3authserver-instance1 0.0.0.0:9085
+         
+   Replace 0.0.0.0 with the private data IP address of Node 1.
+
+8. Create a copy of this line for every node in cluster. That is,  with **M** = 3, you need 3 entries total.
+
+9. Update private data IP of nodes in respective lines.
+
+10. Keep the **s3authserver-instanceX** instance ID unique by incrementing **X** = 1,2,3...
+
+11. Comment out the **HAProxy Monitoring Config** section if present (or remove it):
+
+    ::
+    
+     ##---------------------------------------------------------------------
+     ##HAProxy Monitoring Config
+     ##---------------------------------------------------------------------
+     #listen haproxy3-monitoring
+     #    bind *:8080                #Haproxy Monitoring run on port 8080
+     #    mode http
+     #    option forwardfor
+     #    option httpclose
+     #    stats enable
+     #    stats show-legends
+     #    stats refresh 5s
+     #    stats uri /stats                             #URL for HAProxy monitoring
+     #    stats realm Haproxy\ Statistics
+     #    #stats auth howtoforge:howtoforge            #User and Password for login to the monitoring dashboard
+     #    #stats admin if TRUE
+     #    #default_backend app-main                    #This is optionally for monitoring backend
+
+
+12. Save and close the **haproxy.cfg** file.
+
+13. Copy this **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**.
+
+14. Configure haproxy logs by running the following commands on every node in the cluster.
 
     ::
 
      mkdir /etc/haproxy/errors/
-
+     
      cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
-
+     
      cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
-
+     
      cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
-
+     
      rm -rf /etc/cron.daily/logrotate
-
-     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate 
-
+     
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate
+     
      systemctl restart rsyslog
+     
+15. Apply haproxy config changes by running the following commands on every node in the cluster:
 
+    ::
+    
      systemctl restart haproxy 
-
+     
      systemctl status haproxy
+     
+HAProxy configuration With DNS Round-Robin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Perform the steps mentioned below to configure HAProxy, if external load balancer (DNS RR) is available. 
+**Note**: Configuring DNS Round-Robin itself is outside the scope of this document.  DNS RR is configured in settings of DNS server in your network.  This section only talks about configuring HAProxy.  This configuration assumes that DNS will map single S3 domain name to multiple IP addresses (all nodes in cluster will be added to that DNS entry), and this will distribute the incoming traffic between cluster nodes.
 
-1. Open **/etc/haproxy/haproxy.cfg** from the active node, and navigate to the **backend app-main** section.
+Perform the steps mentioned below to configure HAProxy with DNS Round-Robin.
 
-2. Locate the S3 instance - **server s3-instance-1 0.0.0.0:28081 check maxconn 110**. Add **N – 1**. In case of VM, if the number of S3 instances per node is 1, then three steps (2,3,4) including this will be skipped.
-
-3. Name instances uniquely **(s3-instance-x)** and increment **x** by 1, for every instance.
-
-4. Increment the port number (**28081**) for the next 3 instances, by 1. 
-
-5. Navigate to **backend s3-auth** section, and comment out the **HAProxy Monitoring Config** section if present.
-
-6. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**. 
-
-7. Configure haproxy logs on all the nodes by running the following commands.
+1. Open **/etc/haproxy/haproxy.cfg** on Node 1, and navigate to the **backend app-main** section.
 
    ::
+   
+    #---------------------------------------------------------------------
+    # BackEnd roundrobin as balance algorithm
+    #---------------------------------------------------------------------
+    backend app-main
 
-    mkdir /etc/haproxy/errors/
+2. Locate S3 instance definition line:
 
-    cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
+   ::
+   
+    server s3-instance-1 0.0.0.0:28081 check maxconn 110
 
-    cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
+3. Replicate this line **N** times.  In each line keep increasing **s3-instance-X** number, and port number:
 
-    cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
-
-    rm -rf /etc/cron.daily/logrotate
-
-    cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate 
-
-    systemctl restart rsyslog
-
-    systemctl restart haproxy 
-
-    systemctl status haproxy
+   ::
+  
+    server s3-instance-1 0.0.0.0:28081 check maxconn 110
+    server s3-instance-2 0.0.0.0:28082 check maxconn 110
+    server s3-instance-3 0.0.0.0:28083 check maxconn 110
+    ...
+    
+4. Comment out the **HAProxy Monitoring Config** section if present (or remove it):
  
+   ::
+    
+    ##---------------------------------------------------------------------
+    ##HAProxy Monitoring Config
+    ##---------------------------------------------------------------------
+    #listen haproxy3-monitoring
+    #    bind *:8080                #Haproxy Monitoring run on port 8080
+    #    mode http
+    #    option forwardfor
+    #    option httpclose
+    #    stats enable
+    #    stats show-legends
+    #    stats refresh 5s
+    #    stats uri /stats                             #URL for HAProxy monitoring
+    #    stats realm Haproxy\ Statistics
+    #    #stats auth howtoforge:howtoforge            #User and Password for login to the monitoring dashboard
+    #    #stats admin if TRUE
+    #    #default_backend app-main                    #This is optionally for monitoring backend
+
+5. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**.
+
+6. Configure haproxy logs by running the following commands on every node in the cluster.
+
+   ::
+   
+    mkdir /etc/haproxy/errors/
+    
+    cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
+    
+    cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
+    
+    cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
+    
+    rm -rf /etc/cron.daily/logrotate
+    
+    cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate
+    
+    systemctl restart rsyslog
+    
+7. Apply haproxy config changes by running the following commands on every node in the cluster:
+
+   ::
+   
+    systemctl restart haproxy 
+    
+    systemctl status haproxy
+
+
 Starting Service
 ^^^^^^^^^^^^^^^^^
  

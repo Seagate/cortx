@@ -41,6 +41,13 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
 7. Refer to `Onboarding into CORTX <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_ to execute the onboarding process.
 
 **********************
+Starting of Services
+**********************
+
+To perform starting of services refer to `Starting Services <Starting_Services.rst>`_.
+
+
+**********************
  Stopping of Services
 **********************
  

@@ -165,7 +165,7 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
 
         binddn="cn=admin,cn=config" 
 
-        credentials=seagate 
+        credentials=B4kf1T6Qso
 
         searchbase="cn=config" 
 
@@ -189,7 +189,7 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
 
        binddn="cn=admin,cn=config" 
 
-       credentials=seagate 
+       credentials=B4kf1T6Qso 
 
        searchbase="cn=config" 
 
@@ -211,7 +211,7 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
 
        binddn="cn=admin,cn=config" 
 
-       credentials=seagate 
+       credentials=B4kf1T6Qso
 
        searchbase="cn=config" 
 
@@ -274,7 +274,7 @@ Perform the following steps on only one node. In this case, it must be performed
 
        binddn="cn=admin,dc=seagate,dc=com" 
 
-       credentials=seagate 
+       credentials=B4kf1T6Qso 
 
        searchbase="dc=seagate,dc=com" 
 
@@ -298,7 +298,7 @@ Perform the following steps on only one node. In this case, it must be performed
 
         binddn="cn=admin,dc=seagate,dc=com" 
 
-        credentials=seagate 
+        credentials=B4kf1T6Qso
 
         searchbase="dc=seagate,dc=com" 
 
@@ -320,7 +320,7 @@ Perform the following steps on only one node. In this case, it must be performed
 
          binddn="cn=admin,dc=seagate,dc=com" 
 
-         credentials=seagate 
+         credentials=B4kf1T6Qso 
 
          searchbase="dc=seagate,dc=com" 
 
