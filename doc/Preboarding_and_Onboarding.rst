@@ -64,7 +64,8 @@ The onboarding procedure must be performed after completing the preboarding proc
 
    .. image:: images/SSL.PNG
 
-4. Enter information about the **DNS servers** and **Search domains** in relevant fields. Click **Continue**. The entries must be separated by comma, if either one or both the conditions mentioned below are applicable.
+4. Enter information about the **DNS servers** and **Search domains** in relevant fields, and click **Continue**. 
+   The entries must be separated by comma, if either one or both the conditions mentioned below are applicable.
 
 
    - Number of DNS Servers > 1
@@ -75,7 +76,8 @@ The onboarding procedure must be performed after completing the preboarding proc
    .. image:: images/DNS.PNG
    
    
-5. Provide information about the NTP servers in the relevant field. The entries must be separated by comma, if the below mentioned condition is applicable.
+5. Enter the NTP server address in the text box and select the NTP time zone offset from the drop-down menu. Then, click **Continue**.
+   The entries must be separated by comma, if the below mentioned condition is applicable.
 
    - Number of NTP Servers > 1
    
