@@ -70,7 +70,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    - **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
    
-9.Run the below mentioned commands to check the status of different services that are part of CORTX.
+9. Run the below mentioned commands to check the status of different services that are part of CORTX.
 
 ::
 
