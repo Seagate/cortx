@@ -12,11 +12,11 @@ The preboarding process must be the first process that must be completed after c
     <details>
    <summary><a>Click here to read the preboarding procedure.</a></summary>
 
-1. Navigate to the *https://<management IP>:28100/#/preboarding/welcome*. The management IP that was got from step 6 of `CORTX_on_Open_Virtual_Appliance <https://github.com/Seagate/cortx/blob/Changes-to-VA/doc/CORTX_on_Open_Virtual_Appliance.rst>`_. The CORTX UI is displayed.
+1. Navigate to the *https://<management IP>:28100/#/preboarding/welcome*. The management IP that was got from step 6 of `CORTX_on_Open_Virtual_Appliance <https://github.com/Seagate/cortx/blob/Changes-to-VA/doc/CORTX_on_Open_Virtual_Appliance.rst>`_.
 
 2. Click **Start**. A page that requests you to accept the End User License Agreement (EULA) appears.
 
-  .. image:: images/Start1.PNG
+   .. image:: images/Start1.PNG
 
 3. Click **Get Started**. A window showcasing the End User License Agreement (EULA) appears.
 
