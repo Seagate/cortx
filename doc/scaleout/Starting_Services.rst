@@ -32,10 +32,13 @@ Run the below mentioned command to restart the server.
  
 .. raw:: html
    
- </details>  
+ </details>
+ 
+.. raw:: html
 
-Statsd and Kibana
-=================
+ <details>
+ <summary><a>Statsd and Kibana</a></summary>
+
 
 Run the below mentioned commands to start and enable Statsd.
 
@@ -53,9 +56,14 @@ Run the below mentioned commands to start and enable Kibana.
 
  systemctl enable kibana
  
+.. raw:: html
+   
+ </details>
  
-S3 (AuthServer  and HAProxy)
-============================
+.. raw:: html
+
+ <details>
+ <summary><a>S3 (AuthServer  and HAProxy)</a></summary> 
 
 Run the below mentioned command to start the AuthServer on all the three nodes.
 
@@ -75,9 +83,15 @@ Run the below mentioned command to start the HAProxy services.
 ::
 
  salt '*' cmd.run "systemctl start haproxy"
+ 
+.. raw:: html
+   
+ </details>
 
-SSPL
-====
+.. raw:: html
+
+ <details>
+ <summary><a>SSPL</a></summary>
 
 Run the following to start the SSPL service.
 
@@ -96,6 +110,10 @@ Run the following to restart the SSPL service.
 ::
 
  salt '*' cmd.run "systemctl restart sspl-ll"
+ 
+.. raw:: html
+   
+</details>
 
 CSM
 ===
