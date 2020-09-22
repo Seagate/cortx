@@ -64,7 +64,7 @@ Common Procedure
    
     $ hctl status | grep s3server | wc -l
     
-  For example:
+   For example:
   
    ::
    
@@ -179,7 +179,7 @@ Let us assume we are configuring **M**-node cluster.  Also let's assume number o
      
      systemctl status haproxy
      
- HAProxy configuration With DNS Round-Robin
+HAProxy configuration With DNS Round-Robin
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Note**: Configuring DNS Round-Robin itself is outside the scope of this document.  DNS RR is configured in settings of DNS server in your network.  This section only talks about configuring HAProxy.  This configuration assumes that DNS will map single S3 domain name to multiple IP addresses (all nodes in cluster will be added to that DNS entry), and this will distribute the incoming traffic between cluster nodes.
