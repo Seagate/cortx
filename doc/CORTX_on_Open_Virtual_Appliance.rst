@@ -112,17 +112,16 @@ If any service is inactive, run the below mentioned command.
 
  systemctl start|restart <service_name>
     
+10. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
-#. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
-
-   * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
+    * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
  
-#. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
+11. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
 
-#. Now that you have the complete system up and running, mark down the data IP that you queried in step 6 and use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
+12. Now that you have the complete system up and running, mark down the data IP that you queried in step 6 and use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
 
 
-#. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
+13. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
  
 *************
 Miscellaneous
