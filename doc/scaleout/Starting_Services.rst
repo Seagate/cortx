@@ -2,7 +2,7 @@
 Starting Services
 ==================
 
-Run the commands mentioned below to stop the services. Please follow the order of listing.
+Run the commands mentioned below to start the services. Please follow the order of listing.
 
 .. raw:: html
 
