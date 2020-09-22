@@ -261,16 +261,6 @@ Starting Service
 
    salt '*' cmd.run "systemctl start sspl-ll"
    
-If the SSPL service does not start, run the following commands.
-
-::
-
- salt "*" cmd.run "/opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1"
- 
- salt "*" cmd.run "/opt/seagate/cortx/sspl/bin/sspl_setup config -f"
- 
- systemctl start sspl-ll
-
 - Run the following to restart the SSPL service.
 
   ::
