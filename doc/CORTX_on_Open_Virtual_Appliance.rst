@@ -96,15 +96,15 @@ The procedure to install CORTX on OVA is mentioned below.
     
     systemctl status csm_web
  
- If the SSPL service does not start, run the below mentioned commands.
+  If the SSPL service does not start, run the below mentioned commands.
 
- ::
+  ::
 
-  /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
+   /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
  
-  /opt/seagate/cortx/sspl/bin/sspl_setup config -f
+   /opt/seagate/cortx/sspl/bin/sspl_setup config -f
  
-  systemctl start sspl-ll
+   systemctl start sspl-ll
     
 
  If any service is inactive, run the below mentioned command.
