@@ -25,7 +25,6 @@ Since CORTX is composed of the Motr and S3 Server components, you'll need to:
 
 2. [Get CORTX-S3 Server ready](https://github.com/Seagate/cortx-s3server/blob/dev/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
 
-Watch our CORTX Engineer, Justin Woo, demonstrate **<link to the video>** the process.
 ***
 
 ## Additional Resources
