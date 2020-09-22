@@ -7,3 +7,6 @@ Currently CORTX requires the CentOS 7.7.1908 distribution running the 3.10.0-106
 Please refer to [this page](LocalVMSetup.md) for information about running with VMWare Fusion or Virtual Box as well as links to downloadable VM images which you can use.  
 
 Planning to create your own VM, please check [this page](VIRTUAL_MACHINE.md) for helpful pre-build steps pertaining to motr, s3server and hare. It also contains information to resolve a few issues that can come up at runtime.
+
+A CORTX development environment requires RoCE—RDMA over Converged Ethernet and TCP connectivity.
+   - Note: The CORTX stack currently does not work on Intel's OmniPath cards.
