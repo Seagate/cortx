@@ -85,6 +85,8 @@ The onboarding procedure must be performed after completing the preboarding proc
 
 6. Configure the email notifications by selecting the **Email** checkbox, and providing the relevant information. After configuring, click **Continue**.
 
+   .. image:: images/Email.PNG
+
 7. Click **Finish**. CORTX is now ready for use. CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
 
 .. raw:: html
