@@ -125,9 +125,9 @@ If any service is inactive, run the below mentioned command.
 
 **Important**: By default, port 80 is closed. Run the below mentioned command to open port 80.
 
-               ::
+  ::
                
-                salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
+   salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
  
 *************
 Miscellaneous
