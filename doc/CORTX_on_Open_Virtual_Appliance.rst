@@ -47,6 +47,8 @@ The procedure to install CORTX on OVA is mentioned below.
    * ens256 - public data
    
    .. image:: images/networks.png
+   
+   * If you do not see IP addresses like in the above image, you might need to change your virtual networking configuration for which  `these instructions <troubleshoot_virtual_network.rst>`_ are hopefully useful.
 
 #. Change the hostname by running the following command:
 
