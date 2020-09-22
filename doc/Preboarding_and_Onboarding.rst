@@ -29,6 +29,8 @@ The preboarding process must be the first process that must be completed after c
 4. Create a user with admin privileges.
 
    - Enter the username, password, and email address in the relevant fields. Also, select the checkbox if want to receive the notifications.
+   
+   .. image:: images/Adminu.PNG
 
    **Note**: Do not create an user with one of the following usernames.
 
