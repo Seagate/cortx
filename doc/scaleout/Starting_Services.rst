@@ -4,15 +4,20 @@ Starting Services
 
 Run the commands mentioned below to stop the services. Please follow the order of listing.
 
+.. raw:: html
 
-LDAP
-=====
+ <details>
+ <summary><a>LDAP</a></summary>
 
 Run the following command to start the service on all the 3 nodes.
 
 ::
 
  salt '*' cmd.run "systemctl start slapd"
+ 
+.. raw:: html
+   
+ </details>   
 
 RabbitMQ
 ========
