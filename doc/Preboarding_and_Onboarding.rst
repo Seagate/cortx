@@ -18,9 +18,11 @@ The preboarding process must be the first process that must be completed after c
 
 2. Click **Start**. A page that requests you to accept the End User License Agreement (EULA) appears.
 
-3. Click 
+3. Click **Get Started**.
 
-3. Accept the End User License Agree (EULA).
+   .. image:: images/Get.PNG
+
+3. Click **Accept** to accept the EULA.
 
    .. image:: images/EULA1.PNG
 
