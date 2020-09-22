@@ -56,6 +56,8 @@ The onboarding procedure must be performed after completing the preboarding proc
 
 1. After being prompted, login again with the username and password that you had provided earlier.
 
+   .. image:: images/login.PNG
+
 2. Enter a name for your application in the **System Name** field, and click **Continue**.
 
    .. image:: images/Systemname.PNG
