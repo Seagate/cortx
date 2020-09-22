@@ -9,7 +9,7 @@ now before following the rest of the instructions on this page.
 
 #. If you do not already have one, download an S3 client.  These instructions use `CyberDuck <https://cyberduck.io/download/>`_.
 
-#. At your CORTX GUI, select 'Manage', then select the 'S3 Account' tab, then click on 'Add new account.'
+#. If you have not already created an S3 user, then navigate to you your CORTX GUI, select 'Manage', then select the 'S3 Account' tab, then click on 'Add new account.'
 
    .. image:: images/add_s3_user.png
    
