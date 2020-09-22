@@ -16,6 +16,8 @@ The preboarding process must be the first process that must be completed after c
 
 2. Accept the End User License Agree (EULA).
 
+ .. image:: images/EULA1.PNG
+
 3. Create a user with admin privileges.
 
    - Enter the username, password, and email address in the relevant fields. Also, select the checkbox if want to receive the notifications.
