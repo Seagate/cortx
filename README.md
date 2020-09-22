@@ -41,6 +41,7 @@ We are excited about your interest in CORTX and hope you will join us. We take o
 -   Jump into [CORTX Development Quickstart Guide](QUICK_START.md) to build and test CORTX.
 -   Check out our [Contribution Guide](../main/doc/CORTXContributionGuide.md) to pick up topics and issues to contribute, submit your codes, and learn how to turn your pull request into a successful contribution.
     -   Refer to our [Suggested Contributions](../main/doc/SuggestedContributions.md) page for some inspiration about how to contribute to the CORTX project.
+    -   Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.rst) for more details.
 
 
 Resources
