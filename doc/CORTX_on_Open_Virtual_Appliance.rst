@@ -28,11 +28,11 @@ The procedure to install CORTX on OVA is mentioned below.
 
 #. Import the OVA file by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
-- In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
+   - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
   
-**Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. 
+   **Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. 
 
-**Note**:  Operating system updates are not supported due to specific kernel dependencies.
+   **Note**:  Operating system updates are not supported due to specific kernel dependencies.
  
   
 #. Open the VM console, and login with the below mentioned credentials.
@@ -65,9 +65,9 @@ The procedure to install CORTX on OVA is mentioned below.
      * **chattr -i /etc/hostname**
   
  
-   To verify the change in hostname, run the following command:
+     To verify the change in hostname, run the following command:
  
-   * **hostnamectl status**
+     * **hostnamectl status**
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have a DNS server with which to register the VM, you can access it directly using its IP addresses. However, the hostname is mandatory and should be configured.
 
@@ -75,26 +75,25 @@ The procedure to install CORTX on OVA is mentioned below.
 
    * **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
    
+#. Run the below mentioned commands to check the status of different services that are part of CORTX.
 
-9. Run the below mentioned commands to check the status of different services that are part of CORTX.
+   ::
 
-::
-
- systemctl status rabbitmq-server
+    systemctl status rabbitmq-server
  
- systemctl status elasticsearch
+    systemctl status elasticsearch
    
- systemctl status haproxy
+    systemctl status haproxy
  
- systemctl status s3authserver
+    systemctl status s3authserver
  
- systemctl status sspl-ll
+    systemctl status sspl-ll
     
- hctl status
+    hctl status
     
- systemctl status csm_agent
+    systemctl status csm_agent
     
- systemctl status csm_web
+    systemctl status csm_web
  
 If the SSPL service does not start, run the below mentioned commands.
 
@@ -113,17 +112,16 @@ If any service is inactive, run the below mentioned command.
 
  systemctl start|restart <service_name>
     
+10. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
-#. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
-
-   * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
+    * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
  
-#. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
+11. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
 
-#. Now that you have the complete system up and running, mark down the data IP that you queried in step 6 and use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
+12. Now that you have the complete system up and running, mark down the data IP that you queried in step 6 and use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
 
 
-#. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
+13. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
  
 *************
 Miscellaneous
