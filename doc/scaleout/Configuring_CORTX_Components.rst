@@ -143,6 +143,7 @@ Let us assume we are configuring **M**-node cluster.  Also let's assume number o
 11. Comment out the **HAProxy Monitoring Config** section if present (or remove it):
 
     ::
+    
      ##---------------------------------------------------------------------
      ##HAProxy Monitoring Config
      ##---------------------------------------------------------------------
