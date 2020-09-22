@@ -64,7 +64,8 @@ The onboarding procedure must be performed after completing the preboarding proc
 
    .. image:: images/SSL.PNG
 
-4. Enter information about the **DNS servers** and **Search domains** in relevant fields. Click **Continue**. The entries must be separated by comma, if either one or both the conditions mentioned below are applicable. 
+4. Enter information about the **DNS servers** and **Search domains** in relevant fields. Click **Continue**. The entries must be separated by comma, if either one or both the conditions mentioned below are applicable.
+
 
    - Number of DNS Servers > 1
 
@@ -77,6 +78,8 @@ The onboarding procedure must be performed after completing the preboarding proc
 5. Provide information about the NTP servers in the relevant field. The entries must be separated by comma, if the below mentioned condition is applicable.
 
    - Number of NTP Servers > 1
+   
+   .. image:: images/NTP.PNG
 
 6. Configure the notifications by selecting the checkbox. If you do not want to receive notifications, select **Skip this step**, and click **Next**.
 
