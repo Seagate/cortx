@@ -2,10 +2,16 @@
 Configuration of Components
 ***************************
 
-Configuration of different components that are part of CORTX are mentioned in the sections below.
+Configuration of different components that are part of CORTX are mentioned in the sections below. Please configure every component in the order in which they are listed.
 
 S3 (AuthServer and HAProxy)
 ===========================
+
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for detailed information. </a></summary>
+ 
 
 AuthServer
 ----------
@@ -181,11 +187,19 @@ Starting Service
   ::
    
    salt '*' cmd.run "systemctl status haproxy"
+   
+.. raw:: html
+   
+ </details>   
+
 
 SSPL
 ====
 
-The prerequisites and different procedures associated with the configuration of SSPL component are mentioned below.
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for detailed information. </a></summary>
 
 Initial Steps
 --------------
@@ -246,7 +260,13 @@ Starting Service
   ::
 
    salt '*' cmd.run "systemctl start sspl-ll"
+   
+- Run the below mentioned command if the SSPL service does not start.
 
+  ::
+  
+   "consul kv put system_information/product cluster"
+   
 - Run the following to restart the SSPL service.
 
   ::
@@ -259,6 +279,7 @@ Run the following command to know the status of the SSPL service.
  
  salt '*' cmd.run "systemctl status sspl-ll -l"
  
+ 
 Verification
 ------------
 Perform sanity test and ensure that the SSPL configuration is accurate. Run the following commands to perform the test.
@@ -266,13 +287,19 @@ Perform sanity test and ensure that the SSPL configuration is accurate. Run the 
 ::
 
  /opt/seagate/cortx/sspl/bin/sspl_setup check
-  
- /opt/seagate/cortx/sspl/bin/sspl_setup test self
+
+ 
+.. raw:: html
+   
+ </details>
  
 CSM
 ===
 
-The various aspects associated with the configuration of CSM component are mentioned below.
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for detailed information. </a></summary>
 
 Run the below mentioned command. This is a prerquisite.
 
@@ -287,6 +314,8 @@ Configuration
 Execute the below mentioned commands on the node where Statsd and Kibana services are running.
 
 ::
+
+ salt '*' cmd.run "setfacl -m u:csm:rwx /etc/ssl/stx/stx.pem"
 
  salt '*' cmd.run "csm_setup post_install"
 
@@ -337,10 +366,17 @@ Ensure that the services have started successfully by running the following comm
 
 **Note**: After all the services have started running, the CSM web UI is available at port 28100. Navigate to **https://<IP address of the box>:28100** to access the port.
 
+.. raw:: html
+   
+ </details>
+
 HA 
 ==
 
-The prerequisite and the configuration procedure associated with the configuration of HA component is mentioned below.
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for detailed information. </a></summary>
 
 Prerequisites
 -------------
@@ -364,3 +400,7 @@ To check dependency and configure **HA**, perform **post_install**, **config**, 
  salt '*' cmd.run "/opt/seagate/cortx/ha/conf/script/ha_setup config"
 
  salt '*' cmd.run "/opt/seagate/cortx/ha/conf/script/ha_setup init"
+ 
+.. raw:: html
+   
+ </details>

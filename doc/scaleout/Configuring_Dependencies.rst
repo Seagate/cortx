@@ -2,11 +2,17 @@
 Configuration of Dependencies
 *****************************
 
-The procedures that must be followed to install and configure different dependencies are mentioned below.
+The procedures that must be followed to install and configure different dependencies are mentioned below. Please configure below mentioned dependencies in the order which they are listed.
 
 LDAP
 ====
-This section describes the procedures that must be followed to configure LDAP.
+
+The Lightweight Directory Access Protocol (LDAP) is an open, vendor-neutral, industry standard application protocol for accessing and maintaining distributed directory information services over an IP network.
+
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for complete information. </a></summary>
 
 Configuration
 -------------
@@ -339,9 +345,19 @@ Perform the following steps on only one node. In this case, it must be performed
 
 **Note**: Update the host name in the provider field in data.ldif before running the command.
 
+.. raw:: html
+   
+  </details>
+
 RabbitMQ
 ========
-This section describes the procedures that must be followed to configure RabbitMQ.
+
+RabbitMQ is an open-source message-broker software that originally implemented the Advanced Message Queuing Protocol (AMQP) and has since been extended with a plug-in architecture to support Streaming Text Oriented Messaging Protocol (STOMP), MQ Telemetry Transport (MQTT), and other protocols.
+
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for complete information. </a></summary>
 
 Prerequisites
 --------------
@@ -437,14 +453,22 @@ Run the below mentioned command to check the status of the RabbitMQ cluster.
 
  salt '*' cmd.run "rabbitmqctl cluster_status"
  
+.. raw:: html
+   
+  </details>
+ 
 
 Statsd and Kibana
 =================
-This section describes the procedures that must be followed to configure statsd and kibana.
 
 - **Statsd** is used to collect metric from various sources and it runs on each node as the daemon service.
 
 - **Kibana** is used to aggregate metrics and run on the system with csm service.
+
+.. raw:: html
+
+ <details>
+ <summary><a>Click here for complete information. </a></summary>
 
 Statsd Configuration
 --------------------
@@ -516,3 +540,7 @@ Check the status of Kibana by running the following command.
 ::
 
  systemctl status kibana
+ 
+.. raw:: html
+   
+  </details>
