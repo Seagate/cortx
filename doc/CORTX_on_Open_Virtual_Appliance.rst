@@ -75,7 +75,6 @@ The procedure to install CORTX on OVA is mentioned below.
 
    * **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
    
-
 #. Run the below mentioned commands to check the status of different services that are part of CORTX.
 
    ::
@@ -96,22 +95,22 @@ The procedure to install CORTX on OVA is mentioned below.
     
     systemctl status csm_web
  
-  If the SSPL service does not start, run the below mentioned commands.
+If the SSPL service does not start, run the below mentioned commands.
 
-  ::
+::
 
-   /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
+ /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
  
-   /opt/seagate/cortx/sspl/bin/sspl_setup config -f
+ /opt/seagate/cortx/sspl/bin/sspl_setup config -f
  
-   systemctl start sspl-ll
+ systemctl start sspl-ll
     
 
- If any service is inactive, run the below mentioned command.
+If any service is inactive, run the below mentioned command.
 
- ::
+::
 
-  systemctl start|restart <service_name>
+ systemctl start|restart <service_name>
     
 
 #. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
