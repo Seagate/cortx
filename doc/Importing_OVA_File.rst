@@ -83,7 +83,7 @@ Based on the hypervisor you use, click to expand the corresponding section below
 
 #. After finishing the import, return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
 
-   **Note**: If you do not see any IP addresses when you run the **ip a l** command as directed in the instructions, you may need to reconfigure some of your virtual networking settings.  Refer to `these instructions <troubleshooting_virtual_networks.rst>`_ for more details.
+   **Note**: If you do not see any IP addresses when you run the **ip a l** command as directed in the instructions, you may need to reconfigure some of your virtual networking settings.  Refer to `these instructions <troubleshoot_virtual_network.rst>`_ for more details.
 
 .. raw:: html
    
