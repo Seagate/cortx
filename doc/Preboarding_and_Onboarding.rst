@@ -89,9 +89,11 @@ The onboarding procedure must be performed after completing the preboarding proc
 
 7. Click **Continue** after reviewing the summary. A dialog box is displayed indicating the success of the onboarding the process.
 
-8. Click **Go to dashboard**. CORTX is now ready for use. CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
+8. Click **Go to dashboard**. CORTX is now ready for use. 
 
    .. image:: images/DB.PNG
+   
+   **Note**: CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
 
 .. raw:: html
    
