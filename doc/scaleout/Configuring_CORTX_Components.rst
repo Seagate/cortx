@@ -172,6 +172,18 @@ Let us assume we are configuring **M**-node cluster.  Also let's assume number o
 
      mkdir /etc/haproxy/errors/
      
+     cp /opt/seagate/cortx/s3/install/haproxy/503.http /etc/haproxy/errors/
+     
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/haproxy /etc/logrotate.d/haproxy 
+     
+     cp /opt/seagate/cortx/s3/install/haproxy/rsyslog.d/haproxy.conf /etc/rsyslog.d/haproxy.conf
+     
+     rm -rf /etc/cron.daily/logrotate
+     
+     cp /opt/seagate/cortx/s3/install/haproxy/logrotate/logrotate /etc/cron.hourly/logrotate
+     
+     systemctl restart rsyslog
+     
 15. Apply haproxy config changes by running the following commands on every node in the cluster:
 
     ::
