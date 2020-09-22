@@ -62,6 +62,8 @@ The onboarding procedure must be performed after completing the preboarding proc
 
 3. If you have a SSL certificate, you can upload it. Else, a default self-signed certificate provided by Seagate will be used.
 
+   .. image:: images/SSL.PNG
+
 4. Enter information about the DNS servers and search domains in relevant fields. The entries must be separated by comma, if either one or both the conditions mentioned below are applicable.
 
    - Number of DNS Servers > 1
