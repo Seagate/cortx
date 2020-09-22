@@ -2,19 +2,18 @@
 ===============================
 CORTX on Open Virtual Appliance
 ===============================
-Open Virtual Appliance (OVA) is a virtual machine (VM) image file that consists of pre-installed and pre-configured operating system environment, and a single application.
-
-This document describes how to use a VM image pre-packaged with CORTX for the purposes of single-node CORTX testing.
+An Open Virtual Appliance (OVA) is a virtual machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.
 
 ***********************
 Recommended Hypervisors
 ***********************
-All of the following hypervisors should work:
+All of the following hypervisors should work `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_,
+`VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
+`VMware Fusion <https://www.vmware.com/products/fusion.html>`_, and
+`VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_. 
 
-* `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_
-* `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_
-* `VMware Fusion <https://www.vmware.com/products/fusion.html>`_
-* `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_  
+**Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.  For the same reason, please do not update the operating system in the image as that also might cause it to fail.
+
 
 **********
 Procedure
@@ -30,9 +29,7 @@ The procedure to install CORTX on OVA is mentioned below.
 #. Import the OVA file by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
    * In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
-  
-   **Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.
- 
+   
 #. Open the VM console, and login with the below mentioned credentials.
 
    * Username: **cortx**
@@ -43,12 +40,14 @@ The procedure to install CORTX on OVA is mentioned below.
 
    * sudo su -
  
-#. Run **ip a l** and note the IP addresses of the following interfaces:
+#. Run **ip a l** and record the IP addresses of the following interfaces:
 
    * ens192 - management
  
    * ens256 - public data
- 
+   
+      .. image:: images/networks.png
+
 #. Change the hostname by running the following command:
 
    * **hostnamectl set-hostname --static --transient --pretty <new-name>**
@@ -81,8 +80,6 @@ The procedure to install CORTX on OVA is mentioned below.
 *************
 Miscellaneous
 *************
-
-**Note**: Operating system updates are not supported due to specific kernel dependencies.
 
 If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
   
