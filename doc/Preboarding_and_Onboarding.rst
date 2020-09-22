@@ -5,14 +5,17 @@ Preboarding and Onboarding
 Preboarding
 ===========
 
-The preboarding process must be the first process that must be completed after configugring `CORTX_on_Open_Virtual_Appliance <https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst>`_. The preboarding procedure must be performed only once.
+The preboarding process must be the first process that must be completed after configuring `CORTX on OVA <https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst>`_. The preboarding procedure must be performed only once.
 
 .. raw:: html
 
     <details>
-   <summary><a>Click here to read the preboarding procedure.</a></summary>
+   <summary><a>Click here to expand the preboarding procedure.</a></summary>
 
-1. Navigate to the *https://<management IP>:28100/#/preboarding/welcome*. The management IP must be fetched from the step 6 of `CORTX_on_Open_Virtual_Appliance <https://github.com/Seagate/cortx/blob/Changes-to-VA/doc/CORTX_on_Open_Virtual_Appliance.rst>`_.
+
+1. Open a browser and navigate to the *https://<management IP>:28100/#/preboarding/welcome*. The management IP must be fetched from the step 6 of `CORTX_on_Open_Virtual_Appliance <https://github.com/Seagate/cortx/blob/Changes-to-VA/doc/CORTX_on_Open_Virtual_Appliance.rst>`_.
+
+   - You may see a message about your connection not being private. Ignore the message.
 
 2. Click **Start**. A page that requests you to accept the End User License Agreement (EULA) appears.
 
@@ -45,16 +48,15 @@ The preboarding process must be the first process that must be completed after c
 Onboarding
 ===========
 
-The onboarding procedure must be performed after completing the preboarding procedure by accessing *https://<management IP>:28100/#/preboarding/login* or from the **Settings** page on the CSM GUI. The onboarding procedure can be performed multiple times.
-
+The onboarding procedure must be performed after completing the preboarding procedure by accessing *https://<management IP>:28100/#/preboarding/login*. The onboarding procedure can be performed multiple times.
      
 .. raw:: html
 
     <details>
-   <summary><a>Click here to read the onboarding procedure.</a></summary>
+   <summary><a>Click here to expand the onboarding procedure.</a></summary>
 
+#. If prompted, login again with the username and password that you had provided earlier.
 
-1. After being prompted, login again with the username and password that you had provided earlier.
 
    .. image:: images/login.PNG
 
@@ -65,15 +67,20 @@ The onboarding procedure must be performed after completing the preboarding proc
 3. If you have a SSL certificate, you can upload it. Else, a default self-signed certificate provided by Seagate will be used. Click **Continue**.
 
    .. image:: images/SSL.PNG
+   
+   **Note**: This is an optional step.
 
 4. Enter information about the **DNS servers** and **Search domains** in relevant fields, and click **Continue**. 
    The entries must be separated by comma, if either one or both the conditions mentioned below are applicable.
-
-
+   
    - Number of DNS Servers > 1
-
+   
+     - If you don't know your DNS servers, 8.8.8.8 will usually work.
+      
    - Number of search domains > 1
    
+     - If you don't know your search domains, use cortx.test.
+  
    
    .. image:: images/DNS.PNG
    
@@ -82,6 +89,8 @@ The onboarding procedure must be performed after completing the preboarding proc
    The entries must be separated by comma, if the below mentioned condition is applicable.
 
    - Number of NTP Servers > 1
+   
+     - If you don't know your NTP server, ntp-b.nist.gov will usually work.
    
    .. image:: images/NTP.PNG
 
@@ -96,6 +105,7 @@ The onboarding procedure must be performed after completing the preboarding proc
    .. image:: images/DB.PNG
    
    **Note**: CSM GUI can be accessed by navigating to *https://<management IP>:28100/#/login*
+
 
 .. raw:: html
    
