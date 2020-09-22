@@ -1,17 +1,17 @@
 # CORTX Development Quickstart Guide
 
-This guide is intended to provide quick start instructions for developers who want to build, test, and contribute to the CORTX software.  If you are merely looking to _test_ the software, please use [these instructions](doc/CORTX_on_Open_Virtual_Appliance.rst).
+This guide is intended to provide quick start instructions for developers who want to build, test, and contribute to the CORTX software.  If you are merely looking to _test_ CORTX, please use [these instructions](doc/CORTX_on_Open_Virtual_Appliance.rst).
 
-**Develoment Environment** First you need to configure your [development environment](doc/BUILD_ENVIRONMENT.md). 
+**Develoment Environment:** First you need to configure your [development environment](doc/BUILD_ENVIRONMENT.md). 
 
-**Core Functionality** For basic development and testing of CORTX, you only need the motr and S3 submodules:
+**Core Functionality:** For basic development and testing of CORTX, you only need the motr and S3 submodules:
 
 1. [CORTX-Motr](https://github.com/Seagate/cortx-motr/blob/dev/doc/Quick-Start-Guide.rst)
    - The main data path of the system responsible for the actual storage and distribution of objects and key-value pairs.
 2. [CORTX-S3](https://github.com/Seagate/cortx-s3server/blob/dev/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
    - The S3 interface to CORTX.
 
-**Complete System** For the complete CORTX experience, you will also need the remaining submodules:
+**Complete System:** For the complete CORTX experience, you will also need the remaining submodules:
 
 1. [CORTX HA](https://github.com/Seagate/cortx-ha/blob/main/Quick-Start-Guide.rst)
    - The module responsible for maintaining highly available access to shared storage.
