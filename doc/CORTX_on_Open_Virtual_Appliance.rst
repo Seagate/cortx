@@ -120,7 +120,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
 #. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
-    * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
+   * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
  
 #. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
 
@@ -132,10 +132,10 @@ The procedure to install CORTX on OVA is mentioned below.
 Miscellaneous
 *************
 
-If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the ports mentioned below are open to provide access to OVA.
+If you have a firewall between CORTX and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the ports mentioned below are open to provide access to CORTX.
   
 +----------------------+-------------------+---------------------------------------------+
-|    **Port number**   |   **Protocols**   |   **Destination network (on VA)**           |
+|    **Port number**   |   **Protocols**   |   **Destination network on CORTX**          |
 +----------------------+-------------------+---------------------------------------------+
 |          22          |        TCP        |           Management network                |
 +----------------------+-------------------+---------------------------------------------+ 
