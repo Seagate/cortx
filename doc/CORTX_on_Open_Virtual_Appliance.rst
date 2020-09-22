@@ -48,8 +48,7 @@ The procedure to install CORTX on OVA is mentioned below.
  
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
-   * ens192 - management
- 
+   * ens192 - management 
    * ens256 - public data
    
    .. image:: images/networks.png
@@ -79,20 +78,13 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
 
-    systemctl status rabbitmq-server
- 
-    systemctl status elasticsearch
-   
+    systemctl status rabbitmq-server 
+    systemctl status elasticsearch   
     systemctl status haproxy
- 
-    systemctl status s3authserver
- 
-    systemctl status sspl-ll
-    
-    hctl status
-    
-    systemctl status csm_agent
-    
+    systemctl status s3authserver 
+    systemctl status sspl-ll    
+    hctl status    
+    systemctl status csm_agent    
     systemctl status csm_web
  
    If the SSPL service does not start, run the below mentioned commands.
