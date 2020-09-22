@@ -75,6 +75,8 @@ The procedure to install CORTX on OVA is mentioned below.
 #. Mark down the management IP that you queried in step 6, and refer to `Onboarding into CORTX <Preboarding_and_Onboarding.rst>`_ to configure the management dashboard. 
 
 #. Now that you have CORTX up and running, mark down the data IP that you queried in step 6 and use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
+
+#. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
  
 *************
 Miscellaneous
