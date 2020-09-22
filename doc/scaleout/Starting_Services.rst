@@ -19,14 +19,20 @@ Run the following command to start the service on all the 3 nodes.
    
  </details>   
 
-RabbitMQ
-========
+.. raw:: html
+
+ <details>
+ <summary><a>RabbitMQ</a></summary>
 
 Run the below mentioned command to restart the server.
 
 ::
 
  salt '*' cmd.run "service.restart rabbitmq-server"
+ 
+.. raw:: html
+   
+ </details>  
 
 Statsd and Kibana
 =================
