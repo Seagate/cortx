@@ -210,26 +210,26 @@ Perform the steps mentioned below to configure HAProxy with DNS Round-Robin.
     server s3-instance-3 0.0.0.0:28083 check maxconn 110
     ...
     
- 4. Comment out the **HAProxy Monitoring Config** section if present (or remove it):
+4. Comment out the **HAProxy Monitoring Config** section if present (or remove it):
  
-    ::
+   ::
     
-     ##---------------------------------------------------------------------
-     ##HAProxy Monitoring Config
-     ##---------------------------------------------------------------------
-     #listen haproxy3-monitoring
-     #    bind *:8080                #Haproxy Monitoring run on port 8080
-     #    mode http
-     #    option forwardfor
-     #    option httpclose
-     #    stats enable
-     #    stats show-legends
-     #    stats refresh 5s
-     #    stats uri /stats                             #URL for HAProxy monitoring
-     #    stats realm Haproxy\ Statistics
-     #    #stats auth howtoforge:howtoforge            #User and Password for login to the monitoring dashboard
-     #    #stats admin if TRUE
-     #    #default_backend app-main                    #This is optionally for monitoring backend
+    ##---------------------------------------------------------------------
+    ##HAProxy Monitoring Config
+    ##---------------------------------------------------------------------
+    #listen haproxy3-monitoring
+    #    bind *:8080                #Haproxy Monitoring run on port 8080
+    #    mode http
+    #    option forwardfor
+    #    option httpclose
+    #    stats enable
+    #    stats show-legends
+    #    stats refresh 5s
+    #    stats uri /stats                             #URL for HAProxy monitoring
+    #    stats realm Haproxy\ Statistics
+    #    #stats auth howtoforge:howtoforge            #User and Password for login to the monitoring dashboard
+    #    #stats admin if TRUE
+    #    #default_backend app-main                    #This is optionally for monitoring backend
 
 5. Copy the **haproxy.cfg** to the other server nodes at the same location - **/etc/haproxy/haproxy.cfg**.
 
