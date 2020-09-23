@@ -119,12 +119,12 @@ After the onboarding is complete, you can perform the actions mentioned below.
     
    .. figure:: images/HCTL.PNG
       
-      Scale-out / JBOD Output
+      **Scale-out / JBOD Output**
    
    
    .. figure:: images/OVAH.PNG
    
-      OVA Output
+      **OVA Output**
    
    
    
