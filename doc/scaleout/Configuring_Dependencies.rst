@@ -389,19 +389,19 @@ Prerequisites
     ::
 
      systemctl start rabbitmq-server
-     
+
      systemctl stop rabbitmq-server
      
   - Checking the existance of the file
-  
+
     ::
-    
+
      ls -l /var/lib/rabbitmq/.erlang.cookie
      
   - To copy the file to all nodes
-   
+
     ::
-     
+
      salt-cp "*" /var/lib/rabbitmq/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie --hard-crash
   
 
@@ -412,7 +412,8 @@ Restarting Service
 
   ::
 
-   salt '*' cmd.run "service.restart rabbitmq-server"
+   salt '*' cmd.run "service.stop rabbitmq-server"
+   salt '*' cmd.run "service.start rabbitmq-server"
 
 
 Run the below mentioned command to know the status. This must be run on 2 nodes.
@@ -425,28 +426,14 @@ Configuration
 -------------
 1. Start the RabbitMQ server.
 
-2. Run the below mentioned command.
+2. salt "*" state.apply components.misc_pkgs.rabbitmq.config
 
-   ::
-   
-    salt '*' cmd.run "pip3 install python-consul"
-    
-2. Run the below mentioned commands to setup the RabbitMQ cluster.
+3. salt "*" state.apply components.misc_pkgs.rabbitmq.start
 
-   - Setting a single (current) node as cluster
- 
-   ::
-   
-    /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster
-   
-   - Setting 3 nodes
- 
-   ::
-   
-    /opt/seagate/cortx/sspl/bin/setup_rabbitmq_cluster -n srvnode-1,srvnode-2,srvnode-3
-    
-**Note**: -n NODES where NODES must be FQDN of the respective nodes and separated by comma. For example, -n ssc-vm-2104,ssc-vm-176 
- 
+4. salt "srvnode-1" state.apply components.sync.software.rabbitmq
+   salt "srvnode-2" state.apply components.sync.software.rabbitmq
+   salt "srvnode-3" state.apply components.sync.software.rabbitmq
+
 Run the below mentioned command to check the status of the RabbitMQ cluster.
 
 ::
