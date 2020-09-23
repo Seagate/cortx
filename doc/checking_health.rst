@@ -1,30 +1,22 @@
-After the onboarding is complete, you can perform the actions mentioned below.
+***********************
+CORTX Health via CLI
+***********************
 
-#. Run the below mentioned command to check the cluster health.
+This document describes various methods by which a user can monitor and query the health of a CORTX system using a command line interface.
+
+#. The provided *hctl* program can be used for checking CORTX health.
+
+   .. figure:: images/hctl_help.png
+
+
+#. System status can be shown with the *status* flag.  Note that this image shows a scale-out CORTX cluster with three CORTX servers.
 
    ::
   
     hctl status
     
    .. figure:: images/HCTL.PNG
-      
-      **Scale-out / JBOD Output**
    
-   
-   .. figure:: images/OVAH.PNG
-   
-      **OVA Output**
-   
-   
-   
-#. Trigger IOs from an IO tool.
-
-#. In the GUI, you can see the performance graph as part of the **Dashboard**. Please note that the triggering of IO is reflected in the graph.
-
-   .. image:: images/PG.PNG
-
-IO on Cluster (**Scale-out** / **JBOD** only)
----------------------------------------------
 
 The S3instance assignment per node is as follows.
 
