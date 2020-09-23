@@ -1,6 +1,4 @@
-Looking for support for one of the CORTX software modules?
-
-Consider some of these resources:
+Looking for support for one of the CORTX software modules or to discuss things with your fellow CORTX Community members?
 
 - Chat with us in our CORTX-Open Source [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) in order to connect with the rest of the community and learn more. 
 - Ask questions and share ideas in our [CORTX Discussions.](https://github.com/Seagate/cortx/discussions)
