@@ -253,11 +253,13 @@ You can pass DCO in many ways:
 
 Triaging is about prioritizing and troubleshooting issues raised by you in [GitHub](https://github.com/). Triage can broadly be defined as a process oriented approach towards issue resolution and conflict management.
 
-#### Process of Triaging
+<details>
+  <summary>Process of Triaging</summary>
+  <p>
 
 The process of triaging in CORTX is depicted in the diagram below.
 
-<img source="../images/GitHubTriage.png?raw=true">
+   <img src="../doc/images/GitHubTriage.png?raw=true">
  
 #### Creating an Issue
 
@@ -269,30 +271,34 @@ Perform the below mentioned procedure to create an issue in GitHub:
 4. Click **New Issue**. A page requesting the **Title** and **Description** is displayed.
 5. Enter a title and description for your issue, and click **Submit new issue**.
    
-   :page_with_curl: **Note**: Click **Open a blank issue** if the type of issue you want to open, is not included in the available different types of issues.
+:page_with_curl: **Note**: Click **Open a blank issue** if the type of issue you want to open, is not included in the available different types of issues.
 
+</p>
+</details>
 
 ## Resources 
 
-Refer to these Quickstart Guides to build and contribute to the CORTX project.
+Refer to these Quickstart Guides to build the CORTX full stack and contribute to the CORTX project.
 
 <details>
 <summary>Click to expand!</summary>
 <p>
 
-- Provisioner
-- Motr
-- S3 Server
--
-- CSM
+- [Provisioner](https://github.com/Seagate/cortx-prvsnr/blob/main/Cortx-ProvisionerQuickstartGuide.md)
+- [Motr](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
+- [S3 Server](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
+- [Posix](https://github.com/Seagate/cortx-posix/blob/main/doc/Quick_Start_Guide.md)
+- [Minitor](https://github.com/Seagate/cortx-monitor/blob/main/cortx-monitorQuickstartGuide.md)
+- [Hare](https://github.com/Seagate/cortx-hare/tree/main#hare-user-guide)
+- [HA](https://github.com/Seagate/cortx-ha/blob/main/Quick-Start-Guide.rst)
+
+**TODO** Add links for Manager and Management Portal Quickstart Guides.
 
 </p>
 </details>
 
 ## Communication Channels
 
-- Join the CORTX Slack Channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) and chat with your fellow contributors.
-- For any questions or clarifications, mail us at [cortx-questions@seagate.com](cortx-questions@seagate.com)
-- You can start a thread in the [Github Community](https://github.com/Seagate/cortx/discussions) for any questions, suggestions, feedback, or discussions with your fellow community members. 
+Please refer to the [Support](SUPPORT.md) section to know more about the various channels by which you can reach out to us. 
 
 ### Thank You!
