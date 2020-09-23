@@ -8,7 +8,11 @@ This document describes various methods by which a user can monitor and query th
 
    .. figure:: images/hctl_health.png
 
-#. System status can be shown with the *status* flag.  Note that this image shows a scale-out CORTX cluster with three CORTX servers.
+#. The remainder of this document uses a working example with an S3 client attached to a three node CORTX cluster as is depicted in the below image.
+
+   .. figure:: images/s3_three_cortx_nodes.png
+
+#. System status can be shown with the *status* flag.  
 
    ::
   
@@ -31,3 +35,11 @@ This document describes various methods by which a user can monitor and query th
     tail -f /var/log/haproxy.log
  
    .. image:: images/AWS.PNG
+   
+   #. The *dstat* command can also show IO activity.  The below figure shows dstat output from the three servers when someone first *put* an object, then did *get* on that same object and then finally deleted the object.
+      
+   .. image:: images/dstat_view.png
+   
+    As can be seen, even though the S3 client communicates with a single CORTX server, CORTX distributes data and parity blocks across all 3 servers.
+
+
