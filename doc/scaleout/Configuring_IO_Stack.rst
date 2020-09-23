@@ -65,7 +65,13 @@ Run the below mentioned command to start the cluster. This command is applicable
 Node Restart
 =============
 
-Perform the below mentioned steps to restart (rejoin) a node.
+Run the below mentioned command to restart (rejoin) the node.
+
+::
+
+ hctl node-join
+ 
+If the command fails to execute, perfrom the below mentioned procedure to restart (rejoin) a node.
 
 1. Run the below mentioned command to start the consul.
 
