@@ -1,3 +1,5 @@
+THIS FILE IS OLD AND SHOULD BE REMOVED AFTER VERIFYING THAT NO LINKS EXIST TO IT ANYWHERE ELSEWHERE
+
 
 # Create a new VM from scratch
 For CORTX development, you can create a new VM from scatch and then install a fresh CentOS 7.7.1908.
