@@ -22,3 +22,6 @@
 [submodule "cortx-management-portal"]
 	path = cortx-management-portal
 	url = https://github.com/Seagate/cortx-management-portal.git
+[submodule "cortx-motr"]
+	path = cortx-motr
+	url = https://github.com/Seagate/cortx-motr.git
