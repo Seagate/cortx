@@ -102,6 +102,7 @@ The onboarding procedure must be performed after completing the preboarding proc
    
 CORTX
 =====
+CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization. CORTX is completely Open Source.
 
 .. raw:: html
 
