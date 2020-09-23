@@ -265,7 +265,7 @@ You can pass DCO in many ways:
 </p>
 </details>
 
-### The GitHub Triage Process
+## The GitHub Triage Process
 
 Triaging is about prioritizing and troubleshooting issues raised by you in [GitHub](https://github.com/). Triage can broadly be defined as a process oriented approach towards issue resolution and conflict management.
 
@@ -287,7 +287,6 @@ Perform the below mentioned procedure to create an issue in GitHub:
    
    :page_with_curl: **Note**: Click **Open a blank issue** if the type of issue you want to open, is not included in the available different types of issues.
 
-## Contributing to Documentation TODO
 
 ## Resources 
 
@@ -300,6 +299,7 @@ Refer to these Quickstart Guides to build and contribute to the CORTX project.
 - Provisioner
 - Motr
 - S3 Server
+-
 - CSM
 
 </p>
@@ -309,6 +309,6 @@ Refer to these Quickstart Guides to build and contribute to the CORTX project.
 
 - Join the CORTX Slack Channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) and chat with your fellow contributors.
 - For any questions or clarifications, mail us at [cortx-questions@seagate.com](cortx-questions@seagate.com)
-- You can start a thread in the [Github Community] (Link TBA) for any questions, suggestions, feedback, or discussions with your fellow community members. 
+- You can start a thread in the [Github Community](https://github.com/Seagate/cortx/discussions) for any questions, suggestions, feedback, or discussions with your fellow community members. 
 
 ### Thank You!
