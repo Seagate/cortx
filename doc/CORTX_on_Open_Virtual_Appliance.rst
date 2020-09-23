@@ -67,7 +67,7 @@ The procedure to install CORTX on OVA is mentioned below.
     systemctl status csm_agent    
     systemctl status csm_web
  
-   If the SSPL service does not start, run the below mentioned commands.
+   If the SSPL service is not running, run the below commands.
 
    ::
 
@@ -77,7 +77,7 @@ The procedure to install CORTX on OVA is mentioned below.
     
     systemctl start sspl-ll    
 
-   If any service is inactive, run the below mentioned command.
+   If any other service is inactive, run the below mentioned command.
 
    ::
 
@@ -108,7 +108,7 @@ The procedure to install CORTX on OVA is mentioned below.
  
 #. Using the management IP from the previous step,  refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
 
-#. Now that you have the complete system up and running, using the data IP that you queried previously, use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
+#. Now that you have the complete system up and running, using the data IP that you queried previously, use `these instructions <testing_io.rst>`_ to test the system and observe activity in the  GUI.
 
 #. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
  
