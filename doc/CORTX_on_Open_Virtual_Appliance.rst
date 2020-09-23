@@ -7,7 +7,7 @@ An Open Virtual Appliance (OVA) is a virtual machine (VM) image that consists of
 ***********************
 Recommended Hypervisors
 ***********************
-All of the following hypervisors should work `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_,
+All of the following hypervisors should work: `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_,
 `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
 `VMware Fusion <https://www.vmware.com/products/fusion.html>`_, and
 `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_. 
@@ -48,8 +48,7 @@ The procedure to install CORTX on OVA is mentioned below.
  
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
-   * ens192 - management
- 
+   * ens192 - management 
    * ens256 - public data
    
    .. image:: images/networks.png
@@ -79,64 +78,53 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
 
-    systemctl status rabbitmq-server
- 
-    systemctl status elasticsearch
-   
+    systemctl status rabbitmq-server 
+    systemctl status elasticsearch   
     systemctl status haproxy
- 
-    systemctl status s3authserver
- 
-    systemctl status sspl-ll
-    
-    hctl status
-    
-    systemctl status csm_agent
-    
+    systemctl status s3authserver 
+    systemctl status sspl-ll    
+    hctl status    
+    systemctl status csm_agent    
     systemctl status csm_web
  
-If the SSPL service does not start, run the below mentioned commands.
+   If the SSPL service does not start, run the below mentioned commands.
 
-::
+   ::
 
- /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1
- 
- /opt/seagate/cortx/sspl/bin/sspl_setup config -f
- 
- systemctl start sspl-ll
+    /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1 
+    /opt/seagate/cortx/sspl/bin/sspl_setup config -f 
+    systemctl start sspl-ll    
+
+   If any service is inactive, run the below mentioned command.
+
+   ::
+
+    systemctl start|restart <service_name>
     
+#. By default, port 80 may be closed. Run the below mentioned command to open port 80.
 
-If any service is inactive, run the below mentioned command.
-
-::
-
- systemctl start|restart <service_name>
-    
-10. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
-
-    * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
- 
-11. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
-
-12. Now that you have the complete system up and running, mark down the data IP that you queried in step 6 and use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
-
-
-13. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
-
-**Important**: By default, port 80 is closed. Run the below mentioned command to open port 80.
-
-::
+   ::
                
- salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
+    salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
+
+#. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
+
+   * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
+ 
+#. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
+
+#. Now that you have the complete system up and running, mark down the data IP that you queried in step 6 and use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
+
+#. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
  
 *************
 Miscellaneous
 *************
 
-If you have a firewall between the OVA and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access to OVA.
+If you have a firewall between CORTX and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the ports mentioned below are open to provide access to CORTX.
   
 +----------------------+-------------------+---------------------------------------------+
-|    **Port number**   |   **Protocols**   |   **Destination network (on VA)**           |
+|    **Port number**   |   **Protocols**   |   **Destination network on CORTX**          |
 +----------------------+-------------------+---------------------------------------------+
 |          22          |        TCP        |           Management network                |
 +----------------------+-------------------+---------------------------------------------+ 
@@ -202,7 +190,7 @@ Start the OVA
 
 3. Start CORTX I/O subsystem by running the following command.
 
-   - **hctl bootstrap -c /var/lib/hare/**
+   - **hctl start**
    
 
    

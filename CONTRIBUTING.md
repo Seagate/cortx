@@ -39,13 +39,10 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
     1. Copy the public key: `id_rsa.pub`. By default, your public key is located at `/root/.ssh/id_rsa.pub`
     2. Navigate to [GitHub SSH key settings](https://github.com/settings/keys) on your GitHub account.
       
-    :page_with_curl:**Note:** Ensure that you've set your Email ID as the Primary Email Address associated with your GitHub Account. SSO will not work if you do not set up your Email ID as your Primary Email Address.
+    :page_with_curl:**Note:** Ensure that you've set your Email ID as the Primary Email Address associated with your GitHub Account. 
     
-    3. Paste the SSH key you generated in Step 1 and select *Enable SSO*.
-    4. Click **Authorize** to authorize SSO for your SSH key.
+    3. Paste the SSH key you generated in Step 1 and click **Add SSH key**.
     5. [Create a Personal Access Token or PAT](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
-
-     :page_with_curl:**Note:** Ensure that you have enabled SSO for your PAT.
       
  - Update Git to the latest version. If you're on an older version, you'll see errors in your commit hooks that look like this:
 
@@ -70,8 +67,10 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 
    </p>
     </details>
-
-Contributing to the CORTX repository is a six-step process where you'll need to:
+    
+    <details>
+  <summary>Contributing to the CORTX repository is a six-step process.</summary>
+  <p>
 
 1. [Set up Git on your Development Box](#1-Setup-Git-on-your-Development-Box)
 2. [Clone the CORTX Repository](#2-Clone-the-CORTX-Repository)
@@ -82,25 +81,7 @@ Contributing to the CORTX repository is a six-step process where you'll need to:
 
 ### 1. Setup Git on your Development Box
 
-Once you've installed the prerequisites, follow these steps to set up Git on your Development Box.
-
-<details>
-  <summary> Click to expand!</summary>
-  <p>
-
-1. Install git-clang-format using: `$ yum install git-clang-format`
-
-2. Set up git config options using:
-
-   ```shell
-
-   $ git config --global user.name ‘Your Name’
-   $ git config --global user.email ‘Your.Name@domain_name’
-   $ git config --global color.ui auto
-   $ git config --global credential.helper cache
-   ```
-</p>
-</details>
+Once you've installed the prerequisites, follow the instructions to [install dependecies](doc/InstallingDependencies.md)
 
 ### 2. Clone the CORTX Repository
 
@@ -114,7 +95,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 2. Click **Fork**
 3. Run the following commands in Shell:
    
-   `$ git clone --recursive git@github.com:"your-github-id"/repo-name.git`
+   `$ git clone --recursive https://github.com/Seagate/<repository>.git`
 
 4. You'll need to setup the upstream repository in the remote list. This is a one-time activity. Run the following command to view the configured remote repository for your fork.
     
@@ -130,7 +111,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 
  5. Set up the upstream repository in the remote list using:
    
-    `$ git remote add upstream git@github.com:Seagate/reponame.git`
+    `$ git remote add upstream https://github.com/Seagate/<repository>.git`
       
     `$ git remote -v`
 
@@ -150,15 +131,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 
    `$ git checkout -b 'your-local-branch-name`
    
-    :page_with_curl: **Note:** By default, you'll need to contribute to the main branch. However, this differs for various repositories as shown below:
-    
-   | **Repository**   | **Branch Name** | 
-   | :----------------| :-------------: |
-   | cortx-s3server   | main            | 
-   | cortx-hare       | dev             | 
-   | cortx-motr       | dev             |
-   | cortx-prvsnr     | main            |
-   | cortx-sspl       | dev             |
+    :page_with_curl: **Note:** By default, you'll need to contribute to the main branch. 
 
 </p>
 </details>
@@ -273,36 +246,59 @@ You can pass DCO in many ways:
 </p>
 </details>
 
-## Submitting Issues
+</p>
+</details>
 
-### The GitHub Triage Process
+## The GitHub Triage Process
 
-## File a Bug 
+Triaging is about prioritizing and troubleshooting issues raised by you in [GitHub](https://github.com/). Triage can broadly be defined as a process oriented approach towards issue resolution and conflict management.
 
-## Suggest a Feature or Improvement
+<details>
+  <summary>Process of Triaging</summary>
+  <p>
 
-## Contributing to Documentation TODO
+The process of triaging in CORTX is depicted in the diagram below.
+
+   <img src="../doc/images/GitHubTriage.png?raw=true">
+ 
+#### Creating an Issue
+
+Perform the below mentioned procedure to create an issue in GitHub:
+
+1. Login to GitHub with your credentials.
+2. Navigate to the CORTX repository. Then, click **Issues**. List of issues are displayed.
+3. If there are multiple issue types, click Get started next to the type of issue you'd like to open.
+4. Click **New Issue**. A page requesting the **Title** and **Description** is displayed.
+5. Enter a title and description for your issue, and click **Submit new issue**.
+   
+:page_with_curl: **Note**: Click **Open a blank issue** if the type of issue you want to open, is not included in the available different types of issues.
+
+</p>
+</details>
 
 ## Resources 
 
-Refer to these Quickstart Guides to build and contribute to the CORTX project.
+Refer to these Quickstart Guides to build the CORTX full stack and contribute to the CORTX project.
 
 <details>
 <summary>Click to expand!</summary>
 <p>
 
-- Provisioner
-- Motr
-- S3 Server
-- CSM
+- [Provisioner](https://github.com/Seagate/cortx-prvsnr/blob/main/Cortx-ProvisionerQuickstartGuide.md)
+- [Motr](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
+- [S3 Server](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
+- [Posix](https://github.com/Seagate/cortx-posix/blob/main/doc/Quick_Start_Guide.md)
+- [Minitor](https://github.com/Seagate/cortx-monitor/blob/main/cortx-monitorQuickstartGuide.md)
+- [Hare](https://github.com/Seagate/cortx-hare/tree/main#hare-user-guide)
+- [HA](https://github.com/Seagate/cortx-ha/blob/main/Quick-Start-Guide.rst)
+
+**TODO** Add links for Manager and Management Portal Quickstart Guides.
 
 </p>
 </details>
 
 ## Communication Channels
 
-- Join the CORTX Slack Channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) and chat with your fellow contributors.
-- For any questions or clarifications, mail us at [cortx-questions@seagate.com](cortx-questions@seagate.com)
-- You can start a thread in the [Github Community] (Link TBA) for any questions, suggestions, feedback, or discussions with your fellow community members. 
+Please refer to the [Support](SUPPORT.md) section to know more about the various channels by which you can reach out to us. 
 
 ### Thank You!
