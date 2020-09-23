@@ -77,7 +77,7 @@ Perform the below mentioned procedure to create an issue in GitHub:
 
 ## Communication Channels
 
-Please refer to the [Support](doc/SUPPORT.md) section to know more about the various channels by which you can reach out to us. 
+Please refer to the [Support](SUPPORT.md) section to know more about the various channels by which you can reach out to us. 
 
 ## Thank You!
 
