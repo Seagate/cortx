@@ -115,6 +115,8 @@ After the onboarding is complete, you can perform the actions mentioned below.
 
 #. In the GUI, you can see the performance graph as part of the **Dashboard**. Please note that the triggering of IO is reflected in the graph.
 
+   .. image:: images/PG.PNG
+
 IO on Cluster (**Scale-out (JBOD)** only)
 -----------------------------------------
 
