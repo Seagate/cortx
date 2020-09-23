@@ -6,8 +6,7 @@ This document describes various methods by which a user can monitor and query th
 
 #. The provided *hctl* program can be used for checking CORTX health.
 
-   .. figure:: images/hctl_help.png
-
+   .. figure:: images/hctl_health.png
 
 #. System status can be shown with the *status* flag.  Note that this image shows a scale-out CORTX cluster with three CORTX servers.
 
