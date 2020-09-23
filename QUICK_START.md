@@ -13,10 +13,6 @@ This guide is intended to provide quick start instructions for developers who wa
 
 **Complete System:** For the complete CORTX experience, you will need to install the remaining submodules:
 
-<details>
-   <summary>Click to expand!</summary>
-   <p>
-
 1. [CORTX HA](https://github.com/Seagate/cortx-ha/blob/main/Quick-Start-Guide.rst)
    - The module responsible for maintaining highly available access to shared storage.
 2. [CORTX Hare](https://github.com/Seagate/cortx-hare/blob/main/README.md)
@@ -32,9 +28,6 @@ This guide is intended to provide quick start instructions for developers who wa
 7. [CORTX Provisioner](https://github.com/Seagate/cortx-prvsnr/blob/main/Cortx-ProvisionerQuickstartGuide.md)
    - The module which assists the users is satisfying dependencies, configuring the components and the other modules, and initializing the CORTX environment.
    
-   </p>
-   </details>
-
 ## Additional Resources
 
 - Learn more about [CORTX CI/CD and Automation](doc/CI_CD.md).
