@@ -73,6 +73,8 @@ Run the below mentioned command to restart (rejoin) the node.
  
 If the command fails to execute, perfrom the below mentioned procedure to restart (rejoin) a node.
 
+**Procedure**
+
 1. Run the below mentioned command to start the consul.
 
    ::
