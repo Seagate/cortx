@@ -119,6 +119,9 @@ After the onboarding is complete, you can perform the actions mentioned below.
     
    .. image:: images/HCTL.PNG
    
+   
+   .. image:: images/OVAH.PNG
+   
 #. Trigger IOs from an IO tool.
 
 #. In the GUI, you can see the performance graph as part of the **Dashboard**. Please note that the triggering of IO is reflected in the graph.
