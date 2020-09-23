@@ -13,7 +13,6 @@ After reading this guide, you'll be able to pick up topics and issues to contrib
 - [**Submitting issues**](#Submitting-Issues)
 - [**Contributing to Documentation**](#Contributing_to_Documentation)
 
-
 ## Code of Conduct
 
 Thanks for joining us and we're glad to have you. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). 
@@ -22,278 +21,64 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 
 ## Contribution Process
 
-<details>
-<summary>Prerequisites</summary>
-<p>
+### Prerequisites
 
 - Please read our [CORTX Code Style Guide](doc/CodeStyle.md).
-
 - Get started with [GitHub Tools and Procedures](doc/Tools.rst), if you are new to GitHub.
+- Please find additional information about [working with git](doc/working_with_git.md) specific to CORTX.
+- Plese read about our [DCO and CLA policies](dco_cla.md).
 
-- Before you set up your GitHub, you'll need to
+### Development
 
-  1. Generate the SSH key on your development box using:
+**Development Environment:** First you need to configure your [development environment](doc/BUILD_ENVIRONMENT.md). 
 
-     ```shell
-     $ ssh-keygen -o -t rsa -b 4096 -C "Email-address"
-     ```
-  2. Add the SSH key to your GitHub Account:
-    1. Copy the public key: `id_rsa.pub`. By default, your public key is located at `/root/.ssh/id_rsa.pub`
-    2. Navigate to [GitHub SSH key settings](https://github.com/settings/keys) on your GitHub account.
-      
-    :page_with_curl:**Note:** Ensure that you've set your Email ID as the Primary Email Address associated with your GitHub Account. 
-    
-    3. Paste the SSH key you generated in Step 1 and click **Add SSH key**.
-    5. [Create a Personal Access Token or PAT](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
-      
- - Update Git to the latest version. If you're on an older version, you'll see errors in your commit hooks that look like this:
+**Core Functionality:** For basic development and testing of CORTX, you only need the motr and S3 submodules.
 
-    `$ git commit`
+1. [CORTX-Motr](https://github.com/Seagate/cortx-motr/blob/dev/doc/Quick-Start-Guide.rst)
+   - The main data path of the system responsible for the actual storage and distribution of objects and key-value pairs.
+2. [CORTX-S3](https://github.com/Seagate/cortx-s3server/blob/dev/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
+   - The S3 interface to CORTX.
 
-     **Sample Output**
-  
-    ```shell
+**Complete System:** For the complete CORTX experience, you will need to install the remaining submodules:
 
-    git: 'interpret-trailers' is not a git command.
-    See 'git --help'
-    cannot insert change-id line in .git/COMMIT_EDITMSG
-    ```
+1. [CORTX HA](https://github.com/Seagate/cortx-ha/blob/main/Quick-Start-Guide.rst)
+   - The module responsible for maintaining highly available access to shared storage.
+2. [CORTX Hare](https://github.com/Seagate/cortx-hare/blob/main/README.md)
+   - The module responsible for monitoring the distributed health of the system and maintaining consensus.   
+3. [CORTX Management Portal](https://github.com/Seagate/cortx-management-portal/blob/main/README.md)
+   - The module providing a user interface for management and monitoring of CORTX.   
+4. [CORTX Manager](https://github.com/Seagate/cortx-manager/blob/main/README.md)
+   - The module providing API's with which the management portal communicates with the other modules.   
+5. [CORTX Monitor](https://github.com/Seagate/cortx-monitor/blob/main/cortx-monitorQuickstartGuide.md)
+   - The module tracking platform health and raising alerts on sensing any unintended state.   
+6. [CORTX POSIX](https://github.com/Seagate/cortx-posix/blob/dev/doc/Quick_Start_Guide.md)
+   - The module providing a file interface to CORTX.  
+7. [CORTX Provisioner](https://github.com/Seagate/cortx-prvsnr/blob/main/Cortx-ProvisionerQuickstartGuide.md)
+   - The module which assists the users is satisfying dependencies, configuring the components and the other modules, and initializing the CORTX environment.
+ 
+## Additional Resources
 
-- Install Fix for CentOS 7.x by using: `$ yum remove git`
-  * Download the [RPM file from here](https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm) and run the following commands:
-  
-    ```shell
-       $ yum -y install
-       $ yum -y install git
-    ```
-
-   </p>
-    </details>
-    
-    <details>
-  <summary>Contributing to the CORTX repository is a six-step process.</summary>
-  <p>
-
-### 1. Setup Git on your Development Box
-
-Once you've installed the prerequisites, follow the instructions to [install dependencies](doc/InstallingDependencies.md)
-
-### 2. Clone the CORTX Repository
-
-<details>
-<summary>Click to expand!</summary>
-<p>
-
-Before you can work on a GitHub feature, you'll need to clone the repository you're working on. **Fork** the repository to clone it into your private GitHub repository and follow these steps:
-
-1. Navigate to the repository homepage on GitHub.
-2. Click **Fork**
-3. Run the following commands in Shell:
-   
-   `$ git clone --recursive https://github.com/Seagate/<repository>.git`
-
-4. You'll need to setup the upstream repository in the remote list. This is a one-time activity. Run the following command to view the configured remote repository for your fork.
-    
-   `$ git remote -v`  
-
-    **Sample Output:**
-    
-    ```shell
-    
-     origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
-     origin git@github.com:<github-id>/cortx-sspl.git (push)
-     ```
-
- 5. Set up the upstream repository in the remote list using:
-   
-    `$ git remote add upstream https://github.com/Seagate/<repository>.git`
-      
-    `$ git remote -v`
-
-     **Sample Output:**
-    
-     ```shell
-    
-     origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
-     origin git@github.com:<github-id>/cortx-sspl.git (push)
-     upstream git@github.com:Seagate/cortx-sspl.git (fetch)
-     upstream git@github.com:Seagate/cortx-sspl.git (push)
-     ```
-    
-6. Check out to your branch using:
-
-   `$ git checkout "branchname"`
-
-   `$ git checkout -b 'your-local-branch-name`
-   
-    :page_with_curl: **Note:** By default, you'll need to contribute to the main branch. 
-
-</p>
-</details>
-
-### 3. Commit your Code 
-
-<details>
-<summary>Click to expand!</summary>
-<p>
-
-:page_with_curl: **Note:** At any point in time to rebase your local branch to the latest main branch, follow these steps:
-
-  ```shell
-
-  $ git pull origin main
-  $ git submodule update --init --recursive
-  $ git checkout 'your-local-branch'
-  $ git pull origin 'your-remote-branch-name'
-  $ git submodule update --init --recursive
-  $ git rebase origin/main
-  ```
-  
-You can make changes to the code and save them in your files.
-
-1. Use the command below to add files that need to be pushed to the git staging area:
-
-    `$ git add foo/somefile.cc`
-
-2. To commit your code changes use:
-
-   `$ git commit -s -m ‘comment’` - enter your GitHub Account ID and an appropriate Feature or Change description in comment.
-
-3. Check out your git log to view the details of your commit and verify the author name using: `$ git log`
-
-   :page_with_curl:**Note:** If you need to change the author name for your commit, refer to the GitHub article on [Changing author info](https://docs.github.com/en/github/using-git/changing-author-info).
-
-4. To Push your changes to GitHub, use: `$ git push origin 'your-local-branch-name'`
-
-   **Sample Output**
-
-   ```shell
-
-   Enumerating objects: 4, done.
-   Counting objects: 100% (4/4), done.
-   Delta compression using up to 2 threads
-   Compressing objects: 100% (2/2), done.
-   Writing objects: 100% (3/3), 332 bytes | 332.00 KiB/s, done.
-   Total 3 (delta 1), reused 0 (delta 0)
-   remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-   remote:
-   remote: Create a pull request for 'your-local-branch-name' on GitHub by visiting:
-   remote: https://github.com/<your-GitHub-Id>/cortx-s3server/pull/new/<your-local-branch-name>
-   remote: To github.com:<your-GitHub-Id>/reponame.git
-   * [new branch] <your-local-branch-name> -> <your-local-branch-name>
-   ```
-</p>
-</details>
-
-### 4. Create a Pull Request 
-
-<details>
-<summary>Click to expand!</summary>
-  <p>       
-   
-1. Once you Push changes to GitHub, the output will display a URL for creating a Pull Request, as shown in the sample code above.
-
-   :page_with_curl:**Note:** To resolve conflicts, follow the troubleshooting steps mentioned in git error messages.
-
-2. You'll be redirected to GitHib remote.
-3. Select the relevant repository branch from the *Branches/Tags* drop-down list.
-4. Click **Create pull request** to create the pull request.
-5. Add reviewers to your pull request to review and provide feedback on your changes.
-
-</p>
-</details>
-
-### 5. Run Jenkins and System Tests
-
-Creating a pull request automatically triggers Jenkins jobs and System tests. To familiarize yourself with jenkins, please visit the [Jenkins wiki page](https://en.wikipedia.org/wiki/Jenkins_(software)).
-
-### 6. Sign CLA and Pass DCO 
-
-<details>
-  <summary>Click to expand!</summary>
-  <p>
-
-#### CLA
-
-In order to clarify the intellectual property license granted with Contributions from any person or entity, CORTX Community may require a Contributor License Agreement (CLA) on file that has been signed by each Contributor, indicating agreement to the license terms below. This license is for your protection as a Contributor as well as the protection of the project and its users; it does not change your rights to use your own Contributions for any other purpose.
-
-#### DCO
-
-DCO is always required. The code reviewers will use the [decision tree](https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md) to determine when CLA is required.
-To ensure contributions can be redistributed by all under an open source license, all contributions must be signed with [DCO](https://opensource.com/article/18/3/cla-vs-dco-whats-difference). To further ensure that all members of the community can redistribute and resell CORTX should and when they so choose, [CLA may be required on a case-by-case basis](https://github.com/Seagate/cortx/blob/main/doc/cla/README.md) such that corporations cannot attempt to prevent others from reselling CORTX.
-
-You can pass DCO in many ways:
-
-- While creating a Pull Request via the GitHub UI, add `Signed-off-by: "Name" <email address>` in the PR comments section. 
-
-   **Example:** `Signed-off-by: John Doe <John.doe@gmail.com>`
-
-- DCO will automatically pass if you push commits using [GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/configuring-git-for-github-desktop). 
-
-- You can pass DCO by adding a Signed-off-by line to commit messages in Git CLI:
-
-   `Signed-off-by: Random J Developer <random@developer.example.org>`
-   
-    Git even has a `-s` command line option to append this automatically to your commit message:
-
-   `$ git commit -s -m` - here -m is your commit message.
-  
-</p>
-</details>
-
-</p>
-</details>
-
-## The GitHub Triage Process
-
-Triaging is about prioritizing and troubleshooting issues raised by you in [GitHub](https://github.com/). Triage can broadly be defined as a process oriented approach towards issue resolution and conflict management.
-
-<details>
-  <summary>Process of Triaging</summary>
-  <p>
-
-The process of triaging in CORTX is depicted in the diagram below.
-
-   <img src="../doc/images/GitHubTriage.png?raw=true">
+- Learn more about [CORTX CI/CD and Automation](doc/CI_CD.md).
+- Setup and test [a scale-out distributed CORTX](doc/scaleout/README.rst).
+- Download and run a [single node CORTX VM](doc/CORTX_on_Open_Virtual_Appliance.rst) for testing purposes.
+- Learn more about the [CORTX Architechture](doc/architecture.md). 
  
 #### Creating an Issue
 
 Perform the below mentioned procedure to create an issue in GitHub:
 
 1. Login to GitHub with your credentials.
-2. Navigate to the CORTX repository. Then, click **Issues**. List of issues are displayed.
+2. Navigate to the CORTX repository or relevant submodule. Then, click **Issues**. List of issues are displayed.
 3. If there are multiple issue types, click Get started next to the type of issue you'd like to open.
 4. Click **New Issue**. A page requesting the **Title** and **Description** is displayed.
 5. Enter a title and description for your issue, and click **Submit new issue**.
    
-:page_with_curl: **Note**: Click **Open a blank issue** if the type of issue you want to open, is not included in the available different types of issues.
-
-</p>
-</details>
-
-## Resources 
-
-Refer to these Quickstart Guides to build the CORTX full stack and contribute to the CORTX project.
-
-<details>
-<summary>Click to expand!</summary>
-<p>
-
-- [Provisioner](https://github.com/Seagate/cortx-prvsnr/blob/main/Cortx-ProvisionerQuickstartGuide.md)
-- [Motr](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
-- [S3 Server](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
-- [Posix](https://github.com/Seagate/cortx-posix/blob/main/doc/Quick_Start_Guide.md)
-- [Minitor](https://github.com/Seagate/cortx-monitor/blob/main/cortx-monitorQuickstartGuide.md)
-- [Hare](https://github.com/Seagate/cortx-hare/tree/main#hare-user-guide)
-- [HA](https://github.com/Seagate/cortx-ha/blob/main/Quick-Start-Guide.rst)
-
-**TODO** Add links for Manager and Management Portal Quickstart Guides.
-
-</p>
-</details>
+**Note**: Click **Open a blank issue** if the type of issue you want to open, is not included in the available different types of issues.
 
 ## Communication Channels
 
 Please refer to the [Support](SUPPORT.md) section to know more about the various channels by which you can reach out to us. 
 
-### Thank You!
+## Thank You!
+
+We thank you for stopping by to check out the CORTX Community. We are fully dedicated to our mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world.
