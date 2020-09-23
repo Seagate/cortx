@@ -81,7 +81,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 
 ### 1. Setup Git on your Development Box
 
-Once you've installed the prerequisites, follow the instructions to [install dependecies](doc/InstallingDependencies.md)
+Once you've installed the prerequisites, follow the instructions to [install dependecies](doc/InstallingDependencies.md).
 
 ### 2. Clone the CORTX Repository
 
@@ -220,12 +220,7 @@ Creating a pull request automatically triggers Jenkins jobs and System tests. To
 
 #### CLA
 
-In order to clarify the intellectual property license granted with Contributions from any person or entity, CORTX Community may require a Contributor License Agreement (CLA) on file that has been signed by each Contributor, indicating agreement to the license terms below. This license is for your protection as a Contributor as well as the protection of the project and its users; it does not change your rights to use your own Contributions for any other purpose.
-
-#### DCO
-
-DCO is always required. The code reviewers will use the [decision tree](https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md) to determine when CLA is required.
-To ensure contributions can be redistributed by all under an open source license, all contributions must be signed with [DCO](https://opensource.com/article/18/3/cla-vs-dco-whats-difference). To further ensure that all members of the community can redistribute and resell CORTX should and when they so choose, [CLA may be required on a case-by-case basis](https://github.com/Seagate/cortx/blob/main/doc/cla/README.md) such that corporations cannot attempt to prevent others from reselling CORTX.
+Please refer to the [CORTX Community DCO and CLA Policy](doc/dco_cla.md) document.
 
 You can pass DCO in many ways:
 
