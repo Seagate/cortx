@@ -1,5 +1,5 @@
 ***********
-Testing the CORTX system and observing activity in the CORTX GUI
+Performing IO to a CORTX system and observing activity in the CORTX GUI
 ***********
 
 If you wish to use the provided virtual machine image to test CORTX and observe activity in its GUI, 

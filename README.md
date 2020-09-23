@@ -37,16 +37,16 @@ We are excited about your interest in CORTX and hope you will join us. We take o
 
 ## How to Get Started
 
--   Download a VM image and follow [the instructions](doc/CORTX_on_Open_Virtual_Appliance.rst) to test the pre-built full CORTX system. 
--   Jump into [CORTX Development Quickstart Guide](QUICK_START.md) to build and test CORTX.
--   Check out our [Contribution Guide](CONTRIBUTING.md) to pick up topics and issues to contribute, submit your codes, and learn how to turn your pull request into a successful contribution.
-    -   Refer to our [Suggested Contributions](../main/doc/SuggestedContributions.md) page for some inspiration about how to contribute to the CORTX project.
--   Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.rst) for more details.
+- Download a VM image and follow [the instructions](doc/CORTX_on_Open_Virtual_Appliance.rst) to test the pre-built full CORTX system. 
+- Jump into our [Contribution Guide](CONTRIBUTING.md) to build and test CORTX and to learn about how to make contributions.
+   - Refer to our [Suggested Contributions](../main/doc/SuggestedContributions.md) page for some inspiration about how to contribute to the CORTX project.
+- Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.rst) for more details.
 
 
 Resources
 ---------
 
+<!-- NOTE!!! This is copied from SUPPORT.md.  If you update it here, update it there as well.) -->
 -   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) to interact with community members and gets your questions answered.
 -   Join us in [Discussions](https://github.com/Seagate/cortx/discussions) to ask, answer, and discuss topics with your fellow CORTX contributors!
 -   If you'd like to contact us directly, drop us a mail at cortx-questions@seagate.com.
