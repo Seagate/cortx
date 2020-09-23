@@ -16,27 +16,18 @@ This document describes various methods by which a user can monitor and query th
     
    .. figure:: images/HCTL.PNG
    
+#. When running a scale-out CORTX system, the following steps can show how IO is distributed across the CORTX servers.
 
-The S3instance assignment per node is as follows.
-
-::
-
- s3intance-1  to s3intance-11 =====> srvnode-1
+   #. As was shown in the previous step, the *hctl_status* command shows that there are 11 S3 server instances running on each node. 
+   
+   #. The image below shows the HAProxy config file which shows the mapping from S3 server instance to IP address.  As can be seen, there are three IP addresses representing the three CORTX servers running in this scale-out system.
  
- s3intance-12 to s3intance-22 =====> srvnode-2
- 
- s3intance-23 to s3intance-33 =====> srvnode-3
- 
-The image below depicts the HAProxy config.
- 
-.. image:: images/HAP.PNG
+   .. image:: images/HAP.PNG
   
-On node 1, run the below mentioned command when IOs are started, to check if IOs are running on all nodes.
+   #. To see IOs occuring across the system, use the below command and the multiple S3 instances receiving IO.  Using the mapping from the previous step, it can be seen which CORTX servers are currently performing IO. 
 
-::
+   ::
 
- tail -f /var/log/haproxy.log
+    tail -f /var/log/haproxy.log
  
-.. image:: images/AWS.PNG
-
-.. raw:: html
+   .. image:: images/AWS.PNG
