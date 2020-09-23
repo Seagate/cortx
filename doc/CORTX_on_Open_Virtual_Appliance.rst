@@ -71,8 +71,10 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
 
-    /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1 
+    /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p SINGLE
+    
     /opt/seagate/cortx/sspl/bin/sspl_setup config -f 
+    
     systemctl start sspl-ll    
 
    If any service is inactive, run the below mentioned command.
@@ -86,6 +88,8 @@ The procedure to install CORTX on OVA is mentioned below.
    ::
                
     salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
+    
+    salt '*' cmd.run "firewall-cmd --reload"
 
 #. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 

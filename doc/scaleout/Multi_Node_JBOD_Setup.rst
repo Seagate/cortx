@@ -185,12 +185,15 @@ Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID
   
 11. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <Configuration_File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
 
-**Important**: By default, port 80 is closed. Run the below mentioned command to open port 80.
+**Important**: By default, port 80 is closed. Run the below mentioned commands to open port 80.
 
 ::
                
  salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
-
+ 
+ salt '*' cmd.run "firewall-cmd --reload"
+ 
+ 
 If you have a firewall within your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access.
   
 +----------------------+-------------------+------------------------------------------------+

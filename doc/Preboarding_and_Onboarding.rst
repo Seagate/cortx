@@ -13,7 +13,7 @@ The preboarding process must be the first process that must be completed after c
    <summary><a>Click here to expand the preboarding procedure.</a></summary>
 
 
-1. Open a browser and navigate to the *https://<management IP>:28100/#/preboarding/welcome*. The management IP must be fetched from the step 6 of `CORTX_on_Open_Virtual_Appliance <https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst>`_.
+1. Open a browser and navigate to the *https://<management IP>:28100/#/preboarding/welcome*.
 
    - If you see a message about your connection not being private, it is safe to ignore this message.
 
@@ -21,19 +21,40 @@ The preboarding process must be the first process that must be completed after c
 
    .. image:: images/Start1.PNG
 
-3. Click **Get Started**. A window showcasing the End User License Agreement (EULA) appears.
+3. Click **Get Started**. A **CORTX Terms and Conditions** showcasing the EULA appears.
 
    .. image:: images/Get.PNG
 
-3. Click **Accept** to accept the EULA.
+4. Click **Accept** to accept the **CORTX Terms and Conditions**.
 
    .. image:: images/EULA1.PNG
 
-4. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.
+5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.
 
-   - If you want to receive email notifications, select the **Subscribe to email notifications** checkbox.
+   - If you want to receive email notifications, select the **Subscribe to email notifications** checkbox. The **Notification settings: Email** page is displayed.
    
-   .. image:: images/Adminu.PNG
+     #. In the **Notification settings: Email** page. enter relevant information in the following fields.
+     
+        - **SMTP server**
+        
+        - **Sender email**
+        
+        - **Protocol**
+        
+        - **SMTP Port**
+        
+        - **Sender password**
+        
+        - **Confirm password**
+        
+        - **Receiver emails**
+       
+     #. After filling information in all the fields, click **Send test mail**. You will receive a test mail from CORTX.
+       
+     #. Click **Apply**. The process of configuring emails is completed.
+    
+   
+  .. image:: images/MISC.PNG
 
    **Note**: Do not create an user with one of the following usernames.
 
@@ -99,4 +120,68 @@ The onboarding procedure must be performed after completing the preboarding proc
 .. raw:: html
    
    </details>
+   
+CORTX
+=====
+CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization. CORTX is completely Open Source.
+
+.. raw:: html
+
+    <details>
+   <summary><a>Click here to view what you can do after onboarding.</a></summary>
+
+After the onboarding is complete, you can perform the actions mentioned below.
+
+#. Run the below mentioned command to check the cluster health.
+
+   ::
+  
+    hctl status
+    
+   .. figure:: images/HCTL.PNG
+      
+      **Scale-out / JBOD Output**
+   
+   
+   .. figure:: images/OVAH.PNG
+   
+      **OVA Output**
+   
+   
+   
+#. Trigger IOs from an IO tool.
+
+#. In the GUI, you can see the performance graph as part of the **Dashboard**. Please note that the triggering of IO is reflected in the graph.
+
+   .. image:: images/PG.PNG
+
+IO on Cluster (**Scale-out** / **JBOD** only)
+---------------------------------------------
+
+The S3instance assignment per node is as follows.
+
+::
+
+ s3intance-1  to s3intance-11 =====> srvnode-1
+ 
+ s3intance-12 to s3intance-22 =====> srvnode-2
+ 
+ s3intance-23 to s3intance-33 =====> srvnode-3
+ 
+The image below depicts the HAProxy config.
+ 
+.. image:: images/HAP.PNG
+  
+On node 1, run the below mentioned command when IOs are started, to check if IOs are running on all nodes.
+
+::
+
+ tail -f /var/log/haproxy.log
+ 
+.. image:: images/AWS.PNG
+
+.. raw:: html
+   
+   </details>
+ 
 
