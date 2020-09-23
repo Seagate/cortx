@@ -2,9 +2,11 @@
 
 CORTX is about building the world's best scalable mass-capacity object storage system. If you’re interested in what we’re building and intrigued by hard challenges, here's everything you need to know about contributing to the project and how to get started. 
 
+This guide is intended to provide quick start instructions for developers who want to build, test, and contribute to the CORTX software.  If you are merely looking to _test_ CORTX, please use [these instructions](doc/CORTX_on_Open_Virtual_Appliance.rst).
+
 After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and how to turn your pull request into a successful contribution. Feel free to browse through the [list of contributions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md), and [view and submit issues](https://github.com/Seagate/cortx/issues). And if you have any suggestions on how we can improve this guide, or anything else in the project, we want to hear from you!
 
-## Contribution Guide
+## Table of Contents
 
 - [**Code of Conduct**](#Code-of-Conduct)
 - [**Contribution Process**](#Contribution-Process)
@@ -14,7 +16,7 @@ After reading this guide, you'll be able to pick up topics and issues to contrib
 
 ## Code of Conduct
 
-Thanks for joining us and we're glad to have you. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our [Contributor Covenant Code of Conduct](https://github.com/Seagate/cortx/blob/main/CODE_OF_CONDUCT.md). 
+Thanks for joining us and we're glad to have you. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). 
 
 You can report instances of abusive, harassing, or otherwise unacceptable behavior by contacting the project team at opensource@seagate.com.
 
@@ -24,9 +26,9 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 <summary>Prerequisites</summary>
 <p>
 
-- Please read our [CORTX Code Style Guide](../main/doc/CodeStyle.md).
+- Please read our [CORTX Code Style Guide](doc/CodeStyle.md).
 
-- Get started with [GitHub Tools and Procedures](../doc/Tools.rst), if you are new to GitHub.
+- Get started with [GitHub Tools and Procedures](doc/Tools.rst), if you are new to GitHub.
 
 - Before you set up your GitHub, you'll need to
 
@@ -72,16 +74,9 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
   <summary>Contributing to the CORTX repository is a six-step process.</summary>
   <p>
 
-1. [Set up Git on your Development Box](#1-Setup-Git-on-your-Development-Box)
-2. [Clone the CORTX Repository](#2-Clone-the-CORTX-Repository)
-3. [Commit your Code](#3-Commit-your-Code)
-4. [Create a Pull Request](#4-Create-a-Pull-Request)
-5. [Run Jenkins and System Tests](#5-Run-Jenkins-and-System-Tests)
-6. [Sign CLA and Pass DCO](#Sign-CLA-and-Pass-DCO)
-
 ### 1. Setup Git on your Development Box
 
-Once you've installed the prerequisites, follow the instructions to [install dependecies](doc/InstallingDependencies.md)
+Once you've installed the prerequisites, follow the instructions to [install dependencies](doc/InstallingDependencies.md)
 
 ### 2. Clone the CORTX Repository
 
