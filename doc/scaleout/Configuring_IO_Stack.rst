@@ -33,7 +33,9 @@ Perform the below mentioned procedure to configure the I/O stack.
 
    ::
 
-    hctl start
+    hctl bootstrap --mkfs /var/lib/hare/cluster.yaml
+    
+   Note: **mkfs** must be used only while bootstrapping the cluster for the first time. 
 
 
 4. Verify the motr utility m0crate, by creating a sample m0crate workload file and running m0crate workload. Run the below mentioned commands.
@@ -63,7 +65,20 @@ Run the below mentioned command to start the cluster. This command is applicable
 Node Restart
 =============
 
-Perform the below mentioned steps to restart (rejoin) a node.
+Run the below mentioned command to restart (rejoin) the node.
+
+::
+
+ hctl node-join
+ 
+ 
+ hctl node-join -c /var/lib/hare --consul-addr <IP Address> --consul-port 8500
+ 
+ 
+ 
+If the command fails to execute, perfrom the below mentioned procedure to restart (rejoin) a node.
+
+**Procedure**
 
 1. Run the below mentioned command to start the consul.
 

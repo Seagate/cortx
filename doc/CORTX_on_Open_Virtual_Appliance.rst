@@ -190,7 +190,7 @@ Start the OVA
 
 3. Start CORTX I/O subsystem by running the following command.
 
-   - **hctl bootstrap -c /var/lib/hare/**
+   - **hctl start**
    
 
    
