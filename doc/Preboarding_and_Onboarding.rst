@@ -25,11 +25,11 @@ The preboarding process must be the first process that must be completed after c
 
    .. image:: images/Get.PNG
 
-3. Click **Accept** to accept the EULA.
+4. Click **Accept** to accept the EULA.
 
    .. image:: images/EULA1.PNG
 
-4. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.
+5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.
 
    - If you want to receive email notifications, select the **Subscribe to email notifications** checkbox.
    
