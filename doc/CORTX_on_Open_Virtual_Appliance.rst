@@ -91,9 +91,11 @@ The procedure to install CORTX on OVA is mentioned below.
     
     salt '*' cmd.run "firewall-cmd --reload"
 
-#. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
+#. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
-   * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
+   ::
+   
+   sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh
    
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
@@ -104,9 +106,9 @@ The procedure to install CORTX on OVA is mentioned below.
    
    * If you do not see IP addresses like in the above image, you might need to change your virtual networking configuration for which  `these instructions <troubleshoot_virtual_network.rst>`_ are hopefully useful.
  
-#. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
+#. Using the management IP from the previous step,  refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
 
-#. Now that you have the complete system up and running, mark down the data IP that you queried in step 6 and use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
+#. Now that you have the complete system up and running, using the data IP that you queried previously, use `these instructions <testing_ova.rst>`_ to test the system and observe activity in the  GUI.
 
 #. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
  
