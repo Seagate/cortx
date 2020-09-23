@@ -18,7 +18,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 
 - Please read our [CORTX Code Style Guide](doc/CodeStyle.md).
 - Get started with [GitHub Tools and Procedures](doc/Tools.rst), if you are new to GitHub.
-- Please find additional information about [working with git](doc/working_with_git.md) specific to CORTX.
+   - Please find additional information about [working with git](doc/working_with_git.md) specific to CORTX.
 - Plese read about our [DCO and CLA policies](dco_cla.md).
 
 ### Development
@@ -55,7 +55,6 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 - Setup and test [a scale-out distributed CORTX](doc/scaleout/README.rst).
 - Download and run a [single node CORTX VM](doc/CORTX_on_Open_Virtual_Appliance.rst) for testing purposes.
 - Learn more about the [CORTX Architechture](doc/architecture.md). 
-- Learn about [git](doc/Tools.rst) and [working with git for CORTX](doc/working_with_git.md). 
 - Browse our [suggested list of contributions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md).
 
 ## Communication Channels
