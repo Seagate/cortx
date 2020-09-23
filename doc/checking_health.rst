@@ -38,8 +38,10 @@ This document describes various methods by which a user can monitor and query th
    
    #. The *dstat* command can also show IO activity.  The below figure shows dstat output from the three servers when someone first *put* an object, then did *get* on that same object and then finally deleted the object.
       
+   
    .. image:: images/dstat_view.png
    
-    As can be seen, even though the S3 client communicates with a single CORTX server, CORTX distributes data and parity blocks across all 3 servers.
+   
+   As can be seen, even though the S3 client communicates with a single CORTX server, CORTX distributes data and parity blocks across all 3 servers.
 
 
