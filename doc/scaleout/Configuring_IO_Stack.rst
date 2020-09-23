@@ -71,6 +71,11 @@ Run the below mentioned command to restart (rejoin) the node.
 
  hctl node-join
  
+ 
+ hctl node-join -c /var/lib/hare --consul-addr <IP Address> --consul-port 8500
+ 
+ 
+ 
 If the command fails to execute, perfrom the below mentioned procedure to restart (rejoin) a node.
 
 **Procedure**
