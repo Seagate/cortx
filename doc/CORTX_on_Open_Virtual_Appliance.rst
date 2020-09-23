@@ -20,41 +20,21 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download the cortx-va-1.0.0.zip file that contains the virtual machine images.
+#. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download and then uncompress the cortx-va-1.0.0.zip file that contains the virtual machine image.
 
-#. Extract the contents of the downloaded file into your system. You can also run the below mentioned command to extract the content.
+#. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
-   * **gzip cortx-va-1.0.0.zip**
-
-#. Import the OVA file by referring to `these instructions <Importing_OVA_File.rst>`_. 
-
-   - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
+   - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
   
-   **Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. 
+#. Open the VM console, and login with the below credentials.
 
-   **Note**:  Operating system updates are not supported due to specific kernel dependencies.
- 
-  
-#. Open the VM console, and login with the below mentioned credentials.
-
-
-   * Username: **cortx**
-  
+   * Username: **cortx**  
    * Password: **opensource!**
 
 #. Become the **root** user by running the following command.
 
    * sudo su -
- 
-#. Run **ip a l** and record the IP addresses of the following interfaces:
-
-   * ens192 - management 
-   * ens256 - public data
    
-   .. image:: images/networks.png
-   
-   * If you do not see IP addresses like in the above image, you might need to change your virtual networking configuration for which  `these instructions <troubleshoot_virtual_network.rst>`_ are hopefully useful.
-
 #. Change the hostname by running the following command:
 
    * **hostnamectl set-hostname --static --transient --pretty <new-name>**
@@ -114,6 +94,15 @@ The procedure to install CORTX on OVA is mentioned below.
 #. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
    * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
+   
+#. Run **ip a l** and record the IP addresses of the following interfaces:
+
+   * ens192 - management 
+   * ens256 - public data
+   
+   .. image:: images/networks.png
+   
+   * If you do not see IP addresses like in the above image, you might need to change your virtual networking configuration for which  `these instructions <troubleshoot_virtual_network.rst>`_ are hopefully useful.
  
 #. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
 
