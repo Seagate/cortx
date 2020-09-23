@@ -25,7 +25,7 @@ The preboarding process must be the first process that must be completed after c
 
    .. image:: images/Get.PNG
 
-4. Click **Accept** to accept the EULA.
+4. Click **Accept** to accept the **CORTX Terms and Conditions**.
 
    .. image:: images/EULA1.PNG
 
