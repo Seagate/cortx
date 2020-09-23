@@ -13,7 +13,7 @@ The preboarding process must be the first process that must be completed after c
    <summary><a>Click here to expand the preboarding procedure.</a></summary>
 
 
-1. Open a browser and navigate to the *https://<management IP>:28100/#/preboarding/welcome*. The management IP must be fetched from the step 6 of `CORTX_on_Open_Virtual_Appliance <https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst>`_.
+1. Open a browser and navigate to the *https://<management IP>:28100/#/preboarding/welcome*.
 
    - If you see a message about your connection not being private, it is safe to ignore this message.
 
