@@ -8,5 +8,7 @@ Please refer to [this page](LocalVMSetup.md) for information about running with 
 
 Planning to create your own VM, please check [this page](VIRTUAL_MACHINE.md) for helpful pre-build steps pertaining to motr, s3server and hare. It also contains information to resolve a few issues that can come up at runtime.
 
+We have provided instructions to [install dependencies](doc/InstallingDependencies.md).
+
 A CORTX development environment requires RoCE—RDMA over Converged Ethernet and TCP connectivity.
    - Note: The CORTX stack currently does not work on Intel's OmniPath cards.
