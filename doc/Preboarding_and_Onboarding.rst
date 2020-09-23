@@ -99,4 +99,9 @@ The onboarding procedure must be performed after completing the preboarding proc
 .. raw:: html
    
    </details>
+   
+CORTX
+=====
+
+After the onboarding is complete, you can perform the actions mentioned below.
 
