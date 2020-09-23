@@ -115,20 +115,24 @@ After the onboarding is complete, you can perform the actions mentioned below.
 
 #. In the GUI, you can see the performance graph as part of the **Dashboard**. Please note that the triggering of IO is reflected in the graph.
 
-IO on Cluster
--------------
+IO on Cluster (**Scale-out (JBOD)** only)
+-----------------------------------------
 
-This section is applicable to **Scale-out (JBOD)** only.
 
 The s3instance assignment per node is as follows.
 
 ::
 
- s3intance-1 to s3intance-11 =====> srvnode-1
+ s3intance-1  to s3intance-11 =====> srvnode-1
  
  s3intance-12 to s3intance-22 =====> srvnode-2
  
  s3intance-23 to s3intance-33 =====> srvnode-3
   
-  
+On node 1, run the below mentioned command when IOs are started.
+
+::
+
+ "tail -f /var/log/haproxy.log"
+ 
 
