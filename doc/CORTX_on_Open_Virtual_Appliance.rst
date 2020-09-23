@@ -95,7 +95,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
    
-   sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh
+    sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh
    
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
