@@ -91,8 +91,10 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
 
-    /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p LDR_R1 
+    /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p SINGLE
+    
     /opt/seagate/cortx/sspl/bin/sspl_setup config -f 
+    
     systemctl start sspl-ll    
 
    If any service is inactive, run the below mentioned command.
