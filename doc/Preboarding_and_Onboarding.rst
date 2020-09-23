@@ -117,10 +117,16 @@ After the onboarding is complete, you can perform the actions mentioned below.
   
     hctl status
     
-   .. image:: images/HCTL.PNG
+   .. figure:: images/HCTL.PNG
+      
+      Scale-out / JBOD Output
    
    
-   .. image:: images/OVAH.PNG
+   .. figure:: images/OVAH.PNG
+   
+      OVA Output
+   
+   
    
 #. Trigger IOs from an IO tool.
 
