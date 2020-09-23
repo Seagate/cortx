@@ -21,7 +21,7 @@ The preboarding process must be the first process that must be completed after c
 
    .. image:: images/Start1.PNG
 
-3. Click **Get Started**. A window showcasing the End User License Agreement (EULA) appears.
+3. Click **Get Started**. A window showcasing the EULA appears.
 
    .. image:: images/Get.PNG
 
