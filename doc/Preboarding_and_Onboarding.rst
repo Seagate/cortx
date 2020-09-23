@@ -119,8 +119,8 @@ After the onboarding is complete, you can perform the actions mentioned below.
 
    .. image:: images/PG.PNG
 
-IO on Cluster (**Scale-out (JBOD)** only)
------------------------------------------
+IO on Cluster (**Scale-out** only)
+-----------------------------------
 
 The S3instance assignment per node is as follows.
 
