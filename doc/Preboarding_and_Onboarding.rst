@@ -132,7 +132,7 @@ The s3instance assignment per node is as follows.
  
 .. image:: images/HAP.PNG
   
-On node 1, run the below mentioned command when IOs are started.
+On node 1, run the below mentioned command when IOs are started, to check IOs running on cluster
 
 ::
 
