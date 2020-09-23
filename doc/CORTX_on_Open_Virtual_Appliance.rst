@@ -45,16 +45,7 @@ The procedure to install CORTX on OVA is mentioned below.
 #. Become the **root** user by running the following command.
 
    * sudo su -
- 
-#. Run **ip a l** and record the IP addresses of the following interfaces:
-
-   * ens192 - management 
-   * ens256 - public data
    
-   .. image:: images/networks.png
-   
-   * If you do not see IP addresses like in the above image, you might need to change your virtual networking configuration for which  `these instructions <troubleshoot_virtual_network.rst>`_ are hopefully useful.
-
 #. Change the hostname by running the following command:
 
    * **hostnamectl set-hostname --static --transient --pretty <new-name>**
@@ -110,6 +101,15 @@ The procedure to install CORTX on OVA is mentioned below.
 #. At this point, CORTX can run on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
    * **sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh**
+   
+#. Run **ip a l** and record the IP addresses of the following interfaces:
+
+   * ens192 - management 
+   * ens256 - public data
+   
+   .. image:: images/networks.png
+   
+   * If you do not see IP addresses like in the above image, you might need to change your virtual networking configuration for which  `these instructions <troubleshoot_virtual_network.rst>`_ are hopefully useful.
  
 #. Mark down the management IP that you queried in step 6, and refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
 
