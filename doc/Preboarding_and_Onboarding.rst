@@ -110,6 +110,8 @@ After the onboarding is complete, you can perform the actions mentioned below.
    ::
   
     hctl status
+    
+   .. image:: images/HCTL.PNG
    
 #. Trigger IOs from an IO tool.
 
