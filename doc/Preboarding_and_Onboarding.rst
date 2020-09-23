@@ -103,6 +103,11 @@ The onboarding procedure must be performed after completing the preboarding proc
 CORTX
 =====
 
+.. raw:: html
+
+    <details>
+   <summary><a>Click here to view what you can do after onboarding.</a></summary>
+
 After the onboarding is complete, you can perform the actions mentioned below.
 
 #. Run the below mentioned command to check the cluster health.
@@ -143,5 +148,9 @@ On node 1, run the below mentioned command when IOs are started, to check if IOs
  tail -f /var/log/haproxy.log
  
 .. image:: images/AWS.PNG
+
+.. raw:: html
+   
+   </details>
  
 
