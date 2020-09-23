@@ -48,13 +48,13 @@ The preboarding process must be the first process that must be completed after c
         - **Confirm password**
         
         - **Receiver emails**
-        
-       #. After filling information in all the fields, click **Send test mail**. You will receive a test mail from CORTX.
        
-       #. Click **Apply**. The process of configuring emails is completed.
+     #. After filling information in all the fields, click **Send test mail**. You will receive a test mail from CORTX.
+       
+     #. Click **Apply**. The process of configuring emails is completed.
     
    
-   .. image:: images/MISC.PNG
+  .. image:: images/MISC.PNG
 
    **Note**: Do not create an user with one of the following usernames.
 
