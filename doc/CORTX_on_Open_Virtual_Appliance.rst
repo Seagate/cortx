@@ -110,11 +110,11 @@ The procedure to install CORTX on OVA is mentioned below.
    
    * If you do not see IP addresses like in the above image, you might need to change your virtual networking configuration for which  `these instructions <troubleshoot_virtual_network.rst>`_ are hopefully useful.
  
-#. Using the management IP from the previous step,  refer to `these instructions <Preboarding_and_Onboarding.rst>`_ to configure the CORTX GUI. 
+#. Using the management IP from the previous step,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
-#. Now that you have the complete system up and running, using the data IP that you queried previously, use `these instructions <testing_io.rst>`_ to test the system and observe activity in the  GUI.
+#. Now that you have the complete system up and running, using the data IP that you queried previously, use these instructions `to test the system <testing_io.rst>`_  and observe activity in the  GUI.
 
-#. Please use `these instructions <checking_health.rst>`_ which describe how to use the command line interface to query and monitor the configuration, health, and activity of your CORTX system.
+#. Please use these instructions which describe how to use the `command line interface to query and monitor <checking_health.rst>`_ the configuration, health, and activity of your CORTX system.
 
 #. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
  
