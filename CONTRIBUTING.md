@@ -39,13 +39,10 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
     1. Copy the public key: `id_rsa.pub`. By default, your public key is located at `/root/.ssh/id_rsa.pub`
     2. Navigate to [GitHub SSH key settings](https://github.com/settings/keys) on your GitHub account.
       
-    :page_with_curl:**Note:** Ensure that you've set your Email ID as the Primary Email Address associated with your GitHub Account. SSO will not work if you do not set up your Email ID as your Primary Email Address.
+    :page_with_curl:**Note:** Ensure that you've set your Email ID as the Primary Email Address associated with your GitHub Account. 
     
-    3. Paste the SSH key you generated in Step 1 and select *Enable SSO*.
-    4. Click **Authorize** to authorize SSO for your SSH key.
+    3. Paste the SSH key you generated in Step 1 and click **Add SSH key**.
     5. [Create a Personal Access Token or PAT](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
-
-     :page_with_curl:**Note:** Ensure that you have enabled SSO for your PAT.
       
  - Update Git to the latest version. If you're on an older version, you'll see errors in your commit hooks that look like this:
 
@@ -70,8 +67,10 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 
    </p>
     </details>
-
-Contributing to the CORTX repository is a six-step process where you'll need to:
+    
+    <details>
+  <summary>Contributing to the CORTX repository is a six-step process.</summary>
+  <p>
 
 1. [Set up Git on your Development Box](#1-Setup-Git-on-your-Development-Box)
 2. [Clone the CORTX Repository](#2-Clone-the-CORTX-Repository)
@@ -82,25 +81,7 @@ Contributing to the CORTX repository is a six-step process where you'll need to:
 
 ### 1. Setup Git on your Development Box
 
-Once you've installed the prerequisites, follow these steps to set up Git on your Development Box.
-
-<details>
-  <summary> Click to expand!</summary>
-  <p>
-
-1. Install git-clang-format using: `$ yum install git-clang-format`
-
-2. Set up git config options using:
-
-   ```shell
-
-   $ git config --global user.name ‘Your Name’
-   $ git config --global user.email ‘Your.Name@domain_name’
-   $ git config --global color.ui auto
-   $ git config --global credential.helper cache
-   ```
-</p>
-</details>
+Once you've installed the prerequisites, follow the instructions to [install dependecies](doc/InstallingDependencies.md)
 
 ### 2. Clone the CORTX Repository
 
@@ -265,6 +246,9 @@ You can pass DCO in many ways:
 </p>
 </details>
 
+</p>
+</details>
+
 ## The GitHub Triage Process
 
 Triaging is about prioritizing and troubleshooting issues raised by you in [GitHub](https://github.com/). Triage can broadly be defined as a process oriented approach towards issue resolution and conflict management.
@@ -273,7 +257,7 @@ Triaging is about prioritizing and troubleshooting issues raised by you in [GitH
 
 The process of triaging in CORTX is depicted in the diagram below.
 
- <img source="../images/GitHubTriage.png?raw=true">
+<img source="../images/GitHubTriage.png?raw=true">
  
 #### Creating an Issue
 
