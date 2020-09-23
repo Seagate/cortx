@@ -258,8 +258,7 @@ Triaging is about prioritizing and troubleshooting issues raised by you in [GitH
   <p>
 
 The process of triaging in CORTX is depicted in the diagram below.
-
-   <img src="../doc/images/GitHubTriage.png?raw=true">
+![](doc/images/GitHubTriage.png)
  
 #### Creating an Issue
 
