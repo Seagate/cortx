@@ -114,7 +114,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 2. Click **Fork**
 3. Run the following commands in Shell:
    
-   `$ git clone --recursive git@github.com:"your-github-id"/repo-name.git`
+   `$ git clone --recursive https://github.com/Seagate/<repository>.git`
 
 4. You'll need to setup the upstream repository in the remote list. This is a one-time activity. Run the following command to view the configured remote repository for your fork.
     
@@ -130,7 +130,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 
  5. Set up the upstream repository in the remote list using:
    
-    `$ git remote add upstream git@github.com:Seagate/reponame.git`
+    `$ git remote add upstream https://github.com/Seagate/<repository>.git`
       
     `$ git remote -v`
 
@@ -150,15 +150,7 @@ Before you can work on a GitHub feature, you'll need to clone the repository you
 
    `$ git checkout -b 'your-local-branch-name`
    
-    :page_with_curl: **Note:** By default, you'll need to contribute to the main branch. However, this differs for various repositories as shown below:
-    
-   | **Repository**   | **Branch Name** | 
-   | :----------------| :-------------: |
-   | cortx-s3server   | main            | 
-   | cortx-hare       | dev             | 
-   | cortx-motr       | dev             |
-   | cortx-prvsnr     | main            |
-   | cortx-sspl       | dev             |
+    :page_with_curl: **Note:** By default, you'll need to contribute to the main branch. 
 
 </p>
 </details>
@@ -273,13 +265,27 @@ You can pass DCO in many ways:
 </p>
 </details>
 
-## Submitting Issues
-
 ### The GitHub Triage Process
 
-## File a Bug 
+Triaging is about prioritizing and troubleshooting issues raised by you in [GitHub](https://github.com/). Triage can broadly be defined as a process oriented approach towards issue resolution and conflict management.
 
-## Suggest a Feature or Improvement
+#### Process of Triaging
+
+The process of triaging in CORTX is depicted in the diagram below.
+
+ <img source="../images/GitHubTriage.png?raw=true">
+ 
+#### Creating an Issue
+
+Perform the below mentioned procedure to create an issue in GitHub:
+
+1. Login to GitHub with your credentials.
+2. Navigate to the CORTX repository. Then, click **Issues**. List of issues are displayed.
+3. If there are multiple issue types, click Get started next to the type of issue you'd like to open.
+4. Click **New Issue**. A page requesting the **Title** and **Description** is displayed.
+5. Enter a title and description for your issue, and click **Submit new issue**.
+   
+   :page_with_curl: **Note**: Click **Open a blank issue** if the type of issue you want to open, is not included in the available different types of issues.
 
 ## Contributing to Documentation TODO
 
