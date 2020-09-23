@@ -6,13 +6,6 @@ This guide is intended to provide quick start instructions for developers who wa
 
 After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and how to turn your pull request into a successful contribution. Feel free to browse through the [suggested list of contributions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md), and [view and submit issues](https://github.com/Seagate/cortx/issues). And if you have any suggestions on how we can improve this guide, or anything else in the project, we want to hear from you!
 
-## Table of Contents
-
-- [**Code of Conduct**](#Code-of-Conduct)
-- [**Contribution Process**](#Contribution-Process)
-- [**Submitting issues**](#Submitting-Issues)
-- [**Contributing to Documentation**](#Contributing_to_Documentation)
-
 ## Code of Conduct
 
 Thanks for joining us and we're glad to have you. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). 
@@ -62,18 +55,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 - Setup and test [a scale-out distributed CORTX](doc/scaleout/README.rst).
 - Download and run a [single node CORTX VM](doc/CORTX_on_Open_Virtual_Appliance.rst) for testing purposes.
 - Learn more about the [CORTX Architechture](doc/architecture.md). 
- 
-#### Creating an Issue
-
-Perform the below mentioned procedure to create an issue in GitHub:
-
-1. Login to GitHub with your credentials.
-2. Navigate to the CORTX repository or relevant submodule. Then, click **Issues**. List of issues are displayed.
-3. If there are multiple issue types, click Get started next to the type of issue you'd like to open.
-4. Click **New Issue**. A page requesting the **Title** and **Description** is displayed.
-5. Enter a title and description for your issue, and click **Submit new issue**.
-   
-**Note**: Click **Open a blank issue** if the type of issue you want to open, is not included in the available different types of issues.
+- Learn about [git](doc/Tools.rst) and [working with git for CORTX](doc/working_with_git.md). 
 
 ## Communication Channels
 
