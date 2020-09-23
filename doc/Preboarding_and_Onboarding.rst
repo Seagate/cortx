@@ -31,7 +31,28 @@ The preboarding process must be the first process that must be completed after c
 
 5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.
 
-   - If you want to receive email notifications, select the **Subscribe to email notifications** checkbox.
+   - If you want to receive email notifications, select the **Subscribe to email notifications** checkbox. The **Notification settings: Email** page is displayed.
+   
+     #. In the **Notification settings: Email** page. enter relevant information in the following fields.
+     
+        - **SMTP server**
+        
+        - **Sender email**
+        
+        - **Protocol**
+        
+        - **SMTP Port**
+        
+        - **Sender password**
+        
+        - **Confirm password**
+        
+        - **Receiver emails**
+        
+       #. After filling information in all the fields, click **Send test mail**. You will receive a test mail from CORTX.
+       
+       #. Click **Apply**. The process of configuring emails is completed.
+    
    
    .. image:: images/MISC.PNG
 
