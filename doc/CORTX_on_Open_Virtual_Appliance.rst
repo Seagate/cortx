@@ -20,26 +20,15 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download the cortx-va-1.0.0-rc3.zip file that contains the virtual machine images.
+#. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download and then uncompress the cortx-va-1.0.0.zip file that contains the virtual machine image.
 
-#. Extract the contents of the downloaded file into your system. You can also run the below mentioned command to extract the content.
+#. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
-   * **gzip cortx-va-1.0.0-rc3.zip**
-
-#. Import the OVA file by referring to `these instructions <Importing_OVA_File.rst>`_. 
-
-   - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
+   - In case of troubleshooting, refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
   
-   **Important**: If you are running the VM in any of the products of VMware, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. 
+#. Open the VM console, and login with the below credentials.
 
-   **Note**:  Operating system updates are not supported due to specific kernel dependencies.
- 
-  
-#. Open the VM console, and login with the below mentioned credentials.
-
-
-   * Username: **cortx**
-  
+   * Username: **cortx**  
    * Password: **opensource!**
 
 #. Become the **root** user by running the following command.
