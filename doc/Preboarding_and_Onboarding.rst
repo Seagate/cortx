@@ -105,15 +105,15 @@ CORTX
 
 After the onboarding is complete, you can perform the actions mentioned below.
 
-# Run the below mentioned command to check the cluster health.
+#. Run the below mentioned command to check the cluster health.
 
-  ::
+   ::
   
-   hctl status
+    hctl status
    
-# Trigger IOs from an IO tool.
+#. Trigger IOs from an IO tool.
 
-# In the GUI, you can see the performance graph as part of the **Dashboard**.
+#. In the GUI, you can see the performance graph as part of the **Dashboard**.
   
   
 
