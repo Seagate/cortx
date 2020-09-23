@@ -33,7 +33,7 @@ The preboarding process must be the first process that must be completed after c
 
    - If you want to receive email notifications, select the **Subscribe to email notifications** checkbox.
    
-   .. image:: images/Adminu.PNG
+   .. image:: images/MISC.PNG
 
    **Note**: Do not create an user with one of the following usernames.
 
