@@ -130,7 +130,7 @@ The s3instance assignment per node is as follows.
  
  s3intance-23 to s3intance-33 =====> srvnode-3
  
-  .. image:: images/HAP.PNG
+.. image:: images/HAP.PNG
   
 On node 1, run the below mentioned command when IOs are started.
 
