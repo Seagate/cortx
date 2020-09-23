@@ -120,7 +120,6 @@ After the onboarding is complete, you can perform the actions mentioned below.
 IO on Cluster (**Scale-out (JBOD)** only)
 -----------------------------------------
 
-
 The s3instance assignment per node is as follows.
 
 ::
@@ -130,6 +129,8 @@ The s3instance assignment per node is as follows.
  s3intance-12 to s3intance-22 =====> srvnode-2
  
  s3intance-23 to s3intance-33 =====> srvnode-3
+ 
+ .. image:: images/HAP.PNG
   
 On node 1, run the below mentioned command when IOs are started.
 
