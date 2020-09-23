@@ -51,10 +51,10 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
  
 ## Additional Resources
 
-- Learn more about [CORTX CI/CD and Automation](doc/CI_CD.md).
-- Setup and test [a scale-out distributed CORTX](doc/scaleout/README.rst).
 - Download and run a [single node CORTX VM](doc/CORTX_on_Open_Virtual_Appliance.rst) for testing purposes.
+- Setup and test [a scale-out distributed CORTX](doc/scaleout/README.rst).
 - Learn more about the [CORTX Architechture](doc/architecture.md). 
+- Learn more about [CORTX CI/CD and Automation](doc/CI_CD.md).
 - Browse our [suggested list of contributions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md).
 
 ## Communication Channels
