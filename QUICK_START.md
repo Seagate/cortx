@@ -4,14 +4,14 @@ This guide is intended to provide quick start instructions for developers who wa
 
 **Development Environment:** First you need to configure your [development environment](doc/BUILD_ENVIRONMENT.md). 
 
-**Core Functionality:** For basic development and testing of CORTX, you only need the motr and S3 submodules:
+**Core Functionality:** For basic development and testing of CORTX, you only need the motr and S3 submodules.
 
 1. [CORTX-Motr](https://github.com/Seagate/cortx-motr/blob/dev/doc/Quick-Start-Guide.rst)
    - The main data path of the system responsible for the actual storage and distribution of objects and key-value pairs.
 2. [CORTX-S3](https://github.com/Seagate/cortx-s3server/blob/dev/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
    - The S3 interface to CORTX.
 
-**Complete System:** For the complete CORTX experience, you will also need the remaining submodules:
+**Complete System:** For the complete CORTX experience, you will need to install the remaining submodules:
 
 1. [CORTX HA](https://github.com/Seagate/cortx-ha/blob/main/Quick-Start-Guide.rst)
    - The module responsible for maintaining highly available access to shared storage.
@@ -27,7 +27,7 @@ This guide is intended to provide quick start instructions for developers who wa
    - The module providing a file interface to CORTX.  
 7. [CORTX Provisioner](https://github.com/Seagate/cortx-prvsnr/blob/main/Cortx-ProvisionerQuickstartGuide.md)
    - The module which assists the users is satisfying dependencies, configuring the components and the other modules, and initializing the CORTX environment.
-
+   
 ## Additional Resources
 
 - Learn more about [CORTX CI/CD and Automation](doc/CI_CD.md).
@@ -37,7 +37,7 @@ This guide is intended to provide quick start instructions for developers who wa
 
 ## Contribute to CORTX Community
 
-Refer to the CORTX [Contribution Guide](doc/CORTXContributionGuide.md) that hosts all information about community values, code of conduct, how to contribute code and documentation, code style guides, and how to reach out to us. 
+Refer to the CORTX [Contribution Guide](CONTRIBUTING.md) that hosts all information about community values, code of conduct, how to contribute code and documentation, code style guides, and how to reach out to us. 
 
 We are excited for your interest in CORTX and hope you will join us. We take community very seriously and we are committed to creating a community built on respectful interactions and inclusivity as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).
 
