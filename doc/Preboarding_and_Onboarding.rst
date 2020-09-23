@@ -140,4 +140,6 @@ On node 1, run the below mentioned command when IOs are started, to check IOs ru
 
  "tail -f /var/log/haproxy.log"
  
+.. image:: images/AWS.PNG
+ 
 
