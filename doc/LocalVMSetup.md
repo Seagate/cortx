@@ -20,5 +20,5 @@ Automatic install or manual install. Basic installation is OK. When you build CO
 Please refer to: https://fedoraproject.org/wiki/EPEL
 
 ## 5. Now you are ready to build and test CORTX. 
-Please refer to the [CORTX Quickstart Guide](../QUICK_START.md) to get started.
+Please refer to the [Contribution Guide](../CONTRIBUTING.md) to get started.
 
