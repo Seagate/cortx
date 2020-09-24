@@ -29,7 +29,7 @@ The preboarding process must be the first process that must be completed after c
 
    .. image:: images/EULA1.PNG
 
-5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.
+5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.  The usernames *root* and *csm* are reserved so please do not use them.
 
    - If you want to receive email notifications, select the **Subscribe to email notifications** checkbox. The **Notification settings: Email** page is displayed.
    
@@ -53,14 +53,8 @@ The preboarding process must be the first process that must be completed after c
        
      #. Click **Apply**. The process of configuring emails is completed.
     
-   
-  .. image:: images/MISC.PNG
+     .. image:: images/MISC.PNG
 
-   **Note**: Do not create an user with one of the following usernames.
-
-   - **root**
-
-   - **csm**
   
 .. raw:: html
    
@@ -69,7 +63,7 @@ The preboarding process must be the first process that must be completed after c
 Onboarding
 ===========
 
-The onboarding procedure must be performed after completing the preboarding procedure by accessing *https://<management IP>:28100/#/preboarding/login*. The onboarding procedure can be performed multiple times.
+The onboarding procedure must be performed after completing the preboarding procedure.  You should be brought automatically to the correct page after completing the preboarding.  If you are not, or if you subsequently want to redo the onboarding, you can navigate to *https://<management IP>:28100/#/preboarding/login*. The onboarding procedure can be performed multiple times.
      
 .. raw:: html
 
@@ -80,7 +74,7 @@ The onboarding procedure must be performed after completing the preboarding proc
 
    .. image:: images/login.PNG
 
-2. Enter a memorable name for your application in the **System Name** field, and click **Continue**.
+2. Enter a memorable name in the **System Name** field, and click **Continue**.
 
    .. image:: images/Systemname.PNG
 
