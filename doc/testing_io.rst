@@ -26,5 +26,3 @@ now before following the rest of the instructions on this page.
 #. Navigate to the Dashboard tab in your CORTX GUI, change 'Metric 1' to 'throughput_write' and you should see activity in the dashboard as so:
 
    .. image:: images/PG.PNG
-   
-#. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
