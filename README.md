@@ -19,6 +19,7 @@ CORTX is a distributed object storage system designed for great efficiency, mass
 
 | Project Scope      | Core Design Goals                                                                                                                                                                |
 |--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Mass capacity | Object storage uniquely optimized for mass capacity storage devices       .                                                                                                       |
 | Processor agnostic | Works with any processor.                                                                                                                                                        |
 | Flexibility        | Highly flexible, works with HDD, SSD, and NVM.                                                                                                                                   |
 | Scalability        | Massively Scalable. Scales up to a billion billion billion billion billion exabytes (2^206) and 1.3 billion billion billion billion (2^120) objects with unlimited object sizes. |
