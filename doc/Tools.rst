@@ -286,43 +286,7 @@ You can use Codacy by performing the below mentioned procedure.
    </details>
    
 ********************************
-Developer Certificate of Origin
+Developer Certificate of Origin and Contributor License Agreement
 ********************************
-
-The Developer Certificate of Origin (DCO) is a way through which you certify that you wrote the code, or you have the right to submit the same. The DCO text is mentioned below.
-
-By making a contribution to this project, I certify that:
-
--  The contribution was created in whole or in part by me and I
-   have the right to submit it under the open source license
-   indicated in the file; or
-
--  The contribution is based upon previous work that, to the best
-   of my knowledge, is covered under an appropriate open source
-   license and I have the right under that license to submit that
-   work with modifications, whether created in whole or in part
-   by me, under the same open source license (unless I am
-   permitted to submit under a different license), as indicated
-   in the file; or
-
--  The contribution was provided directly to me by some other
-   person who certified (a), (b) or (c) and I have not modified
-   it.
-
--  I understand and agree that this project and the contribution
-   are public and that a record of the contribution (including all
-   personal information I submit with it, including my sign-off) is
-   maintained indefinitely and may be redistributed consistent with
-   this project or the open source license(s) involved.
-
-You must sign off that you adhere to the above requirements, by pre-fixing **Signed-off-by** to the commit messages.
-
-- **Signed-off-by**: Random J Developer `random@developer.example.org <mailto:random@developer.example.org>`_
-
-In Command Line Interface (CLI), you can add **–s** to append automatically.
-
-- **$ git commit -s -m 'This is my commit message'** 
-
-Usage of hooks will help if you have the tendency to forget adding **-s**. To know more about this, refer `https://lubomir.github.io/en/2016-05-04-signoff-hooks.html <https://lubomir.github.io/en/2016-05-04-signoff-hooks.html>`_
  
-To know more about DCO and CLA, refer `DCO and CLA <https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md>`_.
+CORTX always requires DCO and may require CLA.  To learn more, please refer to `DCO and CLA <https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md>`_.
