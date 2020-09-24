@@ -153,11 +153,11 @@ You can make changes to the code and save them in your files.
 
 Perform the below mentioned procedure to create an issue in GitHub:
 
-1	Login to GitHub with your credentials.
-2	Navigate to the CORTX repository or relevant submodule. Then, click Issues. List of issues are displayed.
-3	If there are multiple issue types, click Get started next to the type of issue you'd like to open.
-4	Click New Issue. A page requesting the Title and Description is displayed.
-5	Enter a title and description for your issue, and click Submit new issue.
+1. Login to GitHub with your credentials.
+2. Navigate to the CORTX repository or relevant submodule. Then, click Issues. List of issues are displayed.
+3. If there are multiple issue types, click Get started next to the type of issue you'd like to open.
+4. Click New Issue. A page requesting the Title and Description is displayed.
+5. Enter a title and description for your issue, and click Submit new issue.
 
 :page_with_curl: **Note:** Click Open a blank issue if the type of issue you want to open, is not included in the available different types of issues.
 
