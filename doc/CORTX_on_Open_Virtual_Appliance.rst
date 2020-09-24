@@ -113,7 +113,9 @@ The procedure to install CORTX on OVA is mentioned below.
 
 #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
-#. Now that you have the complete system up and running, using the data IP from the **ip a l** command, use these instructions `to test the system <testing_io.rst>`_  and observe activity in the  GUI.
+#. Now that you have the complete system up and running, using the data IP from the **ip a l** command, use these instructions `to test the system <testing_io.rst>`_  and observe activity in the GUI.  For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
+
+   .. image:: images/dashboard_read_write.png
 
 #. Please use these instructions which describe how to use the `command line interface to query and monitor <checking_health.rst>`_ the configuration, health, and activity of your CORTX system.
 
