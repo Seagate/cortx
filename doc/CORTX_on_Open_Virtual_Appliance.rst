@@ -147,11 +147,11 @@ Restarting CORTX OVA
 ====================
 To restart the CORTX OVA, follow the below mentioned procedures, in the order of listing.
 
-- Shutdown the OVA
+- Shutdown CORTX
 
-- Start the OVA
+- Restart CORTX
 
-Shutdown the OVA
+Shutdown CORTX
 ----------------
 
 .. raw:: html
@@ -178,7 +178,7 @@ Shutdown the OVA
    </details>
  
 
-Start the OVA
+Restart CORTX
 --------------
 
 .. raw:: html
