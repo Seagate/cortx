@@ -24,6 +24,6 @@ If you do not see IP addresses and you are running in a virtual machine hypervis
 
 **Important**: If you do not find an IP being assigned to an interface, run the following commands:
 
-  - ifdown <interface>
-  
-  - ifup <interface>
+- ifdown <interface>
+
+- ifup <interface>
