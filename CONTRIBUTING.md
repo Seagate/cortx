@@ -19,7 +19,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 - Please read our [CORTX Code Style Guide](doc/CodeStyle.md).
 - Get started with [GitHub Tools and Procedures](doc/Tools.rst), if you are new to GitHub.
    - Please find additional information about [working with git](doc/working_with_git.md) specific to CORTX.
-- Plese read about our [DCO and CLA policies](dco_cla.md).
+- Plese read about our [DCO and CLA policies](doc/dco_cla.md).
 
 ### Development
 
