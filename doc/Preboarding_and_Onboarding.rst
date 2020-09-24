@@ -30,28 +30,6 @@ The preboarding process must be the first process that must be completed after c
    .. image:: images/EULA1.PNG
 
 5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.  The usernames *root* and *csm* are reserved so please do not use them.
-
-   - If you want to receive email notifications, select the **Subscribe to email notifications** checkbox. The **Notification settings: Email** page is displayed.
-   
-     #. In the **Notification settings: Email** page. enter relevant information in the following fields.
-     
-        - **SMTP server**
-        
-        - **Sender email**
-        
-        - **Protocol**
-        
-        - **SMTP Port**
-        
-        - **Sender password**
-        
-        - **Confirm password**
-        
-        - **Receiver emails**
-       
-     #. After filling information in all the fields, click **Send test mail**. You will receive a test mail from CORTX.
-       
-     #. Click **Apply**. The process of configuring emails is completed.
     
      .. image:: images/MISC.PNG
 
@@ -74,15 +52,15 @@ The onboarding procedure must be performed after completing the preboarding proc
 
    .. image:: images/login.PNG
 
-2. Enter a memorable name in the **System Name** field, and click **Continue**.
+#. Enter a memorable name in the **System Name** field, and click **Continue**.
 
    .. image:: images/Systemname.PNG
 
-3. Optional: If you have a SSL certificate, you can upload it. Otherwise, a default self-signed certificate provided by Seagate will be used. Click **Continue**.
+#. Optional: If you have a SSL certificate, you can upload it. Otherwise, a default self-signed certificate provided by Seagate will be used. Click **Continue**.
 
    .. image:: images/SSL.PNG
-
-4. Enter information about the **DNS servers** and **Search domains** in relevant fields, and click **Continue**. 
+   
+#. Enter information about the **DNS servers** and **Search domains** in relevant fields, and click **Continue**. 
    Multiple entries must be separated by commas.
    
    - If you don't know your DNS servers, 8.8.8.8 will usually work.
@@ -92,20 +70,26 @@ The onboarding procedure must be performed after completing the preboarding proc
    .. image:: images/DNS.PNG
    
    
-5. Enter the NTP server address in the text box and select the NTP time zone offset from the drop-down menu. Then, click **Continue**.
+#. Enter the NTP server address in the text box and select the NTP time zone offset from the drop-down menu. Then, click **Continue**.
    Multiple entries must be separated by comma.
 
    - If you don't know your NTP server, ntp-b.nist.gov will usually work.
    
    .. image:: images/NTP.PNG
 
-6. Configure the email notifications by selecting the **Email** checkbox, and providing the relevant information. After configuring, click **Continue**.
+#. Optional: If you want to receive email notifications, select the **Subscribe to email notifications** checkbox. The **Notification settings: Email** page is displayed.
+   
+   #. Fill in the fields appropriately.
+       
+   #. After filling information in all the fields, click **Send test mail**. If configured correctly, you should receive a test mail from CORTX.
+       
+   #. Click **Apply**. The process of configuring emails is completed.
 
    .. image:: images/Email.PNG
 
-7. Click **Continue** after reviewing the summary. A dialog box is displayed indicating the success of the onboarding the process.
+#. Click **Continue** after reviewing the summary. A dialog box is displayed indicating the success of the onboarding process.
 
-8. Click **Go to dashboard**. CORTX is now ready for use. 
+#. Click **Go to dashboard**. CORTX is now ready for use. 
 
    .. image:: images/DB.PNG
    
