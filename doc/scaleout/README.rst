@@ -42,9 +42,9 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
 Testing and Health Check
 **************************
 
-- To test the IO after completing the configuration, refer to `Testing_IO <https://github.com/Seagate/cortx/blob/main/doc/testing_io.rst>`_.
+- To test the IO after completing the onboarding process, refer to `Testing_IO <https://github.com/Seagate/cortx/blob/main/doc/testing_io.rst>`_.
 
-- To check the health status, refer to  `Health_Check <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_.
+- To check the health status after completing the onboarding process, refer to  `Health_Check <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_.
 
 **********************
 Starting of Services
