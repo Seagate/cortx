@@ -20,12 +20,14 @@ If you do not see IP addresses and you are running in a virtual machine hypervis
 
    .. image:: images/config_networks2.png
    
-#. Reboot your VM and recheck **ip a l**.  Hopefully you now have IP addresses showing and your CORTX system will run correctly!  If not, please contact the community and we'll figure it out together.  :relaxed:
+#. Reboot your VM and recheck **ip a l**.  Hopefully you now have IP addresses showing and your CORTX system will run correctly!  If you still do not see IP addresses, the following commands may be useful:
 
-**Important**: If you do not find an IP being assigned to an interface, run the following commands:
+   ::
+ 
+   ifdown <interface>  # e.g. ifdown ens192 
+ 
+   ifup <interface>    # e.g. ifup ens192 
 
-::
- 
- ifdown <interface>
- 
- ifup <interface>
+   If not, please contact the community and we'll figure it out together.  :relaxed:
+
+
