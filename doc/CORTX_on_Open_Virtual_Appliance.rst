@@ -143,6 +143,12 @@ If you have a firewall between CORTX and the rest of your infrastructure, includ
 |         28100        |   TCP (HTTPS)     |              Management network             |
 +----------------------+-------------------+---------------------------------------------+
 
+If your disk does not have space, run the following command to clean up the logs from the **/var/log** file.
+
+::
+
+ rm /var/log/<file to be deleted>
+
 Restarting CORTX OVA
 ====================
 To restart the CORTX OVA, follow the below mentioned procedures, in the order of listing.
