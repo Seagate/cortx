@@ -28,8 +28,8 @@ The procedure to install CORTX on OVA is mentioned below.
   
 #. Open the VM console, and login with the below credentials.
 
-   * Username: **cortx**  
-   * Password: **opensource!**
+   * Username: cortx 
+   * Password: opensource!
 
 #. Become the **root** user by running the following command.
 
