@@ -38,12 +38,19 @@ Perform the below mentioned procedure to setup CORTX on JBOD.
  
 6. You must now complete the preboarding and onboarding processes. Refer to `Preboarding_and_Onboarding <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_ to execute the  preboarding and onboarding processes.
 
+**************************
+Testing and Health Check
+**************************
+
+- To test the IO after completing the configuration, refer to `Testing_IO <doc/testing_io.rst>`_.
+
+- To check the health status, refer to  `Health_Check <doc/checking_health.rst>`_.
+
 **********************
 Starting of Services
 **********************
 
 To perform starting of services refer to `Starting Services <Starting_Services.rst>`_.
-
 
 **********************
  Stopping of Services
