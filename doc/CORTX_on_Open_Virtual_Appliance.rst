@@ -2,7 +2,7 @@
 ===============================
 CORTX on Open Virtual Appliance
 ===============================
-An Open Virtual Appliance (OVA) is a virtual machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.
+An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.
 
 ***********************
 Recommended Hypervisors
@@ -24,12 +24,12 @@ The procedure to install CORTX on OVA is mentioned below.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
-   - For VMWare related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
+   - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
   
 #. Open the VM console, and login with the below credentials.
 
-   * Username: **cortx**  
-   * Password: **opensource!**
+   * Username: cortx 
+   * Password: opensource!
 
 #. Become the **root** user by running the following command.
 
@@ -142,6 +142,12 @@ If you have a firewall between CORTX and the rest of your infrastructure, includ
 +----------------------+-------------------+---------------------------------------------+
 |         28100        |   TCP (HTTPS)     |              Management network             |
 +----------------------+-------------------+---------------------------------------------+
+
+If your disk does not have space, run the following command to clean up the logs from the **/var/log** file.
+
+::
+
+ rm /var/log/<file to be deleted>
 
 Restarting CORTX OVA
 ====================
