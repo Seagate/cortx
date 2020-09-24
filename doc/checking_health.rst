@@ -24,7 +24,7 @@ This document describes various methods by which a user can monitor and query th
 
    #. As was shown in the previous step, the *hctl_status* command shows that there are 11 S3 server instances running on each node. 
    
-   #. The image below shows the HAProxy config file which shows the mapping from S3 server instance to IP address.  As can be seen, there are three IP addresses representing the three CORTX servers running in this scale-out system.
+   #. The image below shows the HAProxy config file which shows the mapping from S3 server instance to IP address.  As can be seen, there are three IP addresses representing the three CORTX servers running in this scale-out system. The path of the config is **/etc/haproxy/haproxy.cfg**.
  
    .. image:: images/HAP.PNG
   

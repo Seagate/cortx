@@ -57,8 +57,6 @@ Personal Access Tokens (PATs) are an alternative to using passwords for authenti
 
 9. Copy the token to the clipboard.
 
-10. To use the token to authenticate, authorize the token with a SAML single-sign-on. The procedure to authorize a token is mentioned below.
-
 Authorizing PAT
 ---------------
 To authorize a PAT, perform the procedure mentioned below.
@@ -71,9 +69,6 @@ To authorize a PAT, perform the procedure mentioned below.
 
 4. In the left sidebar, click **Personal access tokens**. The **Personal access tokens** page is displayed.
 
-5. Navigate to the token you want to authorize, and select **Enable SSO**.
-
-6. Click **Authorize**. The token is authorized with the SAML Single Sign-On.
 
 Git Workflow
 ============
