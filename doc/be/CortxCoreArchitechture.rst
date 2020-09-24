@@ -8,9 +8,9 @@
 **Outline**
 ============
 
--  This presentation is a beginner's guide to the EOS core architecture
+-  This presentation is a beginner's guide to the CORTX core architecture
 
--  Tries to cover all important aspects of EOS core with a reasonable
+-  Tries to cover all important aspects of CORTX core with a reasonable
    level of detail
 
 -  Focus on software (hardware details elsewhere)
@@ -34,13 +34,13 @@
 
 
 =================
-**What is EOS?**
+**What is CORTX?**
 =================
 
 
--  EOS core is a component of the new cloud software stack developed by Seagate
+-  CORTX core is a component of the new cloud software stack developed by Seagate
 
--  EOS provides basic functionality through its clovis interface:
+-  CORTX provides basic functionality through its clovis interface:
 
    -  object store
 
@@ -77,13 +77,13 @@
 
 
 ==========================
-**How is EOS Different?**
+**How is CORTX Different?**
 ==========================
 
 
 -  Scalable
 
-   -  horizontal scalability: grow system by adding more nodes. EOS designed for horizontal scalability: no meta-data hotspots,shared-nothing IO path. Extensions running on additional nodes.
+   -  horizontal scalability: grow system by adding more nodes. CORTX designed for horizontal scalability: no meta-data hotspots,shared-nothing IO path. Extensions running on additional nodes.
 
    -  vertical scalability: more memory and cpu on the nodes.
 
@@ -112,7 +112,7 @@
 =================
 
 
--  eos rpc: uses RDMA when available (requires kernel module)
+-  CORTX rpc: uses RDMA when available (requires kernel module)
 
 -  s3 server linked with libmero
 
@@ -135,7 +135,7 @@
 
 -  very similar to S3
 
--  underlying eos object and index semantics is rich enough to support S3, NFS and others
+-  underlying CORTX object and index semantics is rich enough to support S3, NFS and others
 
 -  interoperability between S3 and NFS: common meta-data format, *lingua franca* [work in progress]
 
@@ -146,7 +146,7 @@
 
 
 ====================================
-**Anatomy of an EOS core instance**
+**Anatomy of an CORTX core instance**
 ====================================
 
 
@@ -281,9 +281,9 @@
 
 -  DTM: Distributed Transaction Manager
 
--  EOS operations affect multiple nodes. Nodes can fail independently. Error recovery is difficult.
+-  CORTX operations affect multiple nodes. Nodes can fail independently. Error recovery is difficult.
 
--  Multiple EOS operations form logical groups:
+-  Multiple CORTX operations form logical groups:
 
    -  S3 object creation: update bucket, store object attributes, create object, write data
 
@@ -291,13 +291,13 @@
 
    -  Error recovery in the middle of a group is difficult (errors during recovery)
 
--  a transaction is a group of eos core operations that are atomic in the face of failures
+-  a transaction is a group of CORTX core operations that are atomic in the face of failures
 
 -  DTM guarantees that either all or none operations survive a failure
 
 -  DTM: work in progress
 
--  one of the most complex EOS components
+-  one of the most complex CORTX components
 
 -  scalable efficient transactions are hard
 
@@ -350,13 +350,13 @@
 
 
 
--  FDMI: file data manipulation interface, EOS core extension interface
+-  FDMI: file data manipulation interface, CORTX core extension interface
 
--  EOS core: objects, key-value indices, transactions. Fast path
+-  CORTX core: objects, key-value indices, transactions. Fast path
 
 -  Extensions: migration, backup, archive, replication, compression, encryption, indexing, tiering, defragmentation, scrubbing, format conversion, re-striping, *etc*.
 
--  We want to keep EOS core small and clean
+-  We want to keep CORTX core small and clean
 
 -  Extensions must be:
 
@@ -382,7 +382,7 @@
 
 -  FDMI is a scalable publish-subscribe interface
 
--  each eos core instance produces cross-referenced records describing operations stored in FOL
+-  each CORTX core instance produces cross-referenced records describing operations stored in FOL
 
 -  FDMI plugin registers a filter, that selects some records
 
