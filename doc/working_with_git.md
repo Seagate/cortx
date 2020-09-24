@@ -1,33 +1,19 @@
-## Working with git for CORTX
+## Working with Git for CORTX
 
-1. Generate an SSH key on your development box using:
+Contributing to the CORTX project using Git is a four-step process as listed below.
 
-     ```shell
-     $ ssh-keygen -o -t rsa -b 4096 -C "Email-address"
-     ```
-  2. Add the SSH key to your GitHub Account:
-    1. Copy the public key: `id_rsa.pub`. By default, your public key is located at `/root/.ssh/id_rsa.pub`
-    2. Navigate to [GitHub SSH key settings](https://github.com/settings/keys) on your GitHub account.
-      
-    :page_with_curl:**Note:** Ensure that you've set your Email ID as the Primary Email Address associated with your GitHub Account. 
-    
-    3. Paste the SSH key you generated in Step 1 and click **Add SSH key**.
-    5. [Create a Personal Access Token or PAT](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
-      
- - Update Git to the latest version. If you're on an older version, you'll see errors in your commit hooks that look like this:
+### 1. Prerequisities
 
-    `$ git commit`
+<details>
+     <summary>Click to expand!</summary>
+     <p>
 
-     **Sample Output**
-  
-    ```shell
-
-    git: 'interpret-trailers' is not a git command.
-    See 'git --help'
-    cannot insert change-id line in .git/COMMIT_EDITMSG
-    ```
-
-- Install Fix for CentOS 7.x by using: `$ yum remove git`
+ - Update Git to the latest version.
+ - Generate [SSH](SSH_Public_Key.rst) and [PAT](Tools.rst#personal-access-token-pat) access for your GitHub Account.
+ - Install Fix for CentOS 7.x by using: 
+ 
+ `$ yum remove git`
+ 
   * Download the [RPM file from here](https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm) and run the following commands:
   
     ```shell
@@ -38,7 +24,13 @@
    </p>
     </details>
     
-    Before you can work on a GitHub feature, you'll need to clone the repository you're working on. **Fork** the repository to clone it into your private GitHub repository and follow these steps:
+### 2. Clone the CORTX Repository
+
+Before you contribute to the CORTX project, you'll have to **Fork** the CORTX repository to clone it into your private GitHub repository.
+
+<details>
+     <summary>Click to expand</summary>
+     <p>
 
 1. Navigate to the repository homepage on GitHub.
 2. Click **Fork**
@@ -156,3 +148,17 @@ You can make changes to the code and save them in your files.
 
 </p>
 </details>
+
+## Create an Issue 
+
+Perform the below mentioned procedure to create an issue in GitHub:
+
+1. Login to GitHub with your credentials.
+2. Navigate to the CORTX repository or relevant submodule. Then, click Issues. List of issues are displayed.
+3. If there are multiple issue types, click Get started next to the type of issue you'd like to open.
+4. Click New Issue. A page requesting the Title and Description is displayed.
+5. Enter a title and description for your issue, and click Submit new issue.
+
+:page_with_curl: **Note:** Click Open a blank issue if the type of issue you want to open, is not included in the available different types of issues.
+
+
