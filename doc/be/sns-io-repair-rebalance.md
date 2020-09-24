@@ -25,9 +25,9 @@
 
 ## SNS repair/rebalance copy machine service
 
-- Repair and Rebalance are implemented as Mero services
-	- $MERO_SRC/sns/cm/repair/service.[ch]
-	- $MERO_SRC/sns/cm/rebalance/service.[ch]
+- Repair and Rebalance are implemented as Motr services
+	- $MOTR_SRC/sns/cm/repair/service.[ch]
+	- $MOTR_SRC/sns/cm/rebalance/service.[ch]
 - Both the services run on every ioservice node.
 
 - Copy machine service initialises and finalises (start/stop) the fop and fom types for,
@@ -47,14 +47,14 @@
 	- Repair status
 	- Rebalance status
 
-- Source: $MERO_SRC/sns/cm/trigger_{fop, fom}.[ch]
+- Source: $MOTR_SRC/sns/cm/trigger_{fop, fom}.[ch]
 
 ## Trigger fom
 
 Sources :
-- $MERO_SRC/cm/repreb/trigger_fom.c : Generic trigger fom implementation for
+- $MOTR_SRC/cm/repreb/trigger_fom.c : Generic trigger fom implementation for
 PREPARE, READY, START and FINI phases.
--  $MERO_SRC/sns/cm/trigger_fom.c : sns repair/rebalance trigger fom
+-  $MOTR_SRC/sns/cm/trigger_fom.c : sns repair/rebalance trigger fom
 implementation.
 
 ## Trigger fop/fom contd..
