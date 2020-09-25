@@ -2,7 +2,7 @@
 
 **What does CORTX stand for?**
 
-   * Actually CORTX is not an acronym.  We choose the name as a modification of the word 'cortex' which is a part of the brain.  This reflects our vision that CORTX is a next-generation, _intelligent_, object storage system that is also well-suited for artificial intelligence and machine learning workloads.  We use CORTX as a stylized view of 'cortex' for purely aesthetic reasons.
+   * Actually CORTX is not an acronym.  The marketing team just thought it looks cool and sounds cool.  :smiley:
 
 **Why introduce a new object store when there are already other object stores out there?**
 
