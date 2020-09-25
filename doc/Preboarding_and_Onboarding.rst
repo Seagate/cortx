@@ -31,7 +31,7 @@ The preboarding process must be the first process that must be completed after c
 
 5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.  The usernames *root* and *csm* are reserved so please do not use them.
     
-   .. image:: images/Very.PNG
+   .. image:: images/preboard_create_admin.PNG
 
   
 .. raw:: html
