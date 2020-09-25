@@ -150,6 +150,22 @@ Based on the hypervisor you use, click to expand the corresponding section below
 
 #. Return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
 
+If you are facing errors due to usage of old versions, perform the below mentioned procedure.
+
+#. Right-click the **.ovf** file and edit it in a text editor (preferably, notepad).
+
+#. Find the line <vssd:VirtualSystemType>vmx-##</vssd:VirtualSystemType> and change the vmx-## value.
+
+   - Change vmx-10 to vmx-09, or to a different hw version that works with ESXi.
+   
+#. Save the changes and close the file.
+
+#. Calculate the SHA-1 hash of the .ovf file and replace the hash value in the .mf file.
+
+   - Removing the **.mf** file from the OVF file structure (folder) typically works.
+
+#. Now, you can import the file.
+
 .. raw:: html
    
    </details>
