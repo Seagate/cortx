@@ -167,9 +167,7 @@
 
 ● Murmur3 hashing was used in **past** to map CORTX-S3 URI to generated OID/fid
 
-● Clovis Unique ID generator is used **today. ref:**
-
-`<https://docs.google.com/presentation/d/1toSKdMzamIQHCZBzQiYzIO5uXdTcDfjImPz3n6UBu0E/>`_
+● Clovis Unique ID generator is used **today**.
 
 ● CORTX-S3 URI – OID mapping stored in CORTX-S3 Object metadata in KVS
 
@@ -203,11 +201,6 @@
 
 **● Metadata is stored as JSON.**
 ##################################
-
-Detailed metadata ref:
-
-`<https://docs.google.com/presentation/d/1KngBz2HGdbCv-pmjeu6df_gYxfC3YUtHpWY4CNuZ6NU/>`_
-
 
 ==================================
 **Streaming upload (PUT Object)**
@@ -269,8 +262,6 @@ Detailed metadata ref:
 
 
 **source:**
-
-`<https://docs.google.com/spreadsheets/d/1xdwjY03pan9w7CeiFLKdVvr54aTOciAwXxOJqFhnWhg/>`_
 
 
 |image16|
