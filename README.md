@@ -27,6 +27,8 @@ CORTX is a distributed object storage system designed for great efficiency, mass
 | Resilience         | Highly Resilient. Ensures a high tolerance for hardware failure and faster rebuild and recovery times using Network Erasure Coding, while remaining fully RAID-compatible.       |
 | Transparency       | Provides specialized telemetry data and unmatched insight into system performance.                                                                                               |
 
+You can read more about the technical goals and distinguishing features of CORTX [here.](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-in-prose.md)
+
 ## CORTX Community Values 
 
 -   **Inclusive** - Our ambitions are global. The CORTX community is, too. The perspectives and skills necessary to achieve our goals are wide and varied; we believe in creating a community and a project that is inclusive, accessible, and welcoming to everyone.
