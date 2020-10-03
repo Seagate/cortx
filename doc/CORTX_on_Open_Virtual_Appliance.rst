@@ -50,9 +50,9 @@ The procedure to install CORTX on OVA is mentioned below.
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have a DNS server with which to register the VM, you can access it directly using its IP addresses. However, the hostname is mandatory and should be configured.
 
-#. Start the CORTX services by running the provided bootstrap.sh script:
-
-   * **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
+#. Start the CORTX services by running this bootstrap.sh script:
+   ::
+     sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
    
 #. Run the below mentioned commands to check the status of different services that are part of CORTX.
 
