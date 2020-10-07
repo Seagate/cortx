@@ -11,6 +11,7 @@
 * [CORTX S3 Server Overview](/doc/be/CORTX-S3OVERVIEW.rst)
 * [CORTX EU R&D (Introductory Tutorial)](/doc/be/CORTX_TUTORIAL.rst)
 * [Authserver Notes](/doc/be/authserver_notes.rst)
+* [Hierarchical Storage Management - SAGE 2016](/doc/PDFs/2016_February_SAGE_WP3_HSM_for_SAGE_Concept_and_Architecture_v1_for_open_use_compressed.pdf)
 
 
 TODO: Add more.  Convert more into .rst format.
