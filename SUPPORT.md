@@ -1,7 +1,7 @@
 Looking for support for one of the CORTX software modules or to discuss things with your fellow CORTX Community members?
 
 <!-- NOTE!!! This is copied into README.md.  If you update it here, update it there as well.) -->
--   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) to interact with community members and gets your questions answered.
+-   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://bit.ly/3609FAb) to interact with community members and gets your questions answered.
 -   Join us in [Discussions](https://github.com/Seagate/cortx/discussions) to ask, answer, and discuss topics with your fellow CORTX contributors!
 -   Ask and answer questions in our [Frequently Asked Questions](FAQs.md) page.
 -   If you'd like to contact us directly, drop us a mail at cortx-questions@seagate.com.
