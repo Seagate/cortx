@@ -10,7 +10,11 @@
    
 **What is the history of CORTX?**
 
-   * TODO: Sai to add.
+   * CORTX began its life with the requirements gathering workshops through the E10 initiative circa 2012. There were multiple  workshops organized throughout the world on getting the requirements of building storage systems for extreme scale computing  involving stakeholders from the (primarily) extreme scale HPC, research data center community, etc. Early pioneers of the Lustre file system were also involved in those workshops & heavily contributed to the architecture and the designs. It was envisioned to build something from scratch on a clean slate considering the changes in hardware assumptions (multicore, many core, extreme parallelism, etc) that was coming about at that time. Then the CORTX initiative  got funding from the European Union through multiple projects,  primarily SAGE (2014 – 2018),  Sage2 (2018 –) , and,  Maestro(2018 - ) . Here the development and the ecosystem around CORTX was enabled by the advanced application developers, key technology vendors, OEMS, research and academic institutions in Europe namely:  
+
+CEA (France), DFKI (Germany), ARM (UK), KTH(Sweden), STFC(UK), UKAEA(UK), ATOS(France), Kitware(France), University of Edinburgh(UK), Diamond Light Source(UK) and Juelich Supercomputing Center (Germany),  HPE/Cray (Switzerland), CSCS (Switzerland), ECMWF (International) and  Appentra (Spain).  
+Some of the above are the largest producers and consumers of data and run some of the largest data centers on the planet with extreme requirements for storage and I/O.  
+CORTX was also used by the weather and climate community in the EsiWACE  (2015 – 2019) and EsiWACE2(2019 - )  projects with works lead by DKRZ (Germany) and University of Reading (UK).  
 
 
 Please help us populate this FAQ by letting us know what you most want to know about CORTX!  Feel free to ask questions in any of our [communications channels](SUPPORT.md) and we can all populate this FAQ as we learned what is actually frequently asked.
