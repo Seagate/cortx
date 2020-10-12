@@ -1,7 +1,7 @@
 name: Issue triage
 on:
   issues:
-    types: [opened, closed]
+    types: [opened]
 jobs:
   build:
     name: Triage
