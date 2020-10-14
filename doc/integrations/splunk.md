@@ -57,7 +57,7 @@ remote.s3.endpoint = https://ssc-vm-0668.colo.seagate.com:443
 *Step 3: Restart your splunk Server*
 In your splunk server navigate to `http://<SPLUNK_IP>:8000/en-US/manager/launcher/control` and hit the "Restart Server" button.
 
-![image](splunk/restartSPLUNK.png)
+![image](splunk/restartSplunk.png)
 
 
 **Validating Splunk with CORTX**
