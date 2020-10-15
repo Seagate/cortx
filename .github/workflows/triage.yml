@@ -1,0 +1,13 @@
+name: Issue triage
+on:
+  issues:
+    types: [opened]
+jobs:
+  build:
+    name: Triage
+    runs-on: ubuntu-16.04
+    steps:
+    - uses: Logerfo/triage-action@0.0.2
+      with:
+        github-token: ${{ secrets.ACCESS_TOKEN }}
+        label: "needs-triage"
