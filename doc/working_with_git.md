@@ -117,7 +117,7 @@ You can make changes to the code and save them in your files.
    * [new branch] <your-local-branch-name> -> <your-local-branch-name>
    ```
 
-   :page_with_curl:**Note:** At any point in time to rebase your local branch to the latest main branch, follow these steps:
+:page_with_curl:**Note:** At any point in time to rebase your local branch to the latest main branch, follow these steps:
 
   ```shell
 
