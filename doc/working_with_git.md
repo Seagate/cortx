@@ -90,7 +90,7 @@ Before you contribute to the CORTX project, you'll have to **Fork** the CORTX re
   $ git pull origin main
   $ git submodule update --init --recursive
   $ git checkout 'your-local-branch'
-  $ git pull origin 'your-remote-branch-name'
+  $ git push origin 'your-remote-branch-name'
   $ git submodule update --init --recursive
   $ git rebase origin/main
   ```
