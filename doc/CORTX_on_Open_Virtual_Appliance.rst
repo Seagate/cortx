@@ -31,9 +31,9 @@ The procedure to install CORTX on OVA is mentioned below.
    * Username: cortx 
    * Password: opensource!
 
-#. Become the **root** user by running the following command.
-
-   * sudo su -
+#. Become the **root** user by running this:
+   ::
+     sudo su -
    
 #. Change the hostname by running the following command:
 
