@@ -7,7 +7,7 @@ The SmartStore feature that provides a way to use remote object stores, such as 
 **What is CORTX?**
 CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization. CORTX is 100% Open Source
 
-**How does CORTX and Splunk work together?**
+**How do CORTX and Splunk work together?**
 Because CORTX is S3 compatible we can use the storage system and the Splunk SmartStore feature to offload data to the object storage.
 
 
