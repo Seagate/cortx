@@ -13,7 +13,7 @@ Because CORTX is S3 compatible we can use the storage system and the Splunk Smar
 
 **Configuring Splunk to work with CORTX:**
 
-*Step 0: If you prefer your instructions in video check out this [video on youtube](https://youtu.be/V6xISfee2VY).*
+*Step 0: If you prefer your instructions in video check out this [video on youtube](http://bit.ly/cortx-splunkY).*
 
 *Step 1:  Get your S3 bucket credentials/details*
 
