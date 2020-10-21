@@ -67,7 +67,7 @@ The onboarding procedure must be performed after completing the preboarding proc
       
    - If you don't know your search domains, please use cortx.test.
   
-   .. image:: images/DNS.PNG
+   .. image:: images/DNS.png
    
    
 #. Enter the NTP server address in the text box and select the NTP time zone offset from the drop-down menu. Then, click **Continue**.
