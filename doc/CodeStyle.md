@@ -24,3 +24,7 @@ Some repositories have their own style guides, please refer to these repository-
 The CORTX project is inclusive, and we have made it a priority to keep the project as accessible as possible by preferring literal and direct terminology over metaphorical language, slang, or other shorthand wherever possible. For example: 
   - Use *Allowlist* instead of *Whitelist*.
   - Replace the *Master and Slave* terminology, use terminology that more precisely reflects the relationship such as *Primary and Secondary* or *Main and Dev*. 
+  
+:page_with_curl: **Using Third Party Software**
+
+To ensure that CORTX software remains available under our current open source licenses, please do not _copy-paste_ any software from other software repositories or from websites such as stackoverflow into any CORTX software. 
