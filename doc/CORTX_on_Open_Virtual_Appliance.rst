@@ -111,6 +111,13 @@ The procedure to install CORTX on OVA is mentioned below.
    
     sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh
 
+    * The script performs several operations on S3 API and LDAP backend:
+      create account
+      create user
+      create bucket
+      put object
+      delete all the above in reverse order
+
 #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
 #. Now that you have the complete system up and running, using the data IP from the **ip a l** command, use these instructions `to test the system <testing_io.rst>`_  and observe activity in the GUI.  For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
