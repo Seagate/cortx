@@ -34,3 +34,4 @@ As they say, 'a picture is worth a thousand words', and we encourage everyone co
 following instructions to embed dynamically rendered images: [instructions for GraphViz files](images/graphviz/README.md) and 
 [instructions for PlantUML files](images/plantuml/README.md).  This allows us to only _commit_ the text-based view and not have to attempt to commit and keep synchronized the binary views.
 
+![alt text](https://graphvizrender.herokuapp.com/render?url=https://raw.githubusercontent.com/johnbent/cortx-1/main/doc/images/graphviz/happy_example.dot)
