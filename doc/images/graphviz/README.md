@@ -13,3 +13,5 @@ and prefix it with `url=`.
 For example, here is a dynamically rendered image of the example graphviz file in this directory:
 
 ![CORTX Example Graphviz Dynamically Rendered](https://graphvizrender.herokuapp.com/render?url=https://raw.githubusercontent.com/johnbent/cortx-1/main/doc/images/graphviz/example.dot)
+
+Thanks very much to @grahamc for providing this service and for so nicely documenting how to use it in his [github repo](https://github.com/grahamc/graphvizrender).  Note that if this service ever stops working, there may be another [comparable service](https://github.com/TLmaK0/gravizo).
