@@ -1,6 +1,6 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1d7c921f809e424c9f3d2997d0e43d0a)](https://app.codacy.com/gh/Seagate/cortx?utm_source=github.com&utm_medium=referral&utm_content=Seagate/cortx&utm_campaign=Badge_Grade)
 [![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/cortx/blob/main/LICENSE) 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2b38e06ea08748f8ae51e9303f6dd7b0)](https://app.codacy.com/organizations/gh/Seagate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seagate/cortx&amp;utm_campaign=Badge_Grade)
-[![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?)
+[![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://bit.ly/3609FAb)
 <!-- ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg) -->
 
 <img src="../assets/images/cortx-logo.png?raw=true">
@@ -27,6 +27,8 @@ CORTX is a distributed object storage system designed for great efficiency, mass
 | Resilience         | Highly Resilient. Ensures a high tolerance for hardware failure and faster rebuild and recovery times using Network Erasure Coding, while remaining fully RAID-compatible.       |
 | Transparency       | Provides specialized telemetry data and unmatched insight into system performance.                                                                                               |
 
+You can read more about the technical goals and distinguishing features of CORTX [here.](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-in-prose.md)
+
 ## CORTX Community Values 
 
 -   **Inclusive** - Our ambitions are global. The CORTX community is, too. The perspectives and skills necessary to achieve our goals are wide and varied; we believe in creating a community and a project that is inclusive, accessible, and welcoming to everyone.
@@ -50,10 +52,12 @@ Resources
 <!-- NOTE!!! This is copied from SUPPORT.md.  If you update it here, update it there as well.) -->
 -   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://bit.ly/3609FAb) to interact with community members and gets your questions answered.
 -   Join us in [Discussions](https://github.com/Seagate/cortx/discussions) to ask, answer, and discuss topics with your fellow CORTX contributors.
+-   Check out our [Youtube Channel](https://www.youtube.com/playlist?list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr).
 -   Ask and answer questions in our [Frequently Asked Questions](FAQs.md) page.
 -   If you'd like to contact us directly, drop us a mail at cortx-questions@seagate.com.
--   We have _CORTX stickers_ available to anyone who would like one! Request yours by filling out [this form](https://forms.office.com/Pages/ResponsePage.aspx?id=aiFm1EPGSkOcLgV0SMF8vgKFhRIEtppAkBdqKlO8waVUMVk1Uk9PWjc2NVhNTUU1WkdVTTFIVlNMSS4u)
+-   We have _CORTX stickers_ available to anyone who would like one. You can email us at cortx-questions@seagate.com to request one.
 -   Subscribe to the our [developer newsletter](https://www.seagate.com/sg/en/promos/developer-newsletter/) to and stay up to date on the latest CORTX developments, news, and events.
+-   Learn how to integrate CORTX with other technologies [here](doc/integrations/README.rst).
 -   We like to highlight the work and contributions of our community members—if you have solved an interesting challenge, or you are interested in sharing your experience or use cases, we want to talk to you! Please email our Community Manager rachel.novak@seagate.com or [schedule a meeting with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2) to share.
 
 Thank You!

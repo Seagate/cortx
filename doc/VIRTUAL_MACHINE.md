@@ -43,7 +43,7 @@ ansible-2.9.3-1.el7.noarch
 ```
 Ensure that the ansible version is `2.9` or greater. 
 
-Now you are ready to clone, build and/or run motr. Please refer to the [Motr](CortxMotrQuickStart.md) quick start document for further help on this.
+Now you are ready to clone, build and/or run motr. Please refer to the [Motr](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst) quick start document for further help on this.
 
 PRE-BUILD [S3SERVER]
 --------------------
@@ -51,7 +51,7 @@ PRE-BUILD [S3SERVER]
 
 * Next, s3server requires the user to be root. So, change user to root and check the path. Please ensure that the path contains: `/usr/local/bin`. This is required as s3server will install `s3iamcli` utility here, which it requires when running tests, and the path environment variable may not be updated resulting in `s3iamcli` not found error at test runtime.
 
-* At this point you are ready to build s3server. Please refer to the [s3server](CortxS3ServerQuickStart.md) quick start document on how to do that.
+* At this point you are ready to build s3server. Please refer to the [s3server](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md) quick start document on how to do that.
 
 ## Running s3server:
 

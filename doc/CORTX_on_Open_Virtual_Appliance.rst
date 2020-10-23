@@ -2,7 +2,7 @@
 ===============================
 CORTX on Open Virtual Appliance
 ===============================
-An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.
+An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.  The minimum recommended system should have at least 4 CPU cores, at least 8 GB of RAM, and at least 120 GB of local storage.
 
 ***********************
 Recommended Hypervisors
@@ -20,7 +20,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download and then uncompress the cortx-va-1.0.0.zip file that contains the virtual machine image.
+#. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download and then uncompress the cortx-va-1.0.1.zip file that contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -31,9 +31,9 @@ The procedure to install CORTX on OVA is mentioned below.
    * Username: cortx 
    * Password: opensource!
 
-#. Become the **root** user by running the following command.
-
-   * sudo su -
+#. Become the **root** user by running this:
+   ::
+     sudo su -
    
 #. Change the hostname by running the following command:
 
@@ -50,9 +50,9 @@ The procedure to install CORTX on OVA is mentioned below.
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have a DNS server with which to register the VM, you can access it directly using its IP addresses. However, the hostname is mandatory and should be configured.
 
-#. Start the CORTX services by running the provided bootstrap.sh script:
-
-   * **sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh**
+#. Start the CORTX services by running this bootstrap.sh script:
+   ::
+     sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
    
 #. Run the below mentioned commands to check the status of different services that are part of CORTX.
 

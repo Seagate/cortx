@@ -27,7 +27,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 
 **Core Functionality:** For basic development and testing of CORTX, you only need the motr and S3 submodules.
 
-1. [CORTX Motr](https://github.com/Seagate/cortx-motr/blob/dev/doc/Quick-Start-Guide.rst)
+1. [CORTX Motr](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
    - The main data path of the system responsible for the actual storage and distribution of objects and key-value pairs.
 2. [CORTX S3](https://github.com/Seagate/cortx-s3server/blob/dev/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
    - The S3 interface to CORTX.
@@ -44,7 +44,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
    - The module providing API's with which the management portal communicates with the other modules.   
 5. [CORTX Monitor](https://github.com/Seagate/cortx-monitor/blob/main/cortx-monitorQuickstartGuide.md)
    - The module tracking platform health and raising alerts on sensing any unintended state.   
-6. [CORTX POSIX](https://github.com/Seagate/cortx-posix/blob/dev/doc/Quick_Start_Guide.md)
+6. [CORTX POSIX](https://github.com/Seagate/cortx-posix/blob/main/doc/Quick_Start_Guide.md)
    - The module providing a file interface to CORTX.  
 7. [CORTX Provisioner](https://github.com/Seagate/cortx-prvsnr/blob/main/Cortx-ProvisionerQuickstartGuide.md)
    - The module which assists the users is satisfying dependencies, configuring the components and the other modules, and initializing the CORTX environment.
