@@ -19,22 +19,6 @@ TZOFFSETTO:-0700
 END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
-ATTENDEE;CN="Sai Narasimhamurthy";RSVP=TRUE:mailto:sai.narasimhamurthy@seag
-	ate.com
-ATTENDEE;CN="Anatoliy Bilenko";RSVP=TRUE:mailto:anatoliy.bilenko@seagate.co
-	m
-ATTENDEE;CN="Hua Huang";RSVP=TRUE:mailto:hua.huang@seagate.com
-ATTENDEE;CN="Nikita Danilov";RSVP=TRUE:mailto:nikita.danilov@seagate.com
-ATTENDEE;CN="Gregory Touretsky";RSVP=TRUE:mailto:gregory.touretsky@seagate.
-	com
-ATTENDEE;CN="Manoj Patil";RSVP=TRUE:mailto:manoj.patil@seagate.com
-ATTENDEE;CN="Ganesan Umanesan";RSVP=TRUE:mailto:ganesan.umanesan@seagate.co
-	m
-ATTENDEE;CN="Dan Olster";RSVP=TRUE:mailto:dan.olster@seagate.com
-ATTENDEE;CN="John Bent";RSVP=TRUE:mailto:john.bent@seagate.com
-ATTENDEE;CN="BK Singh";RSVP=TRUE:mailto:bikrant.singh@seagate.com
-ATTENDEE;CN="Ujjwal Lanjewar";RSVP=TRUE:mailto:ujjwal.lanjewar@seagate.com
-ATTENDEE;CN="Justin Woo";RSVP=TRUE:mailto:justin.woo@seagate.com
 CLASS:PUBLIC
 CREATED:20201026T222720Z
 DESCRIPTION: Monthly Cortx Meet The Architect Happy Hour / Coffee Chat\n\n 
