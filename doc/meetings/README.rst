@@ -2,8 +2,8 @@
 CORTX Monthly 'Meet an Architect' Series
 #######
 
-On the first Tuesday of every month, the CORTX Community hosts a 'Meet an Architect' meetly in which 
-a CORTX architect, or community members, prepares a presentation of interest for the community and
+On the first Tuesday of every month, the CORTX Community hosts a 'Meet an Architect' meeting in which 
+a CORTX architect, or community member, presents a presentation of interest for the community and
 in which time is left for a question and answer session.
 
 Please `click here <https://raw.githubusercontent.com/Seagate/cortx/main/doc/meetings/CORTX_Monthly_Meet_an_Architect_Series.ics>`_ to 
