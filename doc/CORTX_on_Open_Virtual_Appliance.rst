@@ -162,6 +162,12 @@ If your disk does not have space, run the following command to clean up the logs
 ::
 
  rm /var/log/<file to be deleted>
+ 
+Run the below mentioned script to delete the account and objects that were created as part of the earlier sanity.
+
+::
+
+ sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -c
 
 Restarting CORTX OVA
 ====================
