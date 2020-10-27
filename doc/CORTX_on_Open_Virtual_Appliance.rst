@@ -53,6 +53,8 @@ The procedure to install CORTX on OVA is mentioned below.
 #. Start the CORTX services by running this bootstrap.sh script:
    ::
      sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
+     
+   Run the bootstrap script to ensure all the necessary services are operational.
    
 #. Run the below mentioned commands to check the status of different services that are part of CORTX.
 
