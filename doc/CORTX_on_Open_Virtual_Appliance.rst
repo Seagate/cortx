@@ -119,9 +119,9 @@ The procedure to install CORTX on OVA is mentioned below.
       put object
       delete all the above in reverse order
       
-    If s3client(s) is / are deployed in separate VMs, then the below entry must be updated in s3client **/etc/hosts** file as follows:
+   If s3client(s) is / are deployed in separate VMs, then the below entry must be updated in s3client **/etc/hosts** file as follows:
     
-     - 192.168.1.8  s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com
+   - 192.168.1.8  s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com
 
 #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
