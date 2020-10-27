@@ -123,7 +123,7 @@ The procedure to install CORTX on OVA is mentioned below.
       
    If s3client(s) is / are deployed in separate VMs, then the below entry must be updated in s3client **/etc/hosts** file as follows:
     
-   - 192.168.1.8  s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com
+   - <<Data IP>> s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com
 
 #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
@@ -163,7 +163,7 @@ If your disk does not have space, run the following command to clean up the logs
 
  rm /var/log/<file to be deleted>
  
-Run the below mentioned script to delete the account and objects that were created as part of the earlier sanity.
+This step is applicable only if the earlier s3 sanity fails. Run the below mentioned script to delete the account and objects that were created as part of the earlier sanity.
 
 ::
 
