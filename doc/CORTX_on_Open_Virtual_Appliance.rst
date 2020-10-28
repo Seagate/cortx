@@ -53,6 +53,8 @@ The procedure to install CORTX on OVA is mentioned below.
 #. Start the CORTX services by running this bootstrap.sh script:
    ::
      sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
+     
+   Run the bootstrap script to ensure all the necessary services are operational.
    
 #. Run the below mentioned commands to check the status of different services that are part of CORTX.
 
@@ -104,7 +106,8 @@ The procedure to install CORTX on OVA is mentioned below.
    .. image:: images/networks.png
    
    * If you do not see IP addresses like in the above image, you might need to change your virtual networking configuration for which  `these instructions <troubleshoot_virtual_network.rst>`_ are hopefully useful.
-
+   
+   
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
    ::
@@ -117,6 +120,10 @@ The procedure to install CORTX on OVA is mentioned below.
       create bucket
       put object
       delete all the above in reverse order
+      
+   If s3client(s) is / are deployed in separate VMs, then the below entry must be updated in s3client **/etc/hosts** file as follows:
+    
+   - <<Data IP>> s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com
 
 #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
@@ -155,6 +162,12 @@ If your disk does not have space, run the following command to clean up the logs
 ::
 
  rm /var/log/<file to be deleted>
+ 
+This step is applicable only if the earlier s3 sanity fails. Run the below mentioned script to delete the account and objects that were created as part of the earlier sanity.
+
+::
+
+ sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -c
 
 Restarting CORTX OVA
 ====================
