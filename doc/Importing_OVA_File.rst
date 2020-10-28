@@ -168,7 +168,7 @@ If you are facing errors due to usage of old versions, perform the below mention
 
 Click `here <https://kb.vmware.com/s/article/80467>`_ to navigate to the relevant page and resolve the below mentioned error.
 
-- **Could not open /dev/vmmon: Broken pipe**
+- Error: **Could not open /dev/vmmon: Broken pipe**
 
 .. raw:: html
    
