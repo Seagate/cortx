@@ -217,8 +217,16 @@ Restart CORTX
 2. Login to the CORTX OVA as cortx and run the following.
 
    - **sudo su -**
+   
+3. Restart openldap and s3 auth server services by the below mentioned commands.
 
-3. Start CORTX I/O subsystem by running the following command.
+   ::
+   
+    $ systemctl restart slapd
+    
+    $ systemctl restart s3authserver
+
+4. Start CORTX I/O subsystem by running the following command.
 
    - **hctl start**
    
