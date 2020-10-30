@@ -89,5 +89,5 @@ Top-level components
 	- Implementation : PoC exists in a branch
 
 - There is only one open tx group at any moment of time 
-	- Solution : (possible) LSN-based serialized txs
+	- Solution : (possible) LSN-based serialised txs
 	- Implementation : doesn't exists
