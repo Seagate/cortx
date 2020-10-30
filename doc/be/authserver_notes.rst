@@ -298,33 +298,17 @@ Overview:
 
 `<https://docs.aws.amazon.com/AmazonS3/latest/dev/amazon-s3-policy-keys.html>`_
 
-
-
-
 ..
 
-
 ====================
-**Ceph CORTX-S3 Failures**
+**CORTX-S3 Failures**
 ====================
 
-1. `EOS-3601 <https://jts.seagate.com/browse/EOS-3601>`__: S3TEST:Test
-   for bucket_acl_grant_userid_read/readacp is failing with Assertion
-   errors.
+- S3TEST: Test for bucket_acl_grant_userid_read/readacp is failing with Assertion errors.
+- The display name is optional for ACLs as per `AWS documentation <https://docs.aws.amazon.com/AmazonS3/latest/API/API_Grantee.html>`_
 
-
-The display name is optional for ACLs as per AWS documentation
-
-`<https://docs.aws.amazon.com/AmazonS3/latest/API/API_Grantee.html>`_
-
-As we have tried to follow the documentation wherever possible this
-cannot be called an issue.
-
-For all such test cases, you can please update the results without
-taking into account the failures due to 'display name'.
-
-I.E. if the test case fails only due to the unavailability of display
-name you can mark it as pass.
+As we have tried to follow the documentation wherever possible this cannot be called an issue. For all such test cases, you can please update the results without
+taking into account the failures due to 'display name'. If the test case fails only due to the unavailability of display name you can mark it `pass`.
 
 .. |image0| image:: images/1_S3_Actions.png
 .. :width: 2.73958in
