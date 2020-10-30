@@ -185,17 +185,17 @@ Shutdown CORTX
     <details>
    <summary><a>Click here to view the procedure.</a></summary>
    
-1. Stop all S3 I/O traffic from S3 clients to VA.
+#. Stop all S3 I/O traffic from S3 clients to VA.
 
-2. Login to the CORTX Virtual Appliance as **cortx** and run the following.
+#. Login to the CORTX Virtual Appliance as **cortx** and run the following.
 
    * **sudo su -**
 
-3. Stop CORTX I/O subsystem by running the following command.
+#. Stop CORTX I/O subsystem by running the following command.
 
    * **hctl shutdown** 
 
-4. After executing the previous command, shutdown the OVA by running the following command.
+#. After executing the previous command, shutdown the OVA by running the following command.
 
    * **poweroff**
    
@@ -212,13 +212,21 @@ Restart CORTX
     <details>
    <summary><a>Click here to view the procedure.</a></summary>
 
-1. Power on the Virtual Appliance VM.
+#. Power on the Virtual Appliance VM.
 
-2. Login to the CORTX OVA as cortx and run the following.
+#. Login to the CORTX OVA as cortx and run the following.
 
    - **sudo su -**
+   
+#. Restart openldap and s3 auth server services by the below mentioned commands.
 
-3. Start CORTX I/O subsystem by running the following command.
+   ::
+   
+    $ systemctl restart slapd
+    
+    $ systemctl restart s3authserver
+
+#. Start CORTX I/O subsystem by running the following command.
 
    - **hctl start**
    
