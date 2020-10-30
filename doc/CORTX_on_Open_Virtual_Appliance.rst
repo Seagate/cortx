@@ -20,7 +20,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download and then uncompress the cortx-va-1.0.1.zip file that contains the virtual machine image.
+#. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download and then uncompress the `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ file that contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 

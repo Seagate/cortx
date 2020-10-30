@@ -17,7 +17,8 @@ We are excited that you are interested in contributing to the CORTX project! Sin
 Some repositories have their own style guides, please refer to these repository-specific coding style guides.
 
 - **[Bash, Python, and C](https://github.com/Seagate/cortx-hare/tree/dev/rfc/8)** - cortx-hare.
-- **TODO:** Add links for cortx-manager and cortx-management-portal coding style.
+- **[Python](https://github.com/Seagate/cortx-manager/blob/main/CodingStyle.md)** - cortx-manager.
+- **[Typescript, Vue.JS, and HTML](https://github.com/Seagate/cortx-management-portal/blob/main/docs/CodingStyle.md)** - cortx-management-portal.
 
 ## Our Values
 
