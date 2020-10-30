@@ -2,7 +2,7 @@
 CORTX Monthly 'Meet an Architect' Series
 #######
 
-On the first Tuesday of every month at GMT 1600, the CORTX Community hosts a 'Meet an Architect' meeting in which 
+On the first Thursday of every month at GMT 1600, the CORTX Community hosts a 'Meet an Architect' meeting in which 
 a CORTX architect, or community member, presents a presentation of interest for the community and
 in which time is left for a question and answer session.
 
