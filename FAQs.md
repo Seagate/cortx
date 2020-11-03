@@ -1,4 +1,4 @@
-## This is a WIP FAQ
+## Frequently Asked Questions
 
 **What does CORTX stand for?**
 
