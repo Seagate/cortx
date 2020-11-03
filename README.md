@@ -52,7 +52,7 @@ Resources
 <!-- NOTE!!! This is copied from SUPPORT.md.  If you update it here, update it there as well.) -->
 -   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://cortx.link/slack_invite) to interact with community members and gets your questions answered.
 -   Join us in [Discussions](https://github.com/Seagate/cortx/discussions) to ask, answer, and discuss topics with your fellow CORTX contributors.
--   Check out our [Youtube Channel](https://cortx.link/XGVHVq).
+-   Check out our [Youtube Channel](https://cortx.link/videos).
 -   Ask and answer questions in our [Frequently Asked Questions](FAQs.md) page.
 -   If you'd like to contact us directly, drop us a mail at cortx-questions@seagate.com.
 -   We have _CORTX stickers_ available to anyone who would like one. You can email us at cortx-questions@seagate.com to request one.
