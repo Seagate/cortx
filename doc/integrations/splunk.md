@@ -87,7 +87,7 @@ You should see that the Remote Storage Connectivity is ONLINE and there is Bucke
 
 ![image](splunk/CORTXdashboard.png)
 
-## Wacth the demo 
+## Watch the demo 
 
 Our Developer Advocate, Justin Woo, walks us through integrating Splunk and CORTX. Splunk is a software platform that allows you to search, monitor, and analyze machine-generated big data via a web-style interface. Because CORTX is S3 compatible we can use the storage system and the Splunk SmartStore feature to offload data to the object storage. This short video walks through an integration a CORTX integration with Splunk. 
    
