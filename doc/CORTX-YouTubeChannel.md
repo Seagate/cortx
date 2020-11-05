@@ -1,7 +1,6 @@
 # CORTX YouTube Channel
 
-Welcome to the [CORTX YouTube Channel](https://www.youtube.com/playlist?list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr). We have collated a series of informative videos 
-that help you learn everything you need to know about CORTX. 
+Welcome to the CORTX Videos page.  On this page, we maintain a list of videos about CORTX which you might find useful.  Additionally we maintain these on a [YouTube Channel](https://www.youtube.com/playlist?list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr); please subscribe there so you can be notified when we release new videos.
 
 ## CORTX YouTube Playlist
 
