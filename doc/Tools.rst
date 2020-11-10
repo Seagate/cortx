@@ -255,7 +255,7 @@ To rebase your local dev branch on the latest version of main:
 Codacy
 ******
 
-Codacy is an automated code analysis or quality tool that enables a developer to deliver effective software in a faster and seemless manner.
+Codacy is an automated code analysis or quality tool that enables a developer to deliver effective software in a faster and seamless manner.
 
 .. raw:: html
 
