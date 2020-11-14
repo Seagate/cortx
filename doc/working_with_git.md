@@ -8,18 +8,15 @@ Contributing to the CORTX project using Git is a four-step process as listed bel
      <summary>Click to expand!</summary>
      <p>
 
- - Update Git to the latest version.
+ - Update Git to the latest version:
+   ```shell
+        $ yum remove git*
+        $ yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
+        $ yum install git
+   ```
+   
  - Generate [SSH](SSH_Public_Key.rst) and [PAT](Tools.rst#personal-access-token-pat) access for your GitHub Account.
- - Install Fix for CentOS 7.x by using: 
- 
- `$ yum remove git`
- 
-  * Download the [RPM file from here](https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm) and run the following commands:
-  
-    ```shell
-       $ yum -y install
-       $ yum -y install git
-    ```
+
 
    </p>
     </details>
