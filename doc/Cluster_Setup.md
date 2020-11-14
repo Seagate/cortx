@@ -331,7 +331,7 @@ Pacemaker RPMs are needed for Hare.
 
 The workaround:
 ```bash
-curl 'https://raw.githubusercontent.com/Seagate/cortx-prvsnr/master/cli/src/cortx-prereqs.sh?token=APAGAPH5GQBM4LM54UOZJVK7B23XM' -o cortx-prereqs.sh; chmod a+x cortx-prereqs.sh
+curl 'https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/cli/src/cortx-prereqs.sh?token=APAGAPH5GQBM4LM54UOZJVK7B23XM' -o cortx-prereqs.sh; chmod a+x cortx-prereqs.sh
 
 sudo ./cortx-prereqs.sh --disable-sub-mgr
 ```

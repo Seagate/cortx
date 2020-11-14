@@ -1,7 +1,7 @@
 #  Build Installation - FAQs
 
      Qs1. In cortx-s3 during init.sh installation an error occurs: 
-          http://ssc-satellite1.colo.seagate.com/pulp/repos/EOS/Production/CentOS-7_7_1908/custom/EPEL-7/EPEL-7/repodata/repomd.xml: 
+          http://ssc-satellite1.colo.seagate.com/pulp/repos/CORTX/Production/CentOS-7_7_1908/custom/EPEL-7/EPEL-7/repodata/repomd.xml: 
           [Errno 14] curl#6 - "Could not resolve host: ssc-satellite1.colo.seagate.com; Unknown error".
   
      Ans1. Use the following steps:                   
@@ -14,23 +14,23 @@
            * `$ [root@localhost centos7.7.1908]# ls -lrt`
              total 12
              -rw-r--r-- 1 root root 178 Jul  8 21:25 epel7.repo
-             -rw-r--r-- 1 root root 216 Jul  8 21:30 eos_s3_deps.repo
-             -rw-r--r-- 1 root root 206 Jul  8 21:30 eos.repo
+             -rw-r--r-- 1 root root 216 Jul  8 21:30 cortx_s3_deps.repo
+             -rw-r--r-- 1 root root 206 Jul  8 21:30 cortx.repo
            
            3. Step3: Comment all the lines in the repository listed in Step2.
            * `$ [root@localhost centos7.7.1908]# cat *.repo`
-             #[releases_eos]
-             #baseurl = http://ci-storage.mero.colo.seagate.com/releases/eos/github/master/rhel-7.7.1908/last_successful/
+             #[releases_cortx]
+             #baseurl = http://ci-storage.mero.colo.seagate.com/releases/cortx/github/main/rhel-7.7.1908/last_successful/
              #gpgcheck = 0
-             #name = Yum repo for eos builds - OS Centos 7.7.1908
+             #name = Yum repo for cortx builds - OS Centos 7.7.1908
              #priority = 1
-             #[releases_eos_s3deps]
-             #baseurl = http://ci-storage.mero.colo.seagate.com/releases/eos/s3server_uploads/centos7/
+             #[releases_cortx_s3deps]
+             #baseurl = http://ci-storage.mero.colo.seagate.com/releases/cortx/s3server_uploads/centos7/
              #gpgcheck = 0
-             #name = Yum repo for s3 dependencies rpms built for eos - OS Centos/rhel 7
+             #name = Yum repo for s3 dependencies rpms built for cortx - OS Centos/rhel 7
              #priority = 1
              #[epel7]
-             #baseurl = http://ssc-satellite1.colo.seagate.com/pulp/repos/EOS/Production/CentOS-7_7_1908/custom/EPEL-7/EPEL-7/
+             #baseurl = http://ssc-satellite1.colo.seagate.com/pulp/repos/CORTX/Production/CentOS-7_7_1908/custom/EPEL-7/EPEL-7/
              #gpgcheck = 0
              #name = Yum repo for epel7
              #priority = 1
@@ -76,5 +76,5 @@
            
      Qs4: Error: no package found for log4cxx_cortx.
      
-     Ans4: This issue is resolved in the section 'Create a local repository' in https://github.com/Seagate/cortx/blob/master/doc/CortxS3ServerQuickStart.md). 
+     Ans4: This issue is resolved in the section 'Create a local repository' in https://github.com/Seagate/cortx/blob/main/CONTRIBUTING.md). 
 
