@@ -50,7 +50,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
       | Private Data network     | connected to another high-speed NIC         |
       +--------------------------+---------------------------------------------+
 	  
-	  +--------------------------+---------------------------------------------+
+      +--------------------------+---------------------------------------------+
       | **Network name/purpose** | **Corresponding NIC**                       |
       +--------------------------+---------------------------------------------+
       | Management network       | connected to the 1 GbE NIC                  |
