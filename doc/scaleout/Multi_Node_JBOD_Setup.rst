@@ -52,7 +52,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 	  
       **Note** 
 	  
-	  The Management and Public data networks are required the L3 connectivity from outside. If both of them connect to different VLAN, the IPROUTE2 is required to enabled multiple gateway for the JBODs.
+	The Management and Public data networks are required the L3 connectivity from outside. If both of them connect to different VLAN, the IPROUTE2 is required to enabled multiple gateway for the JBODs.
 	  
 	  Example:
 	   
@@ -127,8 +127,7 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 				32766:  from all lookup main
 				32767:  from all lookup default
 
-	  After complete this configuration, the both Management and Public data IP Address shoud be accessible from external.
-				
+	  After complete this configuration, the both Management and Public data IP Address shoud be accessible from external.	  
 
 2. Connect the servers to the networks and the JBODs as per the guidelines provided above.
 
