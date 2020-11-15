@@ -24,6 +24,12 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 **Notes (Server Reference Configuration)**
 
+- Enabled EPEL and SCL repositories
+
+::
+
+  yum -y install epel-release centos-release-scl
+
 - The minimum number of network ports per server is 3.
 
 - Usage of Mellanox HCAs is recommended but not mandatory. For optimal performance you need two high-speed network ports (10 GbE minimum; 50 GbE or 100 GbE recommended). All the three servers must have Mellanox HCA or none of the servers must have it.
@@ -62,6 +68,8 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 		- Device: eth0
 		- /etc/sysconfig/network-scripts/ifcfg-eth0
 		
+		::
+		
 			TYPE=Ethernet
 			BOOTPROTO=none
 			NAME=eth0
@@ -79,6 +87,8 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 		- Device: eth1
 		- /etc/sysconfig/network-scripts/ifcfg-eth1
 		
+		::
+		
 			TYPE=Ethernet
 			BOOTPROTO=none
 			NAME=eth1
@@ -92,6 +102,8 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 		- Please note **NO GATEWAY** directive configured for eth1
 		- The iproute2 configuration:
 			- Append "2		eth1" into /etc/iproute2/rt_tables as below example
+			
+			::
 			
 				#
 				# reserved values
@@ -108,15 +120,22 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 			- Create file /etc/sysconfig/network-scripts/route-eth1 as content below
 			
+			::
+			
 				10.0.2.0/24 dev eth1 src 10.0.2.10 table eth1
 				default via 10.0.2.1 dev eth1 table eth1
 			
 			- Create file /etc/sysconfig/network-scripts/rule-eth1 as content below
 			
+			::
+			
 				from 10.0.2.0/24 table eth1
 				to 10.0.2.0/24 table eth1
   
 			- Restart eth1 interface and verify the configuration
+			
+			::
+			
 				# ifdown eth1; ifup eth1
 				# ip rule
 				0:      from all lookup local
