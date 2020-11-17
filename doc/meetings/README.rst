@@ -9,10 +9,10 @@ in which time is left for a question and answer session.
 Please `click here <https://raw.githubusercontent.com/Seagate/cortx/main/doc/meetings/CORTX_Monthly_Meet_an_Architect_Series.ics>`_ to 
 add the event to your calendar. 
 
-  - If the link does not automatically open your calendar app, choose 'Save As' and save the .ics file on your local drive.   
+- If the link does not automatically open your calendar app, choose 'Save As' and save the .ics file on your local drive.   
 
-   1. You can either drag and drop the .ics file or upload it using calendar settings.
-   2. Once you .ics is successfully uploaded, you can respond to the invite.
+  1. You can either drag and drop the .ics file or upload it using calendar settings.
+  2. Once you .ics is successfully uploaded, you can respond to the invite.
 
 The Meet an Architect series are open to the public via this `WebEx link <https://seagate.webex.com/seagate/j.php?MTID=mb41af913a4001fa5f063eba9551154f6>`_.  All meetings will be recorded and made available on this page afterwards.
 
