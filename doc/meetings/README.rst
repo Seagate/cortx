@@ -18,7 +18,7 @@ The Meet an Architect series are open to the public via this `WebEx link <https:
 
 The schedule is as follows:
 
-#. November 5, 2020: Nikita Danilov presented about the core motr architecture.  `PDF <PDFs/cortx_motr_architecture_overview_nov_2020_nikita_danilov.pdf>`_, `Video <https://cortx.link/nov-architect-video>`_.
+#. November 5, 2020: Nikita Danilov presented about the core motr architecture.  `PDF <PDFs/cortx_motr_architecture_overview_nov_2020_nikita_danilov.pdf>`_  |   `Video <https://cortx.link/nov-architect-video>`_.
 
 #. December 3, 2020: Basavaraj Kirunge will present about the architecture of the S3 layer and how it interfaces with the motr layer.
 
