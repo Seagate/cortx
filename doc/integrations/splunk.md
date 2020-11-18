@@ -10,7 +10,6 @@ CORTX is a distributed object storage system designed for great efficiency, mass
 **How do CORTX and Splunk work together?**
 Because CORTX is S3 compatible we can use the storage system and the Splunk SmartStore feature to offload data to the object storage.
 
-
 **Configuring Splunk to work with CORTX:**
 
 *Step 0: If you prefer your instructions in video check out this [video on youtube](http://bit.ly/cortx-splunk).*
@@ -42,7 +41,8 @@ You will need to add these lines to the `indexes.conf` file.
 
 Note: The values * s3_BUCKET + ACCESS_KEY + SECRET_KEY + DATA_IP* will be from your s3 credentials/details. 
 
-```
+```shell
+
 [volume:s3]
 storageType = remote
 path = s3://<S3_BUCKET>
@@ -51,8 +51,11 @@ remote.s3.secret_key = <SECRET_KEY>
 remote.s3.supports_versioning = false
 remote.s3.endpoint = https://<DATA_IP>:443
 ```
+
 For example:
-```
+
+```shell
+
 storageType = remote
 path = s3://splunk
 remote.s3.access_key = 2wuishXYQAe79w-1is75jw
@@ -72,7 +75,6 @@ There are a few ways we can validate the integration:
 
 1) Check the Smartstore Activity Instance Console
 
-
 You should see that the Remote Storage Connectivity is ONLINE and there is Bucket Activity being uploaded to the remote s3 bucket
 
 ![image](splunk/serverOnline.png)
@@ -84,3 +86,9 @@ You should see that the Remote Storage Connectivity is ONLINE and there is Bucke
 3) Login to the CORTX Management Dashboard and verify that there is data being written
 
 ![image](splunk/CORTXdashboard.png)
+
+## Watch the demo 
+
+Our Developer Advocate, Justin Woo, walks us through integrating Splunk and CORTX. Splunk is a software platform that allows you to search, monitor, and analyze machine-generated big data via a web-style interface. Because CORTX is S3 compatible we can use the storage system and the Splunk SmartStore feature to offload data to the object storage. This short video walks through an integration a CORTX integration with Splunk. 
+   
+[![Connecting CORTX to Splunk](https://img.youtube.com/vi/rBAIloua4p0/0.jpg)](https://www.youtube.com/watch?v=rBAIloua4p0)

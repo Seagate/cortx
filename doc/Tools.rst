@@ -148,7 +148,7 @@ Branching Information
 ---------------------
 Please note the below mentioned points.
 
-- As per the global naming convention, the Master branch is the Main branch.
+- As per the global naming convention, we've renamed Master to Main branch.
 
 - The Main branch represents the official history, and it must be deployable at any point of time. For every new feature that is being developed, the developer creates a new branch.
 
@@ -255,7 +255,7 @@ To rebase your local dev branch on the latest version of main:
 Codacy
 ******
 
-Codacy is an automated code analysis or quality tool that enables a developer to deliver effective software in a faster and seem less manner.
+Codacy is an automated code analysis or quality tool that enables a developer to deliver effective software in a faster and seamless manner.
 
 .. raw:: html
 
