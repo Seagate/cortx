@@ -57,5 +57,12 @@ To perform starting of services refer to `Starting Services <Starting_Services.r
 **********************
  
 To perform stopping of services refer to `Stopping Services <Stopping_Services.rst>`_.
+
+
+Tested by:
+
+- Nov 14, 2020: Sakchai Suntinuraks (sakchai.suntinuraks@seagate.com) using ISO (cortx-1.0.0) file
+
+- Sep 20, 2020: Ashwini Borse (ashwini.borse@seagate.com) using ISO (cortx-1.0.0) file 
  
  
