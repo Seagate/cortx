@@ -1,7 +1,7 @@
 # CORTX v1.0 Virtual Clusters Setup
 
 This is a step by step guide to get CORTX virtual cluster setup ready.
-Also see https://github.com/Seagate/cortx-hare/blob/dev/README.md
+Also see https://github.com/Seagate/cortx-hare/blob/main/README.md
 
 ## 1. Single-node setup
 
