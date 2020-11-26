@@ -7,8 +7,7 @@ Also see https://github.com/Seagate/cortx-hare/blob/dev/README.md
 
 ### 1.1. Create a VM
 
-Create a virtual machine using
-[Red Hat CloudForms](https://ssc-cloud.colo.seagate.com/ui/service/login).
+Create a virtual machine.
 
 ### 1.2. Install the RPMs
 
@@ -149,8 +148,7 @@ For e.g,
 
 ### 2.1. Create two VMs
 
-Create two virtual machines using
-[Red Hat CloudForms](https://ssc-cloud.colo.seagate.com/ui/service/login).
+Create two virtual machines.
 
 ### 2.2. Setup passwordless SSH
 
@@ -274,8 +272,7 @@ Sample diff:
 
 ### 3.1. Create a VM
 
-Create a virtual machine using
-[Red Hat CloudForms](https://ssc-cloud.colo.seagate.com/ui/service/login).
+Create a virtual machine.
 
 ### 3.2. Generate SSH keys
 
