@@ -40,7 +40,7 @@
 
 -  CORTX core is a component of the new cloud software stack developed by Seagate
 
--  CORTX provides basic functionality through its clovis interface:
+-  CORTX provides basic functionality through its motr interface:
 
    -  object store
 
