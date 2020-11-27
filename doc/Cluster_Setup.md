@@ -253,14 +253,14 @@ Sample diff:
 * Write some data to Motr.
   ```bash
   m0cp -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
-       -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x23 -o 21:40 \
+       -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x20 -o 21:40 \
        -s 1m -c 128 /home/src/single/random.img -L 9
   ```
 
 * Read the data from Motr.
   ```bash
   m0cat -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
-        -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x23 -o 21:40 \
+        -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x20 -o 21:40 \
         -s 1m -c 128 /home/src/single/random_from_motr.img -L 9
   ```
 
