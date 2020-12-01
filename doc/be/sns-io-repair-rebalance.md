@@ -2,7 +2,7 @@
 
 ## Overview
 
-- Server network striping ([find more details for io here](/doc/ServerNetworkStripingRepair.rst)
+- Server network striping ([find more details for io here](/doc/ServerNetworkStripingRepair.rst))
 - Implements Erasure coding
 
 ![SNS Overview](/doc/be/images/sns-overview.PNG)
