@@ -29,7 +29,7 @@ The preboarding process is the first process that must be completed after config
 
    .. image:: images/EULA1.PNG
 
-5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.  The usernames *root* and *csm* are reserved so please do not use them.
+5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.  The usernames *root*, *cortx* and *csm* are reserved so please do not use them.
     
    .. image:: images/preboard_create_admin.PNG
 
