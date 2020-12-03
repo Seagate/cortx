@@ -8,3 +8,4 @@ For your convenience, we offer a [pre-built VM image (OVA)](https://github.com/S
 
 A CORTX development environment requires RoCE—RDMA over Converged Ethernet and TCP connectivity.
    - Note: The CORTX stack currently does not work on Intel's OmniPath cards.
+   - Note: Seagate employees may have access to resources to help with this.  Please refer to [this page](DEV_VM.md) for more information.
