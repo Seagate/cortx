@@ -1,14 +1,13 @@
 # CORTX v1.0 Virtual Clusters Setup
 
 This is a step by step guide to get CORTX virtual cluster setup ready.
-Also see https://github.com/Seagate/cortx-hare/blob/dev/README.md
+Also see https://github.com/Seagate/cortx-hare/blob/main/README.md
 
 ## 1. Single-node setup
 
 ### 1.1. Create a VM
 
-Create a virtual machine using
-[Red Hat CloudForms](https://ssc-cloud.colo.seagate.com/ui/service/login).
+Create a virtual machine.
 
 ### 1.2. Install the RPMs
 
@@ -149,8 +148,7 @@ For e.g,
 
 ### 2.1. Create two VMs
 
-Create two virtual machines using
-[Red Hat CloudForms](https://ssc-cloud.colo.seagate.com/ui/service/login).
+Create two virtual machines.
 
 ### 2.2. Setup passwordless SSH
 
@@ -253,14 +251,14 @@ Sample diff:
 * Write some data to Motr.
   ```bash
   m0cp -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
-       -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x23 -o 21:40 \
+       -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x20 -o 21:40 \
        -s 1m -c 128 /home/src/single/random.img -L 9
   ```
 
 * Read the data from Motr.
   ```bash
   m0cat -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
-        -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x23 -o 21:40 \
+        -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x20 -o 21:40 \
         -s 1m -c 128 /home/src/single/random_from_motr.img -L 9
   ```
 
@@ -274,8 +272,7 @@ Sample diff:
 
 ### 3.1. Create a VM
 
-Create a virtual machine using
-[Red Hat CloudForms](https://ssc-cloud.colo.seagate.com/ui/service/login).
+Create a virtual machine.
 
 ### 3.2. Generate SSH keys
 
