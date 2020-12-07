@@ -226,7 +226,7 @@ Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID
     
 5. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
 
-6. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.7-3.2.9.0/rhel7.8/x86_64/MLNX_LIBS/. 
+6. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.9-0.1.7.0/rhel7.8/
 
    **Note**: You must reboot the system after completing the installation of Mellanox OFED.
 
