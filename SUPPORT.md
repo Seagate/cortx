@@ -4,7 +4,7 @@ Looking for support for one of the CORTX software modules or to discuss things w
 -   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://cortx.link/slack_invite) to interact with community members and gets your questions answered.
 -   Check out our [Youtube Channel.](https://cortx.link/videos)
 -   Join us in [Discussions](https://github.com/Seagate/cortx/discussions) to ask, answer, and discuss topics with your fellow CORTX contributors!
-    - You can subscribe to the Community mailing list by following GitHub Discussions as shown below:
+    - Using the below instructions, we can use Discussions effectively as an email mailing list:
       1. Click **Watch** button at the top-left of the repository.
       2. Click *Custom ->* from the Notifications list.
       3. Select *Discussions* from the Custom dialog box and click **Apply**. 
