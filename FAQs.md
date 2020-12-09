@@ -1,5 +1,9 @@
 ## Frequently Asked Questions
 
+**What is CORTX?** 
+
+Refer to the documentation [here](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-in-prose.md) to know more about CORTX.
+
 **What does CORTX stand for?**
 
    * Actually CORTX is not an acronym.  The marketing team just thought it looks cool and sounds cool.  :smiley:
