@@ -9,6 +9,10 @@ Other use cases : automatic virus scans, media files optimization, sensitive inf
 We initially intended to use an event-driven approach through a pub-sub mechanism listening on CORTX events, but it seems that there is no such mechanism available at this time. Instead, we went for a polling approach using S3 list buckets and list objects commands. The events are fed into Siddhi which is an advanced rule engine from WSO2. When the rules we defined were triggered, a corresponding job was sent to the Celery job queue and executed by a worker from the workers pool.
 Siddhi allows for an extremely flexible rules (or "queries") that can detect almost any pattern within a time-series data stream. for example "event A happened 5 times within 3 minutes" or "event A happened, but event B didn't follow it within 2 minutes". Those rules can be added and remove at run time and once triggered invoke a callback which in our case triggers a job.
 
-https://siddhi.io/
-https://docs.celeryproject.org/en/stable/
+![overview](/doc/images/siddhi-celery-pipeline.png)
 
+links: 
+
+[siddhi](https://siddhi.io/)
+
+[celery](https://docs.celeryproject.org/en/stable/)
