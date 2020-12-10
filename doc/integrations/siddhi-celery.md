@@ -25,17 +25,17 @@ This is how it's done:
 
 3. download and install siddhi from https://github.com/siddhi-io/siddhi-sdk/releases/download/v5.1.2/siddhi-sdk-5.1.2.zip and copy it into the siddhi-celery/ directory
 
-4. run "sudo apt install python-env"
+4. run "sudo apt install python3-venv"
 
 5. run ". ./env"
 
-1. goto siddhi-celery/scripts and run the celery job queue and the siddhi rule engine:
+6. goto siddhi-celery/scripts and run the celery job queue and the siddhi rule engine:
 ![screensho1](/doc/images/siddhi1.png)
 
-2. copy a log file (file extension should be *.log) into the bucket named "logs":
+7. copy a log file (file extension should be *.log) into the bucket named "logs":
 ![screensho2](/doc/images/siddhi2.png)
 
-3. within a few seconds, the file would be compressed and the original file would be deleted:
+8. within a few seconds, the file would be compressed and the original file would be deleted:
 ![screensho3](/doc/images/siddhi3.png)
 ![screensho3](/doc/images/siddhi4.png)
 
