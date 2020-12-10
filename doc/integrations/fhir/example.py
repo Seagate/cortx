@@ -8,6 +8,12 @@ from doc.integrations.fhir.connectors.cortx_connector import CortxS3Connector
 fhir_connector = FhirConnector('http://test.fhir.org/r3')
 fhir_connector.connect()
 
+# Create CORTX connector
+cortx_connector = CortxS3Connector(endpoint_url='http://uvo19iqqprct5bd9622.vm.cld.sr',
+                                   aws_access_key_id='z5_sdXvsSvKKWxjJmvCA9g',
+                                   aws_secret_access_key='kUIMmfQCyNzxel8vi8udIsadwuliOYpS/jdyMh8e')
+cortx_connector.connect()
+
 # Get a patient
 print('Getting a patient from FHIR service')
 patient11 = fhir_connector.get(SupportedModels.PATIENT, '11')
@@ -18,12 +24,6 @@ print('Search observations in FHIR service')
 search_terms = {'code': '11449-6'}
 observations = fhir_connector.search(SupportedModels.OBSERVATION, search_terms)
 print(observations[0].as_json())
-
-# Create CORTX connector
-cortx_connector = CortxS3Connector(endpoint_url='http://uvo19iqqprct5bd9622.vm.cld.sr',
-                                   aws_access_key_id='z5_sdXvsSvKKWxjJmvCA9g',
-                                   aws_secret_access_key='kUIMmfQCyNzxel8vi8udIsadwuliOYpS/jdyMh8e')
-cortx_connector.connect()
 
 # Insert data into patient bucket
 print('Insert patient data to CORTX')
