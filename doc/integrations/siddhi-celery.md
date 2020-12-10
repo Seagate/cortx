@@ -19,7 +19,17 @@ links:
 
 This is how it's done:
 
-1. run the celery job queue and the siddhi rule engine:
+1. clone the repo
+
+2. install java 8 and higher and make sure JAVA_HOME is set in the environment variables
+
+3. download and install siddhi from https://github.com/siddhi-io/siddhi-sdk/releases/download/v5.1.2/siddhi-sdk-5.1.2.zip and copy it into the siddhi-celery/ directory
+
+4. run "sudo apt install python-env"
+
+5. run ". ./env"
+
+1. goto siddhi-celery/scripts and run the celery job queue and the siddhi rule engine:
 ![screensho1](/doc/images/siddhi1.png)
 
 2. copy a log file (file extension should be *.log) into the bucket named "logs":
