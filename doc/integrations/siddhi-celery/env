@@ -37,12 +37,10 @@ fi
 if [ ! -e "$PYTHON_PROXY_JAR" ]; then
     echo "Downloading $PYTHON_PROXY_JAR_URL"
     wget -q -P "$SIDDHI_LIB" "$PYTHON_PROXY_JAR_URL"
-    return 2
 fi
 if [ ! -e "$SIDDHI_REGEX_JAR" ]; then
     echo "Downloading $SIDDHI_REGEX_JAR_URL"
     wget -q -P "$SIDDHI_LIB" "$SIDDHI_REGEX_JAR_URL"
-    return 2
 fi
 
 if [ ! -d "$CORTX_VENV_DIR" ]; then
