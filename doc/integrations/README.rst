@@ -8,6 +8,7 @@ such as those using the KV API or the File Data Manipulation Interface (FDMI) pl
 Click on any of the images below to know how to integrate CORTX with other technologies:
 
 |Splunk|
+
 |Siddhi-Celery|
 
 **TODO:** add more integrations!
@@ -17,7 +18,7 @@ Click on any of the images below to know how to integrate CORTX with other techn
    :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/splunk.md
 
 
-.. |Siddhi-Celery| image:: /doc/images/SplunkLogo.png
+.. |Siddhi-Celery| image:: /doc/images/siddhi-overview.png
    :width: 1 em
    :target: siddhi-celery.md
 
