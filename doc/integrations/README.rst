@@ -15,6 +15,6 @@ Click on any of the images below to know how to integrate CORTX with other techn
    :width: 1 em
    :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/splunk.md
 
-.. |Splunk| image:: /doc/images/images-api.png
+.. |ImagesApi| image:: /doc/images/images-api.png
    :width: 1 em
    :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/images-api.md   
