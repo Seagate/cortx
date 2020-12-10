@@ -8,9 +8,14 @@ such as those using the KV API or the File Data Manipulation Interface (FDMI) pl
 Click on any of the images below to know how to integrate CORTX with other technologies:
 
 |Splunk|
+|FHIR|
 
 **TODO:** add more integrations!
 
 .. |Splunk| image:: /doc/images/SplunkLogo.png
    :width: 1 em
    :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/splunk.md
+
+.. |FHIR| image:: /doc/images/fhir-logo.png
+   :width: 1 em
+   :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/fhir.md
