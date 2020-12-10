@@ -16,3 +16,17 @@ links:
 [siddhi](https://siddhi.io/)
 
 [celery](https://docs.celeryproject.org/en/stable/)
+
+This is how it's done:
+
+1. run the celery job queue and the siddhi rule engine:
+![screensho1](/doc/images/siddhi1.png)
+
+2. copy a log file (file extension should be *.log) into the bucket named "logs":
+![screensho2](/doc/images/siddhi2.png)
+
+3. within a few seconds, the file would be compressed and the original file would be deleted:
+![screensho3](/doc/images/siddhi3.png)
+![screensho3](/doc/images/siddhi4.png)
+
+
