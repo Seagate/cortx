@@ -1,0 +1,56 @@
+#!/bin/bash
+#HERE=$(dirname $0)
+HERE=$(pwd)
+SIDDHISDK_NAME=siddhi-sdk-5.1.2
+SIDDHI_LIB=$SIDDHISDK_HOME/lib
+
+PYTHON_PROXY_JAR=$SIDDHI_LIB/siddhi-python-api-proxy-5.1.0.jar
+PYTHON_PROXY_JAR_URL="https://github.com/siddhi-io/PySiddhi/releases/download/v5.1.0/siddhi-python-api-proxy-5.1.0.jar"
+
+SIDDHI_REGEX_JAR=$SIDDHI_LIB/siddhi-execution-regex-5.0.6.jar
+SIDDHI_REGEX_JAR_URL="https://repo1.maven.org/maven2/io/siddhi/extension/execution/regex/siddhi-execution-regex/5.0.6/siddhi-execution-regex-5.0.6.jar"
+
+CORTX_VENV_DIR=$HERE/venv
+CORTX_SIDDHI_DIR=$HERE/cortx-siddhi
+
+if [ -z "$JAVA_HOME" ]; then
+    if [ $(uname) = "Darwin" ]; then
+        export JAVA_HOME=$(/usr/libexec/java_home -v13)
+    else
+        echo "JAVA_HOME is not set, and this script does not set it for Linux, please implement"
+    fi
+    if [ ! -d "$JAVA" ]; then
+        echo "JAVA_HOME not found: $JAVA"
+        return 2
+    fi
+fi
+
+if [ $(uname) = "Darwin" ]; then
+    export SIDDHISDK_HOME=$(realpath $HERE/$SIDDHISDK_NAME)
+else
+    export SIDDHISDK_HOME=$(readlink -f $HERE/$SIDDHISDK_NAME)
+fi
+if [ ! -d "$SIDDHISDK_HOME" ]; then
+    echo "No such directory: $SIDDHISDK_HOME"
+    return 2
+fi
+if [ ! -e "$PYTHON_PROXY_JAR" ]; then
+    echo "Downloading $PYTHON_PROXY_JAR_URL"
+    wget -q -P "$SIDDHI_LIB" "$PYTHON_PROXY_JAR_URL"
+    return 2
+fi
+if [ ! -e "$SIDDHI_REGEX_JAR" ]; then
+    echo "Downloading $SIDDHI_REGEX_JAR_URL"
+    wget -q -P "$SIDDHI_LIB" "$SIDDHI_REGEX_JAR_URL"
+    return 2
+fi
+
+if [ ! -d "$CORTX_VENV_DIR" ]; then
+    python3 -m venv $CORTX_VENV_DIR
+    $CORTX_VENV_DIR/bin/pip install -U pip
+fi
+
+$CORTX_VENV_DIR/bin/pip install -e "$CORTX_SIDDHI_DIR[dev]"
+source $CORTX_VENV_DIR/bin/activate
+
+return 0
