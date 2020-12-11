@@ -4,6 +4,7 @@ Hello, my name is Bari Arviv.
 My idea was to perform an integration from Sypder (Anaconda) to S3.
 I did this using code in Python and Tensorflow. I choose TensorFlow because I am currently doing my final project in Deep Learning and the idea really interested me, I am very glad that I took part in the hackathon. I learned a lot of new things and really enjoyed it! thank you very much!
 
+In Shawee there are 2 videos:
 The first video explains the Concept Details.
 The second video is divided into two parts: one before the run and the other after the run.
 Before running you can see that the bucket finally_mnist does not exist yet.
