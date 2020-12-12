@@ -19,6 +19,8 @@ Because CORTX is S3 compatible we can use the storage system and the Images API 
 
 *if you prefer to use docker, there is a docker file ready in the project repo*
 
+[setup video](https://www.loom.com/share/b81b6c973bac4a50872571eb0cec3e8c)
+
 **Usage**
 
 GET /images/{filename} // return original image
