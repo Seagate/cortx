@@ -15,7 +15,7 @@ Because CORTX is S3 compatible we can use the storage system and the Images API 
 
 *Step 1: assuming you have python 3 installed, pip3 install -r requirements.txt*
 
-*Step 1: python3 api.py*
+*Step 2: python3 [api.py](https://github.com/Seagate/cortx-images/blob/master/api.py)*
 
 *if you prefer to use docker, there is a docker file ready in the project repo*
 
