@@ -2,6 +2,7 @@
 The idea is to create an api on top of cortx to handle images optimization, basically an alternative to platforms like cloudinary, and provide open source solution for the community to use.
 
 [visit the project repo](https://github.com/Seagate/cortx-images)
+[project presentation](https://docs.google.com/presentation/d/1TvyV9C1GEHOv6lP1WLr7zU5KPcN192bMQxnnyfA00Oc/edit?usp=sharing)
 
 **What is CORTX?**
 CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization. CORTX is 100% Open Source
