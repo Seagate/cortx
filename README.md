@@ -1,40 +1,67 @@
-[![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/EOS-Sandbox/blob/master/LICENSE) 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c099437792d44496b720a730ee4939ce)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seagate/mero&amp;utm_campaign=Badge_Grade)
-![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1d7c921f809e424c9f3d2997d0e43d0a)](https://app.codacy.com/gh/Seagate/cortx?utm_source=github.com&utm_medium=referral&utm_content=Seagate/cortx&utm_campaign=Badge_Grade)
+[![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/cortx/blob/main/LICENSE) 
+[![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://cortx.link/join-slack)
+<!-- ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg) -->
 
 <img src="../assets/images/cortx-logo.png?raw=true">
 
+# CORTX: World's Only 100% Open Source Mass-Capacity Optimized Object Store
 
-# CORTX.  Hyperscale storage stack capabilities for all.
+The amount of data the world is creating and collecting is increasing massively. The amount of data the world is storing is not. The models and machine learning that are at the forefront of some of the most important research today depend on access to compete data sets, but limitations on storage lead to unnecessary data loss. By creating better, more economical storage solutions, we enable the research that is changing the world.
 
-In consultation with IDC, Seagate has determined that an immense amount of data (175 zettabytes) will be created in 2025.  Surprisingly, of this data, IDC predicts that only 17 zettabytes (about 10%) will be stored.  This at-risk 158 zettabytes of data slated to be discarded will have a tremendous amount of unrealized potential as multiple research efforts have determined that the accuracy of machine learning and data analytics directly correlates to the size of the input data set.  
+<p align="center"><img src="../assets/images/at_risk_data.jpg?raw=true" title="This graph, using data from IDC, shows the amount of at-risk data increasing annually.  CORTX enables the mass capacity drives that will allow this at-risk data to be saved."/></p>
 
-<p align="center"><img src="../assets/images/at_risk_data.jpg?raw=true"></p>
+## The CORTX Project
 
-As such, Seagate has worked hard to understand both the software and hardware requirements that would allow more of this 158 at-risk zettabytes to be stored.  We have discovered that the underlying hardware requires innovation to improve density per cost and that the software architecture itself is prohibitively expensive.  The result of this analysis is Seagate's conclusion that a new software architecture is needed both to satisfy the economic limitations of the existing systems as well as to ensure efficient utilization of the co-evolving hardware innovations.  
+CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization.  **CORTX is 100% Open Source.** Most of the project is licensed under the [Apache 2.0 License](../main/LICENSE) and the rest is under AGPLv3; check the specific License file for each submodule to determine which is which.
 
-To ensure maximum utililization and code quality and to avoid vendor lock-in, Seagate is open-sourcing CORTX: a distributed object storage system designed for efficient, mass-capacity, HDD-utilization.
+### CORTX Project Scope & Core Design Goals
 
-## The CORTX Community
+| Project Scope      | Core Design Goals                                                                                                                                                                |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Mass capacity | Object storage uniquely optimized for mass capacity storage devices       .                                                                                                       |
+| Processor agnostic | Works with any processor.                                                                                                                                                        |
+| Flexibility        | Highly flexible, works with HDD, SSD, and NVM.                                                                                                                                   |
+| Scalability        | Massively Scalable. Scales up to a billion billion billion billion billion exabytes (2^206) and 1.3 billion billion billion billion (2^120) objects with unlimited object sizes. |
+| Responsiveness     | Rapidly Responsive. Quickly retrieves data regardless of the scale using a novel Key-Value System that ensures low search latency across massive data sets.                      |
+| Resilience         | Highly Resilient. Ensures a high tolerance for hardware failure and faster rebuild and recovery times using Network Erasure Coding, while remaining fully RAID-compatible.       |
+| Transparency       | Provides specialized telemetry data and unmatched insight into system performance.                                                                                               |
 
-We are so excited for you to be visiting us and reading this file and really hope you consider sticking around and being part of our community.  We take community very seriously and assure you that we are committed to all of the social goals of respectful interactions and inclusivity as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).  Check it out and, if it sounds like your kind of place, we bid you a warm welcome!
+You can read more about the technical goals and distinguishing features of CORTX [here.](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-in-prose.md)
 
-## How to Contribute
+## CORTX Community Values 
 
-Please refer to our [Quick Start Guide](QUICK_START.md) for detailed technical information about how to build and test the code as well as for suggested contributions and contribution guidelines.  Please refer to our [Style Guide](https://github.com/Seagate/cortx/blob/master/doc/CodeStyle.md) for a description of our code style guidelines.  Please refer to our [Suggested Contributions List](doc/SuggestedContributions.md) to find ideas about what contributions are currently being sought.
+-   **Inclusive** - Our ambitions are global. The CORTX community is, too. The perspectives and skills necessary to achieve our goals are wide and varied; we believe in creating a community and a project that is inclusive, accessible, and welcoming to everyone.
+-   **Open** - We are dedicated to remaining open and transparent. We believe in keeping CORTX Community code freely and fully available to be viewed, modified, and used without vendor lock-in or other in-built limitations.
+-   **Inspired** - CORTX is all about the challenge. Our goals are not small: we want to build the world’s best scalable mass-capacity object storage system, one that can work with any hardware and interoperate with all workloads. CORTX is built on hard work, ingenuity, and an engineering mindset. We embrace hard problems and find inspired solutions.
+-   **Evolving** – CORTX is continuously growing and adapting. As a community project, there is no limit to its development. We continuously make room for improvement and welcome the opportunities offered by the ever-evolving nature of community projects.
 
-### Discussion of the CI/CD
+We are excited about your interest in CORTX and hope you will join us. We take our community very seriously, and we are committed to creating a community built on respectful interactions and inclusivity, as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).
 
-Please read about our CI/CD and other automation [here](doc/CI_CD.md).
+## How to Get Started
 
-## License
+- Download a VM image and follow [the instructions](doc/CORTX_on_Open_Virtual_Appliance.rst) to test the pre-built full CORTX system. 
+- Jump into our [Contribution Guide](CONTRIBUTING.md) to build and test CORTX and to learn about how to make contributions.
+   - Refer to our [Suggested Contributions](../main/doc/SuggestedContributions.md) page for some inspiration about how to contribute to the CORTX project.
+- Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.rst) for more details.
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
-## Resources
-* [Seagate Innersource CORTX Forum](https://teams.microsoft.com/l/team/19%3a036ef7d2196f4c3dbe2e73ce26672240%40thread.tacv2/conversations?groupId=8a78203a-8c7a-42ad-b964-6fbbdc900bfb&tenantId=d466216a-c643-434a-9c2e-057448c17cbe) is the place to ask questions and find friendly and welcoming community resources. More details about support can be found in our [SUPPORT file](doc/SUPPORT.md)
-* Check the [Issues section](https://github.com/Seagate/cortx/issues) on github if you find a bug or have a feature request. Please check existing Issues before opening a new one.
-* If you're interested in contributing to Seagate's CORTX community, please check [Contributions Guide](doc/SuggestedContributions.md) if you want some ideas about how to contribute. 
+Resources
+---------
 
-## THANK YOU
-We know that your time is limited and split between many worthwhile pursuits and we appreciate you stopping by to check out our community.  Seagate is fully dedicated to our mission to produce open source technologies to help the world save more data and thereby solve more challenging data problems.  We're so glad that you're considering helping us with this mission.
+<!-- NOTE!!! This is copied from SUPPORT.md.  If you update it here, update it there as well.) -->
+-   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://cortx.link/slack_invite) to interact with community members and gets your questions answered.
+-   Join us in [Discussions](https://github.com/Seagate/cortx/discussions) to ask, answer, and discuss topics with your fellow CORTX contributors.
+-   Check out our [Youtube Channel](https://cortx.link/videos).
+-   Ask and answer questions in our [Frequently Asked Questions](FAQs.md) page.
+-   If you'd like to contact us directly, drop us a mail at cortx-questions@seagate.com.
+-   We have _CORTX stickers_ available to anyone who would like one. You can email us at cortx-questions@seagate.com to request one.
+-   Subscribe to the our [developer newsletter](https://cortx.link/cortx-dev-newsletter) to and stay up to date on the latest CORTX developments, news, and events.
+-   Attend our [Monthly Meet an Architect](doc/meetings/README.rst) meetings to learn about CORTX architecture and participate in a Question and Answer Session.
+-   Learn how to integrate CORTX with other technologies [here](doc/integrations/README.rst).
+-   We like to highlight the work and contributions of our community members—if you have solved an interesting challenge, or you are interested in sharing your experience or use cases, we want to talk to you! Please email our Community Manager rachel.novak@seagate.com or [schedule a meeting with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2) to share.
+
+Thank You!
+----------
+
+We thank you for stopping by to check out the CORTX Community. We are fully dedicated to our mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world.

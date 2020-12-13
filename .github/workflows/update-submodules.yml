@@ -1,0 +1,19 @@
+name: Update Submodules
+on:
+  repository_dispatch:
+    types: [submodule-update-event]
+jobs:
+  dispatchEvent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          submodules: 'recursive'
+      - run: |
+          git config --global user.name "CORTX-OPS"
+          git config --global user.email "cortx.application@seagate.com" 
+      - run: git submodule update --remote --checkout
+      - run: git add --all
+      - run: git commit -m "Automated submodule remote update"
+      - run: git push origin main 

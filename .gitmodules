@@ -1,0 +1,30 @@
+[submodule "cortx-s3server"]
+	path = cortx-s3server
+	url = https://github.com/Seagate/cortx-s3server.git
+[submodule "cortx-hare"]
+	path = cortx-hare
+	url = https://github.com/Seagate/cortx-hare.git
+[submodule "cortx-prvsnr"]
+	path = cortx-prvsnr
+	url = https://github.com/Seagate/cortx-prvsnr.git
+[submodule "cortx-posix"]
+	path = cortx-posix
+	url = https://github.com/Seagate/cortx-posix.git
+[submodule "cortx-ha"]
+	path = cortx-ha
+	url = https://github.com/Seagate/cortx-ha.git
+[submodule "cortx-monitor"]
+	path = cortx-monitor
+	url = https://github.com/Seagate/cortx-monitor.git
+[submodule "cortx-manager"]
+	path = cortx-manager
+	url = https://github.com/Seagate/cortx-manager.git
+[submodule "cortx-management-portal"]
+	path = cortx-management-portal
+	url = https://github.com/Seagate/cortx-management-portal.git
+[submodule "cortx-motr"]
+	path = cortx-motr
+	url = https://github.com/Seagate/cortx-motr.git
+[submodule "cortx-utils"]
+	path = cortx-utils
+	url = https://github.com/Seagate/cortx-utils.git

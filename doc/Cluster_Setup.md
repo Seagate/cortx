@@ -1,296 +1,334 @@
-# CORTXv1.0 VIRTUAL CLUSTERS SETUP
-This is a step by step guide to get CORTX virtual clustur setup ready.
+# CORTX v1.0 Virtual Clusters Setup
 
-## Create single node cluster by using last successful build
+This is a step by step guide to get CORTX virtual cluster setup ready.
+Also see https://github.com/Seagate/cortx-hare/blob/main/README.md
 
-### 1. Create one VM by using cloud
-To create cloud VM visit [here](https://ssc-cloud.colo.seagate.com/ui/service/login).
+## 1. Single-node setup
 
-### 2. Install the lustre RPM’s from last successfull build
-  * `$ yum install http://ci-storage.mero.colo.seagate.com/releases/eos/integration/centos7.7.1908/last_successful/kmod-lustre-client-2.12.3-1.el7.x86_64.rpm`
-  * `$ yum install http://ci-storage.mero.colo.seagate.com/releases/eos/integration/centos-7.7.1908/last_successful/lustre-client-2.12.3-1.el7.x86_64.rpm`
-  
-### 3. Install the eos-core rpm
-  * `$ yum install http://ci-storage.mero.colo.seagate.com/releases/eos/integration/centos-7.7.1908/last_successful/eos-core-1.0.0-264_gited8d450eb_3.10.0_1062.el7`
-  
-### 4. Install the eos-hare rpm
-Currently pacemaker rpm is not available in VM, until then refer Known issues section and install it.
-  * `$ yum install http://ci-storage.mero.colo.seagate.com/releases/eos/integration/centos-7.7.1908/last_successful/eos-hare-1.0.0-452_gitd0ba14d.el7.x86_64.rpm`
-  
-### 5. Verification of RPM’s
-  * `$ rpm -qa | grep eos`
+### 1.1. Create a VM
 
-    ```
-    eos-hare-1.0.0-464_git76d5d31.el7.x86_64
-    eos-core-1.0.0-275_git15bae3359_3.10.0_1062.el7.x86_64
-    ```
-  * `$ rpm -qa | grep lustre`
-  
-    ```
-    kmod-lustre-client-2.12.3-1.el7.x86_64
-    lustre-client-2.12.3-1.el7.x86_64
-    ```
+Create a virtual machine.
 
-### 6. Configure Lnet
-Create lnet.conf file, if not exist and restart the service
-  * `$  cat /etc/modprobe.d/lnet.conf`
-  
-    ```
-    options lnet networks=tcp(eth1) config_on_load=1
-    ```
+### 1.2. Install the RPMs
 
-  * `$ systemctl restart lnet`
-  * `$ lctl list_nids`, Make sure it display lnet nid
-  
-    ```
-    192.168.1.159@tcp
-    ```
-    
-### 7. Configure Hare CDF (cluster definition file)
-  * Copy single node conf yaml file.
-    * `$ cp /opt/seagate/eos/hare/share/cfgen/examples/singlenode.yaml .`
-  * Change the hostname and io_disks in singlenode.yaml, below is the diff of against original file.
-    * `$ diff /opt/seagate/eos/hare/share/cfgen/examples/singlenode.yaml singlenode.yam`
-    
-      ```
-      5c5
-      - hostname: localhost 
-      ---
-      - hostname: ssc-vm-0171.colo.seagate.com
-      11c11
-      - io_disks: { path_glob: "/dev/loop[0-9]*" }
-      ---
-      - io_disks: { path_glob: "/dev/sd[b-i]" }
-      ```
-  
-### 8. Start the single node cluster and check the cluster status
-  * `$ # hctl bootstrap --mkfs singlenode.yaml`
-  * `$ hctl status`
-  
-    ```
-    Profile: 0x7000000000000001:0x26
-    Data Pools:
-    0x6f00000000000001:0x27
-    Services:
-    ssc-vm-0171.colo.seagate.com (RC)
-    [started ] hax 0x7200000000000001:0x6 192.168.1.160@tcp:12345:1:1
-    [started ] confd 0x7200000000000001:0x9 192.168.1.160@tcp:12345:2:1
-    [started ] ioservice 0x7200000000000001:0xc 192.168.1.160@tcp:12345:2:2 
-    [unknown ] m0_client 0x7200000000000001:0x20 192.168.1.160@tcp:12345:4:1 
-    [unknown ] m0_client 0x7200000000000001:0x23 192.168.1.160@tcp:12345:4:2 
-    ```
+* Add 'last_successful' yum repository.
+  ```bash
+  REPO=cortx-storage.colo.seagate.com/releases/cortx
+  REPO+=/github/release/rhel-7.7.1908/last_successful/
 
-### 9. Write data in to the mero
-  * `$ c0cp -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 -s 1m -c 128 /home/src/single/random.img -L 9`
+  sudo yum-config-manager --add-repo="http://$REPO"
+  sudo tee -a /etc/yum.repos.d/${REPO//\//_}.repo <<< 'gpgcheck=0'
+  ```
 
-### 10. Read data from the mero
-  * `$ c0cat -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 -s 1m -c 128 /home/src/single/random_from_mero.img -L 9`
-  
-### 11. Verify the data by using md5
-  * $ md5sum random.img random_from_mero.img`
-  
-    ```
-    cc314a3dc4d9fbbfd8c8a1859818b51c random.img
-    cc314a3dc4d9fbbfd8c8a1859818b51c random_from_mero.img
-    ```
+* Install the RPMs.
 
-## Create Dual node cluster by using last successful build
+  ```bash
+  sudo yum install -y cortx-hare
+  ```
+### 1.3. Configure LNet
 
-### 1. Create two VM’s by using cloud
-  * To create cloud VM visit [here](https://ssc-cloud.colo.seagate.com/ui/service/login).
-  
-### 2. Execute in both nodes. (Node-1 & Node-2)
-  * Install the luster RPM’s from last successfull build
-    * `$ yum install http://ci-storage.mero.colo.seagate.com/releases/eos/integration/centos- 7.7.1908/last_successful/kmod-lustre-client-2.12.3-1.el7.x86_64.rpm`
-    * `$ yum install http://ci-storage.mero.colo.seagate.com/releases/eos/integration/centos-7.7.1908/last_successful/lustre-client-2.12.3-1.el7.x86_64.rpm`
+Create `lnet.conf` file, if it does not exist, and restart `lnet` service.
+* `cat /etc/modprobe.d/lnet.conf`
+  ```
+  options lnet networks=tcp(eth1) config_on_load=1
+  ```
+* `sudo systemctl restart lnet`
+* `sudo lctl list_nids` should output IP address(es):
+  ```
+  192.168.1.160@tcp
+  ```
 
-  * Install the eos-core rpm
-    * `$ yum install http://ci-storage.mero.colo.seagate.com/releases/eos/integration/centos-7.7.1908/last_successful/eos-core-1.0.0-264_gited8d450eb_3.10.0_1062.el7`
-    
-  * Install the eos-hare rpm
-    * `$ yum install http://ci-storage.mero.colo.seagate.com/releases/eos/integration/centos-7.7.1908/last_successful/eos-hare-1.0.0-452_gitd0ba14d.el7.x86_64.rpm`
+### 1.4. Prepare the CDF
 
-  * Verification of RPM’s
-    * `$ rpm -qa | grep eos`
-    
-      ```
-      eos-hare-1.0.0-464_git76d5d31.el7.x86_64
-      eos-core-1.0.0-275_git15bae3359_3.10.0_1062.el7.x86_64
-      ```
-    
-    * `$ rpm -qa | grep lustre`
-    
-      ```
-      kmod-lustre-client-2.12.3-1.el7.x86_64
-      lustre-client-2.12.3-1.el7.x86_64
-      ```
-  * Configure Lnet
-  Create lnet.conf file, if not exist and restart the service.
-    * `$ cat /etc/modprobe.d/lnet.con`
-    
-      ```
-      options lnet networks=tcp(eth1) config_on_load=1
-      ```
-      
-    * `$ systemctl restart lnet`
-    * `$ lctl list_nids`
-    
-      ```
-      192.168.1.159@tcp
-      ```
-      
-  * Set passwordless between two nodes for root user
-    * `$ ssh-keygen`, Copy from Node-1 /root/.ssh/id_rsa.pub keys in to the Node-2 /root/.ssh/authorized_keys
-    
-    * From Node-1  
-      `$ ssh root@<Node-2 hostname>`, (Login will success without password.
-    
-    * From Node-2  
-      `$ ssh root@<Node-1 hostname>`, Login will success without password.
-      
-### 3. Execute in NODE-1
-  * Configure Hare CDF
-    * Copy ees-cluster.yaml file and change the hostname, io_disks, data_iface and data_iface_type.
-    
-      * `$ cp /opt/seagate/eos/hare/share/cfgen/examples/ees-cluster.yaml .`
-      * `$ diff /opt/seagate/eos/hare/share/cfgen/examples/ees-cluster.yaml ees-cluster.yaml`
-      
-        ```
-        5,7c5,7
-        < - hostname: pod-c1
-        < data_iface: eth1_c1 # name of data network interface
-        < data_iface_type: o2ib # LNet type of network interface (optional);
-        ---
-        - hostname: ssc-vm-c-441.colo.seagate.com 
-        > data_iface: eth1 # name of data network interface
-        > data_iface_type: tcp # LNet type of network interface (optional);
-        11c11
-        < - io_disks: { path_glob: "/dev/sd[d-g]" }
-        ---
-        - io_disks: { path_glob: "/dev/sd[b-g]" }
-        15,17c15,17
-        < - hostname: pod-c2
-        < data_iface: eth1_c2
-        < data_iface_type: o2ib
-        ---
-        - hostname: ssc-vm-c-442.colo.seagate.com
-        data_iface: eth1
-        data_iface_type: tcp
-        20c20
-        < - io_disks: { path_glob: "/dev/sd[h-k]" }
-        ---
-        - io_disks: { path_glob: "/dev/sd[b-g]" }
-        ```
-  * Start the dual-node cluster
-    * `$ hctl bootstrap --mkfs ees-cluster.yaml`
-    * `$ hctl status`
-    
-      ```
-      Profile: 0x7000000000000001:0x49
-      Data Pools:
+* Make a copy of the single-node CDF (Cluster Description File),
+  provided by Hare:
+  ```bash
+  cp /opt/seagate/cortx/hare/share/cfgen/examples/singlenode.yaml .
+  ```
+
+* Edit the copy:
+
+  - ensure that the disks referred to by `io_disks` values exist. To see available devices use command 'lsblk' or 'lsscsi' or 'fdisk -l'.
+    (add new disks to VM, if necessary, or create loop devices);
+
+  - make sure that `data_iface` value refers to existing network
+    interface (it should be present in the output of `ip a` command
+    and its IP address should be seen in `sudo lctl list_nids` output).
+
+Sample diff:
+```diff
+--- cfgen/examples/singlenode.yaml	2020-05-19 11:41:18.077398588 +0000
++++ /tmp/singlenode.yaml	2020-05-19 21:51:02.704874383 +0000
+@@ -10,16 +10,14 @@
+       - runs_confd: true
+         io_disks: []
+       - io_disks:
+-          - /dev/loop0
+-          - /dev/loop1
+-          - /dev/loop2
+-          - /dev/loop3
+-          - /dev/loop4
+-          - /dev/loop5
+-          - /dev/loop6
+-          - /dev/loop7
+-          - /dev/loop8
+-          - /dev/loop9
++          - /dev/sdb
++          - /dev/sdc
++          - /dev/sdd
++          - /dev/sde
++          - /dev/sdf
++          - /dev/sdg
++          - /dev/sdh
++          - /dev/sdi
+     m0_clients:
+       s3: 0         # number of S3 servers to start
+       other: 2      # max quantity of other Motr clients this host may have
+     pools:
+    - name: the pool
+      #type: sns  # optional; supported values: "sns" (default), "dix", "md"
+      data_units: 4      # N=4 Update N and K here
+      parity_units: 2    # K=2, Also make sure N+2K <= P number of devices.
+      allowed_failures: { site: 0, rack: 0, encl: 0, ctrl: 0, disk: 2 } 
+```
+
+### 1.5. Bootstrap the cluster
+
+* `sudo hctl bootstrap --mkfs singlenode.yaml`
+* `hctl status`
+  ```
+  Profile: 0x7000000000000001:0x26
+  Data Pools:
+      0x6f00000000000001:0x27
+  Services:
+      ssc-vm-0171.colo.seagate.com (RC)
+      [started ]  hax        0x7200000000000001:0x6   192.168.1.160@tcp:12345:1:1
+      [started ]  confd      0x7200000000000001:0x9   192.168.1.160@tcp:12345:2:1
+      [started ]  ioservice  0x7200000000000001:0xc   192.168.1.160@tcp:12345:2:2
+      [unknown ]  m0_client  0x7200000000000001:0x20  192.168.1.160@tcp:12345:4:1
+      [unknown ]  m0_client  0x7200000000000001:0x23  192.168.1.160@tcp:12345:4:2
+  ```
+
+### 1.6. Perform the I/O
+
+m0cp, m0cat and other motr utils argument refer `hctl status`.
+For e.g,
+```
+ -l  local endpoint is,
+     [unknown ]  m0_client  0x7200000000000001:0x20  *192.168.1.160@tcp:12345:4:1*
+ -H  HA endpoint is,
+     [started ]  hax        0x7200000000000001:0x6   *192.168.1.160@tcp:12345:1:1*
+ -p  profile is,
+     Profile: *0x7000000000000001:0x26*
+ -P  process is,
+     [unknown ]  m0_client  *0x7200000000000001:0x20*  192.168.1.160@tcp:12345:4:1
+ ```
+
+* Write some data to Motr.
+  ```bash
+  m0cp -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 \
+       -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 \
+       -s 1m -c 128 /home/src/single/random.img -L 9
+  ```
+
+* Read the data from Motr.
+  ```bash
+  m0cat -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 \
+        -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 \
+        -s 1m -c 128 /home/src/single/random_from_motr.img -L 9
+  ```
+
+* Ensure that I/O succeeded.
+  ```bash
+  cmp random.img random_from_motr.img
+  ```
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+## 2. Dual-node setup
+
+### 2.1. Create two VMs
+
+Create two virtual machines.
+
+### 2.2. Setup passwordless SSH
+
+Enable passwordless SSH access between two nodes for `root` user.
+(Substitute `node-1` and `node-2` with the host names of your VMs.)
+
+* On 'node-1':
+  ```bash
+  sudo su -  # Get root. Skip this step if you are 'root' already.
+  ssh-keygen
+  ssh-copy-id node-2
+  ```
+* On 'node-2':
+  ```bash
+  sudo su -  # Get root. Skip this step if you are 'root' already.
+  ssh-keygen
+  ssh-copy-id node-1
+  ```
+* Verify that passwordless SSH works by executing the following command
+  _from 'node-1'_:
+  ```bash
+  sudo su -
+  ssh node-2 ssh node-1 echo it works  # use actual hostnames
+  ```
+
+### 2.3. Install the RPMs
+
+Execute [step 1.2](#12-install-the-rpms) **on both nodes**.
+
+### 2.4. Configure LNet
+
+Execute [step 1.3](#13-configure-lnet) **on both nodes**.
+
+### 2.5. Prepare the CDF
+
+Edit a copy of `/opt/seagate/eos/hare/share/cfgen/examples/ees-cluster.yaml`.
+See [section 1.4](#14-prepare-the-cdf) for details.
+
+Sample diff:
+```diff
+--- /opt/seagate/cortx/hare/share/cfgen/examples/ees-cluster.yaml	2020-05-19 11:41:18.077166724 +0000
++++ ees-cluster.yaml	2020-05-19 21:32:32.258714734 +0000
+@@ -2,10 +2,8 @@
+ # See `cfgen --help-schema` for the format description.
+
+ nodes:
+-  - hostname: pod-c1        # [user@]hostname
+-    data_iface: eth1_c1     # name of data network interface
+-    data_iface_type: o2ib   # LNet type of network interface (optional);
+-                            # supported values: "tcp" (default), "o2ib"
++  - hostname: node-1        # [user@]hostname
++    data_iface: eth1     # name of data network interface
+     m0_servers:
+       - runs_confd: true
+         io_disks: []
+@@ -17,9 +15,8 @@
+     m0_clients:
+         s3: 0           # number of S3 servers to start
+         other: 2        # max quantity of other Motr clients this node may have
+-  - hostname: pod-c2
+-    data_iface: eth1_c2
+-    data_iface_type: o2ib
++  - hostname: node-2
++    data_iface: eth1
+     m0_servers:
+       - runs_confd: true
+         io_disks: []
+           pools:
+    - name: the pool
+      data_units: 4      # N=4 Update N and K here
+      parity_units: 2    # K=2, Also make sure N+2K <= P number of devices.
+```
+
+### 2.6. Bootstrap the cluster
+
+* `sudo hctl bootstrap --mkfs ees-cluster.yaml`
+* `hctl status`
+  ```
+  Profile: 0x7000000000000001:0x49
+  Data Pools:
       0x6f00000000000001:0x4a
-      Services:
-      ssc-vm-c-442.colo.seagate.com
-      [started ] hax 0x7200000000000001:0x29 192.168.1.156@tcp:12345:1:1
-      [started ] confd 0x7200000000000001:0x2c 192.168.1.156@tcp:12345:2:1 
-      [offline ] ioservice 0x7200000000000001:0x2f 192.168.1.156@tcp:12345:2:2
-      [unknown ] m0_client 0x7200000000000001:0x43 192.168.1.156@tcp:12345:4:1 
-      [unknown ] m0_client 0x7200000000000001:0x46 192.168.1.156@tcp:12345:4:2
-      
-      ssc-vm-c-441.colo.seagate.com (RC)
-      [started ] hax 0x7200000000000001:0x6 192.168.1.159@tcp:12345:1:1
-      [started ] confd 0x7200000000000001:0x9 192.168.1.159@tcp:12345:2:1
-      [started ] ioservice 0x7200000000000001:0xc 192.168.1.159@tcp:12345:2:2
-      [unknown ] m0_client 0x7200000000000001:0x20 192.168.1.159@tcp:12345:4:1
-      [unknown ] m0_client 0x7200000000000001:0x23 192.168.1.159@tcp:12345:4:2
-      ```
-      
-  * Write data in to the mero
-    * `$ c0cp -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x23 -o 21:40 -s 1m -c 128 /home/src/single/random.img -L 9`
-    
-  * Read data from mero
-    * `$ c0cat -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x23 -o 21:40 -s 1m -c 128 /home/src/single/random_from_mero.img -L 9`
-    
-  * Verify the data by using md5
-    * `$ md5sum random.img random_from_mero.img`
-    
-      ```
-      cc314a3dc4d9fbbfd8c8a1859818b51c random.img
-      cc314a3dc4d9fbbfd8c8a1859818b51c random_from_mero.img
-      ```
-  
-## Create single node cluster by using source code
+  Services:
+      node-1
+      [started ]  hax       0x7200000000000001:0x29  192.168.1.156@tcp:12345:1:1
+      [started ]  confd     0x7200000000000001:0x2c  192.168.1.156@tcp:12345:2:1
+      [offline ]  ioservice 0x7200000000000001:0x2f  192.168.1.156@tcp:12345:2:2
+      [unknown ]  m0_client 0x7200000000000001:0x43  192.168.1.156@tcp:12345:4:1
+      [unknown ]  m0_client 0x7200000000000001:0x46  192.168.1.156@tcp:12345:4:2
 
-### 1. Create two VM’s by using cloud
-  * To create cloud VM visit [here](https://ssc-cloud.colo.seagate.com/ui/service/login).
-  
-### 2. Generate ssh-keys
-  * To generate ssh keys, follow the steps given [here](MeroQuickStart.md#Accessing-the-code-right-way).
-  
-### 3. Clone the mero code, compile and install
-  * To Clone the mero code follow the steps given [here](MeroQuickStart.md#Cloning-CORTX).
-  * To compile mero code `$ sudo ./scripts/m0 make`. (It is assumed you are in main source directory of mero code )
-  * To install mero services `$ sudo ./scripts/install-mero-service`.
-  * `$ cd ..`
-  
-### 4. Clone the hare code, compile and instal
-  * `$ git clone --recursive ssh://git@gitlab.mero.colo.seagate.com:6022/mero/hare.git`
-  * `$ cd hare`
-  * `$ sudo make`
-  * `$ sudo make devinstall`
-  * `$ cd ..`
-  
-### 5. Configure Hare CDF
-  * `$ ./hare/cfgen/examples/singlenode.yaml .`
-  * Find raw disks information by using `$ lsblk` command.
-  * `$ diff ./hare/cfgen/examples/singlenode.yaml singlenode.yaml`
-  
-    ```
-    5c5
-    < - hostname: localhost # [user@]hostname
-    ---
-    > - hostname: ssc-vm-0173.colo.seagate.com # [user@]hostname
-    11c11
-    < - io_disks: { path_glob: "/dev/loop[0-9]*" }
-    ---
-    > - io_disks: { path_glob: "/dev/dev[b-i]" }
-    ```
-   
-### 6. Start the single node cluster
-  * `$ sudo hctl bootstrap --mkfs singlenode.yaml`
-  * `$ sudo hctl status`
-  
-    ```
-    Profile: 0x7000000000000001:0x26
-    Data Pools:
-    0x6f00000000000001:0x27
-    Services:
-    
-    ssc-vm-0171.colo.seagate.com (RC) 
-    [started ] hax 0x7200000000000001:0x6 192.168.1.160@tcp:12345:1:1 
-    [started ] confd 0x7200000000000001:0x9 192.168.1.160@tcp:12345:2:1
-    [started ] ioservice 0x7200000000000001:0xc 192.168.1.160@tcp:12345:2:2
-    [unknown ] m0_client 0x7200000000000001:0x20 192.168.1.160@tcp:12345:4:1
-    [unknown ] m0_client 0x7200000000000001:0x23 192.168.1.160@tcp:12345:4:2 
-    ```
-    
-### 7. Write data in to the mero
-  * `$ sudo ./utils/c0cp -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 -s 1m -c 128 /home/src/single/random.img -L 9`
-  
-### 8. Read data from the mero
-  * `$ sudo ./utils/c0cat -l 192.168.1.160@tcp:12345:4:1 -H 192.168.1.160@tcp:12345:1:1 -p 0x7000000000000001:0x26 -P 0x7200000000000001:0x23 -o 12:10 -s 1m -c 128 /home/src/single/random_from_mero.img -L 9`
-  
-### 9. Verify the data by using md5
-  * `$ md5sum random.img random_from_mero.img`
-  
-    ```
-    cc314a3dc4d9fbbfd8c8a1859818b51c random.img
-    cc314a3dc4d9fbbfd8c8a1859818b51c random_from_mero.img
-    ```
-    
-## KNOWN ISSUES
+      node-2 (RC)
+      [started ]  hax        0x7200000000000001:0x6   192.168.1.159@tcp:12345:1:1
+      [started ]  confd      0x7200000000000001:0x9   192.168.1.159@tcp:12345:2:1
+      [started ]  ioservice  0x7200000000000001:0xc   192.168.1.159@tcp:12345:2:2
+      [unknown ]  m0_client  0x7200000000000001:0x20  192.168.1.159@tcp:12345:4:1
+      [unknown ]  m0_client  0x7200000000000001:0x23  192.168.1.159@tcp:12345:4:2
+  ```
 
-### 1. Pacemaker rpms is not available
-  * Pacemaker rpms is needed for Hare.
-  * Copy base repo (lyve_platform.repo) to /etc/yum.repos.d/, password is seagate.
-  * `$ scp smc5-m11.colo.seagate.com:/etc/yum.repos.d/lyve_platform.repo /etc/yum.repos.d/`
+### 2.7. Perform the I/O
+
+* Write some data to Motr.
+  ```bash
+  m0cp -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
+       -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x20 -o 21:40 \
+       -s 1m -c 128 /home/src/single/random.img -L 9
+  ```
+
+* Read the data from Motr.
+  ```bash
+  m0cat -l 192.168.1.159@tcp:12345:4:1 -H 192.168.1.159@tcp:12345:1:1 \
+        -p 0x7000000000000001:0x49 -P 0x7200000000000001:0x20 -o 21:40 \
+        -s 1m -c 128 /home/src/single/random_from_motr.img -L 9
+  ```
+
+* Ensure that I/O succeeded.
+  ```bash
+  cmp random.img random_from_motr.img
+  ```
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+## 3. Installation from sources (single-node setup)
+
+### 3.1. Create a VM
+
+Create a virtual machine.
+
+### 3.2. Generate SSH keys
+
+Follow
+[these steps](CortxMotrQuickStart.md#Accessing-the-code-right-way).
+
+### 3.3. Get Motr sources
+
+Follow [these steps](CortxMotrQuickStart.md#Cloning-CORTX).
+
+### 3.4. Compile and install Motr
+
+```bash
+cd cortx-motr
+scripts/m0 make
+sudo scripts/install-motr-service
+cd -
+```
+
+### 3.5. Get Hare sources
+
+```bash
+git clone --recursive git@github.com:Seagate/cortx-hare.git -b main
+```
+
+### 3.6. Compile and install Hare
+
+```bash
+cd cortx-hare
+make
+sudo make devinstall
+cd -
+```
+
+### 3.7. Prepare the CDF
+
+See [step 1.4](#14-prepare-the-cdf).
+
+### 3.8. Bootstrap the cluster
+
+See [step 1.5](#15-bootstrap-the-cluster).
+
+### 3.9. Perform the I/O
+
+See [step 1.6](#16-perform-the-io).
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+## 4. KNOWN ISSUES
+
+### 4.1. Pacemaker RPMs are not available
+
+Pacemaker RPMs are needed for Hare.
+
+The workaround:
+```bash
+curl 'https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/cli/src/cortx-prereqs.sh?token=APAGAPH5GQBM4LM54UOZJVK7B23XM' -o cortx-prereqs.sh; chmod a+x cortx-prereqs.sh
+
+sudo ./cortx-prereqs.sh --disable-sub-mgr
+```
