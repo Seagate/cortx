@@ -9,6 +9,8 @@ Click on any of the images below to know how to integrate CORTX with other techn
 
 |Splunk|
 
+|ImagesApi|
+
 **TODO:** add more integrations!
 
 .. |Splunk| image:: /doc/images/SplunkLogo.png
