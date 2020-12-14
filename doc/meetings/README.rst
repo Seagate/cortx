@@ -15,6 +15,6 @@ The schedule is as follows:
 
 #. November 5, 2020: Nikita Danilov presented about the core motr architecture.  `PDF <PDFs/cortx_motr_architecture_overview_nov_2020_nikita_danilov.pdf>`_  |   `Video <https://cortx.link/nov-architect-video>`_.
 
-#. December 3, 2020: Basavaraj Kirunge will present about the architecture of the S3 layer and how it interfaces with the motr layer.
+#. December 3, 2020: Basavaraj Kirunge will present about the architecture of the S3 layer and how it interfaces with the motr layer.  `PDF <PDFs/cortx_s3_architecture_overview_dec_2020_basav_kirunge.pdf>`_ | Video Pending
 
-#. January 7, 2021: TBA
+#. January 7, 2021: 
