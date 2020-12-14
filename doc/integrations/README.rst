@@ -17,7 +17,7 @@ Click on any of the images below to know how to integrate CORTX with other techn
    :width: 1 em
    :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/splunk.md
 
-.. |Splunk| image:: /doc/images/tensorflow.png
+.. |TensorFlow| image:: /doc/images/tensorflow.png
    :width: 1 em
    :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/tensorflow
 
