@@ -9,6 +9,8 @@ Click on any of the images below to know how to integrate CORTX with other techn
 
 |Splunk|
 
+|Prometheus|
+
 |Siddhi-Celery|
 
 |FHIR|
@@ -20,6 +22,10 @@ Click on any of the images below to know how to integrate CORTX with other techn
 .. |Splunk| image:: /doc/images/SplunkLogo.png
    :width: 1 em
    :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/splunk.md
+
+.. |Prometheus| image:: /doc/images/PrometheusLogo.png
+   :width: 1 em
+   :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/prometheus.md
 
 .. |Siddhi-Celery| image:: /doc/images/siddhi-overview.png
    :width: 1 em
