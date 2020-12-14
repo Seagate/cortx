@@ -17,4 +17,4 @@ The schedule is as follows:
 
 #. December 3, 2020: Basavaraj Kirunge will present about the architecture of the S3 layer and how it interfaces with the motr layer.
 
-#. January 7, 2021: TBA
+#. January 7, 2021: Serkay Olmez discusses Data Durability and Availability Modeling in Erasure Coded Systems
