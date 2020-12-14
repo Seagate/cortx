@@ -11,6 +11,13 @@ Create a virtual machine.
 
 ### 1.2. Install the RPMs
 
+* Install Consul.
+  ```sh
+  sudo yum -y install yum-utils
+  sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+  sudo yum -y install consul-1.7.8
+  ```
+
 * Add 'last_successful' yum repository.
   ```bash
   REPO=cortx-storage.colo.seagate.com/releases/cortx
@@ -332,3 +339,8 @@ curl 'https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/cli/src/cortx-
 
 sudo ./cortx-prereqs.sh --disable-sub-mgr
 ```
+
+
+Tested by
+=========
+2020.12.14 Single-node Setup is verified by Huang Hua <hua.huang@seagate.com> in CentOS7.7.1908
