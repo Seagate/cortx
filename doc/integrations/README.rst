@@ -8,10 +8,15 @@ such as those using the KV API or the File Data Manipulation Interface (FDMI) pl
 Click on any of the images below to know how to integrate CORTX with these other technologies:
 
 |Splunk|
+
 |Prometheus|
+
 |TensorFlow|
+
 |FHIR|
+
 |Siddhi-Celery|
+
 |ImagesApi|
 
 .. |Splunk| image:: /doc/images/SplunkLogo.png
