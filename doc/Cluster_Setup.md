@@ -180,6 +180,29 @@ Enable passwordless SSH access between two nodes for `root` user.
   sudo su -
   ssh node-2 ssh node-1 echo it works  # use actual hostnames
   ```
+  
+* Disable firewall on both nodes:
+  ```bash
+  sudo systemctl stop firewalld
+  sudo systemctl disable firewalld
+  ```
+* Disable SELinux:
+  ```
+  cat /etc/selinux/config 
+
+  # This file controls the state of SELinux on the system.
+  # SELINUX= can take one of these three values:
+  #     enforcing - SELinux security policy is enforced.
+  #     permissive - SELinux prints warnings instead of enforcing.
+  #     disabled - No SELinux policy is loaded.
+  SELINUX=disabled
+  # SELINUXTYPE= can take one of three values:
+  #     targeted - Targeted processes are protected,
+  #     minimum - Modification of targeted policy. Only selected processes are protected. 
+  #     mls - Multi Level Security protection.
+  SELINUXTYPE=targeted 
+  ```
+
 
 ### 2.3. Install the RPMs
 
@@ -191,47 +214,82 @@ Execute [step 1.3](#13-configure-lnet) **on both nodes**.
 
 ### 2.5. Prepare the CDF
 
-Edit a copy of `/opt/seagate/eos/hare/share/cfgen/examples/ees-cluster.yaml`.
+Edit a copy of `/opt/seagate/cortx/hare/share/cfgen/examples/ci-boot2.yaml`.
+```bash
+cp /opt/seagate/cortx/hare/share/cfgen/examples/ci-boot2.yaml motr-cluster.yaml
+```
+
 See [section 1.4](#14-prepare-the-cdf) for details.
 
 Sample diff:
 ```diff
---- /opt/seagate/cortx/hare/share/cfgen/examples/ees-cluster.yaml	2020-05-19 11:41:18.077166724 +0000
-+++ ees-cluster.yaml	2020-05-19 21:32:32.258714734 +0000
-@@ -2,10 +2,8 @@
- # See `cfgen --help-schema` for the format description.
-
+--- /opt/seagate/cortx/hare/share/cfgen/examples/ci-boot2.yaml	2020-09-22 13:14:20.000000000 -0400
++++ motr-cluster.yaml	2020-12-15 00:21:47.447643009 -0500
+@@ -1,41 +1,41 @@
  nodes:
--  - hostname: pod-c1        # [user@]hostname
--    data_iface: eth1_c1     # name of data network interface
--    data_iface_type: o2ib   # LNet type of network interface (optional);
--                            # supported values: "tcp" (default), "o2ib"
-+  - hostname: node-1        # [user@]hostname
-+    data_iface: eth1     # name of data network interface
+-  - hostname: ssu1
+-    data_iface: eth1
++  - hostname: node-1
++    data_iface: eth0
      m0_servers:
        - runs_confd: true
-         io_disks: []
-@@ -17,9 +15,8 @@
+         io_disks:
+           data: []
+       - io_disks:
+           data:
+-            - /dev/vdb
+-            - /dev/vdc
+-            - /dev/vdd
+-            - /dev/vde
+-            - /dev/vdf
+-            - /dev/vdg
++            - /dev/sdb
++            - /dev/sdc
++            - /dev/sdd
++            - /dev/sde
++            - /dev/sdf
++            - /dev/sdg
      m0_clients:
-         s3: 0           # number of S3 servers to start
-         other: 2        # max quantity of other Motr clients this node may have
--  - hostname: pod-c2
--    data_iface: eth1_c2
--    data_iface_type: o2ib
-+  - hostname: node-2
-+    data_iface: eth1
+         s3: 0
+         other: 2
+-  - hostname: node-2
+-    data_iface: eth1
++  - hostname: ssu2
++    data_iface: eth0
      m0_servers:
        - runs_confd: true
-         io_disks: []
-           pools:
-    - name: the pool
-      data_units: 4      # N=4 Update N and K here
-      parity_units: 2    # K=2, Also make sure N+2K <= P number of devices.
+         io_disks:
+           data: []
+       - io_disks:
+           data:
+-            - /dev/vdb
+-            - /dev/vdc
+-            - /dev/vdd
+-            - /dev/vde
+-            - /dev/vdf
+-            - /dev/vdg
++            - /dev/sdb
++            - /dev/sdc
++            - /dev/sdd
++            - /dev/sde
++            - /dev/sdf
++            - /dev/sdg
+     m0_clients:
+         s3: 0
+         other: 2
+ pools:
+   - name: the pool
+     #type: sns  # optional; supported values: "sns" (default), "dix", "md"
+-    data_units: 1
+-    parity_units: 0
++    data_units: 4
++    parity_units: 2
+     #allowed_failures: { site: 0, rack: 0, encl: 0, ctrl: 0, disk: 0 }
 ```
 
 ### 2.6. Bootstrap the cluster
 
-* `sudo hctl bootstrap --mkfs ees-cluster.yaml`
+* `sudo hctl bootstrap --mkfs motr-cluster.yaml`
 * `hctl status`
   ```
   Profile: 0x7000000000000001:0x49
@@ -342,5 +400,5 @@ sudo ./cortx-prereqs.sh --disable-sub-mgr
 
 
 Tested by
-=========
-2020.12.14 Single-node Setup is verified by Huang Hua <hua.huang@seagate.com> in CentOS7.7.1908
+---------
+2020.12.14 Single-node Setup and Dual-node Setup are verified by Huang Hua <hua.huang@seagate.com> in CentOS7.7.1908
