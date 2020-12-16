@@ -98,14 +98,19 @@ The procedure to install CORTX on OVA is mentioned below.
     salt '*' cmd.run "firewall-cmd --reload"
 
    
-#. Run **ip a l** and record the IP addresses of the following interfaces:
+#. **Before you begin:**
+
+   - Ensure that you have configured your ipv4 network.
+      - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
+   - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
+      - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
+      
+Run **ip a l** and record the IP addresses of the following interfaces:
 
    * ens192 - management 
    * ens256 - public data
    
    .. image:: images/networks.png
-   
-   * If you do not see IP addresses like in the above image, you might need to change your virtual networking configuration for which  `these instructions <troubleshoot_virtual_network.rst>`_ are hopefully useful.
    
    
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
