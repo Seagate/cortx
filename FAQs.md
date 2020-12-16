@@ -2,6 +2,7 @@
 
 **What is CORTX?** 
 
+CORTX is S3 compatible object storage developed by a community with a focused engineering effort provided by Seagate designed to allow the most economically efficient possible storage of massive data sets on mass capacity storage devices. A brief introductory video is available here and please visit our entire youtube channel for more in-depth information. At the heart of CORTX is the internal motr object system of which a detailed architecture description is available here. To ensure the best economics and the highest quality of code, CORTX is 100% open source with core components licensed as Apache and peripheral components licensed as LGPL.
 Refer to the documentation [here](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-in-prose.md) to know more about CORTX.
 
 **What does CORTX stand for?**
