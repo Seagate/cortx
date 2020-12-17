@@ -56,6 +56,13 @@ The procedure to install CORTX on OVA is mentioned below.
      
    Run the bootstrap script to ensure all the necessary services are operational.
    
+#. **Before you begin:**
+   
+   - Ensure that you have configured your ipv4 network.
+      - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
+   - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
+      - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
+   
 #. Run the below mentioned commands to check the status of different services that are part of CORTX.
 
    ::
@@ -96,14 +103,6 @@ The procedure to install CORTX on OVA is mentioned below.
     salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
     
     salt '*' cmd.run "firewall-cmd --reload"
-
-   
-#. **Before you begin:**
-
-   - Ensure that you have configured your ipv4 network.
-      - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
-   - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
-      - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
       
 Run **ip a l** and record the IP addresses of the following interfaces:
 
