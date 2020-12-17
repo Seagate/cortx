@@ -93,7 +93,7 @@ Fork the Repository: A Workflow
 
 A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project i.e., creating a “fork” is producing a personal copy of some external contributor repository which act as a sort of bridge between the original repository and your personal copy.
 
-.. image:: Images/fork.PNG
+.. image:: images/fork.PNG
 
 **How does Forking (Git Fork) work?**
 
@@ -109,7 +109,7 @@ A contributor can use forks to propose changes related to fixing a bug rather th
    
 CLI View
   
-.. image:: Images/cli.PNG
+.. image:: images/cli.PNG
 
 Forking a Repository
 --------------------
@@ -120,6 +120,15 @@ To fork a repository, perform the procedure mentioned below.
 2. Navigate to the relevant repository.
 
 3. In the top-right corner of the page, click **Fork**. A fork of the required repository is created successfully.
+
+Advantages of Forking
+----------------------
+
+- Improving some other contributor's code 
+
+- Reusing the code in a project 
+
+- Reduce license cost consumed per user or contributor 
 
 Cloning a Repository
 --------------------
