@@ -37,7 +37,14 @@ Trust me, you would love to read the following.
   
 - You would land a great job.
 
-  - With software developers and data scientists in high demand, it’s challenging for companies to gain exposure, garner interest and determine the best talent. Hackathons address both challenges. Companies gain awareness in the developer community and are perceived as “hacker-friendly”. 
+  - With software developers and data scientists in high demand, it’s challenging for companies to gain exposure, garner interest and determine the best talent. Hackathons address both challenges. Companies gain awareness in the developer community and are perceived as “hacker-friendly”.
+  
+  
+- It is all about IP (Intellectual Property)
+
+  - Hackathons are great, not necessarily because the silver bullet will be found, but because you may find something you never knew. This may be using your software solutions to break into new markets or developing extensions that open up entire new customer bases.
+
+
 
 
 
