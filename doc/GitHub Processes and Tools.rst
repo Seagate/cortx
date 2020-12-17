@@ -106,10 +106,6 @@ A contributor can use forks to propose changes related to fixing a bug rather th
    curl -u $github_user_name
    
    https://api.github.com/repos/$upstream_repo/$upstream_repo_name/forks -d ''
-   
-**CLI View**
-  
-.. image:: images/cli.PNG
 
 Forking a Repository
 --------------------
@@ -129,16 +125,11 @@ To fork a repository, perform the procedure mentioned below.
   
    git clone <URL of your fork>>
    
-.. image:: images/forking.PNG
-   
-   
 - Verify the new upstream repository you've specified for your fork by running the following command.
 
   ::
   
    git remote –v
- 
-.. image:: images/forclo.PNG
 
 - Pushing code changes to your fork.
 
