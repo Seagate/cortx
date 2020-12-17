@@ -86,6 +86,31 @@ To perform the Git configuration, use the following:
 
 - **$ git config --global user.email ‘Your.Name@yourdomain.com’**
 
+Fork the Repository: A Workflow
+================================
+
+**What is Forking on GitHub?**
+
+A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project i.e., creating a “fork” is producing a personal copy of some external contributor repository which act as a sort of bridge between the original repository and your personal copy.
+
+.. image:: Images/fork.PNG
+
+**How does Forking (Git Fork) work?**
+
+A contributor can use forks to propose changes related to fixing a bug rather than raising an issue for the same so he that he can:
+
+- Fork a repository
+
+  ::
+  
+   curl -u $github_user_name
+   
+   https://api.github.com/repos/$upstream_repo/$upstream_repo_name/forks -d ''
+   
+ CLI View
+  
+.. image:: Images/cli.PNG
+
 Forking a Repository
 --------------------
 To fork a repository, perform the procedure mentioned below.
