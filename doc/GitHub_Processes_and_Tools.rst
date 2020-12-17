@@ -292,6 +292,9 @@ Pull Request
 To create a pull request on GitHub, navigate to the main page of the respective repository, and perform the following:
 
 1. Select the appropriate branch from the **Branch** drop-down menu.
+
+   .. image:: images/mergepatch.PNG
+   
 2. Click **Compare & Pull Request**.
 3. Type a title and description for your pull request.
 
@@ -299,6 +302,8 @@ To create a pull request on GitHub, navigate to the main page of the respective 
    
 4. Select the reviewers using the menu on the right-side of the window.
 5. Click **Create Pull Request**. The pull request is raised successfully.
+
+   .. image:: images/cpr.PNG
 
 
 Rebasing
@@ -349,8 +354,8 @@ You can use Codacy by performing the below mentioned procedure.
    
    </details>
    
-********************************
+********************************************************************
 Developer Certificate of Origin and Contributor License Agreement
-********************************
+********************************************************************
  
 CORTX always requires DCO and may require CLA.  To learn more, please refer to `DCO and CLA <https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md>`_.
