@@ -107,7 +107,7 @@ A contributor can use forks to propose changes related to fixing a bug rather th
    
    https://api.github.com/repos/$upstream_repo/$upstream_repo_name/forks -d ''
    
-CLI View
+**CLI View**
   
 .. image:: images/cli.PNG
 
@@ -121,6 +121,36 @@ To fork a repository, perform the procedure mentioned below.
 
 3. In the top-right corner of the page, click **Fork**. A fork of the required repository is created successfully.
 
+**Forking and Performing changes**
+
+- Create a local clone of your fork by running the following command.
+
+  ::
+  
+   git clone <URL of your fork>>
+   
+.. image:: images/forking.PNG
+   
+   
+- Verify the new upstream repository you've specified for your fork by running the following command.
+
+  ::
+  
+   git remote –v
+ 
+.. image:: images/forclo.PNG
+
+- Pushing code changes to your fork.
+
+- Send changes to Original Repository via Pull Request (PR).
+
+  - You can contribute back to the original repository by sending a request to the original author to pull your fork into their repository by submitting a pull request.
+  
+.. image:: images/cent.PNG
+
+
+**Note**: Forking is allowed for public repositories without permission but if the repository is private, the contributor can only be able to fork if he/she has required permission from the owner/admin of the repository. 
+    
 Advantages of Forking
 ----------------------
 
