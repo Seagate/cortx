@@ -21,6 +21,23 @@ Frankly speaking, no prerequisites are attached to attend a hackathon. Anyways, 
 
 Apart from the pointers mentioned above, I guess the most important aspect is the ability to endure something that saps your mind and body.
 
++++++++++++++++++++++++++++++++
+Benefits from a Hackathon
++++++++++++++++++++++++++++++++
+
+Trust me, you would love to read the following.
+
+- You can end up becoming an innovator. If not, you will witness one that would be encouraging.
+
+  - Hackathons stimulate the creative juices of participants and foster problem-solving and risk-taking in a casual environment. The diversity of participants guarantees a   multitude of perspectives and the time limit on hackathons creates a uniquely productive atmosphere that forces participants to distil their visionary concepts down to actionable solutions.
+  
+- You would become part of an amazing community.
+
+  - In our technology-centric world, no industry is exempt of unpredictable disruption by technology startups. To stay current and connected to the makers and entrepreneurs that may be leading these overnight sensations, it has become increasingly important for all businesses to engage with and create an innovation community of their own.
+  
+- You would land a great job.
+
+  - With software developers and data scientists in high demand, it’s challenging for companies to gain exposure, garner interest and determine the best talent. Hackathons address both challenges. Companies gain awareness in the developer community and are perceived as “hacker-friendly”. 
 
 
 
