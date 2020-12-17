@@ -107,7 +107,7 @@ A contributor can use forks to propose changes related to fixing a bug rather th
    
    https://api.github.com/repos/$upstream_repo/$upstream_repo_name/forks -d ''
    
- CLI View
+CLI View
   
 .. image:: Images/cli.PNG
 
