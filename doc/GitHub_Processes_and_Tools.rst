@@ -175,6 +175,17 @@ To clone a repository, perform the procedure below.
 
 7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
 
+Forking and Cloning
+---------------------
+
+- "forked" repositories and "forking" are not special operations. Forked repositories are created using the standard git clone command. Forked repositories are generally server-side clones.  
+
+- There is no unique Git command to create forked repositories. A clone operation is essentially a copy of a repository and its history. 
+
+- Upstream - Upstream branches are closely associated with remote branches and define the branch tracked on the remote repository by your local remote branch (also called as remote tracking branch)
+
+.. image:: images/forkingcloning.PNG
+
 Syncing the Fork with Repository
 --------------------------------
 To configure Git to sync with the fork, perform the following:
