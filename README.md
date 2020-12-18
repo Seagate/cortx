@@ -60,7 +60,7 @@ Resources
 -   Attend our [Monthly Meet an Architect](doc/meetings/README.rst) meetings to learn about CORTX architecture and participate in a Question and Answer Session.
 -   Learn how to integrate CORTX with other technologies [here](doc/integrations/README.rst).
 -   We like to highlight the work and contributions of our community members—if you have solved an interesting challenge, or you are interested in sharing your experience or use cases, we want to talk to you! Please email our Community Manager rachel.novak@seagate.com or [schedule a meeting with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2) to share.
--   To know more about Seagate sponsored CORTX Hackathons, click [here](doc/CORTX_Hackathon.rst).
+-   Please consider participating in [CORTX Hackathons](doc/CORTX_Hackathon.rst)!
 
 Thank You!
 ----------
