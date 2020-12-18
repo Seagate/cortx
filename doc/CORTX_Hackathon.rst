@@ -48,7 +48,7 @@ Trust me, you would love to read the following.
 CORTX Hackathon
 ==================
 
-The first CORTX hackathon was conducted recently. To know more about the splendid event, click [here](doc/First_Hackathon.rst).
+The first CORTX hackathon was conducted recently. To know more about the splendid event, click `here <doc/First_Hackathon.rst>`_.
 
 
 
