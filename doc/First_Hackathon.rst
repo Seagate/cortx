@@ -117,5 +117,12 @@ Siddhi Integration
 
 - Siddhi put jobs into Celery
 
+CORTX: Before and After Integrations
+=======================================
+
+The diagram below depicts how CORTX was before integration and how it is after the integrations are complete.
+
+ .. image:: image/integrations.PNG
+
 
 
