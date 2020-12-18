@@ -101,11 +101,11 @@ The onboarding procedure must be performed after completing the preboarding proc
    
 **Important**: To open the 28100 port, run the below mentioned commands.
 
-  ::
+::
   
-   salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=28100/tcp --permanent"
+ salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=28100/tcp --permanent"
    
-   salt '*' cmd.run "firewall-cmd --reload"
+ salt '*' cmd.run "firewall-cmd --reload"
    
  
 
