@@ -20,11 +20,10 @@ Create a virtual machine.
   sudo tee -a /etc/yum.repos.d/${REPO//\//_}.repo <<< 'gpgcheck=0'
   ```
 
-* Install the RPMs.
+* Build and Install RPMs.
+Follow the [Hare User Guide](https://github.com/Seagate/cortx-hare#installation) to Build and Install Hare from source.
 
-  ```bash
-  sudo yum install -y cortx-hare
-  ```
+  
 ### 1.3. Configure LNet
 
 Create `lnet.conf` file, if it does not exist, and restart `lnet` service.
