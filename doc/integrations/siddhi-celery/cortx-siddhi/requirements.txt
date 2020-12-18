@@ -1,0 +1,5 @@
+PySiddhi>=5.1,<6
+celery
+boto3
+redis
+colorama
