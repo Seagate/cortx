@@ -35,7 +35,7 @@ Trust me, you would love to read the following.
 
   - In our technology-centric world, no industry is exempt of unpredictable disruption by technology startups. To stay current and connected to the makers and entrepreneurs that may be leading these overnight sensations, it has become increasingly important for all businesses to engage with and create an innovation community of their own.
   
-- You would land a great job.
+- You could land a great job.
 
   - With software developers and data scientists in high demand, it’s challenging for companies to gain exposure, garner interest and determine the best talent. Hackathons address both challenges. Companies gain awareness in the developer community and are perceived as “hacker-friendly”.
   
@@ -48,7 +48,7 @@ Trust me, you would love to read the following.
 CORTX Hackathon
 ==================
 
-The first CORTX hackathon was conducted recently. To know more about the splendid event, click `here <First_Hackathon.rst>`_.
+The first CORTX hackathon was conducted recently. To know more about this splendid event, please click `here <First_Hackathon.rst>`_.
 
 
 
