@@ -1,6 +1,6 @@
-====================
-Tools and Procedures
-====================
+===========================================================
+Guidelines and Instructions for GitHub Processes and Tools
+===========================================================
 *******
 GitHub
 *******
@@ -86,6 +86,27 @@ To perform the Git configuration, use the following:
 
 - **$ git config --global user.email ‘Your.Name@yourdomain.com’**
 
+Fork the Repository: A Workflow
+================================
+
+**What is Forking on GitHub?**
+
+A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project i.e., creating a “fork” is producing a personal copy of some external contributor repository which act as a sort of bridge between the original repository and your personal copy.
+
+.. image:: images/fork.PNG
+
+**How does Forking (Git Fork) work?**
+
+A contributor can use forks to propose changes related to fixing a bug rather than raising an issue for the same so he that he can:
+
+- Fork a repository
+
+  ::
+  
+   curl -u $github_user_name
+   
+   https://api.github.com/repos/$upstream_repo/$upstream_repo_name/forks -d ''
+
 Forking a Repository
 --------------------
 To fork a repository, perform the procedure mentioned below.
@@ -95,6 +116,40 @@ To fork a repository, perform the procedure mentioned below.
 2. Navigate to the relevant repository.
 
 3. In the top-right corner of the page, click **Fork**. A fork of the required repository is created successfully.
+
+**Forking and Performing changes**
+
+- Create a local clone of your fork by running the following command.
+
+  ::
+  
+   git clone <URL of your fork>>
+   
+- Verify the new upstream repository you've specified for your fork by running the following command.
+
+  ::
+  
+   git remote –v
+
+- Pushing code changes to your fork.
+
+- Send changes to Original Repository via Pull Request (PR).
+
+  - You can contribute back to the original repository by sending a request to the original author to pull your fork into their repository by submitting a pull request.
+  
+.. image:: images/cent.PNG
+
+
+**Note**: Forking is allowed for public repositories without permission but if the repository is private, the contributor can only be able to fork if he/she has required permission from the owner/admin of the repository. 
+    
+Advantages of Forking
+----------------------
+
+- Improving some other contributor's code 
+
+- Reusing the code in a project 
+
+- Reduce license cost consumed per user or contributor 
 
 Cloning a Repository
 --------------------
@@ -119,6 +174,17 @@ To clone a repository, perform the procedure below.
     $ git clone https://github.com/YOUR-USERNAME/repository name
 
 7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
+
+Forking and Cloning
+---------------------
+
+- "forked" repositories and "forking" are not special operations. Forked repositories are created using the standard git clone command. Forked repositories are generally server-side clones.  
+
+- There is no unique Git command to create forked repositories. A clone operation is essentially a copy of a repository and its history. 
+
+- Upstream - Upstream branches are closely associated with remote branches and define the branch tracked on the remote repository by your local remote branch (also called as remote tracking branch)
+
+.. image:: images/forkingcloning.PNG
 
 Syncing the Fork with Repository
 --------------------------------
@@ -226,10 +292,18 @@ Pull Request
 To create a pull request on GitHub, navigate to the main page of the respective repository, and perform the following:
 
 1. Select the appropriate branch from the **Branch** drop-down menu.
+
+   .. image:: images/mergepatch.PNG
+   
 2. Click **Compare & Pull Request**.
 3. Type a title and description for your pull request.
+
+   .. image:: images/contributing.PNG
+   
 4. Select the reviewers using the menu on the right-side of the window.
 5. Click **Create Pull Request**. The pull request is raised successfully.
+
+   .. image:: images/cpr.PNG
 
 
 Rebasing
@@ -280,8 +354,8 @@ You can use Codacy by performing the below mentioned procedure.
    
    </details>
    
-********************************
+********************************************************************
 Developer Certificate of Origin and Contributor License Agreement
-********************************
+********************************************************************
  
 CORTX always requires DCO and may require CLA.  To learn more, please refer to `DCO and CLA <https://github.com/Seagate/cortx/blob/main/doc/dco_cla.md>`_.
