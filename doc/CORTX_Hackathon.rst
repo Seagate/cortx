@@ -43,6 +43,12 @@ Trust me, you would love to read the following.
 - It is all about IP (Intellectual Property)
 
   - Hackathons are great, not necessarily because the silver bullet will be found, but because you may find something you never knew. This may be using your software solutions to break into new markets or developing extensions that open up entire new customer bases.
+  
+==================
+CORTX Hackathon
+==================
+
+The first CORTX hackathon was conducted recently. To know more about the splendid event, click [here](doc/First_Hackathon.rst).
 
 
 
