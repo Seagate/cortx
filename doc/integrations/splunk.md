@@ -1,13 +1,12 @@
 **What is Splunk?**
 
-Splunk is a software platform that allows you to search, monitor, and analyze machine-generated big data via a Web-style interface
-Splunk captures, indexes and correlates real-time data in a searchable repository from which it can generate graphs, reports, alerts, dashboards and visualizations
+Splunk is a software platform that allows you to search, monitor, and analyze machine-generated big data via a Web-style interface. Splunk captures, indexes, and correlates real-time data in a searchable repository from which it can generate graphs, reports, alerts, dashboards and visualizations.
 
 The SmartStore feature provides a way to use remote object stores, such as Amazon S3, to store indexed data. By reducing reliance on local storage, SmartStore allows you to scale compute and storage resources separately, thus improving the efficiency of resource usage.
 
 **What is CORTX?**
 
-CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization. CORTX is 100% Open Source
+CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization. CORTX is 100% Open Source.
 
 **How do CORTX and Splunk work together?**
 
