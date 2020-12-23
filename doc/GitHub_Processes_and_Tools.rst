@@ -146,8 +146,8 @@ To push the new dev branch to the remote repo, perform the following:
    
     $ git push origin <local_branch>:<remote_branch>
     
-Code Changes and GIT Commands
------------------------------
+Syncing the Branch 
+--------------------
 - Make your code changes, and commit.
 
   - When main is the branch, and is ready to pull the updates:
