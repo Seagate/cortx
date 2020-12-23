@@ -69,6 +69,25 @@ To authorize a PAT, perform the procedure mentioned below.
 
 4. In the left sidebar, click **Personal access tokens**. The **Personal access tokens** page is displayed.
 
+Branching Information
+======================
+
+Please note the below mentioned points.
+
+- As per the global naming convention, we've renamed Master to Main branch.
+
+- The Main branch represents the official history, and it must be deployable at any point of time. For every new feature that is being developed, the developer creates a new branch.
+
+- At times, a single branch would be used to deliver a large feature, or prepare for a release.
+
+- Before creating a branch, make sure that all the upstream changes from the main branch is maintained.
+
+- Make sure that you are in the right branch before pulling the commits.
+
+- The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
+
+- A new Git branch can be created from the current branch.
+
 
 Git Workflow
 ============
@@ -85,71 +104,6 @@ To perform the Git configuration, use the following:
 - **$ git config --global user.name ‘Your Name’**
 
 - **$ git config --global user.email ‘Your.Name@yourdomain.com’**
-
-Fork the Repository: A Workflow
-================================
-
-**What is Forking on GitHub?**
-
-A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project i.e., creating a “fork” is producing a personal copy of some external contributor repository which act as a sort of bridge between the original repository and your personal copy.
-
-.. image:: images/fork.PNG
-
-**How does Forking (Git Fork) work?**
-
-A contributor can use forks to propose changes related to fixing a bug rather than raising an issue for the same so he that he can:
-
-- Fork a repository
-
-  ::
-  
-   curl -u $github_user_name
-   
-   https://api.github.com/repos/$upstream_repo/$upstream_repo_name/forks -d ''
-
-Forking a Repository
---------------------
-To fork a repository, perform the procedure mentioned below.
-
-1. Login to the GitHub account.
-
-2. Navigate to the relevant repository.
-
-3. In the top-right corner of the page, click **Fork**. A fork of the required repository is created successfully.
-
-**Forking and Performing changes**
-
-- Create a local clone of your fork by running the following command.
-
-  ::
-  
-   git clone <URL of your fork>>
-   
-- Verify the new upstream repository you've specified for your fork by running the following command.
-
-  ::
-  
-   git remote –v
-
-- Pushing code changes to your fork.
-
-- Send changes to Original Repository via Pull Request (PR).
-
-  - You can contribute back to the original repository by sending a request to the original author to pull your fork into their repository by submitting a pull request.
-  
-.. image:: images/cent.PNG
-
-
-**Note**: Forking is allowed for public repositories without permission but if the repository is private, the contributor can only be able to fork if he/she has required permission from the owner/admin of the repository. 
-    
-Advantages of Forking
-----------------------
-
-- Improving some other contributor's code 
-
-- Reusing the code in a project 
-
-- Reduce license cost consumed per user or contributor 
 
 Cloning a Repository
 --------------------
@@ -175,58 +129,22 @@ To clone a repository, perform the procedure below.
 
 7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
 
-Forking and Cloning
----------------------
+Pushing your Branch
+-------------------
 
-- "forked" repositories and "forking" are not special operations. Forked repositories are created using the standard git clone command. Forked repositories are generally server-side clones.  
+To push the new dev branch to the remote repo, perform the following:
 
-- There is no unique Git command to create forked repositories. A clone operation is essentially a copy of a repository and its history. 
+1. Configure Git to always push using the current branch.
 
-- Upstream - Upstream branches are closely associated with remote branches and define the branch tracked on the remote repository by your local remote branch (also called as remote tracking branch)
+   ::
+   
+    $ git config --global push.default current
 
-.. image:: images/forkingcloning.PNG
+2. Push a local branch to a different remote branch.
 
-Syncing the Fork with Repository
---------------------------------
-To configure Git to sync with the fork, perform the following:
-
-1. Open Git Bash.
-
-2. Change directories to the location of the fork you cloned in the earlier procedure.
-
-   - To navigate to your home directory, type **cd**.
-
-   - To list the files and folders in your current directory, type **ls**.
-
-   - To go into one of your listed directories, type **cd your_listed_directory**.
-
-   - To go up one directory, type **cd** ..
-
-3. Type **git remote –v**, and press **Enter**. The configured remote repository for your fork is visible.
-
-4. Type **git remote add upstream**, and then paste the URL you had copied. Then, click **Enter**.
-
-   - **$ git remote add upstream <<URL>>**
-
-5. To verify the new upstream repository that you had specified for your fork, type **git remote -v** again. You should see the URL for your fork as **origin**, and the URL for the original repository as **upstream**.
-
-Branching Information
----------------------
-Please note the below mentioned points.
-
-- As per the global naming convention, we've renamed Master to Main branch.
-
-- The Main branch represents the official history, and it must be deployable at any point of time. For every new feature that is being developed, the developer creates a new branch.
-
-- At times, a single branch would be used to deliver a large feature, or prepare for a release.
-
-- Before creating a branch, make sure that all the upstream changes from the main branch is maintained.
-
-- Make sure that you are in the right branch before pulling the commits.
-
-- The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
-
-- A new Git branch can be created from the current branch.
+   ::
+   
+    $ git push origin <local_branch>:<remote_branch>
     
 Code Changes and GIT Commands
 -----------------------------
@@ -269,24 +187,109 @@ Code Changes and GIT Commands
   ::
    
    $ git commit -m "<type>(<scope>): <subject>"
- 
-Pushing your Branch
--------------------
+    
 
-To push the new dev branch to the remote repo, perform the following:
+Fork the Repository: A Workflow
+--------------------------------
 
-1. Configure Git to always push using the current branch.
+**What is Forking on GitHub?**
 
-   ::
+A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project i.e., creating a “fork” is producing a personal copy of some external contributor repository which act as a sort of bridge between the original repository and your personal copy.
+
+.. image:: images/fork.PNG
+
+**How does Forking (Git Fork) work?**
+
+A contributor can use forks to propose changes related to fixing a bug rather than raising an issue for the same so he that he can:
+
+- Fork a repository
+
+  ::
+  
+   curl -u $github_user_name
    
-    $ git config --global push.default current
+   https://api.github.com/repos/$upstream_repo/$upstream_repo_name/forks -d ''
 
-2. Push a local branch to a different remote branch.
+**Forking a Repository**
 
-   ::
+To fork a repository, perform the procedure mentioned below.
+
+1. Login to the GitHub account.
+
+2. Navigate to the relevant repository.
+
+3. In the top-right corner of the page, click **Fork**. A fork of the required repository is created successfully.
+
+**Forking and Performing changes**
+
+- Create a local clone of your fork by running the following command.
+
+  ::
+  
+   git clone <URL of your fork>>
    
-    $ git push origin <local_branch>:<remote_branch>
-   
+- Verify the new upstream repository you've specified for your fork by running the following command.
+
+  ::
+  
+   git remote –v
+
+- Pushing code changes to your fork.
+
+- Send changes to Original Repository via Pull Request (PR).
+
+  - You can contribute back to the original repository by sending a request to the original author to pull your fork into their repository by submitting a pull request.
+  
+.. image:: images/cent.PNG
+
+
+**Note**: Forking is allowed for public repositories without permission but if the repository is private, the contributor can only be able to fork if he/she has required permission from the owner/admin of the repository. 
+    
+Advantages of Forking
+----------------------
+
+- Improving some other contributor's code 
+
+- Reusing the code in a project 
+
+- Reduce license cost consumed per user or contributor 
+
+
+Forking and Cloning
+---------------------
+
+- "forked" repositories and "forking" are not special operations. Forked repositories are created using the standard git clone command. Forked repositories are generally server-side clones.  
+
+- There is no unique Git command to create forked repositories. A clone operation is essentially a copy of a repository and its history. 
+
+- Upstream - Upstream branches are closely associated with remote branches and define the branch tracked on the remote repository by your local remote branch (also called as remote tracking branch)
+
+.. image:: images/forkingcloning.PNG
+
+Syncing the Fork with Repository
+--------------------------------
+To configure Git to sync with the fork, perform the following:
+
+1. Open Git Bash.
+
+2. Change directories to the location of the fork you cloned in the earlier procedure.
+
+   - To navigate to your home directory, type **cd**.
+
+   - To list the files and folders in your current directory, type **ls**.
+
+   - To go into one of your listed directories, type **cd your_listed_directory**.
+
+   - To go up one directory, type **cd** ..
+
+3. Type **git remote –v**, and press **Enter**. The configured remote repository for your fork is visible.
+
+4. Type **git remote add upstream**, and then paste the URL you had copied. Then, click **Enter**.
+
+   - **$ git remote add upstream <<URL>>**
+
+5. To verify the new upstream repository that you had specified for your fork, type **git remote -v** again. You should see the URL for your fork as **origin**, and the URL for the original repository as **upstream**.
+     
 Pull Request
 ------------
 To create a pull request on GitHub, navigate to the main page of the respective repository, and perform the following:
