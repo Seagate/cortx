@@ -170,12 +170,6 @@ Syncing the Branch
  
    $ git status
 
-- Run the following command from root of the project to add files individually or in bulk.
-
-  ::
-  
-   $ git add
-
 - Run the following command to address additions and deletions.
 
   ::
@@ -189,10 +183,8 @@ Syncing the Branch
    $ git commit -m "<type>(<scope>): <subject>"
     
 
-Fork the Repository: A Workflow
---------------------------------
-
-**What is Forking on GitHub?**
+Forking the Repository
+-----------------------
 
 A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project i.e., creating a “fork” is producing a personal copy of some external contributor repository which act as a sort of bridge between the original repository and your personal copy.
 
@@ -210,7 +202,6 @@ A contributor can use forks to propose changes related to fixing a bug rather th
    
    https://api.github.com/repos/$upstream_repo/$upstream_repo_name/forks -d ''
 
-**Forking a Repository**
 
 To fork a repository, perform the procedure mentioned below.
 
@@ -308,25 +299,6 @@ To create a pull request on GitHub, navigate to the main page of the respective 
 
    .. image:: images/cpr.PNG
 
-
-Rebasing
---------
-Rebasing ensures that you have the latest version of main. The procedure is detailed below.
-
-1. Consume the commits from your dev branch.
-2. Temporarily unset them
-3. Move to the newest head of the main branch
-4. Commit them again
-
-**Note**: If there are no issues, conflicts would not occur.
-
-To rebase your local dev branch on the latest version of main: 
-
-•	**$ git checkout main             /* ensure you are on the main branch**
-•	**$ git pull                                   /* pull the latest from the remote**
-•	**$ git push origin PM/cortx-re-testbranch  /* update your copy in the repo**
-•	**$ git rebase main                 /* rebase on the main branch**    
-•	**$ git push origin PM/cortx-re-testbranch --force   /* force update the remote** 
 
 ******
 Codacy
