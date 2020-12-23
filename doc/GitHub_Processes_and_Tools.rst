@@ -253,25 +253,43 @@ Syncing the Fork with Repository
 --------------------------------
 To configure Git to sync with the fork, perform the following:
 
-1. Open Git Bash.
+1. Clone your project by running the following command.
 
-2. Change directories to the location of the fork you cloned in the earlier procedure.
+   ::
+   
+    $ git clone https://github.com/YOUR-USERNAME/<repository name>
 
-   - To navigate to your home directory, type **cd**.
+2. List the current configured remote repository for your fork by running the following command.
 
-   - To list the files and folders in your current directory, type **ls**.
+   ::
 
-   - To go into one of your listed directories, type **cd your_listed_directory**.
+    $ git remote -v
 
-   - To go up one directory, type **cd** ..
+3. Specify a new remote upstream repository that will be synced with the fork, by running the following command.
 
-3. Type **git remote –v**, and press **Enter**. The configured remote repository for your fork is visible.
+   ::
+   
+    $ git remote add upstream https://github.com/YOUR-USERNAME/<repository name>
 
-4. Type **git remote add upstream**, and then paste the URL you had copied. Then, click **Enter**.
+4. Make you origin repository same as an upstream repository, by running the below mentioned command.
 
-   - **$ git remote add upstream <<URL>>**
+   ::
+   
+    $ git fetch upstream   
 
-5. To verify the new upstream repository that you had specified for your fork, type **git remote -v** again. You should see the URL for your fork as **origin**, and the URL for the original repository as **upstream**.
+5. Now checkout to your main branch by running the below mentioned command, if you are already not checked out.
+
+   ::
+   
+   $ git checkout main
+   
+6. Run the below mentioned command.
+
+   ::
+   
+    $ git merge upstream/main
+    
+   Now your local repository is synced with the upstream repository and you can make changes to your local repository, and pull to the upstream repository
      
 Pull Request
 ------------
