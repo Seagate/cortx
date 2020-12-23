@@ -146,8 +146,8 @@ To push the new dev branch to the remote repo, perform the following:
    
     $ git push origin <local_branch>:<remote_branch>
     
-Syncing the Branch 
---------------------
+Syncing the main Branch 
+------------------------
 - Make your code changes, and commit.
 
   - When main is the branch, and is ready to pull the updates:
@@ -156,13 +156,7 @@ Syncing the Branch
     
      $ git pull origin main
 
-  - You may have to run the following:
-
-    ::
-  
-     $ git pull origin/feature_x
- 
-  - The Git pull command merges the git fetch and git merge commands.
+    The Git pull command merges the git fetch and git merge commands.
 
 - With each commit, there would be additions and deletions. The following command provides an updated list of files.
 
