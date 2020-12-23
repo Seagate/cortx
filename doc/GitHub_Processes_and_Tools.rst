@@ -155,9 +155,7 @@ Syncing the main Branch
     ::
     
      $ git pull origin main
-
-    The Git pull command merges the git fetch and git merge commands.
-
+    
 - With each commit, there would be additions and deletions. The following command provides an updated list of files.
 
   ::
