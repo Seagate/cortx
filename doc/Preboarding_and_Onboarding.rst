@@ -2,7 +2,7 @@
 Preboarding and Onboarding
 ==========================
 
-**Important**: To open the 28100 port, run the below mentioned commands.
+The 28100 port must be open. To open the port, run the below mentioned commands.
 
 ::
   
