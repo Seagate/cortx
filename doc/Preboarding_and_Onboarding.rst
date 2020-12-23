@@ -2,7 +2,7 @@
 Preboarding and Onboarding
 ==========================
 
-The 28100 port must be open. To open the port, run the below mentioned commands.
+Before executing the **Preboarding** section, it must be ensured that the 28100 port is open. To open the port, run the below mentioned commands.
 
 ::
   
@@ -10,7 +10,7 @@ The 28100 port must be open. To open the port, run the below mentioned commands.
    
  salt '*' cmd.run "firewall-cmd --reload"
  
-After executing the above commands, proceed to the **Preboarding** section.
+After running the above commands, proceed to the **Preboarding** section.
 
 Preboarding
 ===========
