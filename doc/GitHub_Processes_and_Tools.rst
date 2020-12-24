@@ -69,6 +69,25 @@ To authorize a PAT, perform the procedure mentioned below.
 
 4. In the left sidebar, click **Personal access tokens**. The **Personal access tokens** page is displayed.
 
+Branching Information
+======================
+
+Please note the below mentioned points.
+
+- As per the global naming convention, we've renamed Master to Main branch.
+
+- The Main branch represents the official history, and it must be deployable at any point of time. For every new feature that is being developed, the developer creates a new branch.
+
+- At times, a single branch would be used to deliver a large feature, or prepare for a release.
+
+- Before creating a branch, make sure that all the upstream changes from the main branch is maintained.
+
+- Make sure that you are in the right branch before pulling the commits.
+
+- The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
+
+- A new Git branch can be created from the current branch.
+
 
 Git Workflow
 ============
@@ -86,10 +105,78 @@ To perform the Git configuration, use the following:
 
 - **$ git config --global user.email ‘Your.Name@yourdomain.com’**
 
-Fork the Repository: A Workflow
-================================
+Cloning a Repository
+--------------------
+To clone a repository, perform the procedure below.
 
-**What is Forking on GitHub?**
+1. Login to your GitHub account, and navigate to the above created fork.
+
+2. Above the list of files, click the following tab.
+
+   .. image:: images/code-button.png
+
+3. To clone the repository using HTTPS, under the Clone with HTTPS section, click the clipboard. To clone the repository using a SSH key, including a certificate issued by your organization's SSH certificate authority, click **Use SSH**, then click the clipboard.
+
+4. Open Git Bash.
+
+5. Change the current working directory to the location where you want the cloned directory.
+
+6. Type **git clone**, and then paste the URL you copied earlier. It will look like this, with your GitHub username instead of **YOUR-USERNAME**.
+
+   ::
+  
+    $ git clone https://github.com/YOUR-USERNAME/repository name
+
+7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
+
+Pushing your Branch
+-------------------
+
+To push the new dev branch to the remote repo, perform the following:
+
+1. Configure Git to always push using the current branch.
+
+   ::
+   
+    $ git config --global push.default current
+
+2. Push a local branch to a different remote branch.
+
+   ::
+   
+    $ git push origin <local_branch>:<remote_branch>
+    
+Syncing the main Branch 
+------------------------
+- Make your code changes, and commit.
+
+  - When main is the branch, and is ready to pull the updates:
+
+    ::
+    
+     $ git pull origin main
+    
+- With each commit, there would be additions and deletions. The following command provides an updated list of files.
+
+  ::
+ 
+   $ git status
+
+- Run the following command to address additions and deletions.
+
+  ::
+  
+   $ git add –all
+
+- When the updates are presented differently, under the heading of Changes to be committed, run the following:
+
+  ::
+   
+   $ git commit -m "<type>(<scope>): <subject>"
+    
+
+Forking the Repository
+-----------------------
 
 A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project i.e., creating a “fork” is producing a personal copy of some external contributor repository which act as a sort of bridge between the original repository and your personal copy.
 
@@ -107,8 +194,7 @@ A contributor can use forks to propose changes related to fixing a bug rather th
    
    https://api.github.com/repos/$upstream_repo/$upstream_repo_name/forks -d ''
 
-Forking a Repository
---------------------
+
 To fork a repository, perform the procedure mentioned below.
 
 1. Login to the GitHub account.
@@ -151,29 +237,6 @@ Advantages of Forking
 
 - Reduce license cost consumed per user or contributor 
 
-Cloning a Repository
---------------------
-To clone a repository, perform the procedure below.
-
-1. Login to your GitHub account, and navigate to the above created fork.
-
-2. Above the list of files, click the following tab.
-
-   .. image:: images/code-button.png
-
-3. To clone the repository using HTTPS, under the Clone with HTTPS section, click the clipboard. To clone the repository using a SSH key, including a certificate issued by your organization's SSH certificate authority, click **Use SSH**, then click the clipboard.
-
-4. Open Git Bash.
-
-5. Change the current working directory to the location where you want the cloned directory.
-
-6. Type **git clone**, and then paste the URL you copied earlier. It will look like this, with your GitHub username instead of **YOUR-USERNAME**.
-
-   ::
-  
-    $ git clone https://github.com/YOUR-USERNAME/repository name
-
-7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
 
 Forking and Cloning
 ---------------------
@@ -190,103 +253,44 @@ Syncing the Fork with Repository
 --------------------------------
 To configure Git to sync with the fork, perform the following:
 
-1. Open Git Bash.
-
-2. Change directories to the location of the fork you cloned in the earlier procedure.
-
-   - To navigate to your home directory, type **cd**.
-
-   - To list the files and folders in your current directory, type **ls**.
-
-   - To go into one of your listed directories, type **cd your_listed_directory**.
-
-   - To go up one directory, type **cd** ..
-
-3. Type **git remote –v**, and press **Enter**. The configured remote repository for your fork is visible.
-
-4. Type **git remote add upstream**, and then paste the URL you had copied. Then, click **Enter**.
-
-   - **$ git remote add upstream <<URL>>**
-
-5. To verify the new upstream repository that you had specified for your fork, type **git remote -v** again. You should see the URL for your fork as **origin**, and the URL for the original repository as **upstream**.
-
-Branching Information
----------------------
-Please note the below mentioned points.
-
-- As per the global naming convention, we've renamed Master to Main branch.
-
-- The Main branch represents the official history, and it must be deployable at any point of time. For every new feature that is being developed, the developer creates a new branch.
-
-- At times, a single branch would be used to deliver a large feature, or prepare for a release.
-
-- Before creating a branch, make sure that all the upstream changes from the main branch is maintained.
-
-- Make sure that you are in the right branch before pulling the commits.
-
-- The checked-out branch must have a “*” as a prefix to the name. If the returned value is not main, then switch to main.
-
-- A new Git branch can be created from the current branch.
-    
-Code Changes and GIT Commands
------------------------------
-- Make your code changes, and commit.
-
-  - When main is the branch, and is ready to pull the updates:
-
-    ::
-    
-     $ git pull origin main
-
-  - You may have to run the following:
-
-    ::
-  
-     $ git pull origin/feature_x
- 
-  - The Git pull command merges the git fetch and git merge commands.
-
-- With each commit, there would be additions and deletions. The following command provides an updated list of files.
-
-  ::
- 
-   $ git status
-
-- Run the following command from root of the project to add files individually or in bulk.
-
-  ::
-  
-   $ git add
-
-- Run the following command to address additions and deletions.
-
-  ::
-  
-   $ git add –all
-
-- When the updates are presented differently, under the heading of Changes to be committed, run the following:
-
-  ::
-   
-   $ git commit -m "<type>(<scope>): <subject>"
- 
-Pushing your Branch
--------------------
-
-To push the new dev branch to the remote repo, perform the following:
-
-1. Configure Git to always push using the current branch.
+1. Clone your project by running the following command.
 
    ::
    
-    $ git config --global push.default current
+    $ git clone https://github.com/YOUR-USERNAME/<repository name>
 
-2. Push a local branch to a different remote branch.
+2. List the current configured remote repository for your fork by running the following command.
+
+   ::
+
+    $ git remote -v
+
+3. Specify a new remote upstream repository that will be synced with the fork, by running the following command.
 
    ::
    
-    $ git push origin <local_branch>:<remote_branch>
+    $ git remote add upstream https://github.com/YOUR-USERNAME/<repository name>
+
+4. Make you origin repository same as an upstream repository, by running the below mentioned command.
+
+   ::
    
+    $ git fetch upstream   
+
+5. Now checkout to your main branch by running the below mentioned command, if you are already not checked out.
+
+   ::
+   
+   $ git checkout main
+   
+6. Run the below mentioned command.
+
+   ::
+   
+    $ git merge upstream/main
+    
+   Now your local repository is synced with the upstream repository and you can make changes to your local repository, and pull to the upstream repository
+     
 Pull Request
 ------------
 To create a pull request on GitHub, navigate to the main page of the respective repository, and perform the following:
@@ -305,25 +309,6 @@ To create a pull request on GitHub, navigate to the main page of the respective 
 
    .. image:: images/cpr.PNG
 
-
-Rebasing
---------
-Rebasing ensures that you have the latest version of main. The procedure is detailed below.
-
-1. Consume the commits from your dev branch.
-2. Temporarily unset them
-3. Move to the newest head of the main branch
-4. Commit them again
-
-**Note**: If there are no issues, conflicts would not occur.
-
-To rebase your local dev branch on the latest version of main: 
-
-•	**$ git checkout main             /* ensure you are on the main branch**
-•	**$ git pull                                   /* pull the latest from the remote**
-•	**$ git push origin PM/cortx-re-testbranch  /* update your copy in the repo**
-•	**$ git rebase main                 /* rebase on the main branch**    
-•	**$ git push origin PM/cortx-re-testbranch --force   /* force update the remote** 
 
 ******
 Codacy
