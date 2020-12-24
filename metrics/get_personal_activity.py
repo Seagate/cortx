@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 
-from add_github_users import get_auth,get_registrants,get_logins,get_repos,search_repo,get_teams
-import cortx_community
+import cortx_community 
 
 import argparse
 import json
