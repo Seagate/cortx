@@ -36,7 +36,7 @@ You can read more about the technical goals and distinguishing features of CORTX
 -   **Inspired** - CORTX is all about the challenge. Our goals are not small: we want to build the world’s best scalable mass-capacity object storage system, one that can work with any hardware and interoperate with all workloads. CORTX is built on hard work, ingenuity, and an engineering mindset. We embrace hard problems and find inspired solutions.
 -   **Evolving** – CORTX is continuously growing and adapting. As a community project, there is no limit to its development. We continuously make room for improvement and welcome the opportunities offered by the ever-evolving nature of community projects.
 
-We are excited about your interest in CORTX and hope you will join us. We take our community very seriously, and we are committed to creating a community built on respectful interactions and inclusivity, as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).
+We are excited about your interest in CORTX and hope you will join us. We take our community very seriously, and we are committed to creating a community built on respectful interactions and inclusivity, as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).  Because of our commitment to community, we work hard to track important community metrics; please feel free to check out how we do it and help us do it better in our [metrics folder](metrics).
 
 ## How to Get Started
 
@@ -60,6 +60,7 @@ Resources
 -   Attend our [Monthly Meet an Architect](doc/meetings/README.rst) meetings to learn about CORTX architecture and participate in a Question and Answer Session.
 -   Learn how to integrate CORTX with other technologies [here](doc/integrations/README.rst).
 -   We like to highlight the work and contributions of our community members—if you have solved an interesting challenge, or you are interested in sharing your experience or use cases, we want to talk to you! Please email our Community Manager rachel.novak@seagate.com or [schedule a meeting with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2) to share.
+-   Many folks are actively conducting various experiments, feasibility studies, and proofs of concept using CORTX.  Check it out in the [cortx-experiments](https://github.com/Seagate/cortx-experiments) repository and either join an existing experiment or start your own.
 -   Please consider participating in [CORTX Hackathons](doc/CORTX_Hackathon.rst)!
 
 Thank You!
