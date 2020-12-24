@@ -16,24 +16,24 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |Splunk| image:: ../images/SplunkLogo.png
    :width: 1 em
-   :target: /doc/integrations/splunk.md
+   :target: splunk.md
 
-.. |Prometheus| image:: /doc/integrations/prometheus/PrometheusLogo.png
+.. |Prometheus| image:: prometheus/PrometheusLogo.png
    :width: 1 em
-   :target: /doc/integrations/prometheus.md
+   :target: prometheus.md
 
-.. |Siddhi-Celery| image:: /doc/images/siddhi_small.png
+.. |Siddhi-Celery| image:: ../images/siddhi_small.png
    :width: 1 em
    :target: siddhi-celery.md
 
-.. |FHIR| image:: /doc/images/fhir-logo.png 
+.. |FHIR| image:: ../images/fhir-logo.png 
    :width: 1 em
-   :target: /doc/integrations/fhir.md
+   :target: fhir.md
 
-.. |TensorFlow| image:: /doc/images/tensorflow.png
+.. |TensorFlow| image:: ../images/tensorflow.png
    :width: 1 em
-   :target: /doc/integrations/tensorflow
+   :target: tensorflow
 
-.. |ImagesApi| image:: /doc/images/images-api.png
+.. |ImagesApi| image:: ../images/images-api.png
    :width: 1 em
-   :target: /doc/integrations/images-api.md   
+   :target: images-api.md   
