@@ -18,7 +18,7 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/splunk.md
 
-.. |Prometheus| image:: /doc/images/PrometheusLogo.png
+.. |Prometheus| image:: /doc/integrations/prometheus/PrometheusLogo.png
    :width: 1 em
    :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/prometheus.md
 
@@ -28,7 +28,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |FHIR| image:: /doc/images/FHIR-LOGO.png 
    :width: 1 em
-   :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/fhir.md
+   :target: https://github.com/Seagate/cortx/blob/main/doc/images/fhir_logo.md
 
 .. |TensorFlow| image:: /doc/images/tensorflow.png
    :width: 1 em
