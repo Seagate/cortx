@@ -103,6 +103,16 @@ The mandatory keys are listed in the table below.
 +--------------------------------+------------------------------------------+
 | network.data_nw.pvt_ip_addr    | Private Data network IP address          |
 +--------------------------------+------------------------------------------+
+| bmc.user                       | BMC user name                            |
+|                                |                                          |
+|                                | For example:                             |
+|                                |    ADMIN                                 |
++--------------------------------+------------------------------------------+
+| bmc.secret                     | BMC password (in single quotes)          |
+|                                |                                          |
+|                                | For example:                             |
+|                                |    'adminBMC123!'                        |
++--------------------------------+------------------------------------------+
 
     
 Optional Keys
@@ -148,16 +158,7 @@ Optional Keys
 |                                | gateway. If there's no gateway, keyword |
 |                                | "None" should be used                   |
 +--------------------------------+-----------------------------------------+
-| bmc.user                       | BMC user name                           |
-|                                |                                         |
-|                                | For example:                            |
-|                                |    ADMIN                                |
-+--------------------------------+-----------------------------------------+
-| bmc.secret                     | BMC password (in single quotes)         |
-|                                |                                         |
-|                                | For example:                            |
-|                                |    'adminBMC123!'                       |
-+--------------------------------+-----------------------------------------+
+
    
 ****************************
 Template of Config.ini file

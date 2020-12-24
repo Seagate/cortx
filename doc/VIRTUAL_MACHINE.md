@@ -1,10 +1,15 @@
-CentOS 7.7 dev VM
+CentOS 7.8 dev VM
 =================
+
+:page_with_curl: **Notes:** 
+ - CentOS 7.8.2003 is deprecated, you will not longer get any updates or security fix's for this version. 
+  - You can continue using CentOS version 7.8.2003, however, you will have to access the OS packages from the vault repo. Please refer http://mirror.centos.org/centos-7/7.8.2003/readme for more information.
+ - CentOS has moved to http://mirror.centos.org/centos-7/7.9.2009/ with kernel-3.10.0-1160.el7.x86_64.rpm
 
 ISO
 ---
-Download CentOS version 7.7.1908 ISO image for installation. You can find the image here:
-http://mirrors.oit.uci.edu/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-DVD-1908.iso
+Download CentOS version 7.8.2003 ISO image for installation. You can find the image here:
+https://vault.centos.org/7.8.2003/isos/x86_64/CentOS-7-x86_64-DVD-2003.iso
 
 VM
 --
@@ -13,7 +18,7 @@ Create VM with the following recommended configuration:
 * Memory = 8GB
 * Storage = 128GB
 
-Install CentOS version 7.7.1908 in this VM from the previously downloaded ISO image. The default install of CentOS may turn off the network interface at boot for security. To turn on the network interface edit the network-scripts for the interface by changing ONBOOT veriable to 'yes' & reboot the VM. 
+Install CentOS version 7.8.2003 in this VM from the previously downloaded ISO image. The default install of CentOS may turn off the network interface at boot for security. To turn on the network interface edit the network-scripts for the interface by changing ONBOOT veriable to 'yes' & reboot the VM. 
 
 ```
 # ip addr show

@@ -150,21 +150,21 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 2. Connect the servers to the networks and the JBODs as per the guidelines provided above.
 
-3. Install CentOS 7.7 (1908 release) operating system on all three servers in the cluster.
+3. Install CentOS 7.8 (2003 release) operating system on all three servers in the cluster.
 
 **Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands and view the appropriate outputs.
   
 - **lsb_release -r**
 
-  - Appropriate Output: 7.7.1908
+  - Appropriate Output: 7.8.2003
 
 - **uname -r**
 
   - Appropriate Output: 3.10.0-1062.el7.x86_64
   
-  **Warning**: Do not update CentOS 7.7 release as it will break CORTX. Operating system updates are not supported at the moment.
+  **Warning**: Do not update CentOS 7.8 release as it will break CORTX. Operating system updates are not supported at the moment.
 
-  While there are no specific requirements for installing the CentOS 7.7, we recommend you to perform the following 4 steps.
+  While there are no specific requirements for installing the CentOS 7.8, we recommend you to perform the following 4 steps.
 
 Step 1 -  Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
   
@@ -226,7 +226,7 @@ Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID
     
 5. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
 
-6. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.7-3.2.9.0/rhel7.7/x86_64/MLNX_LIBS/. 
+6. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.9-0.1.7.0/rhel7.8/x86_64/MLNX_LIBS/
 
    **Note**: You must reboot the system after completing the installation of Mellanox OFED.
 
