@@ -16,11 +16,11 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |Splunk| image:: /doc/images/SplunkLogo.png
    :width: 1 em
-   :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/splunk.md
+   :target: /doc/integrations/splunk.md
 
 .. |Prometheus| image:: /doc/integrations/prometheus/PrometheusLogo.png
    :width: 1 em
-   :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/prometheus.md
+   :target: /doc/integrations/prometheus.md
 
 .. |Siddhi-Celery| image:: /doc/images/siddhi_small.png
    :width: 1 em
@@ -32,8 +32,8 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |TensorFlow| image:: /doc/images/tensorflow.png
    :width: 1 em
-   :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/tensorflow
+   :target: /doc/integrations/tensorflow
 
 .. |ImagesApi| image:: /doc/images/images-api.png
    :width: 1 em
-   :target: https://github.com/Seagate/cortx/blob/main/doc/integrations/images-api.md   
+   :target: doc/integrations/images-api.md   
