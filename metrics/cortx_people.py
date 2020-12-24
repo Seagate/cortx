@@ -38,6 +38,7 @@ def main():
   parser.add_argument('--type', '-t', help="When you update an individual, what type is she")
   parser.add_argument('--email', '-e', help="When you update an individual, add her email")
   parser.add_argument('--company', '-c', help="When you update an individual, what company is she")
+  parser.add_argument('--linkedin', '-l', help="When you update an individual, add her linkedin profile")
   parser.add_argument('--unknowns', '-u', help="Dump the unknowns and quit", action="store_true")
   parser.add_argument('--dump', '-d', help="Dump entire community and quit", action="store_true")
   args = parser.parse_args()
@@ -54,6 +55,9 @@ def main():
       if args.company:
         updated = True
         people.update_company(args.individual,args.company)
+      if args.linkedin:
+        updated = True
+        people.update_linkedin(args.individual,args.linkedin)
       if args.email:
         updated = True
         people.update_email(args.individual,args.email)
@@ -100,6 +104,15 @@ def main():
       types[person.type] += 1
     print(types)
     sys.exit()
+
+  # if no args are passed, the program reaches here
+  # let's add a linkedin field for everyone
+  # we just used this once to change the pickle to add a field
+  #for login,person in people.items():
+  #  people.add_person(login,person.company,person.email,None)
+  #  if person.type:
+  #    people.update_type(login,person.type)
+  
 
   # if no args are passed, the program reaches here
   # if the program reaches here, then it will attempt to auto-update info about the community in the people pickle
