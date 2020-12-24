@@ -14,7 +14,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 
 
-.. |Splunk| image:: /doc/images/SplunkLogo.png
+.. |Splunk| image:: ../images/SplunkLogo.png
    :width: 1 em
    :target: /doc/integrations/splunk.md
 
@@ -36,4 +36,4 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |ImagesApi| image:: /doc/images/images-api.png
    :width: 1 em
-   :target: doc/integrations/images-api.md   
+   :target: /doc/integrations/images-api.md   
