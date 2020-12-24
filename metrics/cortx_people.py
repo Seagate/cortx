@@ -46,17 +46,22 @@ def main():
   gh = Github(os.environ.get('GH_OATH'))
 
   if (args.individual):
+    updated=False
     if people.includes(args.individual):
       if args.type:
+        updated = True
         people.update_type(args.individual,args.type)
       if args.company:
+        updated = True
         people.update_company(args.individual,args.company)
       if args.email:
+        updated = True
         people.update_email(args.individual,args.email)
       print(people.people[args.individual])
     else:
       print("Person %s not in the known community")
-    people.persist()
+    if updated:
+      people.persist()
     sys.exit(0)
 
   if args.unknowns:
