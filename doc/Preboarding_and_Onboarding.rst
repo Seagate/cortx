@@ -41,7 +41,25 @@ The preboarding process is the first process that must be completed after config
 Onboarding
 ===========
 
-The onboarding procedure must be performed after completing the preboarding procedure.  You should be brought automatically to the correct page after completing the preboarding.  If you are not, or if you subsequently want to redo the onboarding, you can navigate to *https://<management IP>:28100/#/onboarding* or, if logged out, through: *https://<management IP>:28100/#/preboarding/login* . You can also perform the onboarding tasks from the **Settings** page.
+**Before you begin**: You'll need to open the 28100 port and run the below mentioned commands:
+
+::
+  
+ salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=28100/tcp --permanent"
+   
+ salt '*' cmd.run "firewall-cmd --reload"
+
+To complete the onboarding procedure after the preboarding procedure. You will be automatically redirected to the correct page after completing the preboarding. 
+
+- In case you are not redirected, or if you subsequently want to redo the onboarding process, navigate to:
+
+    *https://<management IP>:28100/#/onboarding* 
+
+- If you get logged out, you can complete the onboarding process via: 
+
+    *https://<management IP>:28100/#/preboarding/login*  
+    
+ - Alternatively, you can perform the onboarding process via the **Settings** page.
 
 .. raw:: html
 
@@ -98,14 +116,3 @@ The onboarding procedure must be performed after completing the preboarding proc
 .. raw:: html
    
    </details>
-   
-**Important**: To open the 28100 port, run the below mentioned commands.
-
-::
-  
- salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=28100/tcp --permanent"
-   
- salt '*' cmd.run "firewall-cmd --reload"
-   
- 
-
