@@ -21,7 +21,7 @@ def main():
   parser.add_argument('login', metavar='LOGIN', type=str, help="The login of the person for whom you wish to see their activity")
   parser.add_argument('-s', '--since', type=str, help="Only show activity since yyyy-mm-dd")
   parser.add_argument('-u', '--until', type=str, help="Only show activity until yyyy-mm-dd")
-  parser.add_argument('-l', '--last-week', action='store_true', help="Only show activity in the last seven days")
+  parser.add_argument('-l', '--last_week', action='store_true', help="Only show activity in the last seven days")
   args = parser.parse_args()
 
   activity = cortx_community.CortxActivity()
@@ -30,7 +30,8 @@ def main():
     args.since = dateparser.parse(args.since)
   if args.until:
     args.until = dateparser.parse(args.until)
-  print(args.since, args.until)
+  if args.last_week:
+    args.since = datetime.datetime.today() - datetime.timedelta(days=7)
 
   activities = {}
   try:
