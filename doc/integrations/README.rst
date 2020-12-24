@@ -28,7 +28,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |FHIR| image:: /doc/images/fhir-logo.png 
    :width: 1 em
-   :target: https://github.com/Seagate/cortx/blob/main/doc/images/fhir_logo.md
+   :target: /doc/integrations/fhir.md
 
 .. |TensorFlow| image:: /doc/images/tensorflow.png
    :width: 1 em
