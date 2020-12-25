@@ -16,7 +16,7 @@ from github import Github
 def get_group(Type,people):
   group = set()
   for login,person in people.items():
-    if person.get_type() == Type:
+    if person.get_type() == Type or Type == 'All':
       group.add(login)
   return group
 
@@ -24,7 +24,7 @@ def get_logins(CSV):
   logins = set()
   people = None
   for login in CSV.split(','):
-    if login == 'External' or login == 'Innersource':
+    if login == 'External' or login == 'Innersource' or login == 'All':
       if people is None:
         people=cortx_community.CortxCommunity()
       logins |= get_group(Type=login,people=people)
@@ -34,7 +34,7 @@ def get_logins(CSV):
 
 def main():
   parser = argparse.ArgumentParser(description='Retrieve all activity done by a particular user.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-  parser.add_argument('login', metavar='LOGIN', type=str, help="Comma-separate lists of logins [can use External or Innersource as wildcards]")
+  parser.add_argument('login', metavar='LOGIN', type=str, help="Comma-separate lists of logins [can use External or Innersource or All as wildcards]")
   parser.add_argument('-s', '--since', type=str, help="Only show activity since yyyy-mm-dd")
   parser.add_argument('-u', '--until', type=str, help="Only show activity until yyyy-mm-dd")
   parser.add_argument('-l', '--last_week', action='store_true', help="Only show activity in the last seven days")
