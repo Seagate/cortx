@@ -33,8 +33,8 @@ def person_match(person,string):
   return match
 
 def main():
-  parser = argparse.ArgumentParser(description='Trying to update info in our cortx community pickle.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-  parser.add_argument('--individual', '-i', help='Update just one single person.  Run it without this flag to autoupdate on basis of teams and innersource pickle')
+  parser = argparse.ArgumentParser(description='Update or print info in our cortx community pickle.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+  parser.add_argument('--individual', '-i', help='Update or print just one single person.')
   parser.add_argument('--type', '-t', help="When you update an individual, what type is she")
   parser.add_argument('--email', '-e', help="When you update an individual, add her email")
   parser.add_argument('--company', '-c', help="When you update an individual, what company is she")
@@ -117,6 +117,10 @@ def main():
   # if no args are passed, the program reaches here
   # if the program reaches here, then it will attempt to auto-update info about the community in the people pickle
   # fetch the innersource folks from the innersource json
+
+  # this code is dangerous.  We needed it once but we don't probably want to run it again
+  print("Cowardly doing nothing")
+  sys.exit()
   with open('pickles/innersource.json','r') as f:
     innersource = json.load(f)
   Debug("Loaded innersource:")
