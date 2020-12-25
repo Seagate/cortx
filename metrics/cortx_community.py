@@ -135,12 +135,13 @@ class CortxActivity:
     return self.activity[login]
 
 class CortxPerson:
-  def __init__(self,login,company,email):
+  def __init__(self,login,company,email,linkedin):
     self.login = login
     self.company = company
     self.email = email
     self.type = None
     self.note = None
+    self.linked = None
     if self.login.endswith('-bot'):
       self.type = 'Bot'
     if company and not ('seagate' in company.lower() or 'dsr' in company.lower() or 'calsoft' in company.lower() or 'codacy-badger' in login):
@@ -161,6 +162,9 @@ class CortxPerson:
   def update_company(self, company):
     self.company = company
 
+  def update_linkedin(self, linkedin):
+    self.linked = linkedin
+
   def get_company(self):
     return self.company
 
@@ -174,7 +178,7 @@ class CortxPerson:
     return self.login
 
   def __str__(self):
-    return("%s at company %s email %s type %s %s" % (self.login, self.company, self.email, self.type, "\nNotes: %s" if self.note else ""))
+    return("%s at company %s email %s type %s linkedin %s %s" % (self.login, self.company, self.email, self.type, self.linked, "\nNotes: %s" if self.note else ""))
 
 
 class CortxCommunity:
@@ -223,6 +227,9 @@ class CortxCommunity:
   def values(self):
     return self.people.values()
 
+  def items(self):
+    return self.people.items()
+
   def persist(self):
     with open(self.pickle_file, 'wb') as f:
       pickle.dump(self.people, f)
@@ -230,8 +237,8 @@ class CortxCommunity:
   def includes(self, login):
     return login in self.people
 
-  def add_person(self, login, company, email):
-    person = CortxPerson(login,company,email)
+  def add_person(self, login, company, email,linkedin=None):
+    person = CortxPerson(login,company,email,linkedin)
     self.people[login] = person
 
   def add_note(self, login, note):
@@ -247,6 +254,9 @@ class CortxCommunity:
 
   def update_company(self, login, company):
     self.people[login].update_company(company)
+
+  def update_linkedin(self, login, linkedin):
+    self.people[login].update_linkedin(linkedin)
 
 
 def get_auth():

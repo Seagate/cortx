@@ -144,6 +144,8 @@ def scrape_author(people,gh,repo,author,repo_stats,commit,author_activity):
   # don't add None values to these sets
   if company:
     repo_stats['companies'].add(company)
+    if commit:
+      repo_stats['companies_contributing'].add(company)
   if email:
     repo_stats['email_addresses'].add(email)
   if login:
@@ -164,34 +166,52 @@ def clean_domains(domains):
       new_d.add(item)
   return new_d
 
+
+def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh,repo):
+    try:
+      (login,url,created_at) = author_activity.get_activity(key)
+    except KeyError:
+      try:
+        login = item.owner.login # fork
+        created_at = item.created_at
+      except AttributeError:
+        try:
+          login = item.login  # watcher
+          created_at = None
+        except AttributeError:
+          login = item.user.login # stargazer
+          created_at = item.starred_at
+      author_activity.add_activity(key=key,login=login,url=url,created_at=created_at)
+    scrape_author(people,gh,repo,author,stats,False,author_activity)
+    stats[Type].add((login,created_at))
+    if people.is_external(login):
+      stats['%s_external' % Type].add((login,created_at))
+    
 # this function assumes that all initial values are empty or 0
 # however, if we are running in update mode, the values will be pre-initialized
 # that is fine for the values that are over-written but problematic for the values that are incremented
 # therefore, just in case we are running in update mode, explicitly reset incremented values to 0 before incrementing
 def get_top_level_repo_info(stats,repo,people,author_activity,gh):
-  #stats['forks']    = repo.forks_count
-  stats['stars']    = repo.stargazers_count
-  stats['watchers'] = repo.subscribers_count
+  stats['branches']              = len(list(repo.get_branches()))
   stats['clones_unique_14_days'] = repo.get_clones_traffic()['uniques']
   stats['clones_count_14_days']  = repo.get_clones_traffic()['count']
   stats['views_unique_14_days']  = repo.get_views_traffic()['uniques']
   stats['views_count_14_days']   = repo.get_views_traffic()['count']
 
-  forks = repo.get_forks()
-  for f in forks:
+  for f in repo.get_forks():
     key = 'fork -> %s' % (f.full_name)
-    try:
-      (login,url,created_at) = author_activity.get_activity(key)
-    except KeyError:
-      login = f.owner.login
-      created_at = f.created_at
-      url = key 
-      author_activity.add_activity(key=key,login=login,url=url,created_at=created_at)
-    scrape_author(people,gh,repo,f.owner,stats,False,author_activity)
-    stats['forks'].add((login,created_at))
-    if people.is_external(login):
-      stats['forks_external'].add((login,created_at))
-    
+    url = key
+    add_star_watch_fork(key=key,url=url,item=f,stats=stats,people=people,author=f.owner,author_activity=author_activity,Type='forks',gh=gh,repo=repo)
+
+  for sg in repo.get_stargazers_with_dates():
+    key = 'starred -> %s:%s' % (repo,sg.user.login)
+    url = 'starred -> %s' % repo
+    add_star_watch_fork(key=key,url=url,item=sg,stats=stats,people=people,author=sg.user,author_activity=author_activity,Type='stars',gh=gh,repo=repo)
+
+  for w in repo.get_watchers():
+    key = 'watched -> %s:%s' % (repo,w.login)
+    url = 'watched -> %s' % repo
+    add_star_watch_fork(key=key,url=url,item=w,stats=stats,people=people,author=w,author_activity=author_activity,Type='watchers',gh=gh,repo=repo)
 
   # get referrers
   # this is just quick and dirty and seagate-specific top-referrers
@@ -314,36 +334,41 @@ def collect_stats(update):
   today = datetime.today().strftime('%Y-%m-%d')
 
   # the shared structure that we use for collecting stats
-  global_stats = { 'email_addresses'               : set(), 
-                   'external_email_addresses'      : set(),
+  global_stats = { 'branches'                      : 0, 
+                   'clones_count_14_days'          : 0,
+                   'clones_unique_14_days'         : 0,
+                   'comments'                      : 0,
+                   'commits'                       : 0, 
+                   'companies_contributing'        : set(),
                    'companies'                     : set(), 
+                   'contributors'                  : set(), 
                    'domains'                       : set(), 
-                   'logins'                        : set(), 
-                   'new_logins'                    : set(),
-                   'new_external_activities'       : set(),
-                   'top_paths'                     : [], 
-                   'top_referrers'                 : [],
                    'downloads_releases'            : 0,
                    'downloads_vms'                 : 0,
-                   'commits'                       : 0, 
-                   'comments'                      : 0,
+                   'email_addresses'               : set(), 
                    'external_comments'             : 0,
-                   'pull_requests_merged'          : 0,
+                   'external_email_addresses'      : set(),
+                   'forks_external'                : set(),
+                   'forks'                         : set(),
+                   'logins'                        : set(), 
+                   'new_external_activities'       : set(),
+                   'new_logins'                    : set(),
                    'pull_requests_external_merged' : 0,
                    'pull_requests_internal_merged' : 0,
-                   'clones_unique_14_days'         : 0,
-                   'clones_count_14_days'          : 0,
-                   'views_unique_14_days'          : 0,
-                   'views_count_14_days'           : 0,
-                   'forks'                         : set(),
-                   'forks_external'                : set(),
-                   'stars'                         : 0,
-                   'seagate_referrer_count'        : 0,
-                   'seagate_referrer_uniques'      : 0,
+                   'pull_requests_merged'          : 0,
                    'seagate_blog_referrer_count'   : 0,
                    'seagate_blog_referrer_uniques' : 0,
-                   'watchers'                      : 0,
-                   'contributors'                  : set() }
+                   'seagate_referrer_count'        : 0,
+                   'seagate_referrer_uniques'      : 0,
+                   'stars_external'                : set(),
+                   'stars'                         : set(),
+                   'top_paths'                     : [], 
+                   'top_referrers'                 : [],
+                   'views_count_14_days'           : 0,
+                   'views_unique_14_days'          : 0,
+                   'watchers_external'             : set(),
+                   'watchers'                      : set(),
+                    }
   load_actors(global_stats,('mannequin','innersource','external','hackathon','bot','cortx_team','unknown'))
   load_items(global_stats,('issues','pull_requests'),('_external','_internal',''),('','_open','_closed','_open_ave_age_in_s','_closed_ave_age_in_s'))
   global_stats['pull_requests_external_merged'] = 0
@@ -368,9 +393,8 @@ def collect_stats(update):
       print("Fetched %s data for %s" % (timestamp, repo))
       for k,v in cached_local_stats.items():
         local_stats[k] = v
-        local_stats['forks'] = set() # dumb temporary thing as we transition this item from int to set
-      get_top_level_repo_info(local_stats,repo,people=people,author_activity=author_activity,gh=gh,)
     else:
+      get_top_level_repo_info(local_stats,repo,people=people,author_activity=author_activity,gh=gh,)
       get_issues_and_prs(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh)
       get_commits(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh)
       get_contributors(rname,repo,local_stats,people=people,gh=gh)
