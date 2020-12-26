@@ -76,6 +76,7 @@ def main():
         unknowns += 1
         try:
           if person_match(person,'seagate') or person_match(person,'dsr') or person_match(person,'calsoft'):
+            print("%s login matches seagate or contractor; adding to CORTX Team" % person.login)
             people.update_company(person.login,'Seagate')
             people.update_type(person.login,'CORTX Team')
             people.persist()
@@ -85,7 +86,7 @@ def main():
             # if they are unknown, look them up and see if they are part of CORTX organization
           user = gh.get_user(login=person.login)
           user.get_organization_membership('Seagate')
-          print("%s is in Seagate org"%person.login)
+          print("%s is in Seagate org; adding to CORTX Team"%person.login)
           people.update_company(person.login,'Seagate')
           people.update_type(person.login,'CORTX Team')
           people.persist()
