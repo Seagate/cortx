@@ -35,6 +35,8 @@ The main scripts in this folder are the following:
 
     a. A trivial bash script that calls the above and pipes output into mail; intended to be run as a cron job
     
+    b. E.g. 30 11 * * sat bash -c '/home/535110/cortx/metrics/weekly_report.sh' -> run it every Saturday at 11:30 AM
+    
 7. **[commit_pickles.sh](commit_pickles.sh)**
 
     a. A trivial bash script that pushes the pickles into the repo.  Run as part of the above weekly_report.sh
