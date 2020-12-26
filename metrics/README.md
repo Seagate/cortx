@@ -41,4 +41,4 @@ The main scripts in this folder are the following:
 
     a. A trivial bash script that pushes the pickles into the repo.  Run as part of the above weekly_report.sh
     
-For more info, pass '-h' or '--help' to any of the python scripts.
+For more info, pass '-h' or '--help' to any of the python scripts.  Some of the main python modules which you will need to install include: requests, xlrd, python-dateutil, and pyGithub.
