@@ -104,12 +104,12 @@ The procedure to install CORTX on OVA is mentioned below.
     
     salt '*' cmd.run "firewall-cmd --reload"
       
-Run **ip a l** and record the IP addresses of the following interfaces:
+   Run **ip a l** and record the IP addresses of the following interfaces:
 
-   * ens192 - management 
-   * ens256 - public data
+        * ens192 - management 
+        * ens256 - public data
    
-   .. image:: images/networks.png
+        .. image:: images/networks.png
    
    
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
@@ -234,13 +234,18 @@ Restart CORTX
 
    - **hctl start**
    
-
-   
 .. raw:: html
    
    </details>
-   
+
+Troubleshooting OVA 
+-------------------   
+
+Please refer to the `CORTX Troubleshooting Guide </Troubleshooting.md>`_ to resolve known issues.
+
+
 Tested by:
+----------
 
 - Dec 10, 2020: Suprit Shinde (suprit.shinde@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
