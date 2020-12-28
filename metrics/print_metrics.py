@@ -45,6 +45,9 @@ def main():
   ps = cortx_community.PersistentStats()
   repos = sorted([repo for repo in ps.get_repos() if repo != 'GLOBAL'])
 
+  # averages are weird so handle them differently
+  ave_age_str='_ave_age_in_s'
+
   # first build the global stats
   gstats = {} 
   gstats['repo_count'] = len(repos)
@@ -55,7 +58,13 @@ def main():
       if isinstance(v,int) or isinstance(v,float):
         if k not in gstats:
           gstats[k] = 0
-        gstats[k] += v
+        if ave_age_str in k:
+          # treat averages differently, put the total value in here, down below adust by count to get actual average 
+          item  = k[0:len(k)-len(ave_age_str)]
+          count = rstats[item]
+          gstats[k] += (v * count)
+        else:
+          gstats[k] += v
       elif isinstance(v,set):
         if k not in gstats:
           gstats[k] = set()
@@ -70,9 +79,17 @@ def main():
   # top referrers is a bit weird so clean that one up specifically here
   gstats['top_referrers'] = consolidate_referrers(gstats['top_referrers'])
 
+  # ugh, there is a problem with the average age fields
+  # all those fields have consistent names: 'x_ave_age_in_s'
+  # also, there will always be a corresponding field x which is the count
+  for ave_age in [key for key in gstats.keys() if ave_age_str in key]:
+    item  = ave_age[0:len(ave_age)-len(ave_age_str)]
+    gstats[ave_age] /= gstats[item]
+
   # remove some bullshit companies
   for bs_company in ('Seagate', 'Codacy', 'Dependabot'):
     gstats['companies'].remove(bs_company)
+    gstats['companies_contributing'].remove(bs_company)
 
   if args.individual:
     (repo,timestamp) = ps.get_latest(args.individual)

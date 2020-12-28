@@ -52,9 +52,12 @@ def author_info(people,author):
 def domains_from_emails(emails):
   domains = set()
   for email in emails:
-    domain = email.split('@')[1]
-    if 'seagate' not in domain.lower():
-      domains.add(domain)
+    try:
+      domain = email.split('@')[1]
+      if 'seagate' not in domain.lower():
+        domains.add(domain)
+    except IndexError:
+      print("WTF: Couldn't split domain from email %s" % email)
   return domains
 
 def persist_author_activity(author_activity):
@@ -69,7 +72,7 @@ def scrape_comment(people,gh,rname,comment,Type,local_stats,author_activity):
     url = comment.html_url
     created_at = comment.created_at
     author_activity.add_activity(key,login,url,created_at)
-  scrape_author(people,gh,rname,comment.user,login,local_stats,False,author_activity)
+  scrape_author(people,gh,rname,comment.user,local_stats,False,author_activity)
   local_stats['comments'] += 1
   if people.is_external(login):
     local_stats['external_comments'] += 1
@@ -86,7 +89,7 @@ def scrape_issue_or_pr(people,gh,rname,item,local_stats,author_activity,stats_na
     url = item.html_url
     created_at = item.created_at
     author_activity.add_activity(key,login,url,created_at)
-  scrape_author(people,gh,rname,item.user,login,local_stats,commit,author_activity)
+  scrape_author(people,gh,rname,item.user,local_stats,commit,author_activity)
 
   external = people.is_external(login)
   for _ in range(2):  # ok, we have to repeat all this: once for all items, once again to measure separately for external or internal
@@ -115,11 +118,11 @@ def scrape_commit(people,gh,rname,commit,local_stats,author_activity):
     url = commit.html_url
     created_at = commit.commit.author.date
     author_activity.add_activity(key,login,url,created_at)
-  scrape_author(people,gh,rname,commit.author,login,local_stats,True,author_activity)
+  scrape_author(people,gh,rname,commit.author,local_stats,True,author_activity)
   local_stats['commits'] += 1
     
 # the commit parameter is True if the author did a commit, False otherwise (e.g. commented on an Issue for example)
-def scrape_author(people,gh,repo,author,login,repo_stats,commit,author_activity):
+def scrape_author(people,gh,repo,author,repo_stats,commit,author_activity):
   avoid_rate_limiting(gh)
   (company, email, login, previously_known) = author_info(people,author)
 
@@ -141,6 +144,8 @@ def scrape_author(people,gh,repo,author,login,repo_stats,commit,author_activity)
   # don't add None values to these sets
   if company:
     repo_stats['companies'].add(company)
+    if commit:
+      repo_stats['companies_contributing'].add(company)
   if email:
     repo_stats['email_addresses'].add(email)
   if login:
@@ -161,14 +166,52 @@ def clean_domains(domains):
       new_d.add(item)
   return new_d
 
-def get_top_level_repo_info(stats,repo,gh):
-  stats['forks']    = repo.forks_count
-  stats['stars']    = repo.stargazers_count
-  stats['watchers'] = repo.subscribers_count
+
+def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh,repo):
+    try:
+      (login,url,created_at) = author_activity.get_activity(key)
+    except KeyError:
+      try:
+        login = item.owner.login # fork
+        created_at = item.created_at
+      except AttributeError:
+        try:
+          login = item.login  # watcher
+          created_at = None
+        except AttributeError:
+          login = item.user.login # stargazer
+          created_at = item.starred_at
+      author_activity.add_activity(key=key,login=login,url=url,created_at=created_at)
+    scrape_author(people,gh,repo,author,stats,False,author_activity)
+    stats[Type].add((login,created_at))
+    if people.is_external(login):
+      stats['%s_external' % Type].add((login,created_at))
+    
+# this function assumes that all initial values are empty or 0
+# however, if we are running in update mode, the values will be pre-initialized
+# that is fine for the values that are over-written but problematic for the values that are incremented
+# therefore, just in case we are running in update mode, explicitly reset incremented values to 0 before incrementing
+def get_top_level_repo_info(stats,repo,people,author_activity,gh):
+  stats['branches']              = len(list(repo.get_branches()))
   stats['clones_unique_14_days'] = repo.get_clones_traffic()['uniques']
   stats['clones_count_14_days']  = repo.get_clones_traffic()['count']
   stats['views_unique_14_days']  = repo.get_views_traffic()['uniques']
   stats['views_count_14_days']   = repo.get_views_traffic()['count']
+
+  for f in repo.get_forks():
+    key = 'fork -> %s' % (f.full_name)
+    url = key
+    add_star_watch_fork(key=key,url=url,item=f,stats=stats,people=people,author=f.owner,author_activity=author_activity,Type='forks',gh=gh,repo=repo)
+
+  for sg in repo.get_stargazers_with_dates():
+    key = 'starred -> %s:%s' % (repo,sg.user.login)
+    url = 'starred -> %s' % repo
+    add_star_watch_fork(key=key,url=url,item=sg,stats=stats,people=people,author=sg.user,author_activity=author_activity,Type='stars',gh=gh,repo=repo)
+
+  for w in repo.get_watchers():
+    key = 'watched -> %s:%s' % (repo,w.login)
+    url = 'watched -> %s' % repo
+    add_star_watch_fork(key=key,url=url,item=w,stats=stats,people=people,author=w,author_activity=author_activity,Type='watchers',gh=gh,repo=repo)
 
   # get referrers
   # this is just quick and dirty and seagate-specific top-referrers
@@ -186,7 +229,8 @@ def get_top_level_repo_info(stats,repo,gh):
     top_referrers.append(r)
   stats['top_referrers'] = top_referrers
 
-  # get releases
+  stats['downloads_releases'] = 0 # needed if we are running in update mode
+  stats['downloads_vms'] = 0 # needed if we are running in update mode
   for r in repo.get_releases():
     for a in r.get_assets():
       avoid_rate_limiting(gh)
@@ -264,7 +308,7 @@ def get_contributors(rname,repo,local_stats,people,gh):
   print("Scraping contributors from %s" % rname)
   contributors = repo.get_contributors()
   for c in contributors:
-    scrape_author(people,gh,rname,c,c.login,local_stats,True,None)
+    scrape_author(people,gh,rname,c,local_stats,True,None)
     local_stats['contributors'].add(c.login)
 
 # little helper function for putting empty k-v pairs into stats structure
@@ -290,35 +334,41 @@ def collect_stats(update):
   today = datetime.today().strftime('%Y-%m-%d')
 
   # the shared structure that we use for collecting stats
-  global_stats = { 'email_addresses'               : set(), 
-                   'external_email_addresses'      : set(),
+  global_stats = { 'branches'                      : 0, 
+                   'clones_count_14_days'          : 0,
+                   'clones_unique_14_days'         : 0,
+                   'comments'                      : 0,
+                   'commits'                       : 0, 
+                   'companies_contributing'        : set(),
                    'companies'                     : set(), 
+                   'contributors'                  : set(), 
                    'domains'                       : set(), 
-                   'logins'                        : set(), 
-                   'new_logins'                    : set(),
-                   'new_external_activities'       : set(),
-                   'top_paths'                     : [], 
-                   'top_referrers'                 : [],
                    'downloads_releases'            : 0,
                    'downloads_vms'                 : 0,
-                   'commits'                       : 0, 
-                   'comments'                      : 0,
+                   'email_addresses'               : set(), 
                    'external_comments'             : 0,
-                   'pull_requests_merged'          : 0,
+                   'external_email_addresses'      : set(),
+                   'forks_external'                : set(),
+                   'forks'                         : set(),
+                   'logins'                        : set(), 
+                   'new_external_activities'       : set(),
+                   'new_logins'                    : set(),
                    'pull_requests_external_merged' : 0,
                    'pull_requests_internal_merged' : 0,
-                   'clones_unique_14_days'         : 0,
-                   'clones_count_14_days'          : 0,
-                   'views_unique_14_days'          : 0,
-                   'views_count_14_days'           : 0,
-                   'forks'                         : 0,
-                   'stars'                         : 0,
-                   'seagate_referrer_count'        : 0,
-                   'seagate_referrer_uniques'      : 0,
+                   'pull_requests_merged'          : 0,
                    'seagate_blog_referrer_count'   : 0,
                    'seagate_blog_referrer_uniques' : 0,
-                   'watchers'                      : 0,
-                   'contributors'                  : set() }
+                   'seagate_referrer_count'        : 0,
+                   'seagate_referrer_uniques'      : 0,
+                   'stars_external'                : set(),
+                   'stars'                         : set(),
+                   'top_paths'                     : [], 
+                   'top_referrers'                 : [],
+                   'views_count_14_days'           : 0,
+                   'views_unique_14_days'          : 0,
+                   'watchers_external'             : set(),
+                   'watchers'                      : set(),
+                    }
   load_actors(global_stats,('mannequin','innersource','external','hackathon','bot','cortx_team','unknown'))
   load_items(global_stats,('issues','pull_requests'),('_external','_internal',''),('','_open','_closed','_open_ave_age_in_s','_closed_ave_age_in_s'))
   global_stats['pull_requests_external_merged'] = 0
@@ -344,9 +394,9 @@ def collect_stats(update):
       for k,v in cached_local_stats.items():
         local_stats[k] = v
     else:
+      get_top_level_repo_info(local_stats,repo,people=people,author_activity=author_activity,gh=gh,)
       get_issues_and_prs(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh)
       get_commits(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh)
-      get_top_level_repo_info(local_stats,repo,gh=gh)
       get_contributors(rname,repo,local_stats,people=people,gh=gh)
 
     # what we need to do is query when the last time this ran and then pass 'since' to get_commits
@@ -355,10 +405,10 @@ def collect_stats(update):
     summarize_consolidate(local_stats,global_stats,people=people,author_activity=author_activity)
     persist_author_activity(author_activity)
     persistent_stats.add_stats(date=today,repo=rname,stats=local_stats)
-    persistent_stats.print_repo(rname,local_stats,date=today,verbose=False)
+    persistent_stats.print_repo(rname,local_stats,date=today,verbose=False,csv=False)
 
   # print and persist the global consolidated stats
-  persistent_stats.print_repo('GLOBAL',global_stats,date=today,verbose=False)
+  persistent_stats.print_repo('GLOBAL',global_stats,date=today,verbose=False,csv=False)
   persistent_stats.add_stats(date=today,repo='GLOBAL',stats=global_stats)
 
 def dump_stats(stats,Type):
