@@ -51,14 +51,6 @@ The preboarding process is the first process that must be completed after config
 Onboarding
 ===========
 
-**Before you begin**: You'll need to open the 28100 port and run the below mentioned commands:
-
-::
-  
- salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=28100/tcp --permanent"
-   
- salt '*' cmd.run "firewall-cmd --reload"
-
 To complete the onboarding procedure after the preboarding procedure. You will be automatically redirected to the correct page after completing the preboarding. 
 
 - In case you are not redirected, or if you subsequently want to redo the onboarding process, navigate to:
