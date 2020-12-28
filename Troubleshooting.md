@@ -3,7 +3,7 @@ We've listed all the known issues with the CORTX software and the steps to resol
 # Known Issues
 
 <details>
-<summary>Firmware bundle upload and update functionality not working</summary>
+<summary>Firmware bundle upload and update does not work</summary>
 <p>
 
 ### Symptoms and causes
@@ -26,7 +26,7 @@ We've listed all the known issues with the CORTX software and the steps to resol
  </details>
  
 <details>
-<summary>Software package upload and update functionality not working</summary>
+<summary>Software package upload and update is not working</summary>
 <p>
 
 ### Symptoms and causes
@@ -40,8 +40,8 @@ We've listed all the known issues with the CORTX software and the steps to resol
 1. Failed to fetch update status.
   a. Refresh CMP UI after 30 secs.
 2. Failed to upload software bundle file.
-  a. File format is incorrect. Please upload .iso file only.
-  b. File size is too large. Max file allowed is 2 GB.
+  a. File format is incorrect, please upload .iso file only.
+  b. File size is too large, maximum file size allowed is 2 GB.
 3. Failed to update the software.
   a. Failure reason as per return by provisioner component. Please check the csm_agent and provisioner logs.
   
@@ -207,4 +207,102 @@ Refresh CMP UI after 30 secs.
     
 </p>
   </details>
+  
+  <details>
+  <summary>After uploading SSL Certificate, CMP SSL Page stops responding</summary>
+  <p>
+
+### Symptoms and causes
+
+Provisioner API Fails for fetching SSL Certificates.
+
+### Resolution
+
+There are some known scenarios where cluster goes into maintenance state and doesn't recovers from it. This happens when STONITH resources didn't came back online. To recover the cluster, it has to be done manually.
+
+#### Manual Recovery steps:
+
+1. Use the following command to get back system to normal mode.
+    
+    `$csmcli system startup`
+2. Then check pcs status.
+3. If haproxy resource is in failed state then the certificate entered is invalid.
+
+#### Steps to recover:
+1. Remove 
+
+    `/opt/seagate/cortx-prvsnr/srv_user/components/misc_pkgs/ssl_certs/files/stx.pem`
+2. Run
+    
+    `$ salt "*" state.apply components.misc_pkgs.ssl_certs`
+
+3. Restart the cluster using:
+    
+    [pcs cluster stop --all & pcs cluster start --all]
+    
+</p>
+</details>
+
+<details>
+  <summary>Health Page on CMP is Blank or has no Data</summary>
+  <p>
+    
+### Symptoms and causes
+
+Schema File for Health map is not Present or File doesn’t have enough permissions
+
+   `File /opt/seagate/cortxprvsnr/generated_configs/healthmap/ees-schema.json`
+
+### Solution
+
+Provide permissions to file
+    
+   `$ chmod 777 /opt/seagate/cortxprvsnr/generated_configs/healthmap/ees-schema.json`
+   
+</p>
+</details>
+
+<details>
+  <summary>CLI Help Section Shows Only Support Bundle Command in Help after Login</summary>
+  <p>
+    
+### Symptoms and causes
+
+CMP Agent is Down.
+
+### Resolution
+
+1. Try connecting to another node to check whether the CMP Agent Service is running on the other node. You can check it via the command:
+    
+    `pcs resource show | grep csm-agent`
+2. If the CMP Agent Service is running, please use csmcli on this node.
+3. If CMP Backend Service is down on both nodes, you won’t be able to access the cli commands.
+4. Restart csm_agent with following commands: 
+
+    `Restart CSM Agent`
+    
+    `Pcs resource enable csm-agent`
+    
+ </p>
+</details>
+
+<details>
+  <summary>Stats are not working or not visible or large offset in graph</summary>
+
+### Symptoms and cause
+
+Some of the resources like the csm-agent, els-search-clone, statsd-clone, and kibana failed
+
+### Resolution
+
+1. Check `$ pcs status` to list the services that are actively running (service: csm-agent, els-search-clone, statsd-clone, kibana)
+2. Run the command: 
+
+    `$ pcs resource cleanup <name of the failed resource>`
+3. Check time in cluster system and system where browser is running, they can be different timezone but UTC time must be in sync.
+
+</p>
+</details>
+
+
     
