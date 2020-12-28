@@ -1,4 +1,4 @@
-We've listed all the known issues with the CORTX software and the steps to resolve them below. Please refer to our [support documentation](SUPPORT.md) to report new issues or want us to document steps to resolve an issue. 
+We've listed all the known issues with the CORTX software and the steps to resolve them below. Please refer to our [support documentation](SUPPORT.md) if you want to report any new issues or if you want us to document the steps to resolve an issue. 
 
 # Known Issues
 
@@ -75,7 +75,7 @@ We've listed all the known issues with the CORTX software and the steps to resol
  </details>
  
  <details>
- <summary>Capacity Dial showing to Total Space as 0.0 KB</summary>
+ <summary>Capacity Dial showing Total Space as 0.0 KB</summary>
  <p>
     
 ### Symptoms and causes
