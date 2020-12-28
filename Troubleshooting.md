@@ -1,4 +1,4 @@
-We've listed all the known issues with the CORTX software and the steps to resolve them below. Please refer to our [support documentation](SUPPORT.md) if you want to report any new issues or if you want us to document the steps to resolve an issue. 
+We've listed all the known issues with the CORTX software and the steps to resolve them below. Please refer to our [support documentation](SUPPORT.md) if you want to report any new issues or suggest improvements to any of the below.  Or, as always, please feel free to directly edit the below and submit a Pull Request if you see areas for improvement.
 
 # Known Issues
 
