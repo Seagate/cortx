@@ -56,6 +56,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 - Learn more about the [CORTX Architechture](doc/architecture.md). 
 - Learn more about [CORTX CI/CD and Automation](doc/CI_CD.md).
 - Browse our [suggested list of contributions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md).
+- Please refer to the [CORTX Troubleshooting Guide](Troubleshooting.md) to resolve known issues.
 
 ## Communication Channels
 
