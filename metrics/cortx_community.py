@@ -56,9 +56,37 @@ class PersistentStats:
     return sorted(self.stats.keys())
 
   def get_latest(self,repo):
-    dates = self.stats[repo].keys()
+    dates = self.get_dates(repo)
     latest = sorted(dates)[-1]
     return (self.stats[repo][latest],latest)
+
+  def get_dates(self,repo):
+    dates = self.stats[repo].keys()
+    return sorted(dates)
+
+  # some values are numbers, some are dicts, some are sets
+  # this function will return them all as numbers (either the number itself or the size of the collection)
+  def get_values_as_numbers(self,repo,key):
+    Values = self.get_values(repo,key)
+    Numbers = []
+    for v in Values:
+      try:
+        Numbers.append(len(v))
+      except TypeError:
+        Numbers.append(v)
+    return Numbers
+
+  def get_values(self,repo,key):
+    Values=[]
+    dates = self.get_dates(repo)
+    for date in dates:
+      try:
+        Value = self.stats[repo][date][key]
+        Values.append(Value)
+      except KeyError:
+        # if we add new metrics, they won't be at the older dates
+        Values.append(None)
+    return Values
 
   def add_stats(self, date, repo, stats):
     if repo not in self.stats:
