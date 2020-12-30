@@ -7,6 +7,7 @@ import pickle
 import cortx_community
 import os
 import re
+import signal
 import time
 from github import Github  # https://pygithub.readthedocs.io/
 from datetime import datetime
@@ -166,7 +167,6 @@ def clean_domains(domains):
       new_d.add(item)
   return new_d
 
-
 def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh,repo):
     try:
       (login,url,created_at) = author_activity.get_activity(key)
@@ -267,15 +267,30 @@ def get_commits(rname,repo,local_stats,people,author_activity,gh):
       avoid_rate_limiting(gh)
       scrape_comment(people,gh,rname,comment,"commit",local_stats,author_activity)
 
-def summarize_consolidate(local_stats,global_stats,people,author_activity):
+def summarize_consolidate(local_stats,global_stats,people,author_activity,ave_age_str):
   summary_stats = {}
   local_stats['domains']                  = clean_domains(domains_from_emails(local_stats['email_addresses']))
   local_stats['external_email_addresses'] = remove_string_from_set(local_stats['email_addresses'],'seagate')
   local_stats['new_external_activities']  = get_external_activities(people,author_activity.get_new_activities())
+
+  # remove some bullshit companies
+  for bs_company in ('Seagate', 'Codacy', 'Dependabot'):
+    for key in [ 'companies', 'companies_contributing' ]:
+      try:
+        local_stats[key].remove(bs_company)
+      except KeyError:
+        pass
+
+  # now merge each value from local_stats into global stats
   for key in sorted(local_stats.keys()):
     try:                        # for values that are ints
       if 'unique' in key:
         global_stats[key] = max(global_stats[key],local_stats[key]) 
+      elif ave_age_str in key:
+        # treat averages differently, put the total value in here, down below adust by count to get actual average 
+        item  = key[0:len(key)-len(ave_age_str)] # get the substring of this key that corresponds to the count
+        count = local_stats[item]
+        global_stats[key] += (local_stats[key] * count)
       else:
         global_stats[key] += local_stats[key]
     except TypeError:           # other values should be sets
@@ -325,6 +340,18 @@ def load_items(D,first,second,third):
         key = "%s%s%s" % (f,s,t)
         D[key] = 0
 
+# the referrers set is a bit weird so consolidate the global view of it a bit differently
+# hmm, it actually seems a bit quixotic to attempt to handle global completely in this script
+# because if we don't scrape all repos, then global won't be correct anyway
+def consolidate_referrers(referrers):
+  nr = {}
+  for r in referrers:
+    if r.referrer not in nr:
+      nr[r.referrer] = { 'count' : 0, 'uniques' : 0 } 
+    nr[r.referrer]['count'] += r.count
+    nr[r.referrer]['uniques'] = max(nr[r.referrer]['uniques'],r.uniques)
+  return nr
+
 # if update is true, it loads an existing pickle instead of creating a new one
 # this is useful when new fields are added 
 def collect_stats(update):
@@ -332,6 +359,9 @@ def collect_stats(update):
   avoid_rate_limiting(gh)
   stx = gh.get_organization('Seagate')
   today = datetime.today().strftime('%Y-%m-%d')
+
+  # averages are weird so handle them differently
+  ave_age_str='_ave_age_in_s'
 
   # the shared structure that we use for collecting stats
   global_stats = { 'branches'                      : 0, 
@@ -402,25 +432,35 @@ def collect_stats(update):
     # what we need to do is query when the last time this ran and then pass 'since' to get_commits
 
     # summarize info for this repo and persist the data structures
-    summarize_consolidate(local_stats,global_stats,people=people,author_activity=author_activity)
+    summarize_consolidate(local_stats,global_stats,people=people,author_activity=author_activity,ave_age_str=ave_age_str)
     persist_author_activity(author_activity)
     persistent_stats.add_stats(date=today,repo=rname,stats=local_stats)
     persistent_stats.print_repo(rname,local_stats,date=today,verbose=False,csv=False)
 
+  # do a bit of cleaning on global stats
   # print and persist the global consolidated stats
+
+  # treat the 'ave_age_in_s' fields differently 
+  # all those fields have consistent names: 'x_ave_age_in_s'
+  # also, there will always be a corresponding field x which is the count
+  for ave_age in [key for key in global_stats.keys() if ave_age_str in key]:
+    item  = ave_age[0:len(ave_age)-len(ave_age_str)]
+    try:
+      global_stats[ave_age] /= global_stats[item]
+    except ZeroDivisionError:
+      global_stats[ave_age] = 0
+
+  global_stats['top_referrers'] = consolidate_referrers(global_stats['top_referrers'])
+
   persistent_stats.print_repo('GLOBAL',global_stats,date=today,verbose=False,csv=False)
   persistent_stats.add_stats(date=today,repo='GLOBAL',stats=global_stats)
 
-def dump_stats(stats,Type):
-  def print_list_as_csv(data,first_item):
-    data.insert(0,first_item)
-    res = ",".join([str(i) for i in data]) 
-    print(res)
-
-  ts = stats[TIMES]
-  print_list_as_csv(stats[TIMES],'')
-  for repo,data in sorted(stats[Type].items()):
-    print_list_as_csv(data,repo)
+def report_status(signalNumber, frame):
+  js=cortx_community.check_rate_limit()
+  rem = js['rate']['remaining']
+  res = js['rate']['reset']
+  interval = res - time.time()
+  print("\n%d requests remaining, %.1f minutes until reset" % (rem,interval/60.0))
 
 def main():
   parser = argparse.ArgumentParser(description='Collect and print info about all cortx activity in public repos.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -429,6 +469,10 @@ def main():
   #parser.add_argument('--collect', '-c', help='Collect new stats', action='store_true')
   args = parser.parse_args()
 
+  # register a simple signal handler so the impatient can see what's happening
+  signal.signal(signal.SIGINT, report_status)
+
+  # now go off and do a ton of work. :)
   collect_stats(args.update)
 
 if __name__ == "__main__":
