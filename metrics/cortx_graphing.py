@@ -2,10 +2,11 @@
 
 import pandas as pd
 import cortx_community
+import matplotlib.pyplot as plt
+
 
 # a helper function to get a dataframe
 def get_dataframe(repo,ps):
-
   (latest,date)=ps.get_latest(repo)
   data={}
   strdates=ps.get_dates(repo)
@@ -22,3 +23,16 @@ def get_dataframe(repo,ps):
     pass # was already dropped
   return df
 
+class Goal:
+  def __init__(self, name, date, value):
+    self.name = name
+    self.date = date
+    self.value = value
+
+
+def goal_graph(df,title,xlim,ylim,goals,columns):
+  df[columns].plot(title=title,xlim=xlim,ylim=ylim)
+  plt.legend(loc='lower right')
+  for goal in goals:
+    plt.annotate(goal.name, (goal.date, goal.value))
+  return plt
