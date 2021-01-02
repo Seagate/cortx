@@ -39,4 +39,4 @@ The main scripts in this folder are the following:
     
 For more info, pass '-h' or '--help' to any of the python scripts.  Some of the main python modules which you will need to install include: requests, xlrd, python-dateutil, and pyGithub.
 
-To produce a nice PDF report without showing the code inputs: jupyter nbconvert --to latex --no-input CORTX_Metrics_Topline_Report.ipynb.
+To produce a nice PDF report without showing the code inputs: jupyter nbconvert --to pdf --output-dir=/tmp --no-input CORTX_Metrics_Topline_Report.ipynb.
