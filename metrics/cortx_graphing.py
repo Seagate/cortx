@@ -19,7 +19,11 @@ def get_dataframe(repo,ps):
     dates.append(pd.to_datetime(date))
   # load everything into a dataframe
   for k in latest.keys():
-    data[k]=ps.get_values_as_numbers(repo,k)
+    values = ps.get_values_as_numbers(repo,k)
+    if 'ave_age_in_s' in k:
+      values = [None if v is None else v/86400 for v in values]
+      k= k.replace('ave_age_in_s','ave_age_in_days')
+    data[k]=values
   df=pd.DataFrame(data=data,index=dates)
   try:
     dropdate=pd.to_datetime('2020-12-20')
