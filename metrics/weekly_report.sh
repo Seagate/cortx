@@ -8,6 +8,7 @@
 . ~/.bashrc
 
 
+# this only works for some dumb reason if you're calling the script with the full path
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR
 
@@ -15,7 +16,7 @@ mail_subj_prefix="Weekly CORTX Community Report"
 email="john.bent@seagate.com"
 
 # scrape the metrics and mail the raw dump
-tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX)
+tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
 ./scrape_metrics.py > $tfile
 echo "Please see attached" | mail -s "$mail_subj_prefix : Scraper Output" -r $email -a $tfile $email 
 
@@ -39,3 +40,8 @@ mail -s "$mail_subj_prefix : Open Source Team Activity" -r $email $email < $tfil
 
 # commit the pickles because they were updated in the scrape
 ./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $email $email
+
+# make the executive report
+exec_report=CORTX_Metrics_Topline_Report
+jupyter nbconvert --to pdf --output-dir=/tmp --no-input --output $exec_report.$ts $exec_report.ipynb
+echo "Please see attached" | mail -s "$mail_subj_prefix : Metrics Executive Report" -r $email -a /tmp/$exec_report.$ts.pdf $email 
