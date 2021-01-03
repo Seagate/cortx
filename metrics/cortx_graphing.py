@@ -35,10 +35,13 @@ class Goal:
     self.end_value = end_value
 
 
-def goal_graph(df,title,xlim,ylim,goals,columns):
+def goal_graph(df,title,xlim,goals,columns,ylim=None):
   colors=default_colors
-  ax = df[columns].plot(title=title,xlim=xlim,ylim=ylim,color=colors,lw=3)
+  ax = df[columns].plot(title=title,xlim=xlim,color=colors,lw=3)
   actual_xlim=[ax.get_xlim()[0],ax.get_xlim()[-1]]
+  max_y=0
+  for c in columns:
+    max_y = max(max_y,df[c].max())
   for idx,goal in enumerate(goals):
     plt.annotate(" %s Goal" % goal.name, (goal.end_date, goal.end_value),color=colors[idx])
     y_goal_start = 0
@@ -47,6 +50,11 @@ def goal_graph(df,title,xlim,ylim,goals,columns):
         y_goal_start = df[goal.name][i]
         break
     yvalues=(y_goal_start,goal.end_value)
+    max_y = max(max_y,goal.end_value)
     plt.plot(actual_xlim, yvalues,label=None,color=colors[idx],linestyle='--')
+
+  if ylim is None:
+    ylim=(0,max_y*1.1)
+  ax.set_ylim(ylim) # auto set y using the max seen value plus 10% just so nothing is off-screen 
   plt.legend(loc='lower right')
   return plt
