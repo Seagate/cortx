@@ -45,3 +45,8 @@ mail -s "$mail_subj_prefix : Open Source Team Activity" -r $email $email < $tfil
 exec_report=CORTX_Metrics_Topline_Report
 jupyter nbconvert --to pdf --output-dir=/tmp --no-input --output $exec_report.$ts $exec_report.ipynb
 echo "Please see attached" | mail -s "$mail_subj_prefix : Metrics Executive Report" -r $email -a /tmp/$exec_report.$ts.pdf $email 
+
+# make the bulk conversion of all metrics into graphs report
+bulk_report=CORTX_Metrics_Graphs
+jupyter nbconvert --to pdf --output-dir=/tmp --no-input --output $bulk_report.$ts $bulk_report.ipynb
+echo "Please see attached" | mail -s "$mail_subj_prefix : Metrics Bulk Report" -r $email -a /tmp/$bulk_report.$ts.pdf $email 
