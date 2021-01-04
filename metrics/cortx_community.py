@@ -8,6 +8,7 @@ import requests
 import sys
 import time
 import xlrd
+from github import Github
 
 # put GH_OATH in your .bashrc
 # the following are a bunch of useful curl commands to run from the command line
@@ -44,6 +45,9 @@ COMMUNITY_PICKLE='%s/cortx_community.pickle' % PICKLE_DIR
 STATS_PICKLE='%s/persistent_stats.pickle' % PICKLE_DIR
 
 # a simple class that is a dict of {repo : {date : stats }
+# TODO: right now, scrape_metrics.py tries to create a GLOBAL view but it might not work so well
+# also, print_metrics.py creates a global view which might work better but still isn't optimal
+# I think what this class needs to do is create the GLOBAL view on demand whenever anyone asks for a repo matching 'GLOBAL'
 class PersistentStats:
   def __init__(self):
     try:
@@ -56,9 +60,38 @@ class PersistentStats:
     return sorted(self.stats.keys())
 
   def get_latest(self,repo):
-    dates = self.stats[repo].keys()
+    dates = self.get_dates(repo)
     latest = sorted(dates)[-1]
     return (self.stats[repo][latest],latest)
+
+  def get_dates(self,repo):
+    dates = self.stats[repo].keys()
+    return sorted(dates)
+
+  # some values are numbers, some are dicts, some are sets
+  # this function will return them all as numbers (either the number itself or the size of the collection)
+  def get_values_as_numbers(self,repo,key,dates=None):
+    Values = self.get_values(repo,key,dates)
+    Numbers = []
+    for v in Values:
+      try:
+        Numbers.append(len(v))
+      except TypeError:
+        Numbers.append(v)
+    return Numbers
+
+  def get_values(self,repo,key,dates=None):
+    Values=[]
+    if not dates:
+      dates = self.get_dates(repo)
+    for date in dates:
+      try:
+        Value = self.stats[repo][date][key]
+        Values.append(Value)
+      except KeyError:
+        # if we add new metrics, they won't be at the older dates
+        Values.append(None)
+    return Values
 
   def add_stats(self, date, repo, stats):
     if repo not in self.stats:
@@ -319,12 +352,13 @@ def get_teams(url):
   return sorted(teams)
 
 def get_repos():
-  items = pages_to_json("https://api.github.com/orgs/Seagate/repos?type=all")[0]
+  gh = Github(os.environ.get('GH_OATH'))
+  stx = gh.get_organization('Seagate')
+  srepos = stx.get_repos()
   repos = set([])
-  for item in items:
-    repo = item['full_name']
-    if "cortx" in repo and 'old' not in repo and 'backup' not in repo:
-      repos.add(repo)
+  for repo in srepos:
+    if "cortx" in repo.name and 'old' not in repo.name and 'backup' not in repo.name:
+      repos.add(repo.name)
   return sorted(repos)
 
 
