@@ -63,7 +63,7 @@ def main():
         people.update_email(args.individual,args.email)
       print(people.people[args.individual])
     else:
-      print("Person %s not in the known community")
+      print("Person %s not in the known community" % args.individual)
     if updated:
       people.persist()
     sys.exit(0)
