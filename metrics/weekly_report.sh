@@ -15,6 +15,9 @@ cd $DIR
 mail_subj_prefix="Weekly CORTX Community Report"
 email="john.bent@seagate.com"
 
+# start with a git pull in case the pickles were updated elsewhere
+git pull
+
 # scrape the metrics and mail the raw dump
 tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
 ./scrape_metrics.py > $tfile
