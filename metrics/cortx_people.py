@@ -63,7 +63,7 @@ def main():
         people.update_email(args.individual,args.email)
       print(people.people[args.individual])
     else:
-      print("Person %s not in the known community")
+      print("Person %s not in the known community" % args.individual)
     if updated:
       people.persist()
     sys.exit(0)
@@ -139,9 +139,11 @@ def main():
     if person in team_members:
       people.update_type(person,"CORTX Team")
       people.update_company(person,"Seagate")
-    elif person in innersource:
-      people.update_type(person,"Innersource")
+    if person in innersource:
+      if people.get_type(person) is None:
+        people.update_type(person,"Innersource") 
       people.update_company(person,"Seagate")
+      people.update_email(person,innersource[person])
     else:
       Type = people.get_type(person)
       if not Type:

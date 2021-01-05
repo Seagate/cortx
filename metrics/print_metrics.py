@@ -88,8 +88,11 @@ def main():
 
   # remove some bullshit companies
   for bs_company in ('Seagate', 'Codacy', 'Dependabot'):
-    gstats['companies'].remove(bs_company)
-    gstats['companies_contributing'].remove(bs_company)
+    for k in ['companies','companies_contributing']:
+      try:
+        gstats[k].remove(bs_company)
+      except KeyError:
+        pass
 
   if args.individual:
     (repo,timestamp) = ps.get_latest(args.individual)
