@@ -27,7 +27,7 @@ echo "Please see attached" | mail -s "$mail_subj_prefix : Scraper Output" -r $em
 ts=`date +%Y-%m-%d`
 tfile="/tmp/cortx_community_stats.$ts.csv"
 ./print_metrics.py -c -a -s | grep -v '^Statistics' > $tfile
-echo "Please see attached" | mail -s "$mail_subj_prefix : Summary as Attached CSV" -r $email -a $tfile $email 
+./print_metrics.py | mail -s "$mail_subj_prefix : Summary with Attached CSV" -r $email -a $tfile $email 
 
 # mail innersource and external activity reports
 tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX)
