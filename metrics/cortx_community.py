@@ -99,6 +99,10 @@ class PersistentStats:
     self.stats[repo][date] = stats
     self.persist()
 
+  def add_stat(self, date, repo, stat, value):
+    self.stats[repo][date][stat]=value
+    self.persist()
+
   def persist(self):
     with open(STATS_PICKLE,'wb') as f:
       pickle.dump(self.stats,f)
