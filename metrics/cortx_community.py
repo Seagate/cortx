@@ -220,7 +220,7 @@ class CortxPerson:
 
 class CortxCommunity:
   pickle_file = COMMUNITY_PICKLE 
-  allowed_types = set(['Bot', 'CORTX Team', 'Innersource', 'Hackathon', 'External','Mannequin'])
+  allowed_types = set(['Bot', 'CORTX Team', 'Innersource', 'Hackathon', 'External','Mannequin','EU R&D'])
 
   def __init__(self):
     try:
@@ -232,7 +232,7 @@ class CortxCommunity:
 
   def is_external(self,login):
     Type = self.get_type(login)
-    return Type in set(['External','Innersource','Hackathon'])
+    return Type in set(['External','Innersource','Hackathon','EU R&D'])
 
   def __str__(self):
     string = "CORTX Community Members: %d total" % len(self.people)
