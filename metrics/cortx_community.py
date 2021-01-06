@@ -234,6 +234,9 @@ class CortxCommunity:
     Type = self.get_type(login)
     return Type in set(['External','Innersource','Hackathon','EU R&D'])
 
+  def get_types(self):
+    return self.allowed_types
+
   def __str__(self):
     string = "CORTX Community Members: %d total" % len(self.people)
     for person in sorted(self.people.keys()):
