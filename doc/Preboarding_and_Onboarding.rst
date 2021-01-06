@@ -51,7 +51,7 @@ The preboarding process is the first process that must be completed after config
 Onboarding
 ===========
 
-If the Elasticsearch service is not running, execute the below mentioned commamds.
+If the Elasticsearch service is not running, execute the below mentioned commands.
 
 ::
 
