@@ -51,7 +51,7 @@ The preboarding process is the first process that must be completed after config
 Onboarding
 ===========
 
-**Error and Resolution**: As the Elasticsearch service is not running, you will encounter the below depicted error.
+**Error and Resolution**: As the Consul service is not running, you will encounter the below depicted error.
 
 .. image:: images/consul.PNG
 
