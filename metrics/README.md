@@ -6,35 +6,42 @@ using a crontab job.
 
 The main scripts in this folder are the following:
 1. **[scrape_metrics.py](scrape_metrics.py)**
-
-    a. This is the main worker program that crawls github and puts a ton of into into pickles    
-    b. It creates two main pickles: one for actions and one for people
+    * This is the main worker program that crawls github and puts a ton of info into pickles       
+    * It creates two main pickles: one for actions and one for people
     
 2. **[get_personal_activity.py](get_personal_activity.py)**
-
-    a. This program will print all known activity by one or community members
+    * This program will print all known activity by one or community members
     
 3. **[cortx_people.py](cortx_people.py)**
-
-    a. This program allows making modifications to the people pickle    
-    b. Use this for example to mark which community members are external or not    
-    c. Run this with the _dump_ flag to see all community members
+    * This program allows making modifications to the people pickle    
+    * Use this for example to mark which community members are external or not    
+    * Run this with the _dump_ flag to see all community members
     
 4. **[print_metrics.py](print_metrics.py)**
-
-    a. This program reads the pickles and prints the data from the last time the scrape was done
+    * This program reads the pickles and prints the data from the last time the scrape was done
 
 5. **[cortx_community.py](cortx_community.py)**
-
-    a. This is the module imported by the other python scripts which handles the pickling and various other utility functions
+    * This is the module imported by the other python scripts which handles the pickling and various other utility functions
     
-6. **[weekly_report.sh](weekly_report.sh)**
-
-    a. A trivial bash script that calls the above and pipes output into mail; intended to be run as a cron job    
-    b. E.g. 30 11 * * sat bash -c '/home/535110/cortx/metrics/weekly_report.sh' -> run it every Saturday at 11:30 AM
+6. **[cortx_graphing.py](cortx_graphing.py)**
+    * This is the module imported by two of the Jupyter notebooks which has useful functions for making graphs.
     
-7. **[commit_pickles.sh](commit_pickles.sh)**
+7. **[weekly_report.sh](weekly_report.sh)**
+    * A trivial bash script that calls the above and pipes output into mail; intended to be run as a cron job    
+    * E.g. 30 11 * * sat bash -c '/home/535110/cortx/metrics/weekly_report.sh' -> run it every Saturday at 11:30 AM
+    * It also produces and mails two reports produced by two of the Jupyter notebooks.
+    
+8. **[commit_pickles.sh](commit_pickles.sh)**
+    * A trivial bash script that pushes the pickles into the repo.  Run as part of the above weekly_report.sh
 
-    a. A trivial bash script that pushes the pickles into the repo.  Run as part of the above weekly_report.sh
+9. **[quarterly_innersource.sh](quarterly_innersource.sh)**
+    * A trivial bash script that produces the quarterly report for evaluating Seagate innersource activity
+   
+10. A few Jupyter notebooks
+    * **[CORTX_Metrics_Explore.ipynb](CORTX_Metrics_Explore.ipynb)** : useful for interactive exploration and can be used to manually populate the small number of metrics which are not yet automatically scraped
+    * **[CORTX_Metrics_Topline_Report.ipynb](CORTX_Metrics_Topline_Report.ipynb)** : produces the executive report containing the subset of metrics that we think best summarize and incentivize our community goals
+    * **[CORTX_Metrics_Graphs.ipynb](CORTX_Metrics_Graphs.ipynb)** : produces a few other specific interesting graphs produced with some derived values as well as producing a bulk set of graphs for every metric
+    
+
     
 For more info, pass '-h' or '--help' to any of the python scripts.  Some of the main python modules which you will need to install include: requests, xlrd, python-dateutil, and pyGithub.
