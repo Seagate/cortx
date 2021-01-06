@@ -51,6 +51,14 @@ The preboarding process is the first process that must be completed after config
 Onboarding
 ===========
 
+If the Elasticsearch search is not running, execute the below mentioned commamds.
+
+::
+
+ sed -i '11s/host:/host: 127.0.0.1/' /etc/csm/database.yaml
+ 
+ systemctl restart csm_agent
+
 The onboarding procedure must be performed after completing the preboarding procedure.  You should be brought automatically to the correct page after completing the preboarding.  If you are not, or if you subsequently want to redo the onboarding, you can navigate to *https://<management IP>:28100/#/onboarding* or, if logged out, through: *https://<management IP>:28100/#/preboarding/login* . You can also perform the onboarding tasks from the **Settings** page.
 
 .. raw:: html
