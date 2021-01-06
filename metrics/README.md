@@ -6,7 +6,7 @@ using a crontab job.
 
 The main scripts in this folder are the following:
 1. **[scrape_metrics.py](scrape_metrics.py)**
-    * This is the main worker program that crawls github and puts a ton of into into pickles       
+    * This is the main worker program that crawls github and puts a ton of info into pickles       
     * It creates two main pickles: one for actions and one for people
     
 2. **[get_personal_activity.py](get_personal_activity.py)**
