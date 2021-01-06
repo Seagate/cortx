@@ -38,7 +38,7 @@ do
 done
 
 # mail the team report
-./get_personal_activity.py 'VenkyOS,johnbent,justinzw,Saumya-Sunder,novium258' -l > $tfile
+./get_personal_activity.py 'VenkyOS,johnbent,justinzw,TechWriter-Mayur,hessio,Saumya-Sunder,novium258' -l > $tfile
 mail -s "$mail_subj_prefix : Open Source Team Activity" -r $email $email < $tfile
 
 # commit the pickles because they were updated in the scrape
