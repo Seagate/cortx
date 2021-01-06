@@ -51,9 +51,9 @@ The preboarding process is the first process that must be completed after config
 Onboarding
 ===========
 
-**Known Issue and Workaround**: As the Elasticsearch service is not running, you will encounter the below depicted error.
+**Error and Resolution**: As the Elasticsearch service is not running, you will encounter the below depicted error.
 
-.. image:: Images/consul.PNG
+.. image:: images/consul.PNG
 
 To resolve the error, execute the below mentioned commands.
 
