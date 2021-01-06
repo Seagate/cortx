@@ -134,10 +134,14 @@ def scrape_author(people,gh,repo,author,repo_stats,commit,author_activity):
     Type = Type.replace(' ','_')
     key = "%s_%s" % (Type.lower(), 'committers' if commit else 'participants')
     repo_stats[key].add(login)
-    if Type == 'Hackathon':
-      Type = 'External'  # loop so that we count hackathon participants also as external
-    else:
-      break
+    # We used to loop if someone was a Hackathon person so that they would also be counted as external.
+    # But this is confusing and potentially results in double-counting.
+    # Instead, let's just count them once and take sums when we do reporting
+    #if Type == 'Hackathon': 
+    #  Type = 'External'  # loop so that we count hackathon participants also as external
+    #else:
+    #  break
+    break
 
   if not previously_known:
     repo_stats['new_logins'].add(login)
