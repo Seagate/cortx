@@ -18,16 +18,16 @@ Automatic install or manual install. Basic installation is OK. When you build CO
 
 ## 4. Run the following commands.
 
-$ sudo yum install epel-release
+ sudo yum install epel-release
 
-$ sudo yum repolist
+ sudo yum repolist
 
-$ sudo yum install ansible
+ sudo yum install ansible
 
-$ wget https://archives.fedoraproject.org/pub/archive/epel/5/x86_64/epel-release-5-4.noarch.rpm
-$ sudo rpm –ivh epel-release-latest-5.noarch.rpm
-$ sudo yum repolist
-$ sudo yum install ansible
+ wget https://archives.fedoraproject.org/pub/archive/epel/5/x86_64/epel-release-5-4.noarch.rpm
+ sudo rpm –ivh epel-release-latest-5.noarch.rpm
+ sudo yum repolist
+ sudo yum install ansible
 
 ## 5. Now you are ready to build and test CORTX. 
 Please refer to the [Contribution Guide](../CONTRIBUTING.md) to get started.
