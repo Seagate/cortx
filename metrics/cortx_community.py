@@ -80,6 +80,9 @@ class PersistentStats:
         Numbers.append(v)
     return Numbers
 
+  def get_keys(self,repo,date):
+    return self.stats[repo][date].keys()
+
   def get_values(self,repo,key,dates=None):
     Values=[]
     if not dates:

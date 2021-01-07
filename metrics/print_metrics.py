@@ -40,6 +40,7 @@ def main():
   parser.add_argument('-s', '--suppress', action='store_true', help="Don't show interesting fields")
   parser.add_argument('-i', '--individual', type=str, help="Only show data for a single repo")
   parser.add_argument('-c', '--csv', action='store_true', help="Output in csv")
+  #parser.add_argument('-k', '--key', type=str, help="Show all values for all dates for a single key") # TODO: would be nice to add this one
   args = parser.parse_args()
 
   ps = cortx_community.PersistentStats()
@@ -49,6 +50,8 @@ def main():
   ave_age_str='_ave_age_in_s'
 
   # first build the global stats
+  # actually don't even do this anymore
+  # just use the GLOBAL that gets scraped
   gstats = {} 
   gstats['repo_count'] = len(repos)
   timestamp = None
@@ -93,6 +96,9 @@ def main():
         gstats[k].remove(bs_company)
       except KeyError:
         pass
+
+  # just completely undo everything that was just done and just use global from the scrape
+  gstats=ps.get_latest('GLOBAL')[0]
 
   if args.individual:
     (repo,timestamp) = ps.get_latest(args.individual)
