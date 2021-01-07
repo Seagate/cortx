@@ -23,6 +23,9 @@ tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
 ./scrape_metrics.py > $tfile
 echo "Please see attached" | mail -s "$mail_subj_prefix : Scraper Output" -r $email -a $tfile $email 
 
+# carry forward the statistics which aren't scrape
+./update_nonscraped_values.py | mail -s "$mail_subj_prefix: Update Non-Scraped Values" -r $email
+
 # mail the metrics as a CSV 
 ts=`date +%Y-%m-%d`
 tfile="/tmp/cortx_community_stats.$ts.csv"
@@ -41,7 +44,7 @@ done
 ./get_personal_activity.py 'VenkyOS,johnbent,justinzw,TechWriter-Mayur,hessio,Saumya-Sunder,novium258' -l > $tfile
 mail -s "$mail_subj_prefix : Open Source Team Activity" -r $email $email < $tfile
 
-# commit the pickles because they were updated in the scrape
+# commit the pickles because they were updated in the scrape and the update of non-scraped values
 ./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $email $email
 
 # make the executive report
