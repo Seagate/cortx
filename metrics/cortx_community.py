@@ -80,6 +80,9 @@ class PersistentStats:
         Numbers.append(v)
     return Numbers
 
+  def get_keys(self,repo,date):
+    return self.stats[repo][date].keys()
+
   def get_values(self,repo,key,dates=None):
     Values=[]
     if not dates:
@@ -233,6 +236,9 @@ class CortxCommunity:
   def is_external(self,login):
     Type = self.get_type(login)
     return Type in set(['External','Innersource','Hackathon','EU R&D'])
+
+  def get_types(self):
+    return self.allowed_types
 
   def __str__(self):
     string = "CORTX Community Members: %d total" % len(self.people)
