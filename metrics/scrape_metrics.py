@@ -134,10 +134,14 @@ def scrape_author(people,gh,repo,author,repo_stats,commit,author_activity):
     Type = Type.replace(' ','_')
     key = "%s_%s" % (Type.lower(), 'committers' if commit else 'participants')
     repo_stats[key].add(login)
-    if Type == 'Hackathon':
-      Type = 'External'  # loop so that we count hackathon participants also as external
-    else:
-      break
+    # We used to loop if someone was a Hackathon person so that they would also be counted as external.
+    # But this is confusing and potentially results in double-counting.
+    # Instead, let's just count them once and take sums when we do reporting
+    #if Type == 'Hackathon': 
+    #  Type = 'External'  # loop so that we count hackathon participants also as external
+    #else:
+    #  break
+    break
 
   if not previously_known:
     repo_stats['new_logins'].add(login)
@@ -192,6 +196,7 @@ def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh
 # that is fine for the values that are over-written but problematic for the values that are incremented
 # therefore, just in case we are running in update mode, explicitly reset incremented values to 0 before incrementing
 def get_top_level_repo_info(stats,repo,people,author_activity,gh):
+  print("Getting top level info from %s" % repo)
   stats['branches']              = len(list(repo.get_branches()))
   stats['clones_unique_14_days'] = repo.get_clones_traffic()['uniques']
   stats['clones_count_14_days']  = repo.get_clones_traffic()['count']
@@ -327,7 +332,9 @@ def get_contributors(rname,repo,local_stats,people,gh):
     local_stats['contributors'].add(c.login)
 
 # little helper function for putting empty k-v pairs into stats structure
-def load_actors(D,actors):
+def load_actors(D,people):
+  actors = [ k.replace(' ','_').lower() for k in people.get_types() ] 
+  actors.append('unknown')
   for actor in actors:
     D['%s_participants' % actor] = set()
     D['%s_committers' % actor] = set()
@@ -359,6 +366,7 @@ def collect_stats(update):
   avoid_rate_limiting(gh)
   stx = gh.get_organization('Seagate')
   today = datetime.today().strftime('%Y-%m-%d')
+  people = cortx_community.CortxCommunity()             # load up the people pickle
 
   # averages are weird so handle them differently
   ave_age_str='_ave_age_in_s'
@@ -399,17 +407,17 @@ def collect_stats(update):
                    'watchers_external'             : set(),
                    'watchers'                      : set(),
                     }
-  load_actors(global_stats,('mannequin','innersource','external','hackathon','bot','cortx_team','unknown'))
+  load_actors(global_stats,people)
   load_items(global_stats,('issues','pull_requests'),('_external','_internal',''),('','_open','_closed','_open_ave_age_in_s','_closed_ave_age_in_s'))
-  global_stats['pull_requests_external_merged'] = 0
   local_stats_template = copy.deepcopy(global_stats)    # save an empty copy of the stats struct to copy for each repo
   author_activity = cortx_community.CortxActivity()     # load up the author activity pickle 
-  people = cortx_community.CortxCommunity()             # load up the people pickle
   persistent_stats = cortx_community.PersistentStats()  # load up all the stats
 
   for repo in stx.get_repos():
     rname = repo.name # put this in a variable just in case it is a github API to fetch this
-    if 'cortx' not in rname or rname.endswith('.old') or rname.endswith('-old') or repo.private:
+    rmatch='cortx'
+    #rmatch='cortx-motr' # just temporarily only match motr for quick testing of new 'eu_r&d' people type
+    if rmatch not in rname or rname.endswith('.old') or rname.endswith('-old') or repo.private:
       continue
 
     local_stats = copy.deepcopy(local_stats_template) # get an empty copy of the stats structure
