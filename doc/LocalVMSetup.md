@@ -16,19 +16,16 @@ You can download CentOS 7.8.2003 ISO file from http://www.centos.org, or from an
 ## 3. Install a fresh CentOS 7.8.2003
 Automatic install or manual install. Basic installation is OK. When you build CORTX from source in next steps, dependant packages will be resolved and installed.
 
-## 4. Run the following commands.
+## 4. Install GUI so you can setup ssh key
+yum groups install "GNOME Desktop"
 
- sudo yum install epel-release
+startx
 
- sudo yum repolist
+## 5. You may need EPEl repo.
+Please refer to: https://fedoraproject.org/wiki/EPEL
 
- sudo yum install ansible
+sudo yum install ansible
 
- wget https://archives.fedoraproject.org/pub/archive/epel/5/x86_64/epel-release-5-4.noarch.rpm
- sudo rpm –ivh epel-release-latest-5.noarch.rpm
- sudo yum repolist
- sudo yum install ansible
-
-## 5. Now you are ready to build and test CORTX. 
+## 6. Now you are ready to build and test CORTX. 
 Please refer to the [Contribution Guide](../CONTRIBUTING.md) to get started.
 
