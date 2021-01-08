@@ -20,23 +20,22 @@ CORTX is also used by the weather and climate community in the EsiWACE  (2015 â€
 
 **Which are the ongoing EU R&D projects based on CORTX?**
 
-Sage2, Maestro and EsiWACE2 are the currently ongoing R&D projects based on CORTX. 
+   * Sage2, Maestro and EsiWACE2 are the currently ongoing R&D projects based on CORTX. 
 Sage2 is continuing to build a CORTX cluster based for extreme scale computing/HPC and AI moving forward from the SAGE project, continuing to use the SAGE prototype. The project consists of 9 partners lead by Seagate and is funded by the European Commission's H2020 program (Grant Agreement numnber: 800999). Sage2 will demonstrate a multi tier storage system (distributed NVRAM, SSD, HDD), "SAGE", capable of handling data intensive workloads. 
 Seagate is providing the components of CORTX primarily, Motr, lib-motr and Hare and some of the storage enclosures (SAS & SATA HDD tiers). Experimental pieces of Motr are developed by Seagate (eg: QoS, Function Shipping etc) to suit the needs of HPC and AI use cases. 
-
 ATOS.. 
-KTH..
-Juelich 
+KTH is..
+Juelich is...
 Kitware is focussing on providing visualition utilities for applications running on SAGE.
-ARM..
-UKAEA..
-University of Edinburgh..
-CEA..
+ARM is..
+UKAEA is ..
+University of Edinburgh is..
+CEA is..
 
-Maestro R&D project is building a data orchestration software layer that intelligently handles data movement in the I/O stack and has CORTX Motr as one of its primary backends.
+  * Maestro R&D project is building a data orchestration software layer that intelligently handles data movement in the I/O stack and has CORTX Motr as one of its primary backends.
 Apart from Seagate - CEA, Juelich, ETH, Appentra, ECMWF and HPE are the key players and the project is lead by Juelich (administration) + HPE (technical).
 
-The EsiWACE2 project consists of 20 EU partners from the weather and climate community lead by DKRZ (Germany). EsiWACE2 looks at weather and climate applications and is looking at leveraging CORTX Motr as one of the backends. 
+  * The EsiWACE2 project consists of 20 EU partners from the weather and climate community lead by DKRZ (Germany). EsiWACE2 looks at weather and climate applications and is looking at leveraging CORTX Motr as one of the backends. 
 
 Please help us populate this FAQ by letting us know what you most want to know about CORTX!  Feel free to ask questions in any of our [communications channels](SUPPORT.md) and we can all populate this FAQ as we learned what is actually frequently asked.
 
