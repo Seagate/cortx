@@ -71,7 +71,7 @@ def goal_graph(df,title,xlim,goals,columns,ylim=None):
     linestyle=(0,(1,10)) # loosely dotted, might be too faint when combined with a lighter color
     linestyle="dotted"
     color=scale_lightness(colors[idx],1.5) # lighten the color for the goal line
-    plt.plot(actual_xlim, yvalues,label=None, color=color, linestyle=linestyle)
+    plt.plot(actual_xlim, yvalues,label=None, color=color, linestyle=linestyle,lw=4)
 
   if ylim is None:
     ylim=(0,max_y*1.1)  # find the max y-value and pad the graph by 10% over that
