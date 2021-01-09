@@ -223,7 +223,8 @@ class CortxPerson:
 
 class CortxCommunity:
   pickle_file = COMMUNITY_PICKLE 
-  allowed_types = set(['Bot', 'CORTX Team', 'Innersource', 'Hackathon', 'External','Mannequin','EU R&D'])
+  allowed_types  = set(['External','Innersource','Hackathon','EU R&D','Bot', 'CORTX Team', 'Mannequin'])
+  external_types = set(['External','Innersource','Hackathon','EU R&D'])
 
   def __init__(self):
     try:
@@ -233,9 +234,12 @@ class CortxCommunity:
     except FileNotFoundError:
       self.people = {} 
 
+  def external_type(self,Type):
+    return Type in self.external_types
+
   def is_external(self,login):
     Type = self.get_type(login)
-    return Type in set(['External','Innersource','Hackathon','EU R&D'])
+    return external_type(Type)
 
   def get_types(self):
     return self.allowed_types
