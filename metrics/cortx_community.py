@@ -239,7 +239,7 @@ class CortxCommunity:
 
   def is_external(self,login):
     Type = self.get_type(login)
-    return external_type(Type)
+    return self.external_type(Type)
 
   def get_types(self):
     return self.allowed_types
