@@ -23,9 +23,6 @@ tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
 ./scrape_metrics.py > $tfile
 echo "Please see attached" | mail -s "$mail_subj_prefix : Scraper Output" -r $email -a $tfile $email 
 
-# carry forward the statistics which aren't scrape
-./update_nonscraped_values.py | mail -s "$mail_subj_prefix: Update Non-Scraped Values" -r $email
-
 # mail the metrics as a CSV 
 ts=`date +%Y-%m-%d`
 tfile="/tmp/cortx_community_stats.$ts.csv"
