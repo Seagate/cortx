@@ -2,15 +2,14 @@
 For WMware worktation 15.5.0
 ============================
 
-If you using WMware not working with latest version of Windows and you need to install old version of WMware. Thing might work a bit difference.
+If you install latest VMWare workstation and not working with latest version of Windows, you could install old version of WMware workstation.
 
-Hence is the steps for running `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ for WMware Workstation 15.5.0 `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ in Window 10 version 1890 ( OS build 17763.1637) 
+Here the steps for running `cortx-va-1.0.2.zip </releases/download/VA/cortx-va-1.0.2.zip>`_ for WMware Workstation 15.5.0 in Window 10 version 1890 ( OS build 17763.1637) 
 
-1) Install the `WMware Workstation 15.5.0 <https://www.youwindowsworld.com/en/downloads/virtualization/vmware/vmware-workstation-15-pro/download-535-vmware-workstation-15-pro>`_.
+#. Install `WMware Workstation 15.5.0 <https://www.youwindowsworld.com/en/downloads/virtualization/vmware/vmware-workstation-15-pro/download-535-vmware-workstation-15-pro>`_. 
+   (Offial VMWare no longer provided old version for download).
 
-2) All the step will same as the `install instructions <https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst>`_  except VM settings.
-
-3) After import OVA image to VMware Workstation, go to Menu > Edit > Virtual Network Editor...
+#. After import OVA image to VMware Workstation, go to Menu > Edit > Virtual Network Editor...
 
    Follow instruction `here <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_  for the IP netowrk setup.
    
@@ -30,25 +29,25 @@ Right click image and select settings.
    .. image:: images/vmsetup1550/vmsettings.jpg
    
 
-1) Click on network adapter, select network connection as briged, check the "replicate pyshical network connection state.
+#. Click on network adapter, select network connection as briged, check the "replicate pyshical network connection state.
 
-   .. image:: images/vmsetup1550/vm.jpg
+   .. image:: images/vmsetup1550/vm1.jpg
 
 
-2) Select network adapter 2, select Host Only for network connection option.
-
-   .. image:: images/vmsetup1550/vm2.jpg
-
-2) Select network adpater 3, select NAT for network connection option.
+#. Select network adapter 2, select Host Only for network connection option.
 
    .. image:: images/vmsetup1550/vm2.jpg
 
+#. Select network adpater 3, select NAT for network connection option.
 
-7) Click OK, restart VM and run **ip a l**
+   .. image:: images/vmsetup1550/vm2.jpg
+
+
+#. Click OK, restart VM and run **ip a l**
 
 you should see the ip settings is correct, you could go to Menu > Edit > Virtual Network Editor, verify that the VMs should had difference IP.
 
-   .. image:: images/vmsetup1550/vm2.jpg
+   .. image:: images/vmsetup1550/vm3.jpg
 
 Start the CORTX servr, now you should able to view CORTX UI with following magement IP address as highlighted below:
 

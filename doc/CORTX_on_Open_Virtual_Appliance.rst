@@ -60,7 +60,7 @@ The procedure to install CORTX on OVA is mentioned below.
    
    - Ensure that you have configured your ipv4 network.
       - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
-      - If you are using WMware workstation 15.5.0, refer to the network setup `here <https://github.com/Seagate/cortx/doc/vmware_workstation_15_5_0_setup.rst>`_.
+      - If you are using WMware workstation 15.5.0, refer to the network setup `here </doc/vmware_workstation_15_5_0_setup.rst>`_.
    
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
       - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
