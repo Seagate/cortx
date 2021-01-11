@@ -47,7 +47,7 @@ Right click image and select settings.
 
 you should see the ip settings is correct, you could go to Menu > Edit > Virtual Network Editor, verify that the VMs should had difference IP.
 
-   .. image:: images/vmsetup1550/vm3.jpg
+   .. image:: images/vmsetup1550/virtual.jpg
 
 Start the CORTX servr, now you should able to view CORTX UI with following magement IP address as highlighted below:
 
