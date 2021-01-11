@@ -50,14 +50,11 @@ you should see the ip settings is correct, you could go to Menu > Edit > Virtual
 
    .. image:: images/vmsetup1550/vm2.jpg
 
-Start the CORTX servr, now you should able to view CORTX UI with following IP address:
+Start the CORTX servr, now you should able to view CORTX UI with following magement IP address as highlighted below:
 
    .. image:: images/vmsetup1550/ui_ip.jpg
 
-Open browser and go to https://192.168.80.128:28100/, you should see CORTX UI as below:
-
-   .. image:: images/vmsetup1550/ui.JPG
-
+Open browser and go to https://<management IP>:28100/#/preboarding/welcome, you should see CORTX UI.
 
 
 
