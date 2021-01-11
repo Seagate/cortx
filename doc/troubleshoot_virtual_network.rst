@@ -1,6 +1,6 @@
-********
+**************************************************
 Troubleshooting your virtual network configuration
-********
+**************************************************
 
 In order to run CORTX, it must be able to acquire IP addresses.  To test whether it has, run **ip a l** and you should hopefully see something like the following:
 
@@ -29,4 +29,9 @@ If you do not see IP addresses and you are running in a virtual machine hypervis
    ifup <interface>    # e.g. ifup ens192 
 
    If not, please contact the community and we'll figure it out together.  :relaxed:
+   
+   
+For WMware worktation 15.5.0
+============================
 
+If you using WMware worktation 15.5.0, you might follow the instruction `here <https://github.com/Seagate/cortx/doc/vmware_workstation_15_5_0_setup.rst>`_.

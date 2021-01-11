@@ -15,9 +15,9 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.  For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
 
-**********
+*********
 Procedure
-**********
+*********
 The procedure to install CORTX on OVA is mentioned below.
 
 #. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download and then uncompress the `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ file that contains the virtual machine image.
@@ -62,6 +62,7 @@ The procedure to install CORTX on OVA is mentioned below.
       - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
       - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
+   - If you using WMware workstation 15.5.0, you could refer to the network setup `here <https://github.com/Seagate/cortx/doc/vmware_workstation_15_5_0_setup.rst>`_.
    
 #. Run the below mentioned commands to check the status of different services that are part of CORTX.
 
@@ -145,21 +146,21 @@ Miscellaneous
 
 If you have a firewall between CORTX and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the ports mentioned below are open to provide access to CORTX.
   
-+----------------------+-------------------+---------------------------------------------+
-|    **Port number**   |   **Protocols**   |   **Destination network on CORTX**          |
-+----------------------+-------------------+---------------------------------------------+
-|          22          |        TCP        |           Management network                |
-+----------------------+-------------------+---------------------------------------------+ 
-|          53          |      TCP/UDP      | Management network and Public Data network  |
-+----------------------+-------------------+---------------------------------------------+ 
-|         123          |      TCP/UDP      |              Management network             |
-+----------------------+-------------------+---------------------------------------------+
-|         443          |       HTTPS       |             Public Data network             |
-+----------------------+-------------------+---------------------------------------------+
-|         9443         |       HTTPS       |              Public Data network            |
-+----------------------+-------------------+---------------------------------------------+
-|         28100        |   TCP (HTTPS)     |              Management network             |
-+----------------------+-------------------+---------------------------------------------+
++-----------------+---------------+--------------------------------------------+
+| **Port number** | **Protocols** | **Destination network on CORTX**           |
++-----------------+---------------+--------------------------------------------+
+| 22              | TCP           | Management network                         |
++-----------------+---------------+--------------------------------------------+
+| 53              | TCP/UDP       | Management network and Public Data network |
++-----------------+---------------+--------------------------------------------+
+| 123             | TCP/UDP       | Management network                         |
++-----------------+---------------+--------------------------------------------+
+| 443             | HTTPS         | Public Data network                        |
++-----------------+---------------+--------------------------------------------+
+| 9443            | HTTPS         | Public Data network                        |
++-----------------+---------------+--------------------------------------------+
+| 28100           | TCP (HTTPS)   | Management network                         |
++-----------------+---------------+--------------------------------------------+
 
 If your disk does not have space, run the following command to clean up the logs from the **/var/log** file.
 
@@ -182,7 +183,7 @@ To restart the CORTX OVA, follow the below mentioned procedures, in the order of
 - Restart CORTX
 
 Shutdown CORTX
-----------------
+--------------
 
 .. raw:: html
 
@@ -209,7 +210,7 @@ Shutdown CORTX
  
 
 Restart CORTX
---------------
+-------------
 
 .. raw:: html
 
