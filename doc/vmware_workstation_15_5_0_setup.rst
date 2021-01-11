@@ -2,7 +2,7 @@
 For WMware worktation 15.5.0
 ============================
 
-If you install latest VMWare workstation and not working with latest version of Windows, you could install old version of WMware workstation.
+If your installation of VMWare workstation not work with latest version of Windows, you could install old version of WMware workstation.
 
 Here the steps for running `cortx-va-1.0.2.zip </releases/download/VA/cortx-va-1.0.2.zip>`_ for WMware Workstation 15.5.0 in Window 10 version 1890 ( OS build 17763.1637) 
 
@@ -40,7 +40,7 @@ Right click image and select settings.
 
 #. Select network adpater 3, select NAT for network connection option.
 
-   .. image:: images/vmsetup1550/vm2.jpg
+   .. image:: images/vmsetup1550/vm3.jpg
 
 
 #. Click OK, restart VM and run **ip a l**
