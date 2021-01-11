@@ -53,7 +53,9 @@ Start the CORTX servr, now you should able to view CORTX UI with following magem
 
    .. image:: images/vmsetup1550/ui_ip.jpg
 
-Open browser and go to https://<management IP>:28100/#/preboarding/welcome, you should see CORTX UI.
+Open browser and go to *https://<management IP>:28100/#/preboarding/welcome*, you should see CORTX UI.
+
+Follow instruction `here </doc/Preboarding_and_Onboarding.rst>`_ for setup CORTX ui.
 
 
 
