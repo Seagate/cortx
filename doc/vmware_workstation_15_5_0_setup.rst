@@ -8,11 +8,11 @@ Hence is the steps for running `cortx-va-1.0.2.zip <https://github.com/Seagate/c
 
 1) Install the `WMware Workstation 15.5.0 <https://www.youwindowsworld.com/en/downloads/virtualization/vmware/vmware-workstation-15-pro/download-535-vmware-workstation-15-pro>`_.
 
-2) All the step will same as the `install instructions <https://github.com/Seagate/cortx/doc/CORTX_on_Open_Virtual_Appliance.rst>`_  except VM settings.
+2) All the step will same as the `install instructions <https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst>`_  except VM settings.
 
 3) After import OVA image to VMware Workstation, go to Menu > Edit > Virtual Network Editor...
 
-   Follow instruction `here <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>'_ for the IP netowrk setup.
+   Follow instruction `here <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_  for the IP netowrk setup.
    
    If is not working, you need to click on restore default button to restore all network state. 
    
