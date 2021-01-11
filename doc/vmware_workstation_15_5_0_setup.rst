@@ -6,8 +6,7 @@ If your installation of VMWare workstation not work with latest version of Windo
 
 Here the steps for running `cortx-va-1.0.2.zip </releases/download/VA/cortx-va-1.0.2.zip>`_ for WMware Workstation 15.5.0 in Window 10 version 1890 ( OS build 17763.1637) 
 
-#. Install `WMware Workstation 15.5.0 <https://www.youwindowsworld.com/en/downloads/virtualization/vmware/vmware-workstation-15-pro/download-535-vmware-workstation-15-pro>`_. 
-   (Offial VMWare no longer provided old version for download).
+#. Install WMware Workstation 15.5.0. (Offial VMWare no longer provided old version for download, you need to find on internet and download)
 
 #. After import OVA image to VMware Workstation, go to Menu > Edit > Virtual Network Editor...
 
