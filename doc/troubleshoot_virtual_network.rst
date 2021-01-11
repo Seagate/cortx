@@ -34,4 +34,4 @@ If you do not see IP addresses and you are running in a virtual machine hypervis
 For WMware worktation 15.5.0
 ----------------------------
 
-If you using WMware worktation 15.5.0, you might follow the instruction `here <https://github.com/Seagate/cortx/doc/vmware_workstation_15_5_0_setup.rst>`_.
+If you are using WMware worktation 15.5.0, you might follow the instruction `here <https://github.com/Seagate/cortx/doc/vmware_workstation_15_5_0_setup.rst>`_.
