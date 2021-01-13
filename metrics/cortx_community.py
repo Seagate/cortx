@@ -318,6 +318,17 @@ def check_rate_limit():
   js = r.json()
   return js
 
+
+def avoid_rate_limiting(gh):
+  (remaining,total) = gh.rate_limiting
+  if remaining < 10:
+    reset = gh.rate_limiting_resettime
+    sleep = reset - time.time()
+    if(sleep > 0):
+      sleep = int(sleep) + 5 # sleep a bit long to be extra safe
+      print("Need to sleep %d seconds until %d" % (int(sleep),reset))
+      time.sleep(sleep)
+
 def ensure_rate_limit(r):
   if int(r.headers['X-RateLimit-Remaining']) <= 2:  # try early just to give some buffer
     print(r.headers)

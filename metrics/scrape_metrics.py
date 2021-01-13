@@ -20,14 +20,7 @@ def remove_string_from_set(Set, String):
   return newset
 
 def avoid_rate_limiting(gh):
-  (remaining,total) = gh.rate_limiting
-  if remaining < 10:
-    reset = gh.rate_limiting_resettime
-    sleep = reset - time.time()
-    if(sleep > 0):
-      sleep = int(sleep) + 5 # sleep a bit long to be extra safe
-      print("Need to sleep %d seconds until %d" % (int(sleep),reset))
-      time.sleep(sleep)
+  cortx_community.avoid_rate_limiting(gh)
 
 # this function takes a NamedUsed (https://pygithub.readthedocs.io/en/latest/github_objects/NamedUser.html) and returns info about them
 # it seems this function uses the github API to query some of this stuff and that kills the rate limit (and probably performance also)
