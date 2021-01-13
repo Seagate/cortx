@@ -3,7 +3,7 @@ THIS FILE IS OLD AND SHOULD BE REMOVED AFTER VERIFYING THAT NO LINKS EXIST TO IT
 
 # Create a new VM from scratch
 For CORTX development, you can create a new VM from scatch and then install a fresh CentOS 7.8.2003.
-This setup should take you roughly 20 to 30 minutes 
+This setup should take you roughly 20 to 30 minutes.
 
 ## 1. Download ISO file
 You can download CentOS 7.8.2003 ISO file from http://www.centos.org, or from any mirror site you like.
@@ -30,12 +30,12 @@ if you have a network connection then skip on to step 4, otherwise follow the be
  
     sudo reboot now
 
-## 5. Connect to your VM using Putty
-Get the ip address of your VM sudo nmcli will provide you with the ip address. Copy the ip address to your Putty console and click connect.
+## 5. Connect to your VM using Putty (Optional)
+Get the ip address of your VM sudo nmcli will provide you with the ip address. Copy the ip address to your PuTTY console and click connect.
 
 ## 6. Install git
 
-    yum insatll git
+    yum install git
 
 ## 7. You may need to add EPEL repo.
 Please refer to: https://fedoraproject.org/wiki/EPEL
