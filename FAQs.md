@@ -28,7 +28,7 @@ KTH is focusing on adopting the CORTX object storage with an I/O programming mod
 Juelich is...
 Kitware is focussing on providing visualition utilities for applications running on SAGE.
 ARM is..
-UKAEA is ..
+UKAEA is adapting the novel storage system for a unique HPC application involving parallel in time. The combination of the tiered storage with parallel in time aims to demonstrate application portability to the Exascale era. UKAEA also is contributing to areas such as global memory abstraction and is closely working with other CORTX partners to develop and use tools for studying performance alonside data management and analysis. 
 University of Edinburgh is..
 CEA is..
 
