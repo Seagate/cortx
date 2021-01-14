@@ -12,6 +12,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
 1. [John Bent](https://github.com/johnbent)
 1. [Rachel Novak](https://github.com/novium258)
+1. [Mukul Malhotra](https://github.com/mukul-seagate11)
 
 ## [Seagate/cortx-dsal](https://github.com/Seagate/cortx-dsal)
 1.
