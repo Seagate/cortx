@@ -30,16 +30,9 @@ if you have a network connection then skip on to step 4, otherwise follow the be
  
     sudo reboot now
 
-## 5. Connect to your VM using Putty (Optional)
-Get the ip address of your VM sudo nmcli will provide you with the ip address. Copy the ip address to your PuTTY console and click connect.
-
-## 6. Install git
-
-    yum install git
-
-## 7. You may need to add EPEL repo.
+## 5. You may need to add EPEL repo.
 Please refer to: https://fedoraproject.org/wiki/EPEL
 
-## 8. Now you are ready to build and test CORTX. 
+## 6. Now you are ready to build and test CORTX. 
 Please refer to the [Contribution Guide](../CONTRIBUTING.md) to get started.
 
