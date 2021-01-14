@@ -37,8 +37,8 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-hare](https://github.com/Seagate/cortx-hare)
+1. [Andriy Tkachuk](https://github.com/andriytk)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
-1.
 
 ## [Seagate/cortx-images](https://github.com/Seagate/cortx-images)
 1.
@@ -57,8 +57,9 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
+1. [Andriy Tkachuk](https://github.com/andriytk)
 1. [John Bent](https://github.com/johnbent)
-1.
+1. 
 
 ## [Seagate/cortx-motr-galois](https://github.com/Seagate/cortx-motr-galois)
 1.
