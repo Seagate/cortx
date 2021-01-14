@@ -18,12 +18,12 @@ You can download CentOS 7.8.2003 ISO file from http://www.centos.org, or from an
 Automatic install or manual install. Basic installation is OK. When you build CORTX from source in next steps, dependant packages will be resolved and installed.
 
 ## 4. You may need to configure your network settings
-run a test to check if you are connected to the network 
+Run a test to check if you are connected to the network:
 
 ```sh
 sudo nmcli d
 ```   
-if you have a network connection then skip on to step 4, otherwise follow the below commands:
+if you have a network connection then skip on to step [5](https://github.com/hessio/cortx/blob/patch-2/doc/LocalVMSetup.md#5-you-may-need-to-add-epel-repo), otherwise follow the below commands:
 ```sh
 sudo nmtui
 ```
