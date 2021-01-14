@@ -13,6 +13,8 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [John Bent](https://github.com/johnbent)
 1. [Rachel Novak](https://github.com/novium258)
 1. [Mukul Malhotra](https://github.com/mukul-seagate11)
+1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
+
 
 ## [Seagate/cortx-dsal](https://github.com/Seagate/cortx-dsal)
 1.
@@ -35,7 +37,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-hare](https://github.com/Seagate/cortx-hare)
-1.
+1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1.
 
 ## [Seagate/cortx-images](https://github.com/Seagate/cortx-images)
@@ -43,11 +45,11 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-management-portal](https://github.com/Seagate/cortx-management-portal)
-1.
+1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1.
 
 ## [Seagate/cortx-manager](https://github.com/Seagate/cortx-manager)
-1.
+1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1.
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
@@ -76,7 +78,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
 1. [John Bent](https://github.com/johnbent)
-1.
+1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
 1.
