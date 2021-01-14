@@ -11,6 +11,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
 1. [John Bent](https://github.com/johnbent)
+1. [Mayur Gupta](https://github.com/TechWriter-Mayur)
 1. [Mukul Malhotra](https://github.com/mukul-seagate11)
 1. [Rachel Novak](https://github.com/novium258)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
@@ -21,7 +22,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-experiments](https://github.com/Seagate/cortx-experiments)
-1.
+1. 
 1.
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
@@ -33,7 +34,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-ha](https://github.com/Seagate/cortx-ha)
-1.
+1. 
 1.
 
 ## [Seagate/cortx-hare](https://github.com/Seagate/cortx-hare)
@@ -53,7 +54,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
-1.
+1. 
 1.
 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
@@ -70,11 +71,11 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-posix](https://github.com/Seagate/cortx-posix)
-1.
+1. 
 1.
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
-1.
+1. 
 1.
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
@@ -83,7 +84,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
-1.
+1. 
 1.
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
