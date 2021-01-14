@@ -2,8 +2,9 @@
 
 This file contains lists of contributors to CORTX for each repository comprising CORTX.  If you make a contribution anywhere to CORTX, please don't forget to add your name here!
 * Please use alphabetical ordering by first name.
-* Please just follow the convention and precede your name with '1.' as the MarkDown will automatically convert this into a properly numbered list.
-* Please feel free to make your name link to any of your online profiles that you want or you can simply use your github profile page.
+* Please follow the convention and precede your name with '1.' 
+    * The MarkDown will automatically convert all the '1.'s into a properly numbered list.
+* Please feel free to make your name a link to an online profiles (e.g. your github profile).
 * Please add your name to all repos to which you have made a contribution.
 * A contribution is defined as having a Pull Request committed.
 
