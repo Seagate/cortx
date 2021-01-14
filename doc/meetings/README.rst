@@ -17,4 +17,4 @@ The schedule is as follows:
 
 #. December 3, 2020: Basavaraj Kirunge presented about the architecture of the S3 layer and how it interfaces with the motr layer.  `PDF <PDFs/cortx_s3_architecture_overview_dec_2020_basav_kirunge.pdf>`_ | `Video <https://cortx.link/s3-mta>`_.
 
-#. January 7, 2021: Serkay Olmez will discuss Data Durability and Availability Modeling in Erasure Coded Systems including a discussion about the importance of multi-level erasure coding.
+#. January 7, 2021: Serkay Olmez will discuss Data Durability and Availability Modeling in Erasure Coded Systems including a discussion about the importance of multi-level erasure coding.  `HTML <https://quarktetra.github.io/presentations/CortxDurabilityAvailability/presentation.html#/>`_ | `PDF <PDFs/serkay_olmez_cortx_mmaa_jan_2021.pdf>`_ | Video Pending
