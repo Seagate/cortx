@@ -20,15 +20,17 @@ Automatic install or manual install. Basic installation is OK. When you build CO
 ## 4. You may need to configure your network settings
 run a test to check if you are connected to the network 
 
-     sudo nmcli d
-   
+```sh
+sudo nmcli d
+```   
 if you have a network connection then skip on to step 4, otherwise follow the below commands:
-
-     sudo nmtui
- 
+```sh
+sudo nmtui
+```
  -> Edit a connection, select your network interface and choose "Automatically connect" option (by pressing the space key) and then select OK.
- 
-    sudo reboot now
+ ```sh
+sudo reboot now
+```
 
 ## 5. You may need to add EPEL repo.
 Please refer to: https://fedoraproject.org/wiki/EPEL
