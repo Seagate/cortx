@@ -77,27 +77,9 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
-1. [Abhilekh M](https://github.com/abhilekh268)
-1. [Amit Kumar](https://github.com/amitwac2608)
-1. [Ajinkya Dhumal](https://github.com/AjinkyaDhumal)
-1. [Atita S](https://github.com/AtitaShirwaikar)
-1. [Basavraj Kirunge](https://github.com/bkirunge7)
-1. [Dattaprasad Govekar](https://github.com/DPG17)
-1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
-1. [Dmitrii S](https://github.com/dsurnin)
-1. [Evgeniy B](https://github.com/evgeniy-brazhnikov)
-1. [Ivan T](https://github.com/t7ko-seagate)
 1. [John Bent](https://github.com/johnbent)
-1. [Mohommad Sahid](https://github.com/shahidSTX)
 1. [Nilesh Govande](https://github.com/nileshgovande)
-1. [Pranav Pawar](https://github.com/pranavPawar07)
-1. [Pratyush Khan](https://github.com/pratyush-seagate)
-1. [Rajesh Nambiar](https://github.com/knrajnambiar76)
-1. [Sachitanand Shelake](https://github.com/sachitanands)
-1. [Saumitra K](https://github.com/SaumitraK531)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
-1. [Shalaka Dharap](https://github.com/shalakadharap)
-1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
 1.
