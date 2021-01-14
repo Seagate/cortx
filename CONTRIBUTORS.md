@@ -17,6 +17,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Patrick Hession](https://github.com/hessio)
 1. [Rachel Novak](https://github.com/novium258)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
+1. [Sai Narasimhamurthy](https://github.com/sainarasim)
 
 
 
