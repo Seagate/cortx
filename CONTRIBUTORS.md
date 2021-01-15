@@ -17,7 +17,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Mayur Gupta](https://github.com/TechWriter-Mayur)
 1. [Mukul Malhotra](https://github.com/mukul-seagate11)
 1. [Patrick Hession](https://github.com/hessio)
-1. [Philippe Deniel] (https://github.com/phdeniel) 
+1. [Philippe Deniel](https://github.com/phdeniel) 
 1. [Rachel Novak](https://github.com/novium258)
 1. [Sai Narasimhamurthy](https://github.com/sainarasim)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
