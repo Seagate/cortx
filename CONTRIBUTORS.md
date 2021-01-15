@@ -37,7 +37,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-fs-ganesha](https://github.com/Seagate/cortx-fs-ganesha)
-1.
+1.[Philippe Deniel] (https://github.com/phdeniel) 
 1.
 
 ## [Seagate/cortx-ha](https://github.com/Seagate/cortx-ha)
@@ -78,7 +78,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-posix](https://github.com/Seagate/cortx-posix)
-1. 
+1. [Philippe Deniel] (https://github.com/phdeniel) 
 1.
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
