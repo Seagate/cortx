@@ -29,7 +29,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-experiments](https://github.com/Seagate/cortx-experiments)
-1. 
+1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1.
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
@@ -41,7 +41,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-ha](https://github.com/Seagate/cortx-ha)
-1. 
+1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1.
 
 ## [Seagate/cortx-hare](https://github.com/Seagate/cortx-hare)
