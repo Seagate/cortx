@@ -49,8 +49,8 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-hare](https://github.com/Seagate/cortx-hare)
 1. [Andriy Tkachuk](https://github.com/andriytk)
-1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 
 ## [Seagate/cortx-images](https://github.com/Seagate/cortx-images)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
