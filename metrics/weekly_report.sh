@@ -60,6 +60,11 @@ do
 done
 echo "Please see attached" | mail -s "Scraping other projects" -r $email -a $tfile $email
 
+# make the comparison report 
+compare_report=CORTX_Metrics_Compare_Projects
+jupyter nbconvert --to pdf --output-dir=/tmp --no-input --output $compare_report.$ts $compare_report.ipynb
+echo "Please see attached" | mail -s "$mail_subj_prefix : Project Comparison" -r $email -a /tmp/$compare_report.$ts.pdf $email 
+
 # commit the pickles because they were updated in the scrape and the update of non-scraped values
 ./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $email $email
 
