@@ -92,13 +92,13 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
-1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
 1. [John Bent](https://github.com/johnbent)
 1. [Nilesh Govande](https://github.com/nileshgovande)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
+1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
