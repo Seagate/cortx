@@ -24,7 +24,7 @@ def get_logins(CSV):
   logins = set()
   people = None
   for login in CSV.split(','):
-    if login == 'External' or login == 'Innersource' or login == 'All' or login == 'Unknown' or login == 'Hackathon':
+    if login == 'External' or login == 'EU R&D' or login == 'Innersource' or login == 'All' or login == 'Unknown' or login == 'Hackathon':
       if people is None: # because we might come through this path multiple times, cache the pickle
         people=cortx_community.CortxCommunity()
       if login == 'Unknown':
@@ -92,7 +92,7 @@ def get_details(url,stx):
 
 def main():
   parser = argparse.ArgumentParser(description='Retrieve all activity done by a particular user.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-  parser.add_argument('login', metavar='LOGIN', type=str, help="Comma-separate lists of logins [can use External,Hackathon,Innersource,All,Unknown as wildcards]")
+  parser.add_argument('login', metavar='LOGIN', type=str, help="Comma-separate lists of logins [can use External,Hackathon,EU R&D,Innersource,All,Unknown as wildcards]")
   parser.add_argument('-s', '--since', type=str, help="Only show activity since yyyy-mm-dd")
   parser.add_argument('-u', '--until', type=str, help="Only show activity until yyyy-mm-dd")
   parser.add_argument('-l', '--last_week', action='store_true', help="Only show activity in the last seven days")

@@ -40,65 +40,16 @@ def main():
   parser.add_argument('-s', '--suppress', action='store_true', help="Don't show interesting fields")
   parser.add_argument('-i', '--individual', type=str, help="Only show data for a single repo")
   parser.add_argument('-c', '--csv', action='store_true', help="Output in csv")
+  parser.add_argument('-o', '--org', action='store', help='Print the latest statistics for a different org', default='Seagate')
   #parser.add_argument('-k', '--key', type=str, help="Show all values for all dates for a single key") # TODO: would be nice to add this one
   args = parser.parse_args()
 
-  ps = cortx_community.PersistentStats()
+  ps = cortx_community.PersistentStats(org_name=args.org)
   repos = sorted([repo for repo in ps.get_repos() if repo != 'GLOBAL'])
 
-  # averages are weird so handle them differently
-  ave_age_str='_ave_age_in_s'
-
-  # first build the global stats
-  # actually don't even do this anymore
-  # just use the GLOBAL that gets scraped
-  gstats = {} 
-  gstats['repo_count'] = len(repos)
-  timestamp = None
-  for repo in repos: 
-    (rstats,timestamp) = ps.get_latest(repo)
-    for k,v in rstats.items():
-      if isinstance(v,int) or isinstance(v,float):
-        if k not in gstats:
-          gstats[k] = 0
-        if ave_age_str in k:
-          # treat averages differently, put the total value in here, down below adust by count to get actual average 
-          item  = k[0:len(k)-len(ave_age_str)]
-          count = rstats[item]
-          gstats[k] += (v * count)
-        else:
-          gstats[k] += v
-      elif isinstance(v,set):
-        if k not in gstats:
-          gstats[k] = set()
-        gstats[k] |= v
-      elif isinstance(v,list):
-        if k not in gstats:
-          gstats[k] = []
-        gstats[k] += v
-      else:
-        raise TypeError("%s has unknown type %s" % (k, type(v)))
-
-  # top referrers is a bit weird so clean that one up specifically here
-  gstats['top_referrers'] = consolidate_referrers(gstats['top_referrers'])
-
-  # ugh, there is a problem with the average age fields
-  # all those fields have consistent names: 'x_ave_age_in_s'
-  # also, there will always be a corresponding field x which is the count
-  for ave_age in [key for key in gstats.keys() if ave_age_str in key]:
-    item  = ave_age[0:len(ave_age)-len(ave_age_str)]
-    gstats[ave_age] /= gstats[item]
-
-  # remove some bullshit companies
-  for bs_company in ('Seagate', 'Codacy', 'Dependabot'):
-    for k in ['companies','companies_contributing']:
-      try:
-        gstats[k].remove(bs_company)
-      except KeyError:
-        pass
-
-  # just completely undo everything that was just done and just use global from the scrape
+  # just use global from the scrape
   gstats=ps.get_latest('GLOBAL')[0]
+  timestamp = None
 
   if args.individual:
     (repo,timestamp) = ps.get_latest(args.individual)

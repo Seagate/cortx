@@ -15,7 +15,7 @@ Contributing to the CORTX project using Git is a four-step process as listed bel
         $ yum install git
    ```
    
- - Generate [SSH](SSH_Public_Key.rst) and [PAT](Tools.rst#personal-access-token-pat) access for your GitHub Account.
+ - Generate [SSH](SSH_Public_Key.rst) and [PAT](GitHub_Processes_and_Tools.rst#personal-access-token-pat) access for your GitHub Account.
 
 
    </p>

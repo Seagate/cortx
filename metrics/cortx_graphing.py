@@ -18,16 +18,22 @@ def scale_lightness(rgb,scale_l):
   # manipulate h, l, s values and return as rgb
   return colorsys.hls_to_rgb(h, min(1, l * scale_l), s = s)
 
+def get_all_keys(ps,repo):
+  all_keys=set()
+  dates = ps.get_dates(repo)
+  for d in dates:
+    keys=ps.get_keys(repo=repo,date=d)
+    all_keys |= keys
+  return all_keys
+
 # a helper function to get a dataframe
 def get_dataframe(repo,ps):
-  (latest,date)=ps.get_latest(repo)
   data={}
-  strdates=ps.get_dates(repo)
   dates = []
-  for date in strdates:
+  for date in ps.get_dates(repo):
     dates.append(pd.to_datetime(date))
   # load everything into a dataframe
-  for k in latest.keys():
+  for k in get_all_keys(ps=ps,repo=repo):
     values = ps.get_values_as_numbers(repo,k)
     if 'ave_age_in_s' in k:
       values = [None if v is None else v/86400 for v in values]
@@ -39,7 +45,7 @@ def get_dataframe(repo,ps):
     df=df.drop(dropdate,axis=0) # this first scrape was no good, double counted issues and pulls
   except KeyError:
     pass # was already dropped
-  return df
+  return df.fillna(method='ffill')
 
 class Goal:
   def __init__(self, name, end_date, end_value):
@@ -71,7 +77,7 @@ def goal_graph(df,title,xlim,goals,columns,ylim=None):
     linestyle=(0,(1,10)) # loosely dotted, might be too faint when combined with a lighter color
     linestyle="dotted"
     color=scale_lightness(colors[idx],1.5) # lighten the color for the goal line
-    plt.plot(actual_xlim, yvalues,label=None, color=color, linestyle=linestyle)
+    plt.plot(actual_xlim, yvalues,label=None, color=color, linestyle=linestyle,lw=4)
 
   if ylim is None:
     ylim=(0,max_y*1.1)  # find the max y-value and pad the graph by 10% over that

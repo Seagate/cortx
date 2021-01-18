@@ -18,13 +18,10 @@ email="john.bent@seagate.com"
 # start with a git pull in case the pickles were updated elsewhere
 git pull
 
-# scrape the metrics and mail the raw dump
+# scrape the metrics for CORTX and mail the raw dump
 tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
-./scrape_metrics.py > $tfile
+./scrape_metrics.py Seagate > $tfile
 echo "Please see attached" | mail -s "$mail_subj_prefix : Scraper Output" -r $email -a $tfile $email 
-
-# carry forward the statistics which aren't scrape
-./update_nonscraped_values.py | mail -s "$mail_subj_prefix: Update Non-Scraped Values" -r $email
 
 # mail the metrics as a CSV 
 ts=`date +%Y-%m-%d`
@@ -34,7 +31,7 @@ tfile="/tmp/cortx_community_stats.$ts.csv"
 
 # mail innersource and external activity reports
 tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX)
-for group in Innersource External Unknown
+for group in 'EU R&D' Innersource External Unknown
 do
   ./get_personal_activity.py $group -l > $tfile
   mail -s "$mail_subj_prefix : $group Activity" -r $email $email < $tfile
@@ -43,9 +40,6 @@ done
 # mail the team report
 ./get_personal_activity.py 'VenkyOS,johnbent,justinzw,TechWriter-Mayur,hessio,Saumya-Sunder,novium258' -l > $tfile
 mail -s "$mail_subj_prefix : Open Source Team Activity" -r $email $email < $tfile
-
-# commit the pickles because they were updated in the scrape and the update of non-scraped values
-./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $email $email
 
 # make the executive report
 exec_report=CORTX_Metrics_Topline_Report
@@ -56,3 +50,21 @@ echo "Please see attached" | mail -s "$mail_subj_prefix : Metrics Executive Repo
 bulk_report=CORTX_Metrics_Graphs
 jupyter nbconvert --to pdf --output-dir=/tmp --no-input --output $bulk_report.$ts $bulk_report.ipynb
 echo "Please see attached" | mail -s "$mail_subj_prefix : Metrics Bulk Report" -r $email -a /tmp/$bulk_report.$ts.pdf $email 
+
+# scrape metrics for similar projects
+tfile=$(mktemp /tmp/other_projects.XXXXXXXXX.txt)
+touch $tfile
+for p in 'Ceph' 'MinIO' 'DAOS' 'Swift' 'OpenIO'
+do
+  ./scrape_metrics.py -t $p >> $file
+done
+echo "Please see attached" | mail -s "Scraping other projects" -r $email -a $tfile $email
+
+# make the comparison report 
+compare_report=CORTX_Metrics_Compare_Projects
+jupyter nbconvert --to pdf --output-dir=/tmp --no-input --output $compare_report.$ts $compare_report.ipynb
+echo "Please see attached" | mail -s "$mail_subj_prefix : Project Comparison" -r $email -a /tmp/$compare_report.$ts.pdf $email 
+
+# commit the pickles because they were updated in the scrape and the update of non-scraped values
+./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $email $email
+
