@@ -1,0 +1,108 @@
+# Community Roadmap
+
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th colspan="4">CY 2020</th>
+            <th colspan="12">CY 2021</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td>Sep</td>
+            <td>Oct</td>
+            <td>Nov</td>
+            <td>Dec</td>
+            <td>Jan</td>
+            <td>Feb</td>
+            <td>Mar</td>
+            <td>Apr</td>
+            <td>May</td>
+            <td>Jun</td>
+            <td>Jul</td>
+            <td>Aug</td>
+            <td>Sep</td>
+            <td>Oct</td>
+            <td>Nov</td>
+            <td>Dec</td>            
+        </tr>
+        <tr>
+            <td>Hackathons</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td> :israel: </td>
+            <td></td>
+            <td></td>
+            <td>:earth_africa:</td>
+            <td></td>
+            <td></td>
+            <td colspan="2" align="center"> :india: </td>
+            <td></td>
+            <td> :earth_africa:</td>
+            <td></td>
+            <td></td>
+            <td> :ireland:</td>            
+        </tr>
+        <tr>
+        <td>Newsletter</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        </tr>
+        <tr>
+        <td>Releases</td>
+        <td>:heavy_check_mark:</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>:heavy_check_mark:</td>
+        <td></td>
+        <td>:heavy_check_mark:</td>
+        <td></td>
+        <td>:heavy_check_mark:</td>
+        <td></td>
+        <td>:heavy_check_mark:</td>
+        <td></td>
+        <td>:heavy_check_mark:</td>
+        </tr>
+        <tr>
+        <td>Webinar</td>
+        <td></td>
+        <td></td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td>
+        </tr>
+    </tbody>
+</table>
