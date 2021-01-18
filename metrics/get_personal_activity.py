@@ -123,7 +123,7 @@ def main():
       # create a new structure to hold the data in an organization that is more easily sorted
       # go through the activity and save each into the new format
       # problem is that the watch event doesn't have a date for it . . . 
-      for (url,created_at) in activity.get_activity(login):
+      for (url,created_at) in activity.get_activities(login):
         if created_at is not None:  # just don't count watch events since they don't have a date
           activities[login][created_at] = url
     except KeyError: 

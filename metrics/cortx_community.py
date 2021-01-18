@@ -210,6 +210,8 @@ class CortxActivity:
   # I think this function is not used since there is a second
   # function with the same name which is currently used....
   # TOD: change the name of this function to something garbage and make sure everything still works, then delete it
+  # actually, we need this one.  It's super important in scrape_metric to avoid using github API too much.
+  # but now we broke it by overriding it.  So now we need to restore it by changing the name of the other one.
   def get_activity(self,uniquifier):
     return self.hashes[uniquifier]
 
@@ -233,7 +235,7 @@ class CortxActivity:
     with open(self.hash_file,'wb') as f:
       pickle.dump(self.hashes,f)
 
-  def get_activity(self,login):
+  def get_activities(self,login):
     return self.activity[login]
 
 class CortxPerson:
@@ -254,6 +256,9 @@ class CortxPerson:
           external = False
       if external:
         self.type = 'External'
+
+  def get_note(self):
+    return self.note
 
   # starting now, note will be a dict.  Hope this works without breaking pickles
   def add_note(self,note):
@@ -277,6 +282,9 @@ class CortxPerson:
 
   def get_company(self):
     return self.company
+
+  def get_linkedin(self):
+    return self.linked
 
   def get_email(self):
     return self.email
@@ -377,6 +385,9 @@ class CortxCommunity:
   def items(self):
     return self.people.items()
 
+  def get_linkedin(self,login):
+    return self.people[login].get_linkedin()
+
   def get_email(self,login):
     return self.people[login].get_email()
 
@@ -406,11 +417,17 @@ class CortxCommunity:
     person = CortxPerson(login,company,email,linkedin,org_name)
     self.people[login] = person
 
+  def remove_person(self,login):
+    del self.people[login]
+
   def find_person(self, email):
     for login,person in self.people.items():
       if person.get_email() == email:
         return person
     return None
+
+  def get_note(self,login):
+    return self.people[login].get_note()
 
   def add_note(self, login, note):
     self.people[login].add_note(note)
