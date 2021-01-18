@@ -34,18 +34,20 @@ Procedure
 
    ::
    
-    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-re/cortx-build:centos-7.8.2003 make iso_generation.
+    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation.
     
    You can also append the **iso_generation** target in **make build** command (step 5).
    
 #. After the **docker run** execution is complete, the  release build will be available at the following location.
 
-   [root@ssc-vm-1321 opensource-ci]# ll /var/artifacts/0/
+   ::
+
+    [root@ssc-vm-1321 opensource-ci]# ll /var/artifacts/0/
    
-   total 824368
+    total 824368
    
-   drwxr-xr-x 10 root root 4096 Dec 16 05:34 3rd_party
+    drwxr-xr-x 10 root root 4096 Dec 16 05:34 3rd_party
    
-   drwxr-xr-x 3 root root 4096 Dec 16 05:23 cortx_iso
+    drwxr-xr-x 3 root root 4096 Dec 16 05:23 cortx_iso
    
-   drwxr-xr-x 2 root root 4096 Dec 16 05:49 iso
+    drwxr-xr-x 2 root root 4096 Dec 16 05:49 iso
