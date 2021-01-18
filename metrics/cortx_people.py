@@ -41,9 +41,10 @@ def main():
   parser.add_argument('--linkedin', '-l', help="When you update an individual, add her linkedin profile")
   parser.add_argument('--unknowns', '-u', help="Dump the unknowns and quit", action="store_true")
   parser.add_argument('--dump', '-d', help="Dump entire community and quit", action="store_true")
+  parser.add_argument('-o', '--org', action='store', help='Print the latest statistics for a different org', default='Seagate')
   args = parser.parse_args()
 
-  people = CortxCommunity()
+  people = CortxCommunity(org_name=args.org)
   gh = Github(os.environ.get('GH_OATH'))
 
   if (args.individual):
