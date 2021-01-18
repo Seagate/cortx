@@ -8,8 +8,11 @@ import cortx_community
 import os
 import re
 import signal
+import sys
 import time
+from requests.packages.urllib3.util import Retry
 from github import Github  # https://pygithub.readthedocs.io/
+import github
 from datetime import datetime
 
 def remove_string_from_set(Set, String):
@@ -20,20 +23,13 @@ def remove_string_from_set(Set, String):
   return newset
 
 def avoid_rate_limiting(gh):
-  (remaining,total) = gh.rate_limiting
-  if remaining < 10:
-    reset = gh.rate_limiting_resettime
-    sleep = reset - time.time()
-    if(sleep > 0):
-      sleep = int(sleep) + 5 # sleep a bit long to be extra safe
-      print("Need to sleep %d seconds until %d" % (int(sleep),reset))
-      time.sleep(sleep)
+  cortx_community.avoid_rate_limiting(gh)
 
 # this function takes a NamedUsed (https://pygithub.readthedocs.io/en/latest/github_objects/NamedUser.html) and returns info about them
 # it seems this function uses the github API to query some of this stuff and that kills the rate limit (and probably performance also)
 # so we use a local pickle'd dictionary
 # returns (company, email, login, True/False) <- last value is whether we already knew about them
-def author_info(people,author):
+def author_info(people,author,org_name):
   l = author.login
   if people.includes(l):
     c = people.get_company(l)
@@ -43,7 +39,7 @@ def author_info(people,author):
     c = author.company
     e = author.email
     print("New person discovered in community!  %s %s %s" % (l, e, c))
-    people.add_person(login=l,company=c,email=e)
+    people.add_person(login=l,company=c,email=e,linkedin=None,org_name=org_name)
     people.persist()
     known = False
   return(c,e,l,known)
@@ -64,7 +60,7 @@ def domains_from_emails(emails):
 def persist_author_activity(author_activity):
   author_activity.persist()
 
-def scrape_comment(people,gh,rname,comment,Type,local_stats,author_activity):
+def scrape_comment(people,gh,rname,comment,Type,local_stats,author_activity,org_name):
   key="%s_comment.%d" % (Type,comment.id)
   try:
     (login,url,created_at) = author_activity.get_activity(key)
@@ -73,7 +69,7 @@ def scrape_comment(people,gh,rname,comment,Type,local_stats,author_activity):
     url = comment.html_url
     created_at = comment.created_at
     author_activity.add_activity(key,login,url,created_at)
-  scrape_author(people,gh,rname,comment.user,local_stats,False,author_activity)
+  scrape_author(people,gh,rname,comment.user,local_stats,False,author_activity,org_name)
   local_stats['comments'] += 1
   if people.is_external(login):
     local_stats['external_comments'] += 1
@@ -81,7 +77,7 @@ def scrape_comment(people,gh,rname,comment,Type,local_stats,author_activity):
 def new_average(old_average,old_count,new_value):
   return (old_average * old_count + new_value) / (old_count+1)
     
-def scrape_issue_or_pr(people,gh,rname,item,local_stats,author_activity,stats_name,commit):
+def scrape_issue_or_pr(people,gh,rname,item,local_stats,author_activity,stats_name,commit,org_name):
   key = "%s.%d" % (stats_name, item.id)
   try:
     (login,url,created_at) = author_activity.get_activity(key)
@@ -90,7 +86,7 @@ def scrape_issue_or_pr(people,gh,rname,item,local_stats,author_activity,stats_na
     url = item.html_url
     created_at = item.created_at
     author_activity.add_activity(key,login,url,created_at)
-  scrape_author(people,gh,rname,item.user,local_stats,commit,author_activity)
+  scrape_author(people,gh,rname,item.user,local_stats,commit,author_activity,org_name)
 
   external = people.is_external(login)
   for _ in range(2):  # ok, we have to repeat all this: once for all items, once again to measure separately for external or internal
@@ -110,7 +106,7 @@ def scrape_issue_or_pr(people,gh,rname,item,local_stats,author_activity,stats_na
     local_stats[stats_name] += 1
     stats_name='%s_%s' % (stats_name,"external" if external else "internal") 
 
-def scrape_commit(people,gh,rname,commit,local_stats,author_activity):
+def scrape_commit(people,gh,rname,commit,local_stats,author_activity,org_name):
   key = "commit.%s" % commit.sha
   try:
     (login,url,created_at) = author_activity.get_activity(key)
@@ -119,13 +115,13 @@ def scrape_commit(people,gh,rname,commit,local_stats,author_activity):
     url = commit.html_url
     created_at = commit.commit.author.date
     author_activity.add_activity(key,login,url,created_at)
-  scrape_author(people,gh,rname,commit.author,local_stats,True,author_activity)
+  scrape_author(people,gh,rname,commit.author,local_stats,True,author_activity,org_name)
   local_stats['commits'] += 1
     
 # the commit parameter is True if the author did a commit, False otherwise (e.g. commented on an Issue for example)
-def scrape_author(people,gh,repo,author,repo_stats,commit,author_activity):
+def scrape_author(people,gh,repo,author,repo_stats,commit,author_activity,org_name):
   avoid_rate_limiting(gh)
-  (company, email, login, previously_known) = author_info(people,author)
+  (company, email, login, previously_known) = author_info(people,author,org_name)
 
   Type = people.get_type(login)
   while(True):
@@ -171,7 +167,7 @@ def clean_domains(domains):
       new_d.add(item)
   return new_d
 
-def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh,repo):
+def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh,repo,org_name):
     try:
       (login,url,created_at) = author_activity.get_activity(key)
     except KeyError:
@@ -183,10 +179,15 @@ def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh
           login = item.login  # watcher
           created_at = None
         except AttributeError:
-          login = item.user.login # stargazer
+          try:
+            login = item.user.login # stargazer
+          except AttributeError:
+            print("WTF: what we think is a stargazer isn't:", item)
+            print("Cowardly no longer attempting to add this item")
+            return
           created_at = item.starred_at
       author_activity.add_activity(key=key,login=login,url=url,created_at=created_at)
-    scrape_author(people,gh,repo,author,stats,False,author_activity)
+    scrape_author(people,gh,repo,author,stats,False,author_activity,org_name)
     stats[Type].add((login,created_at))
     if people.is_external(login):
       stats['%s_external' % Type].add((login,created_at))
@@ -195,44 +196,58 @@ def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh
 # however, if we are running in update mode, the values will be pre-initialized
 # that is fine for the values that are over-written but problematic for the values that are incremented
 # therefore, just in case we are running in update mode, explicitly reset incremented values to 0 before incrementing
-def get_top_level_repo_info(stats,repo,people,author_activity,gh):
+def get_top_level_repo_info(stats,repo,people,author_activity,gh,org_name):
   print("Getting top level info from %s" % repo)
   stats['branches']              = len(list(repo.get_branches()))
-  stats['clones_unique_14_days'] = repo.get_clones_traffic()['uniques']
-  stats['clones_count_14_days']  = repo.get_clones_traffic()['count']
-  stats['views_unique_14_days']  = repo.get_views_traffic()['uniques']
-  stats['views_count_14_days']   = repo.get_views_traffic()['count']
+  try:
+    stats['clones_unique_14_days'] = repo.get_clones_traffic()['uniques']
+    stats['clones_count_14_days']  = repo.get_clones_traffic()['count']
+    stats['views_unique_14_days']  = repo.get_views_traffic()['uniques']
+    stats['views_count_14_days']   = repo.get_views_traffic()['count']
+  except github.GithubException as e:
+    # sadly need push access in order to see traffic.  :(
+    print("Can't get traffic: GithubException %s" % e.data)
 
   for f in repo.get_forks():
     key = 'fork -> %s' % (f.full_name)
     url = key
-    add_star_watch_fork(key=key,url=url,item=f,stats=stats,people=people,author=f.owner,author_activity=author_activity,Type='forks',gh=gh,repo=repo)
+    add_star_watch_fork(key=key,url=url,item=f,stats=stats,people=people,author=f.owner,author_activity=author_activity,Type='forks',gh=gh,repo=repo,org_name=org_name)
 
   for sg in repo.get_stargazers_with_dates():
     key = 'starred -> %s:%s' % (repo,sg.user.login)
     url = 'starred -> %s' % repo
-    add_star_watch_fork(key=key,url=url,item=sg,stats=stats,people=people,author=sg.user,author_activity=author_activity,Type='stars',gh=gh,repo=repo)
+    add_star_watch_fork(key=key,url=url,item=sg,stats=stats,people=people,author=sg.user,author_activity=author_activity,Type='stars',gh=gh,repo=repo,org_name=org_name)
 
   for w in repo.get_watchers():
     key = 'watched -> %s:%s' % (repo,w.login)
     url = 'watched -> %s' % repo
-    add_star_watch_fork(key=key,url=url,item=w,stats=stats,people=people,author=w,author_activity=author_activity,Type='watchers',gh=gh,repo=repo)
+    add_star_watch_fork(key=key,url=url,item=w,stats=stats,people=people,author=w,author_activity=author_activity,Type='watchers',gh=gh,repo=repo,org_name=org_name)
 
   # get referrers
   # this is just quick and dirty and seagate-specific top-referrers
   # should also figure out how to make a better general solution
-  tr = repo.get_top_referrers()
-  top_referrers = []
-  for r in tr: 
-    avoid_rate_limiting(gh)
-    if r.referrer == 'seagate.com':
-      stats['seagate_referrer_count']   = r.count
-      stats['seagate_referrer_uniques'] = r.uniques
-    elif r.referrer == 'blog.seagate.com':
-      stats['seagate_blog_referrer_count']   = r.count
-      stats['seagate_blog_referrer_uniques'] = r.uniques
-    top_referrers.append(r)
-  stats['top_referrers'] = top_referrers
+  try:
+    tr = repo.get_top_referrers()
+    top_referrers = []
+    for r in tr: 
+      avoid_rate_limiting(gh)
+      if r.referrer == 'seagate.com':
+        stats['seagate_referrer_count']   = r.count
+        stats['seagate_referrer_uniques'] = r.uniques
+      elif r.referrer == 'blog.seagate.com':
+        stats['seagate_blog_referrer_count']   = r.count
+        stats['seagate_blog_referrer_uniques'] = r.uniques
+      top_referrers.append(r)
+    stats['top_referrers'] = top_referrers
+
+    top_paths = []
+    for tp in list(repo.get_top_paths())[0:3]:
+      avoid_rate_limiting(gh)
+      top_path = { 'count' : tp.count, 'uniques' : tp.uniques, 'path' : tp.path }
+      top_paths.append(top_path)
+    stats['top_paths'] = top_paths
+  except github.GithubException as e:
+    print("Can't get referrers: GithubException %s" % e.data)
 
   stats['downloads_releases'] = 0 # needed if we are running in update mode
   stats['downloads_vms'] = 0 # needed if we are running in update mode
@@ -243,15 +258,8 @@ def get_top_level_repo_info(stats,repo,people,author_activity,gh):
       if 'VA' in a.browser_download_url:
         stats['downloads_vms'] += a.download_count
 
-  # get top paths
-  top_paths = []
-  for tp in list(repo.get_top_paths())[0:3]:
-    avoid_rate_limiting(gh)
-    top_path = { 'count' : tp.count, 'uniques' : tp.uniques, 'path' : tp.path }
-    top_paths.append(top_path)
-  stats['top_paths'] = top_paths
 
-def get_commits(rname,repo,local_stats,people,author_activity,gh):
+def get_commits(rname,repo,local_stats,people,author_activity,gh,org_name):
   print("Scraping commits from %s" % rname)
   avoid_rate_limiting(gh)
   try:
@@ -259,18 +267,17 @@ def get_commits(rname,repo,local_stats,people,author_activity,gh):
   except Exception as e:
     print("WTF: get_commits failed?", e)
     commits = () 
+  avoid_rate_limiting(gh)
   for c in commits:
     avoid_rate_limiting(gh)
     if c.author:
-      scrape_commit(people,gh,rname,c,local_stats,author_activity)
+      scrape_commit(people,gh,rname,c,local_stats,author_activity,org_name)
     if c.commit and c.commit.message:
       email_addresses = re.findall(r'[\w\.-]+@[\w\.-]+', c.commit.message) # search for email addresses in commit message; might be some due to DCO
       #print("Adding Commit info %s and %s" % (c.author.company, c.author.email))
       local_stats['email_addresses'] = local_stats['email_addresses'].union(email_addresses)
-    comments = c.get_comments()
-    for comment in comments:
-      avoid_rate_limiting(gh)
-      scrape_comment(people,gh,rname,comment,"commit",local_stats,author_activity)
+    for comment in c.get_comments():
+      scrape_comment(people,gh,rname,comment,"commit",local_stats,author_activity,org_name)
 
 def summarize_consolidate(local_stats,global_stats,people,author_activity,ave_age_str):
   summary_stats = {}
@@ -302,14 +309,15 @@ def summarize_consolidate(local_stats,global_stats,people,author_activity,ave_ag
       global_stats[key] = global_stats[key].union(local_stats[key])
 
 # issues includes pr's.  Very confusing!  Thanks github!
-def get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh):
+def get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh,org_name):
   print("Scraping issues and prs from %s" % rname)
   avoid_rate_limiting(gh)
   try:
     issues = repo.get_issues(state='all')
-  except Exception as e:
-    print("WTF: get_issues failed?", e)
-    issues = () 
+  except GithubException as e:
+    print("WTF: get_issues failed? will recurse and try again", e)
+    return get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh,org_name) # recurse
+
   for issue in issues:
     if issue.pull_request is None:
       Type = 'issues'
@@ -318,18 +326,29 @@ def get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh):
       issue = issue.as_pull_request()
       Type = 'pull_requests'
       commit = True
-    scrape_issue_or_pr(people,gh,rname,issue,local_stats,author_activity,Type,commit)
+    scrape_issue_or_pr(people,gh,rname,issue,local_stats,author_activity,Type,commit,org_name)
     for comment in issue.get_comments():
       avoid_rate_limiting(gh)
-      scrape_comment(people,gh,rname,comment,"issue",local_stats,author_activity)
+      scrape_comment(people,gh,rname,comment,"issue",local_stats,author_activity,org_name)
 
-def get_contributors(rname,repo,local_stats,people,gh):
+def get_contributors(rname,repo,local_stats,people,gh,org_name):
   # collect info from contributors
   print("Scraping contributors from %s" % rname)
-  contributors = repo.get_contributors()
-  for c in contributors:
-    scrape_author(people,gh,rname,c,local_stats,True,None)
-    local_stats['contributors'].add(c.login)
+  avoid_rate_limiting(gh)
+  try:
+    contributors = repo.get_contributors()
+  except github.GithubException as e:
+    print("Ugh, githubexception %s " % e.data )
+    print("while trying to get contributors for %s. will recurse and try again" % (rname))
+    return get_contributors(rname,repo,local_stats,people,gh,org_name)  # try to fix by recursing.
+
+  try:
+    for c in contributors:
+      scrape_author(people,gh,rname,c,local_stats,True,None,org_name)
+      local_stats['contributors'].add(c.login)
+  except github.GithubException as e:
+    print("Ugh, githubexception %s " % e.data )
+    print("while trying to get contributors for %s. cowardly failing" % (rname))
 
 # little helper function for putting empty k-v pairs into stats structure
 def load_actors(D,people):
@@ -361,12 +380,14 @@ def consolidate_referrers(referrers):
 
 # if update is true, it loads an existing pickle instead of creating a new one
 # this is useful when new fields are added 
-def collect_stats(update):
-  gh = Github(os.environ.get('GH_OATH'))
+def collect_stats(gh,org_name,update,prefix,top_only):
   avoid_rate_limiting(gh)
-  stx = gh.get_organization('Seagate')
   today = datetime.today().strftime('%Y-%m-%d')
-  people = cortx_community.CortxCommunity()             # load up the people pickle
+
+  # populate our persistent data structures from the pickles
+  people = cortx_community.CortxCommunity(org_name)             
+  author_activity = cortx_community.CortxActivity(org_name)     
+  persistent_stats = cortx_community.PersistentStats(org_name)  
 
   # averages are weird so handle them differently
   ave_age_str='_ave_age_in_s'
@@ -410,17 +431,11 @@ def collect_stats(update):
   load_actors(global_stats,people)
   load_items(global_stats,('issues','pull_requests'),('_external','_internal',''),('','_open','_closed','_open_ave_age_in_s','_closed_ave_age_in_s'))
   local_stats_template = copy.deepcopy(global_stats)    # save an empty copy of the stats struct to copy for each repo
-  author_activity = cortx_community.CortxActivity()     # load up the author activity pickle 
-  persistent_stats = cortx_community.PersistentStats()  # load up all the stats
 
-  for repo in stx.get_repos():
-    rname = repo.name # put this in a variable just in case it is a github API to fetch this
-    rmatch='cortx'
-    #rmatch='cortx-motr' # just temporarily only match motr for quick testing of new 'eu_r&d' people type
-    if rmatch not in rname or rname.endswith('.old') or rname.endswith('-old') or repo.private:
-      continue
+  for repo in cortx_community.get_repos(org_name=org_name,prefix=prefix): 
 
     local_stats = copy.deepcopy(local_stats_template) # get an empty copy of the stats structure
+    rname=repo.name # just in case this requires a github API call, fetch it once and reuse it
 
     # Use this update if you just want to add some new data and don't want to wait for the very slow time
     # to scrape all activity.  Once you have finished the update, migrate the code out of the update block.
@@ -432,10 +447,11 @@ def collect_stats(update):
       for k,v in cached_local_stats.items():
         local_stats[k] = v
     else:
-      get_top_level_repo_info(local_stats,repo,people=people,author_activity=author_activity,gh=gh,)
-      get_issues_and_prs(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh)
-      get_commits(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh)
-      get_contributors(rname,repo,local_stats,people=people,gh=gh)
+      get_top_level_repo_info(local_stats,repo,people=people,author_activity=author_activity,gh=gh,org_name=org_name)
+      get_contributors(rname,repo,local_stats,people=people,gh=gh,org_name=org_name)
+      if not top_only:
+        get_issues_and_prs(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh,org_name=org_name)
+        get_commits(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh,org_name=org_name)
 
     # what we need to do is query when the last time this ran and then pass 'since' to get_commits
 
@@ -473,6 +489,8 @@ def report_status(signalNumber, frame):
 def main():
   parser = argparse.ArgumentParser(description='Collect and print info about all cortx activity in public repos.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
   parser.add_argument('-u', '--update', help='Load last stats and update it instead of creating a new one.', action='store_true')
+  parser.add_argument('-t', '--toponly', help='Only scrape top-level info for the repo', action='store_true')
+  parser.add_argument('project', help='The project whose repos to scrape', action='store')  # one required arg for org
   #parser.add_argument('--dump', '-d', help="Dump currents stats [either '%s', '%s', or '%s'" % (PNAME,INAME,TNAME), required=False)
   #parser.add_argument('--collect', '-c', help='Collect new stats', action='store_true')
   args = parser.parse_args()
@@ -480,8 +498,17 @@ def main():
   # register a simple signal handler so the impatient can see what's happening
   signal.signal(signal.SIGINT, report_status)
 
+  try:
+    (org,prefix) = cortx_community.projects[args.project]
+  except KeyError:
+    print('%s is not a known project' % args.project)
+    sys.exit(0)
+
   # now go off and do a ton of work. :)
-  collect_stats(args.update)
+  retry= Retry(total=10,status_forcelist=(500,502,504,403),backoff_factor=10) 
+  per_page=100
+  gh = Github(login_or_token=os.environ.get('GH_OATH'),per_page=per_page, retry=retry)
+  collect_stats(gh=gh,org_name=org,update=args.update,prefix=prefix,top_only=args.toponly)
 
 if __name__ == "__main__":
     main()
