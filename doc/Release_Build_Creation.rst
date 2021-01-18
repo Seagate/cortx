@@ -24,6 +24,12 @@ Procedure
     
    The CORTX repository gets cloned at the **/root** location. If you want to clone the repository in another location, replace  **/root/cortx** with the appropriate location.
    
+#. Create directory to store artifacts. In this procedure, **/var/artifacts** is used. Update **docker run** command accordingly to use an alternative directory.
+
+   ::
+   
+    mkdir -p /var/artifacts
+
 #. Build CORTX artifacts using the below mentioned docker.
 
    ::
