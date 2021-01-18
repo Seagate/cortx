@@ -42,6 +42,9 @@ ACTIVITY_HASH_PICKLE='%s/activity_hashes.pickle' % PICKLE_DIR
 # this pickle saves the people in the community
 COMMUNITY_PICKLE='%s/cortx_community.pickle' % PICKLE_DIR
 
+# this pickle saves the people in the community
+SLACK_COMMUNITY_PICKLE='%s/cortx_slack_community.pickle' % PICKLE_DIR
+
 # this pickle saves the per-repo and global stats
 STATS_PICKLE='%s/persistent_stats.pickle' % PICKLE_DIR
 
@@ -204,6 +207,9 @@ class CortxActivity:
     self.new_activities = set()
 
   # a cache of activities to try to avoid overusing github API
+  # I think this function is not used since there is a second
+  # function with the same name which is currently used....
+  # TOD: change the name of this function to something garbage and make sure everything still works, then delete it
   def get_activity(self,uniquifier):
     return self.hashes[uniquifier]
 
@@ -249,8 +255,10 @@ class CortxPerson:
       if external:
         self.type = 'External'
 
+  # starting now, note will be a dict.  Hope this works without breaking pickles
   def add_note(self,note):
     try:
+      # this won't work.  We'll have to rewrite this to be a merger of dicts
       self.note += '\n%s' % note
     except:
       self.note = note
@@ -280,8 +288,53 @@ class CortxPerson:
     return self.login
 
   def __str__(self):
-    return("%s at company %s email %s type %s linkedin %s %s" % (self.login, self.company, self.email, self.type, self.linked, "\nNotes: %s" if self.note else ""))
+    return("%s at company %s email %s type %s linkedin %s %s" % (self.login, self.company, self.email, self.type, self.linked, " Notes: %s" % self.note if self.note else ""))
 
+class SlackCommunity():
+  def __init__(self,org_name=None):
+    self.pickle_file = get_pickle_name(SLACK_COMMUNITY_PICKLE,org_name)
+    try:
+      f = open(self.pickle_file, 'rb')
+      self.people = pickle.load(f)
+      f.close()
+    except FileNotFoundError:
+      self.people = {} 
+
+  def persist(self):
+    with open(self.pickle_file, 'wb') as f:
+      pickle.dump(self.people, f)
+
+  def find_email(self,email):
+    for sid,person in self.people.items():
+      if person['email'] == email:
+        return sid
+    return None
+
+  def find_person(self,slack_id):
+    try:
+      return self.people[slack_id]
+    except KeyError:
+      return None
+
+  def set_github(self,slack_id,github):
+    person = self.find_person(slack_id)
+    person['github']=github
+
+  def get_github(self,slack_id):
+    person = self.find_person(slack_id)
+    return person['github']
+
+  def add_person(self,slack_id,github,email,name):
+    self.people[slack_id] = { 'github' : github, 'email' : email, 'name' : name }
+
+  def __str__(self):
+    header = "CORTX Slack Community Members: %d total" % len(self.people)
+    string = header + '\n'
+    strings = []
+    for sid,person in self.people.items():
+      strings.append("Person %s [%s %s %s]" % (person['name'], person['github'], person['email'],sid))
+    string += ('\n'.join(sorted(strings)) + '\n' + header)
+    return string
 
 class CortxCommunity:
   allowed_types  = set(['External','Innersource','Hackathon','EU R&D','Bot', 'CORTX Team', 'Mannequin'])
@@ -295,6 +348,9 @@ class CortxCommunity:
       f.close()
     except FileNotFoundError:
       self.people = {} 
+
+  def get_person(self,login):
+    return self.people[login]
 
   def external_type(self,Type):
     return Type in self.external_types
@@ -349,6 +405,12 @@ class CortxCommunity:
   def add_person(self, login, company, email,linkedin=None,org_name=None):
     person = CortxPerson(login,company,email,linkedin,org_name)
     self.people[login] = person
+
+  def find_person(self, email):
+    for login,person in self.people.items():
+      if person.get_email() == email:
+        return person
+    return None
 
   def add_note(self, login, note):
     self.people[login].add_note(note)

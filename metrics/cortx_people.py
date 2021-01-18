@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-from cortx_community import get_logins,CortxCommunity,get_teams
+from cortx_community import get_logins,CortxCommunity,get_teams,SlackCommunity,CortxActivity
 
 import argparse
 import json
@@ -32,20 +32,76 @@ def person_match(person,string):
     pass
   return match
 
+def get_mergable_email(source,target):
+  se = source.get_email()
+  te = target.get_email()
+  assert se or te, "Could not find a mergable email"
+  if se and te:
+    assert se == te, "Can't merge different emails %s != %s" % (se,te)
+  if se:
+    return se
+  else:
+    return te
+
+def get_activities(login,activity):
+  activities={}
+  for (url,created_at) in activity.get_activity(login):
+    if created_at is not None:  # just don't count watch events since they don't have a date
+      activities[created_at] = url
+  return activities
+
+
+# function to merge two different people into one
+# this usually happens when we find someone in slack and can't automatically find their github login
+def merge(target_login,source_login,people):
+  slack_people=SlackCommunity() 
+  activity=CortxActivity()
+  # what do we need to do here?
+  # 1. find all activity belonging to merge and add it to individual
+  # 2. find merge in slack people and change github login to individual
+  # 3. remove merge from cortx people
+  assert target_login, "Can't merge without specifying the individual into whom to merge" 
+  print("need to merge %s into %s" % (source, target)) 
+  activities=get_activities(source_login,activity)
+  target=people.get_person(target_login)
+  source=people.get_person(source_login)
+  email=get_mergable_email(source,target)
+  print("need to merge %s into %s using %s" % (source, target, email)) 
+  sperson=slack_people.find_email(email)
+  assert sperson, "Couldn't find % in slack pickle" % email
+  print("Also need to clean up slack person %s" % sperson)
+  for date,url in activities.items():
+    #def add_activity(self,key,login,url,created_at):
+    key="migrated_event.%s.%s.%s.%s" % (url,date,target_login,source_login)
+    try:
+      (login,url,created_at) = activity.get_activity(key) # already exists
+    except:
+      print("Migrating %s %s" % (date,url))
+      activity.add_activity(key,target_login,url,date)
+
 def main():
   parser = argparse.ArgumentParser(description='Update or print info in our cortx community pickle.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-  parser.add_argument('--individual', '-i', help='Update or print just one single person.')
-  parser.add_argument('--type', '-t', help="When you update an individual, what type is she")
-  parser.add_argument('--email', '-e', help="When you update an individual, add her email")
-  parser.add_argument('--company', '-c', help="When you update an individual, what company is she")
-  parser.add_argument('--linkedin', '-l', help="When you update an individual, add her linkedin profile")
-  parser.add_argument('--unknowns', '-u', help="Dump the unknowns and quit", action="store_true")
-  parser.add_argument('--dump', '-d', help="Dump entire community and quit", action="store_true")
-  parser.add_argument('-o', '--org', action='store', help='Print the latest statistics for a different org', default='Seagate')
+  parser.add_argument('--individual',  '-i', help='Update or print just one single person.')
+  parser.add_argument('--type',        '-t', help="When you update an individual, what type is she")
+  parser.add_argument('--email',       '-e', help="When you update an individual, add her email")
+  parser.add_argument('--company',     '-c', help="When you update an individual, what company is she")
+  parser.add_argument('--linkedin',    '-l', help="When you update an individual, add her linkedin profile")
+  parser.add_argument('--unknowns',    '-u', help="Dump the unknowns and quit", action="store_true")
+  parser.add_argument('--dump',        '-d', help="Dump entire community and quit", action="store_true")
+  parser.add_argument('--slack',       '-s', help="Operate on the slack people", action="store_true")
+  parser.add_argument('--merge',       '-m', help="Merge one person into another")
+  parser.add_argument('--org',         '-o', help='Print the latest statistics for a different org', default='Seagate')
   args = parser.parse_args()
 
-  people = CortxCommunity(org_name=args.org)
+  if args.slack:
+    people = SlackCommunity(org_name=args.org)
+  else:
+    people = CortxCommunity(org_name=args.org)
   gh = Github(os.environ.get('GH_OATH'))
+
+  if args.merge:
+    merge(target=args.individual,source=args.merge,people=people)
+
 
   if (args.individual):
     updated=False
@@ -96,15 +152,16 @@ def main():
 
     print("%d total unknowns in community" % unknowns)
     sys.exit(0)
-    
+
   if args.dump:
     print(people)
-    types = {}
-    for person in people.values():
-      if person.type not in types:
-        types[person.type] = 0
-      types[person.type] += 1
-    print(types)
+    if not args.slack:
+      types = {}
+      for person in people.values():
+        if person.type not in types:
+          types[person.type] = 0
+        types[person.type] += 1
+      print(types)
     sys.exit()
 
   # if no args are passed, the program reaches here
