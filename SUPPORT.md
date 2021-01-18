@@ -20,5 +20,6 @@ Looking for support for one of the CORTX software modules or to discuss things w
 -   Subscribe to the our [developer newsletter](https://cortx.link/cortx-dev-newsletter) to and stay up to date on the latest CORTX developments, news, and events.
 -   Learn how to integrate CORTX with other technologies [here](doc/integrations/README.rst).
 -   We like to highlight the work and contributions of our community members—if you have solved an interesting challenge, or you are interested in sharing your experience or use cases, we want to talk to you! Please email our Community Manager rachel.novak@seagate.com or [schedule a meeting with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2) to share.
+- Take a look at how our teams triages incoming issues and how it works, who does it and what to expect [here](https://github.com/Seagate/cortx/wiki/Community-Triage-Process)
 
 
