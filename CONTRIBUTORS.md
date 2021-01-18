@@ -63,9 +63,9 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-manager](https://github.com/Seagate/cortx-manager)
+1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
-1. [Dmitry Didenko](https://github.com/dmitrydb)
 1.
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
@@ -92,9 +92,9 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
+1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Yashodhan Pise (Yash)](https://github.com/ypise)
-1. [Dmitry Didenko](https://github.com/dmitrydb)
 
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
@@ -105,7 +105,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
-1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
+1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
