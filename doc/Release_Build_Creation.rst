@@ -62,4 +62,4 @@ Procedure
  
     ::
     
-     docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
+      docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
