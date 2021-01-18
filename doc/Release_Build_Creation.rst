@@ -58,8 +58,8 @@ Procedure
    
     drwxr-xr-x 2 root root 4096 Dec 16 05:49 iso
     
- #. To list individual component targets, execute the below mentioned command.
+#. To list individual component targets, execute the below mentioned command.
  
-    ::
+   ::
     
-      docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
+    docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
