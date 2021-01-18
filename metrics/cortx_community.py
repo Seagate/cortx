@@ -332,6 +332,10 @@ class SlackCommunity():
     person = self.find_person(slack_id)
     return person['github']
 
+  def get_email(self,slack_id):
+    person = self.find_person(slack_id)
+    return person['email']
+
   def find_login(self,login):
     for sid,person in self.people.items():
       if person['github'] == login:
