@@ -332,6 +332,13 @@ class SlackCommunity():
     person = self.find_person(slack_id)
     return person['github']
 
+  def find_login(self,login):
+    for sid,person in self.people.items():
+      if person['github'] == login:
+        return sid
+    print("No person in slack pickle with name of %s" % login)
+    return None
+
   def add_person(self,slack_id,github,email,name):
     self.people[slack_id] = { 'github' : github, 'email' : email, 'name' : name }
 

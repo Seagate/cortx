@@ -37,7 +37,12 @@ def get_mergable_email(source,target):
   te = target.get_email()
   assert se or te, "Could not find a mergable email"
   if se and te:
-    assert se == te, "Can't merge different emails %s != %s" % (se,te)
+    if '@seagate.com' in se:
+      return se
+    elif '@seagate.com' in te:
+      return te
+    else:
+      assert se == te, "Can't merge different non-seagate emails %s != %s" % (se,te)
   if se:
     return se
   else:
@@ -71,8 +76,8 @@ def merge(target_login,source_login,people):
   source=people.get_person(source_login)
   email=get_mergable_email(source,target)
   print("need to merge %s into %s using %s" % (source, target, email)) 
-  sperson=slack_people.find_email(email)
-  assert sperson, "Couldn't find % in slack pickle" % email
+  sperson=slack_people.find_login(source_login)
+  assert sperson, "Couldn't find %s in slack pickle" % email
   slack_people.set_github(sperson,target_login)
   print("Also need to clean up slack person %s" % sperson)
   for date,url in activities.items():
@@ -99,7 +104,10 @@ def merge(target_login,source_login,people):
     people.add_note(target_login,source.get_note())
   people.update_email(target_login,email)
 
-  people.remove_person(source_login)
+  if 'GID_UNK' in source_login:
+    people.remove_person(source_login)
+  else:
+    print("Cowardly refusing to remove non GID_UNK login")
 
   activity.persist()
   slack_people.persist()

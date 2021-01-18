@@ -162,6 +162,10 @@ def get_conversations(client,channels,slack_people,author_activity):
 def get_client():
   return slack.WebClient(token=os.environ['SLACK_OATH'])
 
+def merge_stats(stats):
+  ps=cc.PersistentStats()
+  
+
 # create a stats structure similar to what is produced in scrape_metrics.py
 def get_stats():
 
