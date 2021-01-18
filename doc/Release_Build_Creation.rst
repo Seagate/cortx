@@ -14,7 +14,7 @@ Procedure
    
 #. Install the docker packages in the system or VM. Refer to `Docker Installation <https://docs.docker.com/engine/install/centos/>`_.
 
-#. Login to GitHub Docker. This is an optional step.
+#. Login to GitHub Docker.
 
 #. Clone the CORTX repository by running the following command.
 
