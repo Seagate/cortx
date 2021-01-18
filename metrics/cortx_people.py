@@ -63,7 +63,10 @@ def merge(target_login,source_login,people):
   # 4. copy the slack id from merge into target
   assert target_login, "Can't merge without specifying the individual into whom to merge" 
   #print("need to merge %s into %s" % (source_login, target_login)) 
-  activities=get_activities(source_login,activity)
+  try:
+    activities=get_activities(source_login,activity)
+  except KeyError: # this person has no activities
+    activities={}
   target=people.get_person(target_login)
   source=people.get_person(source_login)
   email=get_mergable_email(source,target)
@@ -81,7 +84,7 @@ def merge(target_login,source_login,people):
       print("Not yet migrated: Migrating %s %s" % (date,url))
       activity.add_activity(key,target_login,url,date)
 
-  # copy over company, type, linkedin; merge notes
+  # copy over company, type, linkedin, and email; merge notes
   if source.get_company() and not target.get_company():
     print("Trying to transfer company %s" % source.get_company())
     people.set_company(target_login,source.get_company())
@@ -94,6 +97,7 @@ def merge(target_login,source_login,people):
   if source.get_note():
     print("Trying to transfer note %s" % source.get_note())
     people.add_note(target_login,source.get_note())
+  people.update_email(target_login,email)
 
   people.remove_person(source_login)
 
