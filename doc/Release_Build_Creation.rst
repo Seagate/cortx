@@ -12,4 +12,28 @@ Procedure
 
    - You can use a Virtual Machine (VM) also.
    
-#. Install the docker packages in the system or VM. Refer to `Docker Installation <https://docs.docker.com/engine/install/centos/>`_
+#. Install the docker packages in the system or VM. Refer to `Docker Installation <https://docs.docker.com/engine/install/centos/>`_.
+
+#. Login to GitHub Docker. This is an optional step.
+
+#. Clone the CORTX repository by running the following command.
+
+   ::
+   
+    cd /root && git clone https://github.com/Seagate/cortx --recursive
+    
+   The CORTX repository gets cloned at the **/root** location. If you want to clone the repository in another location, replace  **/root/cortx** with the appropriate location.
+   
+#. Build CORTX artifacts using the below mentioned docker.
+
+   ::
+   
+    time docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace -e GITHUB_TOKEN=$GITHUB_TOKEN ghcr.io/seagate/cortx-re/cortx-build:centos-7.8.2003 make clean build
+    
+#. Generate the ISO by running the below mentioned command.
+
+   ::
+   
+    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-re/cortx-build:centos-7.8.2003 make iso_generation.
+    
+   You can also append the **iso_generation** target in **make build** command (step 5).
