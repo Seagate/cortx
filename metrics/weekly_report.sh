@@ -18,10 +18,14 @@ email="john.bent@seagate.com"
 # start with a git pull in case the pickles were updated elsewhere
 git pull
 
-# scrape the metrics for CORTX and mail the raw dump
+# scrape the github metrics for CORTX and mail the raw dump
 tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
-./scrape_metrics.py Seagate > $tfile
-echo "Please see attached" | mail -s "$mail_subj_prefix : Scraper Output" -r $email -a $tfile $email 
+./scrape_metrics.py CORTX > $tfile
+echo "Please see attached" | mail -s "$mail_subj_prefix : Github Scraper Output" -r $email -a $tfile $email 
+
+# scrape the slack metrics for CORTX and mail the raw dump
+./scrape_slack.py > $tfile
+echo "Please see attached" | mail -s "$mail_subj_prefix : Slack Scraper Output" -r $email -a $tfile $email 
 
 # mail the metrics as a CSV 
 ts=`date +%Y-%m-%d`
@@ -33,7 +37,7 @@ tfile="/tmp/cortx_community_stats.$ts.csv"
 tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX)
 for group in 'EU R&D' Innersource External Unknown
 do
-  ./get_personal_activity.py $group -l > $tfile
+  ./get_personal_activity.py "$group" -l > $tfile
   mail -s "$mail_subj_prefix : $group Activity" -r $email $email < $tfile
 done
 
@@ -56,7 +60,7 @@ tfile=$(mktemp /tmp/other_projects.XXXXXXXXX.txt)
 touch $tfile
 for p in 'Ceph' 'MinIO' 'DAOS' 'Swift' 'OpenIO'
 do
-  ./scrape_metrics.py -t $p >> $file
+  ./scrape_metrics.py -t $p >> $tfile
 done
 echo "Please see attached" | mail -s "Scraping other projects" -r $email -a $tfile $email
 
