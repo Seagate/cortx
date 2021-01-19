@@ -151,7 +151,7 @@ def add_activity(glogin,mdate,cname,author_activity):
     author_activity.add_activity(key,login,url,created_at)
 
 # conversation also has 'ts' value so we should be able to get only people talking in the last week
-def get_conversations(client,channels,slack_people,author_activity):
+def get_conversations(client,channels,slack_people,author_activity,stats):
   warnings=set()
   week_ago = datetime.date.today() - datetime.timedelta(days=7)
   all_talkers_alltime=set()
@@ -163,6 +163,7 @@ def get_conversations(client,channels,slack_people,author_activity):
     talkers_weekly[cname]=set()
     conversations = get_channel_conversations(client,cid,cname)
     print("Channel %s has %d conversations" % (cname,len(conversations)))
+    stats[cname]['slack_conversation_count'] = len(conversations)
     for c in conversations:
       try:
         glogin=slack_people.get_github(c['user'])
@@ -234,6 +235,33 @@ def get_domains(people,slack_people):
   return domains
   
 
+# takes the stats structure after it has been scraped and after domains has been added and splits out external counts 
+def add_external(stats):
+  slack_people = cc.SlackCommunity()
+  people       = cc.CortxCommunity()
+  new_stats = {}
+  # get al the domains
+  for cname,cstats in stats.items():
+    new_stats[cname] = {}
+    for k,v in cstats.items():
+      if isinstance(v,set) and 'domains' not in k and 'Type' not in k:
+        for p in v:
+          try:
+            Type = 'Unknown' if people.get_type(p)==None else people.get_type(p)
+            new_key=('%s_Type_%s' % (k,Type)).replace(' ','_')
+            #print("%s type %s -> %s" % (p,Type,new_key))
+            if new_key not in new_stats[cname]:
+              new_stats[cname][new_key] = set()
+            new_stats[cname][new_key].add(p)
+          except KeyError:
+            print("WTF: couldn't find github for %s" % p) # this shouldn't happen.
+
+  # now merge them into the stats structure
+  for cname in stats.keys():
+    stats[cname].update(new_stats[cname])
+  return stats
+
+
 # takes the stats structure after it has been scraped and pulls all the emails and figures out the set of email domains
 def add_domains(stats):
   slack_people = cc.SlackCommunity()
@@ -282,7 +310,7 @@ def get_stats():
   stats[GLOBAL]['slack_active_members'] = active_members
 
   print("Getting talkers lists")
-  (all_talkers,weekly_talkers) = get_conversations(client,channels,slack_people,author_activity)
+  (all_talkers,weekly_talkers) = get_conversations(client,channels,slack_people,author_activity,stats)
   for cname in channels.values():
     stats[cname]['slack_participants'] = all_talkers[cname]
     stats[cname]['slack_weekly_participants'] = weekly_talkers[cname]
@@ -299,10 +327,21 @@ def get_stats():
 
   return stats
 
+def update_global_conversation_count(stats):
+  gcc=0
+  key='slack_conversation_count'
+  for cname,cstats in stats.items():
+    if cname != GLOBAL:
+      gcc+=cstats[key]
+  stats[GLOBAL][key]=gcc
+  return stats
+
 def main():
 
   stats = get_stats()
+  stats=update_global_conversation_count(stats)
   stats=add_domains(stats)
+  stats=add_external(stats)
   ps=merge_stats(stats)
 
 
