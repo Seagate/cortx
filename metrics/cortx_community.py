@@ -328,6 +328,10 @@ class SlackCommunity():
     person = self.find_person(slack_id)
     person['github']=github
 
+  def print_person(self,slack_id):
+    person = self.people[slack_id]
+    print("Person %s github:%s email:%s" % (person['name'], person['github'], person['email']))
+
   def get_github(self,slack_id):
     person = self.find_person(slack_id)
     return person['github']

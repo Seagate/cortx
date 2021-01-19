@@ -125,6 +125,7 @@ def main():
   parser.add_argument('--slack',       '-s', help="Operate on the slack people", action="store_true")
   parser.add_argument('--merge',       '-m', help="Merge one person into another")
   parser.add_argument('--org',         '-o', help='Print the latest statistics for a different org', default='Seagate')
+  parser.add_argument('--github',      '-g', help='Change the github login for a slack person', action="store")
   args = parser.parse_args()
 
   if args.slack:
@@ -136,25 +137,42 @@ def main():
   if args.merge:
     merge(target_login=args.individual,source_login=args.merge,people=people)
 
-
   if (args.individual):
     updated=False
-    if people.includes(args.individual):
-      if args.type:
-        updated = True
-        people.update_type(args.individual,args.type)
-      if args.company:
-        updated = True
-        people.update_company(args.individual,args.company)
-      if args.linkedin:
-        updated = True
-        people.update_linkedin(args.individual,args.linkedin)
-      if args.email:
-        updated = True
-        people.update_email(args.individual,args.email)
-      print(people.people[args.individual])
+    if not args.slack:
+      if people.includes(args.individual):
+        if args.type:
+          updated = True
+          people.update_type(args.individual,args.type)
+        if args.company:
+          updated = True
+          people.update_company(args.individual,args.company)
+        if args.linkedin:
+          updated = True
+          people.update_linkedin(args.individual,args.linkedin)
+        if args.email:
+          updated = True
+          people.update_email(args.individual,args.email)
+        print(people.people[args.individual])
+      else:
+        print("Person %s not in the known community" % args.individual)
     else:
-      print("Person %s not in the known community" % args.individual)
+      if args.github:
+        gpeople=CortxCommunity()
+        gperson = None
+        sperson = None
+        try:
+          gperson=gpeople.get_person(args.github)
+        except KeyError:
+          print("Error: %s is unknown github ID" % args.github)
+        try:
+          sperson=people.get_github(args.individual)
+        except TypeError:
+          print("Error: %s is unknown slack ID" % args.individual)
+        assert gperson and sperson, "Can't operate unless both args are valid"
+        people.set_github(args.individual,args.github)
+        updated=True
+      people.print_person(args.individual)
     if updated:
       people.persist()
     sys.exit(0)
