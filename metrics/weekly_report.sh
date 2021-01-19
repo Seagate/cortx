@@ -20,7 +20,7 @@ git pull
 
 # scrape the github metrics for CORTX and mail the raw dump
 tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
-./scrape_metrics.py Seagate > $tfile
+./scrape_metrics.py CORTX > $tfile
 echo "Please see attached" | mail -s "$mail_subj_prefix : Github Scraper Output" -r $email -a $tfile $email 
 
 # scrape the slack metrics for CORTX and mail the raw dump
@@ -37,7 +37,7 @@ tfile="/tmp/cortx_community_stats.$ts.csv"
 tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX)
 for group in 'EU R&D' Innersource External Unknown
 do
-  ./get_personal_activity.py $group -l > $tfile
+  ./get_personal_activity.py "$group" -l > $tfile
   mail -s "$mail_subj_prefix : $group Activity" -r $email $email < $tfile
 done
 
