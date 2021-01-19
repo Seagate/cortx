@@ -32,7 +32,7 @@ Procedure
 
    ::
    
-    time docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace -e GITHUB_TOKEN=$GITHUB_TOKEN ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
+    time docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
     
 #. Generate the ISO by running the below mentioned command.
 
