@@ -16,13 +16,11 @@ Procedure
 
 #. Login to GitHub Docker.
 
-#. Clone the CORTX repository by running the following command.
+#. Clone the repositories of the required components on VM at /root/cortx (You can use any other directory by updating the docker run command accordingly). Clone the entire CORTX repository by running the following command.
 
    ::
    
     cd /root && git clone https://github.com/Seagate/cortx --recursive
-    
-   The CORTX repository gets cloned at the **/root** location. If you want to clone the repository in another location, replace  **/root/cortx** with the appropriate location.
    
 #. Create directory to store artifacts. In this procedure, **/var/artifacts** is used. Update **docker run** command accordingly to use an alternative directory.
 
