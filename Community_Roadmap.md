@@ -34,18 +34,19 @@
             <td></td>
             <td></td>
             <td></td>
-            <td> :israel: </td>
+            <td> 🇮🇱 </td>
             <td></td>
             <td></td>
             <td>:earth_africa:</td>
             <td></td>
             <td></td>
-            <td colspan="2" align="center"> :india: </td>
+            <td> 🇮🇳 </td>
+            <td></td>
             <td></td>
             <td> :earth_africa:</td>
             <td></td>
             <td></td>
-            <td> :ireland:</td>            
+            <td> 🇮🇪 </td>            
         </tr>
         <tr>
         <td>Newsletter</td>
