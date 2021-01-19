@@ -10,4 +10,4 @@ A CORTX development environment requires RoCE—RDMA over Converged Ethernet and
    - Note: The CORTX stack currently does not work on Intel's OmniPath cards.
    - Note: Seagate employees may have access to resources to help with this.  Please refer to [this page](DEV_VM.md) for more information.
    
-For information on release build generation, refer to [Release_Build_Generation](Release_Build_Creation.rst)
+For information on release build generation, refer to [Release Build Generation](Release_Build_Creation.rst).
