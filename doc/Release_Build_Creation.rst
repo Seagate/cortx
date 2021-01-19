@@ -62,6 +62,8 @@ Procedure
     
     docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
     
+   The output will be displayed as follows.
+    
    ::
    
     [root@ssc-vm-1613 cortx-**]# time docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
