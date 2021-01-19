@@ -34,19 +34,19 @@
             <td></td>
             <td></td>
             <td></td>
-            <td> 🇮🇱 </td>
+            <td> <img src="https://www.countryflags.io/il/flat/64.png"> </td>
             <td></td>
             <td></td>
             <td>:earth_africa:</td>
             <td></td>
             <td></td>
-            <td> 🇮🇳 </td>
+            <td> <img src="https://www.countryflags.io/in/flat/64.png"> </td>
             <td></td>
             <td></td>
             <td> :earth_africa:</td>
             <td></td>
             <td></td>
-            <td> 🇮🇪 </td>            
+            <td> <img src="https://www.countryflags.io/ie/flat/64.png"> </td>            
         </tr>
         <tr>
         <td>Newsletter</td>
