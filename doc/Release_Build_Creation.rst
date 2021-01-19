@@ -61,3 +61,42 @@ Procedure
    ::
     
     docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
+    
+   ::
+   
+    [root@ssc-vm-1613 cortx-**]# time docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
+    usage: make "target"
+
+    Please clone required component repositories in cortx-workspace directory before executing respective targets.
+
+    targets:
+    
+        help: print this help message.
+        
+        clean: remove existing /var/artifacts/0 directory.
+        
+        build: generate complete CORTX build including third-party-deps at "/var/artifacts/0"
+        
+        control-path: generate control-path packages. cortx-provisioner, cortx-monitor, cortx-manager, cortx-management-portal and cortx-ha.
+        
+        io-path: generate io-path packages. cortx-motr, cortx-s3server and cortx-hare.
+        
+        cortx-motr: generate cortx-motr packages.
+        
+        cortx-s3server: generate cortx-s3server packages.
+        
+        cortx-hare: generate cortx-hare packages.
+        
+        cortx-ha: generate cortx-ha packages.
+        
+        cortx-management-portal: generate cortx-management-portal packages.
+        
+        cortx-manager: generate cortx-manager packages.
+        
+        cortx-monitor: generate cortx-monitor packages.
+        
+        cortx-posix: generate cortx-posix (NFS) packages.
+        
+        cortx-prvsnr: generate cortx-prvsnr packages.
+        
+        iso_generation: generate ISO file from release build.
