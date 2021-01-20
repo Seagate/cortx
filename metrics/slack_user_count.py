@@ -25,7 +25,7 @@ def clean(data):
 
 
 def api_process(url):
-   """ Process the slack url to get user count
+    """ Process the slack url to get user count
     If the argument isn't passed in, the function throw an error.
     Parameters
     ----------
