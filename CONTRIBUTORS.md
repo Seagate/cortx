@@ -13,6 +13,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
 1. [Debasmita Samaddar](https://github.com/samaddar)
 1. [John Bent](https://github.com/johnbent)
+1. [Juatin Woo](https://github.com/justinzw)
 1. [Jayesh Badwaik](https://github.com/jayeshbadwaik)
 1. [Mayur Gupta](https://github.com/TechWriter-Mayur)
 1. [Mukul Malhotra](https://github.com/mukul-seagate11)
