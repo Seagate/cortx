@@ -66,7 +66,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
-1.
+1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
 1. [Satish Darade](https://github.com/satish-seagate)
@@ -110,5 +110,6 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
