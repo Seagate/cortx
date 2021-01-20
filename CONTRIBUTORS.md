@@ -69,7 +69,9 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
+1. [Satish Darade](https://github.com/satish-seagate)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Sumedh Kulkarni](https://github.com/sumedhak27)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
