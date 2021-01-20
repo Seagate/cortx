@@ -44,11 +44,23 @@ def api_process(url):
         #todo
     return total_count
 
+def export_csv(login_url, download_url, user, password):
+    #response = requests.get(url, auth=(user, password))
+    session = requests.Session()
+    session.get(login_url)
+    session.post(login_url, data={'_username': user, '_password': password})
+    res = session.get(download_url)
+    with open ("output.csv", "w") as fobj:
+        fobj.write (res.text)
+        
 def main():
     result = api_process("https://slack.openio.io/")
     print ("Minio total count %s" %(result))
     result = api_process("http://slackin-ceph-public.herokuapp.com/")
     print ("Ceph total count %s" %(result))
+   
+    #todo
+    #export_csv()
 
 if __name__ == '__main__':
   main()
