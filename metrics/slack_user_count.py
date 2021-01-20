@@ -25,6 +25,15 @@ def clean(data):
 
 
 def api_process(url):
+   """ Process the slack url to get user count
+    If the argument isn't passed in, the function throw an error.
+    Parameters
+    ----------
+    Url : str, require
+	The url for minio, ceph and daos
+    Returns:
+        The user count of given url.
+    """
     try:
         response = requests.get(url)
         data = html.unescape(response.text)
@@ -32,6 +41,7 @@ def api_process(url):
         total_count = clean(count_obj.group(1))
     except:
         pass
+        #todo
     return total_count
 
 def main():
