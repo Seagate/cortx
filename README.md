@@ -43,23 +43,23 @@ We are excited about your interest in CORTX and hope you will join us. We take o
 
 - Download a VM image and follow [the instructions](doc/CORTX_on_Open_Virtual_Appliance.rst) to test the pre-built full CORTX system.
 
-  #. Download a VM. Refer to <................>.
+  1. Download a VM. Refer to <................>.
   
-  #. Build CORTX from the source. Refer to <..................>.
+  2. Build CORTX from the source. Refer to <..................>.
   
-  #. Run the recently built motr by referring to <.............................>.
-  
-     - For single node, refer to <...............>.
-  
-     - For multi node, refer to <..................>.
-     
-  #. Run motr+s3 by referring to <.......................>.
+  3. Run the recently built motr by referring to <.............................>.
   
      - For single node, refer to <...............>.
   
      - For multi node, refer to <..................>.
      
-  #. Run the recently built complete software by referring to <.................>.
+  4. Run motr+s3 by referring to <.......................>.
+  
+     - For single node, refer to <...............>.
+  
+     - For multi node, refer to <..................>.
+     
+  5. Run the recently built complete software by referring to <.................>.
   
      - For single node, refer to <...............>.
   
