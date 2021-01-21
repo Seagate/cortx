@@ -12,16 +12,7 @@ Thanks for joining us and we're glad to have you. We take community very serious
 
 You can report instances of abusive, harassing, or otherwise unacceptable behavior by contacting the project team at opensource@seagate.com.
 
-## Contribution Process
-
-### Prerequisites
-
-- Please read our [CORTX Code Style Guide](doc/CodeStyle.md).
-- Get started with [GitHub Tools and Procedures](doc/GitHub_Processes_and_Tools.rst), if you are new to GitHub.
-   - Please find additional information about [working with git](doc/working_with_git.md) specific to CORTX.
-- Please read about our [DCO and CLA policies](doc/dco_cla.md).
-
-### Deployment and Testing
+## Deployment and Testing
 - Download a CORTX VM image for easy testing
     - Run it on a single node: [LINK](doc/CORTX_on_Open_Virtual_Appliance.rst); run it on a cluster: TODO
 - Download CORTX as prepackaged software releases
@@ -32,6 +23,15 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
     - Run it on a single node [DONE?](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md); run it on a cluster [TODO]
 - Build entire CORTX from the source: [DONE?](https://github.com/Seagate/cortx-hare/blob/main/README.md)
     - Run it on a single node: TODO; Run it on a cluster: TODO
+
+## Contribution Process
+
+### Prerequisites
+
+- Please read our [CORTX Code Style Guide](doc/CodeStyle.md).
+- Get started with [GitHub Tools and Procedures](doc/GitHub_Processes_and_Tools.rst), if you are new to GitHub.
+   - Please find additional information about [working with git](doc/working_with_git.md) specific to CORTX.
+- Please read about our [DCO and CLA policies](doc/dco_cla.md).
 
 ### Development
 
