@@ -15,9 +15,7 @@ import html
 #from dateutil import parser
 import datetime
 
-# todo 
-# change the token into env variable
-token = 'xoxs-1159580943030-1213988393956-1655315023763-378950a18d12809e302e66d867d5800b186fb5912a3d9df541153e51dde6611d'
+token = os.environ['SLACK_OATH']
 url = 'https://cortxcommunity.slack.com/api/team.stats.export'
 
 payload = {'token':token,'offline':'false'}
@@ -80,8 +78,6 @@ def download_csv(type, date_range):
        # todo
     return
 
-
-"""
 def export_csv(login_url, download_url, user, password):
     #response = requests.get(url, auth=(user, password))
     session = requests.Session()
@@ -90,7 +86,6 @@ def export_csv(login_url, download_url, user, password):
     res = session.get(download_url)
     with open ("output.csv", "w") as fobj:
         fobj.write (res.text)
-"""
         
 def main():
     result = api_process("https://slack.openio.io/")
@@ -99,6 +94,7 @@ def main():
     print ("Ceph total count %s" %(result))
    
     #todo
+    #export_csv(url, 'https://cortxcommunity.slack.com/api/team.stats.export', '', '')
     download_csv('overview', '30d')
     download_csv('users', '30d')
     download_csv('channels', '30d')
