@@ -41,7 +41,30 @@ We are excited about your interest in CORTX and hope you will join us. We take o
 
 ## How to Get Started
 
-- Download a VM image and follow [the instructions](doc/CORTX_on_Open_Virtual_Appliance.rst) to test the pre-built full CORTX system. 
+- Download a VM image and follow [the instructions](doc/CORTX_on_Open_Virtual_Appliance.rst) to test the pre-built full CORTX system.
+
+  #. Download a VM. Refer to <................>.
+  
+  #. Build CORTX from the source. Refer to <..................>.
+  
+  #. Run the recently built motr by referring to <.............................>.
+  
+     - For single node, refer to <...............>.
+  
+     - For multi node, refer to <..................>.
+     
+  #. Run motr+s3 by referring to <.......................>.
+  
+     - For single node, refer to <...............>.
+  
+     - For multi node, refer to <..................>.
+     
+  #. Run the recently built complete software by referring to <.................>.
+  
+     - For single node, refer to <...............>.
+  
+     - For multi node, refer to <..................>.
+     
 - Jump into our [Contribution Guide](CONTRIBUTING.md) to build and test CORTX and to learn about how to make contributions.
    - Refer to our [Suggested Contributions](../main/doc/SuggestedContributions.md) page for some inspiration about how to contribute to the CORTX project.
 - Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.rst) for more details.
