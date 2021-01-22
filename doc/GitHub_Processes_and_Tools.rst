@@ -227,6 +227,8 @@ To fork a repository, perform the procedure mentioned below.
   
 .. image:: images/cent.PNG
 
+Image Source: `Click here <https://www.toolsqa.com/git/git-fork/>`_. 
+
 
 **Note**: Forking is allowed for public repositories without permission but if the repository is private, the contributor can only be able to fork if he/she has required permission from the owner/admin of the repository. 
     
