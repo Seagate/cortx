@@ -182,6 +182,8 @@ A fork is a copy of a repository. Forking a repository allows you to freely expe
 
 .. image:: images/fork.PNG
 
+Image Source: `Click here <https://www.toolsqa.com/git/git-fork/>`_. 
+
 **How does Forking (Git Fork) work?**
 
 A contributor can use forks to propose changes related to fixing a bug rather than raising an issue for the same so he that he can:
