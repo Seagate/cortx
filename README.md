@@ -39,19 +39,10 @@ You can read more about the technical goals and distinguishing features of CORTX
 
 We are excited about your interest in CORTX and hope you will join us. We take our community very seriously, and we are committed to creating a community built on respectful interactions and inclusivity, as documented in our [Code of Conduct](CODE_OF_CONDUCT.md).  Because of our commitment to community, we work hard to track important community metrics; please feel free to check out how we do it and help us do it better in our [metrics folder](metrics).  We also publish our [Community Roadmap](Community_Roadmap.md); please let us know what other community events and milestones you would like to se.
 
-## How to Get Started
+## Get Started
 
-- Acquiring, building, and running CORTX
-    - Download a CORTX virtual machine image for easy testing
-        - Run it on a single node: [LINK](doc/CORTX_on_Open_Virtual_Appliance.rst); run it on a cluster: TODO
-    - Download CORTX as prepackaged software releases
-        - Run it on a single node: TODO; run it across a cluster: [DONE?](doc/scaleout/README.rst)
-    - Build motr from the source: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
-        - Run freshly built motr on a single node: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst); run it on a cluster: TODO
-    - Build motr + S3 from the source: [DONE?](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
-        - Run it on a single node [DONE?](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md); run it on a cluster [TODO]
-    - Build entire CORTX from the source: [DONE?](https://github.com/Seagate/cortx-hare/blob/main/README.md)
-        - Run it on a single node: TODO; Run it on a cluster: TODO
+- Download a [CORTX virtual machine image](doc/CORTX_on_Open_Virtual_Appliance.rst) to get up and running in minutes
+- Learn more ways to acquire, build, and run CORTX in our [Quick Start Guide](QUICK_START.md) 
 - Jump into our [Contribution Guide](CONTRIBUTING.md) to build and test CORTX and to learn about how to make contributions.
    - Refer to our [Suggested Contributions](../main/doc/SuggestedContributions.md) page for some inspiration about how to contribute to the CORTX project.
 - Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.rst) for more details.
