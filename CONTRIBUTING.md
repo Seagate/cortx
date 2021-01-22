@@ -13,16 +13,7 @@ Thanks for joining us and we're glad to have you. We take community very serious
 You can report instances of abusive, harassing, or otherwise unacceptable behavior by contacting the project team at opensource@seagate.com.
 
 ## Deployment and Testing
-- Download a CORTX virtual machine image for easy testing
-    - Run it on a single node: [LINK](doc/CORTX_on_Open_Virtual_Appliance.rst); run it on a cluster: TODO
-- Download CORTX as prepackaged software releases
-    - Run it on a single node: TODO; run it across a cluster: [DONE?](doc/scaleout/README.rst)
-- Build motr from the source: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
-    - Run freshly built motr on a single node: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst); run it on a cluster: TODO
-- Build motr + S3 from the source: [DONE?](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
-    - Run it on a single node [DONE?](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md); run it on a cluster [TODO]
-- Build entire CORTX from the source: [DONE?](https://github.com/Seagate/cortx-hare/blob/main/README.md)
-    - Run it on a single node: TODO; Run it on a cluster: TODO
+- Learn various methods to acquire, build, run and test CORTX in our [Quick Start Guide](QUICK_START.md).
 
 ## Contribution Process
 
@@ -63,8 +54,6 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
  
 ## Additional Resources
 
-- Download and run a [single node CORTX VM](doc/CORTX_on_Open_Virtual_Appliance.rst) for testing purposes.
-- Setup and test [a scale-out distributed CORTX](doc/scaleout/README.rst).
 - Learn more about the [CORTX Architechture](doc/architecture.md). 
 - Learn more about [CORTX CI/CD and Automation](doc/CI_CD.md).
 - Browse our [suggested list of contributions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md).
