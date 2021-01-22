@@ -10,5 +10,7 @@
     - Run it on a single node [DONE?](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md); run it on a cluster [TODO]
 - Build entire CORTX from the source: [DONE?](https://github.com/Seagate/cortx-hare/blob/main/README.md)
     - Run it on a single node: TODO; Run it on a cluster: TODO
+    
+Once you're ready to make more contributions, please check out our [Contribution Guide](CONTRIBUTING.md).
 
 
