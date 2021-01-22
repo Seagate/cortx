@@ -42,7 +42,7 @@ We are excited about your interest in CORTX and hope you will join us. We take o
 ## How to Get Started
 
 - Acquiring, building, and running CORTX
-    - Download a CORTX VM image for easy testing
+    - Download a CORTX virtual machine image for easy testing
         - Run it on a single node: [LINK](doc/CORTX_on_Open_Virtual_Appliance.rst); run it on a cluster: TODO
     - Download CORTX as prepackaged software releases
         - Run it on a single node: TODO; run it across a cluster: [DONE?](doc/scaleout/README.rst)
