@@ -62,6 +62,10 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 
 Please refer to the [Support](SUPPORT.md) section to know more about the various channels by which you can reach out to us. 
 
+## Acknowledgements
+
+After making a contribution, please don't forget to include yourself in our [Contributors list](CONTRIBUTORS.md).
+
 ## Thank You!
 
 We thank you for stopping by to check out the CORTX Community. We are fully dedicated to our mission to build open source technologies that help the world save unlimited data and solve challenging data problems. Join our mission to help reinvent a data-driven world.
