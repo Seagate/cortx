@@ -13,7 +13,7 @@ Thanks for joining us and we're glad to have you. We take community very serious
 You can report instances of abusive, harassing, or otherwise unacceptable behavior by contacting the project team at opensource@seagate.com.
 
 ## Deployment and Testing
-- Download a CORTX VM image for easy testing
+- Download a CORTX virtual machine image for easy testing
     - Run it on a single node: [LINK](doc/CORTX_on_Open_Virtual_Appliance.rst); run it on a cluster: TODO
 - Download CORTX as prepackaged software releases
     - Run it on a single node: TODO; run it across a cluster: [DONE?](doc/scaleout/README.rst)
