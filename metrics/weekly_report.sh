@@ -27,6 +27,10 @@ echo "Please see attached" | mail -s "$mail_subj_prefix : Github Scraper Output"
 ./scrape_slack.py > $tfile
 echo "Please see attached" | mail -s "$mail_subj_prefix : Slack Scraper Output" -r $email -a $tfile $email 
 
+# scrape the slack metrics for comparable projects 
+./scrape_projects.py -v > $tfile
+echo "Please see attached" | mail -s "$mail_subj_prefix : Slack Projects Output" -r $email -a $tfile $email 
+
 # mail the metrics as a CSV 
 ts=`date +%Y-%m-%d`
 tfile="/tmp/cortx_community_stats.$ts.csv"
