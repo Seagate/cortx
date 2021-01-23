@@ -12,6 +12,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
 1. [Debasmita Samaddar](https://github.com/samaddar)
+1. [Gregory Touretsky](https://github.com/gregnsk)
 1. [John Bent](https://github.com/johnbent)
 1. [Justin Woo](https://github.com/justinzw)
 1. [Jayesh Badwaik](https://github.com/jayeshbadwaik)
