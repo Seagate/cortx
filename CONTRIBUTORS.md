@@ -13,6 +13,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
 1. [Debasmita Samaddar](https://github.com/samaddar)
 1. [Gregory Touretsky](https://github.com/gregnsk)
+1. [Huang Hua](https://github.com/huanghua78)
 1. [John Bent](https://github.com/johnbent)
 1. [Justin Woo](https://github.com/justinzw)
 1. [Jayesh Badwaik](https://github.com/jayeshbadwaik)
@@ -83,6 +84,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
 1. [Andriy Tkachuk](https://github.com/andriytk)
+1. [Huang Hua](https://github.com/huanghua78)
 1. [John Bent](https://github.com/johnbent)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
