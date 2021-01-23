@@ -29,6 +29,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Wei Der Chien](https://github.com/steven-chien) 
 
 ## [Seagate/cortx-dsal](https://github.com/Seagate/cortx-dsal)
+1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1.
 
@@ -37,11 +38,13 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
+1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-fs-ganesha](https://github.com/Seagate/cortx-fs-ganesha)
 1. [Philippe Deniel](https://github.com/phdeniel)
+1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1.
 
@@ -89,11 +92,13 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1.
 
 ## [Seagate/cortx-nsal](https://github.com/Seagate/cortx-nsal)
+1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1.
 
 ## [Seagate/cortx-posix](https://github.com/Seagate/cortx-posix)
 1. [Philippe Deniel](https://github.com/phdeniel) 
+1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
@@ -113,6 +118,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
+1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
