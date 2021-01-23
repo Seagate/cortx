@@ -11,14 +11,7 @@ Looking for support for one of the CORTX software modules or to discuss things w
 -   We like to highlight the work and contributions of our community members—if you have solved an interesting challenge, or you are interested in sharing your experience or use cases, we want to talk to you! Please email our Community Manager rachel.novak@seagate.com or [schedule a meeting with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2) to share.
 -   Take a look at how our teams triages incoming issues and how it works, who does it and what to expect [here](https://github.com/Seagate/cortx/wiki/Community-Triage-Process)
 -   Finally, please make sure to join us in [Discussions](https://github.com/Seagate/cortx/discussions) to ask, answer, and discuss topics with your fellow CORTX contributors!
-    - Using the below instructions, we can use Discussions effectively as an email mailing list:
-      1. Click **Watch** button at the top-left of the repository.
-        
-        ![](doc/images/Discussions1.png)
-          
-      2. Click *Custom ->* from the Notifications list.
-      3. Select *Discussions* from the Custom dialog box and click **Apply**. 
-        
-        ![](doc/images/Discussions2.png)
+    - We use Discussions as an email mailing list.  To join, click **Watch** button at the top-right of the repository, select **Custom** from the drop-down list, and then select **Discussions** and click **Apply**.  Select other options if you want to receive additional emails beyond just Discussions.
+
         
 
