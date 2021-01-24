@@ -50,4 +50,3 @@ To display the Executive Report as slides, run:
 jupyter nbconvert --to slides --post serve --SlidesExporter.reveal_theme=serif --SlidesExporter.reveal_scroll=True CORTX_Metrics_Topline_Report.ipynb
 Then view it at http://127.0.0.1:8000/CORTX_Metrics_Topline_Report.slides.html.
 To print it to PDF, view http://127.0.0.1:8000/CORTX_Metrics_Topline_Report.slides.html?print-pdf#/ and then print to PDF.  Make sure margins are none and it is in landscape mode.
-To save it then as PDF, go to the bro
