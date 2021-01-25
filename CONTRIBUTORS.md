@@ -39,6 +39,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-experiments](https://github.com/Seagate/cortx-experiments)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
+1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
@@ -116,6 +117,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
+1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [John Bent](https://github.com/johnbent)
 1. [Nilesh Govande](https://github.com/nileshgovande)
 1. [Rajesh Nambiar](https://github.com/knrajnambiar76)
