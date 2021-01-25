@@ -76,6 +76,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Alexander Voronov](https://github.com/avrnv)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
+1. [Mazhar Inamdar](https://github.com/mazinamdar)
 1. [Prathamesh Rodi](https://github.com/prathameshrodi)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
@@ -113,6 +114,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
+1. [Mazhar Inamdar](https://github.com/mazinamdar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Yashodhan Pise (Yash)](https://github.com/ypise)
 
@@ -130,6 +132,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Alexander Voronov](https://github.com/avrnv)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
+1. [Mazhar Inamdar](https://github.com/mazinamdar)
 1. [Prathamesh Rodi](https://github.com/prathameshrodi)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
