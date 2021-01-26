@@ -109,6 +109,7 @@ def main():
   parser.add_argument('-l', '--last_week', action='store_true', help="Only show activity in the last seven days")
   parser.add_argument('-d', '--details', action='store_true', help="Print stats for pulls and commits, also reports a total score")
   parser.add_argument('-c', '--company', action='store_true', help="Instead of looking up an individual, look up all folks from a particular company")
+  parser.add_argument('-L', '--limit', type=int, help="Only show actions if gte to limit")
   args = parser.parse_args()
 
   activity = cortx_community.CortxActivity()
@@ -157,12 +158,24 @@ def main():
   else:
     filtered_activities = activities
 
+  # optionally filter by limit
+  if args.limit:
+    new_filtered = {}
+    for login,actions in sorted(activities.items()):
+      if len(actions) >= args.limit:
+        new_filtered[login]=actions
+    filtered_activities = new_filtered
+
+
   if len(logins) > 1:
     print("Getting activities from %d logins: %s" % (len(logins),sorted(logins)))
 
   # now print from the filtered list
   total_actions = 0
-  for login,actions in sorted(filtered_activities.items()):
+  for k in sorted(filtered_activities, key=lambda k: len(filtered_activities[k]), reverse=True):
+    login = k
+    actions = filtered_activities[k]
+  #for login,actions in sorted(filtered_activities.items()):
     email=people.get_email(login)
     Type=people.get_type(login)
     total_score   = 0
@@ -173,7 +186,7 @@ def main():
       if args.details:
         (points,details) = get_details(u,stx)
         total_score += points
-      print("\t%s %s %s %s" % (login,d,u, details if args.details else ''))
+      print("\t-- %s %s %s %s" % (login,d,u, details if args.details else ''))
     if len(actions) > 0 and args.details:
       print("\t%4.1f POINTS for %s" % (total_score,login))
 
