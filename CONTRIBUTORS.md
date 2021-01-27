@@ -126,6 +126,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
+1. [Anjali Somwanshi](https://github.com/SomwanshiAnjali)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
 1. [Sanjog Naik](https://github.com/sanjognaik)
