@@ -95,6 +95,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Huang Hua](https://github.com/huanghua78)
 1. [John Bent](https://github.com/johnbent)
+1. [Kanchan Chaudhari](https://github.com/kanchan-chaudhari)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shashank Parulekar](https://github.com/shashank-parulekar)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
