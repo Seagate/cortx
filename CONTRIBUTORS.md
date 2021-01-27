@@ -102,6 +102,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shashank Parulekar](https://github.com/shashank-parulekar)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vinoth Vijayakumar](https://github.com/VinothVijayakumar-dev)
+1. [Yash Bhamare](https://github.com/ydb242)
 
 ## [Seagate/cortx-motr-galois](https://github.com/Seagate/cortx-motr-galois)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
