@@ -97,6 +97,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [John Bent](https://github.com/johnbent)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
+1. [Vinoth Vijayakumar](https://github.com/VinothVijayakumar-dev)
 
 ## [Seagate/cortx-motr-galois](https://github.com/Seagate/cortx-motr-galois)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
