@@ -36,7 +36,23 @@ def clean(data):
     data = data.strip()
     return data
 
-def api_process(url):
+def api_process_post_method (url,channel_id):
+    """
+    """
+    try:
+       payload = {
+	     "token": os.environ["SLACK_MINIO"],
+	     "channel": channel_id,
+	     "as_admin": False
+       }
+       headers = {'content-type': 'application/json', 'cookie':os.environ["MINIO_COOKIE"]}
+
+       r = requests.post(url, data=json.dumps(payload), headers=headers)
+       return r.json()
+    except:
+       pass
+
+def api_process_get_method (url):
     """ Process the slack url to get user count
     If the argument isn't passed in, the function throw an error.
     Parameters
@@ -88,16 +104,18 @@ def export_csv(login_url, download_url, user, password):
         fobj.write (res.text)
         
 def main():
-    result = api_process("https://slack.openio.io/")
-    print ("Minio total count %s" %(result))
-    result = api_process("http://slackin-ceph-public.herokuapp.com/")
-    print ("Ceph total count %s" %(result))
+    result = api_process_post_method ("https://edgeapi.slack.com/cache/T3NG3BE8L/users/counts", "C3NDUB8UA")
+    #result = api_process("https://slack.openio.io/")
+    print ("Minio total count...")
+    print(json.dumps(result, indent=4, sort_keys=True))
+    #result = api_process("http://slackin-ceph-public.herokuapp.com/")
+    #print ("Ceph total count %s" %(result))
    
     #todo
     #export_csv(url, 'https://cortxcommunity.slack.com/api/team.stats.export', '', '')
-    download_csv('overview', '30d')
-    download_csv('users', '30d')
-    download_csv('channels', '30d')
+    #download_csv('overview', '30d')
+    #download_csv('users', '30d')
+    #download_csv('channels', '30d')
 
 
 if __name__ == '__main__':
