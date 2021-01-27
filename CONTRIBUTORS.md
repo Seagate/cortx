@@ -96,6 +96,8 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Huang Hua](https://github.com/huanghua78)
 1. [John Bent](https://github.com/johnbent)
+1. [Kanchan Chaudhari](https://github.com/kanchan-chaudhari)
+1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shashank Parulekar](https://github.com/shashank-parulekar)
 1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
@@ -120,14 +122,19 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
+1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Sradhanand Pati](https://github.com/sradhanand-pati)
 1. [Yashodhan Pise (Yash)](https://github.com/ypise)
 
 
+
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
+1. [Ajinkya Dhumal](https://github.com/AjinkyaDhumal)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [John Bent](https://github.com/johnbent)
 1. [Nilesh Govande](https://github.com/nileshgovande)
+1. [Pranav Diliprao Pawar](https://github.com/pranavPawar07)
 1. [Rajesh Nambiar](https://github.com/knrajnambiar76)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
@@ -140,6 +147,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
 1. [Prathamesh Rodi](https://github.com/prathameshrodi)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
+1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
