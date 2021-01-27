@@ -124,6 +124,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
+1. [Ajinkya Dhumal](https://github.com/AjinkyaDhumal)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [John Bent](https://github.com/johnbent)
 1. [Nilesh Govande](https://github.com/nileshgovande)
