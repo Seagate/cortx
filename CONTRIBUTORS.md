@@ -122,7 +122,9 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
 1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Sradhanand Pati](https://github.com/sradhanand-pati)
 1. [Yashodhan Pise (Yash)](https://github.com/ypise)
+
 
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
