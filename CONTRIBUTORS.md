@@ -11,6 +11,7 @@ This file contains lists of contributors to CORTX for each repository comprising
 Thanks for contributing!  If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md).
 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
+1. [Amit Kumar](https://github.com/amitwac2608)
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Debasmita Samaddar](https://github.com/samaddar)
 1. [Gregory Touretsky](https://github.com/gregnsk)
@@ -129,6 +130,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
 1. [Ajinkya Dhumal](https://github.com/AjinkyaDhumal)
+1. [Amit Kumar](https://github.com/amitwac2608)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [John Bent](https://github.com/johnbent)
 1. [Nilesh Govande](https://github.com/nileshgovande)
