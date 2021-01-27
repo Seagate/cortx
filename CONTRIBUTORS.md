@@ -11,14 +11,17 @@ This file contains lists of contributors to CORTX for each repository comprising
 Thanks for contributing!  If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md).
 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
+1. [Amit Kumar](https://github.com/amitwac2608)
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Debasmita Samaddar](https://github.com/samaddar)
 1. [Gregory Touretsky](https://github.com/gregnsk)
 1. [Huang Hua](https://github.com/huanghua78)
+1. [Jaydeep Mohite](https://github.com/jamohite)
+1. [Jayesh Badwaik](https://github.com/jayeshbadwaik)
 1. [John Bent](https://github.com/johnbent)
 1. [Justin Woo](https://github.com/justinzw)
-1. [Jayesh Badwaik](https://github.com/jayeshbadwaik)
 1. [Mayur Gupta](https://github.com/TechWriter-Mayur)
+1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Mukul Malhotra](https://github.com/mukul-seagate11)
 1. [Patrick Hession](https://github.com/hessio)
 1. [Philippe Deniel](https://github.com/phdeniel) 
@@ -32,6 +35,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Wei Der Chien](https://github.com/steven-chien) 
 
 ## [Seagate/cortx-dsal](https://github.com/Seagate/cortx-dsal)
+1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1.
@@ -40,13 +44,16 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
+1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
+1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-fs-ganesha](https://github.com/Seagate/cortx-fs-ganesha)
+1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Philippe Deniel](https://github.com/phdeniel)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
@@ -90,39 +97,56 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
+1. [Abhishek Saha](https://github.com/AbhishekSahaSeagate)
 1. [Andriy Tkachuk](https://github.com/andriytk)
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Huang Hua](https://github.com/huanghua78)
 1. [John Bent](https://github.com/johnbent)
+1. [Kanchan Chaudhari](https://github.com/kanchan-chaudhari)
+1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Shashank Parulekar](https://github.com/shashank-parulekar)
+1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
+1. [Vinoth Vijayakumar](https://github.com/VinothVijayakumar-dev)
+1. [Yash Bhamare](https://github.com/ydb242)
 
 ## [Seagate/cortx-motr-galois](https://github.com/Seagate/cortx-motr-galois)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1.
 
 ## [Seagate/cortx-nsal](https://github.com/Seagate/cortx-nsal)
+1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1.
 
 ## [Seagate/cortx-posix](https://github.com/Seagate/cortx-posix)
+1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Philippe Deniel](https://github.com/phdeniel) 
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
+1. [Anjali Somwanshi](https://github.com/SomwanshiAnjali)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
+1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Sradhanand Pati](https://github.com/sradhanand-pati)
 1. [Yashodhan Pise (Yash)](https://github.com/ypise)
 
 
+
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
+1. [Ajinkya Dhumal](https://github.com/AjinkyaDhumal)
+1. [Amit Kumar](https://github.com/amitwac2608)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [John Bent](https://github.com/johnbent)
+1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Nilesh Govande](https://github.com/nileshgovande)
+1. [Pranav Diliprao Pawar](https://github.com/pranavPawar07)
 1. [Rajesh Nambiar](https://github.com/knrajnambiar76)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
@@ -133,8 +157,10 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Alexander Voronov](https://github.com/avrnv)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
+1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Prathamesh Rodi](https://github.com/prathameshrodi)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
+1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
