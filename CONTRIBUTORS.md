@@ -17,6 +17,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Huang Hua](https://github.com/huanghua78)
 1. [John Bent](https://github.com/johnbent)
 1. [Justin Woo](https://github.com/justinzw)
+1. [Jaydeep Mohite](https://github.com/jamohite)
 1. [Jayesh Badwaik](https://github.com/jayeshbadwaik)
 1. [Mayur Gupta](https://github.com/TechWriter-Mayur)
 1. [Mukul Malhotra](https://github.com/mukul-seagate11)
