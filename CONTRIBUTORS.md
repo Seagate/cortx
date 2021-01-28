@@ -39,7 +39,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
-1.
+1. [Pratyush Khan](https://github.com/pratyush-seagate)
 
 ## [Seagate/cortx-experiments](https://github.com/Seagate/cortx-experiments)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
@@ -52,13 +52,14 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
+1. [Pratyush Khan](https://github.com/pratyush-seagate)
 
 ## [Seagate/cortx-fs-ganesha](https://github.com/Seagate/cortx-fs-ganesha)
 1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Philippe Deniel](https://github.com/phdeniel)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
-1.
+1. [Pratyush Khan](https://github.com/pratyush-seagate)
 
 ## [Seagate/cortx-ha](https://github.com/Seagate/cortx-ha)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
@@ -121,7 +122,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
-1.
+1. [Pratyush Khan](https://github.com/pratyush-seagate)
 
 ## [Seagate/cortx-posix](https://github.com/Seagate/cortx-posix)
 1. [Mohammed Shahid](https://github.com/shahidSTX)
@@ -156,6 +157,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Shalaka Dharap](https://github.com/shalakadharap)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
+1. [Pratyush Khan](https://github.com/pratyush-seagate)
 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
@@ -167,5 +169,6 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Pratyush Khan](https://github.com/pratyush-seagate)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
