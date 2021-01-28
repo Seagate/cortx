@@ -32,6 +32,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Shalaka Dharap](https://github.com/shalakadharap)
+1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Utz Uwe Haus](https://github.com/u-u-h) 
 1. [Wei Der Chien](https://github.com/steven-chien) 
@@ -41,6 +42,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Pratyush Khan](https://github.com/pratyush-seagate)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Shreya Karmakar](https://github.com/Shreya-18)
 
 ## [Seagate/cortx-experiments](https://github.com/Seagate/cortx-experiments)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
@@ -53,6 +55,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Pratyush Khan](https://github.com/pratyush-seagate)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-fs-ganesha](https://github.com/Seagate/cortx-fs-ganesha)
@@ -61,6 +64,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Pratyush Khan](https://github.com/pratyush-seagate)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Shreya Karmakar](https://github.com/Shreya-18)
 
 ## [Seagate/cortx-ha](https://github.com/Seagate/cortx-ha)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
@@ -71,6 +75,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Andriy Tkachuk](https://github.com/andriytk)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
+1. [Shreya Karmakar](https://github.com/Shreya-18)
 
 ## [Seagate/cortx-images](https://github.com/Seagate/cortx-images)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
@@ -124,6 +129,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Pratyush Khan](https://github.com/pratyush-seagate)
 
 ## [Seagate/cortx-posix](https://github.com/Seagate/cortx-posix)
@@ -131,6 +137,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Philippe Deniel](https://github.com/phdeniel) 
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
@@ -173,5 +180,6 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Shreya Karmakar](https://github.com/Shreya-18)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
