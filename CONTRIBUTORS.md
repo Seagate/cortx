@@ -94,6 +94,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shriya Deshmukh](https://github.com/shriya-deshmukh)
 1. [Sumedh Kulkarni](https://github.com/sumedhak27)
+1. [Thavanathan Thangaraj](https://github.com/thavanathan)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
@@ -135,6 +136,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Sradhanand Pati](https://github.com/sradhanand-pati)
+1. [Thavanathan Thangaraj](https://github.com/thavanathan)
 1. [Yashodhan Pise (Yash)](https://github.com/ypise)
 
 
