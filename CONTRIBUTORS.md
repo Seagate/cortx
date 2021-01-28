@@ -154,6 +154,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Rajesh Nambiar](https://github.com/knrajnambiar76)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
+1. [Shalaka Dharap](https://github.com/shalakadharap)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
