@@ -81,8 +81,7 @@ The procedure to install CORTX on OVA is mentioned below.
     systemctl status elasticsearch   
     systemctl status haproxy
     systemctl status s3authserver 
-    systemctl status sspl-ll    
-    hctl status    
+    systemctl status sspl-ll      
     systemctl status csm_agent    
     systemctl status csm_web
  
