@@ -160,6 +160,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
+1. [Andrey Kononykhin](https://github.com/andkononykhin2)
 1. [Anjali Somwanshi](https://github.com/SomwanshiAnjali)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
@@ -183,6 +184,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Pranav Diliprao Pawar](https://github.com/pranavPawar07)
 1. [Rajesh Nambiar](https://github.com/knrajnambiar76)
 1. [Sachitanand Shelake](https://github.com/sachitanands)
+1. [Saumitra Kulkarni](https://github.com/SaumitraK531)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Shalaka Dharap](https://github.com/shalakadharap)
@@ -204,6 +206,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
+1. [Suryakumar Kumaravelan](https://github.com/suryakumar1024)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
