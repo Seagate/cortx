@@ -116,6 +116,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Venkateswarlu Payidimarry](https://github.com/imvenkip)
 1. [Vinoth Vijayakumar](https://github.com/VinothVijayakumar-dev)
 1. [Yash Bhamare](https://github.com/ydb242)
+1. [Yatin Mahajan](https://github.com/yatin-mahajan)
 
 ## [Seagate/cortx-motr-galois](https://github.com/Seagate/cortx-motr-galois)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
