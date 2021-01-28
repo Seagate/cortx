@@ -13,6 +13,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
 1. [Amit Kumar](https://github.com/amitwac2608)
 1. [Bansidhar Soni](https://github.com/bansisoni)
+1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
 1. [Debasmita Samaddar](https://github.com/samaddar)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
 1. [Gregory Touretsky](https://github.com/gregnsk)
@@ -105,6 +106,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
+1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
 1. [Sandeep Anjara](https://github.com/sandeepsgt)
 1. [Satish Darade](https://github.com/satish-seagate)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
@@ -193,6 +195,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Alexander Voronov](https://github.com/avrnv)
+1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
