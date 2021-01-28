@@ -22,3 +22,9 @@ The schedule is as follows:
 #. February 4, 2021: Gregory Touretsky, the CORTX Product Manager, will discuss the CORTX feature roadmap.  
 
 #. March 4, 2021: Sai Narasimhamurthy, Andriy Tkachuk, and Ganesan Umanesan will present the CORTX related research happening in the European Union on the SAGE CORTX Cluster.  The discussion will include various research topics happening including, but not limited to, Hierarchical Storage Management.
+
+#. April 1, 2021: TBA
+
+#. Future months TBA
+
+Please email cortx-questions@seagate.com to request future topics of interest to you!
