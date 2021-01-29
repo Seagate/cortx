@@ -127,6 +127,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Kanchan Chaudhari](https://github.com/kanchan-chaudhari)
 1. [Maxim Malezhin](https://github.com/maximalezhin)
 1. [Nihar Nayak](https://github.com/nihar1313)
+1. [Papan Singh](https://github.com/papan-singh)
 1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shashank Parulekar](https://github.com/shashank-parulekar)
