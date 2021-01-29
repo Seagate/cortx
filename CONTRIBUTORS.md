@@ -120,6 +120,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Andriy Tkachuk](https://github.com/andriytk)
 1. [Atul Deshmukh](https://github.com/atulsdeshmukh2312)
 1. [Bansidhar Soni](https://github.com/bansisoni)
+1. [Gaurav Gaur](https://github.com/gaurkrgaurav)
 1. [Huang Hua](https://github.com/huanghua78)
 1. [Jaydeep Mohite](https://github.com/jamohite)
 1. [John Bent](https://github.com/johnbent)
