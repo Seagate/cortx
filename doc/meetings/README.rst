@@ -18,3 +18,13 @@ The schedule is as follows:
 #. December 3, 2020: Basavaraj Kirunge presented about the architecture of the S3 layer and how it interfaces with the motr layer.  `PDF <PDFs/cortx_s3_architecture_overview_dec_2020_basav_kirunge.pdf>`_ | `Video <https://cortx.link/s3-mta>`_.
 
 #. January 7, 2021: Serkay Olmez will discuss Data Durability and Availability Modeling in Erasure Coded Systems including a discussion about the importance of multi-level erasure coding.  `HTML <https://quarktetra.github.io/presentations/CortxDurabilityAvailability/presentation.html#/>`_ | `PDF <PDFs/serkay_olmez_cortx_mmaa_jan_2021.pdf>`_ | Video Pending
+
+#. February 4, 2021: Gregory Touretsky, the CORTX Product Manager, will discuss the CORTX feature roadmap.  
+
+#. March 4, 2021: Sai Narasimhamurthy, Andriy Tkachuk, and Ganesan Umanesan will present the CORTX related research happening in the European Union on the SAGE CORTX Cluster.  The discussion will include various research topics happening including, but not limited to, Hierarchical Storage Management.
+
+#. April 1, 2021: TBA
+
+#. Future months TBA
+
+Please email cortx-questions@seagate.com to request future topics of interest to you!
