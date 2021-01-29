@@ -130,6 +130,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shashank Parulekar](https://github.com/shashank-parulekar)
+1. [Tejal Sheth](https://github.com/tejalsheth)
 1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Venkateswarlu Payidimarry](https://github.com/imvenkip)
