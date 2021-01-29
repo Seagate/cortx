@@ -92,6 +92,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
 1. [Andriy Tkachuk](https://github.com/andriytk)
 1. [Bansidhar Soni](https://github.com/bansisoni)
+1. [Gaurav Gaur](https://github.com/gaurkrgaurav)
 1. [Huang Hua](https://github.com/huanghua78)
 1. [John Bent](https://github.com/johnbent)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
