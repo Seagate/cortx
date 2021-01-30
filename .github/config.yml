@@ -1,7 +1,7 @@
 # Configuration for new-issue-welcome
 # Comment to be posted to on first time issues
 newIssueWelcomeComment: >
-  Thanks for opening your first issue here!
+  Thanks for opening this issue. A contributor should be by to give feedback soon. In the meantime, please check out the [contributing guidelines](https://github.com/Seagate/cortx/blob/main/CONTRIBUTING.md) and explore other [ways you can get involved](https://github.com/Seagate/cortx/).
 
 # Configuration for new-pr-welcome
 # Comment to be posted to on PRs from first time contributors in your repository
@@ -16,7 +16,7 @@ firstPRMergeComment: >
 # Configuration for sentiment-bot
 # *Required* toxicity threshold between 0 and .99 with the higher numbers being the most toxic
 # Anything higher than this threshold will be marked as toxic and commented on
-sentimentBotToxicityThreshold: .7
+sentimentBotToxicityThreshold: .8
 
 # *Required* Comment to reply with
 sentimentBotReplyComment: >
