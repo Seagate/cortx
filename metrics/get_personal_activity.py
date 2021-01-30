@@ -32,6 +32,11 @@ def get_group(Type,people):
       group.add(login)
   return group
 
+def get_githubteam():
+  url='https://api.github.com/orgs/seagate/teams/cortx-community'
+  logins = cortx_community.get_logins('members',url)
+  return logins
+
 def get_logins(CSV,people,company):
   logins = set()
   for login in CSV.split(','):
@@ -41,6 +46,8 @@ def get_logins(CSV,people,company):
       logins |= get_group(Type=login,people=people)
     elif company:
       logins |= get_company(login,people)
+    elif login == 'githubteam':
+      logins |= get_githubteam()
     else:
       logins.add(login)
   return logins
@@ -110,6 +117,7 @@ def main():
   parser.add_argument('-d', '--details', action='store_true', help="Print stats for pulls and commits, also reports a total score")
   parser.add_argument('-c', '--company', action='store_true', help="Instead of looking up an individual, look up all folks from a particular company")
   parser.add_argument('-L', '--limit', type=int, help="Only show actions if gte to limit")
+  parser.add_argument('-z', '--zero', action='store_true', help="Show folks even if they have no actions")
   args = parser.parse_args()
 
   activity = cortx_community.CortxActivity()
@@ -176,10 +184,14 @@ def main():
     login = k
     actions = filtered_activities[k]
   #for login,actions in sorted(filtered_activities.items()):
-    email=people.get_email(login)
-    Type=people.get_type(login)
+    try:
+      email=people.get_email(login)
+      Type=people.get_type(login)
+    except KeyError:
+      email = None
+      Type = None
     total_score   = 0
-    if len(actions) > 0:
+    if len(actions) > 0 or args.zero:
       print("%d actions for %s [email %s, Type %s] %s" % (len(actions),login, email, Type, daterange))
       total_actions += len(actions)
     for d,u in sorted(actions.items()):
