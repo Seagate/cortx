@@ -182,6 +182,8 @@ A fork is a copy of a repository. Forking a repository allows you to freely expe
 
 .. image:: images/fork.PNG
 
+Image Source: `Click here <https://www.toolsqa.com/git/git-fork/>`_
+
 **How does Forking (Git Fork) work?**
 
 A contributor can use forks to propose changes related to fixing a bug rather than raising an issue for the same so he that he can:
@@ -225,6 +227,7 @@ To fork a repository, perform the procedure mentioned below.
   
 .. image:: images/cent.PNG
 
+Image Source: `Click here <https://www.toolsqa.com/git/git-fork/>`_
 
 **Note**: Forking is allowed for public repositories without permission but if the repository is private, the contributor can only be able to fork if he/she has required permission from the owner/admin of the repository. 
     
