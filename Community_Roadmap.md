@@ -51,16 +51,16 @@
         <tr>
         <td><a href=https://github.com/Seagate/cortx/tree/main/doc/PDFs/Newsletters>Newsletters</a>
 </td>
-        <td>:heavy_check_mark:</td>
-        <td>:heavy_check_mark:</td>
+        <td></td>
+        <td></td>
         <td>:heavy_check_mark:
-        <a href=/doc/PDFs/Newsletters/November%202020%20Newsletter.pdf>LINK</a>
+        <a href=/doc/PDFs/Newsletters/November%202020%20Newsletter.pdf>PDF</a>
         </td>
         <td>:heavy_check_mark:
-        <a href=/doc/PDFs/Newsletters/December%202020%20Newsletter.pdf>LINK</a>
+        <a href=/doc/PDFs/Newsletters/December%202020%20Newsletter.pdf>PDF</a>
         </td>
         <td>:heavy_check_mark:
-        <a href=/doc/PDFs/Newsletters/January%202021%20Newsletter.pdf>LINK</a>
+        <a href=/doc/PDFs/Newsletters/January%202021%20Newsletter.pdf>PDF</a>
         </td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
