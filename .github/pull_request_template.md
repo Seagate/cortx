@@ -17,6 +17,3 @@
  - [ ] added new dependencies
  - [ ] updated the docs
  - [ ] added a test
- - [ ] Codacy and Sign off
-
-### Fixes
