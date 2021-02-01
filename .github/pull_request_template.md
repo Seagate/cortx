@@ -17,7 +17,7 @@
 
 ### Screenshots (if appropriate)
 
-## Checklist
+### Checklist
  - [ ] tested locally
  - [ ] added new dependencies
  - [ ] updated the docs
