@@ -20,7 +20,3 @@
  - [ ] Codacy and Sign off
 
 ### Fixes
-
-
-
-Thanks for contributing!
