@@ -41,12 +41,12 @@ tfile="/tmp/cortx_community_stats.$ts.csv"
 tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX)
 for group in 'EU R&D' Innersource External Unknown
 do
-  ./get_personal_activity.py "$group" -l > $tfile
+  ./get_personal_activity.py "$group" -w > $tfile
   mail -s "$mail_subj_prefix : $group Activity" -r $email $email < $tfile
 done
 
 # mail the team report
-./get_personal_activity.py 'VenkyOS,johnbent,justinzw,TechWriter-Mayur,hessio,Saumya-Sunder,novium258' -l > $tfile
+./get_personal_activity.py 'VenkyOS,johnbent,justinzw,TechWriter-Mayur,hessio,Saumya-Sunder,novium258' -w > $tfile
 mail -s "$mail_subj_prefix : Open Source Team Activity" -r $email $email < $tfile
 
 # make the executive report

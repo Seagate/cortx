@@ -113,10 +113,11 @@ def main():
   parser.add_argument('login', metavar='LOGIN', type=str, help="Comma-separate lists of logins [can use External,Hackathon,EU R&D,Innersource,All,Unknown as wildcards]")
   parser.add_argument('-s', '--since', type=str, help="Only show activity since yyyy-mm-dd")
   parser.add_argument('-u', '--until', type=str, help="Only show activity until yyyy-mm-dd")
-  parser.add_argument('-l', '--last_week', action='store_true', help="Only show activity in the last seven days")
+  parser.add_argument('-w', '--last_week', action='store_true', help="Only show activity in the last seven days")
+  parser.add_argument('-m', '--last_month', action='store_true', help="Only show activity in the last 30 days")
   parser.add_argument('-d', '--details', action='store_true', help="Print stats for pulls and commits, also reports a total score")
   parser.add_argument('-c', '--company', action='store_true', help="Instead of looking up an individual, look up all folks from a particular company")
-  parser.add_argument('-L', '--limit', type=int, help="Only show actions if gte to limit")
+  parser.add_argument('-l', '--limit', type=int, help="Only show actions if gte to limit")
   parser.add_argument('-z', '--zero', action='store_true', help="Show folks even if they have no actions")
   args = parser.parse_args()
 
@@ -129,6 +130,8 @@ def main():
     args.until = dateparser.parse(args.until)
   if args.last_week:
     args.since = datetime.datetime.today() - datetime.timedelta(days=7)
+  if args.last_month:
+    args.since = datetime.datetime.today() - datetime.timedelta(days=30)
   daterange = "since %s" % (args.since.strftime('%Y-%m-%d') if args.since else "inception")
   if args.until:
     daterange += " until %s" % args.until.strftime('%Y-%m-%d')
@@ -169,7 +172,7 @@ def main():
   # optionally filter by limit
   if args.limit:
     new_filtered = {}
-    for login,actions in sorted(activities.items()):
+    for login,actions in sorted(filtered_activities.items()):
       if len(actions) >= args.limit:
         new_filtered[login]=actions
     filtered_activities = new_filtered
