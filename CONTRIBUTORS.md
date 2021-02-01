@@ -55,6 +55,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
+1. [Radha Gulhane](https://github.com/RadhaGulhane13)
 1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
