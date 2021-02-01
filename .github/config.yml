@@ -19,6 +19,8 @@ firstPRMergeComment: >
 requestInfoReplyComment: >
   Thanks for opening this, but we'd appreciate a little more information. Could you update it with more details?
   
+requestInfoLabelToAdd: request-more-info
+  
 # Configuration for sentiment-bot
 # *Required* toxicity threshold between 0 and .99 with the higher numbers being the most toxic
 # Anything higher than this threshold will be marked as toxic and commented on
