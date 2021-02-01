@@ -1,16 +1,11 @@
 
-### Description
+### Describe your changes in brief
 
-### Related Issue
- - [ ] If suggesting a new feature or change, please discuss it in an issue first
- - [ ] If fixing a bug, there should be an issue describing it with steps to reproduce
- - [ ] Please link to the issue here.
-
-### Motivation and Context
+### Changes
  - [ ] Why is this change required? What problem does it solve?
- - [ ] If it fixes an open issue, please link to the issue here.
+ - [ ] If proposing a new change then please raise an issue first
 
-### How Has This Been Tested?
+### How Has This Been Tested? (Optional)
  - [ ] Please describe in detail how you tested your changes.
  - [ ] Include details of your testing environment, and the tests you ran to
  - [ ] How your change affects other areas of the code, etc.
@@ -22,5 +17,6 @@
  - [ ] added new dependencies
  - [ ] updated the docs
  - [ ] added a test
+ - [ ] Codacy and Sign off
 
-### Fixes#
+### Fixes
