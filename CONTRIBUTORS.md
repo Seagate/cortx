@@ -66,7 +66,6 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
-
 ## [Seagate/cortx-fs-ganesha](https://github.com/Seagate/cortx-fs-ganesha)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
 1. [Mohammed Shahid](https://github.com/shahidSTX)
@@ -90,13 +89,11 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-images](https://github.com/Seagate/cortx-images)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
-1.
 
 ## [Seagate/cortx-management-portal](https://github.com/Seagate/cortx-management-portal)
 1. [Justin Woo](https://github.com/justinzw)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
-1.
 
 ## [Seagate/cortx-manager](https://github.com/Seagate/cortx-manager)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
@@ -154,7 +151,6 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Pratyush Khan](https://github.com/pratyush-seagate)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
-
 ## [Seagate/cortx-posix](https://github.com/Seagate/cortx-posix)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
 1. [Mohammed Shahid](https://github.com/shahidSTX)
@@ -164,7 +160,6 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
-
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
 1. [Andrey Kononykhin](https://github.com/andkononykhin2)
@@ -176,8 +171,6 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sradhanand Pati](https://github.com/sradhanand-pati)
 1. [Thavanathan Thangaraj](https://github.com/thavanathan)
 1. [Yashodhan Pise (Yash)](https://github.com/ypise)
-
-
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
 1. [Ajinkya Dhumal](https://github.com/AjinkyaDhumal)
