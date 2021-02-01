@@ -62,8 +62,18 @@ The procedure to install CORTX on OVA is mentioned below.
       - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
       - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
+      
+#. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
    
-#. Run the below mentioned commands to check the status of different services that are part of CORTX.
+   ::
+   
+      hctl status
+   
+   The output should be similar to the image below
+
+   .. image:: images/hctl_status_output.png
+
+#. Run the commands below to check the status of different services that are part of CORTX.
 
    ::
 
@@ -71,16 +81,15 @@ The procedure to install CORTX on OVA is mentioned below.
     systemctl status elasticsearch   
     systemctl status haproxy
     systemctl status s3authserver 
-    systemctl status sspl-ll    
-    hctl status    
+    systemctl status sspl-ll      
     systemctl status csm_agent    
     systemctl status csm_web
  
-   The below images shows the output of a successful *systemctl* command; notice how the service is *active*.
+   The image below shows the output of a successful *systemctl* command; notice how the service is *active*.
    
    .. image:: images/systemctl_output.png
    
-   If the SSPL service is inactive, run the below commands.
+   If the SSPL service is inactive, run these command.
 
    ::
 
@@ -90,7 +99,7 @@ The procedure to install CORTX on OVA is mentioned below.
     
     systemctl start sspl-ll    
 
-   If any other service is inactive, run the below mentioned command.
+   If any other service is inactive, run this command.
 
    ::
 
