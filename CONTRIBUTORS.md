@@ -11,6 +11,7 @@ This file contains lists of contributors to CORTX for each repository comprising
 Thanks for contributing!  If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md).
 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
+1. [Abhilekh Mustapure](https://github.com/abhilekh268)
 1. [Amit Kumar](https://github.com/amitwac2608)
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Basavaraj Kirunge](https://github.com/bkirunge7)
@@ -54,6 +55,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
+1. [Radha Gulhane](https://github.com/RadhaGulhane13)
 1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
@@ -106,6 +108,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
 1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
+1. [Mariyappan Ponnusamy](https://github.com/mariyappanp)
 1. [Sandeep Anjara](https://github.com/sandeepsgt)
 1. [Satish Darade](https://github.com/satish-seagate)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
@@ -117,6 +120,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
 1. [Abhishek Saha](https://github.com/AbhishekSahaSeagate)
 1. [Andriy Tkachuk](https://github.com/andriytk)
+1. [Ankit Yadav](https://github.com/ankit-seagate)
 1. [Atul Deshmukh](https://github.com/atulsdeshmukh2312)
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Gaurav Gaur](https://github.com/gaurkrgaurav)
@@ -126,6 +130,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Kanchan Chaudhari](https://github.com/kanchan-chaudhari)
 1. [Madhavrao Vemuri](https://github.com/madhavemuri)
 1. [Maxim Malezhin](https://github.com/maximalezhin)
+1. [Mukund Kanekar](https://github.com/mukundkanekar)
 1. [Nihar Nayak](https://github.com/nihar1313)
 1. [Papan Singh](https://github.com/papan-singh)
 1. [Sanjog Naik](https://github.com/sanjognaik)
@@ -174,6 +179,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Yashodhan Pise (Yash)](https://github.com/ypise)
 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
+1. [Abhilekh Mustapure](https://github.com/abhilekh268)
 1. [Ajinkya Dhumal](https://github.com/AjinkyaDhumal)
 1. [Amit Kumar](https://github.com/amitwac2608)
 1. [Basavaraj Kirunge](https://github.com/bkirunge7)
