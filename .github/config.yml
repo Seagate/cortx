@@ -6,7 +6,9 @@ newIssueWelcomeComment: >
 # Configuration for new-pr-welcome
 # Comment to be posted to on PRs from first time contributors in your repository
 newPRWelcomeComment: >
-  Thanks for opening this issue. A contributor should be by to give feedback soon. In the meantime, please check out the [contributing guidelines](https://github.com/Seagate/cortx/blob/main/CONTRIBUTING.md) and explore other [ways you can get involved](https://github.com/Seagate/cortx/).
+  Thanks for your contribution in opening this pull request! Now you can be rewarded with a CORTX sticker by requesting [cortx sticker](https://www.seagate.com/promos/cortx-stickers)
+  
+  In the meantime, please check out the [contributing guidelines](https://github.com/Seagate/cortx/blob/main/CONTRIBUTING.md) and explore other [ways you can get involved](https://github.com/Seagate/cortx/).
 
 # Configuration for first-pr-merge
 # Comment to be posted to on pull requests merged by a first time user
