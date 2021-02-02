@@ -1,6 +1,8 @@
 #! /usr/bin/env python3
 
 import argparse
+import datetime
+import dateutil.parser as dateparser
 import json
 import os
 import pickle
@@ -32,26 +34,86 @@ from github import Github
 
 PICKLE_DIR='pickles'
 
-# this pickle saves actions done by logins
-AUTHOR_ACTIVITY_PICKLE='%s/author_activity.pickle' % PICKLE_DIR
+AUTHOR_ACTIVITY_PICKLE='%s/author_activity.pickle' % PICKLE_DIR       # actions done by logins
+ACTIVITY_HASH_PICKLE='%s/activity_hashes.pickle' % PICKLE_DIR         # actions hashed by uniquifier
+COMMUNITY_PICKLE='%s/cortx_community.pickle' % PICKLE_DIR             # the people in the community
+SLACK_COMMUNITY_PICKLE='%s/cortx_slack_community.pickle' % PICKLE_DIR # the people in the community
+STATS_PICKLE='%s/persistent_stats.pickle' % PICKLE_DIR                # the per-repo and global stats
+COMPARE_PROJECTS_PICKLE='%s/compare_projects.pickle' % PICKLE_DIR     # the historical star and fork counts for all known open source projects
 
-# this pickle saves actions hashed by uniquifier
-ACTIVITY_HASH_PICKLE='%s/activity_hashes.pickle' % PICKLE_DIR
+# a map of projects mapping to (org, repo_prefix)
+projects={'Ceph'  : ('Ceph',None),
+          'MinIO' : ('MinIO',None),
+          'DAOS'  : ('daos-stack',None), 
+          'CORTX' : ('Seagate','cortx'),
+          'Swift' : ('openstack','swift'),
+          'OpenIO': ('open-io','oio')}
 
-# this pickle saves the people in the community
-COMMUNITY_PICKLE='%s/cortx_community.pickle' % PICKLE_DIR
+# map of orgs mapping to the companies which run those orgs
+# used to identify which people are external because they don't belong to any of the known companies
+org_company_map = {
+  'daos-stack' : ('intel'),
+  'Ceph' : ('redhat','suse'),
+  'MinIO' : ('minio'),
+  'Seagate' : ('seagate','dsr','calsoft', 'codacy-badger'),
+  'openstack' : ('swiftstack', 'nvidia'),
+  'open-io' : ('openio'),
+}
 
-# this pickle saves the per-repo and global stats
-STATS_PICKLE='%s/persistent_stats.pickle' % PICKLE_DIR
+# what is currently ugly is that we assume that the org strings are the same in the projects and org_company_map maps
+# let's at least just confirm that here
+for org in [v[0] for v in projects.values()]:
+  if org not in org_company_map.keys():
+    raise KeyError('org %s is unknown org' % org)
+if len(org_company_map) != len(projects):
+  raise KeyError('the two org maps are not consistent')
+
+# a simple helper to get the github connection
+def get_gh():
+  gh = Github(os.environ.get('GH_OATH'))
+  return gh
+
+# a simple helper function to check the github rate
+def rate_check(gh=None):
+  if not gh:
+    gh = Github(os.environ.get('GH_OATH'))
+  print("Remaining is %d, reset in %.2f" % 
+    (gh.get_rate_limit().core.remaining,
+    (gh.get_rate_limit().core.reset - datetime.datetime.utcnow()).total_seconds()/60))  
+
+
+class ProjectComparisons:
+  def __init__(self,org_name=None,stats=None):
+    self.pname = get_pickle_name(COMPARE_PROJECTS_PICKLE,org_name)
+    if stats:
+      self.stats = stats
+    else:
+      try:
+        with open(self.pname,'rb') as f:
+          self.stats = pickle.load(f)
+      except FileNotFoundError:
+          self.stats = {}
+
+  def set_stats(self,stats):
+    self.stats=stats
+    self.persist()
+
+  def get_stats(self):
+    return self.stats
+
+  def persist(self):
+    with open(self.pname, 'wb') as f:
+      pickle.dump(self.stats, f)
 
 # a simple class that is a dict of {repo : {date : stats }
-# TODO: right now, scrape_metrics.py tries to create a GLOBAL view but it might not work so well
-# also, print_metrics.py creates a global view which might work better but still isn't optimal
-# I think what this class needs to do is create the GLOBAL view on demand whenever anyone asks for a repo matching 'GLOBAL'
+# TODO: right now, scrape_metrics.py tries to create a GLOBAL view and it works OK 
+# In fact, print_metrics.py just uses it as do the Jupyter notebooks.
+# I think what this class might want to do instead is create the GLOBAL view on demand whenever anyone asks for a repo matching 'GLOBAL'
 class PersistentStats:
-  def __init__(self):
+  def __init__(self,org_name=None):
+    self.pname = get_pickle_name(STATS_PICKLE,org_name)
     try:
-      with open(STATS_PICKLE,'rb') as f:
+      with open(self.pname,'rb') as f:
         self.stats = pickle.load(f)
     except FileNotFoundError:
         self.stats = {}
@@ -81,6 +143,8 @@ class PersistentStats:
     return Numbers
 
   def get_keys(self,repo,date):
+    if not date:
+      date=self.get_latest(repo)[1]
     return self.stats[repo][date].keys()
 
   def get_values(self,repo,key,dates=None):
@@ -107,7 +171,7 @@ class PersistentStats:
     self.persist()
 
   def persist(self):
-    with open(STATS_PICKLE,'wb') as f:
+    with open(self.pname,'wb') as f:
       pickle.dump(self.stats,f)
     
   # note that this function doesn't use self
@@ -131,23 +195,39 @@ class PersistentStats:
       else:
         print("%s %s -> %d" % (rname,k,short_value),verbosity)
 
+# a helper function to get the name of a pickle file now that we are trying to use these scripts to scrape data for other repos
+# if org is None or is 'Seagate', then just use the original pickle name to be consistent with our historical naming
+# but if org is something else, then insert org into the pickle name
+def get_pickle_name(pickle,org):
+  pname = pickle
+  if org and 'Seagate' not in org: 
+    pname = pname.replace('.pickle','.%s.pickle' % org) 
+  return pname
+
 
 # a simple class that is a dict of {login , set(url)} that can be queried to see what someone has been doing in the activity
 class CortxActivity:
-  def __init__(self):
+  def __init__(self,org_name=None):
+    self.activity_file = get_pickle_name(AUTHOR_ACTIVITY_PICKLE,org_name)
+    self.hash_file = get_pickle_name(ACTIVITY_HASH_PICKLE,org_name)
     try:
-      with open(AUTHOR_ACTIVITY_PICKLE,'rb') as f:
+      with open(self.activity_file,'rb') as f:
         self.activity = pickle.load(f)
     except FileNotFoundError:
       self.activity = {}
     try:
-      with open(ACTIVITY_HASH_PICKLE, 'rb') as f:
+      with open(self.hash_file, 'rb') as f:
         self.hashes = pickle.load(f)
     except FileNotFoundError:
       self.hashes = {}
     self.new_activities = set()
 
   # a cache of activities to try to avoid overusing github API
+  # I think this function is not used since there is a second
+  # function with the same name which is currently used....
+  # TOD: change the name of this function to something garbage and make sure everything still works, then delete it
+  # actually, we need this one.  It's super important in scrape_metric to avoid using github API too much.
+  # but now we broke it by overriding it.  So now we need to restore it by changing the name of the other one.
   def get_activity(self,uniquifier):
     return self.hashes[uniquifier]
 
@@ -166,16 +246,16 @@ class CortxActivity:
     return self.new_activities
 
   def persist(self):
-    with open(AUTHOR_ACTIVITY_PICKLE,'wb') as f:
+    with open(self.activity_file,'wb') as f:
       pickle.dump(self.activity,f)
-    with open(ACTIVITY_HASH_PICKLE,'wb') as f:
+    with open(self.hash_file,'wb') as f:
       pickle.dump(self.hashes,f)
 
-  def get_activity(self,login):
+  def get_activities(self,login):
     return self.activity[login]
 
 class CortxPerson:
-  def __init__(self,login,company,email,linkedin):
+  def __init__(self,login,company,email,linkedin,org_name):
     self.login = login
     self.company = company
     self.email = email
@@ -184,12 +264,25 @@ class CortxPerson:
     self.linked = None
     if self.login.endswith('-bot'):
       self.type = 'Bot'
-    if company and not ('seagate' in company.lower() or 'dsr' in company.lower() or 'calsoft' in company.lower() or 'codacy-badger' in login):
-      self.type = 'External'
+    elif company:
+      companies = org_company_map[org_name]
+      external = True
+      for c in companies:
+        if c.lower() in company.lower():
+          external = False
+      if external:
+        self.type = 'External'
 
+  def get_note(self):
+    return self.note
+
+  # starting now, note will be a dict.  Hope this works without breaking pickles
   def add_note(self,note):
+    assert self.note is None or isinstance(self.note,dict)
+    assert isinstance(note,dict)
     try:
-      self.note += '\n%s' % note
+      # this won't work.  We'll have to rewrite this to be a merger of dicts
+      self.note.update(note) 
     except:
       self.note = note
 
@@ -208,6 +301,9 @@ class CortxPerson:
   def get_company(self):
     return self.company
 
+  def get_linkedin(self):
+    return self.linked
+
   def get_email(self):
     return self.email
 
@@ -218,21 +314,110 @@ class CortxPerson:
     return self.login
 
   def __str__(self):
-    return("%s at company %s email %s type %s linkedin %s %s" % (self.login, self.company, self.email, self.type, self.linked, "\nNotes: %s" if self.note else ""))
+    return("%s at company %s email %s type %s linkedin %s %s" % (self.login, self.company, self.email, self.type, self.linked, " Notes: %s" % self.note if self.note else ""))
 
-
-class CortxCommunity:
-  pickle_file = COMMUNITY_PICKLE 
-  allowed_types  = set(['External','Innersource','Hackathon','EU R&D','Bot', 'CORTX Team', 'Mannequin'])
-  external_types = set(['External','Innersource','Hackathon','EU R&D'])
-
-  def __init__(self):
+class SlackCommunity():
+  def __init__(self,org_name=None):
+    self.pickle_file = get_pickle_name(SLACK_COMMUNITY_PICKLE,org_name)
     try:
       f = open(self.pickle_file, 'rb')
       self.people = pickle.load(f)
       f.close()
     except FileNotFoundError:
       self.people = {} 
+
+  def persist(self):
+    with open(self.pickle_file, 'wb') as f:
+      pickle.dump(self.people, f)
+
+  def find_email(self,email):
+    for sid,person in self.people.items():
+      if person['email'] == email:
+        return sid
+    return None
+
+  def find_person(self,slack_id):
+    try:
+      return self.people[slack_id]
+    except KeyError:
+      return None
+
+  def set_github(self,slack_id,github):
+    person = self.find_person(slack_id)
+    person['github']=github
+
+  def print_person(self,slack_id):
+    person = self.people[slack_id]
+    print("Person %s github:%s email:%s" % (person['name'], person['github'], person['email']))
+
+  def get_github(self,slack_id):
+    person = self.find_person(slack_id)
+    return person['github']
+
+  def get_email(self,slack_id):
+    person = self.find_person(slack_id)
+    return person['email']
+
+  def find_login(self,login):
+    for sid,person in self.people.items():
+      if person['github'] == login:
+        return sid
+    print("No person in slack pickle with name of %s" % login)
+    return None
+
+  def add_person(self,slack_id,github,email,name):
+    self.people[slack_id] = { 'github' : github, 'email' : email, 'name' : name }
+
+  def __str__(self):
+    header = "CORTX Slack Community Members: %d total" % len(self.people)
+    string = header + '\n'
+    strings = []
+    for sid,person in self.people.items():
+      strings.append("Person %s [%s %s %s]" % (person['name'], person['github'], person['email'],sid))
+    string += ('\n'.join(sorted(strings)) + '\n' + header)
+    return string
+
+class CortxCommunity:
+  allowed_types  = set(['External','Innersource','Hackathon','EU R&D','Bot', 'CORTX Team', 'Mannequin'])
+  external_types = set(['External','Innersource','Hackathon','EU R&D'])
+
+  def __init__(self,org_name=None):
+    self.pickle_file = get_pickle_name(COMMUNITY_PICKLE,org_name)
+    try:
+      f = open(self.pickle_file, 'rb')
+      self.people = pickle.load(f)
+      f.close()
+    except FileNotFoundError:
+      self.people = {} 
+
+  def get_external_activity(self,since=None,until=None):
+    if since:
+      since = dateparser.parse(since)
+    if until:
+      until = dateparser.parse(until)
+    activities={}
+    ca=CortxActivity()
+    for login,person in self.people.items():
+      if self.external_type(person.get_type()):
+        activities[login]={}
+        try:
+          for action,date in sorted(ca.get_activities(login)):
+            try:
+              if (since and date < since) or (until and date > until):
+                continue
+              activities[login][date]=action
+            except TypeError:
+              pass # some actions have no date (i.e. watches)
+        except KeyError:
+          pass # no activities ever recorded for this person
+    return activities
+
+
+  def get_person(self,login):
+    return self.people[login]
+
+  def get_external_types(self):
+    return self.external_types
 
   def external_type(self,Type):
     return Type in self.external_types
@@ -259,6 +444,9 @@ class CortxCommunity:
   def items(self):
     return self.people.items()
 
+  def get_linkedin(self,login):
+    return self.people[login].get_linkedin()
+
   def get_email(self,login):
     return self.people[login].get_email()
 
@@ -284,9 +472,21 @@ class CortxCommunity:
   def includes(self, login):
     return login in self.people
 
-  def add_person(self, login, company, email,linkedin=None):
-    person = CortxPerson(login,company,email,linkedin)
+  def add_person(self, login, company, email,linkedin=None,org_name=None):
+    person = CortxPerson(login,company,email,linkedin,org_name)
     self.people[login] = person
+
+  def remove_person(self,login):
+    del self.people[login]
+
+  def find_person(self, email):
+    for login,person in self.people.items():
+      if person.get_email() == email:
+        return person
+    return None
+
+  def get_note(self,login):
+    return self.people[login].get_note()
 
   def add_note(self, login, note):
     self.people[login].add_note(note)
@@ -320,8 +520,12 @@ def check_rate_limit():
 
 
 def avoid_rate_limiting(gh):
-  (remaining,total) = gh.rate_limiting
-  if remaining < 10:
+  THRESHOLD=50
+  #(remaining,total) = gh.rate_limiting # weird, something changed and this no longer refreshes...
+  rl=gh.get_rate_limit()
+  remaining=rl.core.remaining
+  if remaining < THRESHOLD:
+    print("Approaching rate limit; only %d remaining" % remaining) 
     reset = gh.rate_limiting_resettime
     sleep = reset - time.time()
     if(sleep > 0):
@@ -376,15 +580,21 @@ def get_teams(url):
     teams.add(team)
   return sorted(teams)
 
-def get_repos():
-  gh = Github(os.environ.get('GH_OATH'))
-  stx = gh.get_organization('Seagate')
-  srepos = stx.get_repos()
-  repos = set([])
-  for repo in srepos:
-    if "cortx" in repo.name and 'old' not in repo.name and 'backup' not in repo.name:
-      repos.add(repo.name)
-  return sorted(repos)
+# one thing to consider in the future is maybe this should check repo.parent
+# some repo's are forked in an org and maybe we shouldn't scrape them
+# that might be a way to do that
+def get_repos(gh=None,org_name='Seagate',prefix='cortx'):
+  if not gh:
+    gh = Github(os.environ.get('GH_OATH'))
+  org = gh.get_organization(org_name)
+  orepos = org.get_repos()
+  repos = [] 
+  for repo in orepos:
+    if (prefix and prefix not in repo.name) or repo.name.endswith('.old') or repo.name.endswith('-old') or repo.private:
+      continue
+    else:
+      repos.append(repo)
+  return repos
 
 
 def search_repo(repo,user,Type,daterange):
