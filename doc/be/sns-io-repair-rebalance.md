@@ -2,7 +2,7 @@
 
 ## Overview
 
-- Server network striping ([find more details for io here](https://seagatetechnology-my.sharepoint.com/:w:/g/personal/hua_huang_seagate_com/Eb0CTiI3VbdAhLzn8NufzisBj_OFeA4bnKw3Pu0X0jJGVA?e=4%3A8psKWK&at=9&CID=c7fca889-7248-8d1b-0701-0641fb87566d "find more details for io here"))
+- Server network striping ([find more details for io here](/doc/ServerNetworkStripingRepair.rst))
 - Implements Erasure coding
 
 ![SNS Overview](/doc/be/images/sns-overview.PNG)
@@ -25,9 +25,9 @@
 
 ## SNS repair/rebalance copy machine service
 
-- Repair and Rebalance are implemented as Mero services
-	- $MERO_SRC/sns/cm/repair/service.[ch]
-	- $MERO_SRC/sns/cm/rebalance/service.[ch]
+- Repair and Rebalance are implemented as Motr services
+	- $MOTR_SRC/sns/cm/repair/service.[ch]
+	- $MOTR_SRC/sns/cm/rebalance/service.[ch]
 - Both the services run on every ioservice node.
 
 - Copy machine service initialises and finalises (start/stop) the fop and fom types for,
@@ -47,14 +47,14 @@
 	- Repair status
 	- Rebalance status
 
-- Source: $MERO_SRC/sns/cm/trigger_{fop, fom}.[ch]
+- Source: $MOTR_SRC/sns/cm/trigger_{fop, fom}.[ch]
 
 ## Trigger fom
 
 Sources :
-- $MERO_SRC/cm/repreb/trigger_fom.c : Generic trigger fom implementation for
+- $MOTR_SRC/cm/repreb/trigger_fom.c : Generic trigger fom implementation for
 PREPARE, READY, START and FINI phases.
--  $MERO_SRC/sns/cm/trigger_fom.c : sns repair/rebalance trigger fom
+-  $MOTR_SRC/sns/cm/trigger_fom.c : sns repair/rebalance trigger fom
 implementation.
 
 ## Trigger fop/fom contd..

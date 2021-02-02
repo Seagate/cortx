@@ -167,9 +167,7 @@
 
 ● Murmur3 hashing was used in **past** to map CORTX-S3 URI to generated OID/fid
 
-● Clovis Unique ID generator is used **today. ref:**
-
-`<https://docs.google.com/presentation/d/1toSKdMzamIQHCZBzQiYzIO5uXdTcDfjImPz3n6UBu0E/>`_
+● Clovis Unique ID generator is used **today**.
 
 ● CORTX-S3 URI – OID mapping stored in CORTX-S3 Object metadata in KVS
 
@@ -203,11 +201,6 @@
 
 **● Metadata is stored as JSON.**
 ##################################
-
-Detailed metadata ref:
-
-`<https://docs.google.com/presentation/d/1KngBz2HGdbCv-pmjeu6df_gYxfC3YUtHpWY4CNuZ6NU/>`_
-
 
 ==================================
 **Streaming upload (PUT Object)**
@@ -264,17 +257,10 @@ Detailed metadata ref:
 
 
 =====================
-**CORTX-S3 APls support**
+**CORTX-S3 APls Supported**
 =====================
 
-
-**source:**
-
-`<https://docs.google.com/spreadsheets/d/1xdwjY03pan9w7CeiFLKdVvr54aTOciAwXxOJqFhnWhg/>`_
-
-
-|image16|
-
+Refer to the [S3 API document](https://github.com/Seagate/cortx-s3server/blob/main/docs/s3-supported-api.md) to know the supported Service, Bucket, and Object Operations supported by CORTX-S3 Server API.
 
 =============================
 **CORTX-S3 - Clovis KV interface**

@@ -1,0 +1,31 @@
+# Configuration for new-issue-welcome
+# Comment to be posted to on first time issues
+newIssueWelcomeComment: >
+  Thanks for opening this issue. A contributor should be by to give feedback soon. In the meantime, please check out the [contributing guidelines](https://github.com/Seagate/cortx/blob/main/CONTRIBUTING.md) and explore other [ways you can get involved](https://github.com/Seagate/cortx/).
+
+# Configuration for new-pr-welcome
+# Comment to be posted to on PRs from first time contributors in your repository
+newPRWelcomeComment: >
+  Thanks for your contribution in opening this pull request! Now you can be rewarded with a CORTX sticker by requesting [cortx sticker](https://www.seagate.com/promos/cortx-stickers)
+  
+  In the meantime, please check out the [contributing guidelines](https://github.com/Seagate/cortx/blob/main/CONTRIBUTING.md) and explore other [ways you can get involved](https://github.com/Seagate/cortx/).
+
+# Configuration for first-pr-merge
+# Comment to be posted to on pull requests merged by a first time user
+firstPRMergeComment: >
+  Thanks for your contribution to CORTX! :tada:
+   
+# Configuration for request-info
+requestInfoReplyComment: >
+  Thanks for opening this, but we'd appreciate a little more information. Could you update it with more details?
+  
+requestInfoLabelToAdd: request-more-info
+  
+# Configuration for sentiment-bot
+# *Required* toxicity threshold between 0 and .99 with the higher numbers being the most toxic
+# Anything higher than this threshold will be marked as toxic and commented on
+sentimentBotToxicityThreshold: .7
+
+# *Required* Comment to reply with
+sentimentBotReplyComment: >
+  Please be sure to review the code of conduct and be respectful of other users. cc/ @johnbent

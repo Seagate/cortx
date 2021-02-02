@@ -24,6 +24,12 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 
 **Notes (Server Reference Configuration)**
 
+- Enabled EPEL and SCL repositories
+
+::
+
+  yum -y install epel-release centos-release-scl
+
 - The minimum number of network ports per server is 3.
 
 - Usage of Mellanox HCAs is recommended but not mandatory. For optimal performance you need two high-speed network ports (10 GbE minimum; 50 GbE or 100 GbE recommended). All the three servers must have Mellanox HCA or none of the servers must have it.
@@ -49,24 +55,116 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
       +--------------------------+---------------------------------------------+
       | Private Data network     | connected to another high-speed NIC         |
       +--------------------------+---------------------------------------------+
+	  
+      **Note** 
+	  
+	The Management and Public data networks are required the L3 connectivity from outside. If both of them connect to different VLAN, the IPROUTE2 is required to enabled multiple gateway for the JBODs.
+	  
+	  Example:
+	   
+	   Management network : 
+		- IP: 10.0.1.10/24 
+		- Gateway: 10.0.1.1
+		- Device: eth0
+		- /etc/sysconfig/network-scripts/ifcfg-eth0
+		
+		::
+		
+			TYPE=Ethernet
+			BOOTPROTO=none
+			NAME=eth0
+			DEVICE=eth0
+			ONBOOT=yes
+			MTU=9000
+			IPADDR=10.0.1.10
+			PREFIX=24
+			GATEWAY=10.0.1.1
+			ZONE=public
+		
+	   Public data network: 
+		- IP: 10.0.2.10/24
+		- Gateway: 10.0.2.1
+		- Device: eth1
+		- /etc/sysconfig/network-scripts/ifcfg-eth1
+		
+		::
+		
+			TYPE=Ethernet
+			BOOTPROTO=none
+			NAME=eth1
+			DEVICE=eth1
+			ONBOOT=yes
+			MTU=9000
+			IPADDR=10.0.2.10
+			PREFIX=24
+			ZONE=public-data-zone
+		
+		- Please note **NO GATEWAY** directive configured for eth1
+		- The iproute2 configuration:
+			- Append "2		eth1" into /etc/iproute2/rt_tables as below example
+			
+			::
+			
+				#
+				# reserved values
+				#
+				255     local
+				254     main
+				253     default
+				0       unspec
+				#
+				# local
+				#
+				#1      inr.ruhep
+				2       eth1
+
+			- Create file /etc/sysconfig/network-scripts/route-eth1 as content below
+			
+			::
+			
+				10.0.2.0/24 dev eth1 src 10.0.2.10 table eth1
+				default via 10.0.2.1 dev eth1 table eth1
+			
+			- Create file /etc/sysconfig/network-scripts/rule-eth1 as content below
+			
+			::
+			
+				from 10.0.2.0/24 table eth1
+				to 10.0.2.0/24 table eth1
+  
+			- Restart eth1 interface and verify the configuration
+			
+			::
+			
+				# ifdown eth1; ifup eth1
+				# ip rule
+				0:      from all lookup local
+				32762:  from all to 10.0.2.0/24 lookup eth1
+				32763:  from 10.0.2.0/24 lookup eth1
+				32764:  from all to 10.0.2.0/24 lookup eth1
+				32765:  from 10.0.2.0/24 lookup eth1
+				32766:  from all lookup main
+				32767:  from all lookup default
+
+	  After complete this configuration, both Management and Public data IP Address shoud be accessible from external.	  
 
 2. Connect the servers to the networks and the JBODs as per the guidelines provided above.
 
-3. Install CentOS 7.7 (1908 release) operating system on all three servers in the cluster.
+3. Install CentOS 7.8 (2003 release) operating system on all three servers in the cluster.
 
 **Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands and view the appropriate outputs.
   
 - **lsb_release -r**
 
-  - Appropriate Output: 7.7.1908
+  - Appropriate Output: 7.8.2003
 
 - **uname -r**
 
   - Appropriate Output: 3.10.0-1062.el7.x86_64
   
-  **Warning**: Do not update CentOS 7.7 release as it will break CORTX. Operating system updates are not supported at the moment.
+  **Warning**: Do not update CentOS 7.8 release as it will break CORTX. Operating system updates are not supported at the moment.
 
-  While there are no specific requirements for installing the CentOS 7.7, we recommend you to perform the following 4 steps.
+  While there are no specific requirements for installing the CentOS 7.8, we recommend you to perform the following 4 steps.
 
 Step 1 -  Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
   
@@ -128,7 +226,7 @@ Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID
     
 5. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
 
-6. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.7-3.2.9.0/rhel7.7/x86_64/MLNX_LIBS/. 
+6. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.9-0.1.7.0/rhel7.8/x86_64/MLNX_LIBS/
 
    **Note**: You must reboot the system after completing the installation of Mellanox OFED.
 
