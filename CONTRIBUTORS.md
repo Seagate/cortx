@@ -32,6 +32,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Philippe Deniel](https://github.com/phdeniel) 
 1. [Rachel Novak](https://github.com/novium258)
 1. [Rajesh Nambiar](https://github.com/knrajnambiar76)
+1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
 1. [Sachitanand Shelake](https://github.com/sachitanands)
 1. [Sai Narasimhamurthy](https://github.com/sainarasim)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
@@ -57,6 +58,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [Radha Gulhane](https://github.com/RadhaGulhane13)
+1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
 1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
@@ -137,6 +139,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Mukund Kanekar](https://github.com/mukundkanekar)
 1. [Nihar Nayak](https://github.com/nihar1313)
 1. [Papan Singh](https://github.com/papan-singh)
+1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
 1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shankar More](https://github.com/sg-shankar)
