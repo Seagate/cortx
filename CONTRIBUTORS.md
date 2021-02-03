@@ -38,6 +38,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Shalaka Dharap](https://github.com/shalakadharap)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 1. [Utz Uwe Haus](https://github.com/u-u-h) 
@@ -50,6 +51,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
 ## [Seagate/cortx-experiments](https://github.com/Seagate/cortx-experiments)
@@ -57,6 +59,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [Radha Gulhane](https://github.com/RadhaGulhane13)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
@@ -66,6 +69,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
@@ -77,6 +81,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
 ## [Seagate/cortx-ha](https://github.com/Seagate/cortx-ha)
@@ -84,6 +89,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1. [Mandar Sawant](https://github.com/mssawant)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 
 ## [Seagate/cortx-hare](https://github.com/Seagate/cortx-hare)
 1. [Andriy Tkachuk](https://github.com/andriytk)
@@ -99,6 +105,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Justin Woo](https://github.com/justinzw)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 
 ## [Seagate/cortx-manager](https://github.com/Seagate/cortx-manager)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
@@ -108,6 +115,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Prathamesh Rodi](https://github.com/prathameshrodi)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
 1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
@@ -118,6 +126,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shriya Deshmukh](https://github.com/shriya-deshmukh)
 1. [Sumedh Kulkarni](https://github.com/sumedhak27)
 1. [Thavanathan Thangaraj](https://github.com/thavanathan)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
@@ -168,6 +177,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sachin Punadikar](https://github.com/sachinpunadikar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
@@ -221,6 +231,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Selva Nambi](https://github.com/selvakumaar5496)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Suryakumar Kumaravelan](https://github.com/suryakumar1024)
+1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
