@@ -53,6 +53,9 @@ mail -s "$mail_subj_prefix : Open Source Team Activity" -r $email $email < $tfil
 exec_report=CORTX_Metrics_Topline_Report
 jupyter nbconvert --execute --to pdf --output-dir=/tmp --no-input --output $exec_report.$ts $exec_report.ipynb
 echo "Please see attached" | mail -s "$mail_subj_prefix : Metrics Executive Report" -r $email -a /tmp/$exec_report.$ts.pdf $email 
+# scp it to the webserver Serkay set up for me
+jupyter nbconvert --execute --to slides --SlidesExporter.reveal_theme=serif --SlidesExporter.reveal_scroll=True --output-dir=/tmp --output $exec_report.$ts $exec_report.ipynb
+scp /tmp/$exec_report.$ts.html gtx201.nrm.minn.seagate.com:/home/535110/public_html/exec_reports
 
 # make the bulk conversion of all metrics into graphs report
 bulk_report=CORTX_Metrics_Graphs
