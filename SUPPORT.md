@@ -9,10 +9,10 @@ Looking for support for one of the CORTX software modules or to discuss things w
     -   Drop us a mail at cortx-questions@seagate.com 
     -   [Schedule](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2) a meeting to meet with us.
     -   Come to our live online office hours held every two weeks:
-        -   Justin Woo (justin.woo@seagate.com) will be avaiblable at 7am PST (Pacific Time) on the second week of each month. 
-            -   Click [here](doc/meetings/CORTX%20Community%20Office%20Hours%20with%20Justin%20Woo.ics) to add this event to your calandar. 
+        -   Justin Woo (justin.woo@seagate.com) will be available at 7am PST (Pacific Time) on the second week of each month. 
+            -   Click [here](doc/meetings/CORTX%20Community%20Office%20Hours%20with%20Justin%20Woo.ics) to add this event to your calendar. 
         -   Patrick Hession (patrick.hession@seagate.com) will be available 8am GMT/UTC on the last week of each month. 
-            -   Click [here](doc/meetings/CORTX%20Community%20Office%20Hours%20with%20Patrick%20Hession.ics) to add this event to your calandar. 
+            -   Click [here](doc/meetings/CORTX%20Community%20Office%20Hours%20with%20Patrick%20Hession.ics) to add this event to your calendar. 
         -   *If the links do not automatically open your calendar app, choose 'Save As' and save the .ics file on your local drive. Then open the file with your calendar application.*
 -   If you'd like to contact us directly, drop us a mail at cortx-questions@seagate.com or [schedule a meeting to meet with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2).
 -   Subscribe to the our [developer newsletter](https://cortx.link/cortx-dev-newsletter) to and stay up to date on the latest CORTX developments, news, and events.
