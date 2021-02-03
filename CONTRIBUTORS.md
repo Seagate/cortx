@@ -139,6 +139,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Gaurav Gaur](https://github.com/gaurkrgaurav)
 1. [Huang Hua](https://github.com/huanghua78)
+1. [Jugal Patil](https://github.com/JugalPatil)
 1. [Jaydeep Mohite](https://github.com/jamohite)
 1. [John Bent](https://github.com/johnbent)
 1. [Kanchan Chaudhari](https://github.com/kanchan-chaudhari)
