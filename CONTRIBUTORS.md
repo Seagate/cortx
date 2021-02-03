@@ -40,6 +40,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Shalaka Dharap](https://github.com/shalakadharap)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
+1. [Trent Geerdes](https://github.com/tgeerdes-SG)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
@@ -102,6 +103,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
+1. [Trent Geerdes](https://github.com/tgeerdes-SG)
 
 ## [Seagate/cortx-images](https://github.com/Seagate/cortx-images)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
@@ -151,6 +153,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Maxim Malezhin](https://github.com/maximalezhin)
 1. [Mukund Kanekar](https://github.com/mukundkanekar)
 1. [Nihar Nayak](https://github.com/nihar1313)
+1. [Nikhil Birgade](https://github.com/NikhilBirgade)
 1. [Papan Singh](https://github.com/papan-singh)
 1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
 1. [Sanjog Naik](https://github.com/sanjognaik)
