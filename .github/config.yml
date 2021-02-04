@@ -24,20 +24,8 @@ requestInfoLabelToAdd: request-more-info
 # Configuration for sentiment-bot
 # *Required* toxicity threshold between 0 and .99 with the higher numbers being the most toxic
 # Anything higher than this threshold will be marked as toxic and commented on
-sentimentBotToxicityThreshold: .5
+sentimentBotToxicityThreshold: .7
 
 # *Required* Comment to reply with
 sentimentBotReplyComment: >
   Please be sure to review the code of conduct and be respectful of other users. cc/ @novium258
-
-# Configuration for update-docs
-# Comment to be posted to on PRs that don't update documentation
-updateDocsComment: >
-  Thanks for opening this pull request! The maintainers of this repository would appreciate it if you would update some of our documentation based on your changes.
-
-updateDocsWhiteList:
-  - bug
-
-updateDocsTargetFiles:
-  - README
-  - docs/
