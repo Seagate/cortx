@@ -14,6 +14,7 @@ newPRWelcomeComment: >
 # Comment to be posted to on pull requests merged by a first time user
 firstPRMergeComment: >
   Thanks for your contribution to CORTX! :tada: How awesome!
+  Now you can be rewarded with a CORTX sticker by requesting [cortx sticker](https://www.seagate.com/promos/cortx-stickers)
    
 # Configuration for request-info
 requestInfoReplyComment: >
