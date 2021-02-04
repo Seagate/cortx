@@ -128,6 +128,8 @@ Based on the hypervisor you use, click to expand the corresponding section below
 
 If you are facing errors due to usage of old versions, perform the below mentioned procedure.
 
+**Note**: For information on converting an OVA file to OVF file, click `here <OVA_to_OVF.rst>`_.
+
 #. Right-click the **.ovf** file and edit it in a text editor (preferably, notepad).
 
 #. Find the line <vssd:VirtualSystemType>vmx-##</vssd:VirtualSystemType> and change the vmx-## value.
