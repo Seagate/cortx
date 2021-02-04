@@ -20,5 +20,5 @@ Follow the below mentioned procedure to convert an OVA file to an OVF file.
 
    In the below example, “demo-vm.ova” is being converted to OVF file “demo-vm.ovf”. We have to specify the full path of the source OVA file and the full path for the destination OVF file.
    
-   .. image:: Images/OVAOVF.PNG
+   .. image:: images/OVAOVF.PNG
 
