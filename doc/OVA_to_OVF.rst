@@ -4,7 +4,7 @@ Conversion from OVA to OVF
 
 Follow the below mentioned procedure to convert an OVA file to an OVF file.
 
-#. Download and install the VMware OVF tool.
+#. Download the VMware OVF tool by clicking `here <https://my.vmware.com/group/vmware/get-download?downloadGroup=OVFTOOL430UPDATE3>`_and install it.
 
 #. After the installation is complete, navigate to the directory where you installed the OVF tool using the CD command. For example, on a windows machine, by default, the location to the directory is as follows.
 
