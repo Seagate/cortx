@@ -10,8 +10,34 @@ import re
 import requests
 import json
 import os
+from dotenv import load_dotenv
+from cryptography.fernet import Fernet
 
-token = os.environ['SLACK_OATH']
+def decrypt(filename, key):
+    """
+    Given a filename (str) and key (bytes), it decrypts the file and write it
+    """
+    f = Fernet(key)
+    with open(filename, "rb") as file:
+        # read the encrypted data
+        encrypted_data = file.read()
+    # decrypt data
+    decrypted_data = f.decrypt(encrypted_data)
+    # write the original file
+    with open(".env", "wb") as file:
+        file.write(decrypted_data)
+
+def load_key():
+    """
+    Loads the key from the current directory named `key.key`
+    """
+    return open("slack.key", "rb").read()
+
+mykey = load_key()
+decrypt("/home/744417/cortx/metrics/slack.encrypted", mykey)
+
+load_dotenv()
+token = os.getenv('SLACK_OATH')
 url = 'https://cortxcommunity.slack.com/api/team.stats.export'
 
 payload = {'token': token, 'offline': 'false'}
