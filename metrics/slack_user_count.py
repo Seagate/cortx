@@ -1,30 +1,48 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #######################################################################
-# Author		: Venkatesh K
-# Date			: 20-01-2021
-# Description		: Used to get total user count  from slack
-# Usage			: python file_name.py
+# Author                : Venkatesh K
+# Date                  : 20-01-2021
+# Description           : Used to get total user count  from slack
+# Usage                 : python file_name.py
 #######################################################################
 import re
 import requests
 import json
 import os
-import sys
-import html
-#from dateutil import parser
-import datetime
 
 token = os.environ['SLACK_OATH']
 url = 'https://cortxcommunity.slack.com/api/team.stats.export'
 
-payload = {'token':token,'offline':'false'}
+payload = {'token': token, 'offline': 'false'}
+WORKSPACE_INFO = {
+    "MINIO": {
+        "workspace_id": "T3NG3BE8L",
+        "channel_id": "C3NDUB8UA",
+    },
+    "CEPH": {
+        "workspace_id": "T0HFAB7T3",
+        "channel_id": "C0HF72CER"
+    },
+    "OPENIO": {
+        "workspace_id": "T1DEE58R4",
+        "channel_id": "C1DET3MK3"
+    },
+    "DAOS": {
+        "workspace_id": "T4RUE2FDH",
+        "channel_id": "C4SM0RZ54"
+    },
+    "OPENSTACK": {
+        "workspace_id": "T0D0VLNG7",
+        "channel_id": "C0D0Z7XFB"
+    },
+}
 
 def clean(data):
     """ Clean the html tags and remove un-wanted white space
     Parameters
     ----------
-    Data: 
+    Data:
        Raw html data with tags & multiple whitespaces
     Returns:
        Remove spaces, taggs and return the enriched data
@@ -36,41 +54,38 @@ def clean(data):
     data = data.strip()
     return data
 
-def api_process_post_method (url,channel_id):
-    """
-    """
-    try:
-       payload = {
-	     "token": os.environ["SLACK_MINIO"],
-	     "channel": channel_id,
-	     "as_admin": False
-       }
-       headers = {'content-type': 'application/json', 'cookie':os.environ["MINIO_COOKIE"]}
 
-       r = requests.post(url, data=json.dumps(payload), headers=headers)
-       return r.json()
-    except:
-       pass
-
-def api_process_get_method (url):
+def api_process_post_method(workspace):
     """ Process the slack url to get user count
     If the argument isn't passed in, the function throw an error.
     Parameters
     ----------
-    Url : str, require
-	The url for minio, ceph and daos
+    Workspace: MINIO, CEPH, OPENIO, etc..
+    -------------------------------------
+   
     Returns:
-        The user count of given url.
+    --------
+    Total user count for the given workspace
+    
     """
+    url = "https://edgeapi.slack.com/cache/%s/users/counts" %(WORKSPACE_INFO[workspace]["workspace_id"])
+    channel_id = WORKSPACE_INFO[workspace]["channel_id"]
+    
     try:
-        response = requests.get(url)
-        data = html.unescape(response.text)
-        count_obj = re.search(r'\"total\">(\d+)<\/b>\s*users', data)
-        total_count = clean(count_obj.group(1))
+        payload = {
+            "token": os.environ[workspace],
+            "channel": channel_id,
+            "as_admin": False
+        }
+        cookie = workspace + '_COOKIE'
+        # print (cookie)
+        headers = {'content-type': 'application/json', 'cookie': os.environ[cookie]}
+
+        r = requests.post(url, data=json.dumps(payload), headers=headers)
+        return r.json()
     except:
-       pass
-       #todo
-    return total_count
+        pass
+
 
 def download_csv(type, date_range):
     """ Download the csv file for the given type and save it.
@@ -82,42 +97,31 @@ def download_csv(type, date_range):
     Returns:
        None.
     """
-    print('Beginning %s file download with requests' %(type))
+    print('Beginning %s file download with requests' % (type))
     try:
-       payload.update({'type': type, 'date_range': date_range})
-       response = requests.get(url, params=payload)
-       filename = type + '.csv'
-       with open(filename, 'wb') as f:
-          f.write(response.content)
+        payload.update({'type': type, 'date_range': date_range})
+        response = requests.get(url, params=payload)
+        filename = type + '.csv'
+        with open(filename, 'wb') as f:
+            f.write(response.content)
     except:
-       pass
-       # todo
+        pass
+        # todo
     return
 
-def export_csv(login_url, download_url, user, password):
-    #response = requests.get(url, auth=(user, password))
-    session = requests.Session()
-    session.get(login_url)
-    session.post(login_url, data={'_username': user, '_password': password})
-    res = session.get(download_url)
-    with open ("output.csv", "w") as fobj:
-        fobj.write (res.text)
-        
-def main():
-    result = api_process_post_method ("https://edgeapi.slack.com/cache/T3NG3BE8L/users/counts", "C3NDUB8UA")
-    #result = api_process("https://slack.openio.io/")
-    print ("Minio total count...")
-    print(json.dumps(result, indent=4, sort_keys=True))
-    #result = api_process("http://slackin-ceph-public.herokuapp.com/")
-    #print ("Ceph total count %s" %(result))
-   
-    #todo
-    #export_csv(url, 'https://cortxcommunity.slack.com/api/team.stats.export', '', '')
-    #download_csv('overview', '30d')
-    #download_csv('users', '30d')
-    #download_csv('channels', '30d')
 
+def main():
+    workspaces = ["MINIO","OPENIO","DAOS","CEPH","OPENSTACK"]
+    for workspace in workspaces:
+        result = api_process_post_method(workspace)
+        print("%s total count..." %(workspace))
+        print(json.dumps(result, indent=4, sort_keys=True))
+
+    # todo
+    # download_csv('overview', '30d')
+    # download_csv('users', '30d')
+    # download_csv('channels', '30d')
 
 if __name__ == '__main__':
-  main()
+    main()
 
