@@ -2,6 +2,7 @@
 
 import argparse
 import datetime
+import dateutil.parser as dateparser
 import json
 import os
 import pickle
@@ -33,20 +34,12 @@ from github import Github
 
 PICKLE_DIR='pickles'
 
-# this pickle saves actions done by logins
-AUTHOR_ACTIVITY_PICKLE='%s/author_activity.pickle' % PICKLE_DIR
-
-# this pickle saves actions hashed by uniquifier
-ACTIVITY_HASH_PICKLE='%s/activity_hashes.pickle' % PICKLE_DIR
-
-# this pickle saves the people in the community
-COMMUNITY_PICKLE='%s/cortx_community.pickle' % PICKLE_DIR
-
-# this pickle saves the people in the community
-SLACK_COMMUNITY_PICKLE='%s/cortx_slack_community.pickle' % PICKLE_DIR
-
-# this pickle saves the per-repo and global stats
-STATS_PICKLE='%s/persistent_stats.pickle' % PICKLE_DIR
+AUTHOR_ACTIVITY_PICKLE='%s/author_activity.pickle' % PICKLE_DIR       # actions done by logins
+ACTIVITY_HASH_PICKLE='%s/activity_hashes.pickle' % PICKLE_DIR         # actions hashed by uniquifier
+COMMUNITY_PICKLE='%s/cortx_community.pickle' % PICKLE_DIR             # the people in the community
+SLACK_COMMUNITY_PICKLE='%s/cortx_slack_community.pickle' % PICKLE_DIR # the people in the community
+STATS_PICKLE='%s/persistent_stats.pickle' % PICKLE_DIR                # the per-repo and global stats
+COMPARE_PROJECTS_PICKLE='%s/compare_projects.pickle' % PICKLE_DIR     # the historical star and fork counts for all known open source projects
 
 # a map of projects mapping to (org, repo_prefix)
 projects={'Ceph'  : ('Ceph',None),
@@ -88,6 +81,29 @@ def rate_check(gh=None):
     (gh.get_rate_limit().core.remaining,
     (gh.get_rate_limit().core.reset - datetime.datetime.utcnow()).total_seconds()/60))  
 
+
+class ProjectComparisons:
+  def __init__(self,org_name=None,stats=None):
+    self.pname = get_pickle_name(COMPARE_PROJECTS_PICKLE,org_name)
+    if stats:
+      self.stats = stats
+    else:
+      try:
+        with open(self.pname,'rb') as f:
+          self.stats = pickle.load(f)
+      except FileNotFoundError:
+          self.stats = {}
+
+  def set_stats(self,stats):
+    self.stats=stats
+    self.persist()
+
+  def get_stats(self):
+    return self.stats
+
+  def persist(self):
+    with open(self.pname, 'wb') as f:
+      pickle.dump(self.stats, f)
 
 # a simple class that is a dict of {repo : {date : stats }
 # TODO: right now, scrape_metrics.py tries to create a GLOBAL view and it works OK 
@@ -262,9 +278,11 @@ class CortxPerson:
 
   # starting now, note will be a dict.  Hope this works without breaking pickles
   def add_note(self,note):
+    assert self.note is None or isinstance(self.note,dict)
+    assert isinstance(note,dict)
     try:
       # this won't work.  We'll have to rewrite this to be a merger of dicts
-      self.note += '\n%s' % note
+      self.note.update(note) 
     except:
       self.note = note
 
@@ -328,9 +346,24 @@ class SlackCommunity():
     person = self.find_person(slack_id)
     person['github']=github
 
+  def print_person(self,slack_id):
+    person = self.people[slack_id]
+    print("Person %s github:%s email:%s" % (person['name'], person['github'], person['email']))
+
   def get_github(self,slack_id):
     person = self.find_person(slack_id)
     return person['github']
+
+  def get_email(self,slack_id):
+    person = self.find_person(slack_id)
+    return person['email']
+
+  def find_login(self,login):
+    for sid,person in self.people.items():
+      if person['github'] == login:
+        return sid
+    print("No person in slack pickle with name of %s" % login)
+    return None
 
   def add_person(self,slack_id,github,email,name):
     self.people[slack_id] = { 'github' : github, 'email' : email, 'name' : name }
@@ -357,8 +390,34 @@ class CortxCommunity:
     except FileNotFoundError:
       self.people = {} 
 
+  def get_external_activity(self,since=None,until=None):
+    if since:
+      since = dateparser.parse(since)
+    if until:
+      until = dateparser.parse(until)
+    activities={}
+    ca=CortxActivity()
+    for login,person in self.people.items():
+      if self.external_type(person.get_type()):
+        activities[login]={}
+        try:
+          for action,date in sorted(ca.get_activities(login)):
+            try:
+              if (since and date < since) or (until and date > until):
+                continue
+              activities[login][date]=action
+            except TypeError:
+              pass # some actions have no date (i.e. watches)
+        except KeyError:
+          pass # no activities ever recorded for this person
+    return activities
+
+
   def get_person(self,login):
     return self.people[login]
+
+  def get_external_types(self):
+    return self.external_types
 
   def external_type(self,Type):
     return Type in self.external_types
