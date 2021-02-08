@@ -37,7 +37,12 @@ def get_mergable_email(source,target):
   te = target.get_email()
   assert se or te, "Could not find a mergable email"
   if se and te:
-    assert se == te, "Can't merge different emails %s != %s" % (se,te)
+    if '@seagate.com' in se:
+      return se
+    elif '@seagate.com' in te:
+      return te
+    else:
+      assert se == te, "Can't merge different non-seagate emails %s != %s" % (se,te)
   if se:
     return se
   else:
@@ -63,13 +68,16 @@ def merge(target_login,source_login,people):
   # 4. copy the slack id from merge into target
   assert target_login, "Can't merge without specifying the individual into whom to merge" 
   #print("need to merge %s into %s" % (source_login, target_login)) 
-  activities=get_activities(source_login,activity)
+  try:
+    activities=get_activities(source_login,activity)
+  except KeyError: # this person has no activities
+    activities={}
   target=people.get_person(target_login)
   source=people.get_person(source_login)
   email=get_mergable_email(source,target)
   print("need to merge %s into %s using %s" % (source, target, email)) 
-  sperson=slack_people.find_email(email)
-  assert sperson, "Couldn't find % in slack pickle" % email
+  sperson=slack_people.find_login(source_login)
+  assert sperson, "Couldn't find %s in slack pickle" % email
   slack_people.set_github(sperson,target_login)
   print("Also need to clean up slack person %s" % sperson)
   for date,url in activities.items():
@@ -81,7 +89,7 @@ def merge(target_login,source_login,people):
       print("Not yet migrated: Migrating %s %s" % (date,url))
       activity.add_activity(key,target_login,url,date)
 
-  # copy over company, type, linkedin; merge notes
+  # copy over company, type, linkedin, and email; merge notes
   if source.get_company() and not target.get_company():
     print("Trying to transfer company %s" % source.get_company())
     people.set_company(target_login,source.get_company())
@@ -94,8 +102,12 @@ def merge(target_login,source_login,people):
   if source.get_note():
     print("Trying to transfer note %s" % source.get_note())
     people.add_note(target_login,source.get_note())
+  people.update_email(target_login,email)
 
-  people.remove_person(source_login)
+  if 'GID_UNK' in source_login:
+    people.remove_person(source_login)
+  else:
+    print("Cowardly refusing to remove non GID_UNK login")
 
   activity.persist()
   slack_people.persist()
@@ -108,11 +120,13 @@ def main():
   parser.add_argument('--email',       '-e', help="When you update an individual, add her email")
   parser.add_argument('--company',     '-c', help="When you update an individual, what company is she")
   parser.add_argument('--linkedin',    '-l', help="When you update an individual, add her linkedin profile")
+  parser.add_argument('--note',        '-n', help="When you update an individual, add a note (must be formatted as python dict)")
   parser.add_argument('--unknowns',    '-u', help="Dump the unknowns and quit", action="store_true")
   parser.add_argument('--dump',        '-d', help="Dump entire community and quit", action="store_true")
   parser.add_argument('--slack',       '-s', help="Operate on the slack people", action="store_true")
   parser.add_argument('--merge',       '-m', help="Merge one person into another")
   parser.add_argument('--org',         '-o', help='Print the latest statistics for a different org', default='Seagate')
+  parser.add_argument('--github',      '-g', help='Change the github login for a slack person', action="store")
   args = parser.parse_args()
 
   if args.slack:
@@ -124,25 +138,46 @@ def main():
   if args.merge:
     merge(target_login=args.individual,source_login=args.merge,people=people)
 
-
   if (args.individual):
     updated=False
-    if people.includes(args.individual):
-      if args.type:
-        updated = True
-        people.update_type(args.individual,args.type)
-      if args.company:
-        updated = True
-        people.update_company(args.individual,args.company)
-      if args.linkedin:
-        updated = True
-        people.update_linkedin(args.individual,args.linkedin)
-      if args.email:
-        updated = True
-        people.update_email(args.individual,args.email)
-      print(people.people[args.individual])
+    if not args.slack:
+      if people.includes(args.individual):
+        if args.type:
+          updated = True
+          people.update_type(args.individual,args.type)
+        if args.company:
+          updated = True
+          people.update_company(args.individual,args.company)
+        if args.linkedin:
+          updated = True
+          people.update_linkedin(args.individual,args.linkedin)
+        if args.email:
+          updated = True
+          people.update_email(args.individual,args.email)
+        if args.note:
+          updated = True
+          note = json.loads(args.note) 
+          people.add_note(args.individual,note)
+        print(people.people[args.individual])
+      else:
+        print("Person %s not in the known community" % args.individual)
     else:
-      print("Person %s not in the known community" % args.individual)
+      if args.github:
+        gpeople=CortxCommunity()
+        gperson = None
+        sperson = None
+        try:
+          gperson=gpeople.get_person(args.github)
+        except KeyError:
+          print("Error: %s is unknown github ID" % args.github)
+        try:
+          sperson=people.get_github(args.individual)
+        except TypeError:
+          print("Error: %s is unknown slack ID" % args.individual)
+        assert gperson and sperson, "Can't operate unless both args are valid"
+        people.set_github(args.individual,args.github)
+        updated=True
+      people.print_person(args.individual)
     if updated:
       people.persist()
     sys.exit(0)

@@ -19,6 +19,28 @@ MESSAGES_PER_PAGE = 200
 MAX_MESSAGES = 1000
 GLOBAL='GLOBAL'
 
+channel_repo_map = {
+  'general'                    : 'cortx',
+  'random'                     : 'cortx',
+  'devops'                     : 'cortx', # this should change to 'cortx-re' when it becomes public
+  'github-cortx'               : 'cortx',
+  'se'                         : 'cortx',
+  'tech-marketing-engineering' : 'cortx',
+  'cortx-pm'                   : 'cortx',
+  'cortx-get-started'          : 'cortx',
+  'feedback'                   : 'cortx',
+  'cortx-sspl'                 : 'cortx-monitor',
+  'ops-and-implementation'     : 'cortx', # change to cortx-re when it becomes public
+  'cortx-provisioner'          : 'cortx-prvsnr',
+  'cortx-s3'                   : 'cortx-s3server',
+  'cortx-csm'                  : 'cortx-management-portal',
+  'announcements'              : 'cortx',
+  'cortx-virtual-machines'     : 'cortx', # change to cortx-re when it becomes public
+  'cortx-dashboard'            : 'cortx-management-portal',
+  'cortx-motr-client'          : 'cortx-motr', # might change this to m0client-sample-apps
+  'cortx-community-triage'     : 'cortx',
+}
+
 # make a helper function to consolidate all calls to the api 
 def call_api(client,method,data):
   response = client.api_call(api_method=method,data=data)
@@ -62,8 +84,8 @@ def get_member_count(client,channels):
 # note that when our members exceeds 1000, we will have to start making multiple api calls to get the full list
 # can borrow the code from get_conversations
 def get_members(client,all_people,slack_people):
-  members=[]
-  active_members=[]
+  members=set()
+  active_members=set()
   request = call_api(client=client,method="users.list",data=None)
   for m in request['members']:
     # get presence    
@@ -93,9 +115,9 @@ def get_members(client,all_people,slack_people):
         print("WTF: couldn't get meaningful info for profile of %s" % m['name'])
 
     if glogin:
-      members.append(glogin)
+      members.add(glogin)
       if presence == 'active':
-        active_members.append(glogin)
+        active_members.add(glogin)
   slack_people.persist()
   all_people.persist()
   return (members,active_members)
@@ -129,7 +151,8 @@ def add_activity(glogin,mdate,cname,author_activity):
     author_activity.add_activity(key,login,url,created_at)
 
 # conversation also has 'ts' value so we should be able to get only people talking in the last week
-def get_conversations(client,channels,slack_people,author_activity):
+def get_conversations(client,channels,slack_people,author_activity,stats):
+  warnings=set()
   week_ago = datetime.date.today() - datetime.timedelta(days=7)
   all_talkers_alltime=set()
   talkers_alltime={}
@@ -140,6 +163,7 @@ def get_conversations(client,channels,slack_people,author_activity):
     talkers_weekly[cname]=set()
     conversations = get_channel_conversations(client,cid,cname)
     print("Channel %s has %d conversations" % (cname,len(conversations)))
+    stats[cname]['slack_conversation_count'] = len(conversations)
     for c in conversations:
       try:
         glogin=slack_people.get_github(c['user'])
@@ -153,7 +177,9 @@ def get_conversations(client,channels,slack_people,author_activity):
       except KeyError:
         pass
       except TypeError:
-        print("WTF, user %s not in slack people" % c['user'])
+        if c['user'] not in warnings:
+          print("WTF, user %s not in slack people" % c['user'])
+          warnings.add(c['user'])
   talkers_alltime[GLOBAL] = all_talkers_alltime
   talkers_weekly[GLOBAL] = all_talkers_weekly
   author_activity.persist()
@@ -161,6 +187,98 @@ def get_conversations(client,channels,slack_people,author_activity):
 
 def get_client():
   return slack.WebClient(token=os.environ['SLACK_OATH'])
+
+def merge_stat(slack_stats,ps,repo):
+  (existing_stats,latest) = ps.get_latest(repo)
+  print(repo,existing_stats.keys(),slack_stats.keys())
+  for key,value in slack_stats.items():
+    print("Need to merge %s into %s on %s" % (key,repo,latest))
+    existing_value = ps.get_values(repo,key,[latest])[0]
+    if existing_value:
+      if isinstance(existing_value,int) and isinstance(value,int):
+        print("Key %s needs to merge in %s using max" % (key,repo))
+        new_value=max(existing_value,value) 
+      else:
+        if isinstance(existing_value,list):
+          print("WTF: How did a list get into %s:%s?" % (repo,key))
+          existing_value=set(existing_value)
+        assert isinstance(existing_value,set) and isinstance(value,set), "Expecting sets for %s" % key
+        print("Key %s needs to merge in %s using union" % (key,repo))
+        new_value=value|existing_value
+    else:
+      new_value=value
+    ps.add_stat(latest,repo,key,value)
+
+def merge_stats(slack_stats):
+  ps=cc.PersistentStats()
+  repos=ps.get_repos()
+  for channel in slack_stats.keys():
+    try:
+      repo = channel_repo_map[channel] 
+    except KeyError:
+      repo = channel
+    assert repo in repos, "Do not have a repo into which to merge %s" % channel
+    print("Can %s merge channel %s into corresponding repo" % ( '' if repo in repos else 'not', channel))
+    merge_stat(slack_stats[channel],ps,repo)
+  ps.persist()  # probably unnecessary since ps.add_stat does an internal persist
+  return ps 
+
+# a function that returns a set of domains by pulling them out of emails
+def get_domains(people,slack_people):
+  domains=set()
+  for p in people:
+    sid=slack_people.find_login(p)
+    email=slack_people.get_email(sid)
+    domain=email.split('@')[1]
+    if 'seagate' not in domain.lower():
+      domains.add(domain)
+  return domains
+  
+
+# takes the stats structure after it has been scraped and after domains has been added and splits out external counts 
+def add_external(stats):
+  slack_people = cc.SlackCommunity()
+  people       = cc.CortxCommunity()
+  new_stats = {}
+  # get al the domains
+  for cname,cstats in stats.items():
+    new_stats[cname] = {}
+    for k,v in cstats.items():
+      if isinstance(v,set) and 'domains' not in k and 'Type' not in k:
+        for p in v:
+          try:
+            Type = 'Unknown' if people.get_type(p)==None else people.get_type(p)
+            new_key=('%s_Type_%s' % (k,Type)).replace(' ','_')
+            #print("%s type %s -> %s" % (p,Type,new_key))
+            if new_key not in new_stats[cname]:
+              new_stats[cname][new_key] = set()
+            new_stats[cname][new_key].add(p)
+          except KeyError:
+            print("WTF: couldn't find github for %s" % p) # this shouldn't happen.
+
+  # now merge them into the stats structure
+  for cname in stats.keys():
+    stats[cname].update(new_stats[cname])
+  return stats
+
+
+# takes the stats structure after it has been scraped and pulls all the emails and figures out the set of email domains
+def add_domains(stats):
+  slack_people = cc.SlackCommunity()
+  new_stats = {}
+  # get al the domains
+  for cname,cstats in stats.items():
+    new_stats[cname] = {}
+    for k,v in cstats.items():
+      if isinstance(v,set) and 'domains' not in k:
+        new_key='%s_domains' % k
+        domains=get_domains(v,slack_people)
+        new_stats[cname][new_key]=domains
+  # now merge them into the stats structure
+  for cname in stats.keys():
+    stats[cname].update(new_stats[cname])
+  return stats
+
 
 # create a stats structure similar to what is produced in scrape_metrics.py
 def get_stats():
@@ -192,10 +310,10 @@ def get_stats():
   stats[GLOBAL]['slack_active_members'] = active_members
 
   print("Getting talkers lists")
-  (all_talkers,weekly_talkers) = get_conversations(client,channels,slack_people,author_activity)
+  (all_talkers,weekly_talkers) = get_conversations(client,channels,slack_people,author_activity,stats)
   for cname in channels.values():
     stats[cname]['slack_participants'] = all_talkers[cname]
-    stats[cname]['stack_weekly_participants'] = weekly_talkers[cname]
+    stats[cname]['slack_weekly_participants'] = weekly_talkers[cname]
   stats[GLOBAL]['slack_participants'] = all_talkers[GLOBAL]
   stats[GLOBAL]['slack_weekly_participants'] = weekly_talkers[GLOBAL]
   print(stats)
@@ -209,22 +327,22 @@ def get_stats():
 
   return stats
 
+def update_global_conversation_count(stats):
+  gcc=0
+  key='slack_conversation_count'
+  for cname,cstats in stats.items():
+    if cname != GLOBAL:
+      gcc+=cstats[key]
+  stats[GLOBAL][key]=gcc
+  return stats
+
 def main():
 
   stats = get_stats()
-
-  # ok this works pretty well so far.
-  # now the thing we need to do is merge these stats into cc.PersistentStats
-  # for each channel name, find the corresponding repo and add to latest date for it
-  # might be off by a few days but not overly worrisome
-  # what to do about the channels which don't have a correspoding repo?
-  # general and getting-started should be merged into parent 'cortx'.  What about the rest?
-  # maybe just merge all that don't have a 1:1 mapping.
-  return
-
-  # write the result to a file
-  with open('messages.json', 'w', encoding='utf-8') as f:
-    json.dump(messages_all, f, sort_keys=True, indent=4, ensure_ascii=False)
+  stats=update_global_conversation_count(stats)
+  stats=add_domains(stats)
+  stats=add_external(stats)
+  ps=merge_stats(stats)
 
 
 if __name__ == '__main__':
