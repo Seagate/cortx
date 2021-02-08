@@ -31,10 +31,15 @@ def load_key():
     """
     Loads the key from the current directory named `key.key`
     """
-    return open("slack.key", "rb").read()
+    cwd = os.getcwd()
+    key_path = os.path.join(cwd, "slack.key")
+    return open(key_path, "rb").read()
 
 mykey = load_key()
-decrypt("/home/744417/cortx/metrics/slack.encrypted", mykey)
+
+cwd = os.getcwd()
+file_path = os.path.join(cwd, "slack.encrypted")
+decrypt(file_path, mykey)
 
 load_dotenv()
 token = os.getenv('SLACK_OATH')
