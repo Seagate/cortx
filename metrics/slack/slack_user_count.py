@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #######################################################################
 # Author                : Venkatesh K
 # Date                  : 20-01-2021
-# Description           : Used to get total user count  from slack
+# Description           : Used to get total user count from slack
 # Usage                 : python file_name.py
 #######################################################################
 import re
@@ -12,6 +12,7 @@ import json
 import os
 from dotenv import load_dotenv
 from cryptography.fernet import Fernet
+
 
 def decrypt(filename, key):
     """
@@ -27,6 +28,7 @@ def decrypt(filename, key):
     with open(".env", "wb") as file:
         file.write(decrypted_data)
 
+
 def load_key():
     """
     Loads the key from the current directory named `key.key`
@@ -34,6 +36,7 @@ def load_key():
     cwd = os.getcwd()
     key_path = os.path.join(cwd, "slack.key")
     return open(key_path, "rb").read()
+
 
 mykey = load_key()
 
@@ -69,6 +72,7 @@ WORKSPACE_INFO = {
     },
 }
 
+
 def clean(data):
     """ Clean the html tags and remove un-wanted white space
     Parameters
@@ -93,15 +97,15 @@ def api_process_post_method(workspace):
     ----------
     Workspace: MINIO, CEPH, OPENIO, etc..
     -------------------------------------
-   
+
     Returns:
     --------
     Total user count for the given workspace
-    
+
     """
-    url = "https://edgeapi.slack.com/cache/%s/users/counts" %(WORKSPACE_INFO[workspace]["workspace_id"])
+    url = "https://edgeapi.slack.com/cache/%s/users/counts" % (WORKSPACE_INFO[workspace]["workspace_id"])
     channel_id = WORKSPACE_INFO[workspace]["channel_id"]
-    
+
     try:
         payload = {
             "token": os.environ[workspace],
@@ -142,16 +146,17 @@ def download_csv(type, date_range):
 
 
 def main():
-    workspaces = ["MINIO","OPENIO","DAOS","CEPH","OPENSTACK"]
+    workspaces = ["MINIO", "OPENIO", "DAOS", "CEPH", "OPENSTACK"]
     for workspace in workspaces:
         result = api_process_post_method(workspace)
-        print("%s total count..." %(workspace))
+        print("%s total count..." % (workspace))
         print(json.dumps(result, indent=4, sort_keys=True))
 
     # todo
     # download_csv('overview', '30d')
     # download_csv('users', '30d')
     # download_csv('channels', '30d')
+
 
 if __name__ == '__main__':
     main()
