@@ -19,7 +19,7 @@ The schedule is as follows:
 
 #. January 7, 2021: Serkay Olmez discusses Data Durability and Availability Modeling in Erasure Coded Systems including a discussion about the importance of multi-level erasure coding.  `HTML <https://quarktetra.github.io/presentations/CortxDurabilityAvailability/presentation.html#/>`_ | `PDF <PDFs/serkay_olmez_cortx_mmaa_jan_2021.pdf>`_ |  `Video <https://cortx.link/data-durability-gh>`_.
 
-#. February 4, 2021: Gregory Touretsky, the CORTX Product Manager, discussed the CORTX feature roadmap.  PDF and Video to be linked soon.  
+#. February 4, 2021: Gregory Touretsky, the CORTX Product Manager, discussed the CORTX feature roadmap. `PDF </https://github.com/Seagate/cortx/blob/main/doc/meetings/PDFs/Building%20the%20Ultimate%20Object%20Store.pdf>`_  |   `Video <https://cortx.link/MTA-Feb>`_.
 
 #. March 4, 2021: Anatoliy Bilenko will discuss observability in CORTX by demonstrating how to use the `ADDB in motr <https://github.com/Seagate/cortx-motr/blob/main/doc/ADDB.rst>`_.
 
