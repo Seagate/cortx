@@ -216,6 +216,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Madhavrao Vemuri](https://github.com/madhavemuri)
 1. [Mandar Sawant](https://github.com/mssawant)
 1. [Maxim Malezhin](https://github.com/maximalezhin)
+1. [Mehul Joshi](https://github.com/mehjoshi)
 1. [Mukund Kanekar](https://github.com/mukundkanekar)
 1. [Nihar Nayak](https://github.com/nihar1313)
 1. [Nikhil Birgade](https://github.com/NikhilBirgade)
