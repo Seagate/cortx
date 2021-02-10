@@ -13,6 +13,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
 1. [Abhilekh Mustapure](https://github.com/abhilekh268)
 1. [Amit Kumar](https://github.com/amitwac2608)
+1. [Amol Kongre](https://github.com/amolkongre)
 1. [Anatoliy Bilenko](https://github.com/just-now)
 1. [Atita Shirwaikar](https://github.com/AtitaShirwaikar)
 
