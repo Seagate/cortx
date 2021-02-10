@@ -27,7 +27,7 @@ The schedule is as follows:
 
 #. May 6, 2021: TBA
 
-#. Jun3 3, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk will lead a tutorial about installing, configuring, and tuning motr clusters.
+#. June 3, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk will lead a tutorial about installing, configuring, and tuning motr clusters.
 
 #. Future months TBA
 
