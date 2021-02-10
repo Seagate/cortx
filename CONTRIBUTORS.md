@@ -12,6 +12,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx](https://github.com/Seagate/cortx/)
 1. [Amit Kumar](https://github.com/amitwac2608)
+1. [Atita Shirwaikar](https://github.com/AtitaShirwaikar)
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Basavaraj Kirunge](https://github.com/bkirunge7)
 1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
@@ -175,6 +176,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
 1. [Ajinkya Dhumal](https://github.com/AjinkyaDhumal)
 1. [Amit Kumar](https://github.com/amitwac2608)
+1. [Atita Shirwaikar](https://github.com/AtitaShirwaikar)
 1. [Basavaraj Kirunge](https://github.com/bkirunge7)
 1. [Dattaprasad Govekar](https://github.com/DPG17)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
