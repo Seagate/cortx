@@ -34,6 +34,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Patrick Hession](https://github.com/hessio)
 1. [Philippe Deniel](https://github.com/phdeniel) 
 1. [Puja Mudaliar](https://github.com/pujamudaliar)
+1. [Priyank Dalal](https://github.com/priyankdal)
 1. [Rachel Novak](https://github.com/novium258)
 1. [Rajesh Nambiar](https://github.com/knrajnambiar76)
 1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
@@ -50,6 +51,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 1. [Utz Uwe Haus](https://github.com/u-u-h) 
 1. [Wei Der Chien](https://github.com/steven-chien) 
+
 
 ## [Seagate/cortx-dsal](https://github.com/Seagate/cortx-dsal)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
