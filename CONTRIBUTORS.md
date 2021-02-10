@@ -249,6 +249,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
 1. [Dmitrii Surnin](https://github.com/dsurnin)
 1. [Evgeniy Brazhnikov](https://github.com/evgeniy-brazhnikov)
+1. [Gowthaman Chinnathambi](https://github.com/gowthamchinna)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [John Bent](https://github.com/johnbent)
