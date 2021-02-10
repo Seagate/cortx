@@ -137,6 +137,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Sri Bhargav Metta](https://github.com/shrimetta)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
+1. [Jayshree More](https://github.com/JayshreeAmore)
 1. [Vrishali Danave](https://github.com/Vrishali-web-dev)
 
 ## [Seagate/cortx-manager](https://github.com/Seagate/cortx-manager)
