@@ -62,6 +62,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-experiments](https://github.com/Seagate/cortx-experiments)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
+1. [Dmitrii Surnin](https://github.com/dsurnin)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [Radha Gulhane](https://github.com/RadhaGulhane13)
@@ -213,6 +214,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Basavaraj Kirunge](https://github.com/bkirunge7)
 1. [Dattaprasad Govekar](https://github.com/DPG17)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
+1. [Dmitrii Surnin](https://github.com/dsurnin)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [John Bent](https://github.com/johnbent)
 1. [Mohammed Shahid](https://github.com/shahidSTX)
