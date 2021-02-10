@@ -107,6 +107,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-ha](https://github.com/Seagate/cortx-ha)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
+1. [Archana Limaye](https://github.com/ArchanaLimaye)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1. [Konstantin Nekrasov](https://github.com/knekrasov)
