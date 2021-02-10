@@ -15,6 +15,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Amit Kumar](https://github.com/amitwac2608)
 1. [Amol Kongre](https://github.com/amolkongre)
 1. [Anatoliy Bilenko](https://github.com/just-now)
+1. [Ashwini Borse](https://github.com/AshwiniS-Borse)
 1. [Atita Shirwaikar](https://github.com/AtitaShirwaikar)
 
 1. [Balaji Ramachandran](https://github.com/balajiramachandran-seagate)
@@ -245,6 +246,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
 1. [Andrey Kononykhin](https://github.com/andkononykhin2)
 1. [Anjali Somwanshi](https://github.com/SomwanshiAnjali)
+1. [Ashwini Borse](https://github.com/AshwiniS-Borse)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
