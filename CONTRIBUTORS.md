@@ -38,6 +38,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Puja Mudaliar](https://github.com/pujamudaliar)
 1. [Priyank Dalal](https://github.com/priyankdal)
 1. [Rachel Novak](https://github.com/novium258)
+1. [Rahul Shenoy](https://github.com/rshenoy0831)
 1. [Rajesh Nambiar](https://github.com/knrajnambiar76)
 1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
 1. [Sachitanand Shelake](https://github.com/sachitanands)
