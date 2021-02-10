@@ -124,6 +124,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
+1. [Suvrat Joshi](https://github.com/suvratjoshi)
 1. [Trent Geerdes](https://github.com/tgeerdes-SG)
 
 ## [Seagate/cortx-images](https://github.com/Seagate/cortx-images)
@@ -194,6 +195,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shankar More](https://github.com/sg-shankar)
 1. [Shashank Parulekar](https://github.com/shashank-parulekar)
+1. [Suvrat Joshi](https://github.com/suvratjoshi)
 1. [Tejal Sheth](https://github.com/tejalsheth)
 1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
