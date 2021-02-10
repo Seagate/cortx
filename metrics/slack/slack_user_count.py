@@ -10,8 +10,8 @@ import re
 import requests
 import json
 import os
-from dotenv import load_dotenv
-from cryptography.fernet import Fernet
+#from dotenv import load_dotenv
+#from cryptography.fernet import Fernet
 
 
 def decrypt(filename, key):
@@ -38,6 +38,7 @@ def load_key():
     return open(key_path, "rb").read()
 
 
+"""
 mykey = load_key()
 
 cwd = os.getcwd()
@@ -45,6 +46,7 @@ file_path = os.path.join(cwd, "slack.encrypted")
 decrypt(file_path, mykey)
 
 load_dotenv()
+"""
 token = os.getenv('SLACK_OATH')
 url = 'https://cortxcommunity.slack.com/api/team.stats.export'
 
@@ -160,4 +162,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
