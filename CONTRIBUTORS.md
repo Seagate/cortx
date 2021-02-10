@@ -90,6 +90,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Ajay Srivastava](https://github.com/ajaysrivas)
 1. [Amol Shinde](https://github.com/shindeam)
+1. [Andrei Zheregelia](https://github.com/azheregelya)
 1. [Dmitrii Surnin](https://github.com/dsurnin)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
@@ -142,6 +143,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Ajay Srivastava](https://github.com/ajaysrivas)
 1. [Amol Shinde](https://github.com/shindeam)
+1. [Andrei Zheregelia](https://github.com/azheregelya)
 1. [Archana Limaye](https://github.com/ArchanaLimaye)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
@@ -153,6 +155,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Vijaykumar Thakkar](https://github.com/VijayThakkar132)
 
 ## [Seagate/cortx-hare](https://github.com/Seagate/cortx-hare)
+1. [Andrei Zheregelia](https://github.com/azheregelya)
 1. [Andriy Tkachuk](https://github.com/andriytk)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Konstantin Nekrasov](https://github.com/knekrasov)
