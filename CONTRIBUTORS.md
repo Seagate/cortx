@@ -233,6 +233,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Dattaprasad Govekar](https://github.com/DPG17)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
 1. [Dmitrii Surnin](https://github.com/dsurnin)
+1. [Gowthaman Chinnathambi](https://github.com/gowthamchinna)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
 1. [John Bent](https://github.com/johnbent)
 1. [Mohammed Shahid](https://github.com/shahidSTX)
