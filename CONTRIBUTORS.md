@@ -78,6 +78,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
 1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
+1. [Vijaykumar Thakkar](https://github.com/VijayThakkar132)
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
@@ -114,6 +115,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Puja Mudaliar](https://github.com/pujamudaliar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
+1. [Vijaykumar Thakkar](https://github.com/VijayThakkar132)
 
 ## [Seagate/cortx-hare](https://github.com/Seagate/cortx-hare)
 1. [Andriy Tkachuk](https://github.com/andriytk)
@@ -166,6 +168,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Thavanathan Thangaraj](https://github.com/thavanathan)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
+1. [Vijaykumar Thakkar](https://github.com/VijayThakkar132)
 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
 1. [Abhishek Saha](https://github.com/AbhishekSahaSeagate)
