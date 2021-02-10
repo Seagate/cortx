@@ -14,6 +14,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Abhilekh Mustapure](https://github.com/abhilekh268)
 1. [Amit Kumar](https://github.com/amitwac2608)
 1. [Anatoliy Bilenko](https://github.com/just-now)
+1. [Balaji Ramachandran](https://github.com/balajiramachandran-seagate)
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Basavaraj Kirunge](https://github.com/bkirunge7)
 1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
