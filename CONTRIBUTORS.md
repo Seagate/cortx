@@ -90,6 +90,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Radha Gulhane](https://github.com/RadhaGulhane13)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
+1. [Suprit Shinde](https://github.com/supritshinde)
 1. [Upendra Patwardhan](https://github.com/upendrapatwardhan)
 
 ## [Seagate/cortx-fs](https://github.com/Seagate/cortx-fs)
@@ -137,6 +138,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
+1. [Suprit Shinde](https://github.com/supritshinde)
 1. [Suvrat Joshi](https://github.com/suvratjoshi)
 1. [Trent Geerdes](https://github.com/tgeerdes-SG)
 
