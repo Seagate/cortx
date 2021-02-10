@@ -150,6 +150,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-manager](https://github.com/Seagate/cortx-manager)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Alexander Voronov](https://github.com/avrnv)
+1. [Ashish Dhavalikar](https://github.com/ashish-seagate)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
