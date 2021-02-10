@@ -158,6 +158,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Puja Mudaliar](https://github.com/pujamudaliar)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
+1. [Subham Pattanaik](https://github.com/subham-pattanaik)
 1. [Tadeu Bastos](https://github.com/tb-s)
 1. [Udayan Yaragattikar](https://github.com/udayan-y21)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
