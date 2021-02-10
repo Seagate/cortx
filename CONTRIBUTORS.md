@@ -115,6 +115,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
+1. [Soniya Moholkar](https://github.com/soniyamoholkar)
 
 ## [Seagate/cortx-manager](https://github.com/Seagate/cortx-manager)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
@@ -125,6 +126,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
+1. [Soniya Moholkar](https://github.com/soniyamoholkar)
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
 1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
