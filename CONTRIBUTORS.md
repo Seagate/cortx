@@ -52,7 +52,9 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Venkatesh K](https://github.com/venkuppu-chn)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 1. [Utz Uwe Haus](https://github.com/u-u-h) 
-1. [Wei Der Chien](https://github.com/steven-chien) 
+1. [Wei Der Chien](https://github.com/steven-chien)
+1. [Yeshpal Jain](https://github.com/yeshpal-jain-seagate) 
+
 
 
 ## [Seagate/cortx-dsal](https://github.com/Seagate/cortx-dsal)
@@ -201,6 +203,8 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Vinoth Vijayakumar](https://github.com/VinothVijayakumar-dev)
 1. [Yash Bhamare](https://github.com/ydb242)
 1. [Yatin Mahajan](https://github.com/yatin-mahajan)
+1. [Yeshpal Jain](https://github.com/yeshpal-jain-seagate) 
+
 
 ## [Seagate/cortx-motr-galois](https://github.com/Seagate/cortx-motr-galois)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
