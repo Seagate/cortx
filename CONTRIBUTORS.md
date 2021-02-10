@@ -66,6 +66,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
+1. [Ivan Alekhin](https://github.com/ivan-alekhin)
 
 #a# [Seagate/cortx-experiments](https://github.com/Seagate/cortx-experiments)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
@@ -91,6 +92,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
+1. [Ivan Alekhin](https://github.com/ivan-alekhin)
 
 ## [Seagate/cortx-fs-ganesha](https://github.com/Seagate/cortx-fs-ganesha)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
@@ -104,6 +106,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
+1. [Ivan Alekhin](https://github.com/ivan-alekhin)
 
 ## [Seagate/cortx-ha](https://github.com/Seagate/cortx-ha)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
@@ -202,6 +205,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Vinoth Vijayakumar](https://github.com/VinothVijayakumar-dev)
 1. [Yash Bhamare](https://github.com/ydb242)
 1. [Yatin Mahajan](https://github.com/yatin-mahajan)
+1. [Ivan Alekhin](https://github.com/ivan-alekhin)
 
 ## [Seagate/cortx-motr-galois](https://github.com/Seagate/cortx-motr-galois)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
@@ -216,6 +220,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Pratyush Khan](https://github.com/pratyush-seagate)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
+1. [Ivan Alekhin](https://github.com/ivan-alekhin)
 
 ## [Seagate/cortx-posix](https://github.com/Seagate/cortx-posix)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
@@ -229,6 +234,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
+1. [Ivan Alekhin](https://github.com/ivan-alekhin)
 
 ## [Seagate/cortx-prvsnr](https://github.com/Seagate/cortx-prvsnr)
 1. [Andrey Kononykhin](https://github.com/andkononykhin2)
@@ -292,5 +298,6 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Suryakumar Kumaravelan](https://github.com/suryakumar1024)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
+1. [Ivan Alekhin](https://github.com/ivan-alekhin)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
