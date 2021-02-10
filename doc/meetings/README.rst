@@ -25,6 +25,10 @@ The schedule is as follows:
 
 #. April 1, 2021: Sai Narasimhamurthy, Andriy Tkachuk, and Ganesan Umanesan will present the CORTX related research happening in the European Union on the SAGE CORTX Cluster.  The discussion will include various research topics happening including, but not limited to, Hierarchical Storage Management.
 
+#. May 6, 2021: TBA
+
+#. Jun3 3, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk will lead a tutorial about installing, configuring, and tuning motr clusters.
+
 #. Future months TBA
 
 Please email cortx-questions@seagate.com to request future topics of interest to you!
