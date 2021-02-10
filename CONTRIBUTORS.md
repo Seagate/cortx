@@ -27,6 +27,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Madhavrao Vemuri](https://github.com/madhavemuri)
 1. [Mandar Sawant](https://github.com/mssawant)
 1. [Mayur Gupta](https://github.com/TechWriter-Mayur)
+1. [Mehul Joshi](https://github.com/mehjoshi)
 1. [Mohammed Shahid](https://github.com/shahidSTX)
 1. [Mukul Malhotra](https://github.com/mukul-seagate11)
 1. [Nikita Danilov](https://github.com/nikitadanilov)
