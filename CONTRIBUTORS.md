@@ -157,6 +157,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Tadeu Bastos](https://github.com/tb-s)
+1. [Udayan Yaragattikar](https://github.com/udayan-y21)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
@@ -299,6 +300,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Selva Nambi](https://github.com/selvakumaar5496)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Suryakumar Kumaravelan](https://github.com/suryakumar1024)
+1. [Udayan Yaragattikar](https://github.com/udayan-y21)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
