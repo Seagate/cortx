@@ -128,6 +128,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Prathamesh Rodi](https://github.com/prathameshrodi)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
+1. [Subham Pattanaik](https://github.com/subham-pattanaik)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
