@@ -192,6 +192,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
 1. [Sanjog Naik](https://github.com/sanjognaik)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
+1. [Sergey Shilov](https://github.com/sergey-shilov)
 1. [Shankar More](https://github.com/sg-shankar)
 1. [Shashank Parulekar](https://github.com/shashank-parulekar)
 1. [Tejal Sheth](https://github.com/tejalsheth)
