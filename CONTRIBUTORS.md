@@ -63,6 +63,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
 1. [Ivan Tishchenko](https://github.com/t7ko-seagate)
+1. [Pranali Ugale](https://github.com/Pranali04796)
 1. [Radha Gulhane](https://github.com/RadhaGulhane13)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
