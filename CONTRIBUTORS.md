@@ -24,6 +24,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
 1. [Debasmita Samaddar](https://github.com/samaddar)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
+1. [Dipendra Bagchee](https://github.com/dbagchee) 
 1. [Gregory Touretsky](https://github.com/gregnsk)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Huang Hua](https://github.com/huanghua78)
@@ -67,8 +68,6 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Utz Uwe Haus](https://github.com/u-u-h) 
 1. [Wei Der Chien](https://github.com/steven-chien)
 1. [Yeshpal Jain](https://github.com/yeshpal-jain-seagate) 
-1. [Dipendra Bagchee](https://github.com/dbagchee) 
-
 
 
 ## [Seagate/cortx-dsal](https://github.com/Seagate/cortx-dsal)
