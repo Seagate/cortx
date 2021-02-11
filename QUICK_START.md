@@ -13,10 +13,10 @@
     1. Run it on a single node [DONE?](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
     1. Run it on a cluster [TODO]
 1. Build entire CORTX from the source into binaries: [DONE?](https://github.com/Seagate/cortx/blob/main/doc/Release_Build_Creation.rst)
-    1. Run it on a single node: TODO; 
+    1. Run it on a single node: TODO 
     1. Run it on a cluster: TODO
 1. Build entire CORTX from the source into OVA: TODO
-    1. Run it on a single node: TODO; 
+    1. Run it on a single node: TODO 
     1. Run it on a cluster: TODO
 
     
