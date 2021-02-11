@@ -87,6 +87,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-experiments](https://github.com/Seagate/cortx-experiments)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
+1. [Ajay Srivastava](https://github.com/ajaysrivas)
 1. [Dmitrii Surnin](https://github.com/dsurnin)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
@@ -135,6 +136,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-ha](https://github.com/Seagate/cortx-ha)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
+1. [Ajay Srivastava](https://github.com/ajaysrivas)
 1. [Archana Limaye](https://github.com/ArchanaLimaye)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Indrajit Zagade](https://github.com/indrajitzagade)
@@ -176,6 +178,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-manager](https://github.com/Seagate/cortx-manager)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
+1. [Ajay Srivastava](https://github.com/ajaysrivas)
 1. [Alexander Voronov](https://github.com/avrnv)
 1. [Ashish Dhavalikar](https://github.com/ashish-seagate)
 1. [Dmitry Didenko](https://github.com/dmitrydb)
@@ -327,6 +330,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
+1. [Ajay Srivastava](https://github.com/ajaysrivas)
 1. [Alexander Voronov](https://github.com/avrnv)
 1. [Anilkumar Sindhi](https://github.com/Anilsindhi)
 1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
