@@ -67,6 +67,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Utz Uwe Haus](https://github.com/u-u-h) 
 1. [Wei Der Chien](https://github.com/steven-chien)
 1. [Yeshpal Jain](https://github.com/yeshpal-jain-seagate) 
+1. [Dipendra Bagchee](https://github.com/dbagchee) 
 
 
 
