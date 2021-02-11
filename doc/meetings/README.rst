@@ -25,7 +25,7 @@ The schedule is as follows:
 
 #. April 1, 2021: Sai Narasimhamurthy, Andriy Tkachuk, and Ganesan Umanesan will present the CORTX related research happening in the European Union on the SAGE CORTX Cluster.  The discussion will include various research topics happening including, but not limited to, Hierarchical Storage Management.
 
-#. May 6, 2021: TBA
+#. May 6, 2021: Dr. Debasmita Samaddar from Culham Center for Fusion Energy (our first external speaker!) will discuss "Parallel in time and object storage w/ CORTX".
 
 #. June 3, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk will lead a tutorial about installing, configuring, and tuning motr clusters.
 
