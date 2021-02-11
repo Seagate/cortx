@@ -218,6 +218,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 
 ## [Seagate/cortx-motr](https://github.com/Seagate/cortx-motr)
 1. [Abhishek Saha](https://github.com/AbhishekSahaSeagate)
+1. [Alexander Sukhachev](https://github.com/alexsukhachev)
 1. [Anatoliy Bilenko](https://github.com/just-now)
 1. [Andriy Tkachuk](https://github.com/andriytk)
 1. [Anilkumar Sindhi](https://github.com/Anilsindhi)
