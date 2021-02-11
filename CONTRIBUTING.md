@@ -12,14 +12,17 @@ Thanks for joining us and we're glad to have you. We take community very serious
 
 You can report instances of abusive, harassing, or otherwise unacceptable behavior by contacting the project team at opensource@seagate.com.
 
+## Deployment and Testing
+- Learn various methods to acquire, build, run and test CORTX in our [Quick Start Guide](QUICK_START.md).
+
 ## Contribution Process
 
 ### Prerequisites
 
 - Please read our [CORTX Code Style Guide](doc/CodeStyle.md).
-- Get started with [GitHub Tools and Procedures](doc/Tools.rst), if you are new to GitHub.
+- Get started with [GitHub Tools and Procedures](doc/GitHub_Processes_and_Tools.rst), if you are new to GitHub.
    - Please find additional information about [working with git](doc/working_with_git.md) specific to CORTX.
-- Plese read about our [DCO and CLA policies](doc/dco_cla.md).
+- Please read about our [DCO and CLA policies](doc/dco_cla.md).
 
 ### Development
 
@@ -27,9 +30,9 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 
 **Core Functionality:** For basic development and testing of CORTX, you only need the motr and S3 submodules.
 
-1. [CORTX Motr](https://github.com/Seagate/cortx-motr/blob/dev/doc/Quick-Start-Guide.rst)
+1. [CORTX Motr](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
    - The main data path of the system responsible for the actual storage and distribution of objects and key-value pairs.
-2. [CORTX S3](https://github.com/Seagate/cortx-s3server/blob/dev/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
+2. [CORTX S3](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
    - The S3 interface to CORTX.
 
 **Complete System:** For the complete CORTX experience, you will need to install the remaining submodules:
@@ -44,15 +47,13 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
    - The module providing API's with which the management portal communicates with the other modules.   
 5. [CORTX Monitor](https://github.com/Seagate/cortx-monitor/blob/main/cortx-monitorQuickstartGuide.md)
    - The module tracking platform health and raising alerts on sensing any unintended state.   
-6. [CORTX POSIX](https://github.com/Seagate/cortx-posix/blob/dev/doc/Quick_Start_Guide.md)
+6. [CORTX POSIX](https://github.com/Seagate/cortx-posix/blob/main/doc/Quick_Start_Guide.md)
    - The module providing a file interface to CORTX.  
 7. [CORTX Provisioner](https://github.com/Seagate/cortx-prvsnr/blob/main/Cortx-ProvisionerQuickstartGuide.md)
    - The module which assists the users is satisfying dependencies, configuring the components and the other modules, and initializing the CORTX environment.
  
 ## Additional Resources
 
-- Download and run a [single node CORTX VM](doc/CORTX_on_Open_Virtual_Appliance.rst) for testing purposes.
-- Setup and test [a scale-out distributed CORTX](doc/scaleout/README.rst).
 - Learn more about the [CORTX Architechture](doc/architecture.md). 
 - Learn more about [CORTX CI/CD and Automation](doc/CI_CD.md).
 - Browse our [suggested list of contributions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md).
@@ -60,6 +61,10 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 ## Communication Channels
 
 Please refer to the [Support](SUPPORT.md) section to know more about the various channels by which you can reach out to us. 
+
+## Acknowledgements
+
+After making a contribution, please don't forget to include yourself in our [Contributors list](CONTRIBUTORS.md).
 
 ## Thank You!
 

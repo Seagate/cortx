@@ -257,15 +257,10 @@
 
 
 =====================
-**CORTX-S3 APls support**
+**CORTX-S3 APls Supported**
 =====================
 
-
-**source:**
-
-
-|image16|
-
+Refer to the [S3 API document](https://github.com/Seagate/cortx-s3server/blob/main/docs/s3-supported-api.md) to know the supported Service, Bucket, and Object Operations supported by CORTX-S3 Server API.
 
 =============================
 **CORTX-S3 - Clovis KV interface**

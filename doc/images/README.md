@@ -1,1 +1,1 @@
-# Images for s3 document
+# Images for CORTX parent repo

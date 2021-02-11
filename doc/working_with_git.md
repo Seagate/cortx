@@ -8,18 +8,15 @@ Contributing to the CORTX project using Git is a four-step process as listed bel
      <summary>Click to expand!</summary>
      <p>
 
- - Update Git to the latest version.
- - Generate [SSH](SSH_Public_Key.rst) and [PAT](Tools.rst#personal-access-token-pat) access for your GitHub Account.
- - Install Fix for CentOS 7.x by using: 
- 
- `$ yum remove git`
- 
-  * Download the [RPM file from here](https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm) and run the following commands:
-  
-    ```shell
-       $ yum -y install
-       $ yum -y install git
-    ```
+ - Update Git to the latest version:
+   ```shell
+        $ yum remove git*
+        $ yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
+        $ yum install git
+   ```
+   
+ - Generate [SSH](SSH_Public_Key.rst) and [PAT](GitHub_Processes_and_Tools.rst#personal-access-token-pat) access for your GitHub Account.
+
 
    </p>
     </details>
@@ -83,18 +80,6 @@ Before you contribute to the CORTX project, you'll have to **Fork** the CORTX re
 <summary>Click to expand!</summary>
 <p>
 
-:page_with_curl: **Note:** At any point in time to rebase your local branch to the latest main branch, follow these steps:
-
-  ```shell
-
-  $ git pull origin main
-  $ git submodule update --init --recursive
-  $ git checkout 'your-local-branch'
-  $ git pull origin 'your-remote-branch-name'
-  $ git submodule update --init --recursive
-  $ git rebase origin/main
-  ```
-  
 You can make changes to the code and save them in your files.
 
 1. Use the command below to add files that need to be pushed to the git staging area:
@@ -128,6 +113,19 @@ You can make changes to the code and save them in your files.
    remote: To github.com:<your-GitHub-Id>/reponame.git
    * [new branch] <your-local-branch-name> -> <your-local-branch-name>
    ```
+
+:page_with_curl:**Note:** At any point in time to rebase your local branch to the latest main branch, follow these steps:
+
+  ```shell
+
+  $ git pull origin main
+  $ git submodule update --init --recursive
+  $ git checkout 'your-local-branch'
+  $ git pull origin 'your-remote-branch-name'
+  $ git submodule update --init --recursive
+  $ git rebase origin/main
+  ```
+
 </p>
 </details>
 

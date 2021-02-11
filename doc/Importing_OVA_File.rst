@@ -166,6 +166,10 @@ If you are facing errors due to usage of old versions, perform the below mention
 
 #. Return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
 
+If you encounter the below mentioned error, click `here <https://kb.vmware.com/s/article/80467>`_ and refer the resolution section to resolve the below mentioned error.
+
+- Error: **Could not open /dev/vmmon: Broken pipe**
+
 .. raw:: html
    
    </details>

@@ -2,10 +2,20 @@
 Preboarding and Onboarding
 ==========================
 
+Before executing the **Preboarding** section, it must be ensured that the 28100 port is open. To open the port, run the below mentioned commands.
+
+::
+  
+ salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=28100/tcp --permanent"
+   
+ salt '*' cmd.run "firewall-cmd --reload"
+ 
+After running the above commands, proceed to the **Preboarding** section.
+
 Preboarding
 ===========
 
-The preboarding process must be the first process that must be completed after configuring CORTX. The preboarding procedure must be performed only once.
+The preboarding process is the first process that must be completed after configuring CORTX. The preboarding procedure must be performed only once.
 
 .. raw:: html
 
@@ -29,7 +39,7 @@ The preboarding process must be the first process that must be completed after c
 
    .. image:: images/EULA1.PNG
 
-5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.  The usernames *root* and *csm* are reserved so please do not use them.
+5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.  The usernames *root*, *cortx* and *csm* are reserved so please do not use them.
     
    .. image:: images/preboard_create_admin.PNG
 
@@ -41,7 +51,19 @@ The preboarding process must be the first process that must be completed after c
 Onboarding
 ===========
 
-The onboarding procedure must be performed after completing the preboarding procedure.  You should be brought automatically to the correct page after completing the preboarding.  If you are not, or if you subsequently want to redo the onboarding, you can navigate to *https://<management IP>:28100/#/preboarding/login*. You can also perform the onboarding process from the **Settings** page.
+**Error and Resolution**: As the Consul service is not running, you will encounter the below depicted error.
+
+.. image:: images/consul.PNG
+
+To resolve the error, execute the below mentioned commands.
+
+::
+
+ sed -i '11s/host:/host: 127.0.0.1/' /etc/csm/database.yaml
+ 
+ systemctl restart csm_agent
+
+The onboarding procedure must be performed after completing the preboarding procedure.  You should be brought automatically to the correct page after completing the preboarding.  If you are not, or if you subsequently want to redo the onboarding, you can navigate to *https://<management IP>:28100/#/onboarding* or, if logged out, through: *https://<management IP>:28100/#/preboarding/login* . You can also perform the onboarding tasks from the **Settings** page.
 
 .. raw:: html
 
@@ -67,7 +89,7 @@ The onboarding procedure must be performed after completing the preboarding proc
       
    - If you don't know your search domains, please use cortx.test.
   
-   .. image:: images/DNS.PNG
+   .. image:: images/DNS.png
    
    
 #. Enter the NTP server address in the text box and select the NTP time zone offset from the drop-down menu. Then, click **Continue**.
@@ -99,5 +121,3 @@ The onboarding procedure must be performed after completing the preboarding proc
    
    </details>
    
- 
-
