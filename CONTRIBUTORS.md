@@ -305,6 +305,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Dmitry Didenko](https://github.com/dmitrydb)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
+1. [Pritam Bhavsar](https://github.com/83bhp)
 1. [Puja Mudaliar](https://github.com/pujamudaliar)
 1. [Rahul Jyoti](https://github.com/rahuljyoti65)
 1. [Sanjog Naik](https://github.com/sanjognaik)
