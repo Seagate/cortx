@@ -7,12 +7,25 @@
 # Usage                 : python file_name.py
 #######################################################################
 import re
+import argparse
 import requests
 import json
 import os
+import pickle
 from dotenv import load_dotenv
 from cryptography.fernet import Fernet
 
+
+def get_args():
+
+    # Create the parser
+    parser = argparse.ArgumentParser()
+
+    # Add the arguments
+    parser.add_argument('--token', '-t', required=True)
+
+    # Execute the parse_args() method and return
+    return parser.parse_args()
 
 def decrypt(filename, key):
     """
@@ -28,7 +41,6 @@ def decrypt(filename, key):
     with open(".env", "wb") as file:
         file.write(decrypted_data)
 
-
 def load_key():
     """
     Loads the key from the current directory named `key.key`
@@ -37,11 +49,15 @@ def load_key():
     key_path = os.path.join(cwd, "slack.key")
     return open(key_path, "rb").read()
 
-
-mykey = load_key()
+#mykey = os.getenv('SLACK_KEY')
+args = get_args()
+mykey = args.token
+#mykey = "xJ4f4pNM-mRcBKGW-bSYM-iqSnMfuDEKM_s0dfjbI5g="
+#mykey = load_key()
+print ("Mykey", mykey)
 
 cwd = os.getcwd()
-file_path = os.path.join(cwd, "slack.encrypted")
+file_path = os.path.join(cwd, "slack.env")
 decrypt(file_path, mykey)
 
 load_dotenv()
@@ -147,10 +163,16 @@ def download_csv(type, date_range):
 
 def main():
     workspaces = ["MINIO", "OPENIO", "DAOS", "CEPH", "OPENSTACK"]
+    workspace_list = {}
     for workspace in workspaces:
         result = api_process_post_method(workspace)
-        print("%s total count..." % (workspace))
-        print(json.dumps(result, indent=4, sort_keys=True))
+        print("Processing %s..." % (workspace))
+        workspace_list[workspace] = result
+        # print(json.dumps(result, indent=4, sort_keys=True))
+    # Its important to use binary mode
+    dbfile = open('../pickles/slack_users_stats.pickle', 'ab')
+    pickle.dump(workspace_list, dbfile)
+    print ("List", workspace_list)
 
     # todo
     # download_csv('overview', '30d')
@@ -160,4 +182,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
