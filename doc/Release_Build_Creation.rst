@@ -102,3 +102,7 @@ Procedure
         cortx-prvsnr: generate cortx-prvsnr packages.
         
         iso_generation: generate ISO file from release build.
+        
+Tested by:
+
+- Feb 12, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation Pro 16.
