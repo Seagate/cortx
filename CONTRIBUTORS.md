@@ -184,6 +184,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
 1. [Sri Bhargav Metta](https://github.com/shrimetta)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
+1. [Soniya Moholkar](https://github.com/soniyamoholkar)
 1. [Jayshree More](https://github.com/JayshreeAmore)
 1. [Vrishali Danave](https://github.com/Vrishali-web-dev)
 
@@ -205,6 +206,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Tadeu Bastos](https://github.com/tb-s)
 1. [Udayan Yaragattikar](https://github.com/udayan-y21)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
+1. [Soniya Moholkar](https://github.com/soniyamoholkar)
 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
 1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
