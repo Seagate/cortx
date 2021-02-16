@@ -1,0 +1,56 @@
+# This is a workflow to extract the user count from slack
+
+name: Slack User Count
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on on schedule for the main branch
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 0 * * *'  
+  # Allows you to run this workflow manually from the Actions tab    
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out main branch under $GITHUB_WORKSPACE, so job can access it
+      - uses: actions/checkout@v2
+        with:
+          ref: main
+      
+      # Install dotenv python package to load tokens in script
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install python-dotenv
+            
+      # Runs a script using the runners shell
+      - name: Run a user extraction script
+        working-directory: ./metrics/slack          
+        env:
+          SLACK_KEY: ${{ secrets.SLACK_KEY }}
+          
+        run: |
+          python3 slack_user_count.py -t $SLACK_KEY
+      
+      # Commmit the slack pickle file local repo    
+      - name: Commit files
+        run: |
+         git config --local user.email "cortx.application@seagate.com"
+         git config --local user.name "cortx-admin"
+         git add ./metrics/pickles/slack_users_stats.pickle
+         git commit -m "Update the slack user count"
+      
+     # Push the slack pickle file to remote repo          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }} 
