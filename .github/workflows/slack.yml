@@ -48,7 +48,7 @@ jobs:
          git add ./metrics/pickles/slack_users_stats.pickle
          git commit -m "Update the slack user count"
       
-     # Push the slack pickle file to remote repo          
+      # Push the slack pickle file to remote repo          
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
