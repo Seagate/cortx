@@ -12,76 +12,105 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR
 
+mail_scrape_prefix="Weekly CORTX Scraping"
 mail_subj_prefix="Weekly CORTX Community Report"
+mail_subj_prefix="TESTING COMMUNITY METRICS" # use this for testing
 email="john.bent@seagate.com"
 server=gtx201.nrm.minn.seagate.com
 
-# start with a git pull in case the pickles were updated elsewhere
+# start with a git pull in case things were updated elsewhere
 git pull
 
-# scrape the github metrics for CORTX and mail the raw dump
-tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
-./scrape_metrics.py CORTX > $tfile
-echo "Please see attached" | mail -s "$mail_subj_prefix : Github Scraper Output" -r $email -a $tfile $email 
+scrape=1
+report=1
 
-# scrape the slack metrics for CORTX and mail the raw dump
-./scrape_slack.py > $tfile
-echo "Please see attached" | mail -s "$mail_subj_prefix : Slack Scraper Output" -r $email -a $tfile $email 
+function run_command {
+  Command=$1
+  subject=$2
+  email=$3
+  LS='ls'
+  echo "Command $Command , subj $subject , email $email"
+  tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
+  $Command &> $tfile
+  mail -s $subject -r $email $email < $tfile
+}
 
-# scrape the slack metrics for comparable projects 
-./scrape_projects.py -v > $tfile
-echo "Please see attached" | mail -s "$mail_subj_prefix : Slack Projects Output" -r $email -a $tfile $email 
-
-# mail the metrics as a CSV 
-ts=`date +%Y-%m-%d`
-tfile="/tmp/cortx_community_stats.$ts.csv"
-./print_metrics.py -c -a -s | grep -v '^Statistics' > $tfile
-./print_metrics.py | mail -s "$mail_subj_prefix : Summary with Attached CSV" -r $email -a $tfile $email 
-
-# mail innersource and external activity reports
-tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX)
-for group in 'EU R&D' Innersource External Unknown
-do
+function group_activity {
+  group=$1
+  gname=$2
+  tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX)
   ./get_personal_activity.py "$group" -w > $tfile
-  mail -s "$mail_subj_prefix : $group Activity" -r $email $email < $tfile
-done
+  mail -s "$mail_subj_prefix : $gname Activity" -r $email $email < $tfile
+}
 
-# mail the team report
-./get_personal_activity.py 'VenkyOS,johnbent,justinzw,TechWriter-Mayur,hessio,Saumya-Sunder,novium258' -w > $tfile
-mail -s "$mail_subj_prefix : Open Source Team Activity" -r $email $email < $tfile
+function scp_report {
+  report=$1
+  directory=$2
+  src=`ls /tmp/$report*html`
+  ts=`date +%Y-%m-%d`
+  base=`basename $src .html`
+  src2=/tmp/$base.$ts.html
+  scp $src 535110@$server:/home/535110/public_html/latest
+  cp $src $src2 
+  scp $src2 535110@$server:/home/535110/public_html/$directory
+}
 
-# make the executive report
-exec_report=CORTX_Metrics_Topline_Report
-jupyter nbconvert --execute --to pdf --output-dir=/tmp --no-input --output $exec_report.$ts $exec_report.ipynb
-echo "Please see attached" | mail -s "$mail_subj_prefix : Metrics Executive Report" -r $email -a /tmp/$exec_report.$ts.pdf $email 
-# scp it to the webserver Serkay set up for me
-jupyter nbconvert --execute --to slides --SlidesExporter.reveal_theme=serif --SlidesExporter.reveal_scroll=True --output-dir=/tmp --output $exec_report.$ts $exec_report.ipynb
-scp /tmp/$exec_report.$ts.html $server:/home/535110/public_html/exec_reports
+if [ "$1" == "noscrape" ]; then
+  scrape=0
+elif [ "$1" == "noreport" ]; then
+  report=0
+fi
 
-# make the community activity webpage
-cc_report=CORTX_Metrics_Community_Activity
-jupyter nbconvert --execute --to html --output-dir=/tmp --output $cc_report.$ts $cc_report.ipynb
-scp /tmp/$exec_report.$ts.html $server:/home/535110/public_html/community_reports
+if [ $scrape == 1 ]; then
+  echo "Doing scrape"
+  run_command "./scrape_metrics.py -t CORTX" "$mail_scrape_prefix : Github" $email
+  run_command "./scrape_slack.py" "$mail_scrape_prefix : Slack" $email
+  run_command "./scrape_projects.py -v" "$mail_scrape_prefix : Projects" $email
+  for p in 'Ceph' 'MinIO' 'DAOS' 'Swift' 'OpenIO' 'ECS'
+  do
+    run_command "./scrape_metrics.py -t $p" "$mail_scrape_prefix : $p Github" $email
+  done
 
-# make the bulk conversion of all metrics into graphs report
-bulk_report=CORTX_Metrics_Graphs
-jupyter nbconvert --execute --to pdf --output-dir=/tmp --no-input --output $bulk_report.$ts $bulk_report.ipynb
-echo "Please see attached" | mail -s "$mail_subj_prefix : Metrics Bulk Report" -r $email -a /tmp/$bulk_report.$ts.pdf $email 
+  ./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $email $email
+fi
 
-# scrape metrics for similar projects
-tfile=$(mktemp /tmp/other_projects.XXXXXXXXX.txt)
-touch $tfile
-for p in 'Ceph' 'MinIO' 'DAOS' 'Swift' 'OpenIO'
-do
-  ./scrape_metrics.py -t $p >> $tfile
-done
-echo "Please see attached" | mail -s "Scraping other projects" -r $email -a $tfile $email
+if [ $report == 1 ]; then 
+  echo "Doing report"
+  ts=`date +%Y-%m-%d`
 
-# make the comparison report 
-compare_report=CORTX_Metrics_Compare_Projects
-jupyter nbconvert --execute --to pdf --output-dir=/tmp --no-input --output $compare_report.$ts $compare_report.ipynb
-echo "Please see attached" | mail -s "$mail_subj_prefix : Project Comparison" -r $email -a /tmp/$compare_report.$ts.pdf $email 
+  # mail the metrics as a CSV 
+  tfile="/tmp/cortx_community_stats.$ts.csv"
+  ./print_metrics.py -c -a -s | grep -v '^Statistics' > $tfile
+  ./print_metrics.py | mail -s "$mail_subj_prefix : Summary with Attached CSV" -r $email -a $tfile $email 
 
-# commit the pickles because they were updated in the scrape and the update of non-scraped values
-./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $email $email
+  # mail activity reports
+  for group in 'EU R&D' Innersource External Unknown
+  do
+    group_activity "$group" "$group"
+  done
+  group_activity 'VenkyOS,johnbent,justinzw,TechWriter-Mayur,hessio,Saumya-Sunder,novium258' 'Open Source Team'
 
+  jupyter_args="--ExecutePreprocessor.timeout=180 --output-dir=/tmp"
+
+  /bin/rm -rf /tmp/CORTX_Metrics_* # clean up any old crap
+
+  exec_report=CORTX_Metrics_Topline_Report
+  jupyter nbconvert --execute --to slides --SlidesExporter.reveal_theme=serif --SlidesExporter.reveal_scroll=True $jupyter_args --output $exec_report $exec_report.ipynb
+  scp_report $exec_report exec_reports
+
+  cc_report=CORTX_Metrics_Community_Activity
+  jupyter nbconvert --execute --to html $jupyter_args --output $cc_report $cc_report.ipynb
+  scp_report $cc_report community_reports
+
+  bulk_report=CORTX_Metrics_Graphs
+  jupyter nbconvert --execute --to html $jupyter_args --output $bulk_report $bulk_report.ipynb
+  scp_report $bulk_report bulk_graphs
+
+  compare_report=CORTX_Metrics_Compare_Projects
+  jupyter nbconvert --execute --to html $jupyter_args --output $compare_report $compare_report.ipynb
+  scp_report $compare_report compare_projects
+
+  echo "Weekly autogenerated reports are available at http://gtx201.nrm.minn.seagate.com/~535110/.  Enjoy!" | mail -s "$mail_subj_prefix : HTML Reports Now Available" -r $email $email
+fi
+
+exit
