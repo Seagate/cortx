@@ -184,7 +184,7 @@ def print_activities(filtered_activities,logins,details,zero,people,since,until)
     actions = filtered_activities[k]
     (email,Type,Company)=get_info(login,people)
     total_score   = 0
-    if len(actions) > 0 or args.zero:
+    if len(actions) > 0 or zero:
       print("%d actions for %s [email %s, company %s, Type %s] %s" % (len(actions),login, email, Company, Type, daterange))
       total_actions += len(actions)
     for d,u in sorted(actions.items()):
