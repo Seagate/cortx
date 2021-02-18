@@ -1,6 +1,9 @@
 ===========================================================
 Guidelines and Instructions for GitHub Processes and Tools
 ===========================================================
+
+.. contents:: :local:
+ 
 *******
 GitHub
 *******
@@ -8,6 +11,12 @@ GitHub brings together the world's largest community of developers to discover, 
 
 Account Creation
 ================
+
+.. raw:: html 
+
+  <details> 
+  <summary><a>Click here to view the procedure.</a></summary> 
+
 To create a GitHub account, perform the procedure below.
 
 1. Navigate to the GitHub by clicking `https://github.com/ <https://github.com/>`_. The login page appears.
@@ -34,10 +43,19 @@ To create a GitHub account, perform the procedure below.
 5. Click **Create Account**. An email with a link to verify the created account would be sent to you.
 
    - Click the link to complete the verification process.
+   
+.. raw:: html
+   
+   </details>
 
 Personal Access Token (PAT)
 ===========================
-Personal Access Tokens (PATs) are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line. To generate a PAT, perform the procedure below.
+Personal Access Tokens (PATs) are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line. 
+
+.. raw:: html 
+
+  <details> 
+  <summary><a>Click here to view the procedure.</a></summary> 
 
 1. Sign in to GitHub.
 
@@ -57,10 +75,17 @@ Personal Access Tokens (PATs) are an alternative to using passwords for authenti
 
 9. Copy the token to the clipboard.
 
+.. raw:: html
+   
+   </details>
+
 Authorizing PAT
 ---------------
-To authorize a PAT, perform the procedure mentioned below.
+.. raw:: html 
 
+  <details> 
+  <summary><a>Click here to view the procedure.</a></summary>
+  
 1. Sign in to your GitHub account.
 
 2. In the upper-right corner of any page, click your profile photo, then click **Settings**. The **Profile** page is displayed.
@@ -69,10 +94,17 @@ To authorize a PAT, perform the procedure mentioned below.
 
 4. In the left sidebar, click **Personal access tokens**. The **Personal access tokens** page is displayed.
 
+.. raw:: html
+   
+   </details>
+
 Branching Information
 ======================
 
-Please note the below mentioned points.
+.. raw:: html 
+
+  <details> 
+  <summary><a>Click here to expand</a></summary> 
 
 - As per the global naming convention, we've renamed Master to Main branch.
 
@@ -88,9 +120,19 @@ Please note the below mentioned points.
 
 - A new Git branch can be created from the current branch.
 
+.. raw:: html
+   
+   </details>
+   
 
 Git Workflow
 ============
+
+.. raw:: html 
+
+  <details> 
+  <summary><a>Click here to expand</a></summary> 
+
 In Git, the following two aspects are applicable:
 
 - Gitflow
@@ -99,6 +141,7 @@ In Git, the following two aspects are applicable:
 
 Setting up the Git Config
 -------------------------
+
 To perform the Git configuration, use the following:
 
 - **$ git config --global user.name ‘Your Name’**
@@ -107,6 +150,7 @@ To perform the Git configuration, use the following:
 
 Cloning a Repository
 --------------------
+
 To clone a repository, perform the procedure below.
 
 1. Login to your GitHub account, and navigate to the above created fork.
@@ -148,6 +192,7 @@ To push the new dev branch to the remote repo, perform the following:
     
 Syncing the main Branch 
 ------------------------
+
 - Make your code changes, and commit.
 
   - When main is the branch, and is ready to pull the updates:
@@ -311,6 +356,10 @@ To create a pull request on GitHub, navigate to the main page of the respective 
 5. Click **Create Pull Request**. The pull request is raised successfully.
 
    .. image:: images/cpr.PNG
+   
+.. raw:: html
+   
+   </details>
 
 
 ******
