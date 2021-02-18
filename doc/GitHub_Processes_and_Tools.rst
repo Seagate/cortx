@@ -157,8 +157,8 @@ Cloning a Repository
 
 .. raw:: html 
 
-<details> 
-  <summary><a>Click here to view thw procedure</a></summary> 
+  <details> 
+  <summary><a>Click here to view the procedure</a></summary> 
 
 To clone a repository, perform the procedure below.
 
@@ -182,17 +182,18 @@ To clone a repository, perform the procedure below.
 
 7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
 
+
 .. raw:: html
    
-   </details>
+  </details>
 
 Pushing your Branch
 -------------------
 
 .. raw:: html 
 
-<details> 
-  <summary><a>Click here to view thw procedure</a></summary> 
+  <details> 
+  <summary><a>Click here to view the procedure</a></summary> 
 
 To push the new dev branch to the remote repo, perform the following:
 
@@ -217,8 +218,8 @@ Syncing the main Branch
 
 .. raw:: html 
 
-<details> 
-  <summary><a>Click here to view thw procedure</a></summary>
+  <details> 
+  <summary><a>Click here to view the procedure</a></summary>
 
 - Make your code changes, and commit.
 
@@ -256,8 +257,8 @@ Forking the Repository
 
 .. raw:: html 
 
-<details> 
-  <summary><a>Click here to view thw procedure</a></summary>
+  <details> 
+  <summary><a>Click here to view the procedure</a></summary>
   
 A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project i.e., creating a “fork” is producing a personal copy of some external contributor repository which act as a sort of bridge between the original repository and your personal copy.
 
@@ -321,7 +322,7 @@ Advantages of Forking
 
 .. raw:: html 
 
-<details> 
+  <details> 
   <summary><a>Click here to expand</a></summary>
 
 - Improving some other contributor's code 
@@ -340,7 +341,7 @@ Forking and Cloning
 
 .. raw:: html 
 
-<details> 
+  <details> 
   <summary><a>Click here to expand</a></summary>
 
 - "forked" repositories and "forking" are not special operations. Forked repositories are created using the standard git clone command. Forked repositories are generally server-side clones.  
@@ -360,7 +361,7 @@ Syncing the Fork with Repository
 
 .. raw:: html 
 
-<details> 
+  <details> 
   <summary><a>Click here to expand</a></summary>
   
 To configure Git to sync with the fork, perform the following:
@@ -412,7 +413,7 @@ Pull Request
 
 .. raw:: html 
 
-<details> 
+  <details> 
   <summary><a>Click here to view the procedure</a></summary>
   
 To create a pull request on GitHub, navigate to the main page of the respective repository, and perform the following:
