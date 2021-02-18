@@ -128,11 +128,6 @@ Branching Information
 Git Workflow
 ============
 
-.. raw:: html 
-
-  <details> 
-  <summary><a>Click here to expand</a></summary> 
-
 In Git, the following two aspects are applicable:
 
 - Gitflow
@@ -142,14 +137,28 @@ In Git, the following two aspects are applicable:
 Setting up the Git Config
 -------------------------
 
+.. raw:: html 
+
+  <details> 
+  <summary><a>Click here to view the procedure</a></summary> 
+
 To perform the Git configuration, use the following:
 
 - **$ git config --global user.name ‘Your Name’**
 
 - **$ git config --global user.email ‘Your.Name@yourdomain.com’**
 
+.. raw:: html
+   
+   </details>
+
 Cloning a Repository
 --------------------
+
+.. raw:: html 
+
+<details> 
+  <summary><a>Click here to view thw procedure</a></summary> 
 
 To clone a repository, perform the procedure below.
 
@@ -173,8 +182,17 @@ To clone a repository, perform the procedure below.
 
 7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
 
+.. raw:: html
+   
+   </details>
+
 Pushing your Branch
 -------------------
+
+.. raw:: html 
+
+<details> 
+  <summary><a>Click here to view thw procedure</a></summary> 
 
 To push the new dev branch to the remote repo, perform the following:
 
@@ -190,8 +208,17 @@ To push the new dev branch to the remote repo, perform the following:
    
     $ git push origin <local_branch>:<remote_branch>
     
+.. raw:: html
+   
+   </details>
+    
 Syncing the main Branch 
 ------------------------
+
+.. raw:: html 
+
+<details> 
+  <summary><a>Click here to view thw procedure</a></summary>
 
 - Make your code changes, and commit.
 
@@ -218,11 +245,20 @@ Syncing the main Branch
   ::
    
    $ git commit -m "<type>(<scope>): <subject>"
+   
+.. raw:: html
+   
+   </details>
     
 
 Forking the Repository
 -----------------------
 
+.. raw:: html 
+
+<details> 
+  <summary><a>Click here to view thw procedure</a></summary>
+  
 A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project i.e., creating a “fork” is producing a personal copy of some external contributor repository which act as a sort of bridge between the original repository and your personal copy.
 
 .. image:: images/fork.PNG
@@ -275,9 +311,18 @@ To fork a repository, perform the procedure mentioned below.
 Image Source: `Click here <https://www.toolsqa.com/git/git-fork/>`_
 
 **Note**: Forking is allowed for public repositories without permission but if the repository is private, the contributor can only be able to fork if he/she has required permission from the owner/admin of the repository. 
+
+.. raw:: html
+   
+   </details>
     
 Advantages of Forking
 ----------------------
+
+.. raw:: html 
+
+<details> 
+  <summary><a>Click here to expand</a></summary>
 
 - Improving some other contributor's code 
 
@@ -285,9 +330,18 @@ Advantages of Forking
 
 - Reduce license cost consumed per user or contributor 
 
+.. raw:: html
+   
+   </details>
+
 
 Forking and Cloning
 ---------------------
+
+.. raw:: html 
+
+<details> 
+  <summary><a>Click here to expand</a></summary>
 
 - "forked" repositories and "forking" are not special operations. Forked repositories are created using the standard git clone command. Forked repositories are generally server-side clones.  
 
@@ -297,8 +351,18 @@ Forking and Cloning
 
 .. image:: images/forkingcloning.PNG
 
+.. raw:: html
+   
+   </details>
+
 Syncing the Fork with Repository
 --------------------------------
+
+.. raw:: html 
+
+<details> 
+  <summary><a>Click here to expand</a></summary>
+  
 To configure Git to sync with the fork, perform the following:
 
 1. Clone your project by running the following command.
@@ -337,10 +401,20 @@ To configure Git to sync with the fork, perform the following:
    
     $ git merge upstream/main
     
-   Now your local repository is synced with the upstream repository and you can make changes to your local repository, and pull to the upstream repository
+   Now your local repository is synced with the upstream repository and you can make changes to your local repository, and pull to the upstream repository.
+   
+.. raw:: html
+   
+   </details>
      
 Pull Request
 ------------
+
+.. raw:: html 
+
+<details> 
+  <summary><a>Click here to view the procedure</a></summary>
+  
 To create a pull request on GitHub, navigate to the main page of the respective repository, and perform the following:
 
 1. Select the appropriate branch from the **Branch** drop-down menu.
