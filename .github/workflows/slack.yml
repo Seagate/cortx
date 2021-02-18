@@ -23,22 +23,32 @@ jobs:
       # Checks-out main branch under $GITHUB_WORKSPACE, so job can access it
       - uses: actions/checkout@v2
         with:
-          ref: slack-scheduler
-          
+          ref: main
+      
       # Install dotenv python package to load tokens in script
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          pip3 install python-dotenv
+          # pip3 install python-dotenv
             
       # Runs a script using the runners shell
       - name: Run a user extraction script
         working-directory: ./metrics/slack          
         env:
           SLACK_KEY: ${{ secrets.SLACK_KEY }}
-          
+          MINIO: ${{ secrets.MINIO }}
+          MINIO_COOKIE: ${{ secrets.MINIO_COOKIE }}
+          CEPH: ${{ secrets.CEPH }}
+          CEPH_COOKIE: ${{ secrets.CEPH_COOKIE }}
+          OPENIO: ${{ secrets.OPENIO }}
+          OPENIO_COOKIE: ${{ secrets.OPENIO_COOKIE }}
+          DAOS: ${{ secrets.DAOS }}
+          DAOS_COOKIE: ${{ secrets.DAOS_COOKIE }}
+          OPENSTACK: ${{ secrets.OPENSTACK }}
+          OPENSTACK_COOKIE: ${{ secrets.OPENSTACK_COOKIE }}           
+          SLACK_OAUTH: ${{ secrets.SLACK_OAUTH }}
         run: |
-          python3 slack_user_count.py -t $SLACK_KEY
+          python3 slack_user_count.py
       
       # Commmit the slack pickle file local repo    
       - name: Commit files
@@ -46,11 +56,11 @@ jobs:
          git config --local user.email "cortx.application@seagate.com"
          git config --local user.name "cortx-admin"
          git add ./metrics/pickles/slack_users_stats.pickle
-         git commit -m "Updating the slack user count pickle"
-         
-      # Push the slack pickle file to remote repo          
+         git commit -m "Updating the slack user count"
+      
+     # Push the slack pickle file to remote repo          
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }} 
+          branch: ${{ github.ref }}         
