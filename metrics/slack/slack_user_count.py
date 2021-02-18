@@ -12,9 +12,8 @@ import requests
 import json
 import os
 import pickle
-from dotenv import load_dotenv
 from cryptography.fernet import Fernet
-
+from datetime import datetime
 
 def get_args():
 
@@ -27,40 +26,7 @@ def get_args():
     # Execute the parse_args() method and return
     return parser.parse_args()
 
-def decrypt(filename, key):
-    """
-    Given a filename (str) and key (bytes), it decrypts the file and write it
-    """
-    f = Fernet(key)
-    with open(filename, "rb") as file:
-        # read the encrypted data
-        encrypted_data = file.read()
-    # decrypt data
-    decrypted_data = f.decrypt(encrypted_data)
-    # write the original file
-    with open(".env", "wb") as file:
-        file.write(decrypted_data)
 
-def load_key():
-    """
-    Loads the key from the current directory named `key.key`
-    """
-    cwd = os.getcwd()
-    key_path = os.path.join(cwd, "slack.key")
-    return open(key_path, "rb").read()
-
-#mykey = os.getenv('SLACK_KEY')
-args = get_args()
-mykey = args.token
-#mykey = "xJ4f4pNM-mRcBKGW-bSYM-iqSnMfuDEKM_s0dfjbI5g="
-#mykey = load_key()
-print ("Mykey", mykey)
-
-cwd = os.getcwd()
-file_path = os.path.join(cwd, "slack.env")
-decrypt(file_path, mykey)
-
-load_dotenv()
 token = os.getenv('SLACK_OATH')
 url = 'https://cortxcommunity.slack.com/api/team.stats.export'
 
@@ -161,18 +127,51 @@ def download_csv(type, date_range):
     return
 
 
+def open_pickle(path: str):
+    """Open a pickle and return loaded pickle object.
+    :type path: str
+    :param : path: File path to pickle file to be opened.
+    :rtype : object
+    """
+    try:
+        with open(path, 'rb') as opened_pickle:
+            try:
+                return pickle.load(opened_pickle)
+            except Exception as pickle_error:
+                print (pickle_error)
+                raise
+    except FileNotFoundError as fnf_error:
+        return dict()
+    except IOError as io_err:
+        print (io_err)
+        raise
+    except EOFError as eof_error:
+        print (eof_error)
+        raise
+    except pickle.UnpicklingError as unp_error:
+        print (unp_error)
+        raise
+
 def main():
     workspaces = ["MINIO", "OPENIO", "DAOS", "CEPH", "OPENSTACK"]
+    pkl_obj_file = "../pickles/slack_users_stats.pickle"
     workspace_list = {}
     for workspace in workspaces:
         result = api_process_post_method(workspace)
         print("Processing %s..." % (workspace))
         workspace_list[workspace] = result
         # print(json.dumps(result, indent=4, sort_keys=True))
+
+    pkl_dict = open_pickle(pkl_obj_file)
+    date = datetime.today().strftime('%Y-%m-%d')
+
+    pkl_dict[date] = workspace_list
+    print ("Updating the slack user count to pickle object")
+    print (json.dumps(workspace_list, indent=4, sort_keys=True))
+
     # Its important to use binary mode
-    dbfile = open('../pickles/slack_users_stats.pickle', 'ab')
-    pickle.dump(workspace_list, dbfile)
-    print ("List", workspace_list)
+    dbfile = open(pkl_obj_file, 'wb')
+    pickle.dump(pkl_dict, dbfile)
 
     # todo
     # download_csv('overview', '30d')
