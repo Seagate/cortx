@@ -35,7 +35,6 @@ jobs:
       - name: Run a user extraction script
         working-directory: ./metrics/slack          
         env:
-          SLACK_KEY: ${{ secrets.SLACK_KEY }}
           MINIO: ${{ secrets.MINIO }}
           MINIO_COOKIE: ${{ secrets.MINIO_COOKIE }}
           CEPH: ${{ secrets.CEPH }}
