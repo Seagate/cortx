@@ -7,7 +7,7 @@ on:
   # Triggers the workflow on on schedule for the main branch
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 0 * * *'  
+    - cron:  '0 0 * * *'
   # Allows you to run this workflow manually from the Actions tab    
   workflow_dispatch:
 
@@ -24,33 +24,42 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: main
-      
+
       # Install dotenv python package to load tokens in script
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          pip3 install python-dotenv
-            
+          # pip3 install python-dotenv
+
       # Runs a script using the runners shell
       - name: Run a user extraction script
-        working-directory: ./metrics/slack          
+        working-directory: ./metrics/slack
         env:
-          SLACK_KEY: ${{ secrets.SLACK_KEY }}
-          
+          MINIO: ${{ secrets.MINIO }}
+          MINIO_COOKIE: ${{ secrets.MINIO_COOKIE }}
+          CEPH: ${{ secrets.CEPH }}
+          CEPH_COOKIE: ${{ secrets.CEPH_COOKIE }}
+          OPENIO: ${{ secrets.OPENIO }}
+          OPENIO_COOKIE: ${{ secrets.OPENIO_COOKIE }}
+          DAOS: ${{ secrets.DAOS }}
+          DAOS_COOKIE: ${{ secrets.DAOS_COOKIE }}
+          OPENSTACK: ${{ secrets.OPENSTACK }}
+          OPENSTACK_COOKIE: ${{ secrets.OPENSTACK_COOKIE }}
+          SLACK_OAUTH: ${{ secrets.SLACK_OAUTH }}
         run: |
-          python3 slack_user_count.py -t $SLACK_KEY
-      
-      # Commmit the slack pickle file local repo    
+          python3 slack_user_count.py
+
+      # Commmit the slack pickle file local repo
       - name: Commit files
         run: |
-         git config --local user.email "cortx.application@seagate.com"
-         git config --local user.name "cortx-admin"
-         git add ./metrics/pickles/slack_users_stats.pickle
-         git commit -m "Update the slack user count"
-      
-     # Push the slack pickle file to remote repo          
+          git config --local user.email "cortx.application@seagate.com"
+          git config --local user.name "cortx-admin"
+          git add ./metrics/pickles/slack_users_stats.pickle
+          git commit -m "Updating the slack user count"
+
+      # Push the slack pickle file to remote repo
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }} 
+          branch: ${{ github.ref }}         
