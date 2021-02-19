@@ -1,6 +1,9 @@
 ===========================================================
 Guidelines and Instructions for GitHub Processes and Tools
 ===========================================================
+
+.. contents:: :local:
+ 
 *******
 GitHub
 *******
@@ -8,6 +11,12 @@ GitHub brings together the world's largest community of developers to discover, 
 
 Account Creation
 ================
+
+.. raw:: html 
+
+  <details> 
+  <summary><a>Click here to view the procedure.</a></summary> 
+
 To create a GitHub account, perform the procedure below.
 
 1. Navigate to the GitHub by clicking `https://github.com/ <https://github.com/>`_. The login page appears.
@@ -34,10 +43,19 @@ To create a GitHub account, perform the procedure below.
 5. Click **Create Account**. An email with a link to verify the created account would be sent to you.
 
    - Click the link to complete the verification process.
+   
+.. raw:: html
+   
+   </details>
 
 Personal Access Token (PAT)
 ===========================
-Personal Access Tokens (PATs) are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line. To generate a PAT, perform the procedure below.
+Personal Access Tokens (PATs) are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line. 
+
+.. raw:: html 
+
+  <details> 
+  <summary><a>Click here to view the procedure.</a></summary> 
 
 1. Sign in to GitHub.
 
@@ -57,10 +75,17 @@ Personal Access Tokens (PATs) are an alternative to using passwords for authenti
 
 9. Copy the token to the clipboard.
 
+.. raw:: html
+   
+   </details>
+
 Authorizing PAT
 ---------------
-To authorize a PAT, perform the procedure mentioned below.
+.. raw:: html 
 
+  <details> 
+  <summary><a>Click here to view the procedure.</a></summary>
+  
 1. Sign in to your GitHub account.
 
 2. In the upper-right corner of any page, click your profile photo, then click **Settings**. The **Profile** page is displayed.
@@ -69,10 +94,17 @@ To authorize a PAT, perform the procedure mentioned below.
 
 4. In the left sidebar, click **Personal access tokens**. The **Personal access tokens** page is displayed.
 
+.. raw:: html
+   
+   </details>
+
 Branching Information
 ======================
 
-Please note the below mentioned points.
+.. raw:: html 
+
+  <details> 
+  <summary><a>Click here to expand</a></summary> 
 
 - As per the global naming convention, we've renamed Master to Main branch.
 
@@ -88,25 +120,35 @@ Please note the below mentioned points.
 
 - A new Git branch can be created from the current branch.
 
+.. raw:: html
+   
+   </details>
+   
 
 Git Workflow
 ============
+
+.. raw:: html 
+
+  <details> 
+  <summary><a>Click here to expand</a></summary>
+
 In Git, the following two aspects are applicable:
 
 - Gitflow
 
 - Dev Branches
 
-Setting up the Git Config
--------------------------
+**1. Setting up the Git Config**
+
 To perform the Git configuration, use the following:
 
 - **$ git config --global user.name ‘Your Name’**
 
 - **$ git config --global user.email ‘Your.Name@yourdomain.com’**
 
-Cloning a Repository
---------------------
+**2. Cloning a Repository**
+
 To clone a repository, perform the procedure below.
 
 1. Login to your GitHub account, and navigate to the above created fork.
@@ -129,8 +171,7 @@ To clone a repository, perform the procedure below.
 
 7. Press **Enter**. Your local clone will be created. A local copy of your fork of the repository is created.
 
-Pushing your Branch
--------------------
+**3. Pushing your Branch**
 
 To push the new dev branch to the remote repo, perform the following:
 
@@ -146,8 +187,8 @@ To push the new dev branch to the remote repo, perform the following:
    
     $ git push origin <local_branch>:<remote_branch>
     
-Syncing the main Branch 
-------------------------
+**4. Syncing the main Branch**
+
 - Make your code changes, and commit.
 
   - When main is the branch, and is ready to pull the updates:
@@ -173,18 +214,17 @@ Syncing the main Branch
   ::
    
    $ git commit -m "<type>(<scope>): <subject>"
-    
+   
 
-Forking the Repository
------------------------
-
+**5. Forking the Repository**
+  
 A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project i.e., creating a “fork” is producing a personal copy of some external contributor repository which act as a sort of bridge between the original repository and your personal copy.
 
 .. image:: images/fork.PNG
 
 Image Source: `Click here <https://www.toolsqa.com/git/git-fork/>`_
 
-**How does Forking (Git Fork) work?**
+**5.1 How does Forking (Git Fork) work?**
 
 A contributor can use forks to propose changes related to fixing a bug rather than raising an issue for the same so he that he can:
 
@@ -205,7 +245,7 @@ To fork a repository, perform the procedure mentioned below.
 
 3. In the top-right corner of the page, click **Fork**. A fork of the required repository is created successfully.
 
-**Forking and Performing changes**
+**5.2 Forking and Performing changes**
 
 - Create a local clone of your fork by running the following command.
 
@@ -231,8 +271,7 @@ Image Source: `Click here <https://www.toolsqa.com/git/git-fork/>`_
 
 **Note**: Forking is allowed for public repositories without permission but if the repository is private, the contributor can only be able to fork if he/she has required permission from the owner/admin of the repository. 
     
-Advantages of Forking
-----------------------
+**6. Advantages of Forking**
 
 - Improving some other contributor's code 
 
@@ -240,9 +279,7 @@ Advantages of Forking
 
 - Reduce license cost consumed per user or contributor 
 
-
-Forking and Cloning
----------------------
+**7. Forking and Cloning**
 
 - "forked" repositories and "forking" are not special operations. Forked repositories are created using the standard git clone command. Forked repositories are generally server-side clones.  
 
@@ -252,8 +289,8 @@ Forking and Cloning
 
 .. image:: images/forkingcloning.PNG
 
-Syncing the Fork with Repository
---------------------------------
+**8. Syncing the Fork with Repository**
+  
 To configure Git to sync with the fork, perform the following:
 
 1. Clone your project by running the following command.
@@ -292,10 +329,10 @@ To configure Git to sync with the fork, perform the following:
    
     $ git merge upstream/main
     
-   Now your local repository is synced with the upstream repository and you can make changes to your local repository, and pull to the upstream repository
+   Now your local repository is synced with the upstream repository and you can make changes to your local repository, and pull to the upstream repository.
      
-Pull Request
-------------
+**9. Pull Request**
+  
 To create a pull request on GitHub, navigate to the main page of the respective repository, and perform the following:
 
 1. Select the appropriate branch from the **Branch** drop-down menu.
@@ -311,6 +348,10 @@ To create a pull request on GitHub, navigate to the main page of the respective 
 5. Click **Create Pull Request**. The pull request is raised successfully.
 
    .. image:: images/cpr.PNG
+   
+.. raw:: html
+   
+   </details>
 
 
 ******
