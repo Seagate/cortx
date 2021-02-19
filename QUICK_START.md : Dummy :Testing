@@ -20,6 +20,6 @@
     1. Run it on a cluster: TODO
 
     
-Once you're ready to make more contributions, please check out our [Contribution Guide](CONTRIBUTING.md).
+Once you're ready to make more contributions, please check out our [Contribution Guide](CONTRIBUTING.md)..
 
 
