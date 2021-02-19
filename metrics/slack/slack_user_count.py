@@ -128,8 +128,10 @@ def download_csv(type, date_range):
 
 
 def open_pickle(path: str):
-    """Open a pickle and return loaded pickle object.
+    """ 
+    Open a pickle and return loaded pickle object.
     :type path: str
+    
     :param : path: File path to pickle file to be opened.
     :rtype : object
     """
