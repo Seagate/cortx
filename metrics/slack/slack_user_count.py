@@ -105,7 +105,6 @@ def api_process_post_method(workspace):
         return response
     except Exception as error:
         print(error)
-        pass
 
 
 def download_csv(menu_type, date_range):
