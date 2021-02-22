@@ -63,9 +63,9 @@ function scp_report {
 
 if [ $scrape == 1 ]; then
   echo "Doing scrape"
-  run_command "./scrape_metrics.py -t CORTX" "$mail_scrape_prefix - Github" $email
   run_command "./scrape_slack.py" "$mail_scrape_prefix - Slack" $email
   run_command "./scrape_projects.py -v" "$mail_scrape_prefix - Projects" $email
+  run_command "./scrape_metrics.py CORTX" "$mail_scrape_prefix - Github" $email
   for p in 'Ceph' 'MinIO' 'DAOS' 'Swift' 'OpenIO' 'ECS'
   do
     run_command "./scrape_metrics.py -t $p" "$mail_scrape_prefix - $p Github" $email
@@ -90,7 +90,7 @@ if [ $report == 1 ]; then
   done
   group_activity 'VenkyOS,johnbent,justinzw,TechWriter-Mayur,hessio,Saumya-Sunder,novium258' 'Open Source Team'
 
-  jupyter_args="--ExecutePreprocessor.timeout=180 --output-dir=/tmp"
+  jupyter_args="--ExecutePreprocessor.timeout=180 --output-dir=/tmp --no-input"
 
   /bin/rm -rf /tmp/CORTX_Metrics_* # clean up any old crap
 
