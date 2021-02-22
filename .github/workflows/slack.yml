@@ -55,7 +55,7 @@ jobs:
           git config --local user.email "cortx.application@seagate.com"
           git config --local user.name "cortx-admin"
           git add ./metrics/pickles/slack_users_stats.pickle
-          git commit -m "Updating the slack user count"
+          git commit -m "Updating the slack user count on `date +'%Y-%m-%d %H:%M:%S'`"
 
       # Push the slack pickle file to remote repo
       - name: Push changes
