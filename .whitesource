@@ -1,7 +1,6 @@
 {
   "scanSettings": {
-    "configMode": "AUTO",
-    "projectToken": "e820be80c83845f88443b647ee2aed12e3382f75e1b14058b008fd0a49ffe492"
+    "configMode": "AUTO"
   },
   "checkRunSettings": {
     "displayMode": "diff",
