@@ -1,8 +1,10 @@
 {
   "scanSettings": {
-    "configMode": "LOCAL"
+    "configMode": "LOCAL",
+    "baseBranches": []
   },
   "checkRunSettings": {
+    "displayMode": "diff",
     "vulnerableCheckRunConclusionLevel": "failure"
   },
   "issueSettings": {
