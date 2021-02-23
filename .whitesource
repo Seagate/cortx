@@ -1,10 +1,13 @@
 {
   "scanSettings": {
-    "configMode": "AUTO"
+    "configMode": "AUTO",
+    "configExternalURL": "",
+    "projectToken": "",
+    "baseBranches": []
   },
   "checkRunSettings": {
-    "displayMode": "diff",
-    "vulnerableCheckRunConclusionLevel": "failure"
+    "vulnerableCheckRunConclusionLevel": "failure",
+    "displayMode": "diff"
   },
   "issueSettings": {
     "minSeverityLevel": "LOW"
