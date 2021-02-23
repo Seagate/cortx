@@ -48,8 +48,7 @@ def main():
   repos = sorted([repo for repo in ps.get_repos() if repo != 'GLOBAL'])
 
   # just use global from the scrape
-  gstats=ps.get_latest('GLOBAL')[0]
-  timestamp = None
+  (gstats,timestamp)=ps.get_latest('GLOBAL')
 
   if args.individual:
     (repo,timestamp) = ps.get_latest(args.individual)
