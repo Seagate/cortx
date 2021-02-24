@@ -95,7 +95,7 @@ def get_members(client,all_people,slack_people):
     # get profile
     glogin=None
     if slack_people.find_person(m['id']):
-      print("Person %s is already in our slack pickle" % m['name'])
+      #print("Person %s is already in our slack pickle" % m['name']) # overly verbose
       glogin=slack_people.get_github(m['id'])
     else:
       response = call_api(client=client,method="users.profile.get",data={'user' : m['id']})

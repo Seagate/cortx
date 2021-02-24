@@ -108,6 +108,96 @@ def get_details(url,stx):
       raise Exception("unknown contribution; can't score: %s" % (url))
   return (points,msg) 
 
+def get_activities(logins,company,people):
+  activity = cortx_community.CortxActivity()
+  activities = {}
+  logins = get_logins(logins,people,company)
+  for login in logins:
+    activities[login] = {}
+    try:
+      # create a new structure to hold the data in an organization that is more easily sorted
+      # go through the activity and save each into the new format
+      # problem is that the watch event doesn't have a date for it . . . 
+      for (url,created_at) in activity.get_activities(login):
+        if created_at is not None:  # just don't count watch events since they don't have a date
+          activities[login][created_at] = url
+    except KeyError: 
+      pass
+      #print("Login %s has no observed activity" % login)
+  return (activities,logins)
+
+def filter_activities(activities,since,until,limit):
+  # using the new data structure, filter by since and until 
+  filtered_activities = {}
+  if since or until:
+    for login,actions in sorted(activities.items()):
+      filtered_activities[login]={}
+      for d,u in sorted(actions.items()):
+        if since and d < since:
+          continue
+        if until and d > until:
+          continue
+        filtered_activities[login][d]=u
+  else:
+    filtered_activities = activities
+
+  # optionally filter by limit
+  if limit:
+    new_filtered = {}
+    for login,actions in sorted(filtered_activities.items()):
+      if len(actions) >= limit:
+        new_filtered[login]=actions
+    filtered_activities = new_filtered
+  return filtered_activities
+
+def get_info(login,people):
+  try:
+    email=people.get_email(login)
+  except KeyError:
+    email = None
+  try:
+    Type=people.get_type(login)
+  except KeyError:
+    Type = None
+  try:
+    Company=people.get_company(login)
+  except KeyError:
+    Company = None
+  return(email,Type,Company)
+
+def print_activities(filtered_activities,logins,details,zero,people,since,until):
+  if details:
+    gh = Github(os.environ.get('GH_OATH'))
+    stx = gh.get_organization('Seagate')
+
+  daterange = "since %s" % (since.strftime('%Y-%m-%d') if since else "inception")
+  if until:
+    daterange += " until %s" % until.strftime('%Y-%m-%d')
+
+  if len(logins) > 1:
+    print("Getting activities from %d logins: %s" % (len(logins),sorted(logins)))
+
+  # now print from the filtered list as sorted by the quantitied of actions per login
+  total_actions = 0
+  for k in sorted(filtered_activities, key=lambda k: len(filtered_activities[k]), reverse=True):
+    login = k
+    actions = filtered_activities[k]
+    (email,Type,Company)=get_info(login,people)
+    total_score   = 0
+    if len(actions) > 0 or zero:
+      print("%d actions for %s [email %s, company %s, Type %s] %s" % (len(actions),login, email, Company, Type, daterange))
+      total_actions += len(actions)
+    for d,u in sorted(actions.items()):
+      if details:
+        (points,Details) = get_details(u,stx)
+        total_score += points
+      print("\t-- %s %s %s %s" % (login,d,u, Details if details else ''))
+    if len(actions) > 0 and details:
+      print("\t%4.1f POINTS for %s" % (total_score,login))
+      
+  print("SUMMARY: %d total observed actions from %s %s" % (total_actions, logins, daterange))
+
+
 def main():
   parser = argparse.ArgumentParser(description='Retrieve all activity done by a particular user.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
   parser.add_argument('login', metavar='LOGIN', type=str, help="Comma-separate lists of logins [can use External,Hackathon,EU R&D,Innersource,All,Unknown as wildcards]")
@@ -121,8 +211,8 @@ def main():
   parser.add_argument('-z', '--zero', action='store_true', help="Show folks even if they have no actions")
   args = parser.parse_args()
 
-  activity = cortx_community.CortxActivity()
   people=cortx_community.CortxCommunity()
+  (activities,logins) = get_activities(logins=args.login,company=args.company,people=people)
 
   if args.since:
     args.since = dateparser.parse(args.since)
@@ -132,81 +222,10 @@ def main():
     args.since = datetime.datetime.today() - datetime.timedelta(days=7)
   if args.last_month:
     args.since = datetime.datetime.today() - datetime.timedelta(days=30)
-  daterange = "since %s" % (args.since.strftime('%Y-%m-%d') if args.since else "inception")
-  if args.until:
-    daterange += " until %s" % args.until.strftime('%Y-%m-%d')
 
-  if args.details:
-    gh = Github(os.environ.get('GH_OATH'))
-    stx = gh.get_organization('Seagate')
+  filtered_activities=filter_activities(activities=activities,since=args.since,until=args.until,limit=args.limit)
 
-  activities = {}
-  logins = get_logins(args.login,people,args.company)
-  for login in logins:
-    activities[login] = {}
-    try:
-      # create a new structure to hold the data in an organization that is more easily sorted
-      # go through the activity and save each into the new format
-      # problem is that the watch event doesn't have a date for it . . . 
-      for (url,created_at) in activity.get_activities(login):
-        if created_at is not None:  # just don't count watch events since they don't have a date
-          activities[login][created_at] = url
-    except KeyError: 
-      pass
-      #print("Login %s has no observed activity" % login)
-
-  # using the new data structure, filter by since and until 
-  filtered_activities = {}
-  if args.since or args.until:
-    for login,actions in sorted(activities.items()):
-      filtered_activities[login]={}
-      for d,u in sorted(actions.items()):
-        if args.since and d < args.since:
-          continue
-        if args.until and d > args.until:
-          continue
-        filtered_activities[login][d]=u
-  else:
-    filtered_activities = activities
-
-  # optionally filter by limit
-  if args.limit:
-    new_filtered = {}
-    for login,actions in sorted(filtered_activities.items()):
-      if len(actions) >= args.limit:
-        new_filtered[login]=actions
-    filtered_activities = new_filtered
-
-
-  if len(logins) > 1:
-    print("Getting activities from %d logins: %s" % (len(logins),sorted(logins)))
-
-  # now print from the filtered list
-  total_actions = 0
-  for k in sorted(filtered_activities, key=lambda k: len(filtered_activities[k]), reverse=True):
-    login = k
-    actions = filtered_activities[k]
-  #for login,actions in sorted(filtered_activities.items()):
-    try:
-      email=people.get_email(login)
-      Type=people.get_type(login)
-    except KeyError:
-      email = None
-      Type = None
-    total_score   = 0
-    if len(actions) > 0 or args.zero:
-      print("%d actions for %s [email %s, Type %s] %s" % (len(actions),login, email, Type, daterange))
-      total_actions += len(actions)
-    for d,u in sorted(actions.items()):
-      if args.details:
-        (points,details) = get_details(u,stx)
-        total_score += points
-      print("\t-- %s %s %s %s" % (login,d,u, details if args.details else ''))
-    if len(actions) > 0 and args.details:
-      print("\t%4.1f POINTS for %s" % (total_score,login))
-
-      
-  print("SUMMARY: %d total observed actions from %s %s" % (total_actions, args.login, daterange))
+  print_activities(filtered_activities=filtered_activities,logins=logins,details=args.details,zero=args.zero,people=people,since=args.since,until=args.until)
 
 if __name__ == "__main__":
     main()

@@ -19,11 +19,15 @@ The schedule is as follows:
 
 #. January 7, 2021: Serkay Olmez discusses Data Durability and Availability Modeling in Erasure Coded Systems including a discussion about the importance of multi-level erasure coding.  `HTML <https://quarktetra.github.io/presentations/CortxDurabilityAvailability/presentation.html#/>`_ | `PDF <PDFs/serkay_olmez_cortx_mmaa_jan_2021.pdf>`_ |  `Video <https://cortx.link/data-durability-gh>`_.
 
-#. February 4, 2021: Gregory Touretsky, the CORTX Product Manager, will discuss the CORTX feature roadmap.  
+#. February 4, 2021: Gregory Touretsky, the CORTX Product Manager, discussed the CORTX feature roadmap. `PDF <PDFs/Building the Ultimate Object Store.pdf>`_  |   `Video <https://cortx.link/MTA-Feb>`_.
 
-#. March 4, 2021: Sai Narasimhamurthy, Andriy Tkachuk, and Ganesan Umanesan will present the CORTX related research happening in the European Union on the SAGE CORTX Cluster.  The discussion will include various research topics happening including, but not limited to, Hierarchical Storage Management.
+#. March 4, 2021: Anatoliy Bilenko will discuss observability in CORTX by demonstrating how to use the `ADDB in motr <https://github.com/Seagate/cortx-motr/blob/main/doc/ADDB.rst>`_.
 
-#. April 1, 2021: TBA
+#. April 1, 2021: Sai Narasimhamurthy, Andriy Tkachuk, and Ganesan Umanesan will present the CORTX related research happening in the European Union on the SAGE CORTX Cluster.  The discussion will include various research topics happening including, but not limited to, Hierarchical Storage Management.
+
+#. May 6, 2021: Dr. Debasmita Samaddar from Culham Center for Fusion Energy (our first external speaker!) will discuss "Parallel in time and object storage w/ CORTX".
+
+#. June 3, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk will lead a tutorial about installing, configuring, and tuning motr clusters.
 
 #. Future months TBA
 
