@@ -2,7 +2,7 @@
 ===============================
 CORTX on Open Virtual Appliance
 ===============================
-An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.  The minimum recommended system should have at least 4 CPU cores, at least 8 GB of RAM, and at least 120 GB of local storage.  For our Japanese community, this document has been translated and is available `here <https://qiita.com/Taroi_Japanista/items/0ac03f55dce3f7433adf>`_.
+An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.  The minimum recommended system should have at least 4 CPU cores, at least 8 GB of RAM, and at least 120 GB of local storage. Current version of the OVA requires DHCP server to assign IPs to all 3 network interfaces. For our Japanese community, this document has been translated and is available `here <https://qiita.com/Taroi_Japanista/items/0ac03f55dce3f7433adf>`_.
 
 ***********************
 Recommended Hypervisors
@@ -62,8 +62,18 @@ The procedure to install CORTX on OVA is mentioned below.
       - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
       - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
+      
+#. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
    
-#. Run the below mentioned commands to check the status of different services that are part of CORTX.
+   ::
+   
+      hctl status
+   
+   The output should be similar to the image below
+
+   .. image:: images/hctl_status_output.png
+
+#. Run the commands below to check the status of different services that are part of CORTX.
 
    ::
 
@@ -71,16 +81,15 @@ The procedure to install CORTX on OVA is mentioned below.
     systemctl status elasticsearch   
     systemctl status haproxy
     systemctl status s3authserver 
-    systemctl status sspl-ll    
-    hctl status    
+    systemctl status sspl-ll      
     systemctl status csm_agent    
     systemctl status csm_web
  
-   The below images shows the output of a successful *systemctl* command; notice how the service is *active*.
+   The image below shows the output of a successful *systemctl* command; notice how the service is *active*.
    
    .. image:: images/systemctl_output.png
    
-   If the SSPL service is inactive, run the below commands.
+   If the SSPL service is inactive, run these command.
 
    ::
 
@@ -90,7 +99,7 @@ The procedure to install CORTX on OVA is mentioned below.
     
     systemctl start sspl-ll    
 
-   If any other service is inactive, run the below mentioned command.
+   If any other service is inactive, run this command.
 
    ::
 
@@ -241,6 +250,12 @@ Restart CORTX
    </details>
    
 Tested by:
+
+- Feb 4, 2021:  Tim Coulter (timothy.r.coulter@seagate.com) using OVA release 1.0.2 on MAC running VMWare Fusion 12.1.0
+
+- Jan 13, 2021: Mayur Gupta (mayur.gupta@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
+
+- Jan 6, 2021: Patrick Hession (patrick.hession@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
 - Dec 10, 2020: Suprit Shinde (suprit.shinde@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
