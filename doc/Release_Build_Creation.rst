@@ -2,7 +2,7 @@
 Release Build Creation
 =======================
 
-This file consists of the procedure that must be followed to generate the release build outside the Seagate network.
+This file consists of the procedure that should be followed to generate the release build outside the Seagate network using `cortx-build <https://github.com/orgs/Seagate/packages/container/package/cortx-build>`_ docker image. 
 
 ***************
 Procedure
