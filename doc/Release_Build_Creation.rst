@@ -14,15 +14,6 @@ Procedure
    
 #. Install the docker packages in the system or VM. Refer to `Docker Installation <https://docs.docker.com/engine/install/centos/>`_.
 
-#. Login to GitHub Docker Registry using below commands.  For details refer `GitHub Doc <https://docs.github.com/en/packages/guides/migrating-to-github-container-registry-for-docker-images#authenticating-with-the-container-registry>`_.
-
-   ::
-   
-      GITHUB_TOKEN=<Your GitHub Token with proper access>
-      echo $GITHUB_TOKEN | docker login ghcr.io -u <Your GitHub USERNAME> --password-stdin
-       
- 
-
 #. Clone the repositories of the required components on VM at /root/cortx (You can use any other directory by updating the docker run command accordingly). Clone the entire CORTX repository by running the following command.
 
    ::
