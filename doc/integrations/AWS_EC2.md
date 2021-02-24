@@ -3,7 +3,7 @@
 
 Summary:
 ----
-TODO
+This document walks you through how to set up CORTX on an Amazon EC2 instance and how to perform IO operations using another EC2 instance on the same subnet.
 
 Prerequisites:
 -------
@@ -41,9 +41,9 @@ Step 2: Create security group and subnets
 Step 3: Create 2 network interfaces on different subnets with the security group and attach them to the EC2 instance
 ----
 
-- Go to Network Interfaces and create a network interface with the security group that you created above.
-- Name that network interface ens256 and ens224
-- Attach that interface to the EC2 instance
+- [Create 2 network interfaces](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#create_eni) with the security group that you created above.
+- It will be helpful to name that network interface ens256 and ens224 so that it is easy to remember.
+- [Attach that interface] (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#attach_eni) to the EC2 instance that you created in Step 2.
 
 Step 4: Boot up the EC2 instance and edit net .rules file to create stable names for the network interfaces
 ---------------
