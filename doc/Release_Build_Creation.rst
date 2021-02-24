@@ -47,7 +47,7 @@ Procedure
    
     docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation.
     
-   You can also append the **iso_generation** target in **make build** command (step 5).
+   You can also append the **iso_generation** target in **make build** command (step 6).
    
 #. After the **docker run** execution is complete, the  release build will be available at the following location.
 
