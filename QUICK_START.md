@@ -8,7 +8,7 @@
     1. Run it across a cluster: [DONE?](doc/scaleout/README.rst)
 1. Build motr from the source: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
     1. Run freshly built motr on a single node: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
-    1. Run it on a cluster: [DONE?](https://github.com/Seagate/cortx/wiki/Build-Motr-from-Source-in-a-Cluster)
+    1. Run it on a cluster: [LINK](https://github.com/Seagate/cortx/wiki/Build-Motr-from-Source-in-a-Cluster)
 1. Build motr + S3 from the source: [DONE?](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
     1. Run it on a single node [DONE?](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
     1. Run it on a cluster [TODO]
