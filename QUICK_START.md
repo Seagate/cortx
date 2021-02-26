@@ -3,6 +3,7 @@
  1. Download a CORTX virtual machine image for easy testing
     1. Run it on a single node: [LINK](doc/CORTX_on_Open_Virtual_Appliance.rst)
     1. Run it on a cluster: TODO
+    1. Run it on an AWS EC2 instance [LINK](doc/integrations/AWS_EC2.md)
 1. Download CORTX as prepackaged software releases
     1. Run it on a single node: TODO
     1. Run it across a cluster: [DONE?](doc/scaleout/README.rst)
