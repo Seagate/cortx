@@ -9,7 +9,7 @@ in which time is left for a question and answer session.
 Please `click here <https://raw.githubusercontent.com/Seagate/cortx/main/doc/meetings/CORTX_Monthly_Meet_an_Architect_Series.ics>`_ to 
 add the event to your calendar. If the link does not automatically open your calendar app, choose 'Save As' and save the .ics file on your local drive.  Then open the file with your calendar application. Note: the calendar series starts with the first (November 5th), but should show up as a recurring series once added into your calendar.
 
-The Meet an Architect series are open to the public via this `WebEx link <https://seagate.webex.com/seagate/j.php?MTID=mb41af913a4001fa5f063eba9551154f6>`_.  All meetings will be recorded and made available on this page afterwards.
+The Meet an Architect series are open to the public via this `WebEx link <https://seagate.webex.com/seagate/j.php?MTID=mb41af913a4001fa5f063eba9551154f6>`_.  All meetings will be recorded and made available on this page afterwards. Audience members may also be interested in our `Motr Deep Dive training sessions <https://github.com/Seagate/cortx-motr/wiki/Motr-Deep-Dive-Sessions>`_.
 
 The schedule is as follows:
 
