@@ -4,7 +4,7 @@ This document presents the most common methods by which interested parties can t
  
  1. Run a pre-built CORTX OVA (virtual machine image)
     1. On a single node: [LINK](doc/CORTX_on_Open_Virtual_Appliance.rst)
-    1. Run it on an AWS EC2 instance [LINK](doc/integrations/AWS_EC2.md)
+    1. On an AWS EC2 instance: [requires verification](doc/integrations/AWS_EC2.md)
     1. Across a cluster: TODO
 1. Build motr from the source: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
     1. Run it on a single node: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
