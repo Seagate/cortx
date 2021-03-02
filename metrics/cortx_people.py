@@ -92,7 +92,7 @@ def merge(target_login,source_login,people):
   # copy over company, type, linkedin, and email; merge notes
   if source.get_company() and not target.get_company():
     print("Trying to transfer company %s" % source.get_company())
-    people.set_company(target_login,source.get_company())
+    people.update_company(target_login,source.get_company())
   if source.get_type() and not target.get_type():
     print("Trying to transfer type %s" % source.get_type())
     people.set_type(target_login,source.get_type())
