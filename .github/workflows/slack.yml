@@ -24,7 +24,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: main
-
+          token: ${{ secrets.ACCESS_TOKEN }}
+          submodules: 'recursive'
+          
       # Install dotenv python package to load tokens in script
       - name: Install dependencies
         run: |
@@ -48,18 +50,12 @@ jobs:
           SLACK_OAUTH: ${{ secrets.SLACK_OAUTH }}
         run: |
           python3 slack_user_count.py
-
+          
       # Commmit the slack pickle file local repo
       - name: Commit files
         run: |
-          git config --local user.email "cortx.application@seagate.com"
-          git config --local user.name "cortx-admin"
+          git config --global user.email "cortx.application@seagate.com"
+          git config --global user.name "cortx-admin"
           git add ./metrics/pickles/slack_users_stats.pickle
           git commit -m "Updating the slack user count on `date +'%Y-%m-%d %H:%M:%S'`"
-
-      # Push the slack pickle file to remote repo
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}         
+          git push origin main
