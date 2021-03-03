@@ -6,12 +6,15 @@ We take the security of the CORTX project seriously. If you find any security vu
 
 :warning: **Please do not publicly report any security vulnerabilities via GitHub issues.**
 
-Instead, please report them to us by mailing us at [cortx-questions@seagate.com](mailto:cortx-questionse@seagate.com). 
+If you have concerns or questions, please email us at [cortx-questions@seagate.com](mailto:cortx-questionse@seagate.com). 
 
-#### Reporting Format
+To report an actual vulnerability, please use the "[Seagate Responsible Vulnerability Disclosure Policy](https://www.seagate.com/legal-privacy/responsible-vulnerability-disclosure-policy/)"
+ 
+
+### Reporting Format
 
 To make your reporting meaningful and help us understand the nature and scope of the issue, please include as much information as possible. 
 
-#### Preferred Languages
+### Preferred Languages
 
 We prefer all communications to be in English.
