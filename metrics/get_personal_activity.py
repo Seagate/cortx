@@ -175,7 +175,7 @@ def print_activities(filtered_activities,logins,details,zero,people,since,until)
     daterange += " until %s" % until.strftime('%Y-%m-%d')
 
   if len(logins) > 1:
-    print("Getting activities from %d logins: %s" % (len(logins),sorted(logins)))
+    print("Getting activities from %d logins" % (len(logins)))
 
   # now print from the filtered list as sorted by the quantitied of actions per login
   total_actions = 0
