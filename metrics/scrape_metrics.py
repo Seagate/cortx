@@ -218,6 +218,7 @@ def get_top_level_repo_info(stats,repo,people,author_activity,gh,org_name):
     url = 'starred -> %s' % repo
     add_star_watch_fork(key=key,url=url,item=sg,stats=stats,people=people,author=sg.user,author_activity=author_activity,Type='stars',gh=gh,repo=repo,org_name=org_name)
 
+  # ugh, this sometimes fails.  I think the problem is that the iterator is silently doing an API count so we can hit the rate limit....
   for w in repo.get_watchers():
     key = 'watched -> %s:%s' % (repo,w.login)
     url = 'watched -> %s' % repo
@@ -248,6 +249,8 @@ def get_top_level_repo_info(stats,repo,people,author_activity,gh,org_name):
     stats['top_paths'] = top_paths
   except github.GithubException as e:
     print("Can't get referrers: GithubException %s" % e.data)
+  except Exception as e:
+    print("Can't get referrers: unknown exception", e )
 
   stats['downloads_releases'] = 0 # needed if we are running in update mode
   stats['downloads_vms'] = 0 # needed if we are running in update mode
