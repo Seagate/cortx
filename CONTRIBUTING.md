@@ -12,6 +12,9 @@ Thanks for joining us and we're glad to have you. We take community very serious
 
 You can report instances of abusive, harassing, or otherwise unacceptable behavior by contacting the project team at opensource@seagate.com.
 
+## Deployment and Testing
+- Learn various methods to acquire, build, run and test CORTX in our [Quick Start Guide](QUICK_START.md).
+
 ## Contribution Process
 
 ### Prerequisites
@@ -19,7 +22,7 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 - Please read our [CORTX Code Style Guide](doc/CodeStyle.md).
 - Get started with [GitHub Tools and Procedures](doc/GitHub_Processes_and_Tools.rst), if you are new to GitHub.
    - Please find additional information about [working with git](doc/working_with_git.md) specific to CORTX.
-- Plese read about our [DCO and CLA policies](doc/dco_cla.md).
+- Please read about our [DCO and CLA policies](doc/dco_cla.md).
 
 ### Development
 
@@ -51,8 +54,6 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
  
 ## Additional Resources
 
-- Download and run a [single node CORTX VM](doc/CORTX_on_Open_Virtual_Appliance.rst) for testing purposes.
-- Setup and test [a scale-out distributed CORTX](doc/scaleout/README.rst).
 - Learn more about the [CORTX Architechture](doc/architecture.md). 
 - Learn more about [CORTX CI/CD and Automation](doc/CI_CD.md).
 - Browse our [suggested list of contributions](https://github.com/Seagate/cortx/blob/main/doc/SuggestedContributions.md).
@@ -60,6 +61,10 @@ You can report instances of abusive, harassing, or otherwise unacceptable behavi
 ## Communication Channels
 
 Please refer to the [Support](SUPPORT.md) section to know more about the various channels by which you can reach out to us. 
+
+## Acknowledgements
+
+After making a contribution, please don't forget to include yourself in our [Contributors list](CONTRIBUTORS.md).
 
 ## Thank You!
 

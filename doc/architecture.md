@@ -7,7 +7,7 @@
 * [Motr in Prose](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-in-prose.md)
 * [SNS (io, repair, rebalance)](/doc/be/sns-io-repair-rebalance.md)
 * [CORTX S3 IAM Overview](/doc/be/CORTX_S3_IAM_Overview.rst)
-* [CORTX Core Architecture Overview](/doc/be/CortxCoreArchitechture.rst)
+* [CORTX Core Architecture Overview](https://github.com/Seagate/cortx-motr/blob/main/doc/CORTX_MOTR_ARCHITECTURE.rst)
 * [CORTX Core - Deep Dive](/doc/be/CORTXS3IAMDD.rst)
 * [CORTX S3 Server Overview](/doc/be/CORTX-S3OVERVIEW.rst)
 * [CORTX EU R&D (Introductory Tutorial)](/doc/be/CORTX_TUTORIAL.rst)
