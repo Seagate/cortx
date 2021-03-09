@@ -9,8 +9,9 @@ Recommended Hypervisors
 ***********************
 All of the following hypervisors should work: `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_,
 `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
-`VMware Fusion <https://www.vmware.com/products/fusion.html>`_, and
-`VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_. 
+`VMware Fusion <https://www.vmware.com/products/fusion.html>`_,
+`VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_, and
+`Oracle VM VirtualBox <https://www.virtualbox.org/>`_. 
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.  For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
@@ -49,6 +50,65 @@ The procedure to install CORTX on OVA is mentioned below.
      * **hostnamectl status**
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have a DNS server with which to register the VM, you can access it directly using its IP addresses. However, the hostname is mandatory and should be configured.
+
+#. **For Oracle VM VirtualBox Users ONLY**:
+   
+   
+   .. raw:: html
+
+      <details>
+      <summary><a>Expand</a></summary>
+
+   You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens192, ens224 and ens256:
+
+   #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
+
+      * **ip a l**
+
+   #. Record the MAC addresses and go to the following directory:
+
+      * **cd /etc/sysconfig/network_scripts/**
+      * **vi ifcfg-ens192**
+      * Add a new line under **BOOTPROTO=dhcp**
+      * Add a new parameter with the MAC Address *HWADDR=<enp0s3-MAC-Address>*
+      * Repeat the steps for enp0s8 and enp0s9 respectively
+      * **vi ifcfg-ens224**
+      * **vi ifcfg-ens256**
+
+      Sample output **cat ifcfg-ens256**:
+      ::
+         DEVICE="ens256"
+         USERCTL="no"
+         TYPE="Ethernet"
+         BOOTPROTO="dhcp"
+         HWADDR=08:00:27:25:65:74
+         ONBOOT="yes"
+         PREFIX="24"
+         PREDNS="no"
+         DEFROUTE="no"
+         NM_CONTROLLED="no"
+         ZONE=trusted
+
+   #. Reboot the machine by exiting the VM with **Power off the machine** and restart by booting the Rescue OS.
+
+   #. To verify the change in Network Device Name, run the following command:
+
+      * **ip a l**
+
+   #. The Date/Time would sometimes be incorrect as it uses local time as UTC
+
+      * **date**
+
+      If the time displayed is incorrect, use the following command to list and change your timezone accordingly, then change your date/time as necessary (Otherwise, you might face SSL certificate problems later)
+
+      * **timedatectl list-timezones**
+      * **timedatectl set-timezone Asia/Kuala_Lumpur**
+      * **date +%Y%m%d -s "20201231"**
+      * **date +%T -s "11:14:00"**
+
+   .. raw:: html
+
+      </details>
 
 #. Start the CORTX services by running this bootstrap.sh script:
    ::
