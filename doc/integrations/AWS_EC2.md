@@ -66,9 +66,9 @@ Fill in the key for `ATTR{address}==` with the MAC address you want for each net
 
 *Example:*
 ```
-  SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:6d:62:4e:41:e3", NAME="ens192"
-  SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:7c:de:ea:8a:8d", NAME="ens224"
-  SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:61:b7:69:e6:c9", NAME="ens256"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:6d:62:4e:41:e3", NAME="ens192"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:7c:de:ea:8a:8d", NAME="ens224"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:61:b7:69:e6:c9", NAME="ens256"
 ```
 **Do NOT just copy this example, fill in the MAC adddress of YOUR network interfaces**
 
@@ -78,7 +78,7 @@ The naming of both drives in the bootstrap script are quite specific to do this 
 
 - Run these 2 commands:
 
-```ln -s /dev/nvme2n1 /dev/sdb```
+```ln -s /dev/nvme1n1 /dev/sdb```
 
 ```ln -s /dev/nvme2n1 /dev/sdc```
 
