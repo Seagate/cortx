@@ -175,7 +175,7 @@ The procedure to install CORTX on OVA is mentioned below.
     
     salt '*' cmd.run "firewall-cmd --reload"
       
-Run **ip a l** and record the IP addresses of the following interfaces:
+#. Run **ip a l** and record the IP addresses of the following interfaces:
 
    * ens192 - management 
    * ens256 - public data
@@ -200,7 +200,7 @@ Run **ip a l** and record the IP addresses of the following interfaces:
     
    - <<Data IP>> s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com
 
-#. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
+ #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
 #. Now that you have the complete system up and running, using the data IP from the **ip a l** command, use these instructions `to test the system <testing_io.rst>`_  and observe activity in the GUI.  For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
 
