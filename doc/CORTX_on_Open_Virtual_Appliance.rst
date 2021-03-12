@@ -171,8 +171,6 @@ The procedure to install CORTX on OVA is mentioned below.
                
     salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
     
-    salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=28100/tcp --permanent"
-    
     salt '*' cmd.run "firewall-cmd --reload"
       
 Run **ip a l** and record the IP addresses of the following interfaces:
