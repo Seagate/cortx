@@ -105,7 +105,7 @@
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
-        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
