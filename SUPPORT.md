@@ -1,6 +1,7 @@
 Looking for support for one of the CORTX software modules or to discuss things with your fellow CORTX Community members?
 
 <!-- NOTE!!! This is copied into README.md.  If you update it here, update it there as well.) -->
+-   Please refer to the [CORTX Troubleshooting Guide](Troubleshooting.md) to resolve known issues.
 -   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://cortx.link/slack_invite) to interact with community members and gets your questions answered.
 -   Subscribe to the our [developer newsletter](https://cortx.link/cortx-dev-newsletter) to and stay up to date on the latest CORTX developments, news, and events.
 -   Attend our [Monthly Meet an Architect](doc/meetings/README.rst) meetings to learn about CORTX architecture and participate in a Question and Answer Session.
