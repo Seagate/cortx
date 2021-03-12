@@ -13,7 +13,7 @@ The Meet an Architect series are open to the public via this `WebEx link <https:
 
 The schedule is as follows:
 
-Upcoming Schedule:
+**Upcoming Schedule:**
 
 1. April 1, 2021: Sai Narasimhamurthy, Andriy Tkachuk, and Ganesan Umanesan will present the CORTX related research happening in the European Union on the SAGE CORTX Cluster.  The discussion will include various research topics happening including, but not limited to, Hierarchical Storage Management.
 
@@ -21,9 +21,9 @@ Upcoming Schedule:
 
 3. June 3, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk will lead a tutorial about installing, configuring, and tuning motr clusters.
 
-Previously recorded sessions:
+**Previously recorded sessions:**
 
-#. March 4, 2021: Anatoliy Bilenko will discuss observability in CORTX by demonstrating how to use the `ADDB in motr <https://github.com/Seagate/cortx-motr/blob/main/doc/ADDB.rst>`_.
+#. March 4, 2021: Anatoliy Bilenko discussed observability in CORTX by demonstrating how to use the `ADDB in motr <https://github.com/Seagate/cortx-motr/blob/main/doc/ADDB.rst>`_. `PDF <PDFs/CORTX%20Observability.pdf>`_ | `Video <https://cortx.link/MTA-Observability>`_
 
 #. February 4, 2021: Gregory Touretsky, the CORTX Product Manager, discussed the CORTX feature roadmap. `PDF <PDFs/Building the Ultimate Object Store.pdf>`_  |   `Video <https://cortx.link/MTA-Feb>`_.
 
