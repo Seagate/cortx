@@ -177,8 +177,8 @@ The procedure to install CORTX on OVA is mentioned below.
       
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
-   * ens192 - management 
-   * ens256 - public data
+   * ens32 - management 
+   * ens34 - public data
    
    .. image:: images/networks.png
    
