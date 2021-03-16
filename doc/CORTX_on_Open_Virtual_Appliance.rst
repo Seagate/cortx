@@ -178,6 +178,13 @@ The procedure to install CORTX on OVA is mentioned below.
    ::
    
     sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
+    
+    * The script performs several operations on S3 API and LDAP backend:
+      create account
+      create user
+      create bucket
+      put object
+      delete all the above in reverse order
 
       Check S3CMD...OK
       Check s3iamcli...OKconfigured s3iamcli
