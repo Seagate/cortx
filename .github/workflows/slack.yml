@@ -37,6 +37,8 @@ jobs:
       - name: Run a user extraction script
         working-directory: ./metrics/slack
         env:
+          CORTX: ${{ secrets.CORTX }}
+          CORTX_COOKIE: ${{ secrets.CORTX_COOKIE }}
           MINIO: ${{ secrets.MINIO }}
           MINIO_COOKIE: ${{ secrets.MINIO_COOKIE }}
           CEPH: ${{ secrets.CEPH }}
