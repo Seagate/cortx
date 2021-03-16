@@ -185,60 +185,7 @@ The procedure to install CORTX on OVA is mentioned below.
       create bucket
       put object
       delete all the above in reverse order
-
-      Check S3CMD...OK
-      Check s3iamcli...OKconfigured s3iamcli
-      using s3endpoint 127.0.0.1
-      /root/.sgs3iamcli/config.yaml
-      /root/.s3cfg
-
-      Sanity Account doesn't exist for cleanup
-      using s3endpoint 127.0.0.1
-      /root/.sgs3iamcli/config.yaml
-      /root/.s3cfg
-
-
-      *** S3 Sanity ***
-
-      **** Create Account *******
-      UserId = <UserId>, ARN = arn:aws:iam::548273190390:user/SanityUserToDeleteAfterUse, Path = /
-
-      Create bucket - 'sanitybucket':
-      Bucket 's3://sanitybucket/' created
-      1+0 records in
-      1+0 records out
-      5000000 bytes (5.0 MB) copied, 0.167033 s, 29.9 MB/s
-
-      Upload '/tmp/SanityObjectToDeleteAfterUse.input' to 'sanitybucket':
-      upload: '/tmp/SanityObjectToDeleteAfterUse.input' -> 's3://sanitybucket/SanityObjectToDeleteAfterUse'  [1 of 1]
-      5000000 of 5000000   100% in    0s    16.32 MB/s  done
-
-      List uploaded SanityObjectToDeleteAfterUse in 'sanitybucket':
-      2021-03-16 04:34      5000000  s3://sanitybucket/SanityObjectToDeleteAfterUse
-
-      Download 'SanityObjectToDeleteAfterUse' from 'sanitybucket':
-      download: 's3://sanitybucket/SanityObjectToDeleteAfterUse' -> '/tmp/SanityObjectToDeleteAfterUse.out'  [1 of 1]
-      5000000 of 5000000   100% in    0s    20.81 MB/s  done
-
-      Data integrity check: Passed.
-
-      Delete 'SanityObjectToDeleteAfterUse' from 'sanitybucket':
-      delete: 's3://sanitybucket/SanityObjectToDeleteAfterUse'
-
-      Delete bucket - 'sanitybucket':
-      Bucket 's3://sanitybucket/' removed
-
-      Delete User - 'SanityUserToDeleteAfterUse':
-      User deleted.
-
-      Delete Account - 'SanityAccountToDeleteAfterUse':
-      Account deleted successfully.
-      /root/.sgs3iamcli/config.yaml
-      /root/.s3cfg
-
-
-      ***** S3: SANITY TEST SUCCESSFULLY COMPLETED *****
-      
+     
    If s3client(s) is / are deployed in separate VMs, then the below entry must be updated in s3client **/etc/hosts** file as follows:
     
    - <<Data IP>> s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com   
