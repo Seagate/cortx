@@ -194,7 +194,7 @@ The procedure to install CORTX on OVA is mentioned below.
       *** S3 Sanity ***
 
       **** Create Account *******
-      UserId = AIDAAA9B35A55DFF441AA, ARN = arn:aws:iam::548273190390:user/SanityUserToDeleteAfterUse, Path = /
+      UserId = <UserId>, ARN = arn:aws:iam::548273190390:user/SanityUserToDeleteAfterUse, Path = /
 
       Create bucket - 'sanitybucket':
       Bucket 's3://sanitybucket/' created
