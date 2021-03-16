@@ -165,17 +165,10 @@ The procedure to install CORTX on OVA is mentioned below.
 
     systemctl start|restart <service_name>
     
-#. By default, port 80 may be closed. Run the below mentioned command to open port 80.
-
-   ::
-               
-    salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
-    
-    salt '*' cmd.run "firewall-cmd --reload"
-      
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
-   * ens32 - management 
+   * ens32 - management ip
+   * ens33 - data ip
    * ens34 - public data
    
    .. image:: images/networks.png
@@ -186,12 +179,58 @@ The procedure to install CORTX on OVA is mentioned below.
    
     sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
 
-    * The script performs several operations on S3 API and LDAP backend:
-      create account
-      create user
-      create bucket
-      put object
-      delete all the above in reverse order
+      Check S3CMD...OK
+      Check s3iamcli...OKconfigured s3iamcli
+      using s3endpoint 127.0.0.1
+      /root/.sgs3iamcli/config.yaml
+      /root/.s3cfg
+
+      Sanity Account doesn't exist for cleanup
+      using s3endpoint 127.0.0.1
+      /root/.sgs3iamcli/config.yaml
+      /root/.s3cfg
+
+
+      *** S3 Sanity ***
+
+      **** Create Account *******
+      UserId = AIDAAA9B35A55DFF441AA, ARN = arn:aws:iam::548273190390:user/SanityUserToDeleteAfterUse, Path = /
+
+      Create bucket - 'sanitybucket':
+      Bucket 's3://sanitybucket/' created
+      1+0 records in
+      1+0 records out
+      5000000 bytes (5.0 MB) copied, 0.167033 s, 29.9 MB/s
+
+      Upload '/tmp/SanityObjectToDeleteAfterUse.input' to 'sanitybucket':
+      upload: '/tmp/SanityObjectToDeleteAfterUse.input' -> 's3://sanitybucket/SanityObjectToDeleteAfterUse'  [1 of 1]
+      5000000 of 5000000   100% in    0s    16.32 MB/s  done
+
+      List uploaded SanityObjectToDeleteAfterUse in 'sanitybucket':
+      2021-03-16 04:34      5000000  s3://sanitybucket/SanityObjectToDeleteAfterUse
+
+      Download 'SanityObjectToDeleteAfterUse' from 'sanitybucket':
+      download: 's3://sanitybucket/SanityObjectToDeleteAfterUse' -> '/tmp/SanityObjectToDeleteAfterUse.out'  [1 of 1]
+      5000000 of 5000000   100% in    0s    20.81 MB/s  done
+
+      Data integrity check: Passed.
+
+      Delete 'SanityObjectToDeleteAfterUse' from 'sanitybucket':
+      delete: 's3://sanitybucket/SanityObjectToDeleteAfterUse'
+
+      Delete bucket - 'sanitybucket':
+      Bucket 's3://sanitybucket/' removed
+
+      Delete User - 'SanityUserToDeleteAfterUse':
+      User deleted.
+
+      Delete Account - 'SanityAccountToDeleteAfterUse':
+      Account deleted successfully.
+      /root/.sgs3iamcli/config.yaml
+      /root/.s3cfg
+
+
+      ***** S3: SANITY TEST SUCCESSFULLY COMPLETED *****
       
    If s3client(s) is / are deployed in separate VMs, then the below entry must be updated in s3client **/etc/hosts** file as follows:
     
