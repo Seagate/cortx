@@ -83,7 +83,31 @@ def rate_check(gh=None):
     (gh.get_rate_limit().core.remaining,
     (gh.get_rate_limit().core.reset - datetime.datetime.utcnow()).total_seconds()/60))  
 
+class ReadPickle:
+    def __init__(self, file_name):
+        self.file_name = file_name
 
+    def read_pickle(self):
+        try:
+            with open(self.file_name, 'rb') as opened_pickle:
+                try:
+                    return pickle.load(opened_pickle)
+                except Exception as pickle_error:
+                    print(pickle_error)
+                    raise
+        except FileNotFoundError as fnf_error:
+            print(fnf_error)
+            return dict()
+        except IOError as io_err:
+            print(io_err)
+            raise
+        except EOFError as eof_error:
+            print(eof_error)
+            raise
+        except pickle.UnpicklingError as unp_error:
+            print(unp_error)
+            raise
+          
 class ProjectComparisons:
   def __init__(self,org_name=None,stats=None):
     self.pname = get_pickle_name(COMPARE_PROJECTS_PICKLE,org_name)
