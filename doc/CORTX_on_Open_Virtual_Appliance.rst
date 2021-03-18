@@ -164,19 +164,12 @@ The procedure to install CORTX on OVA is mentioned below.
    ::
 
     systemctl start|restart <service_name>
-    
-#. By default, port 80 may be closed. Run the below mentioned command to open port 80.
-
-   ::
-               
-    salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
-    
-    salt '*' cmd.run "firewall-cmd --reload"
       
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
-   * ens32 - management 
-   * ens34 - public data
+   * ens32 - Management IP 
+   * ens33 - Public data IP
+   * ens34 - Private data IP (if present)
    
    .. image:: images/networks.png
    
