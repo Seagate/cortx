@@ -242,6 +242,8 @@ To restart the CORTX OVA, follow the below mentioned procedures, in the order of
 
 - Restart CORTX
 
+Note: If the virtual machine (VM) is forcefully shutdown then some of the services will be impacted as well as the cluster might not start so you have to run the bootstrap script again to avoid importing the OVA image again.
+
 Shutdown CORTX
 ----------------
 
