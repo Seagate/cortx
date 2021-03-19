@@ -14,7 +14,6 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.  For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
-
 **********
 Procedure
 **********
@@ -43,7 +42,6 @@ The procedure to install CORTX on OVA is mentioned below.
      
      * **chattr -i /etc/hostname**
   
- 
      To verify the change in hostname, run the following command:
  
      * **hostnamectl status**
