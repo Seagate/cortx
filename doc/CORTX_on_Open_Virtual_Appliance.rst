@@ -11,7 +11,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
 `VMware Fusion <https://www.vmware.com/products/fusion.html>`_,
 `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_, and
-`Oracle VM VirtualBox <https://www.virtualbox.org/>`_. 
+`Oracle VM VirtualBox <https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html>`_. 
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.  For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
@@ -21,7 +21,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download and then uncompress the `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ file that contains the virtual machine image.
+#. Download and uncompress the `cortx-va-1.0.3.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.3.zip>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -304,6 +304,8 @@ Restart CORTX
    </details>
    
 Tested by:
+
+- Mar 18, 2021: Jalen Kan (jalen.j.kan@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
 - Feb 4, 2021:  Tim Coulter (timothy.r.coulter@seagate.com) using OVA release 1.0.2 on MAC running VMWare Fusion 12.1.0
 
