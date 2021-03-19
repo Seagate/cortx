@@ -175,8 +175,8 @@ The procedure to install CORTX on OVA is mentioned below.
       
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
-   * ens32 - management 
-   * ens34 - public data
+   * ens192 - management 
+   * ens256 - public data
    
    .. image:: images/networks.png
    
@@ -184,7 +184,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
    
-    sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
+    sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh
 
     * The script performs several operations on S3 API and LDAP backend:
       create account
