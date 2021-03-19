@@ -11,7 +11,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
 `VMware Fusion <https://www.vmware.com/products/fusion.html>`_,
 `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_, and
-`Oracle VM VirtualBox <https://www.virtualbox.org/>`_. 
+`Oracle VM VirtualBox <https://www.oracle.com/virtualization/>`_. 
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.  For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
