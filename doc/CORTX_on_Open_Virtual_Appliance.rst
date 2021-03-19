@@ -270,16 +270,17 @@ Shutdown CORTX
    
    </details>
  
- **Known Issue:**
+Known Issue
+-------------
   
- If password is returned after executing hctl shutdown command then follow below workaround or fix,
+If password is returned after executing hctl shutdown command then follow below workaround or fix,
  
- 1. login with user profile
- 2. Execute below commands,
-  a. sudo su -
-  b. ssh-keygen -t rsa
-  c. ssh-copy-id <user>@localhost
-  d. hctl shutdown
+1. login with user profile
+2. Execute below commands,
+ a. sudo su -
+ b. ssh-keygen -t rsa
+ c. ssh-copy-id <user>@localhost
+ d. hctl shutdown
  
 Restart CORTX
 --------------
