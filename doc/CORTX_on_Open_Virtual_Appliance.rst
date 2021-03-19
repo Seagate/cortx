@@ -21,7 +21,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download and uncompress the `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_. This contains the virtual machine image.
+#. Download `cortx-va-1.0.3.ova <http://cortx-storage.colo.seagate.com/releases/opensource_builds/ova/cortx-va-1.0.3.ova>`_ file. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -270,7 +270,17 @@ Shutdown CORTX
    
    </details>
  
-
+ Known Issue:
+ ============
+ If password is returned after executing hctl shutdown command then follow below workaround or fix,
+ 
+ 1. login with user profile
+ 2. Execute below commands,
+  a. sudo su -
+  b. ssh-keygen -t rsa
+  c. ssh-copy-id <user>@localhost
+  d. hctl shutdown
+ 
 Restart CORTX
 --------------
 
