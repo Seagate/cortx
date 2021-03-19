@@ -270,8 +270,10 @@ Shutdown CORTX
    
    </details>
  
+ ************
  Known Issue:
- ============
+ ************
+ 
  If password is returned after executing hctl shutdown command then follow below workaround or fix,
  
  1. login with user profile
