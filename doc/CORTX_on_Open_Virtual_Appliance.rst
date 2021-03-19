@@ -21,7 +21,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download and uncompress the `cortx-va-1.0.3.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.3.zip>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_. This contains the virtual machine image.
+#. Download and uncompress the `cortx-va-1.0.3.ova <https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova>`_ file from `our release page <https://github.com/Seagate/cortx/releases>`_. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -59,7 +59,7 @@ The procedure to install CORTX on OVA is mentioned below.
       <details>
       <summary><a>Expand</a></summary>
 
-   You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens192, ens224 and ens256:
+   You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens32, ens33 and ens34:
 
    #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
 
@@ -68,16 +68,16 @@ The procedure to install CORTX on OVA is mentioned below.
    #. Record the MAC addresses and go to the following directory:
 
       * **cd /etc/sysconfig/network_scripts/**
-      * **vi ifcfg-ens192**
+      * **vi ifcfg-ens32**
       * Add a new line under **BOOTPROTO=dhcp**
-      * Add a new parameter with the MAC Address *HWADDR=<enp0s3-MAC-Address>*
+      * Add a new parameter with the MAC Address *HWADDR=<MAC-Address>*
       * Repeat the steps for enp0s8 and enp0s9 respectively
-      * **vi ifcfg-ens224**
-      * **vi ifcfg-ens256**
+      * **vi ifcfg-ens33**
+      * **vi ifcfg-ens34**
 
-      Sample output **cat ifcfg-ens256**:
+      Sample output **cat ifcfg-ens34**:
       ::
-         DEVICE="ens256"
+         DEVICE="ens34"
          USERCTL="no"
          TYPE="Ethernet"
          BOOTPROTO="dhcp"
@@ -89,7 +89,7 @@ The procedure to install CORTX on OVA is mentioned below.
          NM_CONTROLLED="no"
          ZONE=trusted
 
-   #. Reboot the machine by exiting the VM with **Power off the machine** and restart by booting the Rescue OS.
+   #. Reboot the machine by running **Poweroff** command and restart.
 
    #. To verify the change in Network Device Name, run the following command:
 
@@ -144,6 +144,7 @@ The procedure to install CORTX on OVA is mentioned below.
     systemctl status sspl-ll      
     systemctl status csm_agent    
     systemctl status csm_web
+    systemctl status hare-consul-agent 
  
    The image below shows the output of a successful *systemctl* command; notice how the service is *active*.
    
@@ -305,17 +306,21 @@ Restart CORTX
    
 Tested by:
 
+- Mar 25, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.2 & 1.0.3 on Windows 10 running Oracle VirtualBox & VMware Workstation 6.1.16
+
+- Mar 24, 2021: Harrison Seow (harrison.seow@seagate.com) using OVA release 1.0.2 on Windows running Oracle VM VirtualBox 6.1.16.
+
 - Mar 18, 2021: Jalen Kan (jalen.j.kan@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
 - Feb 4, 2021:  Tim Coulter (timothy.r.coulter@seagate.com) using OVA release 1.0.2 on MAC running VMWare Fusion 12.1.0
 
 - Jan 13, 2021: Mayur Gupta (mayur.gupta@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
-- Jan 6, 2021: Patrick Hession (patrick.hession@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
+- Jan 6, 2021:  Patrick Hession (patrick.hession@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
 - Dec 10, 2020: Suprit Shinde (suprit.shinde@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
-- Nov 3, 2020: Justin Woo (justin.woo@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
+- Nov 3, 2020:  Justin Woo (justin.woo@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
 - Oct 26, 2020: Gregory Touretsky (gregory.touretsky@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
@@ -329,10 +334,6 @@ Tested by:
 
 - Sep 19, 2020: Venkataraman Padmanabhan (venkataraman.padmanabhan@seagate.com) using OVA release 1.0.0 and 1.0.1 on a Windows laptop running VMWare Workstation.
 
-- Sep 12, 2020: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.0 and 1.0.1 on a Windows laptop running VMWare Workstation.
-
 - Sep 12, 2020: Puja Mudaliar (puja.mudaliar@seagate.com) using OVA release 1.0.0 on a Windows laptop running VMWare Workstation.
 
 - Sep 12, 2020: Gaurav Chaudhari (gaurav.chaudhari@seagate.com) using OVA release 1.0.0 on a Windows laptop running VMWare Workstation.
-
-
