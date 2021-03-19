@@ -175,7 +175,7 @@ def print_activities(filtered_activities,logins,details,zero,people,since,until)
     daterange += " until %s" % until.strftime('%Y-%m-%d')
 
   if len(logins) > 1:
-    print("Getting activities from %d logins: %s" % (len(logins),sorted(logins)))
+    print("Getting activities from %d logins" % (len(logins)))
 
   # now print from the filtered list as sorted by the quantitied of actions per login
   total_actions = 0
@@ -184,7 +184,7 @@ def print_activities(filtered_activities,logins,details,zero,people,since,until)
     actions = filtered_activities[k]
     (email,Type,Company)=get_info(login,people)
     total_score   = 0
-    if len(actions) > 0 or args.zero:
+    if len(actions) > 0 or zero:
       print("%d actions for %s [email %s, company %s, Type %s] %s" % (len(actions),login, email, Company, Type, daterange))
       total_actions += len(actions)
     for d,u in sorted(actions.items()):

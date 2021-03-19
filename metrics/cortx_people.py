@@ -92,7 +92,7 @@ def merge(target_login,source_login,people):
   # copy over company, type, linkedin, and email; merge notes
   if source.get_company() and not target.get_company():
     print("Trying to transfer company %s" % source.get_company())
-    people.set_company(target_login,source.get_company())
+    people.update_company(target_login,source.get_company())
   if source.get_type() and not target.get_type():
     print("Trying to transfer type %s" % source.get_type())
     people.set_type(target_login,source.get_type())
@@ -122,6 +122,7 @@ def main():
   parser.add_argument('--linkedin',    '-l', help="When you update an individual, add her linkedin profile")
   parser.add_argument('--note',        '-n', help="When you update an individual, add a note (must be formatted as python dict)")
   parser.add_argument('--unknowns',    '-u', help="Dump the unknowns and quit", action="store_true")
+  parser.add_argument('--update',      '-U', help="When dumpting unknowns, also update the pickle if identified as Seagate")
   parser.add_argument('--dump',        '-d', help="Dump entire community and quit", action="store_true")
   parser.add_argument('--slack',       '-s', help="Operate on the slack people", action="store_true")
   parser.add_argument('--merge',       '-m', help="Merge one person into another")
@@ -188,24 +189,28 @@ def main():
       if person.type is None: 
         print(person)
         unknowns += 1
+        # if they are unknown, look them up and see if they are part of CORTX organization
+        add_to_team=False
         try:
           if person_match(person,'seagate') or person_match(person,'dsr') or person_match(person,'calsoft'):
             print("%s login matches seagate or contractor; adding to CORTX Team" % person.login)
-            people.update_company(person.login,'Seagate')
-            people.update_type(person.login,'CORTX Team')
-            people.persist()
+            add_to_team=True
         except AttributeError:
           pass
         try:
-            # if they are unknown, look them up and see if they are part of CORTX organization
           user = gh.get_user(login=person.login)
           user.get_organization_membership('Seagate')
           print("%s is in Seagate org; adding to CORTX Team"%person.login)
-          people.update_company(person.login,'Seagate')
-          people.update_type(person.login,'CORTX Team')
-          people.persist()
+          add_to_team=True
         except:
           pass
+        if add_to_team:
+          if args.update:
+            people.update_company(person.login,'Seagate')
+            people.update_type(person.login,'CORTX Team')
+            people.persist()
+          else:
+            print("Not updating because update flag was not set")
 
     print("%d total unknowns in community" % unknowns)
     sys.exit(0)

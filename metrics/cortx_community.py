@@ -47,7 +47,8 @@ projects={'Ceph'  : ('Ceph',None),
           'DAOS'  : ('daos-stack',None), 
           'CORTX' : ('Seagate','cortx'),
           'Swift' : ('openstack','swift'),
-          'OpenIO': ('open-io','oio')}
+          'OpenIO': ('open-io','oio'),
+          'ECS'   : ('EMCECS', 'ecs' )}
 
 # map of orgs mapping to the companies which run those orgs
 # used to identify which people are external because they don't belong to any of the known companies
@@ -57,6 +58,7 @@ org_company_map = {
   'MinIO' : ('minio'),
   'Seagate' : ('seagate','dsr','calsoft', 'codacy-badger'),
   'openstack' : ('swiftstack', 'nvidia'),
+  'EMCECS' : ( 'dell', 'emc', 'vmware' ),
   'open-io' : ('openio'),
 }
 
@@ -183,7 +185,10 @@ class PersistentStats:
       try:
         short_value = len(v)   # the v is either int or set/list
       except TypeError:
-        short_value = int(v)
+        try:
+          short_value = int(v)
+        except TypeError:   # could be a None snuck in due to manual manipulation
+          continue
       verbosity = ''
       if verbose:
         try:

@@ -9,8 +9,9 @@ Recommended Hypervisors
 ***********************
 All of the following hypervisors should work: `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_,
 `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
-`VMware Fusion <https://www.vmware.com/products/fusion.html>`_, and
-`VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_. 
+`VMware Fusion <https://www.vmware.com/products/fusion.html>`_,
+`VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_, and
+`Oracle VM VirtualBox <https://www.oracle.com/virtualization/>`_. 
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.  For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
@@ -19,7 +20,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. From `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_, download and then uncompress the `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ file that contains the virtual machine image.
+#. Download and uncompress the `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -47,6 +48,65 @@ The procedure to install CORTX on OVA is mentioned below.
      * **hostnamectl status**
    
    **Note**: Both short hostnames and FQDNs are accepted. If you do not have a DNS server with which to register the VM, you can access it directly using its IP addresses. However, the hostname is mandatory and should be configured.
+
+#. **For Oracle VM VirtualBox Users ONLY**:
+   
+   
+   .. raw:: html
+
+      <details>
+      <summary><a>Expand</a></summary>
+
+   You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens192, ens224 and ens256:
+
+   #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
+
+      * **ip a l**
+
+   #. Record the MAC addresses and go to the following directory:
+
+      * **cd /etc/sysconfig/network_scripts/**
+      * **vi ifcfg-ens192**
+      * Add a new line under **BOOTPROTO=dhcp**
+      * Add a new parameter with the MAC Address *HWADDR=<enp0s3-MAC-Address>*
+      * Repeat the steps for enp0s8 and enp0s9 respectively
+      * **vi ifcfg-ens224**
+      * **vi ifcfg-ens256**
+
+      Sample output **cat ifcfg-ens256**:
+      ::
+         DEVICE="ens256"
+         USERCTL="no"
+         TYPE="Ethernet"
+         BOOTPROTO="dhcp"
+         HWADDR=08:00:27:25:65:74
+         ONBOOT="yes"
+         PREFIX="24"
+         PREDNS="no"
+         DEFROUTE="no"
+         NM_CONTROLLED="no"
+         ZONE=trusted
+
+   #. Reboot the machine by exiting the VM with **Power off the machine** and restart by booting the Rescue OS.
+
+   #. To verify the change in Network Device Name, run the following command:
+
+      * **ip a l**
+
+   #. The Date/Time would sometimes be incorrect as it uses local time as UTC
+
+      * **date**
+
+      If the time displayed is incorrect, use the following command to list and change your timezone accordingly, then change your date/time as necessary (Otherwise, you might face SSL certificate problems later)
+
+      * **timedatectl list-timezones**
+      * **timedatectl set-timezone Asia/Kuala_Lumpur**
+      * **date +%Y%m%d -s "20201231"**
+      * **date +%T -s "11:14:00"**
+
+   .. raw:: html
+
+      </details>
 
 #. Start the CORTX services by running this bootstrap.sh script:
    ::
@@ -102,28 +162,20 @@ The procedure to install CORTX on OVA is mentioned below.
    ::
 
     systemctl start|restart <service_name>
-    
-#. By default, port 80 may be closed. Run the below mentioned command to open port 80.
-
-   ::
-               
-    salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
-    
-    salt '*' cmd.run "firewall-cmd --reload"
       
-Run **ip a l** and record the IP addresses of the following interfaces:
+#. Run **ip a l** and record the IP addresses of the following interfaces:
 
-   * ens192 - management 
-   * ens256 - public data
+   * ens32 - Management IP 
+   * ens33 - Public data IP
+   * ens34 - Private data IP (if present)
    
    .. image:: images/networks.png
-   
    
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
    ::
    
-    sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh
+    sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
 
     * The script performs several operations on S3 API and LDAP backend:
       create account
@@ -134,8 +186,8 @@ Run **ip a l** and record the IP addresses of the following interfaces:
       
    If s3client(s) is / are deployed in separate VMs, then the below entry must be updated in s3client **/etc/hosts** file as follows:
     
-   - <<Data IP>> s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com
-
+   - <<Data IP>> s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com   
+   
 #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
 #. Now that you have the complete system up and running, using the data IP from the **ip a l** command, use these instructions `to test the system <testing_io.rst>`_  and observe activity in the GUI.  For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
@@ -187,6 +239,8 @@ To restart the CORTX OVA, follow the below mentioned procedures, in the order of
 - Shutdown CORTX
 
 - Restart CORTX
+
+Note: If the virtual machine (VM) is forcefully shutdown then some of the services will be impacted as well as the cluster might not start so you have to run the bootstrap script again to avoid importing the OVA image again.
 
 Shutdown CORTX
 ----------------
@@ -248,6 +302,8 @@ Restart CORTX
    </details>
    
 Tested by:
+
+- Mar 18, 2021: Jalen Kan (jalen.j.kan@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
 - Feb 4, 2021:  Tim Coulter (timothy.r.coulter@seagate.com) using OVA release 1.0.2 on MAC running VMWare Fusion 12.1.0
 

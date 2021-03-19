@@ -2,7 +2,7 @@
 Release Build Creation
 =======================
 
-This file consists of the procedure that must be followed to generate the release build outside the Seagate network.
+This file consists of the procedure that should be followed to generate the release build outside the Seagate network using `cortx-build <https://github.com/orgs/Seagate/packages/container/package/cortx-build>`_ docker image. 
 
 ***************
 Procedure
@@ -13,8 +13,6 @@ Procedure
    - You can use a Virtual Machine (VM) also.
    
 #. Install the docker packages in the system or VM. Refer to `Docker Installation <https://docs.docker.com/engine/install/centos/>`_.
-
-#. Login to GitHub Docker.
 
 #. Clone the repositories of the required components on VM at /root/cortx (You can use any other directory by updating the docker run command accordingly). Clone the entire CORTX repository by running the following command.
 
@@ -28,11 +26,12 @@ Procedure
    
     mkdir -p /var/artifacts
 
-#. Build CORTX artifacts using the below mentioned docker.
+#. Build CORTX artifacts using the below mentioned docker. 
+    **Note:** This step can take over an hour to run. Optionally you can prefix this command with ``time`` to show how long the build took.
 
    ::
    
-    time docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build -i
+    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
     
 #. Generate the ISO by running the below mentioned command.
 
@@ -40,7 +39,7 @@ Procedure
    
     docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation.
     
-   You can also append the **iso_generation** target in **make build** command (step 5).
+   You can also append the **iso_generation** target in **make build** command (step 6).
    
 #. After the **docker run** execution is complete, the  release build will be available at the following location.
 
@@ -102,3 +101,7 @@ Procedure
         cortx-prvsnr: generate cortx-prvsnr packages.
         
         iso_generation: generate ISO file from release build.
+        
+Tested by:
+
+- Feb 12, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation Pro 16.

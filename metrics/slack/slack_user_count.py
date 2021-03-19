@@ -7,44 +7,25 @@
 # Usage                 : python file_name.py
 #######################################################################
 import re
+import argparse
 import requests
 import json
 import os
-from dotenv import load_dotenv
-from cryptography.fernet import Fernet
+import pickle
+from datetime import datetime
 
 
-def decrypt(filename, key):
-    """
-    Given a filename (str) and key (bytes), it decrypts the file and write it
-    """
-    f = Fernet(key)
-    with open(filename, "rb") as file:
-        # read the encrypted data
-        encrypted_data = file.read()
-    # decrypt data
-    decrypted_data = f.decrypt(encrypted_data)
-    # write the original file
-    with open(".env", "wb") as file:
-        file.write(decrypted_data)
+def get_args():
+    # Create the parser
+    parser = argparse.ArgumentParser()
+
+    # Add the arguments
+    parser.add_argument('--token', '-t', required=True)
+
+    # Execute the parse_args() method and return
+    return parser.parse_args()
 
 
-def load_key():
-    """
-    Loads the key from the current directory named `key.key`
-    """
-    cwd = os.getcwd()
-    key_path = os.path.join(cwd, "slack.key")
-    return open(key_path, "rb").read()
-
-
-mykey = load_key()
-
-cwd = os.getcwd()
-file_path = os.path.join(cwd, "slack.encrypted")
-decrypt(file_path, mykey)
-
-load_dotenv()
 token = os.getenv('SLACK_OATH')
 url = 'https://cortxcommunity.slack.com/api/team.stats.export'
 
@@ -74,40 +55,43 @@ WORKSPACE_INFO = {
 
 
 def clean(data):
-    """ Clean the html tags and remove un-wanted white space
-    Parameters
+    """
+    Clean the html tags and remove un-wanted white space
+
+    Parameters:
     ----------
-    Data:
-       Raw html data with tags & multiple whitespaces
+        data (str): Raw html data with tags & multiple whitespaces
     Returns:
-       Remove spaces, taggs and return the enriched data
+    -------
+       data (str): Remove spaces, taggs and return the enriched data
     """
     data = str(data)
     data = data.replace(',', '')
-    data = re.sub('\s+', ' ', data)
+    data = re.sub(r'\s+', ' ', data)
     data = re.sub('<[^>]*?>', '', data)
     data = data.strip()
     return data
 
 
 def api_process_post_method(workspace):
-    """ Process the slack url to get user count
+    """
+    Process the slack url to get user count \
     If the argument isn't passed in, the function throw an error.
-    Parameters
+
+    Parameters:
     ----------
-    Workspace: MINIO, CEPH, OPENIO, etc..
-    -------------------------------------
+    workspace: MINIO, CEPH, OPENIO, etc..
 
     Returns:
     --------
-    Total user count for the given workspace
+    response: Total user count for the given workspace
 
     """
-    url = "https://edgeapi.slack.com/cache/%s/users/counts" % (WORKSPACE_INFO[workspace]["workspace_id"])
+    ws_url = "https://edgeapi.slack.com/cache/%s/users/counts" % (WORKSPACE_INFO[workspace]["workspace_id"])
     channel_id = WORKSPACE_INFO[workspace]["channel_id"]
 
     try:
-        payload = {
+        ws_payload = {
             "token": os.environ[workspace],
             "channel": channel_id,
             "as_admin": False
@@ -116,41 +100,92 @@ def api_process_post_method(workspace):
         # print (cookie)
         headers = {'content-type': 'application/json', 'cookie': os.environ[cookie]}
 
-        r = requests.post(url, data=json.dumps(payload), headers=headers)
-        return r.json()
-    except:
+        r = requests.post(ws_url, data=json.dumps(ws_payload), headers=headers)
+        response = r.json()
+        return response
+    except Exception as error:
+        print(error)
         pass
 
 
-def download_csv(type, date_range):
-    """ Download the csv file for the given type and save it.
-    Parameters:
-    ----------
-    Type: overview, channels, users
-       Date Range: 30d, 15d, 1d
-
-    Returns:
-       None.
+def download_csv(menu_type, date_range):
     """
-    print('Beginning %s file download with requests' % (type))
+    Download the csv file for the given type and save it.
+        Parameters:
+        ----------
+        menu_type: overview, channels, users
+           Date Range: 30d, 15d, 1d
+
+        Returns:
+        --------
+           None.
+    """
+    print('Beginning %s file download with requests' % menu_type)
     try:
-        payload.update({'type': type, 'date_range': date_range})
+        payload.update({'type': menu_type, 'date_range': date_range})
         response = requests.get(url, params=payload)
-        filename = type + '.csv'
+        filename = menu_type + '.csv'
         with open(filename, 'wb') as f:
             f.write(response.content)
-    except:
+    except Exception as error:
+        print(error)
         pass
         # todo
     return
 
 
+def open_pickle(path: str):
+    """
+    Open a pickle and return loaded pickle object.
+        Parameters:
+        -----------
+            path: File path to pickle file to be opened.
+
+        Returns:
+        --------
+            rtype : object
+    """
+    try:
+        with open(path, 'rb') as opened_pickle:
+            try:
+                return pickle.load(opened_pickle)
+            except Exception as pickle_error:
+                print(pickle_error)
+                raise
+    except FileNotFoundError as fnf_error:
+        print(fnf_error)
+        return dict()
+    except IOError as io_err:
+        print(io_err)
+        raise
+    except EOFError as eof_error:
+        print(eof_error)
+        raise
+    except pickle.UnpicklingError as unp_error:
+        print(unp_error)
+        raise
+
+
 def main():
     workspaces = ["MINIO", "OPENIO", "DAOS", "CEPH", "OPENSTACK"]
+    pkl_obj_file = "../pickles/slack_users_stats.pickle"
+    workspace_list = {}
     for workspace in workspaces:
         result = api_process_post_method(workspace)
-        print("%s total count..." % (workspace))
-        print(json.dumps(result, indent=4, sort_keys=True))
+        print("Processing %s..." % workspace)
+        workspace_list[workspace] = result
+        # print(json.dumps(result, indent=4, sort_keys=True))
+
+    pkl_dict = open_pickle(pkl_obj_file)
+    date = datetime.today().strftime('%Y-%m-%d')
+
+    pkl_dict[date] = workspace_list
+    print("Updating the slack user count to pickle object")
+    print(json.dumps(workspace_list, indent=4, sort_keys=True))
+
+    # Its important to use binary mode
+    dbfile = open(pkl_obj_file, 'wb')
+    pickle.dump(pkl_dict, dbfile)
 
     # todo
     # download_csv('overview', '30d')
@@ -160,4 +195,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
