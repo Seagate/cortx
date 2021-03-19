@@ -341,7 +341,7 @@ Create a virtual machine.
 ### 3.2. Generate SSH keys
 
 Follow
-[these steps](https://github.com/Seagate/cortx/blob/main/doc/SSH_Public_Key.rst).
+[these steps](SSH_Public_Key.rst).
 
 ### 3.3. Get Motr sources
 
