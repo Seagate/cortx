@@ -20,7 +20,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download and uncompress the `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_. This contains the virtual machine image.
+#. Download and unzip the `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -162,7 +162,15 @@ The procedure to install CORTX on OVA is mentioned below.
    ::
 
     systemctl start|restart <service_name>
-      
+
+#. By default, port 80 may be closed. Run the below mentioned command to open port 80.
+
+   ::
+               
+    salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
+    
+    salt '*' cmd.run "firewall-cmd --reload"
+
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
    * ens192 - management 
