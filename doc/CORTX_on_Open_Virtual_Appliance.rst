@@ -59,7 +59,7 @@ The procedure to install CORTX on OVA is mentioned below.
       <details>
       <summary><a>Expand</a></summary>
 
-   You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens192, ens224 and ens256:
+   You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens32, ens33 and ens34:
 
    #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
 
