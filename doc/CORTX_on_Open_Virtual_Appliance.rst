@@ -171,6 +171,7 @@ The procedure to install CORTX on OVA is mentioned below.
    * ens33 - Public data IP
    * ens34 - Private data IP (if present)
    
+   
    .. image:: images/networks.png
    
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
@@ -304,6 +305,8 @@ Restart CORTX
    
 Tested by:
 
+- Mar 23, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 and 1.0.2 on a Windows laptop running VMWare Workstation.
+
 - Mar 18, 2021: Jalen Kan (jalen.j.kan@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
 - Feb 4, 2021:  Tim Coulter (timothy.r.coulter@seagate.com) using OVA release 1.0.2 on MAC running VMWare Fusion 12.1.0
@@ -327,8 +330,6 @@ Tested by:
 - Sep 19, 2020: Divya Kachchwaha Kachchwaha (divya.kachhwaha@seagate.com) using OVA release 1.0.1 on a Windows laptop running VMWare Workstation.
 
 - Sep 19, 2020: Venkataraman Padmanabhan (venkataraman.padmanabhan@seagate.com) using OVA release 1.0.0 and 1.0.1 on a Windows laptop running VMWare Workstation.
-
-- Sep 12, 2020: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.0 and 1.0.1 on a Windows laptop running VMWare Workstation.
 
 - Sep 12, 2020: Puja Mudaliar (puja.mudaliar@seagate.com) using OVA release 1.0.0 on a Windows laptop running VMWare Workstation.
 
