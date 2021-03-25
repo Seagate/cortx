@@ -7,8 +7,7 @@ An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of
 ***********************
 Recommended Hypervisors
 ***********************
-All of the following hypervisors should work: `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_,
-`VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
+All of the following hypervisors should work: `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
 `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_, and
 `Oracle VM VirtualBox <https://www.oracle.com/virtualization/>`_. 
 
