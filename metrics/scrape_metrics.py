@@ -22,8 +22,8 @@ def remove_string_from_set(Set, String):
       newset.add(item)
   return newset
 
-def avoid_rate_limiting(gh):
-  cortx_community.avoid_rate_limiting(gh)
+def avoid_rate_limiting(gh,limit=None):
+  cortx_community.avoid_rate_limiting(gh,limit)
 
 # this function takes a NamedUsed (https://pygithub.readthedocs.io/en/latest/github_objects/NamedUser.html) and returns info about them
 # it seems this function uses the github API to query some of this stuff and that kills the rate limit (and probably performance also)
@@ -321,15 +321,22 @@ def get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh,org_name
     print("WTF: get_issues failed? will recurse and try again", e)
     return get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh,org_name) # recurse
 
+    avoid_rate_limiting(gh)
   for issue in issues:
     if issue.pull_request is None:
       Type = 'issues'
       commit = False
     else:
-      issue = issue.as_pull_request()
-      Type = 'pull_requests'
-      commit = True
+      try:
+        avoid_rate_limiting(gh)
+        issue = issue.as_pull_request() # this fails sometimes with github.GithubException.GithubException: 500 
+        Type = 'pull_requests'
+        commit = True
+      except Exception as e:
+        print("WTF: as_pull_request failed?", e)
+        continue
     scrape_issue_or_pr(people,gh,rname,issue,local_stats,author_activity,Type,commit,org_name)
+    avoid_rate_limiting(gh)
     for comment in issue.get_comments():
       avoid_rate_limiting(gh)
       scrape_comment(people,gh,rname,comment,"issue",local_stats,author_activity,org_name)
