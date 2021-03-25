@@ -3,7 +3,7 @@
 
 Summary:
 ----
-This document walks you through how to set up CORTX on an Amazon EC2 instance and how to perform IO operations using another EC2 instance on the same subnet.
+This document walks you through how to set up CORTX on an Amazon EC2 instance and how to perform IO operations using another EC2 instance on the same subnet.  This allows easy testing of CORTX's "look and feel" and functionality. It is not suggested that people run CORTX for production systems in AWS; rather, that people test CORTX using AWS and then, if the testing goes well, subsequently create an on-prem production instance for CORTX.
 
 Prerequisites:
 -------
