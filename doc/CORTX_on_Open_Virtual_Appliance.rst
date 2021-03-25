@@ -305,7 +305,7 @@ Restart CORTX
    
 Tested by:
 
-- Mar 23, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 and 1.0.2 on a Windows laptop running VMWare Workstation.
+- Mar 25, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 and 1.0.2 on a Windows laptop running VMWare Workstation & Oracle VirtualBox
 
 - Mar 18, 2021: Jalen Kan (jalen.j.kan@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
