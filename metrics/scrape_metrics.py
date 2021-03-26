@@ -279,7 +279,9 @@ def get_commits(rname,repo,local_stats,people,author_activity,gh,org_name):
       email_addresses = re.findall(r'[\w\.-]+@[\w\.-]+', c.commit.message) # search for email addresses in commit message; might be some due to DCO
       #print("Adding Commit info %s and %s" % (c.author.company, c.author.email))
       local_stats['email_addresses'] = local_stats['email_addresses'].union(email_addresses)
+    avoid_rate_limiting(gh,1000)
     for comment in c.get_comments():
+      avoid_rate_limiting(gh)
       scrape_comment(people,gh,rname,comment,"commit",local_stats,author_activity,org_name)
 
 def summarize_consolidate(local_stats,global_stats,people,author_activity,ave_age_str):
