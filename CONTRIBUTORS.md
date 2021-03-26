@@ -171,9 +171,10 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Subhash Arya](https://github.com/s-arya)
 1. [Suprit Shinde](https://github.com/supritshinde)
-1. [Suvrat Joshi](https://github.com/suvratjoshi)
-1. [Swapnil Gaonkar](https://github.com/SwapnilGaonkar7)
-1. [Trent Geerdes](https://github.com/tgeerdes-SG)
+1. [Supriya Chavan](https://github.com/supriyachavan4398)
+3. [Suvrat Joshi](https://github.com/suvratjoshi)
+4. [Swapnil Gaonkar](https://github.com/SwapnilGaonkar7)
+5. [Trent Geerdes](https://github.com/tgeerdes-SG)
 
 ## [Seagate/cortx-images](https://github.com/Seagate/cortx-images)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
