@@ -68,7 +68,10 @@ The procedure to install CORTX on OVA is mentioned below.
       * **cd /etc/sysconfig/network_scripts/**
       * **vi ifcfg-ens32**
       * Add a new line under **BOOTPROTO=dhcp**
-      * Add a new parameter with the MAC Address *HWADDR=<enp0s3-MAC-Address>*
+      * Add a new parameter with the MAC Address *HWADDR=<MAC-Address>*
+      
+Note: Update <MAC-Address> from respective interfaces i.e. enp0s3, enp0s8, enp0s9 or, [ens32, ens33 and ens34]
+
       * Repeat the steps for enp0s8 and enp0s9 respectively
       * **vi ifcfg-ens33**
       * **vi ifcfg-ens34**
@@ -135,13 +138,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
 
-    systemctl status rabbitmq-server 
-    systemctl status elasticsearch   
-    systemctl status haproxy
-    systemctl status s3authserver 
-    systemctl status sspl-ll      
-    systemctl status csm_agent    
-    systemctl status csm_web
+    systemctl status rabbitmq-server elasticsearch haproxy s3authserver sspl-ll csm_agent csm_web
  
    The image below shows the output of a successful *systemctl* command; notice how the service is *active*.
    
