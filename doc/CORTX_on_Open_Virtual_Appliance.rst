@@ -70,15 +70,13 @@ The procedure to install CORTX on OVA is mentioned below.
       * Add a new line under **BOOTPROTO=dhcp**
       * Add a new parameter with the MAC Address *HWADDR=<MAC-Address>*
       
-   **Note:** Update <MAC-Address> from interfaces enp0s3, enp0s8 or, [ens32, ens33]
+    **Note:** Update the <MAC-Address> from respective interfaces enp0s3, enp0s8 or, [ens32, ens33]
 
       * Repeat the steps for enp0s8 and enp0s9 respectively
-      * **vi ifcfg-ens33**
-      * **vi ifcfg-ens34**
 
-      Sample output **cat ifcfg-ens34**:
+      Sample output **cat ifcfg-ens33**:
       ::
-         DEVICE="ens34"
+         DEVICE="ens33"
          USERCTL="no"
          TYPE="Ethernet"
          BOOTPROTO="dhcp"
@@ -90,7 +88,7 @@ The procedure to install CORTX on OVA is mentioned below.
          NM_CONTROLLED="no"
          ZONE=trusted
 
-   #. Reboot the machine by exiting the VM with **Power off the machine** and restart by booting the Rescue OS.
+   #. Reboot the machine by exiting the VM with **poweroff command**
 
    #. To verify the change in Network Device Name, run the following command:
 
