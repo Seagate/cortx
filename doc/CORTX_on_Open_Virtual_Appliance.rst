@@ -69,9 +69,7 @@ The procedure to install CORTX on OVA is mentioned below.
       * **vi ifcfg-ens32**
       * Add a new line under **BOOTPROTO=dhcp**
       * Add a new parameter with the MAC Address *HWADDR=<MAC-Address>*
-      
-    **Note:** Update the <MAC-Address> from respective interfaces enp0s3, enp0s8 or, [ens32, ens33]
-
+   **Note:** Update the <MAC-Address> from respective interfaces enp0s3, enp0s8 or, [ens32, ens33]
       * Repeat the steps for enp0s8 and enp0s9 respectively
 
       Sample output **cat ifcfg-ens33**:
