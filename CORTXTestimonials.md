@@ -27,7 +27,7 @@ The CORTX project is world's only 100% Open Source Mass-Capacity Optimized Objec
 - **Jeff McAffer, Senior Director of Product**
 
 
-### Intel
+## Intel
 
 > “Open source innovation in high-performance storage is critical to propel cloud, HPC, AI and communications networks to higher levels of performance in the coming data era,” 
 > said Bryan Jorgensen, Vice President in Intel’s Data Platforms Group. “Intel plans to work within the CORTX Community to enable and optimize this exciting open source 
@@ -45,7 +45,7 @@ The CORTX project is world's only 100% Open Source Mass-Capacity Optimized Objec
 
 - **Gary Grider, HPC Division Leader**
 
-### Supermicro
+## Supermicro
 
 > “At Supermicro, we are seeing greater desire from our customers to balance costs, increase operational efficiencies while mitigating risks associated with vendor lock-in, 
 > security and regulatory compliance by going the hybrid cloud route,” said Vik Malyala, senior vice president, Supermicro. “Given this and combined with the need to support 
@@ -54,7 +54,7 @@ The CORTX project is world's only 100% Open Source Mass-Capacity Optimized Objec
 
 - **Vik Malyala, SVP**
 
-### WekaIO
+## WekaIO
 
 > "As the provider of the world's fastest file system, we are thrilled to partner with Seagate to meet our customer's demands for high performance and exascale economic storage 
 > for use cases like AI/ML, life sciences, and financial services. We appreciate Seagate's proven data storage expertise and look forward to participating in the CORTX open 
@@ -63,7 +63,7 @@ The CORTX project is world's only 100% Open Source Mass-Capacity Optimized Objec
 
 - **Shailesh Manjrekar, Head of AI and Strategic Alliances**
 
-### UKAEA
+## UKAEA
 
 > “CORTX is novel in its very concept. It is very exciting to try our application and explore its performance using this unique object data storage system.” The UK Atomic Energy 
 > Authority (UKAEA), a leader in fusion energy research and development, sees CORTX as a welcome and needed solution. “CORTX is novel in its very concept,” said Dr. Debasmita 
