@@ -4,11 +4,8 @@ The CORTX project is world's only 100% Open Source Mass-Capacity Optimized Objec
 
 ## CEA
 
-> "CORTX is now proving to be very powerful and flexible object storage, which can be used very effectively to implement very large-scale data storage. CORTX can very nicely 
->  work with storage tools and many different types of storage interfaces. We have effectively used CORTX to implement a parallel file system interface (pNFS) and hierarchical 
->  storage management tools. CORTX architecture is also compatible with artificial intelligence and deep learning (AI/DL) tools such as TensorFlow.”
-
-- **Jacques-Charles Lafoucriere, Program Manager**
+  - "CORTX is now proving to be very powerful and flexible object storage, which can be used very effectively to implement very large-scale data storage. CORTX can very nicely work with storage tools and many different types of storage interfaces. We have effectively used CORTX to implement a parallel file system interface (pNFS) and hierarchical storage management tools. CORTX architecture is also compatible with artificial intelligence and deep learning (AI/DL) tools such as TensorFlow.”
+    - **Jacques-Charles Lafoucriere, Program Manager**
 
 ## DCBLOX
 
