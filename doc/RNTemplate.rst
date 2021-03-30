@@ -1,5 +1,5 @@
 ================================
-Release Notes - <<Product Name>>
+Release Notes - Product Name
 ================================
 *Version*:
 

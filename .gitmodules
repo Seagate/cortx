@@ -28,3 +28,6 @@
 [submodule "cortx-utils"]
 	path = cortx-utils
 	url = https://github.com/Seagate/cortx-utils.git
+[submodule "cortx-experiments"]
+	path = cortx-experiments
+	url = https://github.com/Seagate/cortx-experiments.git
