@@ -26,11 +26,12 @@ Procedure
    
     mkdir -p /var/artifacts
 
-#. Build CORTX artifacts using the below mentioned docker.
+#. Build CORTX artifacts using the below mentioned docker. 
+    **Note:** This step can take over an hour to run. Optionally you can prefix this command with ``time`` to show how long the build took.
 
    ::
    
-    time docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
+    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
     
 #. Generate the ISO by running the below mentioned command.
 

@@ -43,7 +43,7 @@
 
 
 ===========
-**Clovis**
+**Motr**
 ===========
 
 
@@ -65,11 +65,11 @@
 ..
 
 ===========
-**Clovis**
+**Motr**
 ===========
 
 
-Clovis the access layer to eos core over which IO and KV operations can be performed.
+Motr the access layer to eos core over which IO and KV operations can be performed.
 
 
 |image3|
@@ -77,7 +77,7 @@ Clovis the access layer to eos core over which IO and KV operations can be perfo
 
 
 ======================
-**Clovis: Operation**
+**Motr: Operation**
 ======================
 
 
@@ -86,11 +86,11 @@ Clovis the access layer to eos core over which IO and KV operations can be perfo
 
 
 ===========
-**Clovis**
+**Motr**
 ===========
 
 
-Clovis provides the following abstractions:
+Motr provides the following abstractions:
 
 * object (m0_clovis_obj) is an array of fixed-size blocks.
 
@@ -101,7 +101,7 @@ Clovis provides the following abstractions:
 ..
 
 ===============
-**Clovis: io**
+**Motr: io**
 ===============
 
 
@@ -109,7 +109,7 @@ Clovis provides the following abstractions:
 
 
 ==================
-**Clovis: index**
+**Motr: index**
 ==================
 
 
@@ -361,7 +361,7 @@ New Transport based on Sockets (recently added in Main).
 
 
 =====================
-**Clovis Object IO**
+**Motr Object IO**
 =====================
 
 
@@ -479,10 +479,10 @@ We pick that approach for which reads are minimum.
 ====================
 
 
-Clovis regenerates data from failed or unavailable units per parity
+Motr regenerates data from failed or unavailable units per parity
 group.
 
--  Once read IO fails, clovis checks (per parity group) how many units
+-  Once read IO fails, Motr checks (per parity group) how many units
    are unavailable.
 
 -  If W units were requested to be read, and K units are unavailable, it
@@ -497,7 +497,7 @@ group.
 
 
 
-When clovis app is mounted with parity-verify option, reading operation
+When Motr app is mounted with parity-verify option, reading operation
 reads all the units of a parity group.
 
 Parity is re-calculated using the read units, and compared against the
@@ -511,7 +511,7 @@ read parity.
 
 
 Callbacks for configuration update cancel all RPC sessions that are
-established with clovis instances.
+established with Motr instances.
 
 
 **Ongoing IO:** fails immediately or eventually due to failed RPC
@@ -622,7 +622,7 @@ repair/rebalance copy machine service
 ######################################
 
 
-- Repair and Rebalance are implemented as Mero services.
+- Repair and Rebalance are implemented as Motr services.
 
 - Both the services run on every ioservice node.
 
@@ -842,7 +842,7 @@ It is used to store the metadata. There are two kinds of metadata in BE:
    - cob: the gob (file) attributes, pver, lid, size.
 
 -  The metadata exported to user. It's DIX which is exported through
-   Clovis.
+   Motr.
    
 
 ..
@@ -916,7 +916,7 @@ Implementations
 
 -  low level trusted mechanism:
 
-   -  dynamically load shared library into Mero service process
+   -  dynamically load shared library into Motr service process
 
    -  invoke computations remotely, argument-result passing
 
@@ -929,33 +929,13 @@ Implementations
 
 ..
 
-===============
-**References**
-===============
-
-
-
-CORTX Core Training Documents:
-
-`<https://drive.google.com/drive/u/0/folders/1_oq-i20X7lzWHeLxcSiwfUIZMxgGxHHI>`_
-
-Mero Technical Long:
-
-`<https://drive.google.com/drive/u/0/folders/1_oq-i20X7lzWHeLxcSiwfUIZMxgGxHHI>`_
-
-Mero Function shipping:
-
-`<https://docs.google.com/presentation/d/1kCNlM78b7F0yRJLhq5seymRLU6a2adRznbN_hkhjt5c/edit#slide=id.g2b85cd7800_0_23>`_
-
-
-..
 
 =========
 **Demo**
 =========
 
 
-Clovis sample Apps Usage,
+Motr sample Apps Usage,
 
 $ dd if=abcd of=abcd-512K bs=4K count=128
 
@@ -969,7 +949,7 @@ $c0cat -l 172.16.0.124@o2ib:12345:44:301 -H 172.16.0.124@o2ib:12345:45:1
 
 $ diffabcd-512Kabcd-512K-read
 
-$ m0clovis for index create, put, get, delete ops.
+$ m0motr for index create, put, get, delete ops.
 
 
 ..
