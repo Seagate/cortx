@@ -45,7 +45,7 @@
 
 ● Motr CORTX-S3 is developed in C++, Authentication/Authorisation server developed in Motr Java.
 
-● Uses Clovis library (C - API) to talk to Motr IO/KVS services
+● Uses Motr library (C - API) to talk to Motr IO/KVS services
 
 ● CORTX-S3 Objects stored as CORTX-Motr (motr) Objects - IOS
 
@@ -82,7 +82,7 @@
 
 4. CORTX-S3 Server exposes CORTX-S3 REST APIs for CORTX.
 
-5. Clovis - C library interface to CORTX Object/KVS operations.
+5. Motr - C library interface to CORTX Object/KVS operations.
 
 6. CORTX Motr Object store
 
@@ -128,7 +128,7 @@
 
 4. CORTX-S3 instances request Auth server to verify the API signatures to authenticate and authorize the request.
 
-5. CORTX-S3 instance creates an object in motr and writes data using clovis APIs. Clovis uses erasure coding/replication depending on configuration for data resiliency.
+5. CORTX-S3 instance creates an object in Motr and writes data using Motr APIs. Motr uses erasure coding/replication depending on configuration for data resiliency.
 
 
 ==================================
@@ -150,7 +150,7 @@
 
 3. CORTX-S3 instances request Auth server to verify the API signatures to authenticate and authorize the request.
 
-4. CORTX-S3 instances reads object data from motr nodes and (assembles data units at clovis layer).
+4. CORTX-S3 instances reads object data from Motr nodes and (assembles data units at Motr layer).
 
 5. CORTX-S3 server sends the data back to CORTX-S3 clients via haproxy.
 
@@ -167,7 +167,7 @@
 
 ● Murmur3 hashing was used in **past** to map CORTX-S3 URI to generated OID/fid
 
-● Clovis Unique ID generator is used **today**.
+● Motr Unique ID generator is used **today**.
 
 ● CORTX-S3 URI – OID mapping stored in CORTX-S3 Object metadata in KVS
 
@@ -233,9 +233,9 @@
 
       -  offset for each part = partNumber \* Content-Length
 
-   -  Long term (Assemble in motr -recommended)
+   -  Long term (Assemble in Motr -recommended)
 
-      -  Follows CORTX-S3 protocol strictly and motr handles handles
+      -  Follows CORTX-S3 protocol strictly and Motr handles handles
          assembling in background without the user facing the delay in
          assemble.
 
@@ -263,7 +263,7 @@
 Refer to the [S3 API document](https://github.com/Seagate/cortx-s3server/blob/main/docs/s3-supported-api.md) to know the supported Service, Bucket, and Object Operations supported by CORTX-S3 Server API.
 
 =============================
-**CORTX-S3 - Clovis KV interface**
+**CORTX-S3 - Motr KV interface**
 =============================
 
 * CORTX-S3 uses clevis key-value API interface to use specific KV store like Cassandra DB, Motr KVS, Redis etc.
@@ -284,20 +284,18 @@ Refer to the [S3 API document](https://github.com/Seagate/cortx-s3server/blob/ma
 * Name, timestamps, ACL
 
 * Object references within bucket (CORTX-S3 object url, motr oid)
-	
-	
 
-* **Bucket data stored in Cassandra (Will move to Motr KVS)**
+* Bucket data stored in Cassandra (Will move to Motr KVS)
 
-* **Cassandra used for its nosql big data capabilities**
+* Cassandra used for its nosql big data capabilities
 
-* **Cassandra designed for heavy write operations using append only logs**
+* Cassandra designed for heavy write operations using append only logs
 
-* **Cassandra support built in replication and failure management**
+* Cassandra support built in replication and failure management
 
-* **Cassandra peer to peer architecture, with read/write anywhere**
+* Cassandra peer to peer architecture, with read/write anywhere
 
-* **Cassandra scales out linearly with no operational overhead for adding new nodes**
+* Cassandra scales out linearly with no operational overhead for adding new nodes
 
 
 ..
@@ -311,8 +309,10 @@ Refer to the [S3 API document](https://github.com/Seagate/cortx-s3server/blob/ma
 *Reach out to:*
 
 
-* *CORTX Community Slack channel* - `<https://cortxcommunity.slack.com>`_
+* *CORTX Community Slack channel* - |Slack|
 
+.. |Slack| image:: https://img.shields.io/badge/chat-on%20Slack-blue
+   :target: https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?
 
 |image18|
 

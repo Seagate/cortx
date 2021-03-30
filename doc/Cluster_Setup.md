@@ -11,24 +11,8 @@ Create a virtual machine.
 
 ### 1.2. Install the RPMs
 
-* Install Consul.
-  ```sh
-  sudo yum -y install yum-utils
-  sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-  sudo yum -y install consul-1.7.8
-  ```
-
-* Add 'last_successful' yum repository.
-  ```bash
-  REPO=cortx-storage.colo.seagate.com/releases/cortx
-  REPO+=/github/release/rhel-7.7.1908/last_successful/
-
-  sudo yum-config-manager --add-repo="http://$REPO"
-  sudo tee -a /etc/yum.repos.d/${REPO//\//_}.repo <<< 'gpgcheck=0'
-  ```
-
 * Build and Install RPMs.
-Follow the [Hare User Guide](https://github.com/Seagate/cortx-hare#installation) to Build and Install Hare from source.
+Follow the [Hare User Guide](https://github.com/Seagate/cortx-hare#installation) to Build and Install Hare from source. This guide will also show you how to build and install Motr.
 
   
 ### 1.3. Configure LNet

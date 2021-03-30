@@ -66,6 +66,11 @@ CORTX-S3 Authentication and Authorization
 
 |image2|
 
+Note: since 3/4/2020, in most cases Authorization and Authentication are now
+done as part of a single "combined" API call (to improve performance).  See here
+for more details: `Combined Auth Call Design
+<https://github.com/Seagate/cortx-s3server/blob/main/docs/design/Combined-Auth-Call.md>`_.
+
 =======================   
 Authentication methods
 =======================

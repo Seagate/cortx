@@ -263,9 +263,7 @@ local memory which will need to be extended**
 
 -  Distributed Transaction Management (Basic)
 
--  Higher Level Interface on Clovis
-
-
+-  Higher Level Interface on Motr
 
 
 **Sage2 (Other anticipated outcomes)**
@@ -273,9 +271,9 @@ local memory which will need to be extended**
 
 
 
--  TensorFlow on Clovis
+-  TensorFlow on Motr
 
--  dCache on Clovis
+-  dCache on Motr
 
 -  3DXPoint NVDIMM Interoperability
 
@@ -322,9 +320,9 @@ local memory which will need to be extended**
 #########################
 
 
-MIO - Maestro I/O Interface that sits on top of CORTX Clovis API
+MIO - Maestro I/O Interface that sits on top of CORTX-Motr API
 
--  MIO is a higher level API on top of Clovis making it easy to use CORTX
+-  MIO is a higher level API on top of Motr making it easy to use CORTX
 
 -  MIO work leads to work on a POSIX-lite API in Sage2
 
@@ -353,7 +351,7 @@ MIO - Maestro I/O Interface that sits on top of CORTX Clovis API
    climate models to make use of Exascale systems when they arrive
    (Circa 2023)
 
--  **Seagate Focus:** Development of the Clovis API/CORTX **suitable for the
+-  **Seagate Focus:** Development of the Motr API/CORTX **suitable for the
    Weather/Climate Community** & provide a prototype storage solution
 
 

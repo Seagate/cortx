@@ -175,3 +175,28 @@ If you encounter the below mentioned error, click `here <https://kb.vmware.com/s
    </details>
 
 
+.. raw:: html
+
+   <details>
+   <summary><a>Oracle VM VirtualBox</a></summary>
+
+#. Launch Oracle VM VirtualBox in your system.
+
+#. Click **File** at the top. A menu appears. Select **Import Appliance...**
+
+#. Click *Choose File Icon*. From your system, select the OVA file. Then, click **Open**.
+
+#. Click **Next** to continue, and click **Import** with the default settings.
+
+   - By default, Oracle VM VirtualBox imports the file with *cortx_ova_1* as the name.
+
+#. Click on the green arrow that says "Start".
+
+   - **IMPORTANT**: After started, you should select Rescue OS to boot (Press Down key and Enter) when prompted.
+   - *Will automatically proceed in 5 seconds if not changed, which will have dracut initqueue timeout errors*
+
+#. Return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
+
+.. raw:: html
+   
+   </details>

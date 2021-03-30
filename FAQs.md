@@ -24,11 +24,11 @@ CORTX is also used by the weather and climate community in the EsiWACE  (2015 â€
 Sage2 is continuing to build a CORTX cluster based for extreme scale computing/HPC and AI moving forward from the SAGE project, continuing to use the SAGE prototype. The project consists of 9 partners lead by Seagate and is funded by the European Commission's H2020 program (Grant Agreement numnber: 800999). Sage2 will demonstrate a multi tier storage system (distributed NVRAM, SSD, HDD), "SAGE", capable of handling data intensive workloads. 
 Seagate is providing the components of CORTX primarily, Motr, lib-motr and Hare and some of the storage enclosures (SAS & SATA HDD tiers). Experimental pieces of Motr are developed by Seagate (eg: QoS, Function Shipping etc) to suit the needs of HPC and AI use cases. 
 ATOS.. 
-KTH is..
+KTH is focusing on adopting the CORTX object storage with an I/O programming model that is suitable for large scale HPC and emerging ML/AI applications. To demonstrate the features of CORTX, pilot applications such as [iPIC3D](https://kth-hpc.github.io/iPIC3D/) and [StreamBrain](https://github.com/KTH-HPC/StreamBrain) are adapted to use CORTX object storage and function shipping to accelerate post-processing workloads.
 Juelich is...
 Kitware is focussing on providing visualition utilities for applications running on SAGE.
 ARM is..
-UKAEA is ..
+UKAEA is adapting the novel storage system for a unique HPC application involving parallel in time. The combination of the tiered storage with parallel in time aims to demonstrate application portability to the Exascale era. UKAEA also is contributing to areas such as global memory abstraction and is closely working with other CORTX partners to develop and use tools for studying performance alonside data management and analysis. 
 University of Edinburgh is..
 CEA is..
 

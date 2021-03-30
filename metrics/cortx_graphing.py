@@ -63,6 +63,8 @@ def goal_graph(df,title,xlim,goals,columns,ylim=None):
   for c in columns:
     max_y = max(max_y,df[c].max())
   for idx,goal in enumerate(goals):
+    if not goal:
+      continue
     # add a label at the end
     plt.annotate(" %s Goal" % goal.name, (goal.end_date, goal.end_value),color=colors[idx])
     # find the first known value for this goal and use it to start the goal
