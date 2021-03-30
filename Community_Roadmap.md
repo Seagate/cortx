@@ -37,8 +37,8 @@
             <td> <img src="https://www.countryflags.io/il/flat/64.png"><br><a href=doc/First_Hackathon.rst>LINK</a></td>
             <td></td>
             <td></td>
-            <td>:earth_africa:</td>
-            <td></td>
+            <td>:earth_africa:<a href=https://seagate-cortx-hackathon.devpost.com>LINK</a></td>
+            <td><img src="https://www.countryflags.io/eu/flat/64.png"> </td>
             <td></td>
             <td> <img src="https://www.countryflags.io/in/flat/64.png"> </td>
             <td></td>
