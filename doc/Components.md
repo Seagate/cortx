@@ -16,7 +16,7 @@
 
 ## Definitions and Links to each of the components
 
-### Motr
+### [Motr](https://github.com/seagate/cortx-motr)
 
 At the core of CORTX lies Motr. Motr is a distributed object storage system, targeting mass capacity storage configurations. 
 To ensure the most efficient storage utilization, Motr interacts directly with block devices (i.e., it does not _layer_ on a local file system).
@@ -24,32 +24,9 @@ The Motr design was heavily influenced by the Lustre file system, NFSv4 and data
 (hierarchical directory namespace, strong POSIX consistency guarantees, &c.) are no longer desirable or achievable at mass capacity. Instead, Motr is a more
 general storage system that provides an optional file system interface. This allows wider range of deployments, including cloud.
 
-Following are the features of CORTX Motr: 
-
-   - Scalable: 
-        > Horizontal scalability: grow your system by adding more nodes. The Motr submodule is 	designed for horizontal scalability with no meta-data hotspots, shared-nothing IO paths 	and extensions running on additional nodes. 
-
-        > Vertical scalability: with more memory and CPU on the nodes. 
-
-   - Fault-tolerant: with flexible erasure coding that takes hardware and network topology into account. 
-
-   - Fast network raid repairs. 
-
-   - Observable: with built-in monitoring that collects detailed information about the system       behavior. 
-
-   - Extensible. 
-
-   - Extension interface. 
-
-   - Flexible transactions. 
-
-   - Open source. 
-
-   - Portable: runs in user space and can be easily ported to any version of Linux. 
-
 You can find the Motr repo here [Motr](https://github.com/Seagate/cortx-motr).
 
-### Provisioner
+### [Provisioner](https://github.com/Seagate/cortx-prvsnr)
 
 The process of setting up your IT Infrastructure is called Provisioning. Provisioning involves managing access to data and resources 
 to make these available to users and systems. Resource deployment is a two-step process where you provision and then configure the resource.
@@ -73,7 +50,7 @@ where we maintain a lot more documentation about this repository.
 
 You can find the Provisioner repo here [Provisioner](https://github.com/Seagate/cortx-prvsnr).
 
-### Experiements
+### [Experiments](https://github.com/Seagate/cortx-experiments)
 
 The cortx-experiments repo is used for recording all the pocs and experiments executed by architecture team. 
 
@@ -91,14 +68,14 @@ The cortx-experiments repo is used for recording all the pocs and experiments ex
 
 You can find the Experiments repo here [Experiments](https://github.com/Seagate/cortx-experiments).
  
-### HA
+### [HA](https://github.com/Seagate/cortx-ha/)
 
 CORTX-HA or High-Availability always ensures the availability of CORTX and prevents hardware component or software service failures. If any of your hardware components 
 or software services are affected, CORTX-HA takes over the failover or failback control flow and stabilizes them across the CORTX cluster. 
 
 You can find the HA repo here [HA](https://github.com/Seagate/cortx-ha).
 
-### HARE
+### [HARE](https://github.com/Seagate/cortx-hare/)
 
 What HARE does: 
 
@@ -112,7 +89,7 @@ Hare implementation uses [Consul](https://www.consul.io/) key-value store and he
 
 You can find the HARE repo here [HARE](https://github.com/Seagate/cortx-hare).
 
-### Management-Portal
+### [Management Portal](https://github.com/Seagate/cortx-management-portal)
 
 CORTX Management Portal provides user interface (UI) to facilitate the easy utility of different CORTX components and features.
 It communicates with CORTX manager through middleware application. The CORTX Manager communicates with different CORTX components 
@@ -120,20 +97,20 @@ and features and gives proper response to CORTX Management Portal.
 
 You can find the Management-Portal repo here [Management-Portal](https://github.com/Seagate/cortx-management-portal).
 
-### Manager
+### [Manager](https://github.com/Seagate/cortx-manager)
 
 CORTX Manager provides APIs which communicate with different CORTX components and features. These APIs are consumed by CORTX Management Portal and CLI.
 
 You can find the Manager repo here [Manager](https://github.com/Seagate/cortx-manager).
 
-### Monitor
+### [Monitor](https://github.com/Seagate/cortx-monitor)
 
 CORTX Monitor tracks platform health and raises alerts on sensing any unintended state. It can detect hardware faults, removal or replacement by continuously
 sensing sub-systems like Storage Enclosure, Node Servers and Components, and Network Interfaces.
 
 You can find the Monitor repo here [Monitor](https://github.com/Seagate/cortx-monitor).
 
-### POSIX
+### [POSIX](https://github.com/Seagate/cortx-posix)
 
 CORTX-POSIX is top level code repository, which helps in building various sub-components (like CORTXFS, NSAL, DSAL etc.) to support different file access protocols 
 (like SAMBA, NFS etc.) to Seagate CORTX. This code base consists of scripts which will facilitate in fetching the sub-components repos, and build the code. Note that 
@@ -146,7 +123,7 @@ only provided as a starting point for anyone interested in an NFS layer to CORTX
 
 You can find the POSIX repo here [POSIX](https://github.com/Seagate/cortx-posix).
 
-### S3-Server
+### [S3-Server](https://github.com/Seagate/cortx-s3server)
 
 CORTX Simple Storage Service or CORTX-S3 Server is an object storage service with high data availability, durability, scalability, performance, and security. 
 You can use CORTX-S3 Server to store any amount of data for varying business needs and implement it across industries of varying sizes. 
@@ -155,7 +132,7 @@ You can easily manage data and access controls using CORTX-S3 Server data manage
 
 You can find the S3-Server repo here [S3-Server](https://github.com/Seagate/cortx-s3server).
 
-### Utils
+### [Utils](https://github.com/Seagate/cortx-utils)
 
 The cortx-utils repository contains utility tools and code for various CORTX submodules. For example, S3 and NFS submodules use code from the cortx-utils repos. 
 
