@@ -65,7 +65,9 @@
         <td>:heavy_check_mark:
         <a href=/doc/PDFs/Newsletters/Feb_2021_newsletter.pdf>PDF</a>
         </td>
-        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:
+        <a href=/doc/PDFs/Newsletters/Mar_2021_newsletter.pdf>PDF</a>
+        </td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
@@ -103,7 +105,7 @@
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
-        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>

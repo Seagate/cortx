@@ -22,8 +22,8 @@ def remove_string_from_set(Set, String):
       newset.add(item)
   return newset
 
-def avoid_rate_limiting(gh):
-  cortx_community.avoid_rate_limiting(gh)
+def avoid_rate_limiting(gh,limit=None):
+  cortx_community.avoid_rate_limiting(gh,limit)
 
 # this function takes a NamedUsed (https://pygithub.readthedocs.io/en/latest/github_objects/NamedUser.html) and returns info about them
 # it seems this function uses the github API to query some of this stuff and that kills the rate limit (and probably performance also)
@@ -218,6 +218,7 @@ def get_top_level_repo_info(stats,repo,people,author_activity,gh,org_name):
     url = 'starred -> %s' % repo
     add_star_watch_fork(key=key,url=url,item=sg,stats=stats,people=people,author=sg.user,author_activity=author_activity,Type='stars',gh=gh,repo=repo,org_name=org_name)
 
+  # ugh, this sometimes fails.  I think the problem is that the iterator is silently doing an API count so we can hit the rate limit....
   for w in repo.get_watchers():
     key = 'watched -> %s:%s' % (repo,w.login)
     url = 'watched -> %s' % repo
@@ -248,6 +249,8 @@ def get_top_level_repo_info(stats,repo,people,author_activity,gh,org_name):
     stats['top_paths'] = top_paths
   except github.GithubException as e:
     print("Can't get referrers: GithubException %s" % e.data)
+  except Exception as e:
+    print("Can't get referrers: unknown exception", e )
 
   stats['downloads_releases'] = 0 # needed if we are running in update mode
   stats['downloads_vms'] = 0 # needed if we are running in update mode
@@ -276,7 +279,9 @@ def get_commits(rname,repo,local_stats,people,author_activity,gh,org_name):
       email_addresses = re.findall(r'[\w\.-]+@[\w\.-]+', c.commit.message) # search for email addresses in commit message; might be some due to DCO
       #print("Adding Commit info %s and %s" % (c.author.company, c.author.email))
       local_stats['email_addresses'] = local_stats['email_addresses'].union(email_addresses)
+    avoid_rate_limiting(gh,1000)
     for comment in c.get_comments():
+      avoid_rate_limiting(gh)
       scrape_comment(people,gh,rname,comment,"commit",local_stats,author_activity,org_name)
 
 def summarize_consolidate(local_stats,global_stats,people,author_activity,ave_age_str):
@@ -318,15 +323,22 @@ def get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh,org_name
     print("WTF: get_issues failed? will recurse and try again", e)
     return get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh,org_name) # recurse
 
+    avoid_rate_limiting(gh)
   for issue in issues:
     if issue.pull_request is None:
       Type = 'issues'
       commit = False
     else:
-      issue = issue.as_pull_request()
-      Type = 'pull_requests'
-      commit = True
+      try:
+        avoid_rate_limiting(gh)
+        issue = issue.as_pull_request() # this fails sometimes with github.GithubException.GithubException: 500 
+        Type = 'pull_requests'
+        commit = True
+      except Exception as e:
+        print("WTF: as_pull_request failed?", e)
+        continue
     scrape_issue_or_pr(people,gh,rname,issue,local_stats,author_activity,Type,commit,org_name)
+    avoid_rate_limiting(gh)
     for comment in issue.get_comments():
       avoid_rate_limiting(gh)
       scrape_comment(people,gh,rname,comment,"issue",local_stats,author_activity,org_name)
