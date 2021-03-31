@@ -311,6 +311,8 @@ Restart CORTX
 Tested by:
 <<<<<<< HEAD
 
+- Mar 24, 2021:  Harrison Seow (harrison.seow@seagate.com) using OVA release 1.0.2 on Windows running Oracle VM VirtualBox 6.1.16.
+
 - Mar 18, 2021: Jalen Kan (jalen.j.kan@seagate.com) using OVA release 1.0.2 on a Windows laptop running VMWare Workstation.
 
 =======

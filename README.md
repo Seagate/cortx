@@ -66,6 +66,7 @@ Resources
 -   We like to highlight the work and contributions of our community members—if you have solved an interesting challenge, or you are interested in sharing your experience or use cases, we want to talk to you! Please email our Community Manager rachel.novak@seagate.com or [schedule a meeting with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2) to share.
 -   Many folks are actively conducting various experiments, feasibility studies, and proofs of concept using CORTX.  Check it out in the [cortx-experiments](https://github.com/Seagate/cortx-experiments) repository and either join an existing experiment or start your own.
 -   Please consider participating in [CORTX Hackathons](doc/CORTX_Hackathon.rst) and check out our [CORTX Community Roadmap](Community_Roadmap.md) for upcoming events!
+-   Please [read what our Community members say](CORTXTestimonials.md) about how CORTX is helping them achieve their goals with our next-generation storage solution. 
 
 Thank You!
 ----------
