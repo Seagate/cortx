@@ -19,7 +19,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download `cortx-va-1.0.3.ova <http://cortx-storage.colo.seagate.com/releases/opensource_builds/ova/cortx-va-1.0.3.ova>`_ file. This contains the virtual machine image.
+#. Download `cortx-va-1.0.3.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.3.zip>`_ file. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -135,7 +135,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
 
-    systemctl status rabbitmq-server elasticsearch haproxy s3authserver sspl-ll csm_agent csm_web
+    systemctl status rabbitmq-server elasticsearch haproxy s3authserver sspl-ll csm_agent csm_web hare-consul-agent.service
  
    The image below shows the output of a successful *systemctl* command; notice how the service is *active*.
    
