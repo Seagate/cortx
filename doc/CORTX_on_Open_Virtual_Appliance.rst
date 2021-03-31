@@ -133,7 +133,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
 
-    systemctl status rabbitmq-server elasticsearch haproxy s3authserver sspl-ll csm_agent csm_web hare-consul-agent.service
+    systemctl status rabbitmq-server elasticsearch haproxy s3authserver sspl-ll csm_agent csm_web hare-consul-agent
  
    The image below shows the output of a successful *systemctl* command; notice how the service is *active*.
    
