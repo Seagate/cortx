@@ -142,6 +142,7 @@ The procedure to install CORTX on OVA is mentioned below.
     systemctl status sspl-ll      
     systemctl status csm_agent    
     systemctl status csm_web
+    systemctl status hare-consul-agent
  
    The image below shows the output of a successful *systemctl* command; notice how the service is *active*.
    
@@ -168,7 +169,8 @@ The procedure to install CORTX on OVA is mentioned below.
    * ens32 - Management IP
    * ens33 - Public data IP
    * ens34 - Private data IP (if present)
-   
+
+
    .. image:: images/networks.png
    
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
@@ -197,6 +199,8 @@ The procedure to install CORTX on OVA is mentioned below.
 #. Please use these instructions which describe how to use the `command line interface to query and monitor <checking_health.rst>`_ the configuration, health, and activity of your CORTX system.
 
 #. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
+
+**Note:** The Lyve Pilot (LP) will be available in the future releases.
  
 *************
 Miscellaneous
