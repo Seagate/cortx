@@ -17,7 +17,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 
 **********
 Procedure
-**********
+*********
 The procedure to install CORTX on OVA is mentioned below.
 
 #. Download and unzip the `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_. This contains the virtual machine image.
@@ -118,6 +118,8 @@ The procedure to install CORTX on OVA is mentioned below.
    
    - Ensure that you have configured your ipv4 network.
       - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
+      - If you are using WMware workstation 15.5.0, refer to the network setup `here </doc/vmware_workstation_15_5_0_setup.rst>`_.
+   
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
       - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
       
@@ -211,21 +213,21 @@ Miscellaneous
 
 If you have a firewall between CORTX and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the ports mentioned below are open to provide access to CORTX.
   
-+----------------------+-------------------+---------------------------------------------+
-|    **Port number**   |   **Protocols**   |   **Destination network on CORTX**          |
-+----------------------+-------------------+---------------------------------------------+
-|          22          |        TCP        |           Management network                |
-+----------------------+-------------------+---------------------------------------------+ 
-|          53          |      TCP/UDP      | Management network and Public Data network  |
-+----------------------+-------------------+---------------------------------------------+ 
-|         123          |      TCP/UDP      |              Management network             |
-+----------------------+-------------------+---------------------------------------------+
-|         443          |       HTTPS       |             Public Data network             |
-+----------------------+-------------------+---------------------------------------------+
-|         9443         |       HTTPS       |              Public Data network            |
-+----------------------+-------------------+---------------------------------------------+
-|         28100        |   TCP (HTTPS)     |              Management network             |
-+----------------------+-------------------+---------------------------------------------+
++-----------------+---------------+--------------------------------------------+
+| **Port number** | **Protocols** | **Destination network on CORTX**           |
++-----------------+---------------+--------------------------------------------+
+| 22              | TCP           | Management network                         |
++-----------------+---------------+--------------------------------------------+
+| 53              | TCP/UDP       | Management network and Public Data network |
++-----------------+---------------+--------------------------------------------+
+| 123             | TCP/UDP       | Management network                         |
++-----------------+---------------+--------------------------------------------+
+| 443             | HTTPS         | Public Data network                        |
++-----------------+---------------+--------------------------------------------+
+| 9443            | HTTPS         | Public Data network                        |
++-----------------+---------------+--------------------------------------------+
+| 28100           | TCP (HTTPS)   | Management network                         |
++-----------------+---------------+--------------------------------------------+
 
 If your disk does not have space, run the following command to clean up the logs from the **/var/log** file.
 
@@ -250,7 +252,7 @@ To restart the CORTX OVA, follow the below mentioned procedures, in the order of
 Note: If the virtual machine (VM) is forcefully shutdown then some of the services will be impacted as well as the cluster might not start so you have to run the bootstrap script again to avoid importing the OVA image again.
 
 Shutdown CORTX
-----------------
+--------------
 
 .. raw:: html
 
@@ -277,7 +279,7 @@ Shutdown CORTX
  
 
 Restart CORTX
---------------
+-------------
 
 .. raw:: html
 
