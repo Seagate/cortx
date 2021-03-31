@@ -38,7 +38,9 @@
             <td></td>
             <td></td>
             <td></td>
-            <td> :earth_africa:<a href=https://seagate-cortx-hackathon.devpost.com>LINK</a> <br> <img src="https://www.countryflags.io/eu/flat/64.png"> </td>
+            <td> :earth_africa:<a href=https://seagate-cortx-hackathon.devpost.com>LINK</a> <br> 
+                 <img src="https://www.countryflags.io/eu/flat/64.png"><a href=https://sagestorage.eu/news-and-events/sage2-visualization-hackathon>LINK</a> 
+            </td>
             <td></td>
             <td> <img src="https://www.countryflags.io/in/flat/64.png"> </td>
             <td></td>
