@@ -20,7 +20,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download and uncompress the `cortx-va-1.0.3.ova <https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova>`_ file from `our release page <https://github.com/Seagate/cortx/releases>`_. This contains the virtual machine image.
+#. Download `cortx-va-1.0.3.ova <https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -87,7 +87,7 @@ The procedure to install CORTX on OVA is mentioned below.
          NM_CONTROLLED="no"
          ZONE=trusted
 
-   #. Reboot the machine by running **Poweroff** command and restart.
+   #. Poweroff the machine by running **Poweroff** command and restart.
 
    #. To verify the change in Network Device Name, run the following command:
 
@@ -164,26 +164,17 @@ The procedure to install CORTX on OVA is mentioned below.
 
     systemctl start|restart <service_name>
 
-#. By default, port 80 may be closed. Run the below mentioned command to open port 80.
-
-   ::
-               
-    salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
-    
-    salt '*' cmd.run "firewall-cmd --reload"
-
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
-   * ens192 - management 
-   * ens256 - public data
-   
-   .. image:: images/networks.png
+   * ens32 - Management IP
+   * ens33 - Public data IP
+   * ens34 - Private data IP (if present)
    
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
    ::
    
-    sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh
+    sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
 
     * The script performs several operations on S3 API and LDAP backend:
       create account
