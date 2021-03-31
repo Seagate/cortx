@@ -9,7 +9,8 @@ Recommended Hypervisors
 ***********************
 All of the following hypervisors should work: `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
 `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_, and
-`Oracle VM VirtualBox <https://www.oracle.com/virtualization/>`_. 
+`Oracle VM VirtualBox <https://www.oracle.com/virtualization/>`_.
+`VMware Fusion <https://www.vmware.com/products/fusion.html>`_.
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.  For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
@@ -18,7 +19,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download and unzip the `cortx-va-1.0.3.ova <https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/ova-1.0.3>`_. This contains the virtual machine image.
+#. Download `cortx-va-1.0.3.ova <https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
