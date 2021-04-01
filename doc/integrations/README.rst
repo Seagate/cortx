@@ -48,4 +48,4 @@ Click on any of the images below to know how to integrate CORTX with these other
    
 .. |IPFS| image:: ../images/IPFS.png
    :width: 1 em
-   :target: IPFS.md
+   :target: ipfs.md
