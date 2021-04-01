@@ -71,7 +71,8 @@ cd cmd/ipfs
 
 In your home directory there should be a folder `.ipfs` and in that folder there should be a `config` file.
 
-Include the s3 details below to 
+Include the CORTX details below to the `.config` file
+
 ```json
 {
   "Datastore": {
@@ -97,7 +98,7 @@ Include the s3 details below to
 #### Step 7: Overwrite `$IPFS_DIR/datastore_spec` as specified below
 
 ```
-{"mounts":[{"bucket":"$bucketname","mountpoint":"/blocks","region":"us-east-1","rootDirectory":"$bucketsubdirectory"},{"mountpoint":"/","path":"datastore","type":"levelds"}],"type":"mount"}
+{"mounts":[{"bucket":"<BUCKET NAME>","mountpoint":"/blocks","region":"us-east-1","rootDirectory":"<BUCKET SUBDIRECTORY>"},{"mountpoint":"/","path":"datastore","type":"levelds"}],"type":"mount"}
 ```
 
 #### Step 8: Run the IPFS node
