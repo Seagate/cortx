@@ -47,3 +47,8 @@ The CORTX project is world's only 100% Open Source Mass-Capacity Optimized Objec
 - “CORTX is novel in its very concept. It is very exciting to try our application and explore its performance using this unique object data storage system.” The UK Atomic Energy Authority (UKAEA), a leader in fusion energy research and development, sees CORTX as a welcome and needed solution. “CORTX is novel in its very concept,” said Dr. Debasmita Samadder, Exascale Algorithms Specialist at UKAEA. “It is very exciting to try our application and explore its performance using this unique object data storage system."
 
   - **Dr. Debasmita Samadder, Exascale Algorithms Specialist**
+
+## Johannes Gutenberg University, Mainz
+
+- "The open-source project CORTX pools the expertise of leading industry and research groups within a focused development process. We are happy to be part of this CORTX community and to work with many storage experts on extending CORTX by including hybrid online/offline deduplication strategies."
+    - André Brinkmann
