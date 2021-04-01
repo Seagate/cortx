@@ -46,6 +46,6 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: https://github.com/Seagate/cortx-experiments/blob/main/daos-cortx/docs/datamovment_with_s3.md  
    
-   .. |IPFS| image:: ../images/IPFS.png
+.. |IPFS| image:: ../images/IPFS.png
    :width: 1 em
    :target: IPFS.md
