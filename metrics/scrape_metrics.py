@@ -335,7 +335,7 @@ def get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh,org_name
         Type = 'pull_requests'
         commit = True
       except Exception as e:
-        print("WTF: as_pull_request failed?", e)
+        print("WTF: as_pull_request on %s failed?" % issue.html_url, e)
         continue
     scrape_issue_or_pr(people,gh,rname,issue,local_stats,author_activity,Type,commit,org_name)
     avoid_rate_limiting(gh)
