@@ -10,7 +10,7 @@
     "displayMode": "diff"
   },
   "issueSettings": {
-    "minSeverityLevel": "HIGH"
+    "minSeverityLevel": "LOW"
   }
 }
  
