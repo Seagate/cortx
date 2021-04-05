@@ -12,7 +12,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |FHIR|         | |Siddhi-Celery|    |      |ImagesApi|    |                     
 +----------------+--------------------+---------------------+
-| |AWS_EC2|      | |DAOS|             |                     |             
+| |AWS_EC2|      | |DAOS|             |       |IPFS|        |             
 +----------------+--------------------+---------------------+
 .. |Splunk| image:: ../images/SplunkLogo.png
    :width: 1 em
@@ -45,3 +45,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |DAOS| image:: https://camo.githubusercontent.com/38c204bac927eb42c29e727246742567baa5e1192fa5982183c227e570863604/68747470733a2f2f656d6f6a692e736c61636b2d656467652e636f6d2f5434525545324644482f64616f732f663532623565633262303439353866312e706e67
    :width: 1 em
    :target: https://github.com/Seagate/cortx-experiments/blob/main/daos-cortx/docs/datamovment_with_s3.md  
+   
+.. |IPFS| image:: ../images/IPFS.png
+   :width: 1 em
+   :target: ipfs.md

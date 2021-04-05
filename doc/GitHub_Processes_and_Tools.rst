@@ -353,6 +353,20 @@ To create a pull request on GitHub, navigate to the main page of the respective 
    
    </details>
 
+License blocks
+============
+
+.. raw:: html 
+
+  <details> 
+  <summary><a>Click here to expand</a></summary>
+
+1. License blocks must be added to every source code file (.c, .h, .java, .py, etc)
+2. License blocks should not be added to documentation files (.txt, .md, README's, .rst, etc)
+
+.. raw:: html
+   
+   </details>
 
 ******
 Codacy
