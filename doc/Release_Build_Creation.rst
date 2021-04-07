@@ -104,4 +104,5 @@ Procedure
         
 Tested by:
 
+- Apr 6, 2021: Harrison Seow (harrison.seow@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Player.
 - Feb 12, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation Pro 16.
