@@ -5,7 +5,7 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/Seagate/cortx)](https://github.com/Seagate/cortx/graphs/contributors/)
 <!-- ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg) -->
 
-<img src="../assets/images/cortx-logo.png?raw=true">
+<img src="../main/doc/assets/CORTX-Logo-GRN_400x400.jpg?raw=true" width="200" height="180" />
 
 # CORTX: World's Only 100% Open Source Mass-Capacity Optimized Object Store
 
