@@ -101,7 +101,10 @@ def api_process_post_method(workspace):
             "as_admin": False
         }
         cookie = workspace + '_COOKIE'
-        # print (cookie)
+        print("---------------------------------------------")
+        print (os.environ[workspace])
+        print (os.environ[cookie])
+        print("---------------------------------------------")
         headers = {'content-type': 'application/json', 'cookie': os.environ[cookie]}
 
         r = requests.post(ws_url, data=json.dumps(ws_payload), headers=headers)
