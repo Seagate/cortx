@@ -49,3 +49,6 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |IPFS| image:: ../images/IPFS.png
    :width: 1 em
    :target: ipfs.md
+
+
+Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
