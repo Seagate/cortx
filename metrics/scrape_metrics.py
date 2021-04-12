@@ -181,6 +181,8 @@ def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh
         except AttributeError:
           try:
             login = item.user.login # stargazer
+            if Type == 'watchers':
+              print("WTF: we are including stargazers in watchers?")
           except AttributeError:
             print("WTF: what we think is a stargazer isn't:", item)
             print("Cowardly no longer attempting to add this item")
@@ -219,6 +221,7 @@ def get_top_level_repo_info(stats,repo,people,author_activity,gh,org_name):
     add_star_watch_fork(key=key,url=url,item=sg,stats=stats,people=people,author=sg.user,author_activity=author_activity,Type='stars',gh=gh,repo=repo,org_name=org_name)
 
   # ugh, this sometimes fails.  I think the problem is that the iterator is silently doing an API count so we can hit the rate limit....
+  # TODO: this is merely getting the stargazers again.  We need to replace this with get_subscribers()
   for w in repo.get_watchers():
     key = 'watched -> %s:%s' % (repo,w.login)
     url = 'watched -> %s' % repo
