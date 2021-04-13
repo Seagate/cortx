@@ -22,8 +22,8 @@ def remove_string_from_set(Set, String):
       newset.add(item)
   return newset
 
-def avoid_rate_limiting(gh,limit=None):
-  cortx_community.avoid_rate_limiting(gh,limit)
+def avoid_rate_limiting(gh,limit=None,Verbose=False):
+  cortx_community.avoid_rate_limiting(gh,limit,Verbose)
 
 # this function takes a NamedUsed (https://pygithub.readthedocs.io/en/latest/github_objects/NamedUser.html) and returns info about them
 # it seems this function uses the github API to query some of this stuff and that kills the rate limit (and probably performance also)
@@ -339,6 +339,7 @@ def get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh,org_name
         commit = True
       except Exception as e:
         print("WTF: as_pull_request on %s failed?" % issue.html_url, e)
+        avoid_rate_limiting(gh,limit=None,Verbose=True)
         continue
     scrape_issue_or_pr(people,gh,rname,issue,local_stats,author_activity,Type,commit,org_name)
     avoid_rate_limiting(gh)
