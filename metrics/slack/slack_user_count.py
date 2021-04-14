@@ -51,6 +51,10 @@ WORKSPACE_INFO = {
         "workspace_id": "T0D0VLNG7",
         "channel_id": "C0D0Z7XFB"
     },
+    "CORTX": {
+        "workspace_id": "T014PH2TR0W",
+        "channel_id": "C014WFC5KEF"
+    },
 }
 
 
@@ -97,7 +101,7 @@ def api_process_post_method(workspace):
             "as_admin": False
         }
         cookie = workspace + '_COOKIE'
-        # print (cookie)
+        # print(cookie)
         headers = {'content-type': 'application/json', 'cookie': os.environ[cookie]}
 
         r = requests.post(ws_url, data=json.dumps(ws_payload), headers=headers)
@@ -167,7 +171,7 @@ def open_pickle(path: str):
 
 
 def main():
-    workspaces = ["MINIO", "OPENIO", "DAOS", "CEPH", "OPENSTACK"]
+    workspaces = ["MINIO", "OPENIO", "DAOS", "CEPH", "OPENSTACK", "CORTX"]
     pkl_obj_file = "../pickles/slack_users_stats.pickle"
     workspace_list = {}
     for workspace in workspaces:
