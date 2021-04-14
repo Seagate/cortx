@@ -9,7 +9,7 @@ Prerequisites:
 -------
 
 - You will need an AWS account with right to create an [EC2 instances.](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc) 
-- You will need to [import to an AMI](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) the [CORTX OVA.](https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip) 
+- You will need to [import to an AMI](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) the [CORTX OVA.](https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova) 
 - Ideally you would have [run and setup CORTX on a local VM](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst) and gone through the steps locally before doing it on AWS. 
 
 
@@ -66,9 +66,9 @@ Fill in the key for `ATTR{address}==` with the MAC address you want for each net
 
 *Example:*
 ```
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:6d:62:4e:41:e3", NAME="ens192"
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:7c:de:ea:8a:8d", NAME="ens224"
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:61:b7:69:e6:c9", NAME="ens256"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:6d:62:4e:41:e3", NAME="ens32"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:7c:de:ea:8a:8d", NAME="ens33"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:61:b7:69:e6:c9", NAME="ens34"
 ```
 **Do NOT just copy this example, fill in the MAC adddress of YOUR network interfaces**
 
