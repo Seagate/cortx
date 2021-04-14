@@ -61,6 +61,7 @@ Resources
 -   If you'd like to contact us directly, drop us a mail at cortx-questions@seagate.com.
 -   We have _CORTX stickers_ available to anyone who would like one. [Click here](https://www.seagate.com/promos/cortx-stickers/) to have a sticker mailed to you.
 -   Subscribe to the our [developer newsletter](https://cortx.link/cortx-dev-newsletter) to and stay up to date on the latest CORTX developments, news, and events.  Browse our [archived newsletters](doc/PDFs/Newsletters) from previous months.
+-   To know more about the CORTX Community events visit the [Upcoming Events](https://github.com/Seagate/cortx/wiki/Upcoming-Events) page.
 -   Attend our [Monthly Meet an Architect](doc/meetings/README.rst) meetings to learn about CORTX architecture and participate in a Question and Answer Session. 
 -   Attend our [Motr Deep Dive training sessions](https://github.com/Seagate/cortx-motr/wiki/Motr-Deep-Dive-Sessions) or watch the previously recorded sessions.
 -   Learn how to integrate CORTX with other technologies [here](doc/integrations/README.rst).
