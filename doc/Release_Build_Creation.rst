@@ -101,7 +101,7 @@ Procedure
         cortx-prvsnr: generate cortx-prvsnr packages.
         
         iso_generation: generate ISO file from release build.
-        
+#. Follow this [Provisioner Guide](https://github.com/Seagate/cortx-prvsnr/wiki/Deploy-VM-Hosted-Repo) to run your build.
 Tested by:
 
 - Apr 6, 2021: Harrison Seow (harrison.seow@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Player.
