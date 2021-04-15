@@ -139,3 +139,4 @@ The cortx-utils repository contains utility tools and code for various CORTX sub
 You can find the Utils repo here [Utils](https://github.com/Seagate/cortx-utils).
 
 
+![UML Diagram](https://user-images.githubusercontent.com/23244853/114889941-7ed5dc00-9e02-11eb-838a-66baf925b2bc.jpg)
