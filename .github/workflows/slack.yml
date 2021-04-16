@@ -2,13 +2,13 @@
 
 name: Slack User Count
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on on schedule for the main branch
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '0 0 * * *'
-  # Allows you to run this workflow manually from the Actions tab    
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -26,7 +26,7 @@ jobs:
           ref: main
           token: ${{ secrets.ACCESS_TOKEN }}
           submodules: 'recursive'
-          
+
       # Install dotenv python package to load tokens in script
       - name: Install dependencies
         run: |
@@ -37,6 +37,8 @@ jobs:
       - name: Run a user extraction script
         working-directory: ./metrics/slack
         env:
+          CORTX: ${{ secrets.CORTX }}
+          CORTX_COOKIE: ${{ secrets.CORTX_COOKIE }}
           MINIO: ${{ secrets.MINIO }}
           MINIO_COOKIE: ${{ secrets.MINIO_COOKIE }}
           CEPH: ${{ secrets.CEPH }}
@@ -50,7 +52,7 @@ jobs:
           SLACK_OAUTH: ${{ secrets.SLACK_OAUTH }}
         run: |
           python3 slack_user_count.py
-          
+
       # Commmit the slack pickle file local repo
       - name: Commit files
         run: |
