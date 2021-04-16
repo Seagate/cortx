@@ -100,7 +100,9 @@ Procedure
         cortx-prvsnr: generate cortx-prvsnr packages.
         
         iso_generation: generate ISO file from release build.
-#. Follow this [Guide](https://github.com/Seagate/doc/Provision Release Build.md) to run your build.
+        
+#. Follow this `Guide <Provision Release Build.md>`_ to run your build.
+
 Tested by:
 
 - Apr 6, 2021: Harrison Seow (harrison.seow@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Player.
