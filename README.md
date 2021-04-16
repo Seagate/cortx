@@ -5,13 +5,13 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/Seagate/cortx)](https://github.com/Seagate/cortx/graphs/contributors/)
 <!-- ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg) -->
 
-<img src="../assets/images/cortx-logo.png?raw=true">
+<img src="../main/doc/images/cortx-logo.png?raw=true">
 
 # CORTX: World's Only 100% Open Source Mass-Capacity Optimized Object Store
 
 The amount of data the world is creating and collecting is increasing massively. The amount of data the world is storing is not. The models and machine learning that are at the forefront of some of the most important research today depend on access to compete data sets, but limitations on storage lead to unnecessary data loss. By creating better, more economical storage solutions, we enable the research that is changing the world.
 
-<p align="center"><img src="../assets/images/at_risk_data.jpg?raw=true" title="This graph, using data from IDC, shows the amount of at-risk data increasing annually.  CORTX enables the mass capacity drives that will allow this at-risk data to be saved."/></p>
+<p align="center"><img src="../main/doc/images/at_risk_data.jpg?raw=true" title="This graph, using data from IDC, shows the amount of at-risk data increasing annually.  CORTX enables the mass capacity drives that will allow this at-risk data to be saved."/></p>
 
 ## The CORTX Project
 

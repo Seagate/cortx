@@ -119,7 +119,7 @@ The procedure to install CORTX on OVA is mentioned below.
    - Ensure that you have configured your ipv4 network.
       - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
-      - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
+      - Once you select an NIC, ensure that you do not have conflicting NICs selected. 
       
 #. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
    
@@ -307,6 +307,10 @@ Restart CORTX
    </details>
    
 Tested by:
+
+- Apr 12, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on MAC running VMWare Fusion 12.1.0.
+
+- April 6, 2021: Harrison Seow (harrison.seow@seagate.com) using OVA release 1.0.3 on Windows 10 running VMware Workstation 16 Player.
 
 - Mar 25, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on Windows 10 running Oracle VirtualBox & VMware Workstation 6.1.16.
 
