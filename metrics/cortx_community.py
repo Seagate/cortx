@@ -548,7 +548,7 @@ def check_rate_limit():
   return js
 
 
-def avoid_rate_limiting(gh,THRESHOLD=500):
+def avoid_rate_limiting(gh,THRESHOLD=500,Verbose=False):
 
   # ugh the call to get_rate_limit can fail itself . . . . 
   # might want to add some max number of retries....
@@ -571,6 +571,9 @@ def avoid_rate_limiting(gh,THRESHOLD=500):
     # ugh, I keep crashing due to rate limit, maybe not sleeping long enough?
     # try recursing and see if that helps....
     return avoid_rate_limiting(gh,THRESHOLD)
+  elif Verbose:
+    reset = gh.rate_limiting_resettime
+    print("Rate limit seems OK.  %d remaining; reset in %d" % (remaining,int(reset) - time.time()))
 
 def ensure_rate_limit(r):
   if int(r.headers['X-RateLimit-Remaining']) <= 200:  # try early just to give some buffer

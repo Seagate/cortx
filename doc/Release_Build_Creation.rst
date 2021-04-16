@@ -18,7 +18,7 @@ Procedure
 
    ::
    
-    cd /root && git clone https://github.com/Seagate/cortx --recursive
+    cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
    
 #. Create directory to store artifacts. In this procedure, **/var/artifacts** is used. Update **docker run** command accordingly to use an alternative directory.
 
@@ -37,7 +37,7 @@ Procedure
 
    ::
    
-    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation.
+    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation
     
    You can also append the **iso_generation** target in **make build** command (step 6).
    
@@ -45,16 +45,15 @@ Procedure
 
    ::
 
-    [root@ssc-vm-1321 opensource-ci]# ll /var/artifacts/0/
-   
-    total 824368
-   
-    drwxr-xr-x 10 root root 4096 Dec 16 05:34 3rd_party
-   
-    drwxr-xr-x 3 root root 4096 Dec 16 05:23 cortx_iso
-   
-    drwxr-xr-x 2 root root 4096 Dec 16 05:49 iso
-    
+    [root@ssc-vm-2699 ~]# ll /var/artifacts/0/
+      total 1060876
+      drwxr-xr-x  12 root root      4096 Apr  9 07:23 3rd_party
+      drwxr-xr-x   3 root root      4096 Apr  9 07:23 cortx_iso
+      -rw-r--r--   1 root root      4395 Apr  9 07:23 cortx-prep-2.0.0-0.sh
+      drwxr-xr-x 198 root root      4096 Apr  9 07:23 python_deps
+      -rw-r--r--   1 root root 240751885 Apr  9 07:23 python-deps-1.0.0-0.tar.gz
+      -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz
+          
 #. To list individual component targets, execute the below mentioned command.
  
    ::
@@ -106,3 +105,4 @@ Tested by:
 
 - Apr 6, 2021: Harrison Seow (harrison.seow@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Player.
 - Feb 12, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation Pro 16.
+- April 06, 2021: Vaibhav Paratwar (vaibhav.paratwar@seagate.com) on VM "LDRr1 - 2x CentOS 7.8 Shared Disks-20210329-232113"
