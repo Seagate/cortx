@@ -18,7 +18,7 @@ Procedure
 
    ::
    
-    cd /root && git clone https://github.com/Seagate/cortx --recursive
+    cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
    
 #. Create directory to store artifacts. In this procedure, **/var/artifacts** is used. Update **docker run** command accordingly to use an alternative directory.
 
@@ -45,16 +45,15 @@ Procedure
 
    ::
 
-    [root@ssc-vm-1321 opensource-ci]# ll /var/artifacts/0/
-   
-    total 824368
-   
-    drwxr-xr-x 10 root root 4096 Dec 16 05:34 3rd_party
-   
-    drwxr-xr-x 3 root root 4096 Dec 16 05:23 cortx_iso
-   
-    drwxr-xr-x 2 root root 4096 Dec 16 05:49 iso
-    
+    [root@ssc-vm-2699 ~]# ll /var/artifacts/0/
+      total 1060876
+      drwxr-xr-x  12 root root      4096 Apr  9 07:23 3rd_party
+      drwxr-xr-x   3 root root      4096 Apr  9 07:23 cortx_iso
+      -rw-r--r--   1 root root      4395 Apr  9 07:23 cortx-prep-2.0.0-0.sh
+      drwxr-xr-x 198 root root      4096 Apr  9 07:23 python_deps
+      -rw-r--r--   1 root root 240751885 Apr  9 07:23 python-deps-1.0.0-0.tar.gz
+      -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz
+          
 #. To list individual component targets, execute the below mentioned command.
  
    ::
