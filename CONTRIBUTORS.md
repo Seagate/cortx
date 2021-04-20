@@ -366,7 +366,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Mandar Sawant](https://github.com/mssawant)
 1. [Mazhar Inamdar](https://github.com/mazinamdar)
 1. [Mohammed Shahid](https://github.com/shahidSTX)
-2. [Parayya Vastrad](https://github.com/vastradparayya)
+2. [Parayya Vastrad](https://github.com/vastradparayya) 
 3. [Pawan Kumar Srivastava](https://github.com/pawankumarsrivastava)
 4. [Prathamesh Rodi](https://github.com/prathameshrodi)
 5. [Pratyush Khan](https://github.com/pratyush-seagate)
