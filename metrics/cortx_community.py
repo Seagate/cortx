@@ -548,7 +548,7 @@ def check_rate_limit():
   return js
 
 
-def avoid_rate_limiting(gh,THRESHOLD=500,Verbose=False):
+def avoid_rate_limiting(gh,THRESHOLD=100,Verbose=False):
 
   # ugh the call to get_rate_limit can fail itself . . . . 
   # might want to add some max number of retries....
@@ -559,8 +559,11 @@ def avoid_rate_limiting(gh,THRESHOLD=500,Verbose=False):
     time.sleep(300)
     return avoid_rate_limiting(gh,THRESHOLD)
 
+  if not THRESHOLD: # think it is possible that it is None
+    THRESHOLD=100
+
   remaining=rl.core.remaining
-  if THRESHOLD and remaining < THRESHOLD:
+  if remaining < THRESHOLD:
     print("Approaching rate limit; only %d remaining" % remaining) 
     reset = gh.rate_limiting_resettime
     sleep = reset - time.time()

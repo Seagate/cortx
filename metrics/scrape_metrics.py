@@ -22,7 +22,7 @@ def remove_string_from_set(Set, String):
       newset.add(item)
   return newset
 
-def avoid_rate_limiting(gh,limit=None,Verbose=False):
+def avoid_rate_limiting(gh,limit=100,Verbose=False):
   cortx_community.avoid_rate_limiting(gh,limit,Verbose)
 
 # this function takes a NamedUsed (https://pygithub.readthedocs.io/en/latest/github_objects/NamedUser.html) and returns info about them
@@ -480,7 +480,7 @@ def collect_stats(gh,org_name,update,prefix,top_only):
         break
       except Exception as e:
         print("WTF: Failed while getting stats for repo %s" % repo.name, e)
-        avoid_rate_limiting(gh,limit=None,Verbose=True)
+        avoid_rate_limiting(gh,Verbose=True)
 
   # do a bit of cleaning on global stats
   # print and persist the global consolidated stats
