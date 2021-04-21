@@ -20,7 +20,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download and unzip the `cortx-va-1.0.2.zip <https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/VA>`_. This contains the virtual machine image.
+#. Download the `cortx-va-1.0.3.ova <https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -57,7 +57,7 @@ The procedure to install CORTX on OVA is mentioned below.
       <details>
       <summary><a>Expand</a></summary>
 
-   You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens192, ens224 and ens256:
+   You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens32, ens33 and ens34:
 
    #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
 
@@ -66,16 +66,16 @@ The procedure to install CORTX on OVA is mentioned below.
    #. Record the MAC addresses and go to the following directory:
 
       * **cd /etc/sysconfig/network_scripts/**
-      * **vi ifcfg-ens192**
+      * **vi ifcfg-ens32**
       * Add a new line under **BOOTPROTO=dhcp**
-      * Add a new parameter with the MAC Address *HWADDR=<enp0s3-MAC-Address>*
+      * Add a new parameter with the MAC Address *HWADDR=<MAC-Address>*
       * Repeat the steps for enp0s8 and enp0s9 respectively
-      * **vi ifcfg-ens224**
-      * **vi ifcfg-ens256**
+      * **vi ifcfg-ens33**
+      * **vi ifcfg-ens34**
 
-      Sample output **cat ifcfg-ens256**:
+      Sample output **cat ifcfg-ens34**:
       ::
-         DEVICE="ens256"
+         DEVICE="ens34"
          USERCTL="no"
          TYPE="Ethernet"
          BOOTPROTO="dhcp"
@@ -87,7 +87,7 @@ The procedure to install CORTX on OVA is mentioned below.
          NM_CONTROLLED="no"
          ZONE=trusted
 
-   #. Reboot the machine by exiting the VM with **Power off the machine** and restart by booting the Rescue OS.
+   #. Poweroff the machine by using **Poweroff** command and start again.
 
    #. To verify the change in Network Device Name, run the following command:
 
@@ -119,7 +119,7 @@ The procedure to install CORTX on OVA is mentioned below.
    - Ensure that you have configured your ipv4 network.
       - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
-      - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
+      - Once you select an NIC, ensure that you do not have conflicting NICs selected. 
       
 #. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
    
@@ -142,6 +142,7 @@ The procedure to install CORTX on OVA is mentioned below.
     systemctl status sspl-ll      
     systemctl status csm_agent    
     systemctl status csm_web
+    systemctl status hare-consul-agent
  
    The image below shows the output of a successful *systemctl* command; notice how the service is *active*.
    
@@ -163,33 +164,28 @@ The procedure to install CORTX on OVA is mentioned below.
 
     systemctl start|restart <service_name>
 
-#. By default, port 80 may be closed. Run the below mentioned command to open port 80.
-
-   ::
-               
-    salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
-    
-    salt '*' cmd.run "firewall-cmd --reload"
-
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
-   * ens192 - management 
-   * ens256 - public data
-   
+   * ens32 - Management IP
+   * ens33 - Public data IP
+   * ens34 - Private data IP (if present)
+
+
    .. image:: images/networks.png
    
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
    ::
    
-    sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh
+   sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
 
     * The script performs several operations on S3 API and LDAP backend:
-      create account
-      create user
-      create bucket
-      put object
-      delete all the above in reverse order
+
+      * create account
+      * create user
+      * create bucket
+      * put object
+      * delete all the above in reverse order
       
    If s3client(s) is / are deployed in separate VMs, then the below entry must be updated in s3client **/etc/hosts** file as follows:
     
@@ -204,6 +200,8 @@ The procedure to install CORTX on OVA is mentioned below.
 #. Please use these instructions which describe how to use the `command line interface to query and monitor <checking_health.rst>`_ the configuration, health, and activity of your CORTX system.
 
 #. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
+
+**Note:** The Lyve Pilot (LP) will be available in the future releases.
  
 *************
 Miscellaneous
@@ -310,6 +308,12 @@ Restart CORTX
    
 Tested by:
 <<<<<<< HEAD
+
+- Apr 12, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on MAC running VMWare Fusion 12.1.0.
+
+- April 6, 2021: Harrison Seow (harrison.seow@seagate.com) using OVA release 1.0.3 on Windows 10 running VMware Workstation 16 Player.
+
+- Mar 25, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on Windows 10 running Oracle VirtualBox & VMware Workstation 6.1.16.
 
 - Mar 24, 2021:  Harrison Seow (harrison.seow@seagate.com) using OVA release 1.0.2 on Windows running Oracle VM VirtualBox 6.1.16.
 

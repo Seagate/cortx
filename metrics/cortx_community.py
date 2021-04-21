@@ -83,6 +83,30 @@ def rate_check(gh=None):
     (gh.get_rate_limit().core.remaining,
     (gh.get_rate_limit().core.reset - datetime.datetime.utcnow()).total_seconds()/60))  
 
+class ReadPickle:
+    def __init__(self, file_name):
+        self.file_name = file_name
+
+    def read_pickle(self):
+        try:
+            with open(self.file_name, 'rb') as opened_pickle:
+                try:
+                    return pickle.load(opened_pickle)
+                except Exception as pickle_error:
+                    print(pickle_error)
+                    raise
+        except FileNotFoundError as fnf_error:
+            print(fnf_error)
+            return dict()
+        except IOError as io_err:
+            print(io_err)
+            raise
+        except EOFError as eof_error:
+            print(eof_error)
+            raise
+        except pickle.UnpicklingError as unp_error:
+            print(unp_error)
+            raise
 
 class ProjectComparisons:
   def __init__(self,org_name=None,stats=None):
@@ -524,7 +548,7 @@ def check_rate_limit():
   return js
 
 
-def avoid_rate_limiting(gh,THRESHOLD=500):
+def avoid_rate_limiting(gh,THRESHOLD=100,Verbose=False):
 
   # ugh the call to get_rate_limit can fail itself . . . . 
   # might want to add some max number of retries....
@@ -535,8 +559,11 @@ def avoid_rate_limiting(gh,THRESHOLD=500):
     time.sleep(300)
     return avoid_rate_limiting(gh,THRESHOLD)
 
+  if not THRESHOLD: # think it is possible that it is None
+    THRESHOLD=100
+
   remaining=rl.core.remaining
-  if THRESHOLD and remaining < THRESHOLD:
+  if remaining < THRESHOLD:
     print("Approaching rate limit; only %d remaining" % remaining) 
     reset = gh.rate_limiting_resettime
     sleep = reset - time.time()
@@ -547,6 +574,9 @@ def avoid_rate_limiting(gh,THRESHOLD=500):
     # ugh, I keep crashing due to rate limit, maybe not sleeping long enough?
     # try recursing and see if that helps....
     return avoid_rate_limiting(gh,THRESHOLD)
+  elif Verbose:
+    reset = gh.rate_limiting_resettime
+    print("Rate limit seems OK.  %d remaining; reset in %d" % (remaining,int(reset) - time.time()))
 
 def ensure_rate_limit(r):
   if int(r.headers['X-RateLimit-Remaining']) <= 200:  # try early just to give some buffer
