@@ -14,7 +14,7 @@ The preboarding process is the first process that must be completed after config
    <summary><a>Click here to expand the preboarding procedure.</a></summary>
 
 
-1. Open a browser and navigate to the *https://<management IP>:28100/#/preboarding/welcome*.
+1. Open a browser and navigate to the *https://<management IP>:28100/#/preboarding/welcome*
 
    - If you see a message about your connection not being private, it is safe to ignore this message.
 
