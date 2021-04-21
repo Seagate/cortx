@@ -19,6 +19,14 @@ Procedure
    ::
    
     cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
+    
+#. Above command will clone codebase from **main** branch by default. You can checkout codebase from other branches for all components using following command. e.g. For **stable** branch,
+   
+   ::
+   
+      docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=stable
+      
+   You can also use other Branch name or Tag name instead of **stable** in above command.
    
 #. Create directory to store artifacts. In this procedure, **/var/artifacts** is used. Update **docker run** command accordingly to use an alternative directory.
 
