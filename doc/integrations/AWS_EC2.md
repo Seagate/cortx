@@ -9,7 +9,7 @@ Prerequisites:
 -------
 
 - You will need an AWS account with right to create an [EC2 instances.](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc) 
-- You will need to [import to an AMI](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) the [CORTX OVA.](https://github.com/Seagate/cortx/releases/download/VA/cortx-va-1.0.2.zip) 
+- You will need to [import to an AMI](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) the [CORTX OVA.](https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova) 
 - Ideally you would have [run and setup CORTX on a local VM](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst) and gone through the steps locally before doing it on AWS. 
 
 
@@ -42,15 +42,15 @@ Step 3: Create 2 network interfaces on different subnets with the security group
 ----
 
 - [Create 2 network interfaces](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#create_eni) with the security group that you created above.
-- It will be helpful to name that network interface ens256 and ens224 so that it is easy to remember.
-- [Attach that interface] (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#attach_eni) to the EC2 instance that you created in Step 2.
+- It will be helpful to name those network interfaces ens256 and ens224 so that they are easy to remember.
+- [Attach those interfaces](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#attach_eni) to the EC2 instance that you created in Step 2.
 
 Step 4: Boot up the EC2 instance and edit net .rules file to create stable names for the network interfaces
 ---------------
  
  - Log in to the EC2 instance using these credentials:
  
- Username: `CORTX`
+ Username: `cortx`
  
  Password: `opensource!`
  
@@ -66,11 +66,13 @@ Fill in the key for `ATTR{address}==` with the MAC address you want for each net
 
 *Example:*
 ```
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:6d:62:4e:41:e3", NAME="ens192"
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:7c:de:ea:8a:8d", NAME="ens224"
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:61:b7:69:e6:c9", NAME="ens256"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:6d:62:4e:41:e3", NAME="ens32"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:7c:de:ea:8a:8d", NAME="ens33"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:61:b7:69:e6:c9", NAME="ens34"
 ```
 **Do NOT just copy this example, fill in the MAC adddress of YOUR network interfaces**
+
+- Reboot your instance.
 
 Step 5: Create symbolic links between drives
 -------
@@ -82,18 +84,16 @@ The naming of both drives in the bootstrap script are quite specific to do this 
 
 ```ln -s /dev/nvme2n1 /dev/sdc```
 
-Step 6: Reboot the instance, run the bootstrap script and configure the CORTX server
+Step 6: Run the bootstrap script and configure the CORTX server
 --------
 
-You can reboot the instance by selecting the machine and rebooting it in the EC2 dashboard.
-
-- After the instance has been rebooted, login and run this command:
+- Run this command:
 
 `sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh`
 
 - After this has been completed run the `s3-sanity-test` script to make sure that we can add and remoce s3 objects.
 
-`sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh`
+`sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1`
 
 - If the sanity test passes you can configure the CORTX server by using [these instructions](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst)
 
@@ -116,10 +116,10 @@ Because we can only expose one of the network interfaces publicly we will need a
 
 ![Windows Subnet](AWS_EC2/WindowsSubnet.png)
 
-Launch the instance and wait for it to complete booting before moving on to Step 7.
+Launch the instance and wait for it to complete booting before moving on to Step 8.
 
 
-Step 7: Remote desktop into the Windows Server instance and connect to the CORTX server
+Step 8: Remote desktop into the Windows Server instance and connect to the CORTX server
 -------
 
 Once you have created the Windows Server you can remote desktop into the Windows Server instance to perform IO on the CORTX server.

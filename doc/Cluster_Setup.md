@@ -325,11 +325,11 @@ Create a virtual machine.
 ### 3.2. Generate SSH keys
 
 Follow
-[these steps](CortxMotrQuickStart.md#Accessing-the-code-right-way).
+[these steps](SSH_Public_Key.rst).
 
 ### 3.3. Get Motr sources
 
-Follow [these steps](CortxMotrQuickStart.md#Cloning-CORTX).
+Follow [these steps](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst#cloning-the-source-code).
 
 ### 3.4. Compile and install Motr
 

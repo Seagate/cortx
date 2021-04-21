@@ -1,20 +1,10 @@
 # Components of CORTX
 
-## A list of the Components of CORTX
+## CORTX Component Architecture
 
-1. [Motr](https://github.com/seagate/cortx-motr)
-1. [Provisioner](https://github.com/Seagate/cortx-prvsnr)
-1. [Experiments](https://github.com/Seagate/cortx-experiments)
-1. [HA](https://github.com/Seagate/cortx-ha/)
-1. [HARE](https://github.com/Seagate/cortx-hare/)
-1. [Management Portal](https://github.com/Seagate/cortx-management-portal)
-1. [Manager](https://github.com/Seagate/cortx-manager)
-1. [Monitor](https://github.com/Seagate/cortx-monitor)
-1. [POSIX](https://github.com/Seagate/cortx-posix)
-1. [S3-Server](https://github.com/Seagate/cortx-s3server)
-1. [Utils](https://github.com/Seagate/cortx-utils)
+![CORTX Components](https://user-images.githubusercontent.com/23244853/114573702-82d1f480-9c70-11eb-990c-8e3d8bddb256.jpg)
 
-## Definitions and Links to each of the components
+## Component Details
 
 ### [Motr](https://github.com/seagate/cortx-motr)
 
@@ -137,5 +127,3 @@ You can find the S3-Server repo here [S3-Server](https://github.com/Seagate/cort
 The cortx-utils repository contains utility tools and code for various CORTX submodules. For example, S3 and NFS submodules use code from the cortx-utils repos. 
 
 You can find the Utils repo here [Utils](https://github.com/Seagate/cortx-utils).
-
-
