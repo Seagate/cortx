@@ -1,0 +1,27 @@
+- name: make spark dir
+  file:
+    path: '{{spark_dir}}'
+    state: directory
+
+- name: download spark
+  unarchive:
+    src: '{{spark_url}}'
+    dest: '{{spark_dir}}/'
+    remote_src: yes
+    extra_opts: [ --strip-components=1 ]
+
+- name: copy spark config
+  template:
+    src: '{{templates_dir}}/spark/spark.j2.xml'
+    dest: '{{spark_dir}}/conf/spark-defaults.conf'
+
+- name: copy spark environment variables
+  template:
+    src: '{{templates_dir}}/spark/spark-env.j2.sh'
+    dest: '{{spark_dir}}/conf/spark-env.sh'
+
+- name: copy default logging configuration
+  copy:
+    src: '{{spark_dir}}/conf/log4j.properties.template'
+    dest: '{{spark_dir}}/conf/log4j.properties'
+    remote_src: yes
