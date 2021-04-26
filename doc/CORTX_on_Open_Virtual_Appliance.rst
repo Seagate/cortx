@@ -100,7 +100,7 @@ The procedure to install CORTX on OVA is mentioned below.
       If the time displayed is incorrect, use the following command to adjust time for timezone as necessary (Otherwise, you might face SSL certificate problems later). 
       * **date --set "[+/-]xhours [+/-]yminutes"**
       
-      For instance if your timezone is `4:30:00` behind UTC, then run the following command. Note the `-` before minutes as well.
+      For instance if your timezone is `4:30:00` ahead of UTC, then run the following command in VM. Note the `-` before minutes as well. Similarly if your timezone is behind of UTC, use +ve hours and +ve minutes to make the adjustment.
 
       * **date --set "-4hours -30minutes"**
 
