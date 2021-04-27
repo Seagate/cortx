@@ -2,15 +2,12 @@
 **Install BizTalk Server 2020**
 
 Follow these steps to install Microsoft BizTalk Server 2020 (any version).  
-[*NOTE: This guide assumes you have a SQL Server Environment to install BizTalk.
+**[*NOTE: This guide assumes you have a SQL Server Environment to install BizTalk.
 If you need to set up a SQL Server environment please refer to the accompanying
-document:*  **Microsoft SQL Server 2019 Installation Guide***.*]  
-**  
+document: [Microsoft SQL Server 2019 Installation Guide](./Microsoft%20SQL%20Server%202019%20Installation%20Guide.md).*]  
+  
 **[*NOTE: Before you begin, ensure you are logged into the Windows Server with
 local Administrator permissions.*]
-
-[*NOTE: This Guide assumes you have already followed the steps in the Microsoft
-SQL Server 2019 Installation Guide accompanying this guide.*]
 
 1.  Download the BizTalk Server 2020 media as an ISO from your MSDN account.
 
