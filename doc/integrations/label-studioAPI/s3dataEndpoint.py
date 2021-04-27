@@ -183,7 +183,7 @@ class S3DataEndpoint:
             return False
         return True
 
-
+# dummy calls
 def main():
     END_POINT_URL = 'http://uvo100ebn7cuuq50c0t.vm.cld.sr'
     A_KEY = 'AKIAtEpiGWUcQIelPRlD1Pi6xQ'
@@ -202,9 +202,7 @@ def main():
     # if s3.file_operation(bucket_name2, file_name2, path_file_upload2, None, 'upload'):
     #     print("Uploading file to S3 completed successfully!")
     #
-    # bucket_name = 'newbucketworks'
-    # if s3.bucket_operation(bucket_name, operation='create'):
-    #     print("Creating new S3 bucket has been completed successfully!")
+
     # if s3.file_operation(bucket_name, file_name, path_file_download, None, 'download'):
     #     print("Downloading the file to S3 has been completed successfully!")
 
