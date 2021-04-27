@@ -82,6 +82,7 @@ python train.py
 ```
 The "training" directory include a custom dataset "train.txt" in ParlAI format. Where the "text:" the user message or message from Agent 1, "label:" is the actual message from the AI agent or trained model or Agent 2. The model after geting fine tuned by reducing the loss, can able to predict the label. "episode_done:True" will stops the conversation thread to start a new thread. After training the model gets uploaded to S3 bucket.
 
+train.txt
 
 ``` 
 
@@ -95,6 +96,7 @@ text:how much resiliant?   labels:Highly flexible, works with HDD, SSD, and NVM.
 text:bye   labels:bye.   episode_done=True
 ```
 **Flask web application**
+![alt text](https://github.com/kishorkuttan/cortx/blob/main/doc/integrations/pytorch/flask.png)
 ``` 
 cd ..
 python train.py
