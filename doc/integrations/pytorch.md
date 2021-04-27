@@ -96,7 +96,9 @@ text:how much resiliant?   labels:Highly flexible, works with HDD, SSD, and NVM.
 text:bye   labels:bye.   episode_done=True
 ```
 **Flask web application**
+
 ![alt text](https://github.com/kishorkuttan/cortx/blob/main/doc/integrations/pytorch/flask.png)
+
 ``` 
 cd ..
 python train.py
