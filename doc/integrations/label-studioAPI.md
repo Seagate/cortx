@@ -44,3 +44,6 @@ Step 1: Download reuirements
   <pre> pip install -U label-studio </pre>
 - Start the label studio to verify installation, it would run on local host
   <pre> label-studio </pre>
+
+Step 2: CORTX Cloudshare VM lab setup
+- 
