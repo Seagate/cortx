@@ -58,7 +58,7 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: ./cortx-js-sdk/README.md
 
-.. |myDrive| image:: ./myDrive/logo.png
+.. |myDrive| image:: ./myDrive/logo-small.png
    :width: 1 em
    :target: ./cortx-js-sdk/README.md
 
