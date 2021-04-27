@@ -67,7 +67,7 @@ Step 4: Loading the data from Cortx s3 to PyTorch Dataset Loader:
 
 
 Step 5: Save the trained model directly to Cortx-S3:
--I do not save the model to my local machine first then upload it but saving directly to s3. We're minimizing using the local storage at all costs.
+- I do not save the model to my local machine first then upload it but saving directly to s3. We're minimizing using the local storage at all costs.
 
 
 Step 6: Load the saved model from Cortx-S3 - Inference.
@@ -77,7 +77,7 @@ For this setup, the test images on the local storage. You can save them to Cortx
 
 
 Step 7: Experiment!!!:
- -Integrate different PyTorch models to Cortx and see how they perform.
+ - Integrate different PyTorch models to Cortx and see how they perform.
  
  
 #### Contributors:
