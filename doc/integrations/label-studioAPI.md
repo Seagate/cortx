@@ -12,4 +12,8 @@ Storing and managing data had never been easy and with flourish of AI, deep lear
 The ideal big data storage system would allow storage of a virtually unlimited amount of data, cope both with high rates of random write and read access, flexibly and efficiently deal with a range of different data models, support both structured and unstructured data, and for privacy reasons, only work on encrypted data. Obviously, all these needs cannot be fully satisfied.
 </pre>
 
+### Background / Overview of the project
+- A need for scalable, efficient storage service for ever growing unstructured data due to massive adoption of AI.
+- Building Seagate Cortex S3 storage solutions INTEGRATIONS to store and automate, one of the most complex task in AI, data annotations.
+- Building user interface to make annotation exports and project tracking simpler.
 
