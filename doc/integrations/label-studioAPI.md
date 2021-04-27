@@ -52,5 +52,9 @@ Step 1: Download reuirements
 
 Step 2: CORTX Cloudshare VM lab setup
 - Once the Cortex VM is ready, run this command
+<pre>
+ $ sudo route add default gw 192.168.2.1 ens33
+</pre>
+
 
 
