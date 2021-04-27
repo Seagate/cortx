@@ -54,7 +54,9 @@ Step 1: Download reuirements
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/accessTokenLblImg.png">
 
 Step 2: CORTX Cloudshare VM lab setup
-Follow this guide from Cortex Team: <a href="https://github.com/Seagate/cortx/wiki/CORTX-Cloudshare-Setup-for-April-Hackathon-2021">CORTX-Cloudshare-Setup-for-April-Hackathon-2021</a>
+
+Follow this guide from Cortex Team:
+<a href="https://github.com/Seagate/cortx/wiki/CORTX-Cloudshare-Setup-for-April-Hackathon-2021">CORTX-Cloudshare-Setup-for-April-Hackathon-2021</a>
 - Once the Cortex VM is ready, run this command, keep note of external address to that will serve as our S3 endpoint URL
 <pre>
  $ sudo route add default gw 192.168.2.1 ens33
