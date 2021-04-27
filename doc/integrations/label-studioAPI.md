@@ -166,5 +166,8 @@ class LabelStudioAPI:
         # payload = {}
         res = requests.post(url, headers=headers)
 ```
+We are using Streamlit as frontend for our integration user interface, below is how NEW project creation looks like for end user:
+<img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/createProject.gif">
+
 
 
