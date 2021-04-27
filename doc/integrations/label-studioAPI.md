@@ -51,12 +51,13 @@ Step 1: Download reuirements
 </pre>
 
 Step 2: CORTX Cloudshare VM lab setup
-- Once the Cortex VM is ready, run this command
+- Once the Cortex VM is ready, run this command, keep note of external address to that will serve as our S3 endpoint URL
 <pre>
  $ sudo route add default gw 192.168.2.1 ens33
+ 
  <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/vmCortx.png">
 </pre>
-- Start Windows Server 2019 Edition, go to this S3 cortex dashboard, by default S3 user and test bucket is already made for you
+- Start Windows Server 2019 Edition, go to this S3 cortex dashboard, by default S3 user and test bucket is already made for you, a txt file on Desktop contains all default S3 credentials for use 
 <pre>
  https://192.168.2.102:28100/#/dashboard
 </pre>
