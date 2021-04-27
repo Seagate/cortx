@@ -82,6 +82,15 @@ Step 3: Connecting S3 data enpoint class and methods for uploading and downloadi
                                       aws_secret_access_key=self.secretKey,
                                       config=Config(signature_version='s3v4'),
                                       region_name='US')
+                                      
+        # Functions for buckets operation
+        def create_bucket_op(self, bucket_name, region):
+        if region is None:
+            self.s3_client.create_bucket(Bucket=bucket_name)
+        else:
+            location = {'LocationConstraint': region}
+            self.s3_client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration=location)
+    
    # dummy test                                 
    def main():
     END_POINT_URL = 'http://uvo100ebn7cuuq50c0t.vm.cld.sr'
@@ -89,6 +98,7 @@ Step 3: Connecting S3 data enpoint class and methods for uploading and downloadi
     S_KEY = 'YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK'
 
     s3 = S3DataEndpoint(end_url=END_POINT_URL, accessKey=A_KEY, secretKey=S_KEY)
+    s3.create_bucket_op('newBucketWorks')
     
    if __name__ == "__main__":
     main()
