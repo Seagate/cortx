@@ -109,7 +109,7 @@ Step 3: Connecting S3 data enpoint class and methods for uploading and downloadi
 If all credentials are correct, you will have a new bucket made which you can see it using CyberDuck on the CloudShare Widnows Server 2019 Edition VM. See below image, our new bucket is created.
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/newBucketCreate.png">
 
-Step 4: Set up programming environment and setup Label studio important API calls.
+Step 4: Set up programming environment and setup Label studio important API calls for S3 storage.
 ```python
 class LabelStudioAPI:
     def __init__(self, token, debug=True):
@@ -146,7 +146,8 @@ class LabelStudioAPI:
                 return 'Could not delete'
         else:
             print("Not valid action")
-
+            
+    # connect S3 storage to sync all data to be annoated and results to be stored
     def connectS3Storage(self, projID="1", title="S3", bucket_name="", region_name="US", accessKey="",
                         secretKey="", s3_url=""):
         url = 'http://localhost:8080/api/storages/s3'
@@ -165,3 +166,5 @@ class LabelStudioAPI:
         # payload = {}
         res = requests.post(url, headers=headers)
 ```
+
+
