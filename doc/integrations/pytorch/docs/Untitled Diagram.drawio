@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-27T16:31:00.112Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="U5FlPi2KQvgqGTOJM323" version="14.6.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-27T18:24:00.888Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="kiqhUMRTG_7OGDrx7Wzk" version="14.6.6" type="github">
   <diagram id="cHTkirek6MycF9Q-MXVf" name="Page-1">
     <mxGraphModel dx="934" dy="1614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -7,7 +7,7 @@
         <mxCell id="hMvDqQn-yTiB0dJydoLx-1" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="70" y="-110" width="700" height="700" as="geometry" />
         </mxCell>
-        <mxCell id="hMvDqQn-yTiB0dJydoLx-2" value="Transformer model" style="whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=3;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="hMvDqQn-yTiB0dJydoLx-2" value="Seq2Seq model" style="whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=3;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="557.5" y="60" width="120" height="120" as="geometry" />
         </mxCell>
         <mxCell id="hMvDqQn-yTiB0dJydoLx-3" value="Dataset" style="whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=3;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
