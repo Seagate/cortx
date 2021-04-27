@@ -13,7 +13,7 @@ cope both with high rates of random write and read access, flexibly and efficien
 support both structured and unstructured data, and for privacy reasons, only work on encrypted data. Obviously, all these needs cannot be fully satisfied.
 
 ## Background / Overview of the project
-<img src="https://github.com/kyroninja/cortx/blob/main/doc/integrations/restic/cyber_duck.png">
+<img src="https://github.com/kyroninja/cortx/blob/main/doc/integrations/restic/logo.png">
 
 ## The Problem
 
