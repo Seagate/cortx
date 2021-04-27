@@ -66,7 +66,7 @@ We first need to export some variables before restic can work
 Lets create this bucket (192.168.2.102 is the address of the CORTX VM)
 - restic -r s3:http://192.168.2.102/cortxrules init
 
-<img src="doc/integrations/restic/creatae_bucket_repo.png">
+<img src="https://github.com/kyroninja/cortx/blob/main/doc/integrations/restic/creatae_bucket_repo.png">
 
 Note the http used otherwise there is x509 certificate error
 
