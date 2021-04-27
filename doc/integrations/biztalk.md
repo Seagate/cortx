@@ -31,6 +31,9 @@ business process of interest, the CORTX BizTalk Adapter allows all interested
 applications systems and business processes to seamlessly use CORTX as a mass
 capacity on-prem object store “Enterprise Service” through BizTalk.
 
+## Why is the CORTX BizTalk Adapter Important?
+[This video](https://youtu.be/Z2OG88E-UtA) presents the case for the CORTX BizTalk Adapter and why it is an important and natural fit for sophisticated Enterprise integration architectures.
+
 ## How was the CORTX BizTalk Adapter Built?
 
 I used the [Microsoft Windows Communication Foundation (WCF) Line-Of-Business
