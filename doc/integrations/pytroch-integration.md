@@ -1,4 +1,13 @@
 ## Integrating Cortx and PyTorch
+<br>
+<br>
+
+<p align="center">
+  <img src="pytorch/src/connect.png">
+</p>
+
+<br>
+<br>
 
 #### PyTorch
 [PyTorch](https://pytorch.org/) is an open-source deep learning framework that provides graph-based execution, distributed training, mobile deployment, quantization, developing neural network models.
