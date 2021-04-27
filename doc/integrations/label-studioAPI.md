@@ -171,7 +171,7 @@ class LabelStudioAPI:
         # payload = {}
         res = requests.post(url, headers=headers)
 ```
-We are using Streamlit as frontend for our integration user interface, below is video for how annotation project looks like through our integration, the label_creater XML file we uploaded has information of different labels to be used for data provided. (There are variey of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integratin platform: https://labelstud.io/templates/ )
+We are using Streamlit as frontend for our integration user interface, below is video for how annotation project looks like through our integration, the label_creater XML file we uploaded has information of different labels to be used for data provided. (There are variety of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integration platform: https://labelstud.io/templates/ )
 
 ## Watch out how our Cortx S3 Integration works Label Studio, data annotation tool
 
