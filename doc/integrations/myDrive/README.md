@@ -1,11 +1,8 @@
 ## Cortx-MyDrive is a free Open Source Cloud Server (Similar To Google Drive) integrated with CORTX engine
-# ![Logo](logo.png)
 
 notice ❤: this integration is heavily based on [cortx-js-sdk](https://github.com/kaminskypavel/cortx/blob/main/doc/integrations/cortx-js-sdk/README.md
-)
-
-in this repo we will demonstrate how it can be used in a big scaled projects. for more info click on the image below
-![cortx-js-demo](https://github.com/kaminskypavel/cortx-js-sdk/raw/master/assets/logo.png)
+), for more info click on the image below
+[![cortx-js-demo](https://github.com/kaminskypavel/cortx-js-sdk/raw/master/assets/logo.png)](https://github.com/kaminskypavel/cortx/blob/main/doc/integrations/cortx-js-sdk)
 
 
 
@@ -16,32 +13,33 @@ in this repo we will demonstrate how it can be used in a big scaled projects. fo
 ----
 ## Screenshots
 
-- #### upload documents
+- ## upload documents
 ![upload](https://github.com/kaminskypavel/cortx-js-myDrive/blob/master/github_images/upload.png)
 
-- #### download documents
+- ## download documents
 ![download](https://github.com/kaminskypavel/cortx-js-myDrive/blob/master/github_images/download.png)
 
-- #### built in player
+- ## built in player
 ![player](https://github.com/kaminskypavel/cortx-js-myDrive/raw/master/github_images/video-viewer.png)
 
-- #### search for documents
+- ## search for documents
 ![search](https://github.com/kaminskypavel/cortx-js-myDrive/blob/master/github_images/move.png)
 
 
 ## Problem
 
 In this day and age, privacy and "owning" your own information - matters!
-
-Enterprises may choose a self hosted solutions for a well known software solutions, and some organizations might go as far as hosting their own servers and infrastructure.
+Enterprises may choose a self hosted solutions for a well known software , and some  might go as far as hosting their own servers and infrastructure.
 
 ## Solution 
+# ![Logo](logo.png)
 
-We provide a self hosted solution for a remote data drive similar to "Google Drive" and "Dropbox".
+We provide a self hosted solution for a remote data drive similar to "Google Drive" and "Dropbox",
+which can be useful both on an enterprise and a personal level
 
 ## Technology 
 
-- The project is base on the popular opensource project [myDrive](https://mydrive-storage.com/) who recieved over 2000+ stars.
+- The project is base on the popular open source project [myDrive](https://mydrive-storage.com/) who received over 2000+ stars.
 
 [![GitHub stars](https://img.shields.io/github/stars/subnub/myDrive.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/subnub/myDrive/stargazers/) 
 
@@ -62,4 +60,5 @@ We provide a self hosted solution for a remote data drive similar to "Google Dri
 5. run it! `yarn start:dev`
    
 6. point your browser to `http://localhost:3000`
+
 
