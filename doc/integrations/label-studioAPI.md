@@ -63,7 +63,8 @@ Step 2: CORTX Cloudshare VM lab setup
 </pre>
 
 Step 3: Connecting S3 data enpoint class and methods for uploading and downloading of data from S3 bucket to anywhere
-``` class S3DataEndpoint:
+```python
+   class S3DataEndpoint:
     def __init__(self, end_url, accessKey, secretKey):
         self.end_url = end_url
         self.accessKey = accessKey
