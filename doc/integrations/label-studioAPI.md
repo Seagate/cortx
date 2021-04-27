@@ -62,4 +62,24 @@ Step 2: CORTX Cloudshare VM lab setup
  https://192.168.2.102:28100/#/dashboard
 </pre>
 
+Step 3: Connecting S3 data enpoint class and methods for uploading and downloading of data from S3 bucket to anywhere
+``` class S3DataEndpoint:
+    def __init__(self, end_url, accessKey, secretKey):
+        self.end_url = end_url
+        self.accessKey = accessKey
+        self.secretKey = secretKey
+
+        self.s3_resource = boto3.resource('s3', endpoint_url=self.end_url,
+                                          aws_access_key_id=self.accessKey,
+                                          aws_secret_access_key=self.secretKey,
+                                          config=Config(signature_version='s3v4'),
+                                          region_name='US')
+
+        # command to access data from default session
+        self.s3_client = boto3.client('s3', endpoint_url=self.end_url,
+                                      aws_access_key_id=self.accessKey,
+                                      aws_secret_access_key=self.secretKey,
+                                      config=Config(signature_version='s3v4'),
+                                      region_name='US')
+```
 
