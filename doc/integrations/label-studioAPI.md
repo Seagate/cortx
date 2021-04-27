@@ -62,7 +62,7 @@ Step 2: CORTX Cloudshare VM lab setup
  https://192.168.2.102:28100/#/dashboard
 </pre>
 
-Step 3: Connecting S3 data enpoint class and methods for uploading and downloading of data from S3 bucket to anywhere. Our S3DataEndpoint file link: https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/s3dataEndpoint.py
+Step 3: Connecting S3 data enpoint class and methods for uploading and downloading of data from S3 bucket to anywhere. Our S3DataEndpoint file link: <a href="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/s3dataEndpoint.py">S3DataEndpoint Python Class</a> 
 ```python
    class S3DataEndpoint:
     def __init__(self, end_url, accessKey, secretKey):
