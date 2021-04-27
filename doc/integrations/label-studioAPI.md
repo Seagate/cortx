@@ -171,8 +171,10 @@ class LabelStudioAPI:
 ```
 We are using Streamlit as frontend for our integration user interface, below is how NEW project creation looks like for end user through REST API, after the projet is created you can see that in Label Studio page project is there with labels in the label_creater XML file we uploaded (There are variey of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integratin platform: https://labelstud.io/templates/ )
 
-<a href="https://www.loom.com/share/4e63761934f94cb588c58afba5ba64e3"> <p>cortx/doc/integrations/label-studioAPI at main · vilaksh01/cortx - Watch Video</p> 
- <img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif"> </a>
+## Watch out how our integrations works with Cortx S3 and Label Studio
+
+<a href="https://www.loom.com/share/4e63761934f94cb588c58afba5ba64e3"><p>cortx/doc/integrations/label-studioAPI at main · vilaksh01/cortx - Watch Video</p> 
+<img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif" height="100%" width="100%"></a>
 
 
 
