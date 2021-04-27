@@ -49,7 +49,7 @@ Step 1: Download reuirements
 <pre>
  $ label-studio 
 </pre>
-- Once the tool is running, go to account setting and grab Access Token for Label Studio to connnect it using python methods
+- Once the tool is running, go to account setting and grab Access Token for Label Studio to connnect it using python methods to autommate tasks through REST API calls.
 
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/accessTokenLblImg.png">
 
@@ -109,4 +109,59 @@ Step 3: Connecting S3 data enpoint class and methods for uploading and downloadi
 If all credentials are correct, you will have a new bucket made which you can see it using CyberDuck on the CloudShare Widnows Server 2019 Edition VM. See below image, our new bucket is created.
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/newBucketCreate.png">
 
-Step 4: 
+Step 4: Set up programming environment and setup Label studio important API calls.
+```python
+class LabelStudioAPI:
+    def __init__(self, token, debug=True):
+        self.token = token
+        self.debug = debug
+
+    def Project(self, title='Demo', labelXML="""""", description='New Task', action='create', projID='1'):
+        if action == 'update':
+            url = 'http://localhost:8080/api/projects/'
+            headers = {'Authorization': 'Token ' + self.token}
+            payload = {'title': title, 'description': description, 'label_config': labelXML}
+            res = requests.patch(url, data=payload, headers=headers)
+            print(res.status_code, res.content)
+            
+        elif action == 'create':
+            url = 'http://localhost:8080/api/projects/'
+            headers = {'Authorization': 'Token ' + self.token}
+            payload = {'title': title, 'description': description, 'label_config': labelXML}
+            res = requests.post(url, data=payload, headers=headers)
+            print(res.status_code, res.content)
+            if res.status_code == 201:
+                return 'Successfully created NEW Project ' + title
+            else:
+                return 'Could not create NEW project'
+
+        elif action == 'delete':
+            url = 'http://localhost:8080/api/projects/' + projID + '/'
+            headers = {'Authorization': 'Token ' + self.token}
+            res = requests.delete(url, headers=headers)
+            print(res.status_code, res.content)
+            if res.status_code == 204:
+                return 'Successfully deleted Project ' + projID
+            else:
+                return 'Could not delete'
+        else:
+            print("Not valid action")
+
+    def connectS3Storage(self, projID="1", title="S3", bucket_name="", region_name="US", accessKey="",
+                        secretKey="", s3_url=""):
+        url = 'http://localhost:8080/api/storages/s3'
+        headers = {'Authorization': 'Token ' + self.token}
+        payload = {"project": projID, "title": title, "bucket": bucket_name, "region_name": region_name,
+                   "s3_endpoint": s3_url, "aws_access_key_id": accessKey, "aws_secret_access_key": secretKey,
+                   "use_blob_urls": True, "presign_ttl": "1"}
+        res = requests.post(url, data=payload, headers=headers)
+        print(res.content)
+        print(res.status_code)
+        print("Sync S3 bucket to see all your data in label studio")
+
+    def syncS3Bucket(self, storageID='1'):
+        url = 'http://localhost:8080/api/storages/s3/'+storageID+'/sync'
+        headers = {'Authorization': 'Token ' + self.token}
+        # payload = {}
+        res = requests.post(url, headers=headers)
+```
