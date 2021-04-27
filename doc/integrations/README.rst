@@ -54,5 +54,5 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |BizTalk| image:: ../images/BizTalkLogo.png
    :width: 1 em
-   :target: CORTXBizTalkAdapter.md
+   :target: biztalk.md
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
