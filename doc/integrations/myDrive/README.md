@@ -1,9 +1,9 @@
 ## Cortx-MyDrive is a free Open Source Cloud Server (Similar To Google Drive) integrated with CORTX engine
 
 notice ❤: this integration is heavily based on [cortx-js-sdk](https://github.com/kaminskypavel/cortx/blob/main/doc/integrations/cortx-js-sdk/README.md
-), for more info click on the image below
-[![cortx-js-demo](https://github.com/kaminskypavel/cortx-js-sdk/raw/master/assets/logo.png)](https://github.com/kaminskypavel/cortx/blob/main/doc/integrations/cortx-js-sdk)
+), for more info click on the image below.
 
+[![cortx-js-demo](https://github.com/kaminskypavel/cortx-js-sdk/raw/master/assets/logo.png)](https://github.com/kaminskypavel/cortx/blob/main/doc/integrations/cortx-js-sdk)
 
 
 ## Youtube Demo
@@ -47,18 +47,26 @@ which can be useful both on an enterprise and a personal level
 
 ## Instruction
 
-1. checkout the code from the repository `$ git clone https://github.com/kaminskypavel/cortx-js-myDrive`
-
-2. install dependencies `$ yarn`
+1. checkout the code from the repository 
    
-3. make sure you're running a mongodb instance. you can run a local copy or use `docker run -it -v mongodata:/data/db -p 27017:27017 --name mongodb -d mongo`
+   ```git clone https://github.com/kaminskypavel/cortx-js-myDrive```
 
-4. create db indexes `yarn run create-indexes-database`
-
-5. copy `config/dev.env.sample` to `config/dev.env` and fill in the S3 relevant ID , KEY , ENDPOINT etc..
-
-5. run it! `yarn start:dev`
+2. install dependencies
    
-6. point your browser to `http://localhost:3000`
+   ```yarn```
+   
+3. make sure you're running a mongodb instance. you can run a local copy or use 
+   
+   ```docker run -it -v mongodata:/data/db -p 27017:27017 --name mongodb -d mongo```
+
+4. create db indexes ```yarn run create-indexes-database```
+
+5. copy ```config/dev.env.sample``` to ```config/dev.env``` and fill in the S3 relevant ID , KEY , ENDPOINT etc..
+
+6. run it! 
+   
+   ```yarn start:dev```
+   
+7. point your browser to ```http://localhost:3000```
 
 
