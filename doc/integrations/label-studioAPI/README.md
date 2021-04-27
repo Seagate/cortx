@@ -42,7 +42,7 @@ Building an AI or ML model that acts like a human requires large volumes of trai
 
 ## Integration walkthrough
 
-Step 1: Download reuirements
+Step 1: Download requirements
 - We are integrating S3 storage on label Studio, open source annotation tool, download it using `pip` command:
 <pre>
  $ pip install -U label-studio
@@ -51,7 +51,7 @@ Step 1: Download reuirements
 <pre>
  $ label-studio 
 </pre>
-- Once the tool is running, go to account setting and grab Access Token for Label Studio to connnect it using python methods to autommate tasks through REST API calls.
+- Once the tool is running, go to account setting and grab Access Token for Label Studio to connect it using python methods to automate tasks through REST API calls.
 
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/accessTokenLblImg.png">
 
@@ -70,7 +70,7 @@ Follow this guide from Cortex Team:
  https://192.168.2.102:28100/#/dashboard
 </pre>
 
-Step 3: Connecting S3 data enpoint class and methods for uploading and downloading of data from S3 bucket to anywhere. Our S3DataEndpoint file link: <a href="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/s3dataEndpoint.py">S3DataEndpoint Python Class</a> 
+Step 3: Connecting S3 data endpoint class and methods for uploading and downloading of data from S3 bucket to anywhere. Our S3DataEndpoint file link: <a href="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/s3dataEndpoint.py">S3DataEndpoint Python Class</a> 
 ```python
    class S3DataEndpoint:
     def __init__(self, end_url, accessKey, secretKey):
@@ -171,9 +171,9 @@ class LabelStudioAPI:
         # payload = {}
         res = requests.post(url, headers=headers)
 ```
-We are using Streamlit as frontend for our integration user interface, below is video for how annotation project looks like through our integration, the label_creater XML file we uploaded has information of different labels to be used for data provided. (There are variey of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integratin platform: https://labelstud.io/templates/ )
+We are using Streamlit as frontend for our integration user interface, below is video for how annotation project looks like through our integration, the label_creater XML file we uploaded has information of different labels to be used for data provided. (There are variety of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integration platform: https://labelstud.io/templates/ )
 
 ## Watch out how our Cortx S3 Integration works Label Studio, data annotation tool
+<a href="https://youtu.be/61PaboBbGCc"> Play video <img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif" height="100%" width="100%"></a>
 
-<a href="https://www.loom.com/share/4e63761934f94cb588c58afba5ba64e3"><p>cortx/doc/integrations/label-studioAPI at main · vilaksh01/cortx - Watch Video</p> 
-<img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif" height="100%" width="100%"></a>
+
