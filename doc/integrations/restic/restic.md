@@ -109,6 +109,9 @@ Output is as follows:
 enter password for repository:
 restoring <Snapshot of [/home/sysadmin] at 2021-04-27 21:40:19.884408621 +0200 CEST> to /home/sysadmin
 
+Video Link
+<a href="https://github.com/kyroninja/cortx/blob/main/doc/integrations/restic/2021-04-27%2021-37-44.mkv">Integration Video</a>
+
 Authors
-Pratish "kyroninja" Neerputh
-Shraddha Rajcoomar
+- Pratish "kyroninja" Neerputh
+- Shraddha Rajcoomar
