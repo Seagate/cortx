@@ -42,7 +42,7 @@ Building an AI or ML model that acts like a human requires large volumes of trai
 
 ## Integration walkthrough
 
-Step 1: Download reuirements
+Step 1: Download requirements
 - We are integrating S3 storage on label Studio, open source annotation tool, download it using `pip` command:
 <pre>
  $ pip install -U label-studio
@@ -51,7 +51,7 @@ Step 1: Download reuirements
 <pre>
  $ label-studio 
 </pre>
-- Once the tool is running, go to account setting and grab Access Token for Label Studio to connnect it using python methods to autommate tasks through REST API calls.
+- Once the tool is running, go to account setting and grab Access Token for Label Studio to connect it using python methods to automate tasks through REST API calls.
 
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/accessTokenLblImg.png">
 
@@ -70,7 +70,7 @@ Follow this guide from Cortex Team:
  https://192.168.2.102:28100/#/dashboard
 </pre>
 
-Step 3: Connecting S3 data enpoint class and methods for uploading and downloading of data from S3 bucket to anywhere. Our S3DataEndpoint file link: <a href="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/s3dataEndpoint.py">S3DataEndpoint Python Class</a> 
+Step 3: Connecting S3 data endpoint class and methods for uploading and downloading of data from S3 bucket to anywhere. Our S3DataEndpoint file link: <a href="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/s3dataEndpoint.py">S3DataEndpoint Python Class</a> 
 ```python
    class S3DataEndpoint:
     def __init__(self, end_url, accessKey, secretKey):
