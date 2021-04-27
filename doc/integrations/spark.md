@@ -19,9 +19,9 @@ adopting spark as part of their workflows for large scale data processing and ma
 The Hadoop ecosystem normally refers to an open source framework consisting of many applications for running distributed
 storage and applications, with names that are cryptic and often [indistinguishable from pokemon](http://pixelastic.github.io/pokemonorbigdata/).
 
-![hadoop ecosystem](spark/docsupport/hadoop_ecosystem.png)
+![hadoop ecosystem](spark/docsupport/condensed_hadoop_ecosystem.png)
 
-[image of some typical components of the hadoop ecosystem from a presentation by Lilian Gibbs](https://slideplayer.com/slide/5326034/)
+Components of the Hadoop ecosystem that Spark normally relies on.
 
 Spark relies on a few components from this ecosystem, with Zookeeper acting to coordinate nodes, Yarn for managing 
 cluster resources, and the Hadoop Distributed File System (HDFS) for storage. To get Spark to use CORTX natively I 
@@ -82,7 +82,7 @@ Unimplemented API shown.
 
 ## Installation
 This installation guide assumes you have already performed a few steps:
-1. Installed CORTX. My suggestion fir development is to use the provided [Open Virtual Appliance](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst)
+1. Installed CORTX. My suggestion for development is to use the provided [Open Virtual Appliance](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst)
 image to create a Virtual Machine although there are other methods to [get started](https://github.com/Seagate/cortx/blob/main/QUICK_START.md).
 2. Create a cortex S3 account from the management UI.
    
@@ -228,7 +228,7 @@ Note: You need to include the fullpath including your initial bucket that you se
 ```python
 context = SparkContext.getOrCreate()
 session = SparkSession(context)
-my_data_frame=sql.read.csv('s3a://PATH_TO_YOUR_CSV_HERE.csv',inferSchema=True, header=True)
+my_data_frame=session.read.csv('s3a://PATH/TO/YOUR.csv',inferSchema=True, header=True)
 my_data_frame.show(10)
 ```
 
@@ -273,6 +273,11 @@ put: copyFile(user/stephen/file.txt._COPYING_, user/stephen/hadoop) on user/step
 ```
 Unfortunately there is no workaround and this is a limitation on the subset of the S3 API that's supported by CORTX.
 See [Issue #940](https://github.com/Seagate/cortx/issues/940) for more details.
+
+Other [S3A committers](https://hadoop.apache.org/docs/r3.1.1/hadoop-aws/tools/hadoop-aws/committers.html) have similar
+issues that prevent them from working
+
+
 ### Hadoop command not found
 ```zsh
 $ hadoop
@@ -309,3 +314,13 @@ java.lang.ClassNotFoundException
 Then you likely have incompatible Spark and Hadoop versions. You need to ensure that you either stick to the versions 
 documented here, or you compile spark yourself against your target Hadoop version. This was a constant source of error
 for me when I was attempting my integration.
+
+### Hadoop fs no such file or directory s3a://bucket/user/username
+By default ```hadoop fs``` commands will try to use the path /user/username as the root directory for its commands.
+
+You should ensure that files you want to access using ```hadoop fs``` commands reside in a folder called user/```yourusername```.
+
+To create this folder path directly pass in mkdir with the `-p` flag to make a directory and the path leading up to it. 
+eg. ```hadoop fs -mkdir -p my_new_folder```
+
+This limitation only applies for ```hadoop fs``` commands, not Spark.

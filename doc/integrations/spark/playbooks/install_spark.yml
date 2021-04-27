@@ -1,13 +1,13 @@
 - hosts: spark-hadoop
   tasks:
-    - include: roles/hadoop.yml
-    - include: roles/spark.yml
+    - include: ../roles/hadoop.yml
+    - include: ../roles/spark.yml
   vars:
     ### Change these
-    s3_endpoint: 'ADD HERE'
-    s3_access_key: 'ADD HERE'
-    s3_secret_key: 'ADD HERE'
-    s3_base_bucket_name: 'ADD HERE'
+    s3_endpoint: 'ADD_HERE'
+    s3_access_key: 'ADD_HERE'
+    s3_secret_key: 'ADD_HERE'
+    s3_base_bucket_name: 'ADD_HERE'
 
     ## Change these if you know what you're doing
     hadoop_dir: '{{ansible_env.HOME}}/hadoop'
@@ -19,7 +19,7 @@
     ##Probably best not to change these
     spark_url: 'https://apache.mirror.digitalpacific.com.au/spark/{{spark_version}}.tgz'
     hadoop_url: 'https://archive.apache.org/dist/hadoop/common/hadoop-{{hadoop_version}}/hadoop-{{hadoop_version}}.tar.gz'
-    templates_dir: 'static_templates'
+    templates_dir: '../static_templates'
   # required for this playbook to function
   environment:
     PATH: '{{ ansible_env.PATH }}:{{hadoop_dir}}/bin:{{hadoop_dir}}/sbin'
