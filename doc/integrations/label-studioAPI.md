@@ -44,7 +44,7 @@ Building an AI or ML model that acts like a human requires large volumes of trai
 - We are integrating S3 storage on label Studio, open source annotation tool, download it using `pip` command:
 `$ pip install -U label-studio`
 - Start the label studio to verify installation, it would run on local host
-`$ label-studio`
+<div> $ label-studio </div>
 
 Step 2: CORTX Cloudshare VM lab setup
 - Once the Cortex VM is ready, run this command
