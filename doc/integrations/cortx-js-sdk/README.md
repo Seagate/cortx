@@ -8,7 +8,8 @@
  
 ## Motivation
  
-Javascript is one of the most used languages in the world, According to [StackOverflow](https://insights.stackoverflow.com/trends?tags=java%2Cc%2Cc%2B%2B%2Cpython%2Cc%23%2Cvb.net%2Cjavascript%2Cassembly%2Cphp%2Cperl%2Cruby%2Cvb%2Cswift%2Cr%2Cobjective-c) . 
+Javascript is one of the most used languages in the world, According to [StackOverflow](https://insights.stackoverflow.com/trends?tags=java%2Cc%2Cc%2B%2B%2Cpython%2Cc%23%2Cvb.net%2Cjavascript%2Cassembly%2Cphp%2Cperl%2Cruby%2Cvb%2Cswift%2Cr%2Cobjective-c). 
+
 This makes total sense, as we can run it in the frontend , backend , mobile , wearables , cars or even... fridgeders!
  
  
