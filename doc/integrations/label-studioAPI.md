@@ -41,4 +41,4 @@ Building an AI or ML model that acts like a human requires large volumes of trai
 ## Integration walkthrough
 Step 1: Download reuirements
 We are integrating S3 storage on label Studio, open source annotation tool, download it using `pip` command:
-`pip install -U label-studio`
+<pre> pip install -U label-studio </pre>
