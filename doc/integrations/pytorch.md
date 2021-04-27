@@ -97,12 +97,16 @@ text:is it responsive?   labels:Rapidly Responsive. Quickly retrieves data regar
 text:how much resiliant?   labels:Highly flexible, works with HDD, SSD, and NVM.
 text:bye   labels:bye.   episode_done=True
 ```
+![alt text](https://github.com/kishorkuttan/cortx/blob/main/doc/integrations/pytorch/t2.png)
+
+![alt text](https://github.com/kishorkuttan/cortx/blob/main/doc/integrations/pytorch/t4.png)
 **Flask web application**
 
 
 
 ![alt text](https://github.com/kishorkuttan/cortx/blob/main/doc/integrations/pytorch/flask.png)
 
+![alt text](![alt text](https://github.com/kishorkuttan/cortx/blob/main/doc/integrations/pytorch/f1.png)
 ``` 
 cd ..
 python application.py  -mf "training/poly-encoder/model" 
