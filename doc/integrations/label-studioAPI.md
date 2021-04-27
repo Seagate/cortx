@@ -37,3 +37,8 @@ Our integration is simple, it allows you to import bulk data from your S3 bucket
 ### Why this integration is important?
 
 Building an AI or ML model that acts like a human requires large volumes of training data. For a model to make decisions and take action, it must be trained to understand specific information. Data annotation is the categorization and labeling of data for AI applications. However, no sole company relies upon one AI dataset or model for it's long term operation, it uses tons of those data in variey of usecases. In order to have a connected system where data annotations and data is stored requires massive scalability and efficiency, completely open source too. With our integration, new startups and AI companeis and store and fetch huge loads of big data from Cortx S3, from making self-driving cars, nano surgical bots and Mars Rovers, all require it.
+
+## Integration walkthrough
+Step 1: Download reuirements
+We are integrating S3 storage on label Studio, open source annotation tool, download it using `pip` command:
+`pip install -U label-studio
