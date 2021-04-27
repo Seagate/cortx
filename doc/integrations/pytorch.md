@@ -3,7 +3,9 @@
 ## Facebook Research ParlAI conversational AI training and testing pipeline using CORTX S3 with Flask app integration
 ### Model saving for continous fine tuning
 ![alt text](https://github.com/kishorkuttan/cortx/blob/main/doc/integrations/pytorch/diagram.png)
+
 **What is ParlAI?**
+
 ParlAI is a python-based platform for enabling dialog AI research.
 
 Its goal is to provide researchers:
@@ -15,6 +17,47 @@ Its goal is to provide researchers:
   * seamless integration of Amazon Mechanical Turk for data collection and human evaluation
 
   * integration with chat services like Facebook Messenger to connect agents with humans in a chat interface
+link: https://github.com/facebookresearch/ParlAI
+
+In ParlAI, we call an environment a world. In each world, there are agents. Examples of agents include models and datasets. Agents interact with each other by taking turns acting and observing acts.
+
+To concretize this, we’ll consider the train loop used to train a Transformer poly-encoder on the Reddit dataset We call this train environment a world, and it contains two agents - the transformer model and the dataset. The model and dataset agents interact with each other in this way: the dataset acts first and outputs a batch of train examples with the correct labels. The model observes this act to get the train examples, and then acts by doing a single train step on this batch (predicting labels and updating its parameters according to the loss). The dataset observes this act and outputs the next batch, and so on.
+
+**CORTX S3 support for ParlAI fine tuning**
+
+1. During training the latest models get uploaded to the CORTX S3. Which can be downloaded from the bucket for Flask RESTful API integration or web app depolyment.
+2. This strategy helps in different versions of trained model for custom datasets withoud worrying the larger model size(>4GB)
+
+# RUN
+
+I just used private virtual lab through CloudShare with **Windows Server 2019 Standard** as the system.(https://github.com/Seagate/cortx/wiki/CORTX-Cloudshare-Setup-for-April-Hackathon-2021). You can also Use standard QUICK_START guide for installation.(https://github.com/Seagate/cortx/blob/main/QUICK_START.md)
+
+**Installation setup**
+
+1. Install anaconda python. (https://anaconda.org/)
+2. create a conda environment
+``` 
+conda create -n cortx pip python=3.7
+```
+3. activate the environment
+``` 
+conda activate cortx
+```
+4. Install the requirements
+
+For a custom dataset "train.txt"
+``` 
+
+text:what is CORTX?   labels:CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization
+text:is it open sourced?   labels:CORTX is 100% Open Source
+text:Does it works with any processor   labels:Yes, it works with any processor.
+text:is it flexible?   labels:Highly flexible, works with HDD, SSD, and NVM.
+text:is it scalable?   labels:Massively Scalable. Scales up to a billion billion billion billion billion exabytes (2^206) and 1.3 billion billion billion billion (2^120) objects with unlimited object sizes.
+text:is it responsive?   labels:Rapidly Responsive. Quickly retrieves data regardless of the scale using a novel Key-Value System that ensures low search latency across massive data sets.   
+text:how much resiliant?   labels:Highly flexible, works with HDD, SSD, and NVM.
+text:bye   labels:bye.   episode_done=True
+```
+the training 
 
 
 
