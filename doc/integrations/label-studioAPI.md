@@ -30,7 +30,7 @@ Integrating Label Studio, an open source data annotation tool widely used by glo
 
 ## What our integration does?
 
-Our integration is simple, it allows you to import bulk data from your S3 bucket and once you are done with data annotations, you can export it in most widely used annotation formats: JSON, CSV, COCO, PASCAL VOC. Moreover, you can also download the exported data in any Machine Learning environment using our integration app.
+Our integration is simple, it allows you to import bulk data from your S3 bucket and once you are with data annotations, you can export it in most widely used annotation formats: JSON, CSV, COCO, PASCAL VOC. Moreover, you can also download the exported data inany Machine Learning environment using these codes.
 
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/working.jpg">
 
@@ -171,7 +171,9 @@ class LabelStudioAPI:
 ```
 We are using Streamlit as frontend for our integration user interface, below is how NEW project creation looks like for end user through REST API, after the projet is created you can see that in Label Studio page project is there with labels in the label_creater XML file we uploaded (There are variey of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integratin platform: https://labelstud.io/templates/ )
 
-<img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/createProject.gif">
+<a href="https://www.loom.com/share/4e63761934f94cb588c58afba5ba64e3"> <p>cortx/doc/integrations/label-studioAPI at main · vilaksh01/cortx - Watch Video</p> 
+ <img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif"> </a>
+
 
 
 
