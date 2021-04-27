@@ -14,7 +14,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |AWS_EC2|      | |DAOS|             |       |IPFS|        |
 +----------------+--------------------+---------------------+
-| |cortx-js-sdk|    |myDrive|         |                     |
+| |cortx-js-sdk|                      |      |myDrive|      |
 +----------------+--------------------+---------------------+
 
 
