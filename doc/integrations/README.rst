@@ -33,6 +33,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |TensorFlow| image:: ../images/tensorflow.png
    :width: 1 em
    :target: tensorflow
+.. |PyTorch| image:: pytorch/pytorch_logo.png
+   :width: 1 em
+   :target: pytorch.md
 
 .. |ImagesApi| image:: ../images/images-api.png
    :width: 1 em
@@ -49,8 +52,6 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |IPFS| image:: ../images/IPFS.png
    :width: 1 em
    :target: ipfs.md
-.. |PyTorch| image:: pytorch/pytorch_logo.png
-   :width: 1 em
-   :target: pytorch.md
+
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
