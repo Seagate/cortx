@@ -49,6 +49,9 @@ Step 1: Download reuirements
 <pre>
  $ label-studio 
 </pre>
+- Once the tool is running, go to account setting and grab Access Token for Label Studio to connnect it using python methods
+
+<img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/accessTokenLblImg.png">
 
 Step 2: CORTX Cloudshare VM lab setup
 - Once the Cortex VM is ready, run this command, keep note of external address to that will serve as our S3 endpoint URL
@@ -106,3 +109,4 @@ Step 3: Connecting S3 data enpoint class and methods for uploading and downloadi
 If all credentials are correct, you will have a new bucket made which you can see it using CyberDuck on the CloudShare Widnows Server 2019 Edition VM. See below image, our new bucket is created.
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/newBucketCreate.png">
 
+Step 4: 
