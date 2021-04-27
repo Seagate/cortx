@@ -169,7 +169,7 @@ class LabelStudioAPI:
         # payload = {}
         res = requests.post(url, headers=headers)
 ```
-We are using Streamlit as frontend for our integration user interface, below is how NEW project creation looks like for end user through REST API, after the projet is created you can see that in Label Studio page project is there with labels in the label_creater XML file we uploaded.
+We are using Streamlit as frontend for our integration user interface, below is how NEW project creation looks like for end user through REST API, after the projet is created you can see that in Label Studio page project is there with labels in the label_creater XML file we uploaded (There are variey of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integratin platform: https://labelstud.io/templates/ )
 
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/createProject.gif">
 
