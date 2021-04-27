@@ -8,7 +8,7 @@
 
 ### Change the way the world does by connecting CORTX™— Seagate’s open-source object storage software — with the tools and platforms that underpin the data revolution.
 
-Storing and managing data had never been easy and with flourish of AI, deep learning we have generated paramounts of data called Big Data.
+Storing and managing data had never been easy and with flourish of AI, deep learning we have generated paramounts of data called Big Data. Because unstructured data is made up of files like audio, video, pictures and even social media data, it's easy to see why volume is a challenge. The value of the data can get lost in the shuffle when working with so much of it. There is value to be found in unstructured data, but harnessing that information can be difficult.
 
 <pre>
 The ideal big data storage system would allow storage of a virtually unlimited amount of data, cope both with high rates of random write and read access, flexibly and efficiently deal with a range of different data models, support both structured and unstructured data, and for privacy reasons, only work on encrypted data. Obviously, all these needs cannot be fully satisfied.
@@ -30,13 +30,15 @@ Integrating Label Studio, an open source data annotation tool widely used by glo
 
 ## What our integration does?
 
-Our integration is simple, it allows you to import bulk data from your S3 bucket and once you are with data annotations, you can export it in most widely used annotation formats: JSON, CSV, COCO, PASCAL VOC. Moreover, you can also download the exported data inany Machine Learning environment using these codes.
+Our integration is simple, it allows you to import bulk data from your S3 bucket and once you are with data annotations, you can export it in most widely used annotation formats: JSON, CSV, COCO, PASCAL VOC. Moreover, you can also download the exported data in any Machine Learning environment using this integration.
 
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/working.jpg">
 
-### Why this integration is important?
+## Why this integration is important?
 
 Building an AI or ML model that acts like a human requires large volumes of training data. For a model to make decisions and take action, it must be trained to understand specific information. Data annotation is the categorization and labeling of data for AI applications. However, no sole company relies upon one AI dataset or model for it's long term operation, it uses tons of those data in variey of usecases. In order to have a connected system where data annotations and data is stored requires massive scalability and efficiency, completely open source too. With our integration, new startups and AI companeis and store and fetch huge loads of big data from Cortx S3, from making self-driving cars, nano surgical bots and Mars Rovers, all require it.
+
+<img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/export.jpg">
 
 ## Integration walkthrough
 
@@ -169,17 +171,9 @@ class LabelStudioAPI:
         # payload = {}
         res = requests.post(url, headers=headers)
 ```
-We are using Streamlit as frontend for our integration user interface, below is how NEW project creation looks like for end user through REST API, after the projet is created you can see that in Label Studio page project is there with labels in the label_creater XML file we uploaded (There are variey of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integratin platform: https://labelstud.io/templates/ )
+We are using Streamlit as frontend for our integration user interface, below is video for how annotation project looks like through our integration, the label_creater XML file we uploaded has information of different labels to be used for data provided. (There are variey of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integratin platform: https://labelstud.io/templates/ )
 
 ## Watch out how our Cortx S3 Integration works Label Studio, data annotation tool
 
 <a href="https://www.loom.com/share/4e63761934f94cb588c58afba5ba64e3"><p>cortx/doc/integrations/label-studioAPI at main · vilaksh01/cortx - Watch Video</p> 
 <img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif" height="100%" width="100%"></a>
-
-
-
-
-
-
-
-
