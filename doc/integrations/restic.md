@@ -21,7 +21,7 @@ support both structured and unstructured data, and for privacy reasons, only wor
 Creating backups can be an annoyance yet a necessity. Everyday the amount of data being stored and processed is growing. It is not surprising that a backup in today's age can easily take hundreds of gigs of storage. Whilst we do have cloud storage available from various providers, a local solution would be preferred with quick and optomized access to large volumes of data. Enter CORTX!
 
 ### Hypothesis
-Integrating Label Studio, an open source data annotation tool widely used by global AI brands. Integrating, S3 services for result storing and data retrieval. Restic is compatible with cloud services in it's latest version, so it is good and compatible to integrate Cortx S3 with it since Cortx is a subset of Amazon S3.
+Integrating, S3 services for result storing and data retrieval. Restic is compatible with cloud services in it's latest version, so it is good and compatible to integrate Cortx S3 with it since Cortx is a subset of Amazon S3.
 
 <b> What is CORTX? CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization. CORTX is 100% Open Source. </b>
 
@@ -32,7 +32,7 @@ Our integration is simple, it allows you to backup data to your S3 bucket and on
 
 ### Why this integration is important?
 
-t used to be said that the value of an effective backup system only becomes clear once you’ve lost data. When failures or losses occur, you need to have a fast and easy way to get your files and information back. If an organization loses data, the implications are severe. It could even jeopardize business continuity. Even in a domestic setting, data loss can be a painful experience. Backups are the only sensible safeguards. 
+It used to be said that the value of an effective backup system only becomes clear once you’ve lost data. When failures or losses occur, you need to have a fast and easy way to get your files and information back. If an organization loses data, the implications are severe. It could even jeopardize business continuity. Even in a domestic setting, data loss can be a painful experience. Backups are the only sensible safeguards. 
 
 The program should be fast. You don’t want to wait all day for a backup or restore to complete. Some programs store a base backup image and then store the differences between the base image and the source machine for each subsequent backup. This speeds up the backup process considerably. It also uses less space for your backups. restic does all of this. It is free, open-source, licensed under the 2-Clause BSD License, and under active development
 
@@ -44,8 +44,8 @@ Follow this guide from Cortex Team:
 Step 1: Download requirements
 -Restic is available in most linux repos, in our case using Ubuntu which is a Debian derivative, allows us to simply run the following (switch to the Linux VM on CloudShare first) login with the details provided by CloudShare
 
-username: sysadmin
-password: Gq45qA0g17
+- username: sysadmin
+- password: Gq45qA0g17
 
 Lets update the repos and system first
 -  $sudo apt update
