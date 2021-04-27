@@ -2,7 +2,6 @@ import requests
 import json
 from pathlib import Path
 
-
 # url = 'http://localhost:8080/api/Cortx/1/tasks/bulk/'
 # token = '303a7e45277180b93567209aeca063088856ddf8'
 
@@ -82,10 +81,14 @@ class LabelStudioAPI:
         res = requests.post(url, headers=headers)
         print(res.status_code)
 
+        return res
+
     # export Annotations in all kinds of widely accepted data annotation formats,
     # JSON, CSV, COCO, PASCAL VOC (VOC)
 
-    def exportAnnotations(self, projID='1', exportFormat='JSON', exportPath='/home/sumit/Downloads/'):
+    def exportAnnotations(self, projID='1', exportFormat='JSON',
+                          exportPath='/home/sumit/PycharmProjects/CortxProject/local/'):
+
         folder = Path(exportPath)
         url = 'http://localhost:8080/api/projects/' + projID + '/export?exportType=' + exportFormat
         headers = {'Authorization': 'Token ' + self.token}
@@ -94,29 +97,37 @@ class LabelStudioAPI:
 
         if exportFormat == 'JSON':
             python_data = json.loads(res.text)
+            object_name = ("annotations" + projID + ".json")
             file_name = folder / ("annotations" + projID + ".json")
             with open(file_name, 'w') as responseFile:
                 json.dump({'Data': python_data}, responseFile)
             print("JSON data annotation local export completed.")
+            return object_name
 
         elif exportFormat == 'CSV':
+            object_name = ("annotations" + projID + ".csv")
             file_name = folder / ('annotations' + projID + '.csv')
             f = open(file_name, "w")
             f.write(res.text)
             f.close()
             print("CSV data annotation local export completed")
+            return object_name
 
         elif exportFormat == 'COCO':
+            object_name = ("annotationsCOCO" + projID + ".zip")
             file_name = folder / ('annotationsCOCO' + projID + '.zip')
             with open(file_name, 'wb') as out_file:
                 out_file.write(res.content)
             print("COCO data annotation local export completed")
+            return object_name
 
-        elif exportFormat == 'PASCALVOCXML':
+        elif exportFormat == 'VOC':
+            object_name = ("annotationsPASCAL" + projID + ".zip")
             file_name = folder / ('annotationsPASCAL' + projID + '.zip')
             with open(file_name, 'wb') as out_file:
                 out_file.write(res.content)
             print("PASCAL data annotation local export completed")
+            return object_name
 
         else:
             print("Not supported export format, currently supported are JSON,CSV,COCO,PASCAL")
