@@ -21,7 +21,7 @@ link: https://github.com/facebookresearch/ParlAI
 
 In ParlAI, we call an environment a world. In each world, there are agents. Examples of agents include models and datasets. Agents interact with each other by taking turns acting and observing acts.
 
-To concretize this, we’ll consider the train loop used to train a Transformer poly-encoder on the Reddit dataset We call this train environment a world, and it contains two agents - the transformer model and the dataset. The model and dataset agents interact with each other in this way: the dataset acts first and outputs a batch of train examples with the correct labels. The model observes this act to get the train examples, and then acts by doing a single train step on this batch (predicting labels and updating its parameters according to the loss). The dataset observes this act and outputs the next batch, and so on.
+To concretize this, we’ll consider the train loop used to train a Image Seq2Seq model trained on all DodecaDialogue tasks and fine-tuned on the Empathetic Dialogue task, We call this train environment a world, and it contains two agents - the seq2seq model and the dataset. The model and dataset agents interact with each other in this way: the dataset acts first and outputs a batch of train examples with the correct labels. The model observes this act to get the train examples, and then acts by doing a single train step on this batch (predicting labels and updating its parameters according to the loss). The dataset observes this act and outputs the next batch, and so on.
 
 **CORTX S3 support for ParlAI fine tuning**
 
@@ -44,8 +44,45 @@ conda create -n cortx pip python=3.7
 conda activate cortx
 ```
 4. Install the requirements
+``` 
+pip install -r requirements.txt
+```
 
-For a custom dataset "train.txt"
+**Training**
+1. Create an S3 bucket to store the weight files.
+``` 
+import boto3
+from botocore.client import Config
+END_POINT_URL = "http://192.168.x.xxx"
+A_KEY = "AKIAtEpiGWUcQIelPRlD1Pi6xQ"
+
+S_KEY = "YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK"
+
+
+s3_client = boto3.client('s3', endpoint_url=END_POINT_URL,
+                         aws_access_key_id=A_KEY,
+                         aws_secret_access_key=S_KEY,
+                         config=Config(signature_version='s3v4'),
+                         region_name='US')
+def create_bucket_op(bucket_name, region):
+    if region is None:
+        s3_client.create_bucket(Bucket=bucket_name)
+    else:
+        location = {'LocationConstraint': region}
+        s3_client.create_bucket(Bucket=bucket_name,
+                                CreateBucketConfiguration=location)
+create_bucket_op("testing","US")
+print("bucket created")
+```
+2. Train
+
+``` 
+cd training
+python train.py
+```
+The "training" directory include a custom dataset "train.txt" in ParlAI format. Where the "text:" the user message or message from Agent 1, "label:" is the actual message from the AI agent or trained model or Agent 2. The model after geting fine tuned by reducing the loss, can able to predict the label. "episode_done:True" will stops the conversation thread to start a new thread. After training the model gets uploaded to S3 bucket.
+
+
 ``` 
 
 text:what is CORTX?   labels:CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization
@@ -57,7 +94,11 @@ text:is it responsive?   labels:Rapidly Responsive. Quickly retrieves data regar
 text:how much resiliant?   labels:Highly flexible, works with HDD, SSD, and NVM.
 text:bye   labels:bye.   episode_done=True
 ```
-the training 
+**Flask web application**
+``` 
+cd ..
+python train.py
+```
 
 
 
