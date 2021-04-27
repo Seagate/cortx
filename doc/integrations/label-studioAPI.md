@@ -8,7 +8,7 @@
 
 ### Change the way the world does by connecting CORTX™— Seagate’s open-source object storage software — with the tools and platforms that underpin the data revolution.
 
-Storing and managing data had never been easy and with flourish of AI, deep learning we have generated paramounts of data called Big Data.
+Storing and managing data had never been easy and with flourish of AI, deep learning we have generated paramounts of data called Big Data. Because unstructured data is made up of files like audio, video, pictures and even social media data, it's easy to see why volume is a challenge. The value of the data can get lost in the shuffle when working with so much of it. There is value to be found in unstructured data, but harnessing that information can be difficult.
 
 <pre>
 The ideal big data storage system would allow storage of a virtually unlimited amount of data, cope both with high rates of random write and read access, flexibly and efficiently deal with a range of different data models, support both structured and unstructured data, and for privacy reasons, only work on encrypted data. Obviously, all these needs cannot be fully satisfied.
