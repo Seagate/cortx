@@ -14,6 +14,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |AWS_EC2|      | |DAOS|             |       |IPFS|        |
 +----------------+--------------------+---------------------+
+| |Slack-Bot|    |                    |                     |
++----------------+--------------------+---------------------+
+
 
 .. |Splunk| image:: ../images/SplunkLogo.png
    :width: 1 em
@@ -51,7 +54,7 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: ipfs.md
 
-.. |Cortx-S3-Slack-Bot| image:: https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/logo750x500.png
+.. |Slack-Bot| image:: https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/logo750x500.png
    :width: 1 em
    :target: cortx-s3-slack-bot.md
 
