@@ -4,7 +4,7 @@ import s3dataEndpoint
 import labelStudioAPI
 import streamlit as st
 import xmltodict
-
+from pathlib import Path
 ##########################################################################################################
 token = '303a7e45277180b93567209aeca063088856ddf8'
 lsAPI = labelStudioAPI.LabelStudioAPI(token)
@@ -53,7 +53,7 @@ if add_selectbox == 'Project NEW, UPDATE or DELETE':
             st.write(file1_data)
             if st.button('Create NEW Project'):
                 msg = lsAPI.Project(title=projTitle, description=projDes, labelXML=xml, action=action)
-                if msg.status_code == 204:
+                if msg.status_code == 201:
                     st.info("Label Studio Project created successfully")
                     st.json(msg.text)
                 else:
@@ -62,7 +62,7 @@ if add_selectbox == 'Project NEW, UPDATE or DELETE':
 
 elif add_selectbox == 'Connect S3 storage':
     st.image('Images/working.jpg')
-    action = st.selectbox('Action', [ "Connect S3", "Sync S3", "Delete S3" ])
+    action = st.selectbox('Action', [ "Connect S3", "Sync S3", "Delete S3", "Create S3 Bucket" ])
 
     if action == "Connect S3":
         projid = st.text_input("Enter Label Studio Project ID", "")
@@ -83,7 +83,7 @@ elif add_selectbox == 'Connect S3 storage':
             else:
                 st.info("Cortx S3 not able to connect")
 
-    if action == "Delete S3":
+    elif action == "Delete S3":
         storid = st.text_input("Enter Label Studio S3 Storage ID", "")
         if st.button('Delete'):
             msg = lsAPI.delS3ProjBucket(storageID=storid)
@@ -92,14 +92,20 @@ elif add_selectbox == 'Connect S3 storage':
             else:
                 st.info("Could not delete S3 project storage")
 
-    if action == "Sync S3":
+    elif action == "Sync S3":
         storid = st.text_input("Enter Label Studio S3 Storage ID", "")
         if st.button('Sync'):
-            msg = lsAPI.delS3ProjBucket(storageID=storid)
-            if msg.status_code == 204:
+            msg = lsAPI.syncS3Bucket(storageID=storid)
+            if msg.status_code == 200:
                 st.info("Synced all files from S3. Start labeling in Label Studio")
             else:
                 st.info("Could not Sync from S3 for Storage ID" + storid)
+
+    elif action == "Create S3 Bucket":
+        bucketName = st.text_input("Enter name for your S3 bucket")
+        if st.button("Create S3 Bucket"):
+            if s3.bucket_operation(bucket_name=bucketName, operation='create'):
+                print("S3 bucket made successfully!")
 
 elif add_selectbox == 'Upload dataset to S3':
     st.image('Images/uploadCortx.jpg')
@@ -122,8 +128,8 @@ elif add_selectbox == 'Upload dataset to S3':
     with col2:
         storid = st.text_input("Enter Label Studio S3 Storage ID", "")
         if st.button('Sync'):
-            msg = lsAPI.delS3ProjBucket(storageID=storid)
-            if msg.status_code == 204:
+            msg = lsAPI.syncS3Bucket(storageID=storid)
+            if msg.status_code == 200:
                 st.info("Synced all files from S3. Start labeling in Label Studio")
             else:
                 st.info("Could not Sync from S3 for Storage ID" + storid)
@@ -132,44 +138,46 @@ elif add_selectbox == 'Upload dataset to S3':
 elif add_selectbox == 'Export Annotations':
     st.image('Images/export.jpg')
     projid = st.text_input('Enter Project ID')
-    local_path = st.text_input('Enter Local Path for downlaoding resources')
     export_bucket = st.text_input('Enter destination S3 bucket name')
+    path_file_download = '/home/sumit/PycharmProjects/CortxProject/local/'
 
     st.beta_container()
     col1, col2, col3, col4 = st.beta_columns(4)
 
     with col1:
         if st.button('Export JSON'):
-            lsAPI.exportAnnotations(projID=projid, exportFormat='JSON', exportPath=local_path)
-
-            file = ('annotations'+projid+'.json')
-            if s3.file_operation(bucket_name=export_bucket, file_name=file, file_location=local_path,
-                                 operation='upload'):
+            file = lsAPI.exportAnnotations(projID=projid, exportFormat='JSON',
+                                           exportPath=path_file_download)
+            path_file_download = path_file_download + file
+            if s3.file_operation(bucket_name=export_bucket, file_name=file,
+                                 file_location=path_file_download, operation='upload'):
                 st.info("Uploading file %s to S3 completed successfully!" % file)
 
     with col2:
         if st.button('Export CSV'):
-            msg = lsAPI.exportAnnotations(projID=projid, exportFormat='CSV', exportPath=local_path)
-
-            file = ('annotations' + projid + '.csv')
-            if s3.file_operation(bucket_name=export_bucket, file_name=file, file_location=local_path,
-                                 operation='upload'):
+            file = lsAPI.exportAnnotations(projID=projid, exportFormat='CSV',
+                                           exportPath=path_file_download)
+            path_file_download = path_file_download + file
+            if s3.file_operation(bucket_name=export_bucket, file_name=file,
+                                 file_location=path_file_download, operation='upload'):
                 st.info("Uploading file %s to S3 completed successfully!" % file)
     with col3:
         if st.button('Export COCO'):
-            msg = lsAPI.exportAnnotations(projID=projid, exportFormat='COCO', exportPath=local_path)
+            file = lsAPI.exportAnnotations(projID=projid, exportFormat='COCO',
+                                           exportPath=path_file_download)
+            path_file_download = path_file_download + file
 
-            file = ('annotationsCOCO' + projid + '.zip')
-            if s3.file_operation(bucket_name=export_bucket, file_name=file, file_location=local_path,
-                                 operation='upload'):
+            if s3.file_operation(bucket_name=export_bucket, file_name=file,
+                                 file_location=path_file_download, operation='upload'):
                 st.info("Uploading file %s to S3 completed successfully!" % file)
     with col4:
         if st.button('PASCALVOC'):
-            msg = lsAPI.exportAnnotations(projID=projid, exportFormat='VOC', exportPath=local_path)
+            file = lsAPI.exportAnnotations(projID=projid, exportFormat='VOC',
+                                           exportPath=path_file_download)
+            path_file_download = path_file_download + file
 
-            file = ('annotationsPASCAL' + projid + '.zip')
-            if s3.file_operation(bucket_name=export_bucket, file_name=file, file_location=local_path,
-                                 operation='upload'):
+            if s3.file_operation(bucket_name=export_bucket, file_name=file,
+                                 file_location=path_file_download, operation='upload'):
                 st.info("Uploading file %s to S3 completed successfully!" % file)
 
 elif add_selectbox == 'Download from S3 bucket':
