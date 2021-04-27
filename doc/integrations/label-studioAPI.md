@@ -55,6 +55,9 @@ Step 2: CORTX Cloudshare VM lab setup
 <pre>
  $ sudo route add default gw 192.168.2.1 ens33
 </pre>
-
+- Start Windows Server 2019 Edition, go to this S3 cortex dashboard, by default S3 user and test bucket is already made
+<pre>
+ https://192.168.2.102:28100/#/dashboard
+</pre>
 
 
