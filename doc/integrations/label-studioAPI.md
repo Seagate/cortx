@@ -1,6 +1,6 @@
 # Seagate CORTX Integration Challenge
 
-## CORTX integration with world's most trusted and open-source data annotation tool, Label Studio. Feel the buzz of heavy loads of data annotations on CORTX S3 data storage systems. 
+### CORTX integration with world's most trusted and open-source data annotation tool, Label Studio. Feel the buzz of heavy loads of data annotations on CORTX S3 data storage systems. 
 
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/Cortx.jpg">
 
