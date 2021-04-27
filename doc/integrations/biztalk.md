@@ -58,15 +58,15 @@ SQL Server to persist all messages published to it, so that it can offer
 Enterprise-scale High Availability (HA). BizTalk never loses a message!
 
 If you don’t have a Microsoft SQL Server environment step up, I have prepared
-[this guide]() to walk you through the process.
+[this guide](./biztalk/Microsoft%20SQL%20Server%202019%20Installation%20Guide.md) to walk you through the process.
 
 Once you have SQL Server installed, you are reading to install and configure
-Microsoft BizTalk Server itself. I have prepared [this guide]() to show you how.
+Microsoft BizTalk Server itself. I have prepared [this guide](./biztalk/Microsoft%20BizTalk%20Server%202020%20Installation%20and%20Configuration%20Guide.md) to show you how.
 
 ## Installing the CORTX BizTalk Adapter
 
-Finally, I have prepared [this guide]() to walk you through how to install the
-CORTX BizTalk Adapter. It is made easy with a Windows Installer package I
+Finally, I have prepared [this guide](./biztalk/CORTX%20BizTalk%20Adapter%20Installation%20Guide.md) to walk you through how to install the
+CORTX BizTalk Adapter. It is made easy with a Windows Installer package for the adapter I
 provide that you can find [here](./biztalk/CORTXBizTalkAdapter.msi).
 
 ## Creating a CORTX Environment
