@@ -30,7 +30,7 @@ Integrating Label Studio, an open source data annotation tool widely used by glo
 
 ## What our integration does?
 
-Our integration is simple, it allows you to import bulk data from your S3 bucket and once you are with data annotations, you can export it in most widely used annotation formats: JSON, CSV, COCO, PASCAL VOC. Moreover, you can also download the exported data inany Machine Learning environment using these codes.
+Our integration is simple, it allows you to import bulk data from your S3 bucket and once you are done with data annotations, you can export it in most widely used annotation formats: JSON, CSV, COCO, PASCAL VOC. Moreover, you can also download the exported data in any Machine Learning environment using our integration app.
 
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/working.jpg">
 
