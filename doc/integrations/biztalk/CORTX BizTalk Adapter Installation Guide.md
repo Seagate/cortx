@@ -1,7 +1,7 @@
 # CORTX BizTalk Adapter Installation Guide  
 Follow these steps to install the CORTX BizTalk Adapter.   
-[*NOTE: This guide assumes you have a BizTalk Environment to install the adapter into. If you need to setup a BizTalk environment please refer to the accompanying documents:*  Microsoft SQL Server 2019 Installation Guide *and* Microsoft BizTalk Server 2020 Installation and Configuration Guide *.*]**  
-**[*NOTE: Before you begin, ensure you are logged into the Windows Server with local Administrator permissions.*]  
+[*NOTE: This guide assumes you have a BizTalk Environment to install the adapter into. If you need to setup a BizTalk environment please refer to the accompanying documents:  [Microsoft SQL Server 2019 Installation Guide](./Microsoft%20SQL%20Server%202019%20Installation%20Guide.md) and [Microsoft BizTalk Server 2020 Installation and Configuration Guide](./Microsoft%BizTalk%Server%2020%Installation%and%Configuration%Guide.md).*]  
+[*NOTE: Before you begin, ensure you are logged into the Windows Server with local Administrator permissions.*]  
 [*NOTE: Before you begin, ensure that the BizTalk Administration Console is not running.*]  
 
 
