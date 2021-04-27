@@ -98,9 +98,11 @@ Step 3: Connecting S3 data enpoint class and methods for uploading and downloadi
     S_KEY = 'YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK'
 
     s3 = S3DataEndpoint(end_url=END_POINT_URL, accessKey=A_KEY, secretKey=S_KEY)
-    s3.create_bucket_op('newBucketWorks')
+    s3.create_bucket_op('newbucketworks')
     
    if __name__ == "__main__":
     main()
 ```
+If all credentials are correct, you will have a new bucket made which you can see it using CyberDuck on the CloudShare Widnows Server 2019 Edition VM. See below image, our new bucket is created.
+<img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/newBucketCreate.png">
 
