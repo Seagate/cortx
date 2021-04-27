@@ -14,6 +14,8 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |AWS_EC2|      | |DAOS|             |       |IPFS|        |             
 +----------------+--------------------+---------------------+
+| |PyTorch|      |                    |                     |
++----------------+--------------------+---------------------+
 .. |Splunk| image:: ../images/SplunkLogo.png
    :width: 1 em
    :target: splunk.md
@@ -49,6 +51,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |IPFS| image:: ../images/IPFS.png
    :width: 1 em
    :target: ipfs.md
-
+   
+.. |PyTorch| image:: ../images/PyTorch.png
+   :width: 1 em
+   :target: pytroch-integration.md
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
