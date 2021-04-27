@@ -67,7 +67,7 @@ Microsoft BizTalk Server itself. I have prepared [this guide]() to show you how.
 
 Finally, I have prepared [this guide]() to walk you through how to install the
 CORTX BizTalk Adapter. It is made easy with a Windows Installer package I
-provide that you can find [here](/biztalk/CORTXBizTalkAdapter.msi).
+provide that you can find [here](./biztalk/CORTXBizTalkAdapter.msi).
 
 ## Creating a CORTX Environment
 
