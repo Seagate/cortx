@@ -174,6 +174,6 @@ class LabelStudioAPI:
 We are using Streamlit as frontend for our integration user interface, below is video for how annotation project looks like through our integration, the label_creater XML file we uploaded has information of different labels to be used for data provided. (There are variety of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integration platform: https://labelstud.io/templates/ )
 
 ## Watch out how our Cortx S3 Integration works Label Studio, data annotation tool
-<a href="https://youtu.be/61PaboBbGCc"><img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif" height="100%" width="100%"></a>
+<a href="https://youtu.be/61PaboBbGCc"> Play video <img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif" height="100%" width="100%"></a>
 
 
