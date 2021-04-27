@@ -29,13 +29,13 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |FHIR| image:: ../images/fhir-logo.png 
    :width: 1 em
    :target: fhir.md
-
-.. |TensorFlow| image:: ../images/tensorflow.png
-   :width: 1 em
-   :target: tensorflow
 .. |PyTorch| image:: pytorch/pytorch_logo.png
    :width: 1 em
    :target: pytorch.md
+.. |TensorFlow| image:: ../images/tensorflow.png
+   :width: 1 em
+   :target: tensorflow
+
 
 .. |ImagesApi| image:: ../images/images-api.png
    :width: 1 em
