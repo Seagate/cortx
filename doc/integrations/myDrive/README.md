@@ -1,27 +1,31 @@
+## Cortx-MyDrive is a free Open Source Cloud Server (Similar To Google Drive) integrated with CORTX engine
 # ![Logo](logo.png)
 
 notice ❤: this integration is heavily based on [cortx-js-sdk](https://github.com/kaminskypavel/cortx/blob/main/doc/integrations/cortx-js-sdk/README.md
 )
 
 in this repo we will demonstrate how it can be used in a big scaled projects. for more info click on the image below
-![https://github.com/kaminskypavel/cortx-js-sdk/raw/master/assets/logo.png](https://github.com/kaminskypavel/cortx/blob/main/doc/integrations/cortx-js-sdk)
+![cortx-js-demo](https://github.com/kaminskypavel/cortx-js-sdk/raw/master/assets/logo.png)
 
 
-## Cortx-MyDrive is a free Open Source Cloud Server (Similar To Google Drive) integrated with CORTX engine
 
 ## Youtube Demo
 [![Demo](./youtube-play.png)](https://youtu.be/iegzyHMiqfw)
 
-### Host myDrive on your own server or trusted platform, and then access myDrive through your web browser.
+##### Host myDrive on your own server or trusted platform, and then access myDrive through your web browser.
 ----
 ## Screenshots
 
+- #### upload documents
 ![upload](https://github.com/kaminskypavel/cortx-js-myDrive/blob/master/github_images/upload.png)
 
-![download](https://github.com/kaminskypavel/cortx-js-myDrive/blob/master/github_images/upload.png)
+- #### download documents
+![download](https://github.com/kaminskypavel/cortx-js-myDrive/blob/master/github_images/download.png)
 
+- #### built in player
 ![player](https://github.com/kaminskypavel/cortx-js-myDrive/raw/master/github_images/video-viewer.png)
 
+- #### search for documents
 ![search](https://github.com/kaminskypavel/cortx-js-myDrive/blob/master/github_images/move.png)
 
 
