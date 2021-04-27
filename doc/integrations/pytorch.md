@@ -97,34 +97,17 @@ text:bye   labels:bye.   episode_done=True
 ```
 **Flask web application**
 
+
+
 ![alt text](https://github.com/kishorkuttan/cortx/blob/main/doc/integrations/pytorch/flask.png)
 
 ``` 
 cd ..
-python train.py
+python application.py  -mf "training/poly-encoder/model" 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+1. For each user there will be a unique id to seperate conversations. 
+2. Each connection will include one world, one AI agent and multiple users.
+3. The fine tuned model will be downloaded from the CORTX S3 bucket for inference in Flask.
 
 
 
