@@ -23,3 +23,7 @@ The problem statement is from my personal story, I was working on a wildlife con
 
 ### Hypothesis
 Integrating Label Studio, an open source data annotation tool widely used by global AI brands. Integrating, S3 services for result storing and data retrieval for data analytics and other data related tasks. Label Studio is compatible with cloud services in it's latest version, so it is good and compatible to integrate Cortx S3 with it.
+
+## What our integration does?
+
+Our integration is simple, it allows you to import bulk data from your S3 bucket and once you are with data annotations, you can export it in most widely used annotation formats: JSON, CSV, COCO, PASCAL VOC. Moreover, you can also download the exported data inany Machine Learning environment using these codes.
