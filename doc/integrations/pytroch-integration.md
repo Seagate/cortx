@@ -88,7 +88,11 @@ For this setup, the test images on the local storage. You can save them to Cortx
 Step 7: Experiment!!!:
  - Integrate different PyTorch models to Cortx and see how they perform.
  
- 
+
+### Demo
+- [Quick demo video](https://vimeo.com/542200459)
+- [Detailed video which describes the entire integration process.](https://vimeo.com/542193184)
+
 #### Contributors:
 - Rose Wambui
 
