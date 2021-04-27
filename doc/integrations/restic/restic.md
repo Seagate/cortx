@@ -4,20 +4,16 @@
 
 ### CORTX integration with Restic is a fast and secure backup program, Restic. All your buckets are belong to us. 
 
-<img src="">
-
 ### Change the way the world does by connecting CORTX™— Seagate’s open-source object storage software — with the tools and platforms that underpin the data revolution.
 
 Storing and managing data had never been easy and with flourish of AI, deep learning we have generated paramounts of data called Big Data.
 
-<pre>
 The ideal big data storage system would allow storage of a virtually unlimited amount of data, 
 cope both with high rates of random write and read access, flexibly and efficiently deal with a range of different data models, 
 support both structured and unstructured data, and for privacy reasons, only work on encrypted data. Obviously, all these needs cannot be fully satisfied.
-</pre>
- 
+
 ## Background / Overview of the project
-<img src="">
+<img src="https://github.com/kyroninja/cortx/blob/main/doc/integrations/restic/cyber_duck.png">
 
 ## The Problem
 
@@ -33,7 +29,6 @@ Integrating Label Studio, an open source data annotation tool widely used by glo
 
 Our integration is simple, it allows you to backup data to your S3 bucket and once you are done with backups, your data is available for easy retrieval. Multiple buckets can be created depending on backup type for example
 
-<img src="">
 
 ### Why this integration is important?
 
@@ -115,5 +110,5 @@ enter password for repository:
 restoring <Snapshot of [/home/sysadmin] at 2021-04-27 21:40:19.884408621 +0200 CEST> to /home/sysadmin
 
 Authors
-Pratish Neerputh
+Pratish "kyroninja" Neerputh
 Shraddha Rajcoomar
