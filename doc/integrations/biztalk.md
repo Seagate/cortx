@@ -86,7 +86,7 @@ storage to the Enterprise.
 
 ## Getting Started with CORTX BizTalk Adapter  
 
-I have prepared [this Getting Started Tutorial](./biztalk/CORTX BizTalk Adapter Getting Started Tutorial.md) to walk you through how to use
+I have prepared [this Getting Started Tutorial](./biztalk/CORTX%20BizTalk%20Adapter%20Getting%20Started%20Tutorial.md) to walk you through how to use
 the CORTX BizTalk Adapter to send data from BizTalk to CORTX, as well as receive
 data from CORTX into BizTalk.  
 
