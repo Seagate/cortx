@@ -48,9 +48,9 @@ Building an AI or ML model that acts like a human requires large volumes of trai
 - Start the label studio to verify installation, it would run on local host
 <pre>
  $ label-studio 
-</div>
+</pre>
 
-Step 2: CORTX Cloudshare VM lab setup
+###Step 2: CORTX Cloudshare VM lab setup
 - Once the Cortex VM is ready, run this command
 
 
