@@ -186,5 +186,6 @@ We are using Streamlit as frontend for our integration user interface, below is 
 2. Troubleshoot data not being exported or downloaded from S3 bucket: If you are on Cortx Cloudshare instance, make sure it's active not suspended, if suspended, reconnect and try running the below command on Cortx VM and ping it on your system not cloudshare using the device connection external address
 <pre>
 $ sudo route add default gw 192.168.2.1 ens33
+#ping it on your local system to check if S3 conenction is okay or not
 $ ping uvo100ebn7cuuq50c0t.vm.cld.sr
 </pre>
