@@ -179,6 +179,13 @@ We are using Streamlit as frontend for our integration user interface, below is 
 ## Watch out how our Cortx S3 Integration works Label Studio, data annotation tool
 <a href="https://youtu.be/61PaboBbGCc"> Play video <img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif" height="100%" width="100%"></a>
 
+## Accomplishments:
+
+1. We were successful in connecting Cortx S3, making data bucket and connecting with label studio project
+2. Used API to upload bulk files to Cortx S3 and sync it to our label-studio project
+3. One button file export to Cortx S3 bucket for different formats of data annotations - JSON, CV, COCO, PASCALVOC
+4. Ability to download any file from S3 bucket anywhere, allowing fleibility in using at multiple places or use case, like downloading data annotation results in Jupyter Notebook and Tensorflow framework to make AI, data apps 
+
 ## Problems that you may run into
 
 1. Troubleshoot CORS and access problems: After syncing the imports in S3 bucket, your files don't load in Label Studio due to Cross-origin resource sharing(CORS) not being supported by Cortex S3 Currently, so you can manually upload all your data for labeling instead of syncing from S3. Here is how the problem looks like:
