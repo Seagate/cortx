@@ -27,6 +27,16 @@ We already integrated **4840 dicom tags** into our system as the base of the lab
 
 Cortx_dicom can be used locally with a CORTX-VirtualMachine (VM) or remotely with a cloud-based server.
 
+## Video presentation
+
+This video is about cortx_dicom presentation and it is part of the submission.
+
+[Project presentation video (submission video): https://youtu.be/Qxb3cFnwXnQ](https://youtu.be/Qxb3cFnwXnQ)
+
+
+This video is a code walkthrough and it is **NOT** the part of the submission.
+
+[Code walkthrough video (outside submission): https://youtu.be/emRk4xqBDmQ](https://youtu.be/emRk4xqBDmQ)
 
 ##  How to use?
 
