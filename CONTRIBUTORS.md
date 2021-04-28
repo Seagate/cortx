@@ -352,6 +352,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shalaka Dharap](https://github.com/shalakadharap)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
+1. [Febriano Ramadhani](https://github.com/spiritbro1)
 
 ## [Seagate/cortx-utils](https://github.com/Seagate/cortx-utils)
 1. [Ajay Paratmandali](https://github.com/ajay-paratmandali)
