@@ -3,7 +3,7 @@
 ## Background
 
 **What is DRP?**<br/>
-DRP stands for Declarative Resource Protocol.  It is an open source service mesh project with data mesh extensions originally developed for use with infrastructure sources.
+DRP stands for Declarative Resource Protocol.  It is an open source service mesh project with data mesh extensions.  While originally developed for use with infrastructure sources, it was adapted for use with mock civic data sets using CORTX storage for this project.
 
 ## Demo Video
 A quick video describing this project, what DRP is and how it leverages CORTX storage [Demo on YouTube](https://youtu.be/_fWgcD-Y-G4).
