@@ -8,7 +8,7 @@
 
 [Cortx Jupyter Integration](https://devpost.com/software/cortx-jupyter) is an Open Source python package which combines the power of Cortx and Jupyter Notebooks to empower you to save and manage all of your Notebooks, Checkpoints and Data Files on Cortx. As a bonus, you can also use Cortx Jupyter Integration to load any pre-trained models from or to cortx server without any hassle of configuring or using Library specific integrations.
 
-![logo](/media/cortx_jupyter_header.png)
+![logo](media/cortx_jupyter_header.png)
 
 ## Description
 
@@ -35,7 +35,7 @@ You can find the Python Package that we built at [pypi.org](https://pypi.org/pro
 - `cortx_jupyter.py`: Class that provides core functionality of integrating Jupyter Notebook to Cortx. Jupyter Notebook calls the methods in this class to perform file operations instead of it's in-built File Manager.
 - `utils.py`: This class all the additional functionality such as using boto3 to send requests to Cortx.
 
-![architecture](/media/cortx_jupyer_architecture.png)
+![architecture](media/cortx_jupyer_architecture.png)
 
 
 ## Features
@@ -134,21 +134,21 @@ Use the following command on Linux-like systems to run Jupyter Notebook server:
 
 This will print some information about the notebook server in your terminal(as seen in the screenshot below), including the URL of the web application (by default,  `http://localhost:8888`):
 
-![Jupyter Notebook Run](/media/jupyter_run.png)
+![Jupyter Notebook Run](media/jupyter_run.png)
 
 It will then open your default web browser to this URL(as seen in the screenshot below). When the notebook opens in your browser, you will see the Notebook Dashboard, which will show a list of the notebooks, files, and subdirectories present in Cortx.
 
-![Jupyter Cortx Files](/media/jupyter_cortx_files.png)
+![Jupyter Cortx Files](media/jupyter_cortx_files.png)
 
 If you go to Cyberduck and list the files present in Cortx(as seen in the screenshot below), you can verify that all your Notebooks, Checkpoints and Data Files are stored on Cortx by the `Cortx Jupyter Integration`:
 
-![Cyberduck](/media/cyberduck.jpeg)
+![Cyberduck](media/cyberduck.jpeg)
 
 If you want some examples to get started on Jupyter Notebooks with Cortx as storage, take a look at the following sample notebooks in our repository:
 
- - [Tensorflow example](/Examples/Tensorflow-Demo.ipynb)
- - [Pytorch example](/Examples/Pytorch-Demo.ipynb)
- - [Keras example](/Examples/Keras-Demo.ipynb)
+ - [Tensorflow example](Examples/Tensorflow-Demo.ipynb)
+ - [Pytorch example](Examples/Pytorch-Demo.ipynb)
+ - [Keras example](Examples/Keras-Demo.ipynb)
 
 ## Use any Machine Learning library to train models on data stored in Cortx
 
@@ -191,18 +191,18 @@ In above example, take a look at how we load data from Cortx using `Cortx Jupyte
 
 If you want more examples, take a look at the following sample notebooks:
 
- - [Tensorflow example](/Examples/Tensorflow-Demo.ipynb)
- - [Pytorch example](/Examples/Pytorch-Demo.ipynb)
- - [Keras example](/Examples/Keras-Demo.ipynb)
+ - [Tensorflow example](Examples/Tensorflow-Demo.ipynb)
+ - [Pytorch example](Examples/Pytorch-Demo.ipynb)
+ - [Keras example](Examples/Keras-Demo.ipynb)
 
 The screenshot below shows that you can load data from Cortx and pass it to any ML library or Write data to Cortx using simple methods provided in our Cortx Jupyter Python Package:
 
-![Read and Write](/media/read_write_cortx_jupyter.png)
+![Read and Write](media/read_write_cortx_jupyter.png)
 
 
 ## Revert Checkpoints
 
-![Checkpoints](/media/revert_checkpoint.png)
+![Checkpoints](media/revert_checkpoint.png)
 
 
 ## What we learned & Accomplishments that we're proud of
