@@ -13,7 +13,9 @@ The LETL system is able to address the challenges of data movement and managemen
 
 ![diagram](https://user-images.githubusercontent.com/75850728/116335536-e2a9be80-a78b-11eb-9f8d-6557aaa262a2.png)
 
-The underlying technology and pipeline-like flow gives the LETL system the necessary latency, data throughput, and configurability to provide knowledge workers the performance needed for their specific analysis needs. An exemplary use case for this system is in the healthcare field for future events similar to Covid-19. Datasets were not only continually produced from many different sources and formats but also in large quantities as well. Consider the overwhelming amount of data in fields such as drug/vaccine discovery, precision medicine & genomics, smart hospital and multi-omics data analysis, health informatics, and you can start to visualize the real-world impact of harnessing it for insights.
+The underlying technology and pipeline-like flow gives the LETL system the necessary latency, data throughput, and configurability to provide knowledge workers the performance needed for their specific analysis needs. An exemplary use case for this system is in the healthcare field for future events similar to Covid-19. Datasets were not only continually produced from many different sources and formats but also in large quantities as well. 
+
+Consider the overwhelming amount of data in fields such as drug/vaccine discovery, precision medicine & genomics, smart hospital and multi-omics data analysis, health informatics, and you can start to visualize the real-world impact of harnessing it for insights.
 
 # CORTX-LETL Integration
 
