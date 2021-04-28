@@ -81,14 +81,17 @@ or
 
 # Confirming Functionality
 
-Data movement from CORTX into DAOS can be demonstrated by deleting Data A locally and reading Data A from DAOS
+Data movement from CORTX into DAOS can be demonstrated by viewing the data on the VMs.
 
-### /tiering/D-C
-```
-# Request Body
-{
-"destination_uri": "Covid-19/DNA/NC_045512/A1",
-"source_uri": "public/tiering/A1",
-"request_id": "temp_id5"
-}
-```
+### We start with dataset B1 inside of DAOS.
+
+![MicrosoftTeams-image (4)](https://user-images.githubusercontent.com/75850728/116342075-daa34c00-a796-11eb-971b-169791db0672.png)
+
+### When tiering from DAOS to CORTX, dataset B1 appears on CORTX.
+
+![MicrosoftTeams-image (3)](https://user-images.githubusercontent.com/75850728/116342147-f9094780-a796-11eb-9ea4-ac05713b90fd.png)
+
+### And finally, we tier from CORTX to DAOS by transferring dataset A1.
+
+![MicrosoftTeams-image (5)](https://user-images.githubusercontent.com/75850728/116342204-13dbbc00-a797-11eb-9eea-8ca86dba6456.png)
+
