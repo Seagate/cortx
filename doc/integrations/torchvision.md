@@ -51,6 +51,8 @@ pip install cortx_pytorch
 
 ### 2: Convert and upload your dataset
 
+The example is here for locally sourced ImageNet but the library supports any Pytorch computer vision dataset
+
 ```python
 from cortx_pytorch import upload_cv_dataset, make_client
 from torchvision import datasets
