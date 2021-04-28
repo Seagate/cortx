@@ -183,4 +183,8 @@ We are using Streamlit as frontend for our integration user interface, below is 
 
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/Screenshot%20from%202021-04-27%2003-29-10.png">
 
-2. Troubleshoot data not being exported or downloaded from S3 bucket: If you are on Cortx Cloudshare instance, make sure it's active not suspended, if suspended, reconnect and try running <pre>sudo route add default gw 192.168.2.1 ens33</pre>
+2. Troubleshoot data not being exported or downloaded from S3 bucket: If you are on Cortx Cloudshare instance, make sure it's active not suspended, if suspended, reconnect and try running the below command on Cortx VM and ping it on your system not cloudshare using the device connection external address
+<pre>
+$ sudo route add default gw 192.168.2.1 ens33
+$ ping uvo100ebn7cuuq50c0t.vm.cld.sr
+</pre>
