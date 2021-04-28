@@ -34,8 +34,47 @@ Once the DRP Desktop is open, click Go -> DRP Topology to view the microservices
 ### Class Data
 The sample microservices advertise class definitions to the mesh.  Class records are retrieved from CORTX then dynamically related using UML field stereotypes.  These records are visible in Go -> Hive Browser.  Type "Springfield" in the Search box and hit Enter.
 
+To see a sample class definition via CLI in Go -> DRP Shell...
+```
+dsh> ls Mesh/Services/FireDept/Classes
+Station         UMLClass        11
+Person          UMLClass        11
+Equipment       UMLClass        11
+
+dsh> cat Mesh/Services/FireDept/Classes/Station/GetDefinition
+{
+    "Name": "Station",
+    "Stereotypes": [],
+    "Attributes": {
+        "stationID": {
+            "Name": "stationID",
+            "Stereotype": "stationID",
+            "Visibility": null,
+            "Derived": false,
+            "Type": "int",
+            ...
+```
+Or even see the raw records...
+```
+dsh> cat Mesh/Services/FireDept/Classes/Station/GetRecords   
+{
+    "1000": {
+        "_objClass": "Station",
+        "_objPK": 1000,
+        "_serviceName": "FireDept",
+        "_snapTime": "2021-04-27T08:00:00.000Z",
+        "stationID": 1000,
+        "description": "East side of town",
+        "city": "Springfield",
+        "address": "123 Pine St"
+    },
+    "2000": {
+        "_objClass": "Station",
+        ...
+```
+
 ### Streaming Data
-Streaming data emitted from services can be watched in Go -> DRP Shell.
+Streaming data emitted from services can be watched via CLI in Go -> DRP Shell.
 ```
 dsh> watch firedept
 Subscribed to stream firedept
