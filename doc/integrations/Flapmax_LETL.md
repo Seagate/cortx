@@ -1,13 +1,15 @@
-# Overview
+# Optimizing ETL Pipelines with CORTX and Flapmax Light-weight ETL Engine
+
+## Overview
 
 LETL ( Lightweight-ETL ) is an ETL framework created to provide configurable ETL services while offering analytical capabilities. This system aims to empower users and businesses to manage and control their data.
 
 
-# The Mission
+## The Mission
 
 Big Data poses a challenge to organizations over a variety of different fields with respect to data management and storage. In particular, unstructured data (images, text, audio) is one of the fastest growing forms of data and is especially difficult to address. These artifacts may contain valuable insights but often go to waste as organizations are unable to manage them.
 
-# Enter: LETL 
+## Enter: LETL 
 
 The LETL system is able to address the challenges of data movement and management in a fully managed system end-to-end pipeline. This is achieved by leveraging technology conducive to latency-sensitive tasks such as hardware like SCM and PMem devices while also performing formatting tasks to make data compatible for destination systems. Data may also stay in the LETL ecosystem to utilize the underlying technology.
 
@@ -17,11 +19,11 @@ The underlying technology and pipeline-like flow gives the LETL system the neces
 
 Consider the overwhelming amount of data in fields such as drug/vaccine discovery, precision medicine & genomics, smart hospital and multi-omics data analysis, health informatics, and you can start to visualize the real-world impact of harnessing it for insights.
 
-# CORTX-LETL Integration
+## CORTX-LETL Integration
 
 Considering the previous technological architecture of LETL, CORTX can be integrated to provide data tiering between HDD’s, SSD’s, and PMEM. This provides flexibility for users and organizations for their own data needs.
 
-# Instructions
+## Instructions
 
 [Follow along with our brief demonstration](https://youtu.be/Nz05Z_gcNzI)
 
@@ -81,7 +83,7 @@ or
 `“project-19-276121/letlCovidSet/B1"`
 
 
-# Confirming Functionality
+## Confirming Functionality
 
 Data movement from CORTX into DAOS can be demonstrated by viewing the data on the VMs.
 
