@@ -107,15 +107,14 @@ class PolyTeacher(DialogTeacher):
 
 DisplayModel.main(task='poly_teacher', model='poly')
 TrainModel.main(
-    model='transformer/polyencoder',
+    model='seq2seq',
     model_file='poly-encoder/model',
-    dict_file='zoo:pretrained_transformers/poly_model_huge_reddit/model.dicts',
+    dict_file='zoo:dodecadialogue/empathetic_dialogues_ft/model.dicts',
     task='poly_teacher',
     batchsize=3,
     validation_every_n_secs=10,
     max_train_time=60,
-    cands='batch',
-    eval_candidates='batch',
+
 )
 
 DisplayModel.main(
