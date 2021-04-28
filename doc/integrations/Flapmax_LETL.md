@@ -9,11 +9,11 @@ Big Data poses a challenge to organizations over a variety of different fields w
 
 # Enter: LETL 
 
-The LETL system is able to address the challenges of data movement and management in a fully managed system from end-to-end pipeline. This is achieved by leveraging technology conducive to latency-sensitive tasks such as hardware like SCM and PMem devices while also performing formatting tasks to make data compatible for destination systems. Data may also stay in the LETL ecosystem to utilize the underlying technology.
+The LETL system is able to address the challenges of data movement and management in a fully managed system end-to-end pipeline. This is achieved by leveraging technology conducive to latency-sensitive tasks such as hardware like SCM and PMem devices while also performing formatting tasks to make data compatible for destination systems. Data may also stay in the LETL ecosystem to utilize the underlying technology.
 
 ![diagram](https://user-images.githubusercontent.com/75850728/116335536-e2a9be80-a78b-11eb-9f8d-6557aaa262a2.png)
 
-The underlying technology and pipeline-like flow gives the LETL system the necessary latency, data throughput, and configurability to provide knowledge workers the performance needed for their specific analysis needs. An exemplary use case for this system is in the healthcare field for future events similar to Covid-19. Datasets were not only continually produced from many different sources and formats but also in large quantities as well. Consider that <size of single file instance; it’s big>
+The underlying technology and pipeline-like flow gives the LETL system the necessary latency, data throughput, and configurability to provide knowledge workers the performance needed for their specific analysis needs. An exemplary use case for this system is in the healthcare field for future events similar to Covid-19. Datasets were not only continually produced from many different sources and formats but also in large quantities as well. Consider the overwhelming amount of data in fields such as drug/vaccine discovery, precision medicine & genomics, smart hospital and multi-omics data analysis, health informatics, and you can start to visualize the real-world impact of harnessing it for insights.
 
 # CORTX-LETL Integration
 
