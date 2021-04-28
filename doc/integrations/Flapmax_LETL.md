@@ -23,6 +23,8 @@ Considering the previous technological architecture of LETL, CORTX can be integr
 
 [Follow along with our brief demonstration](https://www.youtube.com/watch?v=5qap5aO4i9A)
 
+We will walk you through our FastAPI and you can follow along as we demonstrate the LETL-CORTX integration. Let's go endpoint by endpoint.
+
 ### 1. /cortx/write: Write data A into CORTX
 
 ```
