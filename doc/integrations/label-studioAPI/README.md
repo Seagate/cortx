@@ -209,3 +209,10 @@ $ streamlit run app.py
 
 4. Troubleshoot download and upload path: When using methods to download or upload files from S3, you need to make sure you give correct file name and their location or path.
  
+## What's next for Cortx Label Studio Integration
+
+1. Integrating backend ML operations for auto-labeling tasks in Label Studio and storing results, metrics on S3.
+2. Multi-level user access for better project control and role management
+3. Integrating other services like data encoder, decoder and direct training over GPU with major ML frameworks 
+4. Faster query system on Cortx S3 using Motr Layer
+
