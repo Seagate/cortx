@@ -1,7 +1,5 @@
 ## Optimizing ETL Pipelines with CORTX and Flapmax Light-weight ETL Engine
 
-## Overview
-
 LETL ( Lightweight-ETL ) is an ETL framework created to provide configurable ETL services while offering fast analytics capabilities. This system aims to empower users and businesses to manage and control their data.
 
 
