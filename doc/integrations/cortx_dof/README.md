@@ -26,6 +26,15 @@ Cortx_dof is a DoF integration into Seagate's CORTX server in Python. For managi
 
 You can manage DoF files on CORTX with S3. DoF contains metadata to help you to mine the functionality of Elasticsearch better. DoF can contain different stages of the dataset such as ` raw data `, ` preprocessed data `, ` output of headless pretrained model `. Besides this, DoF can hold ` model data ` such as weights and biases. Furthermore, it is a container for any additional information like ` license `,  `contact of author `,  `description of model `, etc. There are a lot of prebuild key that help you to store the most important details about your dataset, model or training process. The list of keys are extendable.
 
+## Video presentation
+
+This video is about cortx_dof presentation and it is part of the submission.
+
+[Project presentation video (submission video): https://youtu.be/w9zH1QEcw3w](https://youtu.be/w9zH1QEcw3w)
+
+This video is a code walkthrough and it is **NOT** the part of the submission.
+
+[Code walkthrough video (outside submission): https://youtu.be/1HEI_MdM1X8](https://youtu.be/1HEI_MdM1X8)
 
 ##  How to use?
 
