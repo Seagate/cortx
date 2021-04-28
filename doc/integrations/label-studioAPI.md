@@ -42,6 +42,8 @@ Building an AI or ML model that acts like a human requires large volumes of trai
 
 ## Integration walkthrough
 
+You can directly clone the project dir and use it any code editor like Pycharm or Visual Studio Code and install all requirements.txt, run streamlit app.py after starting label-studio on local host.
+
 Step 1: Download requirements
 - We are integrating S3 storage on label Studio, open source annotation tool, download it using `pip` command:
 <pre>
