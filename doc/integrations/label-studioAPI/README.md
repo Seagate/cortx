@@ -173,9 +173,36 @@ class LabelStudioAPI:
         # payload = {}
         res = requests.post(url, headers=headers)
 ```
+See full source code in project repository: https://github.com/vilaksh01/cortx/tree/main/doc/integrations/label-studioAPI
 We are using Streamlit as frontend for our integration user interface, below is video for how annotation project looks like through our integration, the label_creater XML file we uploaded has information of different labels to be used for data provided. (There are variety of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integration platform: https://labelstud.io/templates/ )
 
 ## Watch out how our Cortx S3 Integration works Label Studio, data annotation tool
 <a href="https://youtu.be/61PaboBbGCc"> Play video <img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif" height="100%" width="100%"></a>
 
+## Accomplishments:
 
+1. We were successful in connecting Cortx S3, making data bucket and connecting with label studio project
+2. Used API to upload bulk files to Cortx S3 and sync it to our label-studio project
+3. One button file export to Cortx S3 bucket for different formats of data annotations - JSON, CV, COCO, PASCALVOC
+4. Ability to download any file from S3 bucket anywhere, allowing fleibility in using at multiple places or use case, like downloading data annotation results in Jupyter Notebook and Tensorflow framework to make AI, data apps 
+
+## Problems that you may run into
+
+1. Troubleshoot CORS and access problems: After syncing the imports in S3 bucket, your files don't load in Label Studio due to Cross-origin resource sharing(CORS) not being supported by Cortex S3 Currently, so you can manually upload all your data for labeling instead of syncing from S3. Here is how the problem looks like:
+
+<img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/Screenshot%20from%202021-04-27%2003-29-10.png">
+
+2. Troubleshoot data not being exported or downloaded from S3 bucket: If you are on Cortx Cloudshare instance, make sure it's active not suspended, if suspended, reconnect and try running the below command on Cortx VM and ping it on your system not cloudshare using the device connection external address
+<pre>
+$ sudo route add default gw 192.168.2.1 ens33
+# ping it on your local system to check if S3 connection is okay or not
+$ ping uvo100ebn7cuuq50c0t.vm.cld.sr
+</pre>
+
+3. Troubleshoot app.py file not being able to run: Our app is made with streamlit.io, to run the app, you need to run using the below command,
+<pre>
+$ streamlit run app.py
+</pre>
+
+4. Troubleshoot download and upload path: When using methods to download or upload files from S3, you need to make sure you give correct file name and their location or path.
+ 
