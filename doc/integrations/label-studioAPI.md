@@ -180,6 +180,7 @@ We are using Streamlit as frontend for our integration user interface, below is 
 <a href="https://youtu.be/61PaboBbGCc"> Play video <img src="https://cdn.loom.com/sessions/thumbnails/4e63761934f94cb588c58afba5ba64e3-with-play.gif" height="100%" width="100%"></a>
 
 ## Problems that you may run into
+
 1. Troubleshoot CORS and access problems: After syncing the imports in S3 bucket, your files don't load in Label Studio due to Cross-origin resource sharing(CORS) not being supported by Cortex S3 Currently, so you can manually upload all your data for labeling instead of syncing from S3. Here is how the problem looks like:
 
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/Screenshot%20from%202021-04-27%2003-29-10.png">
@@ -187,7 +188,7 @@ We are using Streamlit as frontend for our integration user interface, below is 
 2. Troubleshoot data not being exported or downloaded from S3 bucket: If you are on Cortx Cloudshare instance, make sure it's active not suspended, if suspended, reconnect and try running the below command on Cortx VM and ping it on your system not cloudshare using the device connection external address
 <pre>
 $ sudo route add default gw 192.168.2.1 ens33
-# ping it on your local system to check if S3 conenction is okay or not
+# ping it on your local system to check if S3 connection is okay or not
 $ ping uvo100ebn7cuuq50c0t.vm.cld.sr
 </pre>
 
