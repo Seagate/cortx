@@ -1,8 +1,11 @@
 # PyTorch meets CORTX
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 ## Facebook Research ParlAI conversational AI training and testing pipeline using CORTX S3 with Flask app integration
+### Demo Link
+https://www.youtube.com/watch?v=YUS7YCJ9rgs
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/YUS7YCJ9rgs/0.jpg)](http://www.youtube.com/watch?v=YUS7YCJ9rgs "CORTX Meets PyTorch ParlAI")
+
 ### Model saving for continous fine tuning
 ![alt text](https://github.com/kishorkuttan/cortx/blob/main/doc/integrations/pytorch/diagram.png)
 
