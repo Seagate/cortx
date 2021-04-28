@@ -1,4 +1,4 @@
-# Optimizing ETL Pipelines with CORTX and Flapmax Light-weight ETL Engine
+## Optimizing ETL Pipelines with CORTX and Flapmax Light-weight ETL Engine
 
 ## Overview
 
