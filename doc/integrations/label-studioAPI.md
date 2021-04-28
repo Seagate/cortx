@@ -173,6 +173,7 @@ class LabelStudioAPI:
         # payload = {}
         res = requests.post(url, headers=headers)
 ```
+See full source code in project repository: https://github.com/vilaksh01/cortx/tree/main/doc/integrations/label-studioAPI
 We are using Streamlit as frontend for our integration user interface, below is video for how annotation project looks like through our integration, the label_creater XML file we uploaded has information of different labels to be used for data provided. (There are variety of label_creator XML templates for any kind of data annotation project, decide which one to use based on your usecase and create XML file for that to use with our integration platform: https://labelstud.io/templates/ )
 
 ## Watch out how our Cortx S3 Integration works Label Studio, data annotation tool
@@ -192,5 +193,8 @@ $ ping uvo100ebn7cuuq50c0t.vm.cld.sr
 
 3. Troubleshoot app.py file not being able to run: Our app is made with streamlit.io, to run the app, you need to run using the below command,
 <pre>
-$ streamlit run app.p
+$ streamlit run app.py
 </pre>
+
+4. Troubleshoot download and upload path: When using methods to download or upload files from S3, you need to make sure you give correct file name and their location or path.
+ 
