@@ -45,6 +45,8 @@ This workflow has been implemented for computer vision dataset in pytorch in the
 
 ### 1: Install
 
+For this submission we created a `pip` package so that it is as straightforward to use as possible:
+
 ```
 pip install cortx_pytorch
 ```
