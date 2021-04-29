@@ -53,25 +53,25 @@ Procedure
 
         .. image::  images/aws-configure.png
 
-    1. Set the endpoint URL:
+    2. Set the endpoint URL:
         
         ::
 
             aws configure set s3.endpoint_url https://s3.seagate.com
 
-    1. Set the API endpoint URL 
+    3. Set the API endpoint URL 
             
         ::
         
             aws configure set s3api.endpoint_url https://s3.seagate.com
 
-    1. Set the AWS certificate path:
+    4. Set the AWS certificate path:
 
         ::
         
             aws configure set default.ca_bundle /etc/ssl/stx-s3-clients/s3/ca.crt
 
-    1. Copy the S3 certificate from ova-server to client location:
+    5. Copy the S3 certificate from ova-server to client location:
     
         ::
         
