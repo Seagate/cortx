@@ -2,6 +2,7 @@
 Performing IO Operations Using S3 Client
 ========================================
 
+If you want to use the provided OVA to test CORTX and observe activity in its GUI, you should have already followed the `instructions <CORTX_on_Open_Virtual_Appliance.rst>`_ to install and configure the OVA.  If you have not yet done so, please do that before following the rest of the instructions on this page.
 
 
 Prerequisites
