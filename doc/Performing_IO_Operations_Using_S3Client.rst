@@ -66,17 +66,25 @@ Procedure
         
             aws configure set s3api.endpoint_url https://s3.seagate.com
 
-    4. Set the AWS certificate path:
+    4. If you are using a separate VM for client, copy the S3 certificate from ova to client location:
 
         ::
         
-            aws configure set default.ca_bundle /etc/ssl/stx-s3-clients/s3/ca.crt
+            scp root@<ova-server-ip>:/opt/seagate/cortx/provisioner/srv/components/s3clients/files/ca.crt /etc/ssl/stx-s3-clients/s3/ca.crt
 
-    5. Copy the S3 certificate from ova-server to client location:
+    5. Set the AWS certificate path:
+        
+        1. If you are using OVA VM as a client 
     
-        ::
+            ::
         
-            scp root@<ova-server-ip>:/opt/seagate/cortx/provisioner/srv/components/s3clients/files/ca.crt  /etc/ssl/stx-s3-clients/s3/ca.crt
+                aws configure set default.ca_bundle /opt/seagate/cortx/provisioner/srv/components/s3clients/files/ca.crt
+
+        2. If you are using OVA VM as a client 
+    
+            ::
+            
+                aws configure set default.ca_bundle /etc/ssl/stx-s3-clients/s3/ca.crt
 
 #. Perform IO operation.
 
