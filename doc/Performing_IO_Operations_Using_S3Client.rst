@@ -43,12 +43,6 @@ Procedure
 
         .. image:: images/Create-Bucket.png
 
-#. Run the following command to use IOs: 
-
-    ::
-
-        ./s3bench -accessKey=<Enter your access key> -accessSecret=<Enter your Secret Key ID> -bucket=<Bucket name> -endpoint=http://<s3 endpoint or Public data IP>-numClients=100 -numSamples=100 -objectNamePrefix=loadgen_test -objectSize=1048576 -region=igneous-test -skipCleanup=False -verbose=True
-
 #. Configure AWS credentials using following commands:
     
     1. Run the following command to configure the AWS configure: 
