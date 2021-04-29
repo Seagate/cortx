@@ -74,13 +74,13 @@ Procedure
 
     5. Set the AWS certificate path:
         
-        1. If you are using OVA VM as a client 
+        1. If you are using OVA VM as a client: 
     
             ::
         
                 aws configure set default.ca_bundle /opt/seagate/cortx/provisioner/srv/components/s3clients/files/ca.crt
 
-        2. If you are using OVA VM as a client 
+        2. If you are using a separate VM for client: 
     
             ::
             
