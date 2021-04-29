@@ -1,0 +1,43 @@
+```
+app.post('/api/upload', function (req, res, next) {
+  // This grabs the additional parameters so in this case passing     
+  // in "element1" with a value.
+  const element1 = req.body.element1;
+  var busboy = new Busboy({ headers: req.headers });
+  // The file upload has completed
+  busboy.on('finish', function() {
+   console.log('Upload finished');
+   
+   
+   
+   const file=req.files.filetoupload;
+  //  console.log(innerfil)
+   console.log(file);
+
+   var uploadParams = {Bucket: "zee-flask-s3-test", Key: file.name, Body: file.data};
+
+
+s3.upload (uploadParams, function (err, data) {
+if (err) {
+  console.log("Error", err);
+} if (data) {
+  console.log("Upload Success", data.Location);
+  let newlocation=data.Location
+  
+
+  // postgresql insert
+  const {firstname,lastname,email,phone}=req.body;
+  pool.query(
+    'INSERT INTO patients (firstname,lastname,email,phone,image) VALUES ($1,$2,$3,$4,$5)',[firstname,lastname,email,phone,newlocation],(err,data)=>{
+      if(err){
+        throw err;
+      }
+
+      res.send({status: 'success', message: 'New dialogue added',data:data})
+      
+    }
+  )
+  
+}
+
+```
