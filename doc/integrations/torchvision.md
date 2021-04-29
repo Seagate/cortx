@@ -1,6 +1,6 @@
 # Pytorch datasets
 
-Motivation/demo video: https://github.com/Seagate/cortx/pull/967
+Motivation/demo video: https://youtu.be/L0UH-fRhyDU 
 
 ## Motivation
 
