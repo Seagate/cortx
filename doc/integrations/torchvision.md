@@ -1,5 +1,7 @@
 # Pytorch datasets
 
+Motivation/demo video: https://github.com/Seagate/cortx/pull/967
+
 ## Motivation
 
 Deep learning datasets are most of the time constituted of many small files and their associated label. Models are then repeatedly trained on random small subset of the datasets (for example `BS`=256 samples). The usual workflow to generate a batch of data is the following:
