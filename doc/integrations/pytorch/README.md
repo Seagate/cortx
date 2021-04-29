@@ -1,5 +1,7 @@
 # CORTX Pytorch Integration
 
+Video Link: https://youtu.be/cS-f7MNpXyo
+
 ## Inspiration
 
 As a fan of machine learning and deep learning, I like the fact that the CORTX project aims to solve the challenge of storing and accessing large amounts of data. This is a problem that is common in the Machine Learning and Deep Learning space.
