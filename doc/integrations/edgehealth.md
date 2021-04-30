@@ -7,6 +7,7 @@
 
 **What is EdgeHealth and Smart Hospital?**
 Smart Hospital and digitalized healthcare otherwise known as hopsital and healthcare 4.0 is an intelligently working control platform that is oriented on a person's health and medical history. From birth, or even prenatal, until death. On this control platform, knowledge, patient data diagnostics, and treatment data flows together, and others can participate - both private practices and healthcare institutions. The focus of smart hospital is always on the people to improve care delivery, patient experience and precision medicine using new and emergent technologies like the internet of things (IoT), Artifical Intelligence (AI), big data, genomics, visible and invisible user interfaces, advanced analytics, electronic health record systems, augmented and virtual reality, robotics, telemedicine, smart buildings, and so on.
+<<<<<<< HEAD
 
 The EdgeHealth solution consists of various applications and services including Seagate CORTX for object storage, Google Dialogflow for conversation AI, Vue.JS for the frontend, a Node/Express server app on the backend acting as fulfillment app for the Dialogflow service and backend server for the VueJS frontend app. There's also a React frontend App that is a chatbot for testing and sending messages to the Dialogflow service via the NodeJS backend. Chat messages are logged in the storage. The logged messages are displayed in the VueJS frontend app. In addition, there is a flask app that renders imaging or radiology files that are stored in the buckets.
 
@@ -35,3 +36,5 @@ Healthcare organizations are building their IT infrastructures to be more flexib
 
 ## Demo
 can be found [here](https://www.youtube.com/watch?v=cpatsqFkA2o).
+=======
+>>>>>>> 5497bc34... doing it live
