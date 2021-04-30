@@ -1,4 +1,3 @@
-
 ## Description
 
 This repository represents open-source detection methods with YOLOv5 at the edge (on camera), sending cloud storage and importing data.
@@ -11,43 +10,54 @@ NOTE: In Yolo, the coordinates are relative. Meaning that the annotations are wr
 ## Concept pitch
 can be found [here](https://www.loom.com/share/4c0956c5851249db8119a0fdaa7f2d16).
 
+## Integration work-through
+
+### Step 1: Preparing the cloud
+* For using the could I follow the steps in CORTX Cloudshare Setup.
+* I use the Boto3 library that allows me to connect CORTX. 
+For that requires END_POINT_URL (CORTX URL), aws_access_key_id (AWS access key), aws_secret_access_key (AWS access secret).
+* I create bucket by the name "detection" for readinf and writing the data to.
+
+### Step 2: Integrate CORTX to YOLO
+For each frame in the video, a txt file that contains the parameters of the detected objects is sent to the cloud.\
+In order to achieve high speed for upload and download files, I decided to upload small text files instead of very large video files. \
+Note: After running the YOLO model, for each object detected, all parameters are stored in the frame. Therefore, the video file grows for each detection.\
+* First, install the requirements:
+```bash
+$ pip install -r requirements.txt
+$ pip install boto3
+$ pip install logging
+$ pip install botocore
+```
+make sure you install torch>=1.7
+* Next, make test video file and add it to the script below:
+```bash
+$ python detectAndSend.py  --source <test.mp4> --weights yolov5s.pt --conf 0.25 --save-txt
+```
+It will automatically start downloading the pre-trained model if it's not in the folder.
+* Now, you can go to Cyberduck and click refresh and see the files uploading in real-time. \
+In the picture below, you can see the files uploading to the cloud:
+
+<p align="center">
+   <img src="./gif/image.png">
+</p>
+
+### Step 4: Downloading the data from the cloud and drawing the results.
+* Once the files are uploaded to the cloud, we will move on to the final step in the integration.\
+At this point, we will download the files automatically by the script <downloadAndDraw.py>, read the data and display it on each frame in the video.\
+Running results are shown below:
 
 The left top gif is the original film.\
 The right top gif is the yolo detection output.\
 The center down gif is the output after import the data from the cloud.\
-The last image show all the text files that i upload into CORTX cloud using S3 client Cyberduck.
 
 <p align="center">
    <img src="./gif/original.gif">
    <img src="./gif/yoloResults.gif">
-   <img src="./gif/image.png">
    <img src="./gif/outputAfterReceive.gif">
 </p>
 
-## Requirements
-
-Python 3.8 or later with all [requirements.txt](https://github.com/ultralytics/yolov5/blob/master/requirements.txt) dependencies installed, including `torch>=1.7`. To install run:
-```bash
-$ pip install -r requirements.txt
-$ pip instll boto3
-$ pip instll logging
-$ pip instll botocore
-```
-
-## Inference
-
-`detectAndSend.py` runs inference, downloading models automatically from the [latest YOLOv5 release](https://github.com/ultralytics/yolov5/releases) and saving results to `runs/detect`.\
-`downloadAndDraw.py` downloading automatically from the cloud and draw the results to into the original video.
-
-```bash
-$ python detectAndSend.py  --source test.mp4 --weights yolov5s.pt --conf 0.25 --save-txt
-```
-NEXT
-```
-$ python downloadAndDraw.py
-```
-
 ## Future work
-Add RTSP(Real Time Streaming Protocol)
+Add RTSP(Real Time Streaming Protocol)./
 Improve the model
 
