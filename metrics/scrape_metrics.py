@@ -22,8 +22,8 @@ def remove_string_from_set(Set, String):
       newset.add(item)
   return newset
 
-def avoid_rate_limiting(gh):
-  cortx_community.avoid_rate_limiting(gh)
+def avoid_rate_limiting(gh,limit=100,Verbose=False):
+  cortx_community.avoid_rate_limiting(gh,limit,Verbose)
 
 # this function takes a NamedUsed (https://pygithub.readthedocs.io/en/latest/github_objects/NamedUser.html) and returns info about them
 # it seems this function uses the github API to query some of this stuff and that kills the rate limit (and probably performance also)
@@ -181,6 +181,8 @@ def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh
         except AttributeError:
           try:
             login = item.user.login # stargazer
+            if Type == 'watchers':
+              print("WTF: we are including stargazers in watchers?")
           except AttributeError:
             print("WTF: what we think is a stargazer isn't:", item)
             print("Cowardly no longer attempting to add this item")
@@ -219,6 +221,7 @@ def get_top_level_repo_info(stats,repo,people,author_activity,gh,org_name):
     add_star_watch_fork(key=key,url=url,item=sg,stats=stats,people=people,author=sg.user,author_activity=author_activity,Type='stars',gh=gh,repo=repo,org_name=org_name)
 
   # ugh, this sometimes fails.  I think the problem is that the iterator is silently doing an API count so we can hit the rate limit....
+  # TODO: this is merely getting the stargazers again.  We need to replace this with get_subscribers()
   for w in repo.get_watchers():
     key = 'watched -> %s:%s' % (repo,w.login)
     url = 'watched -> %s' % repo
@@ -279,7 +282,9 @@ def get_commits(rname,repo,local_stats,people,author_activity,gh,org_name):
       email_addresses = re.findall(r'[\w\.-]+@[\w\.-]+', c.commit.message) # search for email addresses in commit message; might be some due to DCO
       #print("Adding Commit info %s and %s" % (c.author.company, c.author.email))
       local_stats['email_addresses'] = local_stats['email_addresses'].union(email_addresses)
+    avoid_rate_limiting(gh,1000)
     for comment in c.get_comments():
+      avoid_rate_limiting(gh)
       scrape_comment(people,gh,rname,comment,"commit",local_stats,author_activity,org_name)
 
 def summarize_consolidate(local_stats,global_stats,people,author_activity,ave_age_str):
@@ -321,15 +326,23 @@ def get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh,org_name
     print("WTF: get_issues failed? will recurse and try again", e)
     return get_issues_and_prs(rname,repo,local_stats,people,author_activity,gh,org_name) # recurse
 
+    avoid_rate_limiting(gh)
   for issue in issues:
     if issue.pull_request is None:
       Type = 'issues'
       commit = False
     else:
-      issue = issue.as_pull_request()
-      Type = 'pull_requests'
-      commit = True
+      try:
+        avoid_rate_limiting(gh)
+        issue = issue.as_pull_request() # this fails sometimes with github.GithubException.GithubException: 500 
+        Type = 'pull_requests'
+        commit = True
+      except Exception as e:
+        print("WTF: as_pull_request on %s failed?" % issue.html_url, e)
+        avoid_rate_limiting(gh,limit=None,Verbose=True)
+        continue
     scrape_issue_or_pr(people,gh,rname,issue,local_stats,author_activity,Type,commit,org_name)
+    avoid_rate_limiting(gh)
     for comment in issue.get_comments():
       avoid_rate_limiting(gh)
       scrape_comment(people,gh,rname,comment,"issue",local_stats,author_activity,org_name)
@@ -436,33 +449,38 @@ def collect_stats(gh,org_name,update,prefix,top_only):
   local_stats_template = copy.deepcopy(global_stats)    # save an empty copy of the stats struct to copy for each repo
 
   for repo in cortx_community.get_repos(org_name=org_name,prefix=prefix): 
+    while True: # add a while loop since we are always failing and it would be good to run successfully more often
+      try:
+        local_stats = copy.deepcopy(local_stats_template) # get an empty copy of the stats structure
+        rname=repo.name # just in case this requires a github API call, fetch it once and reuse it
 
-    local_stats = copy.deepcopy(local_stats_template) # get an empty copy of the stats structure
-    rname=repo.name # just in case this requires a github API call, fetch it once and reuse it
+        # Use this update if you just want to add some new data and don't want to wait for the very slow time
+        # to scrape all activity.  Once you have finished the update, migrate the code out of the update block.
+        # Typically we don't use update; only during development 
+        # Note that update doesn't work for values that are incremented . . . 
+        if update:
+          (cached_local_stats,timestamp) = persistent_stats.get_latest(rname)  # load the cached version
+          print("Fetched %s data for %s" % (timestamp, repo))
+          for k,v in cached_local_stats.items():
+            local_stats[k] = v
+        else:
+          get_top_level_repo_info(local_stats,repo,people=people,author_activity=author_activity,gh=gh,org_name=org_name)
+          get_contributors(rname,repo,local_stats,people=people,gh=gh,org_name=org_name)
+          if not top_only:
+            get_issues_and_prs(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh,org_name=org_name)
+            get_commits(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh,org_name=org_name)
 
-    # Use this update if you just want to add some new data and don't want to wait for the very slow time
-    # to scrape all activity.  Once you have finished the update, migrate the code out of the update block.
-    # Typically we don't use update; only during development 
-    # Note that update doesn't work for values that are incremented . . . 
-    if update:
-      (cached_local_stats,timestamp) = persistent_stats.get_latest(rname)  # load the cached version
-      print("Fetched %s data for %s" % (timestamp, repo))
-      for k,v in cached_local_stats.items():
-        local_stats[k] = v
-    else:
-      get_top_level_repo_info(local_stats,repo,people=people,author_activity=author_activity,gh=gh,org_name=org_name)
-      get_contributors(rname,repo,local_stats,people=people,gh=gh,org_name=org_name)
-      if not top_only:
-        get_issues_and_prs(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh,org_name=org_name)
-        get_commits(rname,repo,local_stats,people=people,author_activity=author_activity,gh=gh,org_name=org_name)
+        # what we need to do is query when the last time this ran and then pass 'since' to get_commits
 
-    # what we need to do is query when the last time this ran and then pass 'since' to get_commits
-
-    # summarize info for this repo and persist the data structures
-    summarize_consolidate(local_stats,global_stats,people=people,author_activity=author_activity,ave_age_str=ave_age_str)
-    persist_author_activity(author_activity)
-    persistent_stats.add_stats(date=today,repo=rname,stats=local_stats)
-    persistent_stats.print_repo(rname,local_stats,date=today,verbose=False,csv=False)
+        # summarize info for this repo and persist the data structures
+        summarize_consolidate(local_stats,global_stats,people=people,author_activity=author_activity,ave_age_str=ave_age_str)
+        persist_author_activity(author_activity)
+        persistent_stats.add_stats(date=today,repo=rname,stats=local_stats)
+        persistent_stats.print_repo(rname,local_stats,date=today,verbose=False,csv=False)
+        break
+      except Exception as e:
+        print("WTF: Failed while getting stats for repo %s" % repo.name, e)
+        avoid_rate_limiting(gh,Verbose=True)
 
   # do a bit of cleaning on global stats
   # print and persist the global consolidated stats
