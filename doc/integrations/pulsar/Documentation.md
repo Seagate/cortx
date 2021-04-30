@@ -57,9 +57,9 @@ We may need 6 terminals(to avoid confusion) to see the integration and monitor i
 output = text
 region = US
 s3 =
-  endpoint_url = http://s3.seagate.com
+    endpoint_url = http://s3.seagate.com
 s3api =
-  endpoint_url = http://s3.seagate.com
+    endpoint_url = http://s3.seagate.com
 [plugins]
 endpoint = awscli_plugin_endpoint
 ```
