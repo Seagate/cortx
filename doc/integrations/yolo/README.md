@@ -36,6 +36,11 @@ $ pip install botocore
 
 ## Inference
 
+For running this code you have to followe this step: \
+### 1. 
+``` git clone 
+
+
 `detectAndSend.py` runs inference, downloading models automatically from the [latest YOLOv5 release](https://github.com/ultralytics/yolov5/releases) and saving results to `runs/detect`.\
 `downloadAndDraw.py` downloading automatically from the cloud and draw the results to into the original video.
 
@@ -48,6 +53,6 @@ $ python downloadAndDraw.py
 ```
 
 ## Future work
-Add RTSP(Real Time Streaming Protocol)
+Add RTSP(Real Time Streaming Protocol)./
 Improve the model
 
