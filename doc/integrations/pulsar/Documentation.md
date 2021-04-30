@@ -31,7 +31,7 @@ The following is an index of files in this folder:
 We may need 6 terminals(to avoid confusion) to see the integration and monitor its working.
 1. For SSH into Cortx VM
 2. For running pulsar
-3. For aws cli 
+3. For aws cli and pulsar-admin
 4. For pulsar-producer to publish messages to topic
 5. For pulsar-consumer to receive current messages on topic.
 6. For pulsar-reader to read messages on topic from earliest message.
@@ -41,27 +41,29 @@ We may need 6 terminals(to avoid confusion) to see the integration and monitor i
 1. Install cortx on a VM following the steps [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst)
 2. Make sure you set the date in VM to current date and set `/etc/hosts` mapping for s3.seagate.com and management.seagate.com in your machine so that the s3 server is accessible. Ping the hostnames to check they are working fine.
 3. Try the sanity test for s3 server to make sure everything works.
-4. In the VM, open the file /opt/seagate/cortx/s3/conf/s3config.yaml and change S3_MOTR_LAYOUT_ID to 1(`S3_MOTR_LAYOUT_ID: 1`)
+4. In the VM, open the file `/opt/seagate/cortx/s3/conf/s3config.yaml` and change S3_MOTR_LAYOUT_ID to 1(`S3_MOTR_LAYOUT_ID: 1`)
 5. Restart cortx server as per instructions [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst).
 6. Change the system date to correct value if necessary.
 7. Configure the [Cortx GUI](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst)
-8. Go to https://management.seagate.com:28100/ and after onboarding, in the Manage menu, create and S3 account and download the access key and secret key.
+8. Go to https://management.seagate.com:28100/ and after onboarding, in the Manage menu, create an S3 account and download the access key and secret key.
 
 # Setting up AWS CLI
 1. First ensure that s3 server of cortx is working and then setup awscli and awscli-plugin-endpoint:
 2. To install the AWS client, use: $ pip3 install awscli
 3. To install the AWS plugin, use: $ pip3 install awscli-plugin-endpoint
-4. Add the following to your `~/.aws/config`(or create a new file and add it)
+4. Add the following to your `~/.aws/config`(or create a new file with the path and add the following)
 ```
 [sg]
-  output = text
-  region = US
-  s3 = endpoint_url = http://s3.seagate.com
-  s3api = endpoint_url = http://s3.seagate.com
-  [plugins]
-  endpoint = awscli_plugin_endpoint
+output = text
+region = US
+s3 =
+  endpoint_url = http://s3.seagate.com
+s3api =
+  endpoint_url = http://s3.seagate.com
+[plugins]
+endpoint = awscli_plugin_endpoint
 ```
-5. Add the following to your `~/.aws/credentials`(or create a new file to add) and replace the AWS access key and secret key values with those generated from Cortx GUI.
+5. Add the following to your `~/.aws/credentials`(or create a new file with the path) and replace the AWS access key and secret key values with those generated from Cortx GUI.
 ```
 [sg]
 aws_access_key_id=AKIAw5WobgsyTh2rQ2ljuZmweA
@@ -86,8 +88,8 @@ aws --profile=sg s3 mb s3://pulsar-topic-test
 2. Untar pulsar binary tar and the offloaders tar
 3. cd into the pulsar directory(apache-pulsar-2.7.1). Lets call this PULSAR_HOME and all our work is done from here.
 4. copy offloaders folder from the untared offloaders directory into PULSAR_HOME
-5. Copy pulsar-env.sh from pulsar folder in this repo into PULSAR_HOME. Change the s3 access key and secret key to the ones created from Cortx GUI.
-6. Replace conf/standalone.conf and conf/broker.conf in PULSAR_HOME with the files in pulsar folder in this repo.
+5. Copy pulsar-env.sh from setup folder in this repo into PULSAR_HOME. Change the s3 access key and secret key to the ones created from Cortx GUI.
+6. Replace conf/standalone.conf and conf/broker.conf in PULSAR_HOME with the files in setup folder in this repo.
 7. Run pulsar:
 ```
 . pulsar-env.sh
@@ -102,7 +104,8 @@ aws --profile=sg s3 mb s3://pulsar-topic-test
 ```
 ./bin/pulsar-admin --admin-url http://localhost:8088 namespaces set-offload-policies -d aws-s3 -b pulsar-topic-test -e http://s3.seagate.com  -mbs 8388608 public/default -oat 8388608
 ```
-11. You can verify the offload settings:
+We are indicating that Pulsar should offload topic data to Cortx after a threshold of 8MB and with a maximum block size of 8MB.
+11. You can verify that the offload settings took effect:
 ```
 ./bin/pulsar-admin --admin-url http://localhost:8088 namespaces get-offload-policies public/default
 ```
@@ -116,11 +119,11 @@ aws --profile=sg s3 mb s3://pulsar-topic-test
 ```
 pip3 install pulsar-client
 ```
-2. From this repo's folder, in one terminal window run:
+2. From this(repo's) folder, in one terminal window run:
 ```
 python3 pulsar-subscriber.py
 ```
-3. From this repo's folder, in another terminal window run:
+3. From this(repo's) folder, in another terminal window run:
 ```
 python3 pulsar-producer.py 10
 ```
@@ -130,7 +133,7 @@ python3 pulsar-producer.py 10
 python3 pulsar-producer.py 100000
 python3 pulsar-producer.py 100000
 ```
-6. Publish as many and see that messages are received.
+6. Publish as many as you wish and see that messages are received.
 7. From the terminal we set aside for admin actions, check the topic's internal stats:
 ```
 ./bin/pulsar-admin --admin-url http://localhost:8088 persistent stats-internal public/default/test
@@ -184,7 +187,7 @@ python3 pulsar-producer.py 100000
 ```
 ./bin/pulsar-admin --admin-url http://localhost:8088 topics offload -s 1M persistent://public/default/test
 ```
-8. Now check the internal stats and see that the offloaded flag is set true.
+8. Now check the internal stats and see that the offloaded flag is set true for some ledgers.
 9. To verify that the topic's content is offloaded to cortx's s3, use aws cli to ls the bucket. You will notice ledgers with corresponding index objects showing in the s3 bucket.
 ```
 > aws --profile=sg s3 ls pulsar-topic-test
@@ -195,7 +198,7 @@ python3 pulsar-producer.py 100000
 2021-04-29 07:51:39   37345792 9f9eda83-92ac-47dc-bb9e-74ec7d50704f-ledger-123
 2021-04-29 07:51:40        287 9f9eda83-92ac-47dc-bb9e-74ec7d50704f-ledger-123-index
 ```
-10. Another way to demo the achievement is by listening to the pulsar topic in two ways.
-a. Using the pulsar-subscriber
+10. Another way to demo the achievement is by listening to the pulsar topic and reading the topic.
+a. Using the pulsar-subscriber which will receive latest messages on the topic.
 b. Using the pulsar-reader.py which reads messages from the beginning of the topic.
 Pulsar-reader reading messages shows that the topic messages are safely stored on low cost cortx store, to be used later even after years. This is useful for recommendation engines and trace simulation.
