@@ -127,3 +127,7 @@ Once you have created the Windows Server you can remote desktop into the Windows
 - Follow [these instructions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html#connect-rdp) to remote desktop into your windows instance
 
 - Follow  [these instructions](https://github.com/Seagate/cortx/blob/main/doc/testing_io.rst) to upload files to the CORTX server.
+
+### Tested By:
+
+- Apr 29, 2021: Patrick Hession (patrick.hession@seagate.com) using OVA release 1.0.3.
