@@ -53,15 +53,16 @@ We may need 6 terminals(to avoid confusion) to see the integration and monitor i
 3. To install the AWS plugin, use: $ pip3 install awscli-plugin-endpoint
 4. Add the following to your `~/.aws/config`(or create a new file with the path and add the following)
 ```
-[sg]
+[plugins]
+endpoint = awscli_plugin_endpoint
+
+[profile sg]
 output = text
 region = US
 s3 =
     endpoint_url = http://s3.seagate.com
 s3api =
     endpoint_url = http://s3.seagate.com
-[plugins]
-endpoint = awscli_plugin_endpoint
 ```
 5. Add the following to your `~/.aws/credentials`(or create a new file with the path) and replace the AWS access key and secret key values with those generated from Cortx GUI.
 ```
