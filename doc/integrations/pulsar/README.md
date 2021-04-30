@@ -6,7 +6,7 @@ This project demonstrates
 1. creation of a topic/stream on Apache Pulsar(a message broker like Kafka) with unlimited persistence, which archives older messages to Cortx via S3 API and
 2. replay of the stream/topic from the earliest message stored in Cortx
 
-Theoretically, based on promises made by Pulsar and Cortx(2^120 objects), this integration can be used to store every event ever observed in universe, and then replay them in order from any point, hundreds of years later with consistency guarantees while preserving processing semantics(like exactly-once).
+Theoretically, based on scaling promises made by Pulsar and Cortx(2^120 objects), this integration can be used to store every event ever observed in universe, and then replay them in order from any point, hundreds of years later with consistency guarantees while preserving processing semantics(like exactly-once).
 
 Suitable for oracles, recommendation engines, tracing backends, backtesting algos on trading floors, heavily instrumented operations like aircrafts(to be replayed for flight simulations, for instance) and forgetful humans.
 

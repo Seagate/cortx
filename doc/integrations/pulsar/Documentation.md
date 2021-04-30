@@ -1,12 +1,49 @@
 
+# Documentation
+
+The plan of implementation is this:
+1. We setup Cortx on a VM.
+2. We use aws s3 cli to check the bucket data on Cortx S3.
+3. We setup Pulsar to use Cortx as tiered storage backend.
+4. We make some hacky adjustments to make sure Cortx accepts the payload sizes sent by Pulsar. See issues.
+5. We publish messages on a pulsar topic.
+6. We offload the topic messages(older ones anyway) to Cortx s3.
+7. We prove that the messages are offloaded based on internal stats of the topic via pulsar-admin.
+8. We cross check in Cortx s3, by checking that the S3 bucket has message ledgers with index data.
+9. We replay the data from the earliest message in the topic(which would be on Cortx S3 by now). We are now able to replay data with CortxS3 as source.
+
+## Prerequisites 
+For the reproduction of demo, we need the following:
+1. python3, pip3
+2. Cortx VM setup
+
+
+# Contents
+The following is an index of files in this folder:
+1. `pulsar-producer.py` - Writes messages to locally hosted pulsar on topic with name `test`. 
+2. `pulsar-consumer.py` - Listens to the topic `test` on locally hosted pulsar. It gets only new messages to the topic and not older messages.
+3. `pulsar-reader.py` - Connects to locally hosted pulsar and reads from the earliest message on topic.
+4. `setup` - This folder has all the files needed to configure pulsar.
+5. `setup/pulsar-env.sh` - This has template env variables which pulsar needs to offload data to Cortx S3. Source this file before running pulsar executable.
+6. `setup/conf` - The configuration files needed in pulsar. Copy these into pulsar's conf folder before running the executable.
+
+# Steps to Reproduce
+We may need 6 terminals(to avoid confusion) to see the integration and monitor its working.
+1. For SSH into Cortx VM
+2. For running pulsar
+3. For aws cli 
+4. For pulsar-producer to publish messages to topic
+5. For pulsar-consumer to receive current messages on topic.
+6. For pulsar-reader to read messages on topic from earliest message.
+
 
 # Setting up Cortx
 1. Install cortx on a VM following the steps [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst)
-2. Make sure you set the date to current date and set `/etc/hosts` mapping for s3.seagate.com and management.seagate.com so that the s3 server is accessible from your machine.
+2. Make sure you set the date in VM to current date and set `/etc/hosts` mapping for s3.seagate.com and management.seagate.com in your machine so that the s3 server is accessible. Ping the hostnames to check they are working fine.
 3. Try the sanity test for s3 server to make sure everything works.
 4. In the VM, open the file /opt/seagate/cortx/s3/conf/s3config.yaml and change S3_MOTR_LAYOUT_ID to 1(`S3_MOTR_LAYOUT_ID: 1`)
 5. Restart cortx server as per instructions [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst).
-6. Change the system date if necessary.
+6. Change the system date to correct value if necessary.
 7. Configure the [Cortx GUI](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst)
 8. Go to https://management.seagate.com:28100/ and after onboarding, in the Manage menu, create and S3 account and download the access key and secret key.
 
@@ -14,7 +51,7 @@
 1. First ensure that s3 server of cortx is working and then setup awscli and awscli-plugin-endpoint:
 2. To install the AWS client, use: $ pip3 install awscli
 3. To install the AWS plugin, use: $ pip3 install awscli-plugin-endpoint
-4. Add the following to your `~/.aws/config`
+4. Add the following to your `~/.aws/config`(or create a new file and add it)
 ```
 [sg]
   output = text
@@ -24,25 +61,24 @@
   [plugins]
   endpoint = awscli_plugin_endpoint
 ```
-5. Add the following to your `~/.aws/credentials` and replace the AWS access key and secret key with those generated from Cortx GUI.
+5. Add the following to your `~/.aws/credentials`(or create a new file to add) and replace the AWS access key and secret key values with those generated from Cortx GUI.
 ```
 [sg]
 aws_access_key_id=AKIAw5WobgsyTh2rQ2ljuZmweA
 aws_secret_access_key=sTNG8gMpkG/AOj+gTi6ayBkdr5aw5Xw5s7R252sF
 ```
-Explainer: The above instructions are an extract of Section 1.4 along with prerequisites from here:
-https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md
-6. Test the cli by listing buckets:
+Explainer: The above instructions are an extract of Section 1.4 along with prerequisites from [Cortx S3 Server guide](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
+6. Test the cli by listing buckets from Cortx S3:
 ```
 aws --profile=sg s3 ls 
 ```
 
 # Set up s3 bucket in cortx for offloading topic messages
-1. Create the bucket `pulsar-topic-test`.
+1. Create the bucket `pulsar-topic-test` in Cortx S3.
 ```
 aws --profile=sg s3 mb s3://pulsar-topic-test
 ```
-2. We will use this bucket to push older messages on pulsar topics.
+2. We will use this bucket to offload older messages on pulsar topics.
 
 # Setting up Apache Pulsar:
 1. Download pulsar binary tar along with offloaders
