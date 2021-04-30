@@ -1,6 +1,6 @@
-This release notes includes new features and bug fixes added to the CORTX OVA 1.0.4.
-
 # CORTX OVA 1.0.4
+
+This release notes includes new features and bug fixes added to the CORTX OVA 1.0.4.
 
 # Features
 
