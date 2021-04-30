@@ -28,11 +28,15 @@ Procedure
 
         <<Public Data IP>> s3.seagate.com sts.seagate.com iam.seagate.com sts.cloud.seagate.com   
 
-#. If you have not already created an S3 user, then navigate to you your CORTX GUI, select 'Manage', then select the 'S3 Account' tab, then click on 'Add new account.'
+#. To create an S3 user account:
+    
+    1. On the CORTX GUI, go to the **Manage > S3 Account > Add New Account**.
+    
+        .. image:: images/add_s3_user.png
+    
+    2. Enter the required details and click **Create**
 
-    .. image:: images/add_s3_user.png
-
-#. After adding the new account, make sure to copy the 'Access Key' and the 'Secret Key'. Note that they will also be available in the CSV which is downloaded when you add the new account.
+#. After the new account is created, make sure to copy the *Access Key* and the *Secret Key*. The Access Key and Screte Key will also be available in the CSV file which is downloaded when you add the new account.
 
 #. Create a bucket on CORTX GUI:
    
@@ -60,7 +64,7 @@ Procedure
 
             aws configure set s3.endpoint_url https://s3.seagate.com
 
-    3. Set the API endpoint URL 
+    3. Set the API endpoint URL: 
             
         ::
         
@@ -86,9 +90,9 @@ Procedure
             
                 aws configure set default.ca_bundle /etc/ssl/stx-s3-clients/s3/ca.crt
 
-#. Perform IO operation.
+#. Perform IO operation:
 
-    1. Verify buckect created using CORTX GUI.
+    1. Verify buckect created using CORTX GUI:
 
         ::
         
@@ -120,6 +124,8 @@ Procedure
     
         .. image::  images/aws-download.png
 
-#. Navigate to the Dashboard tab in your CORTX GUI, change 'Metric 1' to 'throughput_write' and you should see activity in the dashboard as so:
+        **Note:** For more information on CORTX supported S3 APIs, see `S3 Supported API <https://github.com/Seagate/cortx-s3server/blob/main/docs/s3-supported-api.md>`__.
+
+#. Navigate to the Dashboard tab in your CORTX GUI, change 'Metric 1' to 'throughput_write' and you should see activity in the dashboard.
    
     .. image:: images/PG.PNG
