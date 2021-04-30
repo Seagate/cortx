@@ -15,7 +15,7 @@ The plan of implementation is this:
 ## Prerequisites 
 For the reproduction of demo, we need the following:
 1. python3, pip3
-2. Cortx VM setup
+2. Cortx VM setup(Demo is on VirtualBox)
 
 
 # Contents
