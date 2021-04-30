@@ -1,4 +1,21 @@
 # Cortx As Persistent Store For Apache Pulsar
+------
+
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Cortx As Persistent Store For Apache Pulsar](#cortx-as-persistent-store-for-apache-pulsar)
+- [TLDR](#tldr)
+- [Presentation Video](#presentation-video)
+- [Problem and Impact](#problem-and-impact)
+- [Project](#project)
+- [Implementation](#implementation)
+- [Issues](#issues)
+
+<!-- /code_chunk_output -->
+
 
 # TLDR
 
@@ -10,8 +27,11 @@ Theoretically, based on scaling promises made by Pulsar and Cortx(2^120 objects)
 
 Suitable for oracles, recommendation engines, tracing backends, backtesting algos on trading floors, heavily instrumented operations like aircrafts(to be replayed for flight simulations, for instance) and forgetful humans.
 
+# Presentation Video
 
-## Problem and Impact
+A short video presentation on the integration is [here](https://www.youtube.com/watch?v=EjY_Q0w4ejA). Detailed steps to reproduce and test it are in Documentation.md
+
+# Problem and Impact
 Message brokers like Kafka and Rabbit MQ are optimized for latency and throughput and have minimal retention options. In any case, retention on these brokers depends on comparitively costly storage. This project is an attempt to combine the power of fast messaging from Pulsar with near-unlimited storage offered by Seagate Cortx.
 
 This allows us to build applications with capabilites that support both fast traditional ETL queries and stream replay. Currently a common practise is to see these problems separately and use ETL optimized storage or tackle them with a intermediary between storage and ETL/stream replay, for instance in the form of Apache Spark jobs or Apache Flink pipelines. The latter solution is too complicated for most data especially in stateless applications(say a simple store for trace data) and applications with simple state.
