@@ -58,6 +58,6 @@ The center down gif is the output after import the data from the cloud.
 </p>
 
 ## Future work
-*Add RTSP(Real Time Streaming Protocol).\
-*Improve the model
+* Add RTSP(Real Time Streaming Protocol).\
+* Improve the model
 
