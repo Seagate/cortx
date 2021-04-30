@@ -29,9 +29,9 @@ The last image show all the text files that i upload into CORTX cloud using S3 c
 Python 3.8 or later with all [requirements.txt](https://github.com/ultralytics/yolov5/blob/master/requirements.txt) dependencies installed, including `torch>=1.7`. To install run:
 ```bash
 $ pip install -r requirements.txt
-$ pip instll boto3
-$ pip instll logging
-$ pip instll botocore
+$ pip install boto3
+$ pip install logging
+$ pip install botocore
 ```
 
 ## Inference
