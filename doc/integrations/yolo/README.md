@@ -32,7 +32,7 @@ $ pip install botocore
 make sure you install torch>=1.7
 * Next, make test video file and add it to the script below:
 ```bash
-$ python detectAndSend.py  --source <test.mp4> --weights yolov5s.pt --conf 0.25 --save-txt
+$ python detectAndSend.py  --source <test.mp4> --weights yolov5s.pt --save-txt
 ```
 It will automatically start downloading the pre-trained model if it's not in the folder.
 * Now, you can go to Cyberduck and click refresh and see the files uploading in real-time. \
