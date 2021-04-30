@@ -49,7 +49,7 @@ Running results are shown below:
 
 The left top gif is the original film.\
 The right top gif is the yolo detection output.\
-The center down gif is the output after import the data from the cloud.\
+The center down gif is the output after import the data from the cloud.
 
 <p align="center">
    <img src="./gif/original.gif">
