@@ -4,6 +4,8 @@ const cors = require('cors')
 const {pool} = require('./config')
 const chatbot=require('./chatbot/Chatbot')
 const AWS=require('aws-sdk')
+let config = require('./config.json')
+
 let dataLocation="";
 // const { response } = require('express')
 
@@ -13,12 +15,18 @@ const Busboy=require('busboy')
 const busboy = require('connect-busboy');
 const busboyBodyParser = require('busboy-body-parser');
 
-const greenEndpoint = new AWS.Endpoint('');
+const s3=new AWS.S3({
+  accessKeyId:config.accessKeyId,
+  secretAccessKey:config.secretAccessKey,
+  region:config.region
+})
 
-const s3 = new AWS.S3({
+const greenEndpoint = new AWS.Endpoint('http://uvo112mdjilnxce3gc0.vm.cld.sr');
+
+const s3v1 = new AWS.S3({
     endpoint: greenEndpoint,
-    accessKeyId: 'xxx',
-    secretAccessKey:'xxx',
+    accessKeyId: 'AKIAtEpiGWUcQIelPRlD1Pi6xQ',
+    secretAccessKey:'YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK',
     s3ForcePathStyle: true,
   });
 
@@ -84,7 +92,16 @@ if (err) {
       res.status(200).json({status: 'success', message: 'New dialogue added',data:data})
     },
   )
+  // pool.query(
+  //   'INSERT INTO patients (firstname,lastname,email,phone,image) VALUES ($1,$2,$3,$4,$5)',[firstname,lastname,email,phone,newlocation],(err,data)=>{
+  //     if(err){
+  //       throw err;
+  //     }
 
+  //     res.status(200).json({status: 'success', message: 'New dialogue added',data:data})
+      
+  //   }
+  // )
   
 }
 });
@@ -108,14 +125,14 @@ app.post('/update',(req,res)=>{
 })
 
   // Chatbot routes
-  app.get('/',(req,res)=>{
+/*   app.get('/',(req,res)=>{
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write('<form action="/patients" method="post" enctype="multipart/form-data">');
     res.write('<input type="file" name="filetoupload"><br>');
     res.write('<input type="submit">');
     res.write('</form>');
     return res.end();
-})
+}) */
 
 app.get('/logs',async (req,res)=>{
   
@@ -159,7 +176,15 @@ app.get('/upload',(req,res)=>{
   res.write('</form>');
   return res.end();
 })
-app.post('/api/upload',(req, res, next)=> {
+app.post('/api/upload',async(req, res, next)=> {
+  var params = {
+    Bucket: "covidxraybucket"
+   };
+  await s3v1.createBucket(params, function(err, data) {
+    if (err) console.log("Bucket already exits",err); 
+    else     console.log(data);           
+    
+  });
   // This grabs the additional parameters so in this case passing     
   // in "element1" with a value.
   const element1 = req.body.element1;
@@ -173,15 +198,17 @@ app.post('/api/upload',(req, res, next)=> {
    const file=req.files.filetoupload;
   //  console.log(innerfil)
    console.log(file);
+   const secondsSinceEpoch = Math.round(Date.now() / 1000)
 
-   var uploadParams = {Bucket: "zee-flask-s3-test", Key: file.name, Body: file.data};
+   var uploadParams = {Bucket: "covidxraybucket", Key: `covid-${secondsSinceEpoch}.png`, Body: file.data};
 
 
-await s3.upload (uploadParams, function (err, data) {
+await s3v1.upload (uploadParams, function (err, data) {
 if (err) {
   console.log("Error", err);
 } if (data) {
   console.log("Upload Success", data.Location);
+  console.log(data)
   let newlocation=data.Location
   
 
@@ -216,11 +243,13 @@ app.post('/api/df_text_query',async(req,res)=>{
     var params = {
       Bucket: "logsbucket"
      };
-    await s3.createBucket(params, function(err, data) {
+    await s3v1.createBucket(params, function(err, data) {
       if (err) console.log("Bucket already exits",err); 
       else     console.log(data);           
       
     });
+    
+const newd= Date.now().toString;
 
     var obj = {
       Response: d_response,
@@ -234,11 +263,12 @@ app.post('/api/df_text_query',async(req,res)=>{
   
   var data = {
       Bucket: 'logsbucket',
-      Key: `${d_skill_name}${now}.json`,
+      Key: `${newd}.json`,
       Body: buf,
+      ACL: 'public-read'
   };
   
-  await s3.upload(data, function (err, data) {
+  await s3v1.upload(data, function (err, data) {
       if (err) {
           console.log(err);
           console.log('Error uploading data: ', data);
@@ -267,7 +297,12 @@ app.post('/api/df_text_query',async(req,res)=>{
 app.post('/api/df_event_query',async(req,res)=>{
     let responses =await chatbot.eventQuery(req.body.event,req.body.parameters);
     res.send(responses[0].queryResult);
-})   
+})
+
+app.get('/api/get_client_token', async (req, res) => {
+  let token = await chatbot.getToken();
+  res.send({token});
+})
 
 
 // Start server
