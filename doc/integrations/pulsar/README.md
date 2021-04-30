@@ -29,7 +29,7 @@ Suitable for oracles, recommendation engines, tracing backends, backtesting algo
 
 # Presentation Video
 
-A short video presentation on the integration is [here](https://www.youtube.com/watch?v=EjY_Q0w4ejA). Detailed steps to reproduce and test it are in [Documentation.md]
+A short video presentation on the integration is [here](https://www.youtube.com/watch?v=EjY_Q0w4ejA). Detailed steps to reproduce and test it are in [Documentation.md](./Documentation.md)
 
 # Problem and Impact
 Message brokers like Kafka and Rabbit MQ are optimized for latency and throughput and have minimal retention options. In any case, retention on these brokers depends on comparitively costly storage. This project is an attempt to combine the power of fast messaging from Pulsar with near-unlimited storage offered by Seagate Cortx.
@@ -64,7 +64,7 @@ In contrast, Pulsar allows us to publish messages on a topic and, hundreds of ye
 8. We cross check in Cortx s3, by checking that the S3 bucket has message ledgers with index data.
 9. We replay the data from the earliest message in the topic(which would be on Cortx S3 by now)
 
-Detailed steps for reproduction are in [Documentation.md]
+Detailed steps for reproduction are in [Documentation.md](./Documentation.md)
 
 
 # Issues
