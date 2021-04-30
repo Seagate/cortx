@@ -22,6 +22,14 @@ The flask app can be found [here](https://edgehealthradiology.herokuapp.com/).
 ## React Chatbot for Sending Logged Messages
 The flask app can be found [here](https://edgehealth-chatbot.herokuapp.com/).
 
+The following messages can be sent:
+
+turn on the light
+turn off the light
+Who is Doctor Van?
+Who is Doctor Ann Thompson?
+
+
 **Healthcare Data Storage Options**
 Healthcare organizations are building their IT infrastructures to be more flexible and scalable to meet the growing data demand. With value-based incentives for data analytics and the increased number of connected medical devices constantly collecting data, organizations are challenged with storing clinical data in a way that is both HIPAA-compliant and easy for authorized users to access.
 
