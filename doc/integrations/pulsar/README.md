@@ -29,7 +29,9 @@ Suitable for oracles, recommendation engines, tracing backends, backtesting algo
 
 # Presentation Video
 
-A short video presentation on the integration is [here](https://www.youtube.com/watch?v=EjY_Q0w4ejA). Detailed steps to reproduce and test it are in [Documentation.md](./Documentation.md)
+A short video presentation on the integration is [here](https://www.youtube.com/watch?v=EjY_Q0w4ejA). Detailed steps to reproduce and test it are in [Documentation.md](Documentation.md).
+
+The full walkthrough/demo of the integration is [here](https://www.youtube.com/watch?v=LPyrcsIMGt8).
 
 # Problem and Impact
 Message brokers like Kafka and Rabbit MQ are optimized for latency and throughput and have minimal retention options. In any case, retention on these brokers depends on comparitively costly storage. This project is an attempt to combine the power of fast messaging from Pulsar with near-unlimited storage offered by Seagate Cortx.

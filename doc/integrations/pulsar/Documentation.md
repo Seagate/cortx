@@ -105,8 +105,8 @@ aws --profile=sg s3 mb s3://pulsar-topic-test
 ```
 ./bin/pulsar-admin --admin-url http://localhost:8088 namespaces set-offload-policies -d aws-s3 -b pulsar-topic-test -e http://s3.seagate.com  -mbs 8388608 public/default -oat 8388608
 ```
-We are indicating that Pulsar should offload topic data to Cortx after a threshold of 8MB and with a maximum block size of 8MB.
-11. You can verify that the offload settings took effect:
+We are indicating that Pulsar should offload topic data to Cortx after a threshold of 8MB and with a maximum block size of 8MB. These settings have already been done in config and this cli command is for showing how policies can be changed.
+11. You can verify that the offload settings here:
 ```
 ./bin/pulsar-admin --admin-url http://localhost:8088 namespaces get-offload-policies public/default
 ```
@@ -141,34 +141,39 @@ python3 pulsar-producer.py 100000
 ```
 8. You should see stats like this, indicating that the ledgers for the topic are not offloaded yet(watch for `offloaded: false`):
 ```
-{
-  "entriesAddedCounter" : 700000,
-  "numberOfEntries" : 831716,
-  "totalSize" : 145301702,
-  "currentLedgerEntries" : 199999,
-  "currentLedgerSize" : 34944587,
-  "lastLedgerCreatedTimestamp" : "2021-04-29T07:36:50.012+05:30",
+  {
+  "entriesAddedCounter" : 100010,
+  "numberOfEntries" : 100010,
+  "totalSize" : 17474068,
+  "currentLedgerEntries" : 10495,
+  "currentLedgerSize" : 1836625,
+  "lastLedgerCreatedTimestamp" : "2021-05-02T04:08:45.235+05:30",
   "waitingCursorsCount" : 1,
   "pendingAddEntriesCount" : 0,
-  "lastConfirmedEntry" : "123:199998",
+  "lastConfirmedEntry" : "38:10494",
   "state" : "LedgerOpened",
-  "ledgers" : [{
-    "ledgerId" : 123,
+  "ledgers" : [ {
+    "ledgerId" : 10,
+    "entries" : 89515,
+    "size" : 15637443,
+    "offloaded" : false
+  }, {
+    "ledgerId" : 38,
     "entries" : 0,
     "size" : 0,
     "offloaded" : false
   } ],
   "cursors" : {
-    "my-subscription2" : {
-      "markDeletePosition" : "123:199998",
-      "readPosition" : "123:199999",
+    "my-subscription1" : {
+      "markDeletePosition" : "38:10494",
+      "readPosition" : "38:10495",
       "waitingReadOp" : true,
       "pendingReadOps" : 0,
-      "messagesConsumedCounter" : 700000,
-      "cursorLedger" : 72,
-      "cursorLedgerLastEntry" : 135,
+      "messagesConsumedCounter" : 100010,
+      "cursorLedger" : 11,
+      "cursorLedgerLastEntry" : 57,
       "individuallyDeletedMessages" : "[]",
-      "lastLedgerSwitchTimestamp" : "2021-04-29T07:04:13.397+05:30",
+      "lastLedgerSwitchTimestamp" : "2021-05-02T03:58:44.662+05:30",
       "state" : "Open",
       "numberOfEntriesSinceFirstNotAckedMessage" : 1,
       "totalNonContiguousDeletedMessagesRange" : 0,
@@ -203,3 +208,4 @@ python3 pulsar-producer.py 100000
 a. Using the pulsar-subscriber which will receive latest messages on the topic.
 b. Using the pulsar-reader.py which reads messages from the beginning of the topic.
 Pulsar-reader reading messages shows that the topic messages are safely stored on low cost cortx store, to be used later even after years. This is useful for recommendation engines and trace simulation.
+
