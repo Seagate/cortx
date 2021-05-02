@@ -47,7 +47,7 @@ Procedure
 
    .. code-block:: bash
 
-      sudo docker run --rm -v /opt/seagate/artifacts:/var/artifacts -v /opt/seagate/cortx:/cortx-workspace -v /opt/seagate/etc/yum.repos.d:/etc/yum.repos.d/motr-kernel-devel ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
+      sudo docker run --rm -v /opt/seagate/artifacts:/var/artifacts -v /opt/seagate/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
 
 #. Generate the ISO by running the below mentioned command.
 
@@ -103,7 +103,6 @@ Procedure
         cortx-management-portal: generate cortx-management-portal packages.
         cortx-manager: generate cortx-manager packages.
         cortx-monitor: generate cortx-monitor packages.
-        cortx-posix: generate cortx-posix (NFS) packages.
         cortx-prvsnr: generate cortx-prvsnr packages.
         iso_generation: generate ISO file from release build.
 
@@ -114,3 +113,4 @@ Tested by:
 - Apr 6, 2021: Harrison Seow (harrison.seow@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Player.
 - Feb 12, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation Pro 16.
 - April 06, 2021: Vaibhav Paratwar (vaibhav.paratwar@seagate.com) on VM "LDRr1 - 2x CentOS 7.8 Shared Disks-20210329-232113"
+- May 02, 2021: Yashodhan Pise (yashodhan.pise@seagate.com) with `packer for Windows Hyper-V <https://github.com/Seagate/cortx-prvsnr/blob/main/images/os/centos_78_2003_hyperv.json>`_ 

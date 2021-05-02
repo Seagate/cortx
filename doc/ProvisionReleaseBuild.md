@@ -59,11 +59,9 @@
    bmc.user=None
    bmc.secret=None
    ```
+
 ### 5. Run the auto_deploy_vm command
    ```provisioner auto_deploy_vm srvnode-1:$(hostname -f) --logfile --logfile-filename\
    /var/log/seagate/provisioner/setup.log --source rpm --config-path\
    ~/config.ini --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
    ```
-   
-   
-
