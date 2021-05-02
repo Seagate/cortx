@@ -12,6 +12,8 @@ The plan of implementation is this:
 8. We cross check in Cortx s3, by checking that the S3 bucket has message ledgers with index data.
 9. We replay the data from the earliest message in the topic(which would be on Cortx S3 by now). We are now able to replay data with CortxS3 as source.
 
+[Here](https://www.youtube.com/watch?v=-JPrpL1_8Mg) is a walkthrough/demo video to follow.
+
 ## Prerequisites 
 For the reproduction of demo, we need the following:
 1. python3, pip3
