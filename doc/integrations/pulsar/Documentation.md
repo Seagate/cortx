@@ -218,6 +218,7 @@ Pulsar-reader reading messages shows that the topic messages are safely stored o
 # Common Issues
 
 ## Cortx VM is inaccessible from local machine
+Related to [this issue](https://github.com/Seagate/cortx/issues/985).
 After poweroff and restart of VM, ssh into it fails:
 ```
 ssh cortx@local.seagate.com
@@ -235,6 +236,7 @@ In `/etc/hosts`, in the below lines, try each of the IPs of the VM:
 ```
 
 ## Management GUI of Cortex is not accessible
+Related to [this issue](https://github.com/Seagate/cortx/issues/985).
 The issue is similar to the above issue with ssh access. This time the IP mapping of `management.seagate.com` is the issue. Every poweroff and restart of VM can potentially create this issue.
 
 ## Clock skew
@@ -270,6 +272,7 @@ Sometimes management GUI can be ridiculously slow with a most of the requests fa
 Give the server a long time to relax between requests, until s3 access key pair is generated. Waiting for 30 seconds improved success rate of requests.
 
 ## Cort Multipart Uploads Alignment issues
+Related to [this issue](https://github.com/Seagate/cortx-s3server/issues/876).
 
 ```
 11:59:04.691 [offloader-OrderedScheduler-1-0] ERROR org.jclouds.http.internal.JavaUrlHttpCommandExecutorService - error after writing 65626/3283684 bytes to http://s3.seagate.com/pulsar-topic-test/70cec628-d533-4b0e-b1fa-da3cb132cfc6-ledger-121?partNumber=1&uploadId=cfe51210-144e-4274-953b-5cf2ab77c595
