@@ -39,7 +39,11 @@ We may need 6 terminals(to avoid confusion) to see the integration and monitor i
 
 # Setting up Cortx
 1. Install cortx on a VM following the steps [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst)
-2. Make sure you set the date in VM to current date and set `/etc/hosts` mapping for s3.seagate.com and management.seagate.com in your machine so that the s3 server is accessible. Ping the hostnames to check they are working fine.
+2. Make sure you set the date in VM to current date and set `/etc/hosts` mapping(based on VM IPs) for s3.seagate.com and management.seagate.com in your machine so that the s3 server is accessible from Pulsar. Ping the hostnames to check they are working fine. To get SSH to the VM working, set mapping. See Section 11 of [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst) to get IPs of the VM. The `/etc/hosts` file should have a couple of lines like this.
+```
+192.168.0.140 local.seagate.com s3.seagate.com sts.seagate.com iam.seagate.com sts.cloud.seagate.com
+192.168.0.138 management.seagate.com
+```
 3. Try the sanity test for s3 server to make sure everything works.
 4. In the VM, open the file `/opt/seagate/cortx/s3/conf/s3config.yaml` and change S3_MOTR_LAYOUT_ID to 1(`S3_MOTR_LAYOUT_ID: 1`)
 5. Restart cortx server as per instructions [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst).
@@ -141,7 +145,7 @@ python3 pulsar-producer.py 100000
 ```
 8. You should see stats like this, indicating that the ledgers for the topic are not offloaded yet(watch for `offloaded: false`):
 ```
-  {
+{
   "entriesAddedCounter" : 100010,
   "numberOfEntries" : 100010,
   "totalSize" : 17474068,
@@ -209,3 +213,69 @@ a. Using the pulsar-subscriber which will receive latest messages on the topic.
 b. Using the pulsar-reader.py which reads messages from the beginning of the topic.
 Pulsar-reader reading messages shows that the topic messages are safely stored on low cost cortx store, to be used later even after years. This is useful for recommendation engines and trace simulation.
 
+# Common Issues
+
+## Cortx VM is inaccessible from local machine
+After poweroff and restart of VM, ssh into it fails:
+```
+ssh cortx@local.seagate.com
+ssh: Could not resolve hostname local.seagate.com: nodename nor servname provided, or not known
+```
+
+
+### Workaround
+Find all three IPs exposed by VM(See Section 11 [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst)) and try each of IPs against the hostname.
+
+In `/etc/hosts`, in the below lines, try each of the IPs of the VM:
+```
+192.168.0.140 local.seagate.com s3.seagate.com sts.seagate.com iam.seagate.com sts.cloud.seagate.com
+192.168.0.138 management.seagate.com
+```
+
+## Management GUI of Cortex is not accessible
+The issue is similar to the above issue with ssh access. This time the IP mapping of `management.seagate.com` is the issue. Every poweroff and restart of VM can potentially create this issue.
+
+## Clock skew
+If the VM time is too off from the correct time/time of the client making a request, http requests fail with a clock skew error.
+
+This can happen with aws cli command(which uses http request underneath):
+```
+aws --profile=sg s3 mb s3://seagatebucket2
+make_bucket failed: s3://seagatebucket2 An error occurred (RequestTimeTooSkewed) when calling the CreateBucket operation: The difference between request time and current time is too large
+```
+
+It can also happen in Pulsar requests to offload topic data to S3. 
+
+### Fix
+Login to Cortx VM and set date to correct value or offset the time as below based on the difference between current VM time and correct time:
+```
+sudo su -
+date -s "-xhours -yminutes +zseconds"
+```
+
+## AWS Credentials issues
+
+s3 login fails or Pulsar could not write data to S3 due to credentials issue.
+
+### Fix
+1. Remember to replace the AWS access key and secret key in ~/.aws/credentials with the ones generated with Cortx GUI.
+2. Remember to replace the AWS access key and secret key in pulsar-env.sh and source the file before running Pulsar.
+
+## Cortx GUI is sometimes too slow
+Sometimes management GUI can be ridiculously slow with a most of the requests failing(This can be observed in Network section of browser's developer tools). This causes modal messages saying waiting for server and s3 account creation fails.
+
+### Workaround
+Give the server a long time to relax between requests, until s3 access key pair is generated. Waiting for 30 seconds improved success rate of requests.
+
+## Cort Multipart Uploads Alignment issues
+
+```
+11:59:04.691 [offloader-OrderedScheduler-1-0] ERROR org.jclouds.http.internal.JavaUrlHttpCommandExecutorService - error after writing 65626/3283684 bytes to http://s3.seagate.com/pulsar-topic-test/70cec628-d533-4b0e-b1fa-da3cb132cfc6-ledger-121?partNumber=1&uploadId=cfe51210-144e-4274-953b-5cf2ab77c595
+```
+
+Cause: Forgetting to set LAYOUT_ID in Cortx config. See Section 4 in the `Setting Up Cortex` section above.
+
+
+### Fix
+
+In the VM, open the file `/opt/seagate/cortx/s3/conf/s3config.yaml` and change S3_MOTR_LAYOUT_ID to 1(`S3_MOTR_LAYOUT_ID: 1`) and restart Cortx as per instructions in [documentation](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst).
