@@ -304,7 +304,7 @@ Restart CORTX
    </details>
    
 Tested by:
-- Apr 12, 2021: Mukul Malhotra (ashwini.borse@seagate.com) using OVA release 1.0.4 on VMware vSphere.
+- Apr 30, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 1.0.4 on VMware vSphere.
 
 - Apr 12, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on MAC running VMWare Fusion 12.1.0.
 
