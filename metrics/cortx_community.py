@@ -634,7 +634,7 @@ def get_repos(gh=None,org_name='Seagate',prefix='cortx'):
       return False
     for p in prefix.split(','):
       if p.lower() in repo_name.lower():
-      return True
+        return True
     return False
 
   if not gh:
