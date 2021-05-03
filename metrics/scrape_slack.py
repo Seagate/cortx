@@ -39,6 +39,9 @@ channel_repo_map = {
   'cortx-dashboard'            : 'cortx-management-portal',
   'cortx-motr-client'          : 'cortx-motr', # might change this to m0client-sample-apps
   'cortx-community-triage'     : 'cortx',
+  'hackathon-general'          : 'cortx',
+  'hackathon-announcements'    : 'cortx',
+  'hackathon-support-and-mentorship'    : 'cortx',
 }
 
 # make a helper function to consolidate all calls to the api 
@@ -95,7 +98,7 @@ def get_members(client,all_people,slack_people):
     # get profile
     glogin=None
     if slack_people.find_person(m['id']):
-      print("Person %s is already in our slack pickle" % m['name'])
+      #print("Person %s is already in our slack pickle" % m['name']) # overly verbose
       glogin=slack_people.get_github(m['id'])
     else:
       response = call_api(client=client,method="users.profile.get",data={'user' : m['id']})
