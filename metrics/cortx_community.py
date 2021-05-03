@@ -41,10 +41,10 @@ SLACK_COMMUNITY_PICKLE='%s/cortx_slack_community.pickle' % PICKLE_DIR # the peop
 STATS_PICKLE='%s/persistent_stats.pickle' % PICKLE_DIR                # the per-repo and global stats
 COMPARE_PROJECTS_PICKLE='%s/compare_projects.pickle' % PICKLE_DIR     # the historical star and fork counts for all known open source projects
 
-# a map of projects mapping to (org, repo_prefix)
-projects={'Ceph'  : ('Ceph',None),
-          'MinIO' : ('MinIO',None),
-          'DAOS'  : ('daos-stack',None), 
+# a map of projects mapping to (org, CSV list of repo_prefixes)
+projects={'Ceph'  : ('Ceph','ceph,rados,crush,rgw'),
+          'MinIO' : ('MinIO','minio,mc,operator,kes,console,direct-csi'),
+          'DAOS'  : ('daos-stack','daos,mercury'),
           'CORTX' : ('Seagate','cortx'),
           'Swift' : ('openstack','swift'),
           'OpenIO': ('open-io','oio'),
