@@ -26,7 +26,7 @@ Verify that the S3 server endpoint is reachable using the following command:
 AWS CLI on the CORTX OVA VM
 ===========================
 
-You can install the AWS CLI on the CORTX OVA to perform IO operations.
+You can install the AWS CLI on the CORTX OVA to perform IO operations. 
 
 #. Ensure that all the prerequisites are satisfied. See `Prerequisites <#Prerequisites>`__.
 
@@ -124,7 +124,12 @@ You can install the AWS CLI on the CORTX OVA to perform IO operations.
 AWS CLI on a different VM
 ===========================
     
-You can also create a different VM and install the AWS CLI on this VM to perform IO operations.
+You can also create a different VM and install the AWS CLI on this VM as a client to perform IO operations.
+
+.. raw:: html
+
+    <details>
+   <summary><a>Click here to expand the instructions.</a></summary>
     
 #. Ensure that all the prerequisites are satisfied. See `Prerequisites <#Prerequisites>`__.
 
@@ -229,3 +234,9 @@ You can also create a different VM and install the AWS CLI on this VM to perform
 #. Navigate to the Dashboard tab in your CORTX GUI, change 'Metric 1' to 'throughput_write' and you should see activity in the dashboard.
 
     .. image:: images/PG.PNG
+
+
+
+.. raw:: html
+
+    </details>
