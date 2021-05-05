@@ -30,7 +30,7 @@ You can install the AWS CLI on the CORTX OVA to perform IO operations.
 
 #. Ensure that all the prerequisites are satisfied. See `Prerequisites <#Prerequisites>`__.
 
-#. Install the unzip packages:
+#. Install the unzip package:
 
     ::
         
@@ -139,7 +139,7 @@ You can also create a different VM and install the AWS CLI on this VM as a clien
     
 #. Ensure that all the prerequisites are satisfied. See `Prerequisites <#Prerequisites>`__.
 
-#. Install the unzip packages:
+#. Install the unzip package:
 
     ::
         
