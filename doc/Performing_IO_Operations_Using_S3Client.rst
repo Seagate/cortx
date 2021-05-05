@@ -30,6 +30,12 @@ You can install the AWS CLI on the CORTX OVA to perform IO operations.
 
 #. Ensure that all the prerequisites are satisfied. See `Prerequisites <#Prerequisites>`__.
 
+#. Install the unzip packages:
+
+    ::
+        
+        yum install unzip
+
 #. Install and configure the the AWS CLI Client. See `AWS CLI <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html>`__.
 
 #. To create an S3 user account:
@@ -132,6 +138,12 @@ You can also create a different VM and install the AWS CLI on this VM as a clien
    <summary><a>Click here to expand the instructions.</a></summary>
     
 #. Ensure that all the prerequisites are satisfied. See `Prerequisites <#Prerequisites>`__.
+
+#. Install the unzip packages:
+
+    ::
+        
+        yum install unzip
 
 #. Add the following entry must be added in the */etc/hosts* file of the new VM:
 
