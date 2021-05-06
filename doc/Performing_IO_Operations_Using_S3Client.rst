@@ -14,14 +14,20 @@ For more information on:
 Prerequisites
 =============
 
-Verify that the S3 server endpoint is reachable using the following command:
+- Verify that the S3 server endpoint is reachable using the following command:
+
+        ::
+    
+            ping <s3 endpoint or public data IP>
+
+    - If yes then go ahead and configure the s3 client. 
+    - If not then recheck the client VM network configuration.  See `Troubleshoot Virtual Network </doc/troubleshoot_virtual_network.rst>`__.
+
+- Install the unzip package:
 
     ::
-  
-        ping <s3 endpoint or public data IP>
-
-- If yes then go ahead and configure the s3 client. 
-- If not then recheck the client VM network configuration.  See `Troubleshoot Virtual Network </doc/troubleshoot_virtual_network.rst>`__.
+        
+        yum install unzip -y
 
 AWS CLI on the CORTX OVA VM
 ===========================
@@ -29,12 +35,6 @@ AWS CLI on the CORTX OVA VM
 You can install the AWS CLI on the CORTX OVA to perform IO operations. 
 
 #. Ensure that all the prerequisites are satisfied. See `Prerequisites <#Prerequisites>`__.
-
-#. Install the unzip package:
-
-    ::
-        
-        yum install unzip -y
 
 #. Install and configure the the AWS CLI Client. See `AWS CLI <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html>`__.
 
@@ -138,12 +138,6 @@ You can also create a different VM and install the AWS CLI on this VM as a clien
    <summary><a>Click here to expand the instructions.</a></summary>
     
 #. Ensure that all the prerequisites are satisfied. See `Prerequisites <#Prerequisites>`__.
-
-#. Install the unzip package:
-
-    ::
-        
-        yum install unzip -y
 
 #. Add the following entry must be added in the */etc/hosts* file of the new VM:
 
