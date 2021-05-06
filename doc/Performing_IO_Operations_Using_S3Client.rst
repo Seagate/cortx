@@ -14,14 +14,20 @@ For more information on:
 Prerequisites
 =============
 
-Verify that the S3 server endpoint is reachable using the following command:
+- Verify that the S3 server endpoint is reachable using the following command:
+
+        ::
+    
+            ping <s3 endpoint or public data IP>
+
+    - If yes then go ahead and configure the s3 client. 
+    - If not then recheck the client VM network configuration.  See `Troubleshoot Virtual Network </doc/troubleshoot_virtual_network.rst>`__.
+
+- Install the unzip package:
 
     ::
-  
-        ping <s3 endpoint or public data IP>
-
-- If yes then go ahead and configure the s3 client. 
-- If not then recheck the client VM network configuration.  See `Troubleshoot Virtual Network </doc/troubleshoot_virtual_network.rst>`__.
+        
+        yum install unzip -y
 
 AWS CLI on the CORTX OVA VM
 ===========================
