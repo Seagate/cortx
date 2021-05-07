@@ -131,3 +131,4 @@ Once you have created the Windows Server you can remote desktop into the Windows
 ### Tested By:
 
 - Apr 29, 2021: Patrick Hession (patrick.hession@seagate.com) using OVA release 1.0.3.
+- Apr 12, 2021: Justin Woo (justin.woo@seagate.com) using OVA release 1.0.3.
