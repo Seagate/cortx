@@ -9,8 +9,8 @@ This document provides quick access to several different ways to set up CORTX fo
 1. Build motr from the source: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
     1. Run it on a single node: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
     1. Run it across a cluster: [LINK](https://github.com/Seagate/cortx-motr/wiki/Build-Motr-from-Source-in-a-Cluster)
-1. Build motr + S3 from the source: [LINK](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
-    1. Run it on a single node [LINK](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
+1. Build motr + S3 from the source: [done, requires verification](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
+    1. Run it on a single node [done, requires verification](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
     1. Run it across a cluster [TODO]
 1. Run a prepackaged CORTX software releases
     1. On a single node: TODO
