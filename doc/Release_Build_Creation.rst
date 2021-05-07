@@ -112,6 +112,7 @@ Procedure
 #. Follow this `Guide <Provision Release Build.md>`_ to run your build.
 
 Tested by:
+
 - May 7, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Pro.
 - Apr 6, 2021: Harrison Seow (harrison.seow@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Player.
 - Feb 12, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation Pro 16.
