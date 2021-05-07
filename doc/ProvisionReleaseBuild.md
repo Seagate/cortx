@@ -1,7 +1,6 @@
 # Provision Release Build
 
-## Prerequisite
-Note: This guide is intended to run the build release created in a previous [guide](https://github.com/Seagate/cortx/blob/main/doc/Release_Build_Creation.rst). Please complete this [guide](https://github.com/Seagate/cortx/blob/main/doc/Release_Build_Creation.rst) before following this guide.
+You will need to complete this [guide](https://github.com/Seagate/cortx/blob/main/doc/Release_Build_Creation.rst) before moving onto the steps below.
 
 ### 1.  Change Hostname
    ```sudo hostnamectl set-hostname deploy-test.cortx.com```
