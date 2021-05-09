@@ -1,0 +1,10 @@
+spark.hadoop.fs.s3a.impl        org.apache.hadoop.fs.s3a.S3AFileSystem
+spark.driver.extraClassPath	{{hadoop_dir}}/share/hadoop/tools/lib/aws-java-sdk-bundle-{{bundled_aws_sdk}}.jar:{{hadoop_dir}}/share/hadoop/tools/lib/hadoop-aws-{{hadoop_version}}.jar
+spark.hadoop.fs.s3a.access.key	{{s3_access_key}}
+spark.hadoop.fs.s3a.secret.key	{{s3_secret_key}}
+spark.hadoop.fs.s3a.endpoint	{{s3_endpoint}}
+spark.hadoop.fs.s3a.connection.ssl.enabled	false
+spark.hadoop.fs.s3a.path.style.access true
+spark.yarn.jars {{spark_dir}}/jars*,com.amazonaws:aws-java-sdk:{{bundled_aws_sdk}},org.apache.hadoop:hadoop-aws:{{hadoop_version}}
+spark.jars.packages com.amazonaws:aws-java-sdk:{{bundled_aws_sdk}},org.apache.hadoop:hadoop-aws:{{hadoop_version}}
+spark.yarn.app.container.log.dir /tmp/
