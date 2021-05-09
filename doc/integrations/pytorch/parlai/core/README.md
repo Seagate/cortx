@@ -1,0 +1,35 @@
+The core library contains the following files:
+
+- **agents.py**: this file contains a few basic agents which can be extended by your own model
+  - **_Agent_**: base class for all other agents, implements the act() method which receives an observation table and returns a table in response
+  - **_Teacher_**: child of Agent, also implements the report method for returning metrics. Tasks implement the Teacher class
+  - **_MultiTaskTeacher_**: creates a set of teachers based on a "task string" passed to the Teacher, creating multiple teachers within it and alternating between them
+  - create_task_teacher: instantiate a teacher from a given task string (e.g. 'babi:task:1' or 'squad')
+- **build_data.py**: basic utilities for setting up data for tasks. you can override if your filesystem needs different functionality.
+- **dict.py**: contains code for building general NLP-style dictionaries from observations
+  - DictionaryAgent: agent which tracks the index and frequency of words in a dictionary, and can parse a sentence into indices into its dictionary or back
+- **gpt2_helper.py**: byte pair encoding utilities from GPT-2
+- **image_featurizers.py**: provides functionality for loading images
+- **loader.py**: functions for loading world, agents, tasks, and teacher modules
+- **logs**: utilities for logging metrics to tensorboard
+- **message**: contains message object
+  - **_Message_**: class for objects and observations in ParlAI
+- **metrics.py**: computes evaluation metrics, e.g. ranking metrics, etc.
+- **params.py**: uses argparse to interpret command line arguments for ParlAI
+- **teachers.py**: contains teachers that deal with dialogue-based tasks, as well as data classes for storing data
+  - **_FixedDialogTeacher_**: base class for a teacher that utilizes fixed data
+  - **_DialogTeacher_**: base class for a teacher doing dialogue with fixed chat logs
+  - **_ParlAIDialogTeacher_**: a teacher that implements a simple standard text format for many tasks (non-visual tasks only)
+- **torch_agent**: utility code for building PyTorch-based agents in ParlAI
+  - **_TorchAgent_**: class which serves as a useful parent class for other model agents
+  - **_Batch_**: namedtuple which is the input type of the main abstract methods of the TorchAgent class
+  - **_Output_**: namedtuple which is the expected output type of the main abstract methods of the TorchAgent class
+  - **_History_**: class which handles tracking the dialogue state over the course of an episode.
+- **torch_classifier_agent**: abstract agent which extends TorchAgent and contains useful utilities for classification models
+- **torch_generator_agent**: abstract agent which extends TorchAgent and contains useful utilities for generation models
+- **torch_ranker_agent**: abstract agent which extends TorchAgent and contains useful utilities for ranking models
+- **worlds.py**: contains a set of basic worlds for tasks to take place inside
+  - **_World_**: base class for all other worlds, implements `parley`, `shutdown`, `__enter__`, and `__exit__`
+  - **_DialogPartnerWorld_**: default world for turn-based two-agent communication
+  - **_MultiAgentDialogWorld_**: round-robin turn-based agent communication for two or more agents
+  - **_HogwildWorld_**: default world for setting up a separate world for every thread when using multiple threads (processes)

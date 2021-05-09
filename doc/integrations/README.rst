@@ -14,6 +14,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |AWS_EC2|      | |DAOS|             |       |IPFS|        |             
 +----------------+--------------------+---------------------+
+| |PyTorch|      |                    |                     |             
++----------------+--------------------+---------------------+
+
 .. |Splunk| image:: ../images/SplunkLogo.png
    :width: 1 em
    :target: splunk.md
@@ -29,10 +32,13 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |FHIR| image:: ../images/fhir-logo.png 
    :width: 1 em
    :target: fhir.md
-
+.. |PyTorch| image:: pytorch/pytorch_logo.png
+   :width: 1 em
+   :target: pytorch.md
 .. |TensorFlow| image:: ../images/tensorflow.png
    :width: 1 em
    :target: tensorflow
+
 
 .. |ImagesApi| image:: ../images/images-api.png
    :width: 1 em
