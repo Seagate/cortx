@@ -385,5 +385,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Udayan Yaragattikar](https://github.com/udayan-y21)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
+1. [Priyadarshini Murugan](https://github.com/msvdpriya)
+1. [Sumanth Reddy Muni](https://github.com/sumanthreddym)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
