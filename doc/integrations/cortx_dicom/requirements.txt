@@ -1,0 +1,18 @@
+# Library dependencies for the cortx_dicom project
+# You have to install these libraries, before you can run the code:
+# 'pip install -r requirements.txt'
+
+# Python version dependency
+python>=3.7
+
+# Standard library dependencies:
+# importlib.resources
+# json
+# os
+# pickle
+# random
+
+# Additional library dependencies
+boto3>=1.4.6
+elasticsearch>=6.8.1
+pydicom>=2.1.2
