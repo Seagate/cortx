@@ -72,6 +72,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 1. [Wei Der Chien](https://github.com/steven-chien)
 1. [Yeshpal Jain](https://github.com/yeshpal-jain-seagate) 
+1. [Febriano Ramadhani](https://github.com/spiritbro1)
 
 ## [Seagate/cortx-dsal](https://github.com/Seagate/cortx-dsal)
 1. [Anilkumar Sindhi](https://github.com/Anilsindhi) 
