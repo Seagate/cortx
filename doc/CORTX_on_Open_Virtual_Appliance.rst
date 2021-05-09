@@ -65,7 +65,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    #. Record the MAC addresses and go to the following directory:
 
-      * **cd /etc/sysconfig/network_scripts/**
+      * **cd /etc/sysconfig/network-scripts/**
       * **vi ifcfg-ens32**
       * Add a new line under **BOOTPROTO=dhcp**
       * Add a new parameter with the MAC Address *HWADDR=<MAC-Address>*
