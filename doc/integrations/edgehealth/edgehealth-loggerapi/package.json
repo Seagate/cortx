@@ -1,0 +1,38 @@
+{
+  "name": "vuehealth-loggerapi",
+  "version": "1.0.0",
+  "description": "API backend for Vue Healthcare Frontend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "backend": "nodemon index.js",
+    "frontend": "npm run start --prefix client",
+    "dev": "concurrently \"npm run backend\"  \"npm run start --prefix client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/xetroc/vuehealth-loggerapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/xetroc/vuehealth-loggerapi/issues"
+  },
+  "homepage": "https://gitlab.com/xetroc/vuehealth-loggerapi#readme",
+  "dependencies": {
+    "aws-sdk": "^2.892.0",
+    "body-parser": "^1.19.0",
+    "busboy": "^0.3.1",
+    "busboy-body-parser": "^0.3.2",
+    "concurrently": "^6.0.2",
+    "connect-busboy": "0.0.2",
+    "cors": "^2.8.5",
+    "dialogflow": "^1.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "google-oauth-jwt": "^0.2.0",
+    "nodemon": "^2.0.7",
+    "pg": "^8.6.0"
+  }
+}
