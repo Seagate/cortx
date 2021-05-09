@@ -1,0 +1,86 @@
+
+
+.navbar{
+    background-color: #eeeef5;
+}
+
+.navbar-brand{
+    color: black;
+}
+
+.left{
+    color: black;
+    padding-left: 20px;
+}
+
+.icon{
+    color: black;
+    text-decoration-color: black;
+}
+
+.nav-link{
+    color: black;
+}
+
+.nav-link:hover{
+    color: black;
+}
+
+
+a.left
+{
+    position: relative;
+    
+}
+
+a.left:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #5a5af3;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+a.left:hover:before {
+    visibility: visible;
+    width: 100%;
+  }
+
+.navbar-toggler-icon{
+    color: black;
+}
+
+.fa-bars{
+    color: black;
+    font-size:28px;
+}
+
+.get-started-btn {
+    color: #5a5af3;
+    border-radius: 50px;
+    padding: 7px 25px 8px 25px;
+    white-space: nowrap;
+    transition: 0.3s;
+    font-size: 12px;
+    display: inline-block;
+    border: 2px solid #5a5af3;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  
+.get-started-btn:hover {
+background: #5a5af3;
+color: #fff;
+}
+
+@media (max-width: 768px) {
+.get-started-btn {
+    margin: 0 48px 0 0;
+    padding: 6px 18px;
+}
+}
