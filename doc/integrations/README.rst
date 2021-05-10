@@ -21,7 +21,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 | |BizTalk|      | |Spark|            | |PyTorch|           |             
 +----------------+--------------------+---------------------+
 
-.. |restic| image:: https://user-images.githubusercontent.com/2047294/117737939-1dfab300-b1b8-11eb-8ab3-56364e86c6d3.png
+.. |restic| image:: https://user-images.githubusercontent.com/2047294/117738249-d58fc500-b1b8-11eb-802b-78128e92a018.png
    :width: 1 em
    :target: restic.md
 
