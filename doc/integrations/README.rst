@@ -14,8 +14,11 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |AWS_EC2|      | |DAOS|             |       |IPFS|        |             
 +----------------+--------------------+---------------------+
+| |cortx-js-sdk| |                    |                     |             
++----------------+--------------------+---------------------+
 | |BizTalk|      | |Spark|            | |PyTorch|           |             
 +----------------+--------------------+---------------------+
+
 
 .. |Splunk| image:: ../images/SplunkLogo.png
    :width: 1 em
@@ -56,6 +59,10 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |PyTorch| image:: ../images/PyTorch.png
    :width: 1 em
    :target: pytroch-integration.md
+
+.. |cortx-js-sdk| image:: ./cortx-js-sdk/logo.png
+   :width: 1 em
+   :target: ./cortx-js-sdk/README.md
 
 .. |BizTalk| image:: ../images/BizTalkLogo.png
    :width: 1 em
