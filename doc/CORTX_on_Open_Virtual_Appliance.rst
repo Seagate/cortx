@@ -65,7 +65,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    #. Record the MAC addresses and go to the following directory:
 
-      * **cd /etc/sysconfig/network_scripts/**
+      * **cd /etc/sysconfig/network-scripts/**
       * **vi ifcfg-ens32**
       * Add a new line under **BOOTPROTO=dhcp**
       * Add a new parameter with the MAC Address *HWADDR=<MAC-Address>*
@@ -97,12 +97,12 @@ The procedure to install CORTX on OVA is mentioned below.
 
       * **date**
 
-      If the time displayed is incorrect, use the following command to list and change your timezone accordingly, then change your date/time as necessary (Otherwise, you might face SSL certificate problems later)
+      If the time displayed is incorrect, use the following command to adjust time for timezone as necessary (Otherwise, you might face SSL certificate problems later). 
+      * **date --set "[+/-]xhours [+/-]yminutes"**
+      
+      For instance if your timezone is `4:30:00` ahead of UTC, then run the following command in VM. Note the `-` before minutes as well. Similarly if your timezone is behind of UTC, use +ve hours and +ve minutes to make the adjustment.
 
-      * **timedatectl list-timezones**
-      * **timedatectl set-timezone Asia/Kuala_Lumpur**
-      * **date +%Y%m%d -s "20201231"**
-      * **date +%T -s "11:14:00"**
+      * **date --set "-4hours -30minutes"**
 
    .. raw:: html
 
@@ -187,9 +187,6 @@ The procedure to install CORTX on OVA is mentioned below.
       * put object
       * delete all the above in reverse order
       
-   If s3client(s) is / are deployed in separate VMs, then the below entry must be updated in s3client **/etc/hosts** file as follows:
-    
-   - <<Data IP>> s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com   
    
 #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
@@ -307,6 +304,8 @@ Restart CORTX
    </details>
    
 Tested by:
+
+- Apr 30, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 1.0.4 on Vsphere.
 
 - Apr 12, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on MAC running VMWare Fusion 12.1.0.
 
