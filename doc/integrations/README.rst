@@ -14,11 +14,14 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |AWS_EC2|      | |DAOS|             |       |IPFS|        |             
 +----------------+--------------------+---------------------+
-| |cortx-js-sdk| |                    |                     |             
+| |cortx-js-sdk| | |label-studio|     |                     |             
 +----------------+--------------------+---------------------+
 | |BizTalk|      | |Spark|            | |PyTorch|           |             
 +----------------+--------------------+---------------------+
 
+.. |label-studio| image:: https://user-images.githubusercontent.com/2047294/117737303-d1fb3e80-b1b6-11eb-81f1-36f182938e61.png
+   :width: 1 em
+   :target: label-studioAPI/README.md
 
 .. |Splunk| image:: ../images/SplunkLogo.png
    :width: 1 em
