@@ -70,7 +70,8 @@
         <td>:heavy_check_mark:
         <a href=/doc/PDFs/Newsletters/Mar_2021_newsletter.pdf>PDF</a>
         </td>
-        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:<a href=/doc/PDFs/Newsletters/april_newsletter_2021.pdf>PDF</a>
+        </td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
