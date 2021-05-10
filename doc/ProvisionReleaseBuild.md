@@ -15,8 +15,9 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 ### 3. Install Provisioner API
    
    - Set repository URL
-   ``` CORTX_RELEASE_REPO="file:///var/artifacts/0"```
-   
+   ```
+   export CORTX_RELEASE_REPO="file:///var/artifacts/0"
+   ```   
    - Install Provisioner API and requisite packages
    ```
    yum install -y yum-utils
