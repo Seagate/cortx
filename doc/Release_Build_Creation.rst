@@ -113,6 +113,7 @@ Procedure
 
 Tested by:
 
+- May 7, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Pro.
 - Apr 6, 2021: Harrison Seow (harrison.seow@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Player.
 - Feb 12, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation Pro 16.
 - April 06, 2021: Vaibhav Paratwar (vaibhav.paratwar@seagate.com) on VM "LDRr1 - 2x CentOS 7.8 Shared Disks-20210329-232113"
