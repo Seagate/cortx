@@ -1,0 +1,82 @@
+- name: install requirements
+  apt:
+    pkg:
+      - openjdk-8-jdk
+      - gzip
+      - unzip
+      - maven
+      - pdsh
+  become: true
+
+- name: Check whether hadoop key exists
+  stat:
+    path: '~/.ssh/hadoop_key'
+  register: hadoop_key
+
+- name: add ssh key
+  shell: 'ssh-keygen -b 2048 -t rsa -f ~/.ssh/hadoop_key -q -N ""'
+  when: hadoop_key.stat.exists == False
+
+- name: add key to authorized key
+  shell: 'cat ~/.ssh/hadoop_key.pub >> ~/.ssh/authorized_keys'
+  when: hadoop_key.stat.exists == False
+
+- name: add server to known hosts
+  shell: 'ssh-keyscan -H localhost >> ~/.ssh/known_hosts'
+  when: hadoop_key.stat.exists == False
+
+- name: check that java is installed properly
+  shell: java -version
+
+- name: make hadoop directory
+  file:
+    path: '{{hadoop_dir}}/'
+    state: directory
+
+- name: download hadoop
+  unarchive:
+    src: '{{hadoop_url}}'
+    dest: '{{hadoop_dir}}/'
+    remote_src: yes
+    extra_opts: [ --strip-components=1 ]
+
+- name: hadoop env variables
+  template:
+    src: '{{templates_dir}}/hadoop/hadoop-env.j2.sh'
+    dest: '{{hadoop_dir}}/etc/hadoop/hadoop-env.sh'
+
+- name: mapreduce template
+  template:
+    src: '{{templates_dir}}/hadoop/mapred-site.j2.xml'
+    dest: '{{hadoop_dir}}/etc/hadoop/mapred-site.xml'
+
+- name: hadoop core site config
+  template:
+    src: '{{templates_dir}}/hadoop/site_config.j2.xml'
+    dest: '{{hadoop_dir}}/etc/hadoop/core-site.xml'
+
+- name: hadoop yarn config
+  template:
+    src: '{{templates_dir}}/hadoop/yarn_site.j2.xml'
+    dest: '{{hadoop_dir}}/etc/hadoop/yarn-site.xml'
+
+- name: add variables to bashrc
+  lineinfile:
+    dest: ~/.bashrc
+    line: '{{ item }}'
+  loop:
+    - 'export PATH={{ ansible_env.PATH }}:{{hadoop_dir}}/bin:{{hadoop_dir}}/sbin:{{spark_dir}}/bin'
+    - 'export HADOOP_MAPRED_HOME={{hadoop_dir}}'
+    - 'export HADOOP_COMMON_HOME={{hadoop_dir}}'
+    - 'export HADOOP_HDFS_HOME={{hadoop_dir}}'
+    - 'export YARN_HOME={{hadoop_dir}}'
+    - 'export HADOOP_HOME={{hadoop_dir}}'
+    - 'export PDSH_RCMD_TYPE=ssh'
+    - 'export HADOOP_CLASSPATH={{hadoop_dir}}/share/hadoop/tools/lib/*'
+
+#- name: test s3 create dir
+#  shell: hadoop fs -mkdir -p working_test
+#  register: hadoop_output
+
+#- name: start yarn
+#  shell: '{{hadoop_dir}}/sbin/start-yarn.sh'
