@@ -14,12 +14,16 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |AWS_EC2|      | |DAOS|             |       |IPFS|        |             
 +----------------+--------------------+---------------------+
-| |PyTorch2|     | |restic|           |                     |             
+| |PyTorch2|     | |restic|           |      |yolo|         |             
 +----------------+--------------------+---------------------+
 | |cortx-js-sdk| | |label-studio|     |      |euclid|       |             
 +----------------+--------------------+---------------------+
 | |BizTalk|      | |Spark|            | |PyTorch|           |             
 +----------------+--------------------+---------------------+
+
+.. |yolo| image:: https://user-images.githubusercontent.com/2047294/117738419-34edd500-b1b9-11eb-90f8-8eac4168006b.png
+   :width: 1 em
+   :target: yolo/README.md 
 
 .. |restic| image:: https://user-images.githubusercontent.com/2047294/117738249-d58fc500-b1b8-11eb-802b-78128e92a018.png
    :width: 1 em
