@@ -8,11 +8,16 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    - Make sure the hostname is changed by running `hostname -f`
    - Reboot the VM `reboot`
 
-### 2. Install Provisioner API
+### 2. Disable SElinux
+
+- ```sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config```
+
+### 3. Install Provisioner API
    
    - Set repository URL
-   ``` CORTX_RELEASE_REPO="file:///var/artifacts/0"```
-   
+   ```
+   export CORTX_RELEASE_REPO="file:///var/artifacts/0"
+   ```   
    - Install Provisioner API and requisite packages
    ```
    yum install -y yum-utils
@@ -41,10 +46,10 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    rm -rf /var/cache/yum/
    rm -rf /etc/pip.conf
    ```
-### 3. Verify provisioner version (0.36.0 and above)
+### 4. Verify provisioner version (0.36.0 and above)
    ```provisioner --version```
    
-### 4. Create the config.ini file
+### 5. Create the config.ini file
    `vi ~/config.ini`
    - Paste the code below into the config file replacing your network interface names with ens33,..ens37
    ```
@@ -62,12 +67,75 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    bmc.user=None
    bmc.secret=None
    ```
-### 5. Run the auto_deploy_vm command
+### 6. Run the auto_deploy_vm command
    ```
-   provisioner auto_deploy_vm srvnode-1:$(hostname -f) --logfile --logfile-filename\
-   /var/log/seagate/provisioner/setup.log --source rpm --config-path\
-   ~/config.ini --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
+    provisioner setup_provisioner srvnode-1:$(hostname -f) \
+    --logfile --logfile-filename /var/log/seagate/provisioner/setup.log --source rpm \
+    --config-path ~/config.ini --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
    ```
-   
+### 7. Prepare Pillar Data (Run this command only on primary node)
+```
+provisioner configure_setup ./config.ini 1
+salt-call state.apply components.system.config.pillar_encrypt
+provisioner confstore_export
+```
+
+## Non-Cortx Group: System & 3rd-Party Softwares
+### 1. Non-Cortx Group: System & 3rd-Party Softwares
+
+```provisioner deploy_vm --setup-type single --states system```
+
+### 2. Prereq component group
+
+``` provisioner deploy_vm --setup-type single --states prereq ```
+
+## Cortx Group: Utils, IO Path & Control Path
+
+### 1. Utils component
+
+``` provisioner deploy_vm --setup-type single --states prereq ```
+
+### 2. IO path component group
+
+``` provisioner deploy_vm --setup-type single --states iopath ```
+
+### 3. Control path component group
+
+``` provisioner deploy_vm --setup-type single --states controlpath ```
+
+## Cortx Group: HA
+
+### 1. HA component group
+
+``` provisioner deploy_vm --setup-type single --states ha ```
+
+## Start cluster (irrespective of number of nodes):
+
+### 1. Execute the following command on primary node to start the cluster:
+
+``` cortx cluster start ```
+
+### 2. Verify Cortx cluster status:
+
+``` hctl status ```
+
+## Disable the Firewall
+
+```
+systemctl stop firewalld
+systemctl disable firewalld
+```
+
+
+## Usage:
+
+Follow this [guide](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst) to setup the GUI.
+   Then to test your system upload data using this [guide](https://github.com/Seagate/cortx/blob/main/doc/testing_io.rst)
+
+
+
+## Tested by:
+
+- Jan 6, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
    
 
