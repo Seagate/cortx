@@ -72,13 +72,13 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 
    [enclosure-1]
    ```
-### 6. Run the auto_deploy_vm command
+### 6. Bootstrap Node
    ```
     provisioner setup_provisioner srvnode-1:$(hostname -f) \
     --logfile --logfile-filename /var/log/seagate/provisioner/setup.log --source rpm \
     --config-path ~/config.ini --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
    ```
-### 7. Prepare Pillar Data (Run this command only on primary node)
+### 7. Prepare Pillar Data
 ```
 provisioner configure_setup ./config.ini 1
 salt-call state.apply components.system.config.pillar_encrypt
@@ -98,7 +98,7 @@ provisioner confstore_export
 
 ### 1. Utils component
 
-``` provisioner deploy_vm --setup-type single --states prereq ```
+``` provisioner deploy_vm --setup-type single --states utils ```
 
 ### 2. IO path component group
 
