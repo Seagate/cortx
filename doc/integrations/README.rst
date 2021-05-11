@@ -26,8 +26,12 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |jupyter|      |      |drp|         | |Pytorch3|          |             
 +----------------+--------------------+---------------------+
-|                |      |pulsar|      | |Pytorch4|          |             
+| |edgehealth|   |      |pulsar|      | |Pytorch4|          |             
 +----------------+--------------------+---------------------+
+
+.. |edgehealth| image:: https://user-images.githubusercontent.com/2047294/117741785-72099580-b1c0-11eb-8b2f-de82cd7513fa.png
+   :width: 1 em
+   :target: edgehealth.md
 
 .. |pulsar| image:: https://user-images.githubusercontent.com/2047294/117741252-37ebc400-b1bf-11eb-8298-66ef3f8fd01f.png
    :width: 1 em
