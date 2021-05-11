@@ -14,6 +14,8 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |AWS_EC2|      | |DAOS|             |       |IPFS|        |
 +----------------+--------------------+---------------------+
+| |cortx-js-sdk|                      |      |myDrive|      |
++----------------+--------------------+---------------------+
 | |Slack-Bot|    |                    |                     |
 +----------------+--------------------+---------------------+
 | |PyTorch2|     | |restic|           |      |yolo|         |             
@@ -63,7 +65,6 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: tensorflow
 
-
 .. |ImagesApi| image:: ../images/images-api.png
    :width: 1 em
    :target: images-api.md
@@ -85,6 +86,10 @@ Click on any of the images below to know how to integrate CORTX with these other
    :target: pytroch-integration.md
 
 .. |cortx-js-sdk| image:: ./cortx-js-sdk/logo.png
+   :width: 1 em
+   :target: ./cortx-js-sdk/README.md
+
+.. |myDrive| image:: ./myDrive/logo-small.png
    :width: 1 em
    :target: ./cortx-js-sdk/README.md
 
