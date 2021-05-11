@@ -18,7 +18,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |PyTorch2|     | |restic|           |      |yolo|         |             
 +----------------+--------------------+---------------------+
-|                | |label-studio|     |      |euclid|       |             
+| |DICOM         | |label-studio|     |      |euclid|       |             
 +----------------+--------------------+---------------------+
 | |BizTalk|      | |Spark|            | |PyTorch|           |             
 +----------------+--------------------+---------------------+
@@ -98,6 +98,10 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |BizTalk| image:: ../images/BizTalkLogo.png
    :width: 1 em
    :target: biztalk.md
+
+.. |DICOM| image:: ../images/dicom-logo.jpg
+   :width: 1 em
+   :target: cortx_dicom.md
 
 .. |Spark| image:: ../images/spark-logo.png
    :width: 1 em
