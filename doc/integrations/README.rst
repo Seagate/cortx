@@ -24,8 +24,12 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |fluentd|      | |strapi|           |  |DOF|              |             
 +----------------+--------------------+---------------------+
-| |jupyter|      |                    |                     |             
+| |jupyter|      |      |drp|         |                     |             
 +----------------+--------------------+---------------------+
+
+.. |drp| image:: https://user-images.githubusercontent.com/2047294/117740445-b21b4900-b1bd-11eb-9d12-5b7ce5ac1dc5.png
+   :width: 1 em
+   :target: drp.md 
 
 .. |jupyter| image:: https://user-images.githubusercontent.com/2047294/117739959-a24f3500-b1bc-11eb-9cdf-bf50602589df.png
    :width: 1 em
