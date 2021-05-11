@@ -26,6 +26,12 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |jupyter|      |      |drp|         | |Pytorch3|          |             
 +----------------+--------------------+---------------------+
+|                |                    | |Pytorch4|          |             
++----------------+--------------------+---------------------+
+
+.. |Pytorch4| image:: https://user-images.githubusercontent.com/2047294/117741096-d3c90000-b1be-11eb-8cb9-00a46ba9c08b.png
+   :width: 1 em
+   :target: pytorch/README2.md 
 
 .. |drp| image:: https://user-images.githubusercontent.com/2047294/117740445-b21b4900-b1bd-11eb-9d12-5b7ce5ac1dc5.png
    :width: 1 em
