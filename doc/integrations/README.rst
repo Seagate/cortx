@@ -8,11 +8,13 @@ such as those using the KV API or the File Data Manipulation Interface (FDMI) pl
 Click on any of the images below to know how to integrate CORTX with these other technologies:
 
 +----------------+--------------------+---------------------+
-| |Splunk|       | |Prometheus|       | |TensorFlow|        | 
+| |Splunk|       | |Prometheus|       | |TensorFlow|        |
 +----------------+--------------------+---------------------+
-| |FHIR|         | |Siddhi-Celery|    |      |ImagesApi|    |                     
+| |FHIR|         | |Siddhi-Celery|    |      |ImagesApi|    |
 +----------------+--------------------+---------------------+
-| |AWS_EC2|      | |DAOS|             |       |IPFS|        |             
+| |AWS_EC2|      | |DAOS|             |       |IPFS|        |
++----------------+--------------------+---------------------+
+| |Slack-Bot|    |                    |                     |
 +----------------+--------------------+---------------------+
 | |PyTorch2|     | |restic|           |      |yolo|         |             
 +----------------+--------------------+---------------------+
@@ -49,7 +51,7 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: siddhi-celery.md
 
-.. |FHIR| image:: ../images/fhir-logo.png 
+.. |FHIR| image:: ../images/fhir-logo.png
    :width: 1 em
    :target: fhir.md
    
@@ -64,16 +66,16 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |ImagesApi| image:: ../images/images-api.png
    :width: 1 em
-   :target: images-api.md   
+   :target: images-api.md
 
 .. |AWS_EC2| image:: https://d0.awsstatic.com/logos/powered-by-aws.png
    :width: 1 em
-   :target: AWS_EC2.md  
-   
+   :target: AWS_EC2.md
+
 .. |DAOS| image:: https://camo.githubusercontent.com/38c204bac927eb42c29e727246742567baa5e1192fa5982183c227e570863604/68747470733a2f2f656d6f6a692e736c61636b2d656467652e636f6d2f5434525545324644482f64616f732f663532623565633262303439353866312e706e67
    :width: 1 em
-   :target: https://github.com/Seagate/cortx-experiments/blob/main/daos-cortx/docs/datamovment_with_s3.md  
-   
+   :target: https://github.com/Seagate/cortx-experiments/blob/main/daos-cortx/docs/datamovment_with_s3.md
+
 .. |IPFS| image:: ../images/IPFS.png
    :width: 1 em
    :target: ipfs.md
@@ -85,6 +87,10 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |cortx-js-sdk| image:: ./cortx-js-sdk/logo.png
    :width: 1 em
    :target: ./cortx-js-sdk/README.md
+
+.. |Slack-Bot| image:: https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/logo750x500.png
+   :width: 1 em
+   :target: cortx-s3-slack-bot.md
 
 .. |BizTalk| image:: ../images/BizTalkLogo.png
    :width: 1 em
