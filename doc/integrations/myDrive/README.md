@@ -1,11 +1,10 @@
 ## Cortx-MyDrive is a free Open Source Cloud Server (Similar To Google Drive) integrated with CORTX engine
 
-
-notice ❤: this integration is heavily based on [cortx-js-sdk](https://github.com/kaminskypavel/cortx/blob/main/doc/integrations/cortx-js-sdk
+Notice ❤: this integration is heavily based on [cortx-js-sdk](https://github.com/kaminskypavel/cortx/blob/main/doc/integrations/cortx-js-sdk
 ), for more info click on the image below, which I also implemented as part of this integration, but published as a different integration 
 for making the life of future developers easier.
 
-[![cortx-js-demo](https://github.com/kaminskypavel/cortx-js-sdk/raw/master/assets/logo.png)](https://github.com/kaminskypavel/cortx/blob/main/doc/integrations/cortx-js-sdk)
+[![cortx-js-demo](https://github.com/kaminskypavel/cortx-js-sdk/raw/master/assets/logo.png)](https://github.com/Seagate/cortx/blob/main/doc/integrations/cortx-js-sdk)
 
 
 ## Youtube Demo

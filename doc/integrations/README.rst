@@ -16,7 +16,30 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |cortx-js-sdk|                      |      |myDrive|      |
 +----------------+--------------------+---------------------+
+| |Slack-Bot|    |                    |                     |
++----------------+--------------------+---------------------+
+| |PyTorch2|     | |restic|           |      |yolo|         |             
++----------------+--------------------+---------------------+
+| |cortx-js-sdk| | |label-studio|     |      |euclid|       |             
++----------------+--------------------+---------------------+
+| |BizTalk|      | |Spark|            | |PyTorch|           |             
++----------------+--------------------+---------------------+
 
+.. |yolo| image:: https://user-images.githubusercontent.com/2047294/117738419-34edd500-b1b9-11eb-90f8-8eac4168006b.png
+   :width: 1 em
+   :target: yolo/README.md 
+
+.. |restic| image:: https://user-images.githubusercontent.com/2047294/117738249-d58fc500-b1b8-11eb-802b-78128e92a018.png
+   :width: 1 em
+   :target: restic.md
+
+.. |label-studio| image:: https://user-images.githubusercontent.com/2047294/117737303-d1fb3e80-b1b6-11eb-81f1-36f182938e61.png
+   :width: 1 em
+   :target: label-studioAPI/README.md
+
+.. |euclid| image:: https://user-images.githubusercontent.com/2047294/117737704-a593f200-b1b7-11eb-9915-cef2567b2583.png
+   :width: 1 em
+   :target: pytorch.md
 
 .. |Splunk| image:: ../images/SplunkLogo.png
    :width: 1 em
@@ -33,7 +56,11 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |FHIR| image:: ../images/fhir-logo.png
    :width: 1 em
    :target: fhir.md
-
+   
+.. |PyTorch2| image:: https://user-images.githubusercontent.com/2047294/117737939-1dfab300-b1b8-11eb-8ab3-56364e86c6d3.png
+   :width: 1 em
+   :target: pytorch2.md
+   
 .. |TensorFlow| image:: ../images/tensorflow.png
    :width: 1 em
    :target: tensorflow
@@ -53,6 +80,10 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |IPFS| image:: ../images/IPFS.png
    :width: 1 em
    :target: ipfs.md
+   
+.. |PyTorch| image:: ../images/PyTorch.png
+   :width: 1 em
+   :target: pytroch-integration.md
 
 .. |cortx-js-sdk| image:: ./cortx-js-sdk/logo.png
    :width: 1 em
@@ -62,5 +93,16 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: ./cortx-js-sdk/README.md
 
+.. |Slack-Bot| image:: https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/logo750x500.png
+   :width: 1 em
+   :target: cortx-s3-slack-bot.md
+
+.. |BizTalk| image:: ../images/BizTalkLogo.png
+   :width: 1 em
+   :target: biztalk.md
+
+.. |Spark| image:: ../images/spark-logo.png
+   :width: 1 em
+   :target: spark.md
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies

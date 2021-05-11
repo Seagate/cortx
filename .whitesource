@@ -6,11 +6,10 @@
     "baseBranches": []
   },
   "checkRunSettings": {
-    "vulnerableCheckRunConclusionLevel": "failure",
-    "displayMode": "diff"
+    "displayMode": "diff",
+    "vulnerableCheckRunConclusionLevel": "failure"
   },
   "issueSettings": {
     "minSeverityLevel": "LOW"
   }
 }
- 
