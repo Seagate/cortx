@@ -26,7 +26,7 @@ Try it out
 
 ## Getting Started
 
-To use this integration, you just need to clone the notebook and run the cells. A few dependencies you'll need in your python environment:
+To use this integration, you just need to clone [the notebook](cortx-med-mnist.ipynb) and run the cells. A few dependencies you'll need in your python environment:
 
 + Pytorch 1.7
 + Boto3
