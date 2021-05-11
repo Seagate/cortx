@@ -27,6 +27,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Debasmita Samaddar](https://github.com/samaddar)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
 1. [Dipendra Bagchee](https://github.com/dbagchee) 
+1. [Febriano Ramadhani](https://github.com/spiritbro1)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Gregory Touretsky](https://github.com/gregnsk)
 1. [Huang Hua](https://github.com/huanghua78)
@@ -58,6 +59,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Richárd Ádám Vécsey Dr.](https://github.com/richardvecsey)
 1. [Sachitanand Shelake](https://github.com/sachitanands)
 1. [Sai Narasimhamurthy](https://github.com/sainarasim)
+1. [Samad Ahmed](https://github.com/sahmed007) 
 1. [Sarthak Arora](https://github.com/sarthakarora1208)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Saurabh Khanvilkar](https://github.com/saurabhkhanvilkar)
@@ -75,8 +77,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Venkatesh K](https://github.com/venkuppu-chn)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 1. [Wei Der Chien](https://github.com/steven-chien)
-1. [Yeshpal Jain](https://github.com/yeshpal-jain-seagate) 
-1. [Febriano Ramadhani](https://github.com/spiritbro1)
+1. [Yeshpal Jain](https://github.com/yeshpal-jain-seagate)
 
 
 ## [Seagate/cortx-dsal](https://github.com/Seagate/cortx-dsal)
