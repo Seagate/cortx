@@ -31,3 +31,6 @@
 [submodule "cortx-experiments"]
 	path = cortx-experiments
 	url = https://github.com/Seagate/cortx-experiments.git
+[submodule "cortx-multisite"]
+	path = cortx-multisite
+	url = https://github.com/Seagate/cortx-multisite.git
