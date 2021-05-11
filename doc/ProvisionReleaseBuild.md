@@ -51,29 +51,34 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    
 ### 5. Create the config.ini file
    `vi ~/config.ini`
-   - Paste the code below into the config file replacing your network interface names with ens33,..ens37
+   - Paste the code below into the config file replacing your network interface names with ens33,..ens37 and storage disks with /dev/sdc,/dev/sdb
    ```
-   [storage]
-   type=other
-
-
-
-   [srvnode-1]
-   hostname=deploy-test.cortx.com
-   network.data.private_ip=None
-   network.data.public_interfaces=ens34, ens35
-   network.data.private_interfaces=ens36, ens37
+   [srvnode_default]
+   network.data.private_interfaces=ens34, ens35
+   network.data.public_interfaces=ens36, ens37
    network.mgmt.interfaces=ens33
    bmc.user=None
    bmc.secret=None
+   storage.cvg.0.data_devices=/dev/sdc
+   storage.cvg.0.metadata_devices=/dev/sdb
+   network.data.private_ip=None
+
+   [srvnode-1]
+   hostname=deploy-test.cortx.com
+   roles=primary,openldap_server
+
+   [enclosure_default]
+   type=other
+
+   [enclosure-1]
    ```
-### 6. Run the auto_deploy_vm command
+### 6. Bootstrap Node
    ```
     provisioner setup_provisioner srvnode-1:$(hostname -f) \
     --logfile --logfile-filename /var/log/seagate/provisioner/setup.log --source rpm \
     --config-path ~/config.ini --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
    ```
-### 7. Prepare Pillar Data (Run this command only on primary node)
+### 7. Prepare Pillar Data
 ```
 provisioner configure_setup ./config.ini 1
 salt-call state.apply components.system.config.pillar_encrypt
@@ -93,7 +98,7 @@ provisioner confstore_export
 
 ### 1. Utils component
 
-``` provisioner deploy_vm --setup-type single --states prereq ```
+``` provisioner deploy_vm --setup-type single --states utils ```
 
 ### 2. IO path component group
 
