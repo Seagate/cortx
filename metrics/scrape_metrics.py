@@ -261,7 +261,7 @@ def get_top_level_repo_info(stats,repo,people,author_activity,gh,org_name):
     for a in r.get_assets():
       avoid_rate_limiting(gh)
       stats['downloads_releases'] += a.download_count
-      if '.ova' in a.browser_download_url:
+      if '.ova' in a.browser_download_url or 'VA' in a.browser_download_url:
         stats['downloads_vms'] += a.download_count
 
 
