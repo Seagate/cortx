@@ -22,7 +22,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |BizTalk|      | |Spark|            | |PyTorch|           |             
 +----------------+--------------------+---------------------+
-| |fluentd|      | |strapi|           |                     |             
+| |fluentd|      | |strapi|           |  |DOF|              |             
 +----------------+--------------------+---------------------+
 
 .. |fluentd| image:: https://user-images.githubusercontent.com/2047294/117739258-34563e00-b1bb-11eb-9330-f6ee034bb371.png
@@ -96,6 +96,10 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |strapi| image:: ../images/strapi.png
    :width: 1 em
    :target: strapi.md
+
+.. |DOF| image:: ../images/DoF.png
+   :width: 1 em
+   :target: cortx_dof.md
 
 .. |myDrive| image:: ./myDrive/logo-small.png
    :width: 1 em
