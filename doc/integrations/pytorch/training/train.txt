@@ -1,0 +1,8 @@
+text:what is CORTX?   labels:CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization
+text:is it open sourced?   labels:CORTX is 100% Open Source
+text:Does it works with any processor   labels:Yes, it works with any processor.
+text:is it flexible?   labels:Highly flexible, works with HDD, SSD, and NVM.
+text:is it scalable?   labels:Massively Scalable. Scales up to a billion billion billion billion billion exabytes (2^206) and 1.3 billion billion billion billion (2^120) objects with unlimited object sizes.
+text:is it responsive?   labels:Rapidly Responsive. Quickly retrieves data regardless of the scale using a novel Key-Value System that ensures low search latency across massive data sets.   
+text:how much resiliant?   labels:Highly flexible, works with HDD, SSD, and NVM.
+text:bye   labels:bye.   episode_done=True
