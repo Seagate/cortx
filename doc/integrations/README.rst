@@ -22,6 +22,12 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |BizTalk|      | |Spark|            | |PyTorch|           |             
 +----------------+--------------------+---------------------+
+| |fluentd|      |                    |                     |             
++----------------+--------------------+---------------------+
+
+.. |fluentd| image:: https://user-images.githubusercontent.com/2047294/117739258-34563e00-b1bb-11eb-9330-f6ee034bb371.png
+   :width: 1 em
+   :target: fluentd.md
 
 .. |yolo| image:: https://user-images.githubusercontent.com/2047294/117738419-34edd500-b1b9-11eb-90f8-8eac4168006b.png
    :width: 1 em
