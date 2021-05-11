@@ -24,6 +24,12 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |fluentd|      | |strapi|           |  |DOF|              |             
 +----------------+--------------------+---------------------+
+| |jupyter|      |                    |                     |             
++----------------+--------------------+---------------------+
+
+.. |jupyter| image:: https://user-images.githubusercontent.com/2047294/117739959-a24f3500-b1bc-11eb-9cdf-bf50602589df.png
+   :width: 1 em
+   :target: cortx_jupyter_integration/README.md 
 
 .. |fluentd| image:: https://user-images.githubusercontent.com/2047294/117739258-34563e00-b1bb-11eb-9330-f6ee034bb371.png
    :width: 1 em
