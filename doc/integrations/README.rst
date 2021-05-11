@@ -24,7 +24,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |fluentd|      | |strapi|           |  |DOF|              |             
 +----------------+--------------------+---------------------+
-| |jupyter|      |      |drp|         |                     |             
+| |jupyter|      |      |drp|         | |Pytorch3           |             
 +----------------+--------------------+---------------------+
 
 .. |drp| image:: https://user-images.githubusercontent.com/2047294/117740445-b21b4900-b1bd-11eb-9d12-5b7ce5ac1dc5.png
@@ -106,6 +106,10 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |strapi| image:: ../images/strapi.png
    :width: 1 em
    :target: strapi.md
+
+.. |Pytorch3| image:: https://user-images.githubusercontent.com/2047294/117740608-03c3d380-b1be-11eb-873f-f59af5781b40.png
+   :width: 1 em
+   :target: torchvision.md
 
 .. |DOF| image:: ../images/DoF.png
    :width: 1 em
