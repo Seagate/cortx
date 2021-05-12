@@ -261,7 +261,7 @@ def get_top_level_repo_info(stats,repo,people,author_activity,gh,org_name):
     for a in r.get_assets():
       avoid_rate_limiting(gh)
       stats['downloads_releases'] += a.download_count
-      if 'VA' in a.browser_download_url:
+      if '.ova' in a.browser_download_url or 'VA' in a.browser_download_url:
         stats['downloads_vms'] += a.download_count
 
 
@@ -396,7 +396,7 @@ def consolidate_referrers(referrers):
 
 # if update is true, it loads an existing pickle instead of creating a new one
 # this is useful when new fields are added 
-def collect_stats(gh,org_name,update,prefix,top_only):
+def collect_stats(gh,org_name,update,prefix,top_only,showonly):
   avoid_rate_limiting(gh)
   today = datetime.today().strftime('%Y-%m-%d')
 
@@ -448,7 +448,15 @@ def collect_stats(gh,org_name,update,prefix,top_only):
   load_items(global_stats,('issues','pull_requests'),('_external','_internal',''),('','_open','_closed','_open_ave_age_in_s','_closed_ave_age_in_s'))
   local_stats_template = copy.deepcopy(global_stats)    # save an empty copy of the stats struct to copy for each repo
 
-  for repo in cortx_community.get_repos(org_name=org_name,prefix=prefix): 
+  repos = cortx_community.get_repos(org_name=org_name,prefix=prefix)
+
+  if showonly:
+    for repo in repos:
+      print("%s has repo %s" % (org_name,repo.name))
+    print("exiting only due to showonly flag")
+    return
+
+  for repo in repos:
     while True: # add a while loop since we are always failing and it would be good to run successfully more often
       try:
         local_stats = copy.deepcopy(local_stats_template) # get an empty copy of the stats structure
@@ -511,6 +519,7 @@ def main():
   parser = argparse.ArgumentParser(description='Collect and print info about all cortx activity in public repos.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
   parser.add_argument('-u', '--update', help='Load last stats and update it instead of creating a new one.', action='store_true')
   parser.add_argument('-t', '--toponly', help='Only scrape top-level info for the repo', action='store_true')
+  parser.add_argument('-s', '--showonly', help='Only show the repos for this org then quit', action='store_true')
   parser.add_argument('project', help='The project whose repos to scrape', action='store')  # one required arg for org
   #parser.add_argument('--dump', '-d', help="Dump currents stats [either '%s', '%s', or '%s'" % (PNAME,INAME,TNAME), required=False)
   #parser.add_argument('--collect', '-c', help='Collect new stats', action='store_true')
@@ -529,7 +538,7 @@ def main():
   retry= Retry(total=10,status_forcelist=(500,502,504,403),backoff_factor=10) 
   per_page=100
   gh = Github(login_or_token=os.environ.get('GH_OATH'),per_page=per_page, retry=retry)
-  collect_stats(gh=gh,org_name=org,update=args.update,prefix=prefix,top_only=args.toponly)
+  collect_stats(gh=gh,org_name=org,update=args.update,prefix=prefix,top_only=args.toponly,showonly=args.showonly)
 
 if __name__ == "__main__":
     main()
