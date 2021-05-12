@@ -19,6 +19,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Anilkumar Sindhi](https://github.com/Anilsindhi)
 1. [Ashwini Borse](https://github.com/AshwiniS-Borse)
 1. [Atita Shirwaikar](https://github.com/AtitaShirwaikar)
+1. [Axel Ország-Krisz Dr.](https://github.com/okaxel)
 1. [Balaji Ramachandran](https://github.com/balajiramachandran-seagate)
 1. [Bansidhar Soni](https://github.com/bansisoni)
 1. [Basavaraj Kirunge](https://github.com/bkirunge7)
@@ -26,6 +27,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Debasmita Samaddar](https://github.com/samaddar)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
 1. [Dipendra Bagchee](https://github.com/dbagchee) 
+1. [Febriano Ramadhani](https://github.com/spiritbro1)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Gregory Touretsky](https://github.com/gregnsk)
 1. [Huang Hua](https://github.com/huanghua78)
@@ -54,8 +56,11 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Rajesh Pratap Singh Chouhan](https://github.com/RajeshPratapSInghChouhan)
 1. [Rajkumar Patel](https://github.com/rajkumarpatel2602)
 1. [Ravindra Choudhari](https://github.com/ravindrachoudhari)
+1. [Richárd Ádám Vécsey Dr.](https://github.com/richardvecsey)
 1. [Sachitanand Shelake](https://github.com/sachitanands)
 1. [Sai Narasimhamurthy](https://github.com/sainarasim)
+1. [Samad Ahmed](https://github.com/sahmed007) 
+1. [Sarthak Arora](https://github.com/sarthakarora1208)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 1. [Saurabh Khanvilkar](https://github.com/saurabhkhanvilkar)
 1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
@@ -63,6 +68,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Shipra Gupta](https://github.com/gshipra)
 1. [Shreya Karmakar](https://github.com/Shreya-18)
 1. [Subhash Arya](https://github.com/s-arya)
+1. [Sumit Kumar](https://github.com/vilaksh01)                        
 1. [Swapnil Gaonkar](https://github.com/SwapnilGaonkar7)
 1. [Trent Geerdes](https://github.com/tgeerdes-SG)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
@@ -71,7 +77,8 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Venkatesh K](https://github.com/venkuppu-chn)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 1. [Wei Der Chien](https://github.com/steven-chien)
-1. [Yeshpal Jain](https://github.com/yeshpal-jain-seagate) 
+1. [Yeshpal Jain](https://github.com/yeshpal-jain-seagate)
+
 
 ## [Seagate/cortx-dsal](https://github.com/Seagate/cortx-dsal)
 1. [Anilkumar Sindhi](https://github.com/Anilsindhi) 
@@ -348,8 +355,9 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Sachitanand Shelake](https://github.com/sachitanands)
 1. [Saumitra Kulkarni](https://github.com/SaumitraK531)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
-1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)
+1. [Shailesh Vaidya](https://github.com/shailesh-vaidya)              
 1. [Shalaka Dharap](https://github.com/shalakadharap)
+1. [Sumit Kumar](https://github.com/vilaksh01)
 1. [Venkataraman Padmanabhan](https://github.com/VenkyOS)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 
@@ -385,5 +393,8 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Udayan Yaragattikar](https://github.com/udayan-y21)
 1. [Ujjwal Lanjewar](https://github.com/ujjwalpl)
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
+1. [Priyadarshini Murugan](https://github.com/msvdpriya)
+1. [Sumanth Reddy Muni](https://github.com/sumanthreddym)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
+
