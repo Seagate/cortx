@@ -136,6 +136,6 @@ Follow this [guide](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_a
 
 ## Tested by:
 
-- Jan 6, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
+- May 11, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
    
 
