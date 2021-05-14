@@ -304,6 +304,7 @@ Restart CORTX
    </details>
    
 Tested by:
+- May 10, 2021: Shiji Zhang (shiji.zhang@tusimple.ai) using OVA release 1.0.4 on KVM 5.1
 
 - Apr 30, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 1.0.4 on Vsphere.
 
