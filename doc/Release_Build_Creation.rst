@@ -34,7 +34,7 @@ Procedure
    
     mkdir -p /var/artifacts
 
-#. Build CORTX artifacts using the below mentioned docker. 
+#. Build CORTX artifacts using the below mentioned docker command. 
     **Note:** This step can take over an hour to run. Optionally you can prefix this command with ``time`` to show how long the build took.
 
    ::
