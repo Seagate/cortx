@@ -34,20 +34,6 @@ The procedure to install CORTX on OVA is mentioned below.
 #. Become the **root** user by running this:
    ::
      sudo su -
-   
-#. Change the hostname by running the following command:
-
-   * **hostnamectl set-hostname --static --transient --pretty <new-name>**
-  
-     If you receive **Access denied** message, remove immutable settings on the **/etc/hostname** file and run the command again. To remove immutable setting from **/etc/hostname**, run the following command.
-     
-     * **chattr -i /etc/hostname**
-  
-     To verify the change in hostname, run the following command:
- 
-     * **hostnamectl status**
-   
-   **Note**: Both short hostnames and FQDNs are accepted. If you do not have a DNS server with which to register the VM, you can access it directly using its IP addresses. However, the hostname is mandatory and should be configured.
 
 #. **For Oracle VM VirtualBox Users ONLY**:
    
