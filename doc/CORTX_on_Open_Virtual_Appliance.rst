@@ -58,14 +58,19 @@ The procedure to install CORTX on OVA is mentioned below.
       <summary><a>Expand</a></summary>
 
    You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens32, ens33 and ens34:
-
+   
+   **Note:** 
+   
+   - The Network Device names may not be the exact same as listed above, for example, enp0s8, enp0s9, enp0s17 instead of enp0s3, enp0s8, enp0s9.
+   - As the network is setup using DHCP, IP changes are bound to happen during restart, static IP configuration could be harder to maintain as it may not work for different VM with different network setups. 
+   
    #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
 
       * **ip a l**
 
    #. Record the MAC addresses and go to the following directory:
 
-      * **cd /etc/sysconfig/network_scripts/**
+      * **cd /etc/sysconfig/network-scripts/**
       * **vi ifcfg-ens32**
       * Add a new line under **BOOTPROTO=dhcp**
       * Add a new parameter with the MAC Address *HWADDR=<MAC-Address>*
@@ -97,12 +102,12 @@ The procedure to install CORTX on OVA is mentioned below.
 
       * **date**
 
-      If the time displayed is incorrect, use the following command to list and change your timezone accordingly, then change your date/time as necessary (Otherwise, you might face SSL certificate problems later)
+      If the time displayed is incorrect, use the following command to adjust time for timezone as necessary (Otherwise, you might face SSL certificate problems later). 
+      * **date --set "[+/-]xhours [+/-]yminutes"**
+      
+      For instance if your timezone is `4:30:00` ahead of UTC, then run the following command in VM. Note the `-` before minutes as well. Similarly if your timezone is behind of UTC, use +ve hours and +ve minutes to make the adjustment.
 
-      * **timedatectl list-timezones**
-      * **timedatectl set-timezone Asia/Kuala_Lumpur**
-      * **date +%Y%m%d -s "20201231"**
-      * **date +%T -s "11:14:00"**
+      * **date --set "-4hours -30minutes"**
 
    .. raw:: html
 
@@ -190,7 +195,7 @@ The procedure to install CORTX on OVA is mentioned below.
    
 #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
-#. Now that you have the complete system up and running, using the data IP from the **ip a l** command, use these instructions `to test the system <Performing_IO_Operations_Using_S3Client.rst>`_  and observe activity in the GUI.  For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
+#. Now that you have the complete system up and running, using the data IP from the **ip a l** command, use these instructions `to test the system <testing_io.rst>`_  and observe activity in the GUI.  For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
 
    .. image:: images/dashboard_read_write.png
 
@@ -305,6 +310,8 @@ Restart CORTX
    
 Tested by:
 <<<<<<< HEAD
+
+- Apr 30, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 1.0.4 on Vsphere.
 
 - Apr 12, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on MAC running VMWare Fusion 12.1.0.
 
