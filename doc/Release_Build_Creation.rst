@@ -20,13 +20,13 @@ Procedure
    
     cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
     
-#. Above command will clone codebase from **main** branch by default. You can checkout codebase from other branches for all components using following command. e.g. For **stable** branch,
+#. Checkout codebase from **main** branch for all components. 
    
    ::
    
-      docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=stable
+      docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=main
       
-   You can also use other Branch name or Tag name instead of **stable** in above command.
+   You can checkout codebase from other branch/TAG for all components using above command. e.g. For **stable** branch replace **main** with **stable**.
    
 #. Create directory to store artifacts. In this procedure, **/var/artifacts** is used. Update **docker run** command accordingly to use an alternative directory.
 
@@ -34,7 +34,7 @@ Procedure
    
     mkdir -p /var/artifacts
 
-#. Build CORTX artifacts using the below mentioned docker. 
+#. Build CORTX artifacts using the below mentioned docker command. 
     **Note:** This step can take over an hour to run. Optionally you can prefix this command with ``time`` to show how long the build took.
 
    ::
