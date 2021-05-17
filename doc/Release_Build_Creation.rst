@@ -58,6 +58,7 @@ Procedure
       drwxr-xr-x  12 root root      4096 Apr  9 07:23 3rd_party
       drwxr-xr-x   3 root root      4096 Apr  9 07:23 cortx_iso
       -rw-r--r--   1 root root      4395 Apr  9 07:23 cortx-prep-2.0.0-0.sh
+      drwxr-xr-x   2 root root      4096 Apr  9 07:24 iso
       drwxr-xr-x 198 root root      4096 Apr  9 07:23 python_deps
       -rw-r--r--   1 root root 240751885 Apr  9 07:23 python-deps-1.0.0-0.tar.gz
       -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz

@@ -58,7 +58,12 @@ The procedure to install CORTX on OVA is mentioned below.
       <summary><a>Expand</a></summary>
 
    You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens32, ens33 and ens34:
-
+   
+   **Note:** 
+   
+   - The Network Device names may not be the exact same as listed above, for example, enp0s8, enp0s9, enp0s17 instead of enp0s3, enp0s8, enp0s9.
+   - As the network is setup using DHCP, IP changes are bound to happen during restart, static IP configuration could be harder to maintain as it may not work for different VM with different network setups. 
+   
    #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
 
       * **ip a l**
@@ -304,6 +309,7 @@ Restart CORTX
    </details>
    
 Tested by:
+
 - May 10, 2021: Shiji Zhang (shiji.zhang@tusimple.ai) using OVA release 1.0.4 on KVM 5.1
 
 - Apr 30, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 1.0.4 on Vsphere.
