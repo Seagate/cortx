@@ -39,6 +39,9 @@ channel_repo_map = {
   'cortx-dashboard'            : 'cortx-management-portal',
   'cortx-motr-client'          : 'cortx-motr', # might change this to m0client-sample-apps
   'cortx-community-triage'     : 'cortx',
+  'hackathon-general'          : 'cortx',
+  'hackathon-announcements'    : 'cortx',
+  'hackathon-support-and-mentorship'    : 'cortx',
 }
 
 # make a helper function to consolidate all calls to the api 

@@ -95,7 +95,7 @@ def merge(target_login,source_login,people):
     people.update_company(target_login,source.get_company())
   if source.get_type() and not target.get_type():
     print("Trying to transfer type %s" % source.get_type())
-    people.set_type(target_login,source.get_type())
+    people.update_type(target_login,source.get_type())
   if source.get_linkedin() and not target.get_linkedin():
     print("Trying to transfer type %s" % source.get_linkedin())
     people.set_linkedin(target_login,source.get_linkedin())
