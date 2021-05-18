@@ -41,8 +41,10 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    # Cortx Pre-requisites
    yum install --nogpgcheck -y java-1.8.0-openjdk-headless
    yum install --nogpgcheck -y python3 cortx-prereq sshpass
+   
    # Pre-reqs for Provisioner
    yum install --nogpgcheck -y python36-m2crypto salt salt-master salt-minion
+   
    # Provisioner API
    yum install --nogpgcheck -y python36-cortx-prvsnr
 
