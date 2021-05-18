@@ -2,8 +2,8 @@
 
 ### Hardware Specifications - Single-Node VM deployment
 
-- Please create VM(s) with at least 2 CPUs and 5GB of RAM.
-- Ensure the VM is created with total 4 attached disks (raw).
+- Please create VM(s) with at least 2 cores (vCPU) and 4GB of RAM.
+- Ensure the VM is created with minimum 2 attached disks (raw).
 
 NOTE: For single-node VM, the VM node itself is treated as primary node.
 
@@ -48,12 +48,6 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    # Provisioner API
    yum install --nogpgcheck -y python36-cortx-prvsnr
 
-   # Cleanup temporary repos
-   rm -rf /etc/yum.repos.d/*3rd_party*.repo
-   rm -rf /etc/yum.repos.d/*cortx_iso*.repo
-   yum clean all
-   rm -rf /var/cache/yum/
-   rm -rf /etc/pip.conf
    ```
 ### 4. Verify provisioner version (0.36.0 and above)
    ```provisioner --version```
