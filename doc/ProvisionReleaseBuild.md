@@ -3,9 +3,13 @@
 ### Hardware Specifications - Single-Node VM deployment
 
 - Please create VM(s) with at least 2 cores (vCPU) and 4GB of RAM.
-- Ensure the VM is created with minimum 2 attached disks (raw) i.e. /dev/sdb (Data Disk), /dev/sdc (Metadata Disks)
+- Ensure the VM is created with minimum 6 attached disks (raw) per node i.e. /dev/sdb (Data Disk), /dev/sdc (Metadata Disks)
+  - Data Disks - Min 4 Disks per node (Capacity 10G+)
+  - Metadata Disks - Min 2 Disks per node (Capacity - 10% of total Data Disk Size)
 - Ensure the VM is created with minimum 3 network Interfaces
-- Data Disks (10G+), Metadata Disks (10% of Total Data Disk Size)
+  - private interfaces: ens36,ens37 
+  - public interfaces: ens33,ens34
+  - management interfaces: ens33
 
 NOTE: For single-node VM, the VM node itself is treated as primary node.
 
