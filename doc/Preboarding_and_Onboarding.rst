@@ -14,7 +14,7 @@ The preboarding process is the first process that must be completed after config
    <summary><a>Click here to expand the preboarding procedure.</a></summary>
 
 
-1. Open a browser and navigate to the *https://<management IP>:28100/#/preboarding/welcome*.
+1. Open a browser and navigate to the *https://<management IP>:28100/#/preboarding/welcome*
 
    - If you see a message about your connection not being private, it is safe to ignore this message.
 
@@ -42,19 +42,13 @@ The preboarding process is the first process that must be completed after config
 Onboarding
 ===========
 
-**Error and Resolution**: As the Consul service is not running, you will encounter the below depicted error.
 
-.. image:: images/consul.PNG
+The onboarding procedure must be performed after completing the preboarding procedure.  You should be brought automatically to the correct page after completing the preboarding:
 
-To resolve the error, execute the below mentioned commands.
+- If you are not or you want to redo the onboarding, navigate to *https://<management IP>:28100/#/onboarding* 
+- If you logged out navigate to: *https://<management IP>:28100/#/preboarding/login*
 
-::
-
- sed -i '11s/host:/host: 127.0.0.1/' /etc/csm/database.yaml
- 
- systemctl restart csm_agent
-
-The onboarding procedure must be performed after completing the preboarding procedure.  You should be brought automatically to the correct page after completing the preboarding.  If you are not, or if you subsequently want to redo the onboarding, you can navigate to *https://<management IP>:28100/#/onboarding* or, if logged out, through: *https://<management IP>:28100/#/preboarding/login* . You can also perform the onboarding tasks from the **Settings** page.
+You can also perform the onboarding tasks from the **Settings** page.
 
 .. raw:: html
 
@@ -112,3 +106,17 @@ The onboarding procedure must be performed after completing the preboarding proc
    
    </details>
    
+Troubleshooting
+===============
+
+As the Consul service is not running, you will encounter the below depicted error.
+
+   .. image:: images/consul.PNG
+   
+   To resolve the error, execute the below mentioned commands.
+   
+   ::
+   
+    sed -i '11s/host:/host: 127.0.0.1/' /etc/csm/database.yaml
+    
+    systemctl restart csm_agent

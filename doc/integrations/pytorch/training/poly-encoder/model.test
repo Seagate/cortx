@@ -1,0 +1,6 @@
+test:
+    accuracy  bleu-4  clen  ctpb  ctps  ctrunc  ctrunclen  exps  exs  f1  hits@1  hits@10  hits@100  hits@5  llen  \
+           1   .8750 46.88 65.17  2502       0          0  51.2    8   1       1        1         1       1 18.25   
+        loss    lr  ltpb  ltps  ltrunc  ltrunclen  mrr  rank  total_train_updates  tpb  tps  
+   1.281e-06 .0001 24.33 934.4       0          0    1     1                   62 89.5 3437
+

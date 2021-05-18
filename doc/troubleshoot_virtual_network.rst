@@ -24,9 +24,9 @@ If you do not see IP addresses and you are running in a virtual machine hypervis
 
    ::
  
-   ifdown <interface>  # e.g. ifdown ens192 
+   ifdown <interface>  # e.g. ifdown ens192
  
-   ifup <interface>    # e.g. ifup ens192 
+   ifup <interface>    # e.g. ifup ens192
 
    If not, please contact the community and we'll figure it out together.  :relaxed:
 

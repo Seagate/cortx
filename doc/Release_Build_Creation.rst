@@ -18,7 +18,15 @@ Procedure
 
    ::
    
-    cd /root && git clone https://github.com/Seagate/cortx --recursive
+    cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
+    
+#. Checkout codebase from **main** branch for all components. 
+   
+   ::
+   
+      docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=main
+      
+   You can checkout codebase from other branch/TAG for all components using above command. e.g. For **stable** branch replace **main** with **stable**.
    
 #. Create directory to store artifacts. In this procedure, **/var/artifacts** is used. Update **docker run** command accordingly to use an alternative directory.
 
@@ -26,7 +34,7 @@ Procedure
    
     mkdir -p /var/artifacts
 
-#. Build CORTX artifacts using the below mentioned docker. 
+#. Build CORTX artifacts using the below mentioned docker command. 
     **Note:** This step can take over an hour to run. Optionally you can prefix this command with ``time`` to show how long the build took.
 
    ::
@@ -37,7 +45,7 @@ Procedure
 
    ::
    
-    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation.
+    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation
     
    You can also append the **iso_generation** target in **make build** command (step 6).
    
@@ -45,16 +53,16 @@ Procedure
 
    ::
 
-    [root@ssc-vm-1321 opensource-ci]# ll /var/artifacts/0/
-   
-    total 824368
-   
-    drwxr-xr-x 10 root root 4096 Dec 16 05:34 3rd_party
-   
-    drwxr-xr-x 3 root root 4096 Dec 16 05:23 cortx_iso
-   
-    drwxr-xr-x 2 root root 4096 Dec 16 05:49 iso
-    
+    [root@ssc-vm-2699 ~]# ll /var/artifacts/0/
+      total 1060876
+      drwxr-xr-x  12 root root      4096 Apr  9 07:23 3rd_party
+      drwxr-xr-x   3 root root      4096 Apr  9 07:23 cortx_iso
+      -rw-r--r--   1 root root      4395 Apr  9 07:23 cortx-prep-2.0.0-0.sh
+      drwxr-xr-x   2 root root      4096 Apr  9 07:24 iso
+      drwxr-xr-x 198 root root      4096 Apr  9 07:23 python_deps
+      -rw-r--r--   1 root root 240751885 Apr  9 07:23 python-deps-1.0.0-0.tar.gz
+      -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz
+          
 #. To list individual component targets, execute the below mentioned command.
  
    ::
@@ -102,6 +110,12 @@ Procedure
         
         iso_generation: generate ISO file from release build.
         
+#. Follow this `Guide <Provision Release Build.md>`_ to run your build.
+
 Tested by:
 
+- May 10, 2021: Christina Ku (christina.ku@seagate.com) on VM "CentOS 7.8.2003 x86_64".
+- May 7, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Pro.
+- Apr 6, 2021: Harrison Seow (harrison.seow@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Player.
 - Feb 12, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation Pro 16.
+- April 06, 2021: Vaibhav Paratwar (vaibhav.paratwar@seagate.com) on VM "LDRr1 - 2x CentOS 7.8 Shared Disks-20210329-232113"
