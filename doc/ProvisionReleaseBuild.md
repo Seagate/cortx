@@ -2,7 +2,7 @@
 
 ### Hardware Specifications - Single-Node VM deployment
 
-- Please create VM(s) with at least 1 node, 2 cores (vCPU) and 4GB of RAM.
+- Please create VM(s) with at least 1 Node, 2 cores (vCPU) and 4GB of RAM.
 - Ensure the VM is created with minimum 4 attached disks (raw) per node i.e. /dev/sdb (Data Disk), /dev/sdc (Metadata Disks)
   - Data Disks - Min 2 Disks per node (Capacity 10G+)
   - Metadata Disks - Min 2 Disks per node (Capacity - 10% of total Data Disk Size)
