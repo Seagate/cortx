@@ -2,7 +2,9 @@
 [![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/cortx/blob/main/LICENSE)
 [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://cortx.link/join-slack)
 [![YouTube](https://img.shields.io/badge/Video-YouTube-red)](https://cortx.link/videos)
+[![Latest Release](https://img.shields.io/github/v/release/Seagate/cortx?style=flat)](https://github.com/seagate/cortx/releases/latest)
 [![GitHub contributors](https://img.shields.io/github/contributors/Seagate/cortx)](https://github.com/Seagate/cortx/graphs/contributors/)
+
 <!-- ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg) -->
 
 <img src="../main/doc/images/cortx-logo.png?raw=true">
