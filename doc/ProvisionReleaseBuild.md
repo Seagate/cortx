@@ -1,5 +1,12 @@
 # Provision Release Build
 
+# Hardware Specifications - Single-Node VM deployment
+
+- Please create VM(s) with at least 2 CPUs and 5GB of RAM.
+- Ensure the VM is created with total 4 attached disks (raw).
+
+NOTE: For single-node VM, the VM node itself is treated as primary node.
+
 You will need to complete this [guide](https://github.com/Seagate/cortx/blob/main/doc/Release_Build_Creation.rst) before moving onto the steps below.
 
 ### 1.  Change Hostname
@@ -141,6 +148,7 @@ Follow this [guide](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_a
 
 ## Tested by:
 
+- May 18, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - May 12, 2021: Christina Ku (christina.ku@seagate.com) on VM "LDRr2 - CentOS 7.8-20210511-221524" with 2 disks.
 - Jan 6, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
    
