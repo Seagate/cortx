@@ -1,6 +1,6 @@
 # Provision Release Build
 
-# Hardware Specifications - Single-Node VM deployment
+### Hardware Specifications - Single-Node VM deployment
 
 - Please create VM(s) with at least 2 CPUs and 5GB of RAM.
 - Ensure the VM is created with total 4 attached disks (raw).
