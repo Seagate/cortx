@@ -8,7 +8,7 @@ This file consists of the procedure that should be followed to generate the rele
 Procedure
 ***************
 
-#. Setup a CentOS 7.8.2003 system.
+#. Setup a `CentOS 7.8.2003 <http://isoredirect.centos.org/centos/7/isos/x86_64/>`_ system.
 
    - You can use a Virtual Machine (VM) also.
    
@@ -113,7 +113,7 @@ Procedure
 #. Follow this `Guide <Provision Release Build.md>`_ to run your build.
 
 Tested by:
-
+- May 19, 2021: Justin Woo (justin.woo@seagate.com) on  "CentOS 7.8.2003 x86_64" VM running on a Windows 10 Desktop running VMware Workstation 16 Pro.
 - May 10, 2021: Christina Ku (christina.ku@seagate.com) on VM "CentOS 7.8.2003 x86_64".
 - May 7, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Pro.
 - Apr 6, 2021: Harrison Seow (harrison.seow@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Player.
