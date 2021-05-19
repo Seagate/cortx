@@ -8,7 +8,7 @@ This file consists of the procedure that should be followed to generate the rele
 Procedure
 ***************
 
-#. Setup a `CentOS 7.8.2003 <http://isoredirect.centos.org/centos/7/isos/x86_64/>`_ system.
+#. Setup a `CentOS 7.8.2003 <http://isoredirect.centos.org/centos/7.8.2003/isos/x86_64/>`_ system.
 
    - You can use a Virtual Machine (VM) also.
    
