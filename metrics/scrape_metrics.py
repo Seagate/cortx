@@ -457,6 +457,7 @@ def collect_stats(gh,org_name,update,prefix,top_only,showonly):
     return
 
   for repo in repos:
+    retries = 1
     while True: # add a while loop since we are always failing and it would be good to run successfully more often
       try:
         local_stats = copy.deepcopy(local_stats_template) # get an empty copy of the stats structure
@@ -487,6 +488,10 @@ def collect_stats(gh,org_name,update,prefix,top_only,showonly):
         persistent_stats.print_repo(rname,local_stats,date=today,verbose=False,csv=False)
         break
       except Exception as e:
+        retries += 1
+        if retries > 5:
+          print("Tried multiple times but failed.  Cowardly no longer attempting")
+          break
         print("WTF: Failed while getting stats for repo %s" % repo.name, e)
         avoid_rate_limiting(gh,Verbose=True)
 
