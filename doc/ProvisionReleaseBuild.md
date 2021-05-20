@@ -10,7 +10,10 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 
 ### 2. Disable SElinux
 
-- ```sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config```
+```
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+```
+- Reboot the VM `reboot` 
 
 ### 3. Install Provisioner API
    
