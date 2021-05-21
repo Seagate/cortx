@@ -1,6 +1,8 @@
-### VM Specifications - Single-Node VM deployment
+# VM Specifications - Single-Node VM deployment
 
-- Please create VM(s) with at least 1 Node, 2 cores (vCPU) and 4GB of RAM.
+### Pre-requisite:
+
+- Please create VM(s) with at least 2 cores (vCPU) and 4GB of RAM.
 - Ensure the VM is created with minimum 6 attached disks (raw) per node i.e. /dev/sdb (Data Disk), /dev/sdc (Metadata Disks)
 
   - Data Disks - Min 4 Disks per node (Capacity 10G+)
