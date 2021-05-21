@@ -140,7 +140,7 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: ./cortx-js-sdk/README.md
 
-.. |Slack-Bot| image:: https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/logo750x500.png
+.. |Slack-Bot| image:: https://user-images.githubusercontent.com/2047294/118882535-8846de00-b8b1-11eb-863a-74b409affdff.png
    :width: 1 em
    :target: cortx-s3-slack-bot.md
 
