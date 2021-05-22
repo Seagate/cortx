@@ -50,7 +50,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
    
 ### 5. Create the config.ini file
 
-Note: You can find the devices on your node by running below command to update in config.ini
+*Note:* You can find the devices on your node by running below command to update in config.ini
     
     device_list=$(lsblk -nd -o NAME -e 11|grep -v sda|sed 's|sd|/dev/sd|g'|paste -s -d, -)
 
