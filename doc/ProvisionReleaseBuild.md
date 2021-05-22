@@ -1,4 +1,4 @@
-# Provision Release Build
+# Deploy Cortx Community Release Build
 
 You will need to complete this [guide](https://github.com/Seagate/cortx/blob/main/doc/Release_Build_Creation.rst) before moving onto the steps below.
 
@@ -38,22 +38,28 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
    # Cortx Pre-requisites
    yum install --nogpgcheck -y java-1.8.0-openjdk-headless
    yum install --nogpgcheck -y python3 cortx-prereq sshpass
+   
    # Pre-reqs for Provisioner
    yum install --nogpgcheck -y python36-m2crypto salt salt-master salt-minion
+   
    # Provisioner API
    yum install --nogpgcheck -y python36-cortx-prvsnr
-
-   # Cleanup temporary repos
-   rm -rf /etc/yum.repos.d/*3rd_party*.repo
-   rm -rf /etc/yum.repos.d/*cortx_iso*.repo
-   yum clean all
-   rm -rf /var/cache/yum/
-   rm -rf /etc/pip.conf
    ```
 ### 4. Verify provisioner version (0.36.0 and above)
    ```provisioner --version```
    
 ### 5. Create the config.ini file
+
+Note: You can find the devices on your node by running below command to update in config.ini
+    
+    device_list=$(lsblk -nd -o NAME -e 11|grep -v sda|sed 's|sd|/dev/sd|g'|paste -s -d, -)
+
+  - Values for storage.cvg.0.metadata_devices:
+    echo ${device_list%%,*}
+
+  - Values for storage.cvg.0.data_devices:
+    echo ${device_list#*,}
+    
    `vi ~/config.ini`
    - Paste the code below into the config file replacing your network interface names with ens33,..ens37 and storage disks with /dev/sdc,/dev/sdb
    ```
@@ -134,6 +140,13 @@ provisioner confstore_export
 systemctl stop firewalld
 systemctl disable firewalld
 ```
+
+## Cleanup temporary repos
+   rm -rf /etc/yum.repos.d/*3rd_party*.repo
+   rm -rf /etc/yum.repos.d/*cortx_iso*.repo
+   yum clean all
+   rm -rf /var/cache/yum/
+   rm -rf /etc/pip.conf
 
 
 ## Usage:
