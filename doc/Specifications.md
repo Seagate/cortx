@@ -10,7 +10,7 @@
 
 Note: You can find the devices on node using the below command to update in config.ini section,
     
-    ```device_list=$(lsblk -nd -o NAME -e 11|grep -v sda|sed 's|sd|/dev/sd|g'|paste -s -d, -)```
+    device_list=$(lsblk -nd -o NAME -e 11|grep -v sda|sed 's|sd|/dev/sd|g'|paste -s -d, -)
 
   - Values for storage.cvg.0.metadata_devices:
     echo ${device_list%%,*}
@@ -25,4 +25,4 @@ Note: You can find the devices on node using the below command to update in conf
 
 Note: You can find the interfaces as per your setup by running,
 
-    ```firewall-cmd --get-active-zones```
+    firewall-cmd --get-active-zones
