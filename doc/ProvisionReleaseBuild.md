@@ -46,7 +46,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
    yum install --nogpgcheck -y python36-cortx-prvsnr
    ```
 ### 4. Verify provisioner version (0.36.0 and above)
-   ```provisioner --version```
+    provisioner --version
    
 ### 5. Create the config.ini file
 
@@ -60,7 +60,8 @@ Note: You can find the devices on your node by running below command to update i
   - Values for storage.cvg.0.data_devices:
     echo ${device_list#*,}
     
-   `vi ~/config.ini`
+    vi ~/config.ini
+    
    - Paste the code below into the config file replacing your network interface names with ens33,..ens37 and storage disks with /dev/sdc,/dev/sdb
    ```
    [srvnode_default]
@@ -69,7 +70,7 @@ Note: You can find the devices on your node by running below command to update i
    network.mgmt.interfaces=ens33
    bmc.user=None
    bmc.secret=None
-   storage.cvg.0.data_devices=/dev/sdc
+   storage.cvg.0.data_devices=/dev/sdc,/dev/sdd,/dev/sde,/dev/sdf
    storage.cvg.0.metadata_devices=/dev/sdb
    network.data.private_ip=None
 
@@ -142,12 +143,13 @@ systemctl disable firewalld
 ```
 
 ## Cleanup temporary repos
-   rm -rf /etc/yum.repos.d/*3rd_party*.repo
-   rm -rf /etc/yum.repos.d/*cortx_iso*.repo
-   yum clean all
-   rm -rf /var/cache/yum/
-   rm -rf /etc/pip.conf
-
+```
+rm -rf /etc/yum.repos.d/*3rd_party*.repo
+rm -rf /etc/yum.repos.d/*cortx_iso*.repo
+yum clean all
+rm -rf /var/cache/yum/
+rm -rf /etc/pip.conf
+```
 
 ## Usage:
 
