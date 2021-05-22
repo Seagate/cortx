@@ -172,6 +172,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
     ```
 
 ## Cleanup temporary repos
+
     ```
     rm -rf /etc/yum.repos.d/*3rd_party*.repo
     rm -rf /etc/yum.repos.d/*cortx_iso*.repo
