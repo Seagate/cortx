@@ -61,7 +61,7 @@ Note: You can find the devices on your node by running below command to update i
     echo ${device_list#*,}
     
     
-   `vi ~/config.ini`
+    vi ~/config.ini
     
    - Paste the code below into the config file replacing your network interface names with ens33,..ens37 and storage disks with /dev/sdc,/dev/sdb
    ```
