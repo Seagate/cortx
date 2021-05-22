@@ -1,16 +1,30 @@
-=======================
-Release Build Creation
-=======================
+==================================
+Cortx Stack Release Build Creation
+==================================
 
 This file consists of the procedure that should be followed to generate the release build outside the Seagate network using `cortx-build <https://github.com/orgs/Seagate/packages/container/package/cortx-build>`_ docker image. 
+
+*****************************************
+Specifications to setup Virtual Machine
+*****************************************
+
+- Single-Node VM deployment
+
+  - Please create VM(s) with at least 2 cores (vCPU) and 4GB of RAM.
+  - Ensure the VM is created with minimum of total 6 attached disks (where 5 should be raw disks) per node
+
+    - Data Disks - Min 4 Disks per node (Capacity 10G+)
+    - Metadata Disks - Min 2 Disks per node (Capacity - 10% of total Data Disk Size)
+  - Ensure the VM is created with minimum 3 network Interfaces
+  
+*Note:* Raw disks should be added in your hypervisor once CentOS 7.8 is installed
+
 
 ***************
 Procedure
 ***************
 
-#. Setup a `CentOS 7.8.2003 <http://isoredirect.centos.org/centos/7.8.2003/isos/x86_64/>`_ system.
-
-   - You can use a Virtual Machine (VM) also.
+#. Setup a `CentOS 7.8.2003 <http://isoredirect.centos.org/centos/7.8.2003/isos/x86_64/>`_ system in Virtual Machine (VM).
    
 #. Install the docker packages in the system or VM. Refer to `Docker Installation <https://docs.docker.com/engine/install/centos/>`_.
 
@@ -62,6 +76,10 @@ Procedure
       drwxr-xr-x 198 root root      4096 Apr  9 07:23 python_deps
       -rw-r--r--   1 root root 240751885 Apr  9 07:23 python-deps-1.0.0-0.tar.gz
       -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz
+      
+=======================================
+Cortx Components Release Build Creation
+=======================================
           
 #. To list individual component targets, execute the below mentioned command.
  
@@ -112,7 +130,7 @@ Procedure
         
 #. Follow this `Guide <Provision Release Build.md>`_ to run your build.
 
-Tested by:
+*Tested by:*
 
 - May 19, 2021: Justin Woo (justin.woo@seagate.com) on a Windows 10 Desktop running VMware Workstation 16 Pro.
 - May 10, 2021: Christina Ku (christina.ku@seagate.com) on VM "CentOS 7.8.2003 x86_64".
