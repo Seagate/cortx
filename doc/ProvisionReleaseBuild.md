@@ -60,7 +60,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
    ```
   - Values for storage.cvg.0.data_devices:
    ``` 
-   echo ${device_list#*,}
+    echo ${device_list#*,}
    ``` 
     
     vi ~/config.ini
