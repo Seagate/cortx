@@ -166,20 +166,19 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 
 ## Disable the Firewall
 
-    ```
+```
     systemctl stop firewalld
     systemctl disable firewalld
-    ```
+```
 
 ## Cleanup temporary repos
-
-    ```
+```
     rm -rf /etc/yum.repos.d/*3rd_party*.repo
     rm -rf /etc/yum.repos.d/*cortx_iso*.repo
     yum clean all
     rm -rf /var/cache/yum/
     rm -rf /etc/pip.conf
-    ```
+```
 
 ## Usage:
 
