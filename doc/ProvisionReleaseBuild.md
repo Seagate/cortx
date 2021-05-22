@@ -65,7 +65,7 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
     
     vi ~/config.ini
     
-   - Paste the code below into the config file replacing your network interface names with ens33,..ens37 and storage disks with /dev/sdc,/dev/sdb
+   - Paste the code below into the config file replacing your network interface names with ens33,..ens37 and storage disks with /dev/sdb,../dev/sdf
    ```
    [srvnode_default]
    network.data.private_interfaces=ens34, ens35
