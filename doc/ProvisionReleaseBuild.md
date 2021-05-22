@@ -61,8 +61,12 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
   - Values for storage.cvg.0.data_devices:
    ``` 
     echo ${device_list#*,}
-   ``` 
-    
+   ```
+  - You can find the interfaces as per zones defined in your setup by running,
+   ```
+    firewall-cmd --get-active-zones
+   ```
+   
     vi ~/config.ini
     
    - Paste the code below into the config file replacing your network interface names with ens33,..ens37 and storage disks with /dev/sdb,../dev/sdf
