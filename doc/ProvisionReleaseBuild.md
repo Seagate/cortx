@@ -8,7 +8,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    ```
    sudo hostnamectl set-hostname deploy-test.cortx.com
    ```
-   - Please use this hostname to make reduce issues further on in the process.
+   - Please use this hostname to avoid issues further in the bootstrap process.
    - Make sure the hostname is changed by running `hostname -f`
  
 - Disable SElinux by running,
