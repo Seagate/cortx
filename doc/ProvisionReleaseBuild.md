@@ -21,7 +21,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    ```   
 - Reboot your VM by running `reboot` command 
 
-### Procedure
+## Procedure
 
 ### 1. Install Provisioner API and requisite packages
    ```
@@ -109,41 +109,42 @@ provisioner confstore_export
 ```
 
 ## Non-Cortx Group: System & 3rd-Party Softwares
-### 1. Non-Cortx Group: System & 3rd-Party Softwares
+
+- ### Non-Cortx Group: System & 3rd-Party Softwares
 
 ```provisioner deploy_vm --setup-type single --states system```
 
-### 2. Prereq component group
+- ### Prereq component group
 
 ``` provisioner deploy_vm --setup-type single --states prereq ```
 
 ## Cortx Group: Utils, IO Path & Control Path
 
-### 1. Utils component
+- ### Utils component
 
 ``` provisioner deploy_vm --setup-type single --states utils ```
 
-### 2. IO path component group
+- ### IO path component group
 
 ``` provisioner deploy_vm --setup-type single --states iopath ```
 
-### 3. Control path component group
+- ### Control path component group
 
 ``` provisioner deploy_vm --setup-type single --states controlpath ```
 
 ## Cortx Group: HA
 
-### 1. HA component group
+- ### HA component group
 
 ``` provisioner deploy_vm --setup-type single --states ha ```
 
 ## Start cluster (irrespective of number of nodes):
 
-### 1. Execute the following command on primary node to start the cluster:
+- ### Execute the following command on primary node to start the cluster:
 
 ``` cortx cluster start ```
 
-### 2. Verify Cortx cluster status:
+- ### Verify Cortx cluster status:
 
 ``` hctl status ```
 
