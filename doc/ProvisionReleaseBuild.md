@@ -102,67 +102,83 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
     --config-path ~/config.ini --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
    ```
 ### 5. Prepare Pillar Data
-```
-provisioner configure_setup ./config.ini 1
-salt-call state.apply components.system.config.pillar_encrypt
-provisioner confstore_export
-```
+   ```
+    provisioner configure_setup ./config.ini 1
+    salt-call state.apply components.system.config.pillar_encrypt
+    provisioner confstore_export
+   ```
 
 ## Non-Cortx Group: System & 3rd-Party Softwares
 
 - ### Non-Cortx Group: System & 3rd-Party Softwares
 
-```provisioner deploy_vm --setup-type single --states system```
+    ```
+    provisioner deploy_vm --setup-type single --states system
+    ```
 
 - ### Prereq component group
 
-``` provisioner deploy_vm --setup-type single --states prereq ```
+    ```
+    provisioner deploy_vm --setup-type single --states prereq
+    ```
 
 ## Cortx Group: Utils, IO Path & Control Path
 
 - ### Utils component
 
-``` provisioner deploy_vm --setup-type single --states utils ```
+    ```
+    provisioner deploy_vm --setup-type single --states utils
+    ```
 
 - ### IO path component group
 
-``` provisioner deploy_vm --setup-type single --states iopath ```
+    ```
+    provisioner deploy_vm --setup-type single --states iopath
+    ```
 
 - ### Control path component group
 
-``` provisioner deploy_vm --setup-type single --states controlpath ```
+    ```
+    provisioner deploy_vm --setup-type single --states controlpath
+    ```
 
 ## Cortx Group: HA
 
 - ### HA component group
 
-``` provisioner deploy_vm --setup-type single --states ha ```
+    ```
+    provisioner deploy_vm --setup-type single --states ha
+    ```
 
 ## Start cluster (irrespective of number of nodes):
 
 - ### Execute the following command on primary node to start the cluster:
 
-``` cortx cluster start ```
+    ```
+    cortx cluster start
+    ```
 
 - ### Verify Cortx cluster status:
 
-``` hctl status ```
+    ```
+    hctl status
+    ```
 
 ## Disable the Firewall
 
-```
-systemctl stop firewalld
-systemctl disable firewalld
-```
+    ```
+     systemctl stop firewalld
+     systemctl disable firewalld
+    ```
 
 ## Cleanup temporary repos
-```
-rm -rf /etc/yum.repos.d/*3rd_party*.repo
-rm -rf /etc/yum.repos.d/*cortx_iso*.repo
-yum clean all
-rm -rf /var/cache/yum/
-rm -rf /etc/pip.conf
-```
+    ```
+     rm -rf /etc/yum.repos.d/*3rd_party*.repo
+     rm -rf /etc/yum.repos.d/*cortx_iso*.repo
+     yum clean all
+     rm -rf /var/cache/yum/
+     rm -rf /etc/pip.conf
+    ```
 
 ## Usage:
 
