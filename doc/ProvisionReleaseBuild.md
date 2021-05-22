@@ -60,7 +60,8 @@ Note: You can find the devices on your node by running below command to update i
   - Values for storage.cvg.0.data_devices:
     echo ${device_list#*,}
     
-    vi ~/config.ini
+    
+   `vi ~/config.ini`
     
    - Paste the code below into the config file replacing your network interface names with ens33,..ens37 and storage disks with /dev/sdc,/dev/sdb
    ```
@@ -70,7 +71,11 @@ Note: You can find the devices on your node by running below command to update i
    network.mgmt.interfaces=ens33
    bmc.user=None
    bmc.secret=None
+   
+   #data devices
    storage.cvg.0.data_devices=/dev/sdc,/dev/sdd,/dev/sde,/dev/sdf
+   
+   #metadata devices
    storage.cvg.0.metadata_devices=/dev/sdb
    network.data.private_ip=None
 
@@ -160,6 +165,7 @@ Follow this [guide](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_a
 
 ## Tested by:
 
+- May 20 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - May 12, 2021: Christina Ku (christina.ku@seagate.com) on VM "LDRr2 - CentOS 7.8-20210511-221524" with 2 disks.
 - Jan 6, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
    
