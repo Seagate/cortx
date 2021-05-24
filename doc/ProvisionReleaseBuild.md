@@ -3,14 +3,18 @@
 You will need to complete this [guide](https://github.com/Seagate/cortx/blob/main/doc/Release_Build_Creation.rst) before moving onto the steps below.
 
 ### 1.  Change Hostname
-   ```sudo hostnamectl set-hostname deploy-test.cortx.com```
+   ```
+   sudo hostnamectl set-hostname deploy-test.cortx.com
+   ```
    - Please use this hostname to make reduce issues further on in the process.
    - Make sure the hostname is changed by running `hostname -f`
-   - Reboot the VM `reboot`
-
+  
 ### 2. Disable SElinux
 
-- ```sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config```
+```
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+```
+- Reboot the VM  by running `reboot` 
 
 ### 3. Install Provisioner API
    
