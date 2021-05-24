@@ -83,14 +83,14 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    - Paste the code below into the config file replacing your network interface names with ens33,..ens37 and storage disks with /dev/sdb,../dev/sdf
    ```
    [srvnode_default]
-   network.data.private_interfaces=ens34, ens35
-   network.data.public_interfaces=ens36, ens37
+   network.data.private_interfaces=ens38
+   network.data.public_interfaces=ens37
    network.mgmt.interfaces=ens33
    bmc.user=None
    bmc.secret=None
    
    #data devices
-   storage.cvg.0.data_devices=/dev/sdc,/dev/sdd,/dev/sde,/dev/sdf
+   storage.cvg.0.data_devices=/dev/sdc
    
    #metadata devices
    storage.cvg.0.metadata_devices=/dev/sdb
