@@ -1,6 +1,6 @@
-==================================
-Cortx Stack Release Build Creation
-==================================
+===========================
+Compile & Build Cortx Stack
+===========================
 
 This file consists of the procedure that should be followed to generate the release build outside the Seagate network using `cortx-build <https://github.com/orgs/Seagate/packages/container/package/cortx-build>`_ docker image. 
 
