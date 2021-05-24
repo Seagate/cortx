@@ -21,14 +21,14 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    ```   
 - Reboot your VM by running `reboot` command
 
-### Cleanup temporary repos
-    ```
+- Cleanup temporary repos
+   ```
     rm -rf /etc/yum.repos.d/*3rd_party*.repo
     rm -rf /etc/yum.repos.d/*cortx_iso*.repo
     yum clean all
     rm -rf /var/cache/yum/
     rm -rf /etc/pip.conf
-    ```
+   ```
 
 ## Procedure
 
