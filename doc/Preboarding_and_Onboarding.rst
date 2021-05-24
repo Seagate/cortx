@@ -80,7 +80,7 @@ You can also perform the onboarding tasks from the **Settings** page.
 #. Enter the NTP server address in the text box and select the NTP time zone offset from the drop-down menu. Then, click **Continue**.
    Multiple entries must be separated by comma.
 
-   - If you don't know your NTP server, ntp-b.nist.gov will usually work.
+   - If you don't know your NTP server, ntp-b.nist.gov will usually work. To use another NTP server, visit `https://tf.nist.gov/tf-cgi/servers.cgi <https://tf.nist.gov/tf-cgi/servers.cgi>`_
    
    .. image:: images/NTP.PNG
 

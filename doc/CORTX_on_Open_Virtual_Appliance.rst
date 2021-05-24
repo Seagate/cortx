@@ -20,7 +20,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download the `cortx-va-1.0.3.ova <https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. This contains the virtual machine image.
+#. Download the `CORTX OVA <https://github.com/Seagate/cortx/releases/>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -32,7 +32,9 @@ The procedure to install CORTX on OVA is mentioned below.
    * Password: opensource!
 
 #. Become the **root** user by running this:
+   
    ::
+   
      sudo su -
    
 #. Change the hostname by running the following command:
@@ -51,18 +53,13 @@ The procedure to install CORTX on OVA is mentioned below.
 
 #. **For Oracle VM VirtualBox Users ONLY**:
    
-   
-   .. raw:: html
-
-      <details>
-      <summary><a>Expand</a></summary>
-
    You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens32, ens33 and ens34:
    
-   **Note:** 
+      **Note:** 
+      
+         - The Network Device names may not be the exact same as listed above, for example, enp0s8, enp0s9, enp0s17 instead of enp0s3, enp0s8, enp0s9.
+         - As the network is setup using DHCP, IP changes are bound to happen during restart, static IP configuration could be harder to maintain as it may not work for different VM with different network setups. 
    
-   - The Network Device names may not be the exact same as listed above, for example, enp0s8, enp0s9, enp0s17 instead of enp0s3, enp0s8, enp0s9.
-   - As the network is setup using DHCP, IP changes are bound to happen during restart, static IP configuration could be harder to maintain as it may not work for different VM with different network setups. 
    
    #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
 
@@ -79,7 +76,9 @@ The procedure to install CORTX on OVA is mentioned below.
       * **vi ifcfg-ens34**
 
       Sample output **cat ifcfg-ens34**:
+      
       ::
+      
          DEVICE="ens34"
          USERCTL="no"
          TYPE="Ethernet"
@@ -109,23 +108,57 @@ The procedure to install CORTX on OVA is mentioned below.
 
       * **date --set "-4hours -30minutes"**
 
-   .. raw:: html
-
-      </details>
 
 #. Start the CORTX services by running this bootstrap.sh script:
+   
    ::
-     sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
+   
+      sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
      
    Run the bootstrap script to ensure all the necessary services are operational.
    
 #. **Before you begin:**
    
    - Ensure that you have configured your ipv4 network.
+
       - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
+
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
+
       - Once you select an NIC, ensure that you do not have conflicting NICs selected. 
       
+#. If you want to configure the static IPs:
+
+   - For Management Network static IP, run the following command:
+
+      ::
+
+         # Set Management Network
+         provisioner pillar_set "cluster/srvnode-1/network/mgmt_nw/public_ip_addr" \"<IP address for management network>\"
+         provisioner pillar_set "cluster/srvnode-1/network/mgmt_nw/netmask" \"<Netmask for management network>\"
+         provisioner pillar_set "cluster/srvnode-1/network/mgmt_nw/gateway" \"<IP address for management network gateway>\"
+         salt-call state.apply components.system.network.mgmt.public
+
+      .. image:: images/OVAStaticIP.png
+
+   - For Data Network static IP, run the following command:
+
+      ::
+      
+         # Set Data Network
+         provisioner pillar_set "cluster/srvnode-1/network/data_nw/public_ip_addr" \"<IP address for public network>\"
+         provisioner pillar_set "cluster/srvnode-1/network/data_nw/netmask" \"<Netmask for public data network>\"
+         salt-call state.apply components.system.network.data.public
+
+      .. image:: images/OVAStaticIP_Public.png
+
+**Note:** To verify the static IPs are configured, run the following command:
+
+   ::
+
+      cat /etc/sysconfig/network-scripts/ifcfg-ens32 |grep -Ei "ip|netmask|gateway"
+      cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
+
 #. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
    
    ::
@@ -167,7 +200,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
 
-    systemctl start|restart <service_name>
+      systemctl start|restart <service_name>
 
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
@@ -182,15 +215,15 @@ The procedure to install CORTX on OVA is mentioned below.
 
    ::
    
-   sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
+      sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
 
-    * The script performs several operations on S3 API and LDAP backend:
+      * The script performs several operations on S3 API and LDAP backend:
 
-      * create account
-      * create user
-      * create bucket
-      * put object
-      * delete all the above in reverse order
+         * create account
+         * create user
+         * create bucket
+         * put object
+         * delete all the above in reverse order
       
    
 #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
