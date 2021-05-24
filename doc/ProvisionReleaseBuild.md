@@ -19,7 +19,16 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    ```
    export CORTX_RELEASE_REPO="file:///var/artifacts/0"
    ```   
-- Reboot your VM by running `reboot` command 
+- Reboot your VM by running `reboot` command
+
+### Cleanup temporary repos
+    ```
+    rm -rf /etc/yum.repos.d/*3rd_party*.repo
+    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
+    yum clean all
+    rm -rf /var/cache/yum/
+    rm -rf /etc/pip.conf
+    ```
 
 ## Procedure
 
@@ -46,6 +55,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    # Provisioner API
    yum install --nogpgcheck -y python36-cortx-prvsnr
    ```
+
 ### 2. Verify provisioner version (0.36.0 and above)
     provisioner --version
    
@@ -169,15 +179,6 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 ```
     systemctl stop firewalld
     systemctl disable firewalld
-```
-
-## Cleanup temporary repos
-```
-    rm -rf /etc/yum.repos.d/*3rd_party*.repo
-    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
-    yum clean all
-    rm -rf /var/cache/yum/
-    rm -rf /etc/pip.conf
 ```
 
 ## Usage:
