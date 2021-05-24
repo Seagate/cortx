@@ -1,4 +1,4 @@
-# Deploy Cortx Stack Release Build
+# Deploy Cortx Stack Build
 
 You will need to complete this [guide](https://github.com/Seagate/cortx/blob/main/doc/Release_Build_Creation.rst) before moving onto the steps below.
 
