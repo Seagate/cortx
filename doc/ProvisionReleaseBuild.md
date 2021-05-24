@@ -30,7 +30,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
     rm -rf /etc/pip.conf
    ```
 
-## Procedure
+## Procedure for VM Deployment Steps
 
 ### 1. Install Provisioner API and requisite packages
    ```
