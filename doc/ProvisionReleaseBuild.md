@@ -112,6 +112,8 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
     --config-path ~/config.ini --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
    ```
 ### 5. Prepare Pillar Data
+
+Update data from config.ini into Salt pillar. Export pillar data to provisioner_cluster.json
    ```
     provisioner configure_setup ./config.ini 1
     salt-call state.apply components.system.config.pillar_encrypt
@@ -120,13 +122,13 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 
 ## Non-Cortx Group: System & 3rd-Party Softwares
 
-- ### Non-Cortx Group: System & 3rd-Party Softwares
+- ### System components:
 
    ```
    provisioner deploy_vm --setup-type single --states system
    ```
 
-- ### Prereq component group
+- ### 3rd-Party components:
 
    ```
    provisioner deploy_vm --setup-type single --states prereq
@@ -134,19 +136,19 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 
 ## Cortx Group: Utils, IO Path & Control Path
 
-- ### Utils component
+- ### Utils component:
 
    ```
    provisioner deploy_vm --setup-type single --states utils
    ```
 
-- ### IO path component group
+- ### iopath components:
 
    ```
    provisioner deploy_vm --setup-type single --states iopath
    ```
 
-- ### Control path component group
+- ### Controlpath components:
 
    ```
    provisioner deploy_vm --setup-type single --states controlpath
@@ -154,13 +156,13 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 
 ## Cortx Group: HA
 
-- ### HA component group
+- ### HA components:
 
    ```
    provisioner deploy_vm --setup-type single --states ha
    ```
 
-## Start cluster (irrespective of number of nodes):
+## Start cortx cluster (irrespective of number of nodes):
 
 - ### Execute the following command on primary node to start the cluster:
 
@@ -168,18 +170,11 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    cortx cluster start
    ```
 
-- ### Verify Cortx cluster status:
+- ### Verify cortx cluster status:
 
    ```
    hctl status
    ```
-
-## Disable the Firewall
-
-```
-   systemctl stop firewalld
-   systemctl disable firewalld
-```
 
 ## Usage:
 
