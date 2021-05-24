@@ -122,63 +122,63 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 
 - ### Non-Cortx Group: System & 3rd-Party Softwares
 
-    ```
-    provisioner deploy_vm --setup-type single --states system
-    ```
+   ```
+   provisioner deploy_vm --setup-type single --states system
+   ```
 
 - ### Prereq component group
 
-    ```
-    provisioner deploy_vm --setup-type single --states prereq
-    ```
+   ```
+   provisioner deploy_vm --setup-type single --states prereq
+   ```
 
 ## Cortx Group: Utils, IO Path & Control Path
 
 - ### Utils component
 
-    ```
-    provisioner deploy_vm --setup-type single --states utils
-    ```
+   ```
+   provisioner deploy_vm --setup-type single --states utils
+   ```
 
 - ### IO path component group
 
-    ```
-    provisioner deploy_vm --setup-type single --states iopath
-    ```
+   ```
+   provisioner deploy_vm --setup-type single --states iopath
+   ```
 
 - ### Control path component group
 
-    ```
-    provisioner deploy_vm --setup-type single --states controlpath
-    ```
+   ```
+   provisioner deploy_vm --setup-type single --states controlpath
+   ```
 
 ## Cortx Group: HA
 
 - ### HA component group
 
-    ```
-    provisioner deploy_vm --setup-type single --states ha
-    ```
+   ```
+   provisioner deploy_vm --setup-type single --states ha
+   ```
 
 ## Start cluster (irrespective of number of nodes):
 
 - ### Execute the following command on primary node to start the cluster:
 
-    ```
-    cortx cluster start
-    ```
+   ```
+   cortx cluster start
+   ```
 
 - ### Verify Cortx cluster status:
 
-    ```
-    hctl status
-    ```
+   ```
+   hctl status
+   ```
 
 ## Disable the Firewall
 
 ```
-    systemctl stop firewalld
-    systemctl disable firewalld
+   systemctl stop firewalld
+   systemctl disable firewalld
 ```
 
 ## Usage:
