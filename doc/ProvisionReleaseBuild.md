@@ -80,11 +80,11 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    
     vi ~/config.ini
     
-   - Paste the code below into the config file replacing your network interface names with ens33,..ens37 and storage disks with /dev/sdb,../dev/sdf
+   - Paste the code below into the config file replacing your network interface names with ens33,..ens35 and storage disks with /dev/sdb,../dev/sdc
    ```
    [srvnode_default]
-   network.data.private_interfaces=ens38
-   network.data.public_interfaces=ens37
+   network.data.private_interfaces=ens35
+   network.data.public_interfaces=ens34
    network.mgmt.interfaces=ens33
    bmc.user=None
    bmc.secret=None
