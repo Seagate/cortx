@@ -22,7 +22,7 @@ Prerequisites to setup Virtual Machine
     - NIC: 3
     
 - Ensure IP’s have assigned to all NICs. For this deployment interface name is considered as eth33, eth34, and eth35.
-- Ensure system have valid hostname and they are accessible (i.e. ping)
+- Ensure that the system have valid hostname and are accessible using ping.
 
 
 *************************
