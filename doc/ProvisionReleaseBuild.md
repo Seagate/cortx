@@ -30,12 +30,13 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    ```
    sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
    ```
+ 
+ **Note:** Reboot the VM by running `reboot` command after disabling SElinux
+ 
 - Set repository URL
    ```
    export CORTX_RELEASE_REPO="file:///var/artifacts/0"
    ```
-**Note:** Reboot the VM by running `reboot` command after disabling SElinux
-   
    
 ## Procedure for VM Deployment Steps
 
