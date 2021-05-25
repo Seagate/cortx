@@ -9,6 +9,7 @@ Prerequisites to setup Virtual Machine
 *****************************************
 
 - Single-Node VM deployment:
+  
   - Create a CentOS 7.8.2003 VM with the following configuration:
     - RAM: 4GB
     - CPU: 1 core
