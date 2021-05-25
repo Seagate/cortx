@@ -24,6 +24,8 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    - Please use this hostname to avoid issues further in the bootstrap process.
    - Make sure the hostname is changed by running `hostname -f`
  
+*Note:* You can change the hostname as per your requirement
+ 
 - Disable SElinux by running,
    ```
    sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
