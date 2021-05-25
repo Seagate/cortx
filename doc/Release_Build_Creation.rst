@@ -132,7 +132,7 @@ Cortx Components Release Build Creation
         
 #. Follow this `Guide <Provision Release Build.md>`_ to run your build.
 
-*Tested by:*
+**Tested by:**
 
 - May 19, 2021: Justin Woo (justin.woo@seagate.com) on a Windows 10 Desktop running VMware Workstation 16 Pro.
 - May 10, 2021: Christina Ku (christina.ku@seagate.com) on VM "CentOS 7.8.2003 x86_64".
