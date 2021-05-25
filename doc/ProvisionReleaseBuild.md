@@ -2,6 +2,18 @@
 
 You will need to complete this [guide](https://github.com/Seagate/cortx/blob/main/doc/Release_Build_Creation.rst) before moving onto the steps below.
 
+# Before You Start  
+### Checklist:
+- Single-Node VM Deployment:
+ -  [x]  Please create VM(s) with at least 1 CPUs and 4GB of RAM.  
+ -  [x]  For single-node VM deployment, ensure the VM is created with 2+ attached disks.
+ -  [x]  Do you see the devices on execution of this command: lsblk ?  
+ -  [x]  Do the systems on your setup have valid hostnames, are the hostnames accessible: ping <hostname>?  
+ -  [x]  Do you have IPs' assigned to all NICs ensxx, ensxx and ensxx?  
+ -  [x]  Identify primary node and run below commands on primary node  
+    
+**NOTE**: For single-node VM, the VM node itself is treated as primary node.
+
 ### Pre-requisite
 
 - Change Hostname by running,
@@ -18,9 +30,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 - Set repository URL
    ```
    export CORTX_RELEASE_REPO="file:///var/artifacts/0"
-   ```   
-- Reboot your VM by running `reboot` command
-
+   ```
 - Cleanup temporary repos
    ```
     rm -rf /etc/yum.repos.d/*3rd_party*.repo
@@ -29,7 +39,9 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
     rm -rf /var/cache/yum/
     rm -rf /etc/pip.conf
    ```
-
+**Note:** Reboot the VM by running `reboot` command after disabling Selinux
+   
+   
 ## Procedure for VM Deployment Steps
 
 ### 1. Install Provisioner API and requisite packages
