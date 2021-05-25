@@ -6,6 +6,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 ### Checklist:
 
 - Single-Node VM Deployment:
+
  -  [x]  Please create VM(s) with at least 1 CPUs and 4GB of RAM.  
  -  [x]  For single-node VM deployment, ensure the VM is created with 2+ attached disks.
  -  [x]  Do you see the devices on execution of this command: lsblk ?  
