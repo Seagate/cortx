@@ -10,13 +10,15 @@ Prerequisites to setup Virtual Machine
 
 - Single-Node VM deployment:
   
-  - Create a CentOS 7.8.2003 VM with the following configuration in Virtual Machine (VM):
+  - Setup a `CentOS 7.8.2003 <http://isoredirect.centos.org/centos/7.8.2003/isos/x86_64/>`_ system with the following configuration in Virtual Machine (VM):
   
     - RAM: 4GB
     - CPU: 1 core
     - Total Disks: 2 (Raw disks)
+    
       - Data Disk: 1 (Capacity: 20GB)
       - Metadata Disk: 1 (Capacity: 10% of total Data Disk Size)
+      
     - NIC: 3
     
 - Ensure IP’s have assigned to all NICs. For this deployment interface name is considered as eth33, eth34, and eth35.
