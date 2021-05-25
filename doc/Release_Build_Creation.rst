@@ -14,10 +14,12 @@ Prerequisites to setup Virtual Machine
   
     - RAM: 4GB
     - CPU: 1 core
-    - Total Disks: 2 (Raw disks)
+    - Total Disks: 3
     
       - Data Disk: 1 (Capacity: 20GB)
       - Metadata Disk: 1 (Capacity: 10% of total Data Disk Size)
+      
+**Note:** Use 2 raw disks and 1 main bootable disk
       
     - NIC: 3
     
