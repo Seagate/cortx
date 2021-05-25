@@ -133,7 +133,7 @@ Compile & Build Cortx Components
         
         iso_generation: generate ISO file from release build.
         
-#. Follow this `Guide <Provision Release Build.md>`_ to run your build.
+#. Follow this `Guide <Provision Release Build.md>`_ to Deploy Cortx Build Stack.
 
 **Tested by:**
 
