@@ -61,10 +61,9 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    
    # Provisioner API
    yum install --nogpgcheck -y python36-cortx-prvsnr
-   ```
+
    # Verify provisioner version (0.36.0 and above)
-   ```
-    provisioner --version
+   provisioner --version
    ```
 ### 2. Cleanup temporary repos
    ```
