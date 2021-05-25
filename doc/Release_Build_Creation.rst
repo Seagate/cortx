@@ -1,6 +1,6 @@
-===========================
-Compile & Build Cortx Stack
-===========================
+====================================
+Compile & Build Complete Cortx Stack
+====================================
 
 This file consists of the procedure that should be followed to generate the release build outside the Seagate network using `cortx-build <https://github.com/orgs/Seagate/packages/container/package/cortx-build>`_ docker image. 
 
@@ -13,13 +13,16 @@ Specifications to setup Virtual Machine
   - Please create VM(s) with at least 1 cores (vCPU) and 4GB of RAM.
   - Ensure the VM is created with minimum of total 2 attached raw disks (additional disks apart from main bootable disk) per node
 
-    - Data Disks - Min 1 Disks per node (Capacity 10G+)
+    - Data Disks - Min 1 Disks per node (Capacity 20G+)
     - Metadata Disks - Min 1 Disks per node (Capacity - 10% of total Data Disk Size)
   - Ensure the VM is created with minimum 3 network Interfaces
+  
+**Note:** Your NIC's may have different names so select the interfaces as per your setup
+ 
   - Ensure system have valid hostname and they are accessible (i.e. ping)
   - Ensure IP’s have assigned to all NICs e.g. eth33, eth34 and eth35
   
-*Note:* Raw disks should be added in your hypervisor once CentOS 7.8 is installed
+**Note:** Raw disks should be added in your hypervisor once CentOS 7.8 is installed
 
 
 *************************
@@ -79,9 +82,9 @@ Procedure for Build Steps
       -rw-r--r--   1 root root 240751885 Apr  9 07:23 python-deps-1.0.0-0.tar.gz
       -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz
       
-=======================================
-Cortx Components Release Build Creation
-=======================================
+================================
+Compile & Build Cortx Components
+================================
           
 #. To list individual component targets, execute the below mentioned command.
  
@@ -98,7 +101,7 @@ Cortx Components Release Build Creation
 
     Please clone required component repositories in cortx-workspace directory before executing respective targets.
 
-    targets:
+    **targets:**
     
         help: print this help message.
         
