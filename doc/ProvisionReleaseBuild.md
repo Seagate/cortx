@@ -1,9 +1,10 @@
-# Provision & Deploy Cortx Build Stack
+# Deploy Cortx Build Stack
 
 You will need to complete this [guide](https://github.com/Seagate/cortx/blob/main/doc/Release_Build_Creation.rst) before moving onto the steps below.
 
-# Before You Start  
+## Before You Start  
 ### Checklist:
+
 - Single-Node VM Deployment:
  -  [x]  Please create VM(s) with at least 1 CPUs and 4GB of RAM.  
  -  [x]  For single-node VM deployment, ensure the VM is created with 2+ attached disks.
