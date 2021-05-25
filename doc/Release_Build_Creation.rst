@@ -14,14 +14,13 @@ Prerequisites to setup Virtual Machine
   
     - RAM: 4GB
     - CPU: 1 core
+    - NIC: 3
     - Total Disks: 3
     
       - Data Disk: 1 (Capacity: 20GB)
       - Metadata Disk: 1 (Capacity: 10% of total Data Disk Size)
       
 **Note:** Use 2 raw disks and 1 main bootable disk
-      
-    - NIC: 3
     
 - Ensure IP’s have assigned to all NICs. For this deployment interface name is considered as eth33, eth34, and eth35.
 - Ensure that the system have valid hostname and are accessible using ping.
