@@ -11,9 +11,9 @@ Specifications to setup Virtual Machine
 - Single-Node VM deployment
 
   - Please create VM(s) with at least 1 cores (vCPU) and 4GB of RAM.
-  - Ensure the VM is created with minimum of total 9 attached raw disks (additional disks apart from main bootable disk) per node
+  - Ensure the VM is created with minimum of total 2 attached raw disks (additional disks apart from main bootable disk) per node
 
-    - Data Disks - Min 8 Disks per node (Capacity 10G+)
+    - Data Disks - Min 1 Disks per node (Capacity 10G+)
     - Metadata Disks - Min 1 Disks per node (Capacity - 10% of total Data Disk Size)
   - Ensure the VM is created with minimum 3 network Interfaces
   - Ensure system have valid hostname and they are accessible (i.e. ping)
