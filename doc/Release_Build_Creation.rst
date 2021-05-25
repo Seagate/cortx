@@ -9,20 +9,15 @@ Prerequisites to setup Virtual Machine
 *****************************************
 
 - Single-Node VM deployment
-
-  - Please create VM(s) with at least 1 cores (vCPU) and 4GB of RAM.
-  - Ensure the VM is created with minimum of total 2 attached raw disks (additional disks apart from main bootable disk)
-
-    - Data Disks - Min 1 Disks per node (Capacity 20G+)
-    - Metadata Disks - Min 1 Disks per node (Capacity - 10% of total Data Disk Size)
-  - Ensure the VM is created with minimum 3 network Interfaces
-  - Ensure IP’s have assigned to all NICs e.g. eth33, eth34 and eth35
-  
-**Note:** Your NIC's may have different names so select the interfaces as per your setup
- 
-  - Ensure system have valid hostname and they are accessible (i.e. ping)
-  
-**Note:** Raw disks should be added in your hypervisor once CentOS 7.8 is installed
+  - Create a CentOS 7.8.2003 VM with the following configuration:
+    - RAM: 4GB
+    - CPU: 1 core
+    - Total Disks: 2 (Raw disks)
+      - Data Disk: 1 (Capacity: 20GB)
+      - Metadata Disk: 1 (Capacity: 10% of total Data Disk Size)
+    - NIC: 3
+- Ensure IP’s have assigned to all NICs. For this deployment interface name is considered as eth33, eth34, and eth35.
+- Ensure system have valid hostname and they are accessible (i.e. ping)
 
 
 *************************
