@@ -17,7 +17,7 @@ Prerequisites to setup Virtual Machine
     - NIC: 3
     - Total Disks: 3
     
-      - Data Disk: 1 (Capacity: 20GB)
+      - Data Disk: 1 (Capacity: 50GB)
       - Metadata Disk: 1 (Capacity: 10% of total Data Disk Size)
       
 **Note:** Use 2 raw disks and 1 main bootable disk
