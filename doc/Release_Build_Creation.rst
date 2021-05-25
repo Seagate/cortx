@@ -16,11 +16,11 @@ Specifications to setup Virtual Machine
     - Data Disks - Min 1 Disks per node (Capacity 20G+)
     - Metadata Disks - Min 1 Disks per node (Capacity - 10% of total Data Disk Size)
   - Ensure the VM is created with minimum 3 network Interfaces
+  - Ensure IP’s have assigned to all NICs e.g. eth33, eth34 and eth35
   
 **Note:** Your NIC's may have different names so select the interfaces as per your setup
  
   - Ensure system have valid hostname and they are accessible (i.e. ping)
-  - Ensure IP’s have assigned to all NICs e.g. eth33, eth34 and eth35
   
 **Note:** Raw disks should be added in your hypervisor once CentOS 7.8 is installed
 
@@ -101,7 +101,7 @@ Compile & Build Cortx Components
 
     Please clone required component repositories in cortx-workspace directory before executing respective targets.
 
-    **targets:**
+    targets:
     
         help: print this help message.
         
