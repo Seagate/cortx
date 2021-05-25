@@ -24,7 +24,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    - Please use this hostname to avoid issues further in the bootstrap process.
    - Make sure the hostname is changed by running `hostname -f`
  
-*Note:* You can change the hostname as per your requirement
+**Note:** You can change the hostname as per your requirement
  
 - Disable SElinux by running,
    ```
@@ -34,15 +34,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    ```
    export CORTX_RELEASE_REPO="file:///var/artifacts/0"
    ```
-- Cleanup temporary repos
-   ```
-    rm -rf /etc/yum.repos.d/*3rd_party*.repo
-    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
-    yum clean all
-    rm -rf /var/cache/yum/
-    rm -rf /etc/pip.conf
-   ```
-**Note:** Reboot the VM by running `reboot` command after disabling Selinux
+**Note:** Reboot the VM by running `reboot` command after disabling SElinux
    
    
 ## Procedure for VM Deployment Steps
@@ -70,9 +62,18 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    # Provisioner API
    yum install --nogpgcheck -y python36-cortx-prvsnr
    ```
-
-### 2. Verify provisioner version (0.36.0 and above)
+- Cleanup temporary repos
+   ```
+    rm -rf /etc/yum.repos.d/*3rd_party*.repo
+    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
+    yum clean all
+    rm -rf /var/cache/yum/
+    rm -rf /etc/pip.conf
+   ```
+   # 2. Verify provisioner version (0.36.0 and above)
+   ```
     provisioner --version
+   ```
    
 ### 3. Create the config.ini file
 
@@ -157,13 +158,13 @@ Update data from config.ini into Salt pillar. Export pillar data to provisioner_
    provisioner deploy_vm --setup-type single --states utils
    ```
 
-- ### iopath components:
+- ### IO Path components:
 
    ```
    provisioner deploy_vm --setup-type single --states iopath
    ```
 
-- ### Controlpath components:
+- ### Control Path components:
 
    ```
    provisioner deploy_vm --setup-type single --states controlpath
