@@ -1,16 +1,34 @@
-=======================
-Release Build Creation
-=======================
+=========================================================
+Compile & Build Complete Cortx Stack Via Docker Container
+=========================================================
 
 This file consists of the procedure that should be followed to generate the release build outside the Seagate network using `cortx-build <https://github.com/orgs/Seagate/packages/container/package/cortx-build>`_ docker image. 
 
-***************
-Procedure
-***************
+*****************************************
+Prerequisites to setup Virtual Machine
+*****************************************
 
-#. Setup a CentOS 7.8.2003 system.
+- Single-Node VM deployment:
+  
+  - Setup a `CentOS 7.8.2003 <http://isoredirect.centos.org/centos/7.8.2003/isos/x86_64/>`_ system with the following configuration in Virtual Machine (VM):
+  
+    - RAM: 4GB
+    - CPU: 1 core
+    - NIC: 3
+    - Total Disks: 3
+    
+      - Data Disk: 1 (Capacity: 50GB)
+      - Metadata Disk: 1 (Capacity: 10% of total Data Disk Size)
+      
+**Note:** Use 2 raw disks and 1 main bootable disk
+    
+- Ensure IP’s have assigned to all NICs. For this deployment interface name is considered as eth33, eth34, and eth35.
+- Ensure that the system have valid hostname and are accessible using ping.
 
-   - You can use a Virtual Machine (VM) also.
+
+*************************
+Procedure for Build Steps
+*************************
    
 #. Install the docker packages in the system or VM. Refer to `Docker Installation <https://docs.docker.com/engine/install/centos/>`_.
 
@@ -62,6 +80,10 @@ Procedure
       drwxr-xr-x 198 root root      4096 Apr  9 07:23 python_deps
       -rw-r--r--   1 root root 240751885 Apr  9 07:23 python-deps-1.0.0-0.tar.gz
       -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz
+      
+================================
+Compile & Build Cortx Components
+================================
           
 #. To list individual component targets, execute the below mentioned command.
  
@@ -110,10 +132,11 @@ Procedure
         
         iso_generation: generate ISO file from release build.
         
-#. Follow this `Guide <Provision Release Build.md>`_ to run your build.
+#. Follow this `Guide <Provision Release Build.md>`_ to Deploy Cortx Build Stack.
 
-Tested by:
+**Tested by:**
 
+- May 19, 2021: Justin Woo (justin.woo@seagate.com) on a Windows 10 Desktop running VMware Workstation 16 Pro.
 - May 10, 2021: Christina Ku (christina.ku@seagate.com) on VM "CentOS 7.8.2003 x86_64".
 - May 7, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Pro.
 - Apr 6, 2021: Harrison Seow (harrison.seow@seagate.com) on a Windows 10 desktop running VMWare Workstation 16 Player.
