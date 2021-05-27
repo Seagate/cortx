@@ -16,6 +16,7 @@ Prerequisites to setup Virtual Machine
   - Storage Configuration:
     
       - Usecase-1:
+      
         - Min 9 Disks
         
           - Data Disks - Min 8 Disks (Capacity 10GB+)
