@@ -12,7 +12,7 @@ Prerequisites to setup Virtual Machine
   
   - Setup a `CentOS 7.8.2003 <http://isoredirect.centos.org/centos/7.8.2003/isos/x86_64/>`_ system with the following configuration in Virtual Machine (VM):
   - Create VM(s) with at least 4 vCPUs and 4GB of RAM.
-  - Minimum 3 NIC is required on different network (not mandatory)
+  - Minimum 3 NIC is required on different network as per recommendation
   - Storage Configuration:
     
       - Usecase-1:
