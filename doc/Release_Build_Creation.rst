@@ -15,7 +15,7 @@ Prerequisites to setup Virtual Machine
   - Minimum 3 NIC is required on different network as per recommendation
   - Storage Configuration:
     
-      - Usecase-1 (4+2+2):
+      - Usecase-1 (4 +2 + 2):
       
         - Min 9 Disks
         
