@@ -29,7 +29,7 @@ Prerequisites to setup Virtual Machine
           - Data Disks - Min 2 Disks (Capacity 50GB+)
           - Metadata Disks - Min 1 Disks (Capacity - 40GB)
       
-      - Feature Request:
+      - Future Request:
       
         - Min 7 Disks
         
