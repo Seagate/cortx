@@ -29,7 +29,7 @@ Prerequisites to setup Virtual Machine
           - Data Disks - Min 1 Disks (Capacity 50GB+)
           - Metadata Disks - Min 1 Disks (Capacity - 40GB)
       
-      - Future Request (Erasure coding with units N(data) + K (parity) + S (spare) as 4 + 2 + 0):
+      - Usecase-3 [Future Feature Request - (Erasure coding with units N(data) + K (parity) + S (spare) as 4 + 2 + 0)]:
       
         - Min 7 Disks
         
