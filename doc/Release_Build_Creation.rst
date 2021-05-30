@@ -15,23 +15,23 @@ Prerequisites to setup Virtual Machine
   - Minimum 3 NIC is required on different network as per recommendation
   - Storage Configuration:
     
-      - Usecase-1 (4 +2 + 2):
+      - Usecase-1:
       
-        - Min 9 Disks
+        - Min 9 Disks (4 + 2 + 2)
         
           - Data Disks - Min 8 Disks (Capacity 10GB+)
           - Metadata Disks - Min 1 Disks (Capacity - 5GB+)
       
       - Usecase-2:
       
-        - Min 3 Disks
+        - Min 3 Disks (1 + 0 + 0)
         
-          - Data Disks - Min 2 Disks (Capacity 50GB+)
+          - Data Disks - Min 1 Disks (Capacity 50GB+)
           - Metadata Disks - Min 1 Disks (Capacity - 40GB)
       
       - Future Request:
       
-        - Min 7 Disks
+        - Min 7 Disks (4 + 2 + 0)
         
           - Data Disks - Min 6 Disks (Capacity 10G+)
           - Metadata Disks - Min 1 Disks (Capacity - 5GB+)
