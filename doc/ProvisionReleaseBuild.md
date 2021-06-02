@@ -92,10 +92,12 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
   - You can find the interfaces as per zones defined in your setup by running,
    ```
     firewall-cmd --get-active-zones
-    systemctl stop firewalld
-    systemctl disable firewalld
    ```
-   
+  - Firewall must be disabled to connect to GUI and do IO operations
+  ```
+  systemctl stop firewalld
+  systemctl disable firewalld
+  ```
     vi ~/config.ini
     
    - Paste the code below into the config file replacing your network interface names with ens33,..ens35 and storage disks with /dev/sdb,../dev/sdc
