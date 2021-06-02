@@ -1,7 +1,16 @@
 ==========================
-Preboarding and Onboarding
+Configuring the CORTX GUI
 ==========================
 
+This guide provides step-by-step instructions to configure the CORTX GUI. To configure the CORTX GUI you either had completed one of following guides:
+
+- `CORTX Open Virtual Appliance guide <CORTX_on_Open_Virtual_Appliance.rst>`_
+- `Setting up the CORTX Environment for SingleNode <Setting-up-the-CORTX-Environment-for-SingleNode>`_
+
+The step to configure the CORTX GUI gets completed in two step:
+
+- `Preboarding <#Preboarding>`_
+- `Onboarding <#Onbarding>`_
 
 Preboarding
 ===========
