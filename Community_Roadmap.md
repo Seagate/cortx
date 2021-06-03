@@ -121,3 +121,5 @@
         </tr>
     </tbody>
 </table>
+
+To more about the up and coming feature releases for CORTX, refer to the [Feature Roadmap document](/FeatureRoadmap.md).
