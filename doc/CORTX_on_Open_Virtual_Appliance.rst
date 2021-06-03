@@ -20,7 +20,10 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download the `cortx-va-1.0.3.ova <https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. This contains the virtual machine image.
+#. Download |Latest Release| of virtual machine image.
+
+   .. |Latest Release| image:: https://img.shields.io/github/v/release/Seagate/cortx?label=Latest%20Release
+      :target: https://github.com/seagate/cortx/releases/latest
 
 #. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
 
@@ -58,14 +61,19 @@ The procedure to install CORTX on OVA is mentioned below.
       <summary><a>Expand</a></summary>
 
    You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens32, ens33 and ens34:
-
+   
+   **Note:** 
+   
+   - The Network Device names may not be the exact same as listed above, for example, enp0s8, enp0s9, enp0s17 instead of enp0s3, enp0s8, enp0s9.
+   - As the network is setup using DHCP, IP changes are bound to happen during restart, static IP configuration could be harder to maintain as it may not work for different VM with different network setups. 
+   
    #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
 
       * **ip a l**
 
    #. Record the MAC addresses and go to the following directory:
 
-      * **cd /etc/sysconfig/network_scripts/**
+      * **cd /etc/sysconfig/network-scripts/**
       * **vi ifcfg-ens32**
       * Add a new line under **BOOTPROTO=dhcp**
       * Add a new parameter with the MAC Address *HWADDR=<MAC-Address>*
@@ -97,12 +105,12 @@ The procedure to install CORTX on OVA is mentioned below.
 
       * **date**
 
-      If the time displayed is incorrect, use the following command to list and change your timezone accordingly, then change your date/time as necessary (Otherwise, you might face SSL certificate problems later)
+      If the time displayed is incorrect, use the following command to adjust time for timezone as necessary (Otherwise, you might face SSL certificate problems later). 
+      * **date --set "[+/-]xhours [+/-]yminutes"**
+      
+      For instance if your timezone is `4:30:00` ahead of UTC, then run the following command in VM. Note the `-` before minutes as well. Similarly if your timezone is behind of UTC, use +ve hours and +ve minutes to make the adjustment.
 
-      * **timedatectl list-timezones**
-      * **timedatectl set-timezone Asia/Kuala_Lumpur**
-      * **date +%Y%m%d -s "20201231"**
-      * **date +%T -s "11:14:00"**
+      * **date --set "-4hours -30minutes"**
 
    .. raw:: html
 
@@ -119,7 +127,7 @@ The procedure to install CORTX on OVA is mentioned below.
    - Ensure that you have configured your ipv4 network.
       - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
-      - Once you select an NIC, ensure that you do not ave conflicting NICs selected. 
+      - Once you select an NIC, ensure that you do not have conflicting NICs selected. 
       
 #. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
    
@@ -187,9 +195,6 @@ The procedure to install CORTX on OVA is mentioned below.
       * put object
       * delete all the above in reverse order
       
-   If s3client(s) is / are deployed in separate VMs, then the below entry must be updated in s3client **/etc/hosts** file as follows:
-    
-   - <<Data IP>> s3.seagate.com sts.seagate.com iam.seagate.com  sts.cloud.seagate.com   
    
 #. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
 
@@ -307,6 +312,16 @@ Restart CORTX
    </details>
    
 Tested by:
+
+- June 1, 2021: Bo Wei (bo.b.wei@seagate.com) using OVA release 1.0.3 on Windows 10 running VMWare Workstation 16 Player.
+
+- May 10, 2021: Shiji Zhang (shiji.zhang@tusimple.ai) using OVA release 1.0.4 on KVM 5.1
+
+- Apr 30, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 1.0.4 on Vsphere.
+
+- Apr 12, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on MAC running VMWare Fusion 12.1.0.
+
+- April 6, 2021: Harrison Seow (harrison.seow@seagate.com) using OVA release 1.0.3 on Windows 10 running VMware Workstation 16 Player.
 
 - Mar 25, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on Windows 10 running Oracle VirtualBox & VMware Workstation 6.1.16.
 
