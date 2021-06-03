@@ -1,6 +1,6 @@
-***********
-Performing IO to a CORTX system and observe activity in the CORTX GUI
-***********
+========================================
+Performing IO Operations Using S3 Client
+========================================
 
 If you wish to use the provided virtual machine image to test CORTX and observe activity in its GUI, 
 you should have already followed `these instructions <CORTX_on_Open_Virtual_Appliance.rst>`_
