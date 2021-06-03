@@ -191,7 +191,7 @@ def print_activities(filtered_activities,logins,details,zero,people,since,until)
       if details:
         (points,Details) = get_details(u,stx)
         total_score += points
-      print("\t-- %s %s %s %s" % (login,d,u, Details if details else ''))
+      print("\t-- %s ; %s ; %s %s" % (login,d,u, Details if details else ''))
     if len(actions) > 0 and details:
       print("\t%4.1f POINTS for %s" % (total_score,login))
       
