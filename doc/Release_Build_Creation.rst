@@ -8,19 +8,35 @@ This file consists of the procedure that should be followed to generate the rele
 Prerequisites to setup Virtual Machine
 *****************************************
 
-- Single-Node VM deployment:
+- **Single-Node VM deployment:**
   
   - Setup a `CentOS 7.8.2003 <http://isoredirect.centos.org/centos/7.8.2003/isos/x86_64/>`_ system with the following configuration in Virtual Machine (VM):
-  
-    - RAM: 4GB
-    - CPU: 1 core
-    - NIC: 3
-    - Total Disks: 3
+  - Create VM(s) with at least 4 vCPUs and 4GB of RAM.
+  - Minimum 3 NIC is required on different network as per recommendation
+  - Storage Configuration:
     
-      - Data Disk: 1 (Capacity: 50GB)
-      - Metadata Disk: 1 (Capacity: 10% of total Data Disk Size)
+      - Usecase-1 (Erasure coding with units N(data) + K (parity) + S (spare) as 4 + 2 + 2):
       
-**Note:** Use 2 raw disks and 1 main bootable disk
+        - Min 9 Disks
+        
+          - Data Disks - Min 8 Disks (Capacity 10GB+)
+          - Metadata Disks - Min 1 Disks (Capacity - 5GB+)
+      
+      - Usecase-2 (Erasure coding with units N(data) + K (parity) + S (spare) as 1 + 0 + 0):
+      
+        - Min 3 Disks
+        
+          - Data Disks - Min 1 Disks (Capacity 50GB+)
+          - Metadata Disks - Min 1 Disks (Capacity - 40GB)
+      
+      - Usecase-3 [Future Feature Request - (Erasure coding with units N(data) + K (parity) + S (spare) as 4 + 2 + 0)]:
+      
+        - Min 7 Disks
+        
+          - Data Disks - Min 6 Disks (Capacity 10G+)
+          - Metadata Disks - Min 1 Disks (Capacity - 5GB+)
+      
+**Note:** You also create disk partitions and present those as devices (in case you have insufficient number of virtual disks)
     
 - Ensure IP’s have assigned to all NICs. For this deployment interface name is considered as eth33, eth34, and eth35.
 - Ensure that the system have valid hostname and are accessible using ping.
