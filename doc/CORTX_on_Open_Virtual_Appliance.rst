@@ -172,15 +172,15 @@ The procedure to install CORTX on OVA is mentioned below.
 
     systemctl start|restart <service_name>
 
-#. Run **ip a l** and record the IP addresses of the following interfaces:
+#. Run **ip a l** and record the IP addresses of **ens32 + ens33** :
 
-   * ens32 - Management IP
-   * ens33 - Public data IP
-   * ens34 - Private data IP (if present)
-
-
-   .. image:: images/networks.png
+   For example, in the image below 
    
+   * ens32  = 192.168.16.176
+   * ens33  = 192.168.16.177 
+   
+   .. image:: images/networks.png
+    
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
    ::
@@ -312,6 +312,8 @@ Restart CORTX
    </details>
    
 Tested by:
+
+- June 1, 2021: Bo Wei (bo.b.wei@seagate.com) using OVA release 1.0.3 on Windows 10 running VMWare Workstation 16 Player.
 
 - May 10, 2021: Shiji Zhang (shiji.zhang@tusimple.ai) using OVA release 1.0.4 on KVM 5.1
 
