@@ -53,6 +53,11 @@ The procedure to install CORTX on OVA is mentioned below.
 
 #. **For Oracle VM VirtualBox Users ONLY**:
    
+   .. raw:: html
+
+       <details>
+       <summary><a>Click here to expand the preboarding procedure.</a></summary>
+
    You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens32, ens33 and ens34:
    
       **Note:** 
@@ -107,7 +112,10 @@ The procedure to install CORTX on OVA is mentioned below.
       For instance if your timezone is `4:30:00` ahead of UTC, then run the following command in VM. Note the `-` before minutes as well. Similarly if your timezone is behind of UTC, use +ve hours and +ve minutes to make the adjustment.
 
       * **date --set "-4hours -30minutes"**
-
+  
+   .. raw:: html
+   
+       </details>
 
 #. Start the CORTX services by running this bootstrap.sh script:
    
