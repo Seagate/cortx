@@ -135,7 +135,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
       - Once you select an NIC, ensure that you do not have conflicting NICs selected. 
       
-#. If you want to configure the static IPs:
+#. (Optional) To configure the static IPs instead of DHCP:
 
    - For Management Network static IP, run the following command:
 
