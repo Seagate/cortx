@@ -111,7 +111,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
    
    storage.cvg.0.data_devices=/dev/sdc
    storage.cvg.0.metadata_devices=/dev/sdb
-   network.data.private_ip=None
+   network.data.private_ip=192.254.254.254
 
    [srvnode-1]
    hostname=deploy-test.cortx.com
