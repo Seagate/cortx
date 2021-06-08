@@ -41,10 +41,6 @@ The procedure to install CORTX on OVA is mentioned below.
 
    * **hostnamectl set-hostname --static --transient --pretty <new-name>**
   
-     If you receive **Access denied** message, remove immutable settings on the **/etc/hostname** file and run the command again. To remove immutable setting from **/etc/hostname**, run the following command.
-     
-     * **chattr -i /etc/hostname**
-  
      To verify the change in hostname, run the following command:
  
      * **hostnamectl status**
@@ -176,29 +172,6 @@ The procedure to install CORTX on OVA is mentioned below.
    The output should be similar to the image below
 
    .. image:: images/hctl_status_output.png
-
-#. Run the commands below to check the status of different services that are part of CORTX.
-
-   ::
-
-    systemctl status rabbitmq-server 
-    systemctl status elasticsearch   
-    systemctl status haproxy
-    systemctl status s3authserver 
-    systemctl status sspl-ll      
-    systemctl status csm_agent    
-    systemctl status csm_web
-    systemctl status hare-consul-agent
- 
-   The image below shows the output of a successful *systemctl* command; notice how the service is *active*.
-   
-   .. image:: images/systemctl_output.png
-
-   If any of the services are inactive, run the following command.
-
-   ::
-
-      systemctl start|restart <service_name>
 
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
