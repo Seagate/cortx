@@ -234,18 +234,6 @@ If you have a firewall between CORTX and the rest of your infrastructure, includ
 |         28100        |   TCP (HTTPS)     |              Management network             |
 +----------------------+-------------------+---------------------------------------------+
 
-If your disk does not have space, run the following command to clean up the logs from the **/var/log** file.
-
-::
-
- rm /var/log/<file to be deleted>
- 
-This step is applicable only if the earlier s3 sanity fails. Run the below mentioned script to delete the account and objects that were created as part of the earlier sanity.
-
-::
-
- sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -c
-
 Restarting CORTX OVA
 ====================
 To restart the CORTX OVA, follow the below mentioned procedures, in the order of listing.

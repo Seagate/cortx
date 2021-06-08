@@ -23,7 +23,9 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 
    - RAM: 8GB
    - Processor: 4 core CPU
-   - Storage: 120GB
+   - Storage: 60GB
+
+     Note: The CORTX OVA VM will create 9 disk partitions. 
 
 - Download the `CORTX OVA <https://github.com/Seagate/cortx/releases/>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. 
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
@@ -103,12 +105,6 @@ Procedure
          cat /etc/sysconfig/network-scripts/ifcfg-ens32 |grep -Ei "ip|netmask|gateway"
          cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
 
-#. To start the CORTX Cluster, run the following command:
-
-   ::
-
-      cortx cluster start
-
 #. To check the CORTX cluster status, run the following command:
    
    ::
@@ -118,13 +114,6 @@ Procedure
    The output should be similar to the image below
 
    .. image:: https://github.com/Seagate/cortx/tree/main/doc/images/104hctl_status_output.png
-
-   **Note:** If the cortx cluster is not running then restart the cluster using following commands: 
-
-   ::
-      
-      cortx cluster stop 
-      cortx cluster start
 
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
