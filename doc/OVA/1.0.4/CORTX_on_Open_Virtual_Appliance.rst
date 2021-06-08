@@ -167,7 +167,7 @@ The procedure to install CORTX on OVA is mentioned below.
    
    The output should be similar to the image below
 
-   .. image:: https://github.com/Seagate/cortx/tree/main/doc/images/104hctl_status_output.png
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104hctl_status_output.png
 
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
@@ -176,7 +176,7 @@ The procedure to install CORTX on OVA is mentioned below.
    * ens34 - Private data IP (if present)
 
 
-   .. image:: https://github.com/Seagate/cortx/tree/main/doc/images/104networks.png
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104networks.png
    
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
@@ -210,7 +210,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
 #. Now that you have the complete system up and running, using the data IP from the **ip a l** command, use these instructions `to test the system <https://github.com/Seagate/cortx/blob/main/doc/testing_io.rst>`_  and observe activity in the GUI.  For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
 
-   .. image:: https://github.com/Seagate/cortx/tree/main/doc/images/dashboard_read_write.png
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/dashboard_read_write.png
 
 #. Please use these instructions which describe how to use the `command line interface to query and monitor <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ the configuration, health, and activity of your CORTX system.
 

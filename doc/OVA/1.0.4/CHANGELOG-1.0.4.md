@@ -79,7 +79,6 @@ This release notes  includes new features and bug fixes added to the CORTX OVA 1
 - Moved the cluster out of maintenance state after the CSM config stage. 
 - Fixed the issue of the Node replacement failed in deploy replacement stage 2 for the NodeJS after boxing-unboxing. 
 - Fixed the issue of unboxing with the static network configuration. 
-- Updated the fallback mechanism in the glusterfs. 
 - Fixed the issue where the NodeJS installation fails during the node replacement due to missing entries in the "salt-call pillar.items commons". 
 - Fixed the issue of the unboxing is hung while updating management VIP in the pillar. 
 - Updated the HA Proxy for the DHCP environment. 
@@ -146,7 +145,6 @@ This release notes  includes new features and bug fixes added to the CORTX OVA 1
 -	Fixed the issue where the S3 CLI requests fail with "No route to host" error intermittently.
 -	Updated the SSL certificates.
 -	Fixed the issue where SFTP session returns with non-zero exit code.
--	Updated the glusterfs service relation with the salt-master.
 -	Updated the JSON structures in the Manifest file.
 -	Fixed the issue of dangling web-socket connection.
 -	Replaced the UDX with LDP and added the expansion to the summary page.
