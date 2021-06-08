@@ -111,7 +111,7 @@ Compile & Build Cortx Components
     
    ::
    
-    [root@ssc-vm-1613 cortx-**]# time docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
+    [root@ssc-vm-1613 cortx-**]# docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
     usage: make "target"
 
     Please clone required component repositories in cortx-workspace directory before executing respective targets.
