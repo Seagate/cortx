@@ -8,6 +8,8 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 
  -  [ ]  Please create VM(s) with at least 4 CPUs and 4 GB of RAM  
  -  [ ]  For single-node VM deployment, ensure the VM is created with 2+ attached disks, in addition to at least 1 ide storage for OS.  
+         2+ disks is basic configuration that doesn't allow configuration of erasure coding.
+         If one wishes to enable erasure coding, 8+ attached disks would be required.
  -  [ ]  Do you see the devices on execution of this command: lsblk ?  
  -  [ ]  Do the systems on your setup have valid hostnames, are the hostnames accessible: ping <hostname>?  
  -  [ ]  Do you have IPs' assigned to all NICs ensxx, ensxx and ensxx?  
@@ -115,7 +117,7 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
          ```  
          Paste the code below into the config file replacing your network interface names with ens33,..ens35 and storage disks with /dev/sdb, /dev/sdc, ...
 
-   
+         Without erasure coding (2+ attached storage LUNs/disks)  
          ```
          [srvnode_default]
          network.data.private_interfaces=ens35
@@ -124,6 +126,34 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
          storage.cvg.0.data_devices=/dev/sdc, /dev/sdd, /dev/sde, /dev/sdf, /dev/sdg, /dev/sdh, /dev/sdi
          storage.cvg.0.metadata_devices=/dev/sdb
          network.data.private_ip=192.254.254.254
+         storage.durability.sns.data=1
+         storage.durability.sns.parity=0
+         storage.durability.sns.spare=0
+         bmc.user=None
+         bmc.secret=None
+
+         [srvnode-1]
+         hostname=deploy-test.cortx.com
+         roles=primary,openldap_server
+
+         [enclosure_default]
+         type=other
+
+         [enclosure-1]
+         ```
+
+         With erasure coding enabled (8+ attached storage LUNs/disks)  
+         ```
+         [srvnode_default]
+         network.data.private_interfaces=ens35
+         network.data.public_interfaces=ens34
+         network.mgmt.interfaces=ens33
+         storage.cvg.0.data_devices=/dev/sdc, /dev/sdd, /dev/sde, /dev/sdf, /dev/sdg, /dev/sdh, /dev/sdi
+         storage.cvg.0.metadata_devices=/dev/sdb
+         network.data.private_ip=192.254.254.254
+         storage.durability.sns.data=4
+         storage.durability.sns.parity=2
+         storage.durability.sns.spare=2
          bmc.user=None
          bmc.secret=None
 
