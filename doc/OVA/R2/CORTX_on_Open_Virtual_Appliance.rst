@@ -110,10 +110,6 @@ Procedure
    ::
    
       pcs status
-   
-   The output should be similar to the image below
-
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status_output.png
 
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
