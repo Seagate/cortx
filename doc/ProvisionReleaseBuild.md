@@ -6,12 +6,14 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 ### Checklist:
 #### Single-Node VM Deployment
 
- -  [ ]  Please create VM(s) with at least 4 CPUs and 4GB of RAM.  
- -  [ ]  For single-node VM deployment, ensure the VM is created with 8+ attached disks in addition to at least 2 ide storage for OS.  
+ -  [ ]  Please create VM(s) with at least 4 CPUs and 4 GB of RAM  
+ -  [ ]  For single-node VM deployment, ensure the VM is created with 2+ attached disks, in addition to at least 1 ide storage for OS.  
  -  [ ]  Do you see the devices on execution of this command: lsblk ?  
- -  [ ]  Do the systems on your setup have valid hostnames, are the hostnames accessible: ping <hostname>?   
+ -  [ ]  Do the systems on your setup have valid hostnames, are the hostnames accessible: ping <hostname>?  
  -  [ ]  Do you have IPs' assigned to all NICs ensxx, ensxx and ensxx?  
-         ```ip a```  
+      ```
+      ip a
+      ```  
  -  [ ]  Identify primary node and run below commands on primary node  
          **NOTE**: For single-node VM, the VM node itself is treated as primary node.
 
