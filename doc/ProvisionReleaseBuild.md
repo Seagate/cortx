@@ -6,34 +6,35 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 ### Checklist:
 #### Single-Node VM Deployment
 
- -  [x]  Please create VM(s) with at least 1 CPUs and 4GB of RAM.  
- -  [x]  For single-node VM deployment, ensure the VM is created with 2+ attached disks.
- -  [x]  Do you see the devices on execution of this command: lsblk ?  
- -  [x]  Do the systems on your setup have valid hostnames, are the hostnames accessible: ping <hostname>?  
- -  [x]  Do you have IPs' assigned to all NICs ensxx, ensxx and ensxx?  
- -  [x]  Identify primary node and run below commands on primary node  
-    
-**NOTE**: For single-node VM, the VM node itself is treated as primary node.
+ -  [ ]  Please create VM(s) with at least 4 CPUs and 4GB of RAM.  
+ -  [ ]  For single-node VM deployment, ensure the VM is created with 8+ attached disks in addition to at least 2 ide storage for OS.  
+ -  [ ]  Do you see the devices on execution of this command: lsblk ?  
+ -  [ ]  Do the systems on your setup have valid hostnames, are the hostnames accessible: ping <hostname>?   
+ -  [ ]  Do you have IPs' assigned to all NICs ensxx, ensxx and ensxx?  
+         ```ip a```  
+ -  [ ]  Identify primary node and run below commands on primary node  
+         **NOTE**: For single-node VM, the VM node itself is treated as primary node.
 
 ### Pre-requisite
 
-- Change Hostname by running,
+-  Change Hostname by running,
    ```
-   sudo hostnamectl set-hostname deploy-test.cortx.com
+   sudo hostnamectl set-hostname --static --transient --pretty deploy-test.cortx.com
    ```
-   - Please use this hostname to avoid issues further in the bootstrap process.
-   - Make sure the hostname is changed by running `hostname -f`
+   -  Please use this hostname to avoid issues further in the bootstrap process.
+   -  Make sure the hostname is changed by running:  
+      ```hostname -f```
  
 **Note:** You can change the hostname as per your requirement
  
-- Disable SElinux by running,
+-  Disable SElinux by running,
    ```
    sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
    ```
  
  **Note:** Reboot the VM by running `reboot` command after disabling SElinux
  
-- Set repository URL
+-  Set repository URL
    ```
    export CORTX_RELEASE_REPO="file:///var/artifacts/0"
    ```
@@ -65,68 +66,81 @@ You will need to complete this [guide](https://github.com/Seagate/cortx/blob/mai
 
    # Verify provisioner version (0.36.0 and above)
    provisioner --version
-   ```
+   ```  
+
 ### 2. Cleanup temporary repos
    ```
-    rm -rf /etc/yum.repos.d/*3rd_party*.repo
-    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
-    yum clean all
-    rm -rf /var/cache/yum/
-    rm -rf /etc/pip.conf
-   ```
-   
+   rm -rf /etc/yum.repos.d/*3rd_party*.repo
+   rm -rf /etc/yum.repos.d/*cortx_iso*.repo
+   yum clean all
+   rm -rf /var/cache/yum/
+   rm -rf /etc/pip.conf
+   ```  
+
 ### 3. Create the config.ini file
 
 **Note:** You can find the devices on your node by running below command to update in config.ini
     
     device_list=$(lsblk -nd -o NAME -e 11|grep -v sda|sed 's|sd|/dev/sd|g'|paste -s -d, -)
 
-  - Values for storage.cvg.0.metadata_devices:
-   ```
-    echo ${device_list%%,*}
-   ```
-  - Values for storage.cvg.0.data_devices:
+   -  Values for storage.cvg.0.metadata_devices:
+      ```
+      echo ${device_list%%,*}
+      ```
+   - Values for storage.cvg.0.data_devices:
    ``` 
     echo ${device_list#*,}
    ```
-  - You can find the interfaces as per zones defined in your setup by running,
+   - You can find the interfaces as per zones defined in your setup by running,
    ```
     firewall-cmd --get-active-zones
    ```
-  - Firewall must be disabled to connect to GUI and do IO operations
-  ```
-  systemctl stop firewalld
-  systemctl disable firewalld
-  ```
-    vi ~/config.ini
-    
-   - Paste the code below into the config file replacing your network interface names with ens33,..ens35 and storage disks with /dev/sdb,../dev/sdc
+   - Firewall must be disabled to connect to GUI and do IO operations
    ```
-   [srvnode_default]
-   network.data.private_interfaces=ens35
-   network.data.public_interfaces=ens34
-   network.mgmt.interfaces=ens33
-   bmc.user=None
-   bmc.secret=None
+   systemctl stop firewalld
+   systemctl disable firewalld
+   ```
    
-   storage.cvg.0.data_devices=/dev/sdc
-   storage.cvg.0.metadata_devices=/dev/sdb
-   network.data.private_ip=None
+   - Configure config.ini file:  
+      -  Find disks:  
+         ```
+         device_list=\$(lsblk -nd -o NAME -e 11|grep -v sda|sed 's|sd|/dev/sd|g'|paste -s -d, -)
+         ```  
+      
+      -  Open file:
+         ```
+         vi ~/config.ini
+         ```  
+         Paste the code below into the config file replacing your network interface names with ens33,..ens35 and storage disks with /dev/sdb, /dev/sdc, ...
 
-   [srvnode-1]
-   hostname=deploy-test.cortx.com
-   roles=primary,openldap_server
+   
+         ```
+         [srvnode_default]
+         network.data.private_interfaces=ens35
+         network.data.public_interfaces=ens34
+         network.mgmt.interfaces=ens33
+         storage.cvg.0.data_devices=/dev/sdc, /dev/sdd, /dev/sde, /dev/sdf, /dev/sdg, /dev/sdh, /dev/sdi
+         storage.cvg.0.metadata_devices=/dev/sdb
+         network.data.private_ip=192.254.254.254
+         bmc.user=None
+         bmc.secret=None
 
-   [enclosure_default]
-   type=other
+         [srvnode-1]
+         hostname=deploy-test.cortx.com
+         roles=primary,openldap_server
 
-   [enclosure-1]
-   ```
+         [enclosure_default]
+         type=other
+
+         [enclosure-1]
+         ```
+
 ### 4. Bootstrap Node
    ```
     provisioner setup_provisioner srvnode-1:$(hostname -f) \
     --logfile --logfile-filename /var/log/seagate/provisioner/setup.log --source rpm \
-    --config-path ~/config.ini --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
+    --config-path ~/config.ini \
+    --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
    ```
 ### 5. Prepare Pillar Data
 
