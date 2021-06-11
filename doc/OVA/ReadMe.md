@@ -7,5 +7,5 @@ This document provides information to deploy the various CORTX OVA releases:
 
 # For OVA 2.0.1
 
-- To know about new features, enhancements, and fixed issues, see [Release Notes](R2/Release_Notes.md).
-- To deploy the OVA VM, see [OVA deployment guide](R2/CORTX_on_Open_Virtual_Appliance.rst). 
+- To know about new features, enhancements, and fixed issues, see [Release Notes](2.0.1/Release_Notes.md).
+- To deploy the OVA VM, see [OVA deployment guide](2.0.1/CORTX_on_Open_Virtual_Appliance.rst). 
