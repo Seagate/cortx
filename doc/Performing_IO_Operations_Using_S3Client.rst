@@ -2,7 +2,7 @@
 Performing IO Operations Using S3 Client
 ========================================
 
-If you want to use the provided OVA to test CORTX and observe activity in its GUI, you should have already followed the `instructions <CORTX_on_Open_Virtual_Appliance.rst>`_ to install and configure the OVA.  If you have not yet done so, please do that before following the rest of the instructions on this page.
+If you want to use the provided OVA to test CORTX and observe activity in its GUI, you should have already followed the `instructions <https://github.com/Seagate/cortx/blob/main/doc/OVA/1.0.4/CORTX_on_Open_Virtual_Appliance.rst>`_ to install and configure the OVA.  If you have not yet done so, please do that before following the rest of the instructions on this page.
 
 To perform the IO operations in CORTX, you need to install the AWS CLI. You can install the AWS CLI either on the same OVA or you can create a new VM and install it.
 
