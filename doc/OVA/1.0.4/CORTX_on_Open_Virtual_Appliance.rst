@@ -121,6 +121,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
       - Once you select an NIC, ensure that you do not have conflicting NICs selected. 
       
+
 #. (Optional) To configure the static IPs instead of DHCP:
 
    - For Management Network static IP, run the following command:
@@ -148,6 +149,20 @@ The procedure to install CORTX on OVA is mentioned below.
 
         cat /etc/sysconfig/network-scripts/ifcfg-ens32 |grep -Ei "ip|netmask|gateway"
         cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
+
+
+#. Reboot the OVA VM using following command:
+
+   ::
+
+      reboot
+
+#. Start the CORTX Cluster using following command:
+
+   ::
+
+      hctl start
+
 
 #. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
    
