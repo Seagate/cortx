@@ -223,6 +223,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-monitor](https://github.com/Seagate/cortx-monitor)
 1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
+1. [Jeet Jain](https://github.com/jjxsg)
 1. [Madhura Mande](https://github.com/Madhura-08)
 1. [Mariyappan Ponnusamy](https://github.com/mariyappanp)
 1. [Palak Garg](https://github.com/gargpalak048)
