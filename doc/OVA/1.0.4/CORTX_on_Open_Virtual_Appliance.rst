@@ -2,7 +2,7 @@
 ===============================
 CORTX on Open Virtual Appliance
 ===============================
-An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.  The minimum recommended system should have at least 4 CPU cores, at least 8 GB of RAM, and at least 120 GB of local storage. Current version of the OVA requires DHCP server to assign IPs to all 3 network interfaces. For our Japanese community, this document has been translated and is available `here <https://qiita.com/Taroi_Japanista/items/0ac03f55dce3f7433adf>`_.
+An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.  The minimum recommended system should have at least 4 CPU cores, at least 8 GB of RAM, and at least 120 GB of local storage. For our Japanese community, this document has been translated and is available `here <https://qiita.com/Taroi_Japanista/items/0ac03f55dce3f7433adf>`_.
 
 ***********************
 Recommended Hypervisors
@@ -20,12 +20,9 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download |Latest Release| of virtual machine image.
+#. Download the `CORTX OVA <https://github.com/Seagate/cortx/releases/>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. This contains the virtual machine image.
 
-   .. |Latest Release| image:: https://img.shields.io/github/v/release/Seagate/cortx?label=Latest%20Release
-      :target: https://github.com/seagate/cortx/releases/latest
-
-#. Import the OVA image by referring to `these instructions <Importing_OVA_File.rst>`_. 
+#. Import the OVA image by referring to `these instructions <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_. 
 
    - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
   
@@ -35,37 +32,25 @@ The procedure to install CORTX on OVA is mentioned below.
    * Password: opensource!
 
 #. Become the **root** user by running this:
+   
    ::
+   
      sudo su -
-   
-#. Change the hostname by running the following command:
-
-   * **hostnamectl set-hostname --static --transient --pretty <new-name>**
-  
-     If you receive **Access denied** message, remove immutable settings on the **/etc/hostname** file and run the command again. To remove immutable setting from **/etc/hostname**, run the following command.
-     
-     * **chattr -i /etc/hostname**
-  
-     To verify the change in hostname, run the following command:
- 
-     * **hostnamectl status**
-   
-   **Note**: Both short hostnames and FQDNs are accepted. If you do not have a DNS server with which to register the VM, you can access it directly using its IP addresses. However, the hostname is mandatory and should be configured.
 
 #. **For Oracle VM VirtualBox Users ONLY**:
    
-   
    .. raw:: html
 
-      <details>
-      <summary><a>Expand</a></summary>
+       <details>
+       <summary><a>Click here to expand the preboarding procedure.</a></summary>
 
    You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens32, ens33 and ens34:
    
-   **Note:** 
+      **Note:** 
+      
+         - The Network Device names may not be the exact same as listed above, for example, enp0s8, enp0s9, enp0s17 instead of enp0s3, enp0s8, enp0s9.
+         - As the network is setup using DHCP, IP changes are bound to happen during restart, static IP configuration could be harder to maintain as it may not work for different VM with different network setups. 
    
-   - The Network Device names may not be the exact same as listed above, for example, enp0s8, enp0s9, enp0s17 instead of enp0s3, enp0s8, enp0s9.
-   - As the network is setup using DHCP, IP changes are bound to happen during restart, static IP configuration could be harder to maintain as it may not work for different VM with different network setups. 
    
    #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
 
@@ -82,7 +67,9 @@ The procedure to install CORTX on OVA is mentioned below.
       * **vi ifcfg-ens34**
 
       Sample output **cat ifcfg-ens34**:
+      
       ::
+      
          DEVICE="ens34"
          USERCTL="no"
          TYPE="Ethernet"
@@ -111,24 +98,43 @@ The procedure to install CORTX on OVA is mentioned below.
       For instance if your timezone is `4:30:00` ahead of UTC, then run the following command in VM. Note the `-` before minutes as well. Similarly if your timezone is behind of UTC, use +ve hours and +ve minutes to make the adjustment.
 
       * **date --set "-4hours -30minutes"**
-
+  
    .. raw:: html
-
-      </details>
-
-#. Start the CORTX services by running this bootstrap.sh script:
-   ::
-     sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
-     
-   Run the bootstrap script to ensure all the necessary services are operational.
    
+       </details>
+
 #. **Before you begin:**
    
    - Ensure that you have configured your ipv4 network.
-      - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <troubleshoot_virtual_network.rst>`_.
+
+      - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
+
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
+
       - Once you select an NIC, ensure that you do not have conflicting NICs selected. 
       
+
+#. Start the CORTX services by running this bootstrap.sh script:
+   
+   ::
+   
+      sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
+     
+   Run the bootstrap script to ensure all the necessary services are operational.
+   
+#. Reboot the OVA VM using following command:
+
+   ::
+
+      reboot
+
+#. Start the CORTX Cluster using following command:
+
+   ::
+
+      hctl start
+
+
 #. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
    
    ::
@@ -137,72 +143,83 @@ The procedure to install CORTX on OVA is mentioned below.
    
    The output should be similar to the image below
 
-   .. image:: images/hctl_status_output.png
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104hctl_status_output.png
 
-#. Run the commands below to check the status of different services that are part of CORTX.
 
-   ::
+#. (Optional) To configure the static IPs instead of DHCP:
 
-    systemctl status rabbitmq-server 
-    systemctl status elasticsearch   
-    systemctl status haproxy
-    systemctl status s3authserver 
-    systemctl status sspl-ll      
-    systemctl status csm_agent    
-    systemctl status csm_web
-    systemctl status hare-consul-agent
- 
-   The image below shows the output of a successful *systemctl* command; notice how the service is *active*.
+   - For Management Network static IP, run the following command:
+
+      ::
+
+         # Set Management Network
+         provisioner pillar_set "cluster/srvnode-1/network/mgmt_nw/public_ip_addr" \"<IP address for management network>\"
+         provisioner pillar_set "cluster/srvnode-1/network/mgmt_nw/netmask" \"<Netmask for management network>\"
+         provisioner pillar_set "cluster/srvnode-1/network/mgmt_nw/gateway" \"<IP address for management network gateway>\"
+         salt-call state.apply components.system.network.mgmt.public
+
+   - For Data Network static IP, run the following command:
+
+      ::
+      
+         # Set Data Network
+         provisioner pillar_set "cluster/srvnode-1/network/data_nw/public_ip_addr" \"<IP address for public network>\"
+         provisioner pillar_set "cluster/srvnode-1/network/data_nw/netmask" \"<Netmask for public data network>\"
+         salt-call state.apply components.system.network.data.public
+
+    **Note:** To verify the static IPs are configured, run the following command:
+
+    ::
+
+        cat /etc/sysconfig/network-scripts/ifcfg-ens32 |grep -Ei "ip|netmask|gateway"
+        cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
+
+
+
+#. Run **ip a l** and record the IP addresses of the following interfaces:
+
+   * ens32 - Management IP
+   * ens33 - Public data IP
+   * ens34 - Private data IP (if present)
+
+
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104networks.png
    
-   .. image:: images/systemctl_output.png
-   
-   If the SSPL service is inactive, run these command.
-
-   ::
-
-    /opt/seagate/cortx/sspl/bin/sspl_setup post_install -p SINGLE
-    
-    /opt/seagate/cortx/sspl/bin/sspl_setup config -f 
-    
-    systemctl start sspl-ll    
-
-   If any other service is inactive, run this command.
-
-   ::
-
-    systemctl start|restart <service_name>
-
-#. Run **ip a l** and record the IP addresses of **ens32 + ens33** :
-
-   For example, in the image below 
-   
-   * ens32  = 192.168.16.176
-   * ens33  = 192.168.16.177 
-   
-   .. image:: images/networks.png
-    
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
    ::
    
-   sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
+      sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
 
-    * The script performs several operations on S3 API and LDAP backend:
+      * The script performs several operations on S3 API and LDAP backend:
 
-      * create account
-      * create user
-      * create bucket
-      * put object
-      * delete all the above in reverse order
+         * create account
+         * create user
+         * create bucket
+         * put object
+         * delete all the above in reverse order
       
    
-#. Using the management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <Preboarding_and_Onboarding.rst>`_. 
+#. Using the public data IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
 
-#. Now that you have the complete system up and running, using the data IP from the **ip a l** command, use these instructions `to test the system <testing_io.rst>`_  and observe activity in the GUI.  For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
+#. Run the following command and verify the S3 authserver and HA proxy are active and running:
 
-   .. image:: images/dashboard_read_write.png
+   ::
 
-#. Please use these instructions which describe how to use the `command line interface to query and monitor <checking_health.rst>`_ the configuration, health, and activity of your CORTX system.
+      systemctl status s3authserver
+      systemctl status haproxy
+   
+   - If any service is in failed state, run the following command active the services:
+
+      ::
+
+         systemctl start <service name>
+
+#. Now that you have the complete system up and running, using the data IP from the **ip a l** command, use these instructions `to test the system <https://github.com/Seagate/cortx/blob/main/doc/testing_io.rst>`_  and observe activity in the GUI.  For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
+
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/dashboard_read_write.png
+
+#. Please use these instructions which describe how to use the `command line interface to query and monitor <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ the configuration, health, and activity of your CORTX system.
 
 #. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
 
@@ -219,28 +236,10 @@ If you have a firewall between CORTX and the rest of your infrastructure, includ
 +----------------------+-------------------+---------------------------------------------+
 |          22          |        TCP        |           Management network                |
 +----------------------+-------------------+---------------------------------------------+ 
-|          53          |      TCP/UDP      | Management network and Public Data network  |
-+----------------------+-------------------+---------------------------------------------+ 
-|         123          |      TCP/UDP      |              Management network             |
-+----------------------+-------------------+---------------------------------------------+
 |         443          |       HTTPS       |             Public Data network             |
-+----------------------+-------------------+---------------------------------------------+
-|         9443         |       HTTPS       |              Public Data network            |
 +----------------------+-------------------+---------------------------------------------+
 |         28100        |   TCP (HTTPS)     |              Management network             |
 +----------------------+-------------------+---------------------------------------------+
-
-If your disk does not have space, run the following command to clean up the logs from the **/var/log** file.
-
-::
-
- rm /var/log/<file to be deleted>
- 
-This step is applicable only if the earlier s3 sanity fails. Run the below mentioned script to delete the account and objects that were created as part of the earlier sanity.
-
-::
-
- sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -c
 
 Restarting CORTX OVA
 ====================
@@ -304,16 +303,12 @@ Restart CORTX
 #. Start CORTX I/O subsystem by running the following command.
 
    - **hctl start**
-   
-
-   
+     
 .. raw:: html
    
    </details>
    
 Tested by:
-
-- June 1, 2021: Bo Wei (bo.b.wei@seagate.com) using OVA release 1.0.3 on Windows 10 running VMWare Workstation 16 Player.
 
 - May 10, 2021: Shiji Zhang (shiji.zhang@tusimple.ai) using OVA release 1.0.4 on KVM 5.1
 
@@ -356,5 +351,3 @@ Tested by:
 - Sep 12, 2020: Puja Mudaliar (puja.mudaliar@seagate.com) using OVA release 1.0.0 on a Windows laptop running VMWare Workstation.
 
 - Sep 12, 2020: Gaurav Chaudhari (gaurav.chaudhari@seagate.com) using OVA release 1.0.0 on a Windows laptop running VMWare Workstation.
-
-
