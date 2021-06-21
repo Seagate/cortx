@@ -1,7 +1,7 @@
 
-===============================
+================================
 CORTX on Open Virtual Appliance
-===============================
+================================
 An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing. 
 For our Japanese community, this document has been translated and is available `here <https://qiita.com/Taroi_Japanista/items/0ac03f55dce3f7433adf>`_.
 
@@ -189,12 +189,6 @@ Known Issues
 
 Tested by:
 
-- May 10, 2021: Shiji Zhang (shiji.zhang@tusimple.ai) using OVA release 1.0.4 on KVM 5.1
+- June 21, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 2.0.0 on Vsphere.
 
-- Apr 30, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 1.0.4 on Vsphere.
-
-- Apr 12, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on MAC running VMWare Fusion 12.1.0.
-
-- April 6, 2021: Harrison Seow (harrison.seow@seagate.com) using OVA release 1.0.3 on Windows 10 running VMware Workstation 16 Player.
-
-- Mar 25, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 1.0.3 on Windows 10 running Oracle VirtualBox & VMware Workstation 6.1.16.
+- June 21, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 2.0.0 on VMWare WorkStation Pro 16.
