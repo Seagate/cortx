@@ -103,14 +103,6 @@ The procedure to install CORTX on OVA is mentioned below.
    
        </details>
 
-#. Start the CORTX services by running this bootstrap.sh script:
-   
-   ::
-   
-      sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
-     
-   Run the bootstrap script to ensure all the necessary services are operational.
-   
 #. **Before you begin:**
    
    - Ensure that you have configured your ipv4 network.
@@ -121,6 +113,38 @@ The procedure to install CORTX on OVA is mentioned below.
 
       - Once you select an NIC, ensure that you do not have conflicting NICs selected. 
       
+
+#. Start the CORTX services by running this bootstrap.sh script:
+   
+   ::
+   
+      sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
+     
+   Run the bootstrap script to ensure all the necessary services are operational.
+   
+#. Reboot the OVA VM using following command:
+
+   ::
+
+      reboot
+
+#. Start the CORTX Cluster using following command:
+
+   ::
+
+      hctl start
+
+
+#. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
+   
+   ::
+   
+      hctl status
+   
+   The output should be similar to the image below
+
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104hctl_status_output.png
+
 
 #. (Optional) To configure the static IPs instead of DHCP:
 
@@ -151,28 +175,6 @@ The procedure to install CORTX on OVA is mentioned below.
         cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
 
 
-#. Reboot the OVA VM using following command:
-
-   ::
-
-      reboot
-
-#. Start the CORTX Cluster using following command:
-
-   ::
-
-      hctl start
-
-
-#. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
-   
-   ::
-   
-      hctl status
-   
-   The output should be similar to the image below
-
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104hctl_status_output.png
 
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
