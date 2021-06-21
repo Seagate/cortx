@@ -106,7 +106,7 @@ Procedure
    * ens33 - Public data IP: To access S3 endpoint and perform IO operations.
    * ens34 - Private data IP: To perform CORTX internal communication.
 
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/networks.png
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104networks.png
 
    
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
