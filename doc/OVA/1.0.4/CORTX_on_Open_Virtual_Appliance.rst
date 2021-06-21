@@ -310,6 +310,8 @@ Restart CORTX
    
 Tested by:
 
+- June 20, 2021: Daniar Kurniawan (daniar@uchicago.edu) using OVA release 1.0.3 on MacOS Catalina running Oracle VirtualBox 5.2.18 (Qt5.6.3).
+
 - May 10, 2021: Shiji Zhang (shiji.zhang@tusimple.ai) using OVA release 1.0.4 on KVM 5.1
 
 - Apr 30, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 1.0.4 on Vsphere.
