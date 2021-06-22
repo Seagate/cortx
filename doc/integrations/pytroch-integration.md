@@ -38,7 +38,7 @@ Data on s3 using cyberduck.
 
 
 
-Step 1: Install Cortx OVA on virtual box following these [guidelines](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst):
+Step 1: Install Cortx OVA on virtual box following these [guidelines](https://github.com/Seagate/cortx/blob/main/doc/OVA/1.0.4/CORTX_on_Open_Virtual_Appliance.rst):
 
 Step 2: Set up Cortx-S3 account via the Cortx GUI dashboard to generate the access and secret key.
 
