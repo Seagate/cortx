@@ -161,6 +161,8 @@ Known Issues
     <details>
    <summary><a>Click here to view the known issues.</a></summary>
 
+#. On the CORTX GUI, the S3 audit logs are not displayed.
+
 #. After configuring the CORTX GUI, if any system alerts are displayed. You can ignore these system alerts. 
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/AlertsError.png
