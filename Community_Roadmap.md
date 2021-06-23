@@ -90,9 +90,9 @@
         <td></td>
         <td></td>
         <td>:heavy_check_mark:<br><a href=https://github.com/Seagate/cortx/releases/tag/ova-1.0.3>LINK</a></td>
-        <td>:heavy_check_mark:</td>
         <td></td>
-        <td>:heavy_check_mark:</td>
+        <td></td>
+        <td>:heavy_check_mark:<br><a href=https://github.com/Seagate/cortx/releases/tag/cortx-ova-1.0.4.632>LINK</a></td>
         <td></td>
         <td>:heavy_check_mark:</td>
         <td></td>
@@ -109,7 +109,7 @@
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
-        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
@@ -121,3 +121,5 @@
         </tr>
     </tbody>
 </table>
+
+To more about the up and coming feature releases for CORTX, refer to the [Feature Roadmap document](/FeatureRoadmap.md).

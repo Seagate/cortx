@@ -220,7 +220,7 @@ class PersistentStats:
         except:
           pass  # nothing verbose to do for int fields
       if csv:
-        print("%s,%s-%s,%s" % (date,rname,k,short_value))
+        print("%s,%s;%s,%s" % (date,rname,k,short_value))
       else:
         print("%s %s -> %d" % (rname,k,short_value),verbosity)
 

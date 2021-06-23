@@ -2,7 +2,9 @@
 [![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/cortx/blob/main/LICENSE)
 [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://cortx.link/join-slack)
 [![YouTube](https://img.shields.io/badge/Video-YouTube-red)](https://cortx.link/videos)
+[![Latest Release](https://img.shields.io/github/v/release/Seagate/cortx?label=Latest%20Release)](https://github.com/seagate/cortx/releases/latest)
 [![GitHub contributors](https://img.shields.io/github/contributors/Seagate/cortx)](https://github.com/Seagate/cortx/graphs/contributors/)
+
 <!-- ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg) -->
 
 <img src="../main/doc/images/cortx-logo.png?raw=true">
@@ -67,7 +69,7 @@ Resources
 -   Learn how to integrate CORTX with other technologies [here](doc/integrations/README.rst).
 -   We like to highlight the work and contributions of our community members—if you have solved an interesting challenge, or you are interested in sharing your experience or use cases, we want to talk to you! Please email our Community Manager rachel.novak@seagate.com or [schedule a meeting with us](https://outlook.office365.com/owa/calendar/CORTXCommunity@seagate.com/bookings/s/x8yMn2ODxUCOdhxvXkH4FA2) to share.
 -   Many folks are actively conducting various experiments, feasibility studies, and proofs of concept using CORTX.  Check it out in the [cortx-experiments](https://github.com/Seagate/cortx-experiments) repository and either join an existing experiment or start your own.
--   Please consider participating in [CORTX Hackathons](doc/CORTX_Hackathon.rst) and check out our [CORTX Community Roadmap](Community_Roadmap.md) for upcoming events!
+-   Please consider participating in [CORTX Hackathons](doc/CORTX_Hackathon.rst) and check out our [CORTX Community Roadmap](Community_Roadmap.md) for upcoming events! To know more about upcoming features in the next 24 months, check out our [CORTX Feature Roadmap](FeatureRoadmap.md)
 -   Please [read what our Community members say](CORTXTestimonials.md) about how CORTX is helping them achieve their goals with our next-generation storage solution.
 
 Thank You!
