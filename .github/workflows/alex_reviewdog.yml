@@ -1,0 +1,26 @@
+# Configuration for alex - https://github.com/get-alex/alex
+
+name: CORTX inclusive words scan
+on:
+  # Trigger the workflow on pull request labeled as cla-signed
+  # and synchronize for the main branch
+  pull_request:
+    types: [ labeled, synchronize ]
+    branches:
+      - main
+  # Trigger the workflow on demand
+  workflow_dispatch:
+jobs:
+  # Let's start the alex to scan
+  alex:
+    name: Alex report
+    if: ${{ github.event.label.name == 'cla-signed' || github.event.action == 'synchronize' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: reviewdog/action-alex@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          filter_mode: added
+          reporter: github-pr-review
+          fail_on_error: false
