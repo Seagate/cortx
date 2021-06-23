@@ -90,9 +90,9 @@
         <td></td>
         <td></td>
         <td>:heavy_check_mark:<br><a href=https://github.com/Seagate/cortx/releases/tag/ova-1.0.3>LINK</a></td>
-        <td>:heavy_check_mark:</td>
         <td></td>
-        <td>:heavy_check_mark:</td>
+        <td></td>
+        <td>:heavy_check_mark:<br><a href=https://github.com/Seagate/cortx/releases/tag/cortx-ova-1.0.4.632>LINK</a></td>
         <td></td>
         <td>:heavy_check_mark:</td>
         <td></td>
