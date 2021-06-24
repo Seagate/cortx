@@ -2,7 +2,7 @@
 
 CORTX is about building the world's best scalable mass-capacity object storage system. If you’re interested in what we’re building and intrigued by hard challenges, here's everything you need to know about contributing to the project and how to get started. 
 
-This guide is intended to provide quick start instructions for developers who want to build, test, and contribute to the CORTX software.  If you are merely looking to _test_ CORTX, please use [these instructions](doc/CORTX_on_Open_Virtual_Appliance.rst).
+This guide is intended to provide quick start instructions for developers who want to build, test, and contribute to the CORTX software.  If you are merely looking to _test_ CORTX, please use [these instructions](doc/OVA/1.0.4/CORTX_on_Open_Virtual_Appliance.rst).
 
 After reading this guide, you'll be able to pick up topics and issues to contribute, submit your codes, and how to turn your pull request into a successful contribution. And if you have any suggestions on how we can improve this guide, or anything else in the project, we want to hear from you!
 

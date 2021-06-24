@@ -21,7 +21,7 @@ We can use CORTX as the datastore for the IPFS node.
 
 #### Step 1: Have a CORTX system up and running
 
-If you need instructions on how to set up your own CORTX system you can find instructions on how to setup one on a local machine [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst) or AWS [here.](https://github.com/Seagate/cortx/blob/main/doc/integrations/AWS_EC2.md)
+If you need instructions on how to set up your own CORTX system you can find instructions on how to setup one on a local machine [here](https://github.com/Seagate/cortx/blob/main/doc/OVA/1.0.4/CORTX_on_Open_Virtual_Appliance.rst) or AWS [here.](https://github.com/Seagate/cortx/blob/main/doc/integrations/AWS_EC2.md)
 
 To connect the IFPS client to CORTX you will need these details
 * IP ADDRESS

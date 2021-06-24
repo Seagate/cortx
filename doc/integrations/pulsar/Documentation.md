@@ -40,15 +40,15 @@ We may need 6 terminals(to avoid confusion) to see the integration and monitor i
 
 
 # Setting up Cortx
-1. Install cortx on a VM following the steps [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst)
-2. Make sure you set the date in VM to current date and set `/etc/hosts` mapping(based on VM IPs) for s3.seagate.com and management.seagate.com in your machine so that the s3 server is accessible from Pulsar. Ping the hostnames to check they are working fine. To get SSH to the VM working, set mapping. See Section 11 of [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst) to get IPs of the VM. The `/etc/hosts` file should have a couple of lines like this.
+1. Install cortx on a VM following the steps [here](https://github.com/Seagate/cortx/blob/main/doc/OVA/1.0.4/CORTX_on_Open_Virtual_Appliance.rst)
+2. Make sure you set the date in VM to current date and set `/etc/hosts` mapping(based on VM IPs) for s3.seagate.com and management.seagate.com in your machine so that the s3 server is accessible from Pulsar. Ping the hostnames to check they are working fine. To get SSH to the VM working, set mapping. See Section 11 of [here](https://github.com/Seagate/cortx/blob/main/doc/OVA/1.0.4/CORTX_on_Open_Virtual_Appliance.rst) to get IPs of the VM. The `/etc/hosts` file should have a couple of lines like this.
 ```
 192.168.0.140 local.seagate.com s3.seagate.com sts.seagate.com iam.seagate.com sts.cloud.seagate.com
 192.168.0.138 management.seagate.com
 ```
 3. Try the sanity test for s3 server to make sure everything works.
 4. In the VM, open the file `/opt/seagate/cortx/s3/conf/s3config.yaml` and change S3_MOTR_LAYOUT_ID to 1(`S3_MOTR_LAYOUT_ID: 1`)
-5. Restart cortx server as per instructions [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst).
+5. Restart cortx server as per instructions [here](https://github.com/Seagate/cortx/blob/main/doc/OVA/1.0.4/CORTX_on_Open_Virtual_Appliance.rst).
 6. Change the system date to correct value if necessary.
 7. Configure the [Cortx GUI](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst)
 8. Go to https://management.seagate.com:28100/ and after onboarding, in the Manage menu, create an S3 account and download the access key and secret key.
@@ -227,7 +227,7 @@ ssh: Could not resolve hostname local.seagate.com: nodename nor servname provide
 
 
 ### Workaround
-Find all three IPs exposed by VM(See Section 11 [here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst)) and try each of IPs against the hostname.
+Find all three IPs exposed by VM(See Section 11 [here](https://github.com/Seagate/cortx/blob/main/doc/OVA/1.0.4/CORTX_on_Open_Virtual_Appliance.rst)) and try each of IPs against the hostname.
 
 In `/etc/hosts`, in the below lines, try each of the IPs of the VM:
 ```
@@ -283,4 +283,4 @@ Cause: Forgetting to set LAYOUT_ID in Cortx config. See Section 4 in the `Settin
 
 ### Fix
 
-In the VM, open the file `/opt/seagate/cortx/s3/conf/s3config.yaml` and change S3_MOTR_LAYOUT_ID to 1(`S3_MOTR_LAYOUT_ID: 1`) and restart Cortx as per instructions in [documentation](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst).
+In the VM, open the file `/opt/seagate/cortx/s3/conf/s3config.yaml` and change S3_MOTR_LAYOUT_ID to 1(`S3_MOTR_LAYOUT_ID: 1`) and restart Cortx as per instructions in [documentation](https://github.com/Seagate/cortx/blob/main/doc/OVA/1.0.4/CORTX_on_Open_Virtual_Appliance.rst).
