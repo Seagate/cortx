@@ -7,7 +7,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ## Prerequisites
 
-- All the prerequisites specified in the [Setting up the CORTX Environment for Single Node](https://github.com/Seagate/cortx/blob/main/doc/Community-Build/Setting-up-the-CORTX-Environment-for-SingleNode.md) must be satisfied.
+- All the prerequisites specified in the [Building the CORTX Environment for Single Node](https://github.com/Seagate/cortx/blob/main/doc/Community-Build/Building-CORTX-From-Source-for-SingleNode.md) must be satisfied.
 
 ## Procedure
 

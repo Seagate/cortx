@@ -5,7 +5,7 @@ Configuring the CORTX GUI
 This guide provides step-by-step instructions to configure the CORTX GUI. You can configure the CORTX GUI after your CORTX cluster is up and running using one of the following guides:
 
 - `Any CORTX Open Virtual Appliance guide <https://github.com/Seagate/cortx/tree/main/doc/OVA>`_
-- `Setting up the CORTX Environment for Single Node <https://github.com/Seagate/cortx/blob/main/doc/Community-Build/Setting-up-the-CORTX-Environment-for-SingleNode.md>`_
+- `Building the CORTX Environment for Single Node <https://github.com/Seagate/cortx/blob/main/doc/Community-Build/Building-CORTX-From-Source-for-SingleNode.md>`_
 
 The configuration of CORTX GUI gets completed in two-step:
 
