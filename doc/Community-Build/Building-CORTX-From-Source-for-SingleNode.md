@@ -16,9 +16,9 @@ The CORTX deployment and configuration is a four-step procedure:
     - RAM: 8GB
     - Processor: 4
     - NICs: 3
-    - OS Disks: 20GB
+    - OS Disk: 1 disk of 20GB
     - Data Disks: 8 disks of 10GB
-    - Metadata Disks: 1 disk of 10GB
+    - Metadata Disk: 1 disk of 8GB
     
 -   All Network Interface Cards (NICs) must have internet access. Attach your network adapters accordingly as per your environment to establish internet connectivity. For this deployment, the NICs are considered as eth33, eth34, and eth35.
 -   The VM must have a valid hostname and accessible using ping operation.
