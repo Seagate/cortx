@@ -10,7 +10,7 @@ This guide provides step-by-step instructions to configure the CORTX GUI. You ca
 The configuration of CORTX GUI gets completed in two-step:
 
 - `Preboarding <#Preboarding>`_
-- `Onboarding <#Onbarding>`_
+- `Onboarding <#Onboarding>`_
 
 Preboarding
 ===========
