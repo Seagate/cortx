@@ -3,7 +3,7 @@
     "configMode": "AUTO",
 	"configExternalURL": "",
 	"projectToken": "",
-	"baseBranches": []
+	"baseBranches": ["main"]
   },
   "checkRunSettings": {
     "displayMode": "diff",
@@ -12,4 +12,4 @@
   "issueSettings": {
     "minSeverityLevel": "HIGH"
   }
-}
+} 
