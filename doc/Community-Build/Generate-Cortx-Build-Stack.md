@@ -7,7 +7,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ## Prerequisites
 
-- All the prerequisites specified in the [Building the CORTX Environment for Single Node](https://github.com/Seagate/cortx/blob/main/doc/Community-Build/Building-CORTX-From-Source-for-SingleNode.md) must be satisfied.
+- All the prerequisites specified in the [Building the CORTX Environment for Single Node](Building-CORTX-From-Source-for-SingleNode.md) must be satisfied.
 
 ## Procedure
 
@@ -110,4 +110,4 @@ To know about various CORTX components, see [CORTX Components guide](https://git
       iso_generation: generate ISO file from release build.
    ```
 
-8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](https://github.com/Seagate/cortx/blob/main/doc/Community-Build/ProvisionReleaseBuild.md).
+8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).

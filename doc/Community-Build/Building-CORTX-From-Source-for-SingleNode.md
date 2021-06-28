@@ -57,7 +57,7 @@ The CORTX deployment and configuration is a four-step procedure:
     ```
     sudo su -
     ```
-2. Generate the CORTX deployment packages using the instructions provided in [Generating the CORTX packages guide](https://github.com/Seagate/cortx/blob/main/doc/Community-Build/Generate-Cortx-Build-Stack.md).
-3. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](https://github.com/Seagate/cortx/blob/main/doc/Community-Build/ProvisionReleaseBuild.md).
+2. Generate the CORTX deployment packages using the instructions provided in [Generating the CORTX packages guide](Generate-Cortx-Build-Stack.md).
+3. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
 4. Configure the CORTX GUI using the instruction provided in [Configuring the CORTX GUI document](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst).
 5. Create an S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
