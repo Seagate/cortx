@@ -1,6 +1,6 @@
 # Setting up the CORTX Environment for Single Node
 
-You can deploy the CORTX stack from the source code. This document provides step-by-step instructions to deploy and configure the CORTX environment for a single-node Virtual Machine (VM).
+You can deploy the CORTX stack from the source code. You can built CORTX on any hypervisor, including VMware Workstation, Oracle Virtual Box, Microsoft Hyper-V, VMware vSphere, or on AWS instance. This document provides step-by-step instructions to deploy and configure the CORTX environment for a single-node Virtual Machine (VM).
 
 The CORTX deployment and configuration is a four-step procedure:
 
@@ -25,7 +25,7 @@ The CORTX deployment and configuration is a four-step procedure:
 -   Install the Docker packages in the VM. See to [Docker Installation](https://docs.docker.com/engine/install/centos/).
 -   Run the following command to install the Git:
     ```
-    yum install git
+    yum install git -y
     ```
 -   Run the following command to update the hostname:  
     ```

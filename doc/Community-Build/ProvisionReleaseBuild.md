@@ -101,8 +101,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
       network.data.private_interfaces=ens35
       network.data.public_interfaces=ens34
       network.mgmt.interfaces=ens33
-      storage.cvg.0.data_devices=/dev/sdb,/dev/sdc,/dev/sdd,/dev/sde,/dev/sdf,/dev/sdg,/dev/sdh,/dev/sdi
-      storage.cvg.0.metadata_devices=/dev/sdj
+      storage.cvg.0.data_devices=/dev/sdc,/dev/sdd,/dev/sde,/dev/sdf,/dev/sdg,/dev/sdh,/dev/sdi,/dev/sdj
+      storage.cvg.0.metadata_devices=/dev/sdb
       network.data.private_ip=192.254.254.254
       storage.durability.sns.data=4
       storage.durability.sns.parity=2
