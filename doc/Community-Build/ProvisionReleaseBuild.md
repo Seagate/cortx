@@ -103,7 +103,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
       network.mgmt.interfaces=ens33
       storage.cvg.0.data_devices=/dev/sdc,/dev/sdd,/dev/sde,/dev/sdf,/dev/sdg,/dev/sdh,/dev/sdi,/dev/sdj
       storage.cvg.0.metadata_devices=/dev/sdb
-      network.data.private_ip=192.254.254.254
+      network.data.private_ip=None
       storage.durability.sns.data=4
       storage.durability.sns.parity=2
       storage.durability.sns.spare=2
@@ -125,10 +125,9 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    ```
    provisioner setup_provisioner srvnode-1:$(hostname -f) \
    --logfile --logfile-filename /var/log/seagate/provisioner/setup.log --source rpm \
-   --config-path ~/config.ini \ 
+   --config-path ~/config.ini \
    --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
    ```
-
 6. Load the config.ini file data for the single node into pillars using following command:
 
    ```
