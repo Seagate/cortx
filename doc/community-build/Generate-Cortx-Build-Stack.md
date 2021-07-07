@@ -111,3 +111,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    ```
 
 8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
+
+
+## Tested by:
+
+- July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
