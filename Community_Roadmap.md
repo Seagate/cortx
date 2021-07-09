@@ -42,7 +42,7 @@
                  <img src="https://www.countryflags.io/eu/flat/64.png"><a href=https://sagestorage.eu/news-and-events/sage2-visualization-hackathon>LINK</a>
             </td>
             <td></td>
-            <td> <img src="https://www.countryflags.io/in/flat/64.png"> </td>
+            <td>  </td>
             <td><img src="https://www.countryflags.io/sg/flat/64.png"><br><a href=https://seagate-cortx-hack-singapore.devpost.com/>LINK</a></td>
             <td></td>
             <td> :earth_africa:</td>
