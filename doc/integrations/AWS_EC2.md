@@ -9,8 +9,8 @@ Prerequisites:
 -------
 
 - You will need an AWS account with right to create an [EC2 instances.](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc) 
-- You will need to [import to an AMI](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) the [CORTX OVA.](https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova) 
-- Ideally you would have [run and setup CORTX on a local VM](https://github.com/Seagate/cortx/blob/main/doc/OVA/1.0.4/CORTX_on_Open_Virtual_Appliance.rst) and gone through the steps locally before doing it on AWS. 
+- You will need to [import to an AMI](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) the [CORTX OVA](https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova).
+- Ideally you would have [run and setup CORTX on a local VM](https://github.com/Seagate/cortx/blob/main/doc/ova/1.0.4/CORTX_on_Open_Virtual_Appliance.rst) and gone through the steps locally before doing it on AWS.
 
 
 Step 1: Launch AWS EC2 instance with the CORTX AMI
