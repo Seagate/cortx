@@ -98,7 +98,7 @@ You can install the AWS CLI on the CORTX OVA to perform IO operations.
 
 #. Create a bucket on CORTX GUI:
 
-    1. Log-in to CORTX GUI  using S3 account credentials at ``https://<management IP>:28100/#/``
+    1. Log-in to CORTX GUI  using S3 account credentials at ``https://<management IP>/#/``
 
     2. Go to the **Manage tab > Bucket > Create Bucket**.
 
@@ -164,7 +164,7 @@ You can install the AWS CLI on the CORTX OVA to perform IO operations.
 
         ::
 
-            aws s3api get-object --bucket ova-bucket --key 1G /tmp/read-1G
+            aws s3api get-object --bucket ova-bucket --key 1G /tmp/read-1G --endpoint-url https://s3.seagate.com
 
         .. image::  https://github.com/Seagate/cortx/blob/main/doc/images/aws-download.png
 
@@ -283,7 +283,7 @@ You can also create a different VM and install the AWS CLI on this VM as a clien
 
         ::
 
-            aws s3api get-object --bucket ova-bucket --key 1G /tmp/read-1G
+            aws s3api get-object --bucket ova-bucket --key 1G /tmp/read-1G --endpoint-url https://s3.seagate.com
 
         .. image::  https://github.com/Seagate/cortx/blob/main/doc/images/aws-download.png
 
