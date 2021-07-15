@@ -30,6 +30,7 @@ from github import Github
 # > curl -i -s -u "johnbent:$GH_OATH" -X GET -d '' "https://api.github.com/repos/seagate/cortx/releases" | grep download_count | awk '{print $2}' | sed 's/,//' |  paste -sd+ | bc
 # will sum all releases
 # > curl -i -s -u "johnbent:$GH_OATH" -X GET "https://api.github.com/search/issues?q=repo:Seagate/cortx+label:hacktoberfest+is:open"
+# note that http://max.colo.seagate.com/motr-stats/ also has a lot of data
 
 
 PICKLE_DIR='pickles'
