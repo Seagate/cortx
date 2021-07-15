@@ -44,5 +44,5 @@ This section provides information on all the newly added features in the CORTX O
 
 # Known Issues
 
-- Read Throughput metric does not displays the performance graph, in the CORTX GUI.
-- In the CORTX GUI the Health View tab is displaying the error messages.
+- Read Throughput metric does not displays the performance graph in the CORTX GUI.
+- In the CORTX GUI, the Health View tab is displaying the error messages.
