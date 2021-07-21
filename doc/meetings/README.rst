@@ -11,15 +11,14 @@ add the event to your calendar. If the link does not automatically open your cal
 
 The Meet an Architect series are open to the public via this `WebEx link <https://seagate.webex.com/seagate/j.php?MTID=mb41af913a4001fa5f063eba9551154f6>`_.  All meetings will be recorded and made available on this page afterwards. Audience members may also be interested in our `Motr Deep Dive training sessions <https://github.com/Seagate/cortx-motr/wiki/Motr-Deep-Dive-Sessions>`_.
 
-The schedule is as follows:
-
-**Upcoming Schedule:**
-
-1. May 6, 2021: Dr. Debasmita Samaddar from Culham Center for Fusion Energy (our first external speaker!) will discuss "Parallel in time and object storage w/ CORTX".
-
-2. June 3, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk will lead a tutorial about installing, configuring, and tuning motr clusters.
 
 **Previously recorded sessions:**
+
+#. July 1, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk presented a tutorial about installing, configuring, and tuning motr clusters. `PDF <PDFs/PresentationPDF.pdf>`_ 
+
+#. June 3, 2021: Dr. Axel Orszag-Krisz, Dr. Richard Adam Vecsey, and other guests from our latest hackathon discussed on their integrations. `Video <https://www.youtube.com/watch?v=znYAcySt8lg&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=15>`_. 
+
+#. May 6, 2021: Dr. Debasmita Samaddar from Culham Center for Fusion Energy (our first external speaker!) discussed "Parallel in time and object storage w/ CORTX". `PDF <PDFs/DSamaddar_UKAEA.pdf>`_  |   `Video <https://www.youtube.com/watch?v=R0Zhjy_9WjE&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=14>`_. 
 
 #. April 1, 2021: Sai Narasimhamurthy, Andriy Tkachuk, and Ganesan Umanesan presented the CORTX related research happening in the European Union on the SAGE CORTX Cluster.  The discussion included Hierarchical Storage Management. `PDF <PDFs/MTA_april.pdf>`_  |   `Video <https://www.youtube.com/watch?v=-LRq-XUD_OE&t=100>`_. 
 
