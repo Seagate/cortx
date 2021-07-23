@@ -25,6 +25,7 @@ The preboarding procedure must be performed only once. On the preboarding proces
 
 1. Open a browser and navigate to the *https://<management IP>/#/preboarding/welcome*
 
+   - If you use OVA 1.0.4 or earlier, you should use *https://<management IP>:28100/#/preboarding/welcome*
    - If you see a message about your connection not being private, it is safe to ignore this message.
 
 2. Click **Start**. A page that requests you to accept the End User License Agreement (EULA) appears.
