@@ -20,7 +20,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 2. Run the following command to check out the codebase from the **main** branch for all components:
 
    ```
-   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=main
+   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=CORTX-OVA-2.0.0-264
    ```
 
 3. Run the following command to create a directory to store packages:
