@@ -200,7 +200,7 @@ The procedure to install CORTX on OVA is mentioned below.
          * delete all the above in reverse order
       
    
-#. Using the public data IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
+#. Using the Management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <https://github.com/Seagate/cortx/blob/main/doc/ova/1.0.4/Preboarding_and_Onboarding.rst>`_. 
 
 #. Run the following command and verify the S3 authserver and HA proxy are active and running:
 
