@@ -23,20 +23,20 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=main
    ```
    
-   Run the following command to check out the codebase from tag:
+3. You can run the following command to check out the codebase from tag:
    
    ```
    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=CORTX-OVA-2.0.0-264
    ```
    
 
-3. Run the following command to create a directory to store packages:
+4. Run the following command to create a directory to store packages:
 
    ```
    mkdir -p /var/artifacts
    ```
 
-4. Run the following command to build the CORTX packages:
+5. Run the following command to build the CORTX packages:
 
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
@@ -44,13 +44,13 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
    **Note:** It may take more than an hour to generate all the CORTX packages.
 
-5. Run the following command to generate the ISO for each component:
+6. Run the following command to generate the ISO for each component:
 
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation
    ```
 
-6. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
+7. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
 
    ```
    ll /var/artifacts/0/
@@ -70,7 +70,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz
    ```
 
-7. To view each component targets, run:
+8. To view each component targets, run:
 
    ```
    docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
@@ -117,7 +117,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
       iso_generation: generate ISO file from release build.
    ```
 
-8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
+9. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
 
 
 ## Tested by:
