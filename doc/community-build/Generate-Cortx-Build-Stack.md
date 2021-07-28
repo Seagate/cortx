@@ -115,4 +115,5 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ## Tested by:
 
+- July 28 2021: Daniar Kurniawan (daniar@uchicago.edu) on baremetal servers hosted by Chameleon Cloud and Emulab Cloud.
 - July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
