@@ -112,6 +112,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
 
+
 ## Troubleshooting
 
 You might get an error message about missing `kernel-devel` package when building the CORTX packages; sample errors:
@@ -142,9 +143,6 @@ else
 fi
 ```
 7. Finally, make it executable by running: `chmod +x /bin/uname`
-
-
-- All the prerequisites specified in the [Building the CORTX Environment for Single Node](Building-CORTX-From-Source-for-SingleNode.md) must be satisfied.
 
 
 ## Tested by:
