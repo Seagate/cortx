@@ -23,7 +23,7 @@ The preboarding procedure must be performed only once. On the preboarding proces
    <summary><a>Click here to expand the preboarding procedure.</a></summary>
 
 
-1. Open a browser and navigate to the *https://<management IP>/#/preboarding/welcome*
+1. Open a browser and navigate to the *https://<management IP>:28100/#/preboarding/welcome*
 
    - If you see a message about your connection not being private, it is safe to ignore this message.
 
@@ -54,8 +54,8 @@ Onboarding
 
 The onboarding procedure must be performed after completing the preboarding procedure. You should be brought automatically to the correct page after completing the preboarding:
 
-- If you are not or you want to redo the onboarding, navigate to *https://<management IP>/#/onboarding* 
-- If you logged out navigate to: *https://<management IP>/#/preboarding/login*
+- If you are not or you want to redo the onboarding, navigate to *https://<management IP>:28100/#/onboarding* 
+- If you logged out navigate to: *https://<management IP>:28100/#/preboarding/login*
 
 You can also perform the onboarding tasks from the **Settings** page.
 
@@ -109,7 +109,7 @@ You can also perform the onboarding tasks from the **Settings** page.
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/DB.PNG
    
-   **Note**: CSM GUI can now be accessed by navigating to *https://<management IP>/#/login*
+   **Note**: CSM GUI can now be accessed by navigating to *https://<management IP>:28100/#/login*
 
 .. raw:: html
    
