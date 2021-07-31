@@ -72,18 +72,6 @@ Choose a number from below, or type in your own value
 > s3
 ```
 
-
-```
-** See help for s3 backend at: https://rclone.org/s3/ **
-
-Choose your S3 provider.
-Enter a string value. Press Enter for the default ("").
-Choose a number from below, or type in your own value
-
-> other
-```
-
-
 ```
 ** See help for s3 backend at: https://rclone.org/s3/ **
 
