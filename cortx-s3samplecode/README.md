@@ -14,7 +14,7 @@ Basic Operations
 |listObjects|List objects in a bucket|
 |deleteObject|Delete an object in a bucket|
 
-Script Prerequisites
+Prerequisites
 ---------------------
 In order to run these scripts, you'll need the CORTX S3 server URL and S3 user credentials.  In a lab setup, the S3 server URL will be **https://***\<dataIP\>***:443** where *\<dataIP\>* is the IP address of the public data interface (ens33 in most cases) of the CORTX S3 server.
 
