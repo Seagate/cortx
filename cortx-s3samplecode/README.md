@@ -16,7 +16,7 @@ Basic Operations
 
 Script Prerequisites
 ---------------------
-In order to run these scripts, you'll need the CORTX S3 server URL and S3 user credentials.  In a lab setup, the S3 server URL will be **https://***<dataIP>***:443** where *<dataIP>* is the IP address of the public data interface (ens33 in most cases) of the CORTX S3 server.
+In order to run these scripts, you'll need the CORTX S3 server URL and S3 user credentials.  In a lab setup, the S3 server URL will be **https://***\<dataIP\>***:443** where *\<dataIP\>* is the IP address of the public data interface (ens33 in most cases) of the CORTX S3 server.
 
 >Tip: It is strongly recommended that you verify connectivity with Cyberduck to ensure that the target S3 server is reachable and the S3 credentials are valid.  If Cyberduck cannot connect, chances are these scripts won't be able to either.
 
