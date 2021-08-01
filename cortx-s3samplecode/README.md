@@ -28,3 +28,12 @@ Each script will execute a series of operations.  A new bucket will be created, 
 -  [node.js](node.js/)
 -  [go](go/)
 -  [template](template/) (template used for sample script README.md)
+
+Troubleshooting
+---------------------
+If you run into problems, here are some common errors and their resolutions.
+
+|Error Code|Description|Resolution|
+|-|-|-|
+|SignatureDoesNotMatch|Incorrect credentials provided|Verify the S3 Access and Secret keys are correct|
+|RequestTimeTooSkewed|The time difference between the client and the server is too large|Update time on server (use NTP) and/or client, verify timezones are correct|
