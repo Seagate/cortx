@@ -17,7 +17,7 @@ With Django as one of the top Python-based web frameworks, cookiecutter template
 ```
 pip install cookiecutter
 cd <your-working-directory>
-cookiecutter <url> # TODO
+cookiecutter https://github.com/calvinyanghwa/cookiecutter-django-cortx.git
 ```
 
 2. Install development requirements:
