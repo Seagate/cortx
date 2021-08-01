@@ -82,7 +82,7 @@ Unimplemented API shown.
 
 ## Installation
 This installation guide assumes you have already performed a few steps:
-1. Installed CORTX. My suggestion for development is to use the provided [Open Virtual Appliance](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst)
+1. Installed CORTX. My suggestion for development is to use the provided [Open Virtual Appliance](https://github.com/Seagate/cortx/blob/main/doc/ova/1.0.4/CORTX_on_Open_Virtual_Appliance.rst)
 image to create a Virtual Machine although there are other methods to [get started](https://github.com/Seagate/cortx/blob/main/QUICK_START.md).
 2. Create a cortex S3 account from the management UI.
    

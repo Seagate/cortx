@@ -76,7 +76,7 @@ provide that you can find [here](./biztalk/CORTXBizTalkAdapter.msi).
 
 If you need instructions on how to set up your own CORTX system you can find
 instructions on how to setup one on a local machine
-[here](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst)
+[here](https://github.com/Seagate/cortx/blob/main/doc/ova/1.0.4/CORTX_on_Open_Virtual_Appliance.rst)
 or AWS
 [here.](https://github.com/Seagate/cortx/blob/main/doc/integrations/AWS_EC2.md)
 

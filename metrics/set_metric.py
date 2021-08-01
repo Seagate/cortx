@@ -22,6 +22,7 @@ def main():
   optional.add_argument('--date', '-d', type=str, help='Which date to set', required=False)
   optional.add_argument('--org',  '-o', help='Which org',  default='Seagate')
   optional.add_argument('--repo', '-r', help='Which repo', default='GLOBAL')
+  optional.add_argument('--verbose', '-V', help='Do not compress array values into a number', action='store_true', default=False, required=False)
   args = parser.parse_args()
 
   repo = args.repo
@@ -42,7 +43,10 @@ def main():
     print("Changing %s on %s to be %s" % (repo,date,val))
 
   for d in dates:
-    print( d, args.key, ps.get_values_as_numbers(args.repo,args.key,[d]))
+    if args.verbose:
+      print( d, args.key, ps.get_values(args.repo,args.key,[d]))
+    else:
+      print( d, args.key, ps.get_values_as_numbers(args.repo,args.key,[d]))
 
 if __name__ == "__main__":
     main()

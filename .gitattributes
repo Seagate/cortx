@@ -1,0 +1,2 @@
+*.pickle filter=lfs diff=lfs merge=lfs -text
+*.ova filter=lfs diff=lfs merge=lfs -text

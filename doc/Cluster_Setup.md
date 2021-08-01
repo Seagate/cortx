@@ -133,6 +133,12 @@ For e.g,
   cmp random.img random_from_motr.img
   ```
 
+* Notes:
+
+  * Make sure that size of the source file (random.img) is greater than or equal to block size * count (*i.e. 1M * 128 = 128M here*). Otherwise errors may happen. See [this issue](https://github.com/Seagate/cortx-motr/issues/10#issuecomment-691633983). 
+  * If source file size is 128.5M, then only 128M data will be written to Motr. Therefore, please pick a proper block size and make your test file size == block size * count.
+  * Consider using [go/mcp](https://github.com/Seagate/cortx-motr/tree/main/bindings/go), which is more user friendly. It calculates the optimal unit and block size automatically based on the object size and pool parity configuration. For the example above, go/mcp can automatically write the entire 128.5M data to Motr.
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 ## 2. Dual-node setup
 

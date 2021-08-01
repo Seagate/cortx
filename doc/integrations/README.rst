@@ -24,8 +24,33 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |fluentd|      | |strapi|           |  |DOF|              |             
 +----------------+--------------------+---------------------+
-| |jupyter|      |                    |                     |             
+| |jupyter|      |      |drp|         | |Pytorch3|          |             
 +----------------+--------------------+---------------------+
+| |edgehealth|   |      |pulsar|      | |Pytorch4|          |             
++----------------+--------------------+---------------------+
+| |flapmax|      |                    |                     |             
++----------------+--------------------+---------------------+
+
+.. |flapmax| image:: https://github.com/flapmx/cortx/blob/09b27dcb19e55d0a598a5ca3085103d31bbed8da/doc/images/flapmaxlogo.png?raw=true
+   :width: 1 em
+   :target: Flapmax_LETL.md
+
+.. |edgehealth| image:: https://user-images.githubusercontent.com/2047294/117741785-72099580-b1c0-11eb-8b2f-de82cd7513fa.png
+   :width: 1 em
+   :target: edgehealth.md
+
+.. |pulsar| image:: https://user-images.githubusercontent.com/2047294/117741252-37ebc400-b1bf-11eb-8298-66ef3f8fd01f.png
+   :width: 1 em
+   :target: pulsar/README.md 
+
+
+.. |Pytorch4| image:: https://user-images.githubusercontent.com/2047294/117741096-d3c90000-b1be-11eb-8cb9-00a46ba9c08b.png
+   :width: 1 em
+   :target: pytorch/README2.md 
+
+.. |drp| image:: https://user-images.githubusercontent.com/2047294/117740445-b21b4900-b1bd-11eb-9d12-5b7ce5ac1dc5.png
+   :width: 1 em
+   :target: drp.md 
 
 .. |jupyter| image:: https://user-images.githubusercontent.com/2047294/117739959-a24f3500-b1bc-11eb-9cdf-bf50602589df.png
    :width: 1 em
@@ -103,6 +128,10 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: strapi.md
 
+.. |Pytorch3| image:: https://user-images.githubusercontent.com/2047294/117740608-03c3d380-b1be-11eb-873f-f59af5781b40.png
+   :width: 1 em
+   :target: torchvision.md
+
 .. |DOF| image:: ../images/DoF.png
    :width: 1 em
    :target: cortx_dof.md
@@ -111,7 +140,7 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: ./cortx-js-sdk/README.md
 
-.. |Slack-Bot| image:: https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/logo750x500.png
+.. |Slack-Bot| image:: https://user-images.githubusercontent.com/2047294/118882535-8846de00-b8b1-11eb-863a-74b409affdff.png
    :width: 1 em
    :target: cortx-s3-slack-bot.md
 
