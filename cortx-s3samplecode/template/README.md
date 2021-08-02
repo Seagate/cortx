@@ -12,28 +12,32 @@ Sample script name - \<link to script name in same directory\>
 
 Session  Setup
 ---------------------
-Code section to instantiate session to S3 server
+```Code section to instantiate session to S3 server```
 
 Create Bucket
 ---------------------
-Code section to create bucket
+```Code section to create bucket```
 
 List Buckets
 ---------------------
-Code section to list buckets
+```Code section to list buckets```
 
 Put Object
 ---------------------
-Code section to put an object
+```Code section to put an object```
+
+Get  Object
+---------------------
+```Code section to put an object```
 
 List Objects
 ---------------------
-Code section to list objects
+```Code section to list objects```
 
 Delete Object
 ---------------------
-Code section to delete object
+```Code section to delete object```
 
 Delete Bucket
 ---------------------
-Code section to delete bucket
+```Code section to delete bucket```
