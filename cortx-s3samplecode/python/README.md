@@ -93,3 +93,6 @@ print('The files in bucket %s:\n' % (bucket_name))
 for obj in current_bucket.objects.all():
     print(obj.meta.data) 
 ```
+
+## Test By:
+* August, 2021: Bari Arviv (bararviv0120@gmail.com | bari.arviv@seagate.com)
