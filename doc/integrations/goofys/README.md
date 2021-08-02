@@ -32,7 +32,7 @@ For detailed integration steps, do check out our 5-minute [step-by-step video]()
 Team Zelda:
 
 - Claire Lim
-- Hwang Sung Won
+- Xenon Ng
 - Tan Ziheng
 
 If there are any questions, do not hesitate to contact our team at clairelimjiaying@ntudsc.com.
