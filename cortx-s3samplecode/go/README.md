@@ -1,9 +1,9 @@
-CORTX S3 Sample Code - python
+CORTX S3 Sample Code - go
 ==============================
 
 Prerequisites
 ---------------------
-* go x.x
+* go 1.15
 ```
 $ go get -u github.com/aws/aws-sdk-go/...
 ```
