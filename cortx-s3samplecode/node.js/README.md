@@ -5,7 +5,7 @@ Prerequisites
 ---------------------
 * node.js 13.0
 ```
-$ npm install @aws-sdk/client-s3
+$ npm install aws-sdk
 ```
 
 Full Script
