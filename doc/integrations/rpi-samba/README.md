@@ -2,7 +2,7 @@
 
 ![](project_logo.png)
 
-Integration link: https://vimeo.com/manage/videos/582170955
+Integration link: https://vimeo.com/582170955
 
 ## Introduction
 With a Raspberry Pi, Samba and CORTX, this integration lets you create your NAS server (to serve network-wide files) cheaply, and automatically syncs with your CORTX storage.
