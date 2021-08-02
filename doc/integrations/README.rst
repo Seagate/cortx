@@ -155,5 +155,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |Spark| image:: ../images/spark-logo.png
    :width: 1 em
    :target: spark.md
+   
+.. |goofys| image:: ../images/goofys.png
+   :width: 1em
+   :target: ./goofys/README.md
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
