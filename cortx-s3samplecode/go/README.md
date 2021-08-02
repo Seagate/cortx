@@ -168,3 +168,6 @@ return
 }
 fmt.Printf("Bucket %q successfully deleted\n", bucket)
 ```
+
+### Tested By:
+* 
