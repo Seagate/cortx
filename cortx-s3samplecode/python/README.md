@@ -95,4 +95,4 @@ for obj in current_bucket.objects.all():
 ```
 
 ### Tested By:
-* August, 2021: Bari Arviv (bararviv0120@gmail.com | bari.arviv@seagate.com)
+* August 2, 2021: Bari Arviv (bararviv0120@gmail.com | bari.arviv@seagate.com)
