@@ -23,11 +23,10 @@ In order to run these scripts, you'll need the CORTX S3 server URL and S3 user c
 Sample Scripts
 ---------------------
 Each script will execute a series of operations.  A new bucket will be created, populated with an object, listed then deleted.
--  [curl](curl/)
+-  [curl](curl/) (work in progress)
 -  [python](python/)
 -  [node.js](node.js/)
 -  [go](go/)
--  [template](template/) (template used for sample script README.md)
 
 Troubleshooting
 ---------------------
