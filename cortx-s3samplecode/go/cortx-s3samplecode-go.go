@@ -3,16 +3,13 @@
 package main
 
 import (
+	"fmt"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/aws/aws-sdk-go/aws/awserr"
-	"strings"
-	"fmt"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"os"
-	"time"
 )
 
 func main() {
@@ -46,7 +43,7 @@ func main() {
 	result, err :=
 		s3Client.ListBuckets(nil)
 	if err != nil {
-		fmt.Println("Unable to list buckets",err)
+		fmt.Println("Unable to list buckets",err.Error())
 		return
 	}
 	// print all found buckets
@@ -57,13 +54,15 @@ func main() {
 	}
 
 	//Let's upload a test object or file to the bucket we created above
-	// to upload external file, provide FILENAME as argument to go run s3_utility.go
-	command
-	filename := os.Args[1]objectFile, err := os.Open(filename)
+	// to upload external file, provide FILENAME as argument to go run s3_utility.go command
+	filename := os.Args[1]
+
+	objectFile, err := os.Open(filename)
 	if err != nil {
 		fmt.Println("Unable to open file", err)
 	}
 	defer objectFile.Close()
+
 	// Upload the file to our "test-bucket".
 	_, err = s3Client.PutObject(&s3.PutObjectInput{
 		Body: objectFile,
@@ -71,11 +70,10 @@ func main() {
 		Key: aws.String(filename),
 	})
 	if err != nil {
-		fmt.Printf("Failed to upload data to %s/%s, %s\n", *bucket, *key, err.Error())
+		fmt.Println("Failed to upload data", err.Error())
 		return
 	}
-	fmt.Printf("Successfully created bucket %s and uploaded data with key %s\n",
-		*bucket, *key)
+	fmt.Printf("Successfully created bucket %s and uploaded data", *bucket)
 
 	// Let's download the uploaded file from the bucket created
 	// Retrieve our file from our "test-bucket" and store it locally in "file_local"
@@ -84,15 +82,15 @@ func main() {
 		fmt.Println("Failed to create file", err)
 		return
 	}
+
 	defer file.Close()
 	downloader := s3manager.NewDownloader(newSession)
 	numBytes, err := downloader.Download(file,
 		&s3.GetObjectInput{
 			Bucket: bucket,
-			Key: aws.String(filename),}
-	)
+			Key: aws.String(filename),})
 	if err != nil {
-		fmt.Println("Failed to download file", err)
+		fmt.Println("Failed to download file", err.Error())
 		return
 	}
 	fmt.Println("Downloaded file", file.Name(), numBytes, "bytes")
@@ -101,9 +99,10 @@ func main() {
 	// Get the list of items
 	resp, err := s3Client.ListObjectsV2(&s3.ListObjectsV2Input{Bucket: bucket})
 	if err != nil {
-		fmt.Println("Unable to list objects", err)
+		fmt.Println("Unable to list objects", err.Error())
 		return
-	}for _, item := range resp.Contents {
+	}
+	for _, item := range resp.Contents {
 		fmt.Println("Name: ", *item.Key)
 		fmt.Println("Last modified:", *item.LastModified)
 		fmt.Println("Size: ", *item.Size)
@@ -113,13 +112,11 @@ func main() {
 	fmt.Println("Found", len(resp.Contents), "items in bucket", bucket)
 	fmt.Println("")
 
-	// Lets' delete object, here, the file we uplaoded inside the bucket
+	// Lets' delete object, here, the file we uploaded inside the bucket
 	// Delete the item (here, file we uploaded, key was set as filename)
-	_, err = s3Client.DeleteObject(&s3.DeleteObjectInput{Bucket: bucket, Key:
-	aws.String(filename)}
-	)
+	_, err = s3Client.DeleteObject(&s3.DeleteObjectInput{Bucket: bucket, Key:aws.String(filename)})
 	if err != nil {
-		fmt.Println("Unable to delete object from bucket", err)
+		fmt.Println("Unable to delete object from bucket", err.Error())
 		return
 	}
 	err = s3Client.WaitUntilObjectNotExists(&s3.HeadObjectInput{
@@ -127,21 +124,21 @@ func main() {
 		Key: aws.String(filename),
 	})
 	if err != nil {
-		fmt.println("Error occurred while waiting for object to be deleted", err)
+		fmt.Println("Error occurred while waiting for object to be deleted", err.Error())
+		return
 	}
 	fmt.Printf("Object %q successfully deleted\n", filename)
-	// Let's delete the bucket which we created in beginnning
-	_, err = s3Client.DeleteBucket(&s3.DeleteBucketInput{Bucket: bucket,}
-	)
+	// Let's delete the bucket which we created in beginning
+	_, err = s3Client.DeleteBucket(&s3.DeleteBucketInput{Bucket: bucket,})
 	if err != nil {
-		fmt.Println("Unable to delete bucket", err)
+		fmt.Println("Unable to delete bucket", err.Error())
 		return
 	}
 	// Wait until bucket is deleted before finishing
 	fmt.Printf("Waiting for bucket %q to be deleted...\n", bucket)
 	err = s3Client.WaitUntilBucketNotExists(&s3.HeadBucketInput{Bucket: bucket,})
 	if err != nil {
-		fmt.Println("Error occurred while waiting for bucket to be deleted", error)
+		fmt.Println("Error occurred while waiting for bucket to be deleted", err.Error())
 		return
 	}
 	fmt.Printf("Bucket %q successfully deleted\n", bucket)
