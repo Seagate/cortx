@@ -74,10 +74,13 @@ aws --endpoint-url http://uvo1djqlaa0iveuluux.vm.cld.sr s3 sync s3://testbucket 
 ## Final Product
 
 Our simple setup:
+
 ![](Picture1.png)
 
 Files on network storage:
+
 ![](Picture2.png)
 
 Files on CORTX storage:
+
 ![](Picture3.png)
