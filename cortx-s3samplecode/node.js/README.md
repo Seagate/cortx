@@ -39,7 +39,7 @@ Create Bucket
 ```javascript
     // Create a bucket
     console.log("Creating a bucket...");
-    let createBucketResults = await S3.createBucket({ Bucket: this.s3BucketName }).promise();
+    let createBucketResults = await S3.createBucket({ Bucket: testBucketName }).promise();
     console.dir(createBucketResults);
 ```
 
