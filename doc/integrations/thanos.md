@@ -1,6 +1,6 @@
 # Thanos + Cortx Integration deployed with Multi-cluster Docker + Prometheus + Grafana
 
-![n](img/integration.png)
+![n](thanos/img/integration.png)
 
 
 [Prometheus](https://prometheus.io/) is an open source systems monitoring and alerting toolkit that is widely adopted as a standard monitoring tool with self-managed and provider-managed Kubernetes. Prometheus provides many useful features, such as dynamic service discovery, powerful queries, and seamless alert notification integration. Beyond certain scale, however, problems arise when basic Prometheus capabilities do not meet requirements such as:
@@ -23,7 +23,7 @@ Thanos provides downsampling and compaction, so that you downsample your histori
 
 The architecture of Thanos can be seen below
 
-![thanos](img/thanos.png)
+![thanos](thanos/img/thanos.png)
 
 ## Overview of Integration
 
@@ -112,7 +112,7 @@ Attaching to node-exporter, grafana, mc, prometheus0, prometheus1, thanos-store,
 
 Access the Thanos Query UI, which looks identical to the Prometheus UI: - http://localhost:10904/graph
 
-![t1](img/t1.png)
+![t1](thanos/img/t1.png)
 
 
 ## Step 5
@@ -122,9 +122,9 @@ Access the Grafana UI at http://localhost:3000/
 Default login/password is ```admin```
 
 Select datasources, add a prometheus datasource and select the endpoint: ```http://query0:10904```, which should look like this:
-![g2](img/g2.png)
+![g2](thanos/img/g2.png)
 
 
 When we create a dashboard, you can test a query with node_disk_writes_completed_total and it should look something like this:
 
-![g1](img/g1.png)
+![g1](thanos/img/g1.png)
