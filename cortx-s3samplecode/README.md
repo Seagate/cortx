@@ -11,6 +11,7 @@ Basic Operations
 |listBuckets|List S3 buckets available to user|
 |deleteBucket|Delete an S3 bucket and contents|
 |putObject|Upload an object to a bucket|
+|getObject|Download an object from the bucket|
 |listObjects|List objects in a bucket|
 |deleteObject|Delete an object in a bucket|
 
