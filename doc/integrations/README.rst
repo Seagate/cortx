@@ -158,6 +158,6 @@ Click on any of the images below to know how to integrate CORTX with these other
    
 .. |samba| image:: ../images/project_logo.png
    :width: 1 em
-   :target: ./samba/README.md
+   :target: ./rpi-samba/README.md
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
