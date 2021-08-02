@@ -7,9 +7,11 @@
 
 ## What is Goofys?
 
-[goofys](https://github.com/kahing/goofys) lets us mount S3 and S3-compatible storage buckets as a filesystem. 
+[goofys](https://github.com/kahing/goofys) lets us mount S3 and S3-compatible storage buckets as a filesystem. Hence, using goofys, we are able to create a folder on our own machine that automatically 'syncs' with our CORTX buckets.
 
-Hence, using goofys, we are able to create a folder on our own machine that automatically 'syncs' with your CORTX bucket.
+## Integration Value
+
+This integration up lots of opportunities for CORTX to integrate with other software and utilities that do not offer an S3 API interface and requires to interact with data in filesystems. An example includes proof-of-storage blockchain mining.
 
 ## Installation 
 
