@@ -19,7 +19,7 @@ We created a [convenience script](./goofys-cortx-setup.sh) that creates a folder
 
 ```sh
 # download to our convenience script to your system
-wget https://raw.githubusercontent.com/Seagate/cortx/313e2698446d607a0038d88f1fd94d598a62638d/doc/integrations/goofys/goofys-cortx-setup.sh
+wget https://raw.githubusercontent.com/c-l-j-y/cortx/main/doc/integrations/goofys/goofys-cortx-setup.sh
 
 # run the script with 4 arguments as listed below
 sh goofys-cortx-setup.sh <cortx-endpoint-url> <bucket-name> <aws-access-key-id> <secret-access-key>
