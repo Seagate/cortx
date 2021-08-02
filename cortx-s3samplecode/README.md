@@ -36,3 +36,8 @@ If you run into problems, here are some common errors and their resolutions.
 |-|-|-|
 |SignatureDoesNotMatch|Incorrect credentials provided|Verify the S3 Access and Secret keys are correct|
 |RequestTimeTooSkewed|The time difference between the client and the server is too large|Update time on server (use NTP) and/or client, verify timezones are correct|
+
+
+Tested by:
+
+August 2, 2021: Pete Brown (jpbrown@adhdtech.com) using Node.js 14.15.1
