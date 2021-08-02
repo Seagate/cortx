@@ -96,3 +96,6 @@ Delete Bucket
     let deleteBucketResults = await S3.deleteBucket({ Bucket: testBucketName }).promise();
     console.dir(deleteBucketResults);
 ```
+
+### Test By:
+* 
