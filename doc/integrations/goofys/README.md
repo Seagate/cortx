@@ -17,7 +17,11 @@ This integration up lots of opportunities for CORTX to integrate with other soft
 
 We created a [convenience script](./goofys-cortx-setup.sh) that creates a folder `/root/shared` that will be used to mount your CORTX bucket. Simply carry out the following command:
 
-```
+```sh
+# download to our convenience script to your system
+wget https://raw.githubusercontent.com/Seagate/cortx/313e2698446d607a0038d88f1fd94d598a62638d/doc/integrations/goofys/goofys-cortx-setup.sh
+
+# run the script with 4 arguments as listed below
 sh goofys-cortx-setup.sh <cortx-endpoint-url> <bucket-name> <aws-access-key-id> <secret-access-key>
 ```
 
