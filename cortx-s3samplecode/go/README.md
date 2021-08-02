@@ -18,7 +18,7 @@ Session  Setup
 // configure Cortx S3 server
 // endpoint is your cortex S3 endpoint URL
 s3Config := &aws.Config{
-Credentials: credentials.NewStaticCredentials("YOUR-ACCESSKEYID", "YOURSECRETACCESSKEY", ""),
+Credentials: credentials.NewStaticCredentials("YOUR-ACCESSKEYID", "YOUR-SECRETACCESSKEY", ""),
 Endpoint: aws.String("http://localhost:8080"),
 Region: aws.String("us-east-1"),
 DisableSSL: aws.Bool(true),
