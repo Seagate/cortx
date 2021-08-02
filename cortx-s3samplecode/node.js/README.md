@@ -97,5 +97,5 @@ Delete Bucket
     console.dir(deleteBucketResults);
 ```
 
-### Test By:
+### Tested By:
 * 
