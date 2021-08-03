@@ -28,7 +28,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |edgehealth|   |      |pulsar|      | |Pytorch4|          |             
 +----------------+--------------------+---------------------+
-| |flapmax|      |                    |                     |             
+| |flapmax|      |     |restic2|      |                     |             
 +----------------+--------------------+---------------------+
 
 .. |flapmax| image:: https://github.com/flapmx/cortx/blob/09b27dcb19e55d0a598a5ca3085103d31bbed8da/doc/images/flapmaxlogo.png?raw=true
@@ -155,5 +155,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |Spark| image:: ../images/spark-logo.png
    :width: 1 em
    :target: spark.md
+   
+.. |restic2| image:: ./restic2/logo.png
+   :width: 1 em
+   :target: ./restic2/restic.md
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
