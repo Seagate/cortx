@@ -158,6 +158,6 @@ Click on any of the images below to know how to integrate CORTX with these other
    
 .. |restic2| image:: ./restic2/logo.png
    :width: 1 em
-   :target: ./restic2/restic.md
+   :target: ./restic2/restic.rst
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
