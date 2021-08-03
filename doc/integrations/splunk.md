@@ -1,4 +1,4 @@
-# What is Splunk?
+# What is Splunk? - blah blah blah 
 
 Splunk is a software platform that allows you to search, monitor, and analyze machine-generated big data via a Web-style interface. Splunk captures, indexes, and correlates real-time data in a searchable repository from which it can generate graphs, reports, alerts, dashboards and visualizations.
 
