@@ -4,7 +4,7 @@ CORTX on Open Virtual Appliance
 ===============================
 An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.  The minimum recommended system should have at least 4 CPU cores, at least 8 GB of RAM, and at least 120 GB of local storage. For our Japanese community, this document has been translated and is available `here <https://qiita.com/Taroi_Japanista/items/0ac03f55dce3f7433adf>`_.
 
-**Note: ** This is not for development purposes. Package Managers such as yum will not work in the OVA.
+**Note:** This is intended for simple testing to evaluate the CORTX system for the "look and feel" and for some basic functionality testing; it is not intended for development purposes. Package Managers such as yum will not work in the OVA. If you are interested in development, please instead use these instructions `Build CORTX from Source Code using Docker <https://github.com/Seagate/cortx/blob/main/doc/community-build/Building-CORTX-From-Source-for-SingleNode.md>`_
 
 ***********************
 Recommended Hypervisors
