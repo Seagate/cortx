@@ -6,7 +6,7 @@ CORTX-Restic
 Integrating CORTX with Restic
 *****************************
 
-.. image:: restic/logo.png
+.. image:: ./logo.png
     :alt: logo
 
 
