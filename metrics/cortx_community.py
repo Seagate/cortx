@@ -30,6 +30,7 @@ from github import Github
 # > curl -i -s -u "johnbent:$GH_OATH" -X GET -d '' "https://api.github.com/repos/seagate/cortx/releases" | grep download_count | awk '{print $2}' | sed 's/,//' |  paste -sd+ | bc
 # will sum all releases
 # > curl -i -s -u "johnbent:$GH_OATH" -X GET "https://api.github.com/search/issues?q=repo:Seagate/cortx+label:hacktoberfest+is:open"
+# note that http://max.colo.seagate.com/motr-stats/ also has a lot of data
 
 
 PICKLE_DIR='pickles'
@@ -41,10 +42,10 @@ SLACK_COMMUNITY_PICKLE='%s/cortx_slack_community.pickle' % PICKLE_DIR # the peop
 STATS_PICKLE='%s/persistent_stats.pickle' % PICKLE_DIR                # the per-repo and global stats
 COMPARE_PROJECTS_PICKLE='%s/compare_projects.pickle' % PICKLE_DIR     # the historical star and fork counts for all known open source projects
 
-# a map of projects mapping to (org, repo_prefix)
-projects={'Ceph'  : ('Ceph',None),
-          'MinIO' : ('MinIO',None),
-          'DAOS'  : ('daos-stack',None), 
+# a map of projects mapping to (org, CSV list of repo_prefixes)
+projects={'Ceph'  : ('Ceph','ceph,rados,crush,rgw'),
+          'MinIO' : ('MinIO','minio,mc,operator,kes,console,direct-csi'),
+          'DAOS'  : ('daos-stack','daos,mercury'),
           'CORTX' : ('Seagate','cortx'),
           'Swift' : ('openstack','swift'),
           'OpenIO': ('open-io','oio'),
@@ -220,7 +221,7 @@ class PersistentStats:
         except:
           pass  # nothing verbose to do for int fields
       if csv:
-        print("%s,%s-%s,%s" % (date,rname,k,short_value))
+        print("%s,%s;%s,%s" % (date,rname,k,short_value))
       else:
         print("%s %s -> %d" % (rname,k,short_value),verbosity)
 
@@ -629,13 +630,21 @@ def get_teams(url):
 # some repo's are forked in an org and maybe we shouldn't scrape them
 # that might be a way to do that
 def get_repos(gh=None,org_name='Seagate',prefix='cortx'):
+  def prefix_included(repo_name,prefix):
+    if prefix is None:
+      return False
+    for p in prefix.split(','):
+      if p.lower() in repo_name.lower():
+        return True
+    return False
+
   if not gh:
     gh = Github(os.environ.get('GH_OATH'))
   org = gh.get_organization(org_name)
   orepos = org.get_repos()
   repos = [] 
   for repo in orepos:
-    if (prefix and prefix not in repo.name) or repo.name.endswith('.old') or repo.name.endswith('-old') or repo.private:
+    if prefix_included(repo.name,prefix) is False or repo.name.endswith('.old') or repo.name.endswith('-old') or repo.private:
       continue
     else:
       repos.append(repo)

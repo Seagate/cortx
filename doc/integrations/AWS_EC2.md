@@ -9,8 +9,8 @@ Prerequisites:
 -------
 
 - You will need an AWS account with right to create an [EC2 instances.](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc) 
-- You will need to [import to an AMI](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) the [CORTX OVA.](https://github.com/Seagate/cortx/releases/download/ova-1.0.3/cortx-va-1.0.3.ova) 
-- Ideally you would have [run and setup CORTX on a local VM](https://github.com/Seagate/cortx/blob/main/doc/CORTX_on_Open_Virtual_Appliance.rst) and gone through the steps locally before doing it on AWS. 
+- You will need to [import to an AMI](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) the [CORTX OVA](https://github.com/Seagate/cortx/releases/download/cortx-ova-1.0.4-632/cortx-ova-1.0.4.ova).
+- Ideally you would have [run and setup CORTX on a local VM](https://github.com/Seagate/cortx/blob/main/doc/ova/1.0.4/CORTX_on_Open_Virtual_Appliance.rst) and gone through the steps locally before doing it on AWS.
 
 
 Step 1: Launch AWS EC2 instance with the CORTX AMI
@@ -127,3 +127,8 @@ Once you have created the Windows Server you can remote desktop into the Windows
 - Follow [these instructions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html#connect-rdp) to remote desktop into your windows instance
 
 - Follow  [these instructions](https://github.com/Seagate/cortx/blob/main/doc/testing_io.rst) to upload files to the CORTX server.
+
+### Tested By:
+
+- Apr 29, 2021: Patrick Hession (patrick.hession@seagate.com) using OVA release 1.0.3.
+- Apr 12, 2021: Justin Woo (justin.woo@seagate.com) using OVA release 1.0.3.
