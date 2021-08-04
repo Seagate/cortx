@@ -1,6 +1,5 @@
-# LyveLab Israel - Bari Arviv
-
-## CORTX Installation on Bare Metal Server - Yes, we can!
+# Install CORTX on Supermicro Servers with Seagate RBOD Storage
+### LyveLab Israel - Bari Arviv
 
 1. Verify that the connectivity of the hardware is the same as described below: 
    <p align="center">
@@ -418,9 +417,9 @@
 
 13.	Copy installation files to `/opt/isos` **on server-a**:
     ```
-    cortx-os-1.0.0-23.iso  
-    cortx-prep-1.0.0-540.sh
-    cortx-1.0.0-540-single.iso
+    [cortx-os-1.0.0-23.iso](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-os-1.0.0-23.iso)  
+    [cortx-prep-1.0.0-540.sh](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-prep-1.0.0-540.sh)
+    [cortx-1.0.0-540-single.iso](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-1.0.0-540-single.iso)
     ```
 
 14.	Execute:
