@@ -29,7 +29,7 @@
 1. Configure **both servers** identically to boot in UEFI mode. Controller configuration should be AHCI (non-RAID), \
    boot from first local drive.
 
-1. Install `cortx-os-1.0.0-23.iso` **on both servers**. Possible installation options are using a physical USB drive (with installation iso deployed) using PXE environment configured in UEFI mode, using kickstart file `ks.cfg` from the iso. It should be slightly modified to be run in isolated mode (non-production environment). Example configuration:
+1. Install [`cortx-os-1.0.0-23.iso`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-os-1.0.0-23.iso) **on both servers**. Possible installation options are using a physical USB drive (with installation iso deployed) using PXE environment configured in UEFI mode, using kickstart file `ks.cfg` from the iso. It should be slightly modified to be run in isolated mode (non-production environment). Example configuration:
    ```
    [root@rack-b-node-1-gui ~]# cat /var/ftp/pub/ks.cfg
    install
@@ -415,12 +415,10 @@
        ./controller-cli.sh host -h '10.0.0.3' -u manage -p <’controller password’> prov -s
        ```
 
-13.	Copy installation files to `/opt/isos` **on server-a**:
-    ```
-    [cortx-os-1.0.0-23.iso](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-os-1.0.0-23.iso)  
-    [cortx-prep-1.0.0-540.sh](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-prep-1.0.0-540.sh)
-    [cortx-1.0.0-540-single.iso](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-1.0.0-540-single.iso)
-    ```
+13.	Copy installation files to `/opt/isos` **on server-a**: \
+    [`cortx-os-1.0.0-23.iso`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-os-1.0.0-23.iso)  
+    [`cortx-prep-1.0.0-540.sh`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-prep-1.0.0-540.sh)  
+    [`cortx-1.0.0-540-single.iso`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-1.0.0-540-single.iso) 
 
 14.	Execute:
     ```
