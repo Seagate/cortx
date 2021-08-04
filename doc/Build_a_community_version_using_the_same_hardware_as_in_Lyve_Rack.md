@@ -4,7 +4,7 @@
 
 1. Verify that the connectivity of the hardware is the same as described below: 
    <p align="center">
- 	 <img src="./images/LDRv1 connections diagram.png">
+	 <img src="./images/LDRv1_connections_diagram.png">
    </p>
 
 1. HW spec that was used for the installation:
