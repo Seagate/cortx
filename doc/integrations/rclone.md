@@ -1,5 +1,7 @@
 # What is RClone?
 
+[video](https://vimeo.com/582062188)
+
 [Rclone](https://github.com/rclone/rclone) ("rsync for cloud storage") is a command line program to sync files and directories to and from different cloud storage providers.
 
 Users call rclone "The Swiss army knife of cloud storage", and "Technology indistinguishable from magic".
