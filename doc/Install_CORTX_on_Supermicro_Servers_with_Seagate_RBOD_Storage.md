@@ -31,7 +31,7 @@
 
 1. Install [`cortx-os-1.0.0-23.iso`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-os-1.0.0-23.iso) **on both servers**. Possible installation options are using a physical USB drive (with installation iso deployed) using PXE environment configured in UEFI mode, using kickstart file `ks.cfg` from the iso. It should be slightly modified to be run in isolated mode (non-production environment). Example configuration:
    ```
-   [root@rack-b-node-1-gui ~]# cat /var/ftp/pub/ks.cfg
+   [root@rack-b-node-1-gui ~]# cat ks.cfg
    install
    cdrom
    lang en_us.utf-8
@@ -322,7 +322,10 @@
        wget https://raw.githubusercontent.com/Seagate/cortx-prvsnr/9618eab4a1aca82b8c7921cfcfc6751614b3e1df/srv/components/controller/files/scripts/xml.sh
        ```
 
-    2. Install `sshpass` via `yum`.
+    2. Install `sshpass` via `yum`: 
+       ```
+       yum install sshpass
+       ```
 
     3. Change permissions of `/tmp/scripts`. Run: 
        ```
