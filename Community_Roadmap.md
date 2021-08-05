@@ -55,26 +55,21 @@
 </td>
         <td></td>
         <td></td>
-        <td>:heavy_check_mark:
-        <a href=/doc/PDFs/Newsletters/November%202020%20Newsletter.pdf>PDF</a>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/November%202020%20Newsletter.pdf>PDF</a>
         </td>
-        <td>:heavy_check_mark:
-        <a href=/doc/PDFs/Newsletters/December%202020%20Newsletter.pdf>PDF</a>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/December%202020%20Newsletter.pdf>PDF</a>
         </td>
-        <td>:heavy_check_mark:
-        <a href=/doc/PDFs/Newsletters/January%202021%20Newsletter.pdf>PDF</a>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/January%202021%20Newsletter.pdf>PDF</a>
         </td>
-        <td>:heavy_check_mark:
-        <a href=/doc/PDFs/Newsletters/Feb_2021_newsletter.pdf>PDF</a>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/Feb_2021_newsletter.pdf>PDF</a>
         </td>
-        <td>:heavy_check_mark:
-        <a href=/doc/PDFs/Newsletters/Mar_2021_newsletter.pdf>PDF</a>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/Mar_2021_newsletter.pdf>PDF</a>
         </td>
-        <td>:heavy_check_mark:<a href=/doc/PDFs/Newsletters/april_newsletter_2021.pdf>PDF</a>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/april_newsletter_2021.pdf>PDF</a>
         </td>
-        <td>:heavy_check_mark:<a href=/doc/PDFs/Newsletters/May_newsletter21.pdf>PDF</a></td>
-        <td>:heavy_check_mark:<a href=/doc/PDFs/Newsletters/june_newsletter21.pdf>PDF</a></td>
-        <td>:heavy_check_mark:<a href=/doc/PDFs/Newsletters/july_newsletter21.pdf>PDF</a></td>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/May_newsletter21.pdf>PDF</a></td>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/june_newsletter21.pdf>PDF</a></td>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/july_newsletter21.pdf>PDF</a></td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
