@@ -14,7 +14,7 @@ The Meet an Architect series are open to the public via this `WebEx link <https:
 
 **Previously recorded sessions:**
 
-#. July 1, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk presented a tutorial about installing, configuring, and tuning motr clusters. `PDF <PDFs/PresentationPDF.pdf>`_ 
+#. July 1, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk presented a tutorial about installing, configuring, and tuning motr clusters. `PDF <PDFs/PresentationPDF.pdf>`_  | `Video <https://www.youtube.com/watch?v=OGG5x2Wohm0>`_.
 
 #. June 3, 2021: Dr. Axel Orszag-Krisz, Dr. Richard Adam Vecsey, and other guests from our latest hackathon discussed on their integrations. `Video <https://cortx.link/mta-hackathon>`_. 
 
