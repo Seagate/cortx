@@ -19,10 +19,11 @@ This document provides quick access to several different ways to set up CORTX fo
     1. Run it across a cluster [TODO]
 4. Run a prepackaged CORTX software releases
     1. On a single node: TODO
-    1. Across a cluster: [TODO](doc/scaleout/README.rst)
+    1. Across a cluster: [requires verification](doc/scaleout/README.rst)
 5. Build entire CORTX into OVA (virtual machine image): TODO
     1. Run it on a single node: TODO 
     1. Run it on a cluster: TODO
+1. Install CORTX on Supermicro Servers with Seagate RBOD Storage: [requires verification](doc/Install_CORTX_on_Supermicro_Servers_with_Seagate_RBOD_Storage.md)
 
 Note that some of the links above are tagged 'requires verification' and some are tagged 'LINK'.  We apply the 'LINK' tag only after instructions have been verified by at least two people.  The 'required verification' instructions are instructions which are still awaiting a second verification.  If you verify them, please add your name to the 'Tested By' section at the bottom of the page and change the tag on this page as well. If you have any questions, please visit our [resources page](https://github.com/Seagate/cortx/blob/main/SUPPORT.md) or join us on [Slack.](https://cortx.link/slack_invite)
     
