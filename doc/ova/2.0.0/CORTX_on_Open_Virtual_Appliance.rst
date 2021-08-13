@@ -191,7 +191,7 @@ Known Issues
 
 Tested by:
 
-- Aug  11, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VMWare Fusion 12.1.2.
+- Aug 11, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VMWare Fusion 12.1.2.
 
 - June 21, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 2.0.0 on Vsphere.
 
