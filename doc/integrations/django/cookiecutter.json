@@ -1,0 +1,12 @@
+{
+  "project_name": "django_cortx_project",
+  "repo_name": "django_cortx_repo",
+  "author_name": "Your name",
+  "email": "Your email",
+  "description": "A short description of the project",
+  "year": "Current year",
+  "cortx_access_key_id": "AKIAtEpiGWUcQIelPRlD1Pi6xQ",
+  "cortx_secret_access_key": "YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK",
+  "cortx_bucket_name": "testbucket",
+  "cortx_endpoint_url": "https://your-endpoint-here"
+}
