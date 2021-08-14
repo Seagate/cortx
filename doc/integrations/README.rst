@@ -30,7 +30,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+            
 | |flapmax|      |    |s3fs|          |     |samba|         |                         
 +----------------+--------------------+---------------------+          
-|       |h2o|    |    |Django|        |                     | 
+|       |h2o|    |    |Django|        |      |rclone|       | 
 +----------------+--------------------+---------------------+
 
 .. |flapmax| image:: https://github.com/flapmx/cortx/blob/09b27dcb19e55d0a598a5ca3085103d31bbed8da/doc/images/flapmaxlogo.png?raw=true
@@ -158,6 +158,10 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: spark.md
    
+.. |rclone| image:: ./rclone/logo.png
+   :width: 1 em
+   :target: rclone.md
+
 .. |h2o| image:: ./h2o/h2o.png
    :width: 1 em
    :target: h2o.rst
