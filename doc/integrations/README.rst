@@ -32,6 +32,8 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+          
 |       |h2o|    |    |Django|        |      |rclone|       | 
 +----------------+--------------------+---------------------+
+|       |chia|   |                    |                     | 
++----------------+--------------------+---------------------+
 
 .. |flapmax| image:: https://github.com/flapmx/cortx/blob/09b27dcb19e55d0a598a5ca3085103d31bbed8da/doc/images/flapmaxlogo.png?raw=true
    :width: 1 em
@@ -158,6 +160,10 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: spark.md
    
+.. |chia| image:: ../images/chia-logo.png
+   :width: 1 em
+   :target: ./chia-blockchain/README.md
+
 .. |rclone| image:: ./rclone/logo.png
    :width: 1 em
    :target: rclone.md
