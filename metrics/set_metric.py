@@ -38,7 +38,10 @@ def main():
     date = dates[-1]
     print("Defaulting to use last valid date %s" % date)
 
-  if val is not None:
+  if val == 'None':
+    ps.add_stat(date=date,repo=repo,stat=key,value=None)
+    print("Changing %s on %s to be %s" % (repo,date,val))
+  elif val is not None:
     ps.add_stat(date=date,repo=repo,stat=key,value=int(val))
     print("Changing %s on %s to be %s" % (repo,date,val))
 

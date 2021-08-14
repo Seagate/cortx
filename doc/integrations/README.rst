@@ -27,8 +27,10 @@ Click on any of the images below to know how to integrate CORTX with these other
 | |jupyter|      |      |drp|         | |Pytorch3|          |             
 +----------------+--------------------+---------------------+
 | |edgehealth|   |      |pulsar|      | |Pytorch4|          |             
++----------------+--------------------+---------------------+            
+| |flapmax|      |    |s3fs|          |     |samba|         |                         
 +----------------+--------------------+---------------------+
-| |flapmax|      |    |Django|        |                     |             
+|                |    |Django|        |                     | 
 +----------------+--------------------+---------------------+
 
 .. |flapmax| image:: https://github.com/flapmx/cortx/blob/09b27dcb19e55d0a598a5ca3085103d31bbed8da/doc/images/flapmaxlogo.png?raw=true
@@ -159,5 +161,13 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |Django| image:: ../images/django.png
    :width: 1 em
    :target: ./django/README.md
+
+.. |s3fs| image:: ./s3fs/s3fs.png
+   :width: 1 em
+   :target: s3fs.md
+
+.. |samba| image:: ../images/project_logo.png
+   :width: 1 em
+   :target: ./rpi-samba/README.md
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
