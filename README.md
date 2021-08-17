@@ -15,7 +15,7 @@ The amount of data the world is creating and collecting is increasing massively.
 
 <p align="center"><img src="../main/doc/images/at_risk_data.jpg?raw=true" title="This graph, using data from IDC, shows the amount of at-risk data increasing annually.  CORTX enables the mass capacity drives that will allow this at-risk data to be saved."/></p>
 
-## The CORTX Project
+## The CORTX Project Mental
 
 CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization.  **CORTX is 100% Open Source.** Most of the project is licensed under the [Apache 2.0 License](../main/LICENSE) and the rest is under AGPLv3; check the specific License file for each submodule to determine which is which.
 
