@@ -1,0 +1,28 @@
+name: Alex Recommends
+
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  alex:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Alex Scan Report
+      uses: brown-ccv/alex-recommends@v1.1.2
+      with:
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        message_id: 'cortx'
+        no_binary: true
+        profanity_sureness: 0
+        pr_only: false
+        glob_pattern: "*"
