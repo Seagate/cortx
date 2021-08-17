@@ -17,10 +17,11 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
    ```
 
-2. Run the following command to check out the codebase from the **main** branch for all components:
+2. Run one of the following commands to check out the codebase from the **main** branch for all components:
 
    ```
    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=main
+   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
    ```
 
 3. Run the following command to create a directory to store packages:
@@ -29,18 +30,20 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    mkdir -p /var/artifacts
    ```
 
-4. Run the following command to build the CORTX packages:
+4. Run one of the following commands to build the CORTX packages:
 
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
+   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean build
    ```
 
    **Note:** It may take more than an hour to generate all the CORTX packages.
 
-5. Run the following command to generate the ISO for each component:
+5. Run one of the following commands to generate the ISO for each component:
 
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation
+   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make iso_generation
    ```
 
 6. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
@@ -49,27 +52,14 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    ll /var/artifacts/0/
    ```
 
-   The system output displays as follows:
-
-   ```
-   [root@ssc-vm-2699 ~]# ll /var/artifacts/0/
-   total 1060876
-   drwxr-xr-x  12 root root      4096 Apr  9 07:23 3rd_party
-   drwxr-xr-x   3 root root      4096 Apr  9 07:23 cortx_iso
-   -rw-r--r--   1 root root      4395 Apr  9 07:23 cortx-prep-2.0.0-0.sh
-   drwxr-xr-x   2 root root      4096 Apr  9 07:24 iso
-   drwxr-xr-x 198 root root      4096 Apr  9 07:23 python_deps
-   -rw-r--r--   1 root root 240751885 Apr  9 07:23 python-deps-1.0.0-0.tar.gz
-   -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz
-   ```
-
-7. To view each component targets, run:
+7. To view each component targets, run one of the below commands:
 
    ```
    docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
+   docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
    ```
 
-   The system output displays as follows:
+   The system output displays as follows from centos-7.8:
 
    ```
    [root@ssc-vm-1613 cortx-**]# docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
@@ -113,7 +103,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
 
 
-## Troubleshooting
+## Troubleshooting [centos-7.8]
 
 You might get an error message about missing `kernel-devel` package when building the CORTX packages; sample errors:
 ```sh
