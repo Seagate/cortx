@@ -108,9 +108,9 @@ Procedure
 
       If the cluster is not running, start the cluster using the following command:
 
-         ::
+      ::
 
-            hctl start
+         hctl start
 
 
 #. Run **ip a l** and record the IP addresses of the following interfaces:
@@ -204,7 +204,7 @@ Known Issues
 
 Tested by:
 
-- Aug 11, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VirtualBox 6.1.26.
+- Aug 16, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VirtualBox 6.1.26.
 
 - Aug 11, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VMWare Fusion 12.1.2.
 
