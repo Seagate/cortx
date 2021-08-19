@@ -11,7 +11,7 @@ The CORTX deployment and configuration is a four-step procedure:
 
 ## Prerequisites
 
--   Create a [CentOS 7.8.2003](http://repos-va.psychz.net/centos/7.8.2003/isos/x86_64/) VM with following minimum configuration:
+-   Create a [CentOS 7.9.2009](http://repos-va.psychz.net/centos/7.9.2009/isos/x86_64/) VM with following minimum configuration:
 
     - RAM: 8GB
     - Processor: 4
@@ -65,4 +65,6 @@ The CORTX deployment and configuration is a four-step procedure:
 
 ## Tested by:
 
+- Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
 - July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
+

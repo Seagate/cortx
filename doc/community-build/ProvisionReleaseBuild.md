@@ -131,7 +131,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 6. Load the config.ini file data for the single node into pillars using following command:
 
    ```
-   provisioner configure_setup ./config.ini 1
+   provisioner configure_setup ~/config.ini 1
    ```
    **Note:** To know more about pillar data, see [Pillar in SaltStack](https://docs.saltproject.io/en/latest/topics/tutorials/pillar.html).
 
@@ -216,6 +216,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ### Tested by:
 
+- Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
 - July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - May 24 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - May 12, 2021: Christina Ku (christina.ku@seagate.com) on VM "LDRr2 - CentOS 7.8-20210511-221524" with 2 disks.
