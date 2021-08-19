@@ -65,4 +65,6 @@ The CORTX deployment and configuration is a four-step procedure:
 
 ## Tested by:
 
+- Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
 - July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
+
