@@ -32,7 +32,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+          
 |       |h2o|    |    |Django|        |      |rclone|       | 
 +----------------+--------------------+---------------------+
-|       |chia|   |   |laravel|        |                     | 
+|       |chia|   |   |laravel|        |         |dvc|        | 
 +----------------+--------------------+---------------------+
 
 .. |laravel| image:: https://github.com/Seagate/cortx/blob/main/doc/integrations/laravel/1200px-Laravel.svg.png?raw=true
@@ -164,6 +164,10 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: spark.md
    
+.. |dvc| image:: ../images/dvc.png
+   :width: 1 em
+   :target: ./dvc/README.md
+
 .. |chia| image:: ../images/chia-logo.png
    :width: 1 em
    :target: ./chia-blockchain/README.md
@@ -187,6 +191,5 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |samba| image:: ../images/project_logo.png
    :width: 1 em
    :target: ./rpi-samba/README.md
-
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
