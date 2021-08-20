@@ -32,8 +32,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+          
 |       |h2o|    |    |Django|        |      |rclone|       | 
 +----------------+--------------------+---------------------+
-|       |chia|   |   |laravel|        |         |dvc|        | 
+|       |chia|   |   |laravel|        |         |dvc|       | 
 +----------------+--------------------+---------------------+
+
 
 .. |laravel| image:: https://github.com/Seagate/cortx/blob/main/doc/integrations/laravel/1200px-Laravel.svg.png?raw=true
    :width: 1 em
