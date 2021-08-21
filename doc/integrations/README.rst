@@ -31,10 +31,10 @@ Click on any of the images below to know how to integrate CORTX with these other
 | |flapmax|      |    |s3fs|          |     |samba|         |                         
 +----------------+--------------------+---------------------+          
 |       |h2o|    |    |Django|        |      |rclone|       | 
-+----------------+--------------------+---------------------+
++----------------+--------------------+---------------------+        
 |       |chia|   |   |laravel|        |         |dvc|       | 
 +----------------+--------------------+---------------------+
-|    |restic2|   |        |thanos|    |                     | 
+|    |restic2|   |        |thanos|    |          |goofys|   | 
 +----------------+--------------------+---------------------+
 
 
@@ -166,6 +166,9 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: spark.md
    
+.. |goofys| image:: ../images/goofys.jpg
+   :width: 1 em
+   :target: ./goofys/README.md
 
 .. |thanos| image:: ./thanos/img/logo.png
    :width: 1 em
