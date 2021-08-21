@@ -34,6 +34,8 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 |       |chia|   |   |laravel|        |         |dvc|       | 
 +----------------+--------------------+---------------------+
+|    |restic2|   |                    |                     | 
++----------------+--------------------+---------------------+
 
 
 .. |laravel| image:: https://github.com/Seagate/cortx/blob/main/doc/integrations/laravel/1200px-Laravel.svg.png?raw=true
@@ -51,7 +53,6 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |pulsar| image:: https://user-images.githubusercontent.com/2047294/117741252-37ebc400-b1bf-11eb-8298-66ef3f8fd01f.png
    :width: 1 em
    :target: pulsar/README.md 
-
 
 .. |Pytorch4| image:: https://user-images.githubusercontent.com/2047294/117741096-d3c90000-b1be-11eb-8cb9-00a46ba9c08b.png
    :width: 1 em
@@ -165,6 +166,10 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: spark.md
    
+.. |restic2| image:: ./restic2/logo.png
+   :width: 1 em
+   :target: ./restic2/restic.rst
+
 .. |dvc| image:: ../images/dvc.png
    :width: 1 em
    :target: ./dvc/README.md
