@@ -34,7 +34,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 |       |chia|   |   |laravel|        |         |dvc|       | 
 +----------------+--------------------+---------------------+
-|    |restic2|   |                    |                     | 
+|    |restic2|   |        |thanos|    |                     | 
 +----------------+--------------------+---------------------+
 
 
@@ -166,6 +166,11 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: spark.md
    
+
+.. |thanos| image:: ./thanos/img/logo.png
+   :width: 1 em
+   :target: thanos.md
+
 .. |restic2| image:: ./restic2/logo.png
    :width: 1 em
    :target: ./restic2/restic.rst
@@ -197,5 +202,6 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |samba| image:: ../images/project_logo.png
    :width: 1 em
    :target: ./rpi-samba/README.md
+
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
