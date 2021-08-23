@@ -204,6 +204,8 @@ Known Issues
 
 Tested by:
 
+- Aug 23, 2021: Harrison Seow (harrison.seow@seagate.com) using OVA release 2.0.0 on Windows 10 running VMWare WorkStation 16 Player.
+
 - Aug 16, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VirtualBox 6.1.26.
 
 - Aug 11, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VMWare Fusion 12.1.2.
