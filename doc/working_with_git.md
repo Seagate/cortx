@@ -33,7 +33,7 @@ Before you contribute to the CORTX project, you'll have to **Fork** the CORTX re
 2. Click **Fork**
 3. Run the following commands in Shell:
    
-   `$ git clone --recursive https://github.com/Seagate/<repository>.git`
+   `$ git clone --recursive https://github.com/github-id/<repository>.git`
 
 4. You'll need to setup the upstream repository in the remote list. This is a one-time activity. Run the following command to view the configured remote repository for your fork.
     
@@ -43,7 +43,7 @@ Before you contribute to the CORTX project, you'll have to **Fork** the CORTX re
     
     ```shell
     
-     origin git@github.com:<gitgub-id>/cortx-sspl.git (fetch)
+     origin git@github.com:<github-id>/cortx-sspl.git (fetch)
      origin git@github.com:<github-id>/cortx-sspl.git (push)
      ```
 
