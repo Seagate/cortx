@@ -17,11 +17,10 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
    ```
 
-2. Run one of the following commands to check out the codebase from the **main** branch for all components:
+2. Run the following command and use appropriate image, image name as per OS version name Run one of the following commands to check out the codebase from the **main** branch for all components:
 
    ```
    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=main
-   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
    ```
 
 3. Run the following command to create a directory to store packages:
