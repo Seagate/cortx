@@ -100,6 +100,19 @@ Procedure
          cortx cluster stop
          cortx cluster start
 
+   **Note** For VirtualBox users, you need to check if the CORTX hare cluster is running using the following command:
+
+      ::
+
+         hctl status
+
+      If the cluster is not running, start the cluster using the following command:
+
+      ::
+
+         hctl start
+
+
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
    * ens32 - Management IP: To access the CORTX GUI.
@@ -190,6 +203,8 @@ Known Issues
 
 
 Tested by:
+
+- Aug 16, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VirtualBox 6.1.26.
 
 - Aug 11, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VMWare Fusion 12.1.2.
 
