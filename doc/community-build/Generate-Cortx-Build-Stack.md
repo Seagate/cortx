@@ -33,7 +33,6 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean build
    ```
 
    **Note:** It may take more than an hour to generate all the CORTX packages.
@@ -42,7 +41,6 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make iso_generation
    ```
 
 6. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
@@ -55,7 +53,6 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
    ```
    docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
-   docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
    ```
 
    The system output displays as follows from centos-7.8:
