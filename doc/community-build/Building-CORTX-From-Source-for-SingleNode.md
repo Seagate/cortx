@@ -21,6 +21,9 @@ The CORTX deployment and configuration is a four-step procedure:
     - Metadata Disk: 1 disk of 8GB
     
 -   All Network Interface Cards (NICs) must have internet access. Attach your network adapters accordingly as per your environment to establish internet connectivity. For this deployment, the NICs are considered as eth33, eth34, and eth35.
+
+- *Note* For VirtualBox users, you can follow this guideline to [Create data disks and Configure NICs](Network_&_Disk_Configuration_For_VirtualBox.md).
+
 -   The VM must have a valid hostname and accessible using ping operation.
 -   Install the Docker packages in the VM. See to [Docker Installation](https://docs.docker.com/engine/install/centos/).
 -   Run the following command to install the Git:
