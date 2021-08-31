@@ -41,9 +41,7 @@ The preboarding procedure must be performed only once. On the preboarding proces
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/EULA1.PNG
 
-5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.  The usernames *root*, *cortx*, and *csm* are reserved so please do not use them.
-    
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/preboard_create_admin.PNG
+5. Login with the default username<cortxadmin> and password<Cortxadmin@123>. Once logged in, you will be prompted to set your password.
 
   
 .. raw:: html
