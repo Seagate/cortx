@@ -5,7 +5,7 @@ To set up CORTX from the source for a single node, you need to configure the net
 
     <img src="../images/network_disks/network.png">
     <br><br>
-2. Enable Adapters 1, 2 and 3. Change Attached to from NAT to Bridged Adapter. On the promiscuous mode,select Allow All; this allows incoming traffic to pass the physical network adapter of the host machine and reach the virtual network adapter of the VM.
+2. Enable Adapters 1, 2 and 3. Change Attached to from NAT to Bridged Adapter. On the promiscuous mode,select Allow All; this allows incoming traffic to pass the physical network adapter of the local machine and reach the virtual network adapter of the VM.
 
     <img src="../images/network_disks/enable.png">
     <br><br>
@@ -29,7 +29,7 @@ To set up CORTX from the source for a single node, you need to configure the net
 
     <img src="../images/network_disks/ethernet_1.png">
     <br><br>
-- This will connect the NIC cards to DHCP IP address, and the DNS configured on your host machine.
+- This will connect the NIC cards to DHCP IP address, and the DNS configured on your local machine.
 
     <img src="../images/network_disks/ethernet_2.png">
     <br><br>
