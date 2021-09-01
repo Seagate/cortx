@@ -10,7 +10,16 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ## Procedure
 
-**Note:** Run appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9
+**Note:** Run appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9. For example:
+
+##### For CentOS 7.8.2003
+```
+ # docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
+```
+##### For CentOS 7.9.2009
+```
+ # docker pull ghcr.io/seagate/cortx-build:centos-7.8.2003
+```
 
 1. Run the following command to clone the CORTX repository:
 
