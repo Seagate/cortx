@@ -10,7 +10,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ## Procedure
 
-**Note** Execute following commands as per CentOS 7.8 or CentOS 7.9
+**Note:** Execute following commands as per CentOS 7.8 or CentOS 7.9 image with tag
 
 1. Run the following command to clone the CORTX repository:
 
@@ -59,7 +59,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 7. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
 
 
-## Tested by:
+### Tested by:
 
 - Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
