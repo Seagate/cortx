@@ -14,11 +14,11 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ##### For CentOS 7.8.2003
 ```
- # docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
+ # docker pull ghcr.io/seagate/cortx-build:centos-7.8.2003
 ```
 ##### For CentOS 7.9.2009
 ```
- # docker pull ghcr.io/seagate/cortx-build:centos-7.8.2003
+ # docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
 ```
 
 1. Run the following command to clone the CORTX repository:
