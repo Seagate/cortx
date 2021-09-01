@@ -10,7 +10,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ## Procedure
 
-**Note:** Execute following commands as per CentOS 7.8 or CentOS 7.9 image with tag
+**Note:** Run appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9
 
 1. Run the following command to clone the CORTX repository:
 
