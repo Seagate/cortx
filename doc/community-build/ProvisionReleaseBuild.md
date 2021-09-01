@@ -80,19 +80,13 @@ To know about various CORTX components, see [CORTX Components guide](https://git
       echo ${device_list#*,}
       ```
 
-   C. To find the interfaces as per zones defined in your VM, run:
-
-      ```
-      firewall-cmd --get-active-zones
-      ```
-
-   D. Run the following command to create a config.ini file:
+   C. Run the following command to create a config.ini file:
 
       ```
       vi ~/config.ini
       ```
 
-   E. Paste the code below into the config file replacing your network interface names with ens33,ens34, ens35, and storage disks with /dev/sdb,../dev/sdc:
+   D. Paste the code below into the config file replacing your network interface names with ens33,ens34,ens35, and storage disks with /dev/sdb,../dev/sdc:
       
       **Note:** The values used in the below code are for example purpose, update the values as per the inputs received from the above steps.
 
@@ -101,18 +95,20 @@ To know about various CORTX components, see [CORTX Components guide](https://git
       network.data.private_interfaces=ens35
       network.data.public_interfaces=ens34
       network.mgmt.interfaces=ens33
-      storage.cvg.0.data_devices=/dev/sdc,/dev/sdd,/dev/sde,/dev/sdf,/dev/sdg,/dev/sdh,/dev/sdi,/dev/sdj
-      storage.cvg.0.metadata_devices=/dev/sdb
-      network.data.private_ip=None
-      storage.durability.sns.data=4
-      storage.durability.sns.parity=2
-      storage.durability.sns.spare=2
-      bmc.user=None
-      bmc.secret=None
+      roles=primary,openldap_server,kafka_server
+      storage.cvg.0.data_devices=/dev/sdb2,/dev/sdb3,/dev/sdb4
+      storage.cvg.0.metadata_devices=/dev/sdb1
+      storage.cvg.1.data_devices=/dev/sdc2,/dev/sdc3,/dev/sdc4
+      storage.cvg.1.metadata_devices=/dev/sdc1
 
       [srvnode-1]
       hostname=deploy-test.cortx.com
-      roles=primary,openldap_server
+      storage.durability.sns.data=4
+      storage.durability.sns.parity=2
+      storage.durability.sns.spare=0
+      storage.durability.dix.data=1
+      storage.durability.dix.parity=0
+      storage.durability.dix.spare=0
 
       [enclosure_default]
       type=other
@@ -216,6 +212,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ### Tested by:
 
+- Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
 - July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - May 24 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
