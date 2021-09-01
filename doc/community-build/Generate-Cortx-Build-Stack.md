@@ -15,31 +15,31 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 1. Run the following command to clone the CORTX repository:
 
    ```
-   cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
+   # cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
    ```
 
 2. Run the following command to check out the codebase from the **main** branch for all components:
 
    ```
-   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=main
+   # docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=main
    ```
 
 3. Run the following command to create a directory to store packages:
 
    ```
-   mkdir -p /var/artifacts
+   # mkdir -p /var/artifacts
    ```
 
 4. Run the following command to build the CORTX packages:
 
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
+   # docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
    ```
 
 5. Run the following command to generate the ISO for each component:
 
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation
+   # docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation
    ```
 
 6. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
