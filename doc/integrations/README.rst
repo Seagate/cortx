@@ -31,9 +31,16 @@ Click on any of the images below to know how to integrate CORTX with these other
 | |flapmax|      |    |s3fs|          |     |samba|         |                         
 +----------------+--------------------+---------------------+          
 |       |h2o|    |    |Django|        |      |rclone|       | 
++----------------+--------------------+---------------------+        
+|       |chia|   |   |laravel|        |         |dvc|       | 
 +----------------+--------------------+---------------------+
-|       |chia|   |                    |                     | 
+|    |restic2|   |        |thanos|    |          |goofys|   | 
 +----------------+--------------------+---------------------+
+
+
+.. |laravel| image:: https://github.com/Seagate/cortx/blob/main/doc/integrations/laravel/1200px-Laravel.svg.png?raw=true
+   :width: 1 em
+   :target: cortx_laravel.md 
 
 .. |flapmax| image:: https://github.com/flapmx/cortx/blob/09b27dcb19e55d0a598a5ca3085103d31bbed8da/doc/images/flapmaxlogo.png?raw=true
    :width: 1 em
@@ -46,7 +53,6 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |pulsar| image:: https://user-images.githubusercontent.com/2047294/117741252-37ebc400-b1bf-11eb-8298-66ef3f8fd01f.png
    :width: 1 em
    :target: pulsar/README.md 
-
 
 .. |Pytorch4| image:: https://user-images.githubusercontent.com/2047294/117741096-d3c90000-b1be-11eb-8cb9-00a46ba9c08b.png
    :width: 1 em
@@ -160,6 +166,22 @@ Click on any of the images below to know how to integrate CORTX with these other
    :width: 1 em
    :target: spark.md
    
+.. |goofys| image:: ../images/goofys.jpg
+   :width: 1 em
+   :target: ./goofys/README.md
+
+.. |thanos| image:: ./thanos/img/logo.png
+   :width: 1 em
+   :target: thanos.md
+
+.. |restic2| image:: ./restic2/logo.png
+   :width: 1 em
+   :target: ./restic2/restic.rst
+
+.. |dvc| image:: ../images/dvc.png
+   :width: 1 em
+   :target: ./dvc/README.md
+
 .. |chia| image:: ../images/chia-logo.png
    :width: 1 em
    :target: ./chia-blockchain/README.md
