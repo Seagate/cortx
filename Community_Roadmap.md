@@ -70,8 +70,8 @@
         <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/May_newsletter21.pdf>PDF</a></td>
         <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/june_newsletter21.pdf>PDF</a></td>
         <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/july_newsletter21.pdf>PDF</a></td>
-        <td>:heavy_check_mark:</td>
-        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/august_newsletter_2021.pdf>PDF</a></td>
+        <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/September_newsletter_2021.pdf>PDF</a></td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
@@ -89,11 +89,11 @@
         <td></td>
         <td>:heavy_check_mark:<br><a href=https://github.com/Seagate/cortx/releases/tag/cortx-ova-1.0.4.632>LINK</a></td>
         <td>:heavy_check_mark:<br><a href=https://github.com/Seagate/cortx/releases/tag/cortx-ova-2.0.0-264>LINK</a></td>
-        <td>:heavy_check_mark:</td>
         <td></td>
         <td>:heavy_check_mark:</td>
         <td></td>
         <td>:heavy_check_mark:</td>
+        <td></td>
         </tr>
         <tr>
         <td><a href=doc/meetings/README.rst>Webinars</a></td>
