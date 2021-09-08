@@ -13,6 +13,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 - The CORTX packages must be generated using the steps provided in the [Generate Cortx Build Stack guide](Generate-Cortx-Build-Stack.md).
 
+- 4x4 partitions must be created from each devices i.e. /dev/sdb and /dev/sdc
+
 
 ## Procedure
 
@@ -62,47 +64,31 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 4. Create the config.ini file:
 
-     **Note:** The config.ini file requires you to add the metadata disk, data disk, and NICs, information. Run the following command to find the devices on your node:
+     **Note:** Run the following command to find the device partitions on your node:
 
-   ```
-   device_list=$(lsblk -nd -o NAME -e 11|grep -v sda|sed 's|sd|/dev/sd|g'|paste -s -d, -)
-   ```
+     ```
+     lsblk -l |grep -E "sdb|sdc"
+     ```
 
-   A. To find the metadata disks value for storage.cvg.0.metadata_devices, run:
-
-      ```  
-      echo ${device_list%%,*}
-      ```
-
-   B. To find the data disks value for storage.cvg.0.data_devices, run:
-
-      ```
-      echo ${device_list#*,}
-      ```
-
-   C. To find the interfaces as per zones defined in your VM, run:
-
-      ```
-      firewall-cmd --get-active-zones
-      ```
-
-   D. Run the following command to create a config.ini file:
+   A. Run the following command to create a config.ini file:
 
       ```
       vi ~/config.ini
       ```
 
-   E. Paste the code below into the config file replacing your network interface names with ens33,ens34, ens35, and storage disks with /dev/sdb,../dev/sdc:
+   B. Paste the code below into the config file replacing your network interface names with ens32,ens33,ens34, and storage disks with partitions:
       
       **Note:** The values used in the below code are for example purpose, update the values as per the inputs received from the above steps.
 
       ```
       [srvnode_default]
-      network.data.private_interfaces=ens35
-      network.data.public_interfaces=ens34
-      network.mgmt.interfaces=ens33
-      storage.cvg.0.data_devices=/dev/sdc,/dev/sdd,/dev/sde,/dev/sdf,/dev/sdg,/dev/sdh,/dev/sdi,/dev/sdj
-      storage.cvg.0.metadata_devices=/dev/sdb
+      network.data.private_interfaces=ens34
+      network.data.public_interfaces=ens33
+      network.mgmt.interfaces=ens32
+      storage.cvg.0.data_devices=/dev/sdb1,/dev/sdb2,/dev/sdb3
+      storage.cvg.0.metadata_devices=/dev/sdb4
+      storage.cvg.1.data_devices=/dev/sdc1,/dev/sdc2,/dev/sdc3
+      storage.cvg.1.metadata_devices=/dev/sdc4
       network.data.private_ip=None
       storage.durability.sns.data=4
       storage.durability.sns.parity=2
