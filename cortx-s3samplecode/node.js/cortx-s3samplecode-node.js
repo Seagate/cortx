@@ -1,5 +1,5 @@
 'use strict';
-const AWS = require('aws-sdk');
+const AWS = require("aws-sdk");
 
 // Must ignore cert errors due to Cortx certs
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
