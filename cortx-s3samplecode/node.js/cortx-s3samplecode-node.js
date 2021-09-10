@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 const AWS = require("aws-sdk");
 
 // Must ignore cert errors due to Cortx certs
