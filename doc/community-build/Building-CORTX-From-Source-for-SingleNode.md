@@ -1,6 +1,6 @@
 # Setting up the CORTX Environment for Single Node
 
-You can deploy the CORTX stack from the source code. You can built CORTX on any hypervisor, including VMware Workstation, Oracle Virtual Box, Microsoft Hyper-V, VMware vSphere, or on AWS instance. This document provides step-by-step instructions to deploy and configure the CORTX environment for a single-node Virtual Machine (VM).
+You can deploy the CORTX stack from the source code. You can built CORTX on any hypervisor, including VMware Workstation, VMware vSphere, or on AWS instance. This document provides step-by-step instructions to deploy and configure the CORTX environment for a single-node Virtual Machine (VM).
 
 The CORTX deployment and configuration is a four-step procedure:
 
@@ -11,37 +11,37 @@ The CORTX deployment and configuration is a four-step procedure:
 
 ## Prerequisites
 
--   Create a [CentOS 7.8.2003](http://repos-va.psychz.net/centos/7.8.2003/isos/x86_64/) VM with following minimum configuration:
+-   Create a [CentOS 7.8.2003](http://repos-va.psychz.net/centos/7.8.2003/isos/x86_64/) or [CentOS 7.9.2009](http://repos-va.psychz.net/centos/7.9.2009/isos/x86_64/) VM with following minimum configuration:
 
     - RAM: 8GB
     - Processor: 4
     - NICs: 3
     - OS Disk: 1 disk of 20GB
-    - Data Disks: 8 disks of 10GB
-    - Metadata Disk: 1 disk of 8GB
+    - Total Disks: 2 disks of 32GB each
+          - Partitions: 4x4 partitions of 8GB from each disk
     
 -   All Network Interface Cards (NICs) must have internet access. Attach your network adapters accordingly as per your environment to establish internet connectivity. For this deployment, the NICs are considered as eth33, eth34, and eth35.
 -   The VM must have a valid hostname and accessible using ping operation.
 -   Install the Docker packages in the VM. See to [Docker Installation](https://docs.docker.com/engine/install/centos/).
 -   Run the following command to install the Git:
     ```
-    yum install git -y
+    # yum install git docker-ce docker-ce-cli containerd.io -y
     ```
--   Run the following command to update the hostname:  
+-   Run the following command to update the hostname:
     ```
-    sudo hostnamectl set-hostname --static --transient --pretty deploy-test.cortx.com
+    # sudo hostnamectl set-hostname --static --transient --pretty deploy-test.cortx.com
     ```
-      **Note:**  Use this hostname to avoid issues further in the bootstrap process. Verify the hostname is updated using  `hostname -f`
+    **Note:**  Use this hostname to avoid issues further in the bootstrap process. Verify the hostname is updated using  `hostname -f`
 
 -   Disable the SElinux by running:    
     ```
-    sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+    # sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
     ```
 -   Reboot your VM using the following command: `Reboot`
 -   Start the Docker services:
     
     ```
-    sudo systemctl start docker
+    # sudo systemctl start docker
     ```
 
 ### Recommendations:
@@ -55,7 +55,7 @@ The CORTX deployment and configuration is a four-step procedure:
 1. Become a root user using following command: 
 
     ```
-    sudo su -
+    # sudo su -
     ```
 2. Generate the CORTX deployment packages using the instructions provided in [Generating the CORTX packages guide](Generate-Cortx-Build-Stack.md).
 3. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
@@ -65,4 +65,6 @@ The CORTX deployment and configuration is a four-step procedure:
 
 ## Tested by:
 
+- Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
+- Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
 - July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
