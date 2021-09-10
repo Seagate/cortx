@@ -25,23 +25,23 @@ The CORTX deployment and configuration is a four-step procedure:
 -   Install the Docker packages in the VM. See to [Docker Installation](https://docs.docker.com/engine/install/centos/).
 -   Run the following command to install the Git:
     ```
-    # yum install git docker-ce docker-ce-cli containerd.io -y
+    yum install git docker-ce docker-ce-cli containerd.io -y
     ```
 -   Run the following command to update the hostname:
     ```
-    # sudo hostnamectl set-hostname --static --transient --pretty deploy-test.cortx.com
+    sudo hostnamectl set-hostname --static --transient --pretty deploy-test.cortx.com
     ```
     **Note:**  Use this hostname to avoid issues further in the bootstrap process. Verify the hostname is updated using  `hostname -f`
 
 -   Disable the SElinux by running:    
     ```
-    # sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+    sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
     ```
 -   Reboot your VM using the following command: `Reboot`
 -   Start the Docker services:
     
     ```
-    # sudo systemctl start docker
+    sudo systemctl start docker
     ```
 
 ### Recommendations:
@@ -55,7 +55,7 @@ The CORTX deployment and configuration is a four-step procedure:
 1. Become a root user using following command: 
 
     ```
-    # sudo su -
+    sudo su -
     ```
 2. Generate the CORTX deployment packages using the instructions provided in [Generating the CORTX packages guide](Generate-Cortx-Build-Stack.md).
 3. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
