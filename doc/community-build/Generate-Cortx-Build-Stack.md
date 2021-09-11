@@ -146,6 +146,7 @@ fi
 
 ### Tested by:
 
+- Aug 31 2021: Rose Wambui (rose.wambui@seagate.com) on Mac laptop running VirtualBox 6.1.
 - Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
 - Aug 18 2021: Jalen Kan (jalen.j.kan@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.

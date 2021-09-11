@@ -21,6 +21,9 @@ The CORTX deployment and configuration is a four-step procedure:
           - Partitions: 4x4 partitions of 8GB from each disk
     
 -   All Network Interface Cards (NICs) must have internet access. Attach your network adapters accordingly as per your environment to establish internet connectivity. For this deployment, the NICs are considered as eth33, eth34, and eth35.
+
+- *Note* For VirtualBox users, you can follow this guideline to [Create data disks and Configure NICs](Network_&_Disk_Configuration_For_VirtualBox.md).
+
 -   The VM must have a valid hostname and accessible using ping operation.
 -   Install the Docker packages in the VM. See to [Docker Installation](https://docs.docker.com/engine/install/centos/).
 -   Run the following command to install the Git:
@@ -65,6 +68,7 @@ The CORTX deployment and configuration is a four-step procedure:
 
 ## Tested by:
 
+- Aug 31 2021: Rose Wambui (rose.wambui@seagate.com) on Mac laptop running VirtualBox 6.1.
 - Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
 - July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
