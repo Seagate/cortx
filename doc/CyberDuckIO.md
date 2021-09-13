@@ -5,7 +5,7 @@ CyberDuck for IO Operations
 You can install the CyberDuck on the CORTX OVA to perform IO operations.
 
 
-1. Ensure that all the prerequisites are satisfied. See [Prerequisites](doc/IO_prereqs.md) 
+1. Ensure that all the prerequisites are satisfied. See [Prerequisites](https://github.com/Seagate/cortx/blob/hessio-patch-7/doc/IO_prereqs.md) 
 
 1. If you do not already have one, download an S3 client. These instructions use [CyberDuck](https://cyberduck.io/download/)
 
