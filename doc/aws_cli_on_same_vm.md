@@ -48,7 +48,7 @@ You can install the AWS CLI on the CORTX OVA to perform IO operations.
 
             aws configure set default.ca_bundle /opt/seagate/cortx/provisioner/srv/components/s3clients/files/ca.crt
 
-#. Perform the IO operation:
+1. Perform the IO operation:
 
     1. Verify the bucket created using CORTX GUI:
 
@@ -78,6 +78,6 @@ You can install the AWS CLI on the CORTX OVA to perform IO operations.
 
         **Note:** For more information on CORTX supported S3 APIs, see `S3 Supported API <https://github.com/Seagate/cortx-s3server/blob/main/docs/s3-supported-api.md>`__.
 
-#. Navigate to the Dashboard tab in your CORTX GUI, change *Metric 1* to *throughput_write* and you should see activity in the dashboard.
+1. Navigate to the Dashboard tab in your CORTX GUI, change *Metric 1* to *throughput_write* and you should see activity in the dashboard.
 
     ![Alt Text](https://github.com/Seagate/cortx/blob/main/doc/images/PG.PNG)
