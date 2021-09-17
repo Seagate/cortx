@@ -1,4 +1,3 @@
-
 # Compile and Build Complete CORTX Stack using Docker
 
 This document provides step-by-step instructions to build and generate the CORTX stack packages using Docker.
@@ -10,6 +9,17 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 - All the prerequisites specified in the [Building the CORTX Environment for Single Node](Building-CORTX-From-Source-for-SingleNode.md) must be satisfied.
 
 ## Procedure
+
+**Note:** Run appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9. For example:
+
+##### For CentOS 7.8.2003
+```
+docker pull ghcr.io/seagate/cortx-build:centos-7.8.2003
+```
+##### For CentOS 7.9.2009
+```
+docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
+```
 
 1. Run the following command to clone the CORTX repository:
 
@@ -35,8 +45,6 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
    ```
 
-   **Note:** It may take more than an hour to generate all the CORTX packages.
-
 5. Run the following command to generate the ISO for each component:
 
    ```
@@ -46,13 +54,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 6. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
 
    ```
-   ll /var/artifacts/0/
-   ```
-
-   The system output displays as follows:
-
-   ```
-   [root@ssc-vm-2699 ~]# ll /var/artifacts/0/
+   [root@deploy-test ~]# ll /var/artifacts/0/
    total 1060876
    drwxr-xr-x  12 root root      4096 Apr  9 07:23 3rd_party
    drwxr-xr-x   3 root root      4096 Apr  9 07:23 cortx_iso
@@ -62,56 +64,53 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    -rw-r--r--   1 root root 240751885 Apr  9 07:23 python-deps-1.0.0-0.tar.gz
    -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz
    ```
-
+ 
 7. To view each component targets, run:
-
    ```
    docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
    ```
-
+   
    The system output displays as follows:
-
    ```
    [root@ssc-vm-1613 cortx-**]# docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
    usage: make "target"
-
+   
    Please clone required component repositories in cortx-workspace directory before executing respective targets.
 
    targets:
 
-      help: print this help message.
+     help: print this help message.
 
-      clean: remove existing /var/artifacts/0 directory.
+     clean: remove existing /var/artifacts/0 directory.
 
-      build: generate complete CORTX build including third-party-deps at "/var/artifacts/0"
+     build: generate complete CORTX build including third-party-deps at "/var/artifacts/0"
 
-      control-path: generate control-path packages. cortx-provisioner, cortx-monitor, cortx-manager, cortx-management-portal and cortx-ha.
+     control-path: generate control-path packages. cortx-provisioner, cortx-monitor, cortx-manager, cortx-management-portal and cortx-ha.
 
-      io-path: generate io-path packages. cortx-motr, cortx-s3server and cortx-hare.
+     io-path: generate io-path packages. cortx-motr, cortx-s3server and cortx-hare.
 
-      cortx-motr: generate cortx-motr packages.
+     cortx-motr: generate cortx-motr packages.
 
-      cortx-s3server: generate cortx-s3server packages.
+     cortx-s3server: generate cortx-s3server packages.
 
-      cortx-hare: generate cortx-hare packages.
+     cortx-hare: generate cortx-hare packages.
 
-      cortx-ha: generate cortx-ha packages.
+     cortx-ha: generate cortx-ha packages.
 
-      cortx-management-portal: generate cortx-management-portal packages.
+     cortx-management-portal: generate cortx-management-portal packages.
 
-      cortx-manager: generate cortx-manager packages.
+     cortx-manager: generate cortx-manager packages.
 
-      cortx-monitor: generate cortx-monitor packages.
+     cortx-monitor: generate cortx-monitor packages.
 
-      cortx-posix: generate cortx-posix (NFS) packages.
+     cortx-posix: generate cortx-posix (NFS) packages.
 
-      cortx-prvsnr: generate cortx-prvsnr packages.
+     cortx-prvsnr: generate cortx-prvsnr packages.
 
-      iso_generation: generate ISO file from release build.
-   ```
+     iso_generation: generate ISO file from release build.
+     ```
 
 8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
-
 
 ## Troubleshooting
 
@@ -121,7 +120,7 @@ Error: No Package found for kernel-devel = 3.10.0-1127.19.1.el7
 error: Failed build dependencies:
             kernel-devel = 3.10.0-1127.19.1.el7 is needed by cortx-motr-2.0.0-0_git2ca587c_3.10.0_1127.19.1.el7.x86_64
 ```
-Here is the solution:
+**Here is the solution:**
 1. Go inside the `Docker` container using the interactive mode by running:
 ```sh
 docker container run -it --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 bash
@@ -145,8 +144,10 @@ fi
 7. Finally, make it executable by running: `chmod +x /bin/uname`
 
 
-## Tested by:
+### Tested by:
 
+- Aug 31 2021: Rose Wambui (rose.wambui@seagate.com) on Mac laptop running VirtualBox 6.1.
+- Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
 - Aug 18 2021: Jalen Kan (jalen.j.kan@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - July 28 2021: Daniar Kurniawan (daniar@uchicago.edu) on baremetal servers hosted by Chameleon Cloud and Emulab Cloud.
