@@ -20,18 +20,20 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 **Prerequisites:**
 
 - To run the CORTX OVA the following minimum configuration is required:
-   - RAM: 8GB
-   - Number of core per processor: 4
-   - Storage: 80GB
 
-     Note: The CORTX OVA VM will create 10 disks including OS disk.
+  - RAM: 8GB
+  - Number of core per processor: 4
+  - Storage: 80GB
+
+    Note: The CORTX OVA VM will create 10 disks including OS disk.
 
 - Download the `CORTX OVA <https://github.com/Seagate/cortx/releases/>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. 
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
-   - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
-   - If on the VMware WorkStation, you do not see an IPv4 network configured, then update virtual networking configuration. See `troubleshooting virtual network <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
-   - For Oracle Virtual Box network configuration, see `network configuration for Oracle VirtualBox <https://github.com/Seagate/cortx/blob/main/doc/Oracle_Virtual_Box_Network_Configuration.md>`_.
+
+  - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
+  - If on the VMware WorkStation, you do not see an IPv4 network configured, then update virtual networking configuration. See `troubleshooting virtual network <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
+  - For Oracle Virtual Box network configuration, see `network configuration for Oracle VirtualBox <https://github.com/Seagate/cortx/blob/main/doc/Oracle_Virtual_Box_Network_Configuration.md>`_.
 
 
 **********
@@ -44,11 +46,13 @@ Procedure
    * Password: opensource!
   
 #. Become the **root** user by running this:
+
    ::
    
      sudo su -
 
 #. Start the CORTX services by running this bootstrap.sh script:
+
    ::
    
       sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
@@ -58,7 +62,8 @@ Procedure
 #. (Optional) To configure the static IPs instead of DHCP:
 
    - For Management Network static IP, run the following command:
-      ::
+   
+     ::
 
          # Set Management Network
          provisioner pillar_set "cluster/srvnode-1/network/mgmt/public_ip" \"<IP address for management network>\"
@@ -67,7 +72,8 @@ Procedure
          salt-call state.apply components.system.network.mgmt.public
 
    - For Data Network static IP, run the following command:
-      ::
+   
+     ::
       
          # Set Data Network
          provisioner pillar_set "cluster/srvnode-1/network/data/public_ip" \"<IP address for public network>\"
@@ -75,34 +81,35 @@ Procedure
          salt-call state.apply components.system.network.data.public
 
    **Note:** To verify the static IPs are configured, run the following command:
-      ::
+   
+   ::
 
-         cat /etc/sysconfig/network-scripts/ifcfg-ens32 |grep -Ei "ip|netmask|gateway"
-         cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
+      cat /etc/sysconfig/network-scripts/ifcfg-ens32 |grep -Ei "ip|netmask|gateway"
+      cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
 
 #. To check the CORTX cluster status, run the following command:
+
    ::
    
       pcs status
    
    **Note:** If the cluster is not running then stop and start cluster once using the following command:
-      ::
 
-         cortx cluster stop
-         cortx cluster start
+   ::
 
-   **Note** For VirtualBox users, you need to check if the CORTX hare cluster is running using the following command:
-      ::
+      cortx cluster stop
+      cortx cluster start
 
-         hctl status
+   **Note** For VirtualBox users, you need to check if the CORTX hare cluster is running using the following command::
 
-      If the cluster is not running, start the cluster using the following command:
-      ::
+       hctl status
 
-         hctl start
+   * If the cluster is not running, start the cluster using the following command::
+
+        hctl start
 
 
-#. Run **ip a l** and record the IP addresses of the following interfaces:
+#. Run ``ip a l`` and record the IP addresses of the following interfaces:
 
    * ens32 - Management IP: To access the CORTX GUI.
    * ens33 - Public data IP: To access S3 endpoint and perform IO operations.
@@ -114,13 +121,15 @@ Procedure
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
 
 #. Run the following command and verify the S3 authserver and HA proxy are active and running:
+
    ::
 
       systemctl status s3authserver
       systemctl status haproxy
    
    - If any service is in failed state, run the following command active the services:
-      ::
+   
+     ::
 
          systemctl start <service name>
 
