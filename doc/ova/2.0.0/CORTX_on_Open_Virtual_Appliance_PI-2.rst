@@ -46,13 +46,11 @@ Procedure
    * Password: opensource!
   
 #. Become the **root** user by running this:
-   
    ::
    
      sudo su -
 
 #. Start the CORTX services by running this bootstrap.sh script:
-   
    ::
    
       sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
@@ -62,7 +60,6 @@ Procedure
 #. (Optional) To configure the static IPs instead of DHCP:
 
    - For Management Network static IP, run the following command:
-
       ::
 
          # Set Management Network
@@ -72,7 +69,6 @@ Procedure
          salt-call state.apply components.system.network.mgmt.public
 
    - For Data Network static IP, run the following command:
-
       ::
       
          # Set Data Network
@@ -81,33 +77,28 @@ Procedure
          salt-call state.apply components.system.network.data.public
 
    **Note:** To verify the static IPs are configured, run the following command:
-
       ::
 
          cat /etc/sysconfig/network-scripts/ifcfg-ens32 |grep -Ei "ip|netmask|gateway"
          cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
 
 #. To check the CORTX cluster status, run the following command:
-   
    ::
    
       pcs status
    
    **Note:** If the cluster is not running then stop and start cluster once using the following command:
-      
       ::
 
          cortx cluster stop
          cortx cluster start
 
    **Note** For VirtualBox users, you need to check if the CORTX hare cluster is running using the following command:
-
       ::
 
          hctl status
 
       If the cluster is not running, start the cluster using the following command:
-
       ::
 
          hctl start
@@ -125,14 +116,12 @@ Procedure
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
 
 #. Run the following command and verify the S3 authserver and HA proxy are active and running:
-
    ::
 
       systemctl status s3authserver
       systemctl status haproxy
    
    - If any service is in failed state, run the following command active the services:
-
       ::
 
          systemctl start <service name>
