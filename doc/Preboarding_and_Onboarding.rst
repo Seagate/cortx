@@ -44,6 +44,10 @@ The preboarding procedure must be performed only once. On the preboarding proces
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/EULA1.PNG
    
+.. raw:: html
+   
+   </details>
+
 Onboarding
 ===========
 
