@@ -20,7 +20,6 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 **Prerequisites:**
 
 - To run the CORTX OVA the following minimum configuration is required:
-
    - RAM: 8GB
    - Number of core per processor: 4
    - Storage: 80GB
@@ -30,7 +29,6 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 - Download the `CORTX OVA <https://github.com/Seagate/cortx/releases/>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. 
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
-   
    - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
    - If on the VMware WorkStation, you do not see an IPv4 network configured, then update virtual networking configuration. See `troubleshooting virtual network <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
    - For Oracle Virtual Box network configuration, see `network configuration for Oracle VirtualBox <https://github.com/Seagate/cortx/blob/main/doc/Oracle_Virtual_Box_Network_Configuration.md>`_.
