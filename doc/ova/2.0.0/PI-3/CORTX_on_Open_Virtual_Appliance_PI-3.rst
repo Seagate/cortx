@@ -54,7 +54,7 @@ Procedure
      
 #. Paste the code into the config file replacing your network interface names with ens32,ens33, ens34, and storage disks with partitions created in step 3:
    
-   **Note:** The values used in `config.ini <https://github.com/mukul-seagate11/cortx-1/blob/main/doc/ova/2.0.0/config.ini>`_ are for example purpose, update the values as per your environment.
+   **Note:** The values used in `config.ini <https://github.com/seagate/cortx/blob/main/doc/ova/2.0.0/config.ini>`_ are for example purpose, update the values as per your environment.
    
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
@@ -68,7 +68,7 @@ Procedure
 
    ::
      
-     curl -O https://raw.githubusercontent.com/mukul-seagate11/cortx-1/main/doc/ova/2.0.0/reconfigure_network.sh
+     curl -O https://raw.githubusercontent.com/seagate/cortx/main/doc/ova/2.0.0/reconfigure_network.sh
      chmod +x ./reconfigure_network.sh
      ./reconfigure_network.sh
      
