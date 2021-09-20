@@ -22,10 +22,9 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
     - Processor: 4
     - OS Disk: 1 disk of 20GB
     - Data Disks: 2 disks of 32GB each
+       - 4 partitions of 8GB from each data disks i.e. /dev/sdb1,.../dev/sdb4 and /dev/sdc1,.../dev/sdc4
 
-   Note: Create 4 partitions of 8GB from each disk i.e. /dev/sdb1,.../dev/sdb4 and /dev/sdc1,.../dev/sdc4
-
-- Download the `CORTX OVA <https://cortx-release-ova.s3.us-west-2.amazonaws.com/ova-2.0.0-307.ova>`_ file 
+- Download the `CORTX OVA <https://cortx-release-ova.s3.us-west-2.amazonaws.com/ova-2.0.0-307.ova>`_ from `our release page <https://github.com/Seagate/cortx/releases/latest>`_.
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
    
@@ -47,64 +46,16 @@ Procedure
    
      sudo su -
      
-#. Run following command to insert the partitions in config.ini
-
-   ::
-   
-     lsblk -l |grep -E "sdb|sdc"
-     
 #. Run the following command to create a config.ini file:
 
    ::   
    
      vi ~/config.ini
      
-#. Paste the code into the config file replacing your network interface names with ens32,ens33, ens34, and storage disks with partitions:
+#. Paste the code into the config file replacing your network interface names with ens32,ens33, ens34, and storage disks with partitions created in step 3:
    
-   **Note:** The values used in https://github.com/mukul-seagate11/cortx-1/blob/main/doc/ova/2.0.0/config.ini are for example purpose, update the values as per your environment.
+   **Note:** The values used in `config.ini <https://github.com/mukul-seagate11/cortx-1/blob/main/doc/ova/2.0.0/config.ini>`_ are for example purpose, update the values as per your environment.
    
-#. Create and run the reconfigure_network.sh script to ensure all the necessary services are operational,
-
-   ::
-     
-     sh https://github.com/mukul-seagate11/cortx-1/blob/main/doc/ova/2.0.0/reconfigure_network.sh
-     
-#. Run the following command to start the CORTX cluster:
-
-    ::
-    
-     cortx cluster start
-     cortx cluster stop
-     
-#. Follow the instructions:
-   
- - Bring network interface down with following command,
-   
-   ::
-     
-     ifdown ens33 ens34
-     
-  - Update MAC address of all the interfaces i.e. ens33,ens34 in their network config files /etc/sysconfig/network-scripts/ifcfg-ens33, /etc/sysconfig/network-scripts/ifcfg-ens34 as per command,
-     
-   ::
-     
-     ip a | grep -E "ens33|ens34"
-     
-   - Bring network interface up with following command:
-   
-   ::
-   
-     ifup ens33 ens34
-     
-   - Reboot node (even if HW ADDR are same)
-
-#. To check the CORTX cluster status, run the following command:
-   
-    ::
-  
-     pcs status
-     hctl status
-
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
    * ens32 - Management IP: To access the CORTX GUI.
@@ -112,7 +63,30 @@ Procedure
    * ens34 - Private data IP: To perform CORTX internal communication.
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104networks.png
+   
+#. Create and run the reconfigure_network.sh script to ensure all the necessary services are operational,
 
+   ::
+     
+     curl -O https://raw.githubusercontent.com/mukul-seagate11/cortx-1/main/doc/ova/2.0.0/reconfigure_network.sh
+     chmod +x ./reconfigure_network.sh
+     ./reconfigure_network.sh
+     
+#. Reboot node
+     
+#. Run the following command to start the CORTX cluster:
+
+    ::
+    
+     cortx cluster stop
+     cortx cluster start
+     
+#. To check the CORTX cluster status, run the following command:
+   
+    ::
+  
+     pcs status
+     hctl status
    
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
 
@@ -141,6 +115,31 @@ If you have a firewall between CORTX and the rest of your infrastructure, includ
 +----------------------+-------------------+---------------------------------------------+
 |         443          |       HTTPS       |             Public Data network             |
 +----------------------+-------------------+---------------------------------------------+
+
+
+***************
+Troubleshooting
+***************
+
+#. Follow the instructions If your network service is down:
+   
+  - Bring network interface down with following command,
+   
+   ::
+     
+     ifdown ens33 ens34
+     
+  - Update MAC address of all the interfaces i.e. ens33,ens34 in their network config files /etc/sysconfig/network-scripts/ifcfg-ens33, /etc/sysconfig/network-scripts/ifcfg-ens34 as per command,
+     
+   ::
+     
+     ip a | grep -E "ens33|ens34"
+     
+  - Bring network interface up with following command:
+   
+   ::
+   
+     ifup ens33 ens34
 
 
 Tested by:
