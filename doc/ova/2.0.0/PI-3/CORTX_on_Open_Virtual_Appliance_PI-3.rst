@@ -54,7 +54,7 @@ Procedure
      
 #. Paste the code into the config file replacing your network interface names with ens32,ens33, ens34, and storage disks with partitions created in step 3:
    
-   **Note:** The values used in `config.ini <https://github.com/seagate/cortx/blob/main/doc/ova/2.0.0/config.ini>`_ are for example purpose, update the values as per your environment.
+   **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-3/config.ini>`_ are for example purpose, update the values as per your environment.
    
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
@@ -68,7 +68,7 @@ Procedure
 
    ::
      
-     curl -O https://raw.githubusercontent.com/seagate/cortx/main/doc/ova/2.0.0/reconfigure_network.sh
+     curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-3/reconfigure_network.sh
      chmod +x ./reconfigure_network.sh
      ./reconfigure_network.sh
      
@@ -90,8 +90,8 @@ Procedure
       
       ::
 
-         cortx cluster stop
-         cortx cluster start
+      cortx cluster stop
+      cortx cluster start
 
    
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
