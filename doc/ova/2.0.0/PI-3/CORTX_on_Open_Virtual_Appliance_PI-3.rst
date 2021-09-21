@@ -78,15 +78,21 @@ Procedure
 
     ::
     
-     cortx cluster stop
      cortx cluster start
      
 #. To check the CORTX cluster status, run the following command:
    
     ::
   
-     pcs status
      hctl status
+     
+   **Note:** If the cluster is not running then stop and start cluster once using the following command:
+      
+      ::
+
+         cortx cluster stop
+         cortx cluster start
+
    
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
 
