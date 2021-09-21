@@ -21,8 +21,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
     - RAM: 8GB
     - Processor: 4
     - OS Disk: 1 disk of 20GB
-    - Data Disks: 2 disks of 32GB each
-       - 4 partitions of 8GB from each data disks i.e. /dev/sdb1,.../dev/sdb4 and /dev/sdc1,.../dev/sdc4
+    - Data Disks: 2 disks of 32GB each and 4 partitions of 8GB from each data disks i.e. /dev/sdb1,.../dev/sdb4 and /dev/sdc1,.../dev/sdc4
 
 - Download the `CORTX OVA <https://cortx-release-ova.s3.us-west-2.amazonaws.com/ova-2.0.0-307.ova>`_ from `our release page <https://github.com/Seagate/cortx/releases/latest>`_.
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
@@ -52,7 +51,7 @@ Procedure
    
      vi ~/config.ini
      
-#. Paste the code into the config file replacing your network interface names with ens32,ens33, ens34, and storage disks with partitions created in step 3:
+#. Paste the code into the config file replacing your network interface names with ens32,ens33,ens34, and storage disks with partitions created in step 3:
    
    **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-3/config.ini>`_ are for example purpose, update the values as per your environment.
    
@@ -76,22 +75,22 @@ Procedure
      
 #. Run the following command to start the CORTX cluster:
 
-    ::
+   ::
     
      cortx cluster start
      
 #. To check the CORTX cluster status, run the following command:
    
-    ::
+   ::
   
      hctl status
      
    **Note:** If the cluster is not running then stop and start cluster once using the following command:
       
-      ::
+   ::
 
-      cortx cluster stop
-      cortx cluster start
+     cortx cluster stop
+     cortx cluster start
 
    
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
