@@ -12,7 +12,7 @@ This file consists of the procedure to compile complete CORTX stack and Deploy o
 
    Clone cortx-re repository and change directory to cortx-re/solutions/community-deploy/cloud/AWS
 ```
-    git clone https://github.com/Seagate/cortx-re 
+    git clone https://github.com/Seagate/cortx 
     cd $PWD/cortx-re/solutions/community-deploy/cloud/AWS
 ```
 
