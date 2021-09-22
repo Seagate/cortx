@@ -16,11 +16,14 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 ## Procedure
 
 1. Set local IP using the following command:
-   ```
-   export LOCAL_IP=$(ip -br -c addr show | grep -v lo |head -1 |awk -F "/" '{print $1}' |awk '{print $3}')
-   sed -i '38,84d' /etc/nginx/nginx.conf
-   ```
+
+   **Note:** You must use your local interface name i.e. eth0, ens32 etc as per your environment and verify by running `ip l`
    
+   ```
+   export LOCAL_IP=$(ip -4 addr show <local_interface_name> | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+   sed -i '38,84d' /etc/nginx/nginx.conf
+   ```   
+ 
 2. Append the locally hosted packages directory in /etc/nginx/nginx.conf
    
 ```bash
