@@ -70,7 +70,7 @@ This file consists of the procedure to compile complete CORTX stack and Deploy o
    Generate `root` user password. It will be required as part of CORTX deployment
    
 ```
-   passwd root
+   sudo passwd root
 ```   
 
 ## CORTX Build and Deployment
