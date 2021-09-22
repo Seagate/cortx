@@ -13,7 +13,7 @@ This file consists of the procedure to compile complete CORTX stack and Deploy o
    Download scripts by cloning cortx repository and change directory to cortx-re/solutions/community-deploy/cloud/AWS
 ```
     git clone https://github.com/Seagate/cortx 
-    cd $PWD/cortx/solutions/community-deploy/cloud/AWS
+    cd $PWD/cortx/doc/community-build/cloud/AWS/
 ```
 
    Install required tools by executing `tool_setup.sh`
