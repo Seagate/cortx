@@ -197,17 +197,11 @@ Default config File for firewall command will be available at `/opt/seagate/cort
 19. Run the following commands to clean the temporary repos:
     
     ```bash
-    rm -rf /etc/yum.repos.d/*3rd_party*.repo
-    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
-    yum clean all
-    rm -rf /var/cache/yum/
     rm -rf /var/artifacts/0/{python-deps-1.0.0-0.tar.gz,third-party-1.0.0-0.tar.gz,iso,install-2.0.0-0.sh}
     ```
 
 20. #### Cluster Definition
 
-    **Note:** Before running the cluster create command set the environment variable `CORTX_RELEASE_REPO` with the build URL and the cluster create command assumes the first hostname listed is the primary node.
-	
     ```bash
     cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
     cortx_setup cluster show
@@ -274,7 +268,10 @@ Default config File for firewall command will be available at `/opt/seagate/cort
   - If the install.sh script fails then run the following commands:
 
     ```
-    rm - rf /etc/yum.repos.d/*
+    rm -rf /etc/yum.repos.d/*3rd_party*.repo
+    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
+    yum clean all
+    rm -rf /var/cache/yum/
     rm -rf /etc/pip.conf
     cd $SCRIPT_PATH && ./install.sh -t http://${LOCAL_IP}/0
     ```
