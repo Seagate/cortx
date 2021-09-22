@@ -107,7 +107,7 @@ EOF
 10. #### Create device partitions with below script and run command:
 
     ```
-    curl -O https://raw.githubusercontent.com/mukul-seagate11/cortx-1/main/doc/community-build/create_partitions.sh
+    curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/community-build/create_partitions.sh
     chmod +x create_partitions.sh
     ./create_partitions.sh
     ```
