@@ -84,6 +84,7 @@ if [ $report == 1 ]; then
     group_activity "$group" "$group"
   done
   group_activity 'VenkyOS,johnbent,justinzw,TechWriter-Mayur,hessio,Saumya-Sunder,novium258' 'Open Source Team'
+  group_activity 'rajkumarpatel2602,shraddhaghatol,priyanka25081999,huanghua78,mbcortx' 'ADG'
 
   jupyter_args="--ExecutePreprocessor.timeout=180 --output-dir=/tmp --no-input"
 
