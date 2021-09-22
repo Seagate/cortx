@@ -197,6 +197,8 @@ Default config File for firewall command will be available at `/opt/seagate/cort
 19. Run the following commands to clean the temporary repos:
     
     ```bash
+    rm -rf /etc/yum.repos.d/*3rd_party*.repo
+    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
     yum clean all
     rm -rf /var/cache/yum/
     rm -rf /var/artifacts/0/{python-deps-1.0.0-0.tar.gz,third-party-1.0.0-0.tar.gz,iso,install-2.0.0-0.sh}
