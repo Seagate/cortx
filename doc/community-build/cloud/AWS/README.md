@@ -10,7 +10,7 @@ This file consists of the procedure to compile complete CORTX stack and Deploy o
 
 ## Install and setup Terraform and AWS CLI
 
-   Clone cortx-re repository and change directory to cortx-re/solutions/community-deploy/cloud/AWS
+   Download scripts by cloning cortx repository and change directory to cortx-re/solutions/community-deploy/cloud/AWS
 ```
     git clone https://github.com/Seagate/cortx 
     cd $PWD/cortx-re/solutions/community-deploy/cloud/AWS
