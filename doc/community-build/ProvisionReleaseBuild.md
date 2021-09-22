@@ -9,8 +9,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ## Prerequisite
 
-  - All the prerequisites specified in the [Building the CORTX Environment for Single Node](Building-CORTX-From-Source-for-SingleNode.md) document must be satisfied.
-  - The CORTX packages must be generated using the steps provided in the [Generate Cortx Build Stack guide](Generate-Cortx-Build-Stack.md).
+- All the prerequisites specified in the [Building the CORTX Environment for Single Node](Building-CORTX-From-Source-for-SingleNode.md) document must be satisfied.
+- The CORTX packages must be generated using the steps provided in the [Generate Cortx Build Stack guide](Generate-Cortx-Build-Stack.md).
 
 
 ## Procedure
@@ -54,7 +54,6 @@ EOF
    ```
    SCRIPT_PATH=/mnt/cortx/scripts
    mv /var/artifacts/0/install-2.0.0-0.sh $SCRIPT_PATH/install.sh
-   cd $SCRIPT_PATH && curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh
    sed -i '/udx-discovery/d;/uds-pyi/d' $SCRIPT_PATH/install.sh && \
    sed -i 's/trusted-host: cortx-storage.colo.seagate.com/trusted-host: '$LOCAL_IP'/' $SCRIPT_PATH/install.sh && \
    sed -i 's#cortx-storage.colo.seagate.com|file://#cortx-storage.colo.seagate.com|baseurl=file:///#' $SCRIPT_PATH/install.sh && \
@@ -68,6 +67,7 @@ EOF
     - Initializes the command shell environment (cortx_setup)
 
    ```
+   cd $SCRIPT_PATH && curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh
    chmod +x *.sh 
    ./install.sh -t http://${LOCAL_IP}/0
    ```
