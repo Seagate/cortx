@@ -17,7 +17,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 1. Set management IP using the following command:
    ```
-   export LOCAL_IP=`ip -o addr | grep -v -w lo |awk '{print $4}' |head -1 |cut -c -14`
+   export LOCAL_IP=$(ip -br -c addr show | grep -v lo |head -1 |awk -F "/" '{print $1}' |awk '{print $3}')
    sed -i '38,84d' /etc/nginx/nginx.conf
    ```
    
