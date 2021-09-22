@@ -10,31 +10,25 @@ Recommended Hypervisors
 ***********************
 All of the following hypervisors should work: `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_,
 `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
-`VMware Fusion <https://www.vmware.com/products/fusion.html>`_,
-`VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_, and
-`Oracle VM VirtualBox <https://www.oracle.com/virtualization/>`_. 
+`VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. For the same reason, please do not update the operating system in the image as that also might cause it to fail.
-
 
 **Prerequisites:**
 
 - To run the CORTX OVA the following minimum configuration is required:
 
-   - RAM: 8GB
-   - Number of core per processor: 4
-   - Storage: 80GB
+    - RAM: 8GB
+    - Processor: 4
+    - OS Disk: 1 disk of 20GB
+    - Data Disks: 2 disks of 32GB each and 4 partitions of 8GB from each data disks i.e. /dev/sdb1,.../dev/sdb4 and /dev/sdc1,.../dev/sdc4
 
-     Note: The CORTX OVA VM will create 10 disks including OS disk.
-
-- Download the `CORTX OVA <https://github.com/Seagate/cortx/releases/>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. 
+- Download the `CORTX OVA <https://cortx-release-ova.s3.us-west-2.amazonaws.com/ova-2.0.0-307.ova>`_ from `our release page <https://github.com/Seagate/cortx/releases/latest>`_.
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
    
    - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
    - If on the VMware WorkStation, you do not see an IPv4 network configured, then update virtual networking configuration. See `troubleshooting virtual network <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
-   - For Oracle Virtual Box network configuration, see `network configuration for Oracle VirtualBox <https://github.com/Seagate/cortx/blob/main/doc/Oracle_Virtual_Box_Network_Configuration.md>`_.
-
 
 **********
 Procedure
@@ -50,69 +44,17 @@ Procedure
    ::
    
      sudo su -
-
-#. Start the CORTX services by running this bootstrap.sh script:
-   
-   ::
-   
-      sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
      
-   Run the bootstrap script to ensure all the necessary services are operational.
-      
-#. (Optional) To configure the static IPs instead of DHCP:
+#. Run the following command to create a config.ini file:
 
-   - For Management Network static IP, run the following command:
-
-      ::
-
-         # Set Management Network
-         provisioner pillar_set "cluster/srvnode-1/network/mgmt/public_ip" \"<IP address for management network>\"
-         provisioner pillar_set "cluster/srvnode-1/network/mgmt/netmask" \"<Netmask for management network>\"
-         provisioner pillar_set "cluster/srvnode-1/network/mgmt/gateway" \"<IP address for management network gateway>\"
-         salt-call state.apply components.system.network.mgmt.public
-
-   - For Data Network static IP, run the following command:
-
-      ::
-      
-         # Set Data Network
-         provisioner pillar_set "cluster/srvnode-1/network/data/public_ip" \"<IP address for public network>\"
-         provisioner pillar_set "cluster/srvnode-1/network/data/netmask" \"<Netmask for public data network>\"
-         salt-call state.apply components.system.network.data.public
-
-   **Note:** To verify the static IPs are configured, run the following command:
-
-      ::
-
-         cat /etc/sysconfig/network-scripts/ifcfg-ens32 |grep -Ei "ip|netmask|gateway"
-         cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
-
-#. To check the CORTX cluster status, run the following command:
+   ::   
    
-   ::
+     vi ~/config.ini
+     
+#. Paste the code into the config file replacing your network interface names with ens32,ens33,ens34, and storage disks with partitions created in step 3:
    
-      pcs status
+   **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-3/config.ini>`_ are for example purpose, update the values as per your environment.
    
-   **Note:** If the cluster is not running then stop and start cluster once using the following command:
-      
-      ::
-
-         cortx cluster stop
-         cortx cluster start
-
-   **Note** For VirtualBox users, you need to check if the CORTX hare cluster is running using the following command:
-
-      ::
-
-         hctl status
-
-      If the cluster is not running, start the cluster using the following command:
-
-      ::
-
-         hctl start
-
-
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
    * ens32 - Management IP: To access the CORTX GUI.
@@ -120,22 +62,38 @@ Procedure
    * ens34 - Private data IP: To perform CORTX internal communication.
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104networks.png
+   
+#. Create and run the reconfigure_network.sh script to ensure all the necessary services are operational,
+
+   ::
+     
+     curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-3/reconfigure_network.sh
+     chmod +x ./reconfigure_network.sh
+     ./reconfigure_network.sh
+     
+#. Reboot node
+     
+#. Run the following command to start the CORTX cluster:
+
+   ::
+    
+     cortx cluster start
+     
+#. To check the CORTX cluster status, run the following command:
+   
+   ::
+  
+     hctl status
+     
+   **Note:** If the cluster is not running then stop and start cluster once using the following command:
+      
+   ::
+
+     cortx cluster stop
+     cortx cluster start
 
    
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
-
-#. Run the following command and verify the S3 authserver and HA proxy are active and running:
-
-   ::
-
-      systemctl status s3authserver
-      systemctl status haproxy
-   
-   - If any service is in failed state, run the following command active the services:
-
-      ::
-
-         systemctl start <service name>
 
 #. The system up and running, use the data IP from the **ip a l** command `to test the system <https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst>`_ and observe activity in the GUI. For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
 
@@ -158,56 +116,37 @@ If you have a firewall between CORTX and the rest of your infrastructure, includ
 +----------------------+-------------------+---------------------------------------------+
 |    **Port number**   |   **Protocols**   |   **Destination network on CORTX**          |
 +----------------------+-------------------+---------------------------------------------+
-|          22          |        TCP        |           Management network                |
+|         22           |        TCP        |              Management network             |
 +----------------------+-------------------+---------------------------------------------+
 |         443          |       HTTPS       |             Public Data network             |
 +----------------------+-------------------+---------------------------------------------+
-|         28100        |   TCP (HTTPS)     |              Management network             |
-+----------------------+-------------------+---------------------------------------------+
 
+
+***************
+Troubleshooting
+***************
+
+#. Follow the instructions If your network service is down:
+   
+  - Bring network interface down with following command,
    
-Known Issues
---------------
-
-.. raw:: html
-
-    <details>
-   <summary><a>Click here to view the known issues.</a></summary>
-
-#. On the CORTX GUI, the S3 audit logs are not displayed.
-
-#. After configuring the CORTX GUI, if any system alerts are displayed. You can ignore these system alerts. 
-
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/AlertsError.png
-
-#. On the CORTX GUI, the About page displays the error pop-up. This is an known issue to CORTX:
-
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/CSM_GUI.png
-
-#. As the Consul service is not running, you will encounter the below depicted error.
-
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/consul.PNG
-
-   **Workaround:** Run the followind mentioned commands:
+   ::
+     
+     ifdown ens33 ens34
+     
+  - Update MAC address of all the interfaces i.e. ens33,ens34 in their network config files /etc/sysconfig/network-scripts/ifcfg-ens33, /etc/sysconfig/network-scripts/ifcfg-ens34 as per command,
+     
+   ::
+     
+     ip a | grep -E "ens33|ens34"
+     
+  - Bring network interface up with following command:
    
    ::
    
-    sed -i '11s/host:/host: 127.0.0.1/' /etc/csm/database.yaml
-    
-    systemctl restart csm_agent 
-
-
-.. raw:: html
-   
-   </details>
+     ifup ens33 ens34
 
 
 Tested by:
 
-- Aug 16, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VirtualBox 6.1.26.
-
-- Aug 11, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VMWare Fusion 12.1.2.
-
-- June 21, 2021: Ashwini Borse (ashwini.borse@seagate.com) using OVA release 2.0.0 on Vsphere.
-
-- June 21, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA release 2.0.0 on VMWare WorkStation Pro 16.
+- Sep 06, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA R2 release 2.0.0 on VMWare WorkStation Pro 16.
