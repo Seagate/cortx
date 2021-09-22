@@ -49,7 +49,7 @@ This file consists of the procedure to compile complete CORTX stack and Deploy o
 
 ## Create AWS instance
 
-   Execute Terraform code to create AWS instance for CORTX Build and Deployment. Command will print public-ip on completion. We will use it to connect AWS instance using SSH Protocol. 
+   Run Terraform code to create AWS instance for CORTX Build and Deployment. Command will print public-ip on completion. We will use it to connect AWS instance using SSH Protocol. 
 ```
    terraform validate && terraform apply -var-file user.tfvars --auto-approve
 ```
@@ -61,7 +61,7 @@ This file consists of the procedure to compile complete CORTX stack and Deploy o
    ssh -i cortx.pem centos@"<AWS instance public-ip>" 
 ```
 
-   Execute `/home/centos/setup.sh` to setup Network and Storage devices for CORTX. Script will reboot instance on completion. 
+   Run `/home/centos/setup.sh` to setup Network and Storage devices for CORTX. Script will reboot instance on completion. 
 ```
    sudo bash /home/centos/setup.sh
 ```
