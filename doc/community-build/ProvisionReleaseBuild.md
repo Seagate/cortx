@@ -264,6 +264,16 @@ Default config File for firewall command will be available at `/opt/seagate/cort
 **Note:** If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/Troubleshooting.md)
 
 
+### Troubleshooting:
+
+  - If the install.sh script fails then run the following commands:
+
+    ```
+    rm - rf /etc/yum.repos.d/*
+    rm -rf /etc/pip.conf
+    cd $SCRIPT_PATH && ./install.sh -t http://${LOCAL_IP}/0
+    ```
+
 ### Tested by:
 
 - Sep 11 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
