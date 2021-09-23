@@ -16,7 +16,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
   - For CentOS 7.9.2009:
     ```
     docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
-    ```
+- Do not update OS or kernel package with `yum update` as the kernel version must be set to `3.10.0-1160.el7` 
 
 
 ## Procedure
