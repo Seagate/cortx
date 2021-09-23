@@ -7,22 +7,19 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 ## Prerequisites
 
 - All the prerequisites specified in the [Building the CORTX Environment for Single Node](Building-CORTX-From-Source-for-SingleNode.md) must be satisfied.
+- Run the appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9. For example:
 
-## Procedure
-
-**Note:** Run appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9. For example:
-
-  - For CentOS 7.8.2003
-  
+  - For CentOS 7.8.2003:
     ```
     docker pull ghcr.io/seagate/cortx-build:centos-7.8.2003
     ```
-    
-  - For CentOS 7.9.2009
-  
+  - For CentOS 7.9.2009:
     ```
     docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
     ```
+
+
+## Procedure
 
 1. Run the following command to clone the CORTX repository:
 
@@ -68,6 +65,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    -rw-r--r--   1 root root 1500564340 Jul 22 17:46 third-party-1.0.0-0.tar.gz
    ```
  
+## Compile and Build CORTX Stack as per Individual component
+
 7. To view each component targets, run:
    ```
    docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
@@ -149,4 +148,9 @@ fi
 
 ### Tested by:
 
-- Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
+- Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOS 7.9.2009
+- Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
+- Aug 18 2021: Jalen Kan (jalen.j.kan@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
+- July 28 2021: Daniar Kurniawan (daniar@uchicago.edu) on baremetal servers hosted by Chameleon Cloud and Emulab Cloud.
+- July 25 2021: Bari Arviv (bari.arviv@seagate.com) on Lyve Labs server - CentOS 7.8.2003.
+- July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
