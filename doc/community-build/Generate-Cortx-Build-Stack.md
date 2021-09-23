@@ -44,6 +44,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean build
    ```
+   **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` execution phase.
 
 5. Run the following command to generate the ISO for each component:
 
