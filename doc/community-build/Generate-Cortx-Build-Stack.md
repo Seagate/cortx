@@ -1,4 +1,4 @@
-# Compile and Build Complete CORTX Stack using Docker (Without TAG)
+# Compile and Build Complete CORTX Stack using Docker (Without TAGGING)
 
 This document provides step-by-step instructions to build and generate the CORTX stack packages using Docker.
 
@@ -68,9 +68,9 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    -rw-r--r--   1 root root 1500564340 Jul 22 17:46 third-party-1.0.0-0.tar.gz
    ```
    
-## Compile and Build Complete CORTX Stack using Docker With TAG
+## Compile and Build Complete CORTX Stack using Docker With TAGGING
 
-   **Note:** You must delete the docker image, build for CORTX stack without TAG with `docker rmi <image_id>` command before processing with step 8.
+   **Note:** You must delete the docker image, build for CORTX stack without tagging with `docker rmi <image_id>` command before processing with step 8.
 
 7. Run the following command to clone the CORTX repository:
 
