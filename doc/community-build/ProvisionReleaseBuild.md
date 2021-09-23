@@ -55,7 +55,9 @@ EOF
 5. Run the following commands:
 
    ```
+   yum install epel-release -y
    SCRIPT_PATH=/mnt/cortx/scripts
+   cd $SCRIPT_PATH && curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh
    mv /var/artifacts/0/install-2.0.0-0.sh $SCRIPT_PATH/install.sh
    sed -i '/udx-discovery/d;/uds-pyi/d' $SCRIPT_PATH/install.sh
    sed -i 's/trusted-host: cortx-storage.colo.seagate.com/trusted-host: '$LOCAL_IP'/' $SCRIPT_PATH/install.sh
@@ -70,7 +72,6 @@ EOF
     - Initializes the command shell environment (cortx_setup)
 
    ```
-   cd $SCRIPT_PATH && curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh
    chmod +x *.sh 
    ./install.sh -t http://${LOCAL_IP}/0
    ```
@@ -270,12 +271,14 @@ Default config File for firewall command will be available at `/opt/seagate/cort
 
 ### Troubleshooting:
 
-  - If the install.sh script fails then run the following commands:
+  - If the install.sh script fails then run the script again after following commands:
 
     ```
-    rm - rf /etc/yum.repos.d/*
+    rm -rf /etc/yum.repos.d/*3rd_party*.repo
+    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
+    yum clean all
+    rm -rf /var/cache/yum/
     rm -rf /etc/pip.conf
-    cd $SCRIPT_PATH && ./install.sh -t http://${LOCAL_IP}/0
     ```
     
 
