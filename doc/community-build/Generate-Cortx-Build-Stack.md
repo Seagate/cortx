@@ -1,4 +1,4 @@
-# Compile and Build Complete CORTX Stack using Docker
+# Compile and Build Complete CORTX Stack using Docker (Without TAG)
 
 This document provides step-by-step instructions to build and generate the CORTX stack packages using Docker.
 
@@ -16,7 +16,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
   - For CentOS 7.9.2009:
     ```
     docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
-- Do not update OS or kernel package with `yum update` as the kernel version must be set to `3.10.0-1160.el7` 
+    ```
+ - Do not update OS or kernel package with `yum update` as the kernel version must be set to `3.10.0-1160.el7`
 
 
 ## Procedure
@@ -44,6 +45,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean build
    ```
+   
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` execution phase.
 
 5. Run the following command to generate the ISO for each component:
@@ -65,10 +67,34 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    -rw-r--r--   1 root root  241635505 Jun 15 20:15 python-deps-1.0.0-0.tar.gz
    -rw-r--r--   1 root root 1500564340 Jul 22 17:46 third-party-1.0.0-0.tar.gz
    ```
+   
+## Compile and Build Complete CORTX Stack using Docker With TAG
+
+   **Note:** You must delete the docker image, build for CORTX stack without TAG with `docker rmi <image_id>` command before processing with step 8.
+
+7. Run the following command to clone the CORTX repository:
+
+   ```
+   cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
+   ```
+
+8. Run the following command to check out the codebase from **CORTX-2.0.0-77** branch for all components:
+
+   ```
+   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=CORTX-2.0.0-77
+   ```
+   
+9. Then go to each component directory & verify the git status, for example:
+
+   ```
+   [root@deploy-test cortx]# cd cortx-motr
+   [root@deploy-test cortx-motr]# git status
+   # HEAD detached at CORTX-2.0.0-77
+   ```
  
 ## Compile and Build CORTX Stack as per Individual component
 
-7. To view each component targets, run:
+9. To view each component targets, run:
    ```
    docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
    ```
@@ -113,7 +139,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
      iso_generation: generate ISO file from release build.
      ```
 
-8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
+10. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
+
 
 ## Troubleshooting
 
