@@ -1,6 +1,5 @@
 #!/bin/bash
 
-SCRIPT_PATH=/mnt/cortx/scripts
 sed -i '38,84d' /etc/nginx/nginx.conf
 
 ###########################################################################
@@ -37,8 +36,10 @@ firewall-cmd --reload
 ## Run the following commands ##
 ################################
 
-cd $SCRIPT_PATH && curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh
+SCRIPT_PATH=/mnt/cortx/scripts
+yum install epel-release -y
 mv /var/artifacts/0/install-2.0.0-0.sh $SCRIPT_PATH/install.sh
+cd $SCRIPT_PATH && curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh
 sed -i '/udx-discovery/d;/uds-pyi/d' $SCRIPT_PATH/install.sh
 sed -i 's/trusted-host: cortx-storage.colo.seagate.com/trusted-host: '$LOCAL_IP'/' $SCRIPT_PATH/install.sh
 sed -i 's#cortx-storage.colo.seagate.com|file://#cortx-storage.colo.seagate.com|baseurl=file:///#' $SCRIPT_PATH/install.sh
