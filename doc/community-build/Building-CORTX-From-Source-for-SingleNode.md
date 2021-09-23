@@ -20,7 +20,9 @@ The CORTX deployment and configuration is a four-step procedure:
        - 1 OS disk of 50GB
        - 2 data disks of 32GB each
     
--   All Network Interface Cards (NICs) must have internet access. Attach your network adapters accordingly as per your environment to establish internet connectivity. For this deployment, the NICs are considered as eth33, eth34, and eth35.
+    **Note:** 4 partitions of +8GB from each data disks will be created as per script
+    
+-   All Network Interface Cards (NICs) must have internet access. Attach your network adapters accordingly as per your environment to establish internet connectivity. For this deployment, the NICs are considered as eth32, eth33, and eth34.
 -   The VM must have a valid hostname and accessible using ping operation.
 
 ### Recommendations:
@@ -37,7 +39,7 @@ The CORTX deployment and configuration is a four-step procedure:
     ```
 2. Run the following command:
     ```
-    yum install git docker epel-release yum-utils wget -y && yum install nginx -y 
+    yum install git docker epel-release yum-utils wget -y && yum install nginx -y && yum update -y
     hostnamectl set-hostname --static --transient --pretty deploy-test.cortx.com
     sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
     ```
@@ -51,10 +53,9 @@ The CORTX deployment and configuration is a four-step procedure:
     ```
 4. Reboot your VM using the following command: `Reboot`
 5. Generate the CORTX deployment packages using the instructions provided in [Generating the CORTX packages guide](Generate-Cortx-Build-Stack.md).
-6. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
-7. Configure the CORTX GUI using the instruction provided in [Configuring the CORTX GUI document](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst).
-8. Create an S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
 
 ### Tested by:
 
 - Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
+- Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
+- July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
