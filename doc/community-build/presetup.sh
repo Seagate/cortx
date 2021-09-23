@@ -36,7 +36,7 @@ firewall-cmd --reload
 ## Run the following commands ##
 ################################
 
-SCRIPT_PATH=/mnt/cortx/scripts
+export SCRIPT_PATH=/mnt/cortx/scripts
 yum install epel-release -y && \
 mv /var/artifacts/0/install-2.0.0-0.sh $SCRIPT_PATH/install.sh && \
 cd $SCRIPT_PATH && curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh && \
