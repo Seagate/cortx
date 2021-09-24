@@ -87,14 +87,14 @@ EOF
    ```
 
 8. #### Configure Network
-
-   **Note:** Use network interfaces as per your environment.
+  
+   **Note:** You must use network interfaces as per your environment as mentioned interfaces are for example
 
    ```bash
    cortx_setup network config --transport lnet --mode tcp
-   cortx_setup network config --interfaces <interface_name> --type management
-   cortx_setup network config --interfaces <interface_name> --type data
-   cortx_setup network config --interfaces <interface_name> --type private
+   cortx_setup network config --interfaces ens32 --type management
+   cortx_setup network config --interfaces ens33 --type data
+   cortx_setup network config --interfaces ens34 --type private
    ```
 
 9. #### Configure Storage
