@@ -1,6 +1,5 @@
 #!/bin/bash
 
-export SCRIPT_PATH="/mnt/cortx/scripts"
 yum install epel-release -y
 sed -i '38,84d' /etc/nginx/nginx.conf
 
@@ -29,8 +28,3 @@ systemctl enable nginx
 
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --reload
-
-
-## Run the following commands
-
-cd ${SCRIPT_PATH} && curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh
