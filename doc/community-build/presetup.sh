@@ -28,3 +28,7 @@ systemctl enable nginx
 
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --reload
+
+
+## Download script
+curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh > $SCRIPT_PATH/install.sh
