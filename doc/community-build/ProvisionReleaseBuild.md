@@ -17,76 +17,49 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 1. Set local IP using the following command:
 
-   **Note:** You must use your local interface name i.e. eth0, ens32 etc as per your environment and verify by running `ip l`
+   **Note:** You must use your local interface name i.e. ens32,ens33 etc as per your environment and verify by running `ip l`
    
    ```
    export LOCAL_IP=$(ip -4 addr show ens33 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
    export SCRIPT_PATH="/mnt/cortx/scripts"
-   yum install epel-release -y
    ```
    
-2. Append the locally hosted packages directory in /etc/nginx/nginx.conf
-   
-```bash
-sed -i '38,84d' /etc/nginx/nginx.conf
-
-cat <<EOF>>/etc/nginx/nginx.conf
-server {
-   listen *:80;
-   server_name 127.0.0.1 ${LOCAL_IP};
-   location /0 {
-   root /var/artifacts;
-   autoindex on;
-             }
-         }
-    }
-EOF
-```
-
-3. Run the following commands to start nginx service
-   ```
-   systemctl start nginx
-   systemctl enable nginx
-   ```
-	
-4. Run the following commands to allow HTTP traffic:
-   ```
-   firewall-cmd --permanent --zone=public --add-service=http
-   firewall-cmd --reload
-   ```
-
-5. Run the following commands:
+2. Run the following pre setup script:
 
    ```
-   cd $SCRIPT_PATH && curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh
+   curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/community-build/presetup.sh
+   sh presetup.sh
+   ```
+
+3. Run the following commands:
+   ```
    sed -i '/udx-discovery/d;/uds-pyi/d' $SCRIPT_PATH/install.sh
    sed -i 's/trusted-host: cortx-storage.colo.seagate.com/trusted-host: '$LOCAL_IP'/' $SCRIPT_PATH/install.sh
    sed -i 's#cortx-storage.colo.seagate.com|file://#cortx-storage.colo.seagate.com|baseurl=file:///#' $SCRIPT_PATH/install.sh
    sed -i '269s#yum-config-manager --add-repo "${repo}/3rd_party/" >> "${LOG_FILE}"#yum-config-manager --nogpgcheck --add-repo "${repo}/3rd_party/" >> "${LOG_FILE}"#' $SCRIPT_PATH/install.sh
    ```
    
-6. Run the script as instructed which will performs the following actions:
-
+4. Run the script as instructed which will performs the following actions:
     - Configures yum repositories based on the TARGET-BUILD URL
     - Installs CORTX packages (RPM) and their dependencies from the configured yum repositories
     - Initializes the command shell environment (cortx_setup)
 
+
    ```
-   chmod +x *.sh 
-   ./install.sh -t http://${LOCAL_IP}/0
+   sh install.sh -t http://${LOCAL_IP}/0
    ```
 
 ## Factory Manufacturing
 
    In the factory method server is required to be configured with a certain set of values before applying the changes and packaging the server for shipping.
 
-7. #### Configure Server
+5. #### Configure Server
 
    ```bash
    cortx_setup server config --name  srvnode-1 --type VM
    ```
 
-8. #### Configure Network
+6. #### Configure Network
 
    **Note:** You must use network interfaces as per your environment as mentioned interfaces are for example
 
@@ -97,7 +70,7 @@ EOF
    cortx_setup network config --interfaces ens34 --type private
    ```
 
-9. #### Configure Storage
+7. #### Configure Storage
 
    ```bash
    cortx_setup storage config --name enclosure-1 --type virtual
@@ -105,12 +78,11 @@ EOF
    cortx_setup storage config --controller virtual --mode secondary --ip 127.0.0.1 --port 80 --user 'admin' --password 'admin'
    ```
 
-10. #### Create device partitions with below script and run command:
+8. #### Create device partitions with below script and run command:
 
     ```
-    curl -O https://raw.githubusercontent.com/mukul-seagate11/cortx-1/main/doc/community-build/create_partitions.sh
-    chmod +x create_partitions.sh
-    ./create_partitions.sh
+    curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/community-build/create_partitions.sh
+    sh create_partitions.sh
     ```
 
     ```
@@ -118,19 +90,19 @@ EOF
     cortx_setup storage config --cvg dgA01 --data-devices /dev/sdc1,/dev/sdc2,/dev/sdc3 --metadata-devices /dev/sdc4
     ```
    
-11. #### Configure Security
+9. #### Configure Security
 
     ```bash
     cortx_setup security config --certificate /opt/seagate/cortx/provisioner/srv/components/misc_pkgs/ssl_certs/files/stx.pem
     ```
 
-12. #### Initialize Node
+10. #### Initialize Node
 
     ```bash
     cortx_setup node initialize
     ```
    
-13. #### Finalize Node Configuration
+11. #### Finalize Node Configuration
 
     ```bash
     cortx_setup node finalize
@@ -138,13 +110,13 @@ EOF
 
 ## Field Deployment
    
-14. #### Prepare Node by Configuring Server Identification
+12. #### Prepare Node by Configuring Server Identification
 
     ```bash
     cortx_setup node prepare server --site_id 1 --rack_id 1 --node_id 1
     ```
    
-15. #### Configure Network which configures the following details as per environment:
+13. #### Configure Network which configures the following details as per environment:
 
     - DNS server(s)
     - Search domain(s)
@@ -159,7 +131,7 @@ EOF
     cortx_setup node prepare network --hostname deploy-test.cortx.com --search_domains cortx.com --dns_servers 192.168.220.2
     ```
 
-16. If the network configuration is DHCP, run following commands else run static:
+14. If the network configuration is DHCP, run following commands else run static:
 
    ```bash
    cortx_setup node prepare network --type management
@@ -167,7 +139,7 @@ EOF
    cortx_setup node prepare network --type private
    ```
 
-17. (Optional) If the network configuration is static, run following commands else run DHCP.
+15. (Optional) If the network configuration is static, run following commands else run DHCP.
 
    ```bash
    cortx_setup node prepare network --type management --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
@@ -175,21 +147,21 @@ EOF
    cortx_setup node prepare network --type private --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
    ```
 
-18. #### Configure Firewall
+16. #### Configure Firewall
 
-Default config File for firewall command will be available at `/opt/seagate/cortx_configs/firewall_config.yaml` which must be passed to config argument:
+   Default config File for firewall command will be available at `/opt/seagate/cortx_configs/firewall_config.yaml` which must be passed to config argument:
 
    ```bash
    cortx_setup node prepare firewall --config yaml:///opt/seagate/cortx_configs/firewall_config.yaml
    ```
 
-19. #### Configure the Network Time Server
+17. #### Configure the Network Time Server
 
    ```bash
    cortx_setup node prepare time --server ntp-b.nist.gov --timezone UTC
    ```
   
-20. #### Node Finalize
+18. #### Node Finalize
 
   **Note:** Cleanup local salt-master/ minion configuration on the node:
 
@@ -197,16 +169,17 @@ Default config File for firewall command will be available at `/opt/seagate/cort
    cortx_setup node prepare finalize
    ```
 
-21. #### Cluster Definition
-   
-     **Note:** Enter root password when prompted
+19. #### Cluster Definition
+
+    **Note:** Enter root password when prompted
 	
     ```bash
     cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
     cortx_setup cluster show
     ```
 
-22. #### Define the Storage Set
+20. #### Define the Storage Set
+
     The storageset create command requires the logical node names of all the nodes to be added in the storage set. The logical node names are assigned to each node in the factory, and the names can be fetched using the `cluster show` command.
 	
     ```
@@ -216,12 +189,12 @@ Default config File for firewall command will be available at `/opt/seagate/cort
     cortx_setup storageset config durability storage-set1 --type sns --data 4 --parity 2 --spare 0
     ```
 
-23. #### Prepare Cluster
+21. #### Prepare Cluster
     ```bash
     cortx_setup cluster prepare
     ```
     
-24. Run the following command to deploy and configure CORTX components:
+22. Run the following command to deploy and configure CORTX components:
 	
     **Note:** The commands should be run in the same order as listed.
     
@@ -245,25 +218,25 @@ Default config File for firewall command will be available at `/opt/seagate/cort
     cortx_setup cluster config component --type ha
     ```
     
-25. Run the following command to start the CORTX cluster:
+23. Run the following command to start the CORTX cluster:
     ```bash
     cortx cluster start
     ```
    
-26. Run the following commands to verify the CORTX cluster status:
+24. Run the following commands to verify the CORTX cluster status:
     ```bash
     hctl status
     ```
 
-27. After the CORTX cluster is up and running, configure the CORTX GUI using the instruction provided in [CORTX GUI guide](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst).
+25. After the CORTX cluster is up and running, configure the CORTX GUI using the instruction provided in [CORTX GUI guide](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst).
 
-28. Create the S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
+26. Create the S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
 
 **Note:** If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/Troubleshooting.md)
 
 ### Clean temporary repos:
 
-29. Run the following commands to clean the temporary repos:
+27. Run the following commands to clean the temporary repos:
     
     ```bash
     rm -rf /etc/yum.repos.d/*3rd_party*.repo
@@ -276,7 +249,7 @@ Default config File for firewall command will be available at `/opt/seagate/cort
     
 ### Troubleshooting:
 
-30. If the install.sh script fails then run the script again after following commands:
+28. If the install.sh script fails then run the script again after following commands:
 
     ```
     rm -rf /etc/yum.repos.d/*3rd_party*.repo
