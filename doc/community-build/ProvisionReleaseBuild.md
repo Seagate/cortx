@@ -198,6 +198,8 @@ Default config File for firewall command will be available at `/opt/seagate/cort
    ```
 
 21. #### Cluster Definition
+   
+     **Note:** Enter root password when prompted
 	
     ```bash
     cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
