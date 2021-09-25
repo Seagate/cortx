@@ -57,15 +57,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 6. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
 
    ```
-   [root@deploy-test yum.repos.d]# ll /var/artifacts/0/
-   total 1701408
-   drwxr-xr-x  13 root root        231 Sep 10 15:38 3rd_party
-   drwxr-xr-x   3 root root       4096 Sep 10 15:38 cortx_iso
-   -rw-r--r--   1 root root      19416 Sep 10 15:38 install-2.0.0-0.sh
-   drwxr-xr-x   2 root root         38 Sep 10 15:42 iso
-   drwxr-xr-x 198 root root       8192 Sep 10 15:38 python_deps
-   -rw-r--r--   1 root root  241635505 Jun 15 20:15 python-deps-1.0.0-0.tar.gz
-   -rw-r--r--   1 root root 1500564340 Jul 22 17:46 third-party-1.0.0-0.tar.gz
+   ll /var/artifacts/0
    ```
    
 ## Compile and Build Complete CORTX Stack using Docker With TAGGING
@@ -81,15 +73,15 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 8. Run the following command to check out the codebase from **CORTX-2.0.0-77** branch for all components:
 
    ```
+   docker rmi ghcr.io/seagate/cortx-build:centos-7.9.2009
    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=CORTX-2.0.0-77
    ```
    
-9. Then go to each component directory & verify the git status, for example:
+9. Then go to each component directory & verify the `git status` by running:
 
    ```
-   [root@deploy-test cortx]# cd cortx-motr
-   [root@deploy-test cortx-motr]# git status
-   # HEAD detached at CORTX-2.0.0-77
+   cd cortx/cortx-motr
+   git status
    ```
  
 ## Compile and Build CORTX Stack as per Individual component
