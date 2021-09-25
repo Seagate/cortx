@@ -65,9 +65,9 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
    ```bash
    cortx_setup network config --transport lnet --mode tcp
-   cortx_setup network config --interfaces ens32 --type management
-   cortx_setup network config --interfaces ens33 --type data
-   cortx_setup network config --interfaces ens34 --type private
+   cortx_setup network config --interfaces ens33 --type management
+   cortx_setup network config --interfaces ens34 --type data
+   cortx_setup network config --interfaces ens35 --type private
    ```
 
 7. #### Configure Storage
