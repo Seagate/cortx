@@ -39,7 +39,7 @@ The CORTX deployment and configuration is a four-step procedure:
     ```
 2. Run the following command:
     ```
-    yum install git docker yum-utils wget -y && yum install nginx -y
+    yum install git docker yum-utils wget -y
     hostnamectl set-hostname --static --transient --pretty deploy-test.cortx.com
     sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
     ```
