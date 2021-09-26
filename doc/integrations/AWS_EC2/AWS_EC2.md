@@ -18,17 +18,17 @@ Step 1: Launch AWS EC2 instance with the CORTX AMI
 
 - To launch an instance in the EC2 dashboard look for the launch instance button.
 
-![Launch Instance](AWS_EC2/launchInstance.png)
+![Launch Instance](images/launchInstance.png)
 
 - Select the AMI you created with the CORTX image. 
 
 When choosing the AMI go to **My AMIs**.
  
-![AMI image](AWS_EC2/SelectAMI.png)
+![AMI image](images/SelectAMI.png)
 
 - Launch an AWS instance that can support 4 network interfaces. The recommended instance would be a [c5 xlarge instance](https://aws.amazon.com/ec2/instance-types/c5/).
 
-![C5_instance](AWS_EC2/EC2instanceType.png)
+![C5_instance](images/EC2instanceType.png)
 
 Step 2: Create security group and subnets
 ------
@@ -36,7 +36,7 @@ Step 2: Create security group and subnets
 
 - Once created follow [these instructions](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#AddRemoveRules) to add the below inbound rules to the security group
 
-![Inbound rules](AWS_EC2/securityGroups.png)
+![Inbound rules](images/securityGroups.png)
 
 Step 3: Create 2 network interfaces on different subnets with the security group and attach them to the EC2 instance
 ----
@@ -106,15 +106,15 @@ Because we can only expose one of the network interfaces publicly we will need a
 
 - Create another instance and instead of choosing the CORTX AMI select the Windows Server 2019 AMI instead
 
-![Windows Server 2019](AWS_EC2/EC2instanceWindowsServer2019.png)
+![Windows Server 2019](images/EC2instanceWindowsServer2019.png)
 
 - For this instance you can use a T2 micro instance.
 
-![T2 micro instance](AWS_EC2/t2microInstance.png)
+![T2 micro instance](images/t2microInstance.png)
 
 - Make sure the instance is on the same subnet as the network interface that is connected to ens256 which is the data interface. You will need to select this in the configuration.
 
-![Windows Subnet](AWS_EC2/WindowsSubnet.png)
+![Windows Subnet](images/WindowsSubnet.png)
 
 Launch the instance and wait for it to complete booting before moving on to Step 8.
 
