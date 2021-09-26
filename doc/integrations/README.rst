@@ -120,7 +120,7 @@ Click on any of the images below to know how to integrate CORTX with these other
    :target: cortx_dof
 
 .. |myDrive| image:: ./myDrive/logo-small.png
-   :target: cortx-js-sdk
+   :target: myDrive
 
 .. |Slack-Bot| image:: https://user-images.githubusercontent.com/2047294/118882535-8846de00-b8b1-11eb-863a-74b409affdff.png
    :target: cortx-s3-slack-bot
