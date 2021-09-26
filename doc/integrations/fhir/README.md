@@ -27,7 +27,7 @@ During COVID 19 time, those skills have been proven to be missing and the entire
 can be found [here](https://www.loom.com/share/6b06558ddea14bca9518fe682af969d3).
 
 ## Integration walk-through
-Our intergation example code can be found [here](fhir/example.py).
+Our intergation example code can be found [here](example.py).
 
 ### Step 1 - Download requirements
 We used a FHIR client to communicate with FHIR based server and boto3 for CORTX S3.\
@@ -38,8 +38,8 @@ Flask documentation can be found [here](https://flask.palletsprojects.com/en/1.1
 
 ### Step 2 - Supported models
 FHIR have a lot of models, we have only implemented four models.
-Supported model enum can be found [here](fhir/connectors/supported_models.py).
-To make the code generic as possible we also needed to create [mappers](fhir/connectors/mapper.py):
+Supported model enum can be found [here](connectors/supported_models.py).
+To make the code generic as possible we also needed to create [mappers](connectors/mapper.py):
 - get_fhir_model_type: map between a supported model (enum) to fhirclient's model-type
 - get_cortx_s3_bucket: map between a supported model (enum) to CORTX S3 bucket name
 - revised_mapping: map between a string name of model to supported model (enum).
@@ -97,7 +97,7 @@ Flask documentation can be found [here](https://flask.palletsprojects.com/en/1.1
 We used this server for enabling an easier way of transferring data from/to both FHIR-based servers and CORTX S3.
 
 ### Step 1 - Configuration
-We have created a [configuration file](fhir/server/config.json) from which the server reads its configuration.
+We have created a [configuration file](server/config.json) from which the server reads its configuration.
 Configuration contains:
 - FHIR host (base url of FHIR API server)
 - CORTX endpoint url, AWS access key and AWS access secret
