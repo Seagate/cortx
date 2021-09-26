@@ -127,14 +127,14 @@ Upon invocation we get the names and email addresses of the employees inside a t
 ---
 
 <br/>
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/python/Python_logo_and_wordmark.svg?raw=true" height="100" />
+<img src="images/python/Python_logo_and_wordmark.svg?raw=true" height="100" />
 
 ### Python 3.6+
 
 To test the integration you need to have python installed on your computer. You can get a suitable release from [here](https://www.python.org/downloads/). You can check your python version by the following command.
 <br>
 <br>
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/python/python.png">
+<img src="images/python/python.png">
 
 We recommend using a virtual environment for development. [Read about it here](https://pypi.org/project/virtualenv/).
 
@@ -156,7 +156,7 @@ pip3 install -r requirements.txt
 ---
 
 <br/>
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/cortx-s3/cortx.png" height="100" />
+<img src="images/cortx-s3/cortx.png" height="100" />
 
 ### Cortx S3 Server
 
@@ -175,7 +175,7 @@ You need to have a bucket with the name 'testbucket' inorder for the code to wor
 ---
 
 <br/>
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/ngrok/ngrok.png" height="100" />
+<img src="images/ngrok/ngrok.png" height="100" />
 
 ### ngrok
 
@@ -189,7 +189,7 @@ To develop locally we'll be using ngrok, which allows you to expose a public end
 ---
 
 <br/>
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/aws/aws.png" height="100">
+<img src="images/aws/aws.png" height="100">
 
 ### AWS Account
 
@@ -208,7 +208,7 @@ AMAZON_AWS_SECRET_ACCESS_KEY="YOUR_SECRET_ACCESS_KEY
 ---
 
 <br/>
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/elasticsearch/elasticsearch_logo.png" height="100">
+<img src="images/elasticsearch/elasticsearch_logo.png" height="100">
 
 ### Elasticsearch 7.12.0
 
@@ -233,14 +233,14 @@ python3 elastic_connector.py
 
 A successful connection will yield:
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/elasticsearch/elasticsearch_running.png">
+<img src="images/elasticsearch/elasticsearch_running.png">
 
 <br>
 
 ---
 
 <br>
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/Slack_Technologies_Logo.svg" height="100">
+<img src="images/slack/Slack_Technologies_Logo.svg" height="100">
 
 ### Slack
 
@@ -250,7 +250,7 @@ If you are an existing user you need to make a new channel #cortx-s3-test and yo
 
 `You need to create a new workspace (https://slack.com/create) and add a new channel #cortx-s3-test`
 
- <img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/create-new-channel.png" width="400">
+ <img src="images/slack/create-new-channel.png" width="400">
 
 To get started, you'll need to create a new Slack app, go to:
 [https://api.slack.com/apps](https://api.slack.com/apps)
@@ -260,9 +260,9 @@ Bolt is a foundational framework that makes it easier to build Slack apps with t
 1. Click on `Create an App` button
 2. Give the app name as cortx-bot and choose the development workspace
 
-   <img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/slack-1.png" width="400">
+   <img src="images/slack/slack-1.png" width="400">
 
-   <img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/slack-2.png" width="400">
+   <img src="images/slack/slack-2.png" width="400">
 
 3. Requesting scopes - [Scopes](https://api.slack.com/scopes) give your app permission to do things (for example, post messages) in your development workspace. You can select the scopes to add to your app by navigating over to the _OAuth & Permissions_ sidebar.
 
@@ -338,7 +338,7 @@ Bolt is a foundational framework that makes it easier to build Slack apps with t
 </table>
 <br/>
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/bot-token-scopes.png" width="400">
+<img src="images/slack/bot-token-scopes.png" width="400">
 
 <br/>
 
@@ -370,7 +370,7 @@ Bolt is a foundational framework that makes it easier to build Slack apps with t
 </table>
 <br/>
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/user-token-scopes.png" width="400">
+<img src="images/slack/user-token-scopes.png" width="400">
 
 <br/>
 
@@ -385,7 +385,7 @@ SLACK_USER_TOKEN=xoxp-your-user-token
 SLACK_BOT_TOKEN=xoxb-your-bot-token
 ```
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/tokens.png" width="400">
+<img src="images/slack/tokens.png" width="400">
 
 9. In addition to the access token, you'll need a signing secret. Your app's signing secret verifies that incoming requests are coming from Slack. Navigate to the _Basic Information_ page from your [app management page](https://api.slack.com/apps). Under App Credentials, copy the value for _Signing Secret_ and add it to the [.env](./env) file.
 
@@ -393,7 +393,7 @@ SLACK_BOT_TOKEN=xoxb-your-bot-token
 SLACK_SIGNING_SECRET=your-signing-secret
 ```
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/app-creds.png" width="400">
+<img src="images/slack/app-creds.png" width="400">
 
 10. Make sure you have followed the steps in [Cloning the repo](#Cloning-the-repo). To start the bolt app. The HTTP server is using a built-in development adapter, which is responsible for handling and parsing incoming events from Slack on port 3000
 
@@ -401,7 +401,7 @@ SLACK_SIGNING_SECRET=your-signing-secret
 python3 app.py
 ```
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/python/python3-app.png">
+<img src="images/python/python3-app.png">
 
 Open a new terminal and ensure that you've installed [ngrok](#ngrok), go ahead and tell ngrok to use port 3000 (which Bolt for Python uses by default):
 
@@ -409,7 +409,7 @@ Open a new terminal and ensure that you've installed [ngrok](#ngrok), go ahead a
 ngrok http 3000
 ```
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/ngrok/ngrok_running.gif">
+<img src="images/ngrok/ngrok_running.gif">
 
 For local slack development, we'll use your ngrok URL from above, so copy it your clipboard
 
@@ -427,7 +427,7 @@ Request URL: https://your-own-url.ngrok.io/slack/events
 
 If the challenge was successful you will get a verified right next to the Request URL.
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/event-subscriptions.png" width="400">
+<img src="images/slack/event-subscriptions.png" width="400">
 
 On the same page click on the `Subscribe to bot events` menu on the bottom of the page. Click on the `Add Bot User Event` .
 
@@ -469,7 +469,7 @@ Add the following scopes
     </tbody>
 </table>
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/Bot-and-User-Events.png">
+<img src="images/slack/Bot-and-User-Events.png">
 
 <br/>
 <br/>
@@ -480,7 +480,7 @@ Add the following scopes
 Request URL: https://your-own-url.ngrok.io/slack/events
 ```
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/interactivity.png" width="400">
+<img src="images/slack/interactivity.png" width="400">
 
 13. Scroll down to the _Select Menus_ section, in the Options Load URL, enter your ngork URL appended with /slack/events
 
@@ -488,7 +488,7 @@ Request URL: https://your-own-url.ngrok.io/slack/events
 Options Load URL: https://your-own-url.ngrok.io/slack/events
 ```
 
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/select-menus.png" width="400">
+<img src="images/slack/select-menus.png" width="400">
 
 14. Finally we come to the slash commands. Slack's custom slash commands perform a very simple task: they take whatever text you enter after the command itself (along with some other predefined values), send it to a URL, then accept whatever the script returns and posts it as a Slackbot message to the person who issued the command. We have 5 slash commands to be added in the workspace.
 
@@ -579,12 +579,12 @@ Click on Save to return to the _Slash Commands_
 </table>
 
 <br/>
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/cortx-s3-get.png" width="400">
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/cortx-s3-search.png" width="400">
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/cortx-s3-delete.png" width="400">
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/cortx-s3-upload-resume.png" width="400">
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/cortx-s3-resume-data.png" width="400">
-<img src="https://raw.githubusercontent.com/sarthakarora1208/cortx-s3-slack-bot/master/images/slack/slash-commands.png" width="400">
+<img src="images/slack/cortx-s3-get.png" width="400">
+<img src="images/slack/cortx-s3-search.png" width="400">
+<img src="images/slack/cortx-s3-delete.png" width="400">
+<img src="images/slack/cortx-s3-upload-resume.png" width="400">
+<img src="images/slack/cortx-s3-resume-data.png" width="400">
+<img src="images/slack/slash-commands.png" width="400">
 
 14. Watch the [video](https://youtu.be/G_Pu86H5nSg) to know more about using these slack commands
 
