@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install epel-release -y
+yum install epel-release -y && yum install nginx -y
 sed -i '38,84d' /etc/nginx/nginx.conf
 
 ###########################################################################
