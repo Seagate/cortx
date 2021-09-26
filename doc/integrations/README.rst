@@ -105,7 +105,7 @@ Click on any of the images below to know how to integrate CORTX with these other
    :target: ipfs
    
 .. |cortx-pyTorch| image:: ../images/PyTorch.png
-   :target: cortx-pyTorch
+   :target: cortx-pytorch
 
 .. |cortx-js-sdk| image:: ./cortx-js-sdk/images/logo.png
    :target: cortx-js-sdk
