@@ -34,7 +34,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+        
 | |chia|         | |laravel|          | |dvc|               | 
 +----------------+--------------------+---------------------+
-| |restic2|      | |thanos|           | |goofys|            | 
+| |cortx-restic| | |thanos|           | |goofys|            | 
 +----------------+--------------------+---------------------+
 
 
@@ -140,8 +140,8 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |thanos| image:: ./thanos/img/logo.png
    :target: thanos
 
-.. |restic2| image:: ./restic2/logo.png
-   :target: restic2
+.. |cortx-restic| image:: ./restic2/logo.png
+   :target: cortx-restic
 
 .. |dvc| image:: ../images/dvc.png
    :target: dvc
