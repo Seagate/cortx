@@ -140,7 +140,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |thanos| image:: ./thanos/img/logo.png
    :target: thanos
 
-.. |cortx-restic| image:: ./restic2/logo.png
+.. |cortx-restic| image:: ./cortx-restic/logo.png
    :target: cortx-restic
 
 .. |dvc| image:: ../images/dvc.png
