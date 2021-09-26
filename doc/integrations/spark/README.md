@@ -1,7 +1,7 @@
 # CORTX Spark
 Utilizing CORTX as a storage backend for Apache Spark.
 
-![Project Logo](spark/docsupport/project_logo.png)
+![Project Logo](docsupport/project_logo.png)
 
 
 [Video Presentation](https://www.youtube.com/watch?v=w3vvrV6sVkI)
@@ -19,7 +19,7 @@ adopting spark as part of their workflows for large scale data processing and ma
 The Hadoop ecosystem normally refers to an open source framework consisting of many applications for running distributed
 storage and applications, with names that are cryptic and often [indistinguishable from pokemon](http://pixelastic.github.io/pokemonorbigdata/).
 
-![hadoop ecosystem](spark/docsupport/condensed_hadoop_ecosystem.png)
+![hadoop ecosystem](docsupport/condensed_hadoop_ecosystem.png)
 
 Components of the Hadoop ecosystem that Spark normally relies on.
 
@@ -76,7 +76,7 @@ This copy command is used because Hadoop performs the following two steps when i
 
 My hope is that at some point in the future this API is implemented so that write features can be integrated. I have raised [issue #940](https://github.com/Seagate/cortx/issues/940) 
 to track this.
-![Request PCAP](spark/docsupport/pcap.png) 
+![Request PCAP](docsupport/pcap.png) 
 
 Unimplemented API shown.
 
@@ -86,7 +86,7 @@ This installation guide assumes you have already performed a few steps:
 image to create a Virtual Machine although there are other methods to [get started](https://github.com/Seagate/cortx/blob/main/QUICK_START.md).
 2. Create a cortex S3 account from the management UI.
    
-   ![](spark/docsupport/cortx_s3_user.png)
+   ![](docsupport/cortx_s3_user.png)
 
 Management webpage to add a CORTX s3 account.
 
@@ -212,7 +212,7 @@ it from outside the VM you will need to ssh tunnel it out.
 ```ssh -L 8088:localhost:8088 username@ip_address```
 On your machine visit localhost:8088 via a web browser.
 
-![Yarn cluster UI](spark/docsupport/yarn_cluster.png)
+![Yarn cluster UI](docsupport/yarn_cluster.png)
 
 Hadoop cluster management UI.
 ### Verify Spark
@@ -236,7 +236,7 @@ my_data_frame.show(10)
 To run spark master and one worker run ```~/spark/sbin/start-all.sh```.
 You should then be able to view the master page to view the status of your master and worker nodes.
 
-![Spark Master Node](spark/docsupport/spark_all.png)
+![Spark Master Node](docsupport/spark_all.png)
 Spark Master
 
 
@@ -263,7 +263,7 @@ ls: Bucket test does not exist
 You need to ensure you've created the bucket that you defined in ```core-site.yml```. The hadoop filesystem is unable to
 auto create this for you.
 If you think you've already done this, then make sure your folder is defined at the root level of your cortex account.
-![](spark/docsupport/cyberduck_bucket.png)
+![](docsupport/cyberduck_bucket.png)
 
 ### A header you provided implies functionality that is not implemented.
 Trying a command that will insert an object into CORTX results in an error like this
