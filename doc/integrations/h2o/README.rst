@@ -2,7 +2,7 @@
 H2O Integration with CORTX
 ##########################
 
-video: https://vimeo.com/582061280
+`video link <https://vimeo.com/582061280>`__
 
 H2O is an in-memory platform for distributed, scalable machine learning. H2O uses familiar interfaces like R, Python, Scala, Java, JSON and the Flow notebook/web interface, and works seamlessly with big data technologies like Hadoop and Spark. H2O provides implementations of many popular algorithms such as Generalized Linear Models (GLM), Gradient Boosting Machines (including XGBoost), Random Forests, Deep Neural Networks, Stacked Ensembles, Naive Bayes, Generalized Additive Models (GAM), Cox Proportional Hazards, K-Means, PCA, Word2Vec, as well as a fully automatic machine learning algorithm (H2O AutoML).
 
@@ -30,7 +30,7 @@ Run the following commands in a Terminal window to install H2O for Python.
 	pip install tabulate
 	pip install future
 
-**Note**: These are the dependencies required to run H2O. A complete list of dependencies is maintained in the following file: `https://github.com/h2oai/h2o-3/blob/master/h2o-py/conda/h2o/meta.yaml <https://github.com/h2oai/h2o-3/blob/master/h2o-py/conda/h2o/meta.yaml>`__.
+**Note**: These are the dependencies required to run H2O. A complete list of dependencies is maintained in the following `file <https://github.com/h2oai/h2o-3/blob/master/h2o-py/conda/h2o/meta.yaml>`__.
 
 2. Run the following command to remove any existing H2O module for Python.
 
@@ -60,7 +60,7 @@ Using H2O with CORTX
 
 The relevant code is found in ``h2o.ipynb``, with comments and guides to how to connect a H2O server with CORTX. 
 
-The code can be deployed on Google's Colaboratory https://research.google.com/colaboratory/ as well.
+The code can be deployed on `Google's Colaboratory <https://research.google.com/colaboratory/>`__ as well.
 
 
 Most importantly, the code to ensure the connections is shown below
