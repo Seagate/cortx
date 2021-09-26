@@ -107,7 +107,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |cortx-pyTorch| image:: ../images/PyTorch.png
    :target: cortx-pyTorch
 
-.. |cortx-js-sdk| image:: ./cortx-js-sdk/logo.png
+.. |cortx-js-sdk| image:: ./cortx-js-sdk/images/logo.png
    :target: cortx-js-sdk
 
 .. |strapi| image:: ../images/strapi.png
