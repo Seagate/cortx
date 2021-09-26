@@ -39,7 +39,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 
 .. |laravel| image:: https://github.com/Seagate/cortx/blob/main/doc/integrations/laravel/1200px-Laravel.svg.png?raw=true
-   :target: cortx_laravel
+   :target: laravel
 
 .. |flapmax| image:: https://github.com/flapmx/cortx/blob/09b27dcb19e55d0a598a5ca3085103d31bbed8da/doc/images/flapmaxlogo.png?raw=true
    :target: Flapmax_LETL
