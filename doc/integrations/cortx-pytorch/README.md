@@ -3,7 +3,7 @@
 <br>
 
 <p align="center">
-  <img src="pytorch/src/connect.png">
+  <img src="src/connect.png">
 </p>
 
 <br>
@@ -23,7 +23,7 @@ In the 21st century, there has been an increase in applications of deep learning
 #### Integration Process.
 
 <p align="center">
-  <img width="460" height="300" src="pytorch/src/integration.png">
+  <img width="460" height="300" src="src/integration.png">
 </p>
 
 For this integration, the training of the deep learning model is performed on the CPU. Therefore I’ll use a sample dataset with 5 classes, then train for 1 epoch. The data is stored in Cotrx-S3 and integrated via a custom PyTorch Dataset Loader to pass through to a Convolutional Neural Network for Multi-class classification.
@@ -32,7 +32,7 @@ Data on s3 using cyberduck.
 
 
 <p align="center">
-  <img width="300" height="200" src="pytorch/src/cyberduck.png">
+  <img width="300" height="200" src="src/cyberduck.png">
 </p>
 
 
@@ -44,7 +44,7 @@ Step 2: Set up Cortx-S3 account via the Cortx GUI dashboard to generate the acce
 
 Step 3: Data Preprocessing:
 
-- Follow the instruction on this [noteboook](https://github.com/r-wambui/cortx/blob/ft-integrate-cortx-and-pytroch/doc/integrations/pytorch/Cortx-PyTroch%20Integration%20-%20%201-Data%20Preprocessing.ipynb)  to create, list, delete a bucket, upload a file.
+- Follow the instruction on this [noteboook](Cortx-PyTroch%20Integration%20-%20%201-Data%20Preprocessing.ipynb)  to create, list, delete a bucket, upload a file.
 
 ```
 endpoint_url="http://ens34 ip address"
@@ -56,7 +56,7 @@ aws_secret_access_key = "provided on Step 2"
 
 Step 4: Loading the data from Cortx s3 to PyTorch Dataset Loader:
 
-- Follow the setup on this [notebook](https://github.com/r-wambui/cortx/blob/ft-integrate-cortx-and-pytroch/doc/integrations/pytorch/Cortx-PyTroch%20Integration%20-%20%202%2C%20Loading%20%20Data%20from%20Cotrx-S3%20and%20Train%20the%20model.ipynb) 
+- Follow the setup on this [notebook](Cortx-PyTroch%20Integration%20-%20%202%2C%20Loading%20%20Data%20from%20Cotrx-S3%20and%20Train%20the%20model.ipynb) 
 - This is the main step when integrating to PyTorch. Currently, PyTorch does not have pre-existing Dataset Loaders to fetch data from S3. Therefore you need to create a custom Dataset class
 ```
     class ImageDataset(Dataset):
@@ -80,7 +80,7 @@ Step 5: Save the trained model directly to Cortx-S3:
 
 
 Step 6: Load the saved model from Cortx-S3 - Inference.
-- Follow the guideline on this [notebook](https://github.com/r-wambui/cortx/blob/ft-integrate-cortx-and-pytroch/doc/integrations/pytorch/Cortx-PyTroch%20Integration%20-%20%203%2C%20Load%20trained%20model%20from%20Cotrx-S3%20for%20Inference%20.ipynb)
+- Follow the guideline on this [notebook](Cortx-PyTroch%20Integration%20-%20%203%2C%20Load%20trained%20model%20from%20Cotrx-S3%20for%20Inference%20.ipynb)
 - After training any machine learning model, the next step is to evaluate how your model performs on the test data. 
 For this setup, the test images on the local storage. You can save them to Cortx s3 and load them directly from there as we did on the train and validation images.
 
