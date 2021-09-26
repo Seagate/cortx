@@ -30,11 +30,11 @@ You will get the above information when you create an s3 account on your CORTX s
 
 1. When you create an account you will be shown a screen with your credentials like the one below.
 
-![image](splunk/s3credentials.png)
+![image](images/s3credentials.png)
 
 2. S3 Bucket: You will need to create an s3 bucket by logging into the CORTX management console and creating an s3 Bucket.
 
-![image](splunk/s3Bucket.png)
+![image](images/s3Bucket.png)
 
 #### Step 2: Configuring Splunk
 
@@ -76,7 +76,7 @@ remote.s3.endpoint = https://ssc-vm-0668.colo.seagate.com:443
 
 3. In your splunk server navigate to `http://<SPLUNK_IP>:8000/en-US/manager/launcher/control` and hit the "Restart Server" button.
 
-![image](splunk/restartSplunk.png)
+![image](images/restartSplunk.png)
 
 #### Step 3: Validating Splunk with CORTX
 
@@ -86,15 +86,15 @@ There are a few ways we can validate the integration:
 
 You should see that the Remote Storage Connectivity is ONLINE and there is Bucket Activity being uploaded to the remote s3 bucket
 
-![image](splunk/serverOnline.png)
+![image](images/serverOnline.png)
 
 2) Use an S3 client (eg. cyberduck) to connect to the S3 bucket and see that folders have been created and logs have been uploaded.
 
-![image](splunk/cyberduck.png)
+![image](images/cyberduck.png)
 
 3) Login to the CORTX Management Dashboard and verify that there is data being written
 
-![image](splunk/CORTXdashboard.png)
+![image](images/CORTXdashboard.png)
 
 ## Watch the integration demo 
 
