@@ -48,44 +48,52 @@ Step 1: Download requirements
 - password: Gq45qA0g17
 
 Lets update the repos and system first
--  $sudo apt update
--  $sudo apt full-upgrade
+```
+$ sudo apt update
+$ sudo apt full-upgrade
+```
 
 Lets install Restic
--  $sudo apt install restic
-
+```
+$ sudo apt install restic
+```
 <img src="images/install_restic.png">
 
 Step 2: Create a bucket to store the data with Restic
 We first need to export some variables before restic can work
-- export AWS_ACCESS_KEY_ID=AKIAtEpiGWUcQIelPRlD1Pi6xQ
-- export AWS_SECRET_ACCESS_KEY=YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK
-
+```
+export AWS_ACCESS_KEY_ID=AKIAtEpiGWUcQIelPRlD1Pi6xQ
+export AWS_SECRET_ACCESS_KEY=YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK
+```
 <img src="images/export_s3_cred.png">
 
 Lets create this bucket (192.168.2.102 is the address of the CORTX VM)
-- restic -r s3:http://192.168.2.102/cortxrules init
-
+```
+restic -r s3:http://192.168.2.102/cortxrules init
+```
 <img src="images/creatae_bucket_repo.png">
 
-Note the http used otherwise there is x509 certificate error
+* Note the http used otherwise there is x509 certificate error
 
-The output is as follows
+The output is as followsL
+```
 enter password for new repository: (password for the bucket)
 enter password again:
 created restic repository eefee03bbd at s3:http://192.168.2.102/cortxrules
 Please note that knowledge of your password is required to access the repository. Losing your password means that your data is irrecoverably lost.
-
+```
 <img src="images/cyber_duck.png">
 
 Step 3: Lets backup some data
 
 In the Linux VM there is a file called FSx.jpg so lets use that, run the following
-- restic -r s3:http://192.168.2.102/cortxrules --verbose backup FSx.jpg
-
+```
+restic -r s3:http://192.168.2.102/cortxrules --verbose backup FSx.jpg
+```
 <img src="images/list_backup_file.png">
-Output is as follows:
 
+Output is as follows:
+```
 open repository
 enter password for repository:
 password is correct
@@ -99,15 +107,19 @@ Files:        1 new,     0 changed,     0 unmodified
 Dirs:         1 new,     0 changed,     0 unmodified
 Added:      200 KiB
 snapshot 69A0c125 saved
+```
 
 Step 4: Lets restore some data
-- restic -r s3:http://192.168.2.102/cortxrules restore 69A0c125 --target /home/sysadmin/
-
+```
+restic -r s3:http://192.168.2.102/cortxrules restore 69A0c125 --target /home/sysadmin/
+```
 <img src="images/delete_restore_file.png">
 
 Output is as follows:
+```
 enter password for repository:
 restoring <Snapshot of [/home/sysadmin] at 2021-04-27 21:40:19.884408621 +0200 CEST> to /home/sysadmin
+```
 
 Video Link
 <a href="https://youtu.be/E-OSJ-_PQ78">Integration Video</a>
@@ -115,3 +127,6 @@ Video Link
 Authors
 - Pratish "kyroninja" Neerputh
 - Shraddha Rajcoomar
+
+## Tested by:
+* August 30, 2021: Bari Arviv (bari.arviv@seagate.com) on Ubuntu 20.4
