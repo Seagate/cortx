@@ -1,6 +1,6 @@
 # Pytorch datasets
 
-Motivation/demo video: https://youtu.be/L0UH-fRhyDU 
+[Motivation/demo video](https://youtu.be/L0UH-fRhyDU) 
 
 ## Motivation
 
@@ -42,7 +42,7 @@ The workflow becomes:
 
 ## Usage
 
-This workflow has been implemented for computer vision dataset in pytorch in the following repo: https://github.com/GuillaumeLeclerc/cortx_pytorch
+This workflow has been implemented for computer vision dataset in pytorch in the following [repo](https://github.com/GuillaumeLeclerc/cortx_pytorch).
 
 
 ### 1: Install
