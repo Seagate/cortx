@@ -72,7 +72,7 @@ Click on any of the images below to know how to integrate CORTX with these other
    :target: label-studioAPI
 
 .. |euclid| image:: https://user-images.githubusercontent.com/2047294/117737704-a593f200-b1b7-11eb-9915-cef2567b2583.png
-   :target: pytorch
+   :target: euclid
 
 .. |Splunk| image:: ../images/SplunkLogo.png
    :target: splunk
