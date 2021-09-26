@@ -1,11 +1,11 @@
 # Running CORTX with s3fs
 
-https://vimeo.com/581753953
+[Video link](https://vimeo.com/581753953)
 
 
 Summary:
 ----
-This document walks you through how to set up CORTX integration with s3fs (https://github.com/s3fs-fuse/s3fs-fuse). s3fs allows Linux and macOS to mount an S3 bucket via FUSE. s3fs preserves the native object format for files, allowing use of other tools like AWS CLI.
+This document walks you through how to set up CORTX integration with [s3fs](https://github.com/s3fs-fuse/s3fs-fuse). s3fs allows Linux and macOS to mount an S3 bucket via FUSE. s3fs preserves the native object format for files, allowing use of other tools like AWS CLI.
 
 This documentations runs the s3fs + CORTX integration with a Docker instance as well. 
 
