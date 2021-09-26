@@ -1,6 +1,6 @@
 # CORTX Pytorch Integration
 
-Video Link: https://youtu.be/cS-f7MNpXyo
+[Video Link](https://youtu.be/cS-f7MNpXyo)
 
 ## Inspiration
 
