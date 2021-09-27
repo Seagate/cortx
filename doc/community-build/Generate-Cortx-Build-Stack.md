@@ -37,7 +37,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
    ```
    
-3. (Optional) Run the following command to checkout the codebase from **2.0.0-307** tag for all individual components, for example:
+3. (Optional) Run the following command to checkout the codebase from **2.0.0-307** branch for all individual components, for example:
 
    ```
    cd cortx/cortx-motr
