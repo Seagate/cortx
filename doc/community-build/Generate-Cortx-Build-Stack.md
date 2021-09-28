@@ -1,4 +1,4 @@
-# Compile and Build Complete CORTX Stack using Docker
+# Compile and Build Complete CORTX Stack
 
 This document provides step-by-step instructions to build and generate the CORTX stack packages using Docker.
 
@@ -7,19 +7,24 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 ## Prerequisites
 
 - All the prerequisites specified in the [Building the CORTX Environment for Single Node](Building-CORTX-From-Source-for-SingleNode.md) must be satisfied.
+- Do not update OS or kernel package with `yum update` as the kernel version must be set to `3.10.0-1160.el7`
+- Do not upgrade packages from CentOS 7.8 to CentOS 7.9
+ 
 
-## Procedure
+## Compile and Build CORTX Stack from HEAD
 
-**Note:** Run appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9. For example:
+- Run the appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9. For example:
 
-##### For CentOS 7.8.2003
-```
-docker pull ghcr.io/seagate/cortx-build:centos-7.8.2003
-```
-##### For CentOS 7.9.2009
-```
-docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
-```
+   - For CentOS 7.8.2003:
+     ```
+     docker pull ghcr.io/seagate/cortx-build:centos-7.8.2003
+     ```
+   - For CentOS 7.9.2009:
+     ```
+     docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
+     ```
+
+### Procedure
 
 1. Run the following command to clone the CORTX repository:
 
@@ -30,54 +35,58 @@ docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
 2. Run the following command to check out the codebase from the **main** branch for all components:
 
    ```
-   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make checkout BRANCH=main
+   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
    ```
-
-3. Run the following command to create a directory to store packages:
-
-   ```
-   mkdir -p /var/artifacts
-   ```
-
-4. Run the following command to build the CORTX packages:
+   
+3. Run the following command to checkout the codebase from **2.0.0-307** branch for all individual components, for example:
 
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make clean build
+   cd cortx/cortx-motr
+   git checkout 2.0.0-307
+   git status
    ```
 
-5. Run the following command to generate the ISO for each component:
+4. Run the following command to create a directory to store packages:
 
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 make iso_generation
+   mkdir -p /var/artifacts/ && mkdir -p /mnt/cortx/{components,dependencies,scripts}
    ```
 
-6. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
+5. Run the following command to build the CORTX packages:
 
    ```
-   [root@deploy-test ~]# ll /var/artifacts/0/
-   total 1060876
-   drwxr-xr-x  12 root root      4096 Apr  9 07:23 3rd_party
-   drwxr-xr-x   3 root root      4096 Apr  9 07:23 cortx_iso
-   -rw-r--r--   1 root root      4395 Apr  9 07:23 cortx-prep-2.0.0-0.sh
-   drwxr-xr-x   2 root root      4096 Apr  9 07:24 iso
-   drwxr-xr-x 198 root root      4096 Apr  9 07:23 python_deps
-   -rw-r--r--   1 root root 240751885 Apr  9 07:23 python-deps-1.0.0-0.tar.gz
-   -rw-r--r--   1 root root 845556896 Apr  9 07:23 third-party-centos-7.8.2003-1.0.0-0.tar.gz
+   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean build
    ```
+   
+   **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` execution phase.
+
+6. Run the following command to generate the ISO for each component:
+
+   ```
+   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make iso_generation
+   ```
+
+7. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
+
+    ```
+    ll /var/artifacts/0
+    ```
  
-7. To view each component targets, run:
-   ```
-   docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
-   ```
-   
-   The system output displays as follows:
-   ```
-   [root@ssc-vm-1613 cortx-**]# docker run ghcr.io/seagate/cortx-build:centos-7.8.2003 make help
-   usage: make "target"
-   
-   Please clone required component repositories in cortx-workspace directory before executing respective targets.
+## Compile and Build CORTX Stack as per Individual component
 
-   targets:
+8. Run to view each component targets:
+    ```
+    docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
+    ```
+   
+    The system output displays as follows:
+    ```
+    [root@vm-1 cortx-**]# docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
+    usage: make "target"
+   
+    Please clone required component repositories in cortx-workspace directory before executing respective targets.
+
+    targets:
 
      help: print this help message.
 
@@ -110,7 +119,8 @@ docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
      iso_generation: generate ISO file from release build.
      ```
 
-8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
+9. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
+
 
 ## Troubleshooting
 
@@ -120,34 +130,33 @@ Error: No Package found for kernel-devel = 3.10.0-1127.19.1.el7
 error: Failed build dependencies:
             kernel-devel = 3.10.0-1127.19.1.el7 is needed by cortx-motr-2.0.0-0_git2ca587c_3.10.0_1127.19.1.el7.x86_64
 ```
-**Here is the solution:**
+**Solution:**
 1. Go inside the `Docker` container using the interactive mode by running:
-```sh
-docker container run -it --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 bash
-```
+   ```sh
+   docker container run -it --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.8.2003 bash
+   ```
 2. Check whether you have `kernel-devel` installed by running `rpm -qa | grep kernel-devel`. If you don't have it, please download the required kernel-devel RPM and then install it.
 3. If the `kernel-devel` is installed and you still get the error above, the root cause must be due to the version mismatch. Here is the thing, the `Makefile` script inside the `Docker` calls `uname -r` to get the kernel version. For example, your `uname -r` returns `3.10.0-1127.19.1.el7.x86_64` then the `Makefile` script assumes that the `kernel-devel` RPM must have `3.10.0-1127.19.1` on its name. However, the `kernel-devel` version might differ a bit; instead of `kernel-devel-3.10.0-1127.19.1.el7.x86_64`, it is `kernel-devel-3.10.0-1127.el7.x86_64`.
 4. Let's edit the `uname` in the `Docker` to print the correct version as our current `kernel-devel` version. So, make sure you're still inside the `Docker` container (see Step#1).
 5. Run these:
-```sh
-mv /bin/uname /bin/uname.ori
-vi /bin/uname
-```
+   ```sh
+   mv /bin/uname /bin/uname.ori
+   vi /bin/uname
+   ```
 6. Then, put this script inside the `/bin/uname`:
-```sh
-if [ "$1" == "-r" ]; then
-    echo "3.10.0-1127.el7.x86_64"
-else
-    echo "$(uname.ori $1)"
-fi
-```
+   ```sh
+   if [ "$1" == "-r" ]; then
+      echo "3.10.0-1127.el7.x86_64"
+   else
+      echo "$(uname.ori $1)"
+   fi
+   ```
 7. Finally, make it executable by running: `chmod +x /bin/uname`
 
 
 ### Tested by:
 
-- Aug 31 2021: Rose Wambui (rose.wambui@seagate.com) on Mac laptop running VirtualBox 6.1.
-- Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
+- Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOS 7.9.2009
 - Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
 - Aug 18 2021: Jalen Kan (jalen.j.kan@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - July 28 2021: Daniar Kurniawan (daniar@uchicago.edu) on baremetal servers hosted by Chameleon Cloud and Emulab Cloud.
