@@ -194,6 +194,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
     cortx_setup cluster show
     ```
+    
+    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png
 
 22. #### Define the Storage Set
 
