@@ -24,6 +24,8 @@ The CORTX deployment and configuration is a four-step procedure:
     
 -   All Network Interface Cards (NICs) must have internet access. Attach your network adapters accordingly as per your environment to establish internet connectivity. For this deployment, the NICs are considered as eth32, eth33, and eth34.
 -   The VM must have a valid hostname and accessible using ping operation.
+-   Do not update OS or kernel package with `yum update` as the kernel version must be set to `3.10.0-1160.el7` otherwise it will fail the build process.
+-   Do not upgrade packages from `CentOS 7.8` to `CentOS 7.9`
 
 ### Recommendations:
 
