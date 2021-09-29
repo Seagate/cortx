@@ -263,17 +263,6 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 **Note:** If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/Troubleshooting.md)
 
     
-### Troubleshooting:
-
-30. If the install.sh script fails then run the script again after following commands:
-
-    ```
-    rm -rf /etc/yum.repos.d/*3rd_party*.repo
-    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
-    yum clean all
-    ```
-    
-
 ### Tested by:
 
 - Sep 11 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOS 7.9.2009
