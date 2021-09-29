@@ -188,14 +188,14 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 21. #### Cluster Definition
 
-    **Note:** Enter root password when prompted
+   **Note:** Enter root password when prompted
 	
-    ```bash
-    cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
-    cortx_setup cluster show
-    ```
+   ```bash
+   cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
+   cortx_setup cluster show
+   ```
     
-    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png
 
 22. #### Define the Storage Set
 
@@ -246,19 +246,26 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     ```bash
     hctl status
     ```
-
+    
     .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status.PNG
+    
+27. Run the following commands to stop the nginx service:
 
-27. After the CORTX cluster is up and running, configure the CORTX GUI using the instruction provided in [CORTX GUI guide](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst).
+    ```
+    systemctl stop nginx
+    systemctl disable nginx
+    ```
 
-28. Create the S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
+28. After the CORTX cluster is up and running, configure the CORTX GUI using the instruction provided in [CORTX GUI guide](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst).
+
+29. Create the S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
 
 **Note:** If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/Troubleshooting.md)
 
     
 ### Troubleshooting:
 
-29. If the install.sh script fails then run the script again after following commands:
+30. If the install.sh script fails then run the script again after following commands:
 
     ```
     rm -rf /etc/yum.repos.d/*3rd_party*.repo
