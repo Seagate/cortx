@@ -237,32 +237,32 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     cortx_setup cluster config component --type ha
     ```
     
-25. Run the following command to start the CORTX cluster:
-    ```bash
-    cortx cluster start
-    ```
-   
-26. Run the following commands to verify the CORTX cluster status:
-    ```bash
-    hctl status
-    ```
-    
-    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status.PNG
-    
-27. Run the following commands to stop the nginx service:
+25. Run the following commands to stop the nginx service:
 
     ```
     systemctl stop nginx
     systemctl disable nginx
     ```
+    
+26. Run the following command to start the CORTX cluster:
+    ```bash
+    cortx cluster start
+    ```
+   
+27. Run the following commands to verify the CORTX cluster status:
+    ```bash
+    hctl status
+    ```
+    
+    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status.PNG
 
 28. After the CORTX cluster is up and running, configure the CORTX GUI using the instruction provided in [CORTX GUI guide](https://github.com/Seagate/cortx/blob/main/doc/community-build/Preboarding_and_Onboarding.rst).
 
 29. Create the S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
 
 **Note:** If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/Troubleshooting.md)
-
     
+
 ### Tested by:
 
 - Sep 11 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOS 7.9.2009
