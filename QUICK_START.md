@@ -21,7 +21,7 @@ This document provides quick access to several different ways to set up CORTX fo
     1. On a single node: TODO
     1. Across a cluster: [requires verification](doc/scaleout/README.rst)
 5. Build entire CORTX into OVA (virtual machine image): TODO
-    1. Run it on a single node: TODO 
+    1. Run it on a single node: [LINK](https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-3/CORTX_on_Open_Virtual_Appliance_PI-3.rst)
     1. Run it on a cluster: TODO
 1. Install CORTX on Supermicro Servers with Seagate RBOD Storage: [requires verification](doc/Install_CORTX_on_Supermicro_Servers_with_Seagate_RBOD_Storage.md)
 
