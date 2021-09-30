@@ -13,6 +13,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 - The CORTX packages must be generated using the steps provided in the [Generate Cortx Build Stack guide](Generate-Cortx-Build-Stack.md).
 - Do not update OS or kernel package with `yum update` as the kernel version must be set to `3.10.0-1160.el7`
 - Do not upgrade packages from CentOS 7.8 to CentOS 7.9
+- Synchronize time on Installed Operating Systems with chronyc or NTP.
 
 
 ## Procedure
