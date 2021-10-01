@@ -261,8 +261,16 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 29. Create the S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
 
-**Note:** If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/Troubleshooting.md)
-    
+
+## Troubleshooting
+
+ - If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/community-build/Troubleshooting.md)
+
+## Known Issues
+
+ - See the [Known Issues](https://github.com/Seagate/cortx/blob/main/doc/community-build/CHANGELOG.md) for more details.
+
+
 
 ### Tested by:
 
