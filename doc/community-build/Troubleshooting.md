@@ -3,9 +3,9 @@
 The troubleshooting document provides information on commonly faced issues while deploying and configuring the CORTX Stack. This document also provides the workaround or resolution to resolve these issues.
 
 
-1. **S3 endpoint fail to connect on port 80**
+1. **S3 fails to connect S3 endpoint on port 443 and return error "The difference between request time and current time is too large"**
 
-   If Installed Operating System's time is not Synchronized then S3 endpoint will fail to connect on port 80.
+   If Installed Operating System's time is not Synchronized then connection to S3 endpoint will fail on port 443.
     
    **Resolution:**
    ```
