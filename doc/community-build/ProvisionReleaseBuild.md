@@ -196,7 +196,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    cortx_setup cluster show
    ```
     
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png
+   [![cluster_definition_output.png](https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png "cluster_definition_output.png")](https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png "cluster_definition_output.png")
 
 22. #### Define the Storage Set
 
@@ -255,7 +255,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     hctl status
     ```
     
-    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status.PNG
+    [![hctl_status](https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status.PNG "hctl_status")](https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status.PNG "hctl_status")
 
 28. After the CORTX cluster is up and running, configure the CORTX GUI using the instruction provided in [CORTX GUI guide](https://github.com/Seagate/cortx/blob/main/doc/community-build/Preboarding_and_Onboarding.rst).
 
