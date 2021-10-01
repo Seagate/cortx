@@ -67,49 +67,11 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 ## (Optional) Compile and Build CORTX Stack as per Individual component
 
 7. Run to view each component targets:
-    ```
-    docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
-    ```
+   ```
+   docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
+   ```
    
-    The system output displays as follows:
-    ```
-    [root@vm-1 cortx-**]# docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
-    usage: make "target"
-   
-    Please clone required component repositories in cortx-workspace directory before executing respective targets.
-
-    targets:
-
-     help: print this help message.
-
-     clean: remove existing /var/artifacts/0 directory.
-
-     build: generate complete CORTX build including third-party-deps at "/var/artifacts/0"
-
-     control-path: generate control-path packages. cortx-provisioner, cortx-monitor, cortx-manager, cortx-management-portal and cortx-ha.
-
-     io-path: generate io-path packages. cortx-motr, cortx-s3server and cortx-hare.
-
-     cortx-motr: generate cortx-motr packages.
-
-     cortx-s3server: generate cortx-s3server packages.
-
-     cortx-hare: generate cortx-hare packages.
-
-     cortx-ha: generate cortx-ha packages.
-
-     cortx-management-portal: generate cortx-management-portal packages.
-
-     cortx-manager: generate cortx-manager packages.
-
-     cortx-monitor: generate cortx-monitor packages.
-
-     cortx-posix: generate cortx-posix (NFS) packages.
-
-     cortx-prvsnr: generate cortx-prvsnr packages.
-
-     iso_generation: generate ISO file from release build.
-     ```
+   [![cortx_stack_individual_component.png](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png")](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png") 
 
 8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
 
