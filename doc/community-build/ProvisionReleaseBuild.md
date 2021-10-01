@@ -10,201 +10,268 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 ## Prerequisite
 
 - All the prerequisites specified in the [Building the CORTX Environment for Single Node](Building-CORTX-From-Source-for-SingleNode.md) document must be satisfied.
-
 - The CORTX packages must be generated using the steps provided in the [Generate Cortx Build Stack guide](Generate-Cortx-Build-Stack.md).
-
-- 4x4 partitions must be created from each devices i.e. /dev/sdb and /dev/sdc
+- Do not update OS or kernel package with `yum update` as the kernel version must be set to `3.10.0-1160.el7`
+- Do not upgrade packages from CentOS 7.8 to CentOS 7.9
+- Synchronize time on Installed Operating Systems with chronyc or NTP.
 
 
 ## Procedure
 
-1. Set repository URL using the following command:
+1. Set local IP using the following command:
+
+   **Note:** You must use your local interface name i.e. ens32,ens33 etc as per your environment and verify by running `ip l`
+   
+   ```
+   export LOCAL_IP=$(ip -4 addr show ens33 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+   export SCRIPT_PATH="/mnt/cortx/scripts"
+   ```
+   
+2. Run the following pre-setup script:
 
    ```
-   export CORTX_RELEASE_REPO="file:///var/artifacts/0"   
+   cd $SCRIPT_PATH; curl -O https://raw.githubusercontent.com/mukul-seagate11/cortx-1/main/doc/community-build/presetup.sh
+   sh presetup.sh
    ```
 
-2. Run the following command to install the CORTX provisioner APIs and required packages:
+3. Run the following commands:
+   ```
+   sed -i '/udx-discovery/d;/uds-pyi/d' $SCRIPT_PATH/install.sh
+   sed -i 's/trusted-host: cortx-storage.colo.seagate.com/trusted-host: '$LOCAL_IP'/' $SCRIPT_PATH/install.sh
+   sed -i 's#cortx-storage.colo.seagate.com|file://#cortx-storage.colo.seagate.com|baseurl=file:///#' $SCRIPT_PATH/install.sh
+   sed -i '269s#yum-config-manager --add-repo "${repo}/3rd_party/" >> "${LOG_FILE}"#yum-config-manager --nogpgcheck --add-repo "${repo}/3rd_party/" >> "${LOG_FILE}"#' $SCRIPT_PATH/install.sh
+   ```
+   
+4. Run the following command to test the url accessibility status:
 
    ```
-   yum install -y yum-utils
-   yum-config-manager --add-repo "${CORTX_RELEASE_REPO}/3rd_party/"
-   yum-config-manager --add-repo "${CORTX_RELEASE_REPO}/cortx_iso/"
-
-   cat <<EOF >/etc/pip.conf
-   [global]
-   timeout: 60
-   index-url: $CORTX_RELEASE_REPO/python_deps/
-   trusted-host: $(echo $CORTX_RELEASE_REPO | awk -F '/' '{print $3}')
-   EOF
-
-   # Cortx Pre-requisites
-   yum install --nogpgcheck -y java-1.8.0-openjdk-headless
-   yum install --nogpgcheck -y python3 cortx-prereq sshpass
-
-   # Pre-reqs for Provisioner
-   yum install --nogpgcheck -y python36-m2crypto salt salt-master salt-minion
-
-   # Provisioner API
-   yum install --nogpgcheck -y python36-cortx-prvsnr
-
-   # Verify provisioner version (0.36.0 and above)
-   provisioner --version
+   curl -X GET http://${LOCAL_IP}/0 && if [ $? -eq 0 ];then echo "SUCCESS"; else echo "FAILED"; fi
    ```
-
-3. Run the following commands to clean the temporary repos:
+   
+5. Run the script as instructed which will performs the following actions:
+    - Configures yum repositories based on the TARGET-BUILD URL
+    - Installs CORTX packages (RPM) and their dependencies from the configured yum repositories
+    - Initializes the command shell environment (cortx_setup)
 
    ```
-   rm -rf /etc/yum.repos.d/*3rd_party*.repo
-   rm -rf /etc/yum.repos.d/*cortx_iso*.repo
-   yum clean all
-   rm -rf /var/cache/yum/
-   rm -rf /etc/pip.conf
+   sh install.sh -t http://${LOCAL_IP}/0
    ```
 
-4. Create the config.ini file:
+## Factory Manufacturing
 
-     **Note:** Run the following command to find the device partitions on your node:
+   In the factory method server is required to be configured with a certain set of values before applying the changes and packaging the server for shipping.
 
-     ```
-     lsblk -l |grep -E "sdb|sdc"
-     ```
+6. #### Configure Server
 
-   A. Run the following command to create a config.ini file:
-
-      ```
-      vi ~/config.ini
-      ```
-
-   B. Paste the code below into the config file replacing your network interface names with ens32,ens33,ens34, and storage disks with partitions:
-      
-      **Note:** The values used in the below code are for example purpose, update the values as per the inputs received from the above steps.
-
-      ```
-      [srvnode_default]
-      network.data.private_interfaces=ens34
-      network.data.public_interfaces=ens33
-      network.mgmt.interfaces=ens32
-      storage.cvg.0.data_devices=/dev/sdb1,/dev/sdb2,/dev/sdb3
-      storage.cvg.0.metadata_devices=/dev/sdb4
-      storage.cvg.1.data_devices=/dev/sdc1,/dev/sdc2,/dev/sdc3
-      storage.cvg.1.metadata_devices=/dev/sdc4
-      network.data.private_ip=None
-      storage.durability.sns.data=4
-      storage.durability.sns.parity=2
-      storage.durability.sns.spare=2
-      bmc.user=None
-      bmc.secret=None
-
-      [srvnode-1]
-      hostname=deploy-test.cortx.com
-      roles=primary,openldap_server
-
-      [enclosure_default]
-      type=other
-
-      [enclosure-1]
-      ```
-
-5. To run the bootstrap Node:
-
-   ```
-   provisioner setup_provisioner srvnode-1:$(hostname -f) \
-   --logfile --logfile-filename /var/log/seagate/provisioner/setup.log --source rpm \
-   --config-path ~/config.ini \
-   --dist-type bundle --target-build ${CORTX_RELEASE_REPO}
-   ```
-6. Load the config.ini file data for the single node into pillars using following command:
-
-   ```
-   provisioner configure_setup ~/config.ini 1
-   ```
-   **Note:** To know more about pillar data, see [Pillar in SaltStack](https://docs.saltproject.io/en/latest/topics/tutorials/pillar.html).
-
-7. Encrypt the pillar data using following command:
-
-   ```
-   salt-call state.apply components.system.config.pillar_encrypt
+   ```bash
+   cortx_setup server config --name  srvnode-1 --type VM
    ```
 
-8. Load the encrypted pillar data to confstore using following command:
+7. #### Configure Network
 
+   **Note:** You must use network interfaces as per your environment as mentioned interfaces are for example
+
+   ```bash
+   cortx_setup network config --transport lnet --mode tcp
+   cortx_setup network config --interfaces ens33 --type management
+   cortx_setup network config --interfaces ens34 --type data
+   cortx_setup network config --interfaces ens35 --type private
    ```
-   provisioner confstore_export
+
+8. #### Configure Storage
+
+   ```bash
+   cortx_setup storage config --name enclosure-1 --type virtual
+   cortx_setup storage config --controller virtual --mode primary --ip 127.0.0.1 --port 80 --user 'admin' --password 'admin'
+   cortx_setup storage config --controller virtual --mode secondary --ip 127.0.0.1 --port 80 --user 'admin' --password 'admin'
    ```
 
-9. Configure the CORTX system and other software:
-
-   A. To configure the system components, run:
-
-      ```
-      provisioner deploy_vm --setup-type single --states system
-      ```
-
-   B. To configure other components, run:
-
-      ```
-      provisioner deploy_vm --setup-type single --states prereq
-      ```
-
-10. Configure the CORTX utils, IO path, and control path:
-
-    A. To configure the CORTX utils components, run:
-
-       ```
-       provisioner deploy_vm --setup-type single --states utils
-       ```
-
-    B. To configure the CORTX IO path components, run:
-
-       ```
-       provisioner deploy_vm --setup-type single --states iopath
-       ```
-
-    C. To configure CORTX control path components, run:
-
-       ```
-       provisioner deploy_vm --setup-type single --states controlpath
-       ```
-
-11. To configure CORTX HA components:
+9. #### Run the script to create disk partitions and run the `cortx_setup` command:
 
     ```
-    provisioner deploy_vm --setup-type single --states ha
+    curl -O https://raw.githubusercontent.com/mukul-seagate11/cortx-1/main/doc/community-build/create_partitions.sh
+    sh create_partitions.sh
     ```
 
-12. Run the following command to start the CORTX cluster:
+    ```
+    cortx_setup storage config --cvg dgB01 --data-devices /dev/sdb1,/dev/sdb2,/dev/sdb3 --metadata-devices /dev/sdb4
+    cortx_setup storage config --cvg dgA01 --data-devices /dev/sdc1,/dev/sdc2,/dev/sdc3 --metadata-devices /dev/sdc4
+    ```
+   
+10. #### Configure Security
+
+    ```bash
+    cortx_setup security config --certificate /opt/seagate/cortx/provisioner/srv/components/misc_pkgs/ssl_certs/files/stx.pem
+    ```
+
+11. #### Initialize Node
+
+    ```bash
+    cortx_setup node initialize
+    ```
+   
+12. #### Finalize Node Configuration
+
+    ```bash
+    cortx_setup node finalize
+    ```
+    
+13. Run the following commands to clean the temporary repos:
+    
+    ```bash
+    rm -rf /etc/yum.repos.d/*3rd_party*.repo
+    rm -rf /etc/yum.repos.d/*cortx_iso*.repo
+    yum clean all
+    rm -rf /var/artifacts/0/{python-deps-1.0.0-0.tar.gz,third-party-1.0.0-0.tar.gz,iso,install-2.0.0-0.sh}
+    ```
+
+## Field Deployment
+   
+14. #### Prepare Node by Configuring Server Identification
+
+    ```bash
+    cortx_setup node prepare server --site_id 1 --rack_id 1 --node_id 1
+    ```
+   
+15. #### Configure Network which configures the following details as per environment:
+
+    - DNS server(s)
+    - Search domain(s)
+
+    ```bash
+    cortx_setup node prepare network --hostname <hostname> --search_domains <search-domains> --dns_servers <dns-servers>
+    ```
+    
+    For example:
+    
+    ```
+    cortx_setup node prepare network --hostname deploy-test.cortx.com --search_domains cortx.com --dns_servers 192.168.220.2
+    ```
+
+16. If the network configuration is DHCP, run following commands else run static:
+
+   ```bash
+   cortx_setup node prepare network --type management
+   cortx_setup node prepare network --type data
+   cortx_setup node prepare network --type private
+   ```
+
+17. (Optional) If the network configuration is static, run following commands else run DHCP.
+
+   ```bash
+   cortx_setup node prepare network --type management --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
+   cortx_setup node prepare network --type data --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
+   cortx_setup node prepare network --type private --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
+   ```
+
+18. #### Configure Firewall
+
+   Default config File for firewall command will be available at `/opt/seagate/cortx_configs/firewall_config.yaml` which must be passed to config argument:
+
+   ```bash
+   cortx_setup node prepare firewall --config yaml:///opt/seagate/cortx_configs/firewall_config.yaml
+   ```
+
+19. #### Configure the Network Time Server
+
+   ```bash
+   cortx_setup node prepare time --server ntp-b.nist.gov --timezone UTC
+   ```
+  
+20. #### Node Finalize
+
+  
+   **Note:** Cleanup local salt-master/ minion configuration on the node:
+
+   ```bash
+   cortx_setup node prepare finalize
+   ```
+
+21. #### Cluster Definition
+
+   **Note:** Enter root password when prompted
+	
+   ```bash
+   cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
+   cortx_setup cluster show
+   ```
+    
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png
+
+22. #### Define the Storage Set
+
+    The storageset create command requires the logical node names of all the nodes to be added in the storage set. The logical node names are assigned to each node in the factory, and the names can be fetched using the `cluster show` command.
+	
+    ```
+    cortx_setup storageset create --name storage-set1 --count 1
+    cortx_setup storageset add node storage-set1 srvnode-1
+    cortx_setup storageset add enclosure storage-set1 srvnode-1
+    cortx_setup storageset config durability storage-set1 --type sns --data 4 --parity 2 --spare 0
+    ```
+
+23. #### Prepare Cluster
+    ```bash
+    cortx_setup cluster prepare
+    ```
+    
+24. Run the following command to deploy and configure CORTX components:
+	
+    **Note:** The commands should be run in the same order as listed.
+    
+  - Foundation:
+    ```
+    cortx_setup cluster config component --type foundation
+    ```
+
+  - IO Path:
+    ```
+    cortx_setup cluster config component --type iopath
+    ```
+	
+  - Control Path:
+    ```
+    cortx_setup cluster config component --type controlpath
+    ```
+
+  - High Availability Path:
+    ```
+    cortx_setup cluster config component --type ha
+    ```
+    
+25. Run the following commands to stop the nginx service:
 
     ```
+    systemctl stop nginx
+    systemctl disable nginx
+    ```
+    
+26. Run the following command to start the CORTX cluster:
+    ```bash
     cortx cluster start
     ```
-
-13. Run the following commands to verify the CORTX cluster status:
-
-    ```
+   
+27. Run the following commands to verify the CORTX cluster status:
+    ```bash
     hctl status
     ```
-    ![CORTX Cluster](https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status_output.png)
+    
+    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status.PNG
 
-14. Run the following commands to disable and stop the firewall:
+28. After the CORTX cluster is up and running, configure the CORTX GUI using the instruction provided in [CORTX GUI guide](https://github.com/Seagate/cortx/blob/main/doc/community-build/Preboarding_and_Onboarding.rst).
 
-    ```
-    systemctl disable firewalld
-    systemctl stop firewalld
-    ```
+29. Create the S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
 
-15. After the CORTX cluster is up and running, configure the CORTX GUI using the instruction provided in [CORTX GUI guide](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst).
 
-16. Create the S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
+## Troubleshooting
 
-**Note:** If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/Troubleshooting.md)
+ - If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/community-build/Troubleshooting.md)
+
+## Known Issues
+
+ - See the [Known Issues](https://github.com/Seagate/cortx/blob/main/doc/community-build/CHANGELOG.md) for more details.
+
 
 
 ### Tested by:
 
-- Aug 31 2021: Rose Wambui (rose.wambui@seagate.com) on Mac laptop running VirtualBox 6.1.
-- Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
-- July 05 2021: Pranav Sahasrabudhe (pranav.p.shasrabudhe@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
-- May 24 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
-- May 12, 2021: Christina Ku (christina.ku@seagate.com) on VM "LDRr2 - CentOS 7.8-20210511-221524" with 2 disks.
-- Jan 6, 2021: Patrick Hession (patrick.hession@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
+- Sep 11 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOS 7.9.2009
