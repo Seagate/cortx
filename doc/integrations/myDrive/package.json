@@ -62,7 +62,7 @@
     "@types/uuid": "^7.0.2",
     "@types/validator": "^13.0.0",
     "aws-sdk": "^2.892.0",
-    "axios": "^0.21.0",
+    "axios": "^0.22.0",
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
