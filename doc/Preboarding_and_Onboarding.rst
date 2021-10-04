@@ -26,6 +26,9 @@ The preboarding procedure must be performed only once. On the preboarding proces
 1. Open a browser and navigate to the *https://<management IP>/#/preboarding/welcome*
 
    - If you see a message about your connection not being private, it is safe to ignore this message.
+   - If you are using Google Chrome, you may proceed by simply typing the following text (click on anywhere)
+   
+     ``thisisunsafe``
    
  **Note:** For 1.0.4 OVA use, Open a browser and navigate to the https://<management IP>:28100/#/preboarding/welcome
 
@@ -41,6 +44,10 @@ The preboarding procedure must be performed only once. On the preboarding proces
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/EULA1.PNG
    
+.. raw:: html
+   
+   </details>
+
 Onboarding
 ===========
 
