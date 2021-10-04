@@ -1,6 +1,4 @@
-**************************
-CORTX Terms and Conditions
-**************************
+# CORTX Terms and Conditions
 
 CORTX community is happy to provide this software and associated artifacts for the convenience of the community to test the CORTX software.  
 This is provided merely for testing purposes and is not a supported Seagate product. Users should use this  only for testing purposes and 

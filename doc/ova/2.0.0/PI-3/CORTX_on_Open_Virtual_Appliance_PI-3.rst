@@ -18,17 +18,17 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 
 - To run the CORTX OVA the following minimum configuration is required:
 
-    - RAM: 8GB
-    - Processor: 4
-    - OS Disk: 1 disk of 20GB
-    - Data Disks: 2 disks of 32GB each and 4 partitions of 8GB from each data disks i.e. /dev/sdb1,.../dev/sdb4 and /dev/sdc1,.../dev/sdc4
+  - RAM: 8GB
+  - Processor: 4
+  - OS Disk: 1 disk of 20GB
+  - Data Disks: 2 disks of 32GB each and 4 partitions of 8GB from each data disks i.e. /dev/sdb1,.../dev/sdb4 and /dev/sdc1,.../dev/sdc4
 
 - Download the `CORTX OVA <https://cortx-release-ova.s3.us-west-2.amazonaws.com/ova-2.0.0-307.ova>`_ from `our release page <https://github.com/Seagate/cortx/releases/latest>`_.
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
    
-   - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
-   - If on the VMware WorkStation, you do not see an IPv4 network configured, then update virtual networking configuration. See `troubleshooting virtual network <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
+  - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
+  - If on the VMware WorkStation, you do not see an IPv4 network configured, then update virtual networking configuration. See `troubleshooting virtual network <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
 
 **********
 Procedure
@@ -128,23 +128,23 @@ Troubleshooting
 
 #. Follow the instructions If your network service is down:
    
-  - Bring network interface down with following command,
+   - Bring network interface down with following command,
    
-   ::
+     ::
      
-     ifdown ens33 ens34
+        ifdown ens33 ens34
      
-  - Update MAC address of all the interfaces i.e. ens33,ens34 in their network config files /etc/sysconfig/network-scripts/ifcfg-ens33, /etc/sysconfig/network-scripts/ifcfg-ens34 as per command,
+   - Update MAC address of all the interfaces i.e. ens33,ens34 in their network config files /etc/sysconfig/network-scripts/ifcfg-ens33, /etc/sysconfig/network-scripts/ifcfg-ens34 as per command,
      
-   ::
+     ::
      
-     ip a | grep -E "ens33|ens34"
+        ip a | grep -E "ens33|ens34"
      
-  - Bring network interface up with following command:
+   - Bring network interface up with following command:
    
-   ::
+     ::
    
-     ifup ens33 ens34
+        ifup ens33 ens34
 
 
 Tested by:
