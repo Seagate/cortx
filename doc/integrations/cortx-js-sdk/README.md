@@ -1,4 +1,4 @@
-<img src="https://github.com/kaminskypavel/cortx-js-sdk/raw/master/assets/logo.png">
+<img src="images/logo.png">
  
 # CORTX Javascript/Typescript SDK
  
@@ -13,7 +13,7 @@ Javascript is one of the most used languages in the world, According to [StackOv
 This makes total sense, as we can run it in the frontend , backend , mobile , wearables , cars or even... fridgeders!
  
  
-<img style="max-width:400px" src="./SO.png">
+<img style="max-width:400px" src="images/SO.png">
  
 By making CORTX and "Object Storage Technologies"
 (which are traditionally ruled by devops or backend engineers at best) available for frontend, mobile and fullstack engineers we open new doors for CORTX and the millions developers in the JS eco-system.
