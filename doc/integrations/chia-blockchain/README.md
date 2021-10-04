@@ -1,6 +1,6 @@
 # Chia Harvesting & Plotting W/ CORTX
 
-Video: https://vimeo.com/582086341
+[Video link](https://vimeo.com/582086341)
 
 ## About
 

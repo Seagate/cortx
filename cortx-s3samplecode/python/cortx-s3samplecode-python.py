@@ -17,13 +17,15 @@ s3_resource = boto3.resource('s3', endpoint_url=END_POINT_URL,
                              aws_access_key_id=ACCESS_KEY,
                              aws_secret_access_key=SECRET_ACCESS_KEY,
                              config=Config(signature_version=VERSION),
-                             region_name=REGION)
+                             region_name=REGION,
+                             verify=False)
 
 s3_client = boto3.client('s3', endpoint_url=END_POINT_URL,
                          aws_access_key_id=ACCESS_KEY,
                          aws_secret_access_key=SECRET_ACCESS_KEY,
                          config=Config(signature_version=VERSION),
-                         region_name=REGION)
+                         region_name=REGION,
+                         verify=False)
 
 """ Functions for bucket operations """
 # The function prints the list of existing buckets.
