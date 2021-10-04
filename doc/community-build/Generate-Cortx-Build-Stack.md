@@ -35,7 +35,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 2. Run the following command to checkout the codebase from **2.0.0-307** branch for all components:
 
    ```
-   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=2.0.0-307 > /dev/null 2>&1 && cd ~/cortx/cortx-s3server; git checkout 2.0.0-307
+   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=2.0.0-307 > /dev/null 2>&1
+   cd ~/cortx/cortx-s3server; git checkout 2.0.0-307
    ```
 
 3. Run the following command to create a directory to store packages:
