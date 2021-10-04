@@ -21,19 +21,19 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 
 - To run the CORTX OVA the following minimum configuration is required:
 
-   - RAM: 8GB
-   - Number of core per processor: 4
-   - Storage: 80GB
+  - RAM: 8GB
+  - Number of core per processor: 4
+  - Storage: 80GB
 
-     Note: The CORTX OVA VM will create 10 disks including OS disk.
+    Note: The CORTX OVA VM will create 10 disks including OS disk.
 
 - Download the `CORTX OVA <https://github.com/Seagate/cortx/releases/>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. 
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
    
-   - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
-   - If on the VMware WorkStation, you do not see an IPv4 network configured, then update virtual networking configuration. See `troubleshooting virtual network <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
-   - For Oracle Virtual Box network configuration, see `network configuration for Oracle VirtualBox <https://github.com/Seagate/cortx/blob/main/doc/Oracle_Virtual_Box_Network_Configuration.md>`_.
+  - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
+  - If on the VMware WorkStation, you do not see an IPv4 network configured, then update virtual networking configuration. See `troubleshooting virtual network <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
+  - For Oracle Virtual Box network configuration, see `network configuration for Oracle VirtualBox <https://github.com/Seagate/cortx/blob/main/doc/Oracle_Virtual_Box_Network_Configuration.md>`_.
 
 
 **********
@@ -63,7 +63,7 @@ Procedure
 
    - For Management Network static IP, run the following command:
 
-      ::
+     ::
 
          # Set Management Network
          provisioner pillar_set "cluster/srvnode-1/network/mgmt/public_ip" \"<IP address for management network>\"
@@ -73,7 +73,7 @@ Procedure
 
    - For Data Network static IP, run the following command:
 
-      ::
+     ::
       
          # Set Data Network
          provisioner pillar_set "cluster/srvnode-1/network/data/public_ip" \"<IP address for public network>\"
@@ -82,10 +82,10 @@ Procedure
 
    **Note:** To verify the static IPs are configured, run the following command:
 
-      ::
+   ::
 
-         cat /etc/sysconfig/network-scripts/ifcfg-ens32 |grep -Ei "ip|netmask|gateway"
-         cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
+       cat /etc/sysconfig/network-scripts/ifcfg-ens32 |grep -Ei "ip|netmask|gateway"
+       cat /etc/sysconfig/network-scripts/ifcfg-ens33 |grep -Ei "ip|netmask|gateway"
 
 #. To check the CORTX cluster status, run the following command:
    
@@ -95,22 +95,22 @@ Procedure
    
    **Note:** If the cluster is not running then stop and start cluster once using the following command:
       
-      ::
+   ::
 
-         cortx cluster stop
-         cortx cluster start
+       cortx cluster stop
+       cortx cluster start
 
-   **Note** For VirtualBox users, you need to check if the CORTX hare cluster is running using the following command:
+   **Note:** For VirtualBox users, you need to check if the CORTX hare cluster is running using the following command:
 
-      ::
+   ::
 
-         hctl status
+       hctl status
 
-      If the cluster is not running, start the cluster using the following command:
+   * If the cluster is not running, start the cluster using the following command:
 
-      ::
+     ::
 
-         hctl start
+        hctl start
 
 
 #. Run **ip a l** and record the IP addresses of the following interfaces:
@@ -133,7 +133,7 @@ Procedure
    
    - If any service is in failed state, run the following command active the services:
 
-      ::
+     ::
 
          systemctl start <service name>
 
@@ -192,9 +192,9 @@ Known Issues
    
    ::
    
-    sed -i '11s/host:/host: 127.0.0.1/' /etc/csm/database.yaml
+      sed -i '11s/host:/host: 127.0.0.1/' /etc/csm/database.yaml
     
-    systemctl restart csm_agent 
+      systemctl restart csm_agent 
 
 
 .. raw:: html
@@ -203,6 +203,8 @@ Known Issues
 
 
 Tested by:
+
+- Sept 2, 2021: Jalen Kan (jalen.j.kan@seagate.com) using OVA release 2.0.0 on windows 10 running VMWare WorkStation Pro 16.
 
 - Aug 16, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA release 2.0.0 on MAC running VirtualBox 6.1.26.
 
