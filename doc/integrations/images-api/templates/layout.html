@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <title>Cortx Images API</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body class="h-100 bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Cortx Images API</a>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03"></div>
+    </nav>
+    <div class="d-flex text-center text-white bg-dark">
+      {% block content %}{% endblock %}
+    </div>
+    {% block script %}{% endblock %}
+
+    <footer class="mt-auto text-white-50 text-center">
+      <p>
+        Cortx images, by
+        <a href="https://niradler.com" class="text-white">@niradler</a>.
+      </p>
+    </footer>
+  </body>
+</html>

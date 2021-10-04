@@ -1,0 +1,11 @@
+{
+  "appletName": "RickRoll",
+  "title": "Rick Roll",
+  "sizeX": 620,
+  "sizeY": 400,
+  "appletIcon": "fa-list-alt",
+  "showInMenu": false,
+  "appletScript": "vdm-app-RickRoll.js",
+  "preReqs": [
+  ]
+}

@@ -1,4 +1,0 @@
-cd C:\Users\Administrator\Desktop\ai\ParlAI
-conda activate yolo
-python application.py  -mf zoo:blender/blender_90M/model
-
