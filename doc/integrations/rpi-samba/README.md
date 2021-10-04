@@ -1,8 +1,8 @@
 # Raspberry Pi Samba Server
 
-![](project_logo.png)
+![](images/project_logo.png)
 
-Integration link: https://vimeo.com/582170955
+[Integration video link](https://vimeo.com/582170955)
 
 ## Introduction
 With a Raspberry Pi, Samba and CORTX, this integration lets you create your NAS server (to serve network-wide files) cheaply, and automatically syncs with your CORTX storage.
@@ -11,7 +11,7 @@ What is NAS?:
 > Network attached storage allows you to share files from one, always-on device throughout your house. With a NAS on your network, you can use it to store your movies and play them from multiple Kodi boxes, store backups on it from your PC, or use it as a BitTorrent box that seeds your files 24/7.
 
 ## Architecture
-![](architecture.png)
+![](images/architecture.png)
 
 ## Setup
 
@@ -75,12 +75,12 @@ aws --endpoint-url http://uvo1djqlaa0iveuluux.vm.cld.sr s3 sync s3://testbucket 
 
 Our simple setup:
 
-![](Picture1.png)
+![](images/Picture1.png)
 
 Files on network storage:
 
-![](Picture2.png)
+![](images/Picture2.png)
 
 Files on CORTX storage:
 
-![](Picture3.png)
+![](images/Picture3.png)
