@@ -35,13 +35,15 @@ s3_resource = boto3.resource('s3', endpoint_url=END_POINT_URL,
                              aws_access_key_id=ACCESS_KEY,
                              aws_secret_access_key=SECRET_ACCESS_KEY,
                              config=Config(signature_version=VERSION),
-                             region_name=REGION)
+                             region_name=REGION,
+                             verify=False)
 
 s3_client = boto3.client('s3', endpoint_url=END_POINT_URL,
                          aws_access_key_id=ACCESS_KEY,
                          aws_secret_access_key=SECRET_ACCESS_KEY,
                          config=Config(signature_version=VERSION),
-                         region_name=REGION)
+                         region_name=REGION,
+                         verify=False)
 ```
 
 Create Bucket
@@ -95,4 +97,6 @@ for obj in current_bucket.objects.all():
 ```
 
 ### Tested By:
+* Sep 18, 2021: Bo Wei (bo.b.wei@seagate.com)
 * August 2, 2021: Bari Arviv (bararviv0120@gmail.com | bari.arviv@seagate.com)
+
