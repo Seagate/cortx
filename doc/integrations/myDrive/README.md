@@ -4,27 +4,27 @@ Notice ❤: this integration is heavily based on [cortx-js-sdk](https://github.c
 ), for more info click on the image below, which I also implemented as part of this integration, but published as a different integration 
 for making the life of future developers easier.
 
-[![cortx-js-demo](https://github.com/kaminskypavel/cortx-js-sdk/raw/master/assets/logo.png)](https://github.com/Seagate/cortx/blob/main/doc/integrations/cortx-js-sdk)
+[![cortx-js-demo](images/logo.png)](https://github.com/Seagate/cortx/blob/main/doc/integrations/cortx-js-sdk)
 
 
 ## Youtube Demo
-[![Demo](./youtube-play.png)](https://youtu.be/iegzyHMiqfw)
+[![Demo](images/youtube-play.png)](https://youtu.be/iegzyHMiqfw)
 
 ##### Host myDrive on your own server or trusted platform, and then access myDrive through your web browser.
 ----
 ## Screenshots
 
 - ## upload documents
-![upload](https://github.com/kaminskypavel/cortx-js-myDrive/blob/master/github_images/upload.png)
+![upload](github_images/upload.png)
 
 - ## download documents
-![download](https://github.com/kaminskypavel/cortx-js-myDrive/blob/master/github_images/download.png)
+![download](github_images/download.png)
 
 - ## built in player
-![player](https://github.com/kaminskypavel/cortx-js-myDrive/raw/master/github_images/video-viewer.png)
+![player](github_images/video-viewer.png)
 
 - ## search for documents
-![search](https://github.com/kaminskypavel/cortx-js-myDrive/blob/master/github_images/move.png)
+![search](github_images/move.png)
 
 
 ## Problem
@@ -33,7 +33,7 @@ In this day and age, privacy and "owning" your own information - matters!
 Enterprises may choose a self hosted solutions for a well known software , and some  might go as far as hosting their own servers and infrastructure.
 
 ## Solution 
-# ![Logo](logo.png)
+# ![Logo](images/logo.png)
 
 We provide a self hosted solution for a remote data drive similar to "Google Drive" and "Dropbox",
 which can be useful both on an enterprise and a personal level
