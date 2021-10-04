@@ -51,7 +51,6 @@ We are excited about your interest in CORTX and hope you will join us. We take o
 - Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.rst) for more details.
 - Read about all the different [components](https://github.com/hessio/cortx/blob/patch-11/doc/Components.md) that combine together to make CORTX
 
-
 Resources
 ---------
 

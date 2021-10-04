@@ -40,19 +40,9 @@ The preboarding procedure must be performed only once. On the preboarding proces
 4. Click **Accept** to accept the **CORTX Terms and Conditions**.
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/EULA1.PNG
-
-5. Create a user with admin privileges by entering the username, password, and email address in the relevant fields, and click **Apply and Continue**.  The usernames *root*, *cortx*, and *csm* are reserved so please do not use them.
-    
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/preboard_create_admin.PNG
-
-  
-.. raw:: html
-   
-   </details>
    
 Onboarding
 ===========
-
 
 The onboarding procedure must be performed after completing the preboarding procedure. You should be brought automatically to the correct page after completing the preboarding:
 
@@ -76,7 +66,7 @@ You can also perform the onboarding tasks from the **Settings** page.
 
 #. Optional: If you have an SSL certificate, you can upload it. Otherwise, a default self-signed certificate provided by Seagate will be used. Click **Continue**.
 
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/SSL.PNG
+   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/image-2021-09-16-18-32-26-155.png
    
 #. Enter information about the **DNS servers** and **Search domains** in relevant fields, and click **Continue**. 
    Multiple entries must be separated by commas.

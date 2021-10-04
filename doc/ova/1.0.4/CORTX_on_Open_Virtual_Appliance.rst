@@ -4,6 +4,8 @@ CORTX on Open Virtual Appliance
 ===============================
 An Open Virtual Appliance (OVA) is a Virtual Machine (VM) image that consists of a pre-installed and pre-configured operating system as well as one or more applications packaged for easy deployment and testing.  This document describes how to use a CORTX OVA for the purposes of single-node CORTX testing.  The minimum recommended system should have at least 4 CPU cores, at least 8 GB of RAM, and at least 120 GB of local storage. For our Japanese community, this document has been translated and is available `here <https://qiita.com/Taroi_Japanista/items/0ac03f55dce3f7433adf>`_.
 
+**Note:** This is intended for simple testing to evaluate the CORTX system for the "look and feel" and for some basic functionality testing; it is not intended for development purposes. Package Managers such as yum will not work in the OVA. If you are interested in development, please instead use these instructions `Build CORTX from Source Code using Docker <https://github.com/Seagate/cortx/blob/main/doc/community-build/Building-CORTX-From-Source-for-SingleNode.md>`_
+
 ***********************
 Recommended Hypervisors
 ***********************
@@ -20,7 +22,7 @@ Procedure
 **********
 The procedure to install CORTX on OVA is mentioned below.
 
-#. Download the `CORTX OVA <https://github.com/Seagate/cortx/releases/>`_ file from `our release page <https://github.com/Seagate/cortx/releases/latest>`_. This contains the virtual machine image.
+#. Download the `CORTX OVA <https://github.com/Seagate/cortx/releases/download/cortx-ova-1.0.4-632/cortx-ova-1.0.4.ova>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/cortx-ova-1.0.4-632>`_. This contains the virtual machine image.
 
 #. Import the OVA image by referring to `these instructions <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_. 
 
@@ -200,7 +202,7 @@ The procedure to install CORTX on OVA is mentioned below.
          * delete all the above in reverse order
       
    
-#. Using the public data IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
+#. Using the Management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
 
 #. Run the following command and verify the S3 authserver and HA proxy are active and running:
 

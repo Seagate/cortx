@@ -162,6 +162,7 @@ def main():
         print(people.people[args.individual])
       else:
         print("Person %s not in the known community" % args.individual)
+        sys.exit(-1)
     else:
       if args.github:
         gpeople=CortxCommunity()
