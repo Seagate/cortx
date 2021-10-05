@@ -1,6 +1,6 @@
 # Chia Harvesting & Plotting W/ CORTX
 
-Video: https://vimeo.com/582086341
+[Video link](https://vimeo.com/582086341)
 
 ## About
 
@@ -39,11 +39,13 @@ sh install.sh
 . ./activate
 ```
 
+**Note**: For CentOS users, refer to Chia's [guide](https://github.com/Chia-Network/chia-blockchain/wiki/INSTALL#centosred-hatfedora) for installation.
+
 #### 3. Create temporary folders to store Chia plots
 
 ```sh
-mkdir /root/chia-plots-tmp
-mkdir /root/chia-plots-dest
+mkdir $HOME/chia-plots-tmp
+mkdir $HOME/chia-plots-dest
 ```
 
 #### 4. Install tmux and start a second terminal session (Optional)
@@ -97,7 +99,7 @@ chia start farmer -r
 
 #### 8. You are now harvesting Chia with CORTX! :tada:
 
-Use `cortx farm summary` to track your farming progress, and use the `chia wallet` CLI commands to find out how to transfer your Chia to your digital wallet.
+Use `chia farm summary` to track your farming progress, and use the `chia wallet` CLI commands to find out how to transfer your Chia to your digital wallet.
 
 ## Learning Points
 
@@ -110,3 +112,7 @@ Thank you for the opportunity to integrate crypto with CORTX!
 ## Contributors
 
 Claire, Sung Won and Rosminy :tada: :tada: :tada:
+
+Tested by:
+
+- Sep 20, 2021: Harrison Seow (<harrison.seow@seagate.com>) using Centos 8 and Cortx OVA 2.0.0 on Windows 10 running VMware Workstation 16 Player.
