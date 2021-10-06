@@ -55,6 +55,7 @@ The CORTX deployment and configuration is a four-step procedure:
     ```
 4. Reboot your VM using the following command: `Reboot`
 5. Generate the CORTX deployment packages using the instructions provided in [Generating the CORTX packages guide](Generate-Cortx-Build-Stack.md).
+6. Build & Deploy CORTX Stack on Amazon Web Services using the instructions provided in [Build & Deploy CORTX Stack on AWS guide](https://github.com/Seagate/cortx/blob/main/doc/community-build/cloud/AWS/README.md)
 
 ### Tested by:
 
