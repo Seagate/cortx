@@ -8,6 +8,7 @@ This document provides quick access to several different ways to set up CORTX fo
     1. Across a cluster: TODO
 1. Build entire CORTX into binaries: [LINK](doc/community-build/Building-CORTX-From-Source-for-SingleNode.md)
     1. Run it on a single node: [LINK](doc/community-build/ProvisionReleaseBuild.md)
+    1. Run it on a AWS: [LINK](doc/community-build/cloud/AWS/README.md)
     1. Run it on a cluster: TODO
 1. Build just the block storage layer (motr) from the source: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
     1. Run it on a single node: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
