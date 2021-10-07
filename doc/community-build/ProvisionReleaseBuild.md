@@ -30,7 +30,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 2. Run the following pre-setup script:
 
    ```
-   cd $SCRIPT_PATH; curl -O https://raw.githubusercontent.com/mukul-seagate11/cortx-1/main/doc/community-build/presetup.sh
+   cd $SCRIPT_PATH; curl -O https://github.com/Seagate/cortx/blob/main/doc/community-build/presetup.sh
    sh presetup.sh
    ```
 
