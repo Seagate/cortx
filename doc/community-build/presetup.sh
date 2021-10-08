@@ -31,5 +31,5 @@ firewall-cmd --reload
 
 
 ## Download script
-cd ${SCRIPT_PATH}; curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/srv/components/provisioner/scripts/install.sh
-chmod +x *.sh
+cp ~/cortx/cortx-prvsnr/srv/components/provisioner/scripts/install.sh $SCRIPT_PATH
+chmod +x ${SCRIPT_PATH}/*.sh
