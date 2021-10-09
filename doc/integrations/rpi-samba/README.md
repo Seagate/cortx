@@ -39,7 +39,7 @@ Run `sudo nano /etc/samba/smb.conf`, then insert:
 
 ```
 [your-storage-name]
-path = /
+path = /home/shared/public
 writeable = yes
 create mask = 0775
 directory mask = 0775
