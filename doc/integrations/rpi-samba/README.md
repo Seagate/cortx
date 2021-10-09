@@ -30,7 +30,7 @@ Run `sudo apt install samba samba-common-bin -y`
 ```
 sudo mkdir -p /home/shared/public
 sudo chown -R root:users /home/shared/public
-sudo chown -R ug=rwx,o=rx /home/shared/public
+sudo chmod -R ug=rwx,o=rx /home/shared/public
 ```
 
 4. Update Samba config files
