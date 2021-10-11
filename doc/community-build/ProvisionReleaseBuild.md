@@ -125,7 +125,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 15. #### Finalize Node Configuration
 
     ```bash
-    cortx_setup node finalize
+    cortx_setup node finalize --force
     ```
     
 16. Run the following commands to clean the temporary repos:
