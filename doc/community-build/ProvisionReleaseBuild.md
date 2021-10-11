@@ -94,10 +94,9 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     ```
 
 10. Reboot the VM using following command:
-
-    ::
-
+    ```
     reboot
+    ```
 
 11. Run the following command:
     ```
