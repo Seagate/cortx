@@ -102,6 +102,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     ```
     systemctl start salt-master
     systemctl start salt-minion
+    systemctl start chronyd
+    systemctl enable chronyd
     ```
 
 12. Run the `cortx_setup` command:
