@@ -91,46 +91,34 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     ```
     curl -O https://raw.githubusercontent.com/mukul-seagate11/cortx-1/main/doc/community-build/create_partitions.sh
     sh create_partitions.sh
+    kpartx /dev/sdb; kpartx /dev/sdc
     ```
 
-10. Reboot the VM using following command:
-    ```
-    reboot
-    ```
-
-11. Run the following command:
-    ```
-    systemctl start salt-master
-    systemctl start salt-minion
-    systemctl start chronyd
-    systemctl enable chronyd
-    ```
-
-12. Run the `cortx_setup` command:
+10. Run the `cortx_setup` command:
     ```
     cortx_setup storage config --cvg dgB01 --data-devices /dev/sdb1,/dev/sdb2,/dev/sdb3 --metadata-devices /dev/sdb4
     cortx_setup storage config --cvg dgA01 --data-devices /dev/sdc1,/dev/sdc2,/dev/sdc3 --metadata-devices /dev/sdc4
     ```
 
-13. #### Configure Security
+11. #### Configure Security
 
     ```bash
     cortx_setup security config --certificate /opt/seagate/cortx/provisioner/srv/components/misc_pkgs/ssl_certs/files/stx.pem
     ```
 
-14. #### Initialize Node
+12. #### Initialize Node
 
     ```bash
     cortx_setup node initialize
     ```
    
-15. #### Finalize Node Configuration
+13. #### Finalize Node Configuration
 
     ```bash
     cortx_setup node finalize --force
     ```
     
-16. Run the following commands to clean the temporary repos:
+14. Run the following commands to clean the temporary repos:
     
     ```bash
     rm -rf /etc/yum.repos.d/*3rd_party*.repo
@@ -141,13 +129,13 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ## Field Deployment
    
-17. #### Prepare Node by Configuring Server Identification
+15. #### Prepare Node by Configuring Server Identification
 
     ```bash
     cortx_setup node prepare server --site_id 1 --rack_id 1 --node_id 1
     ```
    
-18. #### Configure Network which configures the following details as per environment:
+16. #### Configure Network which configures the following details as per environment:
 
     - DNS server(s)
     - Search domain(s)
@@ -162,7 +150,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     cortx_setup node prepare network --hostname deploy-test.cortx.com --search_domains cortx.com --dns_servers 192.168.220.2
     ```
 
-19. If the network configuration is DHCP, run following commands else run static:
+17. If the network configuration is DHCP, run following commands else run static:
 
    ```bash
    cortx_setup node prepare network --type management
@@ -170,7 +158,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    cortx_setup node prepare network --type private
    ```
 
-20. (Optional) If the network configuration is static, run following commands else run DHCP.
+18. (Optional) If the network configuration is static, run following commands else run DHCP.
 
    ```bash
    cortx_setup node prepare network --type management --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
@@ -178,7 +166,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    cortx_setup node prepare network --type private --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
    ```
 
-21. #### Configure Firewall
+19. #### Configure Firewall
 
    Default config File for firewall command will be available at `/opt/seagate/cortx_configs/firewall_config.yaml` which must be passed to config argument:
 
@@ -186,13 +174,13 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    cortx_setup node prepare firewall --config yaml:///opt/seagate/cortx_configs/firewall_config.yaml
    ```
 
-22. #### Configure the Network Time Server
+20. #### Configure the Network Time Server
 
    ```bash
    cortx_setup node prepare time --server ntp-b.nist.gov --timezone UTC
    ```
   
-23. #### Node Finalize
+21. #### Node Finalize
 
   
    **Note:** Cleanup local salt-master/ minion configuration on the node:
@@ -201,7 +189,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    cortx_setup node prepare finalize
    ```
 
-24. #### Cluster Definition
+22. #### Cluster Definition
 
    **Note:** Enter root password when prompted
 	
@@ -212,7 +200,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     
    [![cluster_definition_output.png](https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png "cluster_definition_output.png")](https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png "cluster_definition_output.png")
 
-25. #### Define the Storage Set
+23. #### Define the Storage Set
 
     The storageset create command requires the logical node names of all the nodes to be added in the storage set. The logical node names are assigned to each node in the factory, and the names can be fetched using the `cluster show` command.
 	
@@ -223,12 +211,12 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     cortx_setup storageset config durability storage-set1 --type sns --data 4 --parity 2 --spare 0
     ```
 
-26. #### Prepare Cluster
+24. #### Prepare Cluster
     ```bash
     cortx_setup cluster prepare
     ```
     
-27. Run the following command to deploy and configure CORTX components:
+25. Run the following command to deploy and configure CORTX components:
 	
     **Note:** The commands should be run in the same order as listed.
     
@@ -252,28 +240,28 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     cortx_setup cluster config component --type ha
     ```
     
-28. Run the following commands to stop the nginx service:
+26. Run the following commands to stop the nginx service:
 
     ```
     systemctl stop nginx
     systemctl disable nginx
     ```
     
-29. Run the following command to start the CORTX cluster:
+27. Run the following command to start the CORTX cluster:
     ```bash
     cortx cluster start
     ```
    
-30. Run the following commands to verify the CORTX cluster status:
+28. Run the following commands to verify the CORTX cluster status:
     ```bash
     hctl status
     ```
     
     [![hctl_status](https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status.PNG "hctl_status")](https://github.com/Seagate/cortx/blob/main/doc/images/hctl_status.PNG "hctl_status")
 
-31. After the CORTX cluster is up and running, configure the CORTX GUI using the instruction provided in [CORTX GUI guide](https://github.com/Seagate/cortx/blob/main/doc/community-build/Preboarding_and_Onboarding.rst).
+29. After the CORTX cluster is up and running, configure the CORTX GUI using the instruction provided in [CORTX GUI guide](https://github.com/Seagate/cortx/blob/main/doc/community-build/Preboarding_and_Onboarding.rst).
 
-32. Create the S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
+30. Create the S3 account and perform the IO operations using the instruction provided in [IO operation in CORTX](https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst).
 
 
 ## Troubleshooting
