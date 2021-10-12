@@ -28,7 +28,9 @@ systemctl start nginx;systemctl enable nginx;systemctl start chronyd;systemctl e
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --reload
 
-
 ## Download script
 cp ~/cortx/cortx-prvsnr/srv/components/provisioner/scripts/install.sh $SCRIPT_PATH
 chmod +x ${SCRIPT_PATH}/*.sh
+
+# Patch fixed for 307 tag
+curl -O https://raw.githubusercontent.com/Seagate/cortx-prvsnr/main/lr-cli/cortx_setup/commands/pillar_sync.py; mv -f pillar_sync.py ~/cortx/cortx-prvsnr/lr-cli/cortx_setup/commands/pillar_sync.py
