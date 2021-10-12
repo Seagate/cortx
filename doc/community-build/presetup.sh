@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install epel-release -y && yum install nginx -y
+yum install epel-release -y && yum install bind-utils chronyd nginx -y
 sed -i '38,84d' /etc/nginx/nginx.conf
 
 ###########################################################################
@@ -23,6 +23,7 @@ EOF
 
 systemctl start nginx
 systemctl enable nginx
+systemctl start chronyd
 
 ## Run the following commands to allow HTTP traffic
 
