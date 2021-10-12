@@ -21,9 +21,7 @@ EOF
 
 ## Run the following commands to start nginx service
 
-systemctl start nginx
-systemctl enable nginx
-systemctl start chronyd
+systemctl start nginx;systemctl enable nginx;systemctl start chronyd;systemctl enable chronyd
 
 ## Run the following commands to allow HTTP traffic
 
