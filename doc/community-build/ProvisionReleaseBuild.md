@@ -23,7 +23,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    **Note:** You must use your local interface name i.e. ens32,ens33 etc as per your environment and verify by running `ip l`
    
    ```
-   export LOCAL_IP=$(ip -4 addr show ens33 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+   export LOCAL_IP=$(ip -4 addr show ens32 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
    export SCRIPT_PATH="/mnt/cortx/scripts"
    ```
    
@@ -69,13 +69,13 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 7. #### Configure Network
 
-   **Note:** You must use network interfaces as per your environment as mentioned interfaces are for example
+   **Note:** You must use network interfaces by running ip a as per your environment as mentioned interfaces are for example
 
    ```bash
    cortx_setup network config --transport lnet --mode tcp
-   cortx_setup network config --interfaces ens33 --type management
-   cortx_setup network config --interfaces ens34 --type data
-   cortx_setup network config --interfaces ens35 --type private
+   cortx_setup network config --interfaces ens32 --type management
+   cortx_setup network config --interfaces ens33 --type data
+   cortx_setup network config --interfaces ens34 --type private
    ```
 
 8. #### Configure Storage
@@ -86,37 +86,39 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    cortx_setup storage config --controller virtual --mode secondary --ip 127.0.0.1 --port 80 --user 'admin' --password 'admin'
    ```
 
-9. #### Run the script to create disk partitions and run the `cortx_setup` command:
+9. #### Run the script to create disk partitions:
 
     ```
     curl -O https://raw.githubusercontent.com/mukul-seagate11/cortx-1/main/doc/community-build/create_partitions.sh
     sh create_partitions.sh
+    kpartx /dev/sdb; kpartx /dev/sdc
     ```
 
+10. Run the `cortx_setup` command:
     ```
     cortx_setup storage config --cvg dgB01 --data-devices /dev/sdb1,/dev/sdb2,/dev/sdb3 --metadata-devices /dev/sdb4
     cortx_setup storage config --cvg dgA01 --data-devices /dev/sdc1,/dev/sdc2,/dev/sdc3 --metadata-devices /dev/sdc4
     ```
-   
-10. #### Configure Security
+
+11. #### Configure Security
 
     ```bash
     cortx_setup security config --certificate /opt/seagate/cortx/provisioner/srv/components/misc_pkgs/ssl_certs/files/stx.pem
     ```
 
-11. #### Initialize Node
+12. #### Initialize Node
 
     ```bash
     cortx_setup node initialize
     ```
    
-12. #### Finalize Node Configuration
+13. #### Finalize Node Configuration
 
     ```bash
-    cortx_setup node finalize
+    cortx_setup node finalize --force
     ```
     
-13. Run the following commands to clean the temporary repos:
+14. Run the following commands to clean the temporary repos:
     
     ```bash
     rm -rf /etc/yum.repos.d/*3rd_party*.repo
@@ -127,13 +129,13 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ## Field Deployment
    
-14. #### Prepare Node by Configuring Server Identification
+15. #### Prepare Node by Configuring Server Identification
 
     ```bash
     cortx_setup node prepare server --site_id 1 --rack_id 1 --node_id 1
     ```
    
-15. #### Configure Network which configures the following details as per environment:
+16. #### Configure Network which configures the following details as per environment:
 
     - DNS server(s)
     - Search domain(s)
@@ -148,53 +150,53 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     cortx_setup node prepare network --hostname deploy-test.cortx.com --search_domains cortx.com --dns_servers 192.168.220.2
     ```
 
-16. If the network configuration is DHCP, run following commands else run static:
+17. If the network configuration is DHCP, run following commands else run static:
 
-   ```bash
-   cortx_setup node prepare network --type management
-   cortx_setup node prepare network --type data
-   cortx_setup node prepare network --type private
-   ```
+    ```bash
+    cortx_setup node prepare network --type management
+    cortx_setup node prepare network --type data
+    cortx_setup node prepare network --type private
+    ```
 
-17. (Optional) If the network configuration is static, run following commands else run DHCP.
+    (Optional) If the network configuration is static, run following commands else run DHCP.
 
-   ```bash
-   cortx_setup node prepare network --type management --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
-   cortx_setup node prepare network --type data --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
-   cortx_setup node prepare network --type private --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
-   ```
+    ```bash
+    cortx_setup node prepare network --type management --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
+    cortx_setup node prepare network --type data --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
+    cortx_setup node prepare network --type private --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
+    ```
 
 18. #### Configure Firewall
 
-   Default config File for firewall command will be available at `/opt/seagate/cortx_configs/firewall_config.yaml` which must be passed to config argument:
+    Default config File for firewall command will be available at `/opt/seagate/cortx_configs/firewall_config.yaml` which must be passed to config argument:
 
-   ```bash
-   cortx_setup node prepare firewall --config yaml:///opt/seagate/cortx_configs/firewall_config.yaml
-   ```
+    ```bash
+    cortx_setup node prepare firewall --config yaml:///opt/seagate/cortx_configs/firewall_config.yaml
+    ```
 
 19. #### Configure the Network Time Server
 
-   ```bash
-   cortx_setup node prepare time --server ntp-b.nist.gov --timezone UTC
-   ```
+    ```bash
+    cortx_setup node prepare time --server ntp-b.nist.gov --timezone UTC
+    ```
   
 20. #### Node Finalize
 
   
-   **Note:** Cleanup local salt-master/ minion configuration on the node:
+    **Note:** Cleanup local salt-master/ minion configuration on the node:
 
-   ```bash
-   cortx_setup node prepare finalize
-   ```
+    ```bash
+    cortx_setup node prepare finalize
+    ```
 
 21. #### Cluster Definition
 
-   **Note:** Enter root password when prompted
+    **Note:** Enter root password when prompted
 	
-   ```bash
-   cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
-   cortx_setup cluster show
-   ```
+    ```bash
+    cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
+    cortx_setup cluster show
+    ```
     
    [![cluster_definition_output.png](https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png "cluster_definition_output.png")](https://github.com/Seagate/cortx/blob/main/doc/images/cluster_definition_output.png "cluster_definition_output.png")
 

@@ -30,8 +30,11 @@ The CORTX deployment and configuration is a four-step procedure:
 ### Recommendations:
 
 - If you are using multiple virtualization platforms including VMware Workstation, vSphere etc. then after rebooting ensure that all the NICs have internet connectivity.
-- While deploying the CORTX single node VM, if the deployment fails during any step. It is recommended that you must clean up the steps and rerun the steps.
 - It is recommended to use para-virtualized drivers in the guest VM for best performance.
+- While deploying the CORTX single node VM, if the deployment fails during any step:
+  - It is recommended that you must run the steps once and prevent to rerun the steps.
+  - Prevent running the steps multiple times.
+  - Create a fresh virtual machine.
 
 ## Procedure
 
