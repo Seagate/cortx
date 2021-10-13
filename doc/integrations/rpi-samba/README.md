@@ -30,7 +30,7 @@ Run `sudo apt install samba samba-common-bin -y`
 ```
 sudo mkdir -p /home/shared/public
 sudo chown -R root:users /home/shared/public
-sudo chown -R ug=rwx,o=rx /home/shared/public
+sudo chmod -R ug=rwx,o=rx /home/shared/public
 ```
 
 4. Update Samba config files
@@ -39,7 +39,7 @@ Run `sudo nano /etc/samba/smb.conf`, then insert:
 
 ```
 [your-storage-name]
-path = /
+path = /home/shared/public
 writeable = yes
 create mask = 0775
 directory mask = 0775
