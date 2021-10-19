@@ -47,7 +47,10 @@
             <td></td>
             <td> </td>
             <td> <img src="https://www.countryflags.io/ie/flat/64.png"> </td>
-            <td> </td>
+            <td> :earth_africa: <br>
+                  <br>
+                 <img src="https://www.countryflags.io/ie/flat/64.png">
+            </td>
             <td> </td>            
         </tr>
         <tr>
