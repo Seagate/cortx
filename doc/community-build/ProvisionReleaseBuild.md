@@ -89,9 +89,10 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 9. #### Run the script to create disk partitions:
 
     ```
-    curl -O https://raw.githubusercontent.com/mukul-seagate11/cortx-1/main/doc/community-build/create_partitions.sh
+    curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/community-build/create_partitions.sh
     sh create_partitions.sh
-    kpartx /dev/sdb; kpartx /dev/sdc
+    kpartx /dev/sdb
+    kpartx /dev/sdc
     ```
 
 10. Run the `cortx_setup` command:
