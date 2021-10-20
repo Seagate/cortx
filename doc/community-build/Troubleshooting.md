@@ -16,13 +16,24 @@ The troubleshooting document provides information on commonly faced issues while
    timedatectl status
    hwclock -w
    ```
+
+2. **S3 client i.e. CyberDuck not able to connect if ntp is not in sync on VM**
+
+   **Resolution:**
+   Change ntp server in `/etc/chrony.conf` and then restarted chronyd service by running,
+   ```
+   systemctl restart chronyd
+   chronyc makestep
+   ```
    
-2. **When building the CORTX packages an error message will be returned stating missing `kernel-devel` package**
+3. **When building the CORTX packages an error message will be returned stating missing `kernel-devel` package**
+
    ```sh
    Error: No Package found for kernel-devel = 3.10.0-1127.19.1.el7
    error: Failed build dependencies:
    kernel-devel = 3.10.0-1127.19.1.el7 is needed by cortx-motr-2.0.0-0_git2ca587c_3.10.0_1127.19.1.el7.x86_64
    ```
+
    **Resolution:**
  - Go inside the `Docker` container using the interactive mode by running:
    ```sh
