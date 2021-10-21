@@ -46,8 +46,8 @@
             <td><img src="https://www.countryflags.io/sg/flat/64.png"><br><a href=https://seagate-cortx-hack-singapore.devpost.com/>LINK</a></td>
             <td></td>
             <td> </td>
-            <td> <img src="https://www.countryflags.io/ie/flat/64.png"> </td>
             <td> </td>
+            <td><img src="https://www.countryflags.io/ie/flat/64.png"> </td>
             <td> </td>            
         </tr>
         <tr>
@@ -72,7 +72,7 @@
         <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/july_newsletter21.pdf>PDF</a></td>
         <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/august_newsletter_2021.pdf>PDF</a></td>
         <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/September_newsletter_2021.pdf>PDF</a></td>
-        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td><a href=/doc/PDFs/Newsletters/October_newsletter_2021.pdf>PDF</a>
         <td>:heavy_check_mark:</td>
         <td>:heavy_check_mark:</td>
         </tr>
@@ -110,8 +110,8 @@
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
         <td>:heavy_check_mark:<br><a href=doc/meetings/README.rst>LINK</a></td>
-        <td>:heavy_check_mark:</td>
-        <td>:heavy_check_mark:</td>
+        <td>:heavy_check_mark:</td><br><a href=doc/meetings/README.rst>LINK</a>
+        <td>:heavy_check_mark:</td><br><a href=doc/meetings/README.rst>LINK</a>
         <td>:heavy_check_mark:</td>
         </tr>
     </tbody>
