@@ -277,4 +277,5 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ### Tested by:
 
+- Oct 21 2021: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOs 7.9.2009
 - Oct 19 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOS 7.9.2009
