@@ -13,7 +13,8 @@ The Meet an Architect series are open to the public via this `WebEx link <https:
 
 
 **Previously recorded sessions:**
-#. September 2 2021: In this presentation, CORTX architects Anatoliy Bilenko and Nikita Danilov will present the design and current implementation status of the distributed transaction mechanism at the heart of CORTX which is key to providing this resilience. 
+#. October 7 2021: From CentOS to Rocky Linux and beyond, Gregory Kurtzer, CEO of CIQ, has been at the frontline of the intersection of enterprise and open source. In this session of Meet the Architect, he shares his perspective on how and when open source makes sense and talks about some of the exciting projects he and his team have been working on. `PDF <doc/meetings/PDFs/CORTX_ MTA_Rocky.pdf.pdf>`_  | `Video <>`_.
+#. September 2 2021: In this presentation, CORTX architects Anatoliy Bilenko and Nikita Danilov will present the design and current implementation status of the distributed transaction mechanism at the heart of CORTX which is key to providing this resilience. `PDF <doc/meetings/PDFs/CORTX_DTM_execution.pdf>`_  | `Video <https://www.youtube.com/watch?v=ujyIsCt6bbM&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=18>`_.
 
 #. August 5, 2021: John Bent describes the history of data protection and present a deep dive into declustered parity (a method of data protection that scales with the number of storage media).  `PDF <PDFs/Bent_CORTX_MMAA_Declustered.pdf>`_  | `Video <https://www.youtube.com/watch?v=Yefje2cv11g>`_.
 
