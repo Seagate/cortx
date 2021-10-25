@@ -46,7 +46,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
    ```
   
-3. To enable support for lnet kernel module:
+3. Enable lnet support to build the cortx rpms without libfabric:
    
    ```
    sed -i '/libfabric/d' ~/cortx/cortx-motr/cortx-motr.spec.in; modprobe -v lnet; lctl network up; lctl list_nids
