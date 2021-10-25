@@ -45,14 +45,21 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    ```
    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
    ```
+  
+3. To enable support for lnet kernel module:
+   
+   ```
+   sed -i '/libfabric/d' ~/cortx/cortx-motr/cortx-motr.spec.in; modprobe -v lnet; lctl network up; lctl list_nids
+   lsmod |grep lnet; if [ $? -eq 0 ]; then echo "***** LNET Module Enabled *****"; else echo "***** LNET Module is not Enabled *****"; fi
+   ```
 
-3. Run the following command to create a directory to store packages:
+4. Run the following command to create a directory to store packages:
 
    ```
    mkdir -p /var/artifacts/ && mkdir -p /mnt/cortx/{components,dependencies,scripts}
    ```
 
-4. Run the following command to build the CORTX packages:
+5. Run the following command to build the CORTX packages:
 
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean build
@@ -60,13 +67,13 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` execution phase.
 
-5. Run the following command to generate the ISO for each component:
+6. Run the following command to generate the ISO for each component:
 
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make iso_generation
    ```
 
-6. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
+7. The CORTX build is generated in the directory created at step 3. To view the generated build, run:
 
     ```
     ll /var/artifacts/0
@@ -74,16 +81,16 @@ To know about various CORTX components, see [CORTX Components guide](https://git
  
 ## (Optional) Compile and Build CORTX Stack as per Individual component
 
-7. Run to view each component targets:
+8. Run to view each component targets:
    ```
    docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
    ```
    
    [![cortx_stack_individual_component.png](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png")](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png") 
 
-8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
+9. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
 
-9. If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/community-build/Troubleshooting.md)
+10. If you encounter any issue while following the above steps, see [Troubleshooting guide](https://github.com/Seagate/cortx/blob/main/doc/community-build/Troubleshooting.md)
 
 
 ### Tested by:
