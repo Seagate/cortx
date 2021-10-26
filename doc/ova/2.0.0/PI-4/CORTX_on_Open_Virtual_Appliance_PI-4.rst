@@ -79,8 +79,8 @@ Procedure
      
    ::
 
-       cortx cluster stop
-       cortx cluster start
+       hctl shutdown
+       hctl start
    
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
 
