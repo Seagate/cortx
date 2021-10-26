@@ -137,21 +137,14 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     ```
    
 16. #### Configure Network which configures the following details as per environment:
-
-    - DNS server(s)
-    - Search domain(s)
-
-    ```bash
-    cortx_setup node prepare network --hostname <hostname> --search_domains <search-domains> --dns_servers <dns-servers>
-    ```
-    
-    For example:
     
     ```
-    cortx_setup node prepare network --hostname deploy-test.cortx.com --search_domains cortx.com --dns_servers 192.168.220.2
+    nameserver=`cat /etc/resolv.conf |grep nameserver |awk '{print $2}' |head -1`
+    dnssearch=`cat /etc/resolv.conf |grep search |awk '{print $2 " " $3}'`
+    cortx_setup node prepare network --hostname deploy-test.cortx.com --search_domains $dnssearch --dns_servers $nameserver
     ```
 
-17. If the network configuration is DHCP, run following commands else run static:
+17. If the network configuration is DHCP, run following commands:
 
     ```bash
     cortx_setup node prepare network --type management
@@ -159,7 +152,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     cortx_setup node prepare network --type private
     ```
 
-    (Optional) If the network configuration is static, run following commands else run DHCP.
+    (Optional) If the network configuration is static, run following commands:
 
     ```bash
     cortx_setup node prepare network --type management --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
@@ -183,16 +176,15 @@ To know about various CORTX components, see [CORTX Components guide](https://git
   
 20. #### Node Finalize
 
-  
-    **Note:** Cleanup local salt-master/ minion configuration on the node:
-
     ```bash
     cortx_setup node prepare finalize
     ```
 
 21. #### Cluster Definition
 
-    **Note:** Enter root password when prompted
+    **Note:**
+     - This step is expected to take a longer time to complete
+     - Enter root password when prompted
 	
     ```bash
     cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
