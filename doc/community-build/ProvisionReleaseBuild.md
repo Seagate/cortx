@@ -144,7 +144,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     cortx_setup node prepare network --hostname deploy-test.cortx.com --search_domains $dnssearch --dns_servers $nameserver
     ```
 
-17. If the network configuration is DHCP, run following commands else run static:
+17. If the network configuration is DHCP, run following commands:
 
     ```bash
     cortx_setup node prepare network --type management
@@ -152,7 +152,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     cortx_setup node prepare network --type private
     ```
 
-    (Optional) If the network configuration is static, run following commands else run DHCP.
+    (Optional) If the network configuration is static, run following commands:
 
     ```bash
     cortx_setup node prepare network --type management --ip_address <ip_address> --netmask <netmask> --gateway <gateway>
