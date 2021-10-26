@@ -115,25 +115,14 @@ If you have a firewall between CORTX and the rest of your infrastructure, includ
 Troubleshooting
 ***************
 
-#. Follow the instructions If your network service is down:
+#. Follow the instructions after you reboot your VM:
    
-   - Bring network interface down with following command,
-   
-     ::
-     
-        ifdown ens33 ens34
-     
-   - Update MAC address of all the interfaces i.e. ens33,ens34 in their network config files /etc/sysconfig/network-scripts/ifcfg-ens33, /etc/sysconfig/network-scripts/ifcfg-ens34 as per command,
-     
-     ::
-     
-        ip a | grep -E "ens33|ens34"
-     
-   - Bring network interface up with following command:
-   
      ::
    
-        ifup ens33 ens34
+        systemctl start haproxy
+        systemctl start csm_web
+        systemctl start csm_agent
+        systemctl start s3authserver
 
 
 Tested by:
