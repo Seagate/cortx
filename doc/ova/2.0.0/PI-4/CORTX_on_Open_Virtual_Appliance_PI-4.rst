@@ -41,10 +41,9 @@ Procedure
   
 #. Become the **root** user by running this:
   
-   ``` 
+   ```bash
    sudo su -
-   ```
-  
+   ``` 
 #. Run the following command to create a config.ini file:
 
    ```
