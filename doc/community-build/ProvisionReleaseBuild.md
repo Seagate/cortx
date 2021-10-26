@@ -185,7 +185,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     **Note:**
      - This process takes some time to complete building the CORTX packages during command execution phase
      - Enter root password when prompted
-     	
+
     ```bash
     cortx_setup cluster create deploy-test.cortx.com --name cortx_cluster --site_count 1 --storageset_count 1
     cortx_setup cluster show
@@ -203,10 +203,12 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     cortx_setup storageset add enclosure storage-set1 srvnode-1
     cortx_setup storageset config durability storage-set1 --type sns --data 4 --parity 2 --spare 0
     ```
+    
 23. #### Prepare Cluster
     ```bash
     cortx_setup cluster prepare
     ```
+    
 24. Run the following command to deploy and configure CORTX components:
 	
     **Note:** The commands should be run in the same order as listed.
@@ -215,27 +217,25 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     ```
     cortx_setup cluster config component --type foundation
     ```
-
   - IO Path:
     ```
     cortx_setup cluster config component --type iopath
     ```
-	
   - Control Path:
     ```
     cortx_setup cluster config component --type controlpath
     ```
-
   - High Availability Path:
     ```
     cortx_setup cluster config component --type ha
     ```
+    
 25. Run the following commands to stop the nginx service:
-
     ```
     systemctl stop nginx
     systemctl disable nginx
     ```
+    
 26. Run the following command to start the CORTX cluster:
     ```bash
     cortx cluster start
