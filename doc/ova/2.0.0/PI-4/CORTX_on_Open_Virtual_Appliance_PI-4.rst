@@ -41,15 +41,16 @@ Procedure
   
 #. Become the **root** user by running this:
   
-   ```bash
+   ::
+   
    sudo su -
-   ``` 
+   
 #. Run the following command to create a config.ini file:
 
-   ```
+   ::
+
    curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/config.ini   
    vi ~/config.ini
-   ```
 
    **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/config.ini>`_ are for example purpose so update the values as per your environment by replacing your network interface names and storage disks with partitions created in step 3.
 
@@ -63,31 +64,29 @@ Procedure
    
 #. Create and run the reconfigure_network.sh script to ensure all the necessary services are operational,
 
-   ```
-   curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/reconfigure_network.sh
-   sh reconfigure_network.sh
-   ```
-     
-#. Reboot node
+   ::
+
+      curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/reconfigure_network.sh
+      sh reconfigure_network.sh
      
 #. Run the following command to start the CORTX cluster:
 
-   ```
-   cortx cluster start
-   ```
+   ::
+
+      cortx cluster start
 
 #. To check the CORTX cluster status, run the following command:
    
-   ```
-   hctl status
-   ```
+   ::
+
+       hctl status
   
    **Note:** If the cluster is not running then stop and start cluster once using the following command:
      
-   ``` 
-   cortx cluster stop
-   cortx cluster start
-   ```
+   ::
+
+       cortx cluster stop
+       cortx cluster start
    
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
 
