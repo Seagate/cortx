@@ -183,7 +183,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 21. #### Cluster Definition
 
     **Note:**
-     - This step is expected to take a longer time to complete
+     - This process takes some time to complete building the CORTX packages during command execution phase
      - Enter root password when prompted
      	
     ```bash
