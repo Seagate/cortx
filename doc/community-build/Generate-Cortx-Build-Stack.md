@@ -36,7 +36,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 2. Run the following command to checkout the codebase from **2.0.0-527** branch:
 
    ```
-   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=2.0.0-527 > /dev/null 2>&1
+   docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=2.0.0-527 > /dev/null 2>&1; cd ~/cortx/cortx-s3server; git checkout 2.0.0-527
    cd ~/cortx/cortx-s3server; git checkout 2.0.0-527
    ```
 
@@ -46,12 +46,6 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
    ```
   
-3. Enable lnet support to build the cortx rpms without libfabric:
-
-   ```
-   if TRANSPORT==libfabric; then sed -i '/libfabric/d' ~/cortx/cortx-motr/cortx-motr.spec.in; modprobe -v lnet; lctl network up; lctl list_nids; echo "** lnet enabled **"; else echo "** lnet specific things **"; fi
-   ```
-
 4. Run the following command to create a directory to store packages:
 
    ```
@@ -59,9 +53,15 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    ```
 
 5. Run the following command to build the CORTX packages:
-
+   
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean build
+   ```
+
+   (Optional) Run the following command to build the CORTX packages with lnet support:
+
+   ```
+   if TRANSPORT==libfabric; then sed -i '/libfabric/d' ~/cortx/cortx-motr/cortx-motr.spec.in; modprobe -v lnet; lctl network up; lctl list_nids; echo "** lnet enabled **" | docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean build; fi
    ```
    
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` execution phase.
