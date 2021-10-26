@@ -43,14 +43,14 @@ Procedure
   
    ::
    
-   sudo su -
+       sudo su -
    
 #. Run the following command to create a config.ini file:
 
    ::
 
-   curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/config.ini   
-   vi ~/config.ini
+       curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/config.ini   
+       vi ~/config.ini
 
    **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/config.ini>`_ are for example purpose so update the values as per your environment by replacing your network interface names and storage disks with partitions created in step 3.
 
@@ -66,14 +66,14 @@ Procedure
 
    ::
 
-      curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/reconfigure_network.sh
-      sh reconfigure_network.sh
+       curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/reconfigure_network.sh
+       sh reconfigure_network.sh
      
 #. Run the following command to start the CORTX cluster:
 
    ::
 
-      cortx cluster start
+       cortx cluster start
 
 #. To check the CORTX cluster status, run the following command:
    
