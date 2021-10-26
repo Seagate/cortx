@@ -175,7 +175,6 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     ```
   
 20. #### Node Finalize
-
   
     **Note:** Cleanup local salt-master/ minion configuration on the node:
 
