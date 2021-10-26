@@ -47,10 +47,9 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    ```
   
 3. Enable lnet support to build the cortx rpms without libfabric:
-   
+
    ```
-   sed -i '/libfabric/d' ~/cortx/cortx-motr/cortx-motr.spec.in; modprobe -v lnet; lctl network up; lctl list_nids
-   lsmod |grep lnet; if [ $? -eq 0 ]; then echo "***** LNET Module Enabled *****"; else echo "***** LNET Module is not Enabled *****"; fi
+   if TRANSPORT==libfabric; then sed -i '/libfabric/d' ~/cortx/cortx-motr/cortx-motr.spec.in; modprobe -v lnet; lctl network up; lctl list_nids; echo "** lnet enabled **"; else echo "** lnet specific things **"; fi
    ```
 
 4. Run the following command to create a directory to store packages:
