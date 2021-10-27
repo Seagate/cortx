@@ -23,7 +23,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    **Note:** You must use your local interface name i.e. ens32,ens33 etc as per your environment and verify by running `ip l`
    
    ```
-   export LOCAL_IP=$(ip -4 addr show ens32 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+   export LOCAL_IP=$(ip -4 addr show |grep -E "eth|ens" | grep -oP '(?<=inet\s)\d+(\.\d+){3}' |head -1)
    export SCRIPT_PATH="/mnt/cortx/scripts"
    ```
    
@@ -183,7 +183,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 21. #### Cluster Definition
 
     **Note:**
-     - This step is expected to take a longer time to complete
+     - This process takes some time to complete building the CORTX packages during command execution phase
      - Enter root password when prompted
 	
     ```bash
