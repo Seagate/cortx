@@ -69,10 +69,11 @@ Procedure
        curl -O https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/reconfigure_network.sh
        sh reconfigure_network.sh
      
-#. To check the CORTX cluster status, run the following command:
+#. Run the following command to start the CORTX cluster and check the status:
    
    ::
 
+       hctl start
        hctl status
   
    **Note:** If the cluster is not running then stop and start cluster once using the following command:
