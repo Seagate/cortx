@@ -10,3 +10,4 @@ until='2021-10-01'
 echo "The following are unknown contributions during the time period:"
 echo "Temporarily disabled"
 #./get_personal_activity.py Unknown -s $since -u $until | egrep -v 'starred|fork|actions'
+echo "Update spreadsheet : https://bit.ly/3vw4eDN" 

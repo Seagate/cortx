@@ -32,7 +32,6 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
    ```
 
-
 2. Run the following command to checkout the codebase from **2.0.0-527** branch:
 
    ```
@@ -88,7 +87,8 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 
 ### Tested by:
 
-- Aug 31 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOS 7.9.2009
+- Oct 21 2021: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOs 7.9.2009
+- Oct 19 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOS 7.9.2009
 - Aug 19 2021: Bo Wei (bo.b.wei@seagate.com) on a Windows laptop running VirtualBox 6.1.
 - Aug 18 2021: Jalen Kan (jalen.j.kan@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - July 28 2021: Daniar Kurniawan (daniar@uchicago.edu) on baremetal servers hosted by Chameleon Cloud and Emulab Cloud.
