@@ -63,7 +63,7 @@ You can also perform the onboarding tasks from the **Settings** page.
     <details>
    <summary><a>Click here to expand the onboarding procedure.</a></summary>
 
-#. If prompted, log in again with the username and password that you had provided earlier.
+#. If prompted, log in with default username and password i.e. cortxadmin/Cortxadmin@123
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/login.PNG
 
@@ -78,13 +78,10 @@ You can also perform the onboarding tasks from the **Settings** page.
 #. Enter information about the **DNS servers** and **Search domains** in relevant fields, and click **Continue**. 
    Multiple entries must be separated by commas.
    
-   - If you don't know your DNS servers, 8.8.8.8 will usually work.
+   - If you don't know your DNS servers, refer `nameserver` by running `dig` command.
       
    - If you don't know your search domains, please use cortx.test.
-  
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/DNS.png
-   
-   
+     
 #. Enter the NTP server address in the text box and select the NTP time zone offset from the drop-down menu. Then, click **Continue**.
    Multiple entries must be separated by a comma.
 
