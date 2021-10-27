@@ -23,7 +23,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
   - OS Disk: 1 disk of 20GB
   - Data Disks: 2 disks of 32GB each and 4 partitions of 8GB from each data disks i.e. /dev/sdb1,.../dev/sdb4 and /dev/sdc1,.../dev/sdc4
 
-- Download the `CORTX OVA <https://cortx-release-ova.s3.us-west-2.amazonaws.com/ova-2.0.0-307.ova>`_ from `our release page <https://github.com/Seagate/cortx/releases/latest>`_.
+- Download the `CORTX OVA <http://cortx-storage.colo.seagate.com/releases/opensource_builds/ova/cortx-559.ova>`_
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
    
