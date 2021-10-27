@@ -32,7 +32,6 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
    ```
 
-
 2. Run the following command to checkout the codebase from **2.0.0-527** branch:
 
    ```
