@@ -35,7 +35,8 @@
             <td></td>
             <td></td>
             <td> 
-                :israel: <br><a href=doc/First_Hackathon.rst>LINK</a>
+                <img src="/doc/flags/flag-israel_1f1ee-1f1f1.png?raw=true" width="64" title="Israel flag">
+                <br><a href=doc/First_Hackathon.rst>LINK</a>
             </td>
             <td></td>
             <td></td>
@@ -54,7 +55,9 @@
             <td></td>
             <td> </td>
             <td> </td>
-            <td> :ireland: </td>
+            <td>  
+                <img src="/doc/flags/flag-ireland_1f1ee-1f1ea.png?raw=true" width="64" title="Ireland flag">
+            </td>
             <td> </td>            
         </tr>
         <tr>
