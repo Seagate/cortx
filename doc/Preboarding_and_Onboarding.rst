@@ -63,7 +63,7 @@ You can also perform the onboarding tasks from the **Settings** page.
     <details>
    <summary><a>Click here to expand the onboarding procedure.</a></summary>
 
-#. If prompted, log in with default username and password i.e. cortxadmin/Cortxadmin@123
+#. If prompted, log in with default username and password i.e. cortxadmin/Cortxadmin@123 and change to new password
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/login.PNG
 
