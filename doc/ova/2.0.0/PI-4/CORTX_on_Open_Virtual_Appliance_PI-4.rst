@@ -50,7 +50,7 @@ Procedure
 
        curl -O https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/config.ini
        
-       vi ~/config.ini
+       vi config.ini
 
    **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/config.ini>`_ are for example purpose so update the values as per your environment by replacing your network interface names and storage disks with partitions created in step 3.
 
