@@ -75,6 +75,8 @@ echo "INFO: Configuring sspl" | tee -a "${LOG_FILE}"
 salt "*" state.apply components.sspl.config | tee -a "${LOG_FILE}"
 salt "*" state.apply components.sspl.start | tee -a "${LOG_FILE}"
 
+csm_setup config --config json:///opt/seagate/cortx_configs/provisioner_cluster.json
+
 # Restart component services
 systemctl restart hare-consul-agent
 systemctl restart csm_web
