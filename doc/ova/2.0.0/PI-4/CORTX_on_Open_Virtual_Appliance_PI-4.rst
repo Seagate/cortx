@@ -113,10 +113,11 @@ Troubleshooting
    
      ::
    
-        systemctl start haproxy
-        systemctl start csm_web
-        systemctl start csm_agent
-        systemctl start s3authserver
+        systemctl start haproxy.service
+        systemctl status hare-consul-agent.service
+        systemctl start csm_web.service
+        systemctl start csm_agent.service
+        systemctl start s3authserver.service
 
 #. If the cluster is not running then stop and start cluster once using the following command:
 
