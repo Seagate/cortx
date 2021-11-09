@@ -76,13 +76,6 @@ Procedure
        hctl start
        hctl status
   
-   **Note:** If the cluster is not running then stop and start cluster once using the following command:
-     
-   ::
-
-       hctl shutdown
-       hctl start
-   
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/mukul-ova-PI4/doc/Preboarding_and_Onboarding.rst>`_. 
 
 #. The system up and running, use the data IP from the **ip a l** command `to test the system <https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst>`_ and observe activity in the GUI. For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
@@ -124,6 +117,14 @@ Troubleshooting
         systemctl start csm_web
         systemctl start csm_agent
         systemctl start s3authserver
+
+#. If the cluster is not running then stop and start cluster once using the following command:
+
+     ::
+
+        hctl shutdown
+        hctl start
+
 
 
 Tested by:
