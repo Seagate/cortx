@@ -88,7 +88,6 @@ Procedure
 
    Thanks for checking out the CORTX system; we hope you liked it. Hopefully you'll stick around and participate in our community and help make it even better.
 
-   **Note:** The Lyve Pilot (LP) will be available in the future releases.
  
 *************
 Miscellaneous
