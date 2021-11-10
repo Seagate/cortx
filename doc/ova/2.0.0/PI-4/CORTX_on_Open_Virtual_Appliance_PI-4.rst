@@ -113,7 +113,7 @@ Troubleshooting
      ::
    
         systemctl start haproxy.service
-        systemctl status hare-consul-agent.service
+        systemctl start hare-consul-agent.service
         systemctl start csm_web.service
         systemctl start csm_agent.service
         systemctl start s3authserver.service
