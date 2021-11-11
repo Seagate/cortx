@@ -74,6 +74,3 @@ salt-call state.apply components.hare.config
 echo "INFO: Configuring sspl" | tee -a "${LOG_FILE}"
 salt "*" state.apply components.sspl.config | tee -a "${LOG_FILE}"
 salt "*" state.apply components.sspl.start | tee -a "${LOG_FILE}"
-
-# Update user data in consul for CSM UI
-csm_setup config --config json:///opt/seagate/cortx_configs/provisioner_cluster.json
