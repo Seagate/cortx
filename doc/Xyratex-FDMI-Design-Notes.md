@@ -1,1 +1,0 @@
-# Xyratex - FDMI design notes 
