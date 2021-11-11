@@ -115,4 +115,5 @@ Claire, Sung Won and Rosminy :tada: :tada: :tada:
 
 Tested by:
 
+- Nov 11, 2021: Jalen Kan (<jalen.j.kan@seagate.com>) using Centos 7.9.2009 on Windows 10 running VMware Workstation 16.
 - Sep 20, 2021: Harrison Seow (<harrison.seow@seagate.com>) using Centos 8 and Cortx OVA 2.0.0 on Windows 10 running VMware Workstation 16 Player.
