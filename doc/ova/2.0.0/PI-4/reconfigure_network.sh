@@ -48,12 +48,16 @@ systemctl restart firewalld
 # Reconfigure kafka
 salt-call state.apply components.misc_pkgs.kafka.config
 salt-call state.apply components.misc_pkgs.kafka.start
+salt-call state.apply components.misc_pkgs.kafka.sanity_check
 salt-call state.apply components.cortx_utils.config
+salt-call state.apply components.cortx_utils.sanity_check
 
 # Reconfigure lustre
 salt-call state.apply components.misc_pkgs.lustre.stop
 salt-call state.apply components.misc_pkgs.lustre.config
 
+# echo "INFO: Restarting rabbitmq-server" | tee -a "${LOG_FILE}"
+# systemctl restart rabbitmq-server
 echo "INFO: Restarting elasticsearch" | tee -a "${LOG_FILE}"
 systemctl restart elasticsearch
 
