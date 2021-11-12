@@ -48,8 +48,6 @@ systemctl restart firewalld
 # Reconfigure kafka
 salt-call state.apply components.misc_pkgs.kafka.config
 salt-call state.apply components.misc_pkgs.kafka.start
-salt-call state.apply components.misc_pkgs.kafka.sanity_check
-salt-call state.apply components.cortx_utils.config
 
 # Reconfigure lustre
 salt-call state.apply components.misc_pkgs.lustre.stop
