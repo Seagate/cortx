@@ -76,7 +76,8 @@ salt "*" state.apply components.sspl.config | tee -a "${LOG_FILE}"
 salt "*" state.apply components.sspl.start | tee -a "${LOG_FILE}"
 
 # Restart component services
-systemctl restart hare-consul-agent
+systemctl stop hare-consul-agent
+systemctl start hare-consul-agent
 systemctl restart csm_web
 systemctl restart csm_agent
 systemctl restart kafka
