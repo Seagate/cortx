@@ -71,3 +71,6 @@ salt-call state.apply components.hare.config
 echo "INFO: Configuring sspl" | tee -a "${LOG_FILE}"
 salt "*" state.apply components.sspl.config | tee -a "${LOG_FILE}"
 salt "*" state.apply components.sspl.start | tee -a "${LOG_FILE}"
+
+systemctl start csm_web.service
+systemctl start csm_agent.service
