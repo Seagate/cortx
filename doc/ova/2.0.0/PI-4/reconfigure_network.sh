@@ -48,13 +48,12 @@ systemctl restart firewalld
 # Reconfigure kafka
 salt-call state.apply components.misc_pkgs.kafka.config
 salt-call state.apply components.misc_pkgs.kafka.start
+salt-call state.apply components.cortx_utils.config
 
 # Reconfigure lustre
 salt-call state.apply components.misc_pkgs.lustre.stop
 salt-call state.apply components.misc_pkgs.lustre.config
 
-# echo "INFO: Restarting rabbitmq-server" | tee -a "${LOG_FILE}"
-# systemctl restart rabbitmq-server
 echo "INFO: Restarting elasticsearch" | tee -a "${LOG_FILE}"
 systemctl restart elasticsearch
 
@@ -72,5 +71,9 @@ echo "INFO: Configuring sspl" | tee -a "${LOG_FILE}"
 salt "*" state.apply components.sspl.config | tee -a "${LOG_FILE}"
 salt "*" state.apply components.sspl.start | tee -a "${LOG_FILE}"
 
-systemctl start csm_web.service
-systemctl start csm_agent.service
+# Restart component services
+systemctl restart hare-consul-agent
+systemctl restart csm_web
+systemctl restart csm_agent
+systemctl restart kafka
+systemctl restart haproxy
