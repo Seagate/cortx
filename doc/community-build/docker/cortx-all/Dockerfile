@@ -65,5 +65,5 @@ RUN yum install --nogpgcheck -y  $(sed 's/#.*//g' /opt/seagate/cortx/*-rpms.txt)
 RUN rm -f /etc/machine-id && ln -s /etc/cortx/solution/node/id /etc/machine-id \
     && bash /opt/seagate/cortx/generate-release-info.sh
 
-RUN yum-config-manager --enable base,extras,updates && rm -rf /etc/yum.repos.d/cortx-storage.colo.seagate.com_releases_cortx_* /etc/yum.repos.d/C${CENTOS_RELEASE}.repo \
+RUN yum-config-manager --enable base,extras,updates && rm -rf /etc/yum.repos.d/$(echo $BUILD_URL | awk -F '/' '{print $3}')*.repo /etc/yum.repos.d/C${CENTOS_RELEASE}.repo \
     && yum clean all && rm -rf /var/cache/yum
