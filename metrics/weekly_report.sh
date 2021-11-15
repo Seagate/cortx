@@ -18,6 +18,8 @@ mail_subj_prefix="Weekly CORTX Community Report"
 #mail_subj_prefix="TESTING COMMUNITY METRICS" # use this for testing
 Email="john.bent@seagate.com"
 server=gtx201.nrm.minn.seagate.com
+summary=$(mktemp /tmp/scrape.XXXXXXXXX)
+touch $summary
 
 # start with a git pull in case things were updated elsewhere
 git pull
@@ -38,7 +40,9 @@ function run_command {
   echo "Command $Command , subj $subject , email $Email"
   tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
   $Command &> $tfile
+  ret=$?
   mail -s "$subject" -r $Email $Email < $tfile
+  echo "RET $ret from $Command" >> $summary
 }
 
 function group_activity {
@@ -72,6 +76,8 @@ if [ $scrape == 1 ]; then
   done
 
   ./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $Email $Email
+
+  mail -s "$mail_scrape_prefix - Summary" -r $Email $Email < $summary
 fi
 
 if [ $report == 1 ]; then 
