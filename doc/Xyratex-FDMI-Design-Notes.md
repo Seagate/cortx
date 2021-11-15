@@ -1,4 +1,4 @@
-# Xyratex - FDMI design notes
+# Seagate - FDMI design notes
 
 ## Architectural View
 
