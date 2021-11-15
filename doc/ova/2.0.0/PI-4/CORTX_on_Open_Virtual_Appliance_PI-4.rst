@@ -35,14 +35,8 @@ Procedure
 
 #. Open the VM console, and login with the below credentials.
 
-   * Username: cortx 
+   * Username: root
    * Password: opensource!
-  
-#. Become the **root** user by running this:
-  
-   ::
-   
-       sudo su -
    
 #. Run the following command to create a config.ini file:
 
