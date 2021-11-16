@@ -16,7 +16,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 
 **Prerequisites:**
 
-- To run the CORTX OVA the following minimum configuration is required:
+- CORTX OVA image is created with following minimum configuration:
 
   - RAM: 8GB
   - Processor: 4
