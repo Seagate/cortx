@@ -69,19 +69,6 @@ Procedure
        curl -O https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/reconfigure_network.sh
        sh reconfigure_network.sh
     
-#. Run the following command to start the CORTX cluster and check the status:
-   
-   ::
-
-       hctl start
-       hctl status
-       
-#. Run the following command to create the admin user, `cortxadmin`:
-
-   ::
-   
-       csm_setup config --config json:///opt/seagate/cortx_configs/provisioner_cluster.json
-  
 #. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/mukul-ova-PI4/doc/Preboarding_and_Onboarding.rst>`_. 
 
 #. The system up and running, use the data IP from the **ip a l** command `to test the system <https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst>`_ and observe activity in the GUI. For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
