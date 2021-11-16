@@ -38,7 +38,7 @@ Procedure
    * Username: root
    * Password: opensource!
    
-#. Run the following command to create a config.ini file:
+#. Run the following command and modify config.ini file:
 
    ::
 
@@ -60,7 +60,7 @@ Procedure
 
    ::
 
-       curl -O https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/reconfigure_network.sh
+       curl -O [reconfigure_network.sh](https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/reconfigure_network.sh)
        sh reconfigure_network.sh
     
 #. Run the following command to start the CORTX cluster and check the status:
