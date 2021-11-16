@@ -14,10 +14,9 @@ This release notes includes new features, enhancements, and bug fixes added to t
 - CSM: Alerts seen on New-Alert session immediately after preboarding.
 - Unable to connect to s3 endpoint on port 80
 - Unable to see performance graph on CSM UI
-- `csm_setup` command gets stuck on VMware fusion platform
+- `csm_setup` command gets stuck on VMware Fusion Platform
 
 
 ## New Features
 
-- VMware Fusion will be introduced in next release
 - Oracle VM VirtualBox will be introduced in next release
