@@ -81,3 +81,9 @@ systemctl restart csm_web
 systemctl restart csm_agent
 systemctl restart kafka
 systemctl restart haproxy
+
+# Start the CORTX Cluster
+hctl start
+
+# Create the admin user, cortxadmin
+/opt/seagate/cortx/csm/bin/csm_setup config --config json:///opt/seagate/cortx_configs/provisioner_cluster.json
