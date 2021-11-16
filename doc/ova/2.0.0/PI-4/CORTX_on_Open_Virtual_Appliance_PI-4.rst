@@ -10,7 +10,8 @@ Recommended Hypervisors
 ***********************
 All of the following hypervisors should work: `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_,
 `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
-`VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_
+`VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_,
+`VMware Fusion <https://www.vmware.com/in/products/fusion/fusion-evaluation.html>`_
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
