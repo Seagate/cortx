@@ -44,7 +44,7 @@ Procedure
    
      sudo su -
    
-#. Run the following command and modify config.ini file:
+#. Run the following command and modify the config.ini by running `vi`:
 
    ::
 
@@ -52,7 +52,7 @@ Procedure
        
        vi config.ini
 
-   **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/config.ini>`_ are for example purpose so update the values as per your environment by replacing your network interface names and IP addresses.
+   **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/config.ini>`_ are for example purpose so update the values by replacing your network interface names and IP addresses as per your environment.
 
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
