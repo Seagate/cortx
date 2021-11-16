@@ -42,7 +42,7 @@ Procedure
    
    ::
    
-     sudo su -
+       sudo su -
    
 #. Run the following command and modify the config.ini by running `vi`:
 
@@ -62,7 +62,7 @@ Procedure
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104networks.png
    
-#. Create and run the reconfigure_network.sh script to ensure all the necessary services are operational,
+#. Download and run the reconfigure network script to ensure all the necessary services as well as cortx cluster is operational,
 
    ::
 
