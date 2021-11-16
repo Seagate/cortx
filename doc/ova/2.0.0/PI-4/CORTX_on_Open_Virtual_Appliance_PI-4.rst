@@ -62,7 +62,7 @@ Procedure
    * ens34 - Private data IP: To perform CORTX internal communication.
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104networks.png
-         
+
 #. Download and run the reconfigure network script to ensure all the necessary services as well as cortx cluster is operational,
 
    ::
@@ -118,6 +118,7 @@ Troubleshooting
 
         hctl shutdown
         hctl start
+
 
 
 
