@@ -14,7 +14,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
-**Prerequisites:**
+**Specifications:**
 
 - CORTX OVA image is created with following minimum configuration:
 
@@ -22,6 +22,8 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
   - Processor: 4
   - OS Disk: 1 disk of 20GB
   - Data Disks: 2 disks of 32GB each and 4 partitions of 8GB from each data disks i.e. /dev/sdb1,.../dev/sdb4 and /dev/sdc1,.../dev/sdc4
+
+**Prerequisites:**
 
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
@@ -48,7 +50,7 @@ Procedure
 
    ::
 
-       curl -O https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/config.ini
+       curl -O https://raw.githubusercontent.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-4/config.ini
        vi config.ini
 
    **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/config.ini>`_ are for example purpose so update the values by replacing your network interface names and IP addresses as per your environment.
@@ -65,10 +67,10 @@ Procedure
 
    ::
 
-       curl -O https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/reconfigure_network.sh
+       curl -O https://raw.githubusercontent.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-4/reconfigure_network.sh
        sh reconfigure_network.sh
     
-#. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/mukul-ova-PI4/doc/Preboarding_and_Onboarding.rst>`_. 
+#. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
 
 #. The system up and running, use the data IP from the **ip a l** command `to test the system <https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst>`_ and observe activity in the GUI. For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
 
