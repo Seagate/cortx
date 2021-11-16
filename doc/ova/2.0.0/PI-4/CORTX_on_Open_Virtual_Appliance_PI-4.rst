@@ -51,10 +51,10 @@ Procedure
 
    ::
 
-       curl -O https://raw.githubusercontent.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-4/config.ini
+       curl -O https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/config.ini
        vi config.ini
 
-   **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-4/config.ini>`_ are for example purpose so update the values by replacing your network interface names and IP addresses as per your environment.
+   **Note:** The values used in `config.ini <https://raw.githubusercontent.com/Seagate/cortx/main/doc/ova/2.0.0/PI-4/config.ini>`_ are for example purpose so update the values by replacing your network interface names and IP addresses as per your environment.
 
 #. Run **ip a l** and record the IP addresses of the following interfaces:
 
