@@ -35,8 +35,14 @@ Procedure
 
 #. Open the VM console, and login with the below credentials.
 
-   * Username: root
+   * Username: cortx 
    * Password: opensource!
+  
+#. Become the **root** user by running this:
+   
+   ::
+   
+     sudo su -
    
 #. Run the following command and modify config.ini file:
 
@@ -60,7 +66,7 @@ Procedure
 
    ::
 
-       curl -O [reconfigure_network.sh](https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/reconfigure_network.sh)
+       curl -O https://raw.githubusercontent.com/Seagate/cortx/mukul-ova-PI4/doc/ova/2.0.0/PI-4/reconfigure_network.sh
        sh reconfigure_network.sh
     
 #. Run the following command to start the CORTX cluster and check the status:
