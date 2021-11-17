@@ -19,7 +19,7 @@ This document provides step-by-step instructions to build and generate the CORTX
     **Note:** If docker and docker compose not present follow the given link to install docker and docker compose. [Install Docker](https://docs.docker.com/engine/install/centos/) [Install docker compose](https://docs.docker.com/compose/install/)
 ## Procedure
 
-1. Generate community build using steps from [Steps to generate cortx build stack](https://github.com/Seagate/cortx/blob/main/doc/community-build/Generate-Cortx-Build-Stack.md)  . Checkout **kubernetes** branch for generating packages. 
+1. Generate community build using steps from [Steps to generate cortx build stack](https://github.com/Seagate/cortx/blob/main/doc/community-build/Generate-Cortx-Build-Stack.md)  . Checkout **kubernetes** branch for generating packages. **NOTE:** Replace 2.0.0-527 to kubernetes while following this document. 
     
 2. Validate that Packages are generated at **/var/artifacts/0/** after the build step is complete. 
 
