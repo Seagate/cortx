@@ -21,7 +21,7 @@ This document provides step-by-step instructions to build and generate the CORTX
 
 1. Generate community build using steps from [Steps to generate cortx build stack](https://github.com/Seagate/cortx/blob/main/doc/community-build/Generate-Cortx-Build-Stack.md)  . Checkout **kubernetes** branch for generating packages. 
     
-2. Validate that Packages are generated at "/var/artifacts/0/" after the build step is complete. 
+2. Validate that Packages are generated at **/var/artifacts/0/** after the build step is complete. 
 
 3. Make cortx package available over HTTP using Nginx docker image using below command.
     ```
