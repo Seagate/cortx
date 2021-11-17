@@ -44,7 +44,7 @@ This document provides step-by-step instructions to build and generate the CORTX
     docker images
     ```
     **Example** 
-    
+    ```
     [root@ssc-vm-g3-rhev4-2461 community-build]# docker images  | grep cortx-all
     cortx-all                     2.0.0-0-main             6c81b35aa92f   27 hours ago   1.91GB
-    
+    ```
