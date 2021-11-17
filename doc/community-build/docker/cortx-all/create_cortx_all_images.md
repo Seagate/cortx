@@ -29,13 +29,14 @@ This document provides step-by-step instructions to build and generate the CORTX
     ```
 4. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
     ```
-    git clone -b cortx-all-image https://github.com/nikhilpatil2995/cortx.git  && cd cortx/doc/community-build/docker/cortx-all/
+    git clone -b <BRANCH_NAME> https://github.com/<REPO_NAME>/cortx.git  && cd cortx/doc/community-build/docker/cortx-all/
     ```
     ```
     ./build.sh <URL_PATH_TO_ACCESS_ARTIFACTS>
     ```
     **Example** 
-    ```
+    ``` 
+    git clone -b cortx-all-image https://github.com/nikhilpatil2995/cortx.git  && cd cortx/doc/community-build/docker/cortx-all/
     ./build.sh -b http://ssc-vm-rhev4-0707.colo.seagate.com
     ```
 
