@@ -20,6 +20,7 @@ This document provides step-by-step instructions to build and generate the CORTX
 ## Procedure
 
 1. Generate community build using steps from [Steps to generate cortx build stack](https://github.com/Seagate/cortx/blob/main/doc/community-build/Generate-Cortx-Build-Stack.md)  . Checkout **kubernetes** branch for generating packages. **NOTE:** Replace ***2.0.0-527*** to ***kubernetes*** while following this document.
+
     **Example**
     ```
     docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=kubernetes > /dev/null 2>&1
