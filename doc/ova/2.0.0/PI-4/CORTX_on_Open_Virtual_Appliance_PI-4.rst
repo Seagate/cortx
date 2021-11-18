@@ -26,6 +26,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 
 **Prerequisites:**
 
+- Download the `CORTX OVA <https://cortxova.s3.us-west-2.amazonaws.com/ova-2.0.0-559.ova>`_ from `our release page <https://github.com/Seagate/cortx/releases/latest>`_.
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
    
