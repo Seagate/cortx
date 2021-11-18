@@ -127,6 +127,7 @@ Troubleshooting
 
 Tested by:
 
+- Nov 16, 2021: Ashwini Borse (ashwini.borse@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro and VMware ESXi server.
 - Nov 16, 2021: Rose Wambui (rose.wambui@seagate.com) on a Mac running VMWare Fusion 12.2.0.
 - Nov 16, 2021: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - Oct 26, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for OVA [CentOS 7.8]
