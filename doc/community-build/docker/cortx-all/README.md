@@ -24,7 +24,7 @@ This document provides step-by-step instructions to build required binaries and 
 
 2. Validate that Packages are generated at `/var/artifacts/0/` after the build step is complete. 
 
-3. Make cortx package available over HTTP using Nginx docker image using below command.
+3. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
     ```
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
