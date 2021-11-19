@@ -1,32 +1,28 @@
-# Generate CORTX-ALL image for the community (outside Seagate network)
+# Generate CORTX-ALL container image
 
-This document provides step-by-step instructions to build and generate the CORTX image.
+This document provides step-by-step instructions to build required binaries and generate the CORTX-ALL container image.
 
 ## Prerequisites
 
-- latest version of docker and docker compos.
-    -   Docker Version
+- Docker >= 20.10.10 . Please refer [install Docker](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
     ```
-    docker --version
-    Docker version 20.10.10
+    [root@dev-system ~]# docker --version
+    Docker version 20.10.8, build 3967b7d
     ```
-    - Docker compose Version
+ - Docker compose >= 1.29.2 Please refer [install docker compose](https://docs.docker.com/compose/install/) steps. Validate docker-compose version on system.
     ```
-    docker-compose --version
-    docker-compose version 1.29.2
+    [root@dev-system ~]# docker-compose --version
+    docker-compose version 1.29.2, build 5becea4c
     ```
-
-    **Note:** If docker(docker-ce) and docker compose not present follow the given link to install docker and docker compose. [Install Docker](https://docs.docker.com/engine/install/centos/) [Install docker compose](https://docs.docker.com/compose/install/)
 ## Procedure
 
-1. Generate community build using steps from [Steps to generate cortx build stack](https://github.com/Seagate/cortx/blob/main/doc/community-build/Generate-Cortx-Build-Stack.md)  . Checkout **kubernetes** branch for generating packages. **NOTE:** Replace ***2.0.0-527*** to ***kubernetes*** while following this document.
-
-    **Example**
+1. Generate community build using steps from [Steps to generate cortx build stack](https://github.com/Seagate/cortx/blob/main/doc/community-build/Generate-Cortx-Build-Stack.md) Please Checkout **kubernetes** branch for generating packages. Use below command for checkout. 
+  
     ```
     docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=kubernetes
     ```
 
-2. Validate that Packages are generated at ***/var/artifacts/0/*** after the build step is complete. 
+2. Validate that Packages are generated at `/var/artifacts/0/` after the build step is complete. 
 
 3. Make cortx package available over HTTP using Nginx docker image using below command.
     ```
@@ -35,15 +31,15 @@ This document provides step-by-step instructions to build and generate the CORTX
 4. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
     ```
     git clone https://github.com/seagate/cortx.git  && cd cortx/doc/community-build/docker/cortx-all/
-    ./build.sh -b http://ssc-vm-rhev4-0707.colo.seagate.com
+    ./build.sh -b http://$HOSTNAME
     ```
 
-5. Run the below coammnd to see cortx-all images
+5. Run the below coammnd to see recently generated cortx-all image details.
     ```
-    docker images
+    docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' cortx-all
     ```
-    **Example** 
+    **Example output** 
     ```
-    [root@ssc-vm-g3-rhev4-2461 community-build]# docker images  | grep cortx-all
-    cortx-all                     2.0.0-0-main             6c81b35aa92f   27 hours ago   1.91GB
+    [root@dev-system ~]# docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' cortx-all
+    cortx-all:2.0.0-0 2021-11-19 07:31:43 -0700 MST
     ```
