@@ -87,7 +87,7 @@ done
 CORTX_VERSION=$(get_git_hash | tr '\n' ' ')
 rm -rf RELEASE.INFO
 
-if [ "$DOCKER_BUILD_BRANCH" != "stable" ]; then
+if [ "$DOCKER_BUILD_BRANCH" != "main" ]; then
         export TAG=$VERSION-$DOCKER_BUILD_BUILD-$DOCKER_BUILD_BRANCH
 else
         export TAG=$VERSION-$DOCKER_BUILD_BUILD
