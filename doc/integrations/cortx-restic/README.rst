@@ -157,7 +157,9 @@ you can add ``--insecure-tls`` to avoid this error.
 
 Note: At the time of this update, restic's latest stable release 0.12.1 does not have this ``--insecure-tls`` option. But it will be included in future releases.
 Alternatively, you can get the latest restic souce and build it, and get this option enabled.
+
 .. code-block:: console
+
     $ git clone https://github.com/restic/restic
     $ cd restic
     $ go run build.go
