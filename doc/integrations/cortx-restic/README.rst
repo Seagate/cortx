@@ -149,12 +149,15 @@ this command.
 
 If you use CORTX development server as S3 server, and encounter this error 
 "x509: cannot validate certificate for 192.168.1.111 because it doesn't contain any IP SANs",
-you can add `--insecure-tls` to avoid this error. 
+you can add ``--insecure-tls`` to avoid this error. 
+
+.. code-block:: console
 
     $ ./restic -r s3:<YOUR-CORTX-ENDPOINT-URL>/<BUCKET-NAME> init --insecure-tls
 
-Note: At the time of this update, restic's latest stable release 0.12.1 does not have this `--insecure-tls` option. But it will be included in future releases.
+Note: At the time of this update, restic's latest stable release 0.12.1 does not have this ``--insecure-tls`` option. But it will be included in future releases.
 Alternatively, you can get the latest restic souce and build it, and get this option enabled.
+.. code-block:: console
     $ git clone https://github.com/restic/restic
     $ cd restic
     $ go run build.go
@@ -210,6 +213,8 @@ Now is a good time to run ``restic check`` to verify that all data
 is properly stored in the repository. You should run this command regularly
 to make sure the internal structure of the repository is free of errors.
 
-### Tested by:
+#####################
+Tested by:
+#####################
 
 - Nov 21 2021: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
