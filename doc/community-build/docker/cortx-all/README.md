@@ -4,12 +4,12 @@ This document provides step-by-step instructions to build required binaries and 
 
 ## Prerequisites
 
-- Docker >= 20.10.10 . Please refer [install Docker](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
+- Docker >= 20.10.10 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
     ```
     [root@dev-system ~]# docker --version
     Docker version 20.10.8, build 3967b7d
     ```
- - Docker compose >= 1.29.2 Please refer [install docker compose](https://docs.docker.com/compose/install/) steps. Validate docker-compose version on system.
+ - Docker compose >= 1.29.2 Please refer [Install docker compose](https://docs.docker.com/compose/install/) steps. Validate docker-compose version on system.
     ```
     [root@dev-system ~]# docker-compose --version
     docker-compose version 1.29.2, build 5becea4c
