@@ -39,7 +39,7 @@ This document provides step-by-step instructions to build required binaries and 
     ```
 5. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
     ```
-    git clone https://github.com/seagate/cortx.git  && cd cortx/doc/community-build/docker/cortx-all/
+    cd /root/cortx/doc/community-build/docker/cortx-all/
     ./build.sh -b http://$HOSTNAME
     ```
 
