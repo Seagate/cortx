@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (c) 2020 Seagate Technology LLC and/or its Affiliates
+# Copyright (c) 2021 Seagate Technology LLC and/or its Affiliates
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ DOCKER_PUSH=no
 TAG_LATEST=no
 OS=centos-7.9.2009
 ENV=opensource-ci
-ARTFACT_URL="http://cortx-storage.colo.seagate.com/releases/cortx/github/"
 
 
 while getopts "b:p:t:h:e:" opt; do
@@ -45,23 +44,14 @@ while getopts "b:p:t:h:e:" opt; do
     esac
 done
 
-
-echo ${BUILD}
-
 if [ -z "${BUILD}" ] ; then
     echo -e "CORTX Build URL is not provided.Exiting...\n"
     usage
     exit 1
 fi
 
-#if [ "$ENV" == "opensource-ci" ]; then
 BUILD_URL=$BUILD
-SERVICE=cortx-all-local
-#else
-#if echo $BUILD | grep -q custom; then BRANCH="integration-custom-ci"; else BRANCH="kubernetes"; fi
-#BUILD_URL="$ARTFACT_URL/$BRANCH/$OS/$BUILD"
 SERVICE=cortx-all
-#fi
 
 echo "Building cortx-all image from $BUILD_URL"
 sleep 5
