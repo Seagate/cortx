@@ -1,9 +1,9 @@
 
 # Single Node K8s Cortx Deployment
 
-The following steps are presented to deploy Cortx deployment on a single node K8s cluster. The control node acts as both master and worker as it's untainted.
+The following steps are presented to deploy Cortx deployment on a single node K8s cluster. The single node acts as both control and worker node as it's untainted.
 
-# Prerequisites
+# Specifications
 
 The following requirements must exists for deployment:
 - 1 VM with CentOS 7.9.2009 OS.
@@ -37,7 +37,7 @@ The following primary packages version are required:
 - yum-utils
 - git
 
-All the steps are run using ```root``` user and firewall is stopped, selinux is in permissive mode, swap is disabled and additional packages are installed as follows:
+All the steps are run using ```root``` user and firewall is stopped, selinux is in permissive mode, swap memory is turned off and additional packages are installed as follows:
 
 **Firewall stop/disable:**
 ```
@@ -264,7 +264,7 @@ To deploy Cortx cluster framework run any one of the following command.  The dep
 ./deploy-cortx-cloud.sh [<solution-file>]
 ```
 **Verify Cortx cluster status:**
-After deploy script completes it's execution all the pods should be up and running. Verify with the following commands:
+After deploy script completes it's implementation all the pods should be up and running. Verify with the following commands:
 ```
 kubectl get pods -A
 
@@ -287,7 +287,7 @@ To destroy Cortx cluster framework run any one of the following command. There i
 
 # S3 setup:
 
-Now the Cortx cluster is deployment is complete, all pods are in running state and data pods are running, we can setup and use the S3 storage by following the steps below (all the commands are executed as `root`  user)-:
+Now the Cortx cluster is deployment is complete, all pods are in running state and data pods are running, we can setup and use the S3 storage by following the steps below (all the commands are run as `root`  user)-:
 
 ## Installation
 
@@ -296,6 +296,9 @@ Install the following packages which will be required in S3 IO operations:
 **Install cortx-s3iamcli:**
 ```
 yum install -y <link address for cortx-s3iamcli-devel.rpm>  --nogpgcheck
+
+#Example:
+yum install -y http://cortx-storage.colo.seagate.com/releases/cortx/github/main/centos-7.9.2009/last_successful/cortx-s3iamcli-devel-2.0.0-248_gite0c1f347.noarch.rpm --nogpgcheck
 ```
 
 **Install awscli:**
@@ -322,7 +325,7 @@ touch /var/log/seagate/auth/s3iamcli.log
 
 -   Edit `/etc/hosts` file:
     -   Run ```kubectl get pods --o wide```
-    -   Copy one of the IP of service data pod (cortx-data-pod).
+    -   Copy the IP of service data pod (cortx-data-pod). On the single node cluster only one cortx-data-pod will be present.
     -   In ```/etc/hosts``` file add a new entry as follows:
 ```<IP_Address> s3.seagate.com iam.seagate.com```
 
@@ -336,7 +339,7 @@ s3iamcli CreateAccount -n C_QA -e cloud@seagate.com --ldapuser sgiamadmin --ldap
 
 **AWSCLI Configuration:**
 
--   To configure awscli to run with Cortx S3 storage execute the following commands:    
+-   To configure awscli to work with Cortx S3 storage run the following commands:    
 ```
 aws configure
 ```
