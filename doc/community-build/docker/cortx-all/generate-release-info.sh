@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (c) 2021 Seagate Technology LLC and/or its Affiliates
+# Copyright (c) 2020 Seagate Technology LLC and/or its Affiliates
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,11 +29,10 @@ NAME: "CORTX"
 OS: $(cat /etc/redhat-release | sed -e 's/ $//g' -e 's/^/\"/g' -e 's/$/\"/g')
 DATETIME: $(date +"%d-%b-%Y %H:%M %Z" | sed -e 's/^/\"/g' -e 's/$/\"/g')
 COMPONENTS:
-$(for component in $(sed 's/#.*//g' /opt/seagate/cortx/cortx-componenet-rpms.txt); do echo "    - \"$(rpm -qa $component).rpm\"" ; done)
+$(for component in $(sed 's/#.*//g' /opt/seagate/cortx/cortx-componenet-rpms.txt); do echo "    - \"$(rpm -q $component).rpm\"" ; done)
 THIRD_PARTY_RPM_PACKAGES:
-$(for component in $(sed 's/#.*//g' /opt/seagate/cortx/third-party-rpms.txt); do echo "    - \"$(rpm -qa $component).rpm\"" ; done)
+$(for component in $(sed 's/#.*//g' /opt/seagate/cortx/third-party-rpms.txt); do echo "    - \"$(rpm -q $component).rpm\"" ; done)
 THIRD_PARTY_PYTHON_PACKAGES:
 $(pip3 freeze | sed 's/^/    - /g')
 EOF
 popd || exit
-
