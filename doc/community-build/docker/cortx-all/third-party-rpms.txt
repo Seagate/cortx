@@ -1,0 +1,14 @@
+crontabs  #cortx-utils
+haproxy22 #cortx-s3srever
+java-1.8.0-openjdk-headless
+jq #cortx-prvsnr
+kafka  #cortx-utils
+logrotate #cortx-utils
+python3
+python36-dbus
+python36-m2crypto
+python36-psutil
+sshpass
+sudo
+symas-openldap-clients #cortx-s3server
+which #cortx-motr
