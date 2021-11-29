@@ -14,8 +14,3 @@ This release notes includes new features, enhancements, and bug fixes added to t
 - CSM: Alerts seen on New-Alert session immediately after preboarding.
 - Unable to connect to s3 endpoint on port 80
 - Unable to see performance graph on CSM UI
-
-
-## New Features
-
-- Oracle VM VirtualBox will be introduced in next release

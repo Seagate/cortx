@@ -26,6 +26,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 
 **Prerequisites:**
 
+- Download the `CORTX OVA <https://cortxova.s3.us-west-2.amazonaws.com/ova-2.0.0-559.ova>`_ from `our release page <https://github.com/Seagate/cortx/releases/latest>`_.
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
    
@@ -126,6 +127,7 @@ Troubleshooting
 
 Tested by:
 
+- Nov 16, 2021: Ashwini Borse (ashwini.borse@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro and VMware ESXi server.
 - Nov 16, 2021: Rose Wambui (rose.wambui@seagate.com) on a Mac running VMWare Fusion 12.2.0.
 - Nov 16, 2021: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro.
 - Oct 26, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for OVA [CentOS 7.8]
