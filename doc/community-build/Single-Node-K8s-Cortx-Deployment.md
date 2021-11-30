@@ -340,15 +340,10 @@ sudo sh get-docker.sh
 systemctl enable --now docker
 ```
 **Compile and Build cortx-s3iamcli-devel from HEAD:**
--   Run the appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9. For example:
-    
-    -   For CentOS 7.8.2003:
-        
-        ```docker pull ghcr.io/seagate/cortx-build:centos-7.8.2003```
-        
-    -   For CentOS 7.9.2009:
-        
-        ```docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009```
+-   Download cortx-build image:
+    ```
+    docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
+    ```
         
 Clone CORTX repository and build rpms:
 
