@@ -1,0 +1,14 @@
+{
+  "appletName": "DRPShell",
+  "title": "DRP Shell",
+  "sizeX": 740,
+  "sizeY": 442,
+  "appletIcon": "fa-list-alt",
+  "showInMenu": true,
+  "appletScript": "vdm-app-DRPShell.js",
+  "preReqs": [
+    { "JS": "/assets/xterm/lib/xterm.js" },
+    { "JS": "/assets/xterm/lib/xterm-addon-fit.js" },
+    { "CSS": "/assets/xterm/css/xterm.css" }
+  ]
+}

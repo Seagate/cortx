@@ -1,0 +1,10 @@
+{
+    "fhir": {
+        "host": "http://test.fhir.org/r3"
+    },
+    "cortx": {
+        "endpoint_url": "http://uvo19iqqprct5bd9622.vm.cld.sr",
+        "aws_access_key_id": "z5_sdXvsSvKKWxjJmvCA9g",
+        "aws_secret_access_key": "kUIMmfQCyNzxel8vi8udIsadwuliOYpS/jdyMh8e"
+    }
+}
