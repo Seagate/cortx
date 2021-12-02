@@ -84,7 +84,7 @@
             <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/august_newsletter_2021.pdf>PDF</a></td>
             <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/September_newsletter_2021.pdf>PDF</a></td>
             <td>:heavy_check_mark:<a href=/doc/PDFs/Newsletters/October_newsletter_2021.pdf>PDF</a></td>
-            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:<a href=/doc/PDFs/Newsletters/Nov21_Newsletter.pdf>PDF</a></td>
             <td>:heavy_check_mark:</td>
         </tr>
         <tr>
