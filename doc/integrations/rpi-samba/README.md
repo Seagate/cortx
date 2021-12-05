@@ -70,6 +70,11 @@ aws configure
 ```
 aws --endpoint-url http://uvo1djqlaa0iveuluux.vm.cld.sr s3 sync s3://testbucket .
 ```
+Note: If you encouter error [SSL: CERTIFICATE_VERIFY_FAILED] when you use development Cortx S3 server, add `--no-verify-ssl` to avoid the error. For example, `aws --endpoint-url your_endpoint_url s3 sync s3://your_bucket . --no-verify-ssl`.
+
+If you want to not only sync new files from S3 Server, but also delete outdated files in your NAS server, you can use `--delete`. For example, `aws --endpoint-url your_endpoint_url s3 sync s3://your_bucket . --no-verify-ssl --delete`.
+
+If you make changes in your NAS server and want to update them into your S3 Server bucket, you can swap the source and destination of the sync. For example, `aws --endpoint-url your_endpoint_url s3 sync . s3://your_bucket --no-verify-ssl --delete`.
 
 ## Final Product
 
@@ -84,3 +89,7 @@ Files on network storage:
 Files on CORTX storage:
 
 ![](images/Picture3.png)
+
+### Tested by:
+
+- Nov 13 2021: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
