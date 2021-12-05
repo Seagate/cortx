@@ -57,3 +57,7 @@ Following the video guide, we can try to download a big file and see the changes
 cd testbucket
 wget https://github.com/Seagate/cortx/archive/refs/tags/cortx-ova-2.0.0-264.zip
 ```
+
+Tested By:
+
+- Nov 30, 2021: Harrison Seow (harrison.seow@seagate.com) using cortx-va-1.0.3 running on CloudShare, client on Linux WSL2.

@@ -48,7 +48,7 @@ We are excited about your interest in CORTX and hope you will join us. We take o
 - Learn more ways to acquire, build, and run CORTX in our [Quick Start Guide](QUICK_START.md).
 - Jump into our [Contribution Guide](CONTRIBUTING.md) to build and test CORTX and to learn about how to make contributions.
    - Refer to our [Suggested Contributions](../main/doc/SuggestedContributions.md) page for some inspiration about how to contribute to the CORTX project.
-- Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.rst) for more details.
+- Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.md) for more details.
 - Read about all the different [components](https://github.com/hessio/cortx/blob/patch-11/doc/Components.md) that combine together to make CORTX
 
 Resources
@@ -58,6 +58,8 @@ Resources
 -   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://cortx.link/slack_invite) to interact with community members and gets your questions answered.
 -   Join us in [Discussions](https://github.com/Seagate/cortx/discussions) to ask, answer, and discuss topics with your fellow CORTX contributors.
 -   Check out our [Youtube Channel](https://cortx.link/videos).
+-   Browse a ton of architectural documents in our [Confluence Pages](https://seagate-systems.atlassian.net/wiki/spaces/PUB/overview)
+    -  Unfortunately, public editing is not possible but anonymous comments are encouraged! Please "sign" comments with your github ID so we know how to interact with you   
 -   Ask and answer questions in our [Frequently Asked Questions](FAQs.md) page.
 -   If you'd like to contact us directly, drop us a mail at cortx-questions@seagate.com.
 -   We have _CORTX stickers_ available to anyone who would like one. [Click here](https://www.seagate.com/promos/cortx-stickers/) to have a sticker mailed to you.
