@@ -6,12 +6,13 @@ On the first Thursday of every month at GMT 1600, the CORTX Community hosts a 'M
 a CORTX architect, or community member, presents a presentation of interest for the community and
 in which time is left for a question and answer session.
 
-Please `click here < https://cortx.link/CORTX-MTAs>`_ to see the event page.
+Please `click here <https://cortx.link/CORTX-MTAs>`_ to see the event page (will be updated with the new Linkedin Event page).
 
 The Meet an Architect series are open to the public via this `Teams link <https://cortx.link/MTA-webinar>`_.  All meetings will be recorded and made available on this page afterwards. Audience members may also be interested in our `Motr Deep Dive training sessions <https://github.com/Seagate/cortx-motr/wiki/Motr-Deep-Dive-Sessions>`_.
 
 
 **Previously recorded sessions:**
+
 #. November 4 2021: Liana Valdes discussed an exciting new addition to the CORTX project. FDMI allows data scientists to subscribe to event notifications and then perform custom manipulations or analyses on newly created (or updated) data, and Liana covered this in the context of CORTX. on. `PDF <doc/meetings/PDFs/FDMI_MTA.pdf>`_  | `Video <https://www.youtube.com/watch?v=a44tA11WHgk&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=20>`_.
 
 #. October 7 2021: From CentOS to Rocky Linux and beyond, Gregory Kurtzer, CEO of CIQ, has been at the frontline of the intersection of enterprise and open source. In this session of Meet the Architect, he shares his perspective on how and when open source makes sense and talks about some of the exciting projects he and his team have been working on. `PDF <doc/meetings/PDFs/CORTX_ MTA_Rocky.pdf.pdf>`_  | `Video <https://www.youtube.com/watch?v=PNAcNOM-Z-8&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=19>`_.
