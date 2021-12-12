@@ -41,7 +41,7 @@ Step 4: Attach CORTX via s3fs
 
 Enter the following command while ssh-ed or inside the docker instance.
 
-Note: if you use development Cortx S3 Server, and encounter "server certificate verification failed" error, you can add `-o no_check_certificate` to avoid the error.
+Note: if you use development Cortx S3 Server, and encounter "server certificate verification" error, you can add `-o no_check_certificate` to avoid the error.
 
 If you encouter "s3fs: unable to access MOUNTPOINT cortx-fs: No such file or directory", you can `cd /` first then run this s3fs command.
 ```
