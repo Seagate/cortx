@@ -1,9 +1,9 @@
 {
   "scanSettings": {
-    "configMode": "AUTO",
+    "configMode": "LOCAL",
 	"configExternalURL": "",
 	"projectToken": "",
-	"baseBranches": ["main"]
+	"baseBranches": ["main","kubernetes"]
   },
   "checkRunSettings": {
     "displayMode": "diff",
