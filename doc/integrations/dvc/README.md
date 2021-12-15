@@ -42,7 +42,7 @@ git commit -m "Add raw data"
 dvc remote add -d cortx s3://bucketName
 dvc remote modify cortx endpointurl http://endpointUrl
 dvc remote modify cortx access_key_id AKIAtEpiGWUcQIelPRlD1Pi6xQ
-dvc remote modify minio secret_access_key YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK
+dvc remote modify cortx secret_access_key YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK
 ```
 
 **4. Push dataset into CORTX with DVC**
@@ -68,3 +68,7 @@ Contributors to the same ML project can then run `dvc pull` to get access to the
 git checkout <e.g. older commit with an older .dvc file version>
 dvc checkout # Checkout the dataset version in that older commit
 ```
+
+Tested by:
+
+- Dec 13, 2021: Harrison Seow (harrison.seow@seagate.com) using Cortx OVA 1.0.3 running on CloudShare on Windows Server 2019.
