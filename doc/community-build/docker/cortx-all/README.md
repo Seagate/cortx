@@ -39,11 +39,12 @@ This document provides step-by-step instructions to build required binaries and 
     ```
 5. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
     ```
-    cd /root/cortx/doc/community-build/docker/cortx-all/
+    git clone https://github.com/Seagate/cortx-re -b kubernetes
+    cd cortx-re/docker/cortx-deploy/
     ./build.sh -b http://$HOSTNAME
     ```
 
-6. Run the below coammnd to see recently generated cortx-all image details.
+6. Run the below command to see recently generated cortx-all image details.
     ```
     docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' cortx-all
     ```
