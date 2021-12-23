@@ -149,6 +149,7 @@ Troubleshooting
 
 Tested by:
 
+- Dec 23, 2021: Amnuay Boottrakoat (amnuay.boottrakoat@seagate.com) using OVA R2 release 2.0.0 on VMWare WorkStation Pro 16 installed on windows
 - Nov 24, 2021: Zuhair Alsader (zuhair.alsader@seagate.com) using OVA R2 release 2.0.0 on VMWare WorkStation Pro 16 installed on windows.
 - Sep 24, 2021: Rose Wambui (rose.wambui@seagate.com) using OVA R2 release 2.0.0 on VMWare Fusion 12.1.2 installed on Mac.
 - Sep 06, 2021: Mukul Malhotra (mukul.malhotra@seagate.com) using OVA R2 release 2.0.0 on VMWare WorkStation Pro 16.
