@@ -39,4 +39,4 @@ If there are any questions, do not hesitate to contact our team at clairelimjiay
 
 Tested By:
 
-- Dec 14, 2021: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
+- Dec 24, 2021: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
