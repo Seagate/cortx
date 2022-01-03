@@ -23,7 +23,7 @@ This document provides step-by-step instructions to build required binaries and 
     
 2.  Please Checkout **kubernetes** branch for generating CORTX packages. Use below command for checkout. 
     ```
-    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=kubernetes
+    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
     ```
     
 3. Run the following command to build the CORTX packages
@@ -39,7 +39,7 @@ This document provides step-by-step instructions to build required binaries and 
     ```
 5. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
     ```
-    git clone https://github.com/Seagate/cortx-re -b kubernetes
+    git clone https://github.com/Seagate/cortx-re
     cd cortx-re/docker/cortx-deploy/
     ./build.sh -b http://$HOSTNAME
     ```
