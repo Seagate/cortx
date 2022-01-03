@@ -41,8 +41,9 @@ This document provides step-by-step instructions to build required binaries and 
     ```
     git clone https://github.com/Seagate/cortx-re
     cd cortx-re/docker/cortx-deploy/
-    ./build.sh -b http://$HOSTNAME
+    ./build.sh -b http://$HOSTNAME  
     ```
+    Note: You can use IP Address instead of $HOSTNAME if hostname is not reachable. 
 
 6. Run the below command to see recently generated cortx-all image details.
     ```
