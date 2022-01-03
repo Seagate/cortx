@@ -28,7 +28,7 @@ This document provides step-by-step instructions to build required binaries and 
     
 3. Run the following command to build the CORTX packages
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean cortx-all-image
+   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean cortx-all-image cortx-ha
    ```
 
 5. Validate that Packages are generated at `/var/artifacts/0/` after the build step is complete. 
