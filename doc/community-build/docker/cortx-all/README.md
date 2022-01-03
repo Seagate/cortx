@@ -43,7 +43,7 @@ This document provides step-by-step instructions to build required binaries and 
     cd cortx-re/docker/cortx-deploy/
     ./build.sh -b http://$HOSTNAME  
     ```
-    Note: You can use IP Address instead of $HOSTNAME if hostname is not reachable. 
+    Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
 
 6. Run the below command to see recently generated cortx-all image details.
     ```
