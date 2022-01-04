@@ -21,7 +21,7 @@ This document provides step-by-step instructions to build required binaries and 
     cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
     ```
     
-2.  Please Checkout **kubernetes** branch for generating CORTX packages. Use below command for checkout. 
+2.  Please Checkout **main** branch for generating CORTX packages. Use below command for checkout. 
     ```
     docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
     ```
