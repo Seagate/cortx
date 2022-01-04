@@ -3,7 +3,7 @@ AWS CLI on a different VM
 
 You can also create a different VM and install the AWS CLI on this VM as a client to perform IO operations.
 
-1. Ensure that all the prerequisites are satisfied. See [Prerequisites](https://github.com/Seagate/cortx/blob/hessio-patch-7/doc/IO_prereqs.md)
+1. Ensure that all the prerequisites are satisfied. See [Prerequisites](https://github.com/Seagate/cortx/blob/main/doc/IO_prereqs.md)
 
 1. Add the following entry must be added in the */etc/hosts* file of the new VM:
 
