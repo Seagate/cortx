@@ -21,14 +21,14 @@ This document provides step-by-step instructions to build required binaries and 
     cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
     ```
     
-2.  Please Checkout **kubernetes** branch for generating CORTX packages. Use below command for checkout. 
+2.  Please Checkout **main** branch for generating CORTX packages. Use below command for checkout. 
     ```
-    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=kubernetes
+    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
     ```
     
 3. Run the following command to build the CORTX packages
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean cortx-all-image
+   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean cortx-all-image cortx-ha
    ```
 
 5. Validate that Packages are generated at `/var/artifacts/0/` after the build step is complete. 
@@ -39,11 +39,13 @@ This document provides step-by-step instructions to build required binaries and 
     ```
 5. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
     ```
-    cd /root/cortx/doc/community-build/docker/cortx-all/
-    ./build.sh -b http://$HOSTNAME
+    git clone https://github.com/Seagate/cortx-re
+    cd cortx-re/docker/cortx-deploy/
+    ./build.sh -b http://$HOSTNAME  
     ```
+    Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
 
-6. Run the below coammnd to see recently generated cortx-all image details.
+6. Run the below command to see recently generated cortx-all image details.
     ```
     docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' cortx-all
     ```

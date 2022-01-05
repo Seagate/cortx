@@ -487,7 +487,11 @@ class CortxCommunity:
     return self.people[login].get_login()
 
   def get_type(self,login):
-    return self.people[login].get_type()
+    try:
+      return self.people[login].get_type()
+    except KeyError:
+      print("Weird, no info known about %s" % login)
+      return None
 
   def values(self):
     return self.people.values()
