@@ -471,7 +471,8 @@ def collect_stats(gh,org_name,update,prefix,top_only,showonly):
 
   if showonly:
     for repo in repos:
-      print("%s has repo %s" % (org_name,repo.name))
+      (cached_local_stats,timestamp) = persistent_stats.get_latest(repo.name)
+      print("%s has repo %s which was last scraped on " % (org_name,repo.name), timestamp)
     print("exiting only due to showonly flag")
     return
 

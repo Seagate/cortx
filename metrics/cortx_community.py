@@ -650,6 +650,9 @@ def get_repos(gh=None,org_name='Seagate',prefix='cortx'):
   for repo in orepos:
     if prefix_included(repo.name,prefix) is False or repo.name.endswith('.old') or repo.name.endswith('-old') or repo.private:
       continue
+    elif repo.fork:
+      print("Skipping %s because it is a fork of %s" % (repo.name,repo.parent))
+      continue
     else:
       repos.append(repo)
   return repos
