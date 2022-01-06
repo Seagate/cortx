@@ -30,7 +30,11 @@ def avoid_rate_limiting(gh,limit=100,Verbose=False):
 # so we use a local pickle'd dictionary
 # returns (company, email, login, True/False) <- last value is whether we already knew about them
 def author_info(people,author,org_name):
-  l = author.login
+  try:
+    l = author.login
+  except AttributeError:
+    print("WTF: None author?")
+    return(None,None,None,False)
   if people.includes(l):
     c = people.get_company(l)
     e = people.get_email(l)
@@ -66,18 +70,21 @@ def persist_author_activity(author_activity):
   author_activity.persist()
 
 def scrape_comment(people,gh,rname,comment,Type,local_stats,author_activity,org_name):
+  local_stats['comments'] += 1
   key="%s_comment.%d" % (Type,comment.id)
   try:
-    (login,url,created_at) = author_activity.get_activity(key)
-  except KeyError:
-    login = comment.user.login
-    url = comment.html_url
-    created_at = comment.created_at
-    author_activity.add_activity(key,login,url,created_at)
-  scrape_author(people,gh,rname,comment.user,local_stats,False,author_activity,org_name)
-  local_stats['comments'] += 1
-  if people.is_external(login):
-    local_stats['external_comments'] += 1
+    try:
+      (login,url,created_at) = author_activity.get_activity(key)
+    except KeyError:
+      login = comment.user.login
+      url = comment.html_url
+      created_at = comment.created_at
+      author_activity.add_activity(key,login,url,created_at)
+    scrape_author(people,gh,rname,comment.user,local_stats,False,author_activity,org_name)
+    if people.is_external(login):
+      local_stats['external_comments'] += 1
+  except AttributeError:
+    print("WTF: comment is missing some fields")
 
 def new_average(old_average,old_count,new_value):
   return (old_average * old_count + new_value) / (old_count+1)
@@ -469,10 +476,6 @@ def collect_stats(gh,org_name,update,prefix,top_only,showonly):
     return
 
   for repo in repos:
-    # temporarily only work on parent repo
-    if repo.name != 'cortx':
-      print("Skipping %s" % repo.name)
-      continue
     retries = 1
     while True: # add a while loop since we are always failing and it would be good to run successfully more often
       try:
