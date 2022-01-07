@@ -31,7 +31,7 @@ channel_repo_map = {
   'cortx-pm'                   : 'cortx',
   'cortx-get-started'          : 'cortx',
   'feedback'                   : 'cortx',
-  'cortx-rgw'                  : 'cortx-rgw',
+  'cortx-rgw'                  : 'cortx',
   'cortx-sspl'                 : 'cortx-monitor',
   'ops-and-implementation'     : 'cortx', # change to cortx-re when it becomes public
   'cortx-provisioner'          : 'cortx-prvsnr',
