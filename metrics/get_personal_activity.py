@@ -217,10 +217,10 @@ def print_activities(filtered_activities,logins,details,zero,people,since,until,
             increment_value(summary,'lines_deleted',lines_deleted)
       if not quiet:
         print("\t-- %s ; %s ; %s %s" % (login,d,u, Details if details else ''))
-    if (len(actions) > 0 or not quiet) and details:
+    if (len(actions) > 0 and details): 
       print("\t%4.1f POINTS for %s" % (total_score,login))
-    if details:
-      print(summary)
+    #if details:
+    #  print(summary)
       
   print("SUMMARY: %d total observed actions from %s %s" % (total_actions, logins, daterange))
 
