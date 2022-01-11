@@ -17,6 +17,8 @@ This integration up lots of opportunities for CORTX to integrate with other soft
 
 We created a [convenience script](./goofys-cortx-setup.sh) that creates a folder `/root/shared` that will be used to mount your CORTX bucket. Simply carry out the following command:
 
+**Note**: _Tested working Go version 1.16_
+
 ```sh
 # download to our convenience script to your system
 wget https://raw.githubusercontent.com/c-l-j-y/cortx/main/doc/integrations/goofys/goofys-cortx-setup.sh
@@ -36,3 +38,12 @@ Team Zelda:
 - Tan Ziheng
 
 If there are any questions, do not hesitate to contact our team at clairelimjiaying@ntudsc.com.
+
+
+Tested by:
+
+- Dec 24, 2021: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
+
+- Nov 30, 2021: Harrison Seow (harrison.seow@seagate.com) using Cortx OVA 2.0.0 running on VMware Workstation Player 16 on Windows 10.
+
+
