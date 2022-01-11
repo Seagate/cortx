@@ -217,10 +217,10 @@ def print_activities(filtered_activities,logins,details,zero,people,since,until,
             increment_value(summary,'lines_deleted',lines_deleted)
       if not quiet:
         print("\t-- %s ; %s ; %s %s" % (login,d,u, Details if details else ''))
-    if len(actions) > 0 and details:
+    if (len(actions) > 0 and details): 
       print("\t%4.1f POINTS for %s" % (total_score,login))
-    if details:
-      print(summary)
+    #if details:
+    #  print(summary)
       
   print("SUMMARY: %d total observed actions from %s %s" % (total_actions, logins, daterange))
 
@@ -237,6 +237,7 @@ def main():
   parser.add_argument('-l', '--limit', type=int, help="Only show actions if gte to limit")
   parser.add_argument('-z', '--zero', action='store_true', help="Show folks even if they have no actions")
   parser.add_argument('-q', '--quiet', action='store_true', help="Don't print info for each action")
+  parser.add_argument('-W', '--weekly', action='store_true', help="Get every week range between since and until")
   args = parser.parse_args()
 
   people=cortx_community.CortxCommunity()
@@ -251,8 +252,15 @@ def main():
   if args.last_month:
     args.since = datetime.datetime.today() - datetime.timedelta(days=30)
 
-  filtered_activities=filter_activities(activities=activities,since=args.since,until=args.until,limit=args.limit)
+  if args.weekly:
+    delta = datetime.timedelta(7)
+    while args.since <= args.until:
+      until = args.since + delta
+      filtered_activities=filter_activities(activities=activities,since=args.since,until=until,limit=args.limit)
+      print_activities(filtered_activities=filtered_activities,logins=logins,details=args.details,zero=args.zero,people=people,since=args.since,until=args.until,quiet=args.quiet)
+      args.since += delta
 
+  filtered_activities=filter_activities(activities=activities,since=args.since,until=args.until,limit=args.limit)
   print_activities(filtered_activities=filtered_activities,logins=logins,details=args.details,zero=args.zero,people=people,since=args.since,until=args.until,quiet=args.quiet)
 
 if __name__ == "__main__":
