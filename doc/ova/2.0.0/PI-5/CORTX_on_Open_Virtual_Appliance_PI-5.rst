@@ -49,11 +49,12 @@ Procedure
    
        sudo su -
    
-#. Use the management IP from the **ip a l** command and configure the CORTX GUI, See `configure the CORTX GUI document <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
+#. Run the following command to check the health of CORTX using hctl by running this command:
+```bash
+hctl status
+```
 
-#. The system up and running, use the data IP from the **ip a l** command `to test the system <https://github.com/Seagate/cortx/blob/main/doc/Performing_IO_Operations_Using_S3Client.rst>`_ and observe activity in the GUI. For example, the below picture shows a CORTX dashboard after a user did an *S3 put* followed by an *S3 get*.
-
-   .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/dashboard_read_write.png
+#. To perform the S3 IO operations,refer to these instructions in [S3 IO Operations](https://github.com/Seagate/cortx/blob/k8-ova-pi5/doc/ova/2.0.0/PI-5/aws_cli_on_same_vm.md).
 
 #. BOOM. You're all done and you're AWESOME. 
 
@@ -65,6 +66,12 @@ Procedure
 Troubleshooting
 ***************
 
+- If pods goes into pending state then run the following commands,
+```bash
+kubectl get pods
+kubectl logs <pod_name>
+kubectl taint nodes --all node-role.kubernetes.io/master-
+```
 
 
 
