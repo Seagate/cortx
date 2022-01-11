@@ -39,6 +39,11 @@ Team Zelda:
 
 If there are any questions, do not hesitate to contact our team at clairelimjiaying@ntudsc.com.
 
+
 Tested by:
 
+- Dec 24, 2021: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
+
 - Nov 30, 2021: Harrison Seow (harrison.seow@seagate.com) using Cortx OVA 2.0.0 running on VMware Workstation Player 16 on Windows 10.
+
+
