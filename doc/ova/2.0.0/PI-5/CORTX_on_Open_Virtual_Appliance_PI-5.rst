@@ -55,7 +55,7 @@ Procedure
 
        hctl status
 
-#. To perform the S3 IO operations,refer to these instructions in [S3 IO Operations](https://github.com/Seagate/cortx/blob/k8-ova-pi5/doc/ova/2.0.0/PI-5/aws_cli_on_same_vm.md).
+#. To perform the S3 IO operations,refer to these instructions in [S3 IO Operations](https://github.com/Seagate/cortx/blob/k8-ova-pi5/doc/ova/2.0.0/PI-5/aws_cli_on_same_vm.md "S3 IO Operations")
 
 #. BOOM. You're all done and you're AWESOME. 
 
