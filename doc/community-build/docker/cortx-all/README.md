@@ -13,7 +13,23 @@ This document provides step-by-step instructions to build required binaries and 
     ```
     [root@dev-system ~]# docker-compose --version
     docker-compose version 1.29.2, build 5becea4c
-    ```
+       ```
+- Do not update OS or kernel package with yum update as the kernel version must be set to 3.10.0-1160.el7
+- Do not upgrade packages from CentOS 7.8 to CentOS 7.9
+
+## Compile and Build CORTX Stack from HEAD
+
+- Run the appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9. For example:
+
+   - For CentOS 7.8.2003:
+     ```
+     docker pull ghcr.io/seagate/cortx-build:centos-7.8.2003
+     ```
+   - For CentOS 7.9.2009:
+     ```
+     docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
+     ```
+
 ## Procedure
 
 1. Run the following command to clone the CORTX repository:
@@ -31,13 +47,27 @@ This document provides step-by-step instructions to build required binaries and 
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean cortx-all-image cortx-ha
    ```
 
-5. Validate that Packages are generated at `/var/artifacts/0/` after the build step is complete. 
+5. Run the following command to generate the ISO for each component:
 
-4. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
+   ```
+   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make iso_generation
+   ```
+6. Validate that Packages are generated at `/var/artifacts/0/` after the build step is complete. 
+
+4. (Optional) Compile and Build CORTX Stack as per Individual component
+
+   Run to view each component targets:
+   ```
+   docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
+   ```
+   
+   [![cortx_stack_individual_component.png](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png")](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png") 
+   
+6. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
     ```
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
-5. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
+7. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
     ```
     git clone https://github.com/Seagate/cortx-re
     cd cortx-re/docker/cortx-deploy/
