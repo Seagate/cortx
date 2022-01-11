@@ -50,9 +50,10 @@ Procedure
        sudo su -
    
 #. Run the following command to check the health of CORTX using hctl by running this command:
-```bash
-hctl status
-```
+
+   ::
+
+       hctl status
 
 #. To perform the S3 IO operations,refer to these instructions in [S3 IO Operations](https://github.com/Seagate/cortx/blob/k8-ova-pi5/doc/ova/2.0.0/PI-5/aws_cli_on_same_vm.md).
 
@@ -67,11 +68,12 @@ Troubleshooting
 ***************
 
 - If pods goes into pending state then run the following commands,
-```bash
-kubectl get pods
-kubectl logs <pod_name>
-kubectl taint nodes --all node-role.kubernetes.io/master-
-```
+
+   ::
+
+       kubectl get pods
+       kubectl logs <pod_name>
+       kubectl taint nodes --all node-role.kubernetes.io/master-
 
 
 
