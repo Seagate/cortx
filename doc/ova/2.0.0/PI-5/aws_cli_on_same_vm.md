@@ -70,4 +70,4 @@ aws s3 ls s3://mybucket/
 aws s3 cp s3://mybucket/file10MB file10MBDn
 ```
 
-**Note:** For more information on CORTX supported S3 APIs, see `S3 Supported API <https://github.com/Seagate/cortx-s3server/blob/main/docs/s3-supported-api.md>`.
+**Note:** For more information on CORTX supported S3 APIs, see [S3 Supported API](https://github.com/Seagate/cortx-s3server/blob/main/docs/s3-supported-api.md "S3 Supported API").
