@@ -487,7 +487,11 @@ class CortxCommunity:
     return self.people[login].get_login()
 
   def get_type(self,login):
-    return self.people[login].get_type()
+    try:
+      return self.people[login].get_type()
+    except KeyError:
+      print("Weird, no info known about %s" % login)
+      return None
 
   def values(self):
     return self.people.values()
@@ -645,6 +649,9 @@ def get_repos(gh=None,org_name='Seagate',prefix='cortx'):
   repos = [] 
   for repo in orepos:
     if prefix_included(repo.name,prefix) is False or repo.name.endswith('.old') or repo.name.endswith('-old') or repo.private:
+      continue
+    elif repo.fork:
+      print("Skipping %s because it is a fork of %s" % (repo.name,repo.parent))
       continue
     else:
       repos.append(repo)

@@ -147,6 +147,22 @@ this command.
     Please note that knowledge of your password is required to access
     the repository. Losing your password means that your data is irrecoverably lost.
 
+If you use CORTX development server as S3 server, and encounter this error 
+"x509: cannot validate certificate for 192.168.1.111 because it doesn't contain any IP SANs",
+you can add ``--insecure-tls`` to avoid this error. 
+
+.. code-block:: console
+
+    $ ./restic -r s3:<YOUR-CORTX-ENDPOINT-URL>/<BUCKET-NAME> init --insecure-tls
+
+Note: At the time of this update, restic's latest stable release 0.12.1 does not have this ``--insecure-tls`` option. But it will be included in future releases.
+Alternatively, you can get the latest restic souce and build it, and get this option enabled.
+
+.. code-block:: console
+
+    $ git clone https://github.com/restic/restic
+    $ cd restic
+    $ go run build.go
 
 ###################
 Step 3 - Backing Up
@@ -158,7 +174,7 @@ You can even backup individual files in the same repository (not passing
 
 .. code-block:: console
 
-    $ restic -r /srv/restic-repo backup ~/work.txt
+    $ restic -r s3:<YOUR-CORTX-ENDPOINT-URL>/<BUCKET-NAME> backup ~/work.txt
     enter password for repository:
     password is correct
     snapshot 249d0210 saved
@@ -171,7 +187,7 @@ restic encounters:
 
     $ echo 'more data foo bar' >> ~/work.txt
 
-    $ restic -r /srv/restic-repo backup --verbose --verbose ~/work.txt
+    $ restic -r s3:<YOUR-CORTX-ENDPOINT-URL>/<BUCKET-NAME> backup --verbose --verbose ~/work.txt
     open repository
     enter password for repository:
     password is correct
@@ -198,3 +214,10 @@ and files leading to a greater de-duplication.
 Now is a good time to run ``restic check`` to verify that all data
 is properly stored in the repository. You should run this command regularly
 to make sure the internal structure of the repository is free of errors.
+
+#####################
+Tested by:
+#####################
+
+- Dec 10 2021: Harrison Seow (harrison.seow@seagate.com) using Cortx OVA 1.0.3 on CloudShare VM.
+- Nov 21 2021: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.

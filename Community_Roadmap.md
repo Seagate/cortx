@@ -57,6 +57,7 @@
             <td> </td>
             <td>  
                 <img src="/doc/flags/flag-ireland_1f1ee-1f1ea.png?raw=true" width="64" title="Ireland flag">
+                <br><a href=https://www.ucd.ie/cs/news/seagatecortxchallenge>LINK</a>
             </td>
             <td> </td>            
         </tr>
@@ -83,7 +84,7 @@
             <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/august_newsletter_2021.pdf>PDF</a></td>
             <td>:heavy_check_mark:<br><a href=/doc/PDFs/Newsletters/September_newsletter_2021.pdf>PDF</a></td>
             <td>:heavy_check_mark:<a href=/doc/PDFs/Newsletters/October_newsletter_2021.pdf>PDF</a></td>
-            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:<a href=/doc/PDFs/Newsletters/Nov21_Newsletter.pdf>PDF</a></td>
             <td>:heavy_check_mark:</td>
         </tr>
         <tr>
@@ -100,9 +101,9 @@
             <td>:heavy_check_mark:<br><a href=https://github.com/Seagate/cortx/releases/tag/cortx-ova-1.0.4.632>LINK</a></td>
             <td>:heavy_check_mark:<br><a href=https://github.com/Seagate/cortx/releases/tag/cortx-ova-2.0.0-264>LINK</a></td>
             <td></td>
-            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:<br><a href=https://github.com/Seagate/cortx/releases/tag/2.0.0-307>LINK</a></td>
             <td></td>
-            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:<br><a href=https://github.com/Seagate/cortx/releases/tag/2.0.0-559>LINK</a></td>
             <td></td>
         </tr>
         <tr>

@@ -30,18 +30,27 @@ def avoid_rate_limiting(gh,limit=100,Verbose=False):
 # so we use a local pickle'd dictionary
 # returns (company, email, login, True/False) <- last value is whether we already knew about them
 def author_info(people,author,org_name):
-  l = author.login
+  try:
+    l = author.login
+  except AttributeError:
+    print("WTF: None author?")
+    return(None,None,None,False)
   if people.includes(l):
     c = people.get_company(l)
     e = people.get_email(l)
     known = True
   else:
-    c = author.company
-    e = author.email
-    print("New person discovered in community!  %s %s %s" % (l, e, c))
-    people.add_person(login=l,company=c,email=e,linkedin=None,org_name=org_name)
-    people.persist()
-    known = False
+    try:
+      c = author.company
+      e = author.email
+      print("New person discovered in community!  %s %s %s" % (l, e, c))
+      people.add_person(login=l,company=c,email=e,linkedin=None,org_name=org_name)
+      people.persist()
+      known = False
+    except github.GithubException as e:
+      print("Ugh, githubexception %s " % e.data )
+      print("unknown github author %s" % l)
+      return(None,None,None,False)
   return(c,e,l,known)
 
 # pull the set of domains from the email addresses
@@ -61,18 +70,21 @@ def persist_author_activity(author_activity):
   author_activity.persist()
 
 def scrape_comment(people,gh,rname,comment,Type,local_stats,author_activity,org_name):
+  local_stats['comments'] += 1
   key="%s_comment.%d" % (Type,comment.id)
   try:
-    (login,url,created_at) = author_activity.get_activity(key)
-  except KeyError:
-    login = comment.user.login
-    url = comment.html_url
-    created_at = comment.created_at
-    author_activity.add_activity(key,login,url,created_at)
-  scrape_author(people,gh,rname,comment.user,local_stats,False,author_activity,org_name)
-  local_stats['comments'] += 1
-  if people.is_external(login):
-    local_stats['external_comments'] += 1
+    try:
+      (login,url,created_at) = author_activity.get_activity(key)
+    except KeyError:
+      login = comment.user.login
+      url = comment.html_url
+      created_at = comment.created_at
+      author_activity.add_activity(key,login,url,created_at)
+    scrape_author(people,gh,rname,comment.user,local_stats,False,author_activity,org_name)
+    if people.is_external(login):
+      local_stats['external_comments'] += 1
+  except AttributeError:
+    print("WTF: comment is missing some fields")
 
 def new_average(old_average,old_count,new_value):
   return (old_average * old_count + new_value) / (old_count+1)
@@ -122,6 +134,9 @@ def scrape_commit(people,gh,rname,commit,local_stats,author_activity,org_name):
 def scrape_author(people,gh,repo,author,repo_stats,commit,author_activity,org_name):
   avoid_rate_limiting(gh)
   (company, email, login, previously_known) = author_info(people,author,org_name)
+  if not login:
+    print("unable to discover any info about ", author)
+    return
 
   Type = people.get_type(login)
   while(True):
@@ -191,8 +206,12 @@ def add_star_watch_fork(key,url,item,stats,people,author,author_activity,Type,gh
       author_activity.add_activity(key=key,login=login,url=url,created_at=created_at)
     scrape_author(people,gh,repo,author,stats,False,author_activity,org_name)
     stats[Type].add((login,created_at))
-    if people.is_external(login):
-      stats['%s_external' % Type].add((login,created_at))
+    try:
+      if people.is_external(login):
+        stats['%s_external' % Type].add((login,created_at))
+    except KeyError:
+      print("unable to determine if %s is external. Ignoring" % author)
+
     
 # this function assumes that all initial values are empty or 0
 # however, if we are running in update mode, the values will be pre-initialized
@@ -452,7 +471,8 @@ def collect_stats(gh,org_name,update,prefix,top_only,showonly):
 
   if showonly:
     for repo in repos:
-      print("%s has repo %s" % (org_name,repo.name))
+      (cached_local_stats,timestamp) = persistent_stats.get_latest(repo.name)
+      print("%s has repo %s which was last scraped on " % (org_name,repo.name), timestamp)
     print("exiting only due to showonly flag")
     return
 
@@ -487,12 +507,12 @@ def collect_stats(gh,org_name,update,prefix,top_only,showonly):
         persistent_stats.add_stats(date=today,repo=rname,stats=local_stats)
         persistent_stats.print_repo(rname,local_stats,date=today,verbose=False,csv=False)
         break
-      except Exception as e:
+      except ArithmeticError as e:
         retries += 1
+        print("WTF: Failed while getting stats for repo %s" % rname, e)
         if retries > 5:
           print("Tried multiple times but failed.  Cowardly no longer attempting")
           break
-        print("WTF: Failed while getting stats for repo %s" % repo.name, e)
         avoid_rate_limiting(gh,Verbose=True)
 
   # do a bit of cleaning on global stats
@@ -526,6 +546,7 @@ def main():
   parser.add_argument('-t', '--toponly', help='Only scrape top-level info for the repo', action='store_true')
   parser.add_argument('-s', '--showonly', help='Only show the repos for this org then quit', action='store_true')
   parser.add_argument('project', help='The project whose repos to scrape', action='store')  # one required arg for org
+  parser.add_argument('--debug', help='Turn on copious pygithub logging', action='store_true') 
   #parser.add_argument('--dump', '-d', help="Dump currents stats [either '%s', '%s', or '%s'" % (PNAME,INAME,TNAME), required=False)
   #parser.add_argument('--collect', '-c', help='Collect new stats', action='store_true')
   args = parser.parse_args()
@@ -538,6 +559,9 @@ def main():
   except KeyError:
     print('%s is not a known project' % args.project)
     sys.exit(0)
+
+  if args.debug:
+    github.enable_console_debug_logging()
 
   # now go off and do a ton of work. :)
   retry= Retry(total=10,status_forcelist=(500,502,504,403),backoff_factor=10) 

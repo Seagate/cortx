@@ -44,8 +44,7 @@ We are excited about your interest in CORTX and hope you will join us. We take o
 
 ## Get Started
 
-- Download a [CORTX virtual machine image](doc/ova/1.0.4/CORTX_on_Open_Virtual_Appliance.rst) to get up and running in minutes.
-- Learn more ways to acquire, build, and run CORTX in our [Quick Start Guide](QUICK_START.md).
+- Explore multiple ways to acquire, build, and run CORTX in our [Quick Start Guide](QUICK_START.md).
 - Jump into our [Contribution Guide](CONTRIBUTING.md) to build and test CORTX and to learn about how to make contributions.
    - Refer to our [Suggested Contributions](../main/doc/SuggestedContributions.md) page for some inspiration about how to contribute to the CORTX project.
 - Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.md) for more details.
