@@ -1,7 +1,5 @@
-AWS CLI on the same VM
-=======================
-
-You can install the AWS CLI on the CORTX OVA to perform IO operations.
+CORTX k8s OVA to perform IO operations
+======================================
 
 
 ### Prerequisites
