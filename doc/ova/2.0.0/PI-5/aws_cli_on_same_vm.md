@@ -25,7 +25,7 @@ kubectl get pods -o wide | grep cortx-data-pod
 1. Add the following entry in the */etc/hosts* file:
 
 ```bash
-`<IP_Address> s3.seagate.com iam.seagate.com`
+<IP_Address> s3.seagate.com iam.seagate.com
 ```
 
 1. Verify configurations as follows:
@@ -34,7 +34,7 @@ kubectl get pods -o wide | grep cortx-data-pod
 cat /root/.aws/config
 ```
 
-1. Create S3 account:
+1. Create S3 account by running following command:
 
 ```bash
 s3iamcli CreateAccount -n C_QA -e cloud@seagate.com --ldapuser sgiamadmin --ldappasswd ldapadmin --no-ss
@@ -45,7 +45,7 @@ The above command will return the keys as per following example:
 `[root@cortx-k8s-setup ~]# s3iamcli CreateAccount -n C_QA -e cloud@seagate.com --ldapuser sgiamadmin --ldappasswd ldapadmin --no-ss
 AccountId = 600297343713, CanonicalId = dfccc0c3b9154f169408514e32dc20f932c968ed2b6f468bab7aff4cafbe5be8, RootUserName = root, <xxxxAccessKeyxxxx>, SecretKey = <xxxxSecretKeyxxxx>`
 
-1. Create a S3 bucket
+1. Create a new S3 bucket
 ```bash
 aws s3 mb s3://mybucket
 ```
@@ -60,7 +60,7 @@ dd if=/dev/zero of=file10MB bs=1M count=10
 aws s3 cp file10MB s3://mybucket/file10MB
 ```
 
-1. List the files in the bucket:
+1. List the files from bucket:
 ```bash
 aws s3 ls s3://mybucket/
 ```
@@ -70,4 +70,4 @@ aws s3 ls s3://mybucket/
 aws s3 cp s3://mybucket/file10MB file10MBDn
 ```
 
-**Note:** For more information on CORTX supported S3 APIs, see `S3 Supported API <https://github.com/Seagate/cortx-s3server/blob/main/docs/s3-supported-api.md>`__.
+**Note:** For more information on CORTX supported S3 APIs, see `S3 Supported API <https://github.com/Seagate/cortx-s3server/blob/main/docs/s3-supported-api.md>`.
