@@ -55,7 +55,9 @@ Procedure
 
        hctl status
 
-#. To perform the S3 IO operations, refer the instructions in `S3 IO operations <https://github.com/Seagate/cortx/blob/k8-ova-pi5/doc/ova/2.0.0/PI-5/s3_io_operations.md>`_.
+   **Note** Wait for 5 - 10 mins till the cluster services are started.
+ 
+#. To perform the S3 IO operations, refer the instructions in `S3 IO operations <https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-5/s3_io_operations.md>`_.
 
 #. BOOM. You're all done and you're AWESOME. 
 
