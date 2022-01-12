@@ -4,8 +4,8 @@ CORTX k8s OVA to Perform IO Operations
 
 ## Prerequisites
 
-1. RPM Packages, cortx-s3iamcli & cortx-s3iamcli-devel are installed.
-1. Python packages, awscli and awscli-plugin-endpoint are installed.
+1. RPM Packages, `cortx-s3iamcli` & `cortx-s3iamcli-devel` are installed.
+1. Python packages, `awscli` and `awscli-plugin-endpoint` are installed.
 1. Endpoints are configured via awscli configuration i.e. aws configure & can be verified by running, `cat /root/.aws/config`
 1. Import OVA on hypervisor i.e. VMware Workstation and wait for 5 to 10 mins during the booting stage till the login screen comes.
 
@@ -17,7 +17,7 @@ CORTX k8s OVA to Perform IO Operations
 kubectl get pods -o wide | grep cortx-data-pod
 ```
 
-- Edit /etc/hosts file and copy the IP of service data pod i.e. cortx-data-pod-cortx-ova-k8
+- Edit /etc/hosts file and copy the IP of service data pod i.e. `cortx-data-pod`
 
 - Add the following entry in the */etc/hosts* file:
 ```bash
@@ -31,7 +31,7 @@ cat /root/.aws/config
 
 - Create S3 account by running following command:
 ```bash
-s3iamcli CreateAccount -n C_QA -e cloud@seagate.com --ldapuser sgiamadmin --  ldappasswd ldapadmin --no-ss
+s3iamcli CreateAccount -n C_QA -e cloud@seagate.com --ldapuser sgiamadmin --ldappasswd ldapadmin --no-ss
 ```
 
 The above command will return the keys as per following example:
