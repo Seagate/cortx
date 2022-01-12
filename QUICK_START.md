@@ -6,7 +6,7 @@ This document provides quick access to several different ways to set up CORTX fo
     1. On a single node: [LINK](doc/ova/2.0.0/PI-4/CORTX_on_Open_Virtual_Appliance_PI-4.rst)
     1. On an AWS EC2 instance: [LINK](doc/integrations/AWS_EC2/README.md)
     1. Across a cluster: TODO
-1. Build entire CORTX into binaries: [LINK](doc/community-build/Building-CORTX-From-Source-for-SingleNode.md)
+1. Build entire CORTX into binaries: [LINK](./doc/community-build/docker/cortx-all/README.md)
     1. Run it on a single node: [LINK](https://github.com/Seagate/cortx-k8s/blob/stable/doc/cortx-aws-k8s-installation.md)
     1. Run it on a AWS: [LINK](https://github.com/Seagate/cortx-k8s/blob/stable/doc/cortx-aws-k8s-installation.md)
     
