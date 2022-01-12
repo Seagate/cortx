@@ -4,6 +4,8 @@ This document provides step-by-step instructions to build required binaries and 
 
 ## Prerequisites
 
+- Do not update OS or kernel package with yum update as the kernel version must be set to 3.10.0-1160.el7
+- Do not upgrade packages from CentOS 7.8 to CentOS 7.9
 - Docker >= 20.10.10 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
     ```
     [root@dev-system ~]# docker --version
@@ -14,8 +16,6 @@ This document provides step-by-step instructions to build required binaries and 
     [root@dev-system ~]# docker-compose --version
     docker-compose version 1.29.2, build 5becea4c
        ```
-- Do not update OS or kernel package with yum update as the kernel version must be set to 3.10.0-1160.el7
-- Do not upgrade packages from CentOS 7.8 to CentOS 7.9
 
 ## Compile and Build CORTX Stack from HEAD
 
@@ -42,32 +42,36 @@ This document provides step-by-step instructions to build required binaries and 
     docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
     ```
     
-3. Run the following command to build the CORTX packages
+3. Run the following command to build the CORTX packages.
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean cortx-all-image cortx-ha
    ```
-
-5. Run the following command to generate the ISO for each component:
+   **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` execution phase.
+ 
+4. Run the following command to generate the ISO for each component:
 
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make iso_generation
    ```
-6. Validate that Packages are generated at `/var/artifacts/0/` after the build step is complete. 
+5. To validate that Packages are generated, run the following command after the build step is complete:
+   ```
+   ll /var/artifacts/0 
+   ```
 
-4. (Optional) Compile and Build CORTX Stack as per Individual component
+6. (Optional) Compile and Build CORTX Stack as per Individual component.
 
-   Run to view each component targets:
+   Run the following command to view each component targets:
    ```
    docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
    ```
    
    [![cortx_stack_individual_component.png](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png")](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png") 
    
-6. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
+7. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
     ```
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
-7. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
+8. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
     ```
     git clone https://github.com/Seagate/cortx-re
     cd cortx-re/docker/cortx-deploy/
@@ -75,7 +79,7 @@ This document provides step-by-step instructions to build required binaries and 
     ```
     Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
 
-6. Run the below command to see recently generated cortx-all image details.
+9. Run the below command to see recently generated cortx-all image details.
     ```
     docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' cortx-all
     ```
