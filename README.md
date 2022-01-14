@@ -1,4 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1d7c921f809e424c9f3d2997d0e43d0a)](https://app.codacy.com/gh/Seagate/cortx?utm_source=github.com&utm_medium=referral&utm_content=Seagate/cortx&utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a3d60ecc5d8942c9a4b04bcf4b60bf20)](https://www.codacy.com/gh/Seagate/cortx/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seagate/cortx&amp;utm_campaign=Badge_Grade)
 [![ license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Seagate/cortx/blob/main/LICENSE)
 [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://cortx.link/join-slack)
 [![YouTube](https://img.shields.io/badge/Video-YouTube-red)](https://cortx.link/videos)
