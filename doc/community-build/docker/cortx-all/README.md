@@ -30,6 +30,7 @@ This document provides step-by-step instructions to build required binaries and 
      docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
      ```
 
+
 ## Procedure
 
 1. Run the following command to clone the CORTX repository:
