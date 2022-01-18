@@ -46,7 +46,7 @@ This document provides step-by-step instructions to build required binaries and 
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean cortx-all-image cortx-ha
    ```
-   **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` execution phase.
+   **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` implementation phase.
  
 4. Run the following command to generate the ISO for each component:
 
@@ -71,7 +71,7 @@ This document provides step-by-step instructions to build required binaries and 
     ```
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
-8. Once docker container is up and running execute the build.sh file where your cortx-all folder is located.
+8. Once docker container is up and running, run the build.sh file where your cortx-all folder is located.
     ```
     git clone https://github.com/Seagate/cortx-re
     cd cortx-re/docker/cortx-deploy/
