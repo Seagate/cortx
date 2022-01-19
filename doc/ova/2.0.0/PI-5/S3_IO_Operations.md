@@ -52,11 +52,6 @@ aws configure set s3api.endpoint_url http://s3.seagate.com
 cat /root/.aws/config
 ```
 
-- Run the following command to list the bucket:
-```bash
-aws s3 ls
-```
-
 - Create a S3 bucket by running,
 ```bash
 aws s3 mb s3://mybucket
