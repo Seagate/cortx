@@ -57,6 +57,11 @@ cat /root/.aws/config
 aws s3 mb s3://mybucket
 ```
 
+- Run the following command to list the bucket:
+```bash
+aws s3 ls
+```
+
 - Run the following command to create a new file to upload:
 ```bash
 dd if=/dev/zero of=file10MB bs=1M count=10
