@@ -3,7 +3,12 @@ CORTX S3 Sample Code - node.js
 
 Prerequisites
 ---------------------
-* node.js 13.0
+* npm, node.js 14.18.1 installation for CentOS 7.9
+```
+$ curl –sL https://rpm.nodesource.com/setup_14.x | sudo bash -
+$ sudo yum install –y nodejs
+```
+* aws-sdk installation
 ```
 $ npm install aws-sdk
 ```
@@ -11,6 +16,12 @@ $ npm install aws-sdk
 Full Script
 ---------------------
 Sample script name - [cortx-s3samplecode-node.js](cortx-s3samplecode-node.js)
+
+Run Script
+---------------------
+```
+$ node cortx-s3samplecode-node.js
+```
 
 Session  Setup
 ---------------------
@@ -98,4 +109,5 @@ Delete Bucket
 ```
 
 ### Tested By:
+* November 28, 2021: Bo Wei (bo.b.wei@seagate.com) using Node.js 14.18.1, CentOS 7.9.
 * August 2, 2021: Pete Brown (jpbrown@adhdtech.com) using Node.js 14.15.1
