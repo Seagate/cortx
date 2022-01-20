@@ -40,3 +40,6 @@
 [submodule "cortx-k8s"]
 	path = cortx-k8s
 	url = https://github.com/Seagate/cortx-k8s.git
+[submodule "cortx-rgw-integration"]
+	path = cortx-rgw-integration
+	url = https://github.com/Seagate/cortx-rgw-integration.git
