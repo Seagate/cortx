@@ -4,7 +4,7 @@ AWS CLI on the same VM
 You can install the AWS CLI on the CORTX OVA to perform IO operations.
 
 
-1. Ensure that all the prerequisites are satisfied. See [Prerequisites](https://github.com/Seagate/cortx/blob/hessio-patch-7/doc/IO_prereqs.md)
+1. Ensure that all the prerequisites are satisfied. See [Prerequisites](https://github.com/Seagate/cortx/blob/main/doc/IO_prereqs.md)
 
 1. Install and configure the AWS CLI Client. See [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html)
 
