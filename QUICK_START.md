@@ -1,5 +1,6 @@
  ## CORTX Quick Start Guide
  
+ 
 This document provides quick access to several different ways to set up CORTX for installation, testing, running, or deployment. CORTX is available in multiple formats, including as a pre-built virtual machine image - the easiest and fastest way to get CORTX up and running. Alternatively, CORTX can be built into a binary format from source code.  Finally, for those interested in running different configurations of CORTX, there are a variety of different options available. These include everything from the full installation to more slimmed down installations, such as configuring and running motr, the core object storage layer, on its own.  We have attempted to create easy-to-follow instructions for all of these installation/test methods which are organized below in order of difficulty.
  
  1. Download a CORTX virtual machine image to get up and running in minutes
