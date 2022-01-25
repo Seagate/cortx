@@ -1,11 +1,11 @@
-AWS CLI on the Windows Host 
-===========================
+AWS CLI on the Windows  
+=========================
 
 You can also create a different VM and install the AWS CLI on this VM as a client to perform IO operations.
 
 1. Ensure that all the prerequisites are satisfied. See [Prerequisites](https://github.com/Seagate/cortx/blob/main/doc/IO_prereqs.md)
 
-1. Add the following entry must be added in the C:\Windows\System32\drivers\etc\host.txt file of the Windows host :
+1. Add the following entry must be added in the C:\Windows\System32\drivers\etc\host.txt file of the Windows:
 
         <<Public Data IP>> s3.seagate.com sts.seagate.com iam.seagate.com sts.cloud.seagate.com
 
@@ -77,7 +77,7 @@ You can also create a different VM and install the AWS CLI on this VM as a clien
 
     4. Download same file from the bucket:
 
-            aws s3api get-object --bucket ova-bucket --key 1G /tmp/read-1G --endpoint-url https://s3.seagate.com
+            C:\Users\.aws>aws s3api get-object --bucket ova-bucket --key bigfile.out c:\Users\.aws\read-1G --endpoint-url https://s3.seagate.com
 
         ![Alt Text](https://github.com/Seagate/cortx/blob/main/doc/images/wins_aws-download.png)
 
