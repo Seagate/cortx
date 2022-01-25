@@ -77,7 +77,7 @@ You can also create a different VM and install the AWS CLI on this VM as a clien
 
     4. Download same file from the bucket:
 
-            aws s3api get-object --bucket ova-bucket --key 1G /tmp/read-1G --endpoint-url https://s3.seagate.com
+            C:\Users\.aws>aws s3api get-object --bucket ova-bucket --key bigfile.out .\read-1G --endpoint-url https://s3.seagate.com
 
         ![Alt Text](https://github.com/Seagate/cortx/blob/main/doc/images/wins_aws-download.png)
 
