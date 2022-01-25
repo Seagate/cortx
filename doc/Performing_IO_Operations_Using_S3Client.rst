@@ -12,4 +12,4 @@ For more information on:
 -  To use CyberDuck for IO operations, see `CyberDuck for IO Operations <https://github.com/Seagate/cortx/blob/main/doc/CyberDuckIO.md>`__.
 -  AWS CLI on the same OVA, see `AWS CLI on the CORTX OVA VM <https://github.com/Seagate/cortx/blob/main/doc/aws_cli_on_same_vm.md>`__.
 -  AWS CLI on the new VM, see `AWS CLI on a different VM <https://github.com/Seagate/cortx/blob/main/doc/aws_on_separate_vm.md>`__.
--  AWS CLI on Windows host, see `AWS CLI on Windows host <https://github.com/Seagate/cortx/blob/main/doc/aws_cli_on_windows_host.md>`__.
+-  AWS CLI on Windows host, see `AWS CLI on Windows host <https://github.com/Seagate/cortx/blob/main/doc/aws_cli_on_windows_mc.md>`__.
