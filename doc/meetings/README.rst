@@ -6,7 +6,9 @@ On the first Thursday of every month at GMT 1600, the CORTX Community hosts a 'M
 a CORTX architect, or community member, presents a presentation of interest for the community and
 in which time is left for a question and answer session.
 
-The Meet an Architect series are open to the public via this `Teams link <https://cortx.link/MTA-webinar>`_.  All meetings will be recorded and made available on this page afterwards. Audience members may also be interested in our `Motr Deep Dive training sessions <https://github.com/Seagate/cortx-motr/wiki/Motr-Deep-Dive-Sessions>`_.
+The Meet an Architect series are open to the public via this `Teams link <https://cortx.link/MTA-webinar>`_.  All meetings will be recorded and made available on this page afterwards. To add this to your calendar, please 'right-click' on `this link <https://raw.githubusercontent.com/Seagate/cortx/main/doc/meetings/CORTX%20Community%20'Meet%20an%20Architect'%20Series.ics>`_ to save the calendar invite to your computer and then open it with your calendar program.
+
+Audience members may also be interested in our `Motr Deep Dive training sessions <https://github.com/Seagate/cortx-motr/wiki/Motr-Deep-Dive-Sessions>`_.
 
 **Upcoming sessions:**
 
