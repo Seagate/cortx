@@ -14,7 +14,7 @@ Audience members may also be interested in our `Motr Deep Dive training sessions
 
 **Upcoming sessions:**
 
-#. Feb 3 2022: Anatoliy Bilenko and Sining Wu will discuss an exciting new development in the software layer used to connect motr to S3 clients.
+#. Feb 3 2022: Andriy Tkachuk and Sining Wu will discuss an exciting new development in the software layer used to connect motr to S3 clients.
 
 #. Mar 3 2022: Rick Osowski and Gregory Touretsky will present the 'Why' and the 'How' of the recent work to containerize CORTX.
 
