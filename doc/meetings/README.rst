@@ -6,10 +6,17 @@ On the first Thursday of every month at GMT 1600, the CORTX Community hosts a 'M
 a CORTX architect, or community member, presents a presentation of interest for the community and
 in which time is left for a question and answer session.
 
-Please `click here <https://cortx.link/CORTX-MTAs>`_ to see the event page (will be updated with the new Linkedin Event page).
+The Meet an Architect series are open to the public. You can subscribe via this `Calendar`_ invite. In addition, for those who cannot join us live, all meetings are recorded and made available on this page afterwards. 
 
-The Meet an Architect series are open to the public via this `Teams link <https://cortx.link/MTA-webinar>`_.  All meetings will be recorded and made available on this page afterwards. Audience members may also be interested in our `Motr Deep Dive training sessions <https://github.com/Seagate/cortx-motr/wiki/Motr-Deep-Dive-Sessions>`_.
+.. _Calendar: https://cortx.link/mma_invite
 
+Audience members may also be interested in our `Motr Deep Dive training sessions <https://github.com/Seagate/cortx-motr/wiki/Motr-Deep-Dive-Sessions>`_.
+
+**Upcoming sessions:**
+
+#. Feb 3 2022: Andriy Tkachuk and Sining Wu will discuss an exciting new development in the software layer used to connect motr to S3 clients.
+
+#. Mar 3 2022: Rick Osowski and Gregory Touretsky will present the 'Why' and the 'How' of the recent work to containerize CORTX.
 
 **Previously recorded sessions:**
 
