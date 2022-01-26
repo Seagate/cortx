@@ -1,7 +1,7 @@
 AWS CLI on the Windows  
 ======================
 
-You can also create a different VM and install the AWS CLI on this VM as a client to perform IO operations.
+You can also run AWS CLI on Windows machine. Install the AWS CLI for Windows as a client to perform IO operations.
 
 1. Ensure that all the prerequisites are satisfied. See [Prerequisites](https://github.com/Seagate/cortx/blob/main/doc/IO_prereqs.md)
 
@@ -37,7 +37,7 @@ You can also create a different VM and install the AWS CLI on this VM as a clien
 
             aws configure
 
-        ![Alt Text](https://github.com/Seagate/cortx/blob/main/doc/images/wins_aws-configure.png)
+        ![Alt Text](/doc/images/wins_aws-configure.png)
 
     2. Set the endpoint URL:
 
@@ -61,25 +61,25 @@ You can also create a different VM and install the AWS CLI on this VM as a clien
 
             aws s3 ls --endpoint-url=http://s3.seagate.com
 
-        ![Alt Text](https://github.com/Seagate/cortx/blob/main/doc/images/wins_verify-bkt.png)
+        ![Alt Text](/doc/images/wins_verify-bkt.png)
 
     2. Run the following command to create a new large file size 1GB to upload:
 
             fsutil file createnew bigfile.out 1000000000
 
-        ![Alt Text](https://github.com/Seagate/cortx/blob/main/doc/images/wins_create-file.png)
+        ![Alt Text](/doc/images/wins_create-file.png)
 
     3. Upload the file in the created bucket:
 
             C:\Users\.aws>aws s3 cp bigfile.out s3://ova-bucket --endpoint-url https://s3.seagate.com
 
-        ![Alt Text](https://github.com/Seagate/cortx/blob/main/doc/images/wins_upload.png)
+        ![Alt Text](/doc/images/wins_upload.png)
 
     4. Download same file from the bucket:
 
-            aws s3api get-object --bucket ova-bucket --key 1G /tmp/read-1G --endpoint-url https://s3.seagate.com
+            C:\Users\.aws>aws s3api get-object --bucket ova-bucket --key bigfile.out .\read-1G --endpoint-url https://s3.seagate.com
 
-        ![Alt Text](https://github.com/Seagate/cortx/blob/main/doc/images/wins_aws-download.png)
+        ![Alt Text](/doc/images/wins_aws-download.png)
 
         **Note:** For more information on CORTX supported S3 APIs, see [S3 Supported API](https://github.com/Seagate/cortx-s3server/blob/main/docs/s3-supported-api.md)
 
