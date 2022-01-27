@@ -15,7 +15,7 @@ This document provides step-by-step instructions to build required binaries and 
     ```
     [root@dev-system ~]# docker-compose --version
     docker-compose version 1.29.2, build 5becea4c
-       ```
+    ```
 
 ## Compile and Build CORTX Stack from HEAD
 
