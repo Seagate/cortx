@@ -103,5 +103,5 @@ This document provides step-by-step instructions to build required binaries and 
     cortx-all:2.0.0-0 2021-11-19 07:31:43 -0700 MST
     ```
 ### Tested by:
-
+- Jan 27 2022: Pranav Sahasrabudhe (pranav.p.sahasrabudhe@seagate.com) on a Mac laptop running VMWare Fusion 16 with CentOs 7.9.2009 VM
 - Nov 25 2021: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOs 7.9.2009
