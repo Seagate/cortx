@@ -124,3 +124,12 @@ Copying the file from local to remote (Usually rclone is used to copy from remot
 ```
 rclone copy /local_dir cortx:testbucket -vv --ignore-checksum --s3-v2-auth
 ```
+
+Copying the file from remote to local
+```
+rclone copy cortx:testbucket /local_dir -vv --ignore-checksum --s3-v2-auth
+```
+
+Tested by:
+
+- Jan 23, 2022: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
