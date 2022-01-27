@@ -84,4 +84,6 @@ Troubleshooting
 Tested by:
 
 - Jan 24, 2022: Amnuay Boottrakoat (amnuay.boottrakoat@seagate.com) on a Windows with VMWare Workstation 16 Player.
+- Jan 20, 2022: Pranav Sahasrabudhe (pranav.p.sahasrabudhe@seagate.com) on a Mac OS with VMWare Fusion 16.
+- Jan 20, 2022: Ashwini Borse (ashwini.borse@seagate.com) on a Windows with VMWare Workstation 16 Player.
 - Jan 03, 2022: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro.
