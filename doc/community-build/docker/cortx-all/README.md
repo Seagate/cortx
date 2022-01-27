@@ -80,8 +80,6 @@ This document provides step-by-step instructions to build required binaries and 
    docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
    ```
    
-   [![cortx_stack_individual_component.png](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png")](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png") 
-   
 7. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
     ```
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
