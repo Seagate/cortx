@@ -43,6 +43,20 @@ This document provides step-by-step instructions to build required binaries and 
     docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
     ```
     
+    [Optional] You can also checkout **2.0.0-585** from tag instead from **main** branch for generating CORTX packages. Use below command for checkout.
+    ```
+    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=2.0.0-585 > /dev/null 2>&1
+    ```
+     
+     - Then check from individual CORTX component repos:
+       
+       For example:
+
+       ```
+       cd /cortx/cortx-motr
+       git status
+       ```
+
 3. Run the following command to build the CORTX packages.
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean cortx-all-image cortx-ha
@@ -52,7 +66,7 @@ This document provides step-by-step instructions to build required binaries and 
 4. Run the following command to generate the ISO for each component:
 
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make iso_generation
+   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make iso-generation
    ```
 5. To validate that Packages are generated, run the following command after the build step is complete:
    ```
@@ -74,6 +88,7 @@ This document provides step-by-step instructions to build required binaries and 
     ```
 8. Once docker container is up and running, run the build.sh file where your cortx-all folder is located.
     ```
+    docker ps 
     git clone https://github.com/Seagate/cortx-re
     cd cortx-re/docker/cortx-deploy/
     ./build.sh -b http://$HOSTNAME  
@@ -92,4 +107,3 @@ This document provides step-by-step instructions to build required binaries and 
 ### Tested by:
 
 - Nov 25 2021: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOs 7.9.2009
-
