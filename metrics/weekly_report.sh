@@ -84,6 +84,15 @@ if [ $report == 1 ]; then
   echo "Doing report"
   ts=`date +%Y-%m-%d`
 
+  # create and send the partnership report
+  echo "Creating partnership review"
+  partnership_report=CORTX_Community_Partnerships_Review
+  ./mk_community_partnership_report.py 
+  ts=`date +%Y-%m-%d`
+  scp ${partnership_report}.pdf 535110@$server:/home/535110/public_html/latest
+  scp ${partnership_report}.pdf 535110@$server:/home/535110/public_html/community_partnerships/$partnership_report.$ts.pdf
+  echo "CORTX Partnership Review attached" | mail -s "$mail_verbose_prefix - Partnerships Status" -r $Email -a $partnership_report.pdf $Email 
+
   # mail activity reports
   for group in 'EU R&D' Innersource External Unknown
   do
@@ -111,7 +120,7 @@ if [ $report == 1 ]; then
   compare_report=CORTX_Metrics_Compare_Projects
   jupyter nbconvert --execute --to html $jupyter_args --output $compare_report $compare_report.ipynb
   scp_report $compare_report compare_projects
-
+  
   # mail the metrics as a CSV 
   tfile="/tmp/cortx_community_stats.$ts.csv"
   tfile2="/tmp/cortx_community_stats.$ts.txt"

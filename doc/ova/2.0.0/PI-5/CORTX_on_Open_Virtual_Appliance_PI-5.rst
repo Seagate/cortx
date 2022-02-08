@@ -49,6 +49,8 @@ Procedure
    ::
    
        sudo su -
+       
+   **Note** Wait for 5 - 10 mins till the cluster services are started.
    
 #. Run the following command to check the health of CORTX using hctl by running this command:
 
@@ -56,7 +58,6 @@ Procedure
 
        hctl status
 
-   **Note** Wait for 5 - 10 mins till the cluster services are started.
  
 #. To perform the S3 IO operations, refer the instructions in `S3 IO operations <https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-5/S3_IO_Operations.md>`_.
 
@@ -83,5 +84,8 @@ Troubleshooting
 
 Tested by:
 
+- Feb 01, 2022: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop with VMWare Workstation 16 pro. 
 - Jan 24, 2022: Amnuay Boottrakoat (amnuay.boottrakoat@seagate.com) on a Windows with VMWare Workstation 16 Player.
+- Jan 20, 2022: Pranav Sahasrabudhe (pranav.p.sahasrabudhe@seagate.com) on a Mac OS with VMWare Fusion 16.
+- Jan 20, 2022: Ashwini Borse (ashwini.borse@seagate.com) on a Windows with VMWare Workstation 16 Player.
 - Jan 03, 2022: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro.
