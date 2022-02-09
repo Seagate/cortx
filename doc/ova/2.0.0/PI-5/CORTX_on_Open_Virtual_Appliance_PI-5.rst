@@ -79,7 +79,15 @@ Troubleshooting
        kubectl logs <pod_name>
        kubectl taint nodes --all node-role.kubernetes.io/master-
 
+- To perform S3 IO using cyberduck or any s3 client outside the cluster. Get the `endpoint_url` using the steps below
+  
+  Get IP address of node using ``ip a l | grep ens`` ; this becomes your endpoint IP.
+  
+  Get port number value corresponding to **cortx-data-loadbal-svc-cortx-k8s-ova-02** pod using ``kubectl get svc`` command inside OVA K8s cluster; for HTTP request you can use the port next to 80:port and for HTTPS use the port next to 443:port
 
+  Combine the values above to get the endpoint_url:
+  
+    ``http://192.168.0.*:port number``
 
 
 Tested by:
