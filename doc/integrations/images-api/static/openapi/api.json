@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "CORTX Images",
-    "description": "This api will let you interact with images files stored on cortex server. The api will let you fetch and resize images to get the most out of your images",
+    "description": "This api will let you interact with images files stored on cortx server. The api will let you fetch and resize images to get the most out of your images",
     "contact": {
       "email": "me@niradler.com"
     },
