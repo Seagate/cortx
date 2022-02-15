@@ -74,4 +74,5 @@ def docs():
     return render_template('docs.html')
 
 
-app.run()
+if __name__ == '__main__':
+    app.run()

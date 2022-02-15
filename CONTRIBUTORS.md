@@ -195,6 +195,13 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 ## [Seagate/cortx-images](https://github.com/Seagate/cortx-images)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
 
+## [Seagate/cortx-k8s](https://github.com/Seagate/cortx-k8s)
+1. [Dan-Thanh Ton](https://github.com/danthanhton)         
+1. [John Fletcher](https://github.com/john-a-fletcher)
+1. [Keith Pine](https://github.com/keithpine) 
+1. [Rick Osowski](https://github.com/osowski)    
+1. [Walter Lopatka](https://github.com/walterlopatka) 
+
 ## [Seagate/cortx-management-portal](https://github.com/Seagate/cortx-management-portal)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
 1. [Jayshree More](https://github.com/JayshreeAmore)
