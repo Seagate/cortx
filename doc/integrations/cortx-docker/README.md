@@ -70,7 +70,7 @@ Step 4: Mount Cortx S3 bucket with goofys and start Docker Registry with the buc
 
 Step 1: From Docker development machine, build a simple docker image `hello` and push it to Docker Registry server. Replace `192.168.1.115` with your own Docker Registry server ip. If encounter "http: server gave HTTP response to HTTPS client" error, add your Docker Registry server ip to docker development machine's daemon configuration json file under "insecure-registries" first. 
 
-Alternatively, if you test Docker development client on same machine as Docker Registry server, just replace `192.168.1.115` with `localhost`.
+Alternatively, if you test Docker development client on same machine as Docker Registry server, replace `192.168.1.115` with `localhost`.
 
     mkdir hello
     echo -e "# syntax=docker/dockerfile:1\nFROM scratch\nADD hello /\n" > Dockerfile
