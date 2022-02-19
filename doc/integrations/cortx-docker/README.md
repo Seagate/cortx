@@ -68,7 +68,7 @@ Step 4: Mount Cortx S3 bucket with goofys and start Docker Registry with the buc
 
 ###  Test the system 
 
-Step 1: From Docker development machine, build a simple docker image `hello` and push it to Docker Registry server. Replace `192.168.1.115` with your own Docker Registry server ip. If encounter "http: server gave HTTP response to HTTPS client" error, add your Docker Registry server ip to docker development machine's daemon configuration json file under "insecure-registries" first. 
+Step 1: From Docker development machine, build a test docker image `hello` and push it to Docker Registry server. Replace `192.168.1.115` with your own Docker Registry server ip. If encounter "http: server gave HTTP response to HTTPS client" error, add your Docker Registry server ip to docker development machine's daemon configuration json file under "insecure-registries" first. 
 
 Alternatively, if you test Docker development client on same machine as Docker Registry server, replace `192.168.1.115` with `localhost`.
 
@@ -82,7 +82,7 @@ Step 2: Check Cortx S3 bucket is now updated with the new docker image. You can 
 
     aws s3 --endpoint "http://192.168.1.91" ls s3://testbucket/docker/registry/v2/repositories/
 
-Step 3: From Docker deployment machine, pull docker image from Docker Registry server. Then you can start to use the donwnloaded docker image as usual.
+Step 3: From Docker deployment machine, pull docker image from Docker Registry server. Then you can start to use the downloaded docker image as usual.
 
     C:\tmp>docker pull 192.168.1.115:5000/hello                                                                             
     Using default tag: latest                                                                                               
