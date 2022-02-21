@@ -87,7 +87,7 @@ Troubleshooting
 
   - Combine the values above to get the endpoint_url:
   
-    ``http://192.168.0.*:port number``
+    ``http://<IPaddress_Address>:<port_number>``
 
 
 Tested by:
