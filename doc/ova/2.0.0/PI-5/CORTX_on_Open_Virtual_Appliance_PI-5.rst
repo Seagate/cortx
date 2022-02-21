@@ -87,8 +87,11 @@ Troubleshooting
 
   - Combine the values above to get the endpoint_url:
   
-    ``http://<IPaddress_Address>:<port_number>``
-
+    ``http://<IPaddress_Address>:<port_number>`` 80:32594
+    
+    ``https://<IPaddress_Address>:<port_number>`` 443:30524
+    
+    - For example; ``http://192.168.100.110:32594``
 
 Tested by:
 
