@@ -11,7 +11,7 @@ This document provides quick access to several different ways to set up CORTX fo
     1. Run it on a single node: [LINK](https://github.com/Seagate/cortx-k8s/blob/main/doc/cortx-aws-k8s-installation.md)        
 1. Build just the block storage layer (motr) from the source: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
     1. Run it on a single node: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
-    1. Run it across a cluster: [LINK](https://github.com/Seagate/cortx-motr/wiki/Build-Motr-from-Source-in-a-Cluster)
+    1. Run it across a cluster: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Running_Motr_Across_a_Cluster.md)
 1. Use a pre-built virtual machine to quickly test the block storage layer (motr)
     1. Run it on a single node: [LINK](https://github.com/Seagate/cortx-motr/releases/tag/ova-centos79)
 
