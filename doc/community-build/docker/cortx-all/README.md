@@ -85,13 +85,19 @@ This document provides step-by-step instructions to build required binaries and 
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
 
-8. We need to change docker compose file and add below entra_hosts for all the services like below. You can use below command to change it but verify your docker compose before run #9 step.
+8. We need to change docker compose file and add below extra_hosts for all the services like below. 
     ```
     extra_hosts:
       yourhostname: ipaddress_of_server
+    ```
+    You can use below command to change it but verify your docker compose before run #9 step.
 
+    ```
     sed -i "/^[[:space:]].*TAG/a\    extra_hosts:\n      - $HOSTNAME: $(hostname -I | cut -d' ' -f1)" docker/cortx-deploy/docker-compose.yml
+    ```
+    `extra_hosts` entry should be added like below.
 
+    ```
     e.g.  
     cortx-all:
     image: cortx-all:$TAG
