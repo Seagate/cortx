@@ -84,7 +84,25 @@ This document provides step-by-step instructions to build required binaries and 
     ```
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
-8. Once docker container is up and running, run the build.sh file where your cortx-all folder is located.
+
+8. We need to change docker compose file and add below entra_hosts for all the services like below. You can use below command to change it but verify your docker compose before run #9 step.
+    ```
+    extra_hosts:
+      yourhostname: ipaddress_of_server
+
+    sed -i "/^[[:space:]].*TAG/a\    extra_hosts:\n      - $HOSTNAME: $(hostname -I | cut -d' ' -f1)" docker/cortx-deploy/docker-compose.yml
+
+    e.g.  
+    cortx-all:
+    image: cortx-all:$TAG
+    extra_hosts:
+      - myhost.example.com: 127.0.0.1
+    build:
+      context: ./
+      dockerfile: ./Dockerfile  
+    ```
+
+9. Once docker container is up and running, run the build.sh file where your cortx-all folder is located.
     ```
     docker ps 
     git clone https://github.com/Seagate/cortx-re
@@ -93,7 +111,7 @@ This document provides step-by-step instructions to build required binaries and 
     ```
     Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
 
-9. Run the below command to see recently generated cortx-all image details.
+10. Run the below command to see recently generated cortx-all image details.
     ```
     docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' cortx-all
     ```
