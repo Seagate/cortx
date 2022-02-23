@@ -94,7 +94,7 @@ Troubleshooting
     - For example; ``http://192.168.100.110:32594``
 
 Tested by:
-
+- Feb 11, 2022: Justin Woo (justin.woo@seagate.com) on a Windows laptop with VMWare Workstation 16 pro. 
 - Feb 01, 2022: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop with VMWare Workstation 16 pro. 
 - Jan 24, 2022: Amnuay Boottrakoat (amnuay.boottrakoat@seagate.com) on a Windows with VMWare Workstation 16 Player.
 - Jan 20, 2022: Pranav Sahasrabudhe (pranav.p.sahasrabudhe@seagate.com) on a Mac OS with VMWare Fusion 16.
