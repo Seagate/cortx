@@ -86,9 +86,7 @@ Step 3: From Docker deployment machine, pull docker image from Docker Registry s
 
     C:\tmp>docker pull 192.168.1.115:5000/hello                                                                             
     Using default tag: latest                                                                                               
-    latest: Pulling from hello                                                                                              
-    2db29710123e: Pull complete                                                                                             
-    Digest: sha256:f54a58bc1aac5ea1a25d796ae155dc228b3f0e11d046ae276b39c4bf2f13d8c4                                         
+    latest: Pulling from hello                                                                                                                              
     Status: Downloaded newer image for 192.168.1.115:5000/hello:latest                                                      
     192.168.1.115:5000/hello:latest 
 
