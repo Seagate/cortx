@@ -13,21 +13,21 @@ The Meet an Architect series are open to the public. You can subscribe via this 
 Audience members may also be interested in our `Motr Deep Dive training sessions <https://github.com/Seagate/cortx-motr/wiki/Motr-Deep-Dive-Sessions>`_.
 
 **Upcoming sessions:**
-
+#. Apr 12 2022: MTA date change! Topic TBD.
 #. Mar 3 2022: Rick Osowski and Gregory Touretsky will present the 'Why' and the 'How' of the recent work to containerize CORTX. 
 
 
 **Previously recorded sessions:**
 
-#. Feb 3 2022: Andriy Tkachuk and Sining Wu will discussed an exciting new development in the software layer used to connect motr to S3 clients. `PDF <doc/meetings/PDFs/RGW_MOTR.pdf>`_  | `Video <https://youtu.be/j29UxJmVqw0>`_.
+#. Feb 3 2022: Andriy Tkachuk and Sining Wu will discussed an exciting new development in the software layer used to connect motr to S3 clients. `PDF <PDFs/RGW_MOTR.pdf>`_  | `Video <https://youtu.be/j29UxJmVqw0>`_.
 
-#. December 2 2021: Tim Shaffer discussed asynchronous S3 replication. Asynchronous S3 replication uses CORTX’s FDMI capabilities to replicate data between S3 buckets and clusters. `PDF <doc/meetings/PDFs/mma_multisite.pdf>`_  | `Video <https://youtu.be/jGtmZbTuqJg>`_.
+#. December 2 2021: Tim Shaffer discussed asynchronous S3 replication. Asynchronous S3 replication uses CORTX’s FDMI capabilities to replicate data between S3 buckets and clusters. `PDF <PDFs/mma_multisite.pdf>`_  | `Video <https://youtu.be/jGtmZbTuqJg>`_.
 
-#. November 4 2021: Liana Valdes discussed an exciting new addition to the CORTX project. FDMI allows data scientists to subscribe to event notifications and then perform custom manipulations or analyses on newly created (or updated) data, and Liana covered this in the context of CORTX. `PDF <doc/meetings/PDFs/FDMI_MTA.pdf>`_  | `Video <https://www.youtube.com/watch?v=a44tA11WHgk&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=20>`_.
+#. November 4 2021: Liana Valdes discussed an exciting new addition to the CORTX project. FDMI allows data scientists to subscribe to event notifications and then perform custom manipulations or analyses on newly created (or updated) data, and Liana covered this in the context of CORTX. `PDF <PDFs/FDMI_MTA.pdf>`_  | `Video <https://www.youtube.com/watch?v=a44tA11WHgk&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=20>`_.
 
-#. October 7 2021: From CentOS to Rocky Linux and beyond, Gregory Kurtzer, CEO of CIQ, has been at the frontline of the intersection of enterprise and open source. In this session of Meet the Architect, he shares his perspective on how and when open source makes sense and talks about some of the exciting projects he and his team have been working on. `PDF <doc/meetings/PDFs/CORTX_ MTA_Rocky.pdf.pdf>`_  | `Video <https://www.youtube.com/watch?v=PNAcNOM-Z-8&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=19>`_.
+#. October 7 2021: From CentOS to Rocky Linux and beyond, Gregory Kurtzer, CEO of CIQ, has been at the frontline of the intersection of enterprise and open source. In this session of Meet the Architect, he shares his perspective on how and when open source makes sense and talks about some of the exciting projects he and his team have been working on. `PDF <PDFs/CORTX_ MTA_Rocky.pdf.pdf>`_  | `Video <https://www.youtube.com/watch?v=PNAcNOM-Z-8&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=19>`_.
 
-#. September 2 2021: In this presentation, CORTX architects Anatoliy Bilenko and Nikita Danilov will present the design and current implementation status of the distributed transaction mechanism at the heart of CORTX which is key to providing this resilience. `PDF <doc/meetings/PDFs/CORTX_DTM_execution.pdf>`_  | `Video <https://www.youtube.com/watch?v=ujyIsCt6bbM&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=18>`_.
+#. September 2 2021: In this presentation, CORTX architects Anatoliy Bilenko and Nikita Danilov will present the design and current implementation status of the distributed transaction mechanism at the heart of CORTX which is key to providing this resilience. `PDF <PDFs/CORTX_DTM_execution.pdf>`_  | `Video <https://www.youtube.com/watch?v=ujyIsCt6bbM&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=18>`_.
 
 #. August 5, 2021: John Bent describes the history of data protection and present a deep dive into declustered parity (a method of data protection that scales with the number of storage media).  `PDF <PDFs/Bent_CORTX_MMAA_Declustered.pdf>`_  | `Video <https://www.youtube.com/watch?v=Yefje2cv11g>`_.
 
