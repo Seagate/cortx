@@ -40,7 +40,7 @@ nbconvert==6.0.7
 nbformat==5.0.8
 nest-asyncio==1.4.3
 notebook==6.1.6
-numpy==1.19.5
+numpy==1.22.0rc1
 oauthlib==3.1.1
 packaging==20.8
 pandas==1.1.5
