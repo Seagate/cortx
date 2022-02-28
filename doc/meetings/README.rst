@@ -13,6 +13,7 @@ The Meet an Architect series are open to the public. You can subscribe via this 
 Audience members may also be interested in our `Motr Deep Dive training sessions <https://github.com/Seagate/cortx-motr/wiki/Motr-Deep-Dive-Sessions>`_.
 
 **Upcoming sessions:**
+
 #. Apr 12 2022: MTA date change! Topic TBD.
 #. Mar 3 2022: Rick Osowski and Gregory Touretsky will present the 'Why' and the 'How' of the recent work to containerize CORTX. 
 
