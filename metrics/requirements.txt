@@ -74,7 +74,7 @@ testpath==0.4.4
 tornado==6.1
 traitlets==4.3.3
 typing-extensions==3.7.4.3
-urllib3==1.26.2
+urllib3==1.26.5
 Wand==0.6.7
 wcwidth==0.2.5
 webencodings==0.5.1
