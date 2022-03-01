@@ -1,0 +1,7 @@
+*.pyc
+.ipynb_checkpoints
+.*.swp
+CORTX_Metrics_Graphs.html
+CORTX_Metrics_Topline_Report.html
+.vscode
+/.idea/

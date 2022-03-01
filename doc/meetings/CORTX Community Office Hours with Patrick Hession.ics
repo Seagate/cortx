@@ -1,0 +1,389 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 16.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:REQUEST
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VTIMEZONE
+TZID:Pacific Standard Time
+BEGIN:STANDARD
+DTSTART:16011104T020000
+RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=11
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:16010311T020000
+RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=3
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+ATTENDEE;CN="Patrick Hession";RSVP=TRUE:mailto:patrick.hession@seagate.com
+ATTENDEE;CN="Justin Woo";ROLE=OPT-PARTICIPANT;RSVP=TRUE:mailto:justin.woo@s
+	eagate.com
+CLASS:PUBLIC
+CREATED:20210203T174734Z
+DESCRIPTION:Do you have questions about CORTX or have issues you need resol
+	ved or you just want to talk to someone live? \n\n \n\nOur CORTX Developer
+	 Advocates Patrick Hession will be available during this time to answer an
+	y questions live that you may have.\n\n \n\n-- Do not delete or change any
+	 of the following text. -- \n\n \n\nWhen it's time\, join your Webex meeti
+	ng here. \n\n \n\n \n\nJoin meeting <https://seagate.webex.com/seagate/j.p
+	hp?MTID=m9aa1170361a0e9eeebf0d915048ae3f8> \n\n \n\nMore ways to join: \n\
+	n \n\nJoin from the meeting link \n\nhttps://seagate.webex.com/seagate/j.p
+	hp?MTID=m9aa1170361a0e9eeebf0d915048ae3f8 <https://seagate.webex.com/seaga
+	te/j.php?MTID=m9aa1170361a0e9eeebf0d915048ae3f8>  \n\n \n\n \n\nJoin by me
+	eting number \n\nMeeting number (access code): 135 043 9617\n\nMeeting pas
+	sword: dwBtYvcD635  \n\n \n\nTap to join from a mobile device (attendees o
+	nly)  \n8-844-1000\,\,1350439617## <tel:8-844-1000\,\,*01*1350439617%23%23
+	*01*>  SeaTel  \n+1-952-230-1270\,\,1350439617## <tel:%2B1-952-230-1270\,\
+	,*01*1350439617%23%23*01*>  US Toll  \n\nJoin by phone  \n8-844-1000 SeaTe
+	l  \n+1-952-230-1270 US Toll  \nGlobal call-in numbers <https://seagate.we
+	bex.com/seagate/globalcallin.php?MTID=m7488468e0fc9786e75b67edebde1ce99>  
+	 |  Toll-free calling restrictions <https://www.webex.com/pdf/tollfree_res
+	trictions.pdf>    \n  \nJoin from a video system or application\nDial 1350
+	439617@seagate.webex.com <sip:1350439617@seagate.webex.com>   \nYou can al
+	so dial 173.243.2.68 and enter your meeting number. \n\n \n\n \n\nJoin usi
+	ng Microsoft Lync or Microsoft Skype for Business\n\nDial 1350439617.seaga
+	te@lync.webex.com <sip:1350439617.seagate@lync.webex.com> \n\n \n\n \n\nIf
+	 you are a host\, click here <https://seagate.webex.com/seagate/j.php?MTID
+	=m25f589bba04993955a695502f181e92f>  to view host information.\n\n \n\n \n
+	\nNeed help? Go to https://help.webex.com <https://help.webex.com>  \n\n \
+	n\n \n\n \n\n
+DTEND;TZID="Pacific Standard Time":20210226T010000
+DTSTAMP:20210203T174622Z
+DTSTART;TZID="Pacific Standard Time":20210226T000000
+LAST-MODIFIED:20210203T174734Z
+ORGANIZER;CN="Justin Woo":mailto:justin.woo@seagate.com
+PRIORITY:5
+RRULE:FREQ=WEEKLY;COUNT=5;INTERVAL=4;BYDAY=FR;WKST=SU
+SEQUENCE:0
+SUMMARY;LANGUAGE=en-us:CORTX Community Office Hours with Patrick Hession
+TRANSP:OPAQUE
+UID:040000008200E00074C5B7101A82E008000000002069E8E610FAD601000000000000000
+	010000000EA2BD19D970511458CBF5472BD7C8F46
+X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml" 
+	xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-mic
+	rosoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/
+	12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=Generato
+	r content="Microsoft Word 15 (filtered medium)"><style><!--\n/* Font Defin
+	itions */\n@font-face\n	{font-family:"Cambria Math"\;\n	panose-1:2 4 5 3 5
+	 4 6 3 2 4\;}\n@font-face\n	{font-family:Calibri\;\n	panose-1:2 15 5 2 2 2
+	 4 3 2 4\;}\n/* Style Definitions */\np.MsoNormal\, li.MsoNormal\, div.Mso
+	Normal\n	{margin:0in\;\n	margin-bottom:.0001pt\;\n	font-size:11.0pt\;\n	fo
+	nt-family:"Calibri"\,sans-serif\;}\na:link\, span.MsoHyperlink\n	{mso-styl
+	e-priority:99\;\n	color:#0563C1\;\n	text-decoration:underline\;}\na:visite
+	d\, span.MsoHyperlinkFollowed\n	{mso-style-priority:99\;\n	color:#954F72\;
+	\n	text-decoration:underline\;}\np.MsoPlainText\, li.MsoPlainText\, div.Ms
+	oPlainText\n	{mso-style-priority:99\;\n	mso-style-link:"Plain Text Char"\;
+	\n	margin:0in\;\n	margin-bottom:.0001pt\;\n	font-size:11.0pt\;\n	font-fami
+	ly:"Calibri"\,sans-serif\;}\nspan.EmailStyle17\n	{mso-style-type:personal-
+	compose\;\n	font-family:"Calibri"\,sans-serif\;\n	color:windowtext\;}\nspa
+	n.PlainTextChar\n	{mso-style-name:"Plain Text Char"\;\n	mso-style-priority
+	:99\;\n	mso-style-link:"Plain Text"\;\n	font-family:"Calibri"\,sans-serif\
+	;}\n.MsoChpDefault\n	{mso-style-type:export-only\;\n	font-family:"Calibri"
+	\,sans-serif\;}\n@page WordSection1\n	{size:8.5in 11.0in\;\n	margin:1.0in 
+	1.0in 1.0in 1.0in\;}\ndiv.WordSection1\n	{page:WordSection1\;}\n--></style
+	><!--[if gte mso 9]><xml>\n<o:shapedefaults v:ext="edit" spidmax="1026" />
+	\n</xml><![endif]--><!--[if gte mso 9]><xml>\n<o:shapelayout v:ext="edit">
+	\n<o:idmap v:ext="edit" data="1" />\n</o:shapelayout></xml><![endif]--></h
+	ead><body lang=EN-US link="#0563C1" vlink="#954F72"><div class=WordSection
+	1><p class=MsoPlainText>Do you have questions about CORTX or have issues y
+	ou need resolved or you just want to talk to someone live? <o:p></o:p></p>
+	<p class=MsoPlainText><o:p>&nbsp\;</o:p></p><p class=MsoPlainText>Our CORT
+	X Developer Advocates Patrick Hession will be available during this time t
+	o answer any questions live that you may have.<o:p></o:p></p><p class=MsoN
+	ormal>&nbsp\;<o:p></o:p></p><table class=MsoNormalTable border=0 cellspaci
+	ng=0 cellpadding=0 align=left width="100%" style='width:100.0%\;background
+	:white'><tr><td style='padding:0in 15.0pt 0in 15.0pt'><p class=MsoNormal s
+	tyle='mso-element:frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap
+	:around\;mso-element-anchor-vertical:paragraph\;mso-element-anchor-horizon
+	tal:column\;mso-height-rule:exactly'><a name=WBX04348><span style='font-si
+	ze:10.5pt\;font-family:"Arial"\,sans-serif\;color:#A0A0A0'>-- Do not delet
+	e or change any of the following text. --</span></a><span style='mso-bookm
+	ark:WBX04348'> <o:p></o:p></span></p></td><span style='mso-bookmark:WBX043
+	48'></span></tr><tr style='height:.25in'><td style='padding:0in 15.0pt 0in
+	 15.0pt\;height:.25in'><p class=MsoNormal style='mso-element:frame\;mso-el
+	ement-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-element-anchor-ver
+	tical:paragraph\;mso-element-anchor-horizontal:column\;mso-height-rule:exa
+	ctly'><span style='mso-bookmark:WBX04348'><span style='font-family:"Arial"
+	\,sans-serif'>&nbsp\;<o:p></o:p></span></span></p></td><span style='mso-bo
+	okmark:WBX04348'></span></tr><tr><td style='padding:0in 15.0pt 0in 15.0pt'
+	><table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0><tr><td 
+	style='padding:0in 0in 0in 0in'><p class=MsoNormal style='line-height:16.5
+	pt\;mso-element:frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap:a
+	round\;mso-element-anchor-vertical:paragraph\;mso-element-anchor-horizonta
+	l:column\;mso-height-rule:exactly'><span style='mso-bookmark:WBX04348'><b>
+	<span style='font-size:12.0pt\;font-family:"Arial"\,sans-serif\;color:blac
+	k'>When it's time\, join your Webex meeting here. <o:p></o:p></span></b></
+	span></p></td><span style='mso-bookmark:WBX04348'></span></tr><tr style='h
+	eight:.25in'><td style='padding:0in 0in 0in 0in\;height:.25in'><p class=Ms
+	oNormal style='line-height:18.0pt\;mso-element:frame\;mso-element-frame-hs
+	pace:2.25pt\;mso-element-wrap:around\;mso-element-anchor-vertical:paragrap
+	h\;mso-element-anchor-horizontal:column\;mso-height-rule:exactly'><span st
+	yle='mso-bookmark:WBX04348'><span style='font-family:"Arial"\,sans-serif'>
+	&nbsp\;<o:p></o:p></span></span></p></td><span style='mso-bookmark:WBX0434
+	8'></span></tr></table><p class=MsoNormal style='mso-element:frame\;mso-el
+	ement-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-element-anchor-ver
+	tical:paragraph\;mso-element-anchor-horizontal:column\;mso-height-rule:exa
+	ctly'><span style='mso-bookmark:WBX04348'><span style='display:none'><o:p>
+	&nbsp\;</o:p></span></span></p><table class=MsoNormalTable border=0 cellsp
+	acing=0 cellpadding=0 width=0 style='width:0in\;width:auto!important'><tr>
+	<td style='padding:0in 0in 0in 0in\;width:auto!important'><table class=Mso
+	NormalTable border=1 cellspacing=0 cellpadding=0 width=0 style='width:0in\
+	;background:#00823B\;border:solid #00823B 1.0pt\;width:auto!important\;bor
+	der-radius:25px\;min-width:160px!important'><tr><td style='border:none\;pa
+	dding:7.5pt 27.0pt 7.5pt 27.0pt'><p class=MsoNormal align=center style='te
+	xt-align:center\;mso-element:frame\;mso-element-frame-hspace:2.25pt\;mso-e
+	lement-wrap:around\;mso-element-anchor-vertical:paragraph\;mso-element-anc
+	hor-horizontal:column\;mso-height-rule:exactly'><span style='mso-bookmark:
+	WBX04348'></span><a href="https://seagate.webex.com/seagate/j.php?MTID=m9a
+	a1170361a0e9eeebf0d915048ae3f8"><span style='mso-bookmark:WBX04348'><span 
+	style='font-size:15.0pt\;font-family:"Arial"\,sans-serif\;color:white\;tex
+	t-decoration:none'>Join meeting</span></span><span style='mso-bookmark:WBX
+	04348'></span></a><span style='mso-bookmark:WBX04348'><o:p></o:p></span></
+	p></td><span style='mso-bookmark:WBX04348'></span></tr></table><span style
+	='mso-bookmark:WBX04348'></span></td><span style='mso-bookmark:WBX04348'><
+	/span></tr><tr style='height:15.0pt'><td style='padding:0in 0in 0in 0in\;h
+	eight:15.0pt'><p class=MsoNormal style='line-height:15.0pt\;mso-element:fr
+	ame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-element
+	-anchor-vertical:paragraph\;mso-element-anchor-horizontal:column\;mso-heig
+	ht-rule:exactly'><span style='mso-bookmark:WBX04348'><span style='font-fam
+	ily:"Arial"\,sans-serif'>&nbsp\;<o:p></o:p></span></span></p></td><span st
+	yle='mso-bookmark:WBX04348'></span></tr><tr><td style='padding:0in 0in 0in
+	 0in'><p class=MsoNormal style='line-height:18.0pt\;mso-element:frame\;mso
+	-element-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-element-anchor-
+	vertical:paragraph\;mso-element-anchor-horizontal:column\;mso-height-rule:
+	exactly'><span style='mso-bookmark:WBX04348'><b><span style='font-size:10.
+	5pt\;font-family:"Arial"\,sans-serif\;color:black'>More ways to join: <o:p
+	></o:p></span></b></span></p></td><span style='mso-bookmark:WBX04348'></sp
+	an></tr><tr style='height:7.5pt'><td style='padding:0in 0in 0in 0in\;heigh
+	t:7.5pt'><p class=MsoNormal style='mso-line-height-alt:7.5pt\;mso-element:
+	frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-eleme
+	nt-anchor-vertical:paragraph\;mso-element-anchor-horizontal:column\;mso-he
+	ight-rule:exactly'><span style='mso-bookmark:WBX04348'>&nbsp\;</span><span
+	 style='mso-bookmark:WBX04348'><o:p></o:p></span></p></td><span style='mso
+	-bookmark:WBX04348'></span></tr><tr><td style='padding:0in 0in 0in 0in'><p
+	 class=MsoNormal style='line-height:18.0pt\;mso-element:frame\;mso-element
+	-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-element-anchor-vertical
+	:paragraph\;mso-element-anchor-horizontal:column\;mso-height-rule:exactly'
+	><span style='mso-bookmark:WBX04348'><b><span style='font-size:9.0pt\;font
+	-family:"Arial"\,sans-serif\;color:black'>Join from the meeting link <o:p>
+	</o:p></span></b></span></p></td><span style='mso-bookmark:WBX04348'></spa
+	n></tr><tr><td style='padding:0in 0in 0in 0in'><p class=MsoNormal style='m
+	so-element:frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap:around
+	\;mso-element-anchor-vertical:paragraph\;mso-element-anchor-horizontal:col
+	umn\;mso-height-rule:exactly'><span style='mso-bookmark:WBX04348'></span><
+	a href="https://seagate.webex.com/seagate/j.php?MTID=m9aa1170361a0e9eeebf0
+	d915048ae3f8"><span style='mso-bookmark:WBX04348'><span style='font-size:1
+	0.5pt\;font-family:"Arial"\,sans-serif\;color:#005E7D\;text-decoration:non
+	e'>https://seagate.webex.com/seagate/j.php?MTID=m9aa1170361a0e9eeebf0d9150
+	48ae3f8</span></span><span style='mso-bookmark:WBX04348'></span></a><span 
+	style='mso-bookmark:WBX04348'> </span><span style='mso-bookmark:WBX04348'>
+	<o:p></o:p></span></p></td><span style='mso-bookmark:WBX04348'></span></tr
+	><tr style='height:15.0pt'><td style='padding:0in 0in 0in 0in\;height:15.0
+	pt'><p class=MsoNormal style='line-height:15.0pt\;mso-element:frame\;mso-e
+	lement-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-element-anchor-ve
+	rtical:paragraph\;mso-element-anchor-horizontal:column\;mso-height-rule:ex
+	actly'><span style='mso-bookmark:WBX04348'><span style='font-family:"Arial
+	"\,sans-serif'>&nbsp\;<o:p></o:p></span></span></p></td><span style='mso-b
+	ookmark:WBX04348'></span></tr></table><p class=MsoNormal style='mso-elemen
+	t:frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-ele
+	ment-anchor-vertical:paragraph\;mso-element-anchor-horizontal:column\;mso-
+	height-rule:exactly'><span style='mso-bookmark:WBX04348'><span style='disp
+	lay:none'><o:p>&nbsp\;</o:p></span></span></p><table class=MsoNormalTable 
+	border=0 cellspacing=0 cellpadding=0 width=0 style='width:0in\;width:auto!
+	important'><tr><td style='padding:0in 0in 0in 0in'><p class=MsoNormal styl
+	e='line-height:18.0pt\;mso-element:frame\;mso-element-frame-hspace:2.25pt\
+	;mso-element-wrap:around\;mso-element-anchor-vertical:paragraph\;mso-eleme
+	nt-anchor-horizontal:column\;mso-height-rule:exactly'><span style='mso-boo
+	kmark:WBX04348'><b><span style='font-size:9.0pt\;font-family:"Arial"\,sans
+	-serif\;color:black'>Join by meeting number <o:p></o:p></span></b></span><
+	/p></td><span style='mso-bookmark:WBX04348'></span></tr><tr><td style='pad
+	ding:0in 0in 0in 0in'><p class=MsoNormal style='line-height:16.5pt\;mso-el
+	ement:frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap:around\;mso
+	-element-anchor-vertical:paragraph\;mso-element-anchor-horizontal:column\;
+	mso-height-rule:exactly'><span style='mso-bookmark:WBX04348'><span style='
+	font-size:10.5pt\;font-family:"Arial"\,sans-serif\;color:black'>Meeting nu
+	mber (access code): 135 043 9617<o:p></o:p></span></span></p></td><span st
+	yle='mso-bookmark:WBX04348'></span></tr><tr><td style='padding:0in 0in 0in
+	 0in'><p class=MsoNormal style='line-height:16.5pt\;mso-element:frame\;mso
+	-element-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-element-anchor-
+	vertical:paragraph\;mso-element-anchor-horizontal:column\;mso-height-rule:
+	exactly'><span style='mso-bookmark:WBX04348'><span style='font-size:10.5pt
+	\;font-family:"Arial"\,sans-serif\;color:black'>Meeting password: dwBtYvcD
+	635&nbsp\; <o:p></o:p></span></span></p></td><span style='mso-bookmark:WBX
+	04348'></span></tr><tr style='height:.25in'><td style='padding:0in 0in 0in
+	 0in\;height:.25in'><p class=MsoNormal style='line-height:18.0pt\;mso-elem
+	ent:frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-e
+	lement-anchor-vertical:paragraph\;mso-element-anchor-horizontal:column\;ms
+	o-height-rule:exactly'><span style='mso-bookmark:WBX04348'><span style='fo
+	nt-family:"Arial"\,sans-serif'>&nbsp\;<o:p></o:p></span></span></p></td><s
+	pan style='mso-bookmark:WBX04348'></span></tr></table><p class=MsoNormal s
+	tyle='mso-element:frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap
+	:around\;mso-element-anchor-vertical:paragraph\;mso-element-anchor-horizon
+	tal:column\;mso-height-rule:exactly'><span style='mso-bookmark:WBX04348'><
+	b><span style='font-size:9.0pt\;font-family:"Arial"\,sans-serif\;color:bla
+	ck'>Tap to join from a mobile device (attendees only)</span></b></span><sp
+	an style='mso-bookmark:WBX04348'><span style='font-family:"Arial"\,sans-se
+	rif'>&nbsp\; <br></span></span><span style='mso-bookmark:WBX04348'></span>
+	<a href="tel:8-844-1000\,\,*01*1350439617%23%23*01*"><span style='mso-book
+	mark:WBX04348'><span style='font-size:10.5pt\;font-family:"Arial"\,sans-se
+	rif\;color:#005E7D\;text-decoration:none'>8-844-1000\,\,1350439617##</span
+	></span><span style='mso-bookmark:WBX04348'></span></a><span style='mso-bo
+	okmark:WBX04348'><span style='font-size:10.5pt\;font-family:"Arial"\,sans-
+	serif\;color:#333333'>&nbsp\;SeaTel</span></span><span style='mso-bookmark
+	:WBX04348'><span style='font-family:"Arial"\,sans-serif'>&nbsp\; <br></spa
+	n></span><span style='mso-bookmark:WBX04348'></span><a href="tel:%2B1-952-
+	230-1270\,\,*01*1350439617%23%23*01*"><span style='mso-bookmark:WBX04348'>
+	<span style='font-size:10.5pt\;font-family:"Arial"\,sans-serif\;color:#005
+	E7D\;text-decoration:none'>+1-952-230-1270\,\,1350439617##</span></span><s
+	pan style='mso-bookmark:WBX04348'></span></a><span style='mso-bookmark:WBX
+	04348'><span style='font-size:10.5pt\;font-family:"Arial"\,sans-serif\;col
+	or:#333333'>&nbsp\;US Toll</span></span><span style='mso-bookmark:WBX04348
+	'><span style='font-family:"Arial"\,sans-serif'>&nbsp\; <br><br></span></s
+	pan><span style='mso-bookmark:WBX04348'><b><span style='font-size:9.0pt\;f
+	ont-family:"Arial"\,sans-serif\;color:black'>Join by phone</span></b></spa
+	n><span style='mso-bookmark:WBX04348'><span style='font-family:"Arial"\,sa
+	ns-serif'>&nbsp\; <br></span></span><span style='mso-bookmark:WBX04348'><s
+	pan style='font-size:10.5pt\;font-family:"Arial"\,sans-serif\;color:#33333
+	3'>8-844-1000&nbsp\;SeaTel</span></span><span style='mso-bookmark:WBX04348
+	'><span style='font-family:"Arial"\,sans-serif'>&nbsp\; <br></span></span>
+	<span style='mso-bookmark:WBX04348'><span style='font-size:10.5pt\;font-fa
+	mily:"Arial"\,sans-serif\;color:#333333'>+1-952-230-1270&nbsp\;US Toll</sp
+	an></span><span style='mso-bookmark:WBX04348'><span style='font-family:"Ar
+	ial"\,sans-serif'>&nbsp\; <br></span></span><a href="https://seagate.webex
+	.com/seagate/globalcallin.php?MTID=m7488468e0fc9786e75b67edebde1ce99"><spa
+	n style='mso-bookmark:WBX04348'><span style='font-size:10.5pt\;font-family
+	:"Arial"\,sans-serif\;color:#005E7D\;text-decoration:none'>Global call-in 
+	numbers</span></span><span style='mso-bookmark:WBX04348'></span></a><span 
+	style='mso-bookmark:WBX04348'><span style='font-family:"Arial"\,sans-serif
+	'>&nbsp\;&nbsp\;|&nbsp\;&nbsp\;</span></span><a href="https://www.webex.co
+	m/pdf/tollfree_restrictions.pdf"><span style='mso-bookmark:WBX04348'><span
+	 style='font-size:10.5pt\;font-family:"Arial"\,sans-serif\;color:#005E7D\;
+	text-decoration:none'>Toll-free calling restrictions</span></span><span st
+	yle='mso-bookmark:WBX04348'></span></a><span style='mso-bookmark:WBX04348'
+	><span style='font-family:"Arial"\,sans-serif'> &nbsp\; <br>&nbsp\; <br></
+	span></span><span style='mso-bookmark:WBX04348'><b><span style='font-size:
+	9.0pt\;font-family:"Arial"\,sans-serif\;color:black'>Join from a video sys
+	tem or application</span></b></span><span style='mso-bookmark:WBX04348'><s
+	pan style='font-family:"Arial"\,sans-serif'><br></span></span><span style=
+	'mso-bookmark:WBX04348'><span style='font-size:10.5pt\;font-family:"Arial"
+	\,sans-serif\;color:#333333'>Dial</span></span><span style='mso-bookmark:W
+	BX04348'><span style='font-family:"Arial"\,sans-serif'> </span></span><a h
+	ref="sip:1350439617@seagate.webex.com"><span style='mso-bookmark:WBX04348'
+	><span style='font-size:10.5pt\;font-family:"Arial"\,sans-serif\;color:#00
+	5E7D\;text-decoration:none'>1350439617@seagate.webex.com</span></span><spa
+	n style='mso-bookmark:WBX04348'></span></a><span style='mso-bookmark:WBX04
+	348'><span style='font-family:"Arial"\,sans-serif'>&nbsp\; <br></span></sp
+	an><span style='mso-bookmark:WBX04348'><span style='font-size:10.5pt\;font
+	-family:"Arial"\,sans-serif\;color:#333333'>You can also dial 173.243.2.68
+	 and enter your meeting number.</span></span><span style='mso-bookmark:WBX
+	04348'><span style='font-family:"Arial"\,sans-serif'> <o:p></o:p></span></
+	span></p><table class=MsoNormalTable border=0 cellpadding=0><tr style='hei
+	ght:3.75pt'><td style='padding:.75pt .75pt .75pt .75pt\;height:3.75pt'><p 
+	class=MsoNormal style='mso-line-height-alt:3.75pt\;mso-element:frame\;mso-
+	element-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-element-anchor-v
+	ertical:paragraph\;mso-element-anchor-horizontal:column\;mso-height-rule:e
+	xactly'><span style='mso-bookmark:WBX04348'>&nbsp\;</span><span style='mso
+	-bookmark:WBX04348'><o:p></o:p></span></p></td><span style='mso-bookmark:W
+	BX04348'></span></tr></table><p class=MsoNormal style='mso-element:frame\;
+	mso-element-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-element-anch
+	or-vertical:paragraph\;mso-element-anchor-horizontal:column\;mso-height-ru
+	le:exactly'><span style='mso-bookmark:WBX04348'><span style='font-family:"
+	Arial"\,sans-serif\;display:none'><o:p>&nbsp\;</o:p></span></span></p><tab
+	le class=MsoNormalTable border=0 cellpadding=0><tr><td style='padding:.75p
+	t .75pt .75pt .75pt'><p class=MsoNormal style='line-height:18.0pt\;mso-ele
+	ment:frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-
+	element-anchor-vertical:paragraph\;mso-element-anchor-horizontal:column\;m
+	so-height-rule:exactly'><span style='mso-bookmark:WBX04348'><b><span style
+	='font-size:9.0pt\;font-family:"Arial"\,sans-serif\;color:black'>Join usin
+	g Microsoft Lync or Microsoft Skype for Business<o:p></o:p></span></b></sp
+	an></p></td><span style='mso-bookmark:WBX04348'></span></tr><tr><td style=
+	'padding:.75pt .75pt .75pt .75pt'><p class=MsoNormal style='line-height:18
+	.0pt\;mso-element:frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap
+	:around\;mso-element-anchor-vertical:paragraph\;mso-element-anchor-horizon
+	tal:column\;mso-height-rule:exactly'><span style='mso-bookmark:WBX04348'><
+	span style='font-size:10.5pt\;font-family:"Arial"\,sans-serif\;color:#3333
+	33'>Dial </span></span><a href="sip:1350439617.seagate@lync.webex.com"><sp
+	an style='mso-bookmark:WBX04348'><span style='font-size:10.5pt\;font-famil
+	y:"Arial"\,sans-serif\;color:#005E7D\;text-decoration:none'>1350439617.sea
+	gate@lync.webex.com</span></span><span style='mso-bookmark:WBX04348'></spa
+	n></a><span style='mso-bookmark:WBX04348'><span style='font-size:10.5pt\;f
+	ont-family:"Arial"\,sans-serif\;color:#333333'><o:p></o:p></span></span></
+	p></td><span style='mso-bookmark:WBX04348'></span></tr></table><p class=Ms
+	oNormal style='mso-element:frame\;mso-element-frame-hspace:2.25pt\;mso-ele
+	ment-wrap:around\;mso-element-anchor-vertical:paragraph\;mso-element-ancho
+	r-horizontal:column\;mso-height-rule:exactly'><span style='mso-bookmark:WB
+	X04348'><span style='font-family:"Arial"\,sans-serif\;display:none'><o:p>&
+	nbsp\;</o:p></span></span></p><table class=MsoNormalTable border=0 cellspa
+	cing=0 cellpadding=0 width="100%" style='width:100.0%'><tr style='height:1
+	5.0pt'><td style='padding:0in 0in 0in 0in\;height:15.0pt'><p class=MsoNorm
+	al style='line-height:15.0pt\;mso-element:frame\;mso-element-frame-hspace:
+	2.25pt\;mso-element-wrap:around\;mso-element-anchor-vertical:paragraph\;ms
+	o-element-anchor-horizontal:column\;mso-height-rule:exactly'><span style='
+	mso-bookmark:WBX04348'>&nbsp\;</span><span style='mso-bookmark:WBX04348'><
+	o:p></o:p></span></p></td><span style='mso-bookmark:WBX04348'></span></tr>
+	<tr style='height:.25in'><td style='padding:0in 0in 0in 0in\;height:.25in'
+	><p class=MsoNormal style='line-height:18.0pt\;mso-element:frame\;mso-elem
+	ent-frame-hspace:2.25pt\;mso-element-wrap:around\;mso-element-anchor-verti
+	cal:paragraph\;mso-element-anchor-horizontal:column\;mso-height-rule:exact
+	ly'><span style='mso-bookmark:WBX04348'><span style='font-size:10.0pt\;fon
+	t-family:"Arial"\,sans-serif\;color:black'>If you are a host\, </span></sp
+	an><span style='mso-bookmark:WBX04348'></span><a href="https://seagate.web
+	ex.com/seagate/j.php?MTID=m25f589bba04993955a695502f181e92f"><span style='
+	mso-bookmark:WBX04348'><span style='font-size:10.0pt\;font-family:"Arial"\
+	,sans-serif\;color:#005E7D\;text-decoration:none'>click here</span></span>
+	<span style='mso-bookmark:WBX04348'></span></a><span style='mso-bookmark:W
+	BX04348'><span style='font-size:10.0pt\;font-family:"Arial"\,sans-serif\;c
+	olor:black'> to view host information.</span></span><span style='mso-bookm
+	ark:WBX04348'><span style='font-family:"Arial"\,sans-serif'><o:p></o:p></s
+	pan></span></p></td><span style='mso-bookmark:WBX04348'></span></tr></tabl
+	e><p class=MsoNormal style='mso-element:frame\;mso-element-frame-hspace:2.
+	25pt\;mso-element-wrap:around\;mso-element-anchor-vertical:paragraph\;mso-
+	element-anchor-horizontal:column\;mso-height-rule:exactly'><span style='ms
+	o-bookmark:WBX04348'><span style='font-family:"Arial"\,sans-serif\;display
+	:none'><o:p>&nbsp\;</o:p></span></span></p><table class=MsoNormalTable bor
+	der=0 cellspacing=0 cellpadding=0 width="100%" style='width:100.0%'><tr st
+	yle='height:15.0pt'><td style='padding:0in 0in 0in 0in\;height:15.0pt'><p 
+	class=MsoNormal style='mso-element:frame\;mso-element-frame-hspace:2.25pt\
+	;mso-element-wrap:around\;mso-element-anchor-vertical:paragraph\;mso-eleme
+	nt-anchor-horizontal:column\;mso-height-rule:exactly'><span style='mso-boo
+	kmark:WBX04348'><span style='font-family:"Arial"\,sans-serif'>&nbsp\;<o:p>
+	</o:p></span></span></p></td><span style='mso-bookmark:WBX04348'></span></
+	tr><tr><td style='padding:0in 0in 0in 0in'><p class=MsoNormal style='line-
+	height:18.0pt\;mso-element:frame\;mso-element-frame-hspace:2.25pt\;mso-ele
+	ment-wrap:around\;mso-element-anchor-vertical:paragraph\;mso-element-ancho
+	r-horizontal:column\;mso-height-rule:exactly'><span style='mso-bookmark:WB
+	X04348'><span style='font-size:10.5pt\;font-family:"Arial"\,sans-serif\;co
+	lor:black'>Need help? Go to </span></span><a href="https://help.webex.com"
+	><span style='mso-bookmark:WBX04348'><span style='font-size:10.5pt\;font-f
+	amily:"Arial"\,sans-serif\;color:#005E7D\;text-decoration:none'>https://he
+	lp.webex.com</span></span><span style='mso-bookmark:WBX04348'></span></a><
+	span style='mso-bookmark:WBX04348'><span style='font-size:10.5pt\;font-fam
+	ily:"Arial"\,sans-serif\;color:black'> <o:p></o:p></span></span></p></td><
+	span style='mso-bookmark:WBX04348'></span></tr><tr style='height:33.0pt'><
+	td style='padding:0in 0in 0in 0in\;height:33.0pt'><p class=MsoNormal style
+	='mso-element:frame\;mso-element-frame-hspace:2.25pt\;mso-element-wrap:aro
+	und\;mso-element-anchor-vertical:paragraph\;mso-element-anchor-horizontal:
+	column\;mso-height-rule:exactly'><span style='mso-bookmark:WBX04348'><span
+	 style='font-family:"Arial"\,sans-serif'>&nbsp\;<o:p></o:p></span></span><
+	/p></td><span style='mso-bookmark:WBX04348'></span></tr></table><span styl
+	e='mso-bookmark:WBX04348'></span></td><span style='mso-bookmark:WBX04348'>
+	</span></tr></table><span style='mso-bookmark:WBX04348'></span><p class=Ms
+	oNormal><o:p>&nbsp\;</o:p></p><p class=MsoNormal><o:p>&nbsp\;</o:p></p></d
+	iv></body></html>
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MS-OLK-APPTSEQTIME:20210203T174622Z
+X-MS-OLK-AUTOFILLLOCATION:TRUE
+X-MS-OLK-CONFTYPE:0
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR

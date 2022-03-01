@@ -1,0 +1,52 @@
+@startuml
+
+header Simple Object Upload\n By Ivan Tishchenko\n2019-11-12
+title Simple Object Upload
+
+participant "S3 Client" as client
+participant "S3 Server" as server
+participant "Motr\nKVS API" as kvs
+participant "Motr\nObject API" as object
+
+autoactivate on
+
+client -> server: PUT /bucket_name/object_name
+
+server -> kvs: get_keyval(global_bucket_index,\n key = "bucket_name")
+kvs --> server: value = account_id of bucket owner
+
+server -> kvs: get_keyval(global_bucket_md_index,\n key = "account_id/bucket_name")
+kvs --> server: value = bucket metadata JSON
+
+server -> kvs: get_keyval(BUCKET_nnn_obj_index,\n key = "object_name");
+note left
+   * Index OID for this index is stored
+      in bucket metadata JSON.
+   * This call checks if object is present.
+end note
+kvs --> server: not found
+
+server -> object: create_object
+object --> server: success (completed)
+
+loop until all data is written
+  server -> object: Write data (up to 512 blocks per op, 16k each)
+  note left
+    Each write is 512 blocks, size
+    of each block is 16k.  Except the
+    last write, which has only remaining
+    blocks (up to 512) and last block
+    up to 16k.
+  end note
+  object --> server: success (completed)
+end
+
+server -> kvs: put_keyval(BUCKET_nnn_obj_index,\n key = object_name, val = object_metadata)
+kvs --> server: success (completed)
+
+server -> kvs: sync_keyval
+kvs --> server: success (completed)
+
+server --> client: 200 OK
+
+@enduml
