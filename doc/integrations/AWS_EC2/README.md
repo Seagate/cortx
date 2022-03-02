@@ -91,7 +91,7 @@ Step 6: Run the bootstrap script and configure the CORTX server
 
 `sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh`
 
-- After this has been completed run the `s3-sanity-test` script to make sure that we can add and remoce s3 objects.
+- After this has been completed run the `s3-sanity-test` script to make sure that we can add and remove s3 objects.
 
 `sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1`
 
