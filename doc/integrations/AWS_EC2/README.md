@@ -34,7 +34,7 @@ Step 2: Create security group and subnets
 ------
 - Create a new security group by following [these instructions.](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#CreatingSecurityGroups) Name this Security Group something recognizable like CORTX SG.
 
-- Once created follow [these instructions](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#AddRemoveRules) to add the below inbound rules to the security group
+- Once created follow [these instructions](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#working-with-security-group-rules) to add the below inbound rules to the security group
 
 ![Inbound rules](images/securityGroups.png)
 
