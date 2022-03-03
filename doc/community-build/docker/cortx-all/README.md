@@ -124,7 +124,14 @@ This document provides step-by-step instructions to build required binaries and 
     docker ps 
     git clone https://github.com/Seagate/cortx-re
     cd cortx-re/docker/cortx-deploy/
+    ```
+    - Use below command to build cortx-all image using rocky linux:
+    ```
     ./build.sh -b http://$HOSTNAME -o rockylinux-8.4 -s all
+    ```
+    - Use below command to build cortx-all image using centos:
+    ```
+    ./build.sh -b http://$HOSTNAME -o centos-7.9.2009
     ```
     Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
 
