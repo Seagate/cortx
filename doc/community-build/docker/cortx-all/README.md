@@ -19,7 +19,7 @@ This document provides step-by-step instructions to build required binaries and 
 
 ## Compile and Build CORTX Stack from HEAD
 
-- Run the appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9. For example:
+- Run the appropriate tag as per OS required i.e. CentOS 7.8, CentOS 7.9 or rockylinux 8. For example:
 
    - For CentOS 7.8.2003:
      ```
@@ -29,7 +29,10 @@ This document provides step-by-step instructions to build required binaries and 
      ```
      docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
      ```
-
+   - For rockylinux 8.4:
+     ```
+     docker pull ghcr.io/seagate/cortx-build:rockylinux-8.4
+     ```
 
 ## Procedure
 
@@ -40,12 +43,12 @@ This document provides step-by-step instructions to build required binaries and 
     
 2.  Please Checkout **main** branch for generating CORTX packages. Use below command for checkout. 
     ```
-    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
+    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=main
     ```
     
     [Optional] You can also checkout **2.0.0-585** from tag instead from **main** branch for generating CORTX packages. Use below command for checkout.
     ```
-    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=2.0.0-585 > /dev/null 2>&1
+    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=2.0.0-585 > /dev/null 2>&1
     ```
      
      - Then check from individual CORTX component repos:
@@ -58,15 +61,23 @@ This document provides step-by-step instructions to build required binaries and 
        ```
 
 3. Run the following command to build the CORTX packages.
+  - For rocky linux use below command:
+   ```
+   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image cortx-ha
+   ```
+   
+  - For centos use below command:
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean cortx-all-image cortx-ha
    ```
+   
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` implementation phase.
+   
  
 4. Run the following command to generate the ISO for each component:
 
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make iso-generation
+   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make iso-generation
    ```
 5. To validate that Packages are generated, run the following command after the build step is complete:
    ```
@@ -77,7 +88,7 @@ This document provides step-by-step instructions to build required binaries and 
 
    Run the following command to view each component targets:
    ```
-   docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
+   docker run ghcr.io/seagate/cortx-build:rockylinux-8.4 make help
    ```
    
 7. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
@@ -113,7 +124,7 @@ This document provides step-by-step instructions to build required binaries and 
     docker ps 
     git clone https://github.com/Seagate/cortx-re
     cd cortx-re/docker/cortx-deploy/
-    ./build.sh -b http://$HOSTNAME  
+    ./build.sh -b http://$HOSTNAME -o rockylinux-8.4 -s all
     ```
     Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
 
