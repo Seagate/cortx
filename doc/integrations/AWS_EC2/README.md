@@ -81,7 +81,7 @@ Step 4: Boot up the EC2 instance and edit net .rules file to create stable names
    SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:7c:de:ea:8a:8d", NAME="ens33"
    SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:61:b7:69:e6:c9", NAME="ens34"
    ```
-   **DO NOT JUST COPY, the content should look similar to the above**
+   **DO NOT PLAINLY COPY, the content should look similar to the above**
 
    - Reboot your instance.
 
