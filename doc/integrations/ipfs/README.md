@@ -123,6 +123,6 @@ If encounter error "Error: datastore configuration ... does not match what is on
 {"mounts":[{"bucket":"<BUCKET NAME>","mountpoint":"/blocks","region":"us-east-1","rootDirectory":"<BUCKET SUBDIRECTORY>"}],"type":"mount"}
 ```
 
-#### Tested by:
+#### Tested by
 
-- Mar 06, 2022: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
+* Mar 06, 2022: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
