@@ -2,7 +2,7 @@
 
 ## CORTX Component Architecture
 
-![CORTX Components](https://user-images.githubusercontent.com/23244853/114573702-82d1f480-9c70-11eb-990c-8e3d8bddb256.jpg)
+![CORTX Components](/doc/images/CORTX_UML.png)
 
 ## Component Details
 
