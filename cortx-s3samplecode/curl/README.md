@@ -93,4 +93,5 @@ curl -X "DELETE" "https://(endpoint)/(bucket-name)/"
 ```
 
 ### Tested By:
-* shelar1423
+* Mar 7, 2022 :
+ Digvijay shelar (digvijayshelar@gmail.com)
