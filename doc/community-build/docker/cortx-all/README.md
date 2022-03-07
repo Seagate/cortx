@@ -16,10 +16,11 @@ This document provides step-by-step instructions to build required binaries and 
     [root@dev-system ~]# docker-compose --version
     docker-compose version 1.29.2, build 5becea4c
     ```
-
+    **Note:** Before install docker you should have docker home directory space should be 70GB (default docker home directory is /var/lib/docker) and /mnt drive space should be 30GB to run cortx build.
+    
 ## Compile and Build CORTX Stack from HEAD
 
-- Run the appropriate tag as per OS required i.e. CentOS 7.8 or CentOS 7.9. For example:
+- Run the appropriate tag as per OS required i.e. CentOS 7.8, CentOS 7.9 or rockylinux 8. For example:
 
    - For CentOS 7.8.2003:
      ```
@@ -29,23 +30,21 @@ This document provides step-by-step instructions to build required binaries and 
      ```
      docker pull ghcr.io/seagate/cortx-build:centos-7.9.2009
      ```
-
+   - For rockylinux 8.4:
+     ```
+     docker pull ghcr.io/seagate/cortx-build:rockylinux-8.4
+     ```
 
 ## Procedure
 
 1. Run the following command to clone the CORTX repository:
     ```
-    cd /root && git clone https://github.com/Seagate/cortx --recursive --depth=1
+    cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1
     ```
     
 2.  Please Checkout **main** branch for generating CORTX packages. Use below command for checkout. 
     ```
-    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
-    ```
-    
-    [Optional] You can also checkout **2.0.0-585** from tag instead from **main** branch for generating CORTX packages. Use below command for checkout.
-    ```
-    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=2.0.0-585 > /dev/null 2>&1
+    docker run --rm -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=main
     ```
      
      - Then check from individual CORTX component repos:
@@ -53,45 +52,49 @@ This document provides step-by-step instructions to build required binaries and 
        For example:
 
        ```
-       cd cortx/cortx-motr
+       cd /mnt/cortx/cortx-motr
        git status
        ```
 
 3. Run the following command to build the CORTX packages.
+  - For rocky linux use below command:
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean cortx-all-image cortx-ha
+   docker run --rm -v /var/artifacts:/var/artifacts -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image cortx-ha
    ```
+   
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` implementation phase.
- 
-4. Run the following command to generate the ISO for each component:
-
-   ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make iso-generation
-   ```
-5. To validate that Packages are generated, run the following command after the build step is complete:
+   
+4. To validate that Packages are generated, run the following command after the build step is complete:
    ```
    ll /var/artifacts/0 
    ```
 
-6. (Optional) Compile and Build CORTX Stack as per Individual component.
+5. (Optional) Compile and Build CORTX Stack as per Individual component.
 
    Run the following command to view each component targets:
    ```
-   docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
+   docker run ghcr.io/seagate/cortx-build:rockylinux-8.4 make help
    ```
    
-7. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
+6. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
+
     ```
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
 
-8. We need to change docker compose file and add below entra_hosts for all the services like below. You can use below command to change it but verify your docker compose before run #9 step.
+7. We need to change docker compose file and add below extra_hosts for all the services like below. 
     ```
     extra_hosts:
       yourhostname: ipaddress_of_server
+    ```
+    You can use below command to change it but verify your docker compose before run #9 step.
 
+    ```
     sed -i "/^[[:space:]].*TAG/a\    extra_hosts:\n      - $HOSTNAME: $(hostname -I | cut -d' ' -f1)" docker/cortx-deploy/docker-compose.yml
+    ```
+    `extra_hosts` entry should be added like below.
 
+    ```
     e.g.  
     cortx-all:
     image: cortx-all:$TAG
@@ -102,23 +105,32 @@ This document provides step-by-step instructions to build required binaries and 
       dockerfile: ./Dockerfile  
     ```
 
-9. Once docker container is up and running, run the build.sh file where your cortx-all folder is located.
+8. Once docker container is up and running, run the build.sh file where your cortx-all folder is located.
     ```
     docker ps 
     git clone https://github.com/Seagate/cortx-re
     cd cortx-re/docker/cortx-deploy/
-    ./build.sh -b http://$HOSTNAME  
+    ```
+    - Use below command to build cortx-all image using rocky linux:
+    ```
+    ./build.sh -b http://$HOSTNAME -o rockylinux-8.4 -s all
+    ```
+    - Use below command to build cortx-all image using centos:
+    ```
+    ./build.sh -b http://$HOSTNAME -o centos-7.9.2009
     ```
     Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
 
-10. Run the below command to see recently generated cortx-all image details.
+9. Run the below command to see recently generated cortx-all image details.
     ```
-    docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' cortx-all
+    docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}'|grep cortx|grep -v cortx-build
     ```
     **Example output** 
     ```
-    [root@dev-system ~]# docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' cortx-all
-    cortx-all:2.0.0-0 2021-11-19 07:31:43 -0700 MST
+    [root@dev-system ~]# docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}'|grep cortx|grep -v cortx-build
+    cortx-data:2.0.0-0 2022-03-02 07:32:02 -0700 MST
+    cortx-rgw:2.0.0-0 2022-03-02 07:31:31 -0700 MST
+    cortx-all:2.0.0-0 2022-03-02 07:31:23 -0700 MST
     ```
 ### Tested by:
 - Feb 08 2022: Amnuay Boottrakoat (amnuay.boottrakoat@seagate.com) on a Windows running VMWare Workstation 16 Player with CentOs 7.9.2009
