@@ -40,7 +40,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 
 .. |ftp| image:: ./cortx-ftp/image/ftp_integration_architecture.jpg
-   :target: ftp
+   :target: cortx-ftp
 
 .. |laravel| image:: https://github.com/Seagate/cortx/blob/main/doc/integrations/laravel/1200px-Laravel.svg.png?raw=true
    :target: laravel

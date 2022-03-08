@@ -91,7 +91,7 @@ if [ $report == 1 ]; then
   ts=`date +%Y-%m-%d`
   scp ${partnership_report}.pdf 535110@$server:/home/535110/public_html/latest
   scp ${partnership_report}.pdf 535110@$server:/home/535110/public_html/community_partnerships/$partnership_report.$ts.pdf
-  echo "CORTX Partnership Review attached" | mail -s "$mail_verbose_prefix - Partnerships Status" -r $Email -a $partnership_report.pdf $Email 
+  echo "CORTX Partnership Review attached" | mail -s "CORTX Partnerships - Please Update Status (see attached)" -r $Email -a $partnership_report.pdf $Email 
 
   # mail activity reports
   for group in 'EU R&D' Innersource External Unknown

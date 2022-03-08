@@ -39,8 +39,11 @@ def get_pdf(title,pid=None):
 def main():
 
   pdf_writer = PyPDF2.PdfFileWriter()
+  page = get_pdf('CORTX Community Partnerships Overview')
+  pdf_writer.addPage(page)
   page = get_pdf('CORTX Community Project Roadmap')
   pdf_writer.addPage(page)
+
 
   parent=get_confluence_pid('Projects')
   children=conf.get_page_child_by_type(parent, type='page', start=None, limit=None)
