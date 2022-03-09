@@ -1,4 +1,4 @@
-# Generate CORTX container image
+# Generate CORTX container images
 
 This document provides step-by-step instructions to build required binaries and generate the CORTX-ALL container image.
 
