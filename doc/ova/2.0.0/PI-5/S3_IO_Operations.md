@@ -4,7 +4,7 @@ CORTX OVA: Performing S3 IO Operations
 
 ## Prerequisites
 
-1. Necessary packages are already install
+1. Necessary packages are already installed.
 1. Import OVA on hypervisor i.e. VMware Workstation and wait for 5 to 10 mins during the booting stage till the login screen comes.
 
 
@@ -52,7 +52,7 @@ aws configure set s3api.endpoint_url http://s3.seagate.com
 cat /root/.aws/config
 ```
 
-- Create a S3 bucket by running,
+- Create a S3 bucket by running:
 ```bash
 aws s3 mb s3://mybucket
 ```
