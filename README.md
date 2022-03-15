@@ -50,7 +50,7 @@ We are excited about your interest in CORTX and hope you will join us. We take o
 - Jump into our [Contribution Guide](CONTRIBUTING.md) to build and test CORTX and to learn about how to make contributions.
    - Refer to our [Suggested Contributions](../main/doc/SuggestedContributions.md) page for some inspiration about how to contribute to the CORTX project.
 - Please be aware that CORTX Community is not intended for production usage.  Please refer to our [terms and conditions](terms_and_conditions.md) for more details.
-- Read about all the different [components](https://github.com/hessio/cortx/blob/patch-11/doc/Components.md) that combine together to make CORTX
+- Read about all the different [components](/doc/Components.md) that combine together to make CORTX
 
 Resources
 ---------
