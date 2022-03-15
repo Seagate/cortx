@@ -106,6 +106,7 @@ This document provides step-by-step instructions to build required binaries and 
     ```
 
 8. Once docker container is up and running, run the build.sh file where your cortx-all folder is located.
+
     ```
     docker ps 
     git clone https://github.com/Seagate/cortx-re
