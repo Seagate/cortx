@@ -7,7 +7,7 @@ This document provides quick access to several different ways to set up CORTX fo
     1. On an AWS EC2 instance: [LINK](doc/integrations/AWS_EC2/README.md)
     1. Across a cluster: TODO 
 1. Run CORTX on Kubernetes: [LINK](https://github.com/Seagate/cortx-k8s/blob/integration/README.md)
-    1. Run CORTX on Kubernetes using Amazon Web Services: [LINK](https://github.com/Seagate/cortx-k8s/blob/main/doc/cortx-aws-k8s-installation.md)
+    1. Run CORTX on Kubernetes using Amazon Web Services: [LINK](https://github.com/Seagate/cortx-k8s/blob/integration/doc/cortx-aws-k8s-installation.md)
 1. Build entire CORTX into binaries: [LINK](./doc/community-build/docker/cortx-all/README.md)
 1. Build just the block storage layer (motr) from the source: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
     1. Run motr on a single node: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
