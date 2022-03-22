@@ -82,7 +82,7 @@ This document provides step-by-step instructions to build required binaries and 
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
 
-7. Once docker container is up and running, We need to clone another cortx repo use below command for same.
+7. Once docker container is up and running, We need to clone cortx repo use below commands for same.
 
     ```
     docker ps 
