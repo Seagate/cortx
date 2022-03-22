@@ -82,15 +82,23 @@ This document provides step-by-step instructions to build required binaries and 
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
 
-7. We need to change docker compose file and add below extra_hosts for all the services like below. 
-    ```
-    extra_hosts:
-      yourhostname: ipaddress_of_server
-    ```
-    You can use below command to change it but verify your docker compose before run #9 step.
+7. Once docker container is up and running, We need to clone another cortx repo use below command for same.
 
     ```
-    sed -i "/^[[:space:]].*TAG/a\    extra_hosts:\n      - $HOSTNAME: $(hostname -I | cut -d' ' -f1)" docker/cortx-deploy/docker-compose.yml
+    docker ps 
+    git clone https://github.com/Seagate/cortx-re
+    cd cortx-re/docker/cortx-deploy/
+    ```
+
+    - If you run build.sh by $HOSTNAME then here we need change docker-compose.yml and add below extra_hosts in that docker compose for all the services like below.
+    ```
+    extra_hosts:
+      - "yourhostname: ipaddress_of_server"
+    ```
+    - You can use below command to change it but verify your docker compose before run 8 step.
+
+    ```
+    sed -i "/^[[:space:]].*TAG/a\    extra_hosts:\n      - \"$HOSTNAME: $(hostname -I | cut -d' ' -f1)"\" docker/cortx-deploy/docker-compose.yml
     ```
     `extra_hosts` entry should be added like below.
 
@@ -99,19 +107,14 @@ This document provides step-by-step instructions to build required binaries and 
     cortx-all:
     image: cortx-all:$TAG
     extra_hosts:
-      - myhost.example.com: 127.0.0.1
+      - "myhost.example.com: 127.0.0.1"
     build:
       context: ./
       dockerfile: ./Dockerfile  
     ```
 
-8. Once docker container is up and running, run the build.sh file where your cortx-all folder is located.
+8. After verifying docker compose then run the build.sh file where your cortx-all folder is located.
 
-    ```
-    docker ps 
-    git clone https://github.com/Seagate/cortx-re
-    cd cortx-re/docker/cortx-deploy/
-    ```
     - Use below command to build cortx-all image using rocky linux:
     ```
     ./build.sh -b http://$HOSTNAME -o rockylinux-8.4 -s all
