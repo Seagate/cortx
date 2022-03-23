@@ -40,6 +40,7 @@ This document provides step-by-step instructions to build required binaries and 
 1. Run the following command to clone the CORTX repository:
     ```
     cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1
+    cd /mnt/cortx && git clone https://github.com/Seagate/cortx-rgw
     ```
     
 2.  Please Checkout **main** branch for generating CORTX packages. Use below command for checkout. 
@@ -82,12 +83,12 @@ This document provides step-by-step instructions to build required binaries and 
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
 
-7. Once docker container is up and running, We need to clone cortx repo use below commands for same.
+7. We need to clone cortx repo use below commands for same.
 
     ```
     docker ps 
-    git clone https://github.com/Seagate/cortx-re
-    cd cortx-re/docker/cortx-deploy/
+    curl -L google.com
+    git clone https://github.com/Seagate/cortx-re && cd cortx-re/docker/cortx-deploy/
     ```
 
     - If you run build.sh by $HOSTNAME then here we need change docker-compose.yml and add below extra_hosts in that docker compose for all the services like below.
@@ -132,9 +133,10 @@ This document provides step-by-step instructions to build required binaries and 
     **Example output** 
     ```
     [root@dev-system ~]# docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}'|grep cortx|grep -v cortx-build
-    cortx-data:2.0.0-0 2022-03-02 07:32:02 -0700 MST
-    cortx-rgw:2.0.0-0 2022-03-02 07:31:31 -0700 MST
-    cortx-all:2.0.0-0 2022-03-02 07:31:23 -0700 MST
+    cortx-data:2.0.0-0 2022-03-23 11:45:02 -0700 MST
+    cortx-rgw:2.0.0-0 2022-03-23 11:45:31 -0700 MST
+    cortx-all:2.0.0-0 2022-03-23 11:45:23 -0700 MST
+    cortx-control:2.0.0-0 2022-03-23 11:51:23 -0700 MST
     ```
 ### Tested by:
 - Feb 08 2022: Amnuay Boottrakoat (amnuay.boottrakoat@seagate.com) on a Windows running VMWare Workstation 16 Player with CentOs 7.9.2009
