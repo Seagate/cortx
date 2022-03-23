@@ -87,7 +87,7 @@ This document provides step-by-step instructions to build required binaries and 
 
     ```
     docker ps 
-    curl -L google.com
+    curl -L http://$HOSTNAME
     git clone https://github.com/Seagate/cortx-re && cd cortx-re/docker/cortx-deploy/
     ```
 
