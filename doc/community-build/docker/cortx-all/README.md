@@ -39,8 +39,7 @@ This document provides step-by-step instructions to build required binaries and 
 
 1. Run the following command to clone the CORTX repository:
     ```
-    cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1
-    cd /mnt/cortx && git clone https://github.com/Seagate/cortx-rgw
+    cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1 && cd /mnt/cortx && git clone https://github.com/Seagate/cortx-rgw
     ```
     
 2.  Please Checkout **main** branch for generating CORTX packages. Use below command for checkout. 
@@ -83,11 +82,11 @@ This document provides step-by-step instructions to build required binaries and 
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
 
-7. We need to clone cortx repo use below commands for same.
+7. We need to clone cortx repo, use below commands for same.
 
     ```
     docker ps 
-    curl -L http://$HOSTNAME
+    curl -L http://$HOSTNAME/RELEASE.INFO
     git clone https://github.com/Seagate/cortx-re && cd cortx-re/docker/cortx-deploy/
     ```
 
@@ -118,11 +117,11 @@ This document provides step-by-step instructions to build required binaries and 
 
     - Use below command to build cortx-all image using rocky linux:
     ```
-    ./build.sh -b http://$HOSTNAME -o rockylinux-8.4 -s all
+    ./build.sh -b http://$HOSTNAME -o rockylinux-8.4 -s all -e opensource-ci
     ```
     - Use below command to build cortx-all image using centos:
     ```
-    ./build.sh -b http://$HOSTNAME -o centos-7.9.2009
+    ./build.sh -b http://$HOSTNAME -o centos-7.9.2009 -e opensource-ci
     ```
     Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
 
@@ -139,6 +138,8 @@ This document provides step-by-step instructions to build required binaries and 
     cortx-control:2.0.0-0 2022-03-23 11:51:23 -0700 MST
     ```
 ### Tested by:
+- Mar 23 2022: Abhijit Patil (abhijit.patil@seagate.com) on a AWS EC2 instance with RockyLinux 8.5
+  On AWS EC2 we don't have rocky linux 8.4 AMI, so I decided to use RockyLinux 8.5 and then I follow above steps.
 - Feb 08 2022: Amnuay Boottrakoat (amnuay.boottrakoat@seagate.com) on a Windows running VMWare Workstation 16 Player with CentOs 7.9.2009
 - Jan 28 2022: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOs 7.9.2009
 - Jan 27 2022: Pranav Sahasrabudhe (pranav.p.sahasrabudhe@seagate.com) on a Mac laptop running VMWare Fusion 16 with CentOs 7.9.2009 VM
