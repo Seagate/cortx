@@ -17,5 +17,5 @@ echo $PYTHON
 for repo in `python3 -c "$PYTHON"`
 do
   echo $repo
-  curl -s -u "johnbent:$GH_OATH" -X PUT "https://api.github.com/orgs/Seagate/teams/$TEAM/repos/$repo" -d '{"permission":"triage"}'
+  curl -s -u "$GH_USER:$GH_OATH" -X PUT "https://api.github.com/orgs/Seagate/teams/$TEAM/repos/$repo" -d '{"permission":"triage"}'
 done

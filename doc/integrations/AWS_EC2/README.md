@@ -34,7 +34,7 @@ Step 2: Create security group and subnets
 ------
 - Create a new security group by following [these instructions.](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#CreatingSecurityGroups) Name this Security Group something recognizable like CORTX SG.
 
-- Once created follow [these instructions](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#AddRemoveRules) to add the below inbound rules to the security group
+- Once created follow [these instructions](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#working-with-security-group-rules) to add the below inbound rules to the security group
 
 ![Inbound rules](images/securityGroups.png)
 
@@ -56,23 +56,34 @@ Step 4: Boot up the EC2 instance and edit net .rules file to create stable names
  
  To [create stable names for network interfaces](http://www.linuxfromscratch.org/lfs/view/6.3/chapter07/network.html) on the EC2 instance we will need to edit the `70-persistent-net.rules` file located here `/etc/udev/rules.d`
  
- - You can edit the file using `vi` by running this command:
+- If you are using **default configuration of `c5.large` instance type**, you can run the following script:
+   ```sh
+   mgmt_mac=$(ip addr show ens5 | grep -oP '(?<=ether\s)[0-9a-z]{2}(:[0-9a-z]{2}){5}')
+   public_mac=$(ip addr show ens6 | grep -oP '(?<=ether\s)[0-9a-z]{2}(:[0-9a-z]{2}){5}')
+   private_mac=$(ip addr show ens7 | grep -oP '(?<=ether\s)[0-9a-z]{2}(:[0-9a-z]{2}){5}')
+   echo "SUBSYSTEM==\"net\", ACTION==\"add\", DRIVERS==\"?*\", ATTR{address}==\"$mgmt_mac\", NAME=\"ens32\"
+   SUBSYSTEM==\"net\", ACTION==\"add\", DRIVERS==\"?*\", ATTR{address}==\"$public_mac\", NAME=\"ens33\"
+   SUBSYSTEM==\"net\", ACTION==\"add\", DRIVERS==\"?*\", ATTR{address}==\"$private_mac\", NAME=\"ens34\"" > /etc/udev/rules.d/70-persistent-net.rules
+   ```
+
+ - Or you can edit the file **manually** using `vi` by running this command:
  
- `vi /etc/udev/rules.d/70-persistent-net.rules`
+   `vi /etc/udev/rules.d/70-persistent-net.rules`
 
-In the file you will add the value of each of the MAC addresses for the corresponding network interfaces to the right name.
+   In the file you will add the value of each of the MAC addresses for the corresponding network interfaces to the right name.
 
-Fill in the key for `ATTR{address}==` with the MAC address you want for each network interface.
 
-*Example:*
-```
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:6d:62:4e:41:e3", NAME="ens32"
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:7c:de:ea:8a:8d", NAME="ens33"
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:61:b7:69:e6:c9", NAME="ens34"
-```
-**Do NOT just copy this example, fill in the MAC adddress of YOUR network interfaces**
+   *Example:*
 
-- Reboot your instance.
+   Fill in the key for `ATTR{address}==` with the MAC address you want for each network interface.
+   ```
+   SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:6d:62:4e:41:e3", NAME="ens32"
+   SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:7c:de:ea:8a:8d", NAME="ens33"
+   SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="02:61:b7:69:e6:c9", NAME="ens34"
+   ```
+   **DO NOT MERELY COPY, the content should look similar to the above**
+
+   - Reboot your instance.
 
 Step 5: Create symbolic links between drives
 -------
@@ -91,7 +102,7 @@ Step 6: Run the bootstrap script and configure the CORTX server
 
 `sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh`
 
-- After this has been completed run the `s3-sanity-test` script to make sure that we can add and remoce s3 objects.
+- After this has been completed run the `s3-sanity-test` script to make sure that we can add and remove s3 objects.
 
 `sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1`
 
@@ -130,5 +141,6 @@ Once you have created the Windows Server you can remote desktop into the Windows
 
 ### Tested By:
 
+- Mar 3, 2022: Harrison Seow (harrison.seow@seagate.com) using OVA release 1.0.4.
 - Apr 29, 2021: Patrick Hession (patrick.hession@seagate.com) using OVA release 1.0.3.
 - Apr 12, 2021: Justin Woo (justin.woo@seagate.com) using OVA release 1.0.3.
