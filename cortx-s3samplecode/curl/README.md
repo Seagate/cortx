@@ -23,19 +23,36 @@ s3Secret="<yourS3secret>"
 Create Bucket
 ---------------------
 ```sh
-(TODO)
+curl -X "PUT" "https://(endpoint)/(bucket-name)/?cors"
+ -H "Content-MD5: (md5-hash)"
+ -H "Authorization: bearer (token)"
+ -H "Content-Type: text/plain; charset=utf-8"
+ -d "<CORSConfiguration>
+      <CORSRule>
+        <AllowedOrigin>(url)</AllowedOrigin>
+        <AllowedMethod>(request-type)</AllowedMethod>
+        <AllowedHeader>(url)</AllowedHeader>
+      </CORSRule>
+     </CORSConfiguration>"
+
+
 ```
 
 List Buckets
 ---------------------
 ```sh
-(TODO)
+curl "https://(endpoint)/"
+ -H "Authorization: bearer (token)"
+ -H "ibm-service-instance-id: (resource-instance-id)"
 ```
 
 Put Object
 ---------------------
 ```sh
-(TODO)
+curl -X "PUT" "https://(endpoint)/(bucket-name)/(object-key)" \
+ -H "Authorization: bearer (token)" \
+ -H "Content-Type: (content-type)" \
+ -d "(object-contents)"
 ```
 
 Get Object
@@ -57,20 +74,24 @@ curl -k -H "Host: ${s3Server}" \
 List Objects
 ---------------------
 ```sh
-(TODO)
+curl "https://(endpoint)/(bucket-name)"
+ -H "Authorization: bearer (token)"
 ```
 
 Delete Object
 ---------------------
 ```sh
-(TODO)
+curl -X "DELETE" "https://(endpoint)/(bucket-name)/(object-key)"
+ -H "Authorization: bearer (token)"
 ```
 
 Delete Bucket
 ---------------------
 ```sh
-(TODO)
+curl -X "DELETE" "https://(endpoint)/(bucket-name)/"
+ -H "Authorization: bearer (token)"
 ```
 
 ### Tested By:
-* 
+* Mar 7, 2022 :
+ Digvijay shelar (digvijayshelar@gmail.com)
