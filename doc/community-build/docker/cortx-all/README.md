@@ -138,8 +138,10 @@ This document provides step-by-step instructions to build required binaries and 
     cortx-control:2.0.0-0 2022-03-23 11:51:23 -0700 MST
     ```
 ### Tested by:
+
 - Mar 23 2022: Abhijit Patil (abhijit.patil@seagate.com) on a AWS EC2 instance with RockyLinux 8.5
-  On AWS EC2 we don't have rocky linux 8.4 AMI, so I decided to use RockyLinux 8.5 and then I follow above steps.
+  - On AWS EC2 we don't have rocky linux 8.4 AMI, so I decided to use RockyLinux 8.5 and then I follow above steps.
+- Feb 10 2022: Bo Wei (bo.b.wei@seagate.com) on a Windows running VirtualBox with CentOs 7.9.2009
 - Feb 08 2022: Amnuay Boottrakoat (amnuay.boottrakoat@seagate.com) on a Windows running VMWare Workstation 16 Player with CentOs 7.9.2009
 - Jan 28 2022: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop running VMWare Workstation 16 Pro for CentOs 7.9.2009
 - Jan 27 2022: Pranav Sahasrabudhe (pranav.p.sahasrabudhe@seagate.com) on a Mac laptop running VMWare Fusion 16 with CentOs 7.9.2009 VM
