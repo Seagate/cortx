@@ -168,6 +168,19 @@ return
 }
 fmt.Printf("Bucket %q successfully deleted\n", bucket)
 ```
+Troubleshooting
+---------------------
+If encounter the error below, it means `test-bucket` is created succesfully but an input file to upload is not specified. You can specify a test file as the Go executable's 1st argument.
+```
+* test-bucket created on 2022-02-27 06:34:00 +0000 UTC
+panic: runtime error: index out of range [1] with length 1
+```
+
+If encounter the error `BucketAlreadyOwnedByYou: The bucket you tried to create already exists, and you own it. status code: 409`, it means the `test_bucket` is already existing. You can delete the bucket with the command below then re-run.
+```
+aws s3 --endpoint "YOUR_S3_ENDPOINT" rb s3://test-bucket
+```
 
 ### Tested By:
-* 
+* Feb 27, 2022: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
+
