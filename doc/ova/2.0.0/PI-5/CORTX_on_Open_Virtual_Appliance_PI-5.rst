@@ -96,6 +96,7 @@ Troubleshooting
 
 Tested by:
 
+- Mar 25, 2022: Sayed Alfhad Shah (fahadshah2411@gmail.com) on a Windows and Fedora laptop with Oracle Virtual Box 6.1.
 - Mar 05, 2022: Bo Wei (bo.b.wei@seagate.com) on a Windows with VMWare WorkStation 16 Player.
 - Feb 14, 2022: Jalen Kan (jalen.j.kan@seagate.com) on a Windows laptop with VMWare Workstation 16 pro. 
 - Feb 01, 2022: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop with VMWare Workstation 16 pro. 
@@ -103,4 +104,3 @@ Tested by:
 - Jan 20, 2022: Pranav Sahasrabudhe (pranav.p.sahasrabudhe@seagate.com) on a Mac OS with VMWare Fusion 16.
 - Jan 20, 2022: Ashwini Borse (ashwini.borse@seagate.com) on a Windows with VMWare Workstation 16 Player.
 - Jan 03, 2022: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro.
-- Mar 25, 2022: Sayed Alfhad Shah (fahadshah2411@gmail.com) on a Windows and Fedora laptop with Oracle Virtual Box 6.1.
