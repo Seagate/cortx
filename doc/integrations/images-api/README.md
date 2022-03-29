@@ -60,3 +60,6 @@ docker run  --env-file .env -it -p 5000:5000 cortx-images
 #### Watch the demo
    
 ![demo](https://github.com/Seagate/cortx-images/blob/master/static/demo.gif)
+
+Tested By:
+- Feb 26, 2022: Harrison Seow (harrison.seow@seagate.com) using OVA release 1.0.3.
