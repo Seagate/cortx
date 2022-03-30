@@ -26,6 +26,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Chetan S. Deshmukh](https://github.com/cdeshmukh)
 1. [Debasmita Samaddar](https://github.com/samaddar)
 1. [Deepak Mahale](https://github.com/SeagateChaDeepak)
+1. [Digvijay Shelar](https://github.com/shelar1423)
 1. [Dipendra Bagchee](https://github.com/dbagchee) 
 1. [Febriano Ramadhani](https://github.com/spiritbro1)
 1. [Gaurav Chaudhari](https://github.com/gauravchaudhari02)
