@@ -1,12 +1,10 @@
+import argparse
 import csv
-import sys
 import cortx_community
-
-repo_name = sys.argv[1]
 
 
 # Get repository from given organization
-def get_repo(org_name="seagate"):
+def get_repo(repo_name, org_name="seagate"):
     g = cortx_community.get_gh()
     org = g.get_organization(org_name)
     return org.get_repo(repo_name)
@@ -37,7 +35,11 @@ def write_to_csv(users, orrepo, total_prs):
 
 
 def main():
-    orrepo = get_repo()
+    parser = argparse.ArgumentParser(description='Get repository name')
+    parser.add_argument('--repo_name',  '-i', help='Github repository to fetch open PRs.')
+    args = parser.parse_args()
+
+    orrepo = get_repo(args.repo_name)
     pulls = get_pulls(orrepo)
     users = get_pull_author(pulls)
     write_to_csv(users, orrepo, pulls.totalCount)
