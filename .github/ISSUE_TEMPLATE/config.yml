@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: CORTX Questions and Support
+    url: https://github.com/Seagate/cortx/discussions
+    about: Have questions or need support for CORTX for anything that isn't a bug report? Go ahead and start a new discussion.
+  - name: CORTX Community Support
+    url: https://cortx.link/slack_invite
+    about: Join us on Slack for general CORTX questions and support.
