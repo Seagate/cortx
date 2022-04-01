@@ -1,6 +1,6 @@
 # Generate CORTX container images
 
-This document provides step-by-step instructions to build required binaries and generate the CORTX-ALL container image.
+This document provides step-by-step instructions to build required binaries and generate the CORTX container images.
 
 ## Prerequisites
 
@@ -74,13 +74,12 @@ This document provides step-by-step instructions to build required binaries and 
     ```
     
 
-7. Clone  [cortx-re](https://github.com/Seagate/cortx-re) repository using below commands,
+7. Clone [cortx-re](https://github.com/Seagate/cortx-re) repository using below commands,
 
     ```
     git clone https://github.com/Seagate/cortx-re && cd cortx-re/docker/cortx-deploy/
     ```
-
-    - If you run build.sh by $HOSTNAME then here we need change docker-compose.yml and add below extra_hosts in that docker compose for all the services like below.
+    - We need to add extra_hosts parameter in docker-compose.yml for all the services to run build.sh using $HOSTNAME as below
     ```
     extra_hosts:
       - "yourhostname: ipaddress_of_server"
