@@ -114,3 +114,15 @@ ipfs add hello
 # QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o
 ipfs cat <that hash>
 ```
+
+#### Troubleshooting
+
+If encounter error "Error: datastore configuration ... does not match what is on disk ...", try to replace `$IPFS_DIR/datastore_spec` with below:
+
+```
+{"mounts":[{"bucket":"<BUCKET NAME>","mountpoint":"/blocks","region":"us-east-1","rootDirectory":"<BUCKET SUBDIRECTORY>"}],"type":"mount"}
+```
+
+#### Tested by
+
+* Mar 06, 2022: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.

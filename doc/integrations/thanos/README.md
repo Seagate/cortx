@@ -129,3 +129,7 @@ Select datasources, add a prometheus datasource and select the endpoint: ```http
 When we create a dashboard, you can test a query with node_disk_writes_completed_total and it should look something like this:
 
 ![g1](img/g1.png)
+
+Tested by:
+
+- March 17, 2022: Jalen Kan (jalen.j.kan@seagate.com) using Cortx OVA-2.0.0-585 on Windows 10 running VMware Workstation.

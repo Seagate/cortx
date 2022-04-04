@@ -11,7 +11,8 @@ Recommended Hypervisors
 All of the following hypervisors should work: `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_,
 `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
 `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_,
-`VMware Fusion <https://www.vmware.com/in/products/fusion/fusion-evaluation.html>`_
+`VMware Fusion <https://www.vmware.com/in/products/fusion/fusion-evaluation.html>`_,
+`Oracle Virtual Box <https://www.virtualbox.org/>`_
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
@@ -79,11 +80,26 @@ Troubleshooting
        kubectl logs <pod_name>
        kubectl taint nodes --all node-role.kubernetes.io/master-
 
+- To perform S3 IO using cyberduck or any s3 client outside the cluster. Get the `endpoint_url` using the steps below
+  
+  - Get IP address of node using ``ip a l | grep ens`` ; this becomes your endpoint IP.
+  
+  - Get port number value corresponding to **cortx-data-loadbal-svc-cortx-k8s-ova-02** pod using ``kubectl get svc`` command inside OVA K8s cluster; for HTTP request you can use the port next to 80:port and for HTTPS use the port next to 443:port
 
-
+  - Combine the values above to get the endpoint_url:
+  
+    ``http://<IPaddress_Address>:<port_number>`` 80:32594
+    
+    ``https://<IPaddress_Address>:<port_number>`` 443:30524
+    
+    - For example; ``http://192.168.100.110:32594``
 
 Tested by:
 
+- Mar 25, 2022: Sayed Alfhad Shah (fahadshah2411@gmail.com) on a Windows and Fedora laptop with Oracle Virtual Box 6.1.
+- Mar 25, 2022: Harrison Seow (harrison.seow@seagate.com) on a Windows desktop with VMWare WorkStation 16 Player.
+- Mar 05, 2022: Bo Wei (bo.b.wei@seagate.com) on a Windows with VMWare WorkStation 16 Player.
+- Feb 14, 2022: Jalen Kan (jalen.j.kan@seagate.com) on a Windows laptop with VMWare Workstation 16 pro. 
 - Feb 01, 2022: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop with VMWare Workstation 16 pro. 
 - Jan 24, 2022: Amnuay Boottrakoat (amnuay.boottrakoat@seagate.com) on a Windows with VMWare Workstation 16 Player.
 - Jan 20, 2022: Pranav Sahasrabudhe (pranav.p.sahasrabudhe@seagate.com) on a Mac OS with VMWare Fusion 16.
