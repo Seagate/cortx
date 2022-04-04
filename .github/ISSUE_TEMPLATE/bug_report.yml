@@ -1,0 +1,66 @@
+name: Bug report
+description: Report problems and issues with CORTX 
+labels: [bug]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Welcome!
+
+        Thanks for taking the time to fill out this bug report!
+
+        Please only submit issues for problems you are experiencing. For general questions and support, start a new [Discussion](https://github.com/Seagate/cortx/discussions/new) instead.
+
+  - type: textarea
+    attributes:
+      label: Problem
+      description: Describe what the problem is.
+      placeholder: Explain what happened.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: Describe what you think should have happened instead.
+      placeholder: Explain what should have happened.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: How to reproduce
+      description: How can we reproduce the problem?
+      placeholder: Provide instructions to reproduce the problem.
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Environment
+
+  - type: textarea
+    attributes:
+      label: Deployment information
+      description: |
+        Provide details about your deployment environment that may be relevant. This could include versions, installation method, client OS, cluster node OS, managed service (AWS, GCP), etc.
+
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Details
+
+  - type: textarea
+    attributes:
+      label: Additional information
+      description: >
+        Add anything else that you think we should know about here.
+
+  - type: markdown
+    attributes:
+      value: "Thanks again for completing our form! Doing so is a big help."
