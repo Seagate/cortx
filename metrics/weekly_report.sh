@@ -117,6 +117,10 @@ if [ $report == 1 ]; then
   jupyter nbconvert --execute --to html $jupyter_args --output $bulk_report $bulk_report.ipynb
   scp_report $bulk_report bulk_graphs
 
+  health_report=Repo_Health
+  jupyter nbconvert --execute --to html $jupyter_args --output $health_report $health_report.ipynb
+  scp_report $health_report health_reports
+
   compare_report=CORTX_Metrics_Compare_Projects
   jupyter nbconvert --execute --to html $jupyter_args --output $compare_report $compare_report.ipynb
   scp_report $compare_report compare_projects
