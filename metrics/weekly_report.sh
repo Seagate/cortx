@@ -101,7 +101,7 @@ if [ $report == 1 ]; then
   group_activity 'johnbent,justinzw,r-wambui,hessio,swatid-seagate,novium258,mukul-seagate11,mmukul' 'Open Source Team'
   group_activity 'rajkumarpatel2602,shraddhaghatol,priyanka25081999,huanghua78,mbcortx,trshaffer' 'ADG'
 
-  jupyter_args="--ExecutePreprocessor.timeout=180 --output-dir=/tmp --no-input"
+  jupyter_args="--ExecutePreprocessor.timeout=1800 --output-dir=/tmp --no-input"
 
   /bin/rm -rf /tmp/CORTX_Metrics_* # clean up any old crap
 
