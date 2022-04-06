@@ -11,7 +11,8 @@ Recommended Hypervisors
 All of the following hypervisors should work: `VMware ESX Server <https://www.vmware.com/products/esxi-and-esx.html>`_,
 `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
 `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_,
-`VMware Fusion <https://www.vmware.com/in/products/fusion/fusion-evaluation.html>`_
+`VMware Fusion <https://www.vmware.com/in/products/fusion/fusion-evaluation.html>`_,
+`Oracle Virtual Box <https://www.virtualbox.org/>`_
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies. For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
@@ -95,6 +96,8 @@ Troubleshooting
 
 Tested by:
 
+- Mar 25, 2022: Sayed Alfhad Shah (fahadshah2411@gmail.com) on a Windows and Fedora laptop with Oracle Virtual Box 6.1.
+- Mar 25, 2022: Harrison Seow (harrison.seow@seagate.com) on a Windows desktop with VMWare WorkStation 16 Player.
 - Mar 05, 2022: Bo Wei (bo.b.wei@seagate.com) on a Windows with VMWare WorkStation 16 Player.
 - Feb 14, 2022: Jalen Kan (jalen.j.kan@seagate.com) on a Windows laptop with VMWare Workstation 16 pro. 
 - Feb 01, 2022: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop with VMWare Workstation 16 pro. 

@@ -14,11 +14,12 @@ Audience members may also be interested in our `Motr Deep Dive training sessions
 
 **Upcoming sessions:**
 
-#. Apr 12 2022: MTA date change! Topic TBD.
-#. Mar 3 2022: Rick Osowski and Gregory Touretsky will present the 'Why' and the 'How' of the recent work to containerize CORTX. 
+#. Apr 12 2022: Rick Osowski and Gregory Touretsky will present the 'Why' and the 'How' of the recent work to containerize CORTX.
 
 
 **Previously recorded sessions:**
+
+#. Mar 3 2022: Seagate CORTX architects Sai Narasimhamurthy, David Vasiliauskas, and Ganesan Umenesan presented some of our collaborative research projects happening in Europe, and also discussed ephemeral services, deep technical designs for namespace management, and hierarchical storage.
 
 #. Feb 3 2022: Andriy Tkachuk and Sining Wu will discussed an exciting new development in the software layer used to connect motr to S3 clients. `PDF <PDFs/RGW_MOTR.pdf>`_  | `Video <https://youtu.be/j29UxJmVqw0>`_.
 
