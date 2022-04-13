@@ -45,10 +45,10 @@ This document provides step-by-step instructions to build required binaries and 
 2. Run the following command to checkout the codebase from **main** branch for generating CORTX packages: 
     ```
     docker run --rm -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=main
+    ```
     
-   
    (Optional) Run the following command to checkout the codebase from 2.0.0-670 branch:
-     
+    ``` 
     cd /mnt/cortx && for component in $(ls -1d cortx-* |grep -e cortx-motr -e cortx-rgw-integration -e cortx-hare -e cortx-prvsnr -e cortx-utils -e cortx-ha -e cortx-rgw -e cortx-manager ); do pushd $component; git clean -fdx; git checkout .; git pull -p --all; git checkout 2.0.0-670|| exit 1; popd ; done  
     ```
      
