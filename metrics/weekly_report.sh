@@ -75,8 +75,6 @@ if [ $scrape == 1 ]; then
     run_command "./scrape_metrics.py -t $p" "$mail_scrape_prefix - $p Github" $Email
   done
 
-  ./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $Email $Email
-
   mail -s "$mail_scrape_prefix - Summary" -r $Email $Email < $summary
 fi
 
@@ -136,5 +134,8 @@ if [ $report == 1 ]; then
   mail -s "$mail_subj_prefix - Report Available Plus Summary plus Attached CSV" -r $Email -a $tfile $Email < $tfile2
 
 fi
+
+./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $Email $Email
+
 
 exit
