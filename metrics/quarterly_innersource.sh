@@ -1,7 +1,7 @@
 #! /bin/bash 
 
-since='2021-10-01'
-until='2022-01-01'
+since='2022-01-01'
+until='2022-04-01'
 
 # get the detailed point report for innersource
 ./get_personal_activity.py Innersource -s $since -u $until -d
