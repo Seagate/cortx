@@ -6,17 +6,17 @@ This document provides step-by-step instructions to build required binaries and 
 
 - Do not update OS or kernel package with yum update as the kernel version must be set to 3.10.0-1160.el7
 - Do not upgrade packages from CentOS 7.8 to CentOS 7.9
-- Docker >= 20.10.10 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
+- Before installing docker, docker home directory space should be 70GB (default docker home directory is /var/lib/docker) and /mnt drive space should be 30GB to run cortx build.
+- Docker >= 1.13.1 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
     ```
     [root@dev-system ~]# docker --version
-    Docker version 20.10.8, build 3967b7d
+    Docker version 1.13.1, build 7d71120
     ```
  - Docker compose >= 1.29.2 Please refer [Install docker compose](https://docs.docker.com/compose/install/) steps. Validate docker-compose version on system.
     ```
     [root@dev-system ~]# docker-compose --version
     docker-compose version 1.29.2, build 5becea4c
     ```
-    **Note:** Before install docker you should have docker home directory space should be 70GB (default docker home directory is /var/lib/docker) and /mnt drive space should be 30GB to run cortx build.
     
 ## Compile and Build CORTX Stack from HEAD
 
@@ -42,9 +42,14 @@ This document provides step-by-step instructions to build required binaries and 
     cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1 && cd /mnt/cortx && git clone https://github.com/Seagate/cortx-rgw
     ```
     
-2.  Please Checkout **main** branch for generating CORTX packages. Use below command for checkout. 
+2. Run the following command to checkout the codebase from **main** branch for generating CORTX packages: 
     ```
     docker run --rm -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=main
+    
+   
+   (Optional) Run the following command to checkout the codebase from 2.0.0-670 branch:
+     
+    cd /mnt/cortx && for component in $(ls -1d cortx-* |grep -e cortx-motr -e cortx-rgw-integration -e cortx-hare -e cortx-prvsnr -e cortx-utils -e cortx-ha -e cortx-rgw -e cortx-manager ); do pushd $component; git clean -fdx; git checkout .; git pull -p --all; git checkout 2.0.0-670|| exit 1; popd ; done  
     ```
      
      - Then check from individual CORTX component repos:
@@ -57,9 +62,10 @@ This document provides step-by-step instructions to build required binaries and 
        ```
 
 3. Run the following command to build the CORTX packages.
+  
   - For rocky linux use below command:
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image cortx-ha
+   docker run --rm -v /var/artifacts:/var/artifacts:Z -v /mnt/cortx:/cortx-workspace:Z ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image cortx-ha
    ```
    
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` implementation phase.
@@ -139,6 +145,7 @@ This document provides step-by-step instructions to build required binaries and 
     ```
 ### Tested by:
 
+- April 13 2022: Mukul Malhotra (mukul.malhotra@seagate.com) on a VMWare vSphere 7.0.1 for CentOS 7.9.2009
 - Mar 23 2022: Abhijit Patil (abhijit.patil@seagate.com) on a AWS EC2 instance with RockyLinux 8.5
   - On AWS EC2 we don't have rocky linux 8.4 AMI, so I decided to use RockyLinux 8.5 and then I follow above steps.
 - Feb 10 2022: Bo Wei (bo.b.wei@seagate.com) on a Windows running VirtualBox with CentOs 7.9.2009
