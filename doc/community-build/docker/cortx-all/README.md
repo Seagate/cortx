@@ -67,9 +67,7 @@ This document provides step-by-step instructions to build required binaries and 
      ll /var/artifacts/0 
      ```
 
-5. (Optional) Compile and Build CORTX Stack as per Individual component.
-
-   Run the following command to view each component targets:
+5. (Optional) Run the following command to Compile and Build CORTX Stack as Individual component:
      ```
      docker run ghcr.io/seagate/cortx-build:rockylinux-8.4 make help
      ```
