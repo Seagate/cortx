@@ -55,9 +55,7 @@ This document provides step-by-step instructions to build required binaries and 
      git status
      ```
 
-3. Run the following command to build the CORTX packages.
-  
-   - For rocky linux use below command:
+3. Run the following command to build the CORTX packages for rocky linux:
      ```
      docker run --rm -v /var/artifacts:/var/artifacts -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image cortx-ha
      ```
@@ -65,30 +63,30 @@ This document provides step-by-step instructions to build required binaries and 
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` implementation phase.
    
 4. To validate that Packages are generated, run the following command after the build step is complete:
-   ```
-   ll /var/artifacts/0 
-   ```
+     ```
+     ll /var/artifacts/0 
+     ```
 
 5. (Optional) Compile and Build CORTX Stack as per Individual component.
 
    Run the following command to view each component targets:
-   ```
-   docker run ghcr.io/seagate/cortx-build:rockylinux-8.4 make help
-   ```
+     ```
+     docker run ghcr.io/seagate/cortx-build:rockylinux-8.4 make help
+     ```
    
 6. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
 
-    ```
-    docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
-    ```
+     ```
+     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
+     ```
 
 7. We need to clone cortx repo, use below commands for same.
 
-    ```
-    docker ps 
-    curl -L http://$HOSTNAME/RELEASE.INFO
-    git clone https://github.com/Seagate/cortx-re && cd cortx-re/docker/cortx-deploy/
-    ```
+     ```
+     docker ps 
+     curl -L http://$HOSTNAME/RELEASE.INFO
+     git clone https://github.com/Seagate/cortx-re && cd cortx-re/docker/cortx-deploy/
+     ```
 
     - If you run build.sh by $HOSTNAME then here we need change docker-compose.yml and add below extra_hosts in that docker compose for all the services like below.
     ```
@@ -123,13 +121,13 @@ This document provides step-by-step instructions to build required binaries and 
     ```
     ./build.sh -b http://$HOSTNAME -o centos-7.9.2009 -e opensource-ci
     ```
-    Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
+    **Note:** You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
 
 9. Run the below command to see recently generated cortx-all image details.
     ```
     docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}'|grep cortx|grep -v cortx-build
     ```
-    **Example output** 
+    **Example output:** 
     ```
     [root@dev-system ~]# docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}'|grep cortx|grep -v cortx-build
     cortx-data:2.0.0-0 2022-03-23 11:45:02 -0700 MST
