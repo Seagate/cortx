@@ -7,10 +7,10 @@ This document provides step-by-step instructions to build required binaries and 
 - Do not update OS or kernel package with yum update as the kernel version must be set to 3.10.0-1160.el7
 - Do not upgrade packages from CentOS 7.8 to CentOS 7.9
 - Before installing docker, docker home directory space should be 70GB (default docker home directory is /var/lib/docker) and /mnt drive space should be 30GB to run cortx build.
-- Docker >= 1.13.1 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
+- Docker >= 20.10.14 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
     ```
     [root@dev-system ~]# docker --version
-    Docker version 1.13.1, build 7d71120
+    Docker version 20.10.14, build a224086
     ```
  - Docker compose >= 1.29.2 Please refer [Install docker compose](https://docs.docker.com/compose/install/) steps. Validate docker-compose version on system.
     ```
@@ -47,26 +47,20 @@ This document provides step-by-step instructions to build required binaries and 
     docker run --rm -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=main
     ```
     
-   (Optional) Run the following command to checkout the codebase from **2.0.0-670** branch:
-    ``` 
-    cd /mnt/cortx && for component in $(ls -1d cortx-* |grep -e cortx-motr -e cortx-rgw-integration -e cortx-hare -e cortx-prvsnr -e cortx-utils -e cortx-ha -e cortx-rgw -e cortx-manager ); do pushd $component; git clean -fdx; git checkout .; git pull -p --all; git checkout 2.0.0-670|| exit 1; popd ; done  
-    ```
-     
-     - Then check from individual CORTX component repos:
+  - Then check from individual CORTX component repos:
        
-       For example:
-
-       ```
-       cd /mnt/cortx/cortx-motr
-       git status
-       ```
+    For example:
+    ```
+    cd /mnt/cortx/cortx-motr
+    git status
+    ```
 
 3. Run the following command to build the CORTX packages.
   
   - For rocky linux use below command:
-   ```
-   docker run --rm -v /var/artifacts:/var/artifacts:Z -v /mnt/cortx:/cortx-workspace:Z ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image cortx-ha
-   ```
+    ```
+    docker run --rm -v /var/artifacts:/var/artifacts:Z -v /mnt/cortx:/cortx-workspace:Z ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image cortx-ha
+    ```
    
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` implementation phase.
    
