@@ -43,3 +43,6 @@
 [submodule "cortx-rgw"]
 	path = cortx-rgw
 	url = https://github.com/seagate/cortx-rgw.git
+[submodule "cortx-motr-apps"]
+	path = cortx-motr-apps
+	url = https://github.com/Seagate/cortx-motr-apps.git

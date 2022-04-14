@@ -11,7 +11,7 @@ css = weasyprint.CSS(string="""
     """
       )
 
-url='file:///tmp/repo_health.slides.html'
+url='file:///tmp/Repo_Health.html'
 out='cache/repo_health.pdf'
 
 pdf = weasyprint.HTML(url).write_pdf(target=out,stylesheets=[css])
