@@ -38,29 +38,29 @@ This document provides step-by-step instructions to build required binaries and 
 ## Procedure
 
 1. Run the following command to clone the CORTX repository:
-    ```
-    cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1 && cd /mnt/cortx && git clone https://github.com/Seagate/cortx-rgw
-    ```
+     ```
+     cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1 && cd /mnt/cortx && git clone https://github.com/Seagate/cortx-rgw
+     ```
     
 2. Run the following command to checkout the codebase from **main** branch for generating CORTX packages: 
-    ```
-    docker run --rm -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=main
-    ```
+     ```
+     docker run --rm -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=main
+     ```
     
-  - Then check from individual CORTX component repos:
-       
-    For example:
-    ```
-    cd /mnt/cortx/cortx-motr
-    git status
-    ```
+   - Then check from individual CORTX component repos:
+        
+     For example:
+     ```
+     cd /mnt/cortx/cortx-motr
+     git status
+     ```
 
 3. Run the following command to build the CORTX packages.
   
-  - For rocky linux use below command:
-    ```
-    docker run --rm -v /var/artifacts:/var/artifacts:Z -v /mnt/cortx:/cortx-workspace:Z ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image cortx-ha
-    ```
+   - For rocky linux use below command:
+     ```
+     docker run --rm -v /var/artifacts:/var/artifacts:Z -v /mnt/cortx:/cortx-workspace:Z ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image cortx-ha
+     ```
    
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` implementation phase.
    
