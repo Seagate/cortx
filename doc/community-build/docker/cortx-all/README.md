@@ -38,9 +38,9 @@ This document provides step-by-step instructions to build required binaries and 
 ## Procedure
 
 1. Run the following command to clone the CORTX repository:
-     ```
-     cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1
-     ```
+    ```
+    cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1
+    ```
     
 2. Run the following command to checkout the codebase from **main** branch for generating CORTX packages: 
      ```
