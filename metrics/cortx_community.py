@@ -630,9 +630,10 @@ def get_teams(url):
     teams.add(team)
   return sorted(teams)
 
-# one thing to consider in the future is maybe this should check repo.parent
-# some repo's are forked in an org and maybe we shouldn't scrape them
-# that might be a way to do that
+# get public repos for an org
+# skips repos's that are private 
+# skips repos's that are forked
+# skips repos's that are archived
 def get_repos(gh=None,org_name='Seagate',prefix='cortx'):
   def prefix_included(repo_name,prefix):
     if prefix is None:
@@ -651,7 +652,10 @@ def get_repos(gh=None,org_name='Seagate',prefix='cortx'):
     if prefix_included(repo.name,prefix) is False or repo.name.endswith('.old') or repo.name.endswith('-old') or repo.private:
       continue
     elif repo.fork:
-      print("Skipping %s because it is a fork of %s" % (repo.name,repo.parent))
+      #print("Skipping %s because it is a fork of %s" % (repo.name,repo.parent))
+      continue
+    elif repo.archived:
+      #print("Skipping %s because it is archived" % (repo.name))
       continue
     else:
       repos.append(repo)

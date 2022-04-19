@@ -36,8 +36,11 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |cortx-restic| | |thanos|           | |goofys|            | 
 +----------------+--------------------+---------------------+
-| |ftp|          |                    |                     | 
+| |ftp|          | |docker|           |                     | 
 +----------------+--------------------+---------------------+
+
+.. |docker| image:: ./cortx-docker/image/docker_integration_architecture.jpeg
+   :target: cortx-docker
 
 .. |ftp| image:: ./cortx-ftp/image/ftp_integration_architecture.jpg
    :target: cortx-ftp
