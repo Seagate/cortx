@@ -19,13 +19,7 @@ pip3 install awscli-plugin-endpoint
 ```bash
 mkdir -p /var/log/cortx/auth
 touch /var/log/cortx/auth/s3iamcli.log
-kubectl get pods -o wide | grep cortx-data-pod
-```
-
-- Edit */etc/hosts* file and copy the IP of service data pod i.e. `cortx-data-pod` on same OVA image
-and add following entry if it does not exist.
-```bash
-<IP_Address_of_cortx-data-pod> s3.seagate.com iam.seagate.com
+kubectl get pods -o wide | grep cortx-data
 ```
 
 - Configure the default access key and secret key.
