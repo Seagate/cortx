@@ -16,7 +16,7 @@ This document provides step-by-step instructions to build CORTX binaries and con
     ```
     **Note:** Before install docker you should have docker home directory space should be 70GB (default docker home directory is /var/lib/docker) and /mnt drive space should be 30GB to run cortx build.
     
-## Compile and Build CORTX Stack from HEAD
+## Compile and Build CORTX Stack
 
 - Pull CORTX Build image:
      ```
