@@ -38,7 +38,7 @@ This document provides step-by-step instructions to build CORTX binaries and con
      - Validate CORTX component clone status with below command.
        
        ```
-       for component in cortx-motr cortx-hare cortx-rgw-integration cortx-manager cortx-utils cortx-ha cortx-rgw; do echo -e "\nChecking Git Branch for $component"; git status ; done
+       cd /mnt/cortx/ && for component in cortx-motr cortx-hare cortx-rgw-integration cortx-manager cortx-utils cortx-ha cortx-rgw; do echo -e "\n==[ Checking Git Branch for $component ]=="; pushd $component; git status; popd ; done && cd -
        ```
 
 3. Run the following command to build the CORTX packages.
@@ -110,15 +110,15 @@ This document provides step-by-step instructions to build CORTX binaries and con
 
 9. Run the below command to see recently generated cortx-all image details.
     ```
-    docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}'|grep cortx|grep -v cortx-build
+    docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' --filter=reference='cortx-*'
     ```
     **Example output** 
     ```
-    [root@dev-system ~]# docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}'|grep cortx|grep -v cortx-build
-    cortx-data:2.0.0-0 2022-03-23 11:45:02 -0700 MST
-    cortx-rgw:2.0.0-0 2022-03-23 11:45:31 -0700 MST
-    cortx-all:2.0.0-0 2022-03-23 11:45:23 -0700 MST
-    cortx-control:2.0.0-0 2022-03-23 11:51:23 -0700 MST
+    [root@dev-system ~]#  docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' --filter=reference='cortx-*'
+    cortx-rgw:2.0.0-0 2022-04-20 08:40:27 -0600 MDT
+    cortx-data:2.0.0-0 2022-04-20 08:39:46 -0600 MDT
+    cortx-all:2.0.0-0 2022-04-20 08:39:46 -0600 MDT
+    cortx-control:2.0.0-0 2022-04-20 08:38:37 -0600 MDT
     ```
 ### Tested by:
 
