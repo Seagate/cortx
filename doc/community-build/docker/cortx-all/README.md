@@ -43,7 +43,7 @@ This document provides step-by-step instructions to build CORTX binaries and con
 
 3. Run the following command to build the CORTX packages.
    ```
-   docker run --rm -v /var/artifacts:/var/artifacts -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image cortx-ha
+   docker run --rm -v /var/artifacts:/var/artifacts -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image
    ```
    
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` implementation phase.
