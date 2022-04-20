@@ -35,10 +35,8 @@ This document provides step-by-step instructions to build CORTX binaries and con
     docker run --rm -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=main
     ```
      
-     - Validate CORTX component clone status
+     - Validate CORTX component clone status with below command.
        
-       For example:
-
        ```
        for component in cortx-motr cortx-hare cortx-rgw-integration cortx-manager cortx-utils cortx-ha cortx-rgw; do echo -e "\nChecking Git Branch for $component"; git status ; done
        ```
