@@ -30,7 +30,7 @@ This document provides step-by-step instructions to build CORTX binaries and con
     cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1
     ```
     
-2.  Please checkout **main** branch for generating CORTX packages. Use below command for checkout. 
+2.  Run the following command to checkout **main** branch for generating CORTX packages. Use below command for checkout. 
     ```
     docker run --rm -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=main
     ```
@@ -72,7 +72,7 @@ This document provides step-by-step instructions to build CORTX binaries and con
     ```
     
 
-7. Clone [cortx-re](https://github.com/Seagate/cortx-re) repository using below commands,
+7. Run the following command to clone [cortx-re](https://github.com/Seagate/cortx-re) repository using below commands,
 
     ```
     git clone https://github.com/Seagate/cortx-re && cd cortx-re/docker/cortx-deploy/
@@ -102,7 +102,7 @@ This document provides step-by-step instructions to build CORTX binaries and con
 
 8. After verifying docker compose then run the build.sh file where your cortx-all folder is located.
 
-    - Use below command to build cortx-all image. Enure you are in `cortx-re/docker/cortx-deploy/` directory:
+    - Run below command to build cortx-all image. Enure you are in `cortx-re/docker/cortx-deploy/` directory:
     ```
     ./build.sh -b http://$HOSTNAME -o rockylinux-8.4 -s all -e opensource-ci
     ```
