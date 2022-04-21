@@ -30,7 +30,7 @@ aws configure set aws_secret_access_key ldapadmin
 
 - Set the endpoint url into variable for the future reference.
 ```bash
-endpoint_url="http://""$(kubectl get svc | grep cortx-io | awk '{ print $3 }')"":8000"
+endpoint_url="http://""$(kubectl get svc | grep cortx-server-loadbal | awk '{ print $3 }')"":80"
 ```
 
 - Configure S3 endpoint in awscli configuration.
@@ -53,7 +53,7 @@ aws s3 ls
 
 - Create a sample file and copy the object into bucket.
 ```bash
-touch file.txt
+dd if=/dev/zero of=file.txt bs=10MB count=1
 aws s3 cp file.txt s3://mybucket/object
 ```
 
