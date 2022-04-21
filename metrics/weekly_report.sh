@@ -118,7 +118,7 @@ if [ $report == 1 ]; then
   health_report=Repo_Health
   jupyter nbconvert --execute --to html $jupyter_args --output $health_report $health_report.ipynb
   scp_report $health_report health_reports
-  bash ./html_to_pdf.py
+  python3 ./html_to_pdf.py
   echo "CORTX Repository Health Report Attached" | mail -s "CORTX Repository Health Report" -r $Email -a cache/repo_health.pdf $Email 
 
   compare_report=CORTX_Metrics_Compare_Projects
