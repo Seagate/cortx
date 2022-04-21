@@ -102,7 +102,7 @@ This document provides step-by-step instructions to build CORTX binaries and con
 
 8. After verifying docker compose then run the build.sh file where your cortx-all folder is located.
 
-    - Run below command to build cortx-all image. Enure you are in `cortx-re/docker/cortx-deploy/` directory:
+    - Run below command to build cortx-all image. Ensure you are in `cortx-re/docker/cortx-deploy/` directory:
     ```
     ./build.sh -b http://$HOSTNAME -o rockylinux-8.4 -s all -e opensource-ci
     ```
