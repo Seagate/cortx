@@ -3,6 +3,11 @@
 This document provides step-by-step instructions to build CORTX binaries and container images.
 
 ## Prerequisites
+- Git >= 2.27.0 . Please refer [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) document. You can also use below commmand to install Git. 
+  ```
+  yum install git -y 
+  ```
+   
 
 - Docker >= 20.10.10 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
     ```
