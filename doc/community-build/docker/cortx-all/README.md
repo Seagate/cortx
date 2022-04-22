@@ -3,13 +3,13 @@
 This document provides step-by-step instructions to build CORTX binaries and container images.
 
 ## Prerequisites
-- Please create Linux VM with CentOS 7.9 or Rocky Linux 8.4 with below minium requirements.
+- Create Linux VM with CentOS 7.9 or Rocky Linux 8.4 with below minimum requirements.
     - RAM: 8GB
     - Processor: 4
 
-- Please ensure following minimum disk space is available. 
-    - 70GB : Docker Home Directroy. Default docker home directory is /var/lib/docker. You can modify it based on disk layout. 
-    - 30GB : /mnt . We use this directoy as part build process. You can use /mnt from system disk if it enough space is available.
+- Ensure following minimum disk space are available. 
+    - 70GB : Docker Home Directory where default docker home directory is /var/lib/docker. You can modify the file based on disk layout.
+    - 30GB : mnt . Use this directory as part of build process. You can use /mnt from system disk if you have enough disk space available.
 
 - Git >= 2.27.0 . Please refer [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) document. You can also use below commmand to install Git. 
   ```
@@ -57,7 +57,7 @@ This document provides step-by-step instructions to build CORTX binaries and con
    docker run --rm -v /var/artifacts:/var/artifacts -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image
    ```
    
-   **Note:** This process takes around 5Hrs to build entire CORTX packages with minimum VM specifications. This time will vary based on VM specification and Network Speed. 
+   **Note:** This process takes around 5Hrs to build entire CORTX packages with minimum VM specifications where time can vary based on VM specification and network speed.
    
 4. To validate that Packages are generated, run the following command after the build step is complete:
    ```
