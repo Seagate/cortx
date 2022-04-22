@@ -57,11 +57,11 @@ This document provides step-by-step instructions to build CORTX binaries and con
    docker run --rm -v /var/artifacts:/var/artifacts -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image
    ```
    
-   **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` implementation phase.
+   **Note:** This process takes around 5Hrs to build entire CORTX packages with minimum VM specifications. This time will vary based on VM specification and Network Speed. 
    
 4. To validate that Packages are generated, run the following command after the build step is complete:
    ```
-   ll /var/artifacts/0 
+   ls -l /var/artifacts/0 
    ```
 
 5. (Optional) Compile and Build CORTX Stack as per Individual component.
