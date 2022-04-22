@@ -3,11 +3,18 @@
 This document provides step-by-step instructions to build CORTX binaries and container images.
 
 ## Prerequisites
+- Please create Linux VM with CentOS 7.9 or Rocky Linux 8.4 with below minium requirements.
+    - RAM: 8GB
+    - Processor: 4
+
+- Please ensure following minimum disk space is available. 
+    - 70GB : Docker Home Directroy. Default docker home directory is /var/lib/docker. You can modify it based on disk layout. 
+    - 30GB : /mnt . We use this directoy as part build process. You can use /mnt from system disk if it enough space is available.
+
 - Git >= 2.27.0 . Please refer [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) document. You can also use below commmand to install Git. 
   ```
   yum install git -y 
   ```
-   
 
 - Docker >= 20.10.10 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
     ```
@@ -19,7 +26,6 @@ This document provides step-by-step instructions to build CORTX binaries and con
     [root@dev-system ~]# docker-compose --version
     docker-compose version 1.29.2, build 5becea4c
     ```
-    **Note:** Before install docker you should have docker home directory space should be 70GB (default docker home directory is /var/lib/docker) and /mnt drive space should be 30GB to run cortx build.
     
 ## Compile and Build CORTX Stack
 
