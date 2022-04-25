@@ -75,8 +75,6 @@ if [ $scrape == 1 ]; then
     run_command "./scrape_metrics.py -t $p" "$mail_scrape_prefix - $p Github" $Email
   done
 
-  ./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $Email $Email
-
   mail -s "$mail_scrape_prefix - Summary" -r $Email $Email < $summary
 fi
 
@@ -101,7 +99,7 @@ if [ $report == 1 ]; then
   group_activity 'johnbent,justinzw,r-wambui,hessio,swatid-seagate,novium258,mukul-seagate11,mmukul' 'Open Source Team'
   group_activity 'rajkumarpatel2602,shraddhaghatol,priyanka25081999,huanghua78,mbcortx,trshaffer' 'ADG'
 
-  jupyter_args="--ExecutePreprocessor.timeout=180 --output-dir=/tmp --no-input"
+  jupyter_args="--ExecutePreprocessor.timeout=1800 --output-dir=/tmp --no-input"
 
   /bin/rm -rf /tmp/CORTX_Metrics_* # clean up any old crap
 
@@ -120,7 +118,7 @@ if [ $report == 1 ]; then
   health_report=Repo_Health
   jupyter nbconvert --execute --to html $jupyter_args --output $health_report $health_report.ipynb
   scp_report $health_report health_reports
-  bash ./html_to_pdf.py
+  python3 ./html_to_pdf.py
   echo "CORTX Repository Health Report Attached" | mail -s "CORTX Repository Health Report" -r $Email -a cache/repo_health.pdf $Email 
 
   compare_report=CORTX_Metrics_Compare_Projects
@@ -136,5 +134,8 @@ if [ $report == 1 ]; then
   mail -s "$mail_subj_prefix - Report Available Plus Summary plus Attached CSV" -r $Email -a $tfile $Email < $tfile2
 
 fi
+
+./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $Email $Email
+
 
 exit

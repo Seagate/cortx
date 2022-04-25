@@ -2,7 +2,16 @@
 
 import weasyprint
 
-url='https://gtx201.nrm.minn.seagate.com/~535110/latest/repo_health.slides.html'
+
+css = weasyprint.CSS(string="""
+            @page {
+            size: 16in 12in;
+            margin: 0in 0.44in 0.2in 0.44in;
+        }
+    """
+      )
+
+url='file:///tmp/Repo_Health.html'
 out='cache/repo_health.pdf'
 
-pdf = weasyprint.HTML(url).write_pdf(out)
+pdf = weasyprint.HTML(url).write_pdf(target=out,stylesheets=[css])
