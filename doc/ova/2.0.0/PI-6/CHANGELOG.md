@@ -5,7 +5,6 @@ This release notes includes new features, enhancements, and bug fixes added to t
 
 - Restructure CSM-S3 integration code[CORTX-28035]
 - [RGW] REST API to modify IAM user [CORTX-28042]
-- Support bundle enhancement for adding time filter [EOS-28031]
 - Update CSM to work on Rocky Linux 8.2 [EOS-28018]
 - Remove dependency on LDAP for user management [EOS-28020]
 - Integrate Shutdown Signaling REST API with HA [EOS-25532]
@@ -40,7 +39,7 @@ This release notes includes new features, enhancements, and bug fixes added to t
 
 - Improvement in aux pool enable/disable implementation [EOS-25537]
 - Improve http command for hctl status [EOS-27236]
-- [F-53B]Optimize component bundle size - Motr [EOS-25683]
+- Optimize component bundle size - Motr [EOS-25683]
 - MessageBus dynamic port from cluster conf file [EOS-27349]
 - MessageBus as static instance [EOS-27346]
 - IEM CLI integration with Event message [EOS-27255]
