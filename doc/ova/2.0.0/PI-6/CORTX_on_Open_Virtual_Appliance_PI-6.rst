@@ -74,11 +74,6 @@ Validate CSM endpoint via REST API
    
         curl --request POST '<https://$HOSTNAME OR https://$IPADDRESS>/api/v2/login?debug' --header 'Content-Tycation/json' -d '{"username":"cortxadmin","password":"Cortxadmin@123"}' -k
 
-***************
-Troubleshooting
-***************
-
-systemctl restart kubelet docker
 
 Tested by:
 
