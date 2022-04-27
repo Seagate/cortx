@@ -3,6 +3,18 @@
 This document provides step-by-step instructions to build CORTX binaries and container images.
 
 ## Prerequisites
+- Create Linux VM with CentOS 7.9 or Rocky Linux 8.4 with below minimum requirements.
+    - RAM: 8GB
+    - Processor: 4
+
+- Ensure following minimum disk space are available. 
+    - 70GB : Docker Home Directory where default docker home directory is /var/lib/docker. You can modify the file based on disk layout.
+    - 30GB : mnt . Use this directory as part of build process. You can use /mnt from system disk if you have enough disk space available.
+
+- Git >= 2.27.0 . Please refer [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) document. You can also use below commmand to install Git. 
+  ```
+  yum install git -y 
+  ```
 
 - Docker >= 20.10.10 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
     ```
@@ -14,7 +26,6 @@ This document provides step-by-step instructions to build CORTX binaries and con
     [root@dev-system ~]# docker-compose --version
     docker-compose version 1.29.2, build 5becea4c
     ```
-    **Note:** Before install docker you should have docker home directory space should be 70GB (default docker home directory is /var/lib/docker) and /mnt drive space should be 30GB to run cortx build.
     
 ## Compile and Build CORTX Stack
 
@@ -46,11 +57,11 @@ This document provides step-by-step instructions to build CORTX binaries and con
    docker run --rm -v /var/artifacts:/var/artifacts -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image
    ```
    
-   **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` implementation phase.
+   **Note:** This process takes around 5Hrs to build entire CORTX packages with minimum VM specifications where time can vary based on VM specification and network speed.
    
 4. To validate that Packages are generated, run the following command after the build step is complete:
    ```
-   ll /var/artifacts/0 
+   ls -l /var/artifacts/0 
    ```
 
 5. (Optional) Compile and Build CORTX Stack as per Individual component.
