@@ -73,9 +73,9 @@ Validate CSM endpoint via REST API
    
    ::
    
-      curl --request POST '<https://$HOSTNAME:31169/api/v2/login?debug' --header 'Content-Tycation/json' -d '{"username":"cortxadmin","password":"Cortxadmin@123"}' -k
+      curl --request POST '<https://$HOSTNAME:31169/api/v2/login?debug>' --header 'Content-Tycation/json' -d '{"username":"cortxadmin","password":"Cortxadmin@123"}' -k
 
-      curl --request POST '<https://$IPADDRESS>:31169/api/v2/login?debug' --header 'Content-Tycation/json' -d '{"username":"cortxadmin","password":"Cortxadmin@123"}' -k      
+      curl --request POST '<https://$IPADDRESS>:31169/api/v2/login?debug>' --header 'Content-Tycation/json' -d '{"username":"cortxadmin","password":"Cortxadmin@123"}' -k      
 
 
 
