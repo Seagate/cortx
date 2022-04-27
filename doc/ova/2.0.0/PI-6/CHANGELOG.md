@@ -9,7 +9,7 @@ This release notes includes new features, enhancements, and bug fixes added to t
 - Remove dependency on LDAP for user management [EOS-28020]
 - Integrate Shutdown Signaling REST API with HA [EOS-25532]
 - Manage user not able to edit self email id [EOS-26602]
-- Support Bundle filter implementation [EOS-27251]
+- Support Bundle filter implementation [EOS-27251, EOS-28031]
 - RGW sysconfig path needs changes [EOS-28564]
 - populate CDF with rgw client details fetched from conf-store [EOS-27617]
 - RGW: support multiple s3 motr client types in CDF [EOS-27808]
