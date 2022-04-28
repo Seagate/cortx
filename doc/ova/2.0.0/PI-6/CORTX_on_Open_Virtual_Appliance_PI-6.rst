@@ -69,13 +69,12 @@ Procedure
 Validate CSM endpoint via REST API
 **********************************
 
-#. Validate the CSM endpoint using below command. Use hostname or ipaddress as per your VM
+#. Validate the CSM endpoint using below command:
    
    ::
-   
-      curl --request POST '<https://$HOSTNAME:31169/api/v2/login?debug>' --header 'Content-Tycation/json' -d '{"username":"cortxadmin","password":"Cortxadmin@123"}' -k
 
-      curl --request POST '<https://$IPADDRESS>:31169/api/v2/login?debug>' --header 'Content-Tycation/json' -d '{"username":"cortxadmin","password":"Cortxadmin@123"}' -k      
+      export IPADDRESS=`ifconfig ens32 | grep inet -w | awk '{print $2}'` && echo $IPADDRESS
+      curl --request POST 'https://$IPADDRESS:31169/api/v2/login?debug' --header 'Content-Tycation/json' -d '{"username":"cortxadmin","password":"Cortxadmin@123"}' -k
 
 
 
