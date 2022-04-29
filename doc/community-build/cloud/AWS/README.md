@@ -89,7 +89,7 @@ This file consists of the procedure to compile complete CORTX stack and Deploy o
 
 ### 4. Testing IO operations 
 
-   We will need separate AWS instance to test IO operations. Follow [IO Test using AWS ](https://github.com/Seagate/cortx/blob/main/doc/integrations/AWS_EC2/README.md) and subsequent steps. 
+   We will need separate AWS instance to test IO operations. Follow [IO Test using AWS ](https://github.com/Seagate/cortx/blob/main/doc/testing_io.rst) and subsequent steps. 
 
 ## Cleanup 
 
