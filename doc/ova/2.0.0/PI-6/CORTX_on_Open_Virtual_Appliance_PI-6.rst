@@ -76,14 +76,13 @@ Validate CSM endpoint via REST API
       export IPADDRESS=`ifconfig ens32 | grep inet -w | awk '{print $2}'` && echo $IPADDRESS
       curl --request POST 'https://$IPADDRESS:31169/api/v2/login?debug' --header 'Content-Tycation/json' -d '{"username":"cortxadmin","password":"Cortxadmin@123"}' -k
 
-   Notes: 
-   If encounter error "-bash: ifconfig: command not found", install ifconfig first with the following.
+   Note: If encounter error "-bash: ifconfig: command not found", install ifconfig first with the following.
    
    ::
 
       yum install net-tools
 
-   If encounter error "curl: (6) Could not resolve host: $IPADDRESS; Unknown error" on older curl versions, try the following instead. 
+   Note: If encounter error "curl: (6) Could not resolve host: $IPADDRESS; Unknown error" on older curl versions, try the following instead. 
    
    ::
 
