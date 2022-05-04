@@ -92,5 +92,6 @@ Validate CSM endpoint via REST API
 
 Tested by:
 
+- May 04, 2022: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro.
 - Apr 30, 2022: Bo Wei (bo.b.wei@seagate.com) on a Windows with VMWare WorkStation 16 Player.
 - Mar 18, 2022: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro.
