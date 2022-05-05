@@ -54,7 +54,7 @@ Step 4: Boot up the EC2 instance and edit net .rules file to create stable names
  
  Password: `opensource!`
  
- To [create stable names for network interfaces](http://www.linuxfromscratch.org/lfs/view/6.3/chapter07/network.html) on the EC2 instance we will need to edit the `70-persistent-net.rules` file located here `/etc/udev/rules.d`
+ To [create stable names for network interfaces](https://www.linuxfromscratch.org/lfs/view/9.0/chapter07/network.html) on the EC2 instance we will need to edit the `70-persistent-net.rules` file located here `/etc/udev/rules.d`
  
 - If you are using **default configuration of `c5.large` instance type**, you can run the following script:
    ```sh
