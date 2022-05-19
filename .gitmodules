@@ -16,9 +16,6 @@
 [submodule "cortx-manager"]
 	path = cortx-manager
 	url = https://github.com/Seagate/cortx-manager.git
-[submodule "cortx-management-portal"]
-	path = cortx-management-portal
-	url = https://github.com/Seagate/cortx-management-portal.git
 [submodule "cortx-motr"]
 	path = cortx-motr
 	url = https://github.com/Seagate/cortx-motr.git
