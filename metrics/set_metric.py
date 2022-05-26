@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 import cortx_community
-
+import sys
 import argparse
 
 def Debug(msg):
@@ -19,10 +19,11 @@ def main():
   )
   required.add_argument('--key', '-k', type=str, help="Which key to set / query", required=True)
   optional.add_argument('--value', '-v', type=str, help="Which value to set", required=False)
-  optional.add_argument('--date', '-d', type=str, help='Which date to set', required=False)
+  optional.add_argument('--date', '-d', type=str, help='Which date to set [YYYY-MM-DD]', required=False)
   optional.add_argument('--org',  '-o', help='Which org',  default='Seagate')
   optional.add_argument('--repo', '-r', help='Which repo', default='GLOBAL')
   optional.add_argument('--verbose', '-V', help='Do not compress array values into a number', action='store_true', default=False, required=False)
+  optional.add_argument('--show', '-s', help='Dump all possible keys [pass -k foo to get past error message about required args', action='store_true', default=False, required=False)
   args = parser.parse_args()
 
   repo = args.repo
@@ -30,9 +31,16 @@ def main():
   key  = args.key
   val  = args.value
   date = args.date
+  show = args.show
 
   ps = cortx_community.PersistentStats(org_name=args.org)
   dates=ps.get_dates(args.repo)
+
+  if show:
+    all_keys = ps.get_all_keys(args.repo)
+    for key in sorted(all_keys):
+      print(key)
+    sys.exit(0)
 
   if date is None:
     date = dates[-1]
