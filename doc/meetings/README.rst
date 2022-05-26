@@ -14,12 +14,15 @@ Audience members may also be interested in our `Motr Deep Dive training sessions
 
 **Upcoming sessions:**
 
-#. Apr 12 2022: Rick Osowski and Gregory Touretsky will present the 'Why' and the 'How' of the recent work to containerize CORTX.
+#. May 10 2022: Steven Wei Der Chien of KTH will speak about modern storage infrastructures and the I/O programming model landscape in High Performance Computing. His work was recently featured in a  `Blocks and Files article <https://blocksandfiles.com/2022/04/19/seagate-object-storage-exascale-computing-projects/>`_.
 
+#. June 14 2022: Ari Van Der Hoeven will present on BFQ for multi-actuators
 
 **Previously recorded sessions:**
 
-#. Mar 3 2022: Seagate CORTX architects Sai Narasimhamurthy, David Vasiliauskas, and Ganesan Umenesan presented some of our collaborative research projects happening in Europe, and also discussed ephemeral services, deep technical designs for namespace management, and hierarchical storage.
+#. Apr 12 2022: Rick Osowski and Gregory Touretsky presented the 'Why' and the 'How' of the recent work to containerize CORTX. `PDF <PDFs/MTA-Kubernetes.pdf>`_  | `Video <https://cortx.link/mta-k8>`_.
+
+#. Mar 3 2022: Seagate CORTX architects Sai Narasimhamurthy, David Vasiliauskas, and Ganesan Umenesan presented some of our collaborative research projects happening in Europe, and also discussed ephemeral services, deep technical designs for namespace management, and hierarchical storage. `PDF <PDFs/MTA_March22.pdf>`_  | `Video <https://youtu.be/GvyS8cRUxqc>`_.
 
 #. Feb 3 2022: Andriy Tkachuk and Sining Wu will discussed an exciting new development in the software layer used to connect motr to S3 clients. `PDF <PDFs/RGW_MOTR.pdf>`_  | `Video <https://youtu.be/j29UxJmVqw0>`_.
 
