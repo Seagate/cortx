@@ -10,11 +10,11 @@ CORTX, a mass object storage solution, acts as a reliable store for different ve
 
 For demo purposes, we only showed DVC's data versioning functionality. DVC also offers other functionalities such as pipelining, hyperparameter tuning and experiment tracking. Feel free to learn more about DVC [here](https://dvc.org/doc/start).
 
-**1. Install DVC**
+## 1. Install DVC
 
 Follow the steps at https://dvc.org/doc/install
 
-**2. Initialize Git and DVC repository**
+## 2. Initialize Git and DVC repository
 
 ```
 git init
@@ -22,7 +22,7 @@ dvc init
 git commit -m "Init DVC"
 ```
 
-**2. Track dataset versions with DVC**
+## 3. Track dataset versions with DVC
 
 ```
 # Download example dataset
@@ -36,7 +36,7 @@ git add data/data.xml.dvc data/.gitignore
 git commit -m "Add raw data"
 ```
 
-**3. Add CORTX as the dataset storage backend for DVC**
+## 4. Add CORTX as the dataset storage backend for DVC
 
 ```
 dvc remote add -d cortx s3://bucketName
@@ -45,13 +45,13 @@ dvc remote modify cortx access_key_id AKIAtEpiGWUcQIelPRlD1Pi6xQ
 dvc remote modify cortx secret_access_key YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK
 ```
 
-**4. Push dataset into CORTX with DVC**
+## 5. Push dataset into CORTX with DVC
 
 ```
 dvc push
 ```
 
-**5. When you make changes on the dataset...**
+## 6. When you make changes on the dataset...
 
 ```
 # Push it to DVC again; it will NOT overwrite your previous dataset versions
@@ -62,7 +62,7 @@ dvc push
 
 Contributors to the same ML project can then run `dvc pull` to get access to the latest version of the dataset that you pushed.
 
-**6. When you want to switch to a different dataset version, e.g. to revert...**
+## 7. When you want to switch to a different dataset version, e.g. to revert...
 
 ```
 git checkout <e.g. older commit with an older .dvc file version>
