@@ -3,7 +3,7 @@
 This document provides quick access to several different ways to set up CORTX for installation, testing, running, or deployment. CORTX is available in multiple formats, including as a pre-built virtual machine image - the easiest and fastest way to get CORTX up and running. Alternatively, CORTX can be built into a binary format from source code.  Finally, for those interested in running different configurations of CORTX, there are a variety of different options available. These include everything from the full installation to more slimmed down installations, such as configuring and running motr, the core object storage layer, on its own.  We have attempted to create easy-to-follow instructions for all of these installation/test methods which are organized below in order of difficulty.
  
 1. Download a CORTX virtual machine image to get up and running in minutes
-    1. On a single node on Kubernetes inside an OVA: [LINK](doc/ova/2.0.0/PI-5/CORTX_on_Open_Virtual_Appliance_PI-5.rst)
+    1. On a single node on Kubernetes inside an OVA: [LINK](https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-6/CORTX_on_Open_Virtual_Appliance_PI-6.rst)
     1. On an AWS EC2 instance: [LINK](doc/integrations/AWS_EC2/README.md)
     1. Across a cluster: TODO 
 1. Run CORTX on Kubernetes
