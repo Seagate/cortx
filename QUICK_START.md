@@ -10,8 +10,10 @@ This document provides quick access to several different ways to set up CORTX fo
     1. Manual steps: [LINK](https://github.com/Seagate/cortx-k8s/blob/integration/README.md)
     2. Automated script: [LINK](https://github.com/Seagate/cortx-re/blob/main/solutions/community-deploy/CORTX-Deployment.md)
     3. On Amazon Web Services 
-        1. Using Cloudformation: [LINK](https://github.com/Seagate/cortx-k8s/blob/main/doc/cortx-aws-k8s-installation.md)
-        2. Using Terraform: [LINK](https://github.com/Seagate/cortx-re/blob/main/solutions/community-deploy/cloud/AWS/README.md)
+        1. Using Cloudformation: [LINK](https://github.com/Seagate/cortx-k8s/blob/main/doc/cortx-aws-k8s-installation.md)  
+           Click [here](https://aws.amazon.com/cloudformation/) for more details on Cloudformation.
+        3. Using Terraform: [LINK](https://github.com/Seagate/cortx-re/blob/main/solutions/community-deploy/cloud/AWS/README.md)  
+           Click [here](https://www.terraform.io/) for more details on Terraform.
 1. Build entire CORTX into binaries: [LINK](./doc/community-build/docker/cortx-all/README.md)
 1. Build just the block storage layer (motr) from the source: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
     1. Run motr on a single node: [LINK](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst)
