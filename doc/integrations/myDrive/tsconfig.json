@@ -73,6 +73,6 @@
     "webUI",
     "webUI.config.js",
     "webUISetup",
-    "webUISetup.config.js",
+    "webUISetup.config.js"
   ]
 }
