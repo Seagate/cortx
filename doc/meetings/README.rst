@@ -14,11 +14,12 @@ Audience members may also be interested in our `Motr Deep Dive training sessions
 
 **Upcoming sessions:**
 
-#. May 10 2022: Steven Wei Der Chien of KTH will speak about modern storage infrastructures and the I/O programming model landscape in High Performance Computing. His work was recently featured in a  `Blocks and Files article <https://blocksandfiles.com/2022/04/19/seagate-object-storage-exascale-computing-projects/>`_.
-
-#. June 14 2022: Ari Van Der Hoeven will present on BFQ for multi-actuators
+#. June 14 2022: Zuhair Alsader will discuss sharing the S3 layer between Ceph, CORTX, and DAOS.
+#. July 12 2022: Arie Van Der Hoeven will present on BFQ for multi-actuators
 
 **Previously recorded sessions:**
+
+#. May 10 2022: Steven Wei Der Chien of KTH will spoke about modern storage infrastructures and the I/O programming model landscape in High Performance Computing. His work was recently featured in a  `Blocks and Files article <https://blocksandfiles.com/2022/04/19/seagate-object-storage-exascale-computing-projects/>`_.
 
 #. Apr 12 2022: Rick Osowski and Gregory Touretsky presented the 'Why' and the 'How' of the recent work to containerize CORTX. `PDF <PDFs/MTA-Kubernetes.pdf>`_  | `Video <https://cortx.link/mta-k8>`_.
 

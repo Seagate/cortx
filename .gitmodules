@@ -40,3 +40,6 @@
 [submodule "cortx-motr-apps"]
 	path = cortx-motr-apps
 	url = https://github.com/Seagate/cortx-motr-apps.git
+[submodule "cortx-halo"]
+	path = cortx-halo
+	url = https://github.com/Seagate/cortx-halo.git

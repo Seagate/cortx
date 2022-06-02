@@ -85,3 +85,10 @@ Most importantly, the code to ensure the connections is shown below
     # Set s3 credentials
     from h2o.persist import set_s3_credentials
     set_s3_credentials(SECRET, SECRETACCESS)
+
+Note: If encouter error "botocore.errorfactory.NoSuchBucket: An error occurred (NoSuchBucket) when calling the PutObject operation: Unknown", it means the bucket `testbucket` is not found. Need to create it first.
+
+
+Tested by:
+
+- May 3, 2022: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA-2.0.0-713 as S3 Server.
