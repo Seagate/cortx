@@ -421,5 +421,8 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Priyadarshini Murugan](https://github.com/msvdpriya)
 1. [Sumanth Reddy Muni](https://github.com/sumanthreddym)
 
+## [Seagate/cortx-rgw](https://github.com/Seagate/cortx-rgw)
+1. [Mayank Srivastava](https://github.com/Mayank-Sriva)
+
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
 
