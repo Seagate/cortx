@@ -3,8 +3,8 @@ This release notes includes new features, enhancements, and bug fixes added to t
 
 ## Bug Fixes
 
-- add addb logs to rgw support bundle (#88) [CORTX-30595]
-- add consul alive check for config miniprovisioning (#83) [CORTX-29889]
+- Add addb logs to rgw support bundle (#88) [CORTX-30595]
+- Add consul alive check for config miniprovisioning (#83) [CORTX-29889]
 - Upgrade mini-provisioner interface. (#81) [CORTX-29892]
 - Use PVC location for storing m0trace files during mini-provisioner execution (#82) [CORTX-30969]
 - rgw mp: Use PVC for storing m0trace files incase of admin user creation fails during rgw mini-provisioner [CORTX-30969]
@@ -24,16 +24,16 @@ This release notes includes new features, enhancements, and bug fixes added to t
 - dix/dtm0: add support of transient failures for PUT (#1545) [CORTX-27608]
 - Codacy code cleanup (#1606) (#1732) [CORTX-30751]
 - Fix 52motr-singlenode-sanity system test (#1746) [CORTX-31056]
-- fix SNS system tests regression (#1750) [CORTX-31264]
+- Fix SNS system tests regression (#1750) [CORTX-31264]
 - Add support for libfabric v1.14.x and v1.15.x (#1723) [CORTX-29418]
 - Log rotation and compression for the motr log files (#1589) [CORTX-27770]
 - Add DIX repair and rebalance support in m0_ha_sim (#1676) [CORTX-29371]
 - cas/client: fix memory corruption issue (#1628) [CORTX-30728]
 - Rename cvg_count and storage_set_count keys (#1623) [CORTX-29739]
-- convert kernel based spiel ST to usermode (#1489) [CORTX-28542]
+- Convert kernel based spiel ST to usermode (#1489) [CORTX-28542]
 - Fixing the Alex bug (#6373) [CORTX-30785]
-- address codacy errors (#6372) [CORTX-30255]
-- add database.yaml for utils-based models [CORTX-29553]
+- Address codacy errors (#6372) [CORTX-30255]
+- Add database.yaml for utils-based models [CORTX-29553]
 - Enhance System health schema for control node  (#693) [CORTX-29931]
 - rgw_rest_bucket: Support `max-size` attr for SetBucketQuota REST API (#190) [CORTX-31085]
 - When pod is restarted via replicas or kubectl delete, pod_restart count is not set properly (#680) [CORTX-29399]
@@ -47,7 +47,7 @@ This release notes includes new features, enhancements, and bug fixes added to t
 
 ## New Features
 
-- added rgw_s3 service for server node rgw copmonâ€¦ (#6362) [CORTX-29869]
-- migrate unsupported features from ElasticSearch to Consul (#775) [CORTX-28033]
+- Added rgw_s3 service for server node rgw copmonâ€¦ (#6362) [CORTX-29869]
+- Migrate unsupported features from ElasticSearch to Consul (#775) [CORTX-28033]
 - Hybrid API framework improvement for all the capacity API's (#806) [CORTX-30326]
 - List IAM users API (#825) [CORTX-31186]
