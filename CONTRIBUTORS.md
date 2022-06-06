@@ -353,6 +353,9 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Thavanathan Thangaraj](https://github.com/thavanathan)
 1. [Yashodhan Pise (Yash)](https://github.com/ypise)
 
+## [Seagate/cortx-rgw](https://github.com/Seagate/cortx-rgw)
+1. [Mayank Srivastava](https://github.com/Mayank-Sriva)
+
 ## [Seagate/cortx-s3server](https://github.com/Seagate/cortx-s3server)
 1. [Abhilekh Mustapure](https://github.com/abhilekh268)
 1. [Ajinkya Dhumal](https://github.com/AjinkyaDhumal)
@@ -420,9 +423,6 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Vimal Raghwani](https://github.com/vimalraghwani20)
 1. [Priyadarshini Murugan](https://github.com/msvdpriya)
 1. [Sumanth Reddy Muni](https://github.com/sumanthreddym)
-
-## [Seagate/cortx-rgw](https://github.com/Seagate/cortx-rgw)
-1. [Mayank Srivastava](https://github.com/Mayank-Sriva)
 
 If you want to contribute but aren't sure how, please check out our [Contributing Guide](CONTRIBUTING.md)!
 
