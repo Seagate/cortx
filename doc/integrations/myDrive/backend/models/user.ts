@@ -335,7 +335,6 @@ userSchema.methods.encryptToken = function (token: string, key: string, iv: any)
     const encryptedText = cipher.update(token);
 
     return Buffer.concat([encryptedText, cipher.final()]).toString("hex");
-    ;
 }
 
 userSchema.methods.decryptToken = function (encryptedToken: any, key: string, iv: any) {
