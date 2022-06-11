@@ -21,14 +21,14 @@ Note: Dockerfile is available to replace Step 1 and Step 2.
 
 Step 1: Install s3fs
 
-    apt-get install -y s3fs
+    yum install -y s3fs-fuse
 
 
 Step 2: Install ftp server
 
-    apt-get install -y vsftpd
-    sed -i 's/anonymous_enable=NO/anonymous_enable=YES/' /etc/vsftpd.conf
-    mkdir /srv/ftp/cortx-fs
+    yum install -y vsftpd
+    sed -i 's/anonymous_enable=NO/anonymous_enable=YES/' /etc/vsftpd/vsftpd.conf
+    mkdir -p /srv/ftp/cortx-fs
     chmod 600 /srv/ftp/cortx-fs
     service vsftpd start
 
@@ -45,7 +45,7 @@ Step 1: Add some files to the testbucket using tools like Cyberduck or awscli (n
 
 To install awscli.
 
-    apt-get install -y awscli
+    yum install -y awscli
 
 Create aws credential file at ~/.aws/credentials with the following contents.
 
