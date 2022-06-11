@@ -1,0 +1,309 @@
+version: '3'
+
+services:
+  mc:
+    image: minio/mc
+    container_name: mc
+    entrypoint: |
+      sh -c 'sh -s << EOF
+      mc config host add tmp uvo1f7e7qbkxtmmt5iq.vm.cld.sr AKIAtEpiGWUcQIelPRlD1Pi6xQ YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK
+      mc mb tmp/thanos
+      mc config host rm tmp
+      sleep 10000000
+      EOF'
+    networks:
+      - thanos
+
+  prometheus0:
+    image: prom/prometheus:v2.9.2
+    container_name: prometheus0
+    user: root
+    volumes:
+      - thanos0:/data
+      - ./data/prom0/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/data/prom0"
+      - "--log.level=warn"
+      - "--web.enable-lifecycle"
+      - "--storage.tsdb.min-block-duration=2h"
+      - "--storage.tsdb.max-block-duration=2h"
+      - "--web.listen-address=0.0.0.0:9090"
+    networks:
+      - thanos
+
+  prometheus1:
+    image: prom/prometheus:v2.9.2
+    container_name: prometheus1
+    user: root
+    volumes:
+      - thanos1:/data
+      - ./data/prom1/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/data/prom1"
+      - "--log.level=warn"
+      - "--web.enable-lifecycle"
+      - "--storage.tsdb.min-block-duration=2h"
+      - "--storage.tsdb.max-block-duration=2h"
+      - "--web.listen-address=0.0.0.0:9091"
+    networks:
+      - thanos
+
+  prometheus2:
+    image: prom/prometheus:v2.9.2
+    container_name: prometheus2
+    user: root
+    volumes:
+      - thanos2:/data
+      - ./data/prom2/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/data/prom2"
+      - "--log.level=warn"
+      - "--web.enable-lifecycle"
+      - "--storage.tsdb.min-block-duration=2h"
+      - "--storage.tsdb.max-block-duration=2h"
+      - "--web.listen-address=0.0.0.0:9092"
+    networks:
+      - thanos
+
+  sidecar0:
+    image: thanosio/thanos:v0.10.0
+    container_name: thanos-sidecar0
+    command:
+      - "sidecar"
+      - "--debug.name=sidecar-0"
+      - "--log.level=debug"
+      - "--grpc-address=0.0.0.0:10901"
+      - "--grpc-grace-period=1s"
+      - "--http-address=0.0.0.0:10902"
+      - "--http-grace-period=1s"
+      - "--prometheus.url=http://prometheus0:9090"
+      - "--tsdb.path=/data/prom0"
+      - "--objstore.config-file=/bucket.yml"
+    volumes:
+      - thanos0:/data
+      - ./data/bucket.yml:/bucket.yml
+    depends_on:
+      - prometheus0
+    networks:
+      - thanos
+
+  sidecar1:
+    image: thanosio/thanos:v0.10.0
+    container_name: thanos-sidecar1
+    command:
+      - "sidecar"
+      - "--debug.name=sidecar-1"
+      - "--log.level=debug"
+      - "--grpc-address=0.0.0.0:10911"
+      - "--grpc-grace-period=1s"
+      - "--http-address=0.0.0.0:10912"
+      - "--http-grace-period=1s"
+      - "--prometheus.url=http://prometheus1:9091"
+      - "--tsdb.path=/data/prom1"
+      - "--objstore.config-file=/bucket.yml"
+    volumes:
+      - thanos1:/data
+      - ./data/bucket.yml:/bucket.yml
+    depends_on:
+      - prometheus1
+    networks:
+      - thanos
+
+  sidecar2:
+    image: thanosio/thanos:v0.10.0
+    container_name: thanos-sidecar2
+    command:
+      - "sidecar"
+      - "--debug.name=sidecar-2"
+      - "--log.level=debug"
+      - "--grpc-address=0.0.0.0:10921"
+      - "--grpc-grace-period=1s"
+      - "--http-address=0.0.0.0:10922"
+      - "--http-grace-period=1s"
+      - "--prometheus.url=http://prometheus2:9092"
+      - "--tsdb.path=/data/prom2"
+      - "--objstore.config-file=/bucket.yml"
+    volumes:
+      - thanos2:/data
+      - ./data/bucket.yml:/bucket.yml
+    depends_on:
+      - prometheus2
+    networks:
+      - thanos
+
+  store:
+    image: thanosio/thanos:v0.10.0
+    container_name: thanos-store
+    restart: always
+    command:
+      - "store"
+      - "--debug.name=store"
+      - "--log.level=debug"
+      - "--grpc-address=0.0.0.0:10905"
+      - "--grpc-grace-period=1s"
+      - "--http-address=0.0.0.0:10906"
+      - "--http-grace-period=1s"
+      - "--data-dir=/data/store"
+      - "--objstore.config-file=/bucket.yml"
+    volumes:
+      - store:/data
+      - ./data/bucket.yml:/bucket.yml
+    networks:
+      - thanos
+
+  receive:
+    image: thanosio/thanos:v0.10.0
+    container_name: thanos-receive
+    command:
+      - "receive"
+      - "--debug.name=receive"
+      - "--log.level=debug"
+      - "--tsdb.path=/data/remote-write-receive-data"
+      - "--grpc-address=0.0.0.0:10907"
+      - "--grpc-grace-period=1s"
+      - "--http-address=0.0.0.0:10909"
+      - "--http-grace-period=1s"
+      - "--label=receive=\"true\""
+      - "--objstore.config-file=/bucket.yml"
+      - "--remote-write.address=0.0.0.0:10908"
+    volumes:
+      - receive:/data
+      - ./data/bucket.yml:/bucket.yml
+    networks:
+      - thanos
+
+  remotewrite:
+    image: prom/prometheus:v2.9.2
+    container_name: thanos-remote-write
+    user: root
+    volumes:
+      - ./data/local-prometheus-data/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+    depends_on:
+      - prometheus0
+      - sidecar0
+    networks:
+      - thanos
+
+  node-exporter:
+    image: prom/node-exporter:v0.18.1
+    container_name: node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    networks:
+      - thanos
+
+  query0:
+    image: thanosio/thanos:v0.10.0
+    container_name: thanos-query0
+    command:
+      - "query"
+      - "--debug.name=query0"
+      - "--log.level=debug"
+      - "--grpc-address=0.0.0.0:10903"
+      - "--grpc-grace-period=1s"
+      - "--http-address=0.0.0.0:10904"
+      - "--http-grace-period=1s"
+      - "--query.replica-label=prometheus"
+      - "--store=sidecar0:10901"
+      - "--store=sidecar1:10911"
+      - "--store=sidecar2:10921"
+      - "--store=store:10905"
+      - "--store=receive:10907"
+    ports:
+      - 10904:10904
+    depends_on:
+      - sidecar0
+      - sidecar1
+      - sidecar2
+      - store
+      - receive
+    networks:
+      - thanos
+
+  query1:
+    image: thanosio/thanos:v0.10.0
+    container_name: thanos-query1
+    command:
+      - "query"
+      - "--debug.name=query1"
+      - "--log.level=debug"
+      - "--grpc-address=0.0.0.0:10913"
+      - "--grpc-grace-period=1s"
+      - "--http-address=0.0.0.0:10914"
+      - "--http-grace-period=1s"
+      - "--query.replica-label=prometheus"
+      - "--store=sidecar0:10901"
+      - "--store=sidecar1:10911"
+      - "--store=sidecar2:10921"
+      - "--store=store:10905"
+      - "--store=receive:10907"
+    depends_on:
+      - sidecar0
+      - sidecar1
+      - sidecar2
+      - store
+      - receive
+    networks:
+      - thanos
+      
+  compactor:
+    image: thanosio/thanos:v0.10.0
+    container_name: compactor
+    command:
+      - "compact"
+      - "--data-dir=/tmp/thanos-compact"
+      - "--log.level=debug"
+      - "--objstore.config-file=/bucket.yml"
+      - "--http-address=0.0.0.0:10902"
+      - "--http-grace-period=2m"
+      - "--consistency-delay=30m"
+    volumes:
+      - compact:/tmp
+      - ./data/bucket.yml:/bucket.yml
+    depends_on:
+      - sidecar0
+      - sidecar1
+      - sidecar2
+      - store
+    networks:
+      - thanos
+      
+  grafana:
+    image: grafana/grafana:6.5.2
+    container_name: grafana
+    #volumes:
+    #  - grafana_data:/var/lib/grafana
+    #  - ./grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    networks:
+      - thanos
+
+networks:
+  thanos: {}
+
+volumes:
+  thanos0: {}
+  thanos1: {}
+  thanos2: {}
+  store: {}
+  receive: {}
+  compact: {}

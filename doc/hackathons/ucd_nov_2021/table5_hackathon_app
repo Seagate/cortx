@@ -1,0 +1,440 @@
+#!/usr/bin/env python3
+#
+# Copyright (c) 2021 Seagate Technology LLC and/or its Affiliates
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# For any questions about this software or licensing,
+# please email opensource@seagate.com or cortx-questions@seagate.com.
+#
+
+# This is the FDMI sample application. It serves as a hub for the FDMI
+# records delivered fdmi_sample_plugin C-program via stdout. To do so
+# it gathers the cluster configuration with 'hctl status' command,
+# forks fdmi_sample_plugin and waits for the FDMI events in JSON form.
+# The reason to use it is simply because it is much easier to parse data
+# and develop new features in python in compare to C.
+
+# For now it is just a demo that prints FDMI records to console, but
+# except this it can perform records de-dup and for example, replication
+# coordination by means of set of the replication python programs that
+# perform actual data move.
+
+import subprocess
+import signal
+import shlex
+import sys
+import json
+import codecs
+import requests
+import re
+import boto3
+import string
+from time import sleep
+import os
+
+# Global cluster info including information required for running
+# fdmi_sample_plugin C-program.
+cluster_info = dict()
+
+# Global key-value cache used for records de-duplication. KV pairs
+# are available by the kv['cr_key']
+#kv_records = dict()
+kv_records = []
+
+# Global list of fdmi_sample_plugin processes that this program
+# is communicating.
+processes = []
+
+# Global word_counts dictionary
+word_counts = dict()
+
+
+def make_request(kv):
+    print("got requsest to post : {}".format(kv))
+    # try:
+    #json_req = json.loads(kv)
+    # except:
+    #    print ("json loading failed ")
+    try:
+        #print (json_req)
+        #resp = requests.post('http://192.168.56.121:8080' + '/jobs', json=json.loads(kv))
+        # sending request to replicator manager
+        resp = requests.post('http://127.0.0.1:8080' + '/jobs', json=kv)
+        #html = resp.json()
+        #print ("Resonse is : {}".format(html))
+    except:
+        print("Error occured! : response  : {}".format(resp))
+
+
+def str_decode(encoded):
+    if encoded is None:
+        return None
+    if encoded == '0':
+        return encoded
+    return codecs.decode(encoded, 'hex').decode('utf-8')
+
+
+def get_object(client, bucket, object_key):
+    try:
+        value = client.Object(bucket, object_key).get()[
+            'Body'].read().decode('utf-8')
+        #print("Read object '%s' from bucket '%s'", object_key, bucket)
+    except:
+        print("Problem to get object'%s'", object_key)
+    else:
+        return value
+
+
+def connect_client(kv_records):
+    text_obj = []
+
+    # Init client connection with actual key ID and Secret key for my aws client
+    session = boto3.Session(aws_access_key_id='AKIAu8cBwsNeSeWcX1L0kaCaYg',
+                            aws_secret_access_key='j98WQMFokoNuCgHos37Hc3rSfktoVbuVdJzerQIz')
+    client = session.resource('s3', region_name='US',
+                              endpoint_url='http://s3.seagate.com')
+
+    for kv in kv_records:
+        object_key = kv['cr_key']
+        bucket = json.loads(kv['cr_val'])['Bucket-Name']
+        text_obj.append(get_object(client, bucket, object_key))
+
+    return text_obj
+
+
+def count_words(filename, num_print):
+    # Open the filename, read the data and do the word count
+    #print ("Will need to open file %s, and do the word count on its contents." % filename)
+    file = open(filename, "r", encoding="utf-8-sig")
+    from collections import Counter
+    wordList = file.read()
+    import string
+    table = str.maketrans(dict.fromkeys(string.punctuation))
+    words = wordList.translate(table)
+    wordcount = Counter(words.split())
+    for item in wordcount.items():
+        print("{}\t{}".format(*item))
+    # now print the word count for just this file (limit to just the num_print most popular files)
+    # then also print the global word count for all files (limit to just the num_print most popular files)
+    return word_counts
+
+
+# Process the FDMI records in form of JSON and perform some useful actions
+# such as de-dup, logging and/or sending to the replicator program for data
+# move.
+def process_fdmi_record(kv_record, num_print):
+
+    try:
+        # Parsing stdout records produce by the fdmi_sample_plugin
+        kvs = json.loads(kv_record)
+        kv = {'fid': kvs["fid"], 'cr_key': str_decode(
+            kvs["cr_key"]), 'cr_val': str_decode(kvs["cr_val"])}
+        print("KVS Records : {}".format(kv))
+
+        flag = True
+
+        # check dedup records
+        for kv_i in kv_records:
+            if kv['cr_key'] == kv_i['cr_key']:
+                print("Object already created")
+            if (kv['cr_key'] == kv_i['cr_key']) and (kv['cr_val'] != "0"):
+                print("dedup: ")
+                flag = False
+                break
+
+        if flag == True and kv['cr_val'] != "0":
+            kv_records.append(kv)
+
+            # Connect to client and get object data
+            obj_data = connect_client(kv_records)
+
+            # Count words in object data
+            counting = count_words(obj_data, num_print)
+
+            # Print to stdout
+            # print(counting)
+            ################################
+    except:
+        # raise
+        print('Exception occurred!\n')
+
+
+# Handle SIGNT and SIGTERM. Stop the underlying processes and exit.
+def signal_handler(sig, frame):
+    print('CTRL + C pressed', file=sys.stderr)
+    print('Stopping all fdmi_sample_plugin processes...')
+    for p in processes:
+        p.send_signal(sig)
+        p.wait()
+    sys.exit(0)
+
+
+# Fork the process and capture its output
+def execute_command_and_get_output(cmd):
+    proc = subprocess.Popen(cmd, stdin=subprocess.PIPE,
+                            stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE,
+                            shell=True)
+    stdout, stderr = proc.communicate()
+    output_var = str(stdout, 'utf-8')
+    return output_var
+
+
+# fdmi_sample_plugin -l 192.168.52.53@tcp:12345:4:1 -h 192.168.52.53@tcp:12345:1:1
+# -p 0x7000000000000001:0x37 -f 0x7200000000000001:0x19 -g 0x6c00000000000001:0x81
+def get_plugin_cmd(args):
+    # fdmi_sample_plugin = "/path/to/cortx-motr/fdmi/plugins/fdmi_sample_plugin"
+    opts = " -l " + cluster_info['local_endpoint']
+    opts += " -h " + cluster_info['ha_endpoint']
+    opts += " -p " + cluster_info['profile_fid']
+    opts += " -f " + cluster_info['process_fid']
+    opts += " -g " + cluster_info['fdmi_filter_fid']
+    return args.plugin_path + opts
+
+
+# Gather the cluster info with 'hctl status --json' command, which is
+# need for running fdmi_sample_plugin. In case that --filter-id is omitted
+# then parse /etc/motr/confd.xc to find the filter-id for fdmi_sample_plugin
+def get_cluster_info(args):
+    info = dict()
+    cmd = '{} status --json'.format(args.hctl_path)
+    output = execute_command_and_get_output(cmd)
+    if output is None:
+        print('Failed to execute {}. Please make sure the path to '
+              '{} is correct'.format(cmd, args.hctl_path), file=sys.stderr)
+        return None
+    cluster_js = json.loads(output)
+    if cluster_js is None:
+        print('Failed to fetch cluster info.', file=sys.stderr)
+        return None
+
+    profiles = cluster_js.get('profiles')
+    if profiles is None or len(profiles) == 0:
+        print('Failed to fetch profiles from cluster info:\n{}'.format(
+            cluster_js), file=sys.stderr)
+        return None
+
+    profile_fid = str(profiles[0].get('fid'))
+    if profile_fid is None or len(profile_fid) == 0:
+        print(
+            'Failed to fetch profiles[0]/fid from cluster info:\n{}'.format(cluster_js), file=sys.stderr)
+        return None
+    info['profile_fid'] = profile_fid
+
+    nodes_data = cluster_js.get('nodes')
+    if nodes_data is None or len(nodes_data) == 0:
+        print('Failed to fetch nodes from cluster info:\n{}'.format(
+            cluster_js), file=sys.stderr)
+        return None
+    services = nodes_data[0].get('svcs')
+    if services is None or len(services) == 0:
+        print('Failed to fetch nodes/svcs from cluster info:\n{}'.format(cluster_js), file=sys.stderr)
+        return None
+
+    for svc in services:
+        if svc['name'] == 'hax':
+            ha_endpoint = str(svc.get('ep'))
+            if ha_endpoint is None or len(ha_endpoint) == 0:
+                print(
+                    'Invalid nodes/svcs/hax/ep in cluster info:\n{}'.format(cluster_js), file=sys.stderr)
+                return None
+            info['ha_endpoint'] = ha_endpoint
+
+        svc_name = str(svc.get('name'))
+        if svc_name is None or len(svc_name) == 0:
+            print(
+                'Invalid nodes/svcs/name in cluster info:\n{}'.format(cluster_js), file=sys.stderr)
+            return None
+
+        # Always using the first m0client
+        if svc_name == 'm0_client':
+            local_endpoint = str(svc.get('ep'))
+            if local_endpoint is None or len(local_endpoint) == 0:
+                print('Invalid nodes/svcs/m0_client/ep in cluster info:\n{}'.format(cluster_js),
+                      file=sys.stderr)
+                return None
+            info['local_endpoint'] = local_endpoint
+
+            process_fid = str(svc.get('fid'))
+            if process_fid is None or len(process_fid) == 0:
+                print('Invalid nodes/svcs/m0_client/fid in cluster info:\n{}'.format(cluster_js),
+                      file=sys.stderr)
+                return None
+            info['process_fid'] = process_fid
+            break
+
+    if args.filter_id is None:
+        with open(args.config_path) as f:
+            for s in f.readlines():
+                # Example: ' {0x6c| ((^l|1:81), 2, ^l|1:81, "", ^n|1:3, ^v|1:66, [1: "Bucket-Name"],
+                # [1: "192.168.12.2@tcp:12345:4:1"])},'
+                if s.startswith(' {0x6c| ((^l|'):
+                    s = s[15:]
+                    s = s[:s.index(')')]
+                    fdmi_filter_fid = f"0x6c00000000000001:{int(s):#x}"
+                    info['fdmi_filter_fid'] = fdmi_filter_fid
+                    break
+    else:
+        info['fdmi_filter_fid'] = args.filter_id
+
+    if info.get('ha_endpoint') is None:
+        print('Failed to get Hare endpoint from the cluster info.', file=sys.stderr)
+        return None
+    if info.get('process_fid') is None:
+        print('Failed to get client process fid from the cluster info.',
+              file=sys.stderr)
+        return None
+    if info.get('local_endpoint') is None:
+        print('Failed to get local client endpoint from the cluster info.',
+              file=sys.stderr)
+        return None
+    if info.get('fdmi_filter_fid') is None:
+        print('Failed to get fdmi filter id from the cluster config.', file=sys.stderr)
+        return None
+
+    print('  {}'.format(info), file=sys.stderr)
+    return info
+
+
+# For the plugin C-program and wait for data on stdout.
+def listen_on_command(command, num_print):
+    global processes
+    p = subprocess.Popen(shlex.split(command), stdin=subprocess.PIPE,
+                         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if p is None:
+        print('Failed to run {}'.format(command), file=sys.stderr)
+        return -1
+    processes.append(p)
+
+    print('Listening for FDMI events on:\n  {}'.format(command), file=sys.stderr)
+    while True:
+        output = p.stdout.readline()
+        if output is not None:
+            fid = "fid"
+            record = output.decode("utf-8")
+            if fid in record:
+                process_fdmi_record(record, num_print)
+
+        rc = p.poll()
+        if rc is not None:
+            print('Exiting because fdmi_sample_plugin exited with:', file=sys.stderr)
+            print('  error code = {}'.format(rc), file=sys.stderr)
+            _, error = p.communicate()
+            if error is not None:
+                error = error.decode('utf-8')
+            if error is not None and len(error) > 0:
+                print('  error text = {}'.format(error), file=sys.stderr)
+            break
+
+    return p.poll()
+
+
+def poll_directory(path, words, sleep_seconds):
+    file_list = []
+
+    try:
+        while True:
+
+            # Find new created files
+            for file in os.listdir(path):
+                if not file.endswith('.swp') and '.DS_Store' not in file:
+                    if os.path.join(path, file) not in file_list:
+                        file_list.append(os.path.join(path, file))
+
+                        # Count words in object data
+                        counting = count_words(os.path.join(path, file), words)
+
+                else:
+                    continue
+
+            # TODO this should be a parameter with a default value of 1
+            sleep(sleep_seconds)
+
+    except KeyboardInterrupt:
+        print('  Exiting fdmi emulation application', file=sys.stderr)
+    except:
+        print("Unexpected error", file=sys.stderr)
+        raise
+
+
+def main(args):
+    global cluster_info
+    einval = 22
+    if args.local_directory:
+        print('Listening for emulated FDMI events on:\n  {}'.format(
+            args.local_directory), file=sys.stderr)
+        poll_directory(args.local_directory,
+                       args.num_print, args.sleep_seconds)
+    else:
+
+        # Filter id is used by Motr FDMI subsystem for identifying the
+        # FDMI plugins, because there are possible more than one.
+        # If the --filter-id is omitted then this program is looking
+        # for the corrct filter id in /etc/motr/confd.xc config file.
+
+        # Example: ' {0x6c| ((^l|1:81), 2, ^l|1:81, "", ^n|1:3, ^v|1:66, [1: "Bucket-Name"],
+        # [1: "192.168.12.2@tcp:12345:4:1"])},'
+
+        # The fid we need is 0x6c00000000000001:0x81 in this particular example.
+        if args.config_path is None and args.filter_id is None:
+            print('Either --config-path or --filter-id is required.', file=sys.stderr)
+            sys.exit(einval)
+
+        print('Using the following settings:', file=sys.stderr)
+        print('  plugin-path = {}'.format(args.plugin_path), file=sys.stderr)
+        print('  hctl-path = {}'.format(args.hctl_path), file=sys.stderr)
+
+        config_path = args.config_path
+        if config_path is None:
+            config_path = 'using filter-id'
+        print('  config-path = {}'.format(config_path), file=sys.stderr)
+
+        filter_id = args.filter_id
+        if filter_id is None:
+            filter_id = 'using config-path'
+        print('  filter-id = {}'.format(filter_id), file=sys.stderr)
+
+        print('Register SIGINT signal handler', file=sys.stderr)
+        signal.signal(signal.SIGINT, signal_handler)
+
+        print('Cluster info:', file=sys.stderr)
+        cluster_info = get_cluster_info(args)
+        if cluster_info is None:
+            sys.exit(einval)
+
+        # Execute fdmi_sample_plugin with cluster info in loop and wait for
+        # the FDMI events in form of JSON metadata.
+        listen_on_command(get_plugin_cmd(args), args.num_print)
+
+
+if __name__ == '__main__':
+    import argparse
+
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('-pp', '--plugin_path', required=False,
+                    help='path to fdmi_sample_plugin executable',
+                    type=str, default='./fdmi_sample_plugin')
+    ap.add_argument('-hp', '--hctl_path', required=False, help='path to hctl executable',
+                    type=str, default='hctl')
+    ap.add_argument('-cp', '--config_path', required=False, help='path to confd.xc file',
+                    type=str, default='/etc/motr/confd.xc')
+    ap.add_argument('-fi', '--filter_id', required=False, help='plugin filter id',
+                    type=str)
+    ap.add_argument('-ld', '--local_directory', required=False, help='path to directory that will emulate cortx-motr',
+                    type=str)
+    ap.add_argument('-np', '--num_print', required=False, help='when printing the word count, only print the NP most frequent words',
+                    type=int, default=40)
+    ap.add_argument('-ss', '--sleep_seconds', required=False, help='how frequently to poll the local directory',
+                    type=int, default=2)
+    main(ap.parse_args())

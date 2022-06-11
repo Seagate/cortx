@@ -1,0 +1,176 @@
+div.vdmApp-HiveBrowser div.dwData-RightPane {
+  background-color: #EEE;
+}
+
+div.vdmApp-HiveBrowser div.dwData-RightPane:focus
+{
+    outline: none;
+}
+
+div.vdmApp-HiveBrowser div.dwData-RightPane > div {
+  display: none;
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > span.errorMsg {
+    color : red;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > table {
+    border-radius:20px;
+    margin-bottom:10px;
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > table.MK {
+    background-color:#BADA55;
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > table.UK {
+    background-color:#B1CEE6;
+    margin-left:50px;
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > table.FK {
+    background-color:#E4CD59;
+    margin-left:50px;
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > table.GC {
+    background-color:#E48659;
+    margin-left:100px;
+}
+
+    div.vdmApp-HiveBrowser div.objDisplay > table > tr > td {
+        padding: 5px;
+        /*max-width: 450px;*/
+        white-space: nowrap;
+        /*word-wrap: break-word*/
+        -webkit-user-select: text;
+        user-select: text;
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    div.vdmApp-HiveBrowser div.objDisplay > table.QR {
+        width: 100%;
+        background-color: #BADA55;
+        border-radius: 0;
+        -webkit-user-select: text;
+        user-select: text;
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+div.vdmApp-HiveBrowser div.objDisplay > table.QR div.entryContainer {
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > table.QR thead {
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 20px;*/
+    z-index: 1;
+    font-size: 12px;
+    background-color: #DDDDDD;
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > table.QR th {
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > table.QR tbody {
+    /*position: absolute;*/
+    left: 0px;
+    right: 0px;
+    /*top: 40px;*/
+    bottom: 0px;
+    overflow-y: auto;
+    z-index: 0;
+    /*font-size:10px;*/
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > table.QR div.entryContainer > span.entryKey {
+}
+
+div.vdmApp-HiveBrowser div.objDisplay > table.QR div.entryContainer > span.entryVal {
+}
+
+div.vdmApp-HiveBrowser div.objDisplay table tr > td a,
+div.vdmApp-HiveBrowser div.objDisplay table tr > td a:hover {
+    color: #1A1DBF;
+    cursor: pointer;
+}
+
+div.vdmApp-HiveBrowser div.objDisplay table tr > td a:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+div.vdmApp-HiveBrowser div.dwData-RightPane > div > div {
+  position: absolute;
+/*  font-size: 11px; */
+}
+
+div.vdmApp-HiveBrowser div.dwData-RightPane > div.selected {
+  display: block;
+}
+
+div.vdmApp-HiveBrowser div.dwData-RightPane div>div>table a img,a img:visited { border:none; }
+div.vdmApp-HiveBrowser div.dwData-RightPane div>div>table { position: static; }
+div.vdmApp-HiveBrowser div.dwData-RightPane div>div>table>thead {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    font-size: 12px;
+    background-color: #DDDDDD;
+}
+div.vdmApp-HiveBrowser div.dwData-RightPane div>div>table th,td { text-align: left; }
+div.vdmApp-HiveBrowser div.dwData-RightPane div>div>table td {word-break:break-word;}
+div.vdmApp-HiveBrowser div.dwData-RightPane div>div>table>tbody {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    overflow-y: auto;
+    z-index: 0;
+    font-size:10px;
+}
+div.vdmApp-HiveBrowser div.dwData-RightPane div>div>table.table-striped2>tbody>tr:nth-child(odd) {
+    background-color: #F9F9F9;
+}
+div.vdmApp-HiveBrowser div.dwData-RightPane div>div>table>tbody>tr:hover {
+    background-color: #FFFFA0;
+}
+div.vdmApp-HiveBrowser div.dwData-RightPane div>div>table.table-striped2>tbody>tr:nth-child(odd):hover {
+    background-color: #FFFFA0;
+}
+div.vdmApp-HiveBrowser div.dwData-RightPane div>div>table>tbody>tr.selected {
+    background-color: #F28F3C;
+}
+div.vdmApp-HiveBrowser div.dwData-RightPane .table-striped2>tbody>tr.selected:nth-child(odd) {
+    background-color: #F28F3C;
+}
+
+div.vdmApp-HiveBrowser div.dwData-RightPane tbody::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+div.vdmApp-HiveBrowser div.dwData-RightPane tbody::-webkit-scrollbar:vertical {
+    width: 11px;
+}
+
+div.vdmApp-HiveBrowser div.dwData-RightPane tbody::-webkit-scrollbar:horizontal {
+    height: 11px;
+}
+
+div.vdmApp-HiveBrowser div.dwData-RightPane tbody::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 1px solid white;
+    background-color: rgba(64, 64, 64, .5);
+}
+
+div.vdmApp-HiveBrowser div.dwData-RightPane div.UserDetails {
+    font-size: 12px;
+}

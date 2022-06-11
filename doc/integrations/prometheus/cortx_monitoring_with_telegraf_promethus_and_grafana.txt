@@ -1,0 +1,10 @@
+Cortx Monitoring With Telegraf Promethus And Grafana
+----------------------------------------------------
+- Install Telegraf on Cortx VM
+- Use Telegraf plguin to pluck metrics: either available source like HTTP endpoint,
+  or using script to produce metrics output
+  - example: monitor_cortx.py - Python script that connect to S3 API to get list of objects in bucket,
+             returns count of objects per folder in bucket
+- Install Prometheus on separate server, connect it to Telegraf on the Cortx VM
+- Install Grafana on same server as Prometheus, and use it to define dhashboard using the data
+  from Prometheus

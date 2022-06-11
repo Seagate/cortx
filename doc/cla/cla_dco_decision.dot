@@ -1,0 +1,21 @@
+digraph G {
+  contribution [label="Is Contribution Good?"]
+  dco_check [label="Is DCO Present?"]
+  cla_check [label="Is CLA Present?"]
+  reject [label="Request Fixes"]
+  accept [label="Patch Accepted"]
+  contribution_size [label="Size of Contribution?"]
+  ask_pat [label="Ask cla@seagate.com to Decide"]
+
+  reject -> contribution
+  contribution -> dco_check [label="yes"]
+  contribution -> reject [label="no"]
+  dco_check -> reject [label="no"]
+  dco_check -> cla_check [label="yes"]
+  cla_check -> accept [label="yes"]
+  cla_check -> contribution_size [label="no"]
+  contribution_size -> accept [label="minor (e.g. bug fix, documentation)"]
+  contribution_size -> ask_pat [label="major (e.g. feature addition)"] 
+  ask_pat -> accept [label="CLA not needed"]
+  ask_pat -> reject [label="CLA needed"]
+}

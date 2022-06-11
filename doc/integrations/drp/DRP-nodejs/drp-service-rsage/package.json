@@ -1,0 +1,22 @@
+{
+  "name": "drp-service-rsage",
+  "version": "1.0.0",
+  "description": "rSage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "drp",
+    "rsage",
+    "cortex",
+    "hive",
+    "vdm"
+  ],
+  "author": "Pete Brown <jpbrown@adhdtech.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "*",
+    "express-basic-auth": "*"
+  }
+}

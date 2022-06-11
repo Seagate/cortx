@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+
+    <property>
+        <name>yarn.app.mapreduce.am.env</name>
+        <value>{{hadoop_dir}}</value>
+    </property>
+
+    <property>
+        <name>mapreduce.map.env</name>
+        <value>{{hadoop_dir}}</value>
+    </property>
+
+    <property>
+        <name>mapreduce.reduce.env</name>
+        <value>{{hadoop_dir}}</value>
+    </property>
+
+    <property>
+        <name>mapreduce.application.classpath</name>
+        <value>{{hadoop_dir}}/share/hadoop/mapreduce/*,{{hadoop_dir}}/share/hadoop/mapreduce/lib/*</value>
+    </property>
+
+</configuration>
