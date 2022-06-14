@@ -42,7 +42,7 @@ import shutil
 
 ACCESS_KEY = <ACCESS_KEY>
 SECRET_KEY = <SECRET_KEY> 
-host = "http://192.168.2.102"
+host = "http://<IP_ADDRESS>"
 bucket_name = 'testing'
 local_folder = "C:\\Users\\Administrator\\Desktop\\ai\\ParlAI\\training\\poly-encoder"
 '''if os.path.isdir(local_folder):
