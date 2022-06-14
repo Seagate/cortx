@@ -40,7 +40,7 @@ from botocore.exceptions import NoCredentialsError
 import shutil
 
 
-ACCESS_KEY = "AKIAtEpiGWUcQIelPRlD1Pi6xQ"
+ACCESS_KEY = <ACCESS_KEY>
 SECRET_KEY = <SECRET_KEY> 
 host = "http://192.168.2.102"
 bucket_name = 'testing'
