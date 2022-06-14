@@ -41,7 +41,7 @@ import shutil
 
 
 ACCESS_KEY = "AKIAtEpiGWUcQIelPRlD1Pi6xQ"
-SECRET_KEY = "YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK"
+SECRET_KEY = <SECRET_KEY> 
 host = "http://192.168.2.102"
 bucket_name = 'testing'
 local_folder = "C:\\Users\\Administrator\\Desktop\\ai\\ParlAI\\training\\poly-encoder"
