@@ -13,8 +13,7 @@ We can embed dynamically rendered PlantUML images into our github documentation.
 ![CORTX PlantUML Example](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/seagate/cortx/main/doc/images/plantuml/example.plantuml)
 ``` 
 
-Use the URL to the `RAW` version of your PlantUML files, prefix it with `src=`, and use the `cache=no` option so that GitHub always renders the currently committed 
-version.
+Use the URL to the `RAW` version of your PlantUML files, prefix it with `src=`, and use the `cache=no` option so that GitHub always renders the currently committed version. Test edit.
 
 For example, here is a dynamically rendered view of the [example.plantuml](https://raw.githubusercontent.com/seagate/cortx/main/doc/images/plantuml/example.plantuml)
 file in this directory:
