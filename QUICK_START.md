@@ -24,7 +24,7 @@ This document provides quick access to several different ways to set up CORTX fo
 
 Once you have your CORTX system running, you can use [these code samples](cortx-s3samplecode) to show you how to connect to it and perform common S3 operations.
 
-Note that some of the links above are tagged 'requires verification' and some are tagged 'LINK'.  We apply the 'LINK' tag only after instructions have been verified by at least two people.  The 'required verification' instructions are instructions which are still awaiting a second verification.  If you verify them, please add your name to the 'Tested By' section at the bottom of the page and change the tag on this page as well. If you have any questions, please visit our [resources page](https://github.com/Seagate/cortx/blob/main/SUPPORT.md) or join us on [Slack.](https://cortx.link/slack_invite)
+If you use any of these, please consider adding your name to the 'Tested By' section at the bottom of each respective page. If you have any questions, please visit our [resources page](https://github.com/Seagate/cortx/blob/main/SUPPORT.md) or join us on [Slack.](https://cortx.link/slack_invite)
     
 Once you're ready to make more contributions, please check out our [Contribution Guide](CONTRIBUTING.md). 
 
