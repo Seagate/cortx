@@ -7,7 +7,7 @@ const MongoDB = require('mongodb').Db;
 
 class Logger extends DRP_Service {
     /**
-     * 
+     *
      * @param {string} serviceName Service Name
      * @param {drpNode} drpNode DRP Node
      * @param {number} priority Priority (lower better)
@@ -79,7 +79,7 @@ class Logger extends DRP_Service {
         thisLogger.__MongoClient = await MongoClient.connect(`${mongoUrl}`, { useNewUrlParser: true, useUnifiedTopology: true });
         thisLogger.DRPNode.log(`Connected to Mongo`);
 
-        // Open the collector DB 
+        // Open the collector DB
         this.__LoggerDB = thisLogger.__MongoClient.db(thisLogger.serviceName);
     }
 
@@ -93,7 +93,7 @@ class Logger extends DRP_Service {
     }
 
     /**
-     * 
+     *
      * @param {string} sourceService Name of source service
      * @param {object} logData Data object to insert
      * @return {InsertOneWriteOpResult} Result of insert operation

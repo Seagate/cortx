@@ -1,15 +1,17 @@
 {
- "resources": {
-     "profile": "c1.small",
-     "network": [{
-         "interface-name": "eth0",
-         "network-name": "iox-nat0",
-         "port_map": {
-             "mode": "auto",
-             "tcp": {
-                 "8080": "8080"
-             }
-         }
-     }]
- }
+  "resources": {
+    "profile": "c1.small",
+    "network": [
+      {
+        "interface-name": "eth0",
+        "network-name": "iox-nat0",
+        "port_map": {
+          "mode": "auto",
+          "tcp": {
+            "8080": "8080"
+          }
+        }
+      }
+    ]
+  }
 }

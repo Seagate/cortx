@@ -19,7 +19,7 @@
 
 # TLDR
 
-This project demonstrates 
+This project demonstrates
 1. creation of a topic/stream on Apache Pulsar(a message broker like Kafka) with unlimited persistence, which archives older messages to Cortx via S3 API and
 2. replay of the stream/topic from the earliest message stored in Cortx
 
@@ -48,7 +48,7 @@ This project demonstrates how to create a topic on Pulsar which archives older m
 
 Apache Pulsar is a message broker with persistent storage built into it based on Apache Bookkeeper. In theory though there is no limit on number of messages stored in Bookkeeper, older messages on topics are better stored on cheaper and more reliable storage. Pulsar allows tiered-storage backends to be configured so that older ledgers(units of Bookkeeper records) of message data can be offloaded to S3(AWS and non-AWS), Azure Blob Storage, file system etc.,
 
-Replaying archive data from a topic is based on reading a topic just like a normal subscriber would do but with a starting id supplied to the broker. 
+Replaying archive data from a topic is based on reading a topic just like a normal subscriber would do but with a starting id supplied to the broker.
 
 Kafka has a similar feature and other brokers must have made attempts to do it as well. However Kafka(AFAIK) kills the topic data for which tiered storage is enabled, making stream replay from the same topic tedious at the least(It needs to be republished to another topic).
 

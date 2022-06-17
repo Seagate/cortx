@@ -19,7 +19,7 @@ export const startSetStorage = () => {
         axios.get(`/storage-service/info`).then((results) => {
 
             dispatch(setStorage(results.data))
-            
+
         }).catch((err) => {
             console.log(err)
         })

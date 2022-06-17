@@ -30,7 +30,7 @@ class VerifiyEmailPageContainer extends React.Component {
             }
 
             axios.post("/user-service/verify-email", data).then((response) => {
-            
+
                 this.setState(() => {
                     return {
                         ...this.state,
@@ -46,7 +46,7 @@ class VerifiyEmailPageContainer extends React.Component {
                   )
 
             }).catch((err) => {
-              
+
                 this.setState(() => {
                     return {
                         ...this.state,
@@ -65,7 +65,7 @@ class VerifiyEmailPageContainer extends React.Component {
 
     render() {
 
-        return <VerifyEmailPage 
+        return <VerifyEmailPage
                     state={this.state}/>
     }
 }

@@ -23,9 +23,9 @@ class FolderItemContainer extends React.Component {
 
     shouldComponentUpdate = (nextProp, nextState) => {
 
-        return (nextProp.itemSelected !== this.props.itemSelected 
-                || nextProp.listView !== this.props.listView 
-                || nextProp.rightSelected !== this.props.rightSelected 
+        return (nextProp.itemSelected !== this.props.itemSelected
+                || nextProp.listView !== this.props.listView
+                || nextProp.rightSelected !== this.props.rightSelected
                 || nextProp.name !== this.props.name
                 || nextProp.quickFilesLength !== this.props.quickFilesLength
                 || nextState.contextSelected !== this.state.contextSelected)
@@ -49,7 +49,7 @@ class FolderItemContainer extends React.Component {
 
         const date = new Date();
         const difference = date - this.lastTouch;
-   
+
         this.lastTouch = 0;
 
         if (difference > 500) {
@@ -84,7 +84,7 @@ class FolderItemContainer extends React.Component {
                 const bottomSize = this.props.quickFilesLength === 0 ? "-126px" : "-190px"
 
                 styleObj = {bottom: bottomSize, top:"unset"}
-            } 
+            }
 
             if (clientY > ((windowY / 4) * 3.5)) {
 
@@ -96,7 +96,7 @@ class FolderItemContainer extends React.Component {
                 styleObj = {...styleObj, left:"unset", right:0}
 
             } else {
-            
+
                 styleObj = {...styleObj, left:0, right:"unset"}
             }
         }
@@ -106,7 +106,7 @@ class FolderItemContainer extends React.Component {
         this.props.dispatch(startSetSelectedItem(this.props._id, false))
         this.props.dispatch(setLastSelected(0));
         this.props.dispatch(setRightSelected(this.props._id))
-    
+
     }
 
     getClassName = () => {
@@ -120,7 +120,7 @@ class FolderItemContainer extends React.Component {
         } else {
 
             classname += "folder__item__wrapper"
-        } 
+        }
 
         if (this.props._id === this.props.selected) {
 
@@ -133,7 +133,7 @@ class FolderItemContainer extends React.Component {
     changeEditNameMode = async() => {
 
         let inputValue = this.props.name;
-    
+
         const { value: folderName} = await Swal.fire({
             title: 'Enter A File Name',
             input: 'text',
@@ -184,7 +184,7 @@ class FolderItemContainer extends React.Component {
 
 
     closeContext = () => {
-     
+
         this.setState(() => {
             return {
                 ...this.state,
@@ -220,8 +220,8 @@ class FolderItemContainer extends React.Component {
 
     render() {
 
-        return <FolderItem 
-                getContextMenu={this.getContextMenu} 
+        return <FolderItem
+                getContextMenu={this.getContextMenu}
                 getClassName={this.getClassName}
                 onTouchStart={this.onTouchStart}
                 onTouchMove={this.onTouchMove}

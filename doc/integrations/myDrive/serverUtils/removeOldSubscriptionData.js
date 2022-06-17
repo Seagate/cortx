@@ -27,16 +27,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-                
+
                 resolve();
-    
+
             })
 
         } else {
 
             resolve();
         }
-    
+
     })
 }
 
@@ -49,12 +49,12 @@ const mongoRemoveChunks = async(fileList) => {
         let bucket = new mongoose.mongo.GridFSBucket(conn.db, {
             chunkSizeBytes: 1024 * 255,
         });
-    
+
         if (file.metadata.thumbnailID) {
-    
+
             await Thumbnail.deleteOne({_id: file.metadata.thumbnailID});
         }
-    
+
         await bucket.delete(new ObjectID(fileID));
 
     }
@@ -69,7 +69,7 @@ const fsRemoveChunks = async(fileList) => {
             const thumbnail = await Thumbnail.findById(file.metadata.thumbnailID)
             const thumbnailPath = thumbnail.path;
             await removeChunksFS(thumbnailPath);
-    
+
             await Thumbnail.deleteOne({_id: file.metadata.thumbnailID});
         }
 
@@ -115,8 +115,8 @@ const removeChunkData = async(user) => {
 
     } else if (env.dbType === "fs") {
 
-        await fsRemoveChunks(fileList); 
-    
+        await fsRemoveChunks(fileList);
+
     } else {
 
         await s3RemoveChunks(fileList);
@@ -150,9 +150,9 @@ const removeOldSubscriptionData = async() => {
     console.log("All users length", allUsers.length);
 
     for (const currentUser of allUsers) {
-        
+
         if (currentUser.stripeCanceledDate) {
-         
+
             let date = new Date(currentUser.stripeCanceledDate);
             date.setDate(date.getDate() + DAY_LIMIT);
 
@@ -171,15 +171,15 @@ const removeOldSubscriptionData = async() => {
             const stripe = new Stripe(stripKey, {
                 apiVersion: '2020-03-02',
             });
-            
+
             const {subID}= await currentUser.decryptStripeData();
 
             const subscriptionDetails = await stripe.subscriptions.retrieve(subID);
 
             if (subscriptionDetails.status !== "active" && subscriptionDetails.status !== "trailing") {
-                
+
                 const endedAt = (subscriptionDetails.ended_at * 1000);
-                
+
                 let date = new Date(endedAt);
                 date.setDate(date.getDate() + DAY_LIMIT);
                 const nowDate = new Date();
@@ -199,6 +199,6 @@ const removeOldSubscriptionData = async() => {
 
     console.log("\nFinished removing all expired data")
     process.exit()
-} 
+}
 
 removeOldSubscriptionData()

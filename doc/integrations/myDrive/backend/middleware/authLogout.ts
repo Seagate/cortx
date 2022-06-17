@@ -41,7 +41,7 @@ const auth = async(req: RequestType, res: Response, next: NextFunction) => {
 
     } catch (e) {
 
-        if (e.message !== "No Access Token" && 
+        if (e.message !== "No Access Token" &&
         e.message !== "No User") console.log("\nAuthorization Logout Middleware Error:", e.message);
 
         createLogoutCookie(res);

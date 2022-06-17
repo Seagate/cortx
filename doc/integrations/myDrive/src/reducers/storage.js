@@ -1,7 +1,7 @@
 const defaultState = {
     free: 0,
     total: 0,
-    available: 0   
+    available: 0
 }
 
 export default (state = defaultState, action) => {

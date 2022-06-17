@@ -10,7 +10,7 @@ REGION = 'XXXXXX'
 VERSION = 'XXXXXX'
 ACCESS_KEY = 'XXXXXX'
 SECRET_ACCESS_KEY = 'XXXXXX'
-END_POINT_URL = 'XXXXXX' 
+END_POINT_URL = 'XXXXXX'
 
 # Objects to perform actions: client is swiss knife , resource has all sort of data:
 s3_resource = boto3.resource('s3', endpoint_url=END_POINT_URL,
@@ -41,7 +41,7 @@ def list_buckets():
 def bucket_operations(bucket_name=None, operation='list'):
     if operation != 'list' and not bucket_name:
         logging.error('The bucket name is %s missing!' % (bucket_name))
-        return False 
+        return False
 
     try:
         if operation == 'delete':
@@ -58,7 +58,7 @@ def bucket_operations(bucket_name=None, operation='list'):
         return False
 
     return True
-    
+
 """ Functions for files operations """
 # The function prints the list of files in the bucket.
 def list_files(bucket_name):
@@ -66,14 +66,14 @@ def list_files(bucket_name):
     print('The files in bucket %s:\n' % (bucket_name))
 
     for obj in current_bucket.objects.all():
-        print(obj.meta.data) 
+        print(obj.meta.data)
 
 # The function performs the operation according to the parameter obtained. In case of an exception,
 # print it. You can upload, download and delete a file and print the list of files inside the bucket.
 def file_operations(bucket_name, operation='list', file_name=None, file_location=None):
     if not bucket_name:
         logging.error('The bucket name is %s missing!' % (bucket_name))
-        return False 
+        return False
 
     try:
         if operation == 'list':
@@ -81,16 +81,16 @@ def file_operations(bucket_name, operation='list', file_name=None, file_location
         elif operation == 'delete':
             s3_client.delete_object(Bucket=bucket_name, Key=file_name)
         elif operation == 'download':
-            s3_resource.Bucket(bucket_name).download_file(file_name, file_location) 
+            s3_resource.Bucket(bucket_name).download_file(file_name, file_location)
         elif operation == 'upload':
             s3_resource.Bucket(bucket_name).upload_file(file_location, file_name)
         else:
             logging.error('unknown file operation')
-            return False  
+            return False
     except ClientError as err:
         logging.error(err)
         return False
-    
+
     return True
 
 def main():
@@ -99,7 +99,7 @@ def main():
     # create a new bucket
     if bucket_operations(bucket_name, 'create'):
         print("Bucket creation completed successfully!")
-    
+
     # פrint the list of existing buckets
     bucket_operations(operation='list')
     # print the files in a bucket

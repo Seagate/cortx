@@ -19,7 +19,7 @@ const sortGoogleMongoFolderList = (combinedList: FolderInterface[], query: any) 
     } else if (query.sortby === "alp_desc") {
 
         combinedList = combinedList.sort((a, b) => {
-        
+
             const name1 = a.name.toLowerCase();
             const name2 = b.name.toLowerCase();
 
@@ -36,7 +36,7 @@ const sortGoogleMongoFolderList = (combinedList: FolderInterface[], query: any) 
     } else if (query.sortby === "alp_asc") {
 
         combinedList = combinedList.sort((a, b) => {
-        
+
             const name1 = a.name.toLowerCase();
             const name2 = b.name.toLowerCase();
 

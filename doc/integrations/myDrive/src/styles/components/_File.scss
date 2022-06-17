@@ -64,7 +64,7 @@
 }
 
 .file__image__wrapper {
- 
+
     width: 100px;
     height: 100px;
     position: relative;
@@ -129,7 +129,7 @@
     cursor: pointer;
     height: 50px;
     position: relative;
-    
+
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -151,7 +151,7 @@
 
 .file__image__listview {
     width: 31px;
-    opacity: 0.7;  
+    opacity: 0.7;
     min-width: 31px;
 }
 
@@ -216,7 +216,7 @@
 }
 
 .file__title__listview--mover {
-    
+
     @media (max-width: $desktop-breakpoint) {
         font-size: 18px;
     }

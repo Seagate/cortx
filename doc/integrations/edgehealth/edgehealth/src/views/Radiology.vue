@@ -10,12 +10,12 @@
           <v-row>
             <v-btn text icon to="/dashboard"><v-icon size="30">mdi-arrow-left</v-icon></v-btn>
             <v-spacer></v-spacer>
-             
-    
-           
+
+
+
             <v-chip
       class="ma-2"
-      
+
       color="secondary"
       label
       text-color="white"
@@ -27,7 +27,7 @@
     </v-chip>
             <v-chip
       class="ma-2"
-      
+
       color="cyan"
       label
       text-color="white"
@@ -48,19 +48,19 @@
           </v-row>
         </v-img>
         <div class="ma-8">
-            
+
            <v-simple-table fixed-header >
-    
+
       <thead>
         <tr>
-          
+
           <th class="text-left">
             FirstName
           </th>
           <th class="text-left">
             LastName
           </th>
-          
+
           <th class="text-left">
             Email
           </th>
@@ -71,12 +71,12 @@
           <th>
               Dob
           </th>
-         
+
         </tr>
       </thead>
       <tbody>
           <!-- <tr>
-              
+
               <td>
                   <v-text-field  style="margin-top:10px;margin-bottom:-15px"  dense type="text" outlined placeholder="ID"></v-text-field>
               </td>
@@ -92,23 +92,23 @@
               <td>
                   <v-text-field  style="margin-top:10px;margin-bottom:-15px"  dense type="text" outlined placeholder="Score"></v-text-field>
               </td>
-              
-              
+
+
           </tr> -->
         <tr
           v-for="item in logs"
           :key="item.name"
         >
-    
-          
+
+
           <td>{{ item.firstname }}</td>
           <td>{{ item.lastname }}</td>
            <td>{{ item.email }}</td>
            <td>{{ item.phone }}</td>
-          
+
         </tr>
       </tbody>
-   
+
   </v-simple-table>
 
           </div>
@@ -124,7 +124,7 @@ import axios from 'axios'
   export default {
     data () {
       return {
-        
+
         logs:[]
       }
     },
@@ -136,7 +136,7 @@ import axios from 'axios'
       .get('https://vue-health-api.herokuapp.com/patients')
       .then(response => {
         this.logs = response.data
-        
+
         console.log(response.data)
       }).catch(err=>{
         console.log(err)

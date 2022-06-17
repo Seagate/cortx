@@ -72,7 +72,7 @@ class Chatbot extends Component {
         await this.df_client_call(request);
 
     };
-    
+
 
     async df_client_call(request) {
 

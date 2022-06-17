@@ -3,17 +3,17 @@
 ### Learning in Interactive Games with Humans and Text
 <p align="center"><img width="90%" src="tavern.png" /></p>
 The LIGHT project is a large-scale fantasy text adventure game research platform for training agents
-that can both talk and act, interacting either with other models or with humans. 
+that can both talk and act, interacting either with other models or with humans.
 
 ## Abstract
 
 We introduce a large-scale crowdsourced text adventure  game  as  a  research  platform for studying grounded dialogue.  In it, agents can both perceive,  emote and act whilst conducting
-dialogue  with  other  agents;  models  and humans can both act as characters within the game. We describe the results of 
-training state-of-the-art  generative  and  retrieval  models  in this setting. 
+dialogue  with  other  agents;  models  and humans can both act as characters within the game. We describe the results of
+training state-of-the-art  generative  and  retrieval  models  in this setting.
 We show that in addition to using past dialogue, these models are able to effectively  use  the  state given  by  the
 underlying world. In particular, we show that ground-ing on the details of the local environment,
 including location descriptions  and  the  objects (and affordances of those objects) and characters
-(and their previous actions) present within it allows better predictions of agent behavior and dialogue. 
+(and their previous actions) present within it allows better predictions of agent behavior and dialogue.
 We analyze the ingredients necessary for successful grounding in this setting, and how each of these factors
 relate to agents that can talk and act successfully.
 
@@ -24,7 +24,7 @@ relate to agents that can talk and act successfully.
 _Original LIGHT paper_:
 
 - **[Learning to Speak and Act in a Fantasy Text Adventure Game](https://arxiv.org/abs/1903.03094)**
-Jack Urbanek, Angela Fan, Siddharth Karamcheti, Saachi Jain, Samuel Humeau, Emily Dinan, Tim Rocktäschel, Douwe Kiela, Arthur Szlam, Jason Weston. 
+Jack Urbanek, Angela Fan, Siddharth Karamcheti, Saachi Jain, Samuel Humeau, Emily Dinan, Tim Rocktäschel, Douwe Kiela, Arthur Szlam, Jason Weston.
 
 _ML to build the interactive world in LIGHT_:
 
@@ -54,7 +54,7 @@ Prithviraj Ammanabrolu, Jack Urbanek, Margaret Li, Arthur Szlam, Tim Rocktaschel
 ## Datasets
 
 The original LIGHT dataset features 663 locations, 3462 objects and 1755 character types,
-described entirely in natural language. Within that game world, we collected 11,000 episodes of 
+described entirely in natural language. Within that game world, we collected 11,000 episodes of
 character interactions (talking and acting).
 
 You can view the data or train your own ParlAI agent on the LIGHT tasks with
@@ -62,7 +62,7 @@ You can view the data or train your own ParlAI agent on the LIGHT tasks with
 
 An additional WILD dataset featuring 41,131 training episodes of dialogue from [deploying as a game](https://arxiv.org/abs/2008.08076)
 is available, using:
-`-t light_dialog_wild`. 
+`-t light_dialog_wild`.
 
 Data containing annotated quests used in How to Motivate Your Dragon can be found [here](http://parl.ai/downloads/light_project/quests/quest_stems.tar.gz), their completions are available as part of the WILD dataset above, and the ATOMIC-LIGHT dataset can be found [here](http://parl.ai/downloads/light_project/light_atomic/atomic_tuned.tar.gz).
 
@@ -84,5 +84,3 @@ following BibTex entry:
       journal={arXiv preprint arXiv:1903.03094},
       year={2019},
     }
-    
- 

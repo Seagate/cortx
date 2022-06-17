@@ -29,14 +29,14 @@ class HeaderContainer extends React.Component {
             }
         }
     }
-    
+
     searchEvent = (e) => {
         e.preventDefault();
 
         const value = this.props.search;
 
         // console.log("Search value". value)
-        
+
         const parent = "/"
         this.props.dispatch(setParent(parent))
         this.props.dispatch(loadMoreItems(true))
@@ -44,11 +44,11 @@ class HeaderContainer extends React.Component {
         this.props.dispatch(startSetFolders(undefined, undefined, value));
         this.props.dispatch(resetParentList())
 
-   
+
     }
 
     searchOnChange = (e) => {
-        
+
         const value = e.target.value;
         this.searchValue = value;
 
@@ -84,7 +84,7 @@ class HeaderContainer extends React.Component {
 
         this.setState(() => {
             return {
-                ...this.state, 
+                ...this.state,
                 suggestedList: {
                     fileList: [],
                     folderList: []
@@ -98,10 +98,10 @@ class HeaderContainer extends React.Component {
         return;
 
         // if (this.searchValue === "") {
-            
+
         //     return this.setState(() => {
         //         return {
-        //             ...this.state, 
+        //             ...this.state,
         //             suggestedList: {
         //                 fileList: [],
         //                 folderList: []
@@ -116,10 +116,10 @@ class HeaderContainer extends React.Component {
 
         //     this.setState(() => {
         //         return {
-        //             ...this.state, 
+        //             ...this.state,
         //             suggestedList: results.data
         //         }
-        //     }) 
+        //     })
 
         // }).catch((err) => {
         //     console.log(err)
@@ -132,7 +132,7 @@ class HeaderContainer extends React.Component {
     }
 
     logoutUser = () => {
-        
+
         this.props.dispatch(startLogout())
     }
 
@@ -152,7 +152,7 @@ class HeaderContainer extends React.Component {
 
         this.setState(() => {
             return {
-                ...this.state, 
+                ...this.state,
                 suggestedList: {
                     fileList: [],
                     folderList: []
@@ -169,7 +169,7 @@ class HeaderContainer extends React.Component {
 
         this.setState(() => {
             return {
-                ...this.state, 
+                ...this.state,
                 suggestedList: {
                     fileList: [],
                     folderList: []
@@ -196,7 +196,7 @@ class HeaderContainer extends React.Component {
 
     render() {
 
-        return <Header 
+        return <Header
                     searchEvent={this.searchEvent}
                     searchOnChange={this.searchOnChange}
                     selectSuggested={this.selectSuggested}

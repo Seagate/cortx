@@ -5,4 +5,3 @@ Description: LIGHT is a text adventure game with actions and dialogue collected.
 Link: http://parl.ai/projects/light
 
 Tags: #LIGHT-Dialogue, #All, #Grounded
-

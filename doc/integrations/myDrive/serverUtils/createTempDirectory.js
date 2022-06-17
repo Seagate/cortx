@@ -46,7 +46,7 @@ const moveItem = async(oldPath, newPath) => {
     progressBar.start(listCount, 0);
 
     for await (const currentFile of listCursor) {
-        
+
         await conn.db.collection(newPath).insertOne(currentFile);
         progressBar.increment();
     }
@@ -63,7 +63,7 @@ const createTempDirectory = async() => {
     console.log("Moved All Files\n");
 
 
-    console.log(`Moving File Chunks...`);    
+    console.log(`Moving File Chunks...`);
     await moveItem("fs.chunks", "temp-fs.chunks");
     console.log("Moved All Chunks \n");
 
@@ -85,7 +85,7 @@ const createTempDirectory = async() => {
     await moveItem("videos.files", "temp-videos.files")
     console.log("All Transcoded Video Files Moved \n");
 
-    
+
     console.log(`Moving Transcoded Video Chunks...`)
     await moveItem("videos.chunks", "temp-videos.chunks")
     console.log("All Transcoded Video Chunks Moved \n");

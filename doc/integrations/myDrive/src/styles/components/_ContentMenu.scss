@@ -11,7 +11,7 @@
     height: fit-content;
 
     @media (max-width: $desktop-breakpoint) {
-        
+
         position: fixed;
         width: 99%;
         border-bottom-left-radius: 0;
@@ -31,7 +31,7 @@
     height: 41px;
 
     @media (max-width: $desktop-breakpoint) {
-        
+
         height: 55px;
     }
 }
@@ -41,10 +41,10 @@
 
 
     @media (max-width: $desktop-breakpoint) {
-        
+
         background: white;
     }
-   
+
 }
 
 .context__item:active {
@@ -59,7 +59,7 @@
     margin-left: 7px;
 
     @media (max-width: $desktop-breakpoint) {
-        
+
         width: 40px;
     }
 }
@@ -71,7 +71,7 @@
     font-size: 13px;
 
     @media (max-width: $desktop-breakpoint) {
-        
+
         font-size: 15px;
     }
 }

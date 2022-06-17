@@ -28,8 +28,8 @@ export const editFile = (id, file) => ({
 })
 
 export const editFileMetadata = (id, metadata) => ({
-    type: "EDIT_FILE_METADATA", 
-    id, 
+    type: "EDIT_FILE_METADATA",
+    id,
     metadata
 })
 
@@ -38,7 +38,7 @@ export const startSetFileAndFolderItems = (historyKey, parent="/", sortby="DEFAU
     return (dispatch) => {
 
         if (cachedResults[historyKey]) {
-          
+
             const {fileList, folderList} = cachedResults[historyKey];
 
             dispatch(setFiles(fileList));
@@ -57,10 +57,10 @@ export const startSetFileAndFolderItems = (historyKey, parent="/", sortby="DEFAU
         }
 
         //isGoogle = env.googleDriveEnabled;
-    
+
         let limit = window.localStorage.getItem("list-size") || 50
         limit = parseInt(limit);
-    
+
         let fileURL = "";
         let folderURL = "";
 
@@ -77,25 +77,25 @@ export const startSetFileAndFolderItems = (historyKey, parent="/", sortby="DEFAU
 
         } else {
 
-            fileURL = 
-                isGoogle ? `/file-service-google/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}` : 
-                (env.googleDriveEnabled && parent === "/") ? `/file-service-google-mongo/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}` : 
+            fileURL =
+                isGoogle ? `/file-service-google/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}` :
+                (env.googleDriveEnabled && parent === "/") ? `/file-service-google-mongo/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}` :
                 `/file-service/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}`
-            
+
             folderURL = isGoogle ? `/folder-service-google/list?parent=${parent}&sortby=${sortby}&search=${search}&storageType=${storageType}` :
                 (env.googleDriveEnabled && parent === "/") ? `/folder-service-google-mongo/list?parent=${parent}&sortby=${sortby}&search=${search}&storageType=${storageType}` :
                 `/folder-service/list?parent=${parent}&sortby=${sortby}&search=${search}&storageType=${storageType}`;
-            
+
         }
 
         dispatch(setFiles([]))
         dispatch(setFolders([]))
         dispatch(setLoading(true))
-        
+
         const itemList = [axios.get(fileURL), axios.get(folderURL)];
-    
+
         Promise.all(itemList).then((values) => {
-    
+
             const fileList = values[0].data;
             const folderList = values[1].data;
 
@@ -108,7 +108,7 @@ export const startSetFileAndFolderItems = (historyKey, parent="/", sortby="DEFAU
             } else {
                 dispatch(loadMoreItems(false))
             }
-    
+
             cachedResults[historyKey] = {fileList, folderList}
 
         }).catch((e) => {
@@ -145,19 +145,19 @@ export const startSetAllItems = (clearCache, parent="/", sortby="DEFAULT", searc
 
             return;
         }
-    
+
         let limit = window.localStorage.getItem("list-size") || 50
         limit = parseInt(limit)
-    
-        const fileURL = 
-        isGoogle ? `/file-service-google/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}` : 
-        (env.googleDriveEnabled && parent === "/") ? `/file-service-google-mongo/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}` : 
+
+        const fileURL =
+        isGoogle ? `/file-service-google/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}` :
+        (env.googleDriveEnabled && parent === "/") ? `/file-service-google-mongo/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}` :
         `/file-service/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}`
-    
+
         const folderURL = isGoogle ? `/folder-service-google/list?parent=${parent}&sortby=${sortby}&search=${search}&storageType=${storageType}` :
         (env.googleDriveEnabled && parent === "/") ? `/folder-service-google-mongo/list?parent=${parent}&sortby=${sortby}&search=${search}&storageType=${storageType}` :
         `/folder-service/list?parent=${parent}&sortby=${sortby}&search=${search}&storageType=${storageType}`;
-    
+
         const quickItemsURL = !env.googleDriveEnabled ? `/file-service/quick-list` : `/file-service-google-mongo/quick-list`;
 
         dispatch(setFiles([]))
@@ -166,9 +166,9 @@ export const startSetAllItems = (clearCache, parent="/", sortby="DEFAULT", searc
         dispatch(setLoading(true))
 
         const itemList = [axios.get(fileURL), axios.get(folderURL), axios.get(quickItemsURL)];
-    
+
         Promise.all(itemList).then((values) => {
-    
+
             const fileList = values[0].data;
             const folderList = values[1].data;
             const quickItemList = reduceQuickItemList(values[2].data);
@@ -186,7 +186,7 @@ export const startSetAllItems = (clearCache, parent="/", sortby="DEFAULT", searc
 
             cachedResults = {}
             cachedResults[parent] = {fileList, folderList, quickItemList}
-            
+
         }).catch((e) => {
             console.log("Get All Items Error", e);
         })
@@ -206,18 +206,18 @@ export const startSetFiles = (parent="/", sortby="DEFAULT", search="", isGoogle=
         if (env.googleDriveEnabled) {
 
             axios.get(`/file-service-google/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}`).then((results) => {
-                
+
                 const googleList = results.data;
                 //dispatch(loadMoreFiles(googleList))
                 dispatch(setFiles(googleList))
                 dispatch(setLoading(false))
-               
+
                 if (googleList.length === limit) {
                     dispatch(loadMoreItems(true))
                 } else {
                     dispatch(loadMoreItems(false))
                 }
-                
+
             }).catch((err) => {
                 console.log(err)
             })
@@ -239,25 +239,25 @@ export const startSetFiles = (parent="/", sortby="DEFAULT", search="", isGoogle=
                 } else {
                     dispatch(loadMoreItems(false))
                 }
-                
+
             }).catch((err) => {
                 console.log(err)
             })
         } else {
 
             axios.get(`/file-service/list?parent=${parent}&sortby=${sortby}&search=${search}&limit=${limit}&storageType=${storageType}`).then((results) => {
-   
+
                 const mongoData = results.data;
                 //dispatch(setLoading(true))
                 dispatch(setFiles(mongoData))
                 dispatch(setLoading(false))
-              
+
                 if (results.data.length === limit) {
                     dispatch(loadMoreItems(true))
                 } else {
                     dispatch(loadMoreItems(false))
                 }
-    
+
             }).catch((err) => {
                 console.log(err)
             })
@@ -284,17 +284,17 @@ export const startLoadMoreFiles = (parent="/", sortby="DEFAULT", search="", star
 
              // Temp Google Drive API
             axios.get(`/file-service-google/list?limit=${limit}&parent=${parent}&sortby=${sortby}&search=${search}&startAt=${true}&startAtDate=${startAtDate}&startAtName=${startAtName}&pageToken=${pageToken}`).then((results) => {
-            
+
                 dispatch(loadMoreFiles(results.data))
-        
+
                 if (results.data.length !== limit) {
-    
+
                     dispatch(loadMoreItems(false))
-    
+
                 } else {
                     dispatch(loadMoreItems(true))
                 }
-             
+
                 dispatch(setLoadingMoreItems(false));
                 //dispatch(setLoading(false))
 
@@ -305,22 +305,22 @@ export const startLoadMoreFiles = (parent="/", sortby="DEFAULT", search="", star
         } else {
 
             axios.get(`/file-service/list?limit=${limit}&parent=${parent}&sortby=${sortby}&search=${search}&startAt=${true}&startAtDate=${startAtDate}&startAtName=${startAtName}`).then((results) => {
-            
+
                 //console.log("load more files result", results.data.length)
 
                 dispatch(loadMoreFiles(results.data))
-    
+
                 if (results.data.length !== limit) {
-    
+
                     dispatch(loadMoreItems(false))
-    
+
                 } else {
                     dispatch(loadMoreItems(true))
                 }
-                
+
                 // dispatch(setLoading(false))
                dispatch(setLoadingMoreItems(false));
-    
+
             }).catch((err) => {
                 console.log(err)
             })
@@ -346,7 +346,7 @@ export const startAddFile = (uploadInput, parent, parentList, storageSwitcherTyp
               })
             return;
         }
-    
+
         // Store the parent, incase it changes.
         const prevParent = getState().parent.parent;
 
@@ -384,7 +384,7 @@ export const startAddFile = (uploadInput, parent, parentList, storageSwitcherTyp
             const storageType = env.uploadMode;
 
             const data = new FormData();
-      
+
             data.append('filename', currentFile.name);
             data.append("parent", parent)
             data.append("parentList", parentList)
@@ -411,13 +411,13 @@ export const startAddFile = (uploadInput, parent, parentList, storageSwitcherTyp
                 dispatch(startSetStorage())
 
                 cachedResults = {};
-                
+
             })
             .catch(function (error) {
                 console.log(error);
                 dispatch(cancelUpload(currentID))
             });
-    
+
         }
     }
 }
@@ -470,7 +470,7 @@ export const startRemoveFile = (id, isGoogle=false, isPersonal=false) => {
 
 
 export const startRenameFile = (id, title, isGoogle=false) => {
-    
+
     return (dispatch) => {
 
         const data = {id, title}
@@ -482,7 +482,7 @@ export const startRenameFile = (id, title, isGoogle=false) => {
                 dispatch(editFile(id, {filename: title}))
 
                 cachedResults = {};
-    
+
             }).catch((err) => {
                 console.log(err)
             })
@@ -491,14 +491,14 @@ export const startRenameFile = (id, title, isGoogle=false) => {
             axios.patch("/file-service/rename", data).then(() => {
 
                 dispatch(editFile(id, {filename: title}))
-    
+
                 cachedResults = {};
 
             }).catch((err) => {
                 console.log(err)
             })
         }
-        
+
     }
 }
 

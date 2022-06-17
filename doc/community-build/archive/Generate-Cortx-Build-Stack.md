@@ -9,7 +9,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
 - All the prerequisites specified in the [Building the CORTX Environment for Single Node](Building-CORTX-From-Source-for-SingleNode.md) must be satisfied.
 - Do not update OS or kernel package with `yum update` as the kernel version must be set to `3.10.0-1160.el7`
 - Do not upgrade packages from CentOS 7.8 to CentOS 7.9
- 
+
 
 ## Compile and Build CORTX Stack from HEAD
 
@@ -40,7 +40,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    ```
 
    (Optional) Run the following command to checkout the codebase from **main** branch:
-   
+
    ```
    docker run --rm -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make checkout BRANCH=main
    ```
@@ -56,7 +56,7 @@ To know about various CORTX components, see [CORTX Components guide](https://git
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /root/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:centos-7.9.2009 make clean build
    ```
-   
+
    **Note:** This process takes some time to complete building the CORTX packages during `/var/artifacts/0 /` execution phase.
 
 5. Run the following command to generate the ISO for each component:
@@ -70,15 +70,15 @@ To know about various CORTX components, see [CORTX Components guide](https://git
     ```
     ll /var/artifacts/0
     ```
- 
+
 ## (Optional) Compile and Build CORTX Stack as per Individual component
 
 7. Run to view each component targets:
    ```
    docker run ghcr.io/seagate/cortx-build:centos-7.9.2009 make help
    ```
-   
-   [![cortx_stack_individual_component.png](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png")](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png") 
+
+   [![cortx_stack_individual_component.png](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png")](https://github.com/Seagate/cortx/blob/main/doc/images/cortx_stack_individual_component.jpg "cortx_stack_individual_component.png")
 
 8. Deploy the packages generated to create CORTX cluster using the instruction provided in [Deploy Cortx Build Stack guide](ProvisionReleaseBuild.md).
 

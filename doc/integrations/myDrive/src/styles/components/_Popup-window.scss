@@ -26,7 +26,7 @@
         z-index: 5;
         max-width: unset;
     }
-    
+
 }
 
 .popup-window-video {
@@ -90,7 +90,7 @@
     height: 100%;
     cursor: pointer;
 
-    @media (max-width: $desktop-breakpoint) { 
+    @media (max-width: $desktop-breakpoint) {
         width: 90vw;
         max-height: 70vh;
         max-width: 90vw;

@@ -5,4 +5,3 @@ Description: HotpotQA is a dataset for multi-hop question answering.The overall 
 Link: https://arxiv.org/pdf/1809.09600.pdf
 
 Tags: #HotpotQA, #All, #QA
-

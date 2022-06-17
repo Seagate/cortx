@@ -23,9 +23,9 @@ module.exports={
   // The file upload has completed
   busboy.on('finish', async function() {
    console.log('Upload finished');
-   
-   
-   
+
+
+
    const file=req.files.filetoupload;
   //  console.log(innerfil)
    console.log(file);
@@ -39,7 +39,7 @@ if (err) {
 } if (data) {
   console.log("Upload Success", data.Location);
   let newlocation=data.Location
-  
+
 
   // postgresql insert
   const {firstname,lastname,email,phone}=req.body;
@@ -50,10 +50,10 @@ if (err) {
       }
 
       res.status(200).json({status: 'success', message: 'New dialogue added',data:data})
-      
+
     }
   )
-  
+
 }
 });
 });

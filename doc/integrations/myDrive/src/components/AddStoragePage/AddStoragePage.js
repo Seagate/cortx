@@ -3,7 +3,7 @@ import SpinnerLogin from "../SpinnerLogin";
 import AddStorageItem from "../AddStorageItem";
 
 const AddStoragePage = (props) => (
-    
+
     <div>
         <div className="storage__back">
 
@@ -18,10 +18,10 @@ const AddStoragePage = (props) => (
                             {props.state.storagePlans.map((currentPlan) => <AddStorageItem selectPlan={props.selectPlan} plan={currentPlan} loaded={props.state.loaded} userDetails={props.state.userDetails}/>)}
                         </div>
                     </div>
-                    {!props.state.loaded ? undefined : props.state.userDetails.activeSubscription ? 
+                    {!props.state.loaded ? undefined : props.state.userDetails.activeSubscription ?
                     <div className="add-storage-card__button-wrapper">
                         <button className="storage-item__button" onClick={props.removeSubscription}>Remove Subscription</button>
-                    </div> : undefined} 
+                    </div> : undefined}
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@ const AddStoragePage = (props) => (
                 </div>
             </div>
         </div>
-    
+
     </div>
 )
 

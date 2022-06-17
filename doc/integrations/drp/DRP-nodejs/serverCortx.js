@@ -355,7 +355,7 @@ class PoliceDept extends DRP_Service_CortxStorage {
     constructor(serviceName, drpNode, priority, weight, scope, s3Endpoint, s3AccessKeyID, s3SecretAccessKey) {
         super(serviceName, drpNode, "PoliceDept", null, false, priority, weight, drpNode.Zone, scope, null, [], 1, s3Endpoint, s3AccessKeyID, s3SecretAccessKey);
         let thisService = this;
-        this.Startup();        
+        this.Startup();
     }
 
     async Startup() {

@@ -10,7 +10,7 @@ const sendPasswordResetEmail = async (user: UserInterface, passwordResetToken: s
 
     const apiKey: any = env.sendgridKey;
     const sendgridEmail:any = env.sendgridEmail;
-    const url = env.remoteURL + `/reset-password/${passwordResetToken}`    
+    const url = env.remoteURL + `/reset-password/${passwordResetToken}`
 
     // console.log("send grid api key", apiKey)
     // console.log("send grid email", sendgridEmail);
@@ -20,7 +20,7 @@ const sendPasswordResetEmail = async (user: UserInterface, passwordResetToken: s
     const msg = {
         to: user.email,
         from: sendgridEmail,
-        subject: "myDrive Password Reset", 
+        subject: "myDrive Password Reset",
         text: `Please navigate to the following link to reset your password: ${url}`
     }
 

@@ -56,7 +56,7 @@ const authStreamVideo = async(req: RequestType, res: Response, next: NextFunctio
         const encryptedToken = user.encryptToken(accessTokenStreamVideo, encrpytionKey, decoded.iv);
 
         let tokenFound = false;
-        
+
         for (let i = 0; i < user.tempTokens.length; i++) {
 
             const currentEncryptedToken = user.tempTokens[i].token;
@@ -78,10 +78,10 @@ const authStreamVideo = async(req: RequestType, res: Response, next: NextFunctio
 
     } catch (e) {
 
-        if (e.message !== "No Access Token" && 
+        if (e.message !== "No Access Token" &&
         e.message !== "No User" &&
         e.message !== "Access Token Not Found") console.log("\nAuthorization Stream Video Middleware Error:", e.message);
-        
+
         res.status(401).send("Error Authenticating");
     }
 }

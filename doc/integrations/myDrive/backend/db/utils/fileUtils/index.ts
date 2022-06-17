@@ -31,8 +31,8 @@ class DbUtil {
     removeLink = async(fileID: string, userID: string) => {
 
         const file = await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": new ObjectID(fileID), 
-            "metadata.owner": new ObjectID(userID)}, 
+            .findOneAndUpdate({"_id": new ObjectID(fileID),
+            "metadata.owner": new ObjectID(userID)},
             {"$unset": {"metadata.linkType": "", "metadata.link": ""}}) as FileInterface;
 
         return file;
@@ -41,8 +41,8 @@ class DbUtil {
     makePublic = async(fileID: string, userID: string, token: string) => {
 
         const file = await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": new ObjectID(fileID), 
-            "metadata.owner": new ObjectID(userID)}, 
+            .findOneAndUpdate({"_id": new ObjectID(fileID),
+            "metadata.owner": new ObjectID(userID)},
             {"$set": {"metadata.linkType": "public", "metadata.link": token}}) as FileInterface
 
         return file;
@@ -59,8 +59,8 @@ class DbUtil {
     makeOneTimePublic = async(fileID: string, userID: string, token: string) => {
 
         const file = await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": new ObjectID(fileID), 
-            "metadata.owner": new ObjectID(userID)}, 
+            .findOneAndUpdate({"_id": new ObjectID(fileID),
+            "metadata.owner": new ObjectID(userID)},
             {"$set": {"metadata.linkType": "one", "metadata.link": token}}) as FileInterface;
 
         return file;
@@ -106,7 +106,7 @@ class DbUtil {
     removeTempToken = async(user: UserInterface, tempToken: string) => {
 
         user.tempTokens = user.tempTokens.filter((filterToken) => {
-            
+
             return filterToken.token !== tempToken;
         });
 
@@ -128,27 +128,27 @@ class DbUtil {
     renameFile = async(fileID: string, userID: string, title: string) => {
 
         const file = await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": new ObjectID(fileID), 
+            .findOneAndUpdate({"_id": new ObjectID(fileID),
             "metadata.owner": new ObjectID(userID)}, {"$set": {"filename": title}}) as FileInterface;
-    
+
         return file;
     }
 
     moveFile = async(fileID: string, userID: string, parent: string, parentList: string) => {
 
         const file = await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": new ObjectID(fileID), 
+            .findOneAndUpdate({"_id": new ObjectID(fileID),
             "metadata.owner": new ObjectID(userID)}, {"$set": {"metadata.parent": parent, "metadata.parentList": parentList}})
-    
+
         return file;
     }
 
     getFileListByParent = async(userID: string, parentListString: string) => {
 
         const fileList = await conn.db.collection("fs.files")
-            .find({"metadata.owner": new ObjectID(userID), 
+            .find({"metadata.owner": new ObjectID(userID),
             "metadata.parentList":  {$regex : `.*${parentListString}.*`}}).toArray() as FileInterface[];
-        
+
         return fileList;
     }
 

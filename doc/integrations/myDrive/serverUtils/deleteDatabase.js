@@ -9,16 +9,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-                
+
                 resolve();
-    
+
             })
 
         } else {
 
             resolve();
         }
-    
+
     })
 }
 
@@ -30,7 +30,7 @@ const deleteTempDatabase = async() => {
 
     const userConfimation = await prompts({
         type: 'text',
-        message: "Warning: This will delete all the data in the Main Database,\n" + 
+        message: "Warning: This will delete all the data in the Main Database,\n" +
         "this will not delete any data in the Database Backup.\n" +
         "Would you like to continue? (Yes/No)",
         name: "value"

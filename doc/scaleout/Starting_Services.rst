@@ -14,10 +14,10 @@ Run the following command to start the service on all the 3 nodes.
 ::
 
  salt '*' cmd.run "systemctl start slapd"
- 
+
 .. raw:: html
-   
- </details>   
+
+ </details>
 
 .. raw:: html
 
@@ -29,11 +29,11 @@ Run the below mentioned command to restart the server.
 ::
 
  salt '*' cmd.run "service.restart rabbitmq-server"
- 
+
 .. raw:: html
-   
+
  </details>
- 
+
 .. raw:: html
 
  <details>
@@ -55,15 +55,15 @@ Run the below mentioned commands to start and enable Kibana.
  systemctl start kibana
 
  systemctl enable kibana
- 
+
 .. raw:: html
-   
+
  </details>
- 
+
 .. raw:: html
 
  <details>
- <summary><a>S3 (AuthServer  and HAProxy)</a></summary> 
+ <summary><a>S3 (AuthServer  and HAProxy)</a></summary>
 
 Run the below mentioned command to start the AuthServer on all the three nodes.
 
@@ -83,9 +83,9 @@ Run the below mentioned command to start the HAProxy services.
 ::
 
  salt '*' cmd.run "systemctl start haproxy"
- 
+
 .. raw:: html
-   
+
  </details>
 
 .. raw:: html
@@ -110,15 +110,15 @@ Run the following to restart the SSPL service.
 ::
 
  salt '*' cmd.run "systemctl restart sspl-ll"
- 
+
 .. raw:: html
-   
+
 </details>
 
 .. raw:: html
 
  <details>
- <summary><a>CSM</a></summary> 
+ <summary><a>CSM</a></summary>
 
 Run the below mentioned commands to start and enable the csm agent.
 
@@ -135,7 +135,7 @@ Run the below mentioned commands to start and enable the csm web.
  systemctl start csm_web
 
  systemctl enable csm_web
- 
+
 .. raw:: html
-   
+
 </details>

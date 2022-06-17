@@ -13,18 +13,18 @@
           </v-row>
       </v-subheader>
       <div class="mt-3" style="overflow:hidden;overflow-y:scroll;height:68vh">
-        
+
         <div class="ma-8">
             <v-form
     ref="form"
-    
+
     lazy-validation
   >
     <v-text-field
       v-model="ID"
       outlined
       dense
-      
+
       label="ID"
       required
     ></v-text-field>
@@ -89,7 +89,7 @@
       v-model="phonenum"
       outlined
       dense
-      
+
       label="Phone Number"
       required
     ></v-text-field>
@@ -107,7 +107,7 @@
     >
       Register
     </v-btn>
-    
+
   </v-form>
           </div>
       </div>
@@ -138,7 +138,7 @@ export default {
     methods:{
          create(){
             // alert("done");
-            
+
                         let formData = new FormData();
                       formData.append('filetoupload', this.file);
                       formData.append('doctorID',this.ID);
@@ -150,9 +150,9 @@ export default {
                       formData.append('office',this.office);
                       formData.append('email',this.email);
                       formData.append('phone',this.phonenum);
-                      
+
                       console.log(formData)
-              
+
             axios.post('https://vue-health-api.herokuapp.com/api/doctors',formData
   ).then(res=>{
                 console.log(res,"success")
@@ -166,7 +166,7 @@ export default {
       this.file = this.$refs.file.files[0];
     }
     }
-    
+
 }
 </script>
 

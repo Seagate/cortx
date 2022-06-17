@@ -137,7 +137,7 @@ python parlai/scripts/safe_interactive.py \
 ## Safety
 We have undertaken several steps to make this bot safer. The original BlenderBot model was released with a `safe_interactive.py` script using a state-of-the-art safety classifier system on user and bot messages, as discussed [here](https://parl.ai/projects/recipes/), and we do so here as well. In *this* model, we additionally incorporate several strategies not found in previous systems:
 
-1. The bot was trained to distinguish between utterances containing gendered words and utterances without gendered words, and during inference, the bot will be set to respond with utterances without gendered words, to reduce potential gender bias. 
+1. The bot was trained to distinguish between utterances containing gendered words and utterances without gendered words, and during inference, the bot will be set to respond with utterances without gendered words, to reduce potential gender bias.
    - Compared to a bot not trained to be sensitive to gendered words, this bot reduces the frequency of utterances with male words by a factor of 9 and with female words by a factor of 4.
 2. When responding to an image, the bot was trained to distinguish between utterances categorized as “positive” or “neutral” in tone and utterances categorized as “negative”. During inference, the bot is able to respond to an image with only “positive” or “neutral” utterances given the appropriate context string.
     - We find that, in general, “positive” or “neutral” utterances are much less likely to be classified as containing offensive language than “negative” utterances.

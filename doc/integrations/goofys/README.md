@@ -13,7 +13,7 @@
 
 This integration up lots of opportunities for CORTX to integrate with other software and utilities that do not offer an S3 API interface and requires to interact with data in filesystems. An example includes proof-of-storage blockchain mining.
 
-## Installation 
+## Installation
 
 We created a [convenience script](./goofys-cortx-setup.sh) that creates a folder `/root/shared` that will be used to mount your CORTX bucket. Simply carry out the following command:
 
@@ -45,5 +45,3 @@ Tested by:
 - Dec 24, 2021: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
 
 - Nov 30, 2021: Harrison Seow (harrison.seow@seagate.com) using Cortx OVA 2.0.0 running on VMware Workstation Player 16 on Windows 10.
-
-

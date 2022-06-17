@@ -59,7 +59,7 @@ class rSageApplet extends VDMApplet {
             thisApplet.sendCmd("DRP", "unsubscribe", { streamToken: thisStreamToken}, false);
             thisApplet.vdmSession.drpClient.DeleteReplyHandler(thisStreamToken);
         }
-        // Delete from 
+        // Delete from
         delete thisApplet.vdmDesktop.appletInstances[thisApplet.appletIndex];
         /*
         thisApplet.sendCmd("VDM", "closeUserApp",
@@ -73,7 +73,7 @@ class rSageApplet extends VDMApplet {
     }
 
     /**
-     * 
+     *
      * @param {string} serviceName Service Name
      * @param {string} cmdName Command
      * @param {object} cmdData Data object

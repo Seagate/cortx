@@ -33,11 +33,11 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 - The minimum number of network ports per server is 3.
 
 - Usage of Mellanox HCAs is recommended but not mandatory. For optimal performance you need two high-speed network ports (10 GbE minimum; 50 GbE or 100 GbE recommended). All the three servers must have Mellanox HCA or none of the servers must have it.
-    
+
 - Infiniband and OmniPath adapters are not supported.
-  
-  
-  
+
+
+
   - **JBOD Reference Configuration**
 
     - The minimum number of disks per JBOD is 7. One JBOD must be connected to one server. The minimum size of the JBOD disk is 2TB.
@@ -55,21 +55,21 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
       +--------------------------+---------------------------------------------+
       | Private Data network     | connected to another high-speed NIC         |
       +--------------------------+---------------------------------------------+
-	  
-      **Note** 
-	  
+
+      **Note**
+
 	The Management and Public data networks are required the L3 connectivity from outside. If both of them connect to different VLAN, the IPROUTE2 is required to enabled multiple gateway for the JBODs.
-	  
+
 	  Example:
-	   
-	   Management network : 
-		- IP: 10.0.1.10/24 
+
+	   Management network :
+		- IP: 10.0.1.10/24
 		- Gateway: 10.0.1.1
 		- Device: eth0
 		- /etc/sysconfig/network-scripts/ifcfg-eth0
-		
+
 		::
-		
+
 			TYPE=Ethernet
 			BOOTPROTO=none
 			NAME=eth0
@@ -80,15 +80,15 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 			PREFIX=24
 			GATEWAY=10.0.1.1
 			ZONE=public
-		
-	   Public data network: 
+
+	   Public data network:
 		- IP: 10.0.2.10/24
 		- Gateway: 10.0.2.1
 		- Device: eth1
 		- /etc/sysconfig/network-scripts/ifcfg-eth1
-		
+
 		::
-		
+
 			TYPE=Ethernet
 			BOOTPROTO=none
 			NAME=eth1
@@ -98,13 +98,13 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 			IPADDR=10.0.2.10
 			PREFIX=24
 			ZONE=public-data-zone
-		
+
 		- Please note **NO GATEWAY** directive configured for eth1
 		- The iproute2 configuration:
 			- Append "2		eth1" into /etc/iproute2/rt_tables as below example
-			
+
 			::
-			
+
 				#
 				# reserved values
 				#
@@ -119,23 +119,23 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 				2       eth1
 
 			- Create file /etc/sysconfig/network-scripts/route-eth1 as content below
-			
+
 			::
-			
+
 				10.0.2.0/24 dev eth1 src 10.0.2.10 table eth1
 				default via 10.0.2.1 dev eth1 table eth1
-			
+
 			- Create file /etc/sysconfig/network-scripts/rule-eth1 as content below
-			
+
 			::
-			
+
 				from 10.0.2.0/24 table eth1
 				to 10.0.2.0/24 table eth1
-  
+
 			- Restart eth1 interface and verify the configuration
-			
+
 			::
-			
+
 				# ifdown eth1; ifup eth1
 				# ip rule
 				0:      from all lookup local
@@ -146,14 +146,14 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 				32766:  from all lookup main
 				32767:  from all lookup default
 
-	  After complete this configuration, both Management and Public data IP Address shoud be accessible from external.	  
+	  After complete this configuration, both Management and Public data IP Address shoud be accessible from external.
 
 2. Connect the servers to the networks and the JBODs as per the guidelines provided above.
 
 3. Install CentOS 7.8 (2003 release) operating system on all three servers in the cluster.
 
 **Note**: The release must match exactly, as the other versions and distributions of Linux are not supported. You can verify the release by running the following commands and view the appropriate outputs.
-  
+
 - **lsb_release -r**
 
   - Appropriate Output: 7.8.2003
@@ -161,13 +161,13 @@ Perform the below mentioned procedure to complete the process of 3 node JBOD Set
 - **uname -r**
 
   - Appropriate Output: 3.10.0-1062.el7.x86_64
-  
+
   **Warning**: Do not update CentOS 7.8 release as it will break CORTX. Operating system updates are not supported at the moment.
 
   While there are no specific requirements for installing the CentOS 7.8, we recommend you to perform the following 4 steps.
 
 Step 1 -  Use at least two identical internal HDDs in each server (see Server Reference Configuration above).
-  
+
 Step 2 -  On each drive, configure the partitions as per the following guidelines.
 
   +-----------------------+-------------+-------------------------------------------+
@@ -215,7 +215,7 @@ Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID
 +--------------------------------+-----------------+----------+--------------+
 
 **Note**: The information in the table above is provided for reference purposes. You can choose a different structure and/or use different sizes for the partitions (LVM volumes). The minimal size of the / (root) partition should be 20 GB to allow installation of the operating system and the CORTX software. Please adjust the size or / (root) partition accordingly if you do not create separate /var and /var/log partitions.
-    
+
 4. Allow the root login over SSH on all three servers. This is required for the installation and operations of the cluster.
 
 **Notes**
@@ -223,7 +223,7 @@ Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID
 - This setting cannot be changed after the installation is complete.
 
 - You can create another non-root user to avoid logging in to the servers as root all the time. Please allow this user to run all commands using sudo (add it to the "wheel" group).
-    
+
 5. If you have Mellanox HCAs on your servers, please proceed to the next step. If not, proceed to step 8.
 
 6. Install Mellanox OFED from http://linux.mellanox.com/public/repo/mlnx_ofed/4.9-0.1.7.0/rhel7.8/x86_64/MLNX_LIBS/
@@ -241,11 +241,11 @@ Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID
 9. On all three servers, setup Python 3.6 virtual environment. Refer https://docs.python.org/3.6/library/venv.html.
 
    - Supported Version - 3.6
-   
+
      - Other versions are not supported.
-    
+
    **Note**: You can install Python 3.6 without the use of the virtual environments. This is a supported configuration.
-    
+
 10. Configure DNS and DHCP server, if used, with the host names and IP addresses for each server.
 
     - Each server should have FQDN assigned to it. The FQDN should be associated with the IP address of the management network interface.
@@ -273,34 +273,34 @@ Step 4 - Create LVM configuration for the remaining OS partitions using md1 RAID
     - The Cluster (Data) VIP should be from the same subnet as the rest of the Public Data network IPs.
 
     **Notes**
- 
+
     - VIPs utilize CLUSTERIP ip tables module that relies on multicast. For CORTX to function appropriately, multicasts should be allowed for Management and Public Data networks.
 
     - These static IPs are required regardless of whether DHCP is used to provide IP addresses for each server interface or not.
 
     - You must configure DNS resolution for these VIPs.
-   
-  
+
+
 11. Collect all the required information and prepare **config.ini** file for your installation. Refer to `Config.ini File <Configuration_File.rst>`_ for complete information. After the file is prepared, upload it to the first server in the cluster you are planning to install.
 
 **Important**: By default, port 80 is closed. Run the below mentioned commands to open port 80.
 
 ::
-               
+
  salt '*' cmd.run "firewall-cmd --zone=public-data-zone --add-port=80/tcp --permanent"
- 
+
  salt '*' cmd.run "firewall-cmd --reload"
- 
- 
+
+
 If you have a firewall within your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the  ports mentioned below are open to provide access.
-  
+
 +----------------------+-------------------+------------------------------------------------+
 |    **Port number**   |   **Protocols**   |   **Destination network (on VA)**              |
 +----------------------+-------------------+------------------------------------------------+
 |          22          |        TCP        |           Management network                   |
-+----------------------+-------------------+------------------------------------------------+ 
++----------------------+-------------------+------------------------------------------------+
 |          53          |      TCP/UDP      | Management network and Public Data network     |
-+----------------------+-------------------+------------------------------------------------+ 
++----------------------+-------------------+------------------------------------------------+
 |         123          |      TCP/UDP      |              Management network                |
 +----------------------+-------------------+------------------------------------------------+
 |         443          |       HTTPS       |             Public Data network                |

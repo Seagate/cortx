@@ -36,7 +36,7 @@ class DRP_PathCmd {
 
 class DRP_NodeDeclaration {
     /**
-     * 
+     *
      * @param {string} nodeID Node ID
      * @param {string[]} nodeRoles Functional Roles ['Registry','Broker','Provider','Logger']
      * @param {string} hostID Host Identifier
@@ -60,8 +60,8 @@ class DRP_NodeDeclaration {
 
 class DRP_Node extends DRP_Securable {
     /**
-     * 
-     * @param {string[]} nodeRoles List of Roles: Broker, Provider, Registry 
+     *
+     * @param {string[]} nodeRoles List of Roles: Broker, Provider, Registry
      * @param {string} hostID Host Identifier
      * @param {string} domainName DRP Domain Name
      * @param {string} meshKey DRP Mesh Key
@@ -239,7 +239,7 @@ class DRP_Node extends DRP_Securable {
     }
 
     /**
-     * 
+     *
      * @param {string} restRoute Route to listen for Node REST requests
      * @param {string} basePath Base path list
      * @param {boolean} writeToLogger If true, output REST Logs to Logger
@@ -288,7 +288,7 @@ class DRP_Node extends DRP_Securable {
         let basePathArray = tmpBasePath.replace(/^\/|\/$/g, '').split('/');
 
         /**
-         * 
+         *
          * @param {Express_Request} req Request
          * @param {Express_Response} res Response
          * @param {function} next Next step
@@ -408,7 +408,7 @@ class DRP_Node extends DRP_Securable {
         });
 
         /**
-         * 
+         *
          * @param {DRP_TopologyPacket} topologyPacket Topology Packet
          */
         let WatchTopologyForServices = async (topologyPacket) => {
@@ -955,7 +955,7 @@ class DRP_Node extends DRP_Securable {
     }
 
     /**
-     * 
+     *
      * @param {string} remoteNodeID NodeID to connect to
      * @returns {DRP_Endpoint} DRP Node Endpoint
      */
@@ -1067,7 +1067,7 @@ class DRP_Node extends DRP_Securable {
     }
 
     /**
-     * 
+     *
      * @param {DRP_Service} serviceObj DRP Service
      */
     async AddService(serviceObj) {
@@ -1095,7 +1095,7 @@ class DRP_Node extends DRP_Securable {
          * 1. Remove from thisNode.Services[]
          * 2. Create a delete Topology packet
          * 3. Execute ProcessPacket
-         * 
+         *
          * This function is not currently used anywhere since services are normally
          * removed with the termination of the entire process.  Multiple instances
          * of a single service type should not be run from a single process.
@@ -1332,7 +1332,7 @@ class DRP_Node extends DRP_Securable {
                 return;
             }
 
-            // Authentication 
+            // Authentication
             if (thisNode.Debug) {
                 thisNode.log(`Authenticated Consumer`);
                 console.dir(authResponse);
@@ -1369,7 +1369,7 @@ class DRP_Node extends DRP_Securable {
     }
 
     /**
-     * 
+     *
      * @param {DRP_TopologyPacket} topologyPacket DRP Topology Packet
      * @param {DRP_Endpoint} srcEndpoint Source Endpoint
      */
@@ -1632,7 +1632,7 @@ class DRP_Node extends DRP_Securable {
     }
 
     /**
-     * 
+     *
      * @param {function} onControlPlaneConnect Execute after connection to Control Plane
      */
     async ConnectToMesh(onControlPlaneConnect) {
@@ -1798,7 +1798,7 @@ class DRP_Node extends DRP_Securable {
     }
 
     /**
-     * 
+     *
      * @param {string} reason Reason for Node termination
      */
     Die(reason) {
@@ -2061,7 +2061,7 @@ class DRP_Node extends DRP_Securable {
     */
 
     /**
-     * 
+     *
      * @param {string} targetNodeID Target Node ID
      * @param {string} topicName Topic Name
      * @param {function} streamProcessor Function for processing stream data
@@ -2081,7 +2081,7 @@ class DRP_Node extends DRP_Securable {
     }
 
     /**
-     * 
+     *
      * @param {string} targetNodeID Target Node ID
      * @param {string} streamToken Stream Token
      */
@@ -2278,7 +2278,7 @@ class DRP_NodeClient extends DRP_Client {
 // Object which tracks advertised nodes and services
 class DRP_TopologyTracker {
     /**
-     * 
+     *
      * @param {DRP_Node} drpNode Associated DRP Node
      */
     constructor(drpNode) {
@@ -2298,7 +2298,7 @@ class DRP_TopologyTracker {
     }
 
     /**
-     * 
+     *
      * @param {DRP_TopologyPacket} topologyPacket DRP Topology Packet
      * @param {string} srcNodeID Node we received this from
      * @param {string} sourceIsRegistry Is the source node a Registry?
@@ -2917,7 +2917,7 @@ class DRP_TopologyTracker {
     }
 
     /**
-     * 
+     *
      * @param {DRP_Endpoint} sourceEndpoint Source Endopint
      * @param {DRP_NodeDeclaration} declaration Source Declaration
      * @param {boolean} localNodeIsProxy Is the local Node a proxy for the remote Node?
@@ -3145,7 +3145,7 @@ class DRP_TopologyTracker {
 
 class DRP_TrackingTableEntry {
     /**
-    * 
+    *
     * @param {string} nodeID Node ID
     * @param {string} proxyNodeID Proxy Node ID
     * @param {string} scope Node Scope
@@ -3188,7 +3188,7 @@ class DRP_NodeTable {
 // Details of Node
 class DRP_NodeTableEntry extends DRP_TrackingTableEntry {
     /**
-     * 
+     *
      * @param {string} nodeID Node ID
      * @param {string} proxyNodeID Proxy Node ID
      * @param {string[]} roles Roles
@@ -3258,7 +3258,7 @@ class DRP_ServiceTable {
 
 class DRP_ServiceTableEntry extends DRP_TrackingTableEntry {
     /**
-     * 
+     *
      * @param {string} nodeID Origin Node ID
      * @param {string} proxyNodeID Proxy Node ID
      * @param {string} serviceName Name of service
@@ -3291,7 +3291,7 @@ class DRP_ServiceTableEntry extends DRP_TrackingTableEntry {
 
 class DRP_TopologyPacket {
     /**
-     * 
+     *
      * @param {string} originNodeID Source Node ID
      * @param {string} cmd Command [Add|Update|Delete]
      * @param {string} type Object Type [Node|Service]
@@ -3313,7 +3313,7 @@ class DRP_TopologyPacket {
 
 class DRP_RemoteSubscription extends DRP_SubscribableSource {
     /**
-     * 
+     *
      * @param {string} targetNodeID Target Node ID
      * @param {string} topicName Topic Name
      * @param {string} streamToken Stream Token
@@ -3403,7 +3403,7 @@ class DRP_SubscriptionManager {
     }
 
     /**
-     * 
+     *
      * @param {DRP_Subscriber} subscriber Subscription
      * @returns {boolean} Registration success
      */
@@ -3444,7 +3444,7 @@ class DRP_SubscriptionManager {
     }
 
     /**
-     * 
+     *
      * @param {DRP_ServiceTableEntry} serviceEntry Service to check
      * @param {string} streamName Stream Name
      * @param {string} subscriptionScope Subscription Scope
@@ -3490,7 +3490,7 @@ class DRP_SubscriptionManager {
     }
 
     /**
-     * 
+     *
      * @param {string} targetNodeID Target Node ID
      * @param {string} topicName Topic Name
      * @returns {DRP_RemoteSubscription} Remote Subscription

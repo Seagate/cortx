@@ -8,12 +8,12 @@ import SpinnerImage from "../SpinnerImage";
 
 const DataForm = (props) => (
   <div className={props.parent === "/" ? "file__control--panel" : "file__control--panel folder__view"}>
-    
-    {!props.loading ? 
+
+    {!props.loading ?
       <QuickAccess
         fileClick={props.fileClick}
         downloadFile={props.downloadFile}
-      /> : undefined  
+      /> : undefined
     }
 
     {/* style={props.folders.length === 0 ? {} : props.parent === "/" ? {marginTop:"50px", display:"block"} : {display:"block"} */}
@@ -36,7 +36,7 @@ const DataForm = (props) => (
     </div>
 
     <div className="file__view noSelect">
-      
+
 
       <div class="recent__table--wrap">
 
@@ -80,7 +80,7 @@ const DataForm = (props) => (
       )}
 
 
-      {!props.listView ? 
+      {!props.listView ?
       <div className="main__access">
 
       {props.files.map((file) => (<FileItem
@@ -93,7 +93,7 @@ const DataForm = (props) => (
             />))}
 
       </div>
-    
+
     :
 
     <table class="recent__table noSelect" style={props.loading ? {display: "none"} : {}}>
@@ -122,18 +122,18 @@ const DataForm = (props) => (
               fileClick={props.fileClick}
             />
           ))}
-        </table> 
+        </table>
         }
 
         <div className="dataform-loadmore-files" style={props.loadingMoreItems ? {} : {display: "none"}}>
           <SpinnerImage />
         </div>
-  
-        {/* {props.loading ? 
+
+        {/* {props.loading ?
         <div className="dataform__spinner__wrapper">
           <Spinner />
         </div> : undefined} */}
-        
+
         {/* */}
       </div>
     </div>

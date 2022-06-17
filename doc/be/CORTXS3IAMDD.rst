@@ -13,7 +13,7 @@
 ===============
 **Features**
 ===============
- 
+
 
 * 0-copy, 2-phase IO
 
@@ -215,7 +215,7 @@ Output:
 ==============
 
 
-FOP means Formatted file operation packet. Each fop contains opcode for 
+FOP means Formatted file operation packet. Each fop contains opcode for
 corresponding operation. Fop also contains reply which is sent be
 service after completion of the request.
 
@@ -836,14 +836,14 @@ It is used to store the metadata. There are two kinds of metadata in BE:
 -  The metadata about the data stored on storage devices. Consists of:
 
    - balloc: what space is free on the data storage device and what is not.
-	  
+
    - extmap in ad stob domain: if we have an ad stob it has the information where the ad stob data is stored on the storage device.
-	  
+
    - cob: the gob (file) attributes, pver, lid, size.
 
 -  The metadata exported to user. It's DIX which is exported through
    Motr.
-   
+
 
 ..
 
@@ -866,7 +866,7 @@ How BE Works
 
 -  In case of failure the changes from the log are applied to the
    segments.
-   
+
 
 
 Top Level Components
@@ -967,45 +967,45 @@ $ m0motr for index create, put, get, delete ops.
 ..
 
 .. |image0| image:: images/1_EOS_Core_Deep_Dive.png
-   
+
 .. |image1| image:: images/2_System_Level_View.png
-   
+
 .. |image2| image:: images/3_EOS_Core_Scalable_Storage_Platform.png
-   
+
 .. |image3| image:: images/4_Clovis_Layer.png
-   
+
 .. |image4| image:: images/5_Clovis_Operation.png
-   
+
 .. |image5| image:: images/6_Clovis_IO.png
-   
+
 .. |image6| image:: images/7_Clovis_Index.png
-   
+
 .. |image7| image:: images/8_Parity_Groups.png
-   
+
 .. |image8| image:: images/9_IO_Layout.png
-   
+
 .. |image9| image:: images/10_Failure_Domains.png
-  
+
 .. |image10| image:: images/11_Conf_Schema.png
-   
+
 .. |image11| image:: images/12_FOM.png
-   
+
 .. |image12| image:: images/13_FOP_to_FOM.png
-   
+
 .. |image13| image:: images/14_STOB.png
-  
+
 .. |image14| image:: images/15_IO_Flow.png
-   
+
 .. |image15| image:: images/16_IO_Service.png
-   
+
 .. |image16| image:: images/17_Read_Data_Flow.png
- 
+
 .. |image17| image:: images/18_FOP_Execution.png
-   
+
 .. |image18| image:: images/19_ADDB.png
-   
+
 .. |image20| image:: images/20_Read_Request_Flow.png
-   
+
 .. |image21| image:: images/21_Key_Value_Request.png
 
 .. |image22| image:: images/22_SNS_Repair.png
@@ -1027,4 +1027,3 @@ $ m0motr for index create, put, get, delete ops.
 .. |image30| image:: images/30_RM_Use_Case.png
 
 .. |image31| image:: images/31_BE_Data_Flow.png
-

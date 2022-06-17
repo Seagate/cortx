@@ -6,6 +6,5 @@
   "appletIcon": "fa-book",
   "showInMenu": true,
   "appletScript": "vdm-app-CommandTesting.js",
-  "preReqs": [
-  ]
+  "preReqs": []
 }

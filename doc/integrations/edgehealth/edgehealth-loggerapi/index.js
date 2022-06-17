@@ -62,9 +62,9 @@ app.get('/doctors',getDoctor)
   // The file upload has completed
   busboy.on('finish', async function() {
    console.log('Upload finished');
-   
-   
-   
+
+
+
    const file=req.files.filetoupload;
   //  console.log(innerfil)
    console.log(file);
@@ -78,7 +78,7 @@ if (err) {
 } if (data) {
   console.log("Upload Success", data.Location);
   let newlocation=data.Location
-  
+
 
   // postgresql insert
   // const {firstname,lastname,email,phone}=req.body;
@@ -99,10 +99,10 @@ if (err) {
   //     }
 
   //     res.status(200).json({status: 'success', message: 'New dialogue added',data:data})
-      
+
   //   }
   // )
-  
+
 }
 });
   });
@@ -110,7 +110,7 @@ if (err) {
 
   })
   // POST endpoint
-  
+
 
 app.post('/update',(req,res)=>{
   const {doctorid,firstname,lastname,speciality,sabbrev,gender,office,email,phone,photo}=req.body;
@@ -135,7 +135,7 @@ app.post('/update',(req,res)=>{
 }) */
 
 app.get('/logs',async (req,res)=>{
-  
+
   pool.query(
     'SELECT * FROM logs',(error, results) => {
       if (error) {
@@ -181,20 +181,20 @@ app.post('/api/upload',async(req, res, next)=> {
     Bucket: "covidxraybucket"
    };
   await s3v1.createBucket(params, function(err, data) {
-    if (err) console.log("Bucket already exits",err); 
-    else     console.log(data);           
-    
+    if (err) console.log("Bucket already exits",err);
+    else     console.log(data);
+
   });
-  // This grabs the additional parameters so in this case passing     
+  // This grabs the additional parameters so in this case passing
   // in "element1" with a value.
   const element1 = req.body.element1;
   var busboy = new Busboy({ headers: req.headers });
   // The file upload has completed
   busboy.on('finish', async function() {
    console.log('Upload finished');
-   
-   
-   
+
+
+
    const file=req.files.filetoupload;
   //  console.log(innerfil)
    console.log(file);
@@ -210,7 +210,7 @@ if (err) {
   console.log("Upload Success", data.Location);
   console.log(data)
   let newlocation=data.Location
-  
+
 
   // postgresql insert
   const {firstname,lastname,email,phone}=req.body;
@@ -221,10 +221,10 @@ if (err) {
       }
 
       res.status(200).json({status: 'success', message: 'New dialogue added',data:data})
-      
+
     }
   )
-  
+
 }
 });
   });
@@ -244,11 +244,11 @@ app.post('/api/df_text_query',async(req,res)=>{
       Bucket: "logsbucket"
      };
     await s3v1.createBucket(params, function(err, data) {
-      if (err) console.log("Bucket already exits",err); 
-      else     console.log(data);           
-      
+      if (err) console.log("Bucket already exits",err);
+      else     console.log(data);
+
     });
-    
+
 const newd= Date.now().toString;
 
     var obj = {
@@ -258,16 +258,16 @@ const newd= Date.now().toString;
       Time:now,
       Score:d_score
   };
-  
+
   var buf = Buffer.from(JSON.stringify(obj));
-  
+
   var data = {
       Bucket: 'logsbucket',
       Key: `${newd}.json`,
       Body: buf,
       ACL: 'public-read'
   };
-  
+
   await s3v1.upload(data, function (err, data) {
       if (err) {
           console.log(err);
@@ -289,9 +289,9 @@ const newd= Date.now().toString;
     )
 
     res.send(responses[0].queryResult);
-    
-    
-    
+
+
+
 })
 
 app.post('/api/df_event_query',async(req,res)=>{

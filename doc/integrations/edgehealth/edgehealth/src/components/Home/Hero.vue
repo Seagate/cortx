@@ -25,13 +25,13 @@
 
                            <v-btn large :dark="bcolor3==true?true:false" :color="bcolor3==true?'blue':'white'" @click="bcolor1=false;bcolor2=false;bcolor3=true" class="mr-1 text-caption">Find a Location</v-btn>
                        </v-row>
-                       
+
                    </v-col>
                    <v-col cols="12" sm="12" md="4" xl="4" lg="4">
-                       
+
                    </v-col>
                </v-row>
-                     
+
            </div>
            <!-- Search input -->
                 <div class="ml-3">
@@ -48,7 +48,7 @@
                     </div>
           </v-col>
           <v-col cols="12" sm="12" md="6" xl="6" lg="6">
-              
+
           </v-col>
       </v-row>
   </div>
@@ -68,12 +68,12 @@ export default {
 
 <style>
     .hero-img{
-       
-   
+
+
    color: white;
-   
+
    align-items: center;
-    
+
   background: linear-gradient(to right,#3204fdba, #9907facc), url(https://picsum.photos/1280/853/?random=1) no-repeat  top center;
 
     }

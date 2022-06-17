@@ -31,4 +31,3 @@ myNode.ConnectToMesh(async () => {
     myNode.AddService(new TestService(serviceName, myNode, priority, weight, scope));
 
 });
-

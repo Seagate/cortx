@@ -4,7 +4,7 @@ import env from "../../enviroment/envFrontEnd"
 import UploadStorageSwitcher from "./UploadStorageSwitcher";
 
 class UploadStorageSwitcherContainer extends React.Component {
-    
+
     constructor(props) {
         super(props);
 
@@ -57,7 +57,7 @@ class UploadStorageSwitcherContainer extends React.Component {
 
     render() {
 
-        return <UploadStorageSwitcher 
+        return <UploadStorageSwitcher
                     changeUploadSwitcher={this.changeUploadSwitcher}
                     state={this.state}
                     {...this.props}/>

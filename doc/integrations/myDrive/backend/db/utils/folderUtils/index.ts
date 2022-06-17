@@ -88,7 +88,7 @@ class DbUtil {
 
     moveFolder = async(folderID: string, userID: string, parent: string, parentList: string[]) => {
 
-        const folder = await Folder.findOneAndUpdate({"_id": new ObjectID(folderID), 
+        const folder = await Folder.findOneAndUpdate({"_id": new ObjectID(folderID),
         "owner": userID}, {"$set": {"parent": parent, "parentList": parentList}}) as FolderInterface;
 
         return folder;
@@ -96,7 +96,7 @@ class DbUtil {
 
     renameFolder = async(folderID: string, userID: string, title: string) => {
 
-        const folder = await Folder.findOneAndUpdate({"_id": new ObjectID(folderID), 
+        const folder = await Folder.findOneAndUpdate({"_id": new ObjectID(folderID),
         "owner": userID}, {"$set": {"name": title}}) as FolderInterface;
 
         return folder;

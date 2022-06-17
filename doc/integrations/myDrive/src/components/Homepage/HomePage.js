@@ -21,11 +21,11 @@ const HomePage = (props) => (
             <div className="main__wrapper--container" >
 
                 <LeftSection goHome={props.goHome}/>
-                <MainSection />           
-                <Uploader />         
+                <MainSection />
+                <Uploader />
                 {props.photoID.length === 0 ? undefined :
                 <PhotoViewer />}
-                
+
             </div>
         </div>
 
@@ -35,9 +35,8 @@ const HomePage = (props) => (
         <MobileContextMenuContainer />
 
     </div>
-    
+
 
 )
 
 export default HomePage
-

@@ -36,7 +36,7 @@ LABEL maintainer="cortx.opensource@seagate.com" \
 
 ENV GIT_HASH $GIT_HASH
 
-#Disable default repositories. 
+#Disable default repositories.
 #RUN yum-config-manager --disable base,extras,updates
 
 RUN yum-config-manager --disable updates
@@ -50,7 +50,7 @@ RUN yum install epel-release -y && yum clean all \
 
 RUN yum-config-manager --add-repo ${BUILD_URL}/cortx_iso/ \
     && yum-config-manager --add-repo ${BUILD_URL}/3rd_party \
-    && curl ${BUILD_URL}/RELEASE.INFO -o RELEASE.INFO 
+    && curl ${BUILD_URL}/RELEASE.INFO -o RELEASE.INFO
 
 COPY ./*.txt ./generate-release-info.sh /opt/seagate/cortx/
 
@@ -61,10 +61,10 @@ RUN yum install --nogpgcheck -y python3-pip \
 
 RUN yum install --nogpgcheck -y  $(sed 's/#.*//g' /opt/seagate/cortx/third-party-rpms.txt) \
     && yum clean all && rm -rf /var/cache/yum
-    
+
 RUN yum install --nogpgcheck -y  $(sed 's/#.*//g' /opt/seagate/cortx/cortx-componenet-rpms.txt) \
     && yum clean all && rm -rf /var/cache/yum
-    
+
 RUN rm -f /etc/machine-id && ln -s /etc/cortx/solution/node/id /etc/machine-id \
     && bash /opt/seagate/cortx/generate-release-info.sh
 

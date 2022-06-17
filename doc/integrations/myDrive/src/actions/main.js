@@ -34,7 +34,7 @@ export const setLoading = (load) => ({
 
 export const setLoginFailed = (message, code=401) => ({
     type: "SET_LOGIN_FAILED",
-    message, 
+    message,
     code
 })
 

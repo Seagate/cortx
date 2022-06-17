@@ -13,7 +13,7 @@ interface RequestTypeFullUser extends Request {
 class GoogleFolderController {
 
     constructor() {
-        
+
     }
 
     getList = async(req: RequestTypeFullUser, res: Response) => {
@@ -32,7 +32,7 @@ class GoogleFolderController {
             res.send(folderList);
 
         } catch (e) {
-            
+
             console.log("\nGet Google List Error Google Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -55,7 +55,7 @@ class GoogleFolderController {
             res.send(folderList);
 
         } catch (e) {
-           
+
             console.log("\nGet Google/Mongo List Error Google Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -78,7 +78,7 @@ class GoogleFolderController {
             res.send(folderInfo);
 
         } catch (e) {
-            
+
             console.log("\nGet Info Error Google Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -101,7 +101,7 @@ class GoogleFolderController {
             res.send(nameAndIDList);
 
         } catch (e) {
-            
+
             console.log("\nGet Subfolder List Error Google Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -125,7 +125,7 @@ class GoogleFolderController {
             res.send(fullSubfolderList);
 
         } catch (e) {
-            
+
             console.log("\nGet Full Subfolder List Error Google Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -149,7 +149,7 @@ class GoogleFolderController {
             res.send();
 
         } catch (e) {
-            
+
             console.log("\nRename Folder Error Google Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -172,7 +172,7 @@ class GoogleFolderController {
             res.send();
 
         } catch (e) {
-            
+
             console.log("\nRemove Folder Error Google Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -195,7 +195,7 @@ class GoogleFolderController {
             res.send(createdFolder);
 
         } catch (e) {
-            
+
             console.log("\nUpload Folder Error Google Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -219,12 +219,12 @@ class GoogleFolderController {
             res.send();
 
         } catch (e) {
-            
+
             console.log("\nMove Folder Error Google Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
         }
-    } 
+    }
 }
 
 export default GoogleFolderController;

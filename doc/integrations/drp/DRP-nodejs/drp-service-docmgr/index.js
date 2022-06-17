@@ -121,7 +121,7 @@ let openAPIDoc = {
 
 class DocManager extends DRP_Service {
     /**
-     * 
+     *
      * @param {string} serviceName Service Name
      * @param {drpNode} drpNode DRP Node
      * @param {number} priority Priority (lower better)
@@ -210,7 +210,7 @@ class DocManager extends DRP_Service {
                 return await thisDocMgr.ListDocs(serviceName);
             } else {
                 // return doc
-                return await thisDocMgr.LoadDoc(serviceName, docName); 
+                return await thisDocMgr.LoadDoc(serviceName, docName);
             }
         };
     }
@@ -225,7 +225,7 @@ class DocManager extends DRP_Service {
         /** @type {MongoClient} */
         thisDocMgr.__MongoClient = await MongoClient.connect(`${mongoUrl}`, { useNewUrlParser: true, useUnifiedTopology: true });
         let bob = 1;
-        // Open the collector DB 
+        // Open the collector DB
         this.__DocMgrDB = thisDocMgr.__MongoClient.db(thisDocMgr.serviceName);
     }
 
@@ -253,7 +253,7 @@ class DocManager extends DRP_Service {
     }
 
     /**
-     * 
+     *
      * @param {string} serviceName Name of service
      * @returns {Object.<string,object>} Dictionary of files and attributes
      */

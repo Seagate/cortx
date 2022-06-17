@@ -41,16 +41,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-                
+
                 resolve();
-    
+
             })
 
         } else {
 
             resolve();
         }
-    
+
     })
 }
 
@@ -59,11 +59,11 @@ beforeEach(async(done) => {
     await waitForDatabase();
 
     const initVect = crypto.randomBytes(16);
-            
+
     const {user: gotUser, userData: gotUserData} = await createUser();
     user = gotUser;
     userData = gotUserData;
-    
+
     const {user: gotUser2, userData: gotUserData2} = await createUser2();
     user2 = gotUser2;
     userData2 = gotUserData2;
@@ -77,7 +77,7 @@ beforeEach(async(done) => {
         "IV": initVect,
         // filePath: filepath
     }
-    
+
     file = await createFile(filename, filepath, metadata, user);
 
     done();
@@ -90,7 +90,7 @@ afterEach(async(done) => {
 
     //const gfs = Grid(conn.db, mongoose.mongo);
     let bucket = new mongoose.mongo.GridFSBucket(conn.db);
-            
+
     await User.deleteMany({});
 
     await Thumbnail.deleteMany({});
@@ -102,7 +102,7 @@ afterEach(async(done) => {
         const currentFileID = allFiles[i]._id;
         await bucket.delete(ObjectID(currentFileID));
     }
-   
+
     done();
 })
 
@@ -159,10 +159,10 @@ test("When giving wrong auth data for thumbnail, should return 403 error", async
 test("When not email verified should not get thumbnail data, and return 401", async() => {
 
     const appSession = session(app);
-    
+
     const {userData: userData3, user: user3} = await createUserNotEmailVerified();
     await loginUser(appSession, userData3);
-    
+
     const thumbnailFile = await createThumbnail(file, file.filename, user3);
     const thumbnailID = thumbnailFile.metadata.thumbnailID;
 
@@ -179,7 +179,7 @@ test("When not email verified but email verification disabled should get thumbna
     env.disableEmailVerification = true;
 
     const appSession = session(app);
-    
+
     const {userData: userData3, user: user3} = await createUserNotEmailVerified();
     await loginUser(appSession, userData3);
 
@@ -192,7 +192,7 @@ test("When not email verified but email verification disabled should get thumbna
         parentList: "/",
         "IV": initVect,
     }
-    
+
     const file2 = await createFile(filename, filepath, metadata, user3);
 
     const thumbnailFile = await createThumbnail(file2, file2.filename, user3);
@@ -216,7 +216,7 @@ test("When trying to create thumbnail from others users file should not return t
 
     const thumbnailFile = await createThumbnail(file, file.filename, user2);
     const thumbnailID = thumbnailFile.metadata.thumbnailID;
-    
+
     expect(thumbnailID).toEqual(undefined)
 })
 // // Needs Work, cannot phrase binary data?
@@ -227,8 +227,8 @@ test("When trying to create thumbnail from others users file should not return t
 // //     const fileID = file._id.toString();
 // //     const token = jwt.sign({_id: userID.toString()}, env.password);
 // //     await conn.db.collection("fs.files")
-// //     .findOneAndUpdate({"_id": ObjectID(fileID), 
-// //     "metadata.owner": userID}, 
+// //     .findOneAndUpdate({"_id": ObjectID(fileID),
+// //     "metadata.owner": userID},
 // //     {"$set": {"metadata.linkType": "public", "metadata.link": token}})
 
 // //     const response = await request(app)
@@ -238,7 +238,7 @@ test("When trying to create thumbnail from others users file should not return t
 // //     .end();
 
 
-// //     //expect(response.body._id).toEqual(fileID);  
+// //     //expect(response.body._id).toEqual(fileID);
 
 // //     // console.log("public", token.token);
 
@@ -249,7 +249,7 @@ test("When trying to create thumbnail from others users file should not return t
 // //     // .set('content-type', 'application/octet-stream')
 // //     // .send()
 // //     // .expect(203)
- 
+
 // //     // const writeStream = temp.createWriteStream();
 
 // //     //response.pipe(writeStream);
@@ -261,8 +261,8 @@ test("When giving public id, should return public info", async() => {
     const fileID = file._id.toString();
     const token = jwt.sign({_id: userID.toString()}, env.password).toString();
     await conn.db.collection("fs.files")
-    .findOneAndUpdate({"_id": ObjectID(fileID), 
-    "metadata.owner": userID}, 
+    .findOneAndUpdate({"_id": ObjectID(fileID),
+    "metadata.owner": userID},
     {"$set": {"metadata.linkType": "public", "metadata.link": token}})
 
     const response = await request(app)
@@ -333,7 +333,7 @@ test("When giving wrong auth token for file info, should return 404 error", asyn
 test("When not email verified should not get file info, and should return 401", async() => {
 
     const appSession = session(app);
-    
+
     const {userData: userData3, user: user3} = await createUserNotEmailVerified();
     await loginUser(appSession, userData3);
 
@@ -346,7 +346,7 @@ test("When not email verified should not get file info, and should return 401", 
         parentList: "/",
         "IV": initVect,
     }
-    
+
     const file2 = await createFile(filename, filepath, metadata, user3);
 
     const fileID = file2._id;
@@ -364,7 +364,7 @@ test("When not email verified but email verification disabled should return file
     env.disableEmailVerification = true;
 
     const appSession = session(app);
-    
+
     const {userData: userData3, user: user3} = await createUserNotEmailVerified();
     await loginUser(appSession, userData3);
 
@@ -377,7 +377,7 @@ test("When not email verified but email verification disabled should return file
         parentList: "/",
         "IV": initVect,
     }
-    
+
     const file2 = await createFile(filename, filepath, metadata, user3);
 
     const fileID = file2._id;
@@ -399,8 +399,8 @@ test("When giving the wrong tempToken for public file info, should return 404 er
     const token = jwt.sign({_id: userID.toString()}, env.password).toString();
     const wrongToken = "12345"
     await conn.db.collection("fs.files")
-    .findOneAndUpdate({"_id": ObjectID(fileID), 
-    "metadata.owner": userID}, 
+    .findOneAndUpdate({"_id": ObjectID(fileID),
+    "metadata.owner": userID},
     {"$set": {"metadata.linkType": "public", "metadata.link": token}})
 
     const response = await request(app)
@@ -585,7 +585,7 @@ test("When giving fileID and parent, should move file", async() => {
     await appSession
     .patch(`/file-service/move`)
     .send({
-        id: fileID, 
+        id: fileID,
         parent: folderID
     })
     .expect(200);
@@ -612,7 +612,7 @@ test("When not authorized should not move file and return 401", async() => {
     await appSession
     .patch(`/file-service/move`)
     .send({
-        id: fileID, 
+        id: fileID,
         parent: folderID
     })
     .expect(401);
@@ -641,7 +641,7 @@ test("When giving wrong authorization should not move file and return 404", asyn
     await appSession
     .patch(`/file-service/move`)
     .send({
-        id: fileID, 
+        id: fileID,
         parent: folderID
     })
     .expect(404);
@@ -655,11 +655,11 @@ test("When giving a parentID that does not exist, should return 404 error", asyn
     await loginUser(appSession, userData);
 
     const fileID = file._id;
-    
+
     await appSession
     .patch(`/file-service/move`)
     .send({
-        id: fileID, 
+        id: fileID,
         parent: "123456789012"
     })
     .expect(404);
@@ -676,7 +676,7 @@ test("When giving fileID should remove file", async() => {
     await appSession
     .delete(`/file-service/remove`)
     .send({
-        id: fileID, 
+        id: fileID,
     })
     .expect(200);
 })
@@ -692,7 +692,7 @@ test("When giving fileID that does not exist for remove file, should return 404 
     await appSession
     .delete(`/file-service/remove`)
     .send({
-        id: fileID, 
+        id: fileID,
     })
     .expect(404);
 })
@@ -706,7 +706,7 @@ test("When not authorized should not remove file and return 401", async() => {
     await appSession
     .delete(`/file-service/remove`)
     .send({
-        id: fileID, 
+        id: fileID,
     })
     .expect(401);
 })
@@ -722,7 +722,7 @@ test("When giving wrong authorization should not remove file and return 404", as
     await appSession
     .delete(`/file-service/remove`)
     .send({
-        id: fileID, 
+        id: fileID,
     })
     .expect(404);
 })

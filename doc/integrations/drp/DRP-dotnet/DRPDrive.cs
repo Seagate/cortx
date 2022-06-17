@@ -365,7 +365,7 @@ namespace ADHDTech.DRP
                     /*
                     switch (itemType) {
                         case "Newtonsoft.Json.Linq.JObject":
-                            returnJSONString = 
+                            returnJSONString =
                             break;
                         case "Newtonsoft.Json.Linq.JArray":
                             break;
@@ -401,7 +401,7 @@ namespace ADHDTech.DRP
             // Normalize the path before splitting
             string normalPath = NormalizePath(path);
 
-            // Return the path with the drive name and first path 
+            // Return the path with the drive name and first path
             // separator character removed, split by the path separator.
             //string pathNoDrive = normalPath.Replace(this.PSDriveInfo.Root
             //                               + pathSeparator, "");
