@@ -1,13 +1,12 @@
-import { Box } from "chakra-ui";
+
 
 export function IpfsBox({ children }) {
 
     return (
-        <Box
+        <div
             className="my-auto mb-3"
         >
             {children}
-        </Box>
+        </div>
     )
 }
-    

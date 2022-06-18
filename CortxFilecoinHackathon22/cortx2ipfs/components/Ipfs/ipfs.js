@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { create } from 'ipfs-http-client'
+import { Button, StyledButton, Table } from "@nextui-org/react";
 
 export function IpfsComponent(props) {
     const [id, setId] = useState(null);
@@ -47,22 +48,52 @@ export function IpfsComponent(props) {
     }, [props.state])
 
     if (!ipfs) {
-        return <h4 className='f5 ma0 pb2 aqua fw4 montserrat'>Connecting to IPFS...</h4>
+        return <div className='f5 ma0 pb2 aqua fw4 montserrat'>Connecting to IPFS...</div>
     }
 
     console.log(id)
     return (
         <div>
             <p>IPFS here:</p>
+            <Table
+                aria-label="Example static collection table"
+                css={{
+                    height: "auto",
+                    minWidth: "11%",
+                }}
+                // selectionMode="single"
+            >
+
+                <Table.Header>
+
+                    <Table.Column></Table.Column>
+                    <Table.Column></Table.Column>
+                </Table.Header>
+                <Table.Body>
+                    <Table.Row key="1">
+                        <Table.Cell>ID</Table.Cell>
+                        <Table.Cell>{id.string}</Table.Cell>
+                    </Table.Row>
+                    <Table.Row key="2">
+                        <Table.Cell>Version</Table.Cell>
+                        <Table.Cell>{version}</Table.Cell>
+                    </Table.Row>
+                    <Table.Row key="3">
+                        <Table.Cell>Status</Table.Cell>
+                        <Table.Cell>{isOnline ? 'Online' : 'Offline'}</Table.Cell>
+                    </Table.Row>
+                </Table.Body>
+
+            </Table>
             <div>
-                {props.state && <button onClick={handleClick} >Add to IPFS</button>}
+                {true && <StyledButton onClick={handleClick} >Add to IPFS</StyledButton>}
             </div>
             <div>
                 {imgUrl && newFile && (<a href={imgUrl}>Deployed to: {imgUrl}</a>)}
             </div>
-            <h4 data-test="id">ID: {id.string}</h4>
+            {/* <h4 data-test="id">ID: {id.string}</h4>
             <h4 data-test="version">Version: {version}</h4>
-            <h4 data-test="status">Status: {isOnline ? 'Online' : 'Offline'}</h4>
+            <h4 data-test="status">Status: {isOnline ? 'Online' : 'Offline'}</h4> */}
 
         </div>
     )
