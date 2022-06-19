@@ -1,0 +1,10 @@
+{
+    "es.http_compress": true,
+    "es.port": 9200,
+    "es.scheme": "http",
+    "es.url": "http://192.168.1.193",
+    "s3.acces_key_id": "AKIAmEm0xVR1RfOEeB2NDKRv1A",
+    "s3.account": "rixel_s3",
+    "s3.sercret_access_key": "dVecOtYkbFZpUOxCC2+DqnW6pkqj6dcvzLp3c/id",
+    "s3.url": "http://192.168.1.193"
+}

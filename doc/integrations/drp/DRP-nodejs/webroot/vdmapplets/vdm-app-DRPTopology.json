@@ -1,0 +1,14 @@
+{
+  "appletName": "DRPTopology",
+  "title": "DRP Topology",
+  "sizeX": 950,
+  "sizeY": 600,
+  "appletIcon": "fa-list-alt",
+  "showInMenu": true,
+  "appletScript": "vdm-app-DRPTopology.js",
+  "preReqs": [
+    { "JS": "/assets/cytoscape/js/cytoscape.min.js" },
+    { "JS": "/assets/cytoscape/js/cytoscape-context-menus.js" },
+    { "CSS": "/assets/cytoscape/css/cytoscape-context-menus.css" }
+  ]
+}

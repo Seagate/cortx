@@ -1,0 +1,11 @@
+type: S3
+config:
+  bucket: "testbucket"
+  endpoint: "uvo1f7e7qbkxtmmt5iq.vm.cld.sr"
+  access_key: "AKIAtEpiGWUcQIelPRlD1Pi6xQ"
+  secret_key: "YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK"
+  insecure: true
+  signature_version2: true
+  list_objects_version: "v2"
+  http_config:
+    insecure_skip_verify: true

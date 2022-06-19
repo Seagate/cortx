@@ -98,7 +98,7 @@ def merge(target_login,source_login,people):
     people.update_type(target_login,source.get_type())
   if source.get_linkedin() and not target.get_linkedin():
     print("Trying to transfer type %s" % source.get_linkedin())
-    people.set_linkedin(target_login,source.get_linkedin())
+    people.update_linkedin(target_login,source.get_linkedin())
   if source.get_note():
     print("Trying to transfer note %s" % source.get_note())
     people.add_note(target_login,source.get_note())
@@ -162,6 +162,7 @@ def main():
         print(people.people[args.individual])
       else:
         print("Person %s not in the known community" % args.individual)
+        sys.exit(-1)
     else:
       if args.github:
         gpeople=CortxCommunity()

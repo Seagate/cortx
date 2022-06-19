@@ -1,0 +1,53 @@
+This release notes includes new features, enhancements, and bug fixes added to the CORTX k8s OVA.
+
+
+## Bug Fixes
+
+- Add addb logs to rgw support bundle (#88) [CORTX-30595]
+- Add consul alive check for config miniprovisioning (#83) [CORTX-29889]
+- Upgrade mini-provisioner interface. (#81) [CORTX-29892]
+- Use PVC location for storing m0trace files (#82) [CORTX-30969]
+- rgw mp: Use PVC for storing m0trace files incase of admin user creation fails during rgw mini-provisioner [CORTX-30969]
+- Patch to pick rgw-1.log log in logrotaion (#80) [CORTX-30018]
+- Fix codacy issues. (#73) [CORTX-30097]
+- Memory leak in hax m0_ha_proc_counters_fetch API [CORTX-31300]
+- PreMerge Issue: loops devices are not getting detached [CORTX-31431]
+- Hare-HA: report node status as degraded/offline on process unsuccessful to HA [CORTX-29826]
+- Endpoint port settings needs to be done at node level instead of cluster level [CORTX-30898]
+- node>{node_id}>storage>cvg is obsolete [CORTX-30793]
+- SNS Repair: hctl repair status command is failing [CORTX-31185]
+- Hare logs are not rotated as per logrotate configuration [CORTX-26200]
+- Fixing the Alex bug [CORTX-30785]
+- SNS Repair: hctl repair start command is not triggering start request [CORTX-29485]
+- DIX repair and rebalance service types are missing [CORTX-29199]
+- Memory leak in hax m0_ha_proc_counters_fetch API (#1779) [CORTX-31300]
+- Add support of transient unsuccessful for PUT (#1545) [CORTX-27608]
+- Codacy code cleanup (#1606) (#1732) [CORTX-30751]
+- Fix 52motr-singlenode-sanity system test (#1746) [CORTX-31056]
+- Fix SNS system tests regression (#1750) [CORTX-31264]
+- Add support for libfabric v1.14.x and v1.15.x (#1723) [CORTX-29418]
+- Log rotation and compression for the motr log files (#1589) [CORTX-27770]
+- Add DIX repair and rebalance support in m0_ha_sim (#1676) [CORTX-29371]
+- cas/client: fix memory degradated issue (#1628) [CORTX-30728]
+- Rename cvg_count and storage_set_count keys (#1623) [CORTX-29739]
+- Convert kernel based spiel ST to usermode (#1489) [CORTX-28542]
+- Fixing the Alex bug (#6373) [CORTX-30785]
+- Address codacy errors (#6372) [CORTX-30255]
+- Add database.yaml for utils-based models [CORTX-29553]
+- Enhance System health schema for control node  (#693) [CORTX-29931]
+- rgw_rest_bucket: Support `max-size` attr for SetBucketQuota REST API (#190) [CORTX-31085]
+- When pod is restarted via replicas or kubectl delete, pod_restart count is not set properly (#680) [CORTX-29399]
+- rgw_sal_motr: Optimise object storage size (#178) [CORTX-29962]
+- rgw_sal_motr: Enable User Policy CRUD operations (#161) [CORTX-30294]
+- Enhance monitoring capability for control node (#685) [CORTX-29930]
+- rgw_sal_motr: Enable user list api for Motr (#153) [CORTX-28064]
+- Publish CSM API docs on /v2/api/docs (#830) [CORTX-31160]
+- Update cryptography library from 2.8 to 3.3.2 (#807) [CORTX-29993]
+
+
+## New Features
+
+- Added rgw_s3 service for server node rgw copmonâ€¦ (#6362) [CORTX-29869]
+- Migrate unsupported features from ElasticSearch to Consul (#775) [CORTX-28033]
+- Hybrid API framework improvement for all the capacity API's (#806) [CORTX-30326]
+- List IAM users API (#825) [CORTX-31186]

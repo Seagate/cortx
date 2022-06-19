@@ -1,0 +1,12 @@
+{
+  "appletName": "HiveBrowser",
+  "title": "Hive Browser",
+  "sizeX": 800,
+  "sizeY": 400,
+  "appletIcon": "fa-book",
+  "showInMenu": true,
+  "appletScript": "vdm-app-HiveBrowser.js",
+  "preReqs": [
+    { "CSS": "vdmapplets/vdm-app-HiveBrowser.css" }
+  ]
+}

@@ -1,0 +1,3 @@
+export AWS_ACCESS_KEY=AKIAw5WobgsyTh2rQ2ljuZmweA
+export AWS_SECRET_KEY=sTNG8gMpkG/AOj+gTi6ayBkdr5aw5Xw5s7R252sF 
+
