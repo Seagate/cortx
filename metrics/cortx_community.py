@@ -174,6 +174,13 @@ class PersistentStats:
       date=self.get_latest(repo)[1]
     return self.stats[repo][date].keys()
 
+  def get_all_keys(self,repo):
+    all_keys = set()
+    for date in self.stats[repo].keys():
+      s = self.stats[repo][date].keys()
+      all_keys |= s
+    return all_keys
+
   def get_values(self,repo,key,dates=None):
     Values=[]
     if not dates:

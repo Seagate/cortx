@@ -202,7 +202,7 @@ const initServer = async() => {
         stringBuilder += "NODE_ENV=production\n";
         stringBuilder += "PORT=3000\n";
         stringBuilder += "HTTP_PORT=3000\n"; 
-        stringBuilder += "HTTPS_PORT=8080\n"
+        stringBuilder += "HTTPS_PORT=8080\n";
 
         await awaitWriteFile("./docker-variables.env", stringBuilder);
 
