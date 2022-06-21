@@ -20,7 +20,7 @@ axiosRetry.interceptors.request.use((config) => {
   if (!browserIDCheck) {
     browserIDCheck = uuid.v4();
     localStorage.setItem("browser-id", browserIDCheck);
-  };
+  }
 
   config.headers.uuid = browserIDCheck;
 
