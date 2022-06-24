@@ -153,6 +153,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |dvc| image:: ../images/dvc.png
    :target: dvc
 
+.. |freesheet| image:: ./freesheet-jupyter/img/logo.png
+   :target: freesheet-jupyter
+
 .. |chia| image:: ../images/chia-logo.png
    :target: chia-blockchain
 
