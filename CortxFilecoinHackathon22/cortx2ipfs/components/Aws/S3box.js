@@ -1,10 +1,10 @@
 
 
-export function IpfsBox({ children }) {
+export function S3Box({ children }) {
 
     return (
         <div
-            className="mr-auto mb-3 p-11"
+            className="ml-auto mb-3 p-11"
         >
             {children}
         </div>

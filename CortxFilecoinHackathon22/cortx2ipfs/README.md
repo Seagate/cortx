@@ -1,5 +1,16 @@
 ### Cortx IPFS Bridge
 
+## Get Started 🚀
+
+Spin up an IPFS deamon:
+```bash
+ipfs daemon
+```
+
+Make sure your CORTX cluster is running and available. In case of [cloudshare](https://use.cloudshare.com/Authenticated/Landing.aspx?s=1), log in to your account.
+
+
+
 ## Resources
 
 [AWS for React](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/getting-started-react-native.html)

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { create } from 'ipfs-http-client'
 import { Button, StyledButton, Table } from "@nextui-org/react";
+import { useSelector, useDispatch } from 'react-redux';
+import { increment } from '../../app/counterSlice';
 
 export function IpfsComponent(props) {
     const [id, setId] = useState(null);
@@ -8,6 +10,9 @@ export function IpfsComponent(props) {
     const [version, setVersion] = useState(null);
     const [isOnline, setIsOnline] = useState(false);
     const [imgUrl, setUrl] = useState(null);
+
+    const count = useSelector((state) => state.counter.value)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const init = async () => {
@@ -61,7 +66,7 @@ export function IpfsComponent(props) {
                     height: "auto",
                     minWidth: "11%",
                 }}
-                // selectionMode="single"
+            // selectionMode="single"
             >
 
                 <Table.Header>
@@ -81,6 +86,17 @@ export function IpfsComponent(props) {
                     <Table.Row key="3">
                         <Table.Cell>Status</Table.Cell>
                         <Table.Cell>{isOnline ? 'Online' : 'Offline'}</Table.Cell>
+                    </Table.Row>
+                    <Table.Row key="4">
+                        <Table.Cell>
+                            <Button
+                                onClick={() => dispatch(increment())}
+                            className="bg-purple-600"
+                            >
+                                Count
+                            </Button>
+                        </Table.Cell>
+                        <Table.Cell>{count}</Table.Cell>
                     </Table.Row>
                 </Table.Body>
 

@@ -4,16 +4,16 @@ const AWS = require("aws-sdk");
 // Must ignore cert errors due to Cortx certs
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
-let s3Endpoint = "https://<s3server>:443";
-let s3AccessKeyID = "<s3accesskey>";
-let s3SecretAccessKey = "<s3secretkey>";
+const S3 = new AWS.S3(
+    {
+        region: "eu-central-1",
+        credentials: new AWS.Credentials("sgiamadmin", "ldapadmin"),
+        endpoint: "http://uvo1d3803qi367n3fq6.vm.cld.sr:31949",
+        s3ForcePathStyle: true,
+    }
+);
 
-let S3 = new AWS.S3();
-S3.config.s3ForcePathStyle = true;
-S3.config.credentials = new AWS.Credentials(s3AccessKeyID, s3SecretAccessKey);
-S3.endpoint = s3Endpoint;
-
-let testBucketName = "testbucket";
+let testBucketName = "bariiii"  //"testbucket";
 let testObjectName = "testobject.txt";
 let testObjectData = "...some random data...";
 
@@ -21,10 +21,19 @@ let sampleScript = async () => {
 
     // Create a bucket
     console.log("Creating a bucket...");
-    let createBucketResults = await S3.createBucket({ Bucket: testBucketName }).promise();
-    console.dir(createBucketResults);
+    let CreateBucketConfiguration = {
+        LocationConstraint: ""
+    };
 
+    try {
+        let createBucketResults = await S3.createBucket({
+            Bucket: testBucketName,
+            CreateBucketConfiguration,
+        }).promise()
+        console.dir(createBucketResults)
+    } catch (e) { console.log(e) }
     // List buckets
+
     console.log("Listing buckets...");
     let listBucketsResults = await S3.listBuckets().promise();
     console.dir(listBucketsResults);
