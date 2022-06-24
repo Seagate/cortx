@@ -193,6 +193,7 @@ Thanks for contributing!  If you want to contribute but aren't sure how, please 
 1. [Suvrat Joshi](https://github.com/suvratjoshi)
 1. [Swapnil Gaonkar](https://github.com/SwapnilGaonkar7)
 1. [Trent Geerdes](https://github.com/tgeerdes-SG)
+1. [Deepak Nayak](https://github.com/d-nayak)
 
 ## [Seagate/cortx-images](https://github.com/Seagate/cortx-images)
 1. [Saumya Sunder](https://github.com/Saumya-Sunder)
