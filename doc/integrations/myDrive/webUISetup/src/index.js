@@ -80,7 +80,7 @@ encryptionSelect.addEventListener("change", () => {
         encryptionInput.disabled = true;
         encryptionInput.className = "encryption-key-input"
     }
-
+   
 })
 
 dbSelect.addEventListener("change", () => {
@@ -127,13 +127,13 @@ sendGridSelect.addEventListener("change", () => {
 clientInput.addEventListener("input", () => {
 
     const value = clientInput.value;
-
+    
     if (value && value.length !== 0) {
 
         const lastCharacter = value[value.length - 1];
 
         if (lastCharacter === "/") {
-
+            
             clientInput.className = "mongo-input input-invalid"
             clientInvalidInputText.className = "invalid-input-text"
 
@@ -147,7 +147,7 @@ clientInput.addEventListener("input", () => {
         clientInput.className = "mongo-input"
         clientInvalidInputText.className = "invalid-input-text-hidden"
     }
-
+    
     if (value && value.length >= 8 || value && value.length >= 7) {
 
         const firstChactersHttp = value.substring(0, 7);
@@ -195,7 +195,7 @@ saveButton.addEventListener("click", () => {
     if (dockerSelection.value === "yes") serverObj.HTTP_PORT = 3000;
     if (dockerSelection.value === "yes") serverObj.HTTPS_PORT = 8080;
     serverObj.NODE_ENV = "production";
-    serverObj.MONGODB_URL = dockerSelection.value !== "yes" ? mongoURLInput.value :
+    serverObj.MONGODB_URL = dockerSelection.value !== "yes" ? mongoURLInput.value : 
     dockerSelectionMongoURL.value !== "yes" ? mongoURLInputDocker.value : "mongodb://mongo:27017/mydrive"
     if (encryptionSelect.value !== "yes") serverObj.KEY = encryptionInput.value;
     if (dockerSelection.value === "yes") serverObj.DOCKER = true;
@@ -204,23 +204,23 @@ saveButton.addEventListener("click", () => {
     if (sendGridSelect.value === "no") serverObj.DISABLE_EMAIL_VERIFICATION = true;
     if (sendGridSelect.value === "yes") serverObj.SENDGRID_KEY = sendGridInput.value;
     if (sendGridSelect.value === "yes") serverObj.SENDGRID_EMAIL = sendGridInputEmail.value
-    serverObj.DB_TYPE = dbSelect.value;
+    serverObj.DB_TYPE = dbSelect.value;    
     serverObj.REMOTE_URL = clientInput.value;
     serverObj.PASSWORD_ACCESS = accessTokenInput.value;
     serverObj.PASSWORD_REFRESH = refreshTokenInput.value;
     serverObj.PASSWORD_COOKIE = cookieInput.value;
 
     if (dbSelect.value === "s3") {
-
+        
         serverObj.S3_ID = s3IDInput.value;
         serverObj.S3_KEY = s3KeyInput.value;
         serverObj.S3_BUCKET = s3BucketInput.value;
 
     } else if (dbSelect.value === "fs") {
-
+        
         serverObj.FS_DIRECTORY = fsInput.value;
         serverObj.ROOT = fsInput.value;
-    }
+    } 
 
     const data = {
         clientObj,

@@ -11,7 +11,7 @@ Utilizing CORTX as a storage backend for Apache Spark.
 Spark is an open source large scale data processing engine which is capable of being used with the Python, Scala or Java
 programming languages.
 
-Spark is traditionally used by data scientists, with [many organisations](https://spark.apache.org/powered-by.html)
+Spark is traditionally used by data scientists, with [many organisations](https://spark.apache.org/powered-by.html) 
 adopting spark as part of their workflows for large scale data processing and machine learning.
 
 
@@ -23,17 +23,17 @@ storage and applications, with names that are cryptic and often [indistinguishab
 
 Components of the Hadoop ecosystem that Spark normally relies on.
 
-Spark relies on a few components from this ecosystem, with Zookeeper acting to coordinate nodes, Yarn for managing
-cluster resources, and the Hadoop Distributed File System (HDFS) for storage. To get Spark to use CORTX natively I
+Spark relies on a few components from this ecosystem, with Zookeeper acting to coordinate nodes, Yarn for managing 
+cluster resources, and the Hadoop Distributed File System (HDFS) for storage. To get Spark to use CORTX natively I 
 had to configure Hadoop to use CORTXs S3 compatible API using their [S3A](https://hadoop.apache.org/docs/current/hadoop-aws/tools/hadoop-aws/index.html)
 API rather than the traditional Hadoop Distributed File System.
 
 In doing so I am able to run filesystem commands to interact with CORTX that look very familiar to linux users. Examples of these are
-```hadoop fs -ls``` to list subdirectories in a bucket,```hadoop fs -mkdir "foo"``` to make a new directory foo, and
+```hadoop fs -ls``` to list subdirectories in a bucket,```hadoop fs -mkdir "foo"``` to make a new directory foo, and 
 ```hadoop fs -get foo.txt``` to copy foo.txt from CORTX to your local machine.
 
 ## Spark Integration
-The end result of the Spark CORTX integration is that you are able to use the CORTX filesystem as a data source for
+The end result of the Spark CORTX integration is that you are able to use the CORTX filesystem as a data source for 
 Spark applications without having to muck around with credentials or external libraries when running against Spark.
 ```python
 Welcome to
@@ -74,9 +74,9 @@ This copy command is used because Hadoop performs the following two steps when i
 * Uploads the object appended by ```._COPYING_``` as a "Staging" file.
 * Performs the ```x-amz-copy-source``` command to replace the ```._COPYING``` file that's already in S3 to its final name.
 
-My hope is that at some point in the future this API is implemented so that write features can be integrated. I have raised [issue #940](https://github.com/Seagate/cortx/issues/940)
+My hope is that at some point in the future this API is implemented so that write features can be integrated. I have raised [issue #940](https://github.com/Seagate/cortx/issues/940) 
 to track this.
-![Request PCAP](docsupport/pcap.png)
+![Request PCAP](docsupport/pcap.png) 
 
 Unimplemented API shown.
 
@@ -85,27 +85,27 @@ This installation guide assumes you have already performed a few steps:
 1. Installed CORTX. My suggestion for development is to use the provided [Open Virtual Appliance](https://github.com/Seagate/cortx/blob/main/doc/ova/1.0.4/CORTX_on_Open_Virtual_Appliance.rst)
 image to create a Virtual Machine although there are other methods to [get started](https://github.com/Seagate/cortx/blob/main/QUICK_START.md).
 2. Create a cortex S3 account from the management UI.
-
+   
    ![](docsupport/cortx_s3_user.png)
 
 Management webpage to add a CORTX s3 account.
 
 3. Create an initial folder for your data to be stored in. You can use [cyberduck](https://github.com/Seagate/cortx/blob/f124b3fef81b7aae617b3e8cd5209afcc2a9d6f3/doc/testing_io.rst)
    for this purpose.
-
+   
 ### Easy install
 The process of installing Hadoop and Spark can be complicated, so I have created an Ansible playbook to automate the process.
 
 This ansible playbook will run a set of reproducible commands against a target environment of ```ubuntu 20.04```.
-It should be possible to make this playbook compatible with the provided CORTX VM by replacing the APT install with YUM
+It should be possible to make this playbook compatible with the provided CORTX VM by replacing the APT install with YUM 
 install although this is untested.
 
-To use this playbook, [install ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html),
+To use this playbook, [install ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html), 
 git clone the CORTX github, change directory to cortx/doc/integrations/spark with
 ```zsh
 git clone https://github.com/Seagate/cortx.git
 cd cortx/doc/integrations/spark
-```
+``` 
 Modify the following:
 * in inventory.yml add the IP address of your S3 endpoint
 * in playbooks/install_spark.yml add your s3_endpoint, s3_access_key, s3_secret_key and base folder you created
@@ -135,7 +135,7 @@ wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar
 tar -xvf ZendFramework-1.7.2.tar.gz -C ~/hadoop --strip 1
 ```
 Copy the following files from this repository ```spark/static_templates/hadoop``` to your ~/hadoop/etc/hadoop directory, replacing the [{{}} jinja variables](https://jinja.palletsprojects.com/en/2.11.x/)
-with the required values
+with the required values 
 * ```s3_secret_key``` the S3 secret key for your user
 * ```s3_access_key``` the S3 access key for your user
 * ```s3_endpoint``` the IP address or DNS entry of your S3 endpoint
@@ -168,7 +168,7 @@ source ~/.bashrc
 #### Spark
 Now that you've got a working hadoop install that works with CORTX you can now install Spark.
 ```zsh
-# change directory to your home
+# change directory to your home 
 cd ~
 # Download Spark
 wget https://downloads.apache.org/spark/spark-3.1.1/spark-3.1.1-bin-hadoop3.2.tgz
@@ -192,7 +192,7 @@ replacing the JINJA {{}} variables with the following
 * ```spark_dir``` the full path of your spark installation
 * ```bundled_aws_sdk``` the version number of the aws sdk that you're using. If following this guide use 1.11.375 ,
 otherwise look at the version of aws-java-sdk-bundle in ```hadoop/share/hadoop/tools/lib/```.
-
+  
 ## Verification
 ### Test hadoop filesystem to see that S3 is being used correctly
 ```$ hadoop fs -mkdir -p test```
@@ -220,7 +220,7 @@ To verify spark, we're going to check that you can read CSVs from CORTX.
 * Upload a CSV to CORTX. Example CSVs can be found [here](https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html)
 * Enter the PySpark REPL with ```pyspark```
 
-Note: This may take a while to start the pyspark shell as the first run will attempt to download some additional files
+Note: This may take a while to start the pyspark shell as the first run will attempt to download some additional files 
 that are required.
 * Run the following script to verify that you can access your CSV. Ensure you have inserted it into CORTX.
 
@@ -283,8 +283,8 @@ issues that prevent them from working
 $ hadoop
 hadoop: command not found
 ```
-This happens when you haven't defined your hadoop/bin directory properly in your PATH or haven't reloaded bashrc after
-putting in your export statements. You can look at your current PATH using ```printenv | grep PATH```. Your PATH is
+This happens when you haven't defined your hadoop/bin directory properly in your PATH or haven't reloaded bashrc after 
+putting in your export statements. You can look at your current PATH using ```printenv | grep PATH```. Your PATH is 
 where your system will look for commands that you run
 
 ### Hadoop commands don't run they just hang
@@ -311,7 +311,7 @@ When running spark if you see any errors that contain
 java.lang.ClassNotFoundException
 ```
 
-Then you likely have incompatible Spark and Hadoop versions. You need to ensure that you either stick to the versions
+Then you likely have incompatible Spark and Hadoop versions. You need to ensure that you either stick to the versions 
 documented here, or you compile spark yourself against your target Hadoop version. This was a constant source of error
 for me when I was attempting my integration.
 
@@ -320,7 +320,7 @@ By default ```hadoop fs``` commands will try to use the path /user/username as t
 
 You should ensure that files you want to access using ```hadoop fs``` commands reside in a folder called user/```yourusername```.
 
-To create this folder path directly pass in mkdir with the `-p` flag to make a directory and the path leading up to it.
+To create this folder path directly pass in mkdir with the `-p` flag to make a directory and the path leading up to it. 
 eg. ```hadoop fs -mkdir -p my_new_folder```
 
 This limitation only applies for ```hadoop fs``` commands, not Spark.

@@ -4,7 +4,7 @@
         <v-container >
             <v-row style="display: table-cell; vertical-align: middle;height:70vh">
               <v-col cols="8">
-
+                
                 <p style="color:white;font-weight:500" class="text-h2 ">
                   Healthcare: Smart Hospitals and Smart Healthcare
                 </p>
@@ -22,13 +22,13 @@
       </p>
       <br>
       <p style="" class="text-body-1">
-        Healthcare organizations and hospitals are under pressure to deliver quality patient care without compromising clinical outcomes and operational efficiency. Coping with epidemic outbreaks, ensuing patient safety, keeping on top of technology advances, and caring for a rapidly aging population are some common challenges.
+        Healthcare organizations and hospitals are under pressure to deliver quality patient care without compromising clinical outcomes and operational efficiency. Coping with epidemic outbreaks, ensuing patient safety, keeping on top of technology advances, and caring for a rapidly aging population are some common challenges. 
       </p>
       <p style="" class="text-body-1">
         A hospital can be a complex integration of clinical, information technology, and building systems. An optimized, integrated infrastructure streamlines communications and workflows. It’s an investment that enhances patient care, staff satisfaction and the overall quality of your organization — while reduces costs.
       </p>
     </div>
-
+     
     <div>
       <p></p>
     </div>
@@ -58,7 +58,7 @@
               <p style="font-weight:600;margin-bottom:-3px" class="text-body-1">Augmented and virtual reality <v-icon>mdi-menu-right</v-icon></p>
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab </p>
             </v-card>
-
+              
           </v-col>
           <v-col cols="3">
             <v-card
@@ -68,7 +68,7 @@
               <p style="font-weight:600;margin-bottom:-3px" class="text-body-1">Artificial intelligence <v-icon>mdi-menu-right</v-icon></p>
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
             </v-card>
-
+              
           </v-col>
           <v-col cols="3">
             <v-card
@@ -78,7 +78,7 @@
               <p style="font-weight:600;margin-bottom:-3px" class="text-body-1">Robotics <v-icon>mdi-menu-right</v-icon></p>
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
             </v-card>
-
+              
           </v-col>
           <v-col cols="3">
             <v-card
@@ -88,7 +88,7 @@
               <p style="font-weight:600;margin-bottom:-3px" class="text-body-1">Telemedicine <v-icon>mdi-menu-right</v-icon></p>
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
             </v-card>
-
+              
           </v-col>
       </v-row>
       <v-row>
@@ -100,7 +100,7 @@
               <p style="font-weight:600;margin-bottom:-3px" class="text-body-1">Genomics <v-icon>mdi-menu-right</v-icon></p>
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto beatae tempore.</p>
             </v-card>
-
+              
           </v-col>
           <v-col cols="3">
             <v-card
@@ -110,7 +110,7 @@
               <p style="font-weight:600;margin-bottom:-3px" class="text-body-1">3-D printing <v-icon>mdi-menu-right</v-icon></p>
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
             </v-card>
-
+              
           </v-col>
           <v-col cols="3">
             <v-card
@@ -120,7 +120,7 @@
               <p style="font-weight:600;margin-bottom:-3px" class="text-body-1">Precision medicine <v-icon>mdi-menu-right</v-icon></p>
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab </p>
             </v-card>
-
+              
           </v-col>
           <v-col cols="3">
             <v-card
@@ -130,14 +130,14 @@
               <p style="font-weight:600;margin-bottom:-3px" class="text-body-1">Smart Buildings <v-icon>mdi-menu-right</v-icon></p>
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
             </v-card>
-
+              
           </v-col>
       </v-row>
 
     </div>
-
+   
     <br>
-
+    
     </v-container>
     <div :style="`background-image:url(${require('../assets/hero.jpg')})`">
       <v-container>
@@ -149,15 +149,15 @@
             <v-btn color="primary" large tile>Contact us</v-btn>
           </v-col>
           <v-col cols="6">
-
+            
           </v-col>
         </v-row>
       </section>
       </v-container>
     </div>
-
+    
   </div>
-
+    
 </template>
 
 <script>
@@ -167,7 +167,7 @@
 export default {
   name: "Home",
   components: {
-
+    
   },
 };
 </script>
@@ -176,6 +176,6 @@ export default {
   min-height:70vh;
   box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.534);
   background-size:cover;
-
+  
 }
 </style>

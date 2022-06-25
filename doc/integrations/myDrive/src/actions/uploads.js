@@ -8,9 +8,9 @@ export const resetUpload = () => ({
 })
 
 export const editUpload = (id, progress, completed = false) => ({
-    type: "EDIT_UPLOAD",
-    id,
-    progress,
+    type: "EDIT_UPLOAD", 
+    id, 
+    progress, 
     completed
 })
 

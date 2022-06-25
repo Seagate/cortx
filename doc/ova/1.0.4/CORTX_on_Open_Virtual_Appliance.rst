@@ -13,7 +13,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 `VMware vSphere <https://www.vmware.com/products/vsphere.html>`_,
 `VMware Fusion <https://www.vmware.com/products/fusion.html>`_,
 `VMware Workstation <https://www.vmware.com/products/workstation-pro.html>`_, and
-`Oracle VM VirtualBox <https://www.oracle.com/virtualization/>`_.
+`Oracle VM VirtualBox <https://www.oracle.com/virtualization/>`_. 
 
 **Important**: If you are running the VM in any of the VMWare hypervisors, it is not recommended to use VMware Tools, as CORTX may break due to kernel dependencies.  For the same reason, please do not update the operating system in the image as that also might cause it to fail.
 
@@ -24,36 +24,36 @@ The procedure to install CORTX on OVA is mentioned below.
 
 #. Download the `CORTX OVA <https://github.com/Seagate/cortx/releases/download/cortx-ova-1.0.4-632/cortx-ova-1.0.4.ova>`_ file from `our release page <https://github.com/Seagate/cortx/releases/tag/cortx-ova-1.0.4-632>`_. This contains the virtual machine image.
 
-#. Import the OVA image by referring to `these instructions <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
+#. Import the OVA image by referring to `these instructions <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_. 
 
-   - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_.
-
+   - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
+  
 #. Open the VM console, and login with the below credentials.
 
-   * Username: cortx
+   * Username: cortx 
    * Password: opensource!
 
 #. Become the **root** user by running this:
-
+   
    ::
-
+   
      sudo su -
 
 #. **For Oracle VM VirtualBox Users ONLY**:
-
+   
    .. raw:: html
 
        <details>
        <summary><a>Click here to expand the preboarding procedure.</a></summary>
 
    You need to change the Network Device Name from enp0s3, enp0s8, enp0s9 to ens32, ens33 and ens34:
-
-      **Note:**
-
+   
+      **Note:** 
+      
          - The Network Device names may not be the exact same as listed above, for example, enp0s8, enp0s9, enp0s17 instead of enp0s3, enp0s8, enp0s9.
-         - As the network is setup using DHCP, IP changes are bound to happen during restart, static IP configuration could be harder to maintain as it may not work for different VM with different network setups.
-
-
+         - As the network is setup using DHCP, IP changes are bound to happen during restart, static IP configuration could be harder to maintain as it may not work for different VM with different network setups. 
+   
+   
    #. Use the following command to get your Network Device MAC address (Shown after **link/ether**)
 
       * **ip a l**
@@ -69,9 +69,9 @@ The procedure to install CORTX on OVA is mentioned below.
       * **vi ifcfg-ens34**
 
       Sample output **cat ifcfg-ens34**:
-
+      
       ::
-
+      
          DEVICE="ens34"
          USERCTL="no"
          TYPE="Ethernet"
@@ -94,36 +94,36 @@ The procedure to install CORTX on OVA is mentioned below.
 
       * **date**
 
-      If the time displayed is incorrect, use the following command to adjust time for timezone as necessary (Otherwise, you might face SSL certificate problems later).
+      If the time displayed is incorrect, use the following command to adjust time for timezone as necessary (Otherwise, you might face SSL certificate problems later). 
       * **date --set "[+/-]xhours [+/-]yminutes"**
-
+      
       For instance if your timezone is `4:30:00` ahead of UTC, then run the following command in VM. Note the `-` before minutes as well. Similarly if your timezone is behind of UTC, use +ve hours and +ve minutes to make the adjustment.
 
       * **date --set "-4hours -30minutes"**
-
+  
    .. raw:: html
-
+   
        </details>
 
 #. **Before you begin:**
-
+   
    - Ensure that you have configured your ipv4 network.
 
       - If you do not see an ipv4 network configured, you might need to change your virtual networking configuration using  `these instructions <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
 
    - From the Virtual Network Editor dialog, ensure you uncheck Automatic Settings and select the correct VMNet connection and NIC.
 
-      - Once you select an NIC, ensure that you do not have conflicting NICs selected.
-
+      - Once you select an NIC, ensure that you do not have conflicting NICs selected. 
+      
 
 #. Start the CORTX services by running this bootstrap.sh script:
-
+   
    ::
-
+   
       sh /opt/seagate/cortx/provisioner/cli/virtual_appliance/bootstrap.sh
-
+     
    Run the bootstrap script to ensure all the necessary services are operational.
-
+   
 #. Reboot the OVA VM using following command:
 
    ::
@@ -138,11 +138,11 @@ The procedure to install CORTX on OVA is mentioned below.
 
 
 #. Check the health of CORTX using `hctl <https://github.com/Seagate/cortx/blob/main/doc/checking_health.rst>`_ by running this command
-
+   
    ::
-
+   
       hctl status
-
+   
    The output should be similar to the image below
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104hctl_status_output.png
@@ -163,7 +163,7 @@ The procedure to install CORTX on OVA is mentioned below.
    - For Data Network static IP, run the following command:
 
       ::
-
+      
          # Set Data Network
          provisioner pillar_set "cluster/srvnode-1/network/data_nw/public_ip_addr" \"<IP address for public network>\"
          provisioner pillar_set "cluster/srvnode-1/network/data_nw/netmask" \"<Netmask for public data network>\"
@@ -186,11 +186,11 @@ The procedure to install CORTX on OVA is mentioned below.
 
 
    .. image:: https://github.com/Seagate/cortx/blob/main/doc/images/104networks.png
-
+   
 #. At this point, CORTX should be running on your system.  Confirm this by running the S3 sanity test using the script mentioned below.
 
    ::
-
+   
       sh /opt/seagate/cortx/s3/scripts/s3-sanity-test.sh -e 127.0.0.1
 
       * The script performs several operations on S3 API and LDAP backend:
@@ -200,9 +200,9 @@ The procedure to install CORTX on OVA is mentioned below.
          * create bucket
          * put object
          * delete all the above in reverse order
-
-
-#. Using the Management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_.
+      
+   
+#. Using the Management IP from the **ip a l** command,  refer to these instructions to `configure the CORTX GUI <https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst>`_. 
 
 #. Run the following command and verify the S3 authserver and HA proxy are active and running:
 
@@ -210,7 +210,7 @@ The procedure to install CORTX on OVA is mentioned below.
 
       systemctl status s3authserver
       systemctl status haproxy
-
+   
    - If any service is in failed state, run the following command active the services:
 
       ::
@@ -226,18 +226,18 @@ The procedure to install CORTX on OVA is mentioned below.
 #. BOOM.  You're all done and you're AWESOME.  Thanks for checking out the CORTX system; we hope you liked it.  Hopefully you'll stick around and participate in our community and help make it even better.
 
 **Note:** The Lyve Pilot (LP) will be available in the future releases.
-
+ 
 *************
 Miscellaneous
 *************
 
 If you have a firewall between CORTX and the rest of your infrastructure, including but not limited to S3 clients, web browser, and so on, ensure that the ports mentioned below are open to provide access to CORTX.
-
+  
 +----------------------+-------------------+---------------------------------------------+
 |    **Port number**   |   **Protocols**   |   **Destination network on CORTX**          |
 +----------------------+-------------------+---------------------------------------------+
 |          22          |        TCP        |           Management network                |
-+----------------------+-------------------+---------------------------------------------+
++----------------------+-------------------+---------------------------------------------+ 
 |         443          |       HTTPS       |             Public Data network             |
 +----------------------+-------------------+---------------------------------------------+
 |         28100        |   TCP (HTTPS)     |              Management network             |
@@ -260,7 +260,7 @@ Shutdown CORTX
 
     <details>
    <summary><a>Click here to view the procedure.</a></summary>
-
+   
 #. Stop all S3 I/O traffic from S3 clients to VA.
 
 #. Login to the CORTX Virtual Appliance as **cortx** and run the following.
@@ -269,16 +269,16 @@ Shutdown CORTX
 
 #. Stop CORTX I/O subsystem by running the following command.
 
-   * **hctl shutdown**
+   * **hctl shutdown** 
 
 #. After executing the previous command, shutdown the OVA by running the following command.
 
    * **poweroff**
-
+   
 .. raw:: html
-
+   
    </details>
-
+ 
 
 Restart CORTX
 --------------
@@ -293,23 +293,23 @@ Restart CORTX
 #. Login to the CORTX OVA as cortx and run the following.
 
    - **sudo su -**
-
+   
 #. Restart openldap and s3 auth server services by the below mentioned commands.
 
    ::
-
+   
     $ systemctl restart slapd
-
+    
     $ systemctl restart s3authserver
 
 #. Start CORTX I/O subsystem by running the following command.
 
    - **hctl start**
-
+     
 .. raw:: html
-
+   
    </details>
-
+   
 Tested by:
 
 - Dec 13, 2021: Amnuay Boottrakoat (amnuay.boottrakoat@seagate.com) using OVA release 1.0.4 on Windows 10 running VMware Workstation 16 Pro.

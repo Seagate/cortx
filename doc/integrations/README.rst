@@ -16,27 +16,27 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |cortx-js-sdk| | |myDrive|          | |Slack-Bot|         |
 +----------------+--------------------+---------------------+
-| |parlAI|       | |restic|           | |yolo|              |
+| |parlAI|       | |restic|           | |yolo|              |             
 +----------------+--------------------+---------------------+
-| |DICOM|        | |label-studio|     | |euclid|            |
+| |DICOM|        | |label-studio|     | |euclid|            |             
 +----------------+--------------------+---------------------+
-| |BizTalk|      | |Spark|            | |cortx-pyTorch|     |
+| |BizTalk|      | |Spark|            | |cortx-pyTorch|     |             
 +----------------+--------------------+---------------------+
-| |fluentd|      | |strapi|           | |DOF|               |
+| |fluentd|      | |strapi|           | |DOF|               |             
 +----------------+--------------------+---------------------+
-| |jupyter|      | |drp|              | |torchvision|       |
+| |jupyter|      | |drp|              | |torchvision|       |             
 +----------------+--------------------+---------------------+
-| |edgehealth|   | |pulsar|           | |pytorch-mnist|     |
+| |edgehealth|   | |pulsar|           | |pytorch-mnist|     |             
++----------------+--------------------+---------------------+            
+| |flapmax|      | |s3fs|             | |samba|             |                         
++----------------+--------------------+---------------------+          
+| |h2o|          | |Django|           | |rclone|            | 
++----------------+--------------------+---------------------+        
+| |chia|         | |laravel|          | |dvc|               | 
 +----------------+--------------------+---------------------+
-| |flapmax|      | |s3fs|             | |samba|             |
+| |cortx-restic| | |thanos|           | |goofys|            | 
 +----------------+--------------------+---------------------+
-| |h2o|          | |Django|           | |rclone|            |
-+----------------+--------------------+---------------------+
-| |chia|         | |laravel|          | |dvc|               |
-+----------------+--------------------+---------------------+
-| |cortx-restic| | |thanos|           | |goofys|            |
-+----------------+--------------------+---------------------+
-| |ftp|          | |docker|           |                     |
+| |ftp|          | |docker|           |                     | 
 +----------------+--------------------+---------------------+
 
 .. |docker| image:: ./cortx-docker/image/docker_integration_architecture.jpeg
@@ -92,10 +92,10 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |FHIR| image:: ../images/fhir-logo.png
    :target: fhir
-
+   
 .. |parlAI| image:: https://user-images.githubusercontent.com/2047294/117737939-1dfab300-b1b8-11eb-8ab3-56364e86c6d3.png
    :target: parlAI
-
+   
 .. |TensorFlow| image:: ../images/tensorflow.png
    :target: tensorflow
 
@@ -110,7 +110,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |IPFS| image:: ../images/IPFS.png
    :target: ipfs
-
+   
 .. |cortx-pyTorch| image:: ../images/PyTorch.png
    :target: cortx-pytorch
 
@@ -140,7 +140,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |Spark| image:: ../images/spark-logo.png
    :target: spark
-
+   
 .. |goofys| image:: ../images/goofys.jpg
    :target: goofys
 

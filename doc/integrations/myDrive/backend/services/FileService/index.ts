@@ -21,7 +21,7 @@ type userAccessType = {
     s3Enabled: boolean,
 }
 
-
+ 
 class MongoFileService {
 
     constructor() {
@@ -41,7 +41,7 @@ class MongoFileService {
     removeLink = async(userID: string, fileID: string) => {
 
         const file = await dbUtilsFile.removeLink(fileID, userID);
-
+        
         if (!file.lastErrorObject.updatedExisting) throw new NotFoundError("Remove Link File Not Found Error")
     }
 
@@ -52,22 +52,22 @@ class MongoFileService {
         const file = await dbUtilsFile.makePublic(fileID, userID, token);
 
         if (!file.lastErrorObject.updatedExisting) throw new NotFoundError("Make Public File Not Found Error");
-
+            
         return token;
     }
 
     getPublicInfo = async(fileID: string, tempToken: string) => {
 
         const file: FileInterface = await dbUtilsFile.getPublicInfo(fileID, tempToken);
-
+    
         if (!file || !file.metadata.link || file.metadata.link !== tempToken) {
-
+    
             throw new NotFoundError("Public Info Not Found");
-
+    
         } else {
-
+    
             return file;
-        }
+        } 
     }
 
     makeOneTimePublic = async(userID: string, fileID: string) => {
@@ -84,32 +84,32 @@ class MongoFileService {
     getFileInfo = async(userID: string, fileID: string) => {
 
         let currentFile = await dbUtilsFile.getFileInfo(fileID, userID)
-
+    
         if (!currentFile) throw new NotFoundError("Get File Info Not Found Error");
-
+    
         const parentID = currentFile.metadata.parent
-
-        let parentName = "";
-
+    
+        let parentName = ""; 
+    
         if (parentID === "/") {
-
+    
             parentName = "Home"
-
+    
         } else {
-
+    
             const parentFolder = await Folder.findOne({"owner": userID, "_id": parentID});
-
+                
             if (parentFolder) {
-
+    
                 parentName = parentFolder.name;
-
+    
             } else {
-
+    
                 parentName = "Unknown"
             }
-
+    
         }
-
+    
         return {...currentFile, parentName}
     }
 
@@ -121,7 +121,7 @@ class MongoFileService {
         const quickList = await dbUtilsFile.getQuickList(userID, s3Enabled);
 
         if (!quickList) throw new NotFoundError("Quick List Not Found Error");
-
+            
         return quickList;
     }
 
@@ -142,7 +142,7 @@ class MongoFileService {
         limit = parseInt(limit)
 
         const s3Enabled = user.s3Enabled ? true : false;
-
+    
         const queryObj = createQuery(userID, parent, query.sortby,startAt, startAtDate, searchQuery, s3Enabled ,startAtName, storageType, folderSearch);
 
         const fileList = await dbUtilsFile.getList(queryObj, sortBy, limit);
@@ -196,7 +196,7 @@ class MongoFileService {
     getSuggestedList = async(userID: string, searchQuery: any) => {
 
         searchQuery = new RegExp(searchQuery, 'i')
-
+    
         const fileList = await dbUtilsFile.getFileSearchList(userID, searchQuery);
         const folderList = await dbUtilsFolder.getFolderSearchList(userID, searchQuery);
 

@@ -2,8 +2,8 @@ const path = require('path');
 const webpack = require("webpack")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = (env) => {
-
+module.exports = (env) => { 
+    
     if (env === "test") {
 
         console.log("Loading test env variables")
@@ -19,7 +19,7 @@ module.exports = (env) => {
         console.log("Loading production env variables")
         require("dotenv").config({path: ".env.production"});
     }
-
+    
     return {
         entry: './webUI/src/index.js',
         output: {

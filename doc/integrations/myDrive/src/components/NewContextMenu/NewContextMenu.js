@@ -1,7 +1,7 @@
 import React from "react";
 
 class NewContextMenu extends React.Component {
-
+    
     constructor(props) {
         super(props);
     }

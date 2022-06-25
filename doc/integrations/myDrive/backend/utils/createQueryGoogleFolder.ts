@@ -1,7 +1,7 @@
 const createQueryGoogleFolder = (query: any, parent: string) => {
-
+    
     let orderBy = ""
-
+    
     if (query.sortby === "date_desc") {
         orderBy = "modifiedTime desc"
     } else if (query.sortby === "date_asc") {

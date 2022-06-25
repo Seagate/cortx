@@ -1,5 +1,5 @@
 class NotAuthorizedError extends Error {
-
+    
     constructor(args) {
         super(args);
 

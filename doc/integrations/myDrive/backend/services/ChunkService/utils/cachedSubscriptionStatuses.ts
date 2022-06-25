@@ -1,7 +1,7 @@
 // class CachedSubsriptions {
 
 //     cachedSubscriptionStatuses: any;
-
+    
 //     constructor() {
 //         this.cachedSubscriptionStatuses = {}
 //     }
@@ -9,7 +9,7 @@
 //     addToCachedSubscriptionStatus = (userID: string) => {
 //         this.cachedSubscriptionStatuses[userID] = true;
 //         console.log("new cached", this.cachedSubscriptionStatuses)
-//     }
+//     } 
 
 //     checkCachedSubscriptionStatus = (userID: string) => {
 //         console.log("cache check", this.cachedSubscriptionStatuses)

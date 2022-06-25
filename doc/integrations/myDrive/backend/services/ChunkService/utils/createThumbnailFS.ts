@@ -1,6 +1,6 @@
 import mongoose from "../../../db/mongoose";
 import crypto from "crypto";
-import Thumbnail from "../../../models/thumbnail";
+import Thumbnail from "../../../models/thumbnail"; 
 import sharp from "sharp";
 import {FileInterface} from "../../../models/file";
 import {UserInterface} from "../../../models/user";
@@ -16,10 +16,10 @@ const createThumbnailFS = (file: FileInterface, filename: string, user: UserInte
 
         const password = user.getEncryptionKey();
 
-        let CIPHER_KEY = crypto.createHash('sha256').update(password!).digest()
-
+        let CIPHER_KEY = crypto.createHash('sha256').update(password!).digest()       
+        
         const thumbnailFilename = uuid.v4();
-
+    
         const readStream = fs.createReadStream(file.metadata.filePath!);
         const writeStream = fs.createWriteStream(env.fsDirectory + thumbnailFilename);
         const decipher = crypto.createDecipheriv('aes256', CIPHER_KEY, file.metadata.IV);
@@ -33,21 +33,21 @@ const createThumbnailFS = (file: FileInterface, filename: string, user: UserInte
             console.log("File service upload write thumbnail error", e);
             resolve(file);
         })
-
+    
         decipher.on("error", (e: Error) => {
             console.log("File service upload thumbnail decipher error", e);
             resolve(file)
          })
 
         try {
-
-
-            const thumbnailIV = crypto.randomBytes(16);
-
+            
+            
+            const thumbnailIV = crypto.randomBytes(16); 
+    
             const thumbnailCipher = crypto.createCipheriv("aes256", CIPHER_KEY, thumbnailIV);
 
             const imageResize = sharp().resize(300).on("error", (e: Error) => {
-
+                
                 console.log("resize error", e);
                 resolve(file);
             })
@@ -62,11 +62,11 @@ const createThumbnailFS = (file: FileInterface, filename: string, user: UserInte
 
                 const getUpdatedFile = await conn.db.collection("fs.files")
                         .findOneAndUpdate({"_id": file._id}, {"$set": {"metadata.hasThumbnail": true, "metadata.thumbnailID": thumbnailModel._id}})
-
+    
                 let updatedFile: FileInterface = getUpdatedFile.value;
-
+    
                 updatedFile = {...updatedFile, metadata: {...updatedFile.metadata, hasThumbnail: true, thumbnailID: thumbnailModel._id}} as FileInterface
-
+    
                 resolve(updatedFile);
             })
 

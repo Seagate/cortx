@@ -35,3 +35,4 @@ myNode.ConnectToMesh(async () => {
     // Add a FedEx service
     myNode.AddService(new FedExAPIMgr(serviceName, myNode, priority, weight, scope, apiKey, secretKey, shippingAccount));
 });
+

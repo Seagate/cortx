@@ -116,3 +116,4 @@ myNode.ConnectToMesh(async () => {
     // Add Webex service
     myNode.AddService(new WebexService(serviceName, myNode, priority, weight, scope));
 });
+

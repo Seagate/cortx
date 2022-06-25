@@ -22,14 +22,14 @@ class ProgressPercentage(object):
         self._size = float(os.path.getsize(filename))
         self._seen_so_far = 0
         self._lock = threading.Lock()
-
+        
     def __call__(self, bytes_amount):
         # To simplify, assume this is hooked up to a single filename
         with self._lock:
             self._seen_so_far += bytes_amount
             percentage = (self._seen_so_far / self._size) * 100
             sys.stdout.write("\r%s  %s / %s  (%.2f%%)" %
-                             (self._filename, self._seen_so_far,
+                             (self._filename, self._seen_so_far, 
                               self._size, percentage))
             sys.stdout.flush()
 
@@ -40,15 +40,15 @@ def multipart_upload_with_s3(bucket_name, file_path=None, object_name=None):
     key_path = 'multipart_files/{}'.format(object_name)
     print(bucket_name,file_path,object_name,key_path)
     s3_client.upload_file(file_path, bucket_name, key_path,
-                          ExtraArgs={'ACL': 'public-read',
+                          ExtraArgs={'ACL': 'public-read', 
                                      'ContentType': 'text/pdf'},
                           Config=config, Callback=ProgressPercentage(file_path))
-
+    
 def multipart_download_with_s3(bucket_name, file_path=None, object_name=None):
     config = TransferConfig(multipart_threshold=1024 * 25, max_concurrency=10,
                             multipart_chunksize=1024 * 25, use_threads=True)
     temp_file = os.path.dirname(__file__)
-    s3_resource.Object(bucket_name,
+    s3_resource.Object(bucket_name, 
                        object_name
                        ).download_file(file_path, Config=config,
                                        Callback=ProgressPercentage(temp_file))
@@ -59,7 +59,7 @@ def create_bucket_op(bucket_name, region):
         s3_client.create_bucket(Bucket=bucket_name)
     else:
         location = {'LocationConstraint': region}
-        s3_client.create_bucket(Bucket=bucket_name,
+        s3_client.create_bucket(Bucket=bucket_name, 
                                 CreateBucketConfiguration=location)
 
 def list_bucket_op(bucket_name, region, operation):
@@ -71,7 +71,7 @@ def list_bucket_op(bucket_name, region, operation):
     else:
         logging.error('unknown bucket operation')
         return False
-
+    
 def bucket_operation(bucket_name, region=None, operation='list'):
     try:
         if operation == 'delete':
@@ -98,7 +98,7 @@ def list_object_op(bucket_name):
 def delete_object_op(bucket_name, object_name, operation):
     if not object_name:
         logging.error('object_name missing for {}'.format(operation))
-        return False
+        return False  
     s3_client.delete_object(Bucket=bucket_name, Key=object_name)
     return True
 
@@ -115,7 +115,7 @@ def upload_download_object_op(bucket_name, object_name, file_path, operation):
     return True
 
 def object_operation(bucket_name=None, object_name=None, file_path=None,
-                     operation='list'):
+                     operation='list'):                                                             
     try:
         if not bucket_name:
             logging.error('The bucket name %s is missing for %s operation!'
@@ -127,7 +127,7 @@ def object_operation(bucket_name=None, object_name=None, file_path=None,
             return delete_object_op(bucket_name, object_name, operation)
         elif operation == 'upload' or operation == 'download':
             return upload_download_object_op(bucket_name, object_name,
-                                             file_path, operation)
+                                             file_path, operation)      
         else:
             logging.error('unknown object operation')
             return False
@@ -141,18 +141,18 @@ def list_op_file(bucket_name):
     current_bucket = s3_resource.Bucket(bucket_name)
     print('The files in bucket %s:\n' % (bucket_name))
     for obj in current_bucket.objects.all():
-        print(obj.meta.data)
-
+        print(obj.meta.data) 
+        
     return True
 
 def delete_op_file(bucket_name, file_name, operation):
     if not file_name:
-        logging.error('The file name %s is missing for%s operation!'
+        logging.error('The file name %s is missing for%s operation!' 
                       % (file_name, operation))
         return False
     s3_client.delete_object(Bucket=bucket_name, Key=file_name)
     return True
-
+    
 def upload_download_op_file(bucket_name, file_name, file_location,
                             region, operation):
     if not file_location:
@@ -167,25 +167,25 @@ def upload_download_op_file(bucket_name, file_name, file_location,
          location = {'LocationConstraint': region}
          s3_resource.Bucket(bucket_name
                             ).upload_file(file_location, file_name,
-                                          CreateBucketConfiguration=location)
+                                          CreateBucketConfiguration=location) 
     return True
-
-def file_operation(bucket_name=None, file_name=None, file_location=None,
+    
+def file_operation(bucket_name=None, file_name=None, file_location=None, 
                    region=None, operation='list'):
     if not bucket_name:
         logging.error('The bucket name is %s missing!' % (bucket_name))
-        return False
+        return False 
     try:
         if operation == 'list':
             return list_op_file(bucket_name)
         elif operation == 'delete':
-            return delete_op_file(bucket_name, file_name, operation)
+            return delete_op_file(bucket_name, file_name, operation)  
         elif operation == 'upload' or operation == 'download':
-            return upload_download_op_file(bucket_name, file_name,
+            return upload_download_op_file(bucket_name, file_name, 
                                            file_location, region, operation)
         else:
             logging.error('unknown file operation')
-            return False
+            return False  
     except ClientError as e:
         logging.error(e)
         return False
@@ -216,7 +216,7 @@ if bucket_operation(bucket_name, None, 'create'):
 
 if file_operation(bucket_name, file_name, path_file_upload, None, 'upload'):
     print("Uploading file to S3 completed successfully!")
-
+    
 if file_operation(bucket_name, file_name, path_file_download, None, 'download'):
     print("Downloading the file to S3 has been completed successfully!")
 
@@ -253,7 +253,7 @@ loss_fn(y_train[:1], predictions).numpy()
 
 model.compile(optimizer='adam', loss=loss_fn, metrics=['accuracy'])
 
-history = model.fit(x_train, y_train, epochs=5,
+history = model.fit(x_train, y_train, epochs=5, 
                     validation_data=(x_test, y_test))
 
 plt.plot(history.history['accuracy'], label='accuracy')
@@ -275,8 +275,8 @@ model.save(path_save)
 if file_operation(bucket_name, 'saved_model.pb', path_save + 'saved_model.pb',
                   None, 'upload'):
     print("Uploading file to S3 completed successfully!")
-
-zip_point = 'C:/temp/model'
+    
+zip_point = 'C:/temp/model' 
 shutil.make_archive(zip_point, 'zip', path_save)
 
 if file_operation(bucket_name, 'model.zip', 'C:/temp/model.zip',

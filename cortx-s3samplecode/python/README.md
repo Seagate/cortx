@@ -28,7 +28,7 @@ REGION = 'XXXXXX'
 VERSION = 'XXXXXX'
 ACCESS_KEY = 'XXXXXX'
 SECRET_ACCESS_KEY = 'XXXXXX'
-END_POINT_URL = 'XXXXXX'
+END_POINT_URL = 'XXXXXX' 
 
 # Objects to perform actions: client is swiss knife , resource has all sort of data:
 s3_resource = boto3.resource('s3', endpoint_url=END_POINT_URL,
@@ -77,7 +77,7 @@ s3_resource.Bucket(bucket_name).upload_file(file_location, file_name)
 Get/Download Object
 ---------------------
 ```python
-s3_resource.Bucket(bucket_name).download_file(file_name, file_location)
+s3_resource.Bucket(bucket_name).download_file(file_name, file_location) 
 ```
 
 Delete Object
@@ -93,9 +93,10 @@ current_bucket = s3_resource.Bucket(bucket_name)
 print('The files in bucket %s:\n' % (bucket_name))
 
 for obj in current_bucket.objects.all():
-    print(obj.meta.data)
+    print(obj.meta.data) 
 ```
 
 ### Tested By:
 * Sep 18, 2021: Bo Wei (bo.b.wei@seagate.com)
 * August 2, 2021: Bari Arviv (bararviv0120@gmail.com | bari.arviv@seagate.com)
+

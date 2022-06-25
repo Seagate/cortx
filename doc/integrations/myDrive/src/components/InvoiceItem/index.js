@@ -19,7 +19,7 @@ class InvoiceItemContainer extends React.Component {
         if (this.props.currentInvoice.invoice_pdf) {
 
             const finalUrl = this.props.currentInvoice.invoice_pdf;
-
+            
             const link = document.createElement('a');
             document.body.appendChild(link);
             link.href = finalUrl;
@@ -52,8 +52,8 @@ class InvoiceItemContainer extends React.Component {
     }
 
     render() {
-        return <InvoiceItem
-                    downloadInvoice={this.downloadInvoice}
+        return <InvoiceItem 
+                    downloadInvoice={this.downloadInvoice} 
                     state={this.state}
                     {...this.props}/>
     }

@@ -16,7 +16,7 @@
 # Prerequisites
 
 - [google cloud platform](https://cloud.google.com/)
-- [virtualbox](https://www.virtualbox.org/)
+- [virtualbox](https://www.virtualbox.org/) 
 - [centos7.8.2003 minimal iso](http://mirrors.oit.uci.edu/centos/7.8.2003/isos/x86_64/)
 
 # What is strapi
@@ -126,7 +126,7 @@ You will then get `disk.raw` file now let's compress this image using this comma
 tar -cSzf centos782003.tar.gz disk.raw
 ```
 
-Now go to your google cloud storage dashboard and upload the `centos782003.tar.gz`
+Now go to your google cloud storage dashboard and upload the `centos782003.tar.gz` 
 
 ![upload](https://linkedin-resume-spiritbro.vercel.app/api/convertimage?url=https://i.gyazo.com/d48913e72640bcd0aa5dffdb4213fb22.png)
 
@@ -189,7 +189,7 @@ module.exports = ({ env }) => ({
         accessKeyId: env('AWS_ACCESS_KEY_ID'),
         secretAccessKey: env('AWS_ACCESS_SECRET'),
         region: env('AWS_REGION'),
-
+        
         params: {
             Bucket: env('AWS_BUCKET'),
             StorageClass: env('AWS_S3_STORAGE_CLASSES')
@@ -233,7 +233,7 @@ If you see some list like the above image then you're successfully upload from s
 
 ## Wrong kernel
 
-![kernel](https://linkedin-resume-spiritbro.vercel.app/api/convertimage?url=https://i.gyazo.com/e41e1d362b3fcfe5381e90166d835847.png)
+![kernel](https://linkedin-resume-spiritbro.vercel.app/api/convertimage?url=https://i.gyazo.com/e41e1d362b3fcfe5381e90166d835847.png) 
 
 you might find error like this to fix that run this command one by one:
 

@@ -2,7 +2,7 @@
 
 # CORTX S3 - Label Studio Integration
 
-### CORTX integration with world's most trusted and open-source data annotation tool, Label Studio. Feel the buzz of heavy loads of data annotations on CORTX S3 data storage systems.
+### CORTX integration with world's most trusted and open-source data annotation tool, Label Studio. Feel the buzz of heavy loads of data annotations on CORTX S3 data storage systems. 
 
 <a href="https://youtu.be/jKptUQcbnxU"> Watch Integration Presentation Video </a>
 
@@ -15,7 +15,7 @@ Storing and managing data had never been easy and with flourish of AI, deep lear
 <pre>
 The ideal big data storage system would allow storage of a virtually unlimited amount of data, cope both with high rates of random write and read access, flexibly and efficiently deal with a range of different data models, support both structured and unstructured data, and for privacy reasons, only work on encrypted data. Obviously, all these needs cannot be fully satisfied.
 </pre>
-
+ 
 ## Background / Overview of the project
 <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/page3.jpg">
 
@@ -53,7 +53,7 @@ Step 1: Download requirements
 </pre>
 - Start the label studio to verify installation, it would run on local host
 <pre>
- $ label-studio
+ $ label-studio 
 </pre>
 - Once the tool is running, go to account setting and grab Access Token for Label Studio to connect it using python methods to automate tasks through REST API calls.
 
@@ -66,15 +66,15 @@ Follow this guide from Cortex Team:
 - Once the Cortex VM is ready, run this command, keep note of external address to that will serve as our S3 endpoint URL
 <pre>
  $ sudo route add default gw 192.168.2.1 ens33
-
+ 
  <img src="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/Images/vmCortx.png">
 </pre>
-- Start Windows Server 2019 Edition, go to this S3 cortex dashboard, by default S3 user and test bucket is already made for you, a txt file on Desktop contains all default S3 credentials for use
+- Start Windows Server 2019 Edition, go to this S3 cortex dashboard, by default S3 user and test bucket is already made for you, a txt file on Desktop contains all default S3 credentials for use 
 <pre>
  https://192.168.2.102:28100/#/dashboard
 </pre>
 
-Step 3: Connecting S3 data endpoint class and methods for uploading and downloading of data from S3 bucket to anywhere. Our S3DataEndpoint file link: <a href="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/s3dataEndpoint.py">S3DataEndpoint Python Class</a>
+Step 3: Connecting S3 data endpoint class and methods for uploading and downloading of data from S3 bucket to anywhere. Our S3DataEndpoint file link: <a href="https://github.com/vilaksh01/cortx/blob/main/doc/integrations/label-studioAPI/s3dataEndpoint.py">S3DataEndpoint Python Class</a> 
 ```python
    class S3DataEndpoint:
     def __init__(self, end_url, accessKey, secretKey):
@@ -94,7 +94,7 @@ Step 3: Connecting S3 data endpoint class and methods for uploading and download
                                       aws_secret_access_key=self.secretKey,
                                       config=Config(signature_version='s3v4'),
                                       region_name='US')
-
+                                      
         # Functions for buckets operation
         def create_bucket_op(self, bucket_name, region):
         if region is None:
@@ -102,8 +102,8 @@ Step 3: Connecting S3 data endpoint class and methods for uploading and download
         else:
             location = {'LocationConstraint': region}
             self.s3_client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration=location)
-
-   # dummy test
+    
+   # dummy test                                 
    def main():
     END_POINT_URL = 'http://uvo100ebn7cuuq50c0t.vm.cld.sr'
     A_KEY = 'AKIAtEpiGWUcQIelPRlD1Pi6xQ'
@@ -111,7 +111,7 @@ Step 3: Connecting S3 data endpoint class and methods for uploading and download
 
     s3 = S3DataEndpoint(end_url=END_POINT_URL, accessKey=A_KEY, secretKey=S_KEY)
     s3.create_bucket_op('newbucketworks')
-
+    
    if __name__ == "__main__":
     main()
 ```
@@ -133,7 +133,7 @@ class LabelStudioAPI:
             payload = {'title': title, 'description': description, 'label_config': labelXML}
             res = requests.patch(url, data=payload, headers=headers)
             print(res.status_code, res.content)
-
+            
         elif action == 'create':
             url = 'http://localhost:8080/api/projects/'
             headers = {'Authorization': 'Token ' + self.token}
@@ -156,7 +156,7 @@ class LabelStudioAPI:
                 return 'Could not delete'
         else:
             print("Not valid action")
-
+            
     # connect S3 storage to sync all data to be annoated and results to be stored
     def connectS3Storage(self, projID="1", title="S3", bucket_name="", region_name="US", accessKey="",
                         secretKey="", s3_url=""):
@@ -187,7 +187,7 @@ We are using Streamlit as frontend for our integration user interface, below is 
 1. We were successful in connecting Cortx S3, making data bucket and connecting with label studio project
 2. Used API to upload bulk files to Cortx S3 and sync it to our label-studio project
 3. One button file export to Cortx S3 bucket for different formats of data annotations - JSON, CV, COCO, PASCALVOC
-4. Ability to download any file from S3 bucket anywhere, allowing fleibility in using at multiple places or use case, like downloading data annotation results in Jupyter Notebook and Tensorflow framework to make AI, data apps
+4. Ability to download any file from S3 bucket anywhere, allowing fleibility in using at multiple places or use case, like downloading data annotation results in Jupyter Notebook and Tensorflow framework to make AI, data apps 
 
 ## Problems that you may run into
 
@@ -208,10 +208,11 @@ $ streamlit run app.py
 </pre>
 
 4. Troubleshoot download and upload path: When using methods to download or upload files from S3, you need to make sure you give correct file name and their location or path.
-
+ 
 ## What's next for Cortx Label Studio Integration
 
 1. Integrating backend ML operations for auto-labeling tasks in Label Studio and storing results, metrics on S3.
 2. Multi-level user access for better project control and role management
-3. Integrating other services like data encoder, decoder and direct training over GPU with major ML frameworks
+3. Integrating other services like data encoder, decoder and direct training over GPU with major ML frameworks 
 4. Faster query system on Cortx S3 using Motr Layer
+

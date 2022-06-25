@@ -40,10 +40,10 @@ of the tasks, providing a strong baseline for this challenge.
 
 ## Pretrained Models
 
-We release 14 models via the [ParlAI Model Zoo](https://www.parl.ai/docs/zoo.html).
+We release 14 models via the [ParlAI Model Zoo](https://www.parl.ai/docs/zoo.html). 
 
-- One model, `base_model`, contains model weights from pre-training on pushshift.io Reddit.
-- One model is the `all_tasks_mt` model, which was multi-task trained on all 12 dodecaDialogue tasks (starting from the `base_model` weights).
+- One model, `base_model`, contains model weights from pre-training on pushshift.io Reddit. 
+- One model is the `all_tasks_mt` model, which was multi-task trained on all 12 dodecaDialogue tasks (starting from the `base_model` weights). 
 - Twelve models are the `all_tasks_mt` model fine-tuned on each of the 12 dodecaDialogue tasks individually, and are named accordingly.
 
 We provide a few commands below for using these models; for more details regarding all remaining models, please see the commands in the [ParlAI Model Zoo](https://www.parl.ai/docs/zoo.html)

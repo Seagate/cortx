@@ -15,7 +15,7 @@ const Home=()=> {
         axios.get(`${process.env.REACT_APP_BASE_URL_API}/getFiles`).then((res)=>{
         var keys= Object.keys(res.data[0])
         var values = Object.values(res.data[0])
-
+        
         var filesData=[]
         for(var i=0;i<keys.length;i++){
           var temp={
@@ -29,12 +29,12 @@ const Home=()=> {
         setLoading(false);
       }).catch(err=>{
         console.log(err)
-
+        
       })
       }
 
       getData();
-
+      
     },[])
 
     const download = async(fileName)=>{
@@ -107,7 +107,7 @@ const Home=()=> {
     const saveFile = ()=>{
       var data = new FormData();
       setLoading(true);
-
+      
       data.append('file',file)
 
       axios.post(`${process.env.REACT_APP_BASE_URL_API}/save`,data).then((res)=>{
@@ -121,7 +121,7 @@ const Home=()=> {
           progress: undefined,
         });
         setLoading(false);
-
+        
       }).catch(err=>{
         toast.error('Something went wrong.Please try again', {
           position: "top-right",
@@ -144,32 +144,32 @@ const Home=()=> {
       console.log(filesArr.length)
       setFile(filesArr[0]);
 
+      
 
-
-
+     
 
   }
 
 
     return loading ? (<div class="d-flex justify-content-center" style={{marginTop:'5rem'}}>
-
+      
     <div class="col-sm-6 text-center"><p>Loading ...</p>
       <div class="loader4"></div>
-
+    
 </div>
-
+    
   </div>):(
         <div style={{marginTop:'3rem'}}>
         <section id="features" class="features">
         <div class="container">
-
+  
           <div class="section-title" data-aos="fade-up">
             <p>Euclid</p>
             <h6>Add and Remove Immense amount of Data to cloud, powered by CORTX Storage Technology.Use this data in you application by just a simple POST request.</h6>
-
+            
           </div>
-
-
+  
+          
 
           <div className="row" style={{marginTop:'2rem'}}>
             <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12">
@@ -177,8 +177,8 @@ const Home=()=> {
             <i class="fa fa-plus" style={{color: '#00A300',}}></i>
             <h3><a data-toggle="modal" data-target="#exampleModal">Add File</a></h3>
             </div>
-
-
+            
+            
             </div>
 
             <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12">
@@ -200,7 +200,7 @@ const Home=()=> {
 
 
           </div>
-
+  
         </div>
       </section>
 

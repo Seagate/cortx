@@ -47,7 +47,7 @@ const auth = async(req: RequestType, res: Response, next: NextFunction) => {
 
     } catch (e) {
 
-        if (e.message !== "No Access Token" &&
+        if (e.message !== "No Access Token" && 
         e.message !== "No User") console.log("\nAuthorization No Email Verification Middleware Error:", e.message);
 
         return res.status(401).send("Error Authenticating");

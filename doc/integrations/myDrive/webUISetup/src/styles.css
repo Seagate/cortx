@@ -30,7 +30,7 @@ html {
     border-style: groove;
 }
 
-@media (min-width:600px) {
+@media (min-width:600px) { 
     #box-div {
         width: 70%;
         /* background: purple; */
@@ -104,7 +104,7 @@ html {
     font-weight: 500;
     padding-left: 3px;
     padding-right: 4px;
-    margin-top: 19px;
+    margin-top: 19px; 
 }
 
 #docker-select__wrapper {
@@ -168,7 +168,7 @@ html {
 
 #db-form {
     margin-top: 13px;
-    margin-bottom: 13px;
+    margin-bottom: 13px; 
 }
 
 .section-wrapper {
@@ -182,7 +182,7 @@ html {
 #docker-text__wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
 }
 

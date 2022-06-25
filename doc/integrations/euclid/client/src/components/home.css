@@ -30,13 +30,13 @@
     background: #f5f5ff;
     transition: ease-in-out 0.3s;
   }
-
+  
   .features .icon-box i {
     font-size: 32px;
     padding-right: 10px;
     line-height: 1;
   }
-
+  
   .features .icon-box h3 {
     font-weight: 700;
     margin: 0;
@@ -44,21 +44,21 @@
     line-height: 1;
     font-size: 16px;
   }
-
+  
   .features .icon-box h3 a {
     color: #010483;
     transition: ease-in-out 0.3s;
   }
-
+  
   .features .icon-box h3 a:hover {
     color: #01036f;
   }
-
+  
   .features .icon-box:hover {
     background: #ebebff;
   }
 
-
+ 
   /*--------------------------------------------------------------
   # Sections General
   --------------------------------------------------------------*/
@@ -66,13 +66,13 @@
     padding: 60px 0;
     overflow: hidden;
   }
-
-
-
+  
+ 
+  
   .section-title {
     padding-bottom: 40px;
   }
-
+  
   .section-title h2 {
     font-size: 14px;
     font-weight: 500;
@@ -84,7 +84,7 @@
     color: #aaaaaa;
     font-family: "Poppins", sans-serif;
   }
-
+  
   .section-title h2::after {
     content: "";
     width: 120px;
@@ -93,7 +93,7 @@
     background: #5a5af3;
     margin: 4px 10px;
   }
-
+  
   .section-title p {
     margin: 0;
     margin: 0;

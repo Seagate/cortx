@@ -8,7 +8,7 @@ import FolderTreeStorageSub2 from ".././FolderTreeStorageSub";
 import FolderTreeStorageSub from "./FolderTreeStorageSub";
 
 class FolderTreeStorageSubContainer extends React.Component {
-
+    
     constructor(props) {
         super(props);
 
@@ -49,16 +49,16 @@ class FolderTreeStorageSubContainer extends React.Component {
 
     componentDidUpdate = () => {
 
-        if (this.props.selectedIDs[this.props.folder._id]
-            && !this.state.open
+        if (this.props.selectedIDs[this.props.folder._id] 
+            && !this.state.open 
             && !this.state.loaded
             && this.props.folder._id === this.props.selectedID) {
             this.skipUpdate = true;
             this.getFolders()
-        } else if (this.props.selectedIDs[this.props.folder._id]
+        } else if (this.props.selectedIDs[this.props.folder._id] 
             && !this.state.open
             && this.props.folder._id === this.props.selectedID) {
-
+        
             this.skipUpdate = true;
             this.setState(() => {
                 return {
@@ -83,10 +83,10 @@ class FolderTreeStorageSubContainer extends React.Component {
     addNewFolders = () => {
 
         for (let currentKey in this.props.newIDs) {
-
+            
             const currentObj = this.props.newIDs[currentKey];
             if (currentObj.parent === this.props.folder._id && !this.ignoreNewList[currentObj._id]) {
-
+                
                 this.ignoreNewList[currentObj._id] = true;
 
                 this.props.dispatch(removeNewFolderTreeID(currentObj._id))
@@ -109,12 +109,12 @@ class FolderTreeStorageSubContainer extends React.Component {
             const currentObj = this.props.insertedIDs[currentKey];
 
             if (currentObj.parent === this.props.folder._id && !this.ignoreInsertList[currentObj._id]) {
-
+                
                 this.ignoreInsertList[currentObj._id] = true;
 
                 let tempInsertIDsList = this.props.insertedIDs;
                 tempInsertIDsList = [...tempInsertIDsList.slice(0, currentKey), ...tempInsertIDsList.splice(currentKey+1, tempInsertIDsList.length)]
-
+               
                 this.props.dispatch(setFolderTreeID(this.props.folder._id))
 
                 this.setState(() => {
@@ -153,7 +153,7 @@ class FolderTreeStorageSubContainer extends React.Component {
                 })
 
                 this.props.dispatch(removeDeleteFolderTreeID(currentObj._id));
-
+                
                 this.setState(() => {
 
                     return {
@@ -176,13 +176,13 @@ class FolderTreeStorageSubContainer extends React.Component {
 
                 let movedValue = {}
                 const tempFolderList = this.state.folders.filter((currentFolder) => {
-
+                    
                     if (currentObj._id === currentFolder._id) movedValue = currentFolder;
                     return currentObj._id !== currentFolder._id
                 })
 
                 movedValue.parent = currentObj.parent;
-
+                
                 this.props.dispatch(removeMoveFolderTreeID(currentObj._id));
                 this.props.dispatch(addNewFolderTreeID(currentObj._id, movedValue))
 
@@ -241,7 +241,7 @@ class FolderTreeStorageSubContainer extends React.Component {
     getFolders = () => {
 
         const parent = this.props.folder._id;
-
+        
         const url = this.props.type === "drive" ? `/folder-service-google/list?parent=${parent}` : `/folder-service/list?parent=${parent}`;
         axios.get(url).then((response) => {
 
@@ -284,9 +284,9 @@ class FolderTreeStorageSubContainer extends React.Component {
 
         return (
 
-            <FolderTreeStorageSub
-                renderFolders={this.renderFolders}
-                skipUpdate={this.skipUpdate}
+            <FolderTreeStorageSub 
+                renderFolders={this.renderFolders} 
+                skipUpdate={this.skipUpdate} 
                 clickEvent={this.clickEvent}
                 folderClick={this.folderClick}
                 state={this.state}

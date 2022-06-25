@@ -50,10 +50,10 @@ function CustomOnboardingChatApp({
   );
 
   const initialAppSettings = {
-    ...propAppSettings,
-    volume: 1,
-    isReview: false,
-    isCoverPage: false,
+    ...propAppSettings, 
+    volume: 1, 
+    isReview: false, 
+    isCoverPage: false, 
     numMessages: 0
   };
   const [appSettings, setAppSettings] = React.useReducer(
@@ -176,13 +176,13 @@ function CustomOnboardingChatApp({
     return <div dangerouslySetInnerHTML={{ __html: previewHtml }} />;
   }
   if (isOnboarding) {
-    return <OnboardingComponent
-      onboardingData={taskConfig.onboarding_data}
-      annotationBuckets={taskConfig.annotation_buckets}
-      annotationQuestion={taskConfig.annotation_question}
+    return <OnboardingComponent 
+      onboardingData={taskConfig.onboarding_data} 
+      annotationBuckets={taskConfig.annotation_buckets} 
+      annotationQuestion={taskConfig.annotation_question} 
       onSubmit={(dat) => {
         handleMessageSend({text: '', task_data: dat});
-      }}
+      }} 
     />;
   }
 

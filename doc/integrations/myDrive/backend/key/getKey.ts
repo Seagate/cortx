@@ -5,8 +5,8 @@ import getWebUIKey from "./getWebUIKey";
 const getKey = async() => {
 
     if (process.env.KEY) {
-        // For Docker
-
+        // For Docker 
+        
         const password = process.env.KEY;
 
         env.key = crypto.createHash("md5").update(password).digest("hex");

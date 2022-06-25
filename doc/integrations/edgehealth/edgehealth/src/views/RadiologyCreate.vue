@@ -23,7 +23,7 @@
       v-model="firstname"
       outlined
       dense
-
+      
       label="First name"
       required
     ></v-text-field>
@@ -50,7 +50,7 @@
       v-model="phonenumber"
       outlined
       dense
-
+      
       label="Phone Number"
       required
     ></v-text-field>
@@ -69,7 +69,7 @@
     >
       Register
     </v-btn>
-
+    
   </v-form>
           </div>
       </div>
@@ -107,9 +107,9 @@ export default {
                       formData.append('lastname',this.lastname);
                       formData.append('email',this.email);
                       formData.append('phone',this.phonenum);
-
+                      
                       console.log(formData)
-
+              
             axios.post('https://vue-health-api.herokuapp.com/api/upload',formData
   ).then(res=>{
                 console.log(res,"success")

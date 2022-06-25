@@ -83,12 +83,12 @@ function OnboardingDirections({ children }) {
     );
 }
 
-function OnboardingUtterance({
-    annotationBuckets,
-    annotationQuestion,
-    turnIdx,
-    text,
-    annotations = null,
+function OnboardingUtterance({ 
+    annotationBuckets, 
+    annotationQuestion, 
+    turnIdx, 
+    text, 
+    annotations = null, 
     onUpdateAnnotation = null,
 }) {
     var extraElements = '';
@@ -96,12 +96,12 @@ function OnboardingUtterance({
         extraElements = '';
         extraElements = (<span key={'extra_' + turnIdx}><br /><br />
             <span style={{ fontStyle: 'italic' }}><span dangerouslySetInnerHTML={{ __html: annotationQuestion }}></span><br />
-                <Checkboxes
-                    annotations={annotations}
-                    onUpdateAnnotations={onUpdateAnnotation}
-                    annotationBuckets={annotationBuckets}
-                    turnIdx={turnIdx}
-                    askReason={false}
+                <Checkboxes 
+                    annotations={annotations} 
+                    onUpdateAnnotations={onUpdateAnnotation} 
+                    annotationBuckets={annotationBuckets} 
+                    turnIdx={turnIdx} 
+                    askReason={false} 
                 />
             </span>
         </span>)
@@ -154,7 +154,7 @@ function OnboardingComponent({ onboardingData, annotationBuckets, annotationQues
                                             annotationBuckets={annotationBuckets}
                                             annotationQuestion={annotationQuestion}
                                             turnIdx={idx * 2 + 1}
-                                            text={turn[1].text}
+                                            text={turn[1].text} 
                                             annotations={currentTurnAnnotations[idx]}
                                             onUpdateAnnotation={
                                                 (newAnnotations) => {
@@ -175,9 +175,9 @@ function OnboardingComponent({ onboardingData, annotationBuckets, annotationQues
                 <div style={{ textAlign: 'center' }}>
                     <button id="onboarding-submit-button"
                         className="button is-link btn-lg"
-                        onClick={() => handleOnboardingSubmit({
-                            onboardingData,
-                            currentTurnAnnotations,
+                        onClick={() => handleOnboardingSubmit({ 
+                            onboardingData, 
+                            currentTurnAnnotations, 
                             onSubmit,
                         })}
                     >

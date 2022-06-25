@@ -63,6 +63,6 @@ export const setFirstLoadDetailsFolderTree = (firstLoadDetails) => ({
 
 export const setInsertedFolderTreeID = (id, insertedList) => ({
     type: "SET_INSERT_IDS",
-    id,
+    id, 
     insertedList
 })

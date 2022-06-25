@@ -274,7 +274,7 @@
 		& tr:hover{
 			background-color:#F6F5FD;
 			& .settings__wrap{
-				position: relative;
+				position: relative;				
 				& a i{
 					color:#3c85ee;
 				}
@@ -390,7 +390,7 @@
 					white-space: nowrap;
 					text-overflow: ellipsis;
 					display: block;
-
+					
 				}
 			}
 			& p{
@@ -483,8 +483,8 @@
 							left:20%;
 							transform:translate(-100%, -40%);
 						}
-					}
-
+					} 
+					
 				}
 			}
 			padding-top:65px;
@@ -535,7 +535,7 @@
 				// margin-top:0px;
 				& >.recent__table--wrap {
 					& >.head__recent--files{
-						& .path__files{
+						& .path__files{ 
 							display: flex;
 							align-items:center;
 							&>a{
@@ -565,7 +565,7 @@
 						}
 					}
 				}
-
+				
 			}
 		}
 		& .folders__panel{
@@ -777,7 +777,7 @@
 				}
 			}
 		}
-	}
+	}	
 }
 
 .noSelect {
@@ -790,7 +790,7 @@
 }
 
 .context__menu--wrapper {
-
+	
 	& .settings__drop{
 		display: none;
 		position: absolute;
@@ -848,7 +848,7 @@
 
 // .recent__table {
 // 	@media (max-width: $desktop-breakpoint) {
-
+        
 //         min-width: 129vw;
 //     }
 // }
@@ -989,7 +989,7 @@
 	// 				white-space: nowrap;
 	// 				text-overflow: ellipsis;
 	// 				display: block;
-
+					
 	// 			}
 	// }
 
@@ -1021,7 +1021,7 @@
 						// margin-bottom:-80px;
 						}
 					}
-
+					
 					&>.recent__table--wrap{
 						overflow-x: hidden;
 						padding-top: 32px;
@@ -1030,7 +1030,7 @@
 				}
 			}
 		}
-
+		
 		& .file__control--panel.folder__view{
 			&> .file__view{
 				&> .recent__table--wrap {
@@ -1115,7 +1115,7 @@
 						}
 					}
 				}
-
+				
 			}
 		}
 	}
@@ -1171,14 +1171,14 @@
 	}
 
 	@media (max-width: $desktop-breakpoint) {
-
+        
         width: 40%;
     }
 }
 
 // .inner__name--row {
 // 	@media (max-width: $desktop-breakpoint) {
-
+        
 //         display: flex;
 // 		align-items:center;
 // 				& p{
@@ -1196,7 +1196,7 @@
 // 					white-space: nowrap;
 // 					text-overflow: ellipsis;
 // 					display: block;
-
+					
 // 				}
 //     }
 // }

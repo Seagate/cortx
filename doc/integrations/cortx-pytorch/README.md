@@ -56,14 +56,14 @@ aws_secret_access_key = "provided on Step 2"
 
 Step 4: Loading the data from Cortx s3 to PyTorch Dataset Loader:
 
-- Follow the setup on this [notebook](Cortx-PyTroch%20Integration%20-%20%202%2C%20Loading%20%20Data%20from%20Cotrx-S3%20and%20Train%20the%20model.ipynb)
+- Follow the setup on this [notebook](Cortx-PyTroch%20Integration%20-%20%202%2C%20Loading%20%20Data%20from%20Cotrx-S3%20and%20Train%20the%20model.ipynb) 
 - This is the main step when integrating to PyTorch. Currently, PyTorch does not have pre-existing Dataset Loaders to fetch data from S3. Therefore you need to create a custom Dataset class
 ```
     class ImageDataset(Dataset):
-        def __init__,
-
+        def __init__, 
+        
         def __len__,
-
+        
         def __getitem__
 ```
 - Use boto3 to fetch the image from the bucket, OpenCV to read the images, then convert to PIL images which is the required format by PyTorch.
@@ -81,13 +81,13 @@ Step 5: Save the trained model directly to Cortx-S3:
 
 Step 6: Load the saved model from Cortx-S3 - Inference.
 - Follow the guideline on this [notebook](Cortx-PyTroch%20Integration%20-%20%203%2C%20Load%20trained%20model%20from%20Cotrx-S3%20for%20Inference%20.ipynb)
-- After training any machine learning model, the next step is to evaluate how your model performs on the test data.
+- After training any machine learning model, the next step is to evaluate how your model performs on the test data. 
 For this setup, the test images on the local storage. You can save them to Cortx s3 and load them directly from there as we did on the train and validation images.
 
 
 Step 7: Experiment!!!:
  - Integrate different PyTorch models to Cortx and see how they perform.
-
+ 
 
 ### Demo
 - [Quick demo video](https://vimeo.com/542200459)
@@ -95,3 +95,6 @@ Step 7: Experiment!!!:
 
 #### Contributors:
 - Rose Wambui
+
+
+

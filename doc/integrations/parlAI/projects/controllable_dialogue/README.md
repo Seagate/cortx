@@ -13,9 +13,9 @@ It is known to have been in a working state at that point.
 
 ## Paper information
 
-Abigail See, Stephen Roller, Douwe Kiela, Jason Weston.
+Abigail See, Stephen Roller, Douwe Kiela, Jason Weston. 
 _[What makes a good conversation? How controllable attributes affect human
-judgments](https://arxiv.org/abs/1902.08654)_.
+judgments](https://arxiv.org/abs/1902.08654)_. 
 To appear in NAACL 2019.
 
 
@@ -49,7 +49,7 @@ following BibTex entry:
     }
 
 # Code Instructions
-Once you have [installed ParlAI](https://github.com/facebookresearch/ParlAI/#installing-parlai),
+Once you have [installed ParlAI](https://github.com/facebookresearch/ParlAI/#installing-parlai), 
 follow the instructions below.
 
 ## Download the data
@@ -73,7 +73,7 @@ personas, provided for convenience (useful for talking to the model interactivel
 - `ConvAI2_parlaiformat/`:
     - `train.txt`: This is the ConvAI2 training set
       (`data/ConvAI2/train_self_original_no_cands.txt`) converted to parlai
-      format.
+      format. 
     - `valid.txt`: This is the ConvAI2 validation set
       (`data/ConvAI2/valid_self_original_no_cands.txt`) converted to parlai
       format.
@@ -382,3 +382,4 @@ python parlai/mturk/tasks/controllable_dialogue/run.py -r 0.9 --count-complete -
 lightly postprocessed to use it with the analysis tools released. If you intend to do
 this, please file an issue on the
 [ParlAI GitHub](https://github.com/facebookresearch/ParlAI/).
+

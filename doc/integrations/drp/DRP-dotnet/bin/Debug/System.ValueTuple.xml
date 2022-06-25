@@ -393,7 +393,7 @@
             <returns>
             A signed number indicating the relative values of this instance and <paramref name="other"/>.
             Returns less than zero if this instance is less than <paramref name="other"/>, zero if this
-            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater
+            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater 
             than <paramref name="other"/>.
             </returns>
         </member>
@@ -566,7 +566,7 @@
             <returns>
             A signed number indicating the relative values of this instance and <paramref name="other"/>.
             Returns less than zero if this instance is less than <paramref name="other"/>, zero if this
-            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater
+            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater 
             than <paramref name="other"/>.
             </returns>
         </member>
@@ -617,7 +617,7 @@
              </summary>
              <param name="obj">The object to compare with this instance.</param>
              <returns><see langword="true"/> if the current instance is equal to the specified object; otherwise, <see langword="false"/>.</returns>
-
+            
              <remarks>
              The <paramref name="obj"/> parameter is considered to be equal to the current instance under the following conditions:
              <list type="bullet">
@@ -645,11 +645,11 @@
              <param name="other">The object to compare with this instance.</param>
              <param name="comparer">An object that defines the method to use to evaluate whether the two objects are equal.</param>
              <returns><see langword="true"/> if the current instance is equal to the specified object; otherwise, <see langword="false"/>.</returns>
-
+            
              <remarks>
              This member is an explicit interface member implementation. It can be used only when the
               <see cref="T:System.ValueTuple`2"/> instance is cast to an <see cref="T:System.Collections.IStructuralEquatable"/> interface.
-
+            
              The <see cref="M:System.Collections.IEqualityComparer.Equals(System.Object,System.Object)"/> implementation is called only if <c>other</c> is not <see langword="null"/>,
               and if it can be successfully cast (in C#) or converted (in Visual Basic) to a <see cref="T:System.ValueTuple`2"/>
               whose components are of the same types as those of the current instance. The IStructuralEquatable.Equals(Object, IEqualityComparer) method
@@ -664,7 +664,7 @@
             <returns>
             A signed number indicating the relative values of this instance and <paramref name="other"/>.
             Returns less than zero if this instance is less than <paramref name="other"/>, zero if this
-            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater
+            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater 
             than <paramref name="other"/>.
             </returns>
         </member>
@@ -750,7 +750,7 @@
             <returns>
             A signed number indicating the relative values of this instance and <paramref name="other"/>.
             Returns less than zero if this instance is less than <paramref name="other"/>, zero if this
-            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater
+            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater 
             than <paramref name="other"/>.
             </returns>
         </member>
@@ -841,7 +841,7 @@
             <returns>
             A signed number indicating the relative values of this instance and <paramref name="other"/>.
             Returns less than zero if this instance is less than <paramref name="other"/>, zero if this
-            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater
+            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater 
             than <paramref name="other"/>.
             </returns>
         </member>
@@ -939,7 +939,7 @@
             <returns>
             A signed number indicating the relative values of this instance and <paramref name="other"/>.
             Returns less than zero if this instance is less than <paramref name="other"/>, zero if this
-            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater
+            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater 
             than <paramref name="other"/>.
             </returns>
         </member>
@@ -1044,7 +1044,7 @@
             <returns>
             A signed number indicating the relative values of this instance and <paramref name="other"/>.
             Returns less than zero if this instance is less than <paramref name="other"/>, zero if this
-            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater
+            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater 
             than <paramref name="other"/>.
             </returns>
         </member>
@@ -1156,7 +1156,7 @@
             <returns>
             A signed number indicating the relative values of this instance and <paramref name="other"/>.
             Returns less than zero if this instance is less than <paramref name="other"/>, zero if this
-            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater
+            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater 
             than <paramref name="other"/>.
             </returns>
         </member>
@@ -1275,7 +1275,7 @@
             <returns>
             A signed number indicating the relative values of this instance and <paramref name="other"/>.
             Returns less than zero if this instance is less than <paramref name="other"/>, zero if this
-            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater
+            instance is equal to <paramref name="other"/>, and greater than zero if this instance is greater 
             than <paramref name="other"/>.
             </returns>
         </member>

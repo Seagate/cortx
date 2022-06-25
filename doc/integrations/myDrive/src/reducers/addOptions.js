@@ -20,7 +20,7 @@ export default (state = defaultState, action) => {
                 ...state,
                 showAddOptions2: action.show
             }
-        default:
+        default: 
             return state;
     }
 }

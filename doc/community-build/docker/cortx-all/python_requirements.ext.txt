@@ -1,6 +1,6 @@
 #Python packages transitional dependencies
 
-# depdendencies of cryptography
+# depdendencies of cryptography 
 cffi==1.14.5
 # depdendencies of python==3.6
 numpy==1.19.2

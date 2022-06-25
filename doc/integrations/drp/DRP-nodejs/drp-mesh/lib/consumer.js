@@ -5,7 +5,7 @@ const DRP_Client = require("./client");
 
 class DRP_Consumer {
     /**
-     *
+     * 
      * @param {string} wsTarget WebSocket target
      * @param {string} user User
      * @param {string} pass Password
@@ -52,7 +52,7 @@ class DRP_ConsumerClient extends DRP_Client {
     }
 
     /**
-     *
+     * 
      * @param {string} topicName Stream to watch
      * @param {string} scope global|local
      * @param {function} streamHandler Function to process stream packets

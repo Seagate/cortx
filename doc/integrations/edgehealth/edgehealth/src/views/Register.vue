@@ -13,7 +13,7 @@
       </v-subheader>
       <div class="mt-3" style="overflow:hidden;overflow-y:scroll;height:68vh">
         <p class="text-h4 font-weight-bold text-center">Register</p>
-
+        
 
         <v-row>
           <v-col cols="12" xs="12" sm="12" md="3" lg="3" xl="3"></v-col>

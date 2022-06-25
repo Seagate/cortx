@@ -3,13 +3,13 @@ import env from "../../enviroment/env";
 import { google } from "googleapis";
 
 class UserGoogleService {
-
+    
     constructor() {
 
     }
 
     createGoogleStorageURL = async(user: UserInterface, googleData: any) => {
-
+        
         const {clientID, clientKey, clientRedirect} = googleData;
 
         const oauth2Client = new google.auth.OAuth2(
@@ -46,15 +46,15 @@ class UserGoogleService {
             oauth2Client.getToken(code, async(err, tokens) => {
 
                 if (!err) {
-
-                    const token: any = tokens;
-
+    
+                    const token: any = tokens; 
+    
                     user.encryptDriveTokenData(token);
 
                     const {accessToken, refreshToken} = await user.generateAuthToken(uuid);
 
                     resolve({accessToken, refreshToken});
-
+                    
                 } else {
                    reject("Get Google Token Error")
                 }

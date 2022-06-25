@@ -25,3 +25,4 @@ const QuickAccessItem = (props) => (
 )
 
 export default QuickAccessItem
+

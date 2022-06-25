@@ -5,7 +5,7 @@ CyberDuck for IO Operations
 You can install the CyberDuck on the CORTX OVA to perform IO operations.
 
 
-1. Ensure that all the prerequisites are satisfied. See [Prerequisites](https://github.com/Seagate/cortx/blob/hessio-patch-7/doc/IO_prereqs.md)
+1. Ensure that all the prerequisites are satisfied. See [Prerequisites](https://github.com/Seagate/cortx/blob/hessio-patch-7/doc/IO_prereqs.md) 
 
 1. If you do not already have one, download an S3 client. These instructions use [CyberDuck](https://cyberduck.io/download/)
 
@@ -16,11 +16,11 @@ You can install the CyberDuck on the CORTX OVA to perform IO operations.
 1. After adding the new account, copy the **Access Key** and **Secret Key**. A CSV file will be downloaded after you create the new account.
 
 1. On your S3 client, open a connection:
-
+    
     1. Select the protocol as Amazon S3.
     1. In the Server field, enter the data IP determined while configuring the CORTX.
     1. Enter the access key.
-    1. Enter the secret key.
+    1. Enter the secret key. 
 
         ![Alt text](https://github.com/Seagate/cortx/blob/main/doc/images/open_cyberduck_connection.png)
 

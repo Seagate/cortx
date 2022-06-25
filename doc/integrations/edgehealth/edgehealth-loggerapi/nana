@@ -1,15 +1,15 @@
 ```
 app.post('/api/upload', function (req, res, next) {
-  // This grabs the additional parameters so in this case passing
+  // This grabs the additional parameters so in this case passing     
   // in "element1" with a value.
   const element1 = req.body.element1;
   var busboy = new Busboy({ headers: req.headers });
   // The file upload has completed
   busboy.on('finish', function() {
    console.log('Upload finished');
-
-
-
+   
+   
+   
    const file=req.files.filetoupload;
   //  console.log(innerfil)
    console.log(file);
@@ -23,7 +23,7 @@ if (err) {
 } if (data) {
   console.log("Upload Success", data.Location);
   let newlocation=data.Location
-
+  
 
   // postgresql insert
   const {firstname,lastname,email,phone}=req.body;
@@ -34,10 +34,10 @@ if (err) {
       }
 
       res.send({status: 'success', message: 'New dialogue added',data:data})
-
+      
     }
   )
-
+  
 }
 
 ```

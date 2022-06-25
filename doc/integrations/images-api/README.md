@@ -12,7 +12,7 @@ Because CORTX is S3 compatible we can use the storage system and the Images API 
 
 ### Configuring Images API to work with CORTX:
 
-Step 0: set environment variable, you can set it on the os level or create an .env file and set the variable in it, the variable needed is:
+Step 0: set environment variable, you can set it on the os level or create an .env file and set the variable in it, the variable needed is: 
 
     aws_access_key_id,
     aws_secret_access_key,
@@ -58,7 +58,7 @@ docker run  --env-file .env -it -p 5000:5000 cortx-images
 - resized images will be stored for future use.
 
 #### Watch the demo
-
+   
 ![demo](https://github.com/Seagate/cortx-images/blob/master/static/demo.gif)
 
 Tested By:

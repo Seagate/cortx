@@ -1,8 +1,8 @@
 export default (state = [], action) => {
-
+    
     switch(action.type) {
 
-        case "ADD_FOLDER":
+        case "ADD_FOLDER": 
 
             return [
                 action.folder,

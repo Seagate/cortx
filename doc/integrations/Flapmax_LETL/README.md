@@ -7,13 +7,13 @@ LETL ( Lightweight-ETL ) is an ETL framework created to provide configurable ETL
 
 Big Data poses a challenge to organizations over a variety of different fields with respect to data management and storage. In particular, unstructured data (images, text, audio) is one of the fastest growing forms of data and is especially difficult to address. These artifacts may contain valuable insights but often go to waste as organizations are unable to manage them.
 
-## Enter: LETL
+## Enter: LETL 
 
 The LETL system is able to address the challenges of data movement and management in a fully managed system end-to-end pipeline. This is achieved by leveraging technology conducive to latency-sensitive tasks such as hardware like SCM and PMem devices while also performing formatting tasks to make data compatible for destination systems. Data may also stay in the LETL ecosystem to utilize the underlying technology.
 
 ![diagram](https://user-images.githubusercontent.com/75850728/116353584-e0eff300-a7ab-11eb-9b21-ca78a9e30c82.png)
 
-The underlying technology and pipeline-like flow gives the LETL system the necessary latency, data throughput, and configurability to provide knowledge workers the performance needed for their specific analysis needs. An exemplary use case for this system is in the healthcare field for future events similar to Covid-19. Datasets were not only continually produced from many different sources and formats but also in large quantities as well.
+The underlying technology and pipeline-like flow gives the LETL system the necessary latency, data throughput, and configurability to provide knowledge workers the performance needed for their specific analysis needs. An exemplary use case for this system is in the healthcare field for future events similar to Covid-19. Datasets were not only continually produced from many different sources and formats but also in large quantities as well. 
 
 Consider the overwhelming amount of data in fields such as drug/vaccine discovery, precision medicine & genomics, smart hospital and multi-omics data analysis, health informatics, and you can start to visualize the real-world impact of harnessing it for insights.
 
@@ -58,7 +58,7 @@ We will walk you through our FastAPI and you can follow along as we demonstrate 
 ```
 ### 4. /tiering/C-D : Move data A from CORTX into DAOS
 
-
+  
 ```
 # Request Body
 {
@@ -67,7 +67,7 @@ We will walk you through our FastAPI and you can follow along as we demonstrate 
 "request_id": "temp_id4"
 }
 ```
-
+  
 
 ## API Requirements for writing to DAOS or CORTX
 
@@ -96,3 +96,4 @@ Data movement from CORTX into DAOS can be demonstrated by viewing the data on th
 ### And finally, we tier from CORTX to DAOS by transferring dataset A1.
 
 ![MicrosoftTeams-image (5)](https://user-images.githubusercontent.com/75850728/116342204-13dbbc00-a797-11eb-9eea-8ca86dba6456.png)
+

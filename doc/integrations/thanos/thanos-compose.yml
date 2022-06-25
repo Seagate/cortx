@@ -258,7 +258,7 @@ services:
       - receive
     networks:
       - thanos
-
+      
   compactor:
     image: thanosio/thanos:v0.10.0
     container_name: compactor
@@ -280,7 +280,7 @@ services:
       - store
     networks:
       - thanos
-
+      
   grafana:
     image: grafana/grafana:6.5.2
     container_name: grafana

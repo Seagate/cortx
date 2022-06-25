@@ -9,7 +9,7 @@ const url = require('url');
 
 class DRP_Client extends DRP_Endpoint {
     /**
-     *
+     * 
      * @param {string} wsTarget WebSocket target
      * @param {string} proxy Proxy URL
      * @param {DRP_Node} drpNode DRP Node

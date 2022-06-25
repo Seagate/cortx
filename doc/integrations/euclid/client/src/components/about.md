@@ -36,7 +36,7 @@ can be found [here]().
 
 ```
 1 Download all the projects files
-2 Go to the Flask Server folder.Run pip install -r requirements.txt
+2 Go to the Flask Server folder.Run pip install -r requirements.txt  
 3 Start the server by running python app.py
 ```
 
@@ -46,17 +46,17 @@ In a nutshell, The flask server connects to your CORTX S3 server and provides ea
 
 ```
 s3_resource = boto3.resource(
-        's3',
-        region_name = 'us-west-2',
+        's3', 
+        region_name = 'us-west-2', 
         aws_access_key_id = os.environ.get('ACCESS_ID'),
         aws_secret_access_key = os.environ.get('SECRET_KEY'),
         endpoint_url=os.environ.get('ENDPOINT'),
         config=Config(signature_version='s3v4')
-    )
+    ) 
 ```
 This connects to the CORTX S3 server.Set access id, secret key and endpoint as environment varibales or directly paste them in the code.View this link to set env variables [Link](https://stackoverflow.com/questions/5971312/how-to-set-environment-variables-in-python)
 
-There are four Routes
+There are four Routes 
 - /getFiles - GET REQUEST - lists all the files in the server.
 - /save - POST REQUEST - send the file in formData with key as file.
 - /download -POST REQUEST - send the filename as key - JSON-body
@@ -65,7 +65,7 @@ There are four Routes
 [Complete Documentation with examples](https://cortx.netlify.app/docs)
 
 use these APIs to store,download and manage data.
-We also have  a UI to store,download and manage data. To use that go into the client folder
+We also have  a UI to store,download and manage data. To use that go into the client folder 
 ```
 1 run npm install
 2 create a .env file in the client folder and paste REACT_APP_BASE_URL_API=http://127.0.0.1:5000 or the corresponding base URL if you have hosted the app.
@@ -118,8 +118,10 @@ Now we can use pytorch to create,train Neural Networks Easily.
 [API docs](https://cortx.netlify.app/docs)
 
 ## What's next
-- Using the REST API create more integrations
+- Using the REST API create more integrations 
 
-## Created by
+## Created by 
 [Abhay R Patel](https://github.com/abhayrpatel10)
 [Rishav Raj Jain](https://github.com/rishavrajjain)
+
+

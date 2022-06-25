@@ -11,7 +11,7 @@ class HomepageSpinnerContainer extends React.Component {
         return (
             <div className="homepage__spinner__wrapper" style={this.props.loading ? {} : {display:"none"}}>
                 <div className="spinner spinner__no-margin">
-
+    
                 </div>
             </div>
         )

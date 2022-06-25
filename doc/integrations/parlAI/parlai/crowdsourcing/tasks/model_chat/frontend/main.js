@@ -45,23 +45,24 @@ function MainApp() {
         </DefaultTaskDescription>
       )}
       renderTextResponse={
-        ({
-          mephistoContext: { taskConfig },
+        ({ 
+          mephistoContext: { taskConfig }, 
           appContext: { appSettings },
           onMessageSend,
           active,
 
         }) => (
-          <ResponseComponent
+          <ResponseComponent 
             appSettings={appSettings}
             taskConfig={taskConfig}
             active={active}
             onMessageSend={onMessageSend}
           />
-        )
+        )  
       }
     />
   );
 }
 
 ReactDOM.render(<MainApp />, document.getElementById("app"));
+

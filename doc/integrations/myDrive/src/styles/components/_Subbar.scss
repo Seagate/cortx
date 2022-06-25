@@ -41,7 +41,7 @@
     user-select: none;
     // overflow-x: scroll;
 
-    @media (max-width: $desktop-breakpoint) {
+    @media (max-width: $desktop-breakpoint) { 
         width: 100vw;
         display: flex;
         flex-direction: row;
@@ -71,7 +71,7 @@
         height: 52px;
         max-height: 52px;
      }
-
+    
 }
 
 .path__wrapper {

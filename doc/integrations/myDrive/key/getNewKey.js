@@ -16,7 +16,7 @@ const getKey = async() => {
     password = crypto.createHash("md5").update(password).digest("hex");
 
     env.newKey = password;
-
+  
 }
 
 module.exports = getKey;

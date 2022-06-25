@@ -30,7 +30,7 @@ class PopupWindowContainer extends React.Component {
         const filenameSplit = filename.split(".");
 
         if (filenameSplit.length > 1) {
-
+            
             const extension = filenameSplit[filenameSplit.length - 1]
 
             return extension.toUpperCase();
@@ -55,7 +55,7 @@ class PopupWindowContainer extends React.Component {
         }
 
         const thumbnailID = this.props.popupFile.metadata.drive ? this.props.popupFile._id : this.props.popupFile.metadata.thumbnailID
-
+       
         const config = {
             responseType: 'arraybuffer'
         };
@@ -63,7 +63,7 @@ class PopupWindowContainer extends React.Component {
         const isDrive = this.props.popupFile.metadata.drive;
         const isPersonal = this.props.popupFile.metadata.personalFile;
 
-        const url = isDrive ? `/file-service-google/thumbnail/${thumbnailID}`
+        const url = isDrive ? `/file-service-google/thumbnail/${thumbnailID}` 
         : !isPersonal ? `/file-service/thumbnail/${thumbnailID}` : `/file-service-personal/thumbnail/${thumbnailID}`;
 
         axios.get(url, config).then((results) => {
@@ -107,23 +107,23 @@ class PopupWindowContainer extends React.Component {
         //     headers: {
         //     uuid: window.sessionStorage.getItem("uuid")
         // }
-
-        // };
+            
+        // };   
 
         console.log("gettings stream video token")
-
+        
         axios.get("/file-service/download/access-token-stream-video").then(() => {
 
             console.log("stream video got token")
 
             const isDrive = this.props.popupFile.metadata.drive;
             const isPersonal = this.props.popupFile.metadata.personalFile;
-
-            const finalUrl = isDrive ?
-            `/file-service-google/stream-video/${this.props.popupFile._id}`
-            : !isPersonal ? `/file-service/stream-video/${this.props.popupFile._id}`
+    
+            const finalUrl = isDrive ? 
+            `/file-service-google/stream-video/${this.props.popupFile._id}` 
+            : !isPersonal ? `/file-service/stream-video/${this.props.popupFile._id}` 
             : `/file-service-personal/stream-video/${this.props.popupFile._id}`
-
+    
             this.setState(() => ({
                 ...this.state,
                 video: finalUrl
@@ -135,7 +135,7 @@ class PopupWindowContainer extends React.Component {
 
         // axios.get(currentURL +'/file-service/download/get-token-video',config)
         // .then((response) => {
-
+            
         //     this.tempToken =  response.data.tempToken;
 
         //     const uuidID = window.sessionStorage.getItem("uuid");
@@ -143,9 +143,9 @@ class PopupWindowContainer extends React.Component {
         //     const isDrive = this.props.popupFile.metadata.drive;
         //     const isPersonal = this.props.popupFile.metadata.personalFile;
 
-        //     const finalUrl = isDrive ?
-        //     currentURL + `/file-service-google/stream-video/${this.props.popupFile._id}/${this.tempToken}/${uuidID}`
-        //     : !isPersonal ? currentURL + `/file-service/stream-video/${this.props.popupFile._id}/${this.tempToken}/${uuidID}`
+        //     const finalUrl = isDrive ? 
+        //     currentURL + `/file-service-google/stream-video/${this.props.popupFile._id}/${this.tempToken}/${uuidID}` 
+        //     : !isPersonal ? currentURL + `/file-service/stream-video/${this.props.popupFile._id}/${this.tempToken}/${uuidID}` 
         //     : currentURL + `/file-service-personal/stream-video/${this.props.popupFile._id}/${this.tempToken}/${uuidID}`
 
         //     this.setState(() => ({
@@ -160,8 +160,8 @@ class PopupWindowContainer extends React.Component {
 
     componentWillUnmount = () => {
 
-        document.removeEventListener('mousedown', this.handleClickOutside);
-
+        document.removeEventListener('mousedown', this.handleClickOutside);   
+      
         if (this.props.popupFile.metadata.isVideo) {
 
             axios.delete(`/file-service/remove-stream-video-token`).then(() => {
@@ -173,7 +173,7 @@ class PopupWindowContainer extends React.Component {
             })
 
             this.video.current.pause();
-
+        
             this.setState(() => ({
                 ...this.state,
                 video: ""
@@ -184,7 +184,7 @@ class PopupWindowContainer extends React.Component {
     componentDidMount = () => {
 
         document.addEventListener('mousedown', this.handleClickOutside);
-
+        
         if (this.props.popupFile.metadata.hasThumbnail && !this.props.popupFile.metadata.isVideo && !this.props.popupFile.metadata.drive) {
 
             this.getThumbnail()
@@ -222,7 +222,7 @@ class PopupWindowContainer extends React.Component {
 
     render() {
 
-        return <PopupWindow
+        return <PopupWindow 
                 wrapperRef={this.wrapperRef}
                 video={this.video}
                 hidePopupWindow={this.hidePopupWindow}
@@ -236,7 +236,7 @@ class PopupWindowContainer extends React.Component {
 }
 
 const connectPropToState = (state) => ({
-
+  
     popupFile: state.popupFile,
 })
 

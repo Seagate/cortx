@@ -23,7 +23,7 @@ const sortGoogleMongoList = (fileList: FileInterface[], query: any) => {
     } else if (query.sortby === "alp_desc") {
 
         combinedList = combinedList.sort((a, b) => {
-
+        
             const name1 = a.filename.toLowerCase();
             const name2 = b.filename.toLowerCase();
 
@@ -40,7 +40,7 @@ const sortGoogleMongoList = (fileList: FileInterface[], query: any) => {
     } else if (query.sortby === "alp_asc") {
 
         combinedList = combinedList.sort((a, b) => {
-
+        
             const name1 = a.filename.toLowerCase();
             const name2 = b.filename.toLowerCase();
 

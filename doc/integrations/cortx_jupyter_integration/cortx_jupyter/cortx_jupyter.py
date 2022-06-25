@@ -10,12 +10,12 @@ from .utils import (
     _run_sync,MultiPartUploadHelper,_check_directory_exists,_check_file_exists,_get_model,_save_model,_delete_notebook,_rename_notebook,_new_untitled_notebook,_get_new_notebook,_copy_notebook,_create_new_checkpoint,_restore_notebook_checkpoint,_list_all_checkpoints,_delete_notebook_checkpoint
     )
 from .utils import *
-import json
+import json 
 
 import nbformat
 
 Config = namedtuple('Config', [
-
+    
  'prefix', 'region', 'bucket_name', 'host_name', 'cortx_authenticator',
     'multipart_uploads', 'endpoint_url'
 ])
@@ -161,3 +161,4 @@ class CortxJupyter(ContentsManager):
             multipart_uploads=self.multipart_uploads,
             endpoint_url=self.endpoint_url
         )
+

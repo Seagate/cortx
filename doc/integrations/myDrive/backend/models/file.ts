@@ -2,13 +2,13 @@ import mongoose, {Document} from "mongoose";
 import { Binary, ObjectID } from "mongodb";
 
 const fileSchema = new mongoose.Schema({
-
+    
     length: {
         type: Number,
         required: true,
     },
     chunkSize: {
-        type: Number,
+        type: Number, 
     },
     uploadDate: {
         type: Date,
@@ -58,7 +58,7 @@ const fileSchema = new mongoose.Schema({
         },
         required: true
     }
-
+    
 })
 
 export interface FileInterface extends Document {

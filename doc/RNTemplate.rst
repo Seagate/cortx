@@ -15,7 +15,7 @@ The standard copyright that is associated with Seagate must be inserted here.
 
 
 *****************
-About the Release
+About the Release 
 *****************
 
 This section must provide the highlights related to the release.
@@ -56,3 +56,4 @@ Details of bugs that have not been fixed in this release is mentioned below.
 
 * Issue 1 (Bug ID and Description)
 * Issue 2 (Bug ID and Description)
+

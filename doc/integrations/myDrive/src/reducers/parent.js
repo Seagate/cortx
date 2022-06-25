@@ -14,7 +14,7 @@ export default (state = defaultState, action) => {
                 ...state,
                 parent: action.parent,
             }
-        case "ADD_PARENT_LIST":
+        case "ADD_PARENT_LIST": 
 
             return {
                 ...state,
@@ -22,16 +22,16 @@ export default (state = defaultState, action) => {
                 parentNameList: [...state.parentNameList, action.name]
             }
 
-        case "ADJUST_PARENT_LIST":
+        case "ADJUST_PARENT_LIST": 
 
             return {
-                ...state,
+                ...state, 
                 parentList: action.parentList,
                 parentNameList: action.parentNameList
             }
 
         case "SET_PARENT_LIST":
-
+            
             return {
                 ...state,
                 parentList: action.parentList,
@@ -39,14 +39,14 @@ export default (state = defaultState, action) => {
             }
 
         case "REMOVE_PARENT_LIST":
-
+        
             return {
                 ...state,
                 parentList: parentList.filter((parent) => {
                     return parent._id !== action.parent
                 })
             }
-
+        
         case "RESET_PARENT_LIST":
 
             return {
@@ -55,7 +55,7 @@ export default (state = defaultState, action) => {
                 parentNameList: ["Home"]
             }
 
-        case "ADD_PARENT_NAME_LIST":
+        case "ADD_PARENT_NAME_LIST": 
 
             return {
                 ...state,

@@ -13,14 +13,14 @@ Step 1
 Downloading & Installing H2O
 ============================
 
-This section describes how to download and install the latest stable version of H2O. These instructions are also available on the `H2O Download page <http://h2o-release.s3.amazonaws.com/h2o/latest_stable.html>`__.
+This section describes how to download and install the latest stable version of H2O. These instructions are also available on the `H2O Download page <http://h2o-release.s3.amazonaws.com/h2o/latest_stable.html>`__. 
 
 We will only focus on the Python side of H2O in this README.
 
 Install in Python
 -----------------
 
-Run the following commands in a Terminal window to install H2O for Python.
+Run the following commands in a Terminal window to install H2O for Python. 
 
 1. Install dependencies (prepending with ``sudo`` if needed):
 
@@ -47,18 +47,18 @@ Run the following commands in a Terminal window to install H2O for Python.
 **Note**: When installing H2O from ``pip`` in OS X El Capitan, users must include the ``--user`` flag. For example:
 
 .. code-block:: bash
-
+	
    pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html h2o --user
 
 ######
 Step 2
 ######
-
+   
 
 Using H2O with CORTX
 ====================
 
-The relevant code is found in ``h2o.ipynb``, with comments and guides to how to connect a H2O server with CORTX.
+The relevant code is found in ``h2o.ipynb``, with comments and guides to how to connect a H2O server with CORTX. 
 
 The code can be deployed on `Google's Colaboratory <https://research.google.com/colaboratory/>`__ as well.
 
@@ -78,7 +78,7 @@ Most importantly, the code to ensure the connections is shown below
     <value>{SECRETACCESS}</value>
     </property>
     """)
-
+        
     import h2o
     h2o.init(jvm_custom_args=[f"-Dsys.ai.h2o.persist.s3.endPoint={URL}","-Dsys.ai.h2o.persist.s3.enable.path.style=true"],extra_classpath=["-hdfs_config core-site.xml"])
 

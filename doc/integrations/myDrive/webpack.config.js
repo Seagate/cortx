@@ -39,7 +39,7 @@ module.exports = (env) => {
     console.log("env", env);
     const isProduction = env === "production"
     console.log("is prod", isProduction);
-
+    
     const CSSExtract = new MiniCssExtractPlugin({ filename: 'styles.css' });
     return {
 
@@ -103,3 +103,4 @@ module.exports = (env) => {
 
     }
 }
+

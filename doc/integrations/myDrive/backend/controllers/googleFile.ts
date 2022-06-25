@@ -33,13 +33,13 @@ class GoogleFileController {
             res.send(googleFiles)
 
         } catch (e) {
-
+            
             console.log("\nGet Google List Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
         }
     }
-
+    
     getMongoGoogleList = async(req: RequestTypeFullUser, res: Response) => {
 
         if (!req.user) {
@@ -56,7 +56,7 @@ class GoogleFileController {
             res.send(mongoGoogleFiles)
 
         } catch (e) {
-
+            
             console.log("\nGet Google/Mongo List Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -79,7 +79,7 @@ class GoogleFileController {
             res.send(fileInfo);
 
         } catch (e) {
-
+            
             console.log("\nGet Info Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -101,7 +101,7 @@ class GoogleFileController {
             res.send(googleMongoQuickList);
 
         } catch (e) {
-
+            
             console.log("\nGet Google/Mongo Quicklist Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -109,7 +109,7 @@ class GoogleFileController {
     }
 
     getGoogleMongoSuggestedList = async(req: RequestTypeFullUser, res: Response) => {
-
+        
         if (!req.user) {
             return;
         }
@@ -125,7 +125,7 @@ class GoogleFileController {
             res.send(fileAndFolderList);
 
         } catch (e) {
-
+            
             console.log("\nGet Google/Mongo Suggested List Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -149,7 +149,7 @@ class GoogleFileController {
             res.send();
 
         } catch (e) {
-
+            
             console.log("\nRename File Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -162,7 +162,7 @@ class GoogleFileController {
             return;
         }
 
-        try {
+        try { 
 
             const fileID = req.body.id;
             const user = req.user!;
@@ -172,7 +172,7 @@ class GoogleFileController {
             res.send();
 
         } catch (e) {
-
+            
             console.log("\nRemove File Error Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -193,7 +193,7 @@ class GoogleFileController {
             await googleFileService.downloadFile(user, fileID, res);
 
         } catch (e) {
-
+           
             console.log("\nDownload File Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -204,7 +204,7 @@ class GoogleFileController {
 
         if (!req.user) {
             return;
-        }
+        } 
 
         try {
 
@@ -214,7 +214,7 @@ class GoogleFileController {
             await googleFileService.downloadDoc(user, fileID, res);
 
         } catch (e) {
-
+            
             console.log("\nDownload Doc Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -225,7 +225,7 @@ class GoogleFileController {
 
         if (!req.user) {
             return;
-        }
+        } 
 
         try {
 
@@ -235,7 +235,7 @@ class GoogleFileController {
             await googleFileService.getThumbnail(user, fileID, res);
 
         } catch(e) {
-
+            
             console.log("\nGet Thumbnail Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -247,7 +247,7 @@ class GoogleFileController {
 
         if (!req.user) {
             return;
-        }
+        } 
 
         try {
 
@@ -257,7 +257,7 @@ class GoogleFileController {
             await googleFileService.getFullThumbnail(user, fileID, res);
 
         } catch (e) {
-
+            
             console.log("\nGet Full Thumbnail Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -268,8 +268,8 @@ class GoogleFileController {
 
         if (!req.user) {
             return;
-        }
-
+        } 
+    
         try {
 
             const user = req.user!;
@@ -279,7 +279,7 @@ class GoogleFileController {
             await googleFileService.streamVideo(user, fileID, tempUUID, req, res);
 
         } catch (e) {
-
+            
             console.log("\nStream Video Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -290,19 +290,19 @@ class GoogleFileController {
 
         if (!req.user) {
             return;
-        }
+        } 
 
         try {
 
             const user = req.user;
             const busboy = req.busboy;
-
+            
             req.pipe(busboy);
 
             await googleFileService.uploadFile(user, busboy, req, res);
 
         } catch (e) {
-
+            
             console.log("\nUpload File Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -313,7 +313,7 @@ class GoogleFileController {
 
         if (!req.user) {
             return;
-        }
+        } 
 
         try {
 
@@ -326,7 +326,7 @@ class GoogleFileController {
             res.send();
 
         } catch (e) {
-
+            
             console.log("\nMove File Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -338,7 +338,7 @@ class GoogleFileController {
 
         if (!req.user) {
             return;
-        }
+        } 
 
         try {
 
@@ -350,7 +350,7 @@ class GoogleFileController {
             res.send(publicURL);
 
         } catch (e) {
-
+            
             console.log("\nMake Public Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -361,7 +361,7 @@ class GoogleFileController {
 
         if (!req.user) {
             return;
-        }
+        } 
 
         try {
 
@@ -373,7 +373,7 @@ class GoogleFileController {
             res.send();
 
         } catch (e) {
-
+           
             console.log("\nRemove Public Error Google File Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();

@@ -103,7 +103,7 @@ class DRP_Endpoint_Browser {
     }
 
     /**
-     *
+     * 
      * @param {any} wsConn WebSocket Connection
      * @param {DRP_Cmd} cmdPacket Message to process
      */

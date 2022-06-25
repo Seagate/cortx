@@ -34,6 +34,6 @@ const FolderTreeStorage = (props) => (
     //         return <FolderTreeStorageSub key={folder._id} folder={folder} type={props.type}/>
     //     }) : undefined}
     // </div>
-)
+) 
 
 export default FolderTreeStorage;

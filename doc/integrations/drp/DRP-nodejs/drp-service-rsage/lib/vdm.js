@@ -80,7 +80,7 @@ class XRAppletProfile {
 
 class VDMServer extends DRP_Service {
     /**
-     *
+     * 
      * @param {string} serviceName Service Name
      * @param {DRP_Node} drpNode DRP Node
      * @param {string} clientDirectory Client directory
@@ -266,7 +266,7 @@ class VDMServer extends DRP_Service {
     }
 
     /**
-     *
+     * 
      * @param {string} appletName Applet name
      * @param {string} title Window title
      * @param {integer} sizeX Window width
@@ -286,7 +286,7 @@ class VDMServer extends DRP_Service {
     }
 
     /**
-     *
+     * 
      * @param {string} appletName Applet name
      * @param {string} title Window title
      * @param {any} appletIcon Applet icon

@@ -27,7 +27,7 @@ let server: any;
 let serverHttps: any;
 
 if (process.env.SSL === 'true') {
-
+    
     const cert = fs.readFileSync("certificate.crt")
     const ca = fs.readFileSync("certificate.ca-bundle");
     const key = fs.readFileSync("certificate.key");
@@ -57,7 +57,7 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:500
 
 app.use(busboy({
     highWaterMark: 2 * 1024 * 1024,
-
+    
 }));
 
 app.use(userRouter, fileRouter, folderRouter, storageRouter, googleFileRouter, personalFileRouter, googleFolderRouter, userPersonalRouter, userGoogleRouter);

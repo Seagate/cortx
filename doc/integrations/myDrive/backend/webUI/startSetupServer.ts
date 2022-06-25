@@ -23,7 +23,7 @@ const getWebUIKey = () => {
 
             console.log("Response")
             await createConfigFiles(req.body.clientObj, req.body.serverObj);
-
+           
             res.send();
         })
 
@@ -41,7 +41,7 @@ const getWebUIKey = () => {
         server.listen(port, () => {
 
             console.log(`\nPlease navigate to http://localhost:${port} to enter setup details\n`)
-
+           
         });
 
     })
@@ -62,12 +62,12 @@ const awaitWriteFile = (path:string, data:string) => {
     return new Promise((resolve, reject) => {
 
         fs.writeFile(path, data, async(err:any) => {
-
+    
             if (err) {
                 console.log("file write error", err);
                 reject();
             }
-
+            
             resolve();
         })
     })

@@ -13,8 +13,8 @@ const createUser = async() => {
     const userID = new mongoose.Types.ObjectId();
     const userData = {
         _id: userID,
-        name: "Test User",
-        email: "test23@test.com",
+        name: "Test User", 
+        email: "test23@test.com", 
         password: "12345678",
         emailVerified: false,
         tokens: []

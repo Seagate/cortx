@@ -1,6 +1,6 @@
 class DRP_Packet {
     /**
-     *
+     * 
      * @param {string} type Packet Type
      * @param {DRP_RouteOptions} routeOptions Route Options
      * @param {string} token Reply Token
@@ -14,7 +14,7 @@ class DRP_Packet {
 
 class DRP_Cmd extends DRP_Packet {
     /**
-     *
+     * 
      * @param {string} serviceName DRP Service Name
      * @param {string} method Method Name
      * @param {Object} params Method Parameters
@@ -33,7 +33,7 @@ class DRP_Cmd extends DRP_Packet {
 
 class DRP_Reply extends DRP_Packet {
     /**
-     *
+     * 
      * @param {number} token Reply Token
      * @param {number} status Status [0=failed,1=final packet,2=continue]
      * @param {any} payload Reply Payload
@@ -48,7 +48,7 @@ class DRP_Reply extends DRP_Packet {
 
 class DRP_RouteOptions {
     /**
-     *
+     * 
      * @param {string} srcNodeID Source Node ID
      * @param {string} tgtNodeID Target Node ID
      * @param {string[]} routeHistory List of Nodes used as proxies; could be used to calculate TTL

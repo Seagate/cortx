@@ -34,7 +34,7 @@ class GoogleDbUtil {
         const oauth2Client = await getGoogleAuth(user);
 
         const drive = google.drive({version:"v3", auth: oauth2Client});
-
+        
         const file = await drive.files.get({fileId: id, fields: fields});
 
         return file;
@@ -43,11 +43,11 @@ class GoogleDbUtil {
     getQuickList = async(user: UserInterface) => {
 
         const oauth2Client = await getGoogleAuth(user);
-
+   
         const drive = google.drive({version:"v3", auth: oauth2Client});
-
+    
         let query = 'mimeType != "application/vnd.google-apps.folder" and trashed=false';
-
+    
         const files = await drive.files.list({pageSize: 10, fields: `nextPageToken, files(${fields})`, q: query});
 
         return files;
@@ -59,7 +59,7 @@ class GoogleDbUtil {
         const driveQueryFolder = `name contains "${searchQuery}" and mimeType = "application/vnd.google-apps.folder" and trashed=false`
 
         const oauth2Client = await getGoogleAuth(user);
-
+    
         const drive = google.drive({version:"v3", auth: oauth2Client});
         const files = await drive.files.list({pageSize: 10, fields: `nextPageToken, files(${fields})`, q: driveQuery});
         const folders = await drive.files.list({pageSize: 10, fields: `nextPageToken, files(${fields})`, q: driveQueryFolder});
@@ -73,7 +73,7 @@ class GoogleDbUtil {
     renameFile = async(fileID: string, title: string, user: UserInterface) => {
 
         const oauth2Client = await getGoogleAuth(user);
-
+    
         const drive = google.drive({version:"v3", auth: oauth2Client});
 
         await drive.files.update({fileId: fileID, requestBody: {name:title}})
@@ -82,7 +82,7 @@ class GoogleDbUtil {
     removeFile = async(fileID: string, user: UserInterface) => {
 
         const oauth2Client = await getGoogleAuth(user);
-
+    
         const drive = google.drive({version:"v3", auth: oauth2Client});
 
         await drive.files.delete({fileId:fileID});
@@ -135,7 +135,7 @@ class GoogleDbUtil {
         })
 
         const fileDetails = await drive.files.get({
-            fileId: fileID,
+            fileId: fileID, 
             fields: fields
         })
 
@@ -145,14 +145,14 @@ class GoogleDbUtil {
     }
 
     removePublicLink = async(fileID: string, user: UserInterface) => {
-
+    
         const {fileMetadata, drive} = await this.getDownloadFileMetadata(fileID, user);
-
+    
         await drive.permissions.get({
             fileId: fileID,
             permissionId: fileMetadata.data.permissionIds![0]
         })
-
+    
         await drive.permissions.delete({
             fileId: fileID,
             permissionId: fileMetadata.data.permissionIds![0]

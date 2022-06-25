@@ -17,16 +17,16 @@ class PhotoViewerContainer extends React.Component {
 
     closePhotoViewer = () => {
 
-        this.props.dispatch(resetPhotoID())
+        this.props.dispatch(resetPhotoID())        
     }
 
     componentDidMount = () => {
 
         const config = {
             responseType: 'arraybuffer'
-        };
-
-        const url = this.props.isGoogle ? `/file-service-google/full-thumbnail/${this.props.photoID}`
+        }; 
+        
+        const url = this.props.isGoogle ? `/file-service-google/full-thumbnail/${this.props.photoID}` 
         : !this.props.isPersonal ? `/file-service/full-thumbnail/${this.props.photoID}` : `/file-service-personal/full-thumbnail/${this.props.photoID}`;
 
         axios.get(url, config).then((response) => {
@@ -43,7 +43,7 @@ class PhotoViewerContainer extends React.Component {
 
     render() {
 
-        return <PhotoViewer
+        return <PhotoViewer 
                 closePhotoViewer={this.closePhotoViewer}
                 state={this.state}/>
     }

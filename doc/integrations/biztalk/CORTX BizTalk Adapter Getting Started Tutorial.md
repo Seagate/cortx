@@ -22,7 +22,7 @@ to send data from BizTalk to CORTX and receive data from CORTX into BizTalk.
 
 -   This Tutorial assumes you have a BizTalk environment already setup with the
     CORTX adapter installed into it. Refer to the [Microsoft SQL Server 2019
-    Installation Guide](./Microsoft%20SQL%20Server%202019%20Installation%20Guide.md)
+    Installation Guide](./Microsoft%20SQL%20Server%202019%20Installation%20Guide.md) 
     and [Microsoft BizTalk Server 2020 Installation Configuration Guide](./Microsoft%20BizTalk%20Server%202020%20Installation%20and%20Configuration%20Guide.md)
     that accompany this document for instructions for
     setting up your BizTalk environment, and to the [CORTX BizTalk Adapter
@@ -34,7 +34,7 @@ to send data from BizTalk to CORTX and receive data from CORTX into BizTalk.
     **AcessKeyID** and the **SecretAccessKey** and **S3 URL endpoint** necessary
     to access your CORTX instance in order to configure the CORTX Adapter below.
 
-## Part 1 - Send Data to CORTX Using the BizTalk CORTX Adapter
+## Part 1 - Send Data to CORTX Using the BizTalk CORTX Adapter  
 
 
 1.  Create a new folder in your computer’s file system (e.g.; **CortxDemo**),
@@ -152,8 +152,8 @@ to send data from BizTalk to CORTX and receive data from CORTX into BizTalk.
     Locations** tab, then click **New\>One Way Receive Location**. Name the
     **Receive Location** the same as your Receive Port you created it the
     previous step. Select **WCF-Custom** in the **Transport Type** dropdown then
-    click the **Configure** button:
-
+    click the **Configure** button:  
+    
     ![](media/dbf2ae6576fc6e5f15ace8d494bb36a1.png)
 
 3.  As before, enter the address of your CORTX instance in the form of
@@ -206,8 +206,8 @@ to send data from BizTalk to CORTX and receive data from CORTX into BizTalk.
 
 11.  To test the system end-to-end, drop another **.txt** file into your **IN**
     folder and watch it disappear, be written to CORTX only to have BizTalk
-    consume it and place it into the **OUT** folder.
-
+    consume it and place it into the **OUT** folder.   
+    
     Congratulations! You now know how to configure the CORTX BizTalk adapter for
     both sending data to CORTX from BizTalk, and for receiving data from CORTX
     into BizTalk.

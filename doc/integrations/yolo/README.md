@@ -1,7 +1,7 @@
 ## Description
 
 This repository represents open-source detection methods with YOLOv5 at the edge (on camera), sending cloud storage and importing data. YOLO or You Only Look Once is an object detection algorithm. In YOLO a single convolutional network predicts the bounding boxes and the class probabilities for these boxes. \
-The model I use in my project trains on COCO dataset and can detect up to 80 classes. With the help of this model, I detect objects on video frames and save the bounding boxes in a text file, send them to the CORTX cloud, and store them there. Next, I download the data from the CORTX storage and draw the bounding boxes on the original video.
+The model I use in my project trains on COCO dataset and can detect up to 80 classes. With the help of this model, I detect objects on video frames and save the bounding boxes in a text file, send them to the CORTX cloud, and store them there. Next, I download the data from the CORTX storage and draw the bounding boxes on the original video. 
 NOTE: In Yolo, the coordinates are relative. Meaning that the annotations are written this way: \
 <object-class, x_center, y_center, width, height>
 
@@ -12,7 +12,7 @@ can be found [here](https://www.loom.com/share/4c0956c5851249db8119a0fdaa7f2d16)
 
 ### Step 1: Preparing the cloud
 * For using the could I follow the [steps](https://github.com/Seagate/cortx/wiki/CORTX-Cloudshare-Setup-for-April-Hackathon-2021) in CORTX Cloudshare Setup.
-* I use the Boto3 library that allows me to connect CORTX.
+* I use the Boto3 library that allows me to connect CORTX. 
 For that requires END_POINT_URL (CORTX URL), aws_access_key_id (AWS access key), aws_secret_access_key (AWS access secret).
 * I create bucket by the name "detection" for reading and writing the data to.
 
@@ -62,3 +62,4 @@ The center-down gif is the output after downloading the data from the cloud.
 ## Future work
 * Add RTSP(Real Time Streaming Protocol).
 * Improve the model
+

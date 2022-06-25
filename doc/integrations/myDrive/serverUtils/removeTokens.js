@@ -11,16 +11,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-
+                
                 resolve();
-
+    
             })
 
         } else {
 
             resolve();
         }
-
+    
     })
 }
 
@@ -37,7 +37,7 @@ const removeTokens = async() => {
         tempTokens: []
     })
     console.log("Removed tokens from", userList.length, "users");
-
+    
     process.exit();
 }
 

@@ -11,13 +11,13 @@ CORS(app)
 
 
 s3_resource = boto3.resource(
-        's3',
-        region_name = 'us-west-2',
+        's3', 
+        region_name = 'us-west-2', 
         aws_access_key_id = os.environ.get('ACCESS_ID'),
         aws_secret_access_key = os.environ.get('SECRET_KEY'),
         endpoint_url=os.environ.get('ENDPOINT'),
         config=Config(signature_version='s3v4')
-    )
+    ) 
 
 
 
@@ -26,18 +26,18 @@ s3_resource = boto3.resource(
 
 @app.route('/save', methods=['POST'])
 def save():
-
+    
     file = request.files['file']
+    
 
-
-
+    
 
     filename = secure_filename(file.filename)
 
-
-
+    
+    
     result=s3_resource.Bucket("testbucket").put_object(
-        Key = filename,
+        Key = filename, 
         Body = file
     )
 
@@ -46,11 +46,11 @@ def save():
 @app.route('/getFiles',methods=['GET'])
 def getFiles():
     result={}
-
+    
     bucket = s3_resource.Bucket('testbucket')
     for obj in bucket.objects.all():
         result[obj.key]=obj.last_modified
-
+        
     return jsonify(result,200)
 
 @app.route('/download',methods=['POST'])
@@ -63,7 +63,7 @@ def download():
 
 
 
-
+    
 
     return send_file(output,as_attachment=True)
 
@@ -74,7 +74,7 @@ def delete():
     result = s3_resource.Object('testbucket', key).delete()
     return jsonify(result,200)
 
-
+   
 
 
 

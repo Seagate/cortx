@@ -44,3 +44,4 @@ This release notes includes new features, enhancements, and bug fixes added to t
 - MessageBus as static instance [EOS-27346]
 - IEM CLI integration with Event message [EOS-27255]
 - Use noarch architecture for HA package [CORTX-27894]
+

@@ -43,10 +43,10 @@ const authRefresh = async(req: RequestType, res: Response, next: NextFunction) =
 
         if (!refreshToken) throw new Error("No Refresh Token");
 
-        const decoded = jwt.verify(refreshToken, env.passwordRefresh!) as jwtType;
+        const decoded = jwt.verify(refreshToken, env.passwordRefresh!) as jwtType;  
 
         const time = decoded.time;
-
+        
         const user = await User.findById(new ObjectID(decoded._id));
 
         if (!user) throw new Error("No User");
@@ -55,7 +55,7 @@ const authRefresh = async(req: RequestType, res: Response, next: NextFunction) =
         const encryptedToken = user.encryptToken(refreshToken, encrpytionKey, decoded.iv);
 
         let tokenFound = false;
-
+        
         for (let i = 0; i < user.tokens.length; i++) {
 
             const currentEncryptedToken = user.tokens[i].token;
@@ -81,7 +81,7 @@ const authRefresh = async(req: RequestType, res: Response, next: NextFunction) =
 
     } catch (e) {
 
-        if (e.message !== "No Refresh Token" &&
+        if (e.message !== "No Refresh Token" && 
         e.message !== "No User" &&
         e.message !== "Refresh Token Not Found") console.log("\nAuthorization Refresh Middleware Error:", e.message);
 

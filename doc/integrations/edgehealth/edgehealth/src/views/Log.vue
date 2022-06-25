@@ -14,9 +14,9 @@
       <div class="mt-3" style="overflow:hidden;overflow-y:scroll;height:68vh">
 
         <div class="ma-8">
-
+            
            <v-simple-table fixed-header >
-
+    
       <thead>
         <tr>
           <th class="text-left">
@@ -34,13 +34,13 @@
           <th class="text-left">
             Timestamp
           </th>
-
-
+          
+         
         </tr>
       </thead>
       <tbody>
           <!-- <tr>
-
+              
               <td>
                   <v-text-field  style="margin-top:10px;margin-bottom:-15px"  dense type="text" outlined placeholder="ID"></v-text-field>
               </td>
@@ -56,25 +56,25 @@
               <td>
                   <v-text-field  style="margin-top:10px;margin-bottom:-15px"  dense type="text" outlined placeholder="Score"></v-text-field>
               </td>
-
-
+              
+              
           </tr> -->
         <tr
           v-for="item in logs"
           :key="item.name"
         >
-
+          
           <td>{{ item.device }}</td>
           <td>{{ item.querytext }}</td>
           <td>{{ item.text }}</td>
           <td>{{ item.skills }}</td>
           <td>{{ item.time }}</td>
-
+          
         </tr>
       </tbody>
-
+   
   </v-simple-table>
-
+  
           </div>
       </div>
       </v-card>
@@ -92,7 +92,7 @@ export default {
         }
     },
     mounted(){
-
+        
        axios
       .get('https://vue-health-api.herokuapp.com/logs')
       .then(response => {
@@ -102,7 +102,7 @@ export default {
       }).catch(err=>{
         console.log(err)
       })
-
+    
     }
 }
 </script>

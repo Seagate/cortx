@@ -67,10 +67,10 @@ export const startSetFolders = (parent = "/", sortby="DEFAULT", search="", isGoo
         dispatch(setFolders([]))
 
         if (isGoogle) {
-
+            
             axios.get(`/folder-service-google/list?parent=${parent}&sortby=${sortby}&search=${search}&storageType=${storageType}`).then((results) => {
                 const googleList = results.data;
-                dispatch(setFolders(googleList))
+                dispatch(setFolders(googleList)) 
             }).catch((err) => {
                 console.log(err)
             })
@@ -80,7 +80,7 @@ export const startSetFolders = (parent = "/", sortby="DEFAULT", search="", isGoo
              axios.get(`/folder-service-google-mongo/list?parent=${parent}&sortby=${sortby}&search=${search}&storageType=${storageType}`).then((results) => {
                 const googleMongoList = results.data;
                 dispatch(setFolders(googleMongoList))
-
+              
             }).catch((err) => {
                 console.log(err)
             })
@@ -88,10 +88,10 @@ export const startSetFolders = (parent = "/", sortby="DEFAULT", search="", isGoo
         } else {
 
             axios.get(`/folder-service/list?parent=${parent}&sortby=${sortby}&search=${search}&storageType=${storageType}`).then((response) => {
-
+           
                 const folders = response.data;
                 dispatch(setFolders(folders)) //DISABLED TEMP
-
+    
             }).catch((err) => {
                 console.log(err);
             })
@@ -115,7 +115,7 @@ export const startRemoveFolder = (id, parentList, isGoogle=false, parent, person
         axios.delete(url, {
             data
         }).then((response) => {
-
+           
             dispatch(removeFolder(id));
             dispatch(startSetQuickFiles())
             dispatch(addDeleteFolderTreeID(id, {_id:id}))
@@ -131,18 +131,18 @@ export const startRemoveFolder = (id, parentList, isGoogle=false, parent, person
 
 export const editFolder = (id, folder) => ({
     type: "EDIT_FOLDER",
-    id,
+    id, 
     folder
 })
 
 export const startRenameFolder = (id, title, isGoogle=false, parent) => {
-
+    
     return (dispatch) => {
 
         const data = {id, title}
 
         const url = isGoogle ? "/folder-service-google/rename" : "/folder-service/rename";
-
+ 
         axios.patch(url, data).then((response) => {
 
             dispatch(editFolder(id, {name: title}))
@@ -153,6 +153,6 @@ export const startRenameFolder = (id, title, isGoogle=false, parent) => {
 
         }).catch((err) => {
             console.log(err)
-        })
+        })   
     }
 }

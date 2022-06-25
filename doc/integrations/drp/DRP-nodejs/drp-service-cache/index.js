@@ -73,7 +73,7 @@ class DRP_CacheManager extends DRP_Service {
     async ReadClassCacheFromMongo(serviceName, className) {
         let thisService = this;
         return new Promise(function (resolve, reject) {
-            // Open the collector DB
+            // Open the collector DB 
             var serviceDB = thisService.__MongoClient.db(serviceName);
             // Connect to class collection
             var classCollection = serviceDB.collection(className);
@@ -106,7 +106,7 @@ class DRP_CacheManager extends DRP_Service {
                 resolve();
             } else {
 
-                // Open the collector DB
+                // Open the collector DB 
                 let collectorDB = thisService.__MongoClient.db(serviceName);
                 // Connect to class collection
                 let classCollection = collectorDB.collection(className);

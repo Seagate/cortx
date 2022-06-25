@@ -25,7 +25,7 @@ export default (state = defaultState, action) => {
 
             })
 
-        case "CANCEL_UPLOAD":
+        case "CANCEL_UPLOAD": 
 
             return state.map((upload) => {
 
@@ -38,7 +38,7 @@ export default (state = defaultState, action) => {
 
             })
 
-        case "RESET_UPLOADS":
+        case "RESET_UPLOADS": 
 
             return []
 

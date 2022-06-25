@@ -5,7 +5,7 @@ const DRP_Endpoint = require("./endpoint");
 
 class DRP_Endpoint_Server extends DRP_Endpoint {
     /**
-     *
+     * 
      * @param {WebSocket} wsConn Websocket connection
      * @param {DRP_Node} drpNode DRP Node
      * @param {string} endpointID Remote Endpoint ID
@@ -37,7 +37,7 @@ class DRP_Endpoint_Server extends DRP_Endpoint {
 // Handles incoming DRP connections
 class DRP_RouteHandler {
     /**
-     *
+     * 
      * @param {DRP_Node} drpNode DRP Node Object
      * @param {string} route URL Route
      */
@@ -119,7 +119,7 @@ class DRP_RouteHandler {
     }
 
     /**
-     *
+     * 
      * @param {WebSocket} wsConn
      * @param {any} intervalObj
      */
