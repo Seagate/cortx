@@ -14,7 +14,7 @@ The plan of implementation is this:
 
 [Here](https://www.youtube.com/watch?v=-JPrpL1_8Mg) is a walkthrough/demo video to follow.
 
-## Prerequisites
+## Prerequisites 
 For the reproduction of demo, we need the following:
 1. python3, pip3
 2. Cortx VM setup(Demo is on VirtualBox)
@@ -22,7 +22,7 @@ For the reproduction of demo, we need the following:
 
 # Contents
 The following is an index of files in this folder:
-1. `pulsar-producer.py` - Writes messages to locally hosted pulsar on topic with name `test`.
+1. `pulsar-producer.py` - Writes messages to locally hosted pulsar on topic with name `test`. 
 2. `pulsar-consumer.py` - Listens to the topic `test` on locally hosted pulsar. It gets only new messages to the topic and not older messages.
 3. `pulsar-reader.py` - Connects to locally hosted pulsar and reads from the earliest message on topic.
 4. `setup` - This folder has all the files needed to configure pulsar.
@@ -79,7 +79,7 @@ aws_secret_access_key=sTNG8gMpkG/AOj+gTi6ayBkdr5aw5Xw5s7R252sF
 Explainer: The above instructions are an extract of Section 1.4 along with prerequisites from [Cortx S3 Server guide](https://github.com/Seagate/cortx-s3server/blob/main/docs/CORTX-S3%20Server%20Quick%20Start%20Guide.md)
 6. Test the cli by listing buckets from Cortx S3:
 ```
-aws --profile=sg s3 ls
+aws --profile=sg s3 ls 
 ```
 
 # Set up s3 bucket in cortx for offloading topic messages
@@ -248,7 +248,7 @@ aws --profile=sg s3 mb s3://seagatebucket2
 make_bucket failed: s3://seagatebucket2 An error occurred (RequestTimeTooSkewed) when calling the CreateBucket operation: The difference between request time and current time is too large
 ```
 
-It can also happen in Pulsar requests to offload topic data to S3.
+It can also happen in Pulsar requests to offload topic data to S3. 
 
 ### Fix
 Login to Cortx VM and set date to correct value or offset the time as below based on the difference between current VM time and correct time:

@@ -5,9 +5,9 @@ import './home.css';
 export default function Documentation() {
     return (
         <div className="container" style={{marginTop:'5rem'}}>
+        
 
-
-
+        
         <div id="accordion">
         <div class="card">
           <div class="card-header" id="headingOne">
@@ -17,13 +17,13 @@ export default function Documentation() {
               <h5 style={{color:'green'}}>GET</h5>
               <p style={{marginLeft:'1rem'}}>List all files in the CORTX S3 </p>
               </div>
-
+              
               </button>
-
-
+              
+                
             </h5>
           </div>
-
+      
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
               <h6>URL : https://cortx.herokuapp.com/getFiles</h6>
@@ -46,7 +46,7 @@ export default function Documentation() {
                 <h6>URL : https://cortx.herokuapp.com/save</h6>
                 <p>curl --location --request POST 'https://cortx.herokuapp.com/save' \
                 --form 'file=@"/test.csv"'</p>
-
+                
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Documentation() {
               <p>Key is the filename to be downloaded </p>
             </div>
           </div>
-
+          
         </div>
         <div class="card">
           <div class="card-header" id="headingFour">
@@ -96,7 +96,7 @@ export default function Documentation() {
               <p>Key is the filename to be deleted </p>
             </div>
           </div>
-
+          
         </div>
       </div>
 
@@ -107,8 +107,8 @@ export default function Documentation() {
             <i class="fa fa-file-text-o" style={{color: '#00A300',}}></i>
             <h3><a target="_blank" href="https://documenter.getpostman.com/view/5235222/TzJydG5r">View Complete Detailed API docs</a></h3>
             </div>
-
-
+            
+            
             </div>
         </div>
         </section>

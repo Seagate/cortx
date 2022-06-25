@@ -60,14 +60,14 @@
     >
       Specialties
     </v-alert>
-
+      
       <p class="font-weight-bold">{{datas.speciality}}</p>
 
        <v-alert
       dense
       type="success"
       text
-
+      
     >
       Practise names
     </v-alert>
@@ -75,17 +75,17 @@
 
       <v-alert
       icon="mdi-semantic-web"
-
+      
       text
       type="info"
     >
       Board Certifications
     </v-alert>
-
+     
       <p class="font-weight-bold">American Board of Internal Medicine</p>
 
-
-
+     
+      
       <v-alert
       icon="mdi-google-analytics"
       text
@@ -106,7 +106,7 @@
       <p class="font-weight-bold">English</p>
 
       <v-alert
-
+      
       text
       type="success"
     >
@@ -124,13 +124,13 @@
 
             <div>
               <p>What's your insurance plan?</p>
-
+              
                 <v-text-field outlined background-color="white" dense prepend-inner-icon="mdi-abacus"></v-text-field>
 
             </div>
              <div>
               <p>What is the reason for your visit?</p>
-
+              
                  <v-select
           v-model="e6"
           :items="state"
@@ -150,7 +150,7 @@
                 <v-col>
                   <div style="background-color:white;height:10vh" class="pa-3">
                     <v-radio
-
+                    
                     :key="n"
                     :label="`No`"
                     :value="n"
@@ -160,7 +160,7 @@
                 <v-col>
                   <div style="background-color:white;height:10vh;" class="pa-3">
                     <v-radio
-
+                    
                     :key="n"
                     :label="`Yes`"
                     :value="n"
@@ -168,7 +168,7 @@
                 </div>
                 </v-col>
               </v-row>
-
+              
             </div>
 
             <div>
@@ -177,7 +177,7 @@
                 <v-col>
                   <div style="background-color:white;height:10vh" class="pa-3">
                     <v-radio
-
+                    
                     :key="n"
                     :label="`No`"
                     :value="n"
@@ -199,7 +199,7 @@
             </v-card>
           </v-col>
         </v-row>
-
+            
         </div>
       </v-container>
       </div>
@@ -214,7 +214,7 @@ export default {
 
       },
       state:['injury','surgery']
-
+      
     }
   },
   mounted(){
@@ -231,7 +231,7 @@ export default {
         }
       }
     })
-
+    
   }
 }
 </script>

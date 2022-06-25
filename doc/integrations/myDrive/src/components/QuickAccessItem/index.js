@@ -39,7 +39,7 @@ class QuickAccessItemContainer extends React.Component {
     }
 
     closeContext = () => {
-
+     
         this.setState(() => {
             return {
                 ...this.state,
@@ -92,20 +92,20 @@ class QuickAccessItemContainer extends React.Component {
         }))
 
         const isPersonal = this.props.metadata.personalFile;
-
+    
         const url = !isPersonal ? `/file-service/thumbnail/${thumbnailID}` : `/file-service-personal/thumbnail/${thumbnailID}`;
 
         axios.get(url, config).then((results) => {
-
+     
             const imgFile = new Blob([results.data]);
             const imgUrl = URL.createObjectURL(imgFile);
-
+           
             this.setState(() => ({
                 ...this.state,
                 image: imgUrl,
                 imageClassname: imageClassname
             }))
-
+            
         }).catch((err) => {
             console.log(err)
         })
@@ -142,7 +142,7 @@ class QuickAccessItemContainer extends React.Component {
 
         const date = new Date();
         const difference = date - this.lastTouch;
-
+       
         this.lastTouch = 0;
 
         if (difference > 500) {
@@ -156,7 +156,7 @@ class QuickAccessItemContainer extends React.Component {
         if (e) e.preventDefault();
 
         const isMobile = mobileCheck()
-
+    
         const windowX = window.innerWidth;
         const windowY = window.innerHeight;
 
@@ -170,13 +170,13 @@ class QuickAccessItemContainer extends React.Component {
 
             const clientY =  e.nativeEvent.clientY;
             const clientX = e.nativeEvent.clientX;
-
+    
             if (clientX > windowX / 2) {
-
+    
                 styleObj = {...styleObj, left:"unset", right:0}
-
+    
             } else {
-
+             
                 styleObj = {...styleObj, left:0, right:"unset"}
             }
 
@@ -195,7 +195,7 @@ class QuickAccessItemContainer extends React.Component {
     changeEditNameMode = async() => {
 
         let inputValue = this.props.filename;
-
+    
         const { value: folderName} = await Swal.fire({
             title: 'Enter A File Name',
             input: 'text',
@@ -228,7 +228,7 @@ class QuickAccessItemContainer extends React.Component {
     }
 
     changeDeleteMode = async() => {
-
+ 
         Swal.fire({
             title: 'Confirm Deletion',
             text: "You cannot undo this action",
@@ -254,8 +254,8 @@ class QuickAccessItemContainer extends React.Component {
 
     render() {
 
-        return <QuickAccessItem
-                getContextMenu={this.getContextMenu}
+        return <QuickAccessItem 
+                getContextMenu={this.getContextMenu} 
                 onTouchStart={this.onTouchStart}
                 onTouchMove={this.onTouchMove}
                 onTouchEnd={this.onTouchEnd}
@@ -266,7 +266,7 @@ class QuickAccessItemContainer extends React.Component {
                 changeDeleteMode={this.changeDeleteMode}
                 startMovingFile={this.startMovingFile}
                 thumbnailOnError={this.thumbnailOnError}
-                state={this.state}
+                state={this.state} 
                 {...this.props}/>
     }
 
@@ -278,3 +278,4 @@ const connectStateToProp = (state) => ({
 })
 
 export default connect(connectStateToProp)(QuickAccessItemContainer);
+

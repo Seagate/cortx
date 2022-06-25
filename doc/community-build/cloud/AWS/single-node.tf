@@ -215,3 +215,4 @@ output "cortx_deploy_ip_addr" {
   value       = aws_eip_association.eip_assoc.public_ip
   description = "Public IP to connect CORTX server"
 }
+

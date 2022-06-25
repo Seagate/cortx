@@ -10,3 +10,4 @@ An important difference is that the model currently only supports LSTM RNN units
 
 Example script to run on dailydialog:
 parlai train_model -t dailydialog -mf /tmp/dailydialog_hred -bs 4 -eps 5 --model hred
+

@@ -11,7 +11,7 @@ Siddhi allows for an extremely flexible rules (or "queries") that can detect alm
 
 ![overview](/doc/images/siddhi-celery-pipeline.png)
 
-links:
+links: 
 
 [siddhi](https://siddhi.io/)
 
@@ -61,3 +61,4 @@ source env  # or `. ./env`
 # On right panel, run:
 ./scripts/siddhi.sh
 ```
+

@@ -2,7 +2,7 @@ import pulsar
 
 client = pulsar.Client('pulsar://localhost:6650')
 
-msg_id = pulsar.MessageId.earliest
+msg_id = pulsar.MessageId.earliest 
 reader = client.create_reader('test', msg_id)
 
 while True:

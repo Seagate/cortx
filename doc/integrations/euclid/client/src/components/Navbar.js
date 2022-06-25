@@ -25,15 +25,15 @@ const Navbar = (props) => {
                     <li className="nav-item" role="presentation"><Link className="nav-link left" to="/docs">Documentation</Link></li>
                     <li className="nav-item" role="presentation"><a className="nav-link left" href="/jobs">Github</a></li>
                     <li className="nav-item" role="presentation"><a className="nav-link left" href="/jobs">Demo</a></li>
-
+                    
                     <li className="nav-item" role="presentation"><Link to="/about" class="get-started-btn btn btn-block scrollto">Get Started</Link></li>
+                    
+                    
+                    
 
-
-
-
-
-
-
+                    
+                    
+                    
                 </ul>
             </div>
         </div>
@@ -42,3 +42,4 @@ const Navbar = (props) => {
 }
 
 export default Navbar;
+

@@ -2,14 +2,14 @@
 
 # CORTX S3 - Restic Integration
 
-### CORTX integration with Restic is a fast and secure backup program, Restic. All your buckets are belong to us.
+### CORTX integration with Restic is a fast and secure backup program, Restic. All your buckets are belong to us. 
 
 ### Change the way the world does by connecting CORTX™— Seagate’s open-source object storage software — with the tools and platforms that underpin the data revolution.
 
 Storing and managing data had never been easy and with flourish of AI, deep learning we have generated paramounts of data called Big Data.
 
-The ideal big data storage system would allow storage of a virtually unlimited amount of data,
-cope both with high rates of random write and read access, flexibly and efficiently deal with a range of different data models,
+The ideal big data storage system would allow storage of a virtually unlimited amount of data, 
+cope both with high rates of random write and read access, flexibly and efficiently deal with a range of different data models, 
 support both structured and unstructured data, and for privacy reasons, only work on encrypted data. Obviously, all these needs cannot be fully satisfied.
 
 ## Background / Overview of the project
@@ -32,7 +32,7 @@ Our integration is simple, it allows you to backup data to your S3 bucket and on
 
 ### Why this integration is important?
 
-It used to be said that the value of an effective backup system only becomes clear once you’ve lost data. When failures or losses occur, you need to have a fast and easy way to get your files and information back. If an organization loses data, the implications are severe. It could even jeopardize business continuity. Even in a domestic setting, data loss can be a painful experience. Backups are the only sensible safeguards.
+It used to be said that the value of an effective backup system only becomes clear once you’ve lost data. When failures or losses occur, you need to have a fast and easy way to get your files and information back. If an organization loses data, the implications are severe. It could even jeopardize business continuity. Even in a domestic setting, data loss can be a painful experience. Backups are the only sensible safeguards. 
 
 The program should be fast. You don’t want to wait all day for a backup or restore to complete. Some programs store a base backup image and then store the differences between the base image and the source machine for each subsequent backup. This speeds up the backup process considerably. It also uses less space for your backups. restic does all of this. It is free, open-source, licensed under the 2-Clause BSD License, and under active development
 

@@ -42,16 +42,16 @@
 //         }
 
 //         if (!user || !tokenFound) {
-
+            
 //             throw new Error("User Not Found")
 
 //         } else {
 
 //             user.tempTokens = user.tempTokens.filter((filterToken) => {
-
+            
 //                 return filterToken.token !== encryptedToken
 //             })
-
+            
 //             await user.save();
 
 //             req.user = user;

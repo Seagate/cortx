@@ -15,4 +15,4 @@ CORTX S3 metrics grabbed by telegraf agent input plugin, pulled from prometheus 
 
 *Step 2:  install grafana and add prometheus data source pulling from (remote cortx machine)*
 
-this was built during cortx hackathon, demo video and deck uploaded
+this was built during cortx hackathon, demo video and deck uploaded 

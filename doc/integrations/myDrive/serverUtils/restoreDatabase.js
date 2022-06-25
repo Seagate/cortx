@@ -10,16 +10,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-
+                
                 resolve();
-
+    
             })
 
         } else {
 
             resolve();
         }
-
+    
     })
 }
 
@@ -27,7 +27,7 @@ const restoreDatabase = async() => {
 
     const userConfimation = await prompts({
         type: 'text',
-        message: "Warning: This will delete ALL data," +
+        message: "Warning: This will delete ALL data," + 
         " other than the Data Backup created by CopyDatabase. \nMake sure to first run CopyDatabase, and backup" +
         " your data, \nWould you like to continue? (Yes/No)",
         name: "value"
@@ -52,3 +52,4 @@ const restoreDatabase = async() => {
 }
 
 restoreDatabase()
+

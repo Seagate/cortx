@@ -14,9 +14,9 @@ const subtractFromStorageSize = async(userID: string, size: number, isPersonalFi
 
     if (!user.storageData || (!user.storageData.storageSize && !user.storageData.storageLimit)) user.storageData = {storageSize: 0, storageLimit: 0}
 
-    user.storageData!.storageSize = +user.storageData!.storageSize! - +size;
+    user.storageData!.storageSize = +user.storageData!.storageSize! - +size; 
 
-    if (user.storageData?.storageSize! < 0) user.storageData!.storageSize! = 0;
+    if (user.storageData?.storageSize! < 0) user.storageData!.storageSize! = 0; 
 
     await user.save();
 }

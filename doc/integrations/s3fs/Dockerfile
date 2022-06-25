@@ -8,11 +8,11 @@ RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONT
 
 # Install dependencies:
 RUN apt-get install -y tzdata s3fs wget
-RUN apt-get install -y awscli
+RUN apt-get install -y awscli 
 
 COPY creds ${HOME}/.passwd-s3fs
 RUN chmod 600 ${HOME}/.passwd-s3fs
 
-RUN mkdir cortx-fs
+RUN mkdir cortx-fs 
 COPY aws_creds ~/.aws/credentials
 COPY aws_config ~/.aws/aws_config

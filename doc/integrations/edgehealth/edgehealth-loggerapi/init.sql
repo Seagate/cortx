@@ -14,3 +14,4 @@ CREATE TABLE doctors (
 
 INSERT INTO doctors (doctorID,firstname,lastname,speciality,sabbrev,gender,office,email,phone)
 VALUES  ('444432','Olubukola','Olu','Primary care,Internist','OO','Female','Room1','drolu@mail.com','444-234-333');
+

@@ -10,10 +10,10 @@ export default (state = defaultState, action) => {
 
             return action.file
 
-        case "SHOW_POPUP":
+        case "SHOW_POPUP": 
 
             return {
-                ...state,
+                ...state, 
                 showPopup: true
             }
 
@@ -24,7 +24,7 @@ export default (state = defaultState, action) => {
                 showPopup: false
             }
 
-        default:
+        default: 
 
             return state;
     }

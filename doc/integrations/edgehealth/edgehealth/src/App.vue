@@ -13,7 +13,7 @@
         />
         </a>
 
-
+        
       </div>
 
       <v-spacer></v-spacer>
@@ -21,7 +21,7 @@
        <v-menu v-if="!this.$route.meta.showSide" offset-y>
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-
+          
           dark
           v-bind="attrs"
           v-on="on"
@@ -61,7 +61,7 @@
         >
           <v-list-item-title>Telemedicine</v-list-item-title>
         </v-list-item>
-
+        
       </v-list>
     </v-menu>
 
@@ -69,7 +69,7 @@
     <v-menu v-if="!this.$route.meta.showSide" offset-y>
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-
+          
           dark
           v-bind="attrs"
           v-on="on"
@@ -109,7 +109,7 @@
         >
           <v-list-item-title>Telemedicine</v-list-item-title>
         </v-list-item>
-
+        
       </v-list>
     </v-menu>
 
@@ -122,19 +122,19 @@
       <v-avatar
       v-if="this.$route.meta.showSide"
                   size="40px"
-
-
+                  
+                  
                   color="blue"
                 >
                   <span>A</span>
-
-
+                  
+                  
                 </v-avatar>
                 <span class="text-caption" v-if="this.$route.meta.showSide" style="margin-left:3px">Admin</span>
                 <v-btn icon><v-icon>mdi-logout</v-icon></v-btn>
        <!-- <v-btn></v-btn> -->
     </v-app-bar>
-
+   
 
     <v-navigation-drawer
     v-if="this.$route.meta.showSide"
@@ -142,11 +142,11 @@
       absolute
       style="background-color:#343A40;padding-top:100px;padding-left:3px;padding-right:3px"
       permanent
-
+      
       width="50"
     >
 
-
+    
         <v-btn icon to="/dashboard"><v-icon  color="white"> mdi-view-dashboard</v-icon></v-btn>
         <hr style="border:grey">
         <br>
@@ -157,8 +157,8 @@
         <hr style="border:grey">
         <br>
         <v-btn icon><v-icon  color="white">  mdi-account </v-icon></v-btn>
-
-
+      
+      
     </v-navigation-drawer>
 
     <v-main>
@@ -217,7 +217,7 @@
                     <a href="" style="text-decoration:none;color:black">Supplier (U.S. site)</a><br>
                     <a href="" style="text-decoration:none;color:black">Contact Us</a><br>
                   </v-col>
-
+                  
                 </v-row>
 
             </div>
@@ -235,12 +235,12 @@ export default {
   name: "App",
 
   components: {
-
+    
   },
 
   data: () => ({
     //
-
+    
   }),
 };
 </script>

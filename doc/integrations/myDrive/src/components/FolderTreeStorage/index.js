@@ -21,10 +21,10 @@ class FolderTreeStorageContainer extends React.Component {
 
     getFolders = () => {
 
-        const parent = this.props.type === "drive" ? "root" : "/";
-
-        const url = this.props.type === "drive" ? `/folder-service-google/list?parent=${parent}`
-        : `/folder-service/list?parent=${parent}&type=${this.props.type}`;
+        const parent = this.props.type === "drive" ? "root" : "/"; 
+        
+        const url = this.props.type === "drive" ? `/folder-service-google/list?parent=${parent}` 
+        : `/folder-service/list?parent=${parent}&type=${this.props.type}`; 
 
         axios.get(url).then((response) => {
 
@@ -64,7 +64,7 @@ class FolderTreeStorageContainer extends React.Component {
         //     this.setState(() => ({
         //         hideFolderTree
         //     }))
-
+            
         // } else {
         //     this.getFolders();
         // }
@@ -79,7 +79,7 @@ class FolderTreeStorageContainer extends React.Component {
             this.getFolders();
             return;
         }
-
+    
         if (this.updated) return;
 
         this.updated = true;
@@ -96,7 +96,7 @@ class FolderTreeStorageContainer extends React.Component {
 
         const id = this.props.firstLoadDetails._id;
 
-        const url = (this.props.type === "drive")
+        const url = (this.props.type === "drive") 
         ? `/folder-service-google/subfolder-list-full?id=${id}` : `/folder-service/subfolder-list-full?id=${id}`
 
         axios.get(url).then((response) => {

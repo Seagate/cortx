@@ -40,16 +40,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-
+                
                 resolve();
-
+    
             })
 
         } else {
 
             resolve();
         }
-
+    
     })
 }
 
@@ -60,7 +60,7 @@ beforeEach(async(done) => {
     const {user: gotUser, userData: gotUserData} = await createUser();
     user = gotUser;
     userData = gotUserData;
-
+        
     const {user: gotUser2, userData: gotUserData2} = await createUser2();
     user2 = gotUser2;
     userData2 = gotUserData2;
@@ -83,14 +83,14 @@ beforeEach(async(done) => {
 
     //         // user = await createUser();
     //         // userToken = user.tokens[0].token;
-
+            
     //         // user2 = await createUser2();
     //         // userToken2 = user2.tokens[0].token;
 
     //         const {user: gotUser, token: gotToken} = await createUser();
     //         user = gotUser;
     //         userToken = gotToken;
-
+                
     //         const {user: gotUser2, token: gotToken2} = await createUser2();
     //         user2 = gotUser2;
     //         userToken2 = gotToken2;
@@ -101,7 +101,7 @@ beforeEach(async(done) => {
     //             owner: user._id,
     //             parentList: ["/"]
     //         }
-
+    
     //         folder = new Folder(folderData);
     //         await folder.save();
 
@@ -113,13 +113,13 @@ beforeEach(async(done) => {
 
     //     // user = await createUser();
     //     // userToken = user.tokens[0].token;
-
+        
     //     // user2 = await createUser2();
     //     // userToken2 = user2.tokens[0].token;
     //     const {user: gotUser, token: gotToken} = await createUser();
     //     user = gotUser;
     //     userToken = gotToken;
-
+            
     //     const {user: gotUser2, token: gotToken2} = await createUser2();
     //     user2 = gotUser2;
     //     userToken2 = gotToken2;
@@ -144,7 +144,7 @@ beforeEach(async(done) => {
 afterEach(async(done) => {
 
     let bucket = new mongoose.mongo.GridFSBucket(conn.db);
-
+            
     await User.deleteMany({});
     await Folder.deleteMany({});
 
@@ -155,7 +155,7 @@ afterEach(async(done) => {
         const currentFileID = allFiles[i]._id;
         await bucket.delete(ObjectID(currentFileID));
     }
-
+   
     done();
 })
 

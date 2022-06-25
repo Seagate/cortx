@@ -36,7 +36,7 @@ Seagate's CORTX will be used as our long-term storage and the mc container will 
 
 ## Pre-requisites
 
-You should have Docker installed, which should come with docker-compose.
+You should have Docker installed, which should come with docker-compose. 
 
 A CORTX VM should also be running with the endpoints available.
 
@@ -53,7 +53,7 @@ Ensure that you have your SECRET_KEY and SECRET_ACCESS_KEY and CORTX_ENDPOINT.
 
 In ```thanos-compose.yml```
 
-there is a line
+there is a line 
 
 ```yml
 mc config host add tmp uvo1f7e7qbkxtmmt5iq.vm.cld.sr AKIAtEpiGWUcQIelPRlD1Pi6xQ YNV6xS8lXnCTGSy1x2vGkmGnmdJbZSapNXaSaRhK

@@ -54,7 +54,7 @@ has integral support for WCF.
 ## Creating a BizTalk Environment
 
 If you don’t have a BizTalk environment available you will need to create one.
-The two guides in this section will help you set one up on a Windows Computer.
+The two guides in this section will help you set one up on a Windows Computer.  
 
 First, BizTalk is a “store-and-forward” messaging engine and relies on Microsoft
 SQL Server to persist all messages published to it, so that it can offer
@@ -87,11 +87,11 @@ are some resources to help you get started with the adapter and help you imagine
 the many ways it can be used to seamlessly bring hyper-scale on premise object
 storage to the Enterprise.
 
-## Getting Started with CORTX BizTalk Adapter
+## Getting Started with CORTX BizTalk Adapter  
 
 I have prepared [this Getting Started Tutorial](CORTX%20BizTalk%20Adapter%20Getting%20Started%20Tutorial.md) to walk you through how to use
 the CORTX BizTalk Adapter to send data from BizTalk to CORTX, as well as receive
-data from CORTX into BizTalk.
+data from CORTX into BizTalk.  
 
 You can also watch [this video](https://youtu.be/MBQfkiDTxOE) to watch me
 perform similar steps in the tutorial in a live demo.
@@ -100,7 +100,7 @@ perform similar steps in the tutorial in a live demo.
 
 In [this video](https://youtu.be/l8UFgnC9lJo) I walk you through how you could
 use the CORTX BizTalk Adapter to migrate massive amounts of data from
-Microsoft’s Azure Blob Storage server into CORTX in a live demo.
+Microsoft’s Azure Blob Storage server into CORTX in a live demo.  
 
 ## Storing Data with the CORTX BizTalk Adapter
 
@@ -110,10 +110,10 @@ archival capabilities into any Enterprise business process, to meet continuously
 expanding data retention and regulatory compliance requirements. This live demo
 will show how easy it is to add a final CORTX archival step to an existing
 business process that processes incoming Purchase Orders for sending to an
-Enterprise Resource Planning (ERP) system.
+Enterprise Resource Planning (ERP) system.  
 
 
-## Activating Data with the CORTX BizTalk Adapter
+## Activating Data with the CORTX BizTalk Adapter  
 
 In [this video](https://youtu.be/SImILamWbo8) I walk you through how you could
 use the CORTX BizTalk Adapter to activate big data analytics within the

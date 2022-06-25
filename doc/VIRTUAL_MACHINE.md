@@ -1,8 +1,8 @@
 CentOS 7.8 dev VM
 =================
 
-:page_with_curl: **Notes:**
- - CentOS 7.8.2003 is deprecated, you will not longer get any updates or security fix's for this version.
+:page_with_curl: **Notes:** 
+ - CentOS 7.8.2003 is deprecated, you will not longer get any updates or security fix's for this version. 
   - You can continue using CentOS version 7.8.2003, however, you will have to access the OS packages from the vault repo. Please refer http://mirror.centos.org/centos-7/7.8.2003/readme for more information.
  - CentOS has moved to http://mirror.centos.org/centos-7/7.9.2009/ with kernel-3.10.0-1160.el7.x86_64.rpm
 
@@ -18,7 +18,7 @@ Create VM with the following recommended configuration:
 * Memory = 8GB
 * Storage = 128GB
 
-Install CentOS version 7.8.2003 in this VM from the previously downloaded ISO image. The default install of CentOS may turn off the network interface at boot for security. To turn on the network interface edit the network-scripts for the interface by changing ONBOOT veriable to 'yes' & reboot the VM.
+Install CentOS version 7.8.2003 in this VM from the previously downloaded ISO image. The default install of CentOS may turn off the network interface at boot for security. To turn on the network interface edit the network-scripts for the interface by changing ONBOOT veriable to 'yes' & reboot the VM. 
 
 ```
 # ip addr show
@@ -35,7 +35,7 @@ It is recommended to change user to `root` as `root` user privileges are require
 3.10.0-1062.12.1.el7.x86_64
 ```
 
-* [install] The epel-release is needed to be able to install ansible.
+* [install] The epel-release is needed to be able to install ansible. 
 ```
 # yum install -y epel-release
 # yum install -y ansible
@@ -46,7 +46,7 @@ It is recommended to change user to `root` as `root` user privileges are require
 # rpm -qa | grep ansible
 ansible-2.9.3-1.el7.noarch
 ```
-Ensure that the ansible version is `2.9` or greater.
+Ensure that the ansible version is `2.9` or greater. 
 
 Now you are ready to clone, build and/or run motr. Please refer to the [Motr](https://github.com/Seagate/cortx-motr/blob/main/doc/Quick-Start-Guide.rst) quick start document for further help on this.
 
@@ -73,12 +73,12 @@ It means that the necessary authorization information is not present. This may h
 PRE-BUILD [HARE]
 ----------------
 * Python ≥ 3.6 and the corresponding header files. To install them on CentOS 7.6, run
- ```
+ ``` 
 # yum install python3 python3-devel
 ```
 
 * Create an environment variable that points to the Motr source code:
-```
+```  
 # export M0_SRC_DIR="/home/motr"`
 ```
 
@@ -90,9 +90,9 @@ PRE-BUILD [HARE]
 
 ## Single node setup
 
-1. To fetch hare sources refer to section 3.5 in [this](Cluster_Setup.md) document.
+1. To fetch hare sources refer to section 3.5 in [this](Cluster_Setup.md) document. 
 
-2. Make sure you are `root` user, `cd` into the hare source directory and then execute the following commands to build and install hare
+2. Make sure you are `root` user, `cd` into the hare source directory and then execute the following commands to build and install hare 
 ```
 # make
 # make devinstall
@@ -142,7 +142,7 @@ On a successful cluster bootstrap the messages output on the terminal may look l
 Please refer to the `README.md` file in hare source for more comprehensive information.
 
 ## Note:
-* If during the bootstrap you see an error message such as
+* If during the bootstrap you see an error message such as 
 ```Starting Motr (phase1, mkfs)...Job for motr-mkfs@0x7200000000000001:0x9.service failed because the control process exited with error code. See "systemctl status motr-mkfs@0x7200000000000001:0x9.service" and "journalctl -xe" for details.```
 then it might be the case that lnet is not configured properly. In such a case follow these steps:
 ```
@@ -175,13 +175,13 @@ where `0x7200000000000001:0x9` is the confd ID from `hctl status`.
 * To stop a cluster, execute the following command:
 ```
 # hctl shutdown
-Stopping m0d@0x7200000000000001:0xc (ios) at localhost...
+Stopping m0d@0x7200000000000001:0xc (ios) at localhost... 
 Stopped m0d@0x7200000000000001:0xc (ios) at localhost
-Stopping m0d@0x7200000000000001:0x9 (confd) at localhost...
+Stopping m0d@0x7200000000000001:0x9 (confd) at localhost... 
 Stopped m0d@0x7200000000000001:0x9 (confd) at localhost
-Stopping hare-hax at localhost...
+Stopping hare-hax at localhost... 
 Stopped hare-hax at localhost
-Stopping hare-consul-agent at localhost...
+Stopping hare-consul-agent at localhost... 
 Stopped hare-consul-agent at localhost
 Killing RC Leader at localhost... done
-```
+``` 

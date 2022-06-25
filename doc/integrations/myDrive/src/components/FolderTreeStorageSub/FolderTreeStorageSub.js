@@ -1,7 +1,7 @@
 import React from "react";
 
 const FolderTreeStorageSub = (props) => (
-
+    
     <div className="folder-tree-sub__storage">
                 <div className="folder-tree-sub__storage__box">
                     <div className="folder-tree-sub__storage__image-div">
@@ -32,7 +32,7 @@ const FolderTreeStorageSub = (props) => (
     //                 <p style={props.selectedID === props.folder._id ? {color:"#3c85ee"} : {}}><span><i style={props.selectedID === props.folder._id ? {color:"#3c85ee"} : {}} class="fas fa-folder"></i></span>{props.folder.name}</p>
     //             </div>
     //         </div>
-
+            
     //         {/* CHILDREN GO HERE */}
     //         {props.state.open ? props.renderFolders() : undefined}
 

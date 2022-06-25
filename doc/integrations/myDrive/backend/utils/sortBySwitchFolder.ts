@@ -3,7 +3,7 @@ const sortBySwitchFolder = (sortBy: string) => {
 
         case "alp_asc":
             return {name: 1}
-        case "alp_desc":
+        case "alp_desc": 
             return {name: -1}
         case "date_asc":
             return {createdAt: 1}

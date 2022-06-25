@@ -1,7 +1,7 @@
 class NotFoundError extends Error {
 
     code: number;
-
+    
     constructor(args: any) {
         super(args);
 

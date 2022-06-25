@@ -24,7 +24,7 @@ class DownloadPageContainer extends React.Component {
         const filenameSplit = filename.split(".");
 
         if (filenameSplit.length > 1) {
-
+            
             const extension = filenameSplit[filenameSplit.length - 1]
 
             return extension.toUpperCase();
@@ -33,7 +33,7 @@ class DownloadPageContainer extends React.Component {
 
             return "Unknown"
         }
-
+        
     }
 
     componentDidMount = () => {
@@ -52,11 +52,11 @@ class DownloadPageContainer extends React.Component {
 
            this.setState(() => ({
                ...this.state,
-                title,
+                title, 
                 type,
                 size
            }))
-
+            
         }).catch((err) => {
             console.log(err)
             this.setState(() => ({...this.state, error: true}))
@@ -68,7 +68,7 @@ class DownloadPageContainer extends React.Component {
         const _id = this.props.match.params.id;
         const tempToken = this.props.match.params.tempToken
         const finalUrl = !this.isPersonalFile ? `/file-service/public/download/${_id}/${tempToken}` : `/file-service-personal/public/download/${_id}/${tempToken}`;
-
+   
         const link = document.createElement('a');
         document.body.appendChild(link);
         link.href = finalUrl;

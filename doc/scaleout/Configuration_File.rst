@@ -2,7 +2,7 @@
 Configuration File
 ==================
 
-The purpose of the config.ini file is to provide configuration details about the CORTX cluster. It is required for the cluster's installation.
+The purpose of the config.ini file is to provide configuration details about the CORTX cluster. It is required for the cluster's installation. 
 
 The config.ini file contains several sections. All sections are mandatory. Each section has several keys-value pairs, some of which are mandatory and some are optional.
 
@@ -29,7 +29,7 @@ The mandatory keys are listed in the table below.
 
 +------------+-------------------------------------------------+
 |  **Key**   |  **Description / default value (if provided)**  |
-+------------+-------------------------------------------------+
++------------+-------------------------------------------------+     
 | cluster_ip | IP address of Cluster (Data) VIP>               |
 +------------+-------------------------------------------------+
 | mgmt_vip   | IP address of Management VIP>                   |
@@ -49,7 +49,7 @@ The mandatory keys are listed in the table below.
 
 +------------+------------------------------------------------+
 | **Key**    | **Description / default value (if provided)**  |
-+------------+------------------------------------------------+
++------------+------------------------------------------------+     
 | type       | JBOD                                           |
 +------------+------------------------------------------------+
 
@@ -61,9 +61,9 @@ Optional Keys
 
 [srvnode-X]
 ============
-This section provides information about every server in the cluster.
+This section provides information about every server in the cluster. 
 
-**Note**: X should be replaced with the number. The actual sections should be named [srvnode-1], [srvnode-2], and [srvnode-3].
+**Note**: X should be replaced with the number. The actual sections should be named [srvnode-1], [srvnode-2], and [srvnode-3]. 
 
 Mandatory Keys
 ---------------
@@ -114,7 +114,7 @@ The mandatory keys are listed in the table below.
 |                                |    'adminBMC123!'                        |
 +--------------------------------+------------------------------------------+
 
-
+    
 Optional Keys
 --------------
 
@@ -159,7 +159,7 @@ Optional Keys
 |                                | "None" should be used                   |
 +--------------------------------+-----------------------------------------+
 
-
+   
 ****************************
 Template of Config.ini file
 ****************************
@@ -169,7 +169,7 @@ Template of Config.ini file
   [cluster]
   cluster_ip=
   mgmt_vip=
-
+  
   [storage_enclosure]
   type=JBOD
 

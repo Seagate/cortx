@@ -32,7 +32,7 @@ class MoverMenuContainer extends React.Component {
         let parent = this.props.isGoogle ? "root" : "/";
 
         if (this.state.selected !== "") {
-
+    
             parent = this.state.selected;
 
         } else if (this.state.historyList.length !== 0) {
@@ -41,7 +41,7 @@ class MoverMenuContainer extends React.Component {
         }
 
         const data = {
-            id,
+            id, 
             parent
         }
 
@@ -50,43 +50,43 @@ class MoverMenuContainer extends React.Component {
             const url = this.props.isGoogle ? `/file-service-google/move` : `/file-service/move`;
 
             axios.patch(url, data).then((response) => {
-
+        
                 this.props.dispatch(removeFile(id));
                 this.props.dispatch(resetMoverID());
                 this.props.dispatch(addMoveFolderTreeID(id, {_id: id, parent}))
                 this.props.dispatch(startResetCache());
-
+    
             })
-
+        
         } else {
 
             const url = this.props.isGoogle ? `/folder-service-google/move` : `/folder-service/move`;
 
             axios.patch(url, data).then((response) => {
-
+           
                 this.props.dispatch(removeFolder(id));
                 this.props.dispatch(resetMoverID());
                 this.props.dispatch(addMoveFolderTreeID(id, {_id: id, parent}))
                 this.props.dispatch(startResetCache());
-
+    
             })
 
         }
 
-
+        
     }
 
     getButtonName = () => {
 
 
         if (this.state.selected !== "") {
-
+    
             return "Move To Folder";
 
         } else if (this.state.historyList.length === 0) {
 
             return "Move To Home";
-
+            
         } else {
             return "Move Here";
         }
@@ -97,19 +97,19 @@ class MoverMenuContainer extends React.Component {
         e.preventDefault();
 
         const searchValue = this.state.search;
-
+   
         const id = this.props.isGoogle ? "root" : "/"
 
-        const url = this.props.isGoogle ?
-        `/folder-service-google/list?search=${searchValue}&sortBy=DEFAULT}`
-        : this.props.isPersonal ? `/folder-service/list?parent=${id}&search=${searchValue}&itemType=personal&sortBy=DEFAULT`
+        const url = this.props.isGoogle ? 
+        `/folder-service-google/list?search=${searchValue}&sortBy=DEFAULT}` 
+        : this.props.isPersonal ? `/folder-service/list?parent=${id}&search=${searchValue}&itemType=personal&sortBy=DEFAULT` 
         : `/folder-service/list?parent=${id}&search=${searchValue}&itemType=nonpersonal&sortBy=DEFAULT`;
 
         axios.get(url).then((response) => {
-
+           
             let folders = response.data;
 
-            if (!this.props.isFile) folders = folders.filter((folder) =>
+            if (!this.props.isFile) folders = folders.filter((folder) => 
                 folder._id !== this.props.ID);
 
             this.setState(() => ({
@@ -127,22 +127,22 @@ class MoverMenuContainer extends React.Component {
         const value = e.target.value;
 
         this.setState(() => ({
-            ...this.state,
+            ...this.state, 
             search: value
         }))
     }
 
     goHome = () => {
 
-        const id = this.props.isGoogle ? "root" : "/";
+        const id = this.props.isGoogle ? "root" : "/"; 
 
         const url = this.props.isGoogle ? `/folder-service-google/list?parent=${id}` : this.props.isPersonal ? `/folder-service/list?parent=${id}&itemType=personal` : `/folder-service/list?parent=${id}&itemType=nonpersonal`;
 
         axios.get(url).then((response) => {
-
+               
             let folders = response.data;
 
-            if (!this.props.isFile) folders = folders.filter((folder) =>
+            if (!this.props.isFile) folders = folders.filter((folder) => 
                 folder._id !== this.props.ID);
 
             this.setState(() => ({
@@ -169,7 +169,7 @@ class MoverMenuContainer extends React.Component {
 
             historyList = this.state.historyList;
             historyList.pop();
-
+            
             currentID = this.state.historyList[this.state.historyList.length - 1].id;
             currentName = this.state.historyList[this.state.historyList.length - 1].name;
 
@@ -182,10 +182,10 @@ class MoverMenuContainer extends React.Component {
         const url = this.props.isGoogle ? `/folder-service-google/list?parent=${currentID}` : this.props.isPersonal ? `/folder-service/list?parent=${currentID}&itemType=personal` : `/folder-service/list?parent=${currentID}&itemType=nonpersonal`;
 
         axios.get(url).then((response) => {
-
+           
             let folders = response.data;
 
-            if (!this.props.isFile) folders = folders.filter((folder) =>
+            if (!this.props.isFile) folders = folders.filter((folder) => 
                 folder._id !== this.props.ID);
 
             this.setState(() => ({
@@ -211,14 +211,14 @@ class MoverMenuContainer extends React.Component {
         const lastTimeDifference = currentTime - this.state.lastClick;
 
         if (lastTimeDifference < 1500 && id === this.state.selected) {
-
+    
             const url = this.props.isGoogle ? `/folder-service-google/list?parent=${id}` : this.props.isPersonal ? `/folder-service/list?parent=${id}&itemType=personal` : `/folder-service/list?parent=${id}&itemType=nonpersonal`;
 
             axios.get(url).then((response) => {
-
+               
                 let folders = response.data;
 
-                if (!this.props.isFile) folders = folders.filter((folder) =>
+                if (!this.props.isFile) folders = folders.filter((folder) => 
                 folder._id !== this.props.ID);
 
                 const historyList = this.state.historyList;
@@ -235,9 +235,9 @@ class MoverMenuContainer extends React.Component {
             }).catch((err) => {
                 console.log(err);
             })
-
+           
         } else {
-
+         
             this.setState(() => ({
                 ...this.state,
                 selected: id,
@@ -253,17 +253,17 @@ class MoverMenuContainer extends React.Component {
         const url = this.props.isGoogle ? `/folder-service-google/list?parent=${id}` : this.props.isPersonal ? `/folder-service/list?parent=${id}&itemType=personal` : `/folder-service/list?parent=${id}&itemType=nonpersonal`;
 
         axios.get(url).then((response) => {
-
+           
             let folders = response.data;
 
-            if (!this.props.isFile) folders = folders.filter((folder) =>
+            if (!this.props.isFile) folders = folders.filter((folder) => 
                 folder._id !== this.props.ID);
 
             this.setState(() => ({
                 ...this.state,
                 folders
             }))
-
+            
         }).catch((err) => {
             console.log(err);
         })
@@ -271,7 +271,7 @@ class MoverMenuContainer extends React.Component {
 
     render() {
 
-        return <MoverMenu
+        return <MoverMenu 
                 closeMover={this.closeMover}
                 folderClick={this.folderClick}
                 goBack={this.goBack}

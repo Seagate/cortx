@@ -1,6 +1,6 @@
 class UMLAttribute {
     /**
-     *
+     * 
      * @param {string} name Attribute name
      * @param {string} stereotype Type of data contained
      * @param {string} visibility public|private
@@ -24,7 +24,7 @@ class UMLAttribute {
 
 class UMLFunction {
     /**
-     *
+     * 
      * @param {string} name Function name
      * @param {string} visibility public|private
      * @param {string[]} parameters Input parameters
@@ -42,7 +42,7 @@ class UMLFunction {
 
 class UMLDataObject {
     /**
-     *
+     * 
      * @param {string} className UML Class name
      * @param {string} primaryKey Primary key value
      * @param {string} serviceName Source service Name
@@ -62,7 +62,7 @@ class UMLDataObject {
 
 class UMLClass {
     /**
-     *
+     * 
      * @param {string} name Class name
      * @param {string[]} stereotypes Stereotypes
      * @param {UMLAttribute[]} attributes Attributes

@@ -4,7 +4,7 @@ const { DRP_SubscribableSource, DRP_Subscriber } = require('./subscription');
 
 class DRP_TopicManager {
     /**
-     *
+     * 
      * @param {DRP_Node} drpNode DRP Node
      */
     constructor(drpNode) {
@@ -28,7 +28,7 @@ class DRP_TopicManager {
     }
 
     /**
-     *
+     * 
      * @param {DRP_Subscriber} subscription Subscription
      */
     SubscribeToTopic(subscription) {
@@ -83,7 +83,7 @@ class DRP_TopicManager {
 
 class DRP_TopicManager_Topic extends DRP_SubscribableSource {
     /**
-     *
+     * 
      * @param {DRP_TopicManager} topicManager Topic Manager
      * @param {string} topicName Topic Name
      * @param {number} historyLength History Length

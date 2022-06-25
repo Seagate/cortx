@@ -18,7 +18,7 @@ class UploadItemContainer extends React.Component {
             stopUploadButtonStyle: (completed || canceled) ? {visibility:"visible", opacity: 1} : {visibility: "hidden", opacity: 0}
         }
     }
-
+    
     hideProgress = () => {
 
         this.setState(() => ({
@@ -45,7 +45,7 @@ class UploadItemContainer extends React.Component {
             this.props.source.cancel("User Canceled Upload")
             this.props.dispatch(cancelUpload(this.props.id))
         }
-
+        
     }
 
     getUploadImage = () => {
@@ -63,7 +63,7 @@ class UploadItemContainer extends React.Component {
 
         if (this.props.completed && !this.uploadFinished) {
 
-            this.uploadFinished = true;
+            this.uploadFinished = true; 
 
             this.setState(() => ({
             ...this.state,
@@ -88,7 +88,7 @@ class UploadItemContainer extends React.Component {
 
     render() {
 
-        return <UploadItem
+        return <UploadItem 
                 hideProgress={this.hideProgress}
                 showProgress={this.showProgress}
                 cancelUploadEvent={this.cancelUploadEvent}

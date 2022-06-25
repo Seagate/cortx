@@ -36,7 +36,7 @@ class FolderTreeContrainer extends React.Component {
     }
 
     render() {
-
+        
         if (this.state.hideFolderTree) return <div></div>
 
         return <FolderTree state={this.state}/>

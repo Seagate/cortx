@@ -25,9 +25,9 @@ const LoginPage = (props) => {
                 :
 
                 <div className="sign__back">
-
-                    {(props.loginFailed && props.loginFailedCode === 404) ?
-
+                
+                    {(props.loginFailed && props.loginFailedCode === 404) ? 
+    
                     <div class="sign__block">
 
                             <div class="sign__inner">
@@ -49,8 +49,8 @@ const LoginPage = (props) => {
                                             <a class="resend__button" onClick={props.logout}>Logout</a>
                                         </div>
                                     </form>
-
-
+                            
+                            
                                 </div>
                             </div>
 
@@ -89,12 +89,12 @@ const LoginPage = (props) => {
                                     <div class="group__submit">
                                         <input type="submit" value={props.state.resetPasswordMode ? "Reset" : props.state.loginMode ? "Login" : "Create"}/>
                                     </div>
-
-                                    {!props.state.resetPasswordMode ?
-
+                                    
+                                    {!props.state.resetPasswordMode ? 
+                                    
                                     <div class="create__account">
-                                        {props.state.loginMode ?
-
+                                        {props.state.loginMode ? 
+                                        
                                         <p>Don't have an account? <a onClick={props.switchLoginMode}>Create account</a></p>
 
                                         :
@@ -112,7 +112,7 @@ const LoginPage = (props) => {
 
                                     {props.loginFailed ?
 
-                                        props.loginFailedCode === 404 ?
+                                        props.loginFailedCode === 404 ? 
                                         <div>
                                             <div className="login__image__wrapper">
                                                 <img className="login__image" src="/images/error-red.png" />
@@ -155,19 +155,19 @@ const LoginPage = (props) => {
                                 <h2>Check your email</h2>
                                 <p>If the email address matches any in our database, we’ll send you an email with instructions on how to reset your password</p>
                             </div>
+                        
+                        </div>
+                        
 
                         </div>
-
-
-                        </div>
-
+       
                     }
 
                     {/* <!-- Bottom copyright --> */}
                     {/* <div class="bottom__float">
                         <p>Copyright © 2020 myDrive. All Rights Reserved.</p>
                     </div> */}
-
+                    
                 </div>
 
             }

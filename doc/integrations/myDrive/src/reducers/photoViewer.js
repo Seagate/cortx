@@ -9,7 +9,7 @@ export default (state = defaultState, action) => {
     switch(action.type) {
 
         case "SET_PHOTO_ID":
-
+            
             return {
                 ...state,
                 id: action.id,

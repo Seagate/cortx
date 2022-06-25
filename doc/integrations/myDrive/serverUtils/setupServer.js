@@ -17,12 +17,12 @@ const awaitWriteFile = (path, data) => {
     return new Promise((resolve, reject) => {
 
         fs.writeFile(path, data, async(err) => {
-
+    
             if (err) {
                 console.log("file write error", err);
                 reject();
             }
-
+            
             resolve();
         })
     })
@@ -45,7 +45,7 @@ const initServer = async() => {
 
     const docker = getDocker.value;
 
-
+    
     if (docker) {
 
         let stringBuilder = '';
@@ -64,7 +64,7 @@ const initServer = async() => {
         let mongoURL = "mongodb://mongo:27017/personal-drive";
 
         if (!mongo) {
-
+            
             const getMongoURL = await prompts({
                 type: 'text',
                 message: "Enter The MongoDB URL",
@@ -75,7 +75,7 @@ const initServer = async() => {
         }
 
         stringBuilder += "MONGODB_URL=" + mongoURL + "\n"
-
+        
         const getKeyType = await prompts({
             type: 'toggle',
             name: 'value',
@@ -145,7 +145,7 @@ const initServer = async() => {
             })
 
             const s3Key = gets3Key.value;
-
+            
             stringBuilder += "S3_KEY=" + s3Key + "\n";
 
             const gets3Bucket = await prompts({
@@ -157,7 +157,7 @@ const initServer = async() => {
             const s3Bucket = gets3Bucket.value;
 
             stringBuilder += "S3_BUCKET=" + s3Bucket + "\n";
-
+            
         } else if (chunkDB === "fs") {
 
             const getFSPath = await prompts({
@@ -201,7 +201,7 @@ const initServer = async() => {
         stringBuilder += "DOCKER=true\n";
         stringBuilder += "NODE_ENV=production\n";
         stringBuilder += "PORT=3000\n";
-        stringBuilder += "HTTP_PORT=3000\n";
+        stringBuilder += "HTTP_PORT=3000\n"; 
         stringBuilder += "HTTPS_PORT=8080\n"
 
         await awaitWriteFile("./docker-variables.env", stringBuilder);
@@ -292,7 +292,7 @@ const initServer = async() => {
             })
 
             const s3Key = gets3Key.value;
-
+            
             stringBuilderServer += "S3_KEY=" + s3Key + "\n";
 
             const gets3Bucket = await prompts({
@@ -305,7 +305,7 @@ const initServer = async() => {
 
             stringBuilderServer += "S3_BUCKET=" + s3Bucket + "\n";
             stringBuilderClient += "DISABLE_STORAGE=true\n";
-
+            
         } else if (chunkDB === "fs") {
 
             const getFSPath = await prompts({
@@ -317,7 +317,7 @@ const initServer = async() => {
             const fsPath = getFSPath.value;
 
             stringBuilderServer += "FS_DIRECTORY=" + fsPath + "\n";
-            stringBuilderServer += "ROOT=" + fsPath + "\n";
+            stringBuilderServer += "ROOT=" + fsPath + "\n"; 
 
         } else {
 
@@ -352,7 +352,7 @@ const initServer = async() => {
 
         stringBuilderServer += "NODE_ENV=production\n";
         stringBuilderClient += "PORT=3000\n";
-        stringBuilderServer += "HTTP_PORT=3000\n";
+        stringBuilderServer += "HTTP_PORT=3000\n"; 
         stringBuilderServer += "HTTPS_PORT=8080\n"
 
         await awaitWriteFile("./.env.production", stringBuilderClient);

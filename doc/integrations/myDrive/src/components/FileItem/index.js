@@ -15,7 +15,7 @@ class FileItemContainer extends React.Component {
 
     constructor(props) {
         super(props);
-
+  
         this.failedToLoad = false;
 
         this.lastTouch = 0;
@@ -63,18 +63,18 @@ class FileItemContainer extends React.Component {
         }))
 
         const url = !this.props.metadata.personalFile ? `/file-service/thumbnail/${thumbnailID}` : `/file-service-personal/thumbnail/${thumbnailID}`;
-
+    
         axios.get(url, config).then((results) => {
 
             const imgFile = new Blob([results.data]);
-            const imgUrl = URL.createObjectURL(imgFile);
+            const imgUrl = URL.createObjectURL(imgFile);   
 
             this.setState(() => ({
                 ...this.state,
                 imageSrc: imgUrl,
                 imageClassname: imageClassname
             }))
-
+            
 
         }).catch((err) => {
             console.log(err)
@@ -101,24 +101,24 @@ class FileItemContainer extends React.Component {
             this.getThumbnail();
         }
     }
-
+    
     shouldComponentUpdate = (nextProp, nextState) => {
 
-        return (nextProp.itemSelected !== this.props.itemSelected
-                || nextProp.listView !== this.props.listView
-                || nextProp.rightSelected !== this.props.rightSelected
+        return (nextProp.itemSelected !== this.props.itemSelected 
+                || nextProp.listView !== this.props.listView 
+                || nextProp.rightSelected !== this.props.rightSelected 
                 || nextState.imageSrc !== this.state.imageSrc
                 || nextState.imageClassname !== this.state.imageClassname
                 || this.props.filename !== nextProp.filename
-                || this.props.metadata.transcoded !== nextProp.metadata.transcode
+                || this.props.metadata.transcoded !== nextProp.metadata.transcode 
                 || nextState.contextSelected !== this.state.contextSelected
                 || nextState.editNameMode !== this.state.editNameMode
                 || nextState.editName !== this.state.editName
                 || nextState.deleteMode !== this.state.deleteMode
                 || nextState.movingMode !== this.state.movingMode
-                || nextState.movingPercentage !== this.state.movingPercentage)
+                || nextState.movingPercentage !== this.state.movingPercentage) 
     }
-
+   
     componentDidUpdate = (nextProp) => {
 
         // console.log("file item component updated")
@@ -128,7 +128,7 @@ class FileItemContainer extends React.Component {
         const hasThumbnail = this.props.metadata.hasThumbnail;
 
         if (hasThumbnail && !this.failedToLoad && !this.imageLoaded) {
-
+    
             this.getThumbnail();
 
         } else if (nextProp.listView !== this.props.listView) {
@@ -176,9 +176,9 @@ class FileItemContainer extends React.Component {
     getContextMenu = (e) => {
 
         if (e) e.preventDefault();
-
+        
         const isMobile = mobileCheck();
-
+    
         const windowX = window.innerWidth;
         const windowY = window.innerHeight;
 
@@ -196,7 +196,7 @@ class FileItemContainer extends React.Component {
             if (clientY < (windowY / 3)) {
 
                 styleObj = {bottom:"-190px", top:"unset"}
-            }
+            } 
 
             if (clientY > ((windowY / 4) * 3.5)) {
 
@@ -208,7 +208,7 @@ class FileItemContainer extends React.Component {
                 styleObj = {...styleObj, left:"unset", right:0}
 
             } else {
-
+            
                 styleObj = {...styleObj, left:0, right:"unset"}
             }
         }
@@ -223,7 +223,7 @@ class FileItemContainer extends React.Component {
         this.props.dispatch(startSetSelectedItem(this.props._id, true, false))
         this.props.dispatch(setLastSelected(0));
         this.props.dispatch(setRightSelected(this.props._id))
-
+    
     }
 
     getWrapperClassname = () => {
@@ -280,7 +280,7 @@ class FileItemContainer extends React.Component {
     editNamePopup = async() => {
 
         let inputValue = this.props.filename;
-
+    
         const { value: folderName} = await Swal.fire({
             title: 'Enter A File Name',
             input: 'text',
@@ -335,7 +335,7 @@ class FileItemContainer extends React.Component {
 
     changeEditName = (e) => {
 
-        const value = e.target.value;
+        const value = e.target.value; 
 
         this.setState(() => {
             return {
@@ -441,7 +441,7 @@ class FileItemContainer extends React.Component {
         const filenameSplit = filename.split(".");
 
         if (filenameSplit.length > 1) {
-
+            
             let extension = filenameSplit[filenameSplit.length - 1]
 
             if (extension.length > 3) extension = extension.substring(0,2) + extension.substring(extension.length - 1, extension.length);
@@ -504,7 +504,7 @@ class FileItemContainer extends React.Component {
             DOCX: "/assets/extension2.svg",
             XLS: "/assets/extension3.svg",
             PTT: "/assets/extension4.svg",
-            ZIP: "/assets/extension5.svg",
+            ZIP: "/assets/extension5.svg",   
         }
 
         if (extensionObj[ext]) {
@@ -524,9 +524,9 @@ class FileItemContainer extends React.Component {
 
     render() {
 
-        return <FileItem
-                getWrapperClassname={this.getWrapperClassname}
-                getContextMenu={this.getContextMenu}
+        return <FileItem 
+                getWrapperClassname={this.getWrapperClassname} 
+                getContextMenu={this.getContextMenu} 
                 onTouchStart={this.onTouchStart}
                 onTouchEnd={this.onTouchEnd}
                 onTouchMove={this.onTouchMove}

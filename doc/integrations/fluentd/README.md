@@ -30,7 +30,7 @@ After you have done the above, create a bucket in your CORTX instance for Fluent
 
 ### Step 1 - Environment Setup
 Fluentd has a few recommendations on environment setup. The three things recommended are to set up an NTP daemon, increase the number of file descriptors, and optimize the network kernel parameters.
-<br/><br/>In a production-environment, setting up an NTP daemon allows for accurate timestamping.
+<br/><br/>In a production-environment, setting up an NTP daemon allows for accurate timestamping. 
 For a development environment it is not completely necessary. If you choose to set it up, the Fluentd documentation suggests using an [AWS-hosted NTP server](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html).
 <br/><br/>Before increasing the number of file descriptors, first check if it is necessary. You can do so by running
 
@@ -75,7 +75,7 @@ Ensure the Ruby version you have downloaded is ```>=2.4``` by running ```ruby --
 
 Now, that we have resolved our dependencies, go ahead and install the Fluentd Ruby Gem and the Fluentd S3 plugin:
 ```BASH
-$ sudo gem install fluentd --no-doc && sudo gem install fluent-plugin-s3
+$ sudo gem install fluentd --no-doc && sudo gem install fluent-plugin-s3 
 ```
 
 Verify the installation via:
@@ -143,7 +143,7 @@ You will see an output of your records as such:
 2021-04-27 21:00:35         67 logs/202104280159_0.gz
 ```
 
-Congrats! If you have made it this far, you have successfully integrated CORTX with Fluentd!
+Congrats! If you have made it this far, you have successfully integrated CORTX with Fluentd! 
 
 ## What's next?
 Typically, Fluentd is used in conjuction with Elasticsearch and Kibana (EFK stack) which allows for log aggregation, gathering, and visualization. It would be great to eventually store logs in CORTX as a form of retention management.

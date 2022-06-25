@@ -33,7 +33,7 @@ The above command will return the keys as per following example:
 > [root@cortx-k8s-setup ~]# s3iamcli CreateAccount -n C_QA -e cloud@seagate.com --ldapuser sgiamadmin --ldappasswd ldapadmin --no-ss
 AccountId = 600297343713, CanonicalId = dfccc0c3b9154f169408514e32dc20f932c968ed2b6f468bab7aff4cafbe5be8, RootUserName = root, <xxxxAccessKeyxxxx>, SecretKey = <xxxxSecretKeyxxxx>
 
-**Note:** The above command will prompt for Access key and Secret key which can be referenced while configuring `aws configure`
+**Note:** The above command will prompt for Access key and Secret key which can be referenced while configuring `aws configure` 
 
 - Run the following command to configure `awscli`:
 ```bash

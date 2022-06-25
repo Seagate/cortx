@@ -1,5 +1,5 @@
 descriptor-schema-version: "2.7"
-
+  
 info:
  name: iox_docker_drp
  description: "DRP IOX Demo"

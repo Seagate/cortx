@@ -313,8 +313,8 @@ local memory which will need to be extended**
    largest weather prediction data archives, CSCS(Switzerland) - runs
    the largest supercomputer in the world outside of China, CEA,
    Appentra (Spain)
-
-
+   
+   
 
 **Key Technology Focus**
 #########################
@@ -462,9 +462,9 @@ entities [50% - 100%]
          -  Seagate leads storage and I/O workgroup
 
       -  ETP4HPC is an official advisor to the EC
-
-
-
+	  
+	  
+	  
 ..
 
 
@@ -495,25 +495,27 @@ entities [50% - 100%]
 
 
 .. |image0| image:: images/1_EOS_Tutorial.png
-
+   
 .. |image1| image:: images/2_H2020.png
-
+    
 .. |image3| image:: images/4_One_Storage_System.png
-
+   
 .. |image4| image:: images/5_SAGE_Project_Goal.png
-
+   
 .. |image5| image:: images/6_SAGE_Implemented_System_Stack.png
-
+   
 .. |image6| image:: images/7_Implemented_System.png
-
+   
 .. |image7| image:: images/8_SAGE_Use_Cases.png
-
+   
 .. |image8| image:: images/9_SAGE2_Innovation.png
-
+   
 .. |image9| image:: images/10_SAGE2_Use_Cases.png
-
+   
 .. |image10| image:: images/11_SAGE2_Proposed_System.png
-
+   
 .. |image11| image:: images/12_System_Operation_with_SAGE2.png
-
+   
 .. |image12| image:: images/13_SAGE2_Enhanced_System_&_Software_Focus.png
+   
+

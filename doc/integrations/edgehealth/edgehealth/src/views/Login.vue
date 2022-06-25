@@ -65,11 +65,11 @@
 </template>
 <script>
 export default {
-
+  
 }
 </script>
 <style>
 ::-webkit-scrollbar-thumb{
-
+   
 }
 </style>

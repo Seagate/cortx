@@ -58,7 +58,7 @@ export const startSetParentList = (id, isGoogle=false) => {
 
 export const adjustParentList = (parentList, parentNameList) => ({
     type: "ADJUST_PARENT_LIST",
-    parentList,
+    parentList, 
     parentNameList
 })
 

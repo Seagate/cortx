@@ -113,7 +113,7 @@ class ShareModelContainer extends React.Component {
     //             }
     //         })
     //     })
-
+        
     // }
   }
 
@@ -211,7 +211,7 @@ class ShareModelContainer extends React.Component {
         console.log("new state set")
 
         window.setTimeout(() => {
-
+        
             this.setState(() => {
 
                 return {
@@ -219,13 +219,13 @@ class ShareModelContainer extends React.Component {
                     copySelected: false
                 }
             })
-
+        
         }, 750)
     })
   }
 
   removePublicLink = async() => {
-
+   
     const url = this.props.shareSelected.metadata.drive ? `/file-service-google/remove-link/${this.props.shareSelected._id}` : `/file-service/remove-link/${this.props.shareSelected._id}`
 
     axios.delete(url, {
@@ -239,7 +239,7 @@ class ShareModelContainer extends React.Component {
 
         this.props.dispatch(editSelectedItem({link: undefined,
             linkType: undefined}))
-
+        
 
         this.props.dispatch(editShareSelected({"metadata": {
             ...this.props.shareSelected.metadata,
@@ -262,7 +262,7 @@ class ShareModelContainer extends React.Component {
           text: 'An error occurred when removing public link',
         })
     })
-
+    
   }
 
   makePublic = () => {
@@ -280,13 +280,13 @@ class ShareModelContainer extends React.Component {
       }).then((result) => {
 
         this.showingSwal = false;
-
+        
         if (result.value) {
 
             const url = this.props.shareSelected.metadata.drive ? `/file-service-google/make-public/${this.props.shareSelected._id}` : `/file-service/make-public/${this.props.shareSelected._id}`;
-
+    
             axios.patch(url, undefined).then((results) => {
-
+                
                 this.props.dispatch(editFile(this.props.shareSelected._id,{"metadata": {
                     ...this.props.shareSelected.metadata,
                     link: results.data,
@@ -295,7 +295,7 @@ class ShareModelContainer extends React.Component {
 
                 this.props.dispatch(editSelectedItem({link: results.data,
                     linkType: "public"}))
-
+                
 
                 this.props.dispatch(editShareSelected({"metadata": {
                     ...this.props.shareSelected.metadata,
@@ -305,7 +305,7 @@ class ShareModelContainer extends React.Component {
 
                 const shareURL = this.props.shareSelected.metadata.drive ? results.data : `${currentURL}/download-page/${this.props.shareSelected._id}/${results.data}`
 
-
+                
                 this.setState(() => ({
                   ...this.state,
                   shared: true,
@@ -339,11 +339,11 @@ class ShareModelContainer extends React.Component {
         }).then((result) => {
 
           this.showingSwal = false;
-
+          
           if (result.value) {
-
+      
               axios.patch(`/file-service/make-one/${this.props.shareSelected._id}`, undefined).then((results) => {
-
+                  
                   this.props.dispatch(editFile(this.props.shareSelected._id,{"metadata": {
                       ...this.props.shareSelected.metadata,
                       link: results.data,
@@ -371,7 +371,7 @@ class ShareModelContainer extends React.Component {
                     shared: true,
                     shareableLink: shareURL
                   }))
-
+      
               }).catch((err) => {
                   console.log(err)
                   Swal.fire({
@@ -380,7 +380,7 @@ class ShareModelContainer extends React.Component {
                     text: 'An error occurred when making one time public link',
                   })
               })
-
+            
 
           }
         })
@@ -402,7 +402,7 @@ class ShareModelContainer extends React.Component {
 
         this.props.dispatch(editSelectedItem({link: undefined,
             linkType: undefined}))
-
+        
 
         this.props.dispatch(editShareSelected({"metadata": {
             ...this.props.shareSelected.metadata,

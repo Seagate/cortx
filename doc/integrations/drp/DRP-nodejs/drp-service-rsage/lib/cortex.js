@@ -4,7 +4,7 @@ const DRP_Hive = require('./hive');
 
 class Cortex extends DRP_Service {
     /**
-     *
+     * 
      * @param {string} serviceName Service Name
      * @param {DRP_Node} drpNode DRP Node
      * @param {DRP_Hive} hiveObj Hive
@@ -558,7 +558,7 @@ class HiveMapQuery {
 
 class CortexObjectManager {
     /**
-     *
+     * 
      * @param {Cortex} CortexServer Cortex
      * @param {string} ObjectManagerName Object Manager Name
      */

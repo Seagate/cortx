@@ -9,16 +9,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-
+                
                 resolve();
-
+    
             })
 
         } else {
 
             resolve();
         }
-
+    
     })
 }
 
@@ -30,7 +30,7 @@ const deleteTempDatabase = async() => {
 
     const userConfimation = await prompts({
         type: 'text',
-        message: "Warning: Deleting the Backup Database cannot be undone,\n" +
+        message: "Warning: Deleting the Backup Database cannot be undone,\n" + 
         "Would you like to continue? (Yes/No)",
         name: "value"
     })

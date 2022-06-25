@@ -20,7 +20,7 @@ class GoogleAccountPageContainer extends React.Component {
     componentDidMount = () => {
 
         axios.get(`/user-service/user`).then((response) => {
-
+            
             this.setState(() => {
                 return {
                     ...this.state,
@@ -28,7 +28,7 @@ class GoogleAccountPageContainer extends React.Component {
                     accountEmail: response.data.email
                 }
             })
-
+            
         }).catch((err) => {
             console.log("google account page get user err", err);
             Swal.fire({
@@ -62,7 +62,7 @@ class GoogleAccountPageContainer extends React.Component {
         }
 
         axios.post('/user-service/add-google-storage', data).then((response) => {
-
+        
             Swal.fire(
                 'Added Google Account',
                 'Google Account Has Been Successfully Linked',
@@ -89,7 +89,7 @@ class GoogleAccountPageContainer extends React.Component {
     render () {
         return (
 
-            <GoogleAccountPage
+            <GoogleAccountPage 
                 addGoogleAccount={this.addGoogleAccount}
                 state={this.state}
                 {...this.props}/>

@@ -20,7 +20,7 @@
 
 set -e -o pipefail
 
-usage() {
+usage() { 
 echo "Generate cortx-all docker image from provided CORTX release build"
 echo "Usage: $0 [ -b build ] [ -p push docker-image to GHCR yes/no. Default no] [ -t tag latest yes/no. Default no" ] [ -e environment ] [ -h print help message ] 1>&2; exit 1; }
 
@@ -102,3 +102,4 @@ if [ "$TAG_LATEST" == "yes" ];then
 else
         echo "Latest tag creation skipped"
 fi
+

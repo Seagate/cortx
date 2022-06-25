@@ -1,18 +1,18 @@
 import axios from "../axiosInterceptor";
 
 export const setSelectedItem = (selectedItem) => ({
-    type: "SET_SELECTED_ITEM",
+    type: "SET_SELECTED_ITEM", 
     selectedItem
 })
 
 export const startSetSelectedItem = (id, file, fromQuickItems, isGoogleDrive) => {
 
     return (dispatch) => {
-
+        
         const currentDate = Date.now();
 
         dispatch(setLastSelected(currentDate));
-
+        
         if (!fromQuickItems) {
             dispatch(setSelected(id))
         } else {
@@ -28,7 +28,7 @@ export const startSetSelectedItem = (id, file, fromQuickItems, isGoogleDrive) =>
                     const data = results.data;
 
                     const {filename: name, length: size, uploadDate: date, parentName: location, metadata, _id: id} = results.data;
-
+    
                     dispatch(setSelectedItem({name, size, date, file, location, transcoded: metadata.transcoded, isVideo: metadata.isVideo, id, linkType: metadata.linkType, link: metadata.link, drive: metadata.drive, personalFile: metadata.personalFile, data: results.data}))
 
                 }).catch((err) => {
@@ -40,9 +40,9 @@ export const startSetSelectedItem = (id, file, fromQuickItems, isGoogleDrive) =>
                 axios.get(`/file-service/info/${id}`).then((results) => {
 
                     const {filename: name, length: size, uploadDate: date, parentName: location, metadata, _id: id} = results.data;
-
+    
                     dispatch(setSelectedItem({name, size, date, file, location, transcoded: metadata.transcoded, isVideo: metadata.isVideo, id, linkType: metadata.linkType, link: metadata.link, drive: metadata.drive, personalFile: metadata.personalFile, data: results.data}))
-
+                    
                 }).catch((err) => {
                     console.log(err)
                 })
@@ -55,9 +55,9 @@ export const startSetSelectedItem = (id, file, fromQuickItems, isGoogleDrive) =>
                 axios.get(`/folder-service-google/info/${id}`).then((results) => {
 
                     const {name, 0: size, createdAt: date, parentName: location, _id: id, drive, personalFolder: personalFile} = results.data;
-
+    
                     dispatch(setSelectedItem({name, size, date, file, location, data: results.data, id, drive, personalFile}))
-
+                    
                 }).catch((err) => {
                     console.log(err)
                 })
@@ -67,9 +67,9 @@ export const startSetSelectedItem = (id, file, fromQuickItems, isGoogleDrive) =>
                 axios.get(`/folder-service/info/${id}`).then((results) => {
 
                     const {name, 0: size, createdAt: date, parentName: location, _id: id, drive, personalFolder: personalFile} = results.data;
-
+    
                     dispatch(setSelectedItem({name, size, date, file, location, data: results.data, id, drive, personalFile}))
-
+                    
                 }).catch((err) => {
                     console.log(err)
                 })
@@ -97,7 +97,7 @@ export const setLastSelected = (lastSelected) => ({
 })
 
 export const setRightSelected = (selected) => ({
-    type: "SET_RIGHT_SELECTED",
+    type: "SET_RIGHT_SELECTED", 
     selected
 })
 
@@ -109,7 +109,7 @@ export const setShareSelected = (selected) => ({
 export const editShareSelected = (selected) => ({
     type: "EDIT_SHARE_SELECTED",
     selected
-})
+}) 
 
 export const setSelected = (selected) => ({
     type: "SET_SELECTED",

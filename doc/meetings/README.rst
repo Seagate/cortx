@@ -2,11 +2,11 @@
 CORTX Monthly 'Meet an Architect' Series
 #######
 
-On the first Thursday of every month at GMT 1600, the CORTX Community hosts a 'Meet an Architect' meeting in which
+On the first Thursday of every month at GMT 1600, the CORTX Community hosts a 'Meet an Architect' meeting in which 
 a CORTX architect, or community member, presents a presentation of interest for the community and
 in which time is left for a question and answer session.
 
-The Meet an Architect series are open to the public. You can subscribe via this `Calendar`_ invite. In addition, for those who cannot join us live, all meetings are recorded and made available on this page afterwards.
+The Meet an Architect series are open to the public. You can subscribe via this `Calendar`_ invite. In addition, for those who cannot join us live, all meetings are recorded and made available on this page afterwards. 
 
 .. _Calendar: https://cortx.link/mma_invite
 
@@ -39,11 +39,11 @@ Audience members may also be interested in our `Motr Deep Dive training sessions
 
 #. July 1, 2021: CORTX Developer Advocate Patrick Hession and CORTX Architect Andriy Tkachuk presented a tutorial about installing, configuring, and tuning motr clusters. `PDF <PDFs/PresentationPDF.pdf>`_  | `Video <https://www.youtube.com/watch?v=OGG5x2Wohm0>`_.
 
-#. June 3, 2021: Dr. Axel Orszag-Krisz, Dr. Richard Adam Vecsey, and other guests from our latest hackathon discussed on their integrations. `Video <https://cortx.link/mta-hackathon>`_.
+#. June 3, 2021: Dr. Axel Orszag-Krisz, Dr. Richard Adam Vecsey, and other guests from our latest hackathon discussed on their integrations. `Video <https://cortx.link/mta-hackathon>`_. 
 
-#. May 6, 2021: Dr. Debasmita Samaddar from Culham Center for Fusion Energy (our first external speaker!) discussed "Parallel in time and object storage w/ CORTX". `PDF <PDFs/DSamaddar_UKAEA.pdf>`_  |   `Video <https://cortx.link/MTA-May>`_.
+#. May 6, 2021: Dr. Debasmita Samaddar from Culham Center for Fusion Energy (our first external speaker!) discussed "Parallel in time and object storage w/ CORTX". `PDF <PDFs/DSamaddar_UKAEA.pdf>`_  |   `Video <https://cortx.link/MTA-May>`_. 
 
-#. April 1, 2021: Sai Narasimhamurthy, Andriy Tkachuk, and Ganesan Umanesan presented the CORTX related research happening in the European Union on the SAGE CORTX Cluster.  The discussion included Hierarchical Storage Management. `PDF <PDFs/MTA_april.pdf>`_  |   `Video <https://www.youtube.com/watch?v=-LRq-XUD_OE&t=100>`_.
+#. April 1, 2021: Sai Narasimhamurthy, Andriy Tkachuk, and Ganesan Umanesan presented the CORTX related research happening in the European Union on the SAGE CORTX Cluster.  The discussion included Hierarchical Storage Management. `PDF <PDFs/MTA_april.pdf>`_  |   `Video <https://www.youtube.com/watch?v=-LRq-XUD_OE&t=100>`_. 
 
 #. March 4, 2021: Anatoliy Bilenko discussed observability in CORTX by demonstrating how to use the `ADDB in motr <https://github.com/Seagate/cortx-motr/blob/main/doc/ADDB.rst>`_. `PDF <PDFs/CORTX%20Observability.pdf>`_ | `Video <https://cortx.link/MTA-Observability>`_
 

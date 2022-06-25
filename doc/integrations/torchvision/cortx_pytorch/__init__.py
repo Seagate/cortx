@@ -25,7 +25,7 @@ class Packer(ch.utils.data.Dataset):
 
     def __len__(self):
         return len(self.ds)
-
+    
     def __getitem__(self, ix):
         im, lab = self.ds[ix]
         with io.BytesIO() as output:

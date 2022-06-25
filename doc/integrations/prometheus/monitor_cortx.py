@@ -36,3 +36,4 @@ def print_stat(folder, items_count, seconds_since_epoch: int):
 
 if __name__ == '__main__':
     run_monitoring('PyCharm')
+

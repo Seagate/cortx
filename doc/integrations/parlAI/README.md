@@ -21,7 +21,7 @@ Its goal is to provide researchers:
   * seamless integration of Amazon Mechanical Turk for data collection and human evaluation
 
   * integration with chat services like Facebook Messenger to connect agents with humans in a [chat interface
-link](https://github.com/facebookresearch/ParlAI)
+link](https://github.com/facebookresearch/ParlAI) 
 
 In ParlAI, we call an environment a world. In each world, there are agents. Examples of agents include models and datasets. Agents interact with each other by taking turns acting and observing acts.
 
@@ -38,23 +38,23 @@ I just used private virtual lab through [CloudShare](https://github.com/Seagate/
 
 **Installation setup**
 
-1. Install [anaconda](https://anaconda.org/) python.
+1. Install [anaconda](https://anaconda.org/) python. 
 2. create a conda environment
-```
+``` 
 conda create -n cortx pip python=3.7
 ```
 3. activate the environment
-```
+``` 
 conda activate cortx
 ```
 4. Install the requirements
-```
+``` 
 pip install -r requirements.txt
 ```
 
 **Training**
 1. Create an S3 bucket to store the weight files.
-```
+``` 
 import boto3
 from botocore.client import Config
 END_POINT_URL = "http://192.168.x.xxx"
@@ -80,7 +80,7 @@ print("bucket created")
 ```
 2. Train
 
-```
+``` 
 cd training
 python train.py
 ```
@@ -88,14 +88,14 @@ The "training" directory include a custom dataset "train.txt" in ParlAI format. 
 
 train.txt
 
-```
+``` 
 
 text:what is CORTX?   labels:CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization
 text:is it open sourced?   labels:CORTX is 100% Open Source
 text:Does it works with any processor   labels:Yes, it works with any processor.
 text:is it flexible?   labels:Highly flexible, works with HDD, SSD, and NVM.
 text:is it scalable?   labels:Massively Scalable. Scales up to a billion billion billion billion billion exabytes (2^206) and 1.3 billion billion billion billion (2^120) objects with unlimited object sizes.
-text:is it responsive?   labels:Rapidly Responsive. Quickly retrieves data regardless of the scale using a novel Key-Value System that ensures low search latency across massive data sets.
+text:is it responsive?   labels:Rapidly Responsive. Quickly retrieves data regardless of the scale using a novel Key-Value System that ensures low search latency across massive data sets.   
 text:how much resiliant?   labels:Highly flexible, works with HDD, SSD, and NVM.
 text:bye   labels:bye.   episode_done=True
 ```
@@ -108,11 +108,11 @@ text:bye   labels:bye.   episode_done=True
 
 ![alt text](images/flask.png)
 ![alt text](images/f1.png)
-```
+``` 
 cd ..
-python application.py  -mf "training/poly-encoder/model"
+python application.py  -mf "training/poly-encoder/model" 
 ```
-1. For each user there will be a unique id to seperate conversations.
+1. For each user there will be a unique id to seperate conversations. 
 2. Each connection will include one world, one AI agent and multiple users.
 3. The fine tuned model will be downloaded from the CORTX S3 bucket for inference in Flask.
 
@@ -122,4 +122,8 @@ python application.py  -mf "training/poly-encoder/model"
 1. https://github.com/facebookresearch/ParlAI
 2. https://parl.ai/docs/zoo.html
 3. https://arxiv.org/abs/1905.01969
-4. https://parl.ai/projects/polyencoder/
+4. https://parl.ai/projects/polyencoder/ 
+
+
+
+

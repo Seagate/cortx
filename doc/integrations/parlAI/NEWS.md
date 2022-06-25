@@ -14,7 +14,7 @@ We are now making most of our major announcements on [Twitter](https://twitter.c
 
 2020-02-04: [GPT2 fine-tuning for dialogue](https://github.com/facebookresearch/ParlAI/tree/master/parlai/agents/hugging_face)  now supported in ParlAI!
 
-2020-01-17: [All-in-One Image-Grounded Conversational Agents project](https://twitter.com/parlai_parley/status/1218204771859017732) built in ParlAI
+2020-01-17: [All-in-One Image-Grounded Conversational Agents project](https://twitter.com/parlai_parley/status/1218204771859017732) built in ParlAI 
 
 2020-01-15: [Seb Ruder's 10 ML & NLP Research Highlights of 2019 post](https://ruder.io/research-highlights-2019/) mentions at least two works built with ParlAI.
 
@@ -22,7 +22,7 @@ We are now making most of our major announcements on [Twitter](https://twitter.c
 
 2019-12-11: [OneCommon Corpus is now available in ParlAI](https://twitter.com/futsaludy/status/1204661465967259648). Thanks to our colleague Takato Yamazaki
 
-2019-11-10: [Dialogue unlikelihood project](https://parl.ai/projects/dialogue_unlikelihood/) for improving consistency in dialogue generation.
+2019-11-10: [Dialogue unlikelihood project](https://parl.ai/projects/dialogue_unlikelihood/) for improving consistency in dialogue generation. 
 
 2019-11-09: The [Gender bias project page](https://parl.ai/projects/genderation_bias/) mitigates bias in dialogue generation.
 

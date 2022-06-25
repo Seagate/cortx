@@ -8,7 +8,7 @@ const removeChunks = async(bucketStream: GridFSBucketWriteStream) => {
     const uploadID = bucketStream.id as string;
 
     try {
-
+        
         if (!uploadID || uploadID.length === 0) {
 
             console.log("Invalid uploadID for remove chunks");

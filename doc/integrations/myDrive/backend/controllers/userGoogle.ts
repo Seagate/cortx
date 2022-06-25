@@ -11,10 +11,10 @@ interface RequestTypeFullUser extends Request {
 }
 
 class UserGoogleController {
-
+    
     constructor() {
 
-    }
+    } 
 
     createGoogleStorageURL = async(req: RequestTypeFullUser, res: Response) => {
 
@@ -32,7 +32,7 @@ class UserGoogleController {
             res.send(url);
 
         } catch (e) {
-
+            
             console.log("\nCreate Storage URL Error Google User Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -49,7 +49,7 @@ class UserGoogleController {
 
             const user = req.user;
             const code = req.body.code;
-
+            
             const currentUUID = req.headers.uuid as string;
 
             const {accessToken, refreshToken} = await UserProviderGoogle.addGoogleStorage(user, code, currentUUID);
@@ -59,7 +59,7 @@ class UserGoogleController {
             res.send();
 
         } catch (e) {
-
+            
             console.log("\nAdd Google Storage Error Google User Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -85,7 +85,7 @@ class UserGoogleController {
             res.send();
 
         } catch (e) {
-
+            
             console.log("\nRemove Google Storage Error Google User Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();

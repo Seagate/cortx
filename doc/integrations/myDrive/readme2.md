@@ -102,7 +102,7 @@ If you're using a service like SSH or a Droplet, you can forward the localhost c
 ssh -L localhost:3000:localhost:3000 username@ip_address
 ```
 
-Note: You can also disable using the webUI for the encryption key by providing a key in the server environment variables (e.g. KEY=password), but this is not recommended because it greatly reduces security.
+Note: You can also disable using the webUI for the encryption key by providing a key in the server environment variables (e.g. KEY=password), but this is not recommended because it greatly reduces security. 
 
 ## Docker
 
@@ -126,20 +126,20 @@ docker-compose up
 
 ## Updating from a previous version of myDrive
 
-If you are running a previous version of myDrive such as myDrive 2 you must perform the following steps before you will be able to run myDrive properly. An easy way to tell if you are running a previous version of myDrive is checking if you have the old UI/look of myDrive 2. If your home page looks different than the myDrive 3 design you are most likely running myDrive 2.
+If you are running a previous version of myDrive such as myDrive 2 you must perform the following steps before you will be able to run myDrive properly. An easy way to tell if you are running a previous version of myDrive is checking if you have the old UI/look of myDrive 2. If your home page looks different than the myDrive 3 design you are most likely running myDrive 2. 
 
 First I recommend creating a new folder for myDrive 3, so just incase you are having difficulties with myDrive 3 you can easily revert to myDrive 2.
 
 After you install the node modules, run setup, and build the project. You can then run the script to clear all the authentication tokens from all the users. This is because the Schema for tokens has changed, this will cause all users to have to log back in.
 
-Run the following command:
+Run the following command: 
 
 >Remove old tokens
 ``` javascript
 npm run remove-tokens
 ```
 
-If successful you should see in the terminal the number of users that has their tokens removed, if you run into any errors check your environment variables and make sure the project is built properly.
+If successful you should see in the terminal the number of users that has their tokens removed, if you run into any errors check your environment variables and make sure the project is built properly.  
 
 ## Screenshots
 
@@ -178,13 +178,13 @@ Google Drive Support
 
 You can easily create environment variables using the built in setup tool 'npm run setup', or manually create the files.
 
-Create a config folder on the root of the project, and create a file with the name prod.env for the server. For the client variables create a .env.production file in the root of the project.
+Create a config folder on the root of the project, and create a file with the name prod.env for the server. For the client variables create a .env.production file in the root of the project. 
 
-Docker: If you're using Docker, instead create a file named 'docker-variables.env' on the root of the project. You must also include DOCKER=true in the servers environment variables.
+Docker: If you're using Docker, instead create a file named 'docker-variables.env' on the root of the project. You must also include DOCKER=true in the servers environment variables. 
 
 Server Environment Variables:
 
-- MONGODB_URL (Required): Sets the MongoDB URL, this should also work with DocumentDB.
+- MONGODB_URL (Required): Sets the MongoDB URL, this should also work with DocumentDB. 
 - HTTP_PORT (Required): Sets the HTTP port number.
 - HTTPS_PORT (Required): Sets the HTTPS port number.
 - REMOTE_URL (Required): This is the URL that the client navigates to in their browser in order to access myDrive. This is needed for things like the Google Drive redirect URL, and including the URL when sending email verification/password reset emails.
@@ -197,12 +197,12 @@ Server Environment Variables:
 - SECURE_COOKIES (Optional): Makes cookies secure, which means they can only be sent with HTTPS/SSL. Choose this option only if you are using HTTPS.
 - KEY (Optional): Encryption key for data, this is not recommended, please use the built in webUI for setting the key.
 - DOCKER (Optional/Required): Sets the server to use docker, set this to 'true'.
-- FS_DIRECTORY (Optional/Required): Sets the directory for file data on the file system.
+- FS_DIRECTORY (Optional/Required): Sets the directory for file data on the file system. 
 - S3_ID (Optional/Required): Sets the Amazon S3 ID.
 - S3_KEY (Optional/Required): Sets the Amazon S3 Key.
 - S3_BUCKET (Optional/Required): Sets the Amazon Bucket.
 - ROOT (Optional): Uses a filesystem path, is used for storage space.
-- URL (Optional): Allows to specify URL to host on, this is usually not needed.
+- URL (Optional): Allows to specify URL to host on, this is usually not needed. 
 - USE_DOCUMENT_DB (Optional): Enables documentDB, this is experimental, set this to 'true'.
 - DISABLE_EMAIL_VERIFICATION (optional): Disabled email verification when creating an account. Also will not allow users to reset their password with an email.
 - SENDGRID_EMAIL (optional): If you are using email verification it is done through sendgrid, enter the sendgrid email address you would like to use. This is the email address users will see when they need to verify their account, or reset their password.

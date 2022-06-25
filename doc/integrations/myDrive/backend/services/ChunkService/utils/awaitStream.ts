@@ -11,7 +11,7 @@ const awaitStream = <T>(inputSteam: any, outputStream: any, allStreamsToErrorCat
                     error: e
                 })
             })
-
+            
         })
 
         inputSteam.pipe(outputStream).on("finish", (data: T) => {

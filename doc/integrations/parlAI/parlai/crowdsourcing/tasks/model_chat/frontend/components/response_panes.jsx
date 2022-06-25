@@ -8,8 +8,8 @@
 
 import React from "react";
 
-import {
-  FormControl,
+import { 
+  FormControl, 
   Button,
   Col,
   FormGroup,
@@ -28,7 +28,7 @@ function hasAnyAnnotations(annotations) {
   }
   return false;
 }
-
+  
 function FinalSurvey({ taskConfig, onMessageSend, active, currentCheckboxes}) {
   const [rating, setRating] = React.useState(0);
   const [sending, setSending] = React.useState(false);
@@ -36,8 +36,8 @@ function FinalSurvey({ taskConfig, onMessageSend, active, currentCheckboxes}) {
   const tryMessageSend = React.useCallback(() => {
     if (active && !sending) {
       setSending(true);
-      onMessageSend({
-        text: "",
+      onMessageSend({ 
+        text: "", 
         task_data: {
           problem_data_for_prior_message: currentCheckboxes,
           final_rating: rating,
@@ -119,9 +119,9 @@ function CheckboxTextResponse({ onMessageSend, active, currentCheckboxes}) {
   const tryMessageSend = React.useCallback(() => {
     if (textValue !== "" && active && !sending) {
       setSending(true);
-      onMessageSend({
-        text: textValue,
-        task_data: {problem_data_for_prior_message: currentCheckboxes}
+      onMessageSend({ 
+        text: textValue, 
+        task_data: {problem_data_for_prior_message: currentCheckboxes} 
       }).then(() => {
         setTextValue("");
         setSending(false);
@@ -169,15 +169,15 @@ function CheckboxTextResponse({ onMessageSend, active, currentCheckboxes}) {
 }
 
 function ResponseComponent({ taskConfig, appSettings, onMessageSend, active }) {
-
+  
   const lastMessageIdx = appSettings.numMessages - 1;
   const lastMessageAnnotations = appSettings.checkboxValues[lastMessageIdx];
-
+  
   const computedActive = (
-    taskConfig.annotation_buckets === null ||
+    taskConfig.annotation_buckets === null || 
     hasAnyAnnotations(lastMessageAnnotations) & active
   );
-
+  
   if (lastMessageIdx >= taskConfig.min_num_turns * 2) {
     return (
       <FinalSurvey
@@ -189,7 +189,7 @@ function ResponseComponent({ taskConfig, appSettings, onMessageSend, active }) {
     );
   } else {
     return (
-      <CheckboxTextResponse
+      <CheckboxTextResponse 
         onMessageSend={onMessageSend}
         active={computedActive}
         currentCheckboxes={lastMessageAnnotations}

@@ -10,16 +10,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-
+                
                 resolve();
-
+    
             })
 
         } else {
 
             resolve();
         }
-
+    
     })
 }
 
@@ -31,7 +31,7 @@ const copyDatabase = async() => {
 
     const userConfimation = await prompts({
         type: 'text',
-        message: "Warning: This will create a new Database backup, overwriting\n" +
+        message: "Warning: This will create a new Database backup, overwriting\n" + 
         "the current database backup. Only ONE Database backup\n" +
         "can Be Stored At A Time.\n" +
         "For more permanent backups, use MongoExport, or \n" +

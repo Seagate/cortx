@@ -10,7 +10,7 @@ const awaitUploadStream = <T>(inputSteam: any, outputStream: any, req: Request, 
             currentStream.on("error", (e: Error) => {
 
                 removeChunks(outputStream);
-
+        
                 reject({
                     message: "Await Stream Input Error",
                     code: 500,

@@ -21,7 +21,7 @@ class FolderService {
     uploadFolder = async(data: any) => {
 
         const folder = new Folder(data);
-
+    
         await folder.save();
 
         if (!folder) throw new InternalServerError("Upload Folder Error");
@@ -32,36 +32,36 @@ class FolderService {
     getFolderInfo = async(userID: string, folderID: string) => {
 
         let currentFolder = await utilsFolder.getFolderInfo(folderID, userID);
-
+    
         if (!currentFolder) throw new NotFoundError("Folder Info Not Found Error");
-
+    
         const parentID = currentFolder.parent;
-
-        let parentName = "";
-
+    
+        let parentName = ""; 
+    
         if (parentID === "/") {
-
+    
             parentName = "Home"
-
+    
         } else {
-
+    
             const parentFolder = await utilsFolder.getFolderInfo(parentID, userID);
-
+                
             if (parentFolder) {
-
+    
                 parentName = parentFolder.name;
-
+    
             } else {
-
+    
                 parentName = "Unknown"
             }
-
+    
         }
-
+    
         const folderName = currentFolder.name
-
+    
         currentFolder = {...currentFolder._doc, parentName, folderName}
-        // Must Use ._doc here, or the destucturing/spreading
+        // Must Use ._doc here, or the destucturing/spreading 
         // Will add a bunch of unneeded variables to the object.
 
         return currentFolder;
@@ -72,7 +72,7 @@ class FolderService {
         const folder = await utilsFolder.getFolderInfo(folderID, userID);
 
         if (!folder) throw new NotFoundError("Folder Sublist Not Found Error");
-
+    
         const subfolderList = folder.parentList;
 
         let folderIDList = [];
@@ -93,14 +93,14 @@ class FolderService {
 
                 folderIDList.push(currentFolder._id);
                 folderNameList.push(currentFolder.name)
-            }
+            }   
         }
 
         folderIDList.push(folderID);
         folderNameList.push(folder.name)
 
         return {
-            folderIDList,
+            folderIDList, 
             folderNameList
         }
     }
@@ -180,7 +180,7 @@ class FolderService {
                 name: currentFolder.name,
                 subFolders: currentSubFolders
             })
-
+            
             currentID = currentFolder.parent;
         }
 

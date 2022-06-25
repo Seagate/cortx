@@ -22,16 +22,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-
+                
                 resolve();
-
+    
             })
 
         } else {
 
             resolve();
         }
-
+    
     })
 }
 
@@ -67,7 +67,7 @@ beforeEach(async(done) => {
     //             owner: user._id,
     //             parentList: ["/"]
     //         }
-
+    
     //         folder = new Folder(folderData);
     //         await folder.save();
 
@@ -75,11 +75,11 @@ beforeEach(async(done) => {
     //     })
 
     // } else {
-
+        
     //     // user = await createUser();
     //     const {user: gotUser} = await createUser();
     //     user = gotUser;
-
+        
     //     const folderData = {
     //         name: "bunny",
     //         parent: "/",
@@ -92,7 +92,7 @@ beforeEach(async(done) => {
 
     //     done();
     // }
-
+    
 })
 
 afterEach(async(done) => {
@@ -159,7 +159,7 @@ test("When giving userID and query with default values, should return folder lis
 
     const receivedFolderList = await folderService.getFolderList(userID, {});
 
-
+    
     expect(receivedFolderList.length).toBe(1);
 })
 
@@ -170,7 +170,7 @@ test("When giving wrong userID for folder list, should return empty list", async
 
     const receivedFolderList = await folderService.getFolderList(wrongUserID, {});
 
-
+    
     expect(receivedFolderList.length).toBe(0);
 })
 
@@ -234,7 +234,7 @@ test("When giving the wrong userID for move folder, should throw new found error
     const folderID = folder._id;
     const parentID = newFolder._id;
 
-    await expect(folderService.moveFolder(wrongUserID, folderID, parentID)).rejects.toThrow()
+    await expect(folderService.moveFolder(wrongUserID, folderID, parentID)).rejects.toThrow()  
 })
 
 test("When giving a parentID that does not exist for move folder, should throw not found error", async() => {
@@ -243,7 +243,7 @@ test("When giving a parentID that does not exist for move folder, should throw n
     const folderID = folder._id;
     const wrongParentID = "123456789012";
 
-    await expect(folderService.moveFolder(userID, folderID, wrongParentID)).rejects.toThrow()
+    await expect(folderService.moveFolder(userID, folderID, wrongParentID)).rejects.toThrow() 
 })
 
 test("When giving userID, folderID, and parentID, for folder with subitems, should move all items", async() => {
@@ -328,7 +328,7 @@ test("When giving userID, folderID, and parentID, for folder with subitems, shou
     const updatedFolderOne = await Folder.findById(folderOne._id);
     const updatedFolderTwo = await Folder.findById(folderTwo._id);
     const updatedFolderThree = await Folder.findById(folderThree._id);
-
+  
 
 
     expect(updatedFolderOne.parent.toString()).toBe(parentID.toString());

@@ -10,7 +10,7 @@ const WebSocket = require('ws');
 
 class DRP_Endpoint {
     /**
-     *
+     * 
      * @param {Websocket} wsConn Websocket connection
      * @param {DRP_Node} drpNode DRP Node
      * @param {string} endpointID Remote Endpoint ID
@@ -109,7 +109,7 @@ class DRP_Endpoint {
     }
 
     /**
-     *
+     * 
      * @param {string} serviceName DRP Service Name
      * @param {string} method Service Method
      * @param {Object} params Method Parameters

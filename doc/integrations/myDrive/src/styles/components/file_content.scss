@@ -160,16 +160,16 @@
 
 .settings__mobile__margin {
 	@media (max-width: $desktop-breakpoint) {
-
+        
         width: 64vw !important;
     }
 }
 
 .settings__folder__margin {
-	margin-top: 32px !important;
+	margin-top: 32px !important;	
 
 	@media (max-width: $desktop-breakpoint) {
-
+        
         margin-top: -10px !important;
     }
 }
@@ -328,7 +328,7 @@
 }
 
 .folder__selected {
-
+	
 	&>svg {
 		color: #FFF;
 	}
@@ -571,7 +571,7 @@
 				padding-left:15px;
 				padding-right:15px;
 				position: fixed;
-				z-index: 3;
+				z-index: 3;				
 				width: 100%;
 				background: white;
 				margin-top: 0;
@@ -664,8 +664,8 @@
 	}
 }
 
-@media (max-width:500px){
-
+@media (max-width:500px){ 
+	
 	.recent__table--wrap {
 		&>.main__access{
 			grid-template-columns: repeat(auto-fit, minmax(40%, 48%));
@@ -692,7 +692,7 @@
 	}
 
 	@media (max-width: $desktop-breakpoint) {
-
+        
         display: none;
     }
 }
@@ -705,7 +705,7 @@
 	}
 
 	@media (max-width: $desktop-breakpoint) {
-
+        
         display: none;
     }
 }

@@ -60,13 +60,13 @@ export const startCreateAccount = (email, password) => {
 
         const dt = {email, password};
         axios.post("/user-service/create", dt).then((response) => {
-
+            
             const token = response.data.token;
             const id = response.data.user._id;
             const emailVerified = response.data.user.emailVerified;
 
             // window.localStorage.setItem("token", token);
-
+    
             if (emailVerified) {
                 dispatch(setLoginFailed(false))
                 dispatch(login(id));
@@ -113,7 +113,7 @@ export const startLoginCheck = (currentRoute) => {
     return (dispatch) => {
 
         axios.get("/user-service/user").then((response) => {
-
+    
             const emailVerified = response.data.emailVerified;
 
             const id = response.data._id;

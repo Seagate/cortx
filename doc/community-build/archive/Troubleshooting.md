@@ -6,7 +6,7 @@ The troubleshooting document provides information on commonly faced issues while
 1. **S3 fails to connect S3 endpoint on port 443 and return error "The difference between request time and current time is too large"**
 
    If Installed Operating System's time is not Synchronized then connection to S3 endpoint will fail on port 443.
-
+    
    **Resolution:**
    ```
    yum install ntp ntpdate -y
@@ -25,7 +25,7 @@ The troubleshooting document provides information on commonly faced issues while
    systemctl restart chronyd
    chronyc makestep
    ```
-
+   
 3. **When building the CORTX packages an error message will be returned stating missing `kernel-devel` package**
 
    ```sh

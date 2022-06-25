@@ -54,16 +54,16 @@ class InteractiveWorld(DialogPartnerWorld):
 
         Alternate between the two agents.
         """
-
+     
         if self.turn_cnt == 0:
             self.p1, self.p2 = self.get_contexts()
 
         acts = self.acts
         print("acts",acts)
         agents = self.agents
+      
 
-
-
+         
         if self.turn_cnt == 0 and self.p1 != '':
             # add the context on to the first message to agent 0
             context_act = Message(
@@ -104,53 +104,56 @@ class InteractiveWorld(DialogPartnerWorld):
                 print("user_id_value",text)
                 userid = get_user_id(text)
 
+            
 
-
-
+                
             except :
                 print("None")
 
 
-
-
+            
+          
             agents[1].observe(validate(act))
             if os.path.isfile("input.txt"):
                 os.remove("input.txt")
 
-
+        
             print("client:",act)
             acts[1] = agents[1].act()
             print("agent:",acts[1])
             print("text only:",acts[1]['text'])
             file= open("output.txt","w").write(str(acts[1]['text']))
-
-
-
+          
+           
+         
             agents[0].observe(validate(acts[1]))
             self.update_counters()
             self.turn_cnt += 1
             if act['episode_done']:
-
+                
                 self.finalize_episode()
                 self.turn_cnt = 0
         except:
             #agents[1].observe(validate(act))
-
+            
             if os.path.isfile("input.txt"):
                 os.remove("input.txt")
             print("client:",act)
             acts[1] = {'id': 'ImageSeq2seq', 'episode_done': False, 'text': "I didn't get that"}
             print("agent:",acts[1])
             print("text only:",acts[1]['text'])
+          
+            
 
-
-
-
+            
             agents[0].observe(validate(acts[1]))
             self.update_counters()
             self.turn_cnt += 1
             act = {'id': 'localHuman', 'episode_done': False, 'label_candidates': None, 'text': 'hi'}
             if act['episode_done']:
-
+                
                 self.finalize_episode()
                 self.turn_cnt = 0
+        
+
+       

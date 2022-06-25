@@ -31,8 +31,8 @@ Configuration
 
    ::
 
-    salt '*' cmd.run "cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf"
-
+    salt '*' cmd.run "cp /opt/seagate/cortx/s3/install/ldap/rsyslog.d/slapdlog.conf /etc/rsyslog.d/slapdlog.conf" 
+ 
     salt '*' cmd.run "systemctl restart slapd"
 
     salt '*' cmd.run "systemctl restart rsyslog"
@@ -75,8 +75,8 @@ You need not copy the contents of the files from this page as they are placed in
 ::
 
  cd /opt/seagate/cortx/s3/install/ldap/replication
-
-Edit the relevant fields as required (olcserverid.ldif and config.ldif).
+ 
+Edit the relevant fields as required (olcserverid.ldif and config.ldif). 
 
 Procedure
 ^^^^^^^^^^
@@ -89,17 +89,17 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
 - **olcseverrid  = 3 for node 3**
 
 1. Push the unique olcserver Id.
-
+   
    **olcserverid.ldif**
 
    ::
 
     dn: cn=config
-
+   
     changetype: modify
-
+   
     add: olcServerID
-
+   
     olcServerID: 1
 
 
@@ -112,18 +112,18 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
    ::
 
     dn: cn=module,cn=config
-
+    
     objectClass: olcModuleList
-
+    
     cn: module
-
+    
     olcModulePath: /usr/lib64/openldap
-
+    
     olcModuleLoad: syncprov.la
 
 
    **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov_mod.ldif**
-
+  
 3. Push the provider ldif for config replication.
 
    **syncprov_config.ldif**
@@ -134,15 +134,15 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
 
     objectClass: olcOverlayConfig
 
-    objectClass: olcSyncProvConfig
+    objectClass: olcSyncProvConfig 
 
     olcOverlay: syncprov
 
-    olcSpSessionLog: 100
+    olcSpSessionLog: 100 
 
 
 **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov_config.ldif**
-
+ 
 4. Push the **Config.ldif** file.
 
    Replace provider with the hostname or node-id in each olcSyncRepl entry below.
@@ -151,86 +151,86 @@ Perform the the first 4 steps on the 3 nodes with the following change in **olcs
 
    ::
 
-    dn: olcDatabase={0}config,cn=config
+    dn: olcDatabase={0}config,cn=config 
 
-    changetype: modify
+    changetype: modify 
 
-    add: olcSyncRepl
+    add: olcSyncRepl 
 
     olcSyncRepl: rid=001
 
-        provider=ldap://<hostname_node-1>:389/
+        provider=ldap://<hostname_node-1>:389/ 
 
-        bindmethod=simple
+        bindmethod=simple 
 
-        binddn="cn=admin,cn=config"
+        binddn="cn=admin,cn=config" 
 
         credentials=B4kf1T6Qso
 
-        searchbase="cn=config"
+        searchbase="cn=config" 
 
-        scope=sub
+        scope=sub 
 
-        schemachecking=on
+        schemachecking=on 
 
-        type=refreshAndPersist
+        type=refreshAndPersist 
 
-        retry="30 5 300 3"
+        retry="30 5 300 3" 
 
         interval=00:00:05:00
 
-    # Enable additional providers
+    # Enable additional providers 
 
-    olcSyncRepl: rid=002
+    olcSyncRepl: rid=002 
 
-       provider=ldap://<hostname_node-2>:389/
+       provider=ldap://<hostname_node-2>:389/ 
 
-       bindmethod=simple
+       bindmethod=simple 
 
-       binddn="cn=admin,cn=config"
+       binddn="cn=admin,cn=config" 
+
+       credentials=B4kf1T6Qso 
+
+       searchbase="cn=config" 
+
+       scope=sub 
+
+       schemachecking=on 
+
+       type=refreshAndPersist 
+
+       retry="30 5 300 3" 
+
+       interval=00:00:05:00 
+
+    olcSyncRepl: rid=003 
+
+       provider=ldap://<hostname_node-3>:389/ 
+
+       bindmethod=simple 
+
+       binddn="cn=admin,cn=config" 
 
        credentials=B4kf1T6Qso
 
-       searchbase="cn=config"
+       searchbase="cn=config" 
 
-       scope=sub
+       scope=sub 
 
-       schemachecking=on
+       schemachecking=on 
 
-       type=refreshAndPersist
+       type=refreshAndPersist 
 
-       retry="30 5 300 3"
+       retry="30 5 300 3" 
 
-       interval=00:00:05:00
+       interval=00:00:05:00 
 
-    olcSyncRepl: rid=003
-
-       provider=ldap://<hostname_node-3>:389/
-
-       bindmethod=simple
-
-       binddn="cn=admin,cn=config"
-
-       credentials=B4kf1T6Qso
-
-       searchbase="cn=config"
-
-       scope=sub
-
-       schemachecking=on
-
-       type=refreshAndPersist
-
-       retry="30 5 300 3"
-
-       interval=00:00:05:00
-
-    add: olcMirrorMode
+    add: olcMirrorMode 
 
     olcMirrorMode: TRUE
-
+        
 **command to add - ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif**
-
+        
 Perform the following steps on only one node. In this case, it must be performed on the primary node.
 
 1. Push  the provider for data replication.
@@ -239,19 +239,19 @@ Perform the following steps on only one node. In this case, it must be performed
 
     syncprov.ldif
 
-     dn: olcOverlay=syncprov,olcDatabase={2}mdb,cn=config
+     dn: olcOverlay=syncprov,olcDatabase={2}mdb,cn=config 
 
-     objectClass: olcOverlayConfig
+     objectClass: olcOverlayConfig 
 
-     objectClass: olcSyncProvConfig
+     objectClass: olcSyncProvConfig 
 
-     olcOverlay: syncprov
+     olcOverlay: syncprov 
 
      olcSpSessionLog: 100
 
 
    **command to add - ldapadd -Y EXTERNAL -H ldapi:/// -f  syncprov.ldif**
-
+   
 2. Push the data replication ldif.
 
    Replace provider with the hostname or node-id in each olcSyncRepl entry below.
@@ -260,31 +260,31 @@ Perform the following steps on only one node. In this case, it must be performed
 
    ::
 
-    dn: olcDatabase={2}mdb,cn=config
+    dn: olcDatabase={2}mdb,cn=config 
 
-    changetype: modify
+    changetype: modify 
 
-    add: olcSyncRepl
+    add: olcSyncRepl 
 
     olcSyncRepl: rid=004
 
-       provider=ldap://< hostname_of_node_1>:389/
+       provider=ldap://< hostname_of_node_1>:389/ 
 
-       bindmethod=simple
+       bindmethod=simple 
 
-       binddn="cn=admin,dc=seagate,dc=com"
+       binddn="cn=admin,dc=seagate,dc=com" 
 
-       credentials=B4kf1T6Qso
+       credentials=B4kf1T6Qso 
 
-       searchbase="dc=seagate,dc=com"
+       searchbase="dc=seagate,dc=com" 
 
-       scope=sub
+       scope=sub 
 
-       schemachecking=on
+       schemachecking=on 
 
-       type=refreshAndPersist
+       type=refreshAndPersist 
 
-       retry="30 5 300 3"
+       retry="30 5 300 3" 
 
        interval=00:00:05:00
 
@@ -292,61 +292,61 @@ Perform the following steps on only one node. In this case, it must be performed
 
      olcSyncRepl: rid=005
 
-        provider=ldap://< hostname_of_node_2>:389/
+        provider=ldap://< hostname_of_node_2>:389/ 
 
-        bindmethod=simple
+        bindmethod=simple 
 
-        binddn="cn=admin,dc=seagate,dc=com"
+        binddn="cn=admin,dc=seagate,dc=com" 
 
         credentials=B4kf1T6Qso
 
-        searchbase="dc=seagate,dc=com"
+        searchbase="dc=seagate,dc=com" 
 
-        scope=sub
+        scope=sub 
 
-        schemachecking=on
+        schemachecking=on 
 
-        type=refreshAndPersist
+        type=refreshAndPersist 
 
-        retry="30 5 300 3"
+        retry="30 5 300 3" 
 
-        interval=00:00:05:00
+        interval=00:00:05:00 
 
-      olcSyncRepl: rid=006
+      olcSyncRepl: rid=006   
 
-         provider=ldap://<hostname_of_node_3>:389/
+         provider=ldap://<hostname_of_node_3>:389/ 
 
-         bindmethod=simple
+         bindmethod=simple 
 
-         binddn="cn=admin,dc=seagate,dc=com"
+         binddn="cn=admin,dc=seagate,dc=com" 
 
-         credentials=B4kf1T6Qso
+         credentials=B4kf1T6Qso 
 
-         searchbase="dc=seagate,dc=com"
+         searchbase="dc=seagate,dc=com" 
 
-         scope=sub
+         scope=sub 
 
-         schemachecking=on
+         schemachecking=on 
 
-         type=refreshAndPersist
+         type=refreshAndPersist 
 
-         retry="30 5 300 3"
+         retry="30 5 300 3" 
 
          interval=00:00:05:00
 
+   
 
-
-       add: olcMirrorMode
+       add: olcMirrorMode 
 
        olcMirrorMode: TRUE
-
+  
 
 **command to add - ldapmodify -Y EXTERNAL -H ldapi:/// -f data.ldif**
 
 **Note**: Update the host name in the provider field in data.ldif before running the command.
 
 .. raw:: html
-
+   
   </details>
 
 RabbitMQ
@@ -366,19 +366,19 @@ Prerequisites
 
   ::
 
-   python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt
+   python3 /opt/seagate/cortx/provisioner/cli/pillar_encrypt 
 
 - Ensure that rabbitmq server, provisioner, and sspl RPMs must be installed.
 
   ::
-
-   rpm -qa | grep -Ei "rabbitmq|sspl|prvsnr"
-   cortx-libsspl_sec-1.0.0xxxxxxxxxxxxxxxxxxxxx
-   cortx-libsspl_sec-method_none-1.0.0xxxxxxxxxxxxxxx
-   cortx-prvsnr-cli-1.0.0xxxxxxxxxxxxxxxxxxx
-   cortx-prvsnr-1.0.0xxxxxxxxxxxxxxxxx
-   cortx-sspl-1.0.0xxxxxxxxxxxxxxxx
-   cortx-sspl-test-1.0.0xxxxxxxxxxxxxxxxxxxxxxxx
+  
+   rpm -qa | grep -Ei "rabbitmq|sspl|prvsnr" 
+   cortx-libsspl_sec-1.0.0xxxxxxxxxxxxxxxxxxxxx 
+   cortx-libsspl_sec-method_none-1.0.0xxxxxxxxxxxxxxx 
+   cortx-prvsnr-cli-1.0.0xxxxxxxxxxxxxxxxxxx 
+   cortx-prvsnr-1.0.0xxxxxxxxxxxxxxxxx 
+   cortx-sspl-1.0.0xxxxxxxxxxxxxxxx 
+   cortx-sspl-test-1.0.0xxxxxxxxxxxxxxxxxxxxxxxx 
    rabbitmq-server-xxxxxxxxxxxxxxxxxx
 
 
@@ -391,19 +391,19 @@ Prerequisites
      systemctl start rabbitmq-server
 
      systemctl stop rabbitmq-server
-
+     
   - Checking the existance of the file
 
     ::
 
      ls -l /var/lib/rabbitmq/.erlang.cookie
-
+     
   - To copy the file to all nodes
 
     ::
 
      salt-cp "*" /var/lib/rabbitmq/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie --hard-crash
-
+  
 
 Restarting Service
 ------------------
@@ -421,7 +421,7 @@ Run the below mentioned command to know the status. This must be run on 2 nodes.
 ::
 
  systemctl status rabbitmq-server -l
-
+ 
 Configuration
 -------------
 1. Start the RabbitMQ server.
@@ -439,11 +439,11 @@ Run the below mentioned command to check the status of the RabbitMQ cluster.
 ::
 
  salt '*' cmd.run "rabbitmqctl cluster_status"
-
+ 
 .. raw:: html
-
+   
   </details>
-
+ 
 
 Statsd and Kibana
 =================
@@ -489,25 +489,25 @@ In the orignal kibana.service file, **StartLimitInterval** and **StartLimitBurst
 
  [Unit]
  Description=Kibana
+ 
+ [Service] 
+ Type=simple 
+ StartLimitInterval=30 
+ StartLimitBurst=3 
+ User=kibana 
+ Group=kibana 
+ # Load env vars from /etc/default/ and /etc/sysconfig/ if they exist. 
+ # Prefixing the path with '-' makes it try to load, but if the file doesn't 
+ # exist, it continues onward. 
+ EnvironmentFile=-/etc/default/kibana 
+ EnvironmentFile=-/etc/sysconfig/kibana 
+ ExecStart=/usr/share/kibana/bin/kibana "-c /etc/kibana/kibana.yml" 
+ Restart=always 
+ WorkingDirectory=/ 
 
- [Service]
- Type=simple
- StartLimitInterval=30
- StartLimitBurst=3
- User=kibana
- Group=kibana
- # Load env vars from /etc/default/ and /etc/sysconfig/ if they exist.
- # Prefixing the path with '-' makes it try to load, but if the file doesn't
- # exist, it continues onward.
- EnvironmentFile=-/etc/default/kibana
- EnvironmentFile=-/etc/sysconfig/kibana
- ExecStart=/usr/share/kibana/bin/kibana "-c /etc/kibana/kibana.yml"
- Restart=always
- WorkingDirectory=/
-
- [Install]
+ [Install] 
  WantedBy=multi-user.target
-
+  
 2. Reload the daemon by running the following command.
 
    ::
@@ -527,7 +527,7 @@ Check the status of Kibana by running the following command.
 ::
 
  systemctl status kibana
-
+ 
 .. raw:: html
-
+   
   </details>

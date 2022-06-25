@@ -35,7 +35,7 @@ class RightSectionContainer extends React.Component {
         const filenameSplit = filename.split(".");
 
         if (filenameSplit.length > 1) {
-
+            
             const extension = filenameSplit[filenameSplit.length - 1]
 
             return extension.toUpperCase();
@@ -45,7 +45,7 @@ class RightSectionContainer extends React.Component {
             return "Unknown"
         }
 
-
+        
     }
 
     getSidebarClassName = (value) => {
@@ -66,12 +66,12 @@ class RightSectionContainer extends React.Component {
         axios.delete('/file-service/transcode-video/remove', {
             data
         }).then(() => {
-
+            
             this.props.dispatch(editFileMetadata(props.selectedItem.id, {transcoded: undefined}))
 
             this.setState(() => ({
                 ...this.state,
-                optimizing: false,
+                optimizing: false, 
                 optimizing_finished: false,
                 optimizing_removed: true
             }))
@@ -85,7 +85,7 @@ class RightSectionContainer extends React.Component {
 
         const config = {
             file: {_id: props.selectedItem.id}
-        };
+        };    
 
         const data = {file: {_id: props.selectedItem.id}}
 
@@ -93,11 +93,11 @@ class RightSectionContainer extends React.Component {
             ...this.state,
             optimizing: true
         }))
-
+    
 
         axios.post('/file-service/transcode-video', data,config)
         .then((response) => {
-
+            
             const data = response.data;
 
             if (data === "Finished") {
@@ -106,7 +106,7 @@ class RightSectionContainer extends React.Component {
 
                 this.setState(() => ({
                     ...this.state,
-                    optimizing: false,
+                    optimizing: false, 
                     optimizing_finished: true,
                     optimizing_removed: false
                 }))
@@ -143,11 +143,11 @@ class RightSectionContainer extends React.Component {
 
         if (this.props.selectedItem.linkType === "one") {
 
-            return <RightSectionDetail first={false} title="One Time Link" body="True"/>
+            return <RightSectionDetail first={false} title="One Time Link" body="True"/> 
 
         } else {
 
-            return <RightSectionDetail first={false} title="Public" body="True"/>
+            return <RightSectionDetail first={false} title="Public" body="True"/> 
         }
     }
 
@@ -157,7 +157,7 @@ class RightSectionContainer extends React.Component {
 
             this.setState(() => ({
                 ...this.state,
-                optimizing: false,
+                optimizing: false, 
                 optimizing_finished: false
             }))
         }
@@ -187,7 +187,7 @@ class RightSectionContainer extends React.Component {
     }
 
     openItem = (e) => {
-
+        
         if (this.props.selectedItem.file) {
             this.props.fileClick(this.props.selectedItem.id, this.props.selectedItem.data, false, true)
         } else {
@@ -196,7 +196,7 @@ class RightSectionContainer extends React.Component {
     }
 
     closeContext = () => {
-
+     
         this.setState(() => {
             return {
                 ...this.state,
@@ -228,7 +228,7 @@ class RightSectionContainer extends React.Component {
 
     clickStopPropagation = (e) => {
         if (e) e.stopPropagation()
-    }
+    } 
 
     clickTest = (e) => {
         console.log("click test")
@@ -237,7 +237,7 @@ class RightSectionContainer extends React.Component {
     changeEditNameMode = async() => {
 
         let inputValue = this.props.selectedItem.name;
-
+    
         const { value: folderName} = await Swal.fire({
             title: 'Enter A File Name',
             input: 'text',
@@ -259,7 +259,7 @@ class RightSectionContainer extends React.Component {
 
         const parent = this.props.selectedItem.file ? this.props.selectedItem.data.metadata.parent : this.props.selectedItem.data.parent;
 
-        this.props.selectedItem.file ?
+        this.props.selectedItem.file ? 
         this.props.dispatch(startRenameFile(this.props.selectedItem.id, folderName, this.props.selectedItem.drive)) :
         this.props.dispatch(startRenameFolder(this.props.selectedItem.id, folderName, this.props.selectedItem.drive, parent));
 
@@ -290,17 +290,17 @@ class RightSectionContainer extends React.Component {
           }).then((result) => {
             if (result.value) {
 
-                this.props.selectedItem.file ?
+                this.props.selectedItem.file ? 
                 this.props.dispatch(startRemoveFile(this.props.selectedItem.id, this.props.selectedItem.drive, this.props.selectedItem.data.metadata.personalFile)) :
                 this.props.dispatch(startRemoveFolder(this.props.selectedItem.id, [...this.props.selectedItem.data.parentList, this.props.selectedItem.id], this.props.selectedItem.drive, parent, this.props.selectedItem.data.metadata.personalFolder));
-
+                
             }
         })
     }
 
     render() {
 
-        return <RightSection
+        return <RightSection 
                 getPublicStatus={this.getPublicStatus}
                 getTranscodeButton={this.getTranscodeButton}
                 getFileExtension={this.getFileExtension}

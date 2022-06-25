@@ -12,11 +12,11 @@ This release notes includes new features, enhancements, and bug fixes added to t
 - fix rpm build for ARM64 Motr port
 - [Containerization] Log rotation policy to be implemented[EOS-25248]
 - [Containerization] Implementation of Hare miniprovisioner in k8s environment[EOS-24393]
-- Memory leak during Degraded Read operation[EOS-27025]
+- Memory leak during Degraded Read operation[EOS-27025] 
 - Build motr without kernel dependencies[EOS-26798]
 - libfabric-devel is needed for 'make rpms' for motr[EOS-26104]
 - Added delays in between ldap operations while create and delete S3 accounts[EOS-26124]
-- Upgrade log4j to 2.17.0
+- Upgrade log4j to 2.17.0 
 - Implementation for the log rotate config files for K8S[EOS-24355]
 - Kubernetes haproxy micro-provisioner code changes[EOS-24655]
 - S3 Audit Log: Expose an API to push audit logs[EOS-26021]
@@ -33,3 +33,4 @@ This release notes includes new features, enhancements, and bug fixes added to t
 
 - Introducing logging for IEM framework[EOS-23255]
 - Accommodate new config keys in kubernetes environment[EOS-24357]
+

@@ -75,7 +75,7 @@ for source, dirs, files in walks:
             print(relative_path)
             s3_file = relative_path
             # Invoke download function
-
+            
             download_from_s3(bucket_name, local_file, s3_file)
 
 
@@ -171,7 +171,7 @@ def flask_func():
             os.remove("input.txt")
         if os.path.isfile(output_file):
             os.remove("output.txt")
-
+   
         file = open("input.txt","w").write(input_text + "_" + userid)
 
 
@@ -180,7 +180,7 @@ def flask_func():
 
         wait(lambda: is_something_ready(something), waiting_for="output.txt file to be ready")
         file = open("output.txt","r").read()
-
+     
         result = str(file)
 
 

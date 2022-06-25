@@ -59,7 +59,7 @@ class LoginPageContainer extends React.Component {
                 email,
             }
             axios.post("/user-service/send-password-reset", data).then((response) => {
-
+       
                 Swal.fire(
                     'Check your email',
                     'If the email address matches any in our database, we’ll send you an email with instructions on how to reset your password.',
@@ -82,7 +82,7 @@ class LoginPageContainer extends React.Component {
 
             this.props.dispatch(setLoginFailed("Passwords Do Not Match"));
         }
-    }
+    }   
 
     switchResetPasswordMode = () => {
 
@@ -114,9 +114,9 @@ class LoginPageContainer extends React.Component {
             email: value
 
         }))
-
+        
     }
-
+    
     passwordOnChange = (e) => {
 
         const value = e.target.value;
@@ -125,7 +125,7 @@ class LoginPageContainer extends React.Component {
             ...this.state,
             password: value
         }))
-
+        
     }
 
     verifyPasswordOnChange = (e) => {
@@ -136,7 +136,7 @@ class LoginPageContainer extends React.Component {
             ...this.state,
             verifyPassword: value
         }))
-    }
+    } 
 
     startVerifyEmailTimer = () => {
 
@@ -175,7 +175,7 @@ class LoginPageContainer extends React.Component {
         }
 
         axios.post("/user-service/resend-verify-email").then((response) => {
-
+            
             this.setState(() => {
                 return {
                     ...this.state,
@@ -190,17 +190,17 @@ class LoginPageContainer extends React.Component {
     }
 
     logout = () => {
-
+     
         // window.localStorage.removeItem("token");
 
         axios.post("/user-service/logout").then((response) => {
 
             console.log("user logged out verify email");
-
+            
             //this.props.dispatch(setLoginFailed(false))
 
             window.location.reload();
-
+            
             // this.setState(() => {
             //     return {
             //         ...this.state,
@@ -236,7 +236,7 @@ class LoginPageContainer extends React.Component {
 
     render() {
 
-        return <LoginPage
+        return <LoginPage 
                     loginWithToken={this.loginWithToken}
                     switchLoginMode={this.switchLoginMode}
                     switchResetPasswordMode={this.switchResetPasswordMode}

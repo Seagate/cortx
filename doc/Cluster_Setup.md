@@ -14,7 +14,7 @@ Create a virtual machine.
 * Build and Install RPMs.
 Follow the [Hare User Guide](https://github.com/Seagate/cortx-hare#installation) to Build and Install Hare from source. This guide will also show you how to build and install Motr.
 
-
+  
 ### 1.3. Configure LNet
 
 Create `lnet.conf` file, if it does not exist, and restart `lnet` service.
@@ -79,7 +79,7 @@ Sample diff:
       #type: sns  # optional; supported values: "sns" (default), "dix", "md"
       data_units: 4      # N=4 Update N and K here
       parity_units: 2    # K=2, Also make sure N+2K <= P number of devices.
-      allowed_failures: { site: 0, rack: 0, encl: 0, ctrl: 0, disk: 2 }
+      allowed_failures: { site: 0, rack: 0, encl: 0, ctrl: 0, disk: 2 } 
 ```
 
 ### 1.5. Bootstrap the cluster
@@ -135,7 +135,7 @@ For e.g,
 
 * Notes:
 
-  * Make sure that size of the source file (random.img) is greater than or equal to block size * count (*i.e. 1M * 128 = 128M here*). Otherwise errors may happen. See [this issue](https://github.com/Seagate/cortx-motr/issues/10#issuecomment-691633983).
+  * Make sure that size of the source file (random.img) is greater than or equal to block size * count (*i.e. 1M * 128 = 128M here*). Otherwise errors may happen. See [this issue](https://github.com/Seagate/cortx-motr/issues/10#issuecomment-691633983). 
   * If source file size is 128.5M, then only 128M data will be written to Motr. Therefore, please pick a proper block size and make your test file size == block size * count.
   * Consider using [go/mcp](https://github.com/Seagate/cortx-motr/tree/main/bindings/go), which is more user friendly. It calculates the optimal unit and block size automatically based on the object size and pool parity configuration. For the example above, go/mcp can automatically write the entire 128.5M data to Motr.
 
@@ -169,7 +169,7 @@ Enable passwordless SSH access between two nodes for `root` user.
   sudo su -
   ssh node-2 ssh node-1 echo it works  # use actual hostnames
   ```
-
+  
 * Disable firewall on both nodes:
   ```bash
   sudo systemctl stop firewalld
@@ -177,7 +177,7 @@ Enable passwordless SSH access between two nodes for `root` user.
   ```
 * Disable SELinux:
   ```
-  cat /etc/selinux/config
+  cat /etc/selinux/config 
 
   # This file controls the state of SELinux on the system.
   # SELINUX= can take one of these three values:
@@ -187,9 +187,9 @@ Enable passwordless SSH access between two nodes for `root` user.
   SELINUX=disabled
   # SELINUXTYPE= can take one of three values:
   #     targeted - Targeted processes are protected,
-  #     minimum - Modification of targeted policy. Only selected processes are protected.
+  #     minimum - Modification of targeted policy. Only selected processes are protected. 
   #     mls - Multi Level Security protection.
-  SELINUXTYPE=targeted
+  SELINUXTYPE=targeted 
   ```
 
 

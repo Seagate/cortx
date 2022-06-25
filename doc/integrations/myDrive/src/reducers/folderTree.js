@@ -17,7 +17,7 @@ const defaultState = {
     moveID: "",
     renameIDs: {
 
-    },
+    }, 
     renameID: "",
     firstLoadDetails: {
 
@@ -32,8 +32,8 @@ export default (state=defaultState, action) => {
 
     switch (action.type) {
 
-        case "SET_ID":
-
+        case "SET_ID": 
+            
             let tempIDS = state.openIDs;
             tempIDS[action.id] = true;
 
@@ -62,7 +62,7 @@ export default (state=defaultState, action) => {
             }
 
         case "REMOVE_NEW_IDS": {
-
+            
             //console.log("remove new id", action.id, state.newIDs);
             let tempRemoveNewIDS = state.newIDs;
             delete tempRemoveNewIDS[action.id];
@@ -82,7 +82,7 @@ export default (state=defaultState, action) => {
                 insertedIDs: action.insertedList,
                 insertedID: action.id,
             }
-
+        
         }
 
         case "REMOVE_INSERT_IDS": {
@@ -106,7 +106,7 @@ export default (state=defaultState, action) => {
         }
 
         case "REMOVE_DELETE_IDS": {
-
+            
             let tempDeleteIDs = state.deleteIDs;
             delete tempDeleteIDs[action.id];
 
@@ -183,7 +183,7 @@ export default (state=defaultState, action) => {
                 openIDs: tempRemoveIDS
             }
 
-        case "RESET_ID":
+        case "RESET_ID": 
 
             return {
                 ...state,

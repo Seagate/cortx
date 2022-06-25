@@ -40,7 +40,7 @@ class UploadOverlayContainer extends React.Component {
     render() {
         return (
 
-            <UploadOverlay
+            <UploadOverlay 
                 closeOverlay={this.closeOverlay}
                 onDragDropEvent={this.onDragDropEvent}
                 onDragOverEvent={this.onDragOverEvent}

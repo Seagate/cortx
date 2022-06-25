@@ -29,7 +29,7 @@ html {
     border-style: groove;
 }
 
-@media (min-width:600px) {
+@media (min-width:600px) { 
     #box-div {
 
         height: 30%;

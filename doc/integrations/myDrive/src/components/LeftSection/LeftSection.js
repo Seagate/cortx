@@ -26,20 +26,20 @@ class LeftSection extends React.Component {
 						<div class="dropdown__list" style={this.props.state.open ? {display:"block"} : {display:"none"}}>
 							<ul>
 								<li>
-                                    {this.isMobile || this.nonDropMode ?
+                                    {this.isMobile || this.nonDropMode ? 
                                     <div>
-                                        <input className="upload__mobile"  ref={this.props.uploadInput}
+                                        <input className="upload__mobile"  ref={this.props.uploadInput} 
                                         type="file" multiple={true} onChange={this.props.handleUpload}/>
                                         <a onClick={this.props.showUploadOverlay} class="upload__files">
                                             <span><img src="/assets/uploadicon.svg" alt="upload"/></span> Upload Files
                                         </a>
                                     </div>
-                                    :
+                                    :    
                                     <a onClick={this.props.showUploadOverlay} class="upload__files">
 										<span><img src="/assets/uploadicon.svg" alt="upload"/></span> Upload Files
 									</a>
                                     }
-
+									
 								</li>
 								<li>
 									<a onClick={this.props.createFolder}>
@@ -58,7 +58,7 @@ class LeftSection extends React.Component {
 					<div class="folder__structure">
 
 						<FolderTree />
-
+						
 					</div>
 					<div class={this.props.state.hideFolderTree ? "utility__buttons utility__buttons_no_border" : "utility__buttons"}>
 						<ul>

@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import React from "react";
 
 class UploaderContainer extends React.Component {
-
+    
     constructor(props) {
         super(props);
 
@@ -14,22 +14,22 @@ class UploaderContainer extends React.Component {
     }
 
     minimizeUploader = () => {
-
+    
         const uploaderShow = this.props.uploaderShow;
         const dispatch = this.props.dispatch;
-
+    
         if (uploaderShow) {
-
+    
             dispatch(hideUploader())
-
+    
         } else {
-
+    
             dispatch(showUploader())
         }
     }
-
+    
     cancelAllUploadsEvent = () => {
-
+    
         this.props.dispatch(startCancelAllUploads(this.props.uploads))
     }
 
@@ -43,7 +43,7 @@ class UploaderContainer extends React.Component {
     }
 
     render() {
-        return <Uploader
+        return <Uploader 
                 minimizeUploader={this.minimizeUploader}
                 cancelAllUploadsEvent={this.cancelAllUploadsEvent}
                 ref={this.uploaderWrapper}

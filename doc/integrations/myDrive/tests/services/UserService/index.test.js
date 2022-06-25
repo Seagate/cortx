@@ -15,16 +15,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-
+                
                 resolve();
-
+    
             })
 
         } else {
 
             resolve();
         }
-
+    
     })
 }
 
@@ -40,7 +40,7 @@ beforeEach(async(done) => {
 
 afterEach(async(done) => {
 
-    await User.deleteMany({});
+    await User.deleteMany({});   
     done();
 })
 
@@ -50,7 +50,7 @@ test("When giving email and password for login, should return user and token", a
     const password = "12345678";
 
     const userData = {
-        email,
+        email, 
         password
     }
 
@@ -65,7 +65,7 @@ test("When giving wrong password for login, throw error", async() => {
     const password = "87654321";
 
     const userData = {
-        email,
+        email, 
         password
     }
 
@@ -90,8 +90,8 @@ test("When giving user, should logout all, show 0 tokens, and not throw error", 
 test("When giving user data, should create new user", async() => {
 
     const userData = {
-        name: "Test User",
-        email: "test3@test.com",
+        name: "Test User", 
+        email: "test3@test.com", 
         password: "12345678",
     }
 
@@ -103,8 +103,8 @@ test("When giving user data, should create new user", async() => {
 test("When creating user with duplicate email, should throw an error", async() => {
 
     const userData = {
-        name: "Test User",
-        email: "test2@test.com",
+        name: "Test User", 
+        email: "test2@test.com", 
         password: "12345678",
     }
 
@@ -120,7 +120,7 @@ test("When giving user, token, old password, and new password. Should change pas
 })
 
 test("When giving wrong old password for change password, should throw an error", async() => {
-
+    
     const wrongOldPassword = "1649560569";
     const newPassword = "87654321";
 

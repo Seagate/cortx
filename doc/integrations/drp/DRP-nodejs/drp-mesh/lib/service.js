@@ -9,7 +9,7 @@ function getRandomInt(max) {
 
 class DRP_Service {
     /**
-     *
+     * 
      * @param {string} serviceName Service Name
      * @param {DRP_Node} drpNode DRP Node
      * @param {string} type Service Type
@@ -48,7 +48,7 @@ class DRP_Service {
     }
 
     /**
-     *
+     * 
      * @param {UMLClass} umlClass New Class definition
      */
     AddClass(umlClass) {

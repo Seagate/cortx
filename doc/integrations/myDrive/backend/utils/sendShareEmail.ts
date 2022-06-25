@@ -19,7 +19,7 @@ const sendShareEmail = async (file: any, respient: string) => {
     const msg = {
         to: respient,
         from: sendgridEmail,
-        subject: "A File Was Shared With You Through myDrive",
+        subject: "A File Was Shared With You Through myDrive", 
         text: `Please navigate to the following link to view the file ${fileLink}`
     }
 

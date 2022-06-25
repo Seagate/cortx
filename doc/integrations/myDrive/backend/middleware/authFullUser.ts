@@ -48,10 +48,10 @@ const authFullUser = async(req: RequestType, res: Response, next: NextFunction) 
 
     } catch (e) {
 
-        if (e.message !== "No Access Token" &&
+        if (e.message !== "No Access Token" && 
         e.message !== "No User" &&
         e.message !== "Email Not Verified") console.log("\nAuthorization Full User Middleware Error:", e.message);
-
+        
         res.status(401).send("Error Authenticating");
     }
 }

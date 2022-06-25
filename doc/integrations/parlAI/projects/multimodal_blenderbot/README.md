@@ -26,7 +26,7 @@ If you use the models in your own work, please cite with the following BibTex en
 
 ```
 @misc{shuster2020multimodal,
-      title={Multi-Modal Open-Domain Dialogue},
+      title={Multi-Modal Open-Domain Dialogue}, 
       author={Kurt Shuster and Eric Michael Smith and Da Ju and Jason Weston},
       year={2020},
       eprint={2010.01082},

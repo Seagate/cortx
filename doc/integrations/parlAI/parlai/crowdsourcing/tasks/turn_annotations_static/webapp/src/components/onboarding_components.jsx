@@ -48,7 +48,7 @@ var handleOnboardingSubmit = function ({ onboardingData, annotationBuckets, onSu
                     if (answersForTurn.indexOf(c) > - 1) {
                         countIncorrect += 1
                     }
-                    // If not checked *and* not an answer
+                    // If not checked *and* not an answer 
                     // don't increment anything
                 }
             }

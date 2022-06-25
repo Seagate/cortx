@@ -13,7 +13,7 @@ This section provides information on the installation of Provisioner and the ass
    ::
 
     pip install https://github.com/Seagate/provisioner-test/releases/download/cortx-api-v0.33.0/cortx-prvsnr-0.33.0.tar.gz
-
+    
 **Note**: If you installed Python 3.6 without the virtual environment, replace **pip** command with **pip3**.
 
 4. Run the below mentioned commands to install the cluster. The approximate time taken is 40 minutes.
@@ -49,19 +49,19 @@ For example:
    --iso-cortx-deps /root/prereqs.iso --ha --logfile \
    --logfile-filename ./setup.log --config-path config.ini \
    srvnode-1:srv1.test.com srvnode-2:srv2.test.com srvnode-3:srv3.test.com
-
+    
 **Note**: You will be prompted for the root password of each server.
 
 5. Run the below mentioned commands to verify that the dependency components are installed successfully.
 
-   ::
-
+   :: 
+ 
     /usr/share/kibana/bin/kibana --version
-
+    
     slapd -V
 
     /usr/share/elasticsearch/bin/elasticsearch --version
-
+    
     salt '*' service.start rabbitmq-server
 
     rabbitmqadmin --version

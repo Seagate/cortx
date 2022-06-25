@@ -47,7 +47,7 @@ const FileItem = (props) => {
                <td class="name__row">
 					<div class="inner__name--row">
 						<span class="extension__wrap noSelect">
-                            {extensionImageResults.passed ? <img src={extensionImageResults.ext} alt="accessimage"/>
+                            {extensionImageResults.passed ? <img src={extensionImageResults.ext} alt="accessimage"/> 
                             :
                             <div className="no-extension__wrapper" style={{background: extensionImageResults.color}}>
                                 <span className="no-extension__title">
@@ -57,8 +57,8 @@ const FileItem = (props) => {
                             }
                         </span>
                         <p className="name__row-filename noSelect">{props.state.editNameMode ? "" : capitalize(props.filename)}</p>
-
-                        {props.state.editNameMode ?
+                        
+                        {props.state.editNameMode ? 
                         <div onClick={props.clickStopPropagation} class='edit__name'>
                             <input type='text' value={props.state.editName} onChange={props.changeEditName}/>
                             <a onClick={props.saveNameEdit} class='edit__save'>SAVE</a>
@@ -76,8 +76,8 @@ const FileItem = (props) => {
                         {/* <NewContextMenu parent={props.metadata.parent} contextSelected={props.state.contextSelected} closeContext={props.closeContext} downloadFile={props.downloadFile} file={props} changeEditNameMode={props.changeEditNameMode} closeEditNameMode={props.closeEditNameMode} changeDeleteMode={props.changeDeleteMode} startMovingFile={props.startMovingFile}/> */}
 					    <a onClick={props.selectContext}><i class="fas fa-ellipsis-h"></i></a>
 					</div>
-
-                    {props.state.deleteMode ?
+                    
+                    {props.state.deleteMode ? 
                     <div onClick={props.clickStopPropagation } class='delete__wrap'>
                         <p>Are you sure you want to delete this?</p>
                         <div class='delete__buttons'>
@@ -85,12 +85,12 @@ const FileItem = (props) => {
                             <a onClick={props.removeDeleteMode} class='keep__button'>Keep File</a>
                         </div>
                     </div>  : undefined}
-				</td>
+				</td> 
             </tr>
         )
     } else {
 
-        return (<div className={props._id !== props.selected ? "elem__access noSelect" : "elem__access active__recent noSelect"}
+        return (<div className={props._id !== props.selected ? "elem__access noSelect" : "elem__access active__recent noSelect"} 
                 onClick={() => {props.fileClick(props._id, props)}}
                 onContextMenu={props.selectContext}
                 onTouchStart={props.onTouchStart}
