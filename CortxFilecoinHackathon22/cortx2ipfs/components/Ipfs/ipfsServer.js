@@ -1,3 +1,5 @@
+// This component  spins up a IPFS client on the brower. This is slower than than connecting to an existing IPFS node.
+
 import useIpfsFactory from '/hooks/useIpfsFactory.js'
 import useIpfs from '/hooks/useIpfs.js'
 import { useEffect, useState } from 'react'

@@ -1,21 +1,25 @@
-import { Button, StyledButton } from "@nextui-org/react";
-import { listBucket } from "../../lib/s3Util";
+import { Button } from "@chakra-ui/react";
+import { listBucket, listObjects } from "../../lib/s3Util";
 
 
 
 
-export function S3React(){
+export function S3React() {
 
     function handleClick(event) {
 
-        listBucket()
+        listObjects('ipfsbucket')
     }
 
     return (
-        <StyledButton
-        onClick={handleClick}
+        <div
+            className="mr-0"
         >
-            ListAWS
-        </StyledButton>
+            <Button
+                onClick={handleClick}
+            >
+                ListAWS
+            </Button>
+        </div>
     )
 }

@@ -13,9 +13,26 @@ const S3 = new AWS.S3(
     }
 );
 
-let testBucketName = "bariiii"  //"testbucket";
+let testBucketName = "ipfsbucket"  //"testbucket";
 let testObjectName = "testobject.txt";
 let testObjectData = "...some random data...";
+
+// Create initial parameters JSON for putBucketCors.
+const thisConfig = {
+    AllowedHeaders: ["*"],
+    AllowedMethods: ["POST", "GET", "PUT"],
+    AllowedOrigins: ["*"],
+    ExposeHeaders: [],
+    MaxAgeSeconds: 3000,
+};
+// Create an array of configs then add the config object to it.
+const corsRules = new Array(thisConfig);
+
+// Create CORS parameters.
+const corsParams = {
+    Bucket: testBucketName,
+    CORSConfiguration: { CORSRules: corsRules },
+};
 
 let sampleScript = async () => {
 
@@ -32,8 +49,20 @@ let sampleScript = async () => {
         }).promise()
         console.dir(createBucketResults)
     } catch (e) { console.log(e) }
-    // List buckets
 
+    // Create Bucket CORS
+    console.log("Updating CORS policy ...")
+    try {
+        const data = await S3.putBucketCors(corsParams)
+
+        // send(AWS.S3Control.PutBucketCorsCommand(corsParams));
+        console.log("Success", data);
+        return data; // For unit tests.
+    } catch (err) {
+        console.log("Error", err);
+    }
+
+    // List buckets
     console.log("Listing buckets...");
     let listBucketsResults = await S3.listBuckets().promise();
     console.dir(listBucketsResults);
@@ -54,14 +83,14 @@ let sampleScript = async () => {
     console.dir(listObjectsResults);
 
     // Delete an object
-    console.log("Deleting an object...");
-    let deleteObjectResults = await S3.deleteObject({ Bucket: testBucketName, Key: testObjectName }).promise();
-    console.dir(deleteObjectResults);
+    // console.log("Deleting an object...");
+    // let deleteObjectResults = await S3.deleteObject({ Bucket: testBucketName, Key: testObjectName }).promise();
+    // console.dir(deleteObjectResults);
 
     // Delete a bucket
-    console.log("Deleting a bucket...");
-    let deleteBucketResults = await S3.deleteBucket({ Bucket: testBucketName }).promise();
-    console.dir(deleteBucketResults);
+    // console.log("Deleting a bucket...");
+    // let deleteBucketResults = await S3.deleteBucket({ Bucket: testBucketName }).promise();
+    // console.dir(deleteBucketResults);
 }
 
 sampleScript();
