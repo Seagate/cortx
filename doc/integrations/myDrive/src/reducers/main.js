@@ -23,7 +23,7 @@ export default (state = defaultState, action) => {
     switch (action.type) {
 
         // case "RESET_SETTINGS_MAIN": {
-        
+
         //     console.log("Redux reset settings", action.id)
 
         //     return {
@@ -34,7 +34,7 @@ export default (state = defaultState, action) => {
         // }
 
         case "LOADING_MORE_ITEMS": {
-            
+
             return {
                 ...state,
                 loadingMoreItems: action.loading
@@ -73,7 +73,7 @@ export default (state = defaultState, action) => {
             }
         }
 
-        case "SET_CACHED_SEARCH": 
+        case "SET_CACHED_SEARCH":
 
             return {
                 ...state,
@@ -102,13 +102,13 @@ export default (state = defaultState, action) => {
                 loginFailedCode: action.code
             }
 
-        case "SET_LOADING": 
+        case "SET_LOADING":
 
             return {
                 ...state,
                 loading: action.load
             }
-        
+
 
         case "LOAD_MORE_ITEMS":
 
@@ -121,7 +121,7 @@ export default (state = defaultState, action) => {
         case "RESET_ITEMS":
 
             return {
-                ...state, 
+                ...state,
                 resetItems: moment.now()
             }
 
@@ -134,7 +134,7 @@ export default (state = defaultState, action) => {
         }
 
         case "HIDE_UPLOADER": {
-            
+
             return {
                 ...state,
                 uploaderShow: false
@@ -157,11 +157,11 @@ export default (state = defaultState, action) => {
         case "GONE_SIDEBAR":
 
             return {
-                ...state, 
+                ...state,
                 showSideBar: "gone"
             }
 
-        default: 
+        default:
             return state;
     }
 }

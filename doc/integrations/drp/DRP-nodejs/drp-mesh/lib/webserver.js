@@ -21,7 +21,7 @@ class DRP_WebServerConfig {
 // Instantiate Express instance
 class DRP_WebServer {
     /**
-     * 
+     *
      * @param {DRP_WebServerConfig} webServerConfig Web Server Configuration
      */
     constructor(webServerConfig) {

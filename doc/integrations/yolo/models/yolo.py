@@ -264,7 +264,7 @@ if __name__ == '__main__':
     # Create model
     model = Model(opt.cfg).to(device)
     model.train()
-                        
+
     # Profile
     # img = torch.rand(8 if torch.cuda.is_available() else 1, 3, 320, 320).to(device)
     # y = model(img, profile=True)

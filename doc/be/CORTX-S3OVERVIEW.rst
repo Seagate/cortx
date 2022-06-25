@@ -28,14 +28,14 @@
 
 ● Contacts
 
-   
+
 ============================
 **What** is CORTX-S3 **and why?**
 ============================
 
 
 |image2|
- 
+
 
 =============
 **Overview**
@@ -61,7 +61,7 @@
 
 
 ..
- 
+
 ===========================
 **CORTX-S3 Server Architecture**
 ===========================
@@ -183,7 +183,7 @@
 
 * Object listing references within bucket (CORTX-S3 object url, motr oid)
 
-* Multipart upload listing references 
+* Multipart upload listing references
 
 * Tags
 
@@ -323,9 +323,9 @@ Refer to the [S3 API document](https://github.com/Seagate/cortx-s3server/blob/ma
 .. :width: 7.6002in
 .. :height: 5.3680in
 .. |image2| image:: images/2_What_is_S3_and_why.png
-   
+
 .. |image4| image:: images/3_S3_Server_Architecture.jpeg
-   
+
 .. |image5| image:: images/4_S3_Server_Architecture_detail.png
 
 .. |image6| image:: images/5_S3_Overview.png
@@ -350,4 +350,3 @@ Refer to the [S3 API document](https://github.com/Seagate/cortx-s3server/blob/ma
 .. :width: 7.6002in
 .. :height: 5.3680in
 .. |image19| image:: images/15_S3_Clovis_KV_Interface.png
-

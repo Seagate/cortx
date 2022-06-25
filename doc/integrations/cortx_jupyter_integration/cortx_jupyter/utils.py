@@ -20,7 +20,7 @@ from notebook.services.contents.manager import ContentsManager
 from collections import namedtuple
 from tornado import gen
 import nbformat
-import json 
+import json
 
 from nbformat.v4 import new_notebook
 from .cortx_authenticator import CortxAuthenticator
@@ -184,7 +184,7 @@ def _check_file_exists(config, path):
         key = _get_key(config, path)
         try:
             response = yield _head_object(config, config.bucket_name, key)
-            
+
         except HTTPClientError as exception:
             if exception.response.code != 404:
                 raise HTTPServerError(exception.response.code, 'Error checking if S3 exists')
@@ -677,5 +677,3 @@ def _get_copy_order_key(key):
 
 def _delete_order_key(key):
     return tuple(-1 * key_i for key_i in _get_copy_order_key(key))
-
-

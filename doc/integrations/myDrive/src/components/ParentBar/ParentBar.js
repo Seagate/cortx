@@ -6,7 +6,7 @@ const ParentBar = (props) => (
         <span class="spacer__path">
             <img src="/assets/spacer.svg" alt="spacer"/>
         </span>
-        <p onClick={props.onFolderClick} class="current__folder">{props.parentNameList.length !== 0 
+        <p onClick={props.onFolderClick} class="current__folder">{props.parentNameList.length !== 0
         ? props.parentNameList[props.parentNameList.length - 1] : "No Name"}</p>
     </div>
 )

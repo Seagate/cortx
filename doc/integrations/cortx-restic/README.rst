@@ -115,7 +115,7 @@ Windows
 #########################
 Step 2 - CORTX Connection
 #########################
-    
+
 
 CORTX Server
 ************
@@ -147,9 +147,9 @@ this command.
     Please note that knowledge of your password is required to access
     the repository. Losing your password means that your data is irrecoverably lost.
 
-If you use CORTX development server as S3 server, and encounter this error 
+If you use CORTX development server as S3 server, and encounter this error
 "x509: cannot validate certificate for 192.168.1.111 because it doesn't contain any IP SANs",
-you can add ``--insecure-tls`` to avoid this error. 
+you can add ``--insecure-tls`` to avoid this error.
 
 .. code-block:: console
 

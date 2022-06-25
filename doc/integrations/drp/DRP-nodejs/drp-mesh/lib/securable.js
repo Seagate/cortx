@@ -20,7 +20,7 @@ let IsTrue = function (value) {
 
 class DRP_AuthInfo {
     /**
-     * 
+     *
      * @param {string} type
      * @param {string} value
      * @param {any} userInfo
@@ -34,7 +34,7 @@ class DRP_AuthInfo {
 
 class DRP_Permission {
     /**
-     * 
+     *
      * @param {boolean} read
      * @param {boolean} write
      * @param {boolean} execute
@@ -48,7 +48,7 @@ class DRP_Permission {
 
 class DRP_PermissionSet {
     /**
-     * 
+     *
      * @param {Object<string,DRP_Permission>} keys
      * @param {Object<string,DRP_Permission>} users
      * @param {Object<string,DRP_Permission>} groups
@@ -62,7 +62,7 @@ class DRP_PermissionSet {
 
 class DRP_Securable {
     /**
-     * 
+     *
      * @param {DRP_PermissionSet} permissionSet Permission set for accessing object
      */
     constructor(permissionSet) {
@@ -70,7 +70,7 @@ class DRP_Securable {
     }
 
     /**
-     * 
+     *
      * @param {DRP_AuthInfo} callerAuthInfo
      * @param {string} operationType
      */
@@ -103,7 +103,7 @@ class DRP_Securable {
     }
 
     /**
-     * 
+     *
      * @param {DRP_Permission} thisPermission
      * @param {string} operationType
      */

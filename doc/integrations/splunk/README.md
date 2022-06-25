@@ -22,8 +22,8 @@ If you prefer your instructions in video check out this [video on youtube](http:
 
 Here's what you'll need:
 
-* Data IP address 
-* Secret key 
+* Data IP address
+* Secret key
 * Access Key
 
 You will get the above information when you create an s3 account on your CORTX server. Please refer to the testing document [here](https://github.com/Seagate/cortx/blob/main/doc/testing_io.rst) for more information on how to create an account and test it.
@@ -38,18 +38,18 @@ You will get the above information when you create an s3 account on your CORTX s
 
 #### Step 2: Configuring Splunk
 
-Please refer to the document [here](https://docs.splunk.com/Documentation/Splunk/8.0.6/Indexer/ConfigureremotestoreforSmartStore) to configure a remote SmartStore store. However, the instructions below should suffice for configuring CORTX. 
+Please refer to the document [here](https://docs.splunk.com/Documentation/Splunk/8.0.6/Indexer/ConfigureremotestoreforSmartStore) to configure a remote SmartStore store. However, the instructions below should suffice for configuring CORTX.
 
-:page_with_curl: **Notes:** 
+:page_with_curl: **Notes:**
 
-* The steps below apply to a single-indexer configuration. 
+* The steps below apply to a single-indexer configuration.
 * See [Splunk documentation for more details about clustered indexers setup](https://docs.splunk.com/Documentation/Splunk/8.1.1/Indexer/UsetheCLI).
 
-1. Configruing the remote s3 storage is done using an `indexes.conf` file. You can find the local copy of this file in this location: `$SPLUNK_HOME/etc/system/local`  
+1. Configruing the remote s3 storage is done using an `indexes.conf` file. You can find the local copy of this file in this location: `$SPLUNK_HOME/etc/system/local`
 
 2. You will need to add these lines to the `indexes.conf` file.
 
-:page_with_curl: **Note:** The values for *s3_BUCKET + ACCESS_KEY + SECRET_KEY + DATA_IP* are from your s3 credentials/details. 
+:page_with_curl: **Note:** The values for *s3_BUCKET + ACCESS_KEY + SECRET_KEY + DATA_IP* are from your s3 credentials/details.
 
 ```shell
 
@@ -96,8 +96,8 @@ You should see that the Remote Storage Connectivity is ONLINE and there is Bucke
 
 ![image](images/CORTXdashboard.png)
 
-## Watch the integration demo 
+## Watch the integration demo
 
-Our Developer Advocate, Justin Woo, walks us through integrating Splunk and CORTX. Splunk is a software platform that allows you to search, monitor, and analyze machine-generated big data via a web-style interface. Because CORTX is S3 compatible we can use the storage system and the Splunk SmartStore feature to offload data to the object storage. This short video walks through an integration a CORTX integration with Splunk. 
-   
+Our Developer Advocate, Justin Woo, walks us through integrating Splunk and CORTX. Splunk is a software platform that allows you to search, monitor, and analyze machine-generated big data via a web-style interface. Because CORTX is S3 compatible we can use the storage system and the Splunk SmartStore feature to offload data to the object storage. This short video walks through an integration a CORTX integration with Splunk.
+
 [![Connecting CORTX to Splunk](https://img.youtube.com/vi/rBAIloua4p0/0.jpg)](https://www.youtube.com/watch?v=rBAIloua4p0)

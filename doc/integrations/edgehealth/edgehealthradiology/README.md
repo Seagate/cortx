@@ -7,6 +7,6 @@ Install requirements:
 2. python -m pip install -r requirements.txt
 
 Before run:
-chmod +x run.sh  
+chmod +x run.sh
 
 ./run.sh

@@ -5,7 +5,7 @@ import env from "../../enviroment/envFrontEnd";
 import ResetPasswordPage from "./ResetPasswordPage";
 
 class ResetPasswordPageContainer extends React.Component {
-    
+
     constructor(props) {
         super(props);
 
@@ -62,7 +62,7 @@ class ResetPasswordPageContainer extends React.Component {
             }
 
             axios.post("/user-service/reset-password", data).then((response) => {
-              
+
                 Swal.fire(
                     'Password Successfully Reset',
                     'You Have Successfully Resetted Your Password, All Sessions Have Been Logged Out.',
@@ -95,7 +95,7 @@ class ResetPasswordPageContainer extends React.Component {
     }
 
     render() {
-        return <ResetPasswordPage 
+        return <ResetPasswordPage
                     resetPassword={this.resetPassword}
                     passwordOnChange={this.passwordOnChange}
                     verifyPasswordOnChange={this.verifyPasswordOnChange}

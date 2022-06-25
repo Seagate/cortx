@@ -30,7 +30,7 @@ class AddStoragePageContainer extends React.Component {
     getUserDetails = () => {
 
         axios.get("/user-service/user-detailed").then((response) => {
-            
+
             this.setState(() => {
                 return {
                     ...this.state,
@@ -41,7 +41,7 @@ class AddStoragePageContainer extends React.Component {
         }).catch((err) => {
             console.log("Loading user details error", err);
         })
-        
+
     }
 
     componentDidMount = () => {
@@ -64,7 +64,7 @@ class AddStoragePageContainer extends React.Component {
     }
 
     selectPlan = (plan) => {
-        
+
         if (this.state.planSelected) {
             return this.setState(() => {
                 return {
@@ -100,14 +100,14 @@ class AddStoragePageContainer extends React.Component {
                     creditCardNumberError: false
                 }
             })
-        } 
-    
+        }
+
         const numericalValue = value.replace(/[^0-9.]/g,"")
 
         let reconstucted = '';
 
         for (let currentChar of numericalValue) {
-         
+
             reconstucted += currentChar;
 
             const numericalOnly = reconstucted.replace(/[^0-9.]/g,"")
@@ -131,7 +131,7 @@ class AddStoragePageContainer extends React.Component {
     onChangeCreditCardCVC = (e) => {
 
         let value = e.target.value
-        
+
         value = value.replace(/[^0-9.]/g,"");
 
         if (value.length >= 4) {
@@ -165,9 +165,9 @@ class AddStoragePageContainer extends React.Component {
 
         let reconstucted = ''
 
-        
+
         for (let currentChar of numericalValue) {
-         
+
             reconstucted += currentChar;
 
             const numericalOnly = reconstucted.replace(/[^0-9.]/g,"")
@@ -178,7 +178,7 @@ class AddStoragePageContainer extends React.Component {
                 break;
             }
         }
-        
+
         this.setState(() => {
             return {
                 ...this.state,
@@ -206,12 +206,12 @@ class AddStoragePageContainer extends React.Component {
 
         if (creditCardNumber.replace(/[^0-9.]/g,"").length !== 16) {
             ccNumError = true;
-        } 
-        
+        }
+
         if (creditCardCVC.replace(/[^0-9.]/g,"").length !== 3) {
             ccCVCError = true
-        } 
-        
+        }
+
         if (creditCardExpiry.replace(/[^0-9.]/g,"").length !== 4) {
             ccExpiryError = true;
         }
@@ -254,16 +254,16 @@ class AddStoragePageContainer extends React.Component {
                         paymentLoading: true
                     }
                 })
-        
+
                 axios.post("/user-service/create-subscription", data).then((response) => {
-        
+
                     this.setState(() => {
                         return {
                             ...this.state,
                             paymentLoading: false
                         }
                     })
-                    
+
                     Swal.fire(
                         'Payment Successful',
                         'Thank You! Payment Was Successful',
@@ -291,7 +291,7 @@ class AddStoragePageContainer extends React.Component {
     }
 
     removeSubscription = () => {
-        
+
         Swal.fire({
             title: 'Remove Subscription?',
             text: "This will remove all myDrive files",
@@ -311,7 +311,7 @@ class AddStoragePageContainer extends React.Component {
                     'success'
                 ).then(() => {
                     window.location.assign(env.url)
-                    
+
                 })
 
               }).catch((err) => {
@@ -340,7 +340,7 @@ class AddStoragePageContainer extends React.Component {
             onChangeCreditCardNumber={this.onChangeCreditCardNumber}
             selectPlan={this.selectPlan}
             getUserDetails={this.getUserDetails}
-            state={this.state} 
+            state={this.state}
             {...this.props}/>
             // <div>
 
@@ -357,10 +357,10 @@ class AddStoragePageContainer extends React.Component {
             //                         {this.state.storagePlans.map((currentPlan) => <AddStorageItem selectPlan={this.selectPlan} plan={currentPlan} loaded={this.state.loaded} userDetails={this.state.userDetails}/>)}
             //                     </div>
             //                 </div>
-            //                 {!this.state.loaded ? undefined : this.state.userDetails.activeSubscription ? 
+            //                 {!this.state.loaded ? undefined : this.state.userDetails.activeSubscription ?
             //                 <div className="add-storage-card__button-wrapper">
             //                     <button className="storage-item__button" onClick={this.removeSubscription}>Remove Subscription</button>
-            //                 </div> : undefined} 
+            //                 </div> : undefined}
             //             </div>
             //         </div>
             //     </div>
@@ -403,20 +403,20 @@ class AddStoragePageContainer extends React.Component {
             //         </div>
             //     </div>
 
-            //     {/* {!this.state.planSelected ? 
-                
+            //     {/* {!this.state.planSelected ?
+
             //     // <div className="add-storage__box">
 
             //     //     <p className="add-storage__title">Storage Plans</p>
-                    
+
             //     //     <div className="add-storage__body">
 
-            //     //         {this.state.storagePlans.map((currentPlan) => <AddStorageItem selectPlan={this.selectPlan} plan={currentPlan}/>)} 
+            //     //         {this.state.storagePlans.map((currentPlan) => <AddStorageItem selectPlan={this.selectPlan} plan={currentPlan}/>)}
             //     //     </div>
 
             //     //     {!this.state.loaded ? undefined : this.state.userDetails.activeSubscription ? <div className="add-storage-card__button-wrapper">
             //     //         <button className="storage-item__button" onClick={this.removeSubscription}>Remove Subscription</button>
-            //     //     </div> : undefined} 
+            //     //     </div> : undefined}
 
             //     // </div>
             //     <div className="storage__back">
@@ -436,7 +436,7 @@ class AddStoragePageContainer extends React.Component {
             //             </div>
 
             //     </div>
-                
+
             //     :
 
             //     <div className="add-storage-card__wrapper">
@@ -453,7 +453,7 @@ class AddStoragePageContainer extends React.Component {
             //             <input className="add-storage-card__number" onChange={this.onChangeCreditCardNumber} value={this.state.creditCardNumber} placeholder="Credit Card Number"/>
             //         </div>
 
-            //         <div className="add-storage-card__expiry-wrapper"> 
+            //         <div className="add-storage-card__expiry-wrapper">
             //             <input className="add-storage-card__expiry" onChange={this.onChangeCreditCardExpiry} value={this.state.creditCardExpiry} placeholder="Expire Date (MM/YYYY)"/>
             //             <input className="add-storage-card__cvc" onChange={this.onChangeCreditCardCVC} value={this.state.creditCardCVC} placeholder="CVC"/>
             //         </div>
@@ -463,11 +463,11 @@ class AddStoragePageContainer extends React.Component {
             //         </div>
 
             //     </div>
-                
+
             //     } */}
 
             // </div>
-        
+
         )
     }
 }

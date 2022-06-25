@@ -15,7 +15,7 @@ digraph G {
   cla_check -> accept [label="yes"]
   cla_check -> contribution_size [label="no"]
   contribution_size -> accept [label="minor (e.g. bug fix, documentation)"]
-  contribution_size -> ask_pat [label="major (e.g. feature addition)"] 
+  contribution_size -> ask_pat [label="major (e.g. feature addition)"]
   ask_pat -> accept [label="CLA not needed"]
   ask_pat -> reject [label="CLA needed"]
 }

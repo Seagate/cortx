@@ -10,7 +10,7 @@ const ObjectID = require('mongodb').ObjectID
 const jwt = require("jsonwebtoken");
 const utilsFile = new UtilsFile();
 
-let user; 
+let user;
 let file;
 
 process.env.KEY = "1234";
@@ -23,16 +23,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-                
+
                 resolve();
-    
+
             })
 
         } else {
 
             resolve();
         }
-    
+
     })
 }
 
@@ -42,7 +42,7 @@ beforeEach(async(done) => {
 
     const {user: gotUser} = await createUser();
     user = gotUser;
-    
+
     const filename = "bunny.mp4";
     const filepath = path.join(__dirname, "../../../fixtures/media/check.svg")
     const metadata = {
@@ -50,7 +50,7 @@ beforeEach(async(done) => {
         parent: "/",
         parentList: "/"
     }
-    
+
     file = await createFile(filename, filepath, metadata, user);
 
     done();
@@ -59,7 +59,7 @@ beforeEach(async(done) => {
 afterEach( async(done) => {
 
     let bucket = new mongoose.mongo.GridFSBucket(conn.db);
-            
+
     await User.deleteMany({});
 
     const allFiles = await conn.db.collection("fs.files").find({}).toArray();
@@ -69,14 +69,14 @@ afterEach( async(done) => {
         const currentFileID = allFiles[i]._id;
         await bucket.delete(ObjectID(currentFileID));
     }
-   
+
     done();
 
 })
 
 
 test("When giving fileID, should return public file", async() => {
-    
+
     const fileID = file._id;
     const tempToken = file.metadata.link;
 
@@ -111,18 +111,18 @@ test("When giving fileID and userID, should remove public file link", async() =>
     const fileID = file._id;
     const userID = user._id;
     await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": ObjectID(fileID), 
-            "metadata.owner": userID}, 
+            .findOneAndUpdate({"_id": ObjectID(fileID),
+            "metadata.owner": userID},
             {"$set": {"metadata.linkType": "public", "metadata.link": token}})
 
 
-       
+
     await utilsFile.removeLink(fileID, userID);
     const updatedFile = await conn.db.collection("fs.files")
             .findOne({_id: fileID});
-    
 
-    
+
+
     expect(updatedFile.metadata.linkType).toBe(undefined);
 })
 
@@ -133,11 +133,11 @@ test("When giving the wrong fileID, should not remove public link", async() => {
     const userID = user._id;
     const wrongFileID = "123456789012";
     await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": ObjectID(fileID), 
-            "metadata.owner": userID}, 
+            .findOneAndUpdate({"_id": ObjectID(fileID),
+            "metadata.owner": userID},
             {"$set": {"metadata.linkType": "public", "metadata.link": token}})
 
-    
+
 
     await utilsFile.removeLink(wrongFileID, userID);
     const updatedFile = await conn.db.collection("fs.files")
@@ -155,12 +155,12 @@ test("When giving the wrong userID, should not remove public link", async() => {
     const userID = user._id;
     const wrongUserID = "123456789012";
     await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": ObjectID(fileID), 
-            "metadata.owner": userID}, 
+            .findOneAndUpdate({"_id": ObjectID(fileID),
+            "metadata.owner": userID},
             {"$set": {"metadata.linkType": "public", "metadata.link": token}})
 
 
-    
+
     await utilsFile.removeLink(fileID, wrongUserID);
     const updatedFile = await conn.db.collection("fs.files")
             .findOne({_id: fileID});
@@ -176,18 +176,18 @@ test("When giving fileID, should remove one time public link", async() => {
     const fileID = file._id;
     const userID = user._id;
     await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": ObjectID(fileID), 
-            "metadata.owner": userID}, 
+            .findOneAndUpdate({"_id": ObjectID(fileID),
+            "metadata.owner": userID},
             {"$set": {"metadata.linkType": "one", "metadata.link": token}})
 
 
-       
+
     await utilsFile.removeOneTimePublicLink(fileID);
     const updatedFile = await conn.db.collection("fs.files")
             .findOne({_id: fileID});
-    
 
-    
+
+
     expect(updatedFile.metadata.linkType).toBe(undefined);
 })
 
@@ -198,16 +198,16 @@ test("When giving the wrong fileID, should not remove one time public link", asy
     const userID = user._id;
     const wrongFileID = "123456789012";
     await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": ObjectID(fileID), 
-            "metadata.owner": userID}, 
+            .findOneAndUpdate({"_id": ObjectID(fileID),
+            "metadata.owner": userID},
             {"$set": {"metadata.linkType": "one", "metadata.link": token}})
-       
+
     await utilsFile.removeOneTimePublicLink(wrongFileID);
     const updatedFile = await conn.db.collection("fs.files")
             .findOne({_id: fileID});
-    
 
-    
+
+
     expect(updatedFile.metadata.linkType).toBe("one");
 })
 
@@ -353,7 +353,7 @@ test("When giving wrong userID, should not return quicklist", async() => {
 })
 
 test("When giving default query object, should return a filtered file list", async() => {
-    
+
     const userID = user._id;
     const filepath = path.join(__dirname, "../../../fixtures/media/check.svg")
     const metadata = {
@@ -363,17 +363,17 @@ test("When giving default query object, should return a filtered file list", asy
     }
 
     const metadataDifferentParent = {
-        owner: userID, 
+        owner: userID,
         parent: "1234",
         parentList:"/,1234"
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
-    
+
     const fileTwo = await createFile("apple.mp4", filepath, metadata, user);
     const fileThree = await createFile("coconut.mp4", filepath, metadata, user);
     const fileFour = await createFile("dinnerbone.mp4", filepath, metadataDifferentParent, user);
@@ -411,17 +411,17 @@ test("When giving owner, should return filtered list", async() => {
     }
 
     const metadataDifferentParent = {
-        owner: userID, 
+        owner: userID,
         parent: "1234",
         parentList:"/,1234"
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
-    
+
     await createFile("apple.mp4", filepath, metadata, user);
     await createFile("coconut.mp4", filepath, metadata, user);
     await createFile("dinnerbone.mp4", filepath, metadataDifferentParent, user);
@@ -454,17 +454,17 @@ test("When giving parent, should return a filtered file list", async() => {
     }
 
     const metadataDifferentParent = {
-        owner: userID, 
+        owner: userID,
         parent: "1234",
         parentList:"/,1234"
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
-    
+
     await createFile("apple.mp4", filepath, metadata, user);
     await createFile("coconut.mp4", filepath, metadata, user);
     const fileFour = await createFile("dinnerbone.mp4", filepath, metadataDifferentParent, user);
@@ -498,17 +498,17 @@ test("When giving limit, should return filitered list", async() => {
     }
 
     const metadataDifferentParent = {
-        owner: userID, 
+        owner: userID,
         parent: "1234",
         parentList:"/,1234"
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
-    
+
     await createFile("apple.mp4", filepath, metadata, user);
     const fileThree = await createFile("coconut.mp4", filepath, metadata, user);
     await createFile("dinnerbone.mp4", filepath, metadataDifferentParent, user);
@@ -542,17 +542,17 @@ test("When giving ascending upload date, should return filtered list", async() =
     }
 
     const metadataDifferentParent = {
-        owner: userID, 
+        owner: userID,
         parent: "1234",
         parentList:"/,1234"
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
-    
+
     const fileTwo = await createFile("apple.mp4", filepath, metadata, user);
     const fileThree = await createFile("coconut.mp4", filepath, metadata, user);
     await createFile("dinnerbone.mp4", filepath, metadataDifferentParent, user);
@@ -594,11 +594,11 @@ test("When giving decending filename, should return filtered list", async() => {
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
-    
+
     const fileTwo = await createFile("apple.mp4", filepath, metadata, user);
     const fileThree = await createFile("coconut.mp4", filepath, metadata, user);
     await createFile("dinnerbone.mp4", filepath, metadataDifferentParent, user);
@@ -641,11 +641,11 @@ test("When giving ascending filename, should return filtered list", async() => {
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
-    
+
     const fileTwo = await createFile("apple.mp4", filepath, metadata, user);
     const fileThree = await createFile("coconut.mp4", filepath, metadata, user);
     await createFile("dinnerbone.mp4", filepath, metadataDifferentParent, user);
@@ -682,17 +682,17 @@ test("When giving start at with default values, should return filtered list", as
     }
 
     const metadataDifferentParent = {
-        owner: userID, 
+        owner: userID,
         parent: "1234",
         parentList:"/,1234"
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
-    
+
     const fileTwo = await createFile("apple.mp4", filepath, metadata, user);
     const fileThree = await createFile("coconut.mp4", filepath, metadata, user);
     await createFile("dinnerbone.mp4", filepath, metadataDifferentParent, user);
@@ -728,17 +728,17 @@ test("When giving start at with ascending data, should return filtered list", as
     }
 
     const metadataDifferentParent = {
-        owner: userID, 
+        owner: userID,
         parent: "1234",
         parentList:"/,1234"
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
-    
+
     const fileTwo = await createFile("apple.mp4", filepath, metadata, user);
     const fileThree = await createFile("coconut.mp4", filepath, metadata, user);
     await createFile("dinnerbone.mp4", filepath, metadataDifferentParent, user);
@@ -798,7 +798,7 @@ test("When giving start at with ascending data, should return filtered list", as
 //     const fileID = file._id;
 //     const userID = user._id;
 //     await await conn.db.collection("fs.files")
-//     .findOneAndUpdate({"_id": ObjectID(fileID), "metadata.owner": userID}, 
+//     .findOneAndUpdate({"_id": ObjectID(fileID), "metadata.owner": userID},
 //     {"$set": {"metadata.transcoded": true}})
 
 //     await utilsFile.removeTranscodeVideo(fileID, userID);
@@ -815,7 +815,7 @@ test("When giving start at with ascending data, should return filtered list", as
 //     const userID = user._id;
 //     const wrongFileID = "123456789012";
 //     await await conn.db.collection("fs.files")
-//     .findOneAndUpdate({"_id": ObjectID(fileID), "metadata.owner": userID}, 
+//     .findOneAndUpdate({"_id": ObjectID(fileID), "metadata.owner": userID},
 //     {"$set": {"metadata.transcoded": true}})
 
 //     await utilsFile.removeTranscodeVideo(wrongFileID, userID);
@@ -832,7 +832,7 @@ test("When giving start at with ascending data, should return filtered list", as
 //     const userID = user._id;
 //     const wrongUserID = "123456789012";
 //     await await conn.db.collection("fs.files")
-//     .findOneAndUpdate({"_id": ObjectID(fileID), "metadata.owner": userID}, 
+//     .findOneAndUpdate({"_id": ObjectID(fileID), "metadata.owner": userID},
 //     {"$set": {"metadata.transcoded": true}})
 
 //     await utilsFile.removeTranscodeVideo(fileID, wrongUserID);
@@ -862,7 +862,7 @@ test("When giving userID and search query, should return file list", async() => 
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
@@ -898,7 +898,7 @@ test("When giving wrong userID, should not return search list", async() => {
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
@@ -959,7 +959,7 @@ test("When giving the wrong userID, should not rename file", async() => {
 test("When giving userID and parent string, should return file list by parent", async() => {
 
     const userID = user._id;
-   
+
     const filepath = path.join(__dirname, "../../../fixtures/media/check.svg")
     const metadata = {
         owner: userID,
@@ -974,7 +974,7 @@ test("When giving userID and parent string, should return file list by parent", 
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
@@ -994,7 +994,7 @@ test("When giving the wrong userID, should not return file list by parent", asyn
 
     const userID = user._id;
     const wrongUserID = "123456789012"
-   
+
     const filepath = path.join(__dirname, "../../../fixtures/media/check.svg")
     const metadata = {
         owner: userID,
@@ -1009,7 +1009,7 @@ test("When giving the wrong userID, should not return file list by parent", asyn
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
@@ -1029,7 +1029,7 @@ test("When giving the userID, should return file list by owner", async() => {
     const userID = user._id;
 
     const {user: user2} = await createUser2();
-   
+
     const filepath = path.join(__dirname, "../../../fixtures/media/check.svg")
     const metadata = {
         owner: userID,
@@ -1044,7 +1044,7 @@ test("When giving the userID, should return file list by owner", async() => {
     }
 
     const metadataDifferentOwner = {
-        owner: user2._id, 
+        owner: user2._id,
         parent: "/",
         parentList:"/,1234"
     }
@@ -1064,7 +1064,7 @@ test("When giving the wrong userID, should not return file list by owner", async
 
     const userID = user._id;
     const wrongUserID = "123456789012"
-   
+
     const filepath = path.join(__dirname, "../../../fixtures/media/check.svg")
     const metadata = {
         owner: userID,
@@ -1079,7 +1079,7 @@ test("When giving the wrong userID, should not return file list by owner", async
     }
 
     const metadataDifferentOwner = {
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
         parentList:"/,1234"
     }
@@ -1125,4 +1125,3 @@ test("When giving wrong userID for move file, should not remove file", async() =
     expect(updatedFile.metadata.parent).toBe(file.metadata.parent);
     expect(updatedFile.metadata.parentList).toBe(file.metadata.parentList);
 })
-

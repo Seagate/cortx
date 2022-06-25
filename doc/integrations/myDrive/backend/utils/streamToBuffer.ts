@@ -6,14 +6,14 @@ const streamToBuffer = (stream: any, allStreamsToErrorCatch: any[]) => {
     allStreamsToErrorCatch.forEach((currentStream) => {
 
       currentStream.on("error", (e: Error) => {
-  
+
         console.log("Stream To Buffer Error", e);
         reject({
           message: "stream to buffer error",
           code: 500,
           error: e
          })
-  
+
       })
     })
 

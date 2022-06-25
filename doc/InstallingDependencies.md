@@ -6,7 +6,7 @@ Follow these steps to install all the dependency packages required to build your
 2. Run these commands to install the dependencies:
 
     ```shell
-    
+
     $ yum install python3-pip createrepo yum-utils -y
     $ pip3 install githubrelease
     $ mkdir -p /root/cortx-build-dependencies && cd /root/cortx-build-dependencies
@@ -17,14 +17,14 @@ Follow these steps to install all the dependency packages required to build your
     $ echo "gpgcheck=0" >> /etc/yum.repos.d/root_cortx-build-dependencies.repo
     $ yum clean all
     ```
-    
+
 3. To verify the RPM listing is working, run:
 
     ```shell
-    
+
     [local_host cortx-build-dependencies]# yum list cortx-py-utils
     ```
-    
+
     **Sample Output**
-    
+
    <img src="../doc/images/Dependencies.png?raw=true">

@@ -5,7 +5,7 @@
           <v-spacer></v-spacer>
           <v-chip
       class="ma-2"
-      
+
       color="cyan"
       label
       text-color="white"
@@ -15,10 +15,10 @@
       </v-icon>
       <a target="_blank" style="text-decoration:none;color:white"  href="https://edgehealthradiology.herokuapp.com/">Radiology Files</a>
     </v-chip>
-          
+
         </v-row>
           <v-row align="center" justify="center" style="">
-              
+
               <v-col cols="4">
             <v-card
             hover
@@ -35,7 +35,7 @@
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
               </div>
             </v-card>
-              
+
           </v-col>
           <v-col cols="4">
             <v-card
@@ -53,7 +53,7 @@
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
               </div>
             </v-card>
-              
+
           </v-col>
            <v-col cols="4">
             <v-card
@@ -71,13 +71,13 @@
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
               </div>
             </v-card>
-              
+
           </v-col>
-          
-          
+
+
           </v-row>
           <v-row align="center" justify="center" >
-              
+
               <v-col cols="4">
             <v-card
             hover
@@ -94,7 +94,7 @@
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
               </div>
             </v-card>
-              
+
           </v-col>
           <v-col cols="4">
             <v-card
@@ -112,7 +112,7 @@
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
               </div>
             </v-card>
-              
+
           </v-col>
           <v-col cols="4">
             <v-card
@@ -130,13 +130,13 @@
               <p class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iusto ab beatae tempore.</p>
               </div>
             </v-card>
-              
+
           </v-col>
-          
-          
+
+
           </v-row>
-          
-          
+
+
       </v-container>
   </div>
 </template>

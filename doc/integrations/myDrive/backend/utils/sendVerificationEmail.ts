@@ -10,7 +10,7 @@ const sendVerificationEmail = async (user: UserInterface, emailToken: string) =>
 
     const apiKey: any = env.sendgridKey;
     const sendgridEmail:any = env.sendgridEmail;
-    const url = env.remoteURL + `/verify-email/${emailToken}`    
+    const url = env.remoteURL + `/verify-email/${emailToken}`
 
     // console.log("send grid api key", apiKey)
     // console.log("send grid email", sendgridEmail);
@@ -20,7 +20,7 @@ const sendVerificationEmail = async (user: UserInterface, emailToken: string) =>
     const msg = {
         to: user.email,
         from: sendgridEmail,
-        subject: "myDrive Email Verification", 
+        subject: "myDrive Email Verification",
         text: `Please navigate to the following link to verify your email address: ${url}`
     }
 

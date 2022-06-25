@@ -25,7 +25,7 @@ class ParentBarContainer extends React.Component {
     }
 
     render() {
-        return <ParentBar 
+        return <ParentBar
                     homeClick={this.homeClick}
                     onFolderClick={this.onFolderClick}
                     {...this.props}/>

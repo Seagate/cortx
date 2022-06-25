@@ -2,22 +2,22 @@
 
 What is FTP
 ----
-The File Transfer Protocol (FTP) is a standard communication protocol used for the transfer of computer files from a server to a client on a computer network. 
+The File Transfer Protocol (FTP) is a standard communication protocol used for the transfer of computer files from a server to a client on a computer network.
 
 Integrating CORTX with FTP
 ----
-The integration architecture is shown below. In this integration, there is a FTP client, a FTP server, and a Cortx/S3 server. FTP client and FTP server connect through FTP protocol. FTP server uses s3fs mount as storage. s3fs sync with S3 server's S3 bucket.    
+The integration architecture is shown below. In this integration, there is a FTP client, a FTP server, and a Cortx/S3 server. FTP client and FTP server connect through FTP protocol. FTP server uses s3fs mount as storage. s3fs sync with S3 server's S3 bucket.
 
-Other S3 client tools can be added to the system to manage S3 storage, or use to test the system.  
+Other S3 client tools can be added to the system to manage S3 storage, or use to test the system.
 
 ![architecture](image/ftp_integration_architecture.jpg)
 
 ###  Prerequisites
 Have an avaliable Cortx setup, or setup follow the instructions below. And create a bucket testbucket.
-https://github.com/Seagate/cortx/blob/main/QUICK_START.md 
+https://github.com/Seagate/cortx/blob/main/QUICK_START.md
 
-###  Setup Steps 
-Note: Dockerfile is available to replace Step 1 and Step 2. 
+###  Setup Steps
+Note: Dockerfile is available to replace Step 1 and Step 2.
 
 Step 1: Install s3fs
 
@@ -39,9 +39,9 @@ Step 3: Mount S3 bucket with s3fs. Note: replace with your own access key id, se
     s3fs testbucket /srv/ftp/cortx-fs/ -o passwd_file=/etc/passwd-s3fs -o url=https://192.168.1.111:443 -o use_path_request_style -o dbglevel=info -f -o curldbg -o ssl_verify_hostname=0 -o no_check_certificate -o allow_other -o complement_stat -o umask=600
 
 
-###  Run and test the system 
+###  Run and test the system
 
-Step 1: Add some files to the testbucket using tools like Cyberduck or awscli (need to setup separately). 
+Step 1: Add some files to the testbucket using tools like Cyberduck or awscli (need to setup separately).
 
 To install awscli.
 

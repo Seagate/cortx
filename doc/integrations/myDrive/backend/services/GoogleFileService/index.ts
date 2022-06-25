@@ -31,7 +31,7 @@ class GoogleFileService {
 
     constructor() {
 
-        
+
     }
 
     getList = async(user: UserInterface, query: googleQueryType) => {
@@ -48,7 +48,7 @@ class GoogleFileService {
     }
 
     getMongoGoogleList = async(user: UserInterface, query: googleQueryType) => {
-        
+
         const files = await googleDbFileUtils.getList(query, user);
 
         const nextPageToken = files.data.nextPageToken;
@@ -56,7 +56,7 @@ class GoogleFileService {
         const userID = user._id;
 
         const convertedFiles = convertDriveListToMongoList(files.data.files, userID, nextPageToken);
-        
+
         const fileList = await fileService.getList(user, query);
 
         const sortedList = sortGoogleMongoList([...convertedFiles, ...fileList], query)
@@ -80,23 +80,23 @@ class GoogleFileService {
 
         const userID = user._id
         const convertedFiles = convertDriveListToMongoList(files.data.files, userID);
-        
+
         const quickList = await fileService.getQuickList(user);
-    
+
         const sortedGoogleMongoQuickList = sortGoogleMongoQuickFiles(convertedFiles, quickList);
 
         return sortedGoogleMongoQuickList;
     }
 
     getGoogleMongoSuggestedList = async(user: UserInterface, searchQuery: string) => {
-        
+
         const {files, folders} = await googleDbFileUtils.getSuggestedList(searchQuery, user);
-        
+
         const userID = user._id;
 
         const convertedFiles = convertDriveListToMongoList(files.data.files, userID);
         const convertedFolders = convertDriveFoldersToMongoFolders(folders.data.files, userID);
-        
+
         const {fileList: mongoFileList, folderList: mongoFolderList} = await fileService.getSuggestedList(user._id, searchQuery);
 
         return {
@@ -121,8 +121,8 @@ class GoogleFileService {
 
         res.set('Content-Type', 'binary/octet-stream');
         res.set('Content-Disposition', 'attachment; filename="' + fileMetadata.data.name! + '"');
-        res.set('Content-Length', fileMetadata.data.size!); 
-        
+        res.set('Content-Length', fileMetadata.data.size!);
+
         return new Promise((resolve, reject) => {
 
             drive.files.get(
@@ -150,7 +150,7 @@ class GoogleFileService {
 
         res.set('Content-Type', 'binary/octet-stream');
         res.set('Content-Disposition', 'attachment; filename="' + fileMetadata.data.name! + ".pdf" + '"');
-        res.set('Content-Length', fileMetadata.data.size!); 
+        res.set('Content-Length', fileMetadata.data.size!);
 
         drive.files.export({
             fileId: fileID,
@@ -175,8 +175,8 @@ class GoogleFileService {
 
         res.set('Content-Type', 'binary/octet-stream');
         res.set('Content-Disposition', 'attachment; filename="' + fileMetadata.data.name! + '"');
-        res.set('Content-Length', fileMetadata.data.size!); 
-        
+        res.set('Content-Length', fileMetadata.data.size!);
+
         return new Promise((resolve, reject) => {
             drive.files.get(
                 {fileId: fileID, alt: "media"},
@@ -203,8 +203,8 @@ class GoogleFileService {
 
         res.set('Content-Type', 'binary/octet-stream');
         res.set('Content-Disposition', 'attachment; filename="' + fileMetadata.data.name! + '"');
-        res.set('Content-Length', fileMetadata.data.size!); 
-        
+        res.set('Content-Length', fileMetadata.data.size!);
+
         return new Promise((resolve, reject) => {
             drive.files.get(
                 {fileId: fileID, alt: "media"},
@@ -234,13 +234,13 @@ class GoogleFileService {
         const {fileMetadata, drive} = await googleDbFileUtils.getDownloadFileMetadata(fileID, user);
 
         const fileSize = +fileMetadata.data.size!
-        
+
         const headers = req.headers;
 
         const range = headers.range!
         const parts = range.replace(/bytes=/, "").split("-")
         let start = parseInt(parts[0], 10)
-        let end = parts[1] 
+        let end = parts[1]
             ? parseInt(parts[1], 10)
             : fileSize-1
         const chunksize = (end-start)+1
@@ -284,61 +284,61 @@ class GoogleFileService {
     uploadFile = async(user: UserInterface, busboy: any, req: RequestType, res: Response) => {
 
         const streamsToErrorCatch = [req, busboy];
-    
+
         const {file, filename, formData} = await getBusboyData(busboy);
-    
+
         let parent = formData.get("parent") || "/"
         const size = formData.get("size") || ""
-    
+
         parent = parent === "/" ? "root" : parent;
-    
+
         const oauth2Client = await getGoogleAuth(user);
         const drive = google.drive({version:"v3", auth: oauth2Client});
-        
+
         type fileMetadataType = {
             name?: string,
             parents?: string[]
-        } 
-    
+        }
+
         let fileMetadata: fileMetadataType = {}
         fileMetadata.name = filename;
-    
+
         if (parent !== "/") {
             fileMetadata.parents = [parent]
         }
-    
+
         const googleIDandKey = await user.decryptDriveIDandKey();
         const clientID = googleIDandKey.clientID;
         const clientKey = googleIDandKey.clientKey;
         const googleToken = await user.decryptDriveTokenData();
         const refreshToken = googleToken.refresh_token;
-    
+
         const data = {
             client_id: clientID,
             client_secret: clientKey,
             refresh_token: refreshToken,
             grant_type: 'refresh_token'
         }
-    
+
         const tokenResp = await axios.post("https://www.googleapis.com/oauth2/v4/token", data);
         const accessToken = tokenResp.data.access_token
-      
+
         const config = {
             'Authorization': `Bearer ${accessToken}`,
             'Content-Length': size,
             'Content-Type': 'application/json'
         }
-    
+
         const axiosConfigObj = {
             headers: config,
         }
-    
+
         const axiosBody = {
             name: filename,
             parents: [parent],
             fields: "*"
         }
-    
+
         await awaitUploadGoogle(file, size, axiosBody, axiosConfigObj, drive, req, res, streamsToErrorCatch);
 
     }
@@ -357,7 +357,7 @@ class GoogleFileService {
 
     removePublicLink = async(user: UserInterface, fileID: string) => {
 
-        await googleDbFileUtils.removePublicLink(fileID, user);   
+        await googleDbFileUtils.removePublicLink(fileID, user);
     }
 }
 

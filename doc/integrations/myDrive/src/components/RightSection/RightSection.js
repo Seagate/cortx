@@ -14,16 +14,16 @@ class RightSection extends React.Component {
         return (
 
             <div onClicks={this.props.closeContext} ref={this.props.rightSectionRef} style={this.props.rightSectionMode === '' ? {} : this.props.rightSectionMode === 'open' ? {right: "0px"} : {right:"-260px"}} class={this.props.selectedItem.name === "" ? "file__details empty__details" : "file__details"}>
-                
-                {this.props.selectedItem.name === "" ? 
-                
+
+                {this.props.selectedItem.name === "" ?
+
                 <div class="file__details--inner">
                     <span><img src="/assets/filedetailsicon.svg" alt="filedetailsicon"/></span>
                     <p>Select a file or folder to  view it’s details</p>
                 </div>
-    
+
                 :
-    
+
                 <div class="file__info--wrap">
                     <img className={this.props.selected === "" ? "section__title-image section__title-image--gone" : "section__title-image"} src="/images/close_icon.png" onClick={this.props.resetSelected}/>
                    <div class="file__type">
@@ -59,10 +59,10 @@ class RightSection extends React.Component {
                         <NewContextMenu gridMode={true} folderMode={!this.props.selectedItem.file} contextSelected={this.props.state.contextSelected} closeContext={this.props.closeContext} downloadFile={this.props.downloadFile} file={this.props.selectedItem.data} changeEditNameMode={this.props.changeEditNameMode} startMovingFile={this.props.startMoveFolder} changeDeleteMode={this.props.changeDeleteMode}/>
                     </div>
                 </div>
-    
+
                 }
             </div>
-        
+
         )
     }
 }

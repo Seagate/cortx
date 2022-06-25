@@ -24,16 +24,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-                
+
                 resolve();
-    
+
             })
 
         } else {
 
             resolve();
         }
-    
+
     })
 }
 
@@ -57,7 +57,7 @@ beforeEach(async(done) => {
     //     done()
 
     // } else {
-        
+
     //     // user = await createUser();
     //     // userToken = user.tokens[0].token;
     //     const {user: gotUser, token: gotToken} = await createUser();
@@ -121,7 +121,7 @@ test("When giving credentials, should login user, and not return sensitive info"
 })
 
 test("When giving wrong creditentials, should return 500 error", async() => {
-  
+
     const response = await request(app)
     .post(`/user-service/login`)
     .send({
@@ -160,7 +160,7 @@ test("When authoized should logout all sessions of a user", async() => {
     const appSession = session(app);
 
     await loginUser(appSession, userData);
-    
+
     await appSession
     .post(`/user-service/logout-all`)
     .send()
@@ -221,7 +221,7 @@ test("When giving old password, and new password, should change password", async
     await appSession
     .post(`/user-service/change-password`)
     .send({
-        oldPassword, 
+        oldPassword,
         newPassword
     })
     .expect(200);
@@ -247,14 +247,14 @@ test("When giving wrong old password for change password, should return 500 erro
 
     const appSession = session(app);
     await loginUser(appSession, userData);
-    
+
     const wrongOldPassword = "12342345";
     const newPassword = "987654321";
 
     await appSession
     .post(`/user-service/change-password`)
     .send({
-        wrongOldPassword, 
+        wrongOldPassword,
         newPassword
     })
     .expect(500);
@@ -268,7 +268,7 @@ test("When not authorized for change password, should return 401 error", async()
     const response = await request(app)
     .post(`/user-service/change-password`)
     .send({
-        oldPassword, 
+        oldPassword,
         newPassword
     })
     .expect(401);
@@ -289,7 +289,7 @@ test("When not email verified should not change password", async() => {
     await appSession
     .post(`/user-service/change-password`)
     .send({
-        oldPassword, 
+        oldPassword,
         newPassword
     })
     .expect(401);
@@ -310,7 +310,7 @@ test("When not email verified, but email verification disabled, should change pa
     await appSession
     .post(`/user-service/change-password`)
     .send({
-        oldPassword, 
+        oldPassword,
         newPassword
     })
     .expect(200);
@@ -368,7 +368,7 @@ test("When not giving long enouph password, should not create user", async() => 
 })
 
 test("When giving duplicate email, should not create user", async() => {
-  
+
     await request(app)
     .post(`/user-service/create`)
     .send({
@@ -376,7 +376,7 @@ test("When giving duplicate email, should not create user", async() => {
         password: "12345678"
     })
     .expect(201);
-    
+
 
     await request(app)
     .post(`/user-service/create`)
@@ -430,7 +430,7 @@ test("When not authenticated should not get detailed user", async() => {
 test("When not email verified should not get detailed user", async() => {
 
     const appSession = session(app);
-    
+
     const {userData: userData2} = await createUserNotEmailVerified();
     await loginUser(appSession, userData2);
 
@@ -442,7 +442,7 @@ test("When not email verified but email verification disabled should get detaile
     env.disableEmailVerification = true;
 
     const appSession = session(app);
-    
+
     const {userData: userData2} = await createUserNotEmailVerified();
     await loginUser(appSession, userData2);
 
@@ -501,4 +501,3 @@ test("When not giving name should not set users name", async() => {
 
     await appSession.patch("/user-service/add-name").send().expect(403);
 })
-

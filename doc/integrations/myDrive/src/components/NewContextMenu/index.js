@@ -27,7 +27,7 @@ class NewContextMenuContainer extends React.Component {
     handleClickOutside = () => {
         if (this.props.contextSelected && this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
             this.props.closeContext();
-        } 
+        }
     }
 
     startFileDownload = () => {
@@ -55,8 +55,8 @@ class NewContextMenuContainer extends React.Component {
     }
 
     render() {
-       
-        return <NewContextMenu 
+
+        return <NewContextMenu
                     wrapperRef={this.wrapperRef}
                     stopPropagation={this.stopPropagation}
                     startRenameFile={this.startRenameFile}

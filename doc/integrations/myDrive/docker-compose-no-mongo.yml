@@ -5,9 +5,8 @@ services:
     container_name: mydrive-node-no-mongo
     restart: always
     build: .
-    ports: 
+    ports:
       - '3000:3000'
       - '8080:8080'
     env_file:
       - docker-variables.env
- 

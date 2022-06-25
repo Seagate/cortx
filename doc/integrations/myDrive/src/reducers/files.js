@@ -33,7 +33,7 @@ export default (state = [], action) => {
                 }
             })
 
-        case "EDIT_FILE_METADATA": 
+        case "EDIT_FILE_METADATA":
 
             return state.map((file) => {
 
@@ -47,14 +47,14 @@ export default (state = [], action) => {
                 }
             })
 
-        case "REMOVE_FILE": 
+        case "REMOVE_FILE":
 
             return state.filter((file) => {
 
                 return file._id !== action.id
             })
 
-        default: 
+        default:
             return state;
     }
 }

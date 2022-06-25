@@ -3,7 +3,7 @@ import React from "react";
 const GoogleAccountPage = (props) => (
     <div class="modal__wrap" style={!props.state.accountDetailsLoaded ? {background: 'unset'} : {}}>
         <div class="inner__modal">
-            {props.state.accountDetailsLoaded ? 
+            {props.state.accountDetailsLoaded ?
             <div class="password__modal">
                 <div class="head__password">
                     <h2>Google Account</h2>
@@ -24,7 +24,7 @@ const GoogleAccountPage = (props) => (
             </div>  :
             <div>
                 <p>{props.state.info}</p>
-            </div>  
+            </div>
         }
         </div>
     </div>

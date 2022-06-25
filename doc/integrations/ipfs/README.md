@@ -67,7 +67,7 @@ cd cmd/ipfs
 ./ipfs init
 ```
 
-#### Step 6: Edit $IPFS_DIR/config to include s3 details 
+#### Step 6: Edit $IPFS_DIR/config to include s3 details
 
 In your home directory there should be a folder `.ipfs` and in that folder there should be a `config` file.
 

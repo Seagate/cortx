@@ -43,7 +43,7 @@ const getWebUIKey = () => {
         server.listen(port, () => {
 
             console.log(`\nPlease navigate to http://localhost:${port} to enter encryption key\n`)
-           
+
         });
 
     })

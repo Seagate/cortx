@@ -257,7 +257,7 @@
 
         class drpMethod {
             /**
-             * 
+             *
              * @param {string} name
              * @param {string} description
              * @param {Object.<string,drpMethodSwitch>} switches
@@ -966,11 +966,11 @@
                                     // Calculate the starting and ending lines
 
                                     /**
-                                     * 
+                                     *
                                      * length = 10
                                      * linesAfter = 5
                                      * i = 6 (7th line, only 3 left)
-                                     * 
+                                     *
                                      * */
 
                                     let linesToFetch = Math.min(contextLinesAfter, lineArray.length - (i + 1));

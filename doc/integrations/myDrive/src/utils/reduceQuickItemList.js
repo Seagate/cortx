@@ -1,7 +1,7 @@
 const { default: mobilecheck } = require("./mobileCheck");
 
 const reduceQuickItemList = (quickItemList) => {
-    
+
     const isMobile = mobilecheck()
 
     if (quickItemList.length > 10 && !isMobile) {

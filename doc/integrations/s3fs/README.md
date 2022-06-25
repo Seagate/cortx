@@ -7,7 +7,7 @@ Summary:
 ----
 This document walks you through how to set up CORTX integration with [s3fs](https://github.com/s3fs-fuse/s3fs-fuse). s3fs allows Linux and macOS to mount an S3 bucket via FUSE. s3fs preserves the native object format for files, allowing use of other tools like AWS CLI.
 
-This documentations runs the s3fs + CORTX integration with a Docker instance as well. 
+This documentations runs the s3fs + CORTX integration with a Docker instance as well.
 
 
 
@@ -25,7 +25,7 @@ For windows 10, run the following command.
 
 Note: To run `Get-Content` command in Windows 10, need to use Windows PowerShell.
 
-To run `docker` command in Windows 10, need to install WSL2 and Docker Desktop [here](https://www.docker.com/products/docker-desktop) first. 
+To run `docker` command in Windows 10, need to install WSL2 and Docker Desktop [here](https://www.docker.com/products/docker-desktop) first.
 ```
 Get-Content Dockerfile | docker build -t cortx .
 ```
@@ -45,7 +45,7 @@ Note: if you use development Cortx S3 Server, and encounter "server certificate 
 
 If you encouter "s3fs: unable to access MOUNTPOINT cortx-fs: No such file or directory", you can `cd /` first then run this s3fs command.
 ```
-s3fs testbucket cortx-fs -o passwd_file=${HOME}/.passwd-s3fs -o url=http://uvo10yvtzaut5d6y06l.vm.cld.sr -o use_path_request_style 
+s3fs testbucket cortx-fs -o passwd_file=${HOME}/.passwd-s3fs -o url=http://uvo10yvtzaut5d6y06l.vm.cld.sr -o use_path_request_style
 ```
 
 If you do not have testbucket created in cortx, you may do so via the awscli.

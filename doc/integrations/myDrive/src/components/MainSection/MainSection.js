@@ -11,7 +11,7 @@ const MainSection = React.forwardRef((props, ref) => {
 
         <div class="content__block">
                 <div className="overlay" style={(props.leftSectionMode === "open" || props.rightSectionMode === "open") ? {display:"block"} : {display:"none"}}>
-        
+
                 </div>
 				<div class="small__switcher--content">
 					<a onClick={props.switchLeftSectionMode} class="menu__button"><i class="fas fa-bars"></i></a>
@@ -29,7 +29,7 @@ const MainSection = React.forwardRef((props, ref) => {
 						</div>
 					</div>}
 
-                    {props.routeType === "search" ? 
+                    {props.routeType === "search" ?
                     <div class="file__control--panel folder__view" style={{paddingBottom:"0", marginBottom:"-50px"}}>
                         <div class="results__files">
                         <h2><span class="counter__result">{props.files.length + props.folders.length >= 50 ? "50+" : props.files.length + props.folders.length}</span> <span class="result__word">results</span> for <span class="result__search--word">{props.cachedSearch}</span></h2>
@@ -38,7 +38,7 @@ const MainSection = React.forwardRef((props, ref) => {
                     </div> : undefined}
 
                     {props.showPopup ? <PopupWindow downloadFile={props.downloadFile} /> : undefined}
-                    
+
                     {props.moverID.length === 0 ? undefined :
                     <MoverMenu />
                     }
@@ -49,12 +49,12 @@ const MainSection = React.forwardRef((props, ref) => {
                         downloadFile={props.downloadFile}/>
 
 
-                   <RightSection  
+                   <RightSection
                         folderClick={props.folderClick}
                         fileClick={props.fileClick}
                         downloadFile={props.downloadFile}
-                        /> 
-                   
+                        />
+
 				</div>
 		</div>
 

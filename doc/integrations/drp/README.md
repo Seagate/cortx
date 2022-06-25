@@ -17,7 +17,7 @@ The DRP project [GitHub Repo](https://github.com/adhdtech/DRP).
 Prepare your environment and have the Endpoint, AccessIDKey and SecretAccessKey values ready.
 
 ### Run Docker Container
-Run the adhdtech/drp-nodejs container with "node serverCortx.js".  Substitute the S3ENDPOINT, S3ACCESSKEYID and S3SECRETACCESSKEY values with your 
+Run the adhdtech/drp-nodejs container with "node serverCortx.js".  Substitute the S3ENDPOINT, S3ACCESSKEYID and S3SECRETACCESSKEY values with your
 
 ```
 > docker run --name drpcortx -P 8080 -e REGISTRYURL=ws://localhost:8080 -e PORT=8080 -e S3ENDPOINT=https://192.168.5.148 -e S3ACCESSKEYID=AKIAT7y9JwKbREyMsCX08G3blg -e S3SECRETACCESSKEY=IHQRZ8U/06tboLFyLduRdLfWvkSt9gl1rHQUeATQ adhdtech/drp-nodejs node serverCortx.js
@@ -56,7 +56,7 @@ dsh> cat Mesh/Services/FireDept/Classes/Station/GetDefinition
 ```
 Or even see the raw records...
 ```
-dsh> cat Mesh/Services/FireDept/Classes/Station/GetRecords   
+dsh> cat Mesh/Services/FireDept/Classes/Station/GetRecords
 {
     "1000": {
         "_objClass": "Station",

@@ -1,16 +1,16 @@
 import mongoose, {Document} from "mongoose";
 
 const thumbnailSchema = new mongoose.Schema({
-    
+
     name: {
-        type: String, 
+        type: String,
         required: true,
     },
     owner: {
-        type: String, 
+        type: String,
         required: true
     },
-    
+
     data: {
         type: Buffer,
     },

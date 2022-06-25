@@ -205,7 +205,7 @@ We continue with the implementation of parley:
             # produce a model response
             model_act = self.model_copies[i].act()
             # compute any metrics of the response
-            self.teacher_copies[i].observe(model_act)   
+            self.teacher_copies[i].observe(model_act)
 ```
 
 <center>
@@ -372,4 +372,3 @@ from 4 to only 2! This is the trick of how dynamic batching can provide
 :::{tip}
 You can use this mode with `-dynb full` or `--dynamic-batching full`.
 :::
-

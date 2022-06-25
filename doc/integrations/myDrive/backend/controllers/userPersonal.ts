@@ -23,7 +23,7 @@ interface RequestType extends Request {
 }
 
 class UserPersonalController {
-    
+
     constructor() {
 
     }
@@ -38,7 +38,7 @@ class UserPersonalController {
 
             const user = req.user;
             const s3Data = req.body;
-            
+
             const currentUUID = req.headers.uuid as string;
 
             const {accessToken, refreshToken} = await UserProviderPersonal.addS3Storage(user, s3Data, currentUUID);
@@ -48,7 +48,7 @@ class UserPersonalController {
             res.send();
 
         } catch (e) {
-            
+
             console.log("\nAdd S3 Storage Error Personal User Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -73,7 +73,7 @@ class UserPersonalController {
             res.send();
 
         } catch (e) {
-            
+
             console.log("\nRemove S3 Storage Error Personal User Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -95,7 +95,7 @@ class UserPersonalController {
             res.send();
 
         } catch (e) {
-            
+
             console.log("\nRemove S3 Metadata Error Personal User Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -145,7 +145,7 @@ class UserPersonalController {
             res.send();
 
         } catch (e) {
-            
+
             console.log("\nUpload S3 Metadata Error Personal User Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();

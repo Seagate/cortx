@@ -15,9 +15,9 @@ const Header = (props) => (
                                 <a href="#">
                                     <img src="/assets/searchicon.svg" alt="search"/>
                                 </a>
-                                <input type="text" 
+                                <input type="text"
                                     placeholder="Search your files"
-                                    onChange={props.searchOnChange} 
+                                    onChange={props.searchOnChange}
                                     value={props.search}
                                     placeholder="Search" type="text"
                                     onFocus={props.showSuggested}
@@ -38,7 +38,7 @@ const Header = (props) => (
                                 </div>
                                 <div class="profile__wrapper">
                                     <div class="profile__button">
-                                        <a style={{backgroundColor:"#3c85ee"}}> 
+                                        <a style={{backgroundColor:"#3c85ee"}}>
                                             <span style={{color:"#fff"}}>{props.getProfilePic()}</span>
                                         </a>
                                     </div>

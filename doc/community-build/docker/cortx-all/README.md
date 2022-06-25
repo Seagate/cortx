@@ -7,16 +7,16 @@ This document provides step-by-step instructions to build CORTX binaries and con
     - RAM: 8GB
     - Processor: 4
 
-- Ensure following minimum disk space are available. 
+- Ensure following minimum disk space are available.
     - 70GB : Docker Home Directory where default docker home directory is /var/lib/docker. You can modify the file based on disk layout.
     - 30GB : mnt . Use this directory as part of build process. You can use /mnt from system disk if you have enough disk space available.
 
-- Git >= 2.27.0 . Please refer [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) document. You can also use below commmand to install Git. 
+- Git >= 2.27.0 . Please refer [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) document. You can also use below commmand to install Git.
   ```
-  yum install git -y 
+  yum install git -y
   ```
 
-- Docker >= 20.10.10 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system. 
+- Docker >= 20.10.10 . Please refer [Install Docker Community Edition](https://docs.docker.com/engine/install/centos/) steps. Validate docker version on system.
     ```
     [root@dev-system ~]# docker --version
     Docker version 20.10.8, build 3967b7d
@@ -26,7 +26,7 @@ This document provides step-by-step instructions to build CORTX binaries and con
     [root@dev-system ~]# docker-compose --version
     docker-compose version 1.29.2, build 5becea4c
     ```
-    
+
 ## Compile and Build CORTX Stack
 
 - Pull CORTX Build image:
@@ -40,14 +40,14 @@ This document provides step-by-step instructions to build CORTX binaries and con
     ```
     cd /mnt && git clone https://github.com/Seagate/cortx --recursive --depth=1
     ```
-    
-2.  Run the following command to checkout **main** branch for generating CORTX packages. Use below command for checkout. 
+
+2.  Run the following command to checkout **main** branch for generating CORTX packages. Use below command for checkout.
     ```
     docker run --rm -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make checkout BRANCH=main
     ```
-     
+
      - Validate CORTX component clone status with below command.
-       
+
        ```
        cd /mnt/cortx/ && for component in cortx-motr cortx-hare cortx-rgw-integration cortx-manager cortx-utils cortx-ha cortx-rgw; do echo -e "\n==[ Checking Git Branch for $component ]=="; pushd $component; git status; popd ; done && cd -
        ```
@@ -56,12 +56,12 @@ This document provides step-by-step instructions to build CORTX binaries and con
    ```
    docker run --rm -v /var/artifacts:/var/artifacts -v /mnt/cortx:/cortx-workspace ghcr.io/seagate/cortx-build:rockylinux-8.4 make clean cortx-all-rockylinux-image
    ```
-   
+
    **Note:** This process takes around 5Hrs to build entire CORTX packages with minimum VM specifications where time can vary based on VM specification and network speed.
-   
+
 4. To validate that Packages are generated, run the following command after the build step is complete:
    ```
-   ls -l /var/artifacts/0 
+   ls -l /var/artifacts/0
    ```
 
 5. (Optional) Compile and Build CORTX Stack as per Individual component.
@@ -70,18 +70,18 @@ This document provides step-by-step instructions to build CORTX binaries and con
    ```
    docker run ghcr.io/seagate/cortx-build:rockylinux-8.4 make help
    ```
-   
-6. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration. 
+
+6. Publish CORTX release build over HTTP using [Nginx](https://hub.docker.com/_/nginx) docker container. Use below command to create nginx container with required configuration.
 
     ```
     docker run --name release-packages-server -v /var/artifacts/0/:/usr/share/nginx/html:ro -d -p 80:80 nginx
     ```
     Ensure that container is started and we can download RELEASE.INFO
     ```
-    docker ps 
+    docker ps
     curl -L http://$HOSTNAME/RELEASE.INFO
     ```
-    
+
 
 7. Run the following command to clone [cortx-re](https://github.com/Seagate/cortx-re) repository using below commands,
 
@@ -101,14 +101,14 @@ This document provides step-by-step instructions to build CORTX binaries and con
     `extra_hosts` entry should be added like below.
 
     ```
-    e.g.  
+    e.g.
     cortx-all:
     image: cortx-all:$TAG
     extra_hosts:
       - "myhost.example.com: 127.0.0.1"
     build:
       context: ./
-      dockerfile: ./Dockerfile  
+      dockerfile: ./Dockerfile
     ```
 
 8. After verifying docker compose then run the build.sh file where your cortx-all folder is located.
@@ -117,13 +117,13 @@ This document provides step-by-step instructions to build CORTX binaries and con
     ```
     ./build.sh -b http://$HOSTNAME -o rockylinux-8.4 -s all -e opensource-ci
     ```
-    Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command. 
+    Note: You can use IP Address of system instead of $HOSTNAME if hostname is not reachable. You can find IP address using `ip addr show` command.
 
 9. Run the below command to see recently generated cortx-all image details.
     ```
     docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' --filter=reference='cortx-*'
     ```
-    **Example output** 
+    **Example output**
     ```
     [root@dev-system ~]#  docker images --format='{{.Repository}}:{{.Tag}} {{.CreatedAt}}' --filter=reference='cortx-*'
     cortx-rgw:2.0.0-0 2022-04-20 08:40:27 -0600 MDT

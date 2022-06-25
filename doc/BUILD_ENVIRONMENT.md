@@ -4,10 +4,10 @@ Building and testing CORTX can be done using a single system.  Obviously CORTX i
 
 Currently CORTX requires the CentOS 7.8.2003 distribution running the 3.10.0-1127 kernel. Building it and testing it can be done on either a physical or virtual machine matching these requirements.  We have provided instructions to [install dependencies](InstallingDependencies.md).
 
-For your convenience, we offer a [pre-built VM image (OVA)](https://github.com/Seagate/cortx/releases/tag/VA) which can be used for development and testing. 
+For your convenience, we offer a [pre-built VM image (OVA)](https://github.com/Seagate/cortx/releases/tag/VA) which can be used for development and testing.
 
 A CORTX development environment requires RoCE—RDMA over Converged Ethernet and TCP connectivity.
    - Note: The CORTX stack currently does not work on Intel's OmniPath cards.
    - Note: Seagate employees may have access to resources to help with this.  Please refer to [this page](DEV_VM.md) for more information.
-   
+
 For information on release build generation, refer to [Release Build Generation](Release_Build_Creation.rst).

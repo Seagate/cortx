@@ -183,4 +183,3 @@ aws s3 --endpoint "YOUR_S3_ENDPOINT" rb s3://test-bucket
 
 ### Tested By:
 * Feb 27, 2022: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0 as S3 Server.
-

@@ -15,7 +15,7 @@ const folderService = new FolderService();
 const fields = 'id, name, createdTime, parents, mimeType'
 
 class GoogleFolderService {
-    
+
     constructor() {
 
     }
@@ -23,7 +23,7 @@ class GoogleFolderService {
     getList = async(user: UserInterface, query: googleQueryType) => {
 
         const folders = await googleDbFolderUtils.getList(query, user);
-        
+
         const userID = user._id;
 
         const convertedFolders = convertDriveFoldersToMongoFolders(folders.data.files, userID);
@@ -34,7 +34,7 @@ class GoogleFolderService {
     getGoogleMongoList = async(user: UserInterface, query: any) => {
 
         const googleFolderList = await googleDbFolderUtils.getList(query, user);
-        
+
         const userID = user._id;
 
         const convertedFolders = convertDriveFoldersToMongoFolders(googleFolderList.data.files, userID);
@@ -45,13 +45,13 @@ class GoogleFolderService {
 
         return mongoGoogleList;
     }
-    
+
     getInfo = async(user: UserInterface, id: string) => {
 
        const folder = await googleDbFolderUtils.getInfo(id, user);
 
         const userID = user._id;
-        
+
         const convertedFolder = convertDriveFolderToMongoFolder(folder.data, userID);
 
         return convertedFolder;
@@ -81,7 +81,7 @@ class GoogleFolderService {
             if (rootID === currentID) break;
 
             const currentFile = await drive.files.get({fileId: currentID, fields: fields});
-        
+
             folderIDList.splice(1, 0, currentFile.data.id!)
             folderNameList.splice(1,0, currentFile.data.name!)
 
@@ -104,7 +104,7 @@ class GoogleFolderService {
         const drive = google.drive({version:"v3", auth: oauth2Client});
 
         const file = await drive.files.get({fileId: id, fields: fields});
-    
+
         const parent = file.data.parents![0];
         let queryBuilder = `mimeType = "application/vnd.google-apps.folder"`
         queryBuilder += ` and "${file.data.id!}" in parents`
@@ -148,7 +148,7 @@ class GoogleFolderService {
                 name: currentConvertedFile.name,
                 subFolders: currentConvertedSubFolders
             })
-            
+
             currentID = currentFile.data.parents![0];
         }
 
@@ -166,9 +166,9 @@ class GoogleFolderService {
     }
 
     upload = async(user: UserInterface, name: string, parent: string) => {
-        
+
         const createdFolder = await googleDbFolderUtils.uploadFolder(name, parent, user);
-        
+
         const userID = user._id;
 
         const convertedFolder = convertDriveFolderToMongoFolder(createdFolder.data, userID)

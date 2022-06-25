@@ -32,4 +32,3 @@ myNode.ConnectToMesh(async () => {
         myNode.AddService(myHive);
     });
 });
-

@@ -6,9 +6,9 @@
 
 ![](chia-logo.png)
 
-Chia employs the Proof-of-Storage consensus algorithm, different compared to most other cryptocurrencies that employ the Proof-of-Work consensus algorithm. 
+Chia employs the Proof-of-Storage consensus algorithm, different compared to most other cryptocurrencies that employ the Proof-of-Work consensus algorithm.
 
-While Proof-of-Work mining requires expensive single-use hardware consuming large amounts of electricity, Chia mining requires users to use empty hard drive to store cryptographic numbers on unused disks into plots. This makes Chia one of the greenest and most eco-friendly cryptocurrencies. 
+While Proof-of-Work mining requires expensive single-use hardware consuming large amounts of electricity, Chia mining requires users to use empty hard drive to store cryptographic numbers on unused disks into plots. This makes Chia one of the greenest and most eco-friendly cryptocurrencies.
 
 Chia platform was created by a companny called Chia Network, which saw a valuation of $500 million in a recent investment round, and claims to be aiming for an IPO before the end of 2021.
 

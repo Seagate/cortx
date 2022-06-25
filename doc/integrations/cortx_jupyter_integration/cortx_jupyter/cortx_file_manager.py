@@ -1,11 +1,11 @@
-import json 
+import json
 import boto3
 from io import BytesIO
 import joblib
 import pandas as pd
 import numpy as np
 
-config_file_path = "credentials.json" 
+config_file_path = "credentials.json"
 from tensorflow.keras.models import model_from_json
 
 
@@ -44,7 +44,7 @@ def read_model(file_name):
 
 def _put_object(config, bucket, body, object_name):
     print("path upload",config['prefix']+object_name)
-    s3_client = boto3.client('s3', aws_access_key_id=config['cortx_authenticator']['access_key_id'], aws_secret_access_key=config['cortx_authenticator']['secret_access_key'], region_name='us-east-1', endpoint_url= config['endpoint_url']) 
+    s3_client = boto3.client('s3', aws_access_key_id=config['cortx_authenticator']['access_key_id'], aws_secret_access_key=config['cortx_authenticator']['secret_access_key'], region_name='us-east-1', endpoint_url= config['endpoint_url'])
     return s3_client.put_object(Body=body, Bucket=bucket, Key=config['prefix']+object_name)
 
 def _get_object(config, bucket, object_name):

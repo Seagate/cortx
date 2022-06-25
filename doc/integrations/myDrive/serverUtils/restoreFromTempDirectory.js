@@ -42,11 +42,11 @@ const moveItem = async(oldPath, newPath) => {
     const listCursor = await conn.db.collection(oldPath).find({});
     const listCount = await conn.db.collection(oldPath).find({}).count();
     const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
-    
+
     progressBar.start(listCount, 0);
 
     for await (const currentFile of listCursor) {
-        
+
         await conn.db.collection(newPath).insertOne(currentFile);
         progressBar.increment();
     }
@@ -65,7 +65,7 @@ const restoreFromTempDirectory = async() => {
     console.log("Moved All Files\n");
 
 
-    console.log(`Moving File Chunks...`);    
+    console.log(`Moving File Chunks...`);
     await moveItem("temp-fs.chunks","fs.chunks");
     console.log("Moved All Chunks \n");
 
@@ -87,7 +87,7 @@ const restoreFromTempDirectory = async() => {
     await moveItem("temp-videos.files", "videos.files")
     console.log("All Transcoded Video Files Moved \n");
 
-    
+
     console.log(`Moving Transcoded Video Chunks...`)
     await moveItem("temp-videos.chunks", "videos.chunks")
     console.log("All Transcoded Video Chunks Moved \n");

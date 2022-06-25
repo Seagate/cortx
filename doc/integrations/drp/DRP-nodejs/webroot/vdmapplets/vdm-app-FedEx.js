@@ -394,7 +394,7 @@ Weight (lbs): <input class="weight" type="text"><br>
                             "value": null // Gets populated by backend
                         }
                     };
-                    
+
                     // Send DRP command
                     let response = await myApp.sendCmd("FedEx", "CreateShipment", appDataObj, true);
 

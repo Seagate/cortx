@@ -9,7 +9,7 @@ Based on the hypervisor you use, click to expand the corresponding section below
     <details>
    <summary><a>VMware vSphere</a></summary>
 
-#. Log in to the VMware vSphere web client and go to the **VMs** tab. 
+#. Log in to the VMware vSphere web client and go to the **VMs** tab.
 
 #. At the top of the window, click **Actions**. A menu appears. Then, click **Deploy OVF Template**. A window asking through which you can upload the OVA file appears.
 
@@ -32,8 +32,8 @@ Based on the hypervisor you use, click to expand the corresponding section below
 #. Select the desired storage location from the list of data stores. Then, click **Next**.
 
    - You can either choose **Thick** or **Thin**.
-   
- 
+
+
    .. image:: images/vSphere100.PNG
 
 #. Select a network from the drop-down list for each interface, click **Next**.
@@ -43,17 +43,17 @@ Based on the hypervisor you use, click to expand the corresponding section below
    - One interface must be mapped to the private data network
 
    - One interface must be mapped to the public data network
-   
- 
+
+
    .. image:: images/vSphere150.PNG
 
 #. Click **Finish** after you review the configuration. The process of importing starts. After the import is complete, click **Refresh**.
 
 #. Return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions here.
 
-  
+
 .. raw:: html
-   
+
    </details>
 
 
@@ -65,7 +65,7 @@ Based on the hypervisor you use, click to expand the corresponding section below
 
 #. Open the downloaded VMware Workstation Player.
 
-#. Select **Open a Virtual Machine**. The **Open Virtual Machine** window opens.  
+#. Select **Open a Virtual Machine**. The **Open Virtual Machine** window opens.
 
    .. image:: images/WS1.PNG
 
@@ -86,9 +86,9 @@ Based on the hypervisor you use, click to expand the corresponding section below
    **Note**: If you do not see any IP addresses when you run the **ip a l** command as directed in the instructions, you may need to reconfigure some of your virtual networking settings.  Refer to `these instructions <troubleshoot_virtual_network.rst>`_ for more details.
 
 .. raw:: html
-   
+
    </details>
-   
+
 
 .. raw:: html
 
@@ -96,11 +96,11 @@ Based on the hypervisor you use, click to expand the corresponding section below
     <details>
    <summary><a>VMware ESX Server</a></summary>
 
-#. Login to the VMware ESX server using vSphere client. 
+#. Login to the VMware ESX server using vSphere client.
 
 #. At the top, click **File**. A menu is displayed.
 
-#. Select **Deploy OVF Template...**. The **Deploy OVF Template** window is displayed. 
+#. Select **Deploy OVF Template...**. The **Deploy OVF Template** window is displayed.
 
 #. Navigate to the location where the OVA file is placed in you system. Select the file and click **Next**. A window displaying the details appear.
 
@@ -111,9 +111,9 @@ Based on the hypervisor you use, click to expand the corresponding section below
 #. Select the desired storage location from the available data stores using the following radio buttons.
 
    - **Thick Provision**
- 
+
    - **Thin Provision**
- 
+
 #. Select a network from the drop-down list for each interface, and click **Next**.
 
    - One interface must be mapped to the management network
@@ -121,9 +121,9 @@ Based on the hypervisor you use, click to expand the corresponding section below
    - One interface must be mapped to the private data network
 
    - One interface must be mapped to the public data network
- 
+
 #.  Click **Finish** after reviewing your settings.
- 
+
 #. Return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
 
 If you are facing errors due to usage of old versions, perform the below mentioned procedure.
@@ -133,7 +133,7 @@ If you are facing errors due to usage of old versions, perform the below mention
 #. Find the line <vssd:VirtualSystemType>vmx-##</vssd:VirtualSystemType> and change the vmx-## value.
 
    - Change vmx-10 to vmx-09, or to a different hw version that works with ESXi.
-   
+
 #. Save the changes and close the file.
 
 #. Calculate the SHA-1 hash of the .ovf file and replace the hash value in the .mf file.
@@ -143,7 +143,7 @@ If you are facing errors due to usage of old versions, perform the below mention
 #. Now, you can import the file.
 
 .. raw:: html
-   
+
    </details>
 
 
@@ -171,7 +171,7 @@ If you encounter the below mentioned error, click `here <https://kb.vmware.com/s
 - Error: **Could not open /dev/vmmon: Broken pipe**
 
 .. raw:: html
-   
+
    </details>
 
 
@@ -198,5 +198,5 @@ If you encounter the below mentioned error, click `here <https://kb.vmware.com/s
 #. Return to `CORTX on OVA <CORTX_on_Open_Virtual_Appliance.rst>`_, and resume following the instructions there.
 
 .. raw:: html
-   
+
    </details>

@@ -14,7 +14,7 @@ class DRP_SubscribableSource {
     }
 
     /**
-     * 
+     *
      * @param {DRP_Subscriber} subscription Subscription to add
      */
     AddSubscription(subscription) {

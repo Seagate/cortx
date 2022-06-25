@@ -14,11 +14,11 @@ export const startSetQuickFiles = () => {
         if (!env.googleDriveEnabled) {
 
             axios.get(`/file-service/quick-list`).then((results) => {
-        
+
                 //dispatch(setQuickFiles(results.data)) TEMP DISABLED FOR GOOGLE API
-    
+
                 let mongoData = results.data;
-                
+
                 const isMobile = mobilecheck();
 
                 if (mongoData.length > 10 && !isMobile) {
@@ -28,7 +28,7 @@ export const startSetQuickFiles = () => {
                 }
 
                 dispatch(setQuickFiles(mongoData))
-    
+
             }).catch((err) => {
                 console.log(err)
             })
@@ -48,11 +48,11 @@ export const startSetQuickFiles = () => {
                 }
 
                 dispatch(setQuickFiles(combinedData))
-    
+
             }).catch((err) => {
                 console.log(err)
             })
-            
+
         }
     }
 }

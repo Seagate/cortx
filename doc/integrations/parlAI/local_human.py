@@ -27,8 +27,8 @@ class LocalHumanAgent(Agent):
         """
 
         agent = argparser.add_argument_group('Local Human Arguments')
-       
-        
+
+
 
 
         agent.add_argument(
@@ -65,17 +65,17 @@ class LocalHumanAgent(Agent):
         print(
             display_messages(
                 [msg],
-                
+
                 prettify=self.opt.get('display_prettify', False),
             )
         )
- 
+
 
     def act(self):
         reply = Message()
         print("reply:",reply)
         reply['id'] = self.getID()
-   
+
         def is_something_ready(file):
             file = os.path.isfile(file)
 
@@ -91,29 +91,29 @@ class LocalHumanAgent(Agent):
 
         wait(lambda: is_something_ready(something), waiting_for="input.txt file to be ready")
         file = open("input.txt","r").read()
-       
+
         text  = file.split("_")
         text = text[0]
         reply_text = text
         print("reply_text_initial",reply_text)
         reply['episode_done'] = False
-        
+
         reply['label_candidates'] = self.fixedCands_txt
-       
+
         reply['text'] = reply_text
-        
-
-
-   
 
 
 
-        
 
-       
+
+
+
+
+
+
         #reply = {'id': 'localHuman', 'episode_done': False, 'label_candidates': None, 'text': reply}
         #os.remove("input.txt")
-        
+
         return reply
 
 

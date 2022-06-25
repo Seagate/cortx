@@ -33,7 +33,7 @@ module.exports={
         );
       });
     },
-    
+
     textQuery:async function(text,parameters){
         let self=module.exports;
         const request = {
@@ -69,7 +69,7 @@ module.exports={
                 languageCode: config.dialogFlowSessionLanguageCode,
               },
             },
-            
+
           };
           let responses=await sessionClient.detectIntent(request);
           responses = await self.handleAction(responses);

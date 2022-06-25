@@ -1,26 +1,26 @@
 # Install CORTX on Supermicro Servers with Seagate RBOD Storage
 ### LyveLab Israel - Bari Arviv
 
-1. Verify that the connectivity of the hardware is the same as described below: 
+1. Verify that the connectivity of the hardware is the same as described below:
    <p align="center">
 	 <img src="./images/LDRv1_connections_diagram.png">
    </p>
 
 1. HW spec that was used for the installation:
-    - 2x Supermicro 6019U-TRT 
+    - 2x Supermicro 6019U-TRT
     - CPU – 2x Intel Silver 4210R, 10 cores/20 threads
-    - Memory – 192GB, 12x 16GB DDR4 2666 MHz 
-    - HDD – 2x Seagate 1TB SATA HDD 
-    - Power supply – 2x 750W, redundant 
-    - Network (onboard) – 2x 1GbE/10GbE RJ-45 network interfaces (only one connected; serving BMC and Ethernet) 
-    - Network (PCI) – 1x Mellanox Connect-X5 EN (MCX516A-GCAT), two 50 GbE ports; QSFP-28 
-    - BMC – 1x BMC interface (RJ-45) 
-    - SAS HBA – LSI 9305-16e, quad-port, PCIe Gen 3 x8 
-    - 1x EXOS X 5U84 enclosure with 2x Gallium NX3 controllers (for 5U84) 
-    - 84x 16TB NL-SAS 7k RPM HDDs 
-    - 6x Ethernet cables 
-    - 8x SAS cables (note: Beta units have only 4x) 
-    - 1x break-out cable for Mellanox (QSFP-28) 
+    - Memory – 192GB, 12x 16GB DDR4 2666 MHz
+    - HDD – 2x Seagate 1TB SATA HDD
+    - Power supply – 2x 750W, redundant
+    - Network (onboard) – 2x 1GbE/10GbE RJ-45 network interfaces (only one connected; serving BMC and Ethernet)
+    - Network (PCI) – 1x Mellanox Connect-X5 EN (MCX516A-GCAT), two 50 GbE ports; QSFP-28
+    - BMC – 1x BMC interface (RJ-45)
+    - SAS HBA – LSI 9305-16e, quad-port, PCIe Gen 3 x8
+    - 1x EXOS X 5U84 enclosure with 2x Gallium NX3 controllers (for 5U84)
+    - 84x 16TB NL-SAS 7k RPM HDDs
+    - 6x Ethernet cables
+    - 8x SAS cables (note: Beta units have only 4x)
+    - 1x break-out cable for Mellanox (QSFP-28)
     - 1x Mellanox cable (for direct connectl QSFP-28)
 
 1. Connect to 5U84’s web interface, go to `System->Actions->Firmware update`, and verify that bundle version is `GN280R008-04`. \
@@ -116,7 +116,7 @@
    /usr/bin/chvt 1
    ) 2>&1 | tee /mnt/sysimage/root/install.postnochroot.log
    %end
- 
+
    %post --log=/mnt/sysimage/root/install.post.log
    logger "starting anaconda postinstall"
    exec < /dev/tty3 > /dev/tty3
@@ -209,7 +209,7 @@
 
    - Put attention not to use too complex passwords for BMC. In case of usage of unsupported symbols (like exclamation mark) setup will fail with ipmitool connection error because of ipmitools library limitations.
 
-   - Do not use the `172.168.0.0/24` subnet in any IP parameter because this subnet will be configured automatically on `enp216s0f1`. Second 100G interface `enp216s0f0` will get `network.data_nw.public_ip_addr`. Also, `mgmt_vip=172.21.0.100`   
+   - Do not use the `172.168.0.0/24` subnet in any IP parameter because this subnet will be configured automatically on `enp216s0f1`. Second 100G interface `enp216s0f0` will get `network.data_nw.public_ip_addr`. Also, `mgmt_vip=172.21.0.100`
      will be set **on server-a** only as a sub-interface of `eno1` and `mgmt_vip=172.21.0.100` won’t be configured.
 
    Here is the dump of IP configuration using `config.ini` above:
@@ -219,15 +219,15 @@
        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
        inet 127.0.0.1/8 scope host lo
           valid_lft forever preferred_lft forever
-       inet6 ::1/128 scope host 
+       inet6 ::1/128 scope host
           valid_lft forever preferred_lft forever
    2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
        link/ether 3c:ec:ef:19:fa:5e brd ff:ff:ff:ff:ff:ff
        inet 172.21.0.214/16 brd 172.21.255.255 scope global noprefixroute eno1
           valid_lft forever preferred_lft forever
-       inet 172.21.0.100/16 brd 172.21.255.255 scope global secondary eno1:v1 
+       inet 172.21.0.100/16 brd 172.21.255.255 scope global secondary eno1:v1
           valid_lft forever preferred_lft forever
-       inet6 fe80::5ccf:5555:2ce9:febf/64 scope link 
+       inet6 fe80::5ccf:5555:2ce9:febf/64 scope link
           valid_lft forever preferred_lft forever
    3: enp216s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc mq state UP group default qlen 1000
        link/ether 0c:42:a1:c0:ec:88 brd ff:ff:ff:ff:ff:ff
@@ -235,7 +235,7 @@
           valid_lft forever preferred_lft forever
        inet 172.31.0.220/16 brd 172.31.255.255 scope global secondary enp216s0f0
           valid_lft forever preferred_lft forever
-       inet6 fe80::e42:a1ff:fec0:ec88/64 scope link 
+       inet6 fe80::e42:a1ff:fec0:ec88/64 scope link
           valid_lft forever preferred_lft forever
    4: enp216s0f1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc mq state UP group default qlen 1000
        link/ether 0c:42:a1:c0:ec:89 brd ff:ff:ff:ff:ff:ff
@@ -243,7 +243,7 @@
           valid_lft forever preferred_lft forever
        inet 192.168.0.3/24 brd 192.168.0.255 scope global secondary enp216s0f1:c1
           valid_lft forever preferred_lft forever
-       inet6 fe80::e42:a1ff:fec0:ec89/64 scope link 
+       inet6 fe80::e42:a1ff:fec0:ec89/64 scope link
           valid_lft forever preferred_lft forever
    5: eno2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
        link/ether 3c:ec:ef:19:fa:5f brd ff:ff:ff:ff:ff:ff
@@ -255,12 +255,12 @@
           valid_lft forever preferred_lft forever
    ```
 
-7.	Configure `eno1` as management interface (not to use `192.168.0.0/24` subnet).   
-    Next, add DNS and gateway to provide an internet connection. For instance: 
+7.	Configure `eno1` as management interface (not to use `192.168.0.0/24` subnet).
+    Next, add DNS and gateway to provide an internet connection. For instance:
     - `172.21.0.214/16`
-    - `172.21.0.215/16` 
-    
-8.	Set hostnames **on both servers** and append them to `/etc/hosts` file. For instance: 
+    - `172.21.0.215/16`
+
+8.	Set hostnames **on both servers** and append them to `/etc/hosts` file. For instance:
     - `172.21.0.214` **server-a**
     - `172.21.0.215` **server-b**
 
@@ -292,7 +292,7 @@
 
     1. Start and Enable service:
        ```
-       systemctl enable scsi-network-relay 
+       systemctl enable scsi-network-relay
        systemctl start scsi-network-relay
        ```
 
@@ -312,22 +312,22 @@
        systemctl restart scsi-network-relay
        ```
 
-12.	Enclosure storage configuration: 
+12.	Enclosure storage configuration:
 
     1. [Download the files](https://github.com/Seagate/cortx-prvsnr/tree/main/srv/components/controller/files/scripts) to `/tmp/scripts`:
-    
+
        ```
        wget https://raw.githubusercontent.com/Seagate/cortx-prvsnr/9618eab4a1aca82b8c7921cfcfc6751614b3e1df/srv/components/controller/files/scripts/controller-cli.sh
        wget https://raw.githubusercontent.com/Seagate/cortx-prvsnr/9618eab4a1aca82b8c7921cfcfc6751614b3e1df/srv/components/controller/files/scripts/provision.sh
        wget https://raw.githubusercontent.com/Seagate/cortx-prvsnr/9618eab4a1aca82b8c7921cfcfc6751614b3e1df/srv/components/controller/files/scripts/xml.sh
        ```
 
-    2. Install `sshpass` via `yum`: 
+    2. Install `sshpass` via `yum`:
        ```
        yum install sshpass
        ```
 
-    3. Change permissions of `/tmp/scripts`. Run: 
+    3. Change permissions of `/tmp/scripts`. Run:
        ```
        sudo chmod +x *
        ```
@@ -347,7 +347,7 @@
        ***** SUCCESS! *****
        The detailed logs are kept at: /var/log/seagate/provisioner/controller-cli.log
        ```
-    
+
     6. Print details about available disks on storage enclosure (should be no disks):
        ```
        ./controller-cli.sh host -h '10.0.0.3' -u manage -p <’controller password’> prov -s
@@ -384,51 +384,51 @@
        Creating volume dg02-v0008 of size 63922.00GB in pool dg02 mapped to ports A0,A1,A2,A3,B0,B1,B2,B3
        Controller provisioned successfully with following details:
        --------------------- Pools -----------------------
-       name           health         
-       dg01           OK             
-       dg02           OK             
+       name           health
+       dg01           OK
+       dg02           OK
        ------------------- Disk-groups -------------------
-       name           pool           status         health         
-       dg01           dg01           FTOL           OK             
-       dg02           dg02           FTOL           OK             
+       name           pool           status         health
+       dg01           dg01           FTOL           OK
+       dg02           dg02           FTOL           OK
        ------------------- Volumes -----------------------
-       volume-name         size                owner               storage-pool-name   health              
-       dg01-v0001          63.9TB              A                   dg01                OK                  
-       dg01-v0002          63.9TB              A                   dg01                OK                  
-       dg01-v0003          63.9TB              A                   dg01                OK                  
-       dg01-v0004          63.9TB              A                   dg01                OK                  
-       dg01-v0005          63.9TB              A                   dg01                OK                  
-       dg01-v0006          63.9TB              A                   dg01                OK                  
-       dg01-v0007          63.9TB              A                   dg01                OK                  
-       dg01-v0008          63.9TB              A                   dg01                OK                  
-       dg02-v0001          63.9TB              B                   dg02                OK                  
-       dg02-v0002          63.9TB              B                   dg02                OK                  
-       dg02-v0003          63.9TB              B                   dg02                OK                  
-       dg02-v0004          63.9TB              B                   dg02                OK                  
-       dg02-v0005          63.9TB              B                   dg02                OK                  
-       dg02-v0006          63.9TB              B                   dg02                OK                  
-       dg02-v0007          63.9TB              B                   dg02                OK                  
-       dg02-v0008          63.9TB              B                   dg02                OK                  
+       volume-name         size                owner               storage-pool-name   health
+       dg01-v0001          63.9TB              A                   dg01                OK
+       dg01-v0002          63.9TB              A                   dg01                OK
+       dg01-v0003          63.9TB              A                   dg01                OK
+       dg01-v0004          63.9TB              A                   dg01                OK
+       dg01-v0005          63.9TB              A                   dg01                OK
+       dg01-v0006          63.9TB              A                   dg01                OK
+       dg01-v0007          63.9TB              A                   dg01                OK
+       dg01-v0008          63.9TB              A                   dg01                OK
+       dg02-v0001          63.9TB              B                   dg02                OK
+       dg02-v0002          63.9TB              B                   dg02                OK
+       dg02-v0003          63.9TB              B                   dg02                OK
+       dg02-v0004          63.9TB              B                   dg02                OK
+       dg02-v0005          63.9TB              B                   dg02                OK
+       dg02-v0006          63.9TB              B                   dg02                OK
+       dg02-v0007          63.9TB              B                   dg02                OK
+       dg02-v0008          63.9TB              B                   dg02                OK
        ***** SUCCESS! *****
        The detailed logs are kept at: /var/log/seagate/provisioner/controller-cli.log
        ```
 
-    8. Print details about available disks on the storage enclosure. The command output should be the same as the table printed at the end of the previous command run. 
+    8. Print details about available disks on the storage enclosure. The command output should be the same as the table printed at the end of the previous command run.
        ```
        ./controller-cli.sh host -h '10.0.0.3' -u manage -p <’controller password’> prov -s
        ```
 
 13.	Copy installation files to `/opt/isos` **on server-a**: \
-    [`cortx-os-1.0.0-23.iso`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-os-1.0.0-23.iso)  
-    [`cortx-prep-1.0.0-540.sh`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-prep-1.0.0-540.sh)  
-    [`cortx-1.0.0-540-single.iso`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-1.0.0-540-single.iso) 
+    [`cortx-os-1.0.0-23.iso`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-os-1.0.0-23.iso)
+    [`cortx-prep-1.0.0-540.sh`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-prep-1.0.0-540.sh)
+    [`cortx-1.0.0-540-single.iso`](https://cortxpublic.s3.us-west-2.amazonaws.com/cortx-1.0.0-540-single.iso)
 
 14.	Execute:
     ```
     ./cortx-prep-1.0.0-540.sh
     ```
 
-15.	Execute main installation (provisioner setup): 
+15.	Execute main installation (provisioner setup):
     ```
     provisioner auto_deploy --console-formatter full --logfile --logfile-filename /var/log/seagate/provisioner/setup.log \
     --source iso --config-path /root/config.ini --ha --iso-cortx /opt/isos/cortx-1.0.0-540-single.iso --iso-os \
@@ -445,13 +445,13 @@
 
 17.	Once `auto_deploy` command is executed successfully, verify `salt-master` setup **on both nodes** (setup verification checklist):
     ```
-    salt '*' test.ping  
+    salt '*' test.ping
     salt "*" service.stop puppet
     salt "*" service.disable puppet
-    salt '*' pillar.get release  
-    salt '*' grains.get node_id  
-    salt '*' grains.get cluster_id  
-    salt '*' grains.get roles  
+    salt '*' pillar.get release
+    salt '*' grains.get node_id
+    salt '*' grains.get cluster_id
+    salt '*' grains.get roles
     ```
 
 18.	Verify CORTX cluster status:
@@ -466,7 +466,7 @@
 
 20.	Go to *https://<management IP>:28100/#/preboarding/login* and [configure the CORTX GUI](https://github.com/Seagate/cortx/blob/main/doc/Preboarding_and_Onboarding.rst).
     * Now that you have the complete system up and running, using the data IP from the `ip a` command, use these instructions [to test the system](https://github.com/Seagate/cortx/blob/main/doc/testing_io.rst) and observe activity in the GUI.
- 
- 
+
+
 ### Tested by:
 * July, 2021: Bari Arviv (bari.arviv@seagate.com) on Bare Metal Server in Lyve Labs - Israel

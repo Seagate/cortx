@@ -1,7 +1,7 @@
 class NotEmailVerifiedError extends Error {
 
     code: number;
-    
+
     constructor(args: any) {
         super(args);
 

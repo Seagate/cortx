@@ -30,7 +30,7 @@
 a.left
 {
     position: relative;
-    
+
 }
 
 a.left:before {
@@ -72,7 +72,7 @@ a.left:hover:before {
     font-weight: 600;
     margin-top: 4px;
   }
-  
+
 .get-started-btn:hover {
 background: #5a5af3;
 color: #fff;
