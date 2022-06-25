@@ -10,7 +10,7 @@ Standard image captioning tasks such as COCO and Flickr30k are factual, neutral 
 
 ## Dataset
 
-The Personality-Captions dataset can be accessed via ParlAI, with `-t personality_captions`. 
+The Personality-Captions dataset can be accessed via ParlAI, with `-t personality_captions`.
 See the [ParlAI quickstart for help](http://www.parl.ai/docs/tutorial_quick.html).
 
 Additionally, the ParlAI MTurk tasks for data collection and human evaluation

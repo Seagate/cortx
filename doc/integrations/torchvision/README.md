@@ -1,6 +1,6 @@
 # Pytorch datasets
 
-[Motivation/demo video](https://youtu.be/L0UH-fRhyDU) 
+[Motivation/demo video](https://youtu.be/L0UH-fRhyDU)
 
 ## Motivation
 
@@ -99,7 +99,7 @@ preproc = transforms.Compose([
     transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
 ])
-        
+
 if __name__ == '__main__':
 
     # Define the connection settings for our client
@@ -107,7 +107,7 @@ if __name__ == '__main__':
 
     bucket = 'testbucket'  # Bucket where to read/write our ML dataset
     folder = 'imagenet-val'  # Folder where this particular dataset will be
-    
+
     # Now that we have created and upload the dataset on CORTX we can use
     # it in Pytorch
     dataset = (RemoteDataset(client, bucket, folder)

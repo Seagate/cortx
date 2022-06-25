@@ -4,6 +4,5 @@
   "appletIcon": "fa-book",
   "showInMenu": true,
   "appletScript": "xr-app-Grid.js",
-  "preReqs": [
-  ]
+  "preReqs": []
 }

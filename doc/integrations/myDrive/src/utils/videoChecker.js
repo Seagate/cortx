@@ -38,14 +38,14 @@ const videoChecker =  (filename) => {
 
     if (filename.length < 1 || !filename.includes(".")) {
 
-        return false; 
+        return false;
     }
 
     const extSplit = filename.split(".");
 
     if (extSplit < 1) {
-        
-        return false; 
+
+        return false;
     }
 
     const ext = extSplit[extSplit.length - 1];

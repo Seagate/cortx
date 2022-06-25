@@ -57,7 +57,7 @@ class GoogleFolderUtils {
     uploadFolder = async(name: string, parent: string, user: UserInterface) => {
 
         parent = parent === "/" ? "root" : parent;
-    
+
         const oauth2Client = await getGoogleAuth(user);
         const drive = google.drive({version:"v3", auth: oauth2Client});
 

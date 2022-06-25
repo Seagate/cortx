@@ -43,7 +43,7 @@ class HomePageContainer extends React.Component {
 
             if (pathname === "/home") {
                 this.props.dispatch(setCurrentRouteType("home"))
-                this.getFiles(false); 
+                this.getFiles(false);
                 this.props.dispatch(setParent("/"))
                 this.props.dispatch(startResetParentList());
 
@@ -82,14 +82,14 @@ class HomePageContainer extends React.Component {
     }
 
     setFolderItems = (historyKey) => {
-        
+
         const isGoogle = history.location.pathname.includes("folder-google");
         const isPersonal = history.location.pathname.includes("folder-personal");
 
         const sortBy = this.props.sortBy
         const idSplit = isGoogle ? history.location.pathname.split("/folder-google/") : isPersonal ? history.location.pathname.split("/folder-personal/") : history.location.pathname.split("/folder/");
         const id = idSplit[1];
-    
+
         this.props.dispatch(setSearch(""))
         this.props.dispatch(setCurrentRouteType("folder"))
         isGoogle ? this.props.dispatch(setIsGoogle()) : this.props.dispatch(setNotGoogle())
@@ -145,7 +145,7 @@ class HomePageContainer extends React.Component {
             this.props.dispatch(startSetFiles(undefined, undefined, value));
             this.props.dispatch(startSetFolders(undefined, undefined, value));
             this.props.dispatch(setParent)
-            this.props.dispatch(setParentList(["/"], ["Home"]))   
+            this.props.dispatch(setParentList(["/"], ["Home"]))
             // this.props.dispatch(setSearch(""))
             this.props.dispatch(startSetStorage());
 
@@ -155,8 +155,8 @@ class HomePageContainer extends React.Component {
 
     componentDidMount = () => {
 
-        window.addEventListener("resize", () => {this.props.dispatch(goneSideBar())}) 
-       
+        window.addEventListener("resize", () => {this.props.dispatch(goneSideBar())})
+
         this.listStyleCheck();
         this.loginCheck();
         this.setSessionStorage();
@@ -166,7 +166,7 @@ class HomePageContainer extends React.Component {
 
         window.sessionStorage.setItem("uuid", uuid.v4());
     }
-    
+
     componentWillUnmount = () => {
 
         window.removeEventListener("resize", () => {});
@@ -198,7 +198,7 @@ class HomePageContainer extends React.Component {
         // this.props.dispatch(startSetFolders(parent, undefined, value, undefined, storageType));
         this.props.dispatch(startSetFileAndFolderItems("",parent, undefined, value, undefined, storageType, folderSearch))
         this.props.dispatch(setCurrentlySearching());
-        parent ? this.props.dispatch(startSetParentList(parent)) : this.props.dispatch(setParentList(["/"], ["Home"]))       
+        parent ? this.props.dispatch(startSetParentList(parent)) : this.props.dispatch(setParentList(["/"], ["Home"]))
         this.props.dispatch(setSearch(value))
         this.props.dispatch(startSetStorage());
         this.props.dispatch(resetStorageSwitcherStorage())
@@ -220,7 +220,7 @@ class HomePageContainer extends React.Component {
 
 
             this.setFolderItems(history.location.key)
-           
+
         } else if (this.lastLocationKey !== history.location.key) {
 
             this.props.dispatch(setSearch(""))
@@ -247,7 +247,7 @@ class HomePageContainer extends React.Component {
     }
 
     getFiles = (clearCache) => {
-    
+
         const sortBy = this.props.sortBy;
 
         // this.props.dispatch(startSetQuickFiles())

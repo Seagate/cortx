@@ -13,11 +13,11 @@ type userAccessType = {
 }
 
 class UserPeronsalService {
-    
+
     constructor() {
-        
+
     }
-    
+
     addS3Storage = async(user: UserInterface, s3Data: any, uuid: string | undefined) => {
 
         const {id, key, bucket} = s3Data;
@@ -33,7 +33,7 @@ class UserPeronsalService {
     }
 
     removeS3Storage = async(user: UserInterface, uuid: string | undefined) => {
-        
+
         const date = new Date();
 
         user.s3Enabled = undefined;
@@ -57,7 +57,7 @@ class UserPeronsalService {
         for (const currentFile of fileList) {
 
             if (currentFile.metadata.hasThumbnail) {
-                
+
                 const currentThumbnail = await Thumbnail.findById(new ObjectID(currentFile.metadata.thumbnailID)) as ThumbnailInterface;
                 thumbnailList.push(currentThumbnail);
             }
@@ -75,13 +75,13 @@ class UserPeronsalService {
         const personalFileList: FileInterface[] = data.fileList;
         const personalFolderList: FolderInterface[] = data.folderList;
         const personalThumbnailList: ThumbnailInterface[] = data.thumbnailList;
-    
+
         const fixedFileList: FileInterface[] = []
-    
+
         for (let currentObj of personalFileList) {
-         
+
             await File.deleteMany({_id: new ObjectID(currentObj._id), 'metadata.owner': new ObjectID(user._id)});
-        
+
             currentObj.metadata.owner = new ObjectID(user._id);
             currentObj._id = new ObjectID(currentObj._id)
             const oldIV: any = currentObj.metadata.IV;
@@ -91,28 +91,28 @@ class UserPeronsalService {
             currentObj.uploadDate = newDate;
             currentObj.metadata.parent = currentObj.metadata.parent.toString();
             fixedFileList.push(currentObj);
-            
+
         }
-    
+
         const fixedFolderList: FolderInterface[] = []
-    
+
         for (let currentObj of personalFolderList) {
-    
+
             await Folder.deleteMany({_id: new ObjectID(currentObj._id), owner: user._id.toString()});
-    
+
             currentObj._id = new ObjectID(currentObj._id)
             currentObj.owner = user._id.toString();
             currentObj.createdAt = new Date(currentObj.createdAt);
             currentObj.updatedAt = new Date(currentObj.updatedAt);
             fixedFolderList.push(currentObj);
         }
-    
+
         const fixedThumbnailList: ThumbnailInterface[] = [];
-    
+
         for (let currentObj of personalThumbnailList) {
-    
+
             await Thumbnail.deleteMany({_id: new ObjectID(currentObj._id), owner: user._id.toString()});
-    
+
             currentObj._id = new ObjectID(currentObj._id);
             currentObj.owner = user._id.toString();
             currentObj.createdAt = new Date(currentObj.createdAt);
@@ -122,15 +122,15 @@ class UserPeronsalService {
             currentObj.IV = IV;
             fixedThumbnailList.push(currentObj);
         }
-    
+
         await File.insertMany(fixedFileList);
         await Folder.insertMany(fixedFolderList);
         await Thumbnail.insertMany(fixedThumbnailList);
-    
+
     }
 
     removeS3Metadata = async(user: userAccessType) => {
-        
+
         const fileList =  await File.find({"metadata.owner": new ObjectID(user._id),
         "metadata.personalFile": true})
 

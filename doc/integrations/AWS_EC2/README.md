@@ -8,7 +8,7 @@ This document walks you through how to set up CORTX on an Amazon EC2 instance an
 Prerequisites:
 -------
 
-- You will need an AWS account with right to create an [EC2 instances.](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc) 
+- You will need an AWS account with right to create an [EC2 instances.](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc)
 - You will need to [import to an AMI](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) the [CORTX OVA](https://github.com/Seagate/cortx/releases/download/cortx-ova-1.0.4-632/cortx-ova-1.0.4.ova).
 - Ideally you would have [run and setup CORTX on a local VM](https://github.com/Seagate/cortx/blob/main/doc/ova/1.0.4/CORTX_on_Open_Virtual_Appliance.rst) and gone through the steps locally before doing it on AWS.
 
@@ -20,10 +20,10 @@ Step 1: Launch AWS EC2 instance with the CORTX AMI
 
 ![Launch Instance](images/launchInstance.png)
 
-- Select the AMI you created with the CORTX image. 
+- Select the AMI you created with the CORTX image.
 
 When choosing the AMI go to **My AMIs**.
- 
+
 ![AMI image](images/SelectAMI.png)
 
 - Launch an AWS instance that can support 4 network interfaces. The recommended instance would be a [c5 xlarge instance](https://aws.amazon.com/ec2/instance-types/c5/).
@@ -47,15 +47,15 @@ Step 3: Create 2 network interfaces on different subnets with the security group
 
 Step 4: Boot up the EC2 instance and edit net .rules file to create stable names for the network interfaces
 ---------------
- 
+
  - Log in to the EC2 instance using these credentials:
- 
+
  Username: `cortx`
- 
+
  Password: `opensource!`
- 
+
  To [create stable names for network interfaces](https://www.linuxfromscratch.org/lfs/view/9.0/chapter07/network.html) on the EC2 instance we will need to edit the `70-persistent-net.rules` file located here `/etc/udev/rules.d`
- 
+
 - If you are using **default configuration of `c5.large` instance type**, you can run the following script:
    ```sh
    mgmt_mac=$(ip addr show ens5 | grep -oP '(?<=ether\s)[0-9a-z]{2}(:[0-9a-z]{2}){5}')
@@ -67,7 +67,7 @@ Step 4: Boot up the EC2 instance and edit net .rules file to create stable names
    ```
 
  - Or you can edit the file **manually** using `vi` by running this command:
- 
+
    `vi /etc/udev/rules.d/70-persistent-net.rules`
 
    In the file you will add the value of each of the MAC addresses for the corresponding network interfaces to the right name.
@@ -113,7 +113,7 @@ Step 6: Run the bootstrap script and configure the CORTX server
 Step 7: Create another EC2 instance to access to act as the S3 client
 -------
 
-Because we can only expose one of the network interfaces publicly we will need another another EC2 instance to access the data network. 
+Because we can only expose one of the network interfaces publicly we will need another another EC2 instance to access the data network.
 
 - Create another instance and instead of choosing the CORTX AMI select the Windows Server 2019 AMI instead
 

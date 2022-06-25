@@ -7,8 +7,14 @@
   "showInMenu": true,
   "appletScript": "vdm-app-DRPTopology.js",
   "preReqs": [
-    { "JS": "/assets/cytoscape/js/cytoscape.min.js" },
-    { "JS": "/assets/cytoscape/js/cytoscape-context-menus.js" },
-    { "CSS": "/assets/cytoscape/css/cytoscape-context-menus.css" }
+    {
+      "JS": "/assets/cytoscape/js/cytoscape.min.js"
+    },
+    {
+      "JS": "/assets/cytoscape/js/cytoscape-context-menus.js"
+    },
+    {
+      "CSS": "/assets/cytoscape/css/cytoscape-context-menus.css"
+    }
   ]
 }

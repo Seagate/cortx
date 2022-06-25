@@ -1,7 +1,7 @@
 class InternalServerError extends Error {
 
     code: number;
-    
+
     constructor(args: any) {
         super(args);
 

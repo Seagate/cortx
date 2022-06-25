@@ -33,9 +33,9 @@ class FolderController {
 
         if (!req.user) {
 
-            return 
+            return
         }
-    
+
         try {
 
             const data = req.body;
@@ -43,7 +43,7 @@ class FolderController {
             const folder = await folderService.uploadFolder(data);
 
             res.send(folder);
-    
+
         } catch (e) {
 
             console.log("\nUpload Folder Error Folder Route:", e.message);
@@ -56,21 +56,21 @@ class FolderController {
 
         if (!req.user) {
 
-            return 
+            return
         }
-    
+
         try {
-    
+
             const userID = req.user._id;
-            const folderID = req.body.id; 
+            const folderID = req.body.id;
             const parentList = req.body.parentList
 
             await this.chunkService.deleteFolder(userID, folderID, parentList);
-    
+
             res.send();
 
         } catch (e) {
-            
+
             console.log("\nDelete Folder Error Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -80,7 +80,7 @@ class FolderController {
     getSubfolderFullList = async(req: RequestType, res: Response) => {
 
         if (!req.user) {
-            return 
+            return
         }
 
         try {
@@ -94,7 +94,7 @@ class FolderController {
             res.send(subfolderList);
 
         } catch (e) {
-           
+
             console.log("\nGet Subfolder List Error Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -105,23 +105,23 @@ class FolderController {
 
         if (!req.user) {
 
-            return 
+            return
         }
-    
+
         try {
-    
+
             const userID = req.user._id;
-            const folderID = req.body.id; 
+            const folderID = req.body.id;
             const parentList = req.body.parentList
 
             const s3Service = new S3Service();
 
             await s3Service.deleteFolder(userID, folderID, parentList);
-    
+
             res.send();
 
         } catch (e) {
-            
+
             console.log("\nDelete Personal Folder Error Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -132,11 +132,11 @@ class FolderController {
 
         if (!req.user) {
 
-            return 
+            return
         }
-    
+
         try {
-    
+
             const userID = req.user._id;
 
             await this.chunkService.deleteAll(userID);
@@ -144,7 +144,7 @@ class FolderController {
             res.send();
 
         } catch (e) {
-           
+
             console.log("\nDelete All Error Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -156,16 +156,16 @@ class FolderController {
         if (!req.user) {
             return;
         }
-    
+
         try {
-    
+
             const userID = req.user._id;
             const folderID = req.params.id;
-    
+
             const folder = await folderService.getFolderInfo(userID, folderID);
-    
+
             res.send(folder);
-    
+
         } catch (e) {
 
             console.log("\nGet Info Error Folder Route:", e.message);
@@ -179,19 +179,19 @@ class FolderController {
         if (!req.user) {
 
             return
-        } 
-    
+        }
+
         try {
-    
+
             const userID = req.user._id;
             const folderID = req.query.id as string;
-            
+
             const {folderIDList, folderNameList} = await folderService.getFolderSublist(userID, folderID);
-            
-            res.send({folderIDList, folderNameList})    
-    
+
+            res.send({folderIDList, folderNameList})
+
         } catch (e) {
-            
+
             console.log("\nGet Subfolder Error Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -202,11 +202,11 @@ class FolderController {
 
         if (!req.user) {
 
-            return 
+            return
         }
-    
+
         try {
-    
+
             const user = req.user;
             const query = req.query;
 
@@ -215,7 +215,7 @@ class FolderController {
             res.send(folderList);
 
         } catch (e) {
-            
+
             console.log("\nGet Folder List Error Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();
@@ -251,19 +251,19 @@ class FolderController {
         if (!req.user) {
             return;
         }
-    
+
         try {
-    
+
             const userID = req.user._id;
             const folderID = req.body.id;
             const title = req.body.title
-    
+
             await folderService.renameFolder(userID, folderID, title);
-    
+
             res.send()
-            
+
         } catch (e) {
-    
+
             console.log("\nRename Folder Error Folder Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();

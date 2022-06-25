@@ -14,29 +14,29 @@ if (env.useDocumentDB === "true") {
         const mongooseCertificateConnect = mongoose as any;
 
         mongooseCertificateConnect.connect(DBUrl, {
-            
+
             useCreateIndex: true,
-            useUnifiedTopology: true, 
+            useUnifiedTopology: true,
             sslValidate: true,
             sslCA: fileBuffer
         })
-    
+
     } else {
 
         mongoose.connect(DBUrl, {
             useNewUrlParser: true,
             useCreateIndex: true,
-            useUnifiedTopology: true, 
+            useUnifiedTopology: true,
             sslValidate: true,
         })
-    } 
+    }
 
 } else {
 
     mongoose.connect(DBUrl, {
         useNewUrlParser: true,
         useCreateIndex: true,
-        useUnifiedTopology: true, 
+        useUnifiedTopology: true,
     })
 }
 

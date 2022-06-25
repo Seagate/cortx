@@ -40,10 +40,10 @@ echo "GATEWAYDEV=eth0" >> /etc/sysconfig/network
 echo "Restarting Network Service"
 systemctl restart network
 
-echo "All networks should have ip address assigned" 
-/sbin/ip a 
+echo "All networks should have ip address assigned"
+/sbin/ip a
 
-#Setup udev rules for ESB volumes. Refer- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances 
+#Setup udev rules for ESB volumes. Refer- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances
 echo "Mapping Nitro EBS volumes"
 declare -a device_list
 readarray -t device_list < <(lsblk -o NAME | grep -E -v 'nvme0n1|\NAME')

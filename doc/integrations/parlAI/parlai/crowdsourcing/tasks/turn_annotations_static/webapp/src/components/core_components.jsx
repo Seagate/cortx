@@ -7,8 +7,8 @@
  */
 
 import React from "react";
-import { OnboardingComponent } from './onboarding_components.jsx'; 
-import { MainTaskComponent } from './task_components.jsx'; 
+import { OnboardingComponent } from './onboarding_components.jsx';
+import { MainTaskComponent } from './task_components.jsx';
 
 function LoadingScreen() {
   return <div>Loading...</div>;

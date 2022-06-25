@@ -8,13 +8,13 @@
 
 import React from "react";
 
-function Checkboxes({ 
-  annotationBuckets, 
-  turnIdx, 
-  askReason, 
-  annotations, 
-  onUpdateAnnotations, 
-  enabled=true, 
+function Checkboxes({
+  annotationBuckets,
+  turnIdx,
+  askReason,
+  annotations,
+  onUpdateAnnotations,
+  enabled=true,
 }) {
   var reasonComponent = (
     <div>
@@ -34,16 +34,16 @@ function Checkboxes({
       {
         Object.keys(annotationBuckets).map(c => (
           <span key={'span_' + c + '_' + turnIdx}>
-            <input 
+            <input
               type={input_type}
-              id={c + '_' + turnIdx} 
-              name={'checkbox_group_' + turnIdx} 
+              id={c + '_' + turnIdx}
+              name={'checkbox_group_' + turnIdx}
               onChange={(evt) => {
                 let newVal = evt.target.checked;
                 let oldAnnotations = Object.assign({}, annotations);
                 oldAnnotations[annotationBuckets[c].value] = newVal;
                 onUpdateAnnotations(oldAnnotations);
-              }} 
+              }}
               disabled={!enabled}
             />
             <span style={{ marginRight: '15px' }}>

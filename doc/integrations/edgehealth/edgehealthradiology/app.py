@@ -13,7 +13,7 @@ app.jinja_env.filters['datetimeformat'] = datetimeformat
 def files():
     s3_resource = boto3.resource(
         "s3",
-        endpoint_url='', 
+        endpoint_url='',
         aws_access_key_id='',
         aws_secret_access_key=''
     )

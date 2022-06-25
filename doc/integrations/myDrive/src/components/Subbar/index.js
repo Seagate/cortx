@@ -20,7 +20,7 @@ class SubbarContainer extends React.Component {
         this.wrapperRef = React.createRef();
         this.isMobile = mobileCheck();
     }
-    
+
 
     createFolder = async(e) => {
 
@@ -47,7 +47,7 @@ class SubbarContainer extends React.Component {
         const owner = this.props.auth.id;
         const parentList = this.props.parentList;
 
-        this.props.dispatch(startAddFolder(folderName, owner, parent, parentList));    
+        this.props.dispatch(startAddFolder(folderName, owner, parent, parentList));
     }
 
     handleClickOutside = (e) => {
@@ -56,12 +56,12 @@ class SubbarContainer extends React.Component {
             this.addButtonEvent();
         }
     }
-    
+
     componentDidMount = () => {
 
         if (this.isMobile) {
             document.addEventListener('mousedown', this.handleClickOutside);
-        }   
+        }
     }
 
     componentWillUnmount = () => {
@@ -72,15 +72,15 @@ class SubbarContainer extends React.Component {
     }
 
     addButtonEvent = () => {
-        
+
         const currentAddOptions = !this.props.showAddOptions2
-    
+
         this.props.dispatch(showAddOptions2(currentAddOptions))
     }
 
     handleUpload = (e) => {
         e.preventDefault();
-    
+
         this.props.dispatch(startAddFile(this.uploadInput.current, this.props.parent, this.props.parentList))
         this.uploadInput.current.value = ""
     }
@@ -134,17 +134,17 @@ class SubbarContainer extends React.Component {
         } else {
 
             if (this.props.isGoogle) {
-                history.push(`/folder-google/${id}`)    
+                history.push(`/folder-google/${id}`)
             } else {
                 history.push(`/folder/${id}`)
             }
         }
-        
+
     }
 
     render() {
 
-        return <Subbar 
+        return <Subbar
                 uploadInput={this.uploadInput}
                 wrapperRef={this.wrapperRef}
                 createFolder={this.createFolder}

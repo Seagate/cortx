@@ -14,7 +14,7 @@ const createThumnailAny = async(currentFile: FileInterface, filename: string, us
     } else if (env.dbType === "mongo") {
 
         return await createThumbnailMongo(currentFile, filename, user);
-    
+
     } else {
 
         return await createThumbnailFilesystem(currentFile, filename, user);

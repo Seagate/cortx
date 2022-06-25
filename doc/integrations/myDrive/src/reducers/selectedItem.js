@@ -21,7 +21,7 @@ export default (state = defaultState, action) => {
             }
 
         case "SET_SELECTED_ITEM":
-        
+
             return {
                 ...state,
                 ...action.selectedItem
@@ -34,8 +34,8 @@ export default (state = defaultState, action) => {
                 ...action.item
             }
 
-        case "RESET_SELECTED_ITEM": 
-            
+        case "RESET_SELECTED_ITEM":
+
             return defaultState
 
         case "EDIT_SHARE_SELECTED":
@@ -58,19 +58,19 @@ export default (state = defaultState, action) => {
         case "SET_RIGHT_SELECTED":
 
             return {
-                ...state, 
+                ...state,
                 rightSelected: action.selected
             }
 
         case "SET_LAST_SELECTED":
 
             return {
-                ...state, 
+                ...state,
                 lastSelected: action.lastSelected
             }
 
         case "RESET_SELECTED":
-            
+
             return {
                 ...state,
                 selected: ""

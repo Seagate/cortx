@@ -40,7 +40,7 @@ class MainSectionContainer extends React.Component {
 
             this.props.dispatch(startSetSelectedItem(id, false, false, isGoogleDrive));
         }
-        
+
     }
 
     fileClick = (fileID, file, fromQuickItems=false, bypass=false) => {
@@ -86,7 +86,7 @@ class MainSectionContainer extends React.Component {
         if ((windowY / 2) < scrollY && this.props.allowLoadMoreItems) {
 
             console.log("load more main")
-            
+
             if (this.props.files.length >= limit) {
                 const parent = this.props.parent;
                 const search = this.props.filter.search;
@@ -97,7 +97,7 @@ class MainSectionContainer extends React.Component {
                 this.props.dispatch(setLoading(true));
                 this.props.dispatch(startLoadMoreFiles(parent, sortBy, search, lastFileDate, lastFileName));
 
-            } 
+            }
         }
     }
 
@@ -139,7 +139,7 @@ class MainSectionContainer extends React.Component {
     }
 
     componentWillUnmount = () => {
- 
+
         window.removeEventListener("scroll", this.scrollEvent);
     }
 
@@ -152,16 +152,16 @@ class MainSectionContainer extends React.Component {
 
         const isGoogle = file.metadata.drive;
         const isGoogleDoc = file.metadata.googleDoc;
-        const isPersonal = file.metadata.personalFile;  
+        const isPersonal = file.metadata.personalFile;
 
         this.props.dispatch(setLastSelected(0));
 
         axios.post("/user-service/get-token").then((response) => {
 
-           
 
-            const finalUrl = 
-            isGoogle ? !isGoogleDoc ? `/file-service-google/download/${fileID}` : `/file-service-google-doc/download/${fileID}`  
+
+            const finalUrl =
+            isGoogle ? !isGoogleDoc ? `/file-service-google/download/${fileID}` : `/file-service-google-doc/download/${fileID}`
             : !isPersonal ? `/file-service/download/${fileID}` : `/file-service-personal/download/${fileID}`
 
             console.log("download file", finalUrl);
@@ -182,8 +182,8 @@ class MainSectionContainer extends React.Component {
 
         //     const tempToken = response.data.tempToken;
 
-        //     const finalUrl = 
-        //     isGoogle ? !isGoogleDoc ? currentURL + `/file-service-google/download/${fileID}` : currentURL + `/file-service-google-doc/download/${fileID}`  
+        //     const finalUrl =
+        //     isGoogle ? !isGoogleDoc ? currentURL + `/file-service-google/download/${fileID}` : currentURL + `/file-service-google-doc/download/${fileID}`
         //     : !isPersonal ? currentURL + `/file-service/download/${fileID}` : currentURL + `/file-service-personal/download/${fileID}`
 
         //     const link = document.createElement('a');
@@ -199,7 +199,7 @@ class MainSectionContainer extends React.Component {
     }
 
     loadMoreItems = () => {
-    
+
         return;
 
         console.log("load more main")
@@ -224,8 +224,8 @@ class MainSectionContainer extends React.Component {
             const lastPageToken = this.props.files[this.props.files.length - 1].pageToken
             const isGoogle = this.props.filter.isGoogle;
 
-            this.props.dispatch(startLoadMoreFiles(parent, sortBy, search, lastFileDate, lastFileName, lastPageToken, isGoogle))  
-        } 
+            this.props.dispatch(startLoadMoreFiles(parent, sortBy, search, lastFileDate, lastFileName, lastPageToken, isGoogle))
+        }
     }
 
     switchLeftSectionMode = () => {
@@ -252,7 +252,7 @@ class MainSectionContainer extends React.Component {
 
     render() {
 
-        return <MainSection 
+        return <MainSection
                 folderClick={this.folderClick}
                 fileClick={this.fileClick}
                 downloadFile={this.downloadFile}

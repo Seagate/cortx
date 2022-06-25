@@ -53,7 +53,7 @@ function DRP_AuthFunction(authRequest) {
 
 class DRP_Authenticator extends DRP_Service {
     /**
-     * 
+     *
      * @param { string } serviceName Service Name
      * @param { DRP_Node } drpNode DRP Node
      * @param { number } priority Lower better

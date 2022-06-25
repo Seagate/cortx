@@ -73,11 +73,11 @@ var validateUserInput = function (subtaskData) {
 }
 
 var handleUserInputUpdate = function (subtaskData) {
-  // subtaskData: task data with utterances (both human and bot) 
+  // subtaskData: task data with utterances (both human and bot)
   // This checks that at least one checkbox is checked in every turn
   // before enabling the Next button
   // Needed b/c conversations scroll off the screen
-  // HACK: need a more elegant way to check if all turns have an answer 
+  // HACK: need a more elegant way to check if all turns have an answer
   if (validateUserInput(subtaskData)) {
     showEnabledCssNextButton();
   } else {
@@ -155,7 +155,7 @@ var handleSubtaskSubmit = function (subtaskIndex, setIndex, numSubtasks, initial
     mephistoSubmit(window.workerAnswers);
   }
   showDisableCssNextButton();
-  setIndex(subtaskIndex + 1); 
+  setIndex(subtaskIndex + 1);
 }
 
 function LeftPane({ stretch = false, children }) {
@@ -202,7 +202,7 @@ function ChatMessage({ text, agentIdx, annotationQuestion, annotationBuckets, tu
   var extraElements = '';
   var responseInputElement = '';
   if (doAnnotateMessage) {
-    if (annotationBuckets !== null) { 
+    if (annotationBuckets !== null) {
       extraElements = (<span key={'extra_' + turnIdx}><br /><br />
         <span style={{ fontStyle: 'italic' }} >
           <span dangerouslySetInnerHTML={{ __html: annotationQuestion }}></span>

@@ -484,7 +484,7 @@ class NetScalerSet {
 
 class NetScalerManager extends DRP_Service {
     /**
-     * 
+     *
      * @param {string} serviceName Service Name
      * @param {drpNode} drpNode DRP Node
      * @param {number} priority Priority (lower better)

@@ -1,1 +1,3 @@
-{ "SomeKey1": "Hello World" }
+{
+  "SomeKey1": "Hello World"
+}

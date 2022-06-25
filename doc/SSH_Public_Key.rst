@@ -5,7 +5,7 @@ Perform the below mentioned procedure to generate the SSH public key.
 1. Navigate to `SSH Generation <https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key>`_. A page with the *4.3 Git on the Server - Generating Your SSH Public Key* section opens.
 
 2. Run the commands mentioned below.
- 
+
    * **$ cd ~/.ssh**
 
    * **$ ssh-keygen -o**

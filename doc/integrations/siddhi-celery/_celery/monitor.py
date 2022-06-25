@@ -29,7 +29,7 @@ def main():
 
         if buckets is not None:
             created_buckets, deleted_buckets = compare_buckets(previous_buckets, buckets)
-            if len(created_buckets) > 0: 
+            if len(created_buckets) > 0:
                 print(created_buckets)
 
             if len(deleted_buckets) > 0:
@@ -40,4 +40,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    

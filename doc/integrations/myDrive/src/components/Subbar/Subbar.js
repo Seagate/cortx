@@ -12,7 +12,7 @@ export class Subbar extends React.Component {
             <div className="subbar">
 
             <div className="add-button add-button-2" onClick={this.props.addButtonEvent} ref={this.props.wrapperRef}>
-                            
+
             <img className="add-button__img" src="/images/add-blue.png"/>
 
             <h3 className="add-button__title">New</h3>
@@ -24,12 +24,12 @@ export class Subbar extends React.Component {
                 </div>
 
                 <div className="add_button__option__add-folder-wrapper add_button__option__add-folder-wrapper--no-border">
-                            
+
                     <img className="add_button__option__add-folder-image" src="/images/upload-file-grey.png"/>
                     <p className="add_button__option__add-folder-title">File Upload</p>
-                    <input className="add_button__option__add-file-input"  ref={this.props.uploadInput} 
+                    <input className="add_button__option__add-file-input"  ref={this.props.uploadInput}
                     type="file" multiple={true} onChange={this.props.handleUpload}/>
-                            
+
                 </div>
 
                 <div className="add_button__option__add-folder-wrapper add_button__option__add-folder-wrapper--no-border">
@@ -38,14 +38,14 @@ export class Subbar extends React.Component {
                 </div>
                 </div>
                 </div>
-           
-                
+
+
                 <div className="path__wrapper">
 
-                {(this.props.parentList.length !== 1 || this.props.currentlySearching)? 
+                {(this.props.parentList.length !== 1 || this.props.currentlySearching)?
                     (
                     <div className="path__block">
-                    
+
                     {this.props.parentNameList.map((parent, index) => {
 
                         const parentID = this.props.parentList[index];
@@ -55,19 +55,19 @@ export class Subbar extends React.Component {
                                 <h3 className="path__title">{parent}</h3>
 
                                 {index !== this.props.parentNameList.length - 1 ? (<img className="path__image" src="/images/right-arrow-svg.svg"/>) : undefined}
-                                
+
                             </div>
                         )
                     })}
-                    
+
                     </div>)
-                    
+
                  : undefined}
 
-                
-                
+
+
                 </div>
-                
+
 
                 <img className="grid-button" src={!this.props.listView ? "/images/grid-icon-svg.svg" : "/images/list-icon-svg.svg"} onClick={this.props.showListViewEvent}/>
                 <img className="info-button" src="/images/info-icon-grey.png" onClick={this.props.showSideBarEvent}/>

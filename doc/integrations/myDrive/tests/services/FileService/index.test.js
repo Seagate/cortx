@@ -15,7 +15,7 @@ import FileService from "../../../dist/services/FileService";
 const fileService = new FileService();
 const createUserDbType = require("../../fixtures/createUserDbType");
 
-let user; 
+let user;
 let file;
 
 process.env.KEY = "1234";
@@ -28,16 +28,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-                
+
                 resolve();
-    
+
             })
 
         } else {
 
             resolve();
         }
-    
+
     })
 }
 
@@ -46,11 +46,11 @@ beforeEach(async(done) => {
     await waitForDatabase();
 
     const initVect = crypto.randomBytes(16);
-            
+
     // user = await createUser();
     const {user: gotUser} = await createUser();
     user = gotUser;
-    
+
     const filename = "bunny.png";
     const filepath = path.join(__dirname, "../../fixtures/media/check.svg")
     const metadata = {
@@ -59,7 +59,7 @@ beforeEach(async(done) => {
         parentList: "/",
         "IV": initVect
     }
-    
+
     file = await createFile(filename, filepath, metadata, user);
 
     done();
@@ -69,11 +69,11 @@ beforeEach(async(done) => {
     //     conn.once("open", async() => {
 
     //         const initVect = crypto.randomBytes(16);
-            
+
     //         // user = await createUser();
     //         const {user: gotUser} = await createUser();
     //         user = gotUser;
-            
+
     //         const filename = "bunny.png";
     //         const filepath = path.join(__dirname, "../../fixtures/media/check.svg")
     //         const metadata = {
@@ -82,9 +82,9 @@ beforeEach(async(done) => {
     //             parentList: "/",
     //             "IV": initVect
     //         }
-            
+
     //         file = await createFile(filename, filepath, metadata, user);
-    
+
     //         done();
     //     })
     // } else {
@@ -93,7 +93,7 @@ beforeEach(async(done) => {
     //         //user = await createUser();
     //         const {user: gotUser} = await createUser();
     //         user = gotUser;
-            
+
     //         const filename = "bunny.png";
     //         const filepath = path.join(__dirname, "../../fixtures/media/check.svg")
     //         const metadata = {
@@ -102,11 +102,11 @@ beforeEach(async(done) => {
     //             parentList: "/",
     //             "IV": initVect
     //         }
-            
+
     //         file = await createFile(filename, filepath, metadata, user);
-    
+
     //         done();
-    // }  
+    // }
 })
 
 
@@ -114,7 +114,7 @@ afterEach( async(done) => {
 
     //const gfs = Grid(conn.db, mongoose.mongo);
     let bucket = new mongoose.mongo.GridFSBucket(conn.db);
-            
+
     await User.deleteMany({});
     await Folder.deleteMany({});
 
@@ -125,17 +125,17 @@ afterEach( async(done) => {
         const currentFileID = allFiles[i]._id;
         await bucket.delete(ObjectID(currentFileID));
     }
-   
+
     done();
 
 })
 
 // test("When giving user, and thumbnail id, should get thumbnail" , async() => {
-  
+
 //     const thumbnailFile = await createThumbnail(file, file.filename, user);
 //     const thumbnailID = thumbnailFile.metadata.thumbnailID;
 
-   
+
 //     const recievedThumbnail = await fileService.getThumbnail(user, thumbnailID);
 
 
@@ -199,11 +199,11 @@ test("When giving fileID, should return file info if public", async() => {
     const fileID = file._id;
     const token = jwt.sign({_id: userID.toString()}, env.password);
     await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": ObjectID(fileID), 
-            "metadata.owner": userID}, 
+            .findOneAndUpdate({"_id": ObjectID(fileID),
+            "metadata.owner": userID},
             {"$set": {"metadata.linkType": "public", "metadata.link": token}})
 
-    
+
     const receivedFile = await fileService.getPublicInfo(fileID, token);
 
     expect(receivedFile).not.toBe(null);
@@ -224,8 +224,8 @@ test("When giving wrong tempToken for public file, should throw not found error"
     const token = jwt.sign({_id: userID.toString()}, env.password);
     const wrongTempToken = "12345";
     await conn.db.collection("fs.files")
-            .findOneAndUpdate({"_id": ObjectID(fileID), 
-            "metadata.owner": userID}, 
+            .findOneAndUpdate({"_id": ObjectID(fileID),
+            "metadata.owner": userID},
             {"$set": {"metadata.linkType": "public", "metadata.link": token}})
 
     await expect(fileService.getPublicInfo(fileID, wrongTempToken)).rejects.toThrow();
@@ -729,7 +729,7 @@ test("When giving search query with user that has disabled personal file should 
     expect(receivedFileList.length).toBe(1);
     expect(receivedFileList[0].filename).toBe(filename);
     expect(receivedFileList[0].metadata.personalFile).toBe(undefined)
-    
+
 })
 // test("When giving userID, and fileID, should remove file", async() => {
 

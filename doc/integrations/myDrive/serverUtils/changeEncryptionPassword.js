@@ -18,16 +18,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-                
+
                 resolve();
-    
+
             })
 
         } else {
 
             resolve();
         }
-    
+
     })
 }
 
@@ -42,29 +42,29 @@ const reencryptFile = (file, newKey, user) => {
             chunkSizeBytes: 1024 * 255,
             bucketName: "temp-fs"
         });
-    
+
         let bucket = new mongoose.mongo.GridFSBucket(conn.db, {
             chunkSizeBytes: 1024 * 255
         });
-    
+
         const metadata = file.metadata;
-    
+
         const readStream = decryptBucket.openDownloadStream(ObjectID(fileID));
-    
+
         const writeStream = bucket.openUploadStream(filename, {metadata});
-    
+
         const foundOldUser =  await conn.db.collection("temp-users").findOne({_id: user._id});
 
         const password = getOldEncryptionKey(foundOldUser);
 
         const IV = file.metadata.IV.buffer
 
-        const CIPHER_KEY = crypto.createHash('sha256').update(password).digest()   
-                
+        const CIPHER_KEY = crypto.createHash('sha256').update(password).digest()
+
         const decipher = crypto.createDecipheriv('aes256', CIPHER_KEY, IV);
-                
-        const NEW_CIPHER_KEY = crypto.createHash('sha256').update(newKey).digest() 
-    
+
+        const NEW_CIPHER_KEY = crypto.createHash('sha256').update(newKey).digest()
+
         const cipher = crypto.createCipheriv('aes256', NEW_CIPHER_KEY, IV);
 
         cipher.on("error", (e) => {
@@ -84,7 +84,7 @@ const reencryptFile = (file, newKey, user) => {
                } catch (e) {
                    console.log("Cannot create thumbnail", e);
                }
-                
+
                 resolve();
 
             } else {
@@ -109,7 +109,7 @@ const findFiles = async() => {
     for await (const currentUser of userListCursor) {
 
         const currentUserID = currentUser._id;
-    
+
         const newEncrpytionKey = getEncryptionKey(currentUser);
 
         const listCursor = await conn.db.collection("temp-fs.files").find({"metadata.owner": ObjectID(currentUserID)});
@@ -206,7 +206,7 @@ const findUsers = async() => {
        try {
 
         const newUser = await generateEncryptionKeys(currentUser);
-       
+
         await conn.db.collection("users").insertOne(newUser);
 
         progressBar.increment()
@@ -228,8 +228,8 @@ const changeEncryptionPassword = async() => {
 
     const userConfimation = await prompts({
         type: 'text',
-        message: "Warning: This will automatically run Backup-Database,\n" + 
-        "overwriting the current Backup. And will also clear all file chunks\n" + 
+        message: "Warning: This will automatically run Backup-Database,\n" +
+        "overwriting the current Backup. And will also clear all file chunks\n" +
         "other than the Data Backup. Then it will re-encrypt files and move them back over.\n" +
         "(Optional) Create a manual Backup for additional safety.\n" +
         "Would you like to continue? (Yes/No)",

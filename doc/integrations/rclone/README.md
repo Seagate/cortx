@@ -45,7 +45,7 @@ apt-get install -y rclone
 
 #### Step 4: Run rclone configuration
 
-The configuration step is an interactive step - this has been changed across different versions of rclone, but conceptually the same 
+The configuration step is an interactive step - this has been changed across different versions of rclone, but conceptually the same
 
 ```
 rclone config
@@ -103,16 +103,16 @@ Endpoint for S3 API.
 Required when using an S3 clone.
 Enter a string value. Press Enter for the default ("").
 Choose a number from below, or type in your own value
-endpoint> 
+endpoint>
 
-> {{Your CORTX Endpoint Here}} 
+> {{Your CORTX Endpoint Here}}
 ```
 
 This completes the rclone config
 
 That's it! You connected a remote directory in CORTX using rclone. The next step is optional to test your connection
 
-#### Step 6: Uploading from local disk 
+#### Step 6: Uploading from local disk
 
 Let's make a file to upload
 ```

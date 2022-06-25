@@ -27,19 +27,19 @@ class StorageController {
 
             return;
         }
-    
+
         try {
 
             if (!env.root || env.root.length === 0) {
                 return;
             }
-    
+
             const info = await disk.check(env.root!);
-        
+
             res.send(info)
-    
+
         } catch (e) {
-    
+
             console.log("\nGet Storage Error Storage Route:", e.message);
             const code = !e.code ? 500 : e.code >= 400 && e.code <= 599 ? e.code : 500;
             res.status(code).send();

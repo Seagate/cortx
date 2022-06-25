@@ -3,7 +3,7 @@ const DRP_Node = require('drp-mesh').Node;
 
 class Hive extends DRP_Service {
     /**
-     * 
+     *
      * @param {string} serviceName Service Name
      * @param {DRP_Node} drpNode DRP Node
      * @param {number} priority Priority (lower better)

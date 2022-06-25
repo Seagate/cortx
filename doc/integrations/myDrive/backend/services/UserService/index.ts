@@ -38,7 +38,7 @@ class UserService {
     login = async(userData: UserDataType, uuid: string | undefined) => {
 
         const email = userData.email;
-        const password = userData.password; 
+        const password = userData.password;
 
         const user = await UserStaticType.findByCreds(email, password);
 
@@ -58,14 +58,14 @@ class UserService {
         if (!user) throw new NotFoundError("Could Not Find User");
 
         if (refreshToken) {
-            const decoded = jwt.verify(refreshToken, env.passwordRefresh!) as jwtType;  
+            const decoded = jwt.verify(refreshToken, env.passwordRefresh!) as jwtType;
             const encrpytionKey = user.getEncryptionKey();
             const encryptedToken = user.encryptToken(refreshToken, encrpytionKey, decoded.iv);
 
             for (let i = 0; i < user.tokens.length; i++) {
 
                 const currentEncryptedToken = user.tokens[i].token;
-    
+
                 if (currentEncryptedToken === encryptedToken) {
 
                     user.tokens.splice(i, 1);
@@ -122,7 +122,7 @@ class UserService {
         if (!isMatch) throw new ForbiddenError("Change Passwords Do Not Match Error");
 
         const encryptionKey = user.getEncryptionKey();
-        
+
         user.password = newPassword;
 
         user.tokens = [];
@@ -131,24 +131,24 @@ class UserService {
 
         await user.save();
         await user.changeEncryptionKey(encryptionKey!);
-        
+
         const {accessToken, refreshToken} = await user.generateAuthToken(uuid);
 
         return {accessToken, refreshToken};
     }
 
     refreshStorageSize = async(userID: string) => {
-        
+
         const user = await User.findById(userID);
 
         if (!user) throw new NotFoundError("Cannot find user");
 
         const fileList = await File.find({"metadata.owner": user._id, "metadata.personalFile": null});
-    
+
         let size = 0;
 
         for (let currentFile of fileList) {
-            
+
             size += currentFile.length;
         }
 
@@ -160,7 +160,7 @@ class UserService {
     getUserDetailed = async(userID: string) => {
 
         const user = await User.findById(userID);
-        
+
         if (!user) throw new NotFoundError("Cannot find user");
 
         if (user.s3Enabled) {
@@ -172,22 +172,22 @@ class UserService {
                 console.log("getting s3 storage data error");
                 user.storageDataPersonal = {storageSize: 0, failed: true}
             }
-            
+
         }
-    
+
         if (user.googleDriveEnabled) {
 
             try {
 
                 const {clientID} = await user.decryptDriveIDandKey()
-    
+
                 const oauth2Client = await getGoogleAuth(user);
                 const drive = google.drive({version:"v3", auth: oauth2Client});
-        
+
                 const googleData = await drive.about.get({
                     fields: "storageQuota"
                 })
-        
+
                 user.storageDataGoogle = {storageLimit: +googleData.data.storageQuota!.limit!, storageSize: +googleData.data.storageQuota!.usage!}
                 user.googleDriveData!.id = clientID;
 
@@ -198,7 +198,7 @@ class UserService {
             }
 
         }
-    
+
         if (!user.storageData || (!user.storageData.storageSize && !user.storageData.storageLimit)) user.storageData = {storageLimit: 0, storageSize: 0}
         if (!user.storageDataPersonal || (!user.storageDataPersonal.storageSize && !user.storageDataPersonal.failed)) user.storageDataPersonal = {storageSize: 0}
         if (!user.storageDataGoogle || (!user.storageDataGoogle.storageLimit && !user.storageDataGoogle.storageSize && !user.storageDataGoogle.failed)) user.storageDataGoogle = {storageLimit: 0, storageSize: 0}
@@ -209,9 +209,9 @@ class UserService {
     verifyEmail = async(verifyToken: any) => {
 
         const decoded: any = jwt.verify(verifyToken!, env.passwordAccess!);
-   
+
         const iv = decoded.iv;
-        
+
         const user = await User.findOne({_id: decoded._id}) as UserInterface;
         const encrpytionKey = user.getEncryptionKey();
         const encryptedToken = user.encryptToken(verifyToken, encrpytionKey, iv);
@@ -220,7 +220,7 @@ class UserService {
             user.emailVerified = true;
             await user.save();
             return user;
-            
+
         } else {
             throw new ForbiddenError('Email Token Verification Failed')
         }
@@ -258,7 +258,7 @@ class UserService {
     resetPassword = async(newPassword: string, verifyToken: any) => {
 
         const decoded: any = jwt.verify(verifyToken!, env.passwordAccess!);
-   
+
         const iv = decoded.iv;
 
         const user = await User.findOne({_id: decoded._id}) as UserInterface;
@@ -268,13 +268,13 @@ class UserService {
         if (encryptedToken === user.passwordResetToken) {
 
             const encryptionKey = user.getEncryptionKey();
-            
+
             user.password = newPassword;
 
             user.tokens = [];
             user.tempTokens = [];
             user.passwordResetToken = undefined;
-            
+
             await user.save();
             await user.changeEncryptionKey(encryptionKey!);
 
@@ -282,7 +282,7 @@ class UserService {
             throw new ForbiddenError("Reset Password Token Do Not Match")
         }
     }
-    
+
     addName = async(userID: string, name: string) => {
 
         if (!name || name.length === 0) throw new ForbiddenError("No name")

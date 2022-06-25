@@ -4,7 +4,7 @@
 }
 
 .spacer__mobile {
-   
+
     @media (max-width: $desktop-breakpoint) {
         margin-top: calc(80px + 6vh);
     }

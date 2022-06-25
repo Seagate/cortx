@@ -1,1 +1,9 @@
-{"tabs":[{"id":1,"title":"Tab 1","hiddenColumns":null}]}
+{
+  "tabs": [
+    {
+      "id": 1,
+      "title": "Tab 1",
+      "hiddenColumns": null
+    }
+  ]
+}

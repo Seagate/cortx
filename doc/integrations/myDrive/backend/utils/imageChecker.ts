@@ -12,14 +12,14 @@ const imageChecker =  (filename: string) => {
 
     if (filename.length < 1 || !filename.includes(".")) {
 
-        return false; 
+        return false;
     }
 
     const extSplit = filename.split(".");
 
     if (extSplit.length <= 1) {
-        
-        return false; 
+
+        return false;
     }
 
     const ext = extSplit[extSplit.length - 1];

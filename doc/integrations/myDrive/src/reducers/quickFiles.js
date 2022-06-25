@@ -36,14 +36,14 @@ export default (state = defaultState, action) => {
                 }
             })
 
-        case "REMOVE_FILE": 
+        case "REMOVE_FILE":
 
             return state.filter((file) => {
 
                 return file._id !== action.id
             })
 
-        default: 
+        default:
             return state;
     }
 }

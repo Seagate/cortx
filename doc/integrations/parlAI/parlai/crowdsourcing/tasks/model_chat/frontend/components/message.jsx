@@ -51,17 +51,17 @@ function RenderChatMessage({ message, mephistoContext, appContext, idx }) {
       <br />
       {annotationIntro}
       <br />
-      <Checkboxes 
-        annotations={thisBoxAnnotations} 
+      <Checkboxes
+        annotations={thisBoxAnnotations}
         onUpdateAnnotations={
           (newAnnotations) => {
             checkboxValues[idx] = newAnnotations;
             setAppSettings({checkboxValues});
           }
-        } 
-        annotationBuckets={annotationBuckets} 
-        turnIdx={idx} 
-        askReason={false} 
+        }
+        annotationBuckets={annotationBuckets}
+        turnIdx={idx}
+        askReason={false}
         enabled={idx == appSettings.numMessages - 1}
       />
     </div>;

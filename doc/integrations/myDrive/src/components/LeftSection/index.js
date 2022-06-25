@@ -56,7 +56,7 @@ class LeftSectionContainer extends React.Component {
     handleClickOutside = (e) => {
 
         if (this.leftSectionRef && !this.leftSectionRef.current.contains(event.target)) {
-          
+
             if (this.props.leftSectionMode === 'open') {
                 this.props.dispatch(setLeftSectionMode('close'))
             }
@@ -81,7 +81,7 @@ class LeftSectionContainer extends React.Component {
     }
 
     addButtonEvent = () => {
-        
+
         const currentAddOptions = !this.props.showAddOptions
         this.props.dispatch(showAddOptions(currentAddOptions))
     }
@@ -111,7 +111,7 @@ class LeftSectionContainer extends React.Component {
 
     render() {
 
-        return <LeftSection 
+        return <LeftSection
                     addButtonEvent={this.addButtonEvent}
                     wrapperRef={this.wrapperRef}
                     uploadInput={this.uploadInput}

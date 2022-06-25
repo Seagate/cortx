@@ -2,7 +2,7 @@
 
 ### Why do we need it ?
 
-We need a place to store the metadata.  
+We need a place to store the metadata.
 Currently we store 2 kinds of metadata in BE :
 - The metadata about the data stored on storage devices. It consists of :
 	- balloc : what space is free on the data storage device and what is not
@@ -47,7 +47,7 @@ Top-level components
 - BE tx : the transaction. The changes in segments are captured to the transactions
 - BE log : all the segment changes that need to become persistent go there. The changes that didn't go to the segments are replayed during BE recovery.
 
-## Data flow for the user's persistent data  
+## Data flow for the user's persistent data
 ![be-data-flow](/doc/be/images/be-data-flow-1.png)
 
 ## Transactions
@@ -88,6 +88,6 @@ Top-level components
 	- Solution : asynchronous framework
 	- Implementation : PoC exists in a branch
 
-- There is only one open tx group at any moment of time 
+- There is only one open tx group at any moment of time
 	- Solution : (possible) LSN-based serialised txs
 	- Implementation : doesn't exists

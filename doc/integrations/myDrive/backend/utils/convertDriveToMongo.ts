@@ -18,7 +18,7 @@ const convertDriveToMongo = (driveObj: any, ownerID: string, pageToken?: string 
         parentList: driveObj.parents,
         size: driveObj.size,
         drive: true,
-        googleDoc: driveObj.mimeType === "application/vnd.google-apps.document", 
+        googleDoc: driveObj.mimeType === "application/vnd.google-apps.document",
         thumbnailID: driveObj.thumbnailLink,
         link: driveObj.shared ? driveObj.webViewLink : undefined,
         linkType: driveObj.shared ? "public" : undefined

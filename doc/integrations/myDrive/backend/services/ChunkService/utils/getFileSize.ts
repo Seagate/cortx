@@ -7,7 +7,7 @@ const getFileSize = (path: string) => {
         fs.stat(path, (error, stats) => {
 
             if (error) {
-                
+
                 resolve(0);
             }
 

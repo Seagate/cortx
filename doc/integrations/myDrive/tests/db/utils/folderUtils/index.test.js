@@ -7,7 +7,7 @@ const createUser = require("../../../fixtures/createUser");
 const utilsFolder = new UtilsFolder();
 
 
-let user; 
+let user;
 let folder;
 
 process.env.KEY = "1234";
@@ -19,16 +19,16 @@ const waitForDatabase = () => {
         if (conn.readyState !== 1) {
 
             conn.once("open", () => {
-                
+
                 resolve();
-    
+
             })
 
         } else {
 
             resolve();
         }
-    
+
     })
 }
 
@@ -41,11 +41,11 @@ beforeEach(async(done) => {
 
     const folderData = {
         name: "bunny",
-        owner: user._id, 
+        owner: user._id,
         parent: "/",
         parentList: ["/"]
     }
-    
+
 
     folder = new Folder(folderData);
     await folder.save();
@@ -62,18 +62,18 @@ beforeEach(async(done) => {
 
     //         const folderData = {
     //             name: "bunny",
-    //             owner: user._id, 
+    //             owner: user._id,
     //             parent: "/",
     //             parentList: ["/"]
     //         }
-            
-    
+
+
     //         folder = new Folder(folderData);
     //         await folder.save();
-    
+
     //         done();
-    
-    
+
+
     //     })
 
     // } else {
@@ -84,22 +84,22 @@ beforeEach(async(done) => {
 
     //         const folderData = {
     //             name: "bunny",
-    //             owner: user._id, 
+    //             owner: user._id,
     //             parent: "/",
     //             parentList: ["/"]
     //         }
-            
-    
+
+
     //         folder = new Folder(folderData);
     //         await folder.save();
-    
+
     //         done();
     // }
-    
+
 })
 
 afterEach( async(done) => {
-            
+
     await User.deleteMany({});
     await Folder.deleteMany({});
 
@@ -115,23 +115,23 @@ test("When giving userID, and search query, should return a searched filtered fo
 
     const folderTwo = await new Folder({
         name: "coconut",
-        owner: userID, 
+        owner: userID,
         parent: "/",
         parentList: ["/"]
     })
-    
+
     const folderThree = await new Folder({
         name: "dinnerbone",
-        owner: userID, 
+        owner: userID,
         parent: "1234",
-        parentList: ["/", "1234"] 
+        parentList: ["/", "1234"]
     })
 
     const folderFour = await new Folder({
         name: "cocoelephant",
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
-        parentList: ["/"] 
+        parentList: ["/"]
     })
 
     await folderTwo.save();
@@ -156,23 +156,23 @@ test("When giving the wrong userID, should not return search query", async() => 
 
     const folderTwo = await new Folder({
         name: "coconut",
-        owner: userID, 
+        owner: userID,
         parent: "/",
         parentList: ["/"]
     })
-    
+
     const folderThree = await new Folder({
         name: "dinnerbone",
-        owner: userID, 
+        owner: userID,
         parent: "1234",
-        parentList: ["/", "1234"] 
+        parentList: ["/", "1234"]
     })
 
     const folderFour = await new Folder({
         name: "cocoelephant",
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
-        parentList: ["/"] 
+        parentList: ["/"]
     })
 
     await folderTwo.save();
@@ -232,23 +232,23 @@ test("When giving userID, parent, and sortby, should return filtered folder list
 
     const folderTwo = await new Folder({
         name: "coconut",
-        owner: userID, 
+        owner: userID,
         parent: "/",
         parentList: ["/"]
     })
-    
+
     const folderThree = await new Folder({
         name: "dinnerbone",
-        owner: userID, 
+        owner: userID,
         parent: "1234",
-        parentList: ["/", "1234"] 
+        parentList: ["/", "1234"]
     })
 
     const folderFour = await new Folder({
         name: "cocoelephant",
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
-        parentList: ["/"] 
+        parentList: ["/"]
     })
 
     await folderTwo.save();
@@ -274,23 +274,23 @@ test("When giving the wrong userID, should not return folder list filtered by pa
 
     const folderTwo = await new Folder({
         name: "coconut",
-        owner: userID, 
+        owner: userID,
         parent: "/",
         parentList: ["/"]
     })
-    
+
     const folderThree = await new Folder({
         name: "dinnerbone",
-        owner: userID, 
+        owner: userID,
         parent: "1234",
-        parentList: ["/", "1234"] 
+        parentList: ["/", "1234"]
     })
 
     const folderFour = await new Folder({
         name: "cocoelephant",
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
-        parentList: ["/"] 
+        parentList: ["/"]
     })
 
     await folderTwo.save();
@@ -313,23 +313,23 @@ test("When giving userID, search query, and sort by, should return folder list b
 
     const folderTwo = await new Folder({
         name: "coconut",
-        owner: userID, 
+        owner: userID,
         parent: "/",
         parentList: ["/"]
     })
-    
+
     const folderThree = await new Folder({
         name: "dinnerbone",
-        owner: userID, 
+        owner: userID,
         parent: "1234",
-        parentList: ["/", "1234"] 
+        parentList: ["/", "1234"]
     })
 
     const folderFour = await new Folder({
         name: "cocoelephant",
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
-        parentList: ["/"] 
+        parentList: ["/"]
     })
 
     await folderTwo.save();
@@ -355,23 +355,23 @@ test("When giving wrong userID, should not return folder list by search (no limi
 
     const folderTwo = await new Folder({
         name: "coconut",
-        owner: userID, 
+        owner: userID,
         parent: "/",
         parentList: ["/"]
     })
-    
+
     const folderThree = await new Folder({
         name: "dinnerbone",
-        owner: userID, 
+        owner: userID,
         parent: "1234",
-        parentList: ["/", "1234"] 
+        parentList: ["/", "1234"]
     })
 
     const folderFour = await new Folder({
         name: "cocoelephant",
-        owner: "1234", 
+        owner: "1234",
         parent: "/",
-        parentList: ["/"] 
+        parentList: ["/"]
     })
 
     await folderTwo.save();
@@ -457,4 +457,3 @@ test("When giving the wrong userID for folder move, should not move folder", asy
     expect(updatedFolder.parentList.length).toBe(1);
     expect(updatedFolder.parent).toBe(folder.parent);
 })
-

@@ -23,7 +23,7 @@ import { setLoading } from "../../actions/main";
 // import { resetSettingsMain } from "../../actions/main";
 
 class SettingsPageContainer extends React.Component {
-  
+
     constructor(props) {
         super(props);
 
@@ -65,7 +65,7 @@ class SettingsPageContainer extends React.Component {
         this.props.dispatch(setLoading(true));
 
         axios.get("/user-service/user-detailed").then((response) => {
-          
+
             env.name = response.data.name;
             env.emailAddress = response.data.email
             this.props.dispatch(setParent(uuid.v4()))
@@ -104,10 +104,10 @@ class SettingsPageContainer extends React.Component {
                 window.location.assign(env.url);
               })
             }
-          
+
           })
         })
-        
+
     }
 
     componentDidMount = () => {
@@ -152,7 +152,7 @@ class SettingsPageContainer extends React.Component {
     }
 
     modeChangeFullScreen = (type) => {
-     
+
         this.setState(() => {
             return {
                 ...this.state,
@@ -311,7 +311,7 @@ class SettingsPageContainer extends React.Component {
       if (!env.commercialMode || !this.state.userDetails.activeSubscription) return;
 
       axios.get("/user-service/payments").then((response) => {
-  
+
         const invoices = response.data.invoices;
 
         let invoiceDetails = response.data;
@@ -319,9 +319,9 @@ class SettingsPageContainer extends React.Component {
 
         this.setState(() => {
           return {
-            ...this.state, 
+            ...this.state,
             invoiceData: invoiceDetails,
-            invoices, 
+            invoices,
             invoicesLoaded: true}
         })
 
@@ -376,7 +376,7 @@ class SettingsPageContainer extends React.Component {
     }
 
     refreshStorageSize = () => {
-      
+
         axios.patch("/user-service/refresh-storage-size", undefined).then((response) => {
 
             this.getUserDetails()
@@ -395,7 +395,7 @@ class SettingsPageContainer extends React.Component {
       const clientRedirect = "/add-google-account"
 
       const data = {
-          clientID, 
+          clientID,
           clientKey,
           clientRedirect
       }
@@ -426,7 +426,7 @@ class SettingsPageContainer extends React.Component {
             'success'
         ).then(() => {
             // window.location.assign(env.url)
-            
+
         })
       })
     }
@@ -556,7 +556,7 @@ class SettingsPageContainer extends React.Component {
     }
 
     axios.post(`/user-service/change-password/`, data).then((results) => {
-                    
+
       //const newToken = results.data;
       // window.localStorage.setItem("token", newToken);
 
@@ -635,7 +635,7 @@ class SettingsPageContainer extends React.Component {
     }
 
     axios.patch("/user-service/add-name", data).then((response) => {
-      
+
       this.changeShowAddName();
       this.getUserDetails()
       Swal.fire(
@@ -643,7 +643,7 @@ class SettingsPageContainer extends React.Component {
         'Your name has been sucessfully updated',
         'success'
       )
-    
+
     }).catch(() => {
       console.log("could not change name")
       Swal.fire({
@@ -688,9 +688,9 @@ class SettingsPageContainer extends React.Component {
         'Content-Type': 'application/json'
         }
       }
-      
+
       axios.post('/user-service/upload-personal-file-list', currentFile, config).then((response) => {
-               
+
         this.uploadReference.current.value = ''
 
         Swal.fire(
@@ -706,10 +706,10 @@ class SettingsPageContainer extends React.Component {
           title: 'Error',
           text: 'Error uploading personal file list',
         })
-      }) 
-      
+      })
+
     }
-    
+
   }
 
   removeS3Metadata = (e) => {
@@ -741,7 +741,7 @@ class SettingsPageContainer extends React.Component {
             text: 'Error deleting S3 metadata',
           })
         })
-        
+
       }
     })
   }
@@ -824,7 +824,7 @@ class SettingsPageContainer extends React.Component {
 
       window.localStorage.setItem("hide-folder-tree", true);
     }
-    
+
     this.setState(() => ({
       ...this.state,
       hideFolderTree: !this.state.hideFolderTree
@@ -929,7 +929,7 @@ class SettingsPageContainer extends React.Component {
       </div>
     </div>
   </div>
-  
+
   <div class="content__block">
     <div class="small__switcher--content">
       <a onClick={this.showSideBar} class="menu__button">
@@ -1105,9 +1105,9 @@ class SettingsPageContainer extends React.Component {
                       style={{backgroundColor:"#3c85ee",width: !this.state.loaded ? "0%" : env.commercialMode ? this.state.userDetails.activeSubscription ? `${this.getStoragePercentage()}%` : `100%` : "100%"}}
                     ></div>
                   </div>
-                  <span>{!this.state.loaded ? "Loading..." : 
-                  (env.commercialMode && this.state.userDetails.activeSubscription) ? 
-                  `${bytes(this.state.userDetails.storageData.storageSize)} of 
+                  <span>{!this.state.loaded ? "Loading..." :
+                  (env.commercialMode && this.state.userDetails.activeSubscription) ?
+                  `${bytes(this.state.userDetails.storageData.storageSize)} of
                   ${bytes(this.state.userDetails.storageData.storageLimit)} used` : !env.commercialMode ? `${bytes(this.state.userDetails.storageData.storageSize)} used` : ''}</span>
                 </div>
               </div>
@@ -1139,7 +1139,7 @@ class SettingsPageContainer extends React.Component {
                     style={{backgroundColor:"#3c85ee", width: !this.state.loaded ? "0%" : this.state.userDetails.googleDriveEnabled ? `${this.getStoragePercentageGoogle()}%` : '0%'}}
                   ></div>
                 </div>
-                <span>{this.state.userDetails.googleDriveEnabled ? !this.state.userDetails.storageDataGoogle.failed ? `${bytes(this.state.userDetails.storageDataGoogle.storageSize)} of 
+                <span>{this.state.userDetails.googleDriveEnabled ? !this.state.userDetails.storageDataGoogle.failed ? `${bytes(this.state.userDetails.storageDataGoogle.storageSize)} of
                   ${bytes(this.state.userDetails.storageDataGoogle.storageLimit)} used` : "Failed" : ""}
                 </span>
               </div>
@@ -1148,7 +1148,7 @@ class SettingsPageContainer extends React.Component {
               <a onClick={this.showGoogleAccount}>{!this.state.loaded ? "Loading..." : this.state.userDetails.googleDriveEnabled ? "Edit" : "Add"}</a>
             </div>
           </div>
-          
+
           <div class="elem__control--settings">
             <div class="control__title">
               <div class="double__title">
@@ -1164,7 +1164,7 @@ class SettingsPageContainer extends React.Component {
                     style={{backgroundColor:"#3c85ee", width:"100%"}}
                   ></div>
                 </div>
-                <span>{this.state.userDetails.s3Enabled ? !this.state.userDetails.storageDataPersonal.failed ? 
+                <span>{this.state.userDetails.s3Enabled ? !this.state.userDetails.storageDataPersonal.failed ?
                 `${bytes(this.state.userDetails.storageDataPersonal.storageSize)} used` : "Failed" : ""}</span>
               </div>
             </div>
@@ -1220,8 +1220,8 @@ class SettingsPageContainer extends React.Component {
               <p>Payment method</p>
             </div>
             <div class="control__value">
-              <p>{(this.state.loaded && this.state.invoicesLoaded) ? 
-              !this.state.invoiceData.card ? "No Payment Method" : 
+              <p>{(this.state.loaded && this.state.invoicesLoaded) ?
+              !this.state.invoiceData.card ? "No Payment Method" :
               `${this.state.invoiceData.card.brand} ending in ${this.state.invoiceData.card.last4}` : "No Payment Method"}</p>
             </div>
             <div class="value__updater">
@@ -1233,8 +1233,8 @@ class SettingsPageContainer extends React.Component {
               <p>Billing cycle</p>
             </div>
             <div class="control__value">
-              <p>{(this.state.loaded && this.state.invoicesLoaded) ? 
-              !this.state.invoiceData.subscription ? "No Subscription" : 
+              <p>{(this.state.loaded && this.state.invoicesLoaded) ?
+              !this.state.invoiceData.subscription ? "No Subscription" :
               capitalize(this.state.invoiceData.subscription.plan.interval) : "No Subscription"}</p>
             </div>
             <div class="value__updater">
@@ -1404,7 +1404,7 @@ class SettingsPageContainer extends React.Component {
                                 <p>Upload S3 Metadata List</p>
                               </div>
                                 {/* <input onClick={this.downloadPersonalFileList} value="Download S3 File List"/> */}
-                                
+
                             </div>
                         </form>
                         <form onSubmit={this.removeS3Metadata} style={!this.state.loaded ? {display:"none"} : this.state.userDetails.s3Enabled ? {display:"block", marginTop: "13px"} : {display:"none"}}>
@@ -1498,7 +1498,7 @@ class SettingsPageContainer extends React.Component {
 
         </div>
 
-    
+
 
     );
   }

@@ -156,7 +156,7 @@
                 leftHand.rotationQuaternion = vrHelper._leftController.webVRController.deviceRotationQuaternion.clone()
             }
             if(vrHelper._rightController){
-    
+
                 if (! hookAdded) {
                     console.log("hookAdded = true");
                     hookAdded = true;
@@ -165,7 +165,7 @@
                         console.log("Button state changed");
                     })
                 }
-    
+
                 rightHand.position = vrHelper._rightController.webVRController.devicePosition.clone()
                 rightHand.rotationQuaternion = vrHelper._rightController.webVRController.deviceRotationQuaternion.clone()
             }

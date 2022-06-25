@@ -6,18 +6,18 @@ const ShareMenu = React.forwardRef((props, ref) => {
 
         return (
             <div className="sharemenu sharemenu--gone" ref={ref}>
-            
+
             </div>
         )
 
     } else {
-    
+
         return (
             <div div className="sharemenu"
             ref={ref}>
 
-            {props.shareSelected.metadata.link ? 
-                
+            {props.shareSelected.metadata.link ?
+
                 <div className="sharemenu--block">
                     <img className="sharemenu__close-button" onClick={props.hide} src="/images/close_icon.png"/>
                     <div className="sharemenu__link__wrapper">
@@ -25,7 +25,7 @@ const ShareMenu = React.forwardRef((props, ref) => {
                         <p onClick={props.copyLink} className="sharemenu__title">{props.state.title}</p>
                     </div>
                     <button className="sharemenu__button__public" onClick={props.removeLink}>Remove Link</button>
-                
+
                 </div>
 
                 :
@@ -36,7 +36,7 @@ const ShareMenu = React.forwardRef((props, ref) => {
                     <button className="sharemenu__button__public" onClick={props.makeOne}>Create One Time Link</button>
                 </div>
             }
-            
+
             </div>
         )
 

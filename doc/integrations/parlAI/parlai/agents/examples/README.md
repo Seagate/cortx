@@ -1,6 +1,6 @@
 # Examples
 
-Contains example agents and models. 
+Contains example agents and models.
 
 
 ## Basic Examples

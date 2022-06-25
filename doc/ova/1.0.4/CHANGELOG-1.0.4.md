@@ -1,6 +1,6 @@
 # CORTX OVA 1.0.4
 
-This release notes  includes new features and bug fixes added to the CORTX OVA 1.0.4. 
+This release notes  includes new features and bug fixes added to the CORTX OVA 1.0.4.
 
 # Features:
 
@@ -54,81 +54,81 @@ This release notes  includes new features and bug fixes added to the CORTX OVA 1
 - Updated the CSM setup to fix the CSM configuration issues.
 - Fixed the file naming convention issue.
 - Updated the path to collect the motr logs.
-- Fixed the tar file creation issue. 
-- Updated the cron timeout to fix the system shutdown issue. 
+- Fixed the tar file creation issue.
+- Updated the cron timeout to fix the system shutdown issue.
 - Fixed the time-zone issue.
 - Fixed the issue of private network fault alert on UI.
-- The Capacity details are displaying in the CSM GUI. 
+- The Capacity details are displaying in the CSM GUI.
 - Fixed the issue of deployment is failed on the Intel servers.
 - After the UDS RPMs are installed the UDS service file will be updated.
 - Fixed the issue of salt-minion is in failed state on a primary node after the software update.
-- Fixed the issue of Health map for node-1 and Enclosure went missing when Node-1 is in standby mode. 
-- Fixed the issue of the Kernel Mismatch error on the CentOS 7.8 cluster setup. 
+- Fixed the issue of Health map for node-1 and Enclosure went missing when Node-1 is in standby mode.
+- Fixed the issue of the Kernel Mismatch error on the CentOS 7.8 cluster setup.
 - Fixed the issue of the Health view page is displaying the old hostname.
-- Fixed the issue of deployment is failing due to the cryptography python package absent. 
-- Fixed the issue when the SSPL installation is getting failed with requisites were not found an error. 
-- Fixed the issue of deploy replacement is getting failed as the serial number is already assigned in stage 1. 
-- Fixed the issue of cortxub user password is not expiring at the first login. 
-- Fixed the issue of the CSM UI giving a success message for a software update when the software update is failed using CSM UI. 
-- Fixed the issue of the beta build deployment fails on the dell systems as the mpath fails to set different priorities on LUNs. 
-- Fixed the issue of the cortxub user's first login with credentials failed with permission denied. 
-- Fixed the issue when the unboxing fails with ERROR - Salt client command failed and static network configuration. 
-- Fixed the issue where the unboxing script fails to update the SSH file. 
-- Fixed the issue where post successful build deployment, the stonith resource is missing in PCS status as BMC IP for primary node failed to update in the cluster pillar file. 
-- Fixed the issue of the primary node is inaccessible from the secondary node and PCS status shows all services up. 
-- Moved the cluster out of maintenance state after the CSM config stage. 
-- Fixed the issue of the Node replacement failed in deploy replacement stage 2 for the NodeJS after boxing-unboxing. 
-- Fixed the issue of unboxing with the static network configuration. 
-- Fixed the issue where the NodeJS installation fails during the node replacement due to missing entries in the "salt-call pillar.items commons". 
-- Fixed the issue of the unboxing is hung while updating management VIP in the pillar. 
-- Updated the HA Proxy for the DHCP environment. 
-- Fixed the issue where the IP validation fails for the public data network. 
-- Blocked the Motr remote access on the management and data networks. 
-- Fixed the issue of unboxing fails when hostname and IP are changed during unboxing at the volume creation phase. 
+- Fixed the issue of deployment is failing due to the cryptography python package absent.
+- Fixed the issue when the SSPL installation is getting failed with requisites were not found an error.
+- Fixed the issue of deploy replacement is getting failed as the serial number is already assigned in stage 1.
+- Fixed the issue of cortxub user password is not expiring at the first login.
+- Fixed the issue of the CSM UI giving a success message for a software update when the software update is failed using CSM UI.
+- Fixed the issue of the beta build deployment fails on the dell systems as the mpath fails to set different priorities on LUNs.
+- Fixed the issue of the cortxub user's first login with credentials failed with permission denied.
+- Fixed the issue when the unboxing fails with ERROR - Salt client command failed and static network configuration.
+- Fixed the issue where the unboxing script fails to update the SSH file.
+- Fixed the issue where post successful build deployment, the stonith resource is missing in PCS status as BMC IP for primary node failed to update in the cluster pillar file.
+- Fixed the issue of the primary node is inaccessible from the secondary node and PCS status shows all services up.
+- Moved the cluster out of maintenance state after the CSM config stage.
+- Fixed the issue of the Node replacement failed in deploy replacement stage 2 for the NodeJS after boxing-unboxing.
+- Fixed the issue of unboxing with the static network configuration.
+- Fixed the issue where the NodeJS installation fails during the node replacement due to missing entries in the "salt-call pillar.items commons".
+- Fixed the issue of the unboxing is hung while updating management VIP in the pillar.
+- Updated the HA Proxy for the DHCP environment.
+- Fixed the issue where the IP validation fails for the public data network.
+- Blocked the Motr remote access on the management and data networks.
+- Fixed the issue of unboxing fails when hostname and IP are changed during unboxing at the volume creation phase.
 - Fixed the issue of the VIPs failed to update while unboxing in the DHCP environment.
-- Generating the support bundle for the current state of system health view dynamically. 
-- Fixed the consul error for HCTL Status. 
-- Added the alerts for the FAN insertion and removal. 
-- Fixed the PC cluster stop command issue for Node reboot. 
-- Fixed the deployment for 1TB, 3TB, and 5TB volume size. 
-- Fixed the Node replacement issue. 
-- Fixed the CSM GUI update issue. 
-- Fixed the issue of unboxing failure. 
-- Fixed the issue of the HA installation caused the deployment to fail due to consul_watcher. Also, removed the VM-related configuration. 
-- Changed the owner of the SSPL directory to the sspl-ll user to access the "/var/cortx/sspl" directory in SSPL code. 
-- Added the lshw package as a required package in sspl-ll.spec file. 
-- Fixed the issue that was causing multiple "RAID integrity" alerts generation. 
-- Updated the resource health view script to add a node disk dictionary in the node data OS section. 
+- Generating the support bundle for the current state of system health view dynamically.
+- Fixed the consul error for HCTL Status.
+- Added the alerts for the FAN insertion and removal.
+- Fixed the PC cluster stop command issue for Node reboot.
+- Fixed the deployment for 1TB, 3TB, and 5TB volume size.
+- Fixed the Node replacement issue.
+- Fixed the CSM GUI update issue.
+- Fixed the issue of unboxing failure.
+- Fixed the issue of the HA installation caused the deployment to fail due to consul_watcher. Also, removed the VM-related configuration.
+- Changed the owner of the SSPL directory to the sspl-ll user to access the "/var/cortx/sspl" directory in SSPL code.
+- Added the lshw package as a required package in sspl-ll.spec file.
+- Fixed the issue that was causing multiple "RAID integrity" alerts generation.
+- Updated the resource health view script to add a node disk dictionary in the node data OS section.
 - Added the change to retry consul if there is an internal server error and to store the message in consul if there is any type of error happens while publishing the message to the RabbitMQ Queue.
-- Updated the SSPL resource stop logic. 
-- Stored minion ID, consul host, and port in conf file during sspl_config, to start SSPL service in minimum time on a replaced node after node replacement. 
-- Used the show configuration API to fetch the correct chassis serial number. 
+- Updated the SSPL resource stop logic.
+- Stored minion ID, consul host, and port in conf file during sspl_config, to start SSPL service in minimum time on a replaced node after node replacement.
+- Used the show configuration API to fetch the correct chassis serial number.
 - Fixed the Invalid Session key handle error.
-- Updated the JSON messages. 
-- Updated the pyinstaller version. 
-- Added the cortx-prvsnr installation as part of the cortx-csm build process. 
-- Removed the uninstalled packages from the CORTX component list. 
-- Improve the performance of the S3 Server. 
-- Fixed the issue of illegal characters generated as part of the S3 access key. 
-- Fix the S3 sanity cleanup issues. 
-- Fixed the issue where the NextMarker is not getting properly set in list-objects using boto3 when the bucket contains more than 1000 objects. 
-- Fixed the issue where object listing with prefix specified continues key enumeration even after prefix match stops. 
-- Fixed the bucket policy allows access when both deny and allow permission is present. 
+- Updated the JSON messages.
+- Updated the pyinstaller version.
+- Added the cortx-prvsnr installation as part of the cortx-csm build process.
+- Removed the uninstalled packages from the CORTX component list.
+- Improve the performance of the S3 Server.
+- Fixed the issue of illegal characters generated as part of the S3 access key.
+- Fix the S3 sanity cleanup issues.
+- Fixed the issue where the NextMarker is not getting properly set in list-objects using boto3 when the bucket contains more than 1000 objects.
+- Fixed the issue where object listing with prefix specified continues key enumeration even after prefix match stops.
+- Fixed the bucket policy allows access when both deny and allow permission is present.
 - The s3_bundle_generate.sh script displays the error "Repository 'csm_uploads': Error parsing config: Error parsing "baseurl = '/3rd_party'": URL must be http, ftp, file or https not ""
 - Fixed the issue of handle probable delete index entry delete while s3server failure during object writes.
 - Added the fsync call to the put_keyval operation.
 - CSM CLI/GUI list 500 users.
-- [Splunk] Fixed the Ceph S3 regression in list object API. 
-- [Splunk] Fixed the issue of failure for s3tests.functional.test_s3.test_bucket_acls_changes_persistent. 
-- [Splunk] Fixed the issue of s3tests.functional.test_s3.test_bucket_notexist. 
-- [Splunk] Fixed the issue of bad_amz_date_epoch test cases on the bucket and object creation. 
+- [Splunk] Fixed the Ceph S3 regression in list object API.
+- [Splunk] Fixed the issue of failure for s3tests.functional.test_s3.test_bucket_acls_changes_persistent.
+- [Splunk] Fixed the issue of s3tests.functional.test_s3.test_bucket_notexist.
+- [Splunk] Fixed the issue of bad_amz_date_epoch test cases on the bucket and object creation.
 - [Splunk] Fixed the issue of s3tests.functional.test_s3:test_bucket_create_naming_bad_punctuation fails.
-- [Splunk] Fixed the issue of s3server crash in s3tests.functional.test_s3.test_multipart_upload_empty. 
-- [Splunk] Fixed the s3tests.functional.test_s3:test_bucket_create_naming_bad_punctuation issue in S3 Auth Server. 
-- [Splunk] Fixed the test_object_requestid_matchs_header_on_error issue. 
-- Fixed the issue of calling the UploadPart operation the Service is unavailable. 
-- [Splunk] Fixed the s3tests.functional.test_s3.test_multipart_upload fails issue when it ran against main branch. 
-- [Splunk] Fixed the error code mismatch for aws4 bad_ua and bad_auth date cases issue. 
+- [Splunk] Fixed the issue of s3server crash in s3tests.functional.test_s3.test_multipart_upload_empty.
+- [Splunk] Fixed the s3tests.functional.test_s3:test_bucket_create_naming_bad_punctuation issue in S3 Auth Server.
+- [Splunk] Fixed the test_object_requestid_matchs_header_on_error issue.
+- Fixed the issue of calling the UploadPart operation the Service is unavailable.
+- [Splunk] Fixed the s3tests.functional.test_s3.test_multipart_upload fails issue when it ran against main branch.
+- [Splunk] Fixed the error code mismatch for aws4 bad_ua and bad_auth date cases issue.
 - Updated the HA Proxy.
 -	Fixed the issue where the Motr HA interface using the wrong tag.
 -	Fixed the issue of consul state is not updating for process failure.

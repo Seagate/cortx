@@ -115,4 +115,3 @@ def dummy_log_events(input_handler):
         input_handler.send(event_data)
         if n % 3 == 0:
             time.sleep(5)
-

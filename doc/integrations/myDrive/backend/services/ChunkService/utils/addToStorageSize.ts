@@ -12,7 +12,7 @@ const addToStoageSize = async(user: UserInterface, size: number, isPersonalFile:
 
     if (!user.storageData || (!user.storageData.storageSize && !user.storageData.storageLimit)) user.storageData = {storageSize: 0, storageLimit: 0};
 
-    user.storageData!.storageSize = +user.storageData!.storageSize! + +size; 
+    user.storageData!.storageSize = +user.storageData!.storageSize! + +size;
 
     await user.save();
 }

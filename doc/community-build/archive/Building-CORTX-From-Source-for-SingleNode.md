@@ -19,9 +19,9 @@ The CORTX deployment and configuration is a four-step procedure:
     - Total Disk:
        - 1 OS disk of 50GB
        - 2 data disks of 32GB each
-    
+
     **Note:** 4 partitions of +8GB from each data disks will be created as per script
-    
+
 -   All Network Interface Cards (NICs) must have internet access. Attach your network adapters accordingly as per your environment to establish internet connectivity. For this deployment, the NICs are considered as eth32, eth33, and eth34.
 -   The VM must have a valid hostname and accessible using ping operation.
 -   Do not update OS or kernel package with `yum update` as the kernel version must be set to `3.10.0-1160.el7` otherwise it will fail the build process.
@@ -48,7 +48,7 @@ The CORTX deployment and configuration is a four-step procedure:
     hostnamectl set-hostname --static --transient --pretty deploy-test.cortx.com
     sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
     ```
-    
+
     **Note:**  Use this hostname to avoid issues further in the bootstrap process. Verify the hostname is updated using  `hostname -f`
 
 3. Start the Docker services:
