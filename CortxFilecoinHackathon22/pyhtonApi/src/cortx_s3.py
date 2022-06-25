@@ -26,7 +26,7 @@ s3_resource = boto3.resource(
     aws_secret_access_key=SECRET_ACCESS_KEY,
     # config=Config(signature_version=VERSION),
     region_name=REGION,
-    #  verify=False
+     verify=False
 )
 
 s3_client = boto3.client(
@@ -36,7 +36,7 @@ s3_client = boto3.client(
     aws_secret_access_key=SECRET_ACCESS_KEY,
     # config=Config(signature_version=VERSION),
     region_name=REGION,
-    #  verify=False
+     verify=False
 )
 
 """ Functions for bucket operations """
@@ -111,6 +111,7 @@ def file_operations(bucket_name, operation="list", file_name=None, file_location
 
 def main():
     bucket_name = "bari"
+    print(os.environ.get("END_POINT"))
 
     # Print out bucket names
     for bucket in s3_resource.buckets.all():
