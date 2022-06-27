@@ -1,6 +1,6 @@
 # CORTX - IPFS - FILECOIN Integration
 
-![alt text](https://imgur.com/a/QRojcFe)
+!(https://imgur.com/a/QRojcFe)
 
 # Introduction
 
