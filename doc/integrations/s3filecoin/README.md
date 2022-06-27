@@ -1,6 +1,6 @@
 # CORTX - IPFS - FILECOIN Integration
 
-![alt text](https://imgur.com/a/QRojcFe)
+![alt text](https://i.imgur.com/SfcbktD.jpg)
 
 # Introduction
 
@@ -38,7 +38,7 @@ Net: Realtek Gigabit Ethernet running in Bridged Mode
 
 ### Main System
 CPU: AMD Ryzen 7 4750G
-GPU: Raedon RX 560
+GPU: Radeon RX 560
 OS: Windows 11 Professional with WSL2 running Ubuntu 22.04
 Net: Realtek Gigabit Ethernet
 

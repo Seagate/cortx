@@ -171,7 +171,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 .. |samba| image:: ../images/project_logo.png
    :target: rpi-samba
    
-.. |samba| image:: https://user-images.githubusercontent.com/2047294/118882535-8846de00-b8b1-11eb-863a-74b409affdff.png
+.. |s3filecoin| image:: https://user-images.githubusercontent.com/2047294/118882535-8846de00-b8b1-11eb-863a-74b409affdff.png
    :target: s3filecoin
 
 
