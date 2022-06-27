@@ -70,7 +70,7 @@
         }
 
         return obj;
-      };
+      }
 
       function getScratchProp(propname) {
         return cy.scratch('cycontextmenus')[propname];
