@@ -26,9 +26,6 @@ Filecoin includes a blockchain and native cryptocurrency (FIL). Storage provider
 - Currently there is no incentive for a user to run an IPFS node, with filecoin, the node user can be given filecoin as an incentive to keep an IPFS node runninga
 and contribute to the effort of a decentralized data store.
 
-## Concept Pitch
-- Pitch can be found [here](https://)
-
 ## Integration Walkthrough
 - See below steps
 
