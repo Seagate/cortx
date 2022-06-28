@@ -5,6 +5,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/Seagate/cortx?label=Latest%20Release)](https://github.com/seagate/cortx/releases/latest)
 [![GitHub contributors](https://img.shields.io/github/contributors/Seagate/cortx)](https://github.com/Seagate/cortx/graphs/contributors/)
 [![SODA Eco project](https://img.shields.io/badge/SODA-ECO%20Project-9cf)](./doc/Soda-welcome-page.md)
+[![CORTX inclusive words scan](https://github.com/Seagate/cortx/actions/workflows/alex_reviewdog.yml/badge.svg)](https://github.com/Seagate/cortx/actions/workflows/alex_reviewdog.yml)
 
 
 <!-- ![codacy-analysis-cli](https://github.com/Seagate/EOS-Sandbox/workflows/codacy-analysis-cli/badge.svg) -->
