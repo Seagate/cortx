@@ -44,6 +44,9 @@ user    0m0.615s
 sys     0m0.117s
 ```
 
+# Implementation
+See [here](Implementation.md).
+
 
 # Requirements
 1. Access to a Motr cluster and the `motr-devel` package installed. See the CORTX [repo](https://github.com/Seagate/cortx/releases).
