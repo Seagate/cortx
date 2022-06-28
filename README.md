@@ -2,17 +2,25 @@
 
 This web(3) app provides a bridge between IPFS with it's incentive-layer blockchain FileCoin and the massive-data storage system CORTX.
 
-Main Features:
+The user can download his files from IPFS using the CID and chose an existing bucket inside his Cotx cluster to upload it. The mayor contribution is to facilitate the file transfer as most IPFS and Cortx tools demand coding skills. This web/mobile app is available for everyone.  
 
+![scr1](public/screenshots/sc1.png)
+![scr2](public/screenshots/sc2.png)
+
+Main Features:
 - Inspect CID content if available ✅
 - fetch data from IPFS through it's CID ✅
-- deploy to CORTX file-system using S3 interface 📦
+- deploy to CORTX file-system using S3 interface ✅
+- Mobile friendly ✅
 - List deployed files from CORTX file-system 📦
 - authenticate using FileCoin 📦
 - assign user-specific bucket 📦
 - invert bridge 📦
 
 [Live Demo](https://cortxportal.netlify.app/)
+
+Also static hosted on IPFS by Fleek:
+[InterPlanetary Demo](https://cortxbridge.on.fleek.co/)
 
 ## Get Started 🚀
 
@@ -66,9 +74,3 @@ CORSpolicy only concerns the incoming requests. There is no obvious way to have 
 That leaves us with the only option to go ServerSide, which also holds the benefit that it doesn't disclose the env variables to the browser.
 
 Instead of messing with CORS policy, we now try `getServerSideProps()` and as plan B set up a proxy-server API.
-
-We got thisss, 16h to go.
-
-THISSS: https://docs.aws.amazon.com/AmazonS3/latest/userguide/example_s3_PutBucketCors_section.html
-
-[This dude](https://www.youtube.com/watch?v=hxyp_LkKDdk) uses an VPN to get a signed header.
