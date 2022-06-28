@@ -229,7 +229,7 @@ To run a Lotus node your computer must have:
 8. Open config
 	nano config.toml
 9. Change UseIpfs
-	- UseIpfs = true
+	UseIpfs = true
 10. Restart daemon and miner in their respective terminals
 	./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
 	./lotus-miner run --nosync
