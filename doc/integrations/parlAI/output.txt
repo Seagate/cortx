@@ -1,1 +1,0 @@
-CORTX is a distributed object storage system designed for great efficiency, massive capacity, and high HDD-utilization

@@ -1,1 +1,0 @@
-Label Studio Config files

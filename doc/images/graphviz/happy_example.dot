@@ -1,9 +1,0 @@
-digraph G {
-
-  graph [rankdir=LR];
-
-  Happy -> CORTX -> Coding -> smile
-
-  smile [label=":)"]
-
-}

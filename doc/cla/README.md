@@ -1,1 +1,0 @@
-This folder contains the CLA documents that might be requested on a per pull-request basis.  Note that in typical situations, CLA will not be required.  Please refer to [this document](../dco_cla.md) for more information.

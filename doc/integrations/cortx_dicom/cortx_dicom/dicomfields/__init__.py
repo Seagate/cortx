@@ -1,3 +1,0 @@
-"""
-cortx_dicom
-"""

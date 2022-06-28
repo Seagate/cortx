@@ -1,7 +1,0 @@
-cortx-py-utils
-cortx-hare
-cortx-motr
-cortx-s3server
-cortx-csm_agent
-cortx-provisioner
-cortx-ha

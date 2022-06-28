@@ -1,1 +1,0 @@
-This folder is merely a location into which to store PDFs. All PDFs added into this folder should be linked from an existing page. Please do not merely add a PDF into this folder and assume that people will find them.
