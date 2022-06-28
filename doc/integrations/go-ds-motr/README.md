@@ -1,11 +1,11 @@
 # Background
 The current CORTX [integration](https://github.com/Seagate/cortx/tree/main/doc/integrations/ipfs) with IPFS relies on the IPFS [S3 data store plugin](https://github.com/ipfs/go-ds-s3) talking to the S3 object storage REST API implemented by the CORTX [RADOS Gateway](https://github.com/Seagate/cortx-rgw) (RGW) server. This isn't a very efficient design for several reasons. RGW implements a distributed object storage service oriented around objects and buckets and exposing S3-compatible and [Swift-compatible](https://docs.openstack.org/swift/latest/) REST APIs to clients relying on HTTP as the network transport.
 ![arch](https://dm2301files.storage.live.com/y4mDiFmDZt6OVLzAtDVHxpu9gIGtsyz5nzuEaHC08M9U4epxeL8M3N3PVHyvV6giQe2ABBtw8QCLSijbrfDWAMSpTjVziboIPMvtFfa2kXXmhlcTbUGiXWOOPrzVqHnKmH2F_HTMtD8GDRNAYzSz92Jb90H096HrdRB49i_0BHtVC2-HnVNwpv-Oy7tl_CJA0rp?width=1920&height=1080&cropmode=none)
-*Basic S3 server architecture [From Seagate | Meet the Architect – CORTX MOTR](https://www.youtube.com/watch?v=EjL2fRdAy6M)*
+*Basic S3 server architecture. From: [Seagate | Meet the Architect – CORTX MOTR](https://www.youtube.com/watch?v=EjL2fRdAy6M)*
 
 IPFS however implements its own object storage scheme using [content addressing](https://docs.ipfs.io/concepts/content-addressing/), [CIDs](https://proto.school/anatomy-of-a-cid) and [Merkle DAGs](https://proto.school/merkle-dags) to store structured hierachical object data. 
 ![ht](https://proto.school/tutorial-assets/T0008L04-complete-dag.svg)
-*Storing a folder and files as a Merkle DAG.  From [Introducing Merkle DAGs](https://proto.school/merkle-dags/04)*.
+*Storing a folder and files as a Merkle DAG.  From: [Introducing Merkle DAGs](https://proto.school/merkle-dags/04)*.
 
 Each node in an IPFS object graph is identified by a CID and persisted to storage as an immutable block using a a simple pluggable key-value [data store](https://github.com/ipfs/go-datastore) interface. 
 ![ipfsds](https://www.freecodecamp.org/news/content/images/size/w1600/2021/06/IPFS_UNIX_FS_Protobuf.png)
