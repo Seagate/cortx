@@ -1,4 +1,0 @@
-spark-hadoop:
-  hosts:
-    my_cool_host:
-      ansible_host: ADD_HERE

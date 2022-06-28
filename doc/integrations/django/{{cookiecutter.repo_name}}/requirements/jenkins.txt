@@ -1,3 +1,0 @@
--r testing.txt
-
-django-jenkins

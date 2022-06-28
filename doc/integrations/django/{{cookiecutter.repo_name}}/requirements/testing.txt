@@ -1,4 +1,0 @@
--r base.txt
-
-mock
-model-mommy

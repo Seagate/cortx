@@ -1,4 +1,0 @@
-parlai
-waiting
-flask
-boto3

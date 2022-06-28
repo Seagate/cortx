@@ -1,1 +1,0 @@
-CORTX Hackathon - Siddhi Integration
