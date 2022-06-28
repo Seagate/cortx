@@ -11,7 +11,7 @@ Each node in an IPFS object graph is identified by a CID and persisted to storag
 ![ipfsds](https://www.freecodecamp.org/news/content/images/size/w1600/2021/06/IPFS_UNIX_FS_Protobuf.png)
 *Storing  IPFS data using key-value data stores. From: [A Technical Guide to IPFS](https://www.freecodecamp.org/news/technical-guide-to-ipfs-decentralized-storage-of-web3/)*
 
-Several implementations of this data store interface have been developed inluding those using the [LevelDB](https://github.com/google/leveldb) and [BadgerDB](https://github.com/dgraph-io/badger) key-value stores. 
+Several [implementations](https://github.com/ipfs/go-ipfs/tree/master/plugin/plugins) of this data store interface have been developed inluding those using the [LevelDB](https://github.com/google/leveldb) and [BadgerDB](https://github.com/dgraph-io/badger) key-value stores. 
 
 The on-disk storage and persistence layer in IPFS is thus optimized for simple, fast, key-value stores, not full-blown distributed object storage solutions like RGW and S3. Since the RGW server uses its own storage scheme and ultimately talks to the CORTX Motr key-value, using the RGW object storage service as a data store for IPFS CIDs involves multiple levels of redundancies. In addition the IPFS S3 plugin only exposes [configuration](https://github.com/ipfs/go-ds-s3#configuration) for a generic S3 server i.e. bucket name, acccess key etc...there is no way for an IPFS server to expose or consume CORTX-specific configuration for data storage.
 
@@ -23,7 +23,7 @@ The best way for IPFS and Filecoin to take full advantage of the capabilities an
 
 go-ds-motr is a IPFS [data store plugin](https://github.com/ipfs/go-datastore) implementation that uses the Go bindings to the CORTX [Motr C API](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-developer-guide.md) to store IPFS data directly in indexes in the Motr key-value store. This allows IPFS servers to use the full capabilities and scalability of CORTX, instead of relying on a generic S3 REST API and HTTP calls. go-ds-motr stores and retrieves IPFS blocks from Motr using the native Motr client API when requested by the other IPFS subsystems using Motr key ids derived from the IPFS CIDs. go-ds-motr can consume CORTX-specific configuration and parameters specified via the IPFS configuration file and can access the full range of native functionality exposed by the Motr client API.
 
-In simple benchmarks go-ds-motr is vastly more performant than the S3 data store plugin, achieving a 13x speedup for add operations:
+In simple benchmarks go-ds-motr is vastly more performant than the S3 data store plugin, achieving at least a 13x speedup for IPFS file add operations:
 #### Adding 93Mb file to IPFS using S3 data store from cold start:
 ```cmd
 [root@cortx-ova-rgw go-ds-motr]# time ../go-ipfs/cmd/ipfs/ipfs add "01 Track01.flac"                                                                                                           
