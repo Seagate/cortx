@@ -2,7 +2,7 @@
 
 This README refers to an integration between the CORTX API and Hashicorp [Terraform](https://www.terraform.io/). You can refer to the following resources to learn more:
 
-- [Video](https://studio.youtube.com/video/m3MeDl-5jKE/edit)
+- [Video](https://youtube.com/video/m3MeDl-5jKE)
 - [Source + Instructions](https://github.com/DMW2151/big-pile-of-storage)
 
 Infrastructure As Code tools like Terraform can allow organizations to standardize infrastructure and policies across multiple regions, environments, applications, etc. With the this provider, users can now include CORTX resources with their other infrastructure deployments rather than relying on custom scripts or one-off deployment patterns. This provider is opinionated in that it simplifies AWS' provider, abstracts away the elements of the S3 API that aren't applicable for CORTX, and provides a cleaner interface between Terraform and CORTX than the AWS provider can.
