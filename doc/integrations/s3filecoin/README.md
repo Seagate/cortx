@@ -59,42 +59,42 @@ Net: Realtek Gigabit Ethernet
 
 ### Step 2.1 - Install GOLang
 1. Change to home directory
-    cd ~
+    - cd ~
 2. Download and extract Go
-    wget -c https://go.dev/dl/go1.17.10.linux-amd64.tar.gz
-    sudo tar -C /usr/local -xzf go1.17.10.linux-amd64.tar.gz
+    - wget -c https://go.dev/dl/go1.17.10.linux-amd64.tar.gz
+    - sudo tar -C /usr/local -xzf go1.17.10.linux-amd64.tar.gz
 3. Add the following to ~/.profile using nano
-    export PATH=$PATH:/usr/local/go/bin
-    export PATH=$PATH:$(go env GOPATH)/bin
-    export GOPATH=$(go env GOPATH)
+    - export PATH=$PATH:/usr/local/go/bin
+    - export PATH=$PATH:$(go env GOPATH)/bin
+    - export GOPATH=$(go env GOPATH)
 4. Source ~/.profile
-    source ~/.profile
+    - source ~/.profile
 5. Install Go 1.15.10 for later
-    go install golang.org/dl/go1.15.10@latest
-    go1.15.10 download
+    - go install golang.org/dl/go1.15.10@latest
+    - go1.15.10 download
 6. Check if Go is installed
-    go version (should output 1.17.10)
-    go1.15 version (should output 1.15.10)
+    - go version (should output 1.17.10)
+    - go1.15 version (should output 1.15.10)
 
 ### Step 2.2 - Install IPFS with s3 plugin
 Due to the way plugins are so finicky in Go, we will bundle it into the IPFS binary
 1. Clone and cd into the git repo
-    git clone https://github.com/ipfs/go-ipfs
-    cd go-ipfs
+    - git clone https://github.com/ipfs/go-ipfs
+    - cd go-ipfs
 2. Run the following
-    export GO111MODULE=on
-    go get github.com/ipfs/go-ds-s3/plugin@v0.8.0
-    echo -e "\ns3ds github.com/ipfs/go-ds-s3/plugin 0" >> plugin/loader/preload_list
-    make build
-    go mod tidy
-    make build
-    make install (add the ipfs binary to GOPATH)
+    - export GO111MODULE=on
+    - go get github.com/ipfs/go-ds-s3/plugin@v0.8.0
+    - echo -e "\ns3ds github.com/ipfs/go-ds-s3/plugin 0" >> plugin/loader/preload_list
+    - make build
+    - go mod tidy
+    - make build
+    - make install (add the ipfs binary to GOPATH)
 3. Run the IPFS binary
-    ipfs init
+    - ipfs init
 4. Replace the following files in ~/.ipfs with files from repo
-    cd ~/.ipfs
-    rm config
-    rm datastore_spec
+    - cd ~/.ipfs
+    - rm config
+    - rm datastore_spec
 5. While still in ~/.ipfs, make changes to the config and datastore_spec files
     --config--
     - replace "bucketName" with the name of your bucket
@@ -108,58 +108,58 @@ Due to the way plugins are so finicky in Go, we will bundle it into the IPFS bin
     - replace "rootDirectoryName" with the name of the subdirectory of the bucket above
     
 6. In a seperate terminal run
-    ipfs daemon
+    - ipfs daemon
 7. Which should say at the end that the daemon is running (Yay!!)
 
 ### Step 2.3 - Build Lotus-Devnet (for local development use)
 Since we are just testing for now, we will use the devnet version
 
 1. Let's clone the repo
-    git clone https://github.com/textileio/lotus-devnet.git
+    - git clone https://github.com/textileio/lotus-devnet.git
 2. Lets build it
-    cd lotus-devnet
-    make clean
-    CGO_CFLAGS="-D__BLST_PORTABLE__" make
-    go1.15.10 build -o lotus-devnet main.go
+    - cd lotus-devnet
+    - make clean
+    - CGO_CFLAGS="-D__BLST_PORTABLE__" make
+    - go1.15.10 build -o lotus-devnet main.go
 3. Let us run it (in a seperate terminal)
-    ./lotus-devnet --ipfsaddr "/ip4/127.0.0.1/tcp/5001"
+    - ./lotus-devnet --ipfsaddr "/ip4/127.0.0.1/tcp/5001"
 The --ipfsaddr arguement is so it can connect to the IPFS daemon running earlier. The lotus devnet runs on port 7777 instead of 1234 unlike the regular lotus client
 
 ### Step 2.4 - Build/Install Powergate
 To make interfacing easier we will use powergate to link IPFS and Filecoin
 
 1. Let's clone the powergate repo
-    git clone https://github.com/textileio/powergate.git
-    cd powergate
+    - git clone https://github.com/textileio/powergate.git
+    - cd powergate
 2. Lets compile the powergate daemon
-    make build-powd
+    - make build-powd
 3. Lets compile powergate cli
-    make build-pow
+    - make build-pow
 4. Download Geolite DB
-	wget -c https://github.com/textileio/powergate/raw/master/iplocation/maxmind/GeoLite2-City.mmdb
+	- wget -c https://github.com/textileio/powergate/raw/master/iplocation/maxmind/GeoLite2-City.mmdb
 5. Open a terminal and cd into powergate directory and run daemon
-    ./powd --devnet --lotushost "/ip4/127.0.0.1/tcp/7777" --ipfsapiaddr "/ip4/127.0.0.1/tcp/5001"
+    - ./powd --devnet --lotushost "/ip4/127.0.0.1/tcp/7777" --ipfsapiaddr "/ip4/127.0.0.1/tcp/5001"
 
 ### Step 3 - Lets interface Filecoin and IPFS
 Now that the IPFS daemon, lotus-devnet and the Powergate daemon are running, lets test
 
 1. Create a dummy file in ~ for storing (8M)
-    dd if=/dev/random of=hello.world bs=1M  count=8
+    - dd if=/dev/random of=hello.world bs=1M  count=8
 2. Lets create a user and export the token (in powergate dir)
-    ./pow admin user create
+    - ./pow admin user create
 2.1. The above returns a token which we can copy, then lets export so we don't type it all the time
-    export POW_TOKEN=90f517db-dc00-45eb-94f5-550f7b405bb9
+    - export POW_TOKEN=90f517db-dc00-45eb-94f5-550f7b405bb9
 3. Let's stage the data which at the end returns a CID which we need for later
-    ./pow data stage ~/hello.world
+    - ./pow data stage ~/hello.world
 4. Let's carry out the transaction now
-    ./pow config apply --watch CID
+    - ./pow config apply --watch CID
 5. This may take a while but eventually it will show JOB_STATUS_SUCCESS and StorageDealActive
 6. While we are here lets do an md5 sum of hello.world
-    md5sum ~/hello.world
+    - md5sum ~/hello.world
 7. Let's retrieve the file we stored now
-    ./pow data get CID ~/hello.world.new
+    - ./pow data get CID ~/hello.world.new
 8. Compute md5sum of the hello.world.new
-    md5sum ~/hello.world.new
+    - md5sum ~/hello.world.new
 9. Compare the md5sums and they should be equal so the data is the same
 
 
@@ -174,72 +174,72 @@ To run a Lotus node your computer must have:
  - Enough space to store the current Lotus chain (preferably on an SSD storage medium). The chain grows at approximately 38 GiB per day. The chain can be synced from trusted state snapshots and compacted or pruned to a minimum size of around 33Gib. The full history was around 10TiB in June of 2021.
 
 1. Install rustup
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    source $HOME/.cargo/env
+    - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    - source $HOME/.cargo/env
 2. Clone lotus repo
-    git clone https://github.com/filecoin-project/lotus.git
-    cd lotus
-    git checkout master
+    - git clone https://github.com/filecoin-project/lotus.git
+    - cd lotus
+    - git checkout master
 3. Export the following
-    export RUSTFLAGS="-C target-cpu=native -g"
-    export FFI_BUILD_FROM_SOURCE=1
-    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
-    export CGO_CFLAGS="-D__BLST_PORTABLE__"
+    - export RUSTFLAGS="-C target-cpu=native -g"
+    - export FFI_BUILD_FROM_SOURCE=1
+    - export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
+    - export CGO_CFLAGS="-D__BLST_PORTABLE__"
 4. Build lotus
-    make clean all
-    sudo make install
+    - make clean all
+    - sudo make install
 5. Run lotus daemon
-    lotus daemon
+    - lotus daemon
 6. To interact with it, you need a new terminal
 
 ### Step 4.1 - Create a lotus local-net 
 1. Export the following flags or put into ~/.profile
-    export LOTUS_PATH=~/.lotus-local-net
-    export LOTUS_MINER_PATH=~/.lotus-miner-local-net
-    export LOTUS_SKIP_GENESIS_CHECK=_yes_
-    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
-    export CGO_CFLAGS="-D__BLST_PORTABLE__"
+    - export LOTUS_PATH=~/.lotus-local-net
+    - export LOTUS_MINER_PATH=~/.lotus-miner-local-net
+    - export LOTUS_SKIP_GENESIS_CHECK=_yes_
+    - export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
+    - export CGO_CFLAGS="-D__BLST_PORTABLE__"
 2. Clone the repo and checkout
-    git clone https://github.com/filecoin-project/lotus lotus-local-net
-    cd lotus-local-net
-    git checkout v1.15.3
+    - git clone https://github.com/filecoin-project/lotus lotus-local-net
+    - cd lotus-local-net
+    - git checkout v1.15.3
 3. Remove existing repo
-    rm -rf ~/.genesis-sectors
+    - rm -rf ~/.genesis-sectors
 4. Build it and run some commands
-    make 2k
-    ./lotus fetch-params 2048
-    ./lotus-seed pre-seal --sector-size 2KiB --num-sectors 2
-    ./lotus-seed genesis new localnet.json
-    ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json
-    ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
+    - make 2k
+    - ./lotus fetch-params 2048
+    - ./lotus-seed pre-seal --sector-size 2KiB --num-sectors 2
+    - ./lotus-seed genesis new localnet.json
+    - ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json
+    - ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
 5. In a new terminal
-    export LOTUS_PATH=~/.lotus-local-net
-    export LOTUS_MINER_PATH=~/.lotus-miner-local-net
-    export LOTUS_SKIP_GENESIS_CHECK=_yes_
-    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
-    export CGO_CFLAGS="-D__BLST_PORTABLE__"
+    - export LOTUS_PATH=~/.lotus-local-net
+    - export LOTUS_MINER_PATH=~/.lotus-miner-local-net
+    - export LOTUS_SKIP_GENESIS_CHECK=_yes_
+    - export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
+    - export CGO_CFLAGS="-D__BLST_PORTABLE__"
     
-    ./lotus wallet import --as-default ~/.genesis-sectors/pre-seal-t01000.key
-    ./lotus-miner init --genesis-miner --actor=t01000 --sector-size=2KiB --pre-sealed-sectors=~/.genesis-sectors --pre-sealed-metadata=~/.genesis-sectors/pre-seal-t01000.json --nosync
-    ./lotus-miner run --nosync
+    - ./lotus wallet import --as-default ~/.genesis-sectors/pre-seal-t01000.key
+    - ./lotus-miner init --genesis-miner --actor=t01000 --sector-size=2KiB --pre-sealed-sectors=~/.genesis-sectors --pre-sealed-metadata=~/.genesis-sectors/pre-seal-t01000.json --nosync
+    - ./lotus-miner run --nosync
 
 6. Stop the lotus daemon and miner
 7. Change directory to ~/.lotus-local-net
-	cd ~/.lotus-local-net
+	- cd ~/.lotus-local-net
 8. Open config
-	nano config.toml
+	- nano config.toml
 9. Change UseIpfs
-	UseIpfs = true
+	- UseIpfs = true
 10. Restart daemon and miner in their respective terminals
-	./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
-	./lotus-miner run --nosync
+	- ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
+	- ./lotus-miner run --nosync
 	
 ### Step 4.2 - Lets make a deal
 1. Create a dummy file
-	dd if=/dev/random of=hello.world bs=1k  count=1
+	- dd if=/dev/random of=hello.world bs=1k  count=1
 2. from lotus-local-net directory
-	ipfs add -r ~/hello.world (returns a Qm....)
-	./lotus client deal Qm.... t01000 0.0000000001 518400 (returns a deal CID bafy....)
+	- ipfs add -r ~/hello.world (returns a Qm....)
+	- ./lotus client deal Qm.... t01000 0.0000000001 518400 (returns a deal CID bafy....)
 	
 
 ## Demo
