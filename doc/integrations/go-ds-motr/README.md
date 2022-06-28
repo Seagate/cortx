@@ -1,9 +1,30 @@
-# What it does
+# Background
+The current CORTX [integration](https://github.com/Seagate/cortx/tree/main/doc/integrations/ipfs) with IPFS relies on the IPFS [S3 data store plugin](https://github.com/ipfs/go-ds-s3) talking to the S3 object storage REST API implemented by the CORTX [RADOS Gateway](https://github.com/Seagate/cortx-rgw) (RGW) server. This isn't a very efficient design for several reasons. RGW implements a distributed object storage service oriented around objects and buckets and exposing S3-compatible and [Swift-compatible](https://docs.openstack.org/swift/latest/) REST APIs to clients relying on HTTP as the network transport.
+![arch](https://dm2301files.storage.live.com/y4mDiFmDZt6OVLzAtDVHxpu9gIGtsyz5nzuEaHC08M9U4epxeL8M3N3PVHyvV6giQe2ABBtw8QCLSijbrfDWAMSpTjVziboIPMvtFfa2kXXmhlcTbUGiXWOOPrzVqHnKmH2F_HTMtD8GDRNAYzSz92Jb90H096HrdRB49i_0BHtVC2-HnVNwpv-Oy7tl_CJA0rp?width=1920&height=1080&cropmode=none)
+*Basic S3 server architecture [From Seagate | Meet the Architect – CORTX MOTR](https://www.youtube.com/watch?v=EjL2fRdAy6M)*
+
+IPFS however implements its own object storage scheme using [content addressing](https://docs.ipfs.io/concepts/content-addressing/), [CIDs](https://proto.school/anatomy-of-a-cid) and [Merkle DAGs](https://proto.school/merkle-dags) to store structured hierachical object data. 
+![ht](https://proto.school/tutorial-assets/T0008L04-complete-dag.svg)
+*Storing a folder and files as a Merkle DAG.  From [Introducing Merkle DAGs](https://proto.school/merkle-dags/04)*.
+
+Each node in an IPFS object graph is identified by a CID and persisted to storage as an immutable block using a a simple pluggable key-value [data store](https://github.com/ipfs/go-datastore) interface. 
+![ipfsds](https://www.freecodecamp.org/news/content/images/size/w1600/2021/06/IPFS_UNIX_FS_Protobuf.png)
+*Storing  IPFS data using key-value data stores. From: [A Technical Guide to IPFS](https://www.freecodecamp.org/news/technical-guide-to-ipfs-decentralized-storage-of-web3/)*
+
+Several implementations of this data store interface have been developed inluding those using the [LevelDB](https://github.com/google/leveldb) and [BadgerDB](https://github.com/dgraph-io/badger) key-value stores. 
+
+The on-disk storage and persistence layer in IPFS is thus optimized for simple, fast, key-value stores, not full-blown distributed object storage solutions like RGW and S3. Since the RGW server uses its own storage scheme and ultimately talks to the CORTX Motr key-value, using the RGW object storage service as a data store for IPFS CIDs involves multiple levels of redundancies. In addition the IPFS S3 plugin only exposes [configuration](https://github.com/ipfs/go-ds-s3#configuration) for a generic S3 server i.e. bucket name, acccess key etc...there is no way for an IPFS server to expose or consume CORTX-specific configuration for data storage.
+
+The best way for IPFS and Filecoin to take full advantage of the capabilities and scalability of CORTX would be to integrate IPFS directly with the Motr key-value store. This would remove the overhead of making HTTP REST calls and uploads for IPFS data storage and eliminate the need to run a CORTX RGW server node, improving performance and scalability and simplifying deployment of CORTX-integrated IPFS servers considerably 
+
+
+# About
+[![vid1](vid2.webp)](https://youtu.be/xE5IcISQWIY)
 
 go-ds-motr is a IPFS [data store plugin](https://github.com/ipfs/go-datastore) implementation that uses the Go bindings to the CORTX [Motr C API](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-developer-guide.md) to store IPFS data directly in indexes in the Motr key-value store. This allows IPFS servers to use the full capabilities and scalability of CORTX, instead of relying on a generic S3 REST API and HTTP calls. go-ds-motr stores and retrieves IPFS blocks from Motr using the native Motr client API when requested by the other IPFS subsystems using Motr key ids derived from the IPFS CIDs. go-ds-motr can consume CORTX-specific configuration and parameters specified via the IPFS configuration file and can access the full range of native functionality exposed by the Motr client API.
 
 In simple benchmarks go-ds-motr is vastly more performant than the S3 data store plugin, achieving a 13x speedup for add operations:
-#### Adding 93Mb file to IPFS using S3 data store:
+#### Adding 93Mb file to IPFS using S3 data store from cold start:
 ```cmd
 [root@cortx-ova-rgw go-ds-motr]# time ../go-ipfs/cmd/ipfs/ipfs add "01 Track01.flac"                                                                                                           
 added QmXUdQD5gHs483TCYFTEgFsve4J1sgfM4FGs9XLZzE3obv 01 Track01.flac                                                                                                                           
@@ -13,7 +34,7 @@ real    1m20.728s
 user    0m0.437s                                                                                                                                                                               
 sys     0m0.334s                                                                                                            
 ```
-#### Adding 93Mb file to IPFS using go-ds-motr:
+#### Adding 93Mb file to IPFS using go-ds-motr from cold start:
 ```cmd
 [root@venus go-ds-motr]# time ../go-ipfs/cmd/ipfs/ipfs add "01 Track01.flac"                                                                                                                   
 added QmXUdQD5gHs483TCYFTEgFsve4J1sgfM4FGs9XLZzE3obv 01 Track01.flac                                                                                                                           
@@ -24,11 +45,11 @@ sys     0m0.117s
 ```
 
 
-## Requirements
-1. Access to a Motr cluster and the `motr-devel` package installed.
-2. Go 1.17. 
+# Requirements
+1. Access to a Motr cluster and the `motr-devel` package installed. See the CORTX [repo](https://github.com/Seagate/cortx/releases).
+2. Go 1.17. See the official Go [site](https://go.dev/doc/install) for download and install instructions.
 
-## Installation
+# Installation
 1. Clone the go-ipfs repository: `git clone https://github.com/ipfs/go-ipfs.git`
 2. Checkout v0.13.0 of the code: `cd go-ipfs &&  git checkout tags/v0.13.0`
 3. Add the following line to the `plugin/loader/preload.list` file: `motords github.com/allisterb/go-ds-motr/plugin *`. This tells the build system to build the go-ds-motr plugin together with the other plugins specified when building go-ipfs.
@@ -103,3 +124,8 @@ will store the value `bar` for the key `foo` in the Motr  index `0x7800000000000
 This will start the go-ipfs server with the default logging level set to only print errors except for the motrds plugin which will be logging in debug mode.
 ![goipfsstartup](https://dm2301files.storage.live.com/y4mHDFP81DM0sRwtw_q4V3l5ksiUxmbCwrzalWucqAokzwJhAj4OAnEMldPP96pDUc8NXdmeFH2Pb_DRjeSqqb4QRPpLoCTP0PfQHcOLVdea81e4mxBKkVuwitPkdrXOUAsvn4ZgoLpYN6afZY9E9Y0lZ6m58ulscymR-MVYdGJfzyRm1DsO1I8vNxQY6EnP-t8?width=1920&height=884&cropmode=none)
 You should see diagnostic messages from the motrds plugin indicating it initialized successfully and is handling queries and requests for data from IPFS.
+
+# Benchmarking
+You can run `benchmark.sh` from the go-ds-motr repo to get a idea of how performant the data store is:
+
+![benchmark](https://dm2301files.storage.live.com/y4mrOtvFoyt1br2fA5zhouJX_SZZDsNW_ma8mxas_BI0l3mgIo7ummUC_b1MwR3HPboEREdq3J7ecpd3opaaudminonrenX_yGLEdyZIZKn9iZiE5gTzljQ3NL2qymLC0jweRrqEN6WzQ-mpFHFmQxJHEnEMUO7boWXcCd-BfN7fR-9jRcxxN_RtpyIiO2m_yip?width=1918&height=1017&cropmode=none)
