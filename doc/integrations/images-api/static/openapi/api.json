@@ -1,0 +1,100 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "CORTX Images",
+    "description": "This api will let you interact with images files stored on cortx server. The api will let you fetch and resize images to get the most out of your images",
+    "contact": {
+      "email": "me@niradler.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://imagesx.devresources.site/"
+    },
+    {
+      "url": "http://imagesx.devresources.site/"
+    }
+  ],
+  "paths": {
+    "/images/{size}/{filename}": {
+      "get": {
+        "summary": "get resized image",
+        "description": "get resized image",
+        "parameters": [
+          {
+            "name": "size",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filename",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "image",
+            "content": {}
+          },
+          "404": {
+            "description": "image not found",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/images/{filename}": {
+      "get": {
+        "summary": "get image",
+        "description": "get image",
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "image",
+            "content": {}
+          },
+          "404": {
+            "description": "image not found",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "header"
+      }
+    }
+  }
+}

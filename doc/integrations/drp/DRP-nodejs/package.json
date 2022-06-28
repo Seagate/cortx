@@ -1,0 +1,35 @@
+{
+  "name": "drp-project",
+  "version": "1.0.0",
+  "description": "DRP Project Files",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "drp",
+    "mesh",
+    "service",
+    "registry",
+    "provider",
+    "broker"
+  ],
+  "author": "Pete Brown <jpbrown@adhdtech.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adhdtech/DRP.git"
+  },
+  "dependencies": {
+    "cucm-sql-async": "./cucm-sql-async",
+    "drp-mesh": "./drp-mesh",
+    "drp-service-bluecat": "./drp-service-bluecat",
+    "drp-service-cache": "./drp-service-cache",
+    "drp-service-docmgr": "./drp-service-docmgr",
+    "drp-service-ldap": "./drp-service-ldap",
+    "drp-service-logger": "./drp-service-logger",
+    "drp-service-netscaler": "./drp-service-netscaler",
+    "drp-service-rsage": "./drp-service-rsage",
+    "drp-service-test": "./drp-service-test"
+  }
+}

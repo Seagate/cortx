@@ -100,6 +100,7 @@ def main():
 
   pc=cc.ProjectComparisons(org_name=None,stats=projects_data)
   pc.persist()
+  print("Finished successfully")
 
 if __name__ == "__main__":
     main()

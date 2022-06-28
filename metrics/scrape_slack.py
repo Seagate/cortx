@@ -4,8 +4,10 @@ import argparse
 import cortx_community as cc
 import datetime
 import json
+import urllib
 import os
-import slack
+import sys
+import slack  # https://pypi.org/project/slackclient/
 
 from time import sleep
 from pprint import pprint
@@ -22,13 +24,15 @@ GLOBAL='GLOBAL'
 channel_repo_map = {
   'general'                    : 'cortx',
   'random'                     : 'cortx',
-  'devops'                     : 'cortx', # this should change to 'cortx-re' when it becomes public
+  'devops'                     : 'cortx-re', # this should change to 'cortx-re' when it becomes public
   'github-cortx'               : 'cortx',
   'se'                         : 'cortx',
   'tech-marketing-engineering' : 'cortx',
   'cortx-pm'                   : 'cortx',
   'cortx-get-started'          : 'cortx',
   'feedback'                   : 'cortx',
+  'cortx-dps'                  : 'cortx-motr',
+  'cortx-rgw'                  : 'cortx',
   'cortx-sspl'                 : 'cortx-monitor',
   'ops-and-implementation'     : 'cortx', # change to cortx-re when it becomes public
   'cortx-provisioner'          : 'cortx-prvsnr',
@@ -46,20 +50,32 @@ channel_repo_map = {
 
 # make a helper function to consolidate all calls to the api 
 def call_api(client,method,data):
-  response = client.api_call(api_method=method,data=data)
-  sleep(1.1)
-  if not response['ok']:
-    print("WTF: call to %s failed" % method)
-    assert response['ok']
-    return None
-  else:
-    return response
+  try:
+    response = client.api_call(api_method=method,data=data)
+    sleep(1.1)
+    if not response['ok']:
+      print("WTF: call to %s failed" % method)
+      assert response['ok']
+      return None
+    else:
+      return response
+  except urllib.error.URLError as e:
+    print("WTF: call to %s failed: " % method, e)
+    sys.exit(0)
 
 # pass an optional limit to only get a few channels; useful for fast development
 def get_channels(client,limit=None):
   channels={}
-  response = call_api(client=client,method="conversations.list",data={'types' : 'public_channel', 'exclude_archived' : 'true'})
+  print("Trying to get channels")
+  print('curl -s -H "Authorization: Bearer $SLACK_OATH" https://slack.com/api/conversations.list | python -m json.tool')  # this works but the call here is not...
+  # here is the old way which has stopped working
+  #response = call_api(client=client,method="conversations.list",data={'types' : 'public_channel', 'exclude_archived' : 'true'})
+
+  # instead try to call it directly . . . same error
+  response = client.conversations_list(types="public_channel",exclude_archived=1)
+  print("Response is ", response)
   for c in response.data['channels']:
+    print("Got channel %s" % c['name'])
     channels[c['id']] = c['name']
     if limit and len(channels) >= limit:
       break 
@@ -189,7 +205,9 @@ def get_conversations(client,channels,slack_people,author_activity,stats):
   return (talkers_alltime,talkers_weekly)
 
 def get_client():
-  return slack.WebClient(token=os.environ['SLACK_OATH'])
+  client = slack.WebClient(token=os.environ['SLACK_OATH'],timeout=30)
+  print(client)
+  return client
 
 def merge_stat(slack_stats,ps,repo):
   (existing_stats,latest) = ps.get_latest(repo)

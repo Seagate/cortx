@@ -1,0 +1,144 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 16.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:REQUEST
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VTIMEZONE
+TZID:Pacific Standard Time
+BEGIN:STANDARD
+DTSTART:16011104T020000
+RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=11
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:16010311T020000
+RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=3
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+ATTENDEE;CN="John Bent";ROLE=OPT-PARTICIPANT;RSVP=FALSE:mailto:john.bent@se
+	agate.com
+CLASS:PUBLIC
+CREATED:20220331T171523Z
+DESCRIPTION:Monthly CORTX Meet the Architect. Every month\, we'll go on a d
+	eep dive into the work being done on and with CORTX.\n\n\n\n______________
+	__________________________________________________________________ \nMicro
+	soft Teams meeting \nJoin on your computer or mobile app \nClick here to j
+	oin the meeting <https://teams.microsoft.com/l/meetup-join/19%3ameeting_ND
+	I3NDY4ZTEtYTQ3OS00ZTAxLWJmMDItZTQ5NmI1Yzg4M2Fm%40thread.v2/0?context=%7b%2
+	2Tid%22%3a%22d466216a-c643-434a-9c2e-057448c17cbe%22%2c%22Oid%22%3a%221285
+	8502-b604-409a-9017-6a2a53bcc1a5%22%7d>  \nJoin with a video conferencing 
+	device \nseagate@m.webex.com \nVideo Conference ID: 115 069 576 1 \nAltern
+	ate VTC instructions <https://www.webex.com/msteams?confid=1150695761&tena
+	ntkey=seagate&domain=m.webex.com>  \nOr call in (audio only) \n+1 209-800-
+	8561\,\,473684795# <tel:+12098008561\,\,473684795#>    United States\, Sto
+	ckton \nPhone Conference ID: 473 684 795# \nFind a local number <https://d
+	ialin.teams.microsoft.com/b9d29ff3-043e-471a-a329-7e83d78b17a8?id=47368479
+	5>  | Reset PIN <https://mysettings.lync.com/pstnconferencing>  \nLearn Mo
+	re <https://aka.ms/JoinTeamsMeeting>  | Meeting options <https://teams.mic
+	rosoft.com/meetingOptions/?organizerId=12858502-b604-409a-9017-6a2a53bcc1a
+	5&tenantId=d466216a-c643-434a-9c2e-057448c17cbe&threadId=19_meeting_NDI3ND
+	Y4ZTEtYTQ3OS00ZTAxLWJmMDItZTQ5NmI1Yzg4M2Fm@thread.v2&messageId=0&language=
+	en-US>  \n________________________________________________________________
+	________________ \n
+DTEND;TZID="Pacific Standard Time":20210810T090000
+DTSTAMP:20220316T180034Z
+DTSTART;TZID="Pacific Standard Time":20210810T080000
+LAST-MODIFIED:20220331T171523Z
+ORGANIZER;CN="Rachel Novak":mailto:rachel.novak@seagate.com
+PRIORITY:5
+RRULE:FREQ=MONTHLY;BYDAY=TU;BYSETPOS=2
+SEQUENCE:8
+SUMMARY;LANGUAGE=en-us:CORTX Meet the Architect
+TRANSP:OPAQUE
+UID:040000008200E00074C5B7101A82E0080000000068C1FD258182D701000000000000000
+	010000000A036117A118A43419819AE7CCE2CFB6C
+X-ALT-DESC;FMTTYPE=text/html:<html>\n<head>\n\n</head>\n<body>\n<div class=
+	"copy-paste-block" itemprop="copy-paste-block">Monthly CORTX Meet the Arch
+	itect. Every month\, we'll go on a deep dive into the work being done on a
+	nd with CORTX.</div>\n<div><br>\n<br>\n<br>\n<div style="width:100%\;heigh
+	t:20px\;"><span style="white-space:nowrap\;color:#5F5F5F\;opacity:.36\;">_
+	__________________________________________________________________________
+	_____</span>\n</div>\n<div class="me-email-text" style="color:#252424\;fon
+	t-family:'Segoe UI'\,'Helvetica Neue'\,Helvetica\,Arial\,sans-serif\;" lan
+	g="en-US">\n<div style="margin-top:24px\;margin-bottom:20px\;"><span style
+	="font-size:24px\;color:#252424\;">Microsoft Teams meeting</span>\n</div>\
+	n<div style="margin-bottom:20px\;">\n<div style="margin-top:0px\;margin-bo
+	ttom:0px\;font-weight:bold\;"><span style="font-size:14px\;color:#252424\;
+	">Join on your computer or mobile app</span>\n</div>\n<a class="me-email-h
+	eadline" style="font-size:14px\;font-family:'Segoe UI Semibold'\,'Segoe UI
+	'\,'Helvetica Neue'\,Helvetica\,Arial\,sans-serif\;text-decoration:underli
+	ne\;color:#6264a7\;" href="https://teams.microsoft.com/l/meetup-join/19%3a
+	meeting_NDI3NDY4ZTEtYTQ3OS00ZTAxLWJmMDItZTQ5NmI1Yzg4M2Fm%40thread.v2/0?con
+	text=%7b%22Tid%22%3a%22d466216a-c643-434a-9c2e-057448c17cbe%22%2c%22Oid%22
+	%3a%2212858502-b604-409a-9017-6a2a53bcc1a5%22%7d" target="_blank" rel="nor
+	eferrer noopener" title="https://teams.microsoft.com/l/meetup-join/19%3ame
+	eting_ndi3ndy4ztetytq3os00ztaxlwjmmditztq5nmi1yzg4m2fm%40thread.v2/0?conte
+	xt=%7b%22tid%22%3a%22d466216a-c643-434a-9c2e-057448c17cbe%22%2c%22oid%22%3
+	a%2212858502-b604-409a-9017-6a2a53bcc1a5%22%7d">Click\n here to join the m
+	eeting</a> </div>\n<div style="margin-bottom:4px\;"><span style="font-size
+	:14px\;color:#252424\;font-weight:bold\;">Join with a video conferencing d
+	evice</span>\n</div>\n<div style="font-size:14px\;"><a class="me-email-lin
+	k" target="_blank" rel="noreferrer noopener">seagate@m.webex.com</a>\n</di
+	v>\n<div><span style="font-size:14px\;color:#252424\;">Video Conference ID
+	: </span><span style="font-size:16px\;color:#252424\;">115 069 576 1\n</sp
+	an></div>\n<div style="font-size:14px\;margin-bottom:20px\;"><a class="me-
+	email-link" style="text-decoration:underline\;color:#6264a7\;" href="https
+	://www.webex.com/msteams?confid=1150695761&amp\;tenantkey=seagate&amp\;dom
+	ain=m.webex.com" title="https://www.webex.com/msteams?confid=1150695761&am
+	p\;tenantkey=seagate&amp\;domain=m.webex.com" target="_blank" rel="norefer
+	rer noopener">Alternate\n VTC instructions</a> </div>\n<div style="margin-
+	bottom:4px\;">\n<div style="margin-bottom:4px\;"><span style="font-size:14
+	px\;color:#252424\;font-weight:bold\;">Or call in (audio only)</span>\n</d
+	iv>\n<div style="margin-bottom:4px\;"><a style="font-size:14px\;text-decor
+	ation:underline\;color:#6264a7\;" href="tel:+12098008561\,\,473684795# " t
+	itle="tel:+12098008561\,\,473684795# " target="_blank" rel="noreferrer noo
+	pener">+1 209-800-8561\,\,473684795#</a>\n<span style="font-size:14px\;col
+	or:#252424\;">&nbsp\; United States\, Stockton </span></div>\n</div>\n<spa
+	n style="font-size:14px\;color:#252424\;">Phone Conference ID: </span><spa
+	n style="font-size:16px\;color:#252424\;">473 684 795#\n</span>\n<div styl
+	e="margin-bottom:20px\;"><a class="me-email-link" style="font-size:14px\;t
+	ext-decoration:underline\;color:#6264a7\;font-family:'Segoe UI'\,'Helvetic
+	a Neue'\,Helvetica\,Arial\,sans-serif\;" target="_blank" href="https://dia
+	lin.teams.microsoft.com/b9d29ff3-043e-471a-a329-7e83d78b17a8?id=473684795"
+	 rel="noreferrer noopener" title="https://dialin.teams.microsoft.com/b9d29
+	ff3-043e-471a-a329-7e83d78b17a8?id=473684795">Find\n a local number</a> | 
+	<a class="me-email-link" style="font-size:14px\;text-decoration:underline\
+	;color:#6264a7\;" target="_blank" href="https://mysettings.lync.com/pstnco
+	nferencing" rel="noreferrer noopener" title="https://mysettings.lync.com/p
+	stnconferencing">\nReset PIN</a> </div>\n<div style="margin-bottom:24px\;m
+	argin-top:20px\;"><a class="me-email-link" style="font-size:14px\;text-dec
+	oration:underline\;color:#6264a7\;font-family:'Segoe UI'\,'Helvetica Neue'
+	\,Helvetica\,Arial\,sans-serif\;" target="_blank" href="https://aka.ms/Joi
+	nTeamsMeeting" rel="noreferrer noopener" title="https://aka.ms/jointeamsme
+	eting">Learn\n More</a> | <a class="me-email-link" style="font-size:14px\;
+	text-decoration:underline\;color:#6264a7\;font-family:'Segoe UI'\,'Helveti
+	ca Neue'\,Helvetica\,Arial\,sans-serif\;" target="_blank" href="https://te
+	ams.microsoft.com/meetingOptions/?organizerId=12858502-b604-409a-9017-6a2a
+	53bcc1a5&amp\;tenantId=d466216a-c643-434a-9c2e-057448c17cbe&amp\;threadId=
+	19_meeting_NDI3NDY4ZTEtYTQ3OS00ZTAxLWJmMDItZTQ5NmI1Yzg4M2Fm@thread.v2&amp\
+	;messageId=0&amp\;language=en-US" rel="noreferrer noopener" title="https:/
+	/teams.microsoft.com/meetingoptions/?organizerid=12858502-b604-409a-9017-6
+	a2a53bcc1a5&amp\;tenantid=d466216a-c643-434a-9c2e-057448c17cbe&amp\;thread
+	id=19_meeting_ndi3ndy4ztetytq3os00ztaxlwjmmditztq5nmi1yzg4m2fm@thread.v2&a
+	mp\;messageid=0&amp\;language=en-us">\nMeeting options</a> </div>\n</div>\
+	n<div style="font-size:14px\;margin-bottom:4px\;font-family:'Segoe UI'\,'H
+	elvetica Neue'\,Helvetica\,Arial\,sans-serif\;">\n</div>\n<div style="font
+	-size:12px\;"></div>\n</div>\n<div style="width:100%\;height:20px\;"><span
+	 style="white-space:nowrap\;color:#5F5F5F\;opacity:.36\;">________________
+	________________________________________________________________</span>\n<
+	/div>\n<div></div>\n</body>\n</html>\n
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MS-OLK-APPTLASTSEQUENCE:8
+X-MS-OLK-APPTSEQTIME:20220316T180034Z
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR
