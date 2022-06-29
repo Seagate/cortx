@@ -36,7 +36,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |cortx-restic| | |thanos|           | |goofys|            | 
 +----------------+--------------------+---------------------+
-| |ftp|          | |docker|           |                     | 
+| |ftp|          | |docker|           | |cortx-drive|       | 
 +----------------+--------------------+---------------------+
 
 .. |docker| image:: ./cortx-docker/image/docker_integration_architecture.jpeg
@@ -170,6 +170,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |samba| image:: ../images/project_logo.png
    :target: rpi-samba
+   
+.. |cortx-drive| image:: ./cortx-drive/docs/img/cortx-drive-logo.jpeg
+   :target: cortx-drive
 
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
