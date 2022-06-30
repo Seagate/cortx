@@ -55,7 +55,7 @@ See [here](Implementation.md).
 # Installation
 1. Clone the go-ipfs repository: `git clone https://github.com/ipfs/go-ipfs.git`
 2. Checkout v0.13.0 of the code: `cd go-ipfs &&  git checkout tags/v0.13.0`
-3. Add the following line to the `plugin/loader/preload.list` file: `motords github.com/allisterb/go-ds-motr/plugin *`. This tells the build system to build the go-ds-motr plugin together with the other plugins specified when building go-ipfs.
+3. Add the following line to the `plugin/loader/preload.list` file: `motrds github.com/allisterb/go-ds-motr/plugin *`. This tells the build system to build the go-ds-motr plugin together with the other plugins specified when building go-ipfs.
 4. Get the Go go-ds-motr module code from GitHub: `go get github.com/allisterb/go-ds-motr/plugin@HEAD`.
 5. Build go-ipfs: `make build`. This will create the ipfs executable at `cmd/ipfs/ipfs` in your `go-ipfs` directory.
 6. Initialize your IPFS repository: `cmd/ipfs/ipfs init`. This will create an `.ipfs` directory in your `$HOME` directory with your IPFS server configuration.
