@@ -1,6 +1,8 @@
 ### IPFS 2 Cortx Bridge
 
-This web(3) app provides a bridge between IPFS with it's incentive-layer blockchain FileCoin and the massive data-storage system CORTX.
+This web(3) app provides a bridge between IPFS with it's incentive-layer blockchain FileCoin and the massive data-storage system CORTX. You can see a demo video here: 
+![image](https://user-images.githubusercontent.com/17435970/176945272-d585e08d-9e2c-443f-b659-488695cac11c.png)
+
 
 The underlying API and state-manager unifies interaction with the IPFS network and the S3 interface of a CORTX cluster.
 
