@@ -86,7 +86,7 @@ Organization\\CortxNTFS-*\<YourUniqueSerialNumber\>*)
 Note that this file will *not* yet exist so you will have to create it.
 
 The file should contain a single CORTX S3 semi-colon delimited configure string
-one the very first line of the file, in the form:  
+on the very first line of the file, in the form:  
 
 <url with port and trailing slash\>;\<bucket
 name\>;reserved-for-future-use;\<Access Key ID\>;\<Secret Access Key\>  
@@ -96,11 +96,11 @@ exists, assumes the temporary Seagate provided CloudShare environment:
 
 http://uvo1z084vf5xbdy7ui3.vm.cld.sr:31949/;cortxntfs-4cluster-node1;reserved-for-future-use;sgiamadmin;ldapadmin
 
-If the CloudShare environment is still up, fell free to inspect the blocks CortxNTFS writes to the above bucket (cortxntfs-4cluster-node1) as you perform file i/o on the shared W:\\ virtual drive. You can do this by connecting to the CORTX S3 environment in the usual way with a 3rd party tool like S3 Browser or Cyberduck. 
+If the CloudShare environment is still up, feel free to inspect the blocks CortxNTFS writes to the above bucket (cortxntfs-4cluster-node1) as you perform file i/o on the shared W:\\ virtual drive. You can do this by connecting to the CORTX S3 environment in the usual way with a 3rd party tool like S3 Browser or Cyberduck. 
 
 Keep in mind, however, that when inspecting blocks on the configured CORTX S3 instance, only 25% of the block i/o will actually be visible. This is because the demonstration virtual drive is configured for fast parallel block i/o using four S3 instances (clusters) and each gets approximately 25% of the block i/o traffic. 
 
-Also note, that if/when you configure CortxNTFS to switch to using your own CORTX S3 instance you will only be able to properly access files that you write to the shard virtual drive *after* making the switch because the blocks of files written to the default configured CORTX S3 instance *before* the switch will no longer be accessible. 
+Also note, that if/when you configure CortxNTFS to switch to using your own CORTX S3 instance you will only be able to properly access files that you write to the shared virtual drive *after* making the switch because the blocks of files written to the default configured CORTX S3 instance *before* the switch will no longer be accessible. 
 
 # Troubleshooting
 
