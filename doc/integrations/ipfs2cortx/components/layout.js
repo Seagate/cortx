@@ -16,7 +16,7 @@ export default function HomeWrapper({ children }) {
       <Head />
       <Header />
       <main className="z-10 mb-auto">{children}</main>
-      <footer className="sticky bottom-0 mb-0 mt-auto w-full z-50 text-left bg-gray-900 text-white text-xs flex pt-1 bg-slate-900 bg-opacity-60 z-10">
+      <footer className="sticky bottom-0 mb-0 mt-auto w-full z-50 text-left bg-gray-900 text-white text-xs flex pt-1 bg-slate-900 bg-opacity-60 ">
         <IpfsComponent />
         <div className="ml-auto text-center mx-3 flex">
           <a className="mt-3">© 2022 planetary Copyright:</a>

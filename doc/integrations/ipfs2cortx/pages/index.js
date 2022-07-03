@@ -43,7 +43,7 @@ export default function Home({ buckets }) {
         <div className="relative sm:flex space-x-11 ">
           <IpfsBox>
             <IpfsInput />
-            {store.cid && <IpfsLs />}
+            <IpfsLs />
           </IpfsBox>
           <S3Box>
             <CortxBuckets />

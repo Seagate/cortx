@@ -18,7 +18,7 @@
     "@reduxjs/toolkit": "^1.8.2",
     "aws-sdk": "^2.1156.0",
     "dot-prop": "^7.2.0",
-    "framer-motion": "^6",
+    "framer-motion": "^6.3.16",
     "ipfs-core": "^0.15.2",
     "ipfs-http-client": "^57.0.1",
     "is-ipfs": "^6.0.2",

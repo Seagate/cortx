@@ -50,13 +50,13 @@ export function IpfsComponent() {
         }
       }
       if (node) {
-        const nodeId = await node.id()
-        const nodeVersion = await node.version()
-        const nodeIsOnline = await node.isOnline()
+        const nodeId = await node?.id()
+        const nodeVersion = await node?.version()
+        const nodeIsOnline = await node?.isOnline()
 
         setIpfs(node)
-        setId(nodeId.id.string)
-        setVersion(nodeVersion.version)
+        setId(nodeId?.id?.string)
+        setVersion(nodeVersion?.version)
         setIsOnline(nodeIsOnline)
 
         // dispatch(setIpfsDaemon({ node, toast }))

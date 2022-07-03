@@ -93,7 +93,3 @@ export const IpfsCard = ({ ls, idx }) => {
     </>
   )
 }
-console.log('🚀 ~ file: IpfsCard.js ~ line 95 ~ IpfsCard ~ 20', 20)
-console.log('🚀 ~ file: IpfsCard.js ~ line 95 ~ IpfsCard ~ 10', 10)
-console.log('🚀 ~ file: IpfsCard.js ~ line 95 ~ IpfsCard ~ 20', 20)
-console.log('🚀 ~ file: IpfsCard.js ~ line 95 ~ IpfsCard ~ 10', 10)
