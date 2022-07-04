@@ -1,5 +1,7 @@
 # CORTX-flask-app
 
+Link to my video - https://youtu.be/iwQ2beyMFtg
+
 ### 1. Create CORTX instance:
  - To create a CORTX instance you can follow the steps outlined [here](https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-6/CORTX_on_Open_Virtual_Appliance_PI-6.rst)
 
