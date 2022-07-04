@@ -1,5 +1,7 @@
 # cortx-here-traffic-alerts
 
+Link to my video demo: https://www.youtube.com/watch?v=Ah8SAv5LvfA&ab_channel=DylanKearns
+
 ## Prerequisites
 1. Create CORTX instance
  - Setting up the CORTX instance is pretty simple, just follow this [guide](https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-6/CORTX_on_Open_Virtual_Appliance_PI-6.rst)
