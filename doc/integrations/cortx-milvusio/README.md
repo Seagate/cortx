@@ -281,6 +281,7 @@ for x in range(len(results)):
 ```
 
 - Image search results 
+- 
 ![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/804/datas/gallery.jpg)
 
 - **If you notice carefully, the size and number of objects keep growing in our Cortx bucket, since all the queries, indexes and logs are being stored for faster search retrieval and loading for our app. This is hugely beneficial as it prevents reindexing of data multiple times.**
@@ -380,9 +381,11 @@ print("Insert Done")
 ```
 
 -  Search can be done now on embedded vector audio NumPy array
+  
 ![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/810/datas/gallery.jpg)
 
 ### Milvus for Molecular similarity search
+
 ![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/793/datas/gallery.jpg)
 
 ## Challenges we ran into
