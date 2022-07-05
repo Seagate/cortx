@@ -3,6 +3,8 @@
 
 ![](https://github.com/vilaksh01/cortx/blob/main/doc/integrations/cortx-modzy-ai/ppt/1.png)
 
+## Integration Video: [https://youtu.be/BDNye21FH5g](https://youtu.be/BDNye21FH5g)
+
 ## Inspiration
 Storing and managing data had never been easy and with the flourish of AI, and deep learning we have generated paramount data called Big Data. Because unstructured data is made up of files like audio, video, pictures and even social media data, it's easy to see why volume is a challenge. The value of the data can get lost in the shuffle when working with so much of it. There is value to be found in unstructured data, but harnessing that information can be difficult. When there is so much data in S3 it becomes very difficult for organizations to handle document files in lesser time.
 
