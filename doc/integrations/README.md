@@ -1,5 +1,5 @@
 # cortx-here-traffic-alerts
-
+This project retrieves data from the HERE traffic API which provides incident details all around the world. The API doesn't store historical data so we will use CORTX and IPFS to store it.
 Link to my video demo: https://www.youtube.com/watch?v=Ah8SAv5LvfA&ab_channel=DylanKearns
 
 ## Prerequisites
