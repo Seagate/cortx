@@ -20,6 +20,7 @@ The best way for IPFS and Filecoin to take full advantage of the capabilities an
 
 # About
 [![vid1](vid2.webp)](https://youtu.be/xE5IcISQWIY)
+*(Click above for YouTube video)*
 
 go-ds-motr is a IPFS [data store plugin](https://github.com/ipfs/go-datastore) implementation that uses the Go bindings to the CORTX [Motr C API](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-developer-guide.md) to store IPFS data directly in indexes in the Motr key-value store. This allows IPFS servers to use the full capabilities and scalability of CORTX, instead of relying on a generic S3 REST API and HTTP calls. go-ds-motr stores and retrieves IPFS blocks from Motr using the native Motr client API when requested by the other IPFS subsystems using Motr key ids derived from the IPFS CIDs. go-ds-motr can consume CORTX-specific configuration and parameters specified via the IPFS configuration file and can access the full range of native functionality exposed by the Motr client API.
 
@@ -132,3 +133,6 @@ You should see diagnostic messages from the motrds plugin indicating it initiali
 You can run `benchmark.sh` from the go-ds-motr repo to get a idea of how performant the data store is:
 
 ![benchmark](https://dm2301files.storage.live.com/y4mrOtvFoyt1br2fA5zhouJX_SZZDsNW_ma8mxas_BI0l3mgIo7ummUC_b1MwR3HPboEREdq3J7ecpd3opaaudminonrenX_yGLEdyZIZKn9iZiE5gTzljQ3NL2qymLC0jweRrqEN6WzQ-mpFHFmQxJHEnEMUO7boWXcCd-BfN7fR-9jRcxxN_RtpyIiO2m_yip?width=1918&height=1017&cropmode=none)
+
+# Known issues
+See: https://github.com/Seagate/cortx-motr/issues/1960

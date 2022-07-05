@@ -2,7 +2,7 @@
 I used the [Go bindings](https://github.com/Seagate/cortx-motr/tree/main/bindings/go) to the Motr C API to create 2 modules:
 
 * The [CLI](https://github.com/allisterb/go-ds-motr/blob/master/main.go) module provides interactive functions for testing connectivity to a Motr key-value store, creating indexes and other utility functions.
-* The [motords](https://github.com/allisterb/go-ds-motr/blob/master/motrds/motrds.go) module implements the IPFS data store plugin interface.
+* The [motrds](https://github.com/allisterb/go-ds-motr/blob/master/motrds/motrds.go) module implements the IPFS data store plugin interface.
 
 The IPFS data store interface consists of a [set of functions](https://github.com/ipfs/go-datastore/blob/master/datastore.go) like **Get**, **Put**, **Has** etc. that each data store must implement. Each function passes a unique key as input. This is relatively simple to translate to the Motr key-value API. I used the FNV-1 hash function to generate a 128-bit identifier for each IPFS CID key and Go functions from the [Motr mkv package](https://github.com/Seagate/cortx-motr/blob/main/bindings/go/mkv/mkv.go) to implement the corresponding data store functions. 
 
