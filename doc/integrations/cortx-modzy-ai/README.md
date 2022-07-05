@@ -63,3 +63,16 @@ In future would like to bring the characteristics to find (heavily based on the 
 
 1. AI model to recommend to the user how much space could be saved on data compresses, i.e., what will be the compression ratio if we compress bytes of data (from point 1 above) with compression scheme X, a simple trigger would be a smart move to help the end-user save on space
 2. Add elastic search for generated Content Topics, entities, summaries, and translation for quicker access to data without incurring an S3 egress fee for most private Cloud Companies (saving lots of money for the organization) 
+
+## Instructions
+
+1. Clone the repository.
+2. Install all packages in requirements.txt file
+3. Open the terminal and run "$streamlit run search.py"
+4. Add your S3 bucket credentials
+5. Press Start Statistical Analyzer button
+6. And wait for Modzy API to finish scanning all input and sending outputs
+7. Once results are ready you would be able to download results summary pdf
+8. Or select file on sidebar and see model results.
+
+(Note: don't forget to add your own Modzy API keys in api_config.json file)
