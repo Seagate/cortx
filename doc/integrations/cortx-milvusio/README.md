@@ -1,5 +1,9 @@
 ![](https://github.com/vilaksh01/cortx/blob/main/doc/integrations/cortx-milvusio/images/1.png)
 
+## Integration Video
+
+[https://youtu.be/M6zxea_WZEE](https://youtu.be/M6zxea_WZEE)
+
 ## Inspiration
 Neural search, which combines machine learning and object storage technologies, could one day enable people to access the entire world’s information. They would be able to search through any data that is available online but not stored in a standard database format like text or images. This includes newspaper **articles** from 80 years ago or **genetic sequence records** – anything! Since so much of the world’s knowledge exists outside of normal databases already today, neural applications will likely play an important role in research as well as everyday tasks soon enough.
 
