@@ -93,7 +93,11 @@ $ helm install cortx milvus/milvus --set cluster.enabled=false --set externalS3.
 ![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/781/datas/gallery.jpg)
 
 ## Building Neural Search Application
-We are going to test Image Reverse Search and Audio search for a command dataset using the Milvus tool (Although you can build as complicated as DNA, molecular and Q/A search applications as well). The source code repo contains requirements.txt file for each sample application, make sure to install it.
+We are going to test Image Reverse Search and Audio search for a command dataset using the Milvus tool (Although you can build as complicated as DNA, molecular and Q/A search applications as well). The source code repo contains a requirements.txt file for each sample application, make sure to install it.
+
+### Milvus Image Reverse Search
+
+![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/790/datas/gallery.jpg)
 
 - Open a Jupyter Notebook in VS code, and install the requirements.txt by running this command in a cell.
 
@@ -199,8 +203,6 @@ with zipfile.ZipFile("VOCtrainval_11-May-2012.zip","r") as zip_ref:
 
 - Insert the data into Milvus tool (This is the final step and your search app is ready for new images)
 
-![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/790/datas/gallery.jpg)
-
 ```python
 
 import os
@@ -284,6 +286,104 @@ for x in range(len(results)):
 - **If you notice carefully, the size and number of objects keep growing in our Cortx bucket, since all the queries, indexes and logs are being stored for faster search retrieval and loading for our app. This is hugely beneficial as it prevents reindexing of data multiple times.**
 
 ![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/807/datas/gallery.jpg)
+
+### Milvus Audio Neural Search
+In this demo, we will run an audio search training on the dataset uploaded on Cortx for faster audio searches using vector queries.
+
+![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/788/datas/gallery.jpg)
+
+- Create a new collection
+
+```python
+
+#Creating collection
+
+import time
+
+red.flushdb()
+time.sleep(.1)
+collection_name = "audio_test_collection"
+
+if utility.has_collection(collection_name):
+    print("Dropping existing collection...")
+    collection = Collection(name=collection_name)
+    collection.drop()
+
+#if not utility.has_collection(collection_name):
+field1 = FieldSchema(name="id", dtype=DataType.INT64, descrition="int64", is_primary=True,auto_id=True)
+field2 = FieldSchema(name="embedding", dtype=DataType.FLOAT_VECTOR, descrition="float vector", dim=2048, is_primary=False)
+schema = CollectionSchema(fields=[ field1,field2], description="collection description")
+collection = Collection(name=collection_name, schema=schema)
+print("Created new collection with name: " + collection_name)
+
+#Indexing collection
+
+if utility.has_collection(collection_name):
+    collection = Collection(name = collection_name)
+default_index = {"index_type": "IVF_SQ8", "metric_type": "L2", "params": {"nlist": 16384}}
+status = collection.create_index(field_name = "embedding", index_params = default_index)
+if not status.code:
+    print("Successfully create index in collection:{} with param:{}".format(collection_name, default_index))
+
+```
+ 
+- Download audio dataset from S3 bucket and unzip it
+
+```python
+
+s3_resource.Bucket('datasets').download_file('example_audio.zip', 'example_audio.zip') 
+
+import zipfile
+
+with zipfile.ZipFile("example_audio.zip","r") as zip_ref:
+    zip_ref.extractall("./example_audio")
+
+```
+
+- Inserting data
+
+```python
+
+import os
+import librosa
+import gdown
+import zipfile
+import numpy as np
+from panns_inference import SoundEventDetection, labels, AudioTagging
+
+data_dir = './example_audio'
+at = AudioTagging(checkpoint_path=None, device='cpu')
+
+def embed_and_save(path, at):
+    
+    audio, _ = librosa.core.load(path, sr=32000, mono=True)
+    audio = audio[None, :]
+    try:
+        _, embedding = at.inference(audio)
+        embedding = embedding/np.linalg.norm(embedding)
+        embedding = embedding.tolist()[0]
+        mr = collection.insert([[embedding]])
+        ids = mr.primary_keys
+        collection.load()
+        red.set(str(ids[0]), path)
+    except Exception as e:
+        print("failed: " + path + "; error {}".format(e))
+
+
+print("Starting Insert")
+for subdir, dirs, files in os.walk(data_dir):
+    for file in files:
+        path = os.path.join(subdir, file)
+        embed_and_save(path, at)
+print("Insert Done")
+
+```
+
+-  Search can be done now on embedded vector audio NumPy array
+![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/810/datas/gallery.jpg)
+
+### Milvus for Molecular similarity search
+![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/793/datas/gallery.jpg)
 
 ## Challenges we ran into
 Opencloudshare Cortx instance gave lots of problems and disconnections, so installed Cortx locally on VM. 
