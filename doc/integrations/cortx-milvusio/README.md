@@ -1,6 +1,3 @@
-# Cortx Object Storage Integration with Milvus.io
-### Store, index, manage and search trillions of document vectors in milliseconds. Build neural search applications for your unstructured data with Milvus.io and Cortx Object Storage system.
-
 ## Inspiration
 Neural search, which combines machine learning and object storage technologies, could one day enable people to access the entire world’s information. They would be able to search through any data that is available online but not stored in a standard database format like text or images. This includes newspaper **articles** from 80 years ago or **genetic sequence records** – anything! Since so much of the world’s knowledge exists outside of normal databases already today, neural applications will likely play an important role in research as well as everyday tasks soon enough.
 ![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/653/datas/gallery.jpg)
@@ -17,7 +14,7 @@ As a database specifically designed to handle queries over input vectors, it is 
 ## Cortx as the Milvus Object Storage
  Here we will learn about the implementation of data insertion, index building, and data query in Milvus with Cortx as Object Storage Backend.
 
-![](https://milvus.io/static/d75cab95c807c5664c94e3a6a56e26b3/e3932/write_log_sequence.jpg)
+![https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-6/CORTX_on_Open_Virtual_Appliance_PI-6.rst](https://milvus.io/static/d75cab95c807c5664c94e3a6a56e26b3/e3932/write_log_sequence.jpg)
 
 The above diagram encapsulates four components involved in the process of writing log sequence: proxy, log broker, data node, and object storage. The process involves four tasks: validation of DML requests, publication-subscription of log sequence, conversion from streaming log to log snapshots, and persistence of log snapshots. The four tasks are decoupled from each other to make sure each task is handled by its corresponding node type.
 
@@ -32,8 +29,66 @@ As shown above, Data query refers to the process of searching a specified collec
 So we see that Milvus uses logs as the data, mechanism throughout all processes for inter-data exchange between all Milvus components.
 
 ## How we built it
+The building part is constructed in two different steps. The first step is to set up Cortx Data Storage on VMWare:
+- Follow this instruction to setup OVA on VMWare [https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-6/CORTX_on_Open_Virtual_Appliance_PI-6.rst](https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-6/CORTX_on_Open_Virtual_Appliance_PI-6.rst)
+- Load the OVA on VMWare [https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst](https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst)
+- Set up S3 operations from the instructions
+[https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-6/S3_IO_Operations.md](https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-6/S3_IO_Operations.md)
+- If you are successful, you should be able to test aws commands on VMware and check your IP address which will be used as the Endpoint URL. 
+
+```bash
+
+# hostname -I
+# aws s3 cli
+
+```
+
+![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/771/datas/gallery.jpg)
+
+- Your endpoint URL for S3 APIs is **http://YOURIP:31949**
+
+#### Milvus Installation
+Once your cortx VM is running successfully, you can proceed to Milvus standalone installation. Before that, you need docker, kubectl, helm to be installed on your system
+- Install docker for Ubuntu 20.04, from the guide here, [https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
+
+- Install minikube for your system from guide here [https://minikube.sigs.k8s.io/docs/start/](https://minikube.sigs.k8s.io/docs/start/)
+
+- Install kubectl and helm
+
+```bash
+
+$ sudo apt install kubectl
+$ sudo apt install helm
+
+```
+
+- Start minikube ```minikube start```
+![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/777/datas/gallery.jpg)
+
+- Once your minikube had configured and started successfully, Add Milvus Helm repository.
+``` $ helm repo add milvus https://milvus-io.github.io/milvus-helm/ ```
+
+- Update charts locally.
+``` $ helm repo update``` 
+
+- Start Milvus
+
+```bash
+
+$ helm install cortx milvus/milvus --set cluster.enabled=false --set externalS3.enabled=true --set externalS3.host='192.168.1.14' --set externalS3.port=31949 --set externalS3.accessKey=sgiamadmin --set externalS3.secretKey=ldapadmin --set externalS3.bucketName=mybucket --set externalS3.useSSL=false --set minio.enabled=false --set pulsar.enabled=false --set attu.enabled=true --set attu.ingress.enabled=false
+
+```
+
+- Check the status of the running pods. ```kubectl get pods``` It should show 1/1 in all services **READY** status. Check the above images.
+
+- Forward the Milvus port to connect with Milvus Python APIs for our Neural search applications.
+```$ kubectl port-forward service/cortx-milvus 19530```
+
+- Forward the Milvus ATTU port which is to be used to monitor Milvus clusters, collections and entities.
+```$ kubectl port-forward service/cortx-milvus-attu 3000```
 
 ## Challenges we ran into
+Opencloudshare Cortx instance gave lots of problems and disconnections, so installed Cortx locally on VM. 
 
 ## Accomplishments that we're proud of
 
