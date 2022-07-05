@@ -1,4 +1,7 @@
 # CORTX-flask-app
+CORTX is very useful as a mass storage tool, and when I considered what I personally found to be most valuable about cloud storage, I kept coming back to media: my personal images and videos. Being able to back up these memories and have the peace of mind that I won’t lose them is a huge benefit of cloud storage. So I decided to build a Flask project which allowed me to not only upload these images to CORTX, and replicate them to IPFS, but also access them through a static web page, connected to the database. This means that not only are my images backed up, but they are accessible remotely, meaning I can show them to friends and family on the go.
+
+My project allows images to be uploaded to CORTX and IPFS, and also viewed via a static web page, all powered by a Flask app.
 
 Link to my video - https://youtu.be/iwQ2beyMFtg
 
