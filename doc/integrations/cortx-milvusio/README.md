@@ -381,18 +381,21 @@ print("Insert Done")
 ```
 
 -  Search can be done now on embedded vector audio NumPy array
-  
+
 ![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/810/datas/gallery.jpg)
 
-### Milvus for Molecular similarity search
-
+### Milvus for Molecular similarity search and heterogenous data
 ![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/002/024/793/datas/gallery.jpg)
 
 ## Challenges we ran into
-Opencloudshare Cortx instance gave lots of problems and disconnections, so installed Cortx locally on VM. 
+- Opencloudshare Cortx instance gave lots of problems and disconnections, so installed Cortx locally on VM. 
+- Milvus cluster requires a better computer system and nodes (could not test in cluster mode)
 
 ## Accomplishments that we're proud of
-
-## What we learned
+- Using Cortx S3 as Object Storage Engine for Neural Search is something new that we haven't come across (Elastic search is also an option but still Neural search is more dynamic)
+- The insert_log, stats_log and index loaded correctly from S3 Cortx bucket even after the Milvus application was released from memory (true data persistence which prevents repetitive indexing and log ingestion)
+- Milvus a highly industry-recognized tool is going to be a major transition for data searches (3D models, documents, DNA, molecules and all kind of unstructured data in all fields)
 
 ## What's next for Cortx Object Storage Integration with Milvus.io
+- Next thing I plan for is full-scale heterogenous searches for text, documents, 3D models, DNA and molecular sequences.
+- Also, integrating UI for data management and monitoring of Cortx S3 (volume of data can be high for big datasets, make sure we have enough space)
