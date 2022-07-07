@@ -1,5 +1,6 @@
 # Terraform Provider - Seagate CORTX
 
+
 This README refers to an integration between the CORTX API and Hashicorp [Terraform](https://www.terraform.io/). You can refer to the following resources to learn more:
 
 - [Video](https://youtube.com/video/m3MeDl-5jKE)
