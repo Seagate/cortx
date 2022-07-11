@@ -64,9 +64,9 @@ Link to my video demo: https://www.youtube.com/watch?v=Ah8SAv5LvfA&ab_channel=Dy
              "region": "us-east-1",
              "bucket": "traffic-data",
              "rootDirectory": "date",
-             "regionEndpoint": "http://192.168.1.16:31949",
-             "accessKey": "sgiamadmin",
-             "secretKey": "ldapadmin"
+             "regionEndpoint": "http://<ip_address>:31949",
+             "accessKey": "<access_key>",
+             "secretKey": "<secret_key>"
            },
            "mountpoint": "/blocks",
            "prefix": "flatfs.datastore",
@@ -91,9 +91,9 @@ Link to my video demo: https://www.youtube.com/watch?v=Ah8SAv5LvfA&ab_channel=Dy
 ### 2. Configure your script to use your CORTX instance
  - Edit the environment variables in the python script:
  ```bash
- ACCESS_KEY = 'sgiamadmin'
- SECRET_ACCESS_KEY = 'ldapadmin'
- END_POINT_URL = 'http://192.168.1.16:31949' 
+ ACCESS_KEY = '<access_key>'
+ SECRET_ACCESS_KEY = '<secret_key>'
+ END_POINT_URL = 'http://<ip_address>:31949' 
  ```
    **Note:** To get these details follow these steps below:
    1. Run this command in your CORTX instance to get your ACCESS abd SECRET_ACCESS keys
