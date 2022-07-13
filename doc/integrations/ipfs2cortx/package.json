@@ -1,0 +1,49 @@
+{
+  "name": "cortx2ipfs",
+  "version": "0.1.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "lint": "next lint",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.112.0",
+    "@chakra-ui/react": "^2.2.1",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@reduxjs/toolkit": "^1.8.2",
+    "aws-sdk": "^2.1156.0",
+    "dot-prop": "^7.2.0",
+    "framer-motion": "^6.3.16",
+    "ipfs-core": "^0.15.2",
+    "ipfs-http-client": "^57.0.1",
+    "is-ipfs": "^6.0.2",
+    "it-all": "^1.0.6",
+    "logrocket": "^3.0.1",
+    "logrocket-react": "^5.0.1",
+    "next": "12.1.6",
+    "pretty-bytes": "^6.0.0",
+    "qs": "^6.11.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.4.0",
+    "react-redux": "^8.0.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.2",
+    "autoprefixer": "^10.4.7",
+    "eslint": "8.17.0",
+    "eslint-config-next": "12.1.6",
+    "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "tailwindcss": "^3.1.3"
+  }
+}
