@@ -1,4 +1,4 @@
-;(function(){ 'use strict';
+(function(){ 'use strict';
 
   var $ = typeof jQuery === typeof undefined ? null : jQuery;
 
@@ -70,7 +70,7 @@
         }
 
         return obj;
-      };
+      }
 
       function getScratchProp(propname) {
         return cy.scratch('cycontextmenus')[propname];
