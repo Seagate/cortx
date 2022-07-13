@@ -36,6 +36,8 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |cortx-restic| | |thanos|           | |goofys|            | 
 +----------------+--------------------+---------------------+
+| |ftp|          | |docker|           | |s3filecoin|        | 
+=======
 | |ftp|          | |docker|           | |cortx-drive|       | 
 +----------------+--------------------+---------------------+
 
@@ -170,6 +172,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 
 .. |samba| image:: ../images/project_logo.png
    :target: rpi-samba
+   
+.. |s3filecoin| image:: https://i.imgur.com/SfcbktD.jpg
+   :target: s3filecoin
    
 .. |cortx-drive| image:: ./cortx-drive/docs/img/cortx-drive-logo.jpeg
    :target: cortx-drive
