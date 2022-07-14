@@ -1,0 +1,1 @@
+All images and screenshots

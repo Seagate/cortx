@@ -4,9 +4,6 @@
 [submodule "cortx-prvsnr"]
 	path = cortx-prvsnr
 	url = https://github.com/Seagate/cortx-prvsnr.git
-[submodule "cortx-posix"]
-	path = cortx-posix
-	url = https://github.com/Seagate/cortx-posix.git
 [submodule "cortx-ha"]
 	path = cortx-ha
 	url = https://github.com/Seagate/cortx-ha.git

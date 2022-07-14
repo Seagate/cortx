@@ -1,0 +1,76 @@
+.App {
+  /* text-align: center; */
+}
+
+.ant-layout-header {
+  background-color: white;
+  background: white;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px;
+  min-height: 86vh;
+  background: white;
+}
+
+.header-image {
+  height: 50px;
+}
+.result-box {
+  padding: 10px 20px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.success {
+  color: green;
+}
+
+.result-box:hover {
+  background: lightgray;
+}
+
+.img-invoice {
+  width: 80px;
+  margin-right: 10px;
+}
+
+.payment-form input {
+  margin: 5px;
+}
+
+.error-text {
+  color: red;
+  font-style: italic;
+}
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.standard-btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.map-container {
+  position: relative;
+}
+
+.box-overlay {
+  z-index: 999;
+  border-radius: 5px;
+  position: absolute;
+  opacity: 0.9;
+  width: 300px;
+  height: auto;
+  padding: 20px;
+  background: white;
+  top: 20px;
+  left: 20px;
+}
