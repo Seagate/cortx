@@ -1,0 +1,1 @@
+{"mounts":[{"bucket":"bucketName","mountpoint":"/blocks","region":"us-east-1","rootDirectory":"rootDirectoryName"},{"mountpoint":"/","path":"datastore","type":"levelds"}],"type":"mount"}
