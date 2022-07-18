@@ -39,17 +39,13 @@ def get_pdf(title,pid=None):
 def main():
 
   pdf_writer = PyPDF2.PdfFileWriter()
-<<<<<<< HEAD
   for page in ('CORTX Community Projects Overview', 'CORTX Community Project Roadmap'):
     page = get_pdf(page)
     pdf_writer.addPage(page)
-=======
   page = get_pdf('CORTX Community Partnerships Overview')
   pdf_writer.addPage(page)
   page = get_pdf('CORTX Community Project Roadmap')
   pdf_writer.addPage(page)
->>>>>>> 36611e007081f66b3b64f9a7c746a67a0fe06bbb
-
 
   parent=get_confluence_pid('Projects')
   children=conf.get_page_child_by_type(parent, type='page', start=None, limit=None)
