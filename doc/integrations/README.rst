@@ -37,7 +37,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 | |cortx-restic| | |thanos|           | |goofys|            | 
 +----------------+--------------------+---------------------+
 | |ftp|          | |docker|           | |s3filecoin|        | 
-=======
++----------------+--------------------+---------------------+
 | |ftp|          | |docker|           | |cortx-drive|       | 
 +----------------+--------------------+---------------------+
 
