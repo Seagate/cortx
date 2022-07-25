@@ -108,7 +108,7 @@ Link to my video demo: https://www.youtube.com/watch?v=Ah8SAv5LvfA&ab_channel=Dy
       ```bash
       kubectl get svc | grep 'server-loadbal'
       ```
-      ![portnum](https://user-images.githubusercontent.com/23244853/177014915-5ad3e347-9a0f-43f9-94a2-bb1c0d7f58a5.PNG)
+      ![here_data_example](https://user-images.githubusercontent.com/23244853/180814800-acdf7ba6-00e4-465e-806a-e64c3aec24b4.png)
    1. Then our endpoint-url will look like this:
       ```bash
       http://<endpoint ip address>:<port number>
