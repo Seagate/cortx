@@ -1,12 +1,9 @@
 import boto3
 import ipfshttpclient
-#client = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/5001')  # Connects to: /dns/localhost/tcp/5001/http
-#res = client.add('data.txt')
-#print(res)
 
-ACCESS_KEY = 'sgiamadmin'
-SECRET_ACCESS_KEY = 'ldapadmin'
-END_POINT_URL = 'http://192.168.1.16:31949'
+ACCESS_KEY = <ACCESS_KEY>
+SECRET_ACCESS_KEY = <SECRET_KEY>
+END_POINT_URL = 'http://<IP_ADDRESS>:31949'
 BUCKET = "pictures"
 
 def upload_file(file_name, bucket):
@@ -34,7 +31,7 @@ def list_files(bucket):
     try:
         for item in s3_client.list_objects(Bucket=bucket)['Contents']:
             contents.append(item)
-    except Exception as e:
+    except Exception:
         pass
     return contents
 
