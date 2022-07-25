@@ -1,7 +1,7 @@
 import boto3
 
-ACCESS_KEY = '<KEY>'
-SECRET_ACCESS_KEY = '<KEY>'
+ACCESS_KEY = ''
+SECRET_ACCESS_KEY = ''
 END_POINT_URL = 'http://<IP_ADDRESS>:31949'
 BUCKET = "pictures"
 
