@@ -1,8 +1,8 @@
 import boto3
 import ipfshttpclient
 
-ACCESS_KEY = <ACCESS_KEY>
-SECRET_ACCESS_KEY = <SECRET_KEY>
+ACCESS_KEY = '<ACCESS_KEY>'
+SECRET_ACCESS_KEY = '<SECRET_KEY>'
 END_POINT_URL = 'http://<IP_ADDRESS>:31949'
 BUCKET = "pictures"
 
