@@ -75,10 +75,11 @@
             <td> </td> 
             <td> </td>
             <td> </td>
+            <td> :earth_africa: <a href=https://www.sodafoundation.io/events/sodacode2022-code/>LINK</a> <br> </td>
             <td> </td>
             <td> </td>
-            <td> </td>
-            <td> </td>
+            <td> :earth_africa: <a href=https://seagate-cortx-hackathon2022.devpost.com/>LINK</a> <br>
+            </td>
             <td> </td>
             <td> </td>
             <td> </td>
