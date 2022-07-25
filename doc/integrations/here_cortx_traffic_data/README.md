@@ -4,7 +4,7 @@ Link to my video demo: https://www.youtube.com/watch?v=Ah8SAv5LvfA&ab_channel=Dy
 
 ## Prerequisites
 1. Create CORTX instance
- - Setting up the CORTX instance is pretty simple, just follow this [guide](https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-6/CORTX_on_Open_Virtual_Appliance_PI-6.rst)
+ - Setting up the CORTX instance is quick and easy, follow this [guide](https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-6/CORTX_on_Open_Virtual_Appliance_PI-6.rst)
 
 2. Setup Ubuntu instance with IPFS installed
  - (Optional if you want Linux but you have a Windows machine):
@@ -120,7 +120,7 @@ Link to my video demo: https://www.youtube.com/watch?v=Ah8SAv5LvfA&ab_channel=Dy
   ```bash
   crontab -e
   ```
-  - You want this script to run ideally before you leave so that you can avoid routes that have crashes on them
+  - You want this script to run ideally before you leave so that you can avoid routes that have incidents on them
   - To set the time use [crontab.guru](https://crontab.guru/) to make sure you have set your cron job for the correct time
   - Then paste this output to your crontab file
  
