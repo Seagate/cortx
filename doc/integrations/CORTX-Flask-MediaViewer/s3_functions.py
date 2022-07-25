@@ -1,8 +1,7 @@
 import boto3
-import ipfshttpclient
 
-ACCESS_KEY = '<ACCESS_KEY>'
-SECRET_ACCESS_KEY = '<SECRET_KEY>'
+ACCESS_KEY = '<KEY>'
+SECRET_ACCESS_KEY = '<KEY>'
 END_POINT_URL = 'http://<IP_ADDRESS>:31949'
 BUCKET = "pictures"
 
@@ -16,8 +15,6 @@ def upload_file(file_name, bucket):
     )
     
     response = s3_client.upload_file(file_name, bucket, object_name)
-    #client = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/5001')
-    #res = client.add(file_name)
     
     return response
 
