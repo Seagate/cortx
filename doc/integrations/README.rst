@@ -181,6 +181,8 @@ Click on any of the images below to know how to integrate CORTX with these other
    
 .. |cortx-drive| image:: ./cortx-drive/docs/img/cortx-drive-logo.jpeg
    :target: cortx-drive
-
+   
+.. |cortx-modzyai| image:: ../images/modzyai.png
+   :target: cortx-drive
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
