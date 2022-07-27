@@ -38,7 +38,9 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |ftp|          | |docker|           | |s3filecoin|        | 
 +----------------+--------------------+---------------------+
-| |ftp|          | |docker|           | |cortx-drive|       | 
+||cortx-milvusio|| |cortx-modzy-ai|   | |cortx-drive|       | 
++----------------+--------------------+---------------------+
+||CortxNTFS|     | |go-ds-motr|       |                     |
 +----------------+--------------------+---------------------+
 
 .. |docker| image:: ./cortx-docker/image/docker_integration_architecture.jpeg
@@ -181,6 +183,19 @@ Click on any of the images below to know how to integrate CORTX with these other
    
 .. |cortx-drive| image:: ./cortx-drive/docs/img/cortx-drive-logo.jpeg
    :target: cortx-drive
+
+.. |cortx-milvusio| image:: ./cortx-milvusio/images/1.png
+   :target: cortx-milvusio
+   
+.. |cortx-modzy-ai| image:: ./cortx-modzy-ai/ppt/1.png
+   :target: cortx-modzy-ai
+   
+.. |CortxNTFS| image:: ./CortxNTFS/media/e140879936bd0d564070f1e990ea2d6e.png
+   :target: CortxNTFS
+
+.. |go-ds-motr| image:: ./go-ds-motr/go-to-ds.png
+   :target: go-ds-motr
+
 
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
