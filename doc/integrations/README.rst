@@ -38,12 +38,18 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |modzy-ai|     | |milvus|           | |s3filecoin|        | 
 +----------------+--------------------+---------------------+
+| |ftp|          | |docker|           | |cortx-drive|       | 
++----------------+--------------------+---------------------+
+| |NTFS|         |  |freesheet|       |      |go-ds-motr|   | 
++----------------+--------------------+---------------------+
+| |here|         |                    |                     | 
++----------------+--------------------+---------------------+
 
 
-.. |docker| image:: ./cortx-docker/image/docker_integration_architecture.jpeg
+.. |docker| image:: ../images/docker.jpg
    :target: cortx-docker
 
-.. |ftp| image:: ./cortx-ftp/image/ftp_integration_architecture.jpg
+.. |ftp| image:: ../images/ftp.jpg
    :target: cortx-ftp
 
 .. |laravel| image:: https://github.com/Seagate/cortx/blob/main/doc/integrations/laravel/1200px-Laravel.svg.png?raw=true
@@ -185,6 +191,18 @@ Click on any of the images below to know how to integrate CORTX with these other
    :target: cortx-modzy-ai
    
 .. |milvus| image:: ../images/milvus.jpg
-   :target: cortx-milvus-io
+   :target: cortx-milvusio
+   
+.. |NTFS| image:: ../images/ntfs.jpg
+   :target: CortxNTFS
+   
+.. |FreeSheet| image:: ../images/freesheet.jpg
+   :target: freesheet-jupyter
+   
+.. |go-ds-motr| image:: ../images/go-ds-motr.jpg
+   :target: go-ds-motr
+  
+.. |here| image:: ../images/cortx-here.png
+   :target: here_cortx_traffic_data
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies
