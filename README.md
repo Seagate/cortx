@@ -57,7 +57,7 @@ Resources
 ---------
 
 <!-- NOTE!!! This is copied from SUPPORT.md.  If you update it here, update it there as well.) -->
--   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://cortx.link/slack_invite) to interact with community members and gets your questions answered.
+-   Converse with us in our CORTX-Open Source Slack channel [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-1cnj146n6-GA~0cau4VI1Ojs5UNdf99Q) to interact with community members and gets your questions answered.
 -   Join us in [Discussions](https://github.com/Seagate/cortx/discussions) to ask, answer, and discuss topics with your fellow CORTX contributors.
 -   Check out our [Youtube Channel](https://cortx.link/videos).
 -   Browse a ton of architectural documents in our [Confluence Pages](https://seagate-systems.atlassian.net/wiki/spaces/PUB/overview)
