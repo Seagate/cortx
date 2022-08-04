@@ -1,15 +1,13 @@
-from flask import Flask, render_template, request, redirect, send_file
+from flask import Flask, render_template, request, redirect
 from werkzeug.utils import secure_filename
-from werkzeug.datastructures import  FileStorage
-import boto3
 import os
-from s3_functions import list_files, upload_file, show_image
+from s3_functions import upload_file, show_image
 import sys
 
 app = Flask(__name__)
 
-ACCESS_KEY = 'sgiamadmin'
-SECRET_ACCESS_KEY = 'ldapadmin'
+ACCESS_KEY = ''
+SECRET_ACCESS_KEY = ''
 END_POINT_URL = 'http://192.168.1.16:31949' 
 UPLOAD_FOLDER = "uploads"
 BUCKET = "pictures"
@@ -22,7 +20,7 @@ def home():
     return render_template('index.html', contents=contents)
 
 @app.route("/pics")
-def list():
+def list_images():
     contents = show_image(BUCKET)
     return render_template('collection.html', contents=contents)
 
