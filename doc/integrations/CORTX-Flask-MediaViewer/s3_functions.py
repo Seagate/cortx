@@ -1,11 +1,7 @@
 import boto3
-import ipfshttpclient
-#client = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/5001')  # Connects to: /dns/localhost/tcp/5001/http
-#res = client.add('data.txt')
-#print(res)
 
-ACCESS_KEY = 'sgiamadmin'
-SECRET_ACCESS_KEY = 'ldapadmin'
+ACCESS_KEY = ''
+SECRET_ACCESS_KEY = ''
 END_POINT_URL = 'http://192.168.1.16:31949'
 BUCKET = "pictures"
 
@@ -19,9 +15,6 @@ def upload_file(file_name, bucket):
     )
     
     response = s3_client.upload_file(file_name, bucket, object_name)
-    #client = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/5001')
-    #res = client.add(file_name)
-    
     return response
 
 def list_files(bucket):
@@ -34,7 +27,7 @@ def list_files(bucket):
     try:
         for item in s3_client.list_objects(Bucket=bucket)['Contents']:
             contents.append(item)
-    except Exception as e:
+    except Exception:
         pass
     return contents
 
@@ -49,6 +42,6 @@ def show_image(bucket):
         for item in s3_client.list_objects(Bucket=bucket)['Contents']:
             presigned_url = s3_client.generate_presigned_url('get_object', Params = {'Bucket': bucket, 'Key': item['Key']}, ExpiresIn = 100)
             public_urls.append(presigned_url)
-    except Exception as e:
+    except Exception:
         pass
     return public_urls
