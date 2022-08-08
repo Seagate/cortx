@@ -351,7 +351,7 @@ and yield a pair of elements for each call. The first element of the
 pair is a dictionary containing a dialogue act (with required fields
 `text` and `labels` and any other additional field required by your task,
 such as `label_candidates`). In this case,
-we *only* return `text` and `labels`. The second
+we _only_ return `text` and `labels`. The second
 is a boolean flag `new_episode?` which indicates if the current query
 starts a new episode or not.
 
