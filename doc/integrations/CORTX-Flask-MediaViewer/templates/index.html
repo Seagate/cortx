@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <style>
+      body{
+	font-family: Impact;
+      }
+      h1{
+	      margin: auto;
+	      width: 30%;
+	      padding: 10px;
+      }
+      input[type="file"] {
+              display: none;
+      }
+      input{
+	      background-color: #0989C4;
+              border: none; 
+              color: white;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+	      font-weight: 700;
+	      border-radius: 12px;
+      }
+      .custom-file-upload {
+ 	     background-color: #0989C4;
+	     border: 1px solid #ccc;
+    	     display: inline-block;
+    	     padding: 15px 32px;
+	     color:white;
+	     font-weight: 700;
+	     font-size: 16px;
+             border-radius: 12px;
+     	     cursor: pointer; 
+     }
+     .form{
+	     margin: auto;
+             width: 10%;
+             padding: 10px;
+     }
+
+     body {
+  	margin: 0;
+  	font-family: Arial;
+     }
+     .post-list {
+  	display: grid;
+  	grid-template-columns: repeat(3, minmax(200px, 500px));
+  	justify-content: center;
+  	grid-gap: 28px;
+     }
+     .post {
+  	cursor: pointer;
+  	position: relative;
+  	display: block;
+     }
+     .post-image {
+  	margin: 0;
+     }
+     .post-image img {
+  	width: 100%;
+  	vertical-align: top;
+     }
+     .post-overlay {
+  	background: rgba(0,0,0, .4);
+  	position: absolute;
+  	left: 0;
+  	right: 0;
+ 	bottom: 0;
+  	top: 0;
+  	display: none;
+  	align-items: center;
+  	justify-content: center;
+  	color: white;
+  	text-align: center;
+     }
+     .post:hover .post-overlay{
+	display: flex;
+     }
+
+     @media screen and (max-width: 768px) {
+     	.post-list {
+    		grid-gap: 3px;
+     	}
+     }
+     .photos{
+	     background-color:#CFCFCF;
+	     padding-top:30px;
+     }
+    </style>
+    <div class="content">
+      <h1>Think Big Picture by Matthew Carrot</h1>
+    </div>
+      <div class="form"> 
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+          <label for="file-upload" class="custom-file-upload">
+          <i class="fa fa-cloud-upload"></i> Choose File!
+          </label>
+          <input id="file-upload" name="file" type="file"/> 
+	  </br>
+	  <input style="margin-left:25px;margin-top:10px;" type="submit" value="Upload">
+        </form>
+      </div>
+
+    <div class="photos">
+        <div> 
+          <ul>
+	    <section class="post-list">
+            {% for item in contents %}
+	    	<figure class="post-image">
+      			<img class='gallery_img' src={{ item }}>
+    		</figure>
+	    {% endfor %}
+	    </section>
+          </ul>
+        </div>
+    </div>
+  </body>
+</html>
