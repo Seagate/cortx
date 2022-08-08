@@ -1,0 +1,18 @@
+{
+  "status": "fulfilled",
+  "endpointName": "sayHiJon",
+  "requestId": "oCn_vnd3XAcA-6nPRJPtk",
+  "startedTimeStamp": 1656509898972,
+  "data": {
+    "name": "John Doe"
+  },
+  "fulfilledTimeStamp": 1656509899160,
+  "isUninitialized": false,
+  "isLoading": false,
+  "isSuccess": true,
+  "isError": false,
+  "currentData": {
+    "name": "John Doe"
+  },
+  "isFetching": false
+}
