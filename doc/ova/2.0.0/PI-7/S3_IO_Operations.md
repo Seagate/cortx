@@ -61,6 +61,7 @@ aws s3 cp file10Mb s3://mybucket/
 - Validate and download the object from the bucket
 ```bash
 aws s3 ls s3://mybucket/
+aws s3 cp s3://mybucket/ file10Mb-download
 ```
 
 - Remove the object from the bucket
