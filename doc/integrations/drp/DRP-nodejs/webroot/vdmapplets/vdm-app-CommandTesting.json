@@ -1,0 +1,11 @@
+{
+  "appletName": "CommandTesting",
+  "title": "Command Testing",
+  "sizeX": 850,
+  "sizeY": 400,
+  "appletIcon": "fa-book",
+  "showInMenu": true,
+  "appletScript": "vdm-app-CommandTesting.js",
+  "preReqs": [
+  ]
+}

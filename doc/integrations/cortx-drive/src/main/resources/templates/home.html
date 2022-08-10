@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CORTX Drive | Welcome</title>
+<link rel="stylesheet" href="/css/foundation.min.css" type="text/css">
+<link rel="stylesheet" href="/css/app.css" type="text/css">
+</head>
+<body>
+	<!-- begin nav -->
+	<div class="top-bar">
+		<div class="top-bar-left">
+			<ul class="dropdown menu" data-dropdown-menu>
+				<li class="menu-text"><a href="#" th:href="@{/home}">CORTX
+						Drive</a></li>
+
+				<li><a href="#">CORTX</a></li>
+				<li><a href="#">IPFS</a></li>
+			</ul>
+		</div>
+		<div class="top-bar-right">
+			<ul class="menu">
+				<li><input type="search" placeholder="Search"></li>
+				<li><button type="button" class="button">Search</button></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- end nav -->
+
+	<div class="off-canvas-wrapper">
+
+		<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+
+			<div class="off-canvas-content" data-off-canvas-content>
+				<div class="title-bar hide-for-large">
+					<div class="title-bar-left">
+						<button class="menu-icon" type="button" data-open="my-info"></button>
+						<span class="title-bar-title">Mike Mikerson</span>
+					</div>
+				</div>
+				<div class="callout primary">
+					<div class="row column">
+						<h1>Welcome to CORTX Drive!</h1>
+						<p class="lead">Use CORTX Drive to migrate your data to
+							Seagate's amazing Open Source object storage system. You can also
+							share your data to IPFS from CORTX Drive. Go Crazy!!!</p>
+							
+							<p>Powered by</p>
+							<img src="/img/Seagate_logo_black.png" width="275px" height="60px" />
+							
+							<img src="/img/cortx-logo.webp" width="275px" height="60px" />
+							<img src="/img/IPFS_logo.png" width="200px" height="54px" />
+					</div>
+				</div>
+
+				<div th:if="${statusMessage != null}"
+					class="row small-up-2 medium-up-3 large-up-4">
+					<!--  <div th:if="${statusMessage.messageType == 1}" class="callout success">
+					<div th:if="${statusMessage.messageType == 0}" class="callout">
+					<div th:if="${statusMessage.messageType == -1}" class="callout error">
+					-->
+					<div class="callout success">
+						<h5 th:text="${statusMessage.title}">This is a secondary
+							callout</h5>
+						<p th:text="${statusMessage.details}">It has an easy to
+							override visual style, and is appropriately subdued.</p>
+						<!--  <a href="#">Click here to also upload it to IPFS.</a> -->
+					</div>
+				</div>
+
+				<div class="row small-up-2 medium-up-3 large-up-4">
+				
+				<h2>My Files</h2>
+
+					<div class="product-card column"
+						th:each="file : ${cortxFilesMetadata}">
+						<div class="product-card-thumbnail">
+							<a href="#"><img src="/img/placeholder-image.jpg" /></a>
+						</div>
+						<h2 class="product-card-title">
+							<a href="#" th:text="${file['name']}">Product Name</a>
+						</h2>
+						<span class="product-card-desc" th:text="${file['description']}">Product
+							Description</span> <span class="product-card-price"
+							th:text="${file['fileName']}">$9.99</span>
+						<div class="product-card-colors">
+							<a href="#" th:href="@{/copyToIpfs(fileName=${fileName})}"
+								class="button success">send to ipfs</a>
+
+							<button href="#" class="product-card-color-option">
+								<img src="https://placehold.it/30x30" />
+							</button>
+							<button href="#" class="product-card-color-option">
+								<img src="/img/download-512.webp" width="32px" height="32px" />
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="row small-up-2 medium-up-3 large-up-4">
+
+					<div class="product-card column" th:each="fileName : ${cortxFiles}">
+						<div class="product-card-thumbnail">
+							<a href="#"><img src="/img/placeholder-image.jpg" /></a>
+						</div>
+						<h2 class="product-card-title">
+							<a href="#" th:text="${fileName}">Product Name</a>
+						</h2>
+						
+						<div class="product-card-colors">
+							<a href="#" th:href="@{/copyToIpfs(fileName=${fileName})}"
+								class="button success">send to ipfs</a>
+					
+							<button href="#">
+								<img src="/img/download-512.webp" width="64px" height="64px" />
+							</button>
+						</div>
+					</div>
+
+				</div>
+
+                <!-- 
+				<hr />
+
+				<div class="row small-up-2 medium-up-3 large-up-4">
+
+					<div th:each="fileName : ${cortxFiles}" class="column">
+						<img class="thumbnail" src="/img/placeholder-image.jpg">
+						<h5>
+							<span th:text="${fileName}">My Site</span> <span><a
+								href="#" th:href="@{/copyToIpfs(fileName=${fileName})}">&nbsp;&nbsp;&nbsp;<img
+									src="/img/copy-file.webp" width="32px" height="32px"
+									alt="copy to IPFS" /></a></span>
+						</h5>
+						 
+						<div class="row">
+							<div class="columns flex"><h5 th:text="${fileName}">My Site</h5></div>
+							<div class="columns flex"><a href="#" th:href="@{/copyToIpfs/(${fileName})}">Copy to IPFS</a></div>
+						</div>
+						 
+					</div>
+
+					<div class="column">
+						<img class="thumbnail" src="/img/placeholder-image.jpg">
+						<h5>My Site</h5>
+					</div>
+					<div class="column">
+						<img class="thumbnail" src="/img/placeholder-image.jpg">
+						<h5>My Site</h5>
+					</div>
+
+				</div>
+				 -->
+
+				<hr>
+
+				<div class="row">
+					<div class="medium-6 columns">
+						<h3>Add a file to CORTX</h3>
+						<p>Use the form to upload and store your files on CORTX. Upload your photos, videos, music or documents.</p>
+						<ul class="menu">
+							<li><a href="#">Dribbble</a></li>
+							<li><a href="#">Facebook</a></li>
+							<li><a href="#">Yo</a></li>
+						</ul>
+					</div>
+					<div class="medium-6 columns">
+						<form th:object="${uploadFileData}" th:action="@{/uploadFile}"
+							method="POST" enctype="multipart/form-data">
+							<label>Name <input th:field="*{name}" type="text"
+								placeholder="Name">
+							</label> <label> Description <textarea th:field="*{description}"
+									placeholder="Description"></textarea>
+							</label> <label>File: </label><input type="file" name="file" /> <input
+								type="submit" class="button expanded" value="Upload File">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/vendor/jquery.js"></script>
+	<script src="/js/vendor/foundation.js"></script>
+	<script>
+		$(document).foundation();
+	</script>
+</body>
+</html>
+
+
+

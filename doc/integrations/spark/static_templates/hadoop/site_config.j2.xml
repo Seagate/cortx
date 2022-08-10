@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<properties>
+    <hadoop.version>{{hadoop_version}}</hadoop.version>
+
+    <property>
+        <name>fs.defaultFS</name>
+        <value>s3a://{{s3_base_bucket_name}}</value>
+        <description>
+            Starting bucket to use.
+            Needs to be prefixed with s3a://
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.endpoint</name>
+        <description>
+            DNS or IP address of your CORTX s3 endpoint
+        </description>
+        <value>{{s3_endpoint}}</value>
+    </property>
+
+    <property>
+        <name>fs.s3a.connection.ssl.enabled</name>
+        <value>false</value>
+        <description>
+            Enables or disables SSL connections to S3.
+            Unless you have created a self signed certificate and added your authority to ca-certificates
+            https://askubuntu.com/questions/645818/how-to-install-certificates-for-command-line
+            or added a certificate for CORTX from a trusted certificate authority then keep it as false.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.path.style.access</name>
+        <value>true</value>
+        <description>
+            Enables path style access for CORTX.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.aws.credentials.provider</name>
+        <value>
+            com.amazonaws.auth.EnvironmentVariableCredentialsProvider
+        </value>
+        <description>
+            Pulls your CORTX credentials from your hadoop-env.sh file.
+            Variable names are AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.acl.default</name>
+        <description>Set a canned ACL for newly created and copied objects. Value may be Private,
+            PublicRead, PublicReadWrite, AuthenticatedRead, LogDeliveryWrite, BucketOwnerRead,
+            or BucketOwnerFullControl.
+        </description>
+        <value>PublicReadWrite</value>
+    </property>
+
+    <property>
+        <name>fs.s3a.connection.establish.timeout</name>
+        <value>5000</value>
+        <description>Socket connection setup timeout in milliseconds.</description>
+    </property>
+
+    <property>
+        <name>fs.s3a.connection.timeout</name>
+        <value>200000</value>
+        <description>Socket connection timeout in milliseconds.</description>
+    </property>
+
+    <property>
+        <name>fs.s3a.connection.maximum</name>
+        <value>15</value>
+        <description>Controls the maximum number of simultaneous connections to S3.</description>
+    </property>
+
+    <property>
+        <name>fs.s3a.attempts.maximum</name>
+        <value>5</value>
+        <description>How many times we should retry commands on transient errors.</description>
+    </property>
+
+    <property>
+        <name>fs.s3a.paging.maximum</name>
+        <value>500</value>
+        <description>How many keys to request from S3 when doing
+            directory listings at a time.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.threads.max</name>
+        <value>10</value>
+        <description>Maximum number of concurrent active (part)uploads,
+            which each use a thread from the threadpool.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.socket.send.buffer</name>
+        <value>8192</value>
+        <description>Socket send buffer hint to amazon connector. Represented in bytes.</description>
+    </property>
+
+    <property>
+        <name>fs.s3a.socket.recv.buffer</name>
+        <value>8192</value>
+        <description>Socket receive buffer hint to amazon connector. Represented in bytes.</description>
+    </property>
+
+    <property>
+        <name>fs.s3a.threads.keepalivetime</name>
+        <value>60</value>
+        <description>Number of seconds a thread can be idle before being
+            terminated.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.max.total.tasks</name>
+        <value>20</value>
+        <description>Number of (part)uploads allowed to the queue before
+            blocking additional uploads.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.multipart.size</name>
+        <value>64M</value>
+        <description>How big (in bytes) to split upload or copy operations up into.
+            A suffix from the set {K,M,G,T,P} may be used to scale the numeric value.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.multipart.threshold</name>
+        <value>128m</value>
+        <description>How big (in bytes) to split upload or copy operations up into.
+            This also controls the partition size in renamed files, as rename() involves
+            copying the source file(s).
+            A suffix from the set {K,M,G,T,P} may be used to scale the numeric value.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.multiobjectdelete.enable</name>
+        <value>false</value>
+        <description>When enabled, multiple single-object delete requests are replaced by
+            a single 'delete multiple objects'-request, reducing the number of requests.
+            Beware: legacy S3-compatible object stores might not support this request.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.multipart.purge</name>
+        <value>false</value>
+        <description>True if you want to purge existing multipart uploads that may not have been
+            completed/aborted correctly
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.multipart.purge.age</name>
+        <value>86400</value>
+        <description>Minimum age in seconds of multipart uploads to purge</description>
+    </property>
+
+    <property>
+        <name>fs.s3a.signing-algorithm</name>
+        <description>Override the default signing algorithm so legacy
+            implementations can still be used
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.server-side-encryption-algorithm</name>
+        <description>Specify a server-side encryption algorithm for s3a: file system.
+            Unset by default. It supports the following values: 'AES256' (for SSE-S3), 'SSE-KMS'
+            and 'SSE-C'
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.server-side-encryption.key</name>
+        <description>Specific encryption key to use if fs.s3a.server-side-encryption-algorithm
+            has been set to 'SSE-KMS' or 'SSE-C'. In the case of SSE-C, the value of this property
+            should be the Base64 encoded key. If you are using SSE-KMS and leave this property empty,
+            you'll be using your default's S3 KMS key, otherwise you should set this property to
+            the specific KMS key id.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.buffer.dir</name>
+        <value>${hadoop.tmp.dir}/s3a</value>
+        <description>Comma separated list of directories that will be used to buffer file
+            uploads to.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.block.size</name>
+        <value>32M</value>
+        <description>Block size to use when reading files using s3a: file system.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.impl</name>
+        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
+        <description>The implementation class of the S3A Filesystem</description>
+    </property>
+
+    <property>
+        <name>fs.AbstractFileSystem.s3a.impl</name>
+        <value>org.apache.hadoop.fs.s3a.S3A</value>
+        <description>The implementation class of the S3A AbstractFileSystem.</description>
+    </property>
+
+    <property>
+        <name>fs.s3a.readahead.range</name>
+        <value>64K</value>
+        <description>Bytes to read ahead during a seek() before closing and
+            re-opening the S3 HTTP connection. This option will be overridden if
+            any call to setReadahead() is made to an open stream.
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.list.version</name>
+        <value>2</value>
+        <description>Select which version of the S3 SDK's List Objects API to use.
+            Currently support 2 (default) and 1 (older API).
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.connection.request.timeout</name>
+        <value>60000</value>
+        <description>
+            Time out on HTTP requests to the AWS service; 0 means no timeout.
+            Measured in seconds; the usual time suffixes are all supported
+
+            Important: this is the maximum duration of any AWS service call,
+            including upload and copy operations. If non-zero, it must be larger
+            than the time to upload multi-megabyte blocks to S3 from the client,
+            and to rename many-GB files. Use with care.
+
+            Values that are larger than Integer.MAX_VALUE milliseconds are
+            converged to Integer.MAX_VALUE milliseconds
+        </description>
+    </property>
+
+    <property>
+        <name>fs.s3a.bucket.probe</name>
+        <value>2</value>
+        <description>
+            The value can be 0, 1 or 2 (default).
+            When set to 0, bucket existence checks won't be done
+            during initialization thus making it faster.
+            Though it should be noted that when the bucket is not available in S3,
+            or if fs.s3a.endpoint points to the wrong instance of a private S3 store
+            consecutive calls like listing, read, write etc. will fail with
+            an UnknownStoreException.
+            When set to 1, the bucket existence check will be done using the
+            V1 API of the S3 protocol which doesn't verify the client's permissions
+            to list or read data in the bucket.
+            When set to 2, the bucket existence check will be done using the
+            V2 API of the S3 protocol which does verify that the
+            client has permission to read the bucket.
+        </description>
+    </property>
+
+    <property>
+        <name>mapreduce.outputcommitter.factory.scheme.s3a</name>
+        <value>org.apache.hadoop.fs.s3a.commit.S3ACommitterFactory</value>
+        <description>
+            The committer factory to use when writing data to S3A filesystems.
+        </description>
+    </property>
+
+
+</properties>
+
+

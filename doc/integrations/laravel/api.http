@@ -1,0 +1,44 @@
+@baseUrl = http://localhost/api
+@boundary = WebKitFormBoundary1Cg4g2Dgv5n76Wa
+@file = helloworld.txt
+
+### Create object at root directory
+POST {{baseUrl}}/ HTTP/1.1
+Content-Type: multipart/form-data; boundary=----{{boundary}}
+
+------{{boundary}}
+Content-Disposition: form-data; name="file"; filename="{{file}}"
+Content-Type: text/plain
+
+< ./{{file}}
+------{{boundary}}
+
+### Create object at a certain directory
+POST {{baseUrl}}/hello HTTP/1.1
+Content-Type: multipart/form-data; boundary=----{{boundary}}
+
+------{{boundary}}
+Content-Disposition: form-data; name="file"; filename="{{file}}"
+Content-Type: text/plain
+
+< ./{{file}}
+------{{boundary}}
+
+### Read object at a certain directory
+GET {{baseUrl}}/hello/{{file}} HTTP/1.1
+
+### List object at a certain directory
+GET {{baseUrl}}/files/hello HTTP/1.1
+
+### List object recurringly in all directory
+GET {{baseUrl}}/all-files/ HTTP/1.1
+
+# http://localhost/api/download/helloworld.txt
+### Download object at a certain directory, for this api, use the web browser to download
+# GET {{baseUrl}}/download/hello/{{file}} HTTP/1.1
+
+### Delete object at a certain directory
+Delete {{baseUrl}}/hello/{{file}} HTTP/1.1
+
+### Delete object at a certain directory
+Delete {{baseUrl}}/{{file}} HTTP/1.1

@@ -1,0 +1,32 @@
+- hosts: spark-hadoop
+  tasks:
+    - include: ../roles/hadoop.yml
+    - include: ../roles/spark.yml
+  vars:
+    ### Change these
+    s3_endpoint: 'ADD_HERE'
+    s3_access_key: 'ADD_HERE'
+    s3_secret_key: 'ADD_HERE'
+    s3_base_bucket_name: 'ADD_HERE'
+
+    ## Change these if you know what you're doing
+    hadoop_dir: '{{ansible_env.HOME}}/hadoop'
+    spark_dir: '{{ansible_env.HOME}}/spark'
+    hadoop_version: '3.2.0'
+    spark_version: 'spark-3.1.1/spark-3.1.1-bin-hadoop3.2'
+    bundled_aws_sdk: '1.11.375' # can infer this from hadoop install (hadoop_dir/share/hadoop/tools/lib)
+
+    ##Probably best not to change these
+    spark_url: 'https://apache.mirror.digitalpacific.com.au/spark/{{spark_version}}.tgz'
+    hadoop_url: 'https://archive.apache.org/dist/hadoop/common/hadoop-{{hadoop_version}}/hadoop-{{hadoop_version}}.tar.gz'
+    templates_dir: '../static_templates'
+  # required for this playbook to function
+  environment:
+    PATH: '{{ ansible_env.PATH }}:{{hadoop_dir}}/bin:{{hadoop_dir}}/sbin'
+    HADOOP_MAPRED_HOME: '{{hadoop_dir}}'
+    HADOOP_COMMON_HOME: '{{hadoop_dir}}'
+    HADOOP_HDFS_HOME: '{{hadoop_dir}}'
+    YARN_HOME: '{{hadoop_dir}}'
+    JAVA_HOME: '/usr/lib/jvm/java-8-openjdk-amd64/'
+    PDSH_RCMD_TYPE: 'ssh'
+    HADOOP_CLASSPATH: '{{hadoop_dir}}/share/hadoop/tools/lib/*'

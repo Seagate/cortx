@@ -54,10 +54,13 @@ class Goal:
     self.end_value = end_value
 
 
-def goal_graph(df,title,xlim,goals,columns,ylim=None):
+def goal_graph(df,title,xlim,goals,columns,ylim=None,bar=False):
   colors=default_colors
   # drop nan values to make a better plot
-  ax = df[columns].dropna().plot(title=title,xlim=xlim,color=colors,lw=4)
+  if bar is False:
+    ax = df[columns].dropna().plot(title=title,xlim=xlim,color=colors,lw=4)
+  else:
+    ax = df[columns].dropna().plot.bar(title=title,xlim=xlim,color=colors)
   actual_xlim=[ax.get_xlim()[0],ax.get_xlim()[-1]]
   max_y=0
   for c in columns:
@@ -80,6 +83,7 @@ def goal_graph(df,title,xlim,goals,columns,ylim=None):
     linestyle="dotted"
     color=scale_lightness(colors[idx],1.5) # lighten the color for the goal line
     plt.plot(actual_xlim, yvalues,label=None, color=color, linestyle=linestyle,lw=4)
+
 
   if ylim is None:
     ylim=(0,max_y*1.1)  # find the max y-value and pad the graph by 10% over that

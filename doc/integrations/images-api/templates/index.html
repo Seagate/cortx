@@ -1,0 +1,68 @@
+{% extends "layout.html" %} {% block content %}
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Fast, Secure and friendly integration.</h1>
+      <p class="lead text-muted">
+        This api will let you interact with images stored on cortex server.
+        <br />
+        The api will let you fetch and resize images to get the most out of your
+        images
+      </p>
+      <a
+        href="/api/docs"
+        class="btn btn-lg btn-secondary fw-bold border-white bg-gray"
+        >API Documentation</a
+      >
+    </div>
+  </div>
+</section>
+
+<div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <hr />
+  <h1>Playground</h1>
+  <p class="lead">pick width and height and resize the image.</p>
+  <form class="container" id="form">
+    <div class="row">
+      <div class="col-4">
+        <label for="" class="form-label">width</label>
+        <input
+          type="number"
+          class="form-control"
+          id="width"
+          placeholder="300"
+        />
+      </div>
+      <div class="col-4">
+        <label for="" class="form-label">height</label>
+        <input
+          type="number"
+          class="form-control"
+          id="height"
+          placeholder="300"
+        />
+      </div>
+      <div class="col-4" style="line-height: 6">
+        <input type="submit" class="btn btn-primary" value="Resize" />
+      </div>
+    </div>
+  </form>
+
+  <div class="container">
+    <img id="image" src="http://localhost:5000/images/102x120/bg.jpg" />
+  </div>
+</div>
+
+<script>
+  document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    const h = document.getElementById("height").value;
+    const w = document.getElementById("width").value;
+
+    document.getElementById(
+      "image"
+    ).src = `http://localhost:5000/images/${w}x${h}/bg.jpg`;
+  });
+</script>
+{% endblock %}

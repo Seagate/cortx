@@ -78,8 +78,15 @@ def get_details(url,stx):
   # I was thinking about doing a regex and I actually had a pattern:  m = re.match('https:\/\/github.com\/Seagate\/([a-z-0-9]+)\/(pull|commit)\/([a-z0-9]+)', url)
   # But since we want to avoid the comment lines, I think it's probably just easier to do it with split
   msg = ''
-  if 'slack' or '#' in url:
+  Type = None
+  lines_added = 0
+  lines_deleted = 0
+  if 'slack' in url:
     points = POINTS_COMMENTS
+    Type = 'slack'
+  elif '#' in url:
+    points = POINTS_COMMENTS
+    Type = 'comment'
   elif 'starred' in url:
     points = POINTS_STAR
   elif 'fork' in url:
@@ -95,6 +102,7 @@ def get_details(url,stx):
       f = pr.changed_files
       points = get_score(action,a+d)
       msg = ( "%d additions, %d deletions, %d files changed" % (a,d,f))
+      Type = 'pull'
     elif action == 'commit':
       repo = stx.get_repo(tokens[-3])
       co = repo.get_commit(tokens[-1])
@@ -102,11 +110,15 @@ def get_details(url,stx):
       d = co.stats.deletions
       points = get_score(action,a+d)
       msg = ( "%d additions, %d deletions" % (a,d))
+      Type = 'commit'
+      lines_added = a
+      lines_deleted = d
     elif action == 'issues':
       points = get_score(action,0)  # this should be an issue
+      Type = 'issue'
     else:
       raise Exception("unknown contribution; can't score: %s" % (url))
-  return (points,msg) 
+  return (points,msg,Type,lines_added,lines_deleted) 
 
 def get_activities(logins,company,people):
   activity = cortx_community.CortxActivity()
@@ -165,7 +177,12 @@ def get_info(login,people):
     Company = None
   return(email,Type,Company)
 
-def print_activities(filtered_activities,logins,details,zero,people,since,until):
+def print_activities(filtered_activities,logins,details,zero,people,since,until,quiet):
+  def increment_value(D,K,V=1):
+    if K not in D:
+      D[K] = 0
+    D[K] += V
+
   if details:
     gh = Github(os.environ.get('GH_OATH'))
     stx = gh.get_organization('Seagate')
@@ -187,13 +204,23 @@ def print_activities(filtered_activities,logins,details,zero,people,since,until)
     if len(actions) > 0 or zero:
       print("%d actions for %s [email %s, company %s, Type %s] %s" % (len(actions),login, email, Company, Type, daterange))
       total_actions += len(actions)
+    summary = { 'login' : k } 
     for d,u in sorted(actions.items()):
       if details:
-        (points,Details) = get_details(u,stx)
+        (points,Details,Type,lines_added,lines_deleted) = get_details(u,stx)
         total_score += points
-      print("\t-- %s %s %s %s" % (login,d,u, Details if details else ''))
-    if len(actions) > 0 and details:
+        if Type:
+          increment_value(summary,Type)
+          if lines_added > 0:
+            increment_value(summary,'lines_added',lines_added)
+          if lines_deleted > 0:
+            increment_value(summary,'lines_deleted',lines_deleted)
+      if not quiet:
+        print("\t-- %s ; %s ; %s %s" % (login,d,u, Details if details else ''))
+    if (len(actions) > 0 and details): 
       print("\t%4.1f POINTS for %s" % (total_score,login))
+    #if details:
+    #  print(summary)
       
   print("SUMMARY: %d total observed actions from %s %s" % (total_actions, logins, daterange))
 
@@ -209,6 +236,8 @@ def main():
   parser.add_argument('-c', '--company', action='store_true', help="Instead of looking up an individual, look up all folks from a particular company")
   parser.add_argument('-l', '--limit', type=int, help="Only show actions if gte to limit")
   parser.add_argument('-z', '--zero', action='store_true', help="Show folks even if they have no actions")
+  parser.add_argument('-q', '--quiet', action='store_true', help="Don't print info for each action")
+  parser.add_argument('-W', '--weekly', action='store_true', help="Get every week range between since and until")
   args = parser.parse_args()
 
   people=cortx_community.CortxCommunity()
@@ -223,9 +252,16 @@ def main():
   if args.last_month:
     args.since = datetime.datetime.today() - datetime.timedelta(days=30)
 
-  filtered_activities=filter_activities(activities=activities,since=args.since,until=args.until,limit=args.limit)
+  if args.weekly:
+    delta = datetime.timedelta(7)
+    while args.since <= args.until:
+      until = args.since + delta
+      filtered_activities=filter_activities(activities=activities,since=args.since,until=until,limit=args.limit)
+      print_activities(filtered_activities=filtered_activities,logins=logins,details=args.details,zero=args.zero,people=people,since=args.since,until=args.until,quiet=args.quiet)
+      args.since += delta
 
-  print_activities(filtered_activities=filtered_activities,logins=logins,details=args.details,zero=args.zero,people=people,since=args.since,until=args.until)
+  filtered_activities=filter_activities(activities=activities,since=args.since,until=args.until,limit=args.limit)
+  print_activities(filtered_activities=filtered_activities,logins=logins,details=args.details,zero=args.zero,people=people,since=args.since,until=args.until,quiet=args.quiet)
 
 if __name__ == "__main__":
     main()

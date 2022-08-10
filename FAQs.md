@@ -39,3 +39,22 @@ Apart from Seagate - CEA, Juelich, ETH, Appentra, ECMWF and HPE are the key play
 
 Please help us populate this FAQ by letting us know what you most want to know about CORTX!  Feel free to ask questions in any of our [communications channels](SUPPORT.md) and we can all populate this FAQ as we learned what is actually frequently asked.
 
+
+**How do I make a object in CORTX publicly accessible using a URL?**
+
+To do this you will need to change the permissions on the object. The easiest way to do this is using [cyberduck](https://cyberduck.io/).
+
+In cyberduck you can select the object right click and then click "Share". This will set the right permissions on the object and give you a link to the object that you can share.
+
+![](https://user-images.githubusercontent.com/950172/127746106-a6f2d377-3037-4bc8-a0a7-fb5cdf33a0f6.png)
+
+
+**Can we use CORTX Motr as the underlying datastore for Filecoin?**
+
+Yes.  Filecoin stores data via an abstraction layer called “go-datastore”. There are several existing go-datastore implementations , which are based on different key value stores (KVS) including Flatfs, Badger, LevelDB, Amazon S3, etc. 
+
+CORTX Motr has a built-in KVS called Motr Index, which can be exactly used as the underlying KVS for go-datastore.
+
+[Go-ds-motr module](https://github.com/mengwanguc/go-ds-motr) is an implementation of go-datastore based on CORTX motr. Go-ds-motr implements all the necessary functions required for Filecoin. More information can be found [here](doc/PDFs/Meng_Wang_Poster_Presentation.pdf).
+
+

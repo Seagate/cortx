@@ -18,6 +18,8 @@ mail_subj_prefix="Weekly CORTX Community Report"
 #mail_subj_prefix="TESTING COMMUNITY METRICS" # use this for testing
 Email="john.bent@seagate.com"
 server=gtx201.nrm.minn.seagate.com
+summary=$(mktemp /tmp/scrape.XXXXXXXXX)
+touch $summary
 
 # start with a git pull in case things were updated elsewhere
 git pull
@@ -38,7 +40,9 @@ function run_command {
   echo "Command $Command , subj $subject , email $Email"
   tfile=$(mktemp /tmp/cortx_community.XXXXXXXXX.txt)
   $Command &> $tfile
+  ret=$?
   mail -s "$subject" -r $Email $Email < $tfile
+  echo "RET $ret from $Command" >> $summary
 }
 
 function group_activity {
@@ -71,21 +75,31 @@ if [ $scrape == 1 ]; then
     run_command "./scrape_metrics.py -t $p" "$mail_scrape_prefix - $p Github" $Email
   done
 
-  ./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $Email $Email
+  mail -s "$mail_scrape_prefix - Summary" -r $Email $Email < $summary
 fi
 
 if [ $report == 1 ]; then 
   echo "Doing report"
   ts=`date +%Y-%m-%d`
 
+  # create and send the partnership report
+  echo "Creating partnership review"
+  partnership_report=CORTX_Community_Partnerships_Review
+  ./mk_community_partnership_report.py 
+  ts=`date +%Y-%m-%d`
+  scp ${partnership_report}.pdf 535110@$server:/home/535110/public_html/latest
+  scp ${partnership_report}.pdf 535110@$server:/home/535110/public_html/community_partnerships/$partnership_report.$ts.pdf
+  echo "CORTX Partnership Review attached" | mail -s "CORTX Partnerships - Please Update Status (see attached)" -r $Email -a $partnership_report.pdf $Email 
+
   # mail activity reports
   for group in 'EU R&D' Innersource External Unknown
   do
     group_activity "$group" "$group"
   done
-  group_activity 'VenkyOS,johnbent,justinzw,TechWriter-Mayur,hessio,Saumya-Sunder,novium258' 'Open Source Team'
+  group_activity 'johnbent,justinzw,r-wambui,hessio,swatid-seagate,novium258,mukul-seagate11,mmukul' 'Open Source Team'
+  group_activity 'rajkumarpatel2602,shraddhaghatol,priyanka25081999,huanghua78,mbcortx,trshaffer' 'ADG'
 
-  jupyter_args="--ExecutePreprocessor.timeout=180 --output-dir=/tmp --no-input"
+  jupyter_args="--ExecutePreprocessor.timeout=1800 --output-dir=/tmp --no-input"
 
   /bin/rm -rf /tmp/CORTX_Metrics_* # clean up any old crap
 
@@ -101,10 +115,16 @@ if [ $report == 1 ]; then
   jupyter nbconvert --execute --to html $jupyter_args --output $bulk_report $bulk_report.ipynb
   scp_report $bulk_report bulk_graphs
 
+  health_report=Repo_Health
+  jupyter nbconvert --execute --to html $jupyter_args --output $health_report $health_report.ipynb
+  python3 ./html_to_pdf.py
+  scp_report $health_report health_reports
+  echo "CORTX Repository Health Report Attached" | mail -s "CORTX Repository Health Report" -r $Email -a cache/repo_health.pdf $Email 
+
   compare_report=CORTX_Metrics_Compare_Projects
   jupyter nbconvert --execute --to html $jupyter_args --output $compare_report $compare_report.ipynb
   scp_report $compare_report compare_projects
-
+  
   # mail the metrics as a CSV 
   tfile="/tmp/cortx_community_stats.$ts.csv"
   tfile2="/tmp/cortx_community_stats.$ts.txt"
@@ -114,5 +134,8 @@ if [ $report == 1 ]; then
   mail -s "$mail_subj_prefix - Report Available Plus Summary plus Attached CSV" -r $Email -a $tfile $Email < $tfile2
 
 fi
+
+./commit_pickles.sh | mail -s "Weekly Pickle Commit for CORTX Community" -r $Email $Email
+
 
 exit

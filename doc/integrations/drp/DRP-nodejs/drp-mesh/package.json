@@ -1,0 +1,34 @@
+{
+  "name": "drp-mesh",
+  "version": "1.0.1",
+  "description": "DRP Mesh",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adhdtech/DRP.git"
+  },
+  "keywords": [
+    "drp",
+    "mesh",
+    "service",
+    "registry",
+    "provider",
+    "broker"
+  ],
+  "author": "Pete Brown <jpbrown@adhdtech.com>",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "*",
+    "body-parser": "*",
+    "express": "*",
+    "express-ws": "*",
+    "cors": "*",
+    "ping": "*",
+    "tcp-ping": "*",
+    "uuid": "^8.0.0",
+    "swagger-ui-express": "^4.1.4"
+  }
+}

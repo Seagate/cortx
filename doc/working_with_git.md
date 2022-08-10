@@ -139,7 +139,7 @@ You can make changes to the code and save them in your files.
 
    :page_with_curl:**Note:** To resolve conflicts, follow the troubleshooting steps mentioned in git error messages.
 
-2. You'll be redirected to GitHib remote.
+2. You'll be redirected to GitHub remote.
 3. Select the relevant repository branch from the *Branches/Tags* drop-down list.
 4. Click **Create pull request** to create the pull request.
 5. Add reviewers to your pull request to review and provide feedback on your changes.

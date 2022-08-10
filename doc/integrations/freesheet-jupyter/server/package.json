@@ -1,0 +1,27 @@
+{
+  "name": "freesheet-server",
+  "version": "1.0.0",
+  "description": "free-sheet backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "create": "node createBucket.js",
+    "objects": "node listObjects.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cortx",
+    "filecoin",
+    "ipfs",
+    "nodejs"
+  ],
+  "author": "Chris Buonocore",
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/cors": "^7.0.0",
+    "@fastify/multipart": "^6.0.0",
+    "aws-sdk": "^2.1145.0",
+    "fastify": "^3.29.0"
+  }
+}

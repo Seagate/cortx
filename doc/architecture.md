@@ -2,9 +2,9 @@
 
 * [Learn more about the CORTX Metadata Backend](/doc/be/BE_TheMetadataBackend.md)
 * [Lots of architectural documents about the motr core](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-design-doc-list.rst)
-* <a href="https://github.com/Saumya-Sunder/cortx/blob/main/doc/PDFs/CORTX_Technical_Overview.pdf">CORTX Technical Overview</a>
-* [Brainshark about CORTX Architecture](https://www.brainshark.com/SeagateCommunications/vu?pi=zGpzSLLI8zROgkz0)
+* <a href="https://github.com/Seagate/cortx/blob/main/doc/PDFs/CORTX_Technical_Overview.pdf">CORTX Technical Overview</a>
 * [Motr in Prose](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-in-prose.md)
+* [YouTube video about CORTX Architecture](https://www.youtube.com/watch?v=oyBYayT7qhc&list=PLOLUar3XSz2P_4MxY4z0ut9-dMGDnpFPp&index=2)
 * [SNS (io, repair, rebalance)](/doc/be/sns-io-repair-rebalance.md)
 * [CORTX S3 IAM Overview](/doc/be/CORTX_S3_IAM_Overview.rst)
 * [CORTX Core Architecture Overview](https://github.com/Seagate/cortx-motr/blob/main/doc/CORTX_MOTR_ARCHITECTURE.rst)
