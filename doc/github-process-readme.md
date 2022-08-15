@@ -4,7 +4,7 @@
 
 A) Generate new ssh keys 
 ```sh
-$ ssh-keygen -o -t rsa -b 4096 -C "<seagate-email-address>"  
+ssh-keygen -o -t rsa -b 4096 -C "<seagate-email-address>"  
 ```
 B) Update github settings with this public ssh key
   - Get id_rsa.pub key (default location: /root/.ssh/id_rsa.pub) 
@@ -36,11 +36,13 @@ D) Work on feature branch
 
 2)  update your code change and add it to git:  
                            
-             vim README.md 
+```
+vim README.md 
 
-             git diff README.md 
+git diff README.md 
 
-             git add README.md 
+git add README.md 
+```
 
 3)  commit your code change: `git commit –m “<JIRA ID>:S3:<info about change>” `
 
