@@ -1,1 +1,4 @@
 CODE_OF_CONDUCT.md
+doc/integrations/**
+!doc/integrations/suggestions.md
+!doc/integrations/!doc/integrations/suggestions.md
