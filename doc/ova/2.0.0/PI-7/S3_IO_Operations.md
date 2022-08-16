@@ -17,7 +17,7 @@ pip3 install awscli-plugin-endpoint
 
 ## Procedure
 
-- Run the following commands:
+- Run the following commands to get the port required to access your s3 server:
 ```bash
 kubectl get pods -o wide -n cortx
 kubectl get svc cortx-server-loadbal-svc-cortx-ova-rgw -n cortx |grep NodePort
