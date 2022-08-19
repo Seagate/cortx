@@ -42,7 +42,7 @@ Click on any of the images below to know how to integrate CORTX with these other
 +----------------+--------------------+---------------------+
 | |NTFS|         |  |freesheet|       |      |go-ds-motr|   | 
 +----------------+--------------------+---------------------+
-| |here|         |                    |                     | 
+| |here|         |   |flaskmedia|     |  |terraform|        |
 +----------------+--------------------+---------------------+
 
 
@@ -204,5 +204,11 @@ Click on any of the images below to know how to integrate CORTX with these other
   
 .. |here| image:: ../images/cortx-here.png
    :target: here_cortx_traffic_data
+ 
+.. |terraform| image:: ../images/terraform.jpg
+   :target: cortx-terraform
+
+.. |flaskmedia| image:: ../images/flask.jpg
+   :target: CORTX-Flask-MediaViewer
 
 Looking to make your own integration?  Click `here <suggestions.md>`_ for instructions and a list of suggested techologies

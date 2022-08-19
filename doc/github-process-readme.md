@@ -17,36 +17,36 @@ B) Update github settings with this public ssh key
 
 A) Configure git 
 ```sh
-$ git config --global user.name ‘Your Name’ 
+git config --global user.name ‘Your Name’ 
 
-$ git config --global user.email ‘Your.Name@seagate.com’ 
+git config --global user.email ‘Your.Name@seagate.com’ 
 
-$ git config --global color.ui auto 
+git config --global color.ui auto 
 ```
 
 B) Clone s3server  
 
-a) using ssh: `$ git clone git@github.com:Seagate/cortx-s3server.git` 
+a) using ssh: `git clone git@github.com:Seagate/cortx-s3server.git` 
 
-C) Update the source code:  `$ git submodule-update --init  --recursive` 
+C) Update the source code:  `git submodule-update --init  --recursive` 
 
 D) Work on feature branch  
 
-1)  create new branch: `$ git checkout –b dev/SS/test1` 
+1)  create new branch: `git checkout –b dev/SS/test1` 
 
 2)  update your code change and add it to git:  
                            
-             $ vim README.md 
+             vim README.md 
 
-             $ git diff README.md 
+             git diff README.md 
 
-             $ git add README.md 
+             git add README.md 
 
-3)  commit your code change: `$ git commit –m “<JIRA ID>:S3:<info about change>” `
+3)  commit your code change: `git commit –m “<JIRA ID>:S3:<info about change>” `
 
-4)  check git log: `$ git log –2 (to see last 2 commits)` 
+4)  check git log: `git log –2 (to see last 2 commits)` 
 
-5)  push your code change:  `$ git push origin dev/SS/test1` (output shows pull request url)
+5)  push your code change:  `git push origin dev/SS/test1` (output shows pull request url)
 
 E)  Create pull request for feature branch 
 
@@ -80,21 +80,21 @@ F) Rebase your changes:
 
 To rebase your local feature branch off of the latest version of main: 
 
-`$ git checkout main`                  /* ensure you are on the main branch 
+`git checkout main`                  /* ensure you are on the main branch 
 
-`$ git pull`                                          /* pull the latest from the remote 
+`git pull`                                          /* pull the latest from the remote 
 
-`$ git submodule-update --init  --recursive`   /* pull the latest from the remote  
+`git submodule-update --init  --recursive`   /* pull the latest from the remote  
 
-`$ git checkout dev/SS/test1`       /* checkout the feature branch 
+`git checkout dev/SS/test1`       /* checkout the feature branch 
 
-`$ git pull`                                          /* pull the latest from the remote 
+`git pull`                                          /* pull the latest from the remote 
 
-`$ git submodule-update --init  --recursive`   /* pull the latest from the remote 
+`git submodule-update --init  --recursive`   /* pull the latest from the remote 
 
-`$ git rebase main`                      /* rebase on the main branch 
+`git rebase main`                      /* rebase on the main branch 
 
-`$ git push`                                       /* force update the remote 
+`git push`                                       /* force update the remote 
 
  
 
