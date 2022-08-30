@@ -1,3 +1,5 @@
+#! /bin/bash
+
 set -euE
 export LOG_FILE="${LOG_FILE:-/var/log/seagate/provisioner/va_bootstrap.log}"
 mkdir -p $(dirname "${LOG_FILE}")
