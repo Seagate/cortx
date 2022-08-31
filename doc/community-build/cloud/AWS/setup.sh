@@ -30,8 +30,8 @@ for nic in eth1 eth2
 do
    MAC=$(ifconfig $nic | grep -o -E '([[:xdigit:]]{2}:){5}[[:xdigit:]]{2}')
    cp /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-$nic
-   sed -i 's/eth0/$nic/g' /etc/sysconfig/network-scripts/ifcfg-$nic
-   sed -i -e '/HWADDR/d' /etc/sysconfig/network-scripts/ifcfg-$nic
+   sed -i "s/eth0/$nic/g" /etc/sysconfig/network-scripts/ifcfg-$nic
+   sed -i -e "/HWADDR/d" /etc/sysconfig/network-scripts/ifcfg-$nic
    sed -i "5 a HWADDR=$MAC" /etc/sysconfig/network-scripts/ifcfg-$nic
    echo -e "SUBSYSTEM==\"net\", ACTION==\"add\", DRIVERS==\"?*\", ATTR{address}==\"$MAC\", NAME=\"$nic\"" >> /etc/udev/rules.d/70-persistent-net.rules
 done
