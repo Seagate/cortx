@@ -17,7 +17,7 @@ pip3 install awscli-plugin-endpoint
 
 ## Procedure
 
-- Run the following commands:
+- Run the following commands to get the port required to access your s3 server:
 ```bash
 kubectl get pods -o wide -n cortx
 kubectl get svc cortx-server-loadbal-svc-cortx-ova-rgw -n cortx |grep NodePort
@@ -61,6 +61,7 @@ aws s3 cp file10Mb s3://mybucket/
 - Validate and download the object from the bucket
 ```bash
 aws s3 ls s3://mybucket/
+aws s3 cp s3://mybucket/file10Mb file10Mb-download
 ```
 
 - Remove the object from the bucket
