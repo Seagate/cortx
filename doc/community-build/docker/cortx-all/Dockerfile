@@ -48,25 +48,25 @@ RUN yum-config-manager --disable updates
 RUN yum install epel-release -y && yum clean all \
 && rm -rf /var/cache/yum
 
-RUN yum-config-manager --add-repo ${BUILD_URL}/cortx_iso/ \
-    && yum-config-manager --add-repo ${BUILD_URL}/3rd_party \
+RUN yum-config-manager --add-repo "${BUILD_URL}"/cortx_iso/ \
+    && yum-config-manager --add-repo "${BUILD_URL}"/3rd_party \
     && curl ${BUILD_URL}/RELEASE.INFO -o RELEASE.INFO 
 
 COPY ./*.txt ./generate-release-info.sh /opt/seagate/cortx/
 
 RUN yum install --nogpgcheck -y python3-pip \
     && pip3 install yq \
-    && pip3 install  --no-cache-dir --trusted-host $(echo $BUILD_URL | awk -F '/' '{print $3}') -i $BUILD_URL/python_deps -r /opt/seagate/cortx/python_requirements.txt -r /opt/seagate/cortx/python_requirements.ext.txt \
+    && pip3 install  --no-cache-dir --trusted-host "$(echo $BUILD_URL | awk -F '/' '{print $3}')" -i $BUILD_URL/python_deps -r /opt/seagate/cortx/python_requirements.txt -r /opt/seagate/cortx/python_requirements.ext.txt \
    && yum clean all && rm -rf /var/cache/yum
 
-RUN yum install --nogpgcheck -y  $(sed 's/#.*//g' /opt/seagate/cortx/third-party-rpms.txt) \
+RUN yum install --nogpgcheck -y  "$(sed 's/#.*//g' /opt/seagate/cortx/third-party-rpms.txt)" \
     && yum clean all && rm -rf /var/cache/yum
     
-RUN yum install --nogpgcheck -y  $(sed 's/#.*//g' /opt/seagate/cortx/cortx-componenet-rpms.txt) \
+RUN yum install --nogpgcheck -y  "$(sed 's/#.*//g' /opt/seagate/cortx/cortx-componenet-rpms.txt)" \
     && yum clean all && rm -rf /var/cache/yum
     
 RUN rm -f /etc/machine-id && ln -s /etc/cortx/solution/node/id /etc/machine-id \
     && bash /opt/seagate/cortx/generate-release-info.sh
 
-RUN yum-config-manager --enable base,extras,updates && rm -rf /etc/yum.repos.d/$(echo $BUILD_URL | awk -F '/' '{print $3}')*.repo /etc/yum.repos.d/C${CENTOS_RELEASE}.repo \
+RUN yum-config-manager --enable base,extras,updates && rm -rf /etc/yum.repos.d/"$(echo $BUILD_URL | awk -F '/' '{print $3}')*".repo /etc/yum.repos.d/C${CENTOS_RELEASE}.repo \
     && yum clean all && rm -rf /var/cache/yum
