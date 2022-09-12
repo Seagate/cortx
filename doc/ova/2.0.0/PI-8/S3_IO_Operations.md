@@ -20,8 +20,8 @@ pip3 install awscli-plugin-endpoint
 - Run the following commands to get the port required to access your s3 server:
 ```bash
 kubectl get pods -o wide -n cortx
-kubectl get svc cortx-server-loadbal-svc-cortx-ova-rgw -n cortx |grep NodePort
-kubectl describe svc cortx-server-loadbal-svc-cortx-ova-rgw -n cortx |grep NodePort:
+kubectl get svc cortx-server-0 -n cortx |grep NodePort
+kubectl describe svc cortx-server-0 -n cortx |grep NodePort:
 ```
 
 - Configure the default access key and secret key.
@@ -32,7 +32,7 @@ aws configure set aws_secret_access_key ldapadmin
 
 - Set the endpoint url into variable for the future reference.
 ```bash
-endpoint_url="http://""$(kubectl get svc -n cortx | grep cortx-server-loadbal | awk '{ print $3 }')"":80"
+endpoint_url="http://""$(kubectl get svc -n cortx | grep cortx-server-0 | awk '{ print $3 }')"":80"
 ```
 
 - Configure S3 endpoint in awscli configuration.
