@@ -26,6 +26,10 @@ A Cylinder Volume Group, or CVG, is a collection of drives or block devices whic
 
 Block devices, HDDs, SDDs, or other types of storage devices addressable by `/dev/{device-name}` which CORTX uses to store user data.
 
+### IEM
+
+In the context of [CORTX](https://github.com/Seagate/cortx), IEM stands for Interesting Event Messages, relating to events happening within the system, affecting normal system functionality and which may be useful for preliminary debugging.
+
 ### JBOD
 
 JBOD stands for "Just a Bunch of Disks" and refers to a rack enclosure containing many disks which are each individually exposed to the host (CORTX in our case).
