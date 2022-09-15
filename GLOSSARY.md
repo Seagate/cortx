@@ -1,4 +1,4 @@
-# Glossary for CORTX on Kubernetes
+# Glossary for CORTX 
 
 This page will serve as a clearinghouse for all terms, definitions, and acronyms critical to both the understanding of and having success with [CORTX](https://github.com/Seagate/cortx). Please feel free to add terms as needed but place them in proper alphabetical order within the proper section. The glossary is currently split into three sections:
 1. [CORTX Core Glossary](#cortx-core-glossary)
