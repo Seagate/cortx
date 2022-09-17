@@ -25,7 +25,13 @@ By making CORTX and "Object Storage Technologies"
 ```sh
 npm install --save cortx-js-sdk
 ```
- 
+
+If npm is not available, install with: 
+```sh
+sudo apt-get update 
+sudo apt-get install npm
+```
+
 # Connectors
  
 ### Amazon S3
@@ -124,6 +130,13 @@ const res = await s3
   Complete { ETag: '"c3bef121dd0aa891d5895004542f912f"' }
   ```
 
+- Troubleshoot: 
+  If encounter error below, use a https S3 endpoint url instead.
+
+  ```
+  Create bucket failed { NetworkingError: Protocol "http:" not supported. Expected "https:"
+  ```
+
 ### MOTR
  
 TBD , once Cortx release MOTR APIs.
@@ -146,4 +159,5 @@ Absolutely! the package is a thin lightweight wrapper which is "bundle-size" fri
 
 Tested by:
 
+  - Sep 17, 2022: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA-2.0.0-790 as S3 Server.
   - Sep 19, 2021: Harrison Seow (<harrison.seow@seagate.com>) using Cortx OVA 2.0.0 running on VMware Workstation Player 16 on Windows 10.
