@@ -143,7 +143,16 @@ Real example for storing a dicom file in a test bucket.
 es_id = cortxdicom.store(dicomfile, bucket=TEST_BUCKET)
  ```
 
+### Troubleshoot
+If run example and encounter error `FileNotFoundError: [Errno 2] No such file or directory: 'dicoms' `, clone the example dicom file repo from https://github.com/datalad/example-dicom-structural, and copy its `dicoms` folder to the `cortx_dicom` folder.
+
 
 # Why should you used cortx_dicom?
 
 CORTX is an open source solution. Cortx_dicom can help you to handle dicom files on a legally proper way to meet the requirements of different regulations like **HIPAA**, **GDPR** or **CCPA**.
+
+
+# Tested by:
+
+- Sep 29, 2022: Bo Wei (bo.b.wei@seagate.com) using Cortx OVA 2.0.0-790 as S3 Server.
+
