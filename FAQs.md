@@ -1,17 +1,9 @@
 ## Frequently Asked Questions
 
-**What is CORTX?** 
-
-CORTX is S3 compatible object storage developed by a community with a focused engineering effort provided by Seagate designed to allow the most economically efficient possible storage of massive data sets on mass capacity storage devices. Please watch our [brief introductory video](https://www.youtube.com/watch?v=dA-QtUBf16w&list=PLOLUar3XSz2M_w5OxQLNDBTpSrsGbjDWr&index=1&t=12s) and visit our [youtube channel](https://cortx.link/videos) for more in-depth information. At the heart of CORTX is the internal motr object system about which you can read a [detailed architecture description](https://github.com/Seagate/cortx-motr/blob/main/doc/motr-in-prose.md).  To ensure the best economics and the highest quality of code, CORTX is 100% open source with core components licensed as Apache and peripheral components licensed as LGPL.
-
 **What does CORTX stand for?**
 
    * Actually CORTX is not an acronym.  The marketing team just thought it looks cool and sounds cool.  :smiley:
-
-**Why introduce a new object store when there are already other object stores out there?**
-
-   * We are certainly familar with the other really excellent object stores out there.  But the fact is that there are clearly many use cases for object storage today, with additional use cases emerging all the time, and we don't see it as a *one size fits all* world. Each object store has its own particular design choices which results in unique feature sets.  The more diversity of choices that are available, the more likely that different users/customers can find the system best suited for their needs and the uniformity of the S3 interface allows this without overly forcing users/customers into *vendor lock-in*.  Specific and unique to CORTX is our focus on enabling the next generation of mass capacity devices (e.g. HAMR) and the TCO benefits that come with that approach.  This is a unique focus and requires the object store itself to address a number of design/architectural challenges that the CORTX community is best positioned to address.  We have heard from many in the community that there is a clear need for an open source object store that is focused on enabling these mass capacity devices and that is the core motivation behind CORTX. The origin of this technology is from an EU funded program and the user/developer community, whom came together because they saw the need for a differently approach to object storage as they looked at the needs of application developers, the challenges of exascale/exabytes scale of storage and the need to optimally utilize emerging device level technology innovations. CORTX provides something different from other object stores in that it will uniquely leverage HDD innovations such as REMAN to reduce the likelihood of rebuild storms, HAMR to enable the largest capacity/lowest cost per bit next gen devices, and multi-actuator to retain IOPS per capacity ratios.  CORTX and the community are focused on such capabilities that are required in mass capacity deployments.
-   
+ 
 **What is the history of CORTX?**
 
    * CORTX began its life with the requirements gathering workshops through the E10 initiative circa 2012. There were multiple  workshops organized throughout the world on getting the requirements of building storage systems for extreme scale computing  involving stakeholders from the (primarily) extreme scale HPC, research data center community, etc. Early pioneers of the Lustre file system were also involved in those workshops & heavily contributed to the architecture and the designs. It was envisioned to build something from scratch on a clean slate considering the changes in hardware assumptions (multicore, many core, extreme parallelism, etc) that was coming about at that time. Then the CORTX initiative got funding from the European Union through multiple projects,  primarily SAGE (2014 – 2018),  Sage2 (2018 –) , and,  Maestro(2018 - ). The development and the ecosystem around CORTX was enabled by many advanced application developers, key technology vendors, OEMS, research and academic institutions in Europe. 
@@ -39,22 +31,5 @@ Apart from Seagate - CEA, Juelich, ETH, Appentra, ECMWF and HPE are the key play
 
 Please help us populate this FAQ by letting us know what you most want to know about CORTX!  Feel free to ask questions in any of our [communications channels](SUPPORT.md) and we can all populate this FAQ as we learned what is actually frequently asked.
 
-
-**How do I make a object in CORTX publicly accessible using a URL?**
-
-To do this you will need to change the permissions on the object. The easiest way to do this is using [cyberduck](https://cyberduck.io/).
-
-In cyberduck you can select the object right click and then click "Share". This will set the right permissions on the object and give you a link to the object that you can share.
-
-![](https://user-images.githubusercontent.com/950172/127746106-a6f2d377-3037-4bc8-a0a7-fb5cdf33a0f6.png)
-
-
-**Can we use CORTX Motr as the underlying datastore for Filecoin?**
-
-Yes.  Filecoin stores data via an abstraction layer called “go-datastore”. There are several existing go-datastore implementations , which are based on different key value stores (KVS) including Flatfs, Badger, LevelDB, Amazon S3, etc. 
-
-CORTX Motr has a built-in KVS called Motr Index, which can be exactly used as the underlying KVS for go-datastore.
-
-[Go-ds-motr module](https://github.com/mengwanguc/go-ds-motr) is an implementation of go-datastore based on CORTX motr. Go-ds-motr implements all the necessary functions required for Filecoin. More information can be found [here](doc/PDFs/Meng_Wang_Poster_Presentation.pdf).
 
 
