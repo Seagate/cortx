@@ -27,8 +27,8 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
 
 **Prerequisites:**
 
-- Download the `CORTX OVA <https://cortxova.s3.us-west-2.amazonaws.com/ova-2.0.0-790.ova>`_ from `our release page <https://github.com/Seagate/cortx/releases/latest>`_.
-- To perform the S3 IO operations,refer to these instructions in `S3 IO Operations <https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-7/S3_IO_Operations.md>`_.
+- Download the `CORTX OVA <https://cortxova.s3.us-west-2.amazonaws.com/ova-2.0.0-940.ova>`_ from `our release page <https://github.com/Seagate/cortx/releases/latest>`_.
+- To perform the S3 IO operations,refer to these instructions in `S3 IO Operations <https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-8/S3_IO_Operations.md>`_.
 - Import the OVA image using the instruction provided in  to `Importing the OVA document <https://github.com/Seagate/cortx/blob/main/doc/Importing_OVA_File.rst>`_.
 - Ensure that the Virtualization platform has internet connectivity:
    
@@ -60,7 +60,7 @@ Procedure
        hctl status
 
  
-#. To perform the S3 IO operations, refer the instructions in `S3 IO operations <https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-7/S3_IO_Operations.md>`_.
+#. To perform the S3 IO operations, refer the instructions in `S3 IO operations <https://github.com/Seagate/cortx/blob/main/doc/ova/2.0.0/PI-8/S3_IO_Operations.md>`_.
 
 #. BOOM. You're all done and you're AWESOME. 
 
@@ -87,7 +87,5 @@ Validate CSM endpoint via REST API
 
 Tested by:
 
-- Sep 9, 2022: Bo Wei (bo.b.wei@seagate.com) on a Windows with VMWare WorkStation 16 Player.
-- June 15, 2022: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro.
-- June 11, 2022: Harrison Seow (harrison.seow@seagate.com) on a Windows desktop with VMWare Workstation 16 Player.
-- May 28, 2022: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro.
+- September 16, 2022: Amnuay Boottrakoat (amnuay.boottrakoar@seagate.com) on a Windows with VMWare Workstation 16 Player.
+- September 7, 2022: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro.

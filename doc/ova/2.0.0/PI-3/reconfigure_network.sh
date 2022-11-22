@@ -1,3 +1,5 @@
+#! /bin/bash
+
 set -euE
 export LOG_FILE="${LOG_FILE:-/var/log/seagate/provisioner/va_bootstrap.log}"
 mkdir -p $(dirname "${LOG_FILE}")
@@ -8,7 +10,6 @@ function trap_handler {
     echo "******************"
 }
 trap trap_handler ERR
-BASEDIR=$(dirname "${BASH_SOURCE}")
 
 mgmt_ip=$(ip -4 addr show ens32 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 public_ip=$(ip -4 addr show ens33 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')

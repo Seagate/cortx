@@ -27,9 +27,7 @@ echo "Usage: $0 [ -b build ] [ -p push docker-image to GHCR yes/no. Default no] 
 VERSION=2.0.0
 DOCKER_PUSH=no
 TAG_LATEST=no
-OS=centos-7.9.2009
 ENV=opensource-ci
-
 
 while getopts "b:p:t:h:e:" opt; do
     case $opt in
