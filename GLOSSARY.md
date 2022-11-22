@@ -1,4 +1,4 @@
-# Glossary for CORTX on Kubernetes
+# Glossary for CORTX 
 
 This page will serve as a clearinghouse for all terms, definitions, and acronyms critical to both the understanding of and having success with [CORTX](https://github.com/Seagate/cortx). Please feel free to add terms as needed but place them in proper alphabetical order within the proper section. The glossary is currently split into three sections:
 1. [CORTX Core Glossary](#cortx-core-glossary)
@@ -25,6 +25,10 @@ A Cylinder Volume Group, or CVG, is a collection of drives or block devices whic
 ### Data Devices / Drives
 
 Block devices, HDDs, SDDs, or other types of storage devices addressable by `/dev/{device-name}` which CORTX uses to store user data.
+
+### IEM
+
+In the context of [CORTX](https://github.com/Seagate/cortx), IEM stands for Interesting Event Messages, relating to events happening within the system, affecting normal system functionality and which may be useful for preliminary debugging.
 
 ### JBOD
 
@@ -195,6 +199,14 @@ Commonly known as "the package manager for Kubernetes", [Helm](https://helm.sh/)
 ### kubelet
 
 The [kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) is the primary "node agent" that runs on each node. It can register the node with the apiserver using one of: the hostname; a flag to override the hostname; or specific logic for a cloud provider.
+
+### Kubernetes API
+
+The [Kubernetes API](https://kubernetes.io/docs/reference/using-api/api-concepts/) is a resource-based (RESTful) programmatic interface provided via HTTP. It supports retrieving, creating, updating, and deleting primary resources via the standard HTTP verbs (POST, PUT, PATCH, DELETE, GET).
+
+### Kubernetes API Server
+
+The [Kubernetes API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) validates and configures data for the api objects which include pods, services, replicationcontrollers, and others. The API Server services REST operations and provides the frontend to the cluster's shared state through which all other components interact.
 
 ### KUDO
 
