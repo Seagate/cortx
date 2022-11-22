@@ -4,7 +4,7 @@ This document provides quick access to several different ways to set up CORTX fo
  
 1. Download a CORTX virtual machine image to get up and running in minutes
 
-    1. On a single node on Kubernetes inside an OVA: [LINK](doc/ova/2.0.0/PI-7/CORTX_on_Open_Virtual_Appliance_PI-7.rst)
+    1. On a single node on Kubernetes inside an OVA: [LINK](doc/ova/2.0.0/PI-7/CORTX_on_Open_Virtual_Appliance_PI-8.rst) 
     1. On an AWS EC2 instance: [LINK](doc/integrations/AWS_EC2/README.md)
     1. Across a cluster: TODO 
 1. Run CORTX on Kubernetes
