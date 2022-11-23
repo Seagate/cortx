@@ -1,5 +1,5 @@
 import mongoose from "../../db/mongoose";
-import { Response, Request } from "express";;
+import { Response, Request } from "express";
 import DbUtilFile from "../../db/utils/fileUtils";
 import crypto from "crypto";
 import videoChecker from "../../utils/videoChecker"

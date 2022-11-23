@@ -92,3 +92,7 @@ Step 2: Use ftp client on another machine (e.g. Windows has default ftp client a
     test_ftp
 
 All done. Now you have a ftp server ready with Cortx as its storage.
+
+Tested by:
+
+- June 26, 2022: Jalen Kan (<jalen.j.kan@seagate.com>) using Cortx OVA 2.0.0-790 on Windows 10 running VMware Workstation 16.

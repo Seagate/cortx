@@ -34,6 +34,7 @@ All of the following hypervisors should work: `VMware ESX Server <https://www.vm
    
   - For VMware related troubleshooting, please refer to `VM Documents <https://docs.vmware.com/en/VMware-vSphere/index.html>`_. 
   - If on the VMware WorkStation, you do not see an IPv4 network configured, then update virtual networking configuration. See `troubleshooting virtual network <https://github.com/Seagate/cortx/blob/main/doc/troubleshoot_virtual_network.rst>`_.
+  - for VMWare Fusion see <https://docs.vmware.com/en/VMware-Fusion/12/com.vmware.fusion.using.doc/GUID-E498672E-19DD-40DF-92D3-FC0078947958.html>
 
 **********
 Procedure
@@ -86,6 +87,7 @@ Validate CSM endpoint via REST API
 
 Tested by:
 
+- Sep 9, 2022: Bo Wei (bo.b.wei@seagate.com) on a Windows with VMWare WorkStation 16 Player.
 - June 15, 2022: Rose Wambui (rose.wambui@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro.
 - June 11, 2022: Harrison Seow (harrison.seow@seagate.com) on a Windows desktop with VMWare Workstation 16 Player.
 - May 28, 2022: Mukul Malhotra (mukul.malhotra@seagate.com) on a Windows laptop with VMWare Workstation 16 Pro.
