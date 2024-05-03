@@ -29,8 +29,8 @@ for i in json_string['results']:
 print(todays_data)
 
 # create bucket named the current date
-ACCESS_KEY = 'sgiamadmin'
-SECRET_ACCESS_KEY = 'ldapadmin'
+ACCESS_KEY = ''
+SECRET_ACCESS_KEY = ''
 END_POINT_URL = 'http://192.168.1.16:31949'
 
 s3_client = boto3.client('s3', endpoint_url=END_POINT_URL,
@@ -68,11 +68,11 @@ f.close()
 
 s3_resource.Bucket(str(today)).upload_file('data.txt', 'data.txt')
 
-gmail_user = '<gmail_username>'
-gmail_app_password = '<gmail_password>'
+gmail_user = ''
+gmail_app_password = ''
 
 sent_from = gmail_user
-sent_to = ['dylanthegander@gmail.com']
+sent_to = ['']
 sent_subject = "Travel Updates!"
 sent_body = ''
 
