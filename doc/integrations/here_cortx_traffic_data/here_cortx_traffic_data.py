@@ -68,8 +68,8 @@ f.close()
 
 s3_resource.Bucket(str(today)).upload_file('data.txt', 'data.txt')
 
-gmail_user = 'dylanthegander@gmail.com'
-gmail_app_password = 'drilqouaaojpfrme'
+gmail_user = '<gmail_username>'
+gmail_app_password = '<gmail_password>'
 
 sent_from = gmail_user
 sent_to = ['dylanthegander@gmail.com']
